@@ -34,22 +34,22 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // 可以用斧子来挖掘
         tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(ModBlocks.DYEDREAM_LOG.get());
+                .add(ModBlocks.DYEDREAM_LOG.get())
+                .add(ModBlocks.DYEDREAM_WOOD.get());
 
         // 寻找树的新手引导
         tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
-                .add(ModBlocks.DYEDREAM_LOG.get());
+                .add(ModBlocks.DYEDREAM_LOG.get())
+                .add(ModBlocks.DYEDREAM_WOOD.get());
 
         // 加了这个之后，无需额外编写烧制木炭的配方
         tag(BlockTags.LOGS_THAT_BURN)
-                .add(ModBlocks.DYEDREAM_LOG.get());
-
-        // 无去皮版本，但仍需标记以兼容其他模组
-//        tag(Tags.Blocks.STRIPPED_LOGS)
-//                .add(ModBlocks.DYEDREAM_LOG.get());
+                .add(ModBlocks.DYEDREAM_LOG.get())
+                .add(ModBlocks.DYEDREAM_WOOD.get());
 
         tag(BlockTags.LOGS)
-                .add(ModBlocks.DYEDREAM_LOG.get());
+                .add(ModBlocks.DYEDREAM_LOG.get())
+                .add(ModBlocks.DYEDREAM_WOOD.get());
 
 
         tag(BlockTags.LEAVES)
@@ -57,5 +57,46 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.SAPLINGS)
                 .add(ModBlocks.DYEDREAM_SAPLING.get());
+
+        // ===== 染梦木板建材系列 =====
+
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.DYEDREAM_PLANKS.get())
+                .add(ModBlocks.DYEDREAM_PLANKS_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_PLANKS_SLAB.get())
+                .add(ModBlocks.DYEDREAM_PLANKS_FENCE.get())
+                .add(ModBlocks.DYEDREAM_PLANKS_FENCEGATE.get())
+                .add(ModBlocks.DYEDREAM_PLANKS_PANE.get())
+                .add(ModBlocks.DYEDREAM_PLANKS_DOOR.get())
+                .add(ModBlocks.DYEDREAM_PLANKS_TRAPDOOR.get())
+                .add(ModBlocks.DYEDREAM_PLANKS_PRESSURE_PLATE.get())
+                .add(ModBlocks.DYEDREAM_PLANKS_BUTTON.get());
+
+        tag(BlockTags.PLANKS)
+                .add(ModBlocks.DYEDREAM_PLANKS.get());
+
+        tag(BlockTags.WOODEN_STAIRS)
+                .add(ModBlocks.DYEDREAM_PLANKS_STAIRS.get());
+
+        tag(BlockTags.WOODEN_SLABS)
+                .add(ModBlocks.DYEDREAM_PLANKS_SLAB.get());
+
+        tag(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.DYEDREAM_PLANKS_FENCE.get());
+
+        tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.DYEDREAM_PLANKS_FENCEGATE.get());
+
+        tag(BlockTags.WOODEN_DOORS)
+                .add(ModBlocks.DYEDREAM_PLANKS_DOOR.get());
+
+        tag(BlockTags.WOODEN_TRAPDOORS)
+                .add(ModBlocks.DYEDREAM_PLANKS_TRAPDOOR.get());
+
+        tag(BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.DYEDREAM_PLANKS_PRESSURE_PLATE.get());
+
+        tag(BlockTags.WOODEN_BUTTONS)
+                .add(ModBlocks.DYEDREAM_PLANKS_BUTTON.get());
     }
 }

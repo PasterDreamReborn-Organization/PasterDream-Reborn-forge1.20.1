@@ -22,8 +22,19 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_DIRT.get());
                         output.accept(ModItems.DYEDREAM_GRASS_BLOCK.get());
                         output.accept(ModItems.DYEDREAM_LOG.get());
+                        output.accept(ModItems.DYEDREAM_WOOD.get());
                         output.accept(ModItems.DYEDREAM_LEAVES.get());
                         output.accept(ModItems.DYEDREAM_SAPLING.get());
+                        output.accept(ModItems.DYEDREAM_PLANKS.get());
+                        output.accept(ModItems.DYEDREAM_PLANKS_STAIRS.get());
+                        output.accept(ModItems.DYEDREAM_PLANKS_SLAB.get());
+                        output.accept(ModItems.DYEDREAM_PLANKS_FENCE.get());
+                        output.accept(ModItems.DYEDREAM_PLANKS_FENCEGATE.get());
+                        output.accept(ModItems.DYEDREAM_PLANKS_PANE.get());
+                        output.accept(ModItems.DYEDREAM_PLANKS_DOOR.get());
+                        output.accept(ModItems.DYEDREAM_PLANKS_TRAPDOOR.get());
+                        output.accept(ModItems.DYEDREAM_PLANKS_PRESSURE_PLATE.get());
+                        output.accept(ModItems.DYEDREAM_PLANKS_BUTTON.get());
                     })
                     .build());
 

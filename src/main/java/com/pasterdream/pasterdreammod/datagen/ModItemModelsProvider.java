@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.datagen;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.item.ModItems;
+import com.pasterdream.pasterdreammod.world.level.block.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -24,6 +25,12 @@ public class ModItemModelsProvider extends ItemModelProvider {
     protected void registerModels() {
         withExistingParent(ModItems.DYEDREAM_SAPLING.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/dyedream_sapling"));
+
+        fenceItem(ModBlocks.DYEDREAM_PLANKS_FENCE, ModBlocks.DYEDREAM_PLANKS);
+        buttonItem(ModBlocks.DYEDREAM_PLANKS_BUTTON, ModBlocks.DYEDREAM_PLANKS);
+        basicItem(ModItems.DYEDREAM_PLANKS_DOOR.get());
+        withExistingParent(ModItems.DYEDREAM_PLANKS_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dyedream_planks_trapdoor"));
     }
 
     @Override

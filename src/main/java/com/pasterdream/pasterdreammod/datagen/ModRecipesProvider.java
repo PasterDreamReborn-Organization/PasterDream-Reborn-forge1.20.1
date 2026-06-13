@@ -1,8 +1,10 @@
 package com.pasterdream.pasterdreammod.datagen;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -20,26 +22,96 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
-        // 烧炼配方
-        // oreSmelting(pWriter, List.of(ModItems.EXAMPLE_RAW.get()), RecipeCategory.MISC, ModItems.EXAMPLE_INGOT.get(), 1.0F, 200, "example");
-        // oreBlasting(pWriter, List.of(ModItems.EXAMPLE_RAW.get()), RecipeCategory.MISC, ModItems.EXAMPLE_INGOT.get(), 1.0F, 100, "example");
+        // 染梦原木 → 染梦木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS.get(), 4)
+                .requires(ModItems.DYEDREAM_LOG.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_LOG.get()), has(ModItems.DYEDREAM_LOG.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_planks_from_log");
 
-        // 3×3 压缩存储
-        // ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.EXAMPLE_BLOCK.get())
-        //         .pattern("###")
-        //         .pattern("###")
-        //         .pattern("###")
-        //         .define('#', ModItems.EXAMPLE_INGOT.get())
-        //         .group("example")
-        //         .unlockedBy(getHasName(ModItems.EXAMPLE_INGOT.get()), has(ModItems.EXAMPLE_INGOT.get()))
-        //         .save(pWriter);
+        // 染梦原木 → 染梦木头
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_WOOD.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.DYEDREAM_LOG.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_LOG.get()), has(ModItems.DYEDREAM_LOG.get()))
+                .save(pWriter);
 
-        // 3×3 解压
-        // ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.EXAMPLE_INGOT.get(), 9)
-        //         .requires(ModBlocks.EXAMPLE_BLOCK.get())
-        //         .group("example")
-        //         .unlockedBy(getHasName(ModBlocks.EXAMPLE_BLOCK.get()), has(ModBlocks.EXAMPLE_BLOCK.get()))
-        //         .save(pWriter);
+        // 染梦木头 → 染梦木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS.get(), 4)
+                .requires(ModItems.DYEDREAM_WOOD.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_WOOD.get()), has(ModItems.DYEDREAM_WOOD.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_planks_from_wood");
+
+        // 染梦木板楼梯
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS_STAIRS.get(), 4)
+                .pattern("a  ")
+                .pattern("aa ")
+                .pattern("aaa")
+                .define('a', ModItems.DYEDREAM_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
+                .save(pWriter);
+
+        // 染梦木板台阶
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS_SLAB.get(), 6)
+                .pattern("aaa")
+                .define('a', ModItems.DYEDREAM_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
+                .save(pWriter);
+
+        // 染梦木板栅栏
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS_FENCE.get(), 3)
+                .pattern("aba")
+                .pattern("aba")
+                .define('a', ModItems.DYEDREAM_PLANKS.get())
+                .define('b', Items.STICK)
+                .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
+                .save(pWriter);
+
+        // 染梦木板栅栏门
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS_FENCEGATE.get(), 1)
+                .pattern("aba")
+                .pattern("aba")
+                .define('a', Items.STICK)
+                .define('b', ModItems.DYEDREAM_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
+                .save(pWriter);
+
+        // 染梦木窗格 - 玻璃板 + 染梦木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS_PANE.get(), 1)
+                .requires(Items.GLASS_PANE)
+                .requires(ModItems.DYEDREAM_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
+                .save(pWriter);
+
+        // 染梦木门
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS_DOOR.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.DYEDREAM_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
+                .save(pWriter);
+
+        // 染梦木板活板门
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS_TRAPDOOR.get(), 2)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModItems.DYEDREAM_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
+                .save(pWriter);
+
+        // 染梦木板压力板
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS_PRESSURE_PLATE.get(), 1)
+                .pattern("aa")
+                .define('a', ModItems.DYEDREAM_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
+                .save(pWriter);
+
+        // 染梦木板按钮
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS_BUTTON.get(), 1)
+                .requires(ModItems.DYEDREAM_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
+                .save(pWriter);
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
@@ -56,6 +128,5 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                             pCookingSerializer).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(pFinishedRecipeConsumer, PasterDreamMod.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
-
     }
 }

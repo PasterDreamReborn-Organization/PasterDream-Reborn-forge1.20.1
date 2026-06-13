@@ -47,7 +47,7 @@ public class DyedreamGrassBlock extends Block {
     private static boolean canBeGrass(BlockState state, LevelReader level, BlockPos pos) {
         BlockPos above = pos.above();
         BlockState aboveState = level.getBlockState(above);
-        return aboveState.isAir() && aboveState.getFluidState().getAmount() < 8;
+        return !aboveState.isSolidRender(level, above) && aboveState.getFluidState().getAmount() < 8;
     }
 
     private static boolean canPropagate(BlockState state, LevelReader level, BlockPos pos) {

@@ -27,9 +27,21 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 block -> createSilkTouchDispatchTable(block,
                         LootItem.lootTableItem(ModBlocks.DYEDREAM_DIRT.get())));
         dropSelf(ModBlocks.DYEDREAM_LOG.get());
+        dropSelf(ModBlocks.DYEDREAM_WOOD.get());
         add(ModBlocks.DYEDREAM_LEAVES.get(),
                 block -> createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         dropSelf(ModBlocks.DYEDREAM_SAPLING.get());
+
+        dropSelf(ModBlocks.DYEDREAM_PLANKS.get());
+        dropSelf(ModBlocks.DYEDREAM_PLANKS_STAIRS.get());
+        dropSelf(ModBlocks.DYEDREAM_PLANKS_SLAB.get());
+        dropSelf(ModBlocks.DYEDREAM_PLANKS_FENCE.get());
+        dropSelf(ModBlocks.DYEDREAM_PLANKS_FENCEGATE.get());
+        dropSelf(ModBlocks.DYEDREAM_PLANKS_PANE.get());
+        add(ModBlocks.DYEDREAM_PLANKS_DOOR.get(), createDoorTable(ModBlocks.DYEDREAM_PLANKS_DOOR.get()));
+        dropSelf(ModBlocks.DYEDREAM_PLANKS_TRAPDOOR.get());
+        dropSelf(ModBlocks.DYEDREAM_PLANKS_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.DYEDREAM_PLANKS_BUTTON.get());
     }
 
     @Override

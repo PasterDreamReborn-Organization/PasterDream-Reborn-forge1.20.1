@@ -27,10 +27,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "stripped_logs")))
-                .add(ModItems.DYEDREAM_LOG.get());
+                .add(ModItems.DYEDREAM_LOG.get())
+                .add(ModItems.DYEDREAM_WOOD.get());
 
         tag(ItemTags.LOGS_THAT_BURN)
-                .add(ModItems.DYEDREAM_LOG.get());
+                .add(ModItems.DYEDREAM_LOG.get())
+                .add(ModItems.DYEDREAM_WOOD.get());
 
     }
 }

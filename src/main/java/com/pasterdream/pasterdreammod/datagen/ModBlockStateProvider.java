@@ -4,7 +4,16 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.level.block.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.IronBarsBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -29,11 +38,47 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         logBlock((RotatedPillarBlock) ModBlocks.DYEDREAM_LOG.get());
         blockItem(ModBlocks.DYEDREAM_LOG);
+        var logTex = blockTexture(ModBlocks.DYEDREAM_LOG.get());
+        axisBlock((RotatedPillarBlock) ModBlocks.DYEDREAM_WOOD.get(), logTex, logTex);
+        blockItem(ModBlocks.DYEDREAM_WOOD);
         simpleBlockWithItem(ModBlocks.DYEDREAM_LEAVES.get(), cubeAll(ModBlocks.DYEDREAM_LEAVES.get()));
 
         simpleBlock(ModBlocks.DYEDREAM_SAPLING.get(),
                 models().cross(ModBlocks.DYEDREAM_SAPLING.getId().getPath(),
                         blockTexture(ModBlocks.DYEDREAM_SAPLING.get())).renderType("cutout"));
+
+        // ===== 染梦木板建材系列 =====
+
+        simpleBlockWithItem(ModBlocks.DYEDREAM_PLANKS.get(), cubeAll(ModBlocks.DYEDREAM_PLANKS.get()));
+
+        stairsBlock((StairBlock) ModBlocks.DYEDREAM_PLANKS_STAIRS.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
+        blockItem(ModBlocks.DYEDREAM_PLANKS_STAIRS);
+
+        slabBlock((SlabBlock) ModBlocks.DYEDREAM_PLANKS_SLAB.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
+        blockItem(ModBlocks.DYEDREAM_PLANKS_SLAB);
+
+        fenceBlock((FenceBlock) ModBlocks.DYEDREAM_PLANKS_FENCE.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
+
+        fenceGateBlock((FenceGateBlock) ModBlocks.DYEDREAM_PLANKS_FENCEGATE.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
+        blockItem(ModBlocks.DYEDREAM_PLANKS_FENCEGATE);
+
+        paneBlock((IronBarsBlock) ModBlocks.DYEDREAM_PLANKS_PANE.get(), modLoc("block/dyedream_planks_trapdoor"), modLoc("block/dyedream_planks_trapdoor"));
+
+        doorBlockWithRenderType((DoorBlock) ModBlocks.DYEDREAM_PLANKS_DOOR.get(),
+                modLoc("block/dyedream_planks_door_bottom"),
+                modLoc("block/dyedream_planks_door_top"),
+                "cutout");
+
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.DYEDREAM_PLANKS_TRAPDOOR.get(),
+                modLoc("block/dyedream_planks_trapdoor"),
+                true,
+                "cutout");
+        blockItem(ModBlocks.DYEDREAM_PLANKS_TRAPDOOR, "_bottom");
+
+        pressurePlateBlock((PressurePlateBlock) ModBlocks.DYEDREAM_PLANKS_PRESSURE_PLATE.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
+        blockItem(ModBlocks.DYEDREAM_PLANKS_PRESSURE_PLATE);
+
+        buttonBlock((ButtonBlock) ModBlocks.DYEDREAM_PLANKS_BUTTON.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
     }
 
     private <T extends Block> void blockItem(RegistryObject<T> block) {
