@@ -1,9 +1,16 @@
 package com.pasterdream.pasterdreammod.datagen;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.item.ModItems;
+import com.pasterdream.pasterdreammod.world.level.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -18,15 +25,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        // 自定义标签
-        // tag(ModItemTags.EXAMPLE_TAG)
-        //         .add(ModItems.EXAMPLE_ITEM.get());
 
-        // 原版可锻造盔甲标签（支持纹饰）
-        // tag(ItemTags.TRIMMABLE_ARMOR)
-        //         .add(ModItems.EXAMPLE_HELMET.get())
-        //         .add(ModItems.EXAMPLE_CHESTPLATE.get())
-        //         .add(ModItems.EXAMPLE_LEGGINGS.get())
-        //         .add(ModItems.EXAMPLE_BOOTS.get());
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "stripped_logs")))
+                .add(ModItems.DYEDREAM_LOG.get());
+
+        tag(ItemTags.LOGS_THAT_BURN)
+                .add(ModItems.DYEDREAM_LOG.get());
+
     }
 }

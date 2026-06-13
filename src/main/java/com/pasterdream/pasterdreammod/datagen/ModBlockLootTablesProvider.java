@@ -23,7 +23,13 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.DYEDREAM_DIRT.get());
-        dropSelf(ModBlocks.DYEDREAM_GRASS_BLOCK.get());
+        add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        LootItem.lootTableItem(ModBlocks.DYEDREAM_DIRT.get())));
+        dropSelf(ModBlocks.DYEDREAM_LOG.get());
+        add(ModBlocks.DYEDREAM_LEAVES.get(),
+                block -> createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(ModBlocks.DYEDREAM_SAPLING.get());
     }
 
     @Override

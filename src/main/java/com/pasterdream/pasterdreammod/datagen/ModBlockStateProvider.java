@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.level.block.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -25,6 +26,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 modLoc("block/dyedream_grass_block_top"));
         simpleBlock(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), grassBlock);
         simpleBlockItem(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), grassBlock);
+
+        logBlock((RotatedPillarBlock) ModBlocks.DYEDREAM_LOG.get());
+        blockItem(ModBlocks.DYEDREAM_LOG);
+        simpleBlockWithItem(ModBlocks.DYEDREAM_LEAVES.get(), cubeAll(ModBlocks.DYEDREAM_LEAVES.get()));
+
+        simpleBlock(ModBlocks.DYEDREAM_SAPLING.get(),
+                models().cross(ModBlocks.DYEDREAM_SAPLING.getId().getPath(),
+                        blockTexture(ModBlocks.DYEDREAM_SAPLING.get())).renderType("cutout"));
     }
 
     private <T extends Block> void blockItem(RegistryObject<T> block) {
