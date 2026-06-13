@@ -18,7 +18,10 @@
 | 旧 ID | 新 ID | 变更说明 | 客制化类处理 |
 |-------|-------|---------|------------|
 | `dyedream_dirt` | `dyedream_dirt` | 不改 | 无需客制化类，直接用 `Block` |
-| `dyedream_grass` | `dyedream_grass_block` | 重命名，加 `_block` 后缀与物品区分 | 需客制化类：`canSustainPlant` + `lightBlock`，移除死代码 |
+| `dyedream_grass` | `dyedream_grass_block` | 重命名，加 `_block` 后缀 | 客制化类 `DyedreamGrassBlock`，仅覆写 `canSustainPlant` |
+| `dyedream_log` | `dyedream_log` | 不改 | 无需客制化类，直接用 `RotatedPillarBlock` |
+| `dyedream_leaves` | `dyedream_leaves` | 不改 | 无需客制化类，直接用 `LeavesBlock` |
+| `dyedream_sapling` | `dyedream_sapling` | 不改 | 无需客制化类，直接用 `SaplingBlock`，移除不必要的 BlockEntity |
 
 ---
 

@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod;
 import com.pasterdream.pasterdreammod.datagen.*;
 import com.pasterdream.pasterdreammod.datagen.lang.ModEnUsLangProvider;
 import com.pasterdream.pasterdreammod.datagen.lang.ModZhCnLangProvider;
+import com.pasterdream.pasterdreammod.datagen.ModWorldGenProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -28,6 +29,8 @@ public class ModDataGenerator {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         // 服务端数据生成
+        generator.addProvider(event.includeServer(),
+                new ModWorldGenProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new ModRecipesProvider(packOutput));
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(
                 new LootTableProvider.SubProviderEntry(ModBlockLootTablesProvider::new, LootContextParamSets.BLOCK)
