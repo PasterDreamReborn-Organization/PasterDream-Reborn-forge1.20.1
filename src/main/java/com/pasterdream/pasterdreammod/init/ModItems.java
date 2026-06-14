@@ -36,6 +36,11 @@ public class ModItems {
     public static final RegistryObject<Item> DYEDREAM_BUD_NUGGET = ITEMS.register("dyedream_bud_nugget",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> RAW_DYEDREAM_ALLOY_INGOT = ITEMS.register("raw_dyedream_alloy_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> DYEDREAM_ALLOY_INGOT = ITEMS.register("dyedream_alloy_ingot",
+            () -> new Item(new Item.Properties()));
     // ===== 方块物品 =====
 
     public static final RegistryObject<Item> DYEDREAM_DIRT = ITEMS.register("dyedream_dirt",

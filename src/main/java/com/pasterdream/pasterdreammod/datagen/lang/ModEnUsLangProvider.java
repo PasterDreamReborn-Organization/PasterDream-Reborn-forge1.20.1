@@ -18,6 +18,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_DUST_PIECE.get(), "Dye Dream Dust Piece");
         add(ModItems.AMBER_CANDY.get(), "Amber Candy");
         add(ModItems.PINK_SLIMEBALL.get(), "Pink Slimeball");
+        add(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get(), "Raw Dye Dream Alloy Ingot");
+        add(ModItems.DYEDREAM_ALLOY_INGOT.get(), "Dye Dream Alloy Ingot");
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "Dye Dream Dirt");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "Dye Dream Grass Block");
