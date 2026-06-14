@@ -30,7 +30,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // 可以用锄头来挖掘
         tag(BlockTags.MINEABLE_WITH_HOE)
-                .add(ModBlocks.DYEDREAM_LEAVES.get());
+                .add(ModBlocks.DYEDREAM_LEAVES.get())
+                .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get());
 
         // 可以用斧子来挖掘
         tag(BlockTags.MINEABLE_WITH_AXE)
@@ -53,7 +54,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
 
         tag(BlockTags.LEAVES)
-                .add(ModBlocks.DYEDREAM_LEAVES.get());
+                .add(ModBlocks.DYEDREAM_LEAVES.get())
+                .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get());
 
         tag(BlockTags.SAPLINGS)
                 .add(ModBlocks.DYEDREAM_SAPLING.get());

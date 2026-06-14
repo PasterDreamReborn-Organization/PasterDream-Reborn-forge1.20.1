@@ -30,6 +30,9 @@ public class ModItems {
     public static final RegistryObject<Item> DYEDREAM_LEAVES = ITEMS.register("dyedream_leaves",
             () -> new BlockItem(ModBlocks.DYEDREAM_LEAVES.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> DYEDREAM_WORLDTREE_LEAVES = ITEMS.register("dyedream_worldtree_leaves",
+            () -> new BlockItem(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), new Item.Properties()));
+
     public static final RegistryObject<Item> DYEDREAM_SAPLING = ITEMS.register("dyedream_sapling",
             () -> new BlockItem(ModBlocks.DYEDREAM_SAPLING.get(), new Item.Properties()));
 

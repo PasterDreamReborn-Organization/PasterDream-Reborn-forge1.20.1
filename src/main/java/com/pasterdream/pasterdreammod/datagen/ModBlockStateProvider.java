@@ -43,6 +43,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.DYEDREAM_WOOD);
         simpleBlockWithItem(ModBlocks.DYEDREAM_LEAVES.get(), cubeAll(ModBlocks.DYEDREAM_LEAVES.get()));
 
+        var worldtreeLeaves = models().cubeAll(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get())).renderType("cutout");
+        simpleBlockWithItem(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), worldtreeLeaves);
+
         simpleBlock(ModBlocks.DYEDREAM_SAPLING.get(),
                 models().cross(ModBlocks.DYEDREAM_SAPLING.getId().getPath(),
                         blockTexture(ModBlocks.DYEDREAM_SAPLING.get())).renderType("cutout"));

@@ -24,6 +24,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_LOG.get());
                         output.accept(ModItems.DYEDREAM_WOOD.get());
                         output.accept(ModItems.DYEDREAM_LEAVES.get());
+                        output.accept(ModItems.DYEDREAM_WORLDTREE_LEAVES.get());
                         output.accept(ModItems.DYEDREAM_SAPLING.get());
                         output.accept(ModItems.DYEDREAM_PLANKS.get());
                         output.accept(ModItems.DYEDREAM_PLANKS_STAIRS.get());

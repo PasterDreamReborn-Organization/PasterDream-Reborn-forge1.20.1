@@ -17,6 +17,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_LOG.get(), "染梦原木");
         add(ModBlocks.DYEDREAM_WOOD.get(), "染梦木头");
         add(ModBlocks.DYEDREAM_LEAVES.get(), "染梦树叶");
+        add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), "染梦世界树树叶");
         add(ModBlocks.DYEDREAM_SAPLING.get(), "染梦树苗");
         add(ModBlocks.DYEDREAM_PLANKS.get(), "染梦木板");
         add(ModBlocks.DYEDREAM_PLANKS_STAIRS.get(), "染梦木板楼梯");

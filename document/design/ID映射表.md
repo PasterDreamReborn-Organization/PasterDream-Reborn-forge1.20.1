@@ -22,6 +22,7 @@
 | `dyedream_log` | `dyedream_log` | 不改 | 无需客制化类，直接用 `RotatedPillarBlock` |
 | `dyedream_wood` | `dyedream_wood` | 不改 | 无需客制化类，直接用 `RotatedPillarBlock` |
 | `dyedream_leaves` | `dyedream_leaves` | 不改 | 无需客制化类，直接用 `LeavesBlock` |
+| `dyedream_worldtree_leaves` | `dyedream_worldtree_leaves` | 不改，材质从拼音 `ran_meng_shi_jie_shu_xie_` 重命名 | 无需客制化类，直接用 `LeavesBlock` |
 | `dyedream_sapling` | `dyedream_sapling` | 不改 | 无需客制化类，直接用 `SaplingBlock`，移除不必要的 BlockEntity |
 | `dyedream_planks` | `dyedream_planks` | 不改 | 无需客制化类，直接用 `Block` |
 | `dyedream_planks_stairs` | `dyedream_planks_stairs` | 不改 | 无需客制化类，直接用 `StairBlock` |
