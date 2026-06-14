@@ -16,7 +16,7 @@ public class ModFluids
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, PasterDreamMod.MOD_ID);
 
     public static final RegistryObject<FluidType> MELTDREAM_LIQUID_TYPE = FLUID_TYPES.register("meltdream_liquid", () -> MeltdreamLiquidFluidType.TYPE);
-    public static final RegistryObject<FluidType> SHADOW_LIQUID_TYPE = FLUID_TYPES.register("shadow_liquid", () -> MeltdreamLiquidFluidType.TYPE);
+    public static final RegistryObject<FluidType> SHADOW_LIQUID_TYPE = FLUID_TYPES.register("shadow_liquid", () -> ShadowLiquidFluidType.TYPE);
 
     public static final RegistryObject<FluidType> APPLE_JUICE_TYPE = FLUID_TYPES.register("apple_juice", () -> AppleJuiceFluidType.TYPE);
     public static final RegistryObject<FluidType> DREAMJUICE_TYPE = FLUID_TYPES.register("dreamjuice", () -> DreamjuiceFluidType.TYPE);
