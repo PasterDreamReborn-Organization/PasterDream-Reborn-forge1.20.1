@@ -267,6 +267,10 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         // ===== 染梦石英配方 =====
 
         quartzRecipes(pWriter);
+
+        // ===== 染梦合金锭配方 =====
+
+        alloySmeltingRecipes(pWriter);
     }
 
     private void dustRecipes(Consumer<FinishedRecipe> pWriter) {
@@ -287,6 +291,44 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(ModItems.DYEDREAM_DUST_PIECE.get(), 9)
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DUST_PIECE.get()), has(ModItems.DYEDREAM_DUST_PIECE.get()))
                 .save(pWriter);
+    }
+
+    private void alloySmeltingRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 染梦合金锭粗胚 → 染梦合金锭（熔炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()),
+                        RecipeCategory.MISC, ModItems.DYEDREAM_ALLOY_INGOT.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()), has(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_alloy_ingot_from_smelting");
+
+        // 染梦合金锭粗胚 → 染梦合金锭（高炉）
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()),
+                        RecipeCategory.MISC, ModItems.DYEDREAM_ALLOY_INGOT.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()), has(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_alloy_ingot_from_blasting");
+
+        // 粗钛 → 钛金锭（熔炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_TITANIUM.get()),
+                        RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.RAW_TITANIUM.get()), has(ModItems.RAW_TITANIUM.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_ingot_from_smelting");
+
+        // 粗钛 → 钛金锭（高炉）
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.RAW_TITANIUM.get()),
+                        RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.RAW_TITANIUM.get()), has(ModItems.RAW_TITANIUM.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_ingot_from_blasting");
+
+        // 钛金锭 → 9× 钛金粒
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TITANIUM_NUGGET.get(), 9)
+                .requires(ModItems.TITANIUM_INGOT.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_nugget_from_ingot");
+
+        // 9× 钛金粒 → 钛金锭
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 1)
+                .requires(ModItems.TITANIUM_NUGGET.get(), 9)
+                .unlockedBy(getHasName(ModItems.TITANIUM_NUGGET.get()), has(ModItems.TITANIUM_NUGGET.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_ingot_from_nuggets");
     }
 
     private void quartzRecipes(Consumer<FinishedRecipe> pWriter) {

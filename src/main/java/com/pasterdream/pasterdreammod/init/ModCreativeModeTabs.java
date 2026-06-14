@@ -87,8 +87,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MORTAR.get());
                         output.accept(ModItems.DYEDREAM_DYE.get());
                         output.accept(ModItems.DYEDREAM_BUD_NUGGET.get());
-                        output.accept(ModItems.DYEDREAM_ALLOY_INGOT.get());
                         output.accept(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get());
+                        output.accept(ModItems.DYEDREAM_ALLOY_INGOT.get());
+                        output.accept(ModItems.RAW_TITANIUM.get());
+                        output.accept(ModItems.TITANIUM_INGOT.get());
+                        output.accept(ModItems.TITANIUM_NUGGET.get());
                     })
                     .build());
 

@@ -35,6 +35,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DYEDREAM_BUD_NUGGET.get());
         basicItem(ModItems.DYEDREAM_ALLOY_INGOT.get());
         basicItem(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get());
+        basicItem(ModItems.TITANIUM_INGOT.get());
+        basicItem(ModItems.TITANIUM_NUGGET.get());
+        basicItem(ModItems.RAW_TITANIUM.get());
 
         withExistingParent(ModItems.PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/pink_mushroom"));

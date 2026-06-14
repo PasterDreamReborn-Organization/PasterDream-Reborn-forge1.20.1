@@ -61,7 +61,12 @@
     "mortar": "mortar",
     "dyedream_dye": "dyedream_dye",
     "dyedream_bud_nugget": "dyedream_bud_nugget",
-    "dyedreamquartz": "dyedream_quartz"
+    "dyedreamquartz": "dyedream_quartz",
+    "dyedream_base": "raw_dyedream_alloy_ingot",
+    "dyedream_ingot": "dyedream_alloy_ingot",
+    "titanium_ingot": "titanium_ingot",
+    "titanium_nugget": "titanium_nugget",
+    "raw_titanium": "raw_titanium"
   },
   "entities": {},
   "recipes": {}
