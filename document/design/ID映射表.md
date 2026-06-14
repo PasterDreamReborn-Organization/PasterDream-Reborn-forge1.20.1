@@ -23,6 +23,16 @@
 | `dyedream_wood` | `dyedream_wood` | 不改 | 无需客制化类，直接用 `RotatedPillarBlock` |
 | `dyedream_leaves` | `dyedream_leaves` | 不改 | 无需客制化类，直接用 `LeavesBlock` |
 | `dyedream_worldtree_leaves` | `dyedream_worldtree_leaves` | 不改，材质从拼音 `ran_meng_shi_jie_shu_xie_` 重命名 | 无需客制化类，直接用 `LeavesBlock` |
+| `dyedreamdust_ore` | `dyedream_dust_ore` | 重命名，`dyedreamdust` → `dyedream_dust`，补下划线 | 无需客制化类，直接用 `Block` |
+| `dyedreamquartz_ore` | `dyedream_quartz_ore` | 重命名，补下划线 | 无需客制化类，直接用 `Block` |
+| `dyedreamquartz_block` | `dyedream_quartz_block` | 重命名，补下划线 | 无需客制化类，直接用 `Block` |
+| `smooth_dyedreamquartz_block` | `smooth_dyedream_quartz_block` | 重命名，补下划线 | 无需客制化类，直接用 `Block` |
+| `bricks_dyedreamquartz_block` | `bricks_dyedream_quartz_block` | 重命名，补下划线 | 无需客制化类，直接用 `Block` |
+| `pillar_dyedreamquartz_block` | `pillar_dyedream_quartz_block` | 重命名，补下划线 | 无需客制化类，直接用 `RotatedPillarBlock`，旧版用自定义 FACING 代替轴旋转 |
+| `chiseled_dyedreamquartz_block` | `chiseled_dyedream_quartz_block` | 重命名，补下划线 | 无需客制化类，直接用 `Block` |
+| `dyedreamquartz_block_stairs` | `dyedream_quartz_block_stairs` | 重命名，补下划线 | 无需客制化类，直接用 `StairBlock` |
+| `dyedreamquartz_block_slab` | `dyedream_quartz_block_slab` | 重命名，补下划线 | 无需客制化类，直接用 `SlabBlock` |
+| `dyedreamquartz_block_wall` | `dyedream_quartz_block_wall` | 重命名，补下划线 | 无需客制化类，直接用 `WallBlock` |
 | `dyedream_sapling` | `dyedream_sapling` | 不改 | 无需客制化类，直接用 `SaplingBlock`，移除不必要的 BlockEntity |
 | `dyedream_planks` | `dyedream_planks` | 不改 | 无需客制化类，直接用 `Block` |
 | `dyedream_planks_stairs` | `dyedream_planks_stairs` | 不改 | 无需客制化类，直接用 `StairBlock` |
@@ -41,7 +51,9 @@
 
 | 旧 ID | 新 ID | 变更说明 | 客制化类处理 |
 |-------|-------|---------|------------|
-| | | | |
+| `dyedream_dust` | `dyedream_dust` | 不改 | 无需客制化类，直接用 `Item` |
+| `dyedream_dust_piece` | `dyedream_dust_piece` | 不改 | 无需客制化类，直接用 `Item` |
+| `dyedreamquartz` | `dyedream_quartz` | 重命名，补下划线 | 无需客制化类，直接用 `Item` |
 
 ---
 

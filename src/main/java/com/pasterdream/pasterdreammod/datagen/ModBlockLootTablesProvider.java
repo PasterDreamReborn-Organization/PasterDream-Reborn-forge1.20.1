@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.datagen;
 
+import com.pasterdream.pasterdreammod.world.item.ModItems;
 import com.pasterdream.pasterdreammod.world.level.block.ModBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -33,6 +34,28 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(),
                 block -> createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         dropSelf(ModBlocks.DYEDREAM_SAPLING.get());
+
+        add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_QUARTZ.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+
+        add(ModBlocks.DYEDREAM_DUST_ORE.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_DUST_PIECE.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+
+        dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get());
+        dropSelf(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get());
+        dropSelf(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get());
+        dropSelf(ModBlocks.PILLAR_DYEDREAM_QUARTZ_BLOCK.get());
+        dropSelf(ModBlocks.CHISELED_DYEDREAM_QUARTZ_BLOCK.get());
+        dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get());
+        add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get()));
+        dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get());
 
         dropSelf(ModBlocks.DYEDREAM_PLANKS.get());
         dropSelf(ModBlocks.DYEDREAM_PLANKS_STAIRS.get());

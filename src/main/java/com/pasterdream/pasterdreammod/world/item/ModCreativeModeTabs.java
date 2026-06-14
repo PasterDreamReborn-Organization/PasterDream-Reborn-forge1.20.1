@@ -26,6 +26,16 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_LEAVES.get());
                         output.accept(ModItems.DYEDREAM_WORLDTREE_LEAVES.get());
                         output.accept(ModItems.DYEDREAM_SAPLING.get());
+                        output.accept(ModItems.DYEDREAM_QUARTZ_ORE.get());
+                        output.accept(ModItems.DYEDREAM_DUST_ORE.get());
+                        output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK.get());
+                        output.accept(ModItems.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get());
+                        output.accept(ModItems.BRICKS_DYEDREAM_QUARTZ_BLOCK.get());
+                        output.accept(ModItems.PILLAR_DYEDREAM_QUARTZ_BLOCK.get());
+                        output.accept(ModItems.CHISELED_DYEDREAM_QUARTZ_BLOCK.get());
+                        output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK_STAIRS.get());
+                        output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK_SLAB.get());
+                        output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK_WALL.get());
                         output.accept(ModItems.DYEDREAM_PLANKS.get());
                         output.accept(ModItems.DYEDREAM_PLANKS_STAIRS.get());
                         output.accept(ModItems.DYEDREAM_PLANKS_SLAB.get());
@@ -36,6 +46,17 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_PLANKS_TRAPDOOR.get());
                         output.accept(ModItems.DYEDREAM_PLANKS_PRESSURE_PLATE.get());
                         output.accept(ModItems.DYEDREAM_PLANKS_BUTTON.get());
+                    })
+                    .build());
+
+    public static final RegistryObject<CreativeModeTab> PASTERDREAM_MATERIALS_TAB = CREATIVE_MODE_TABS.register("pasterdream_materials_tab",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_materials_tab"))
+                    .icon(() -> new ItemStack(ModItems.DYEDREAM_QUARTZ.get()))
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.DYEDREAM_QUARTZ.get());
+                        output.accept(ModItems.DYEDREAM_DUST.get());
+                        output.accept(ModItems.DYEDREAM_DUST_PIECE.get());
                     })
                     .build());
 

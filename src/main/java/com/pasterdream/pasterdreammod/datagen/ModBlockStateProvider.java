@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -45,6 +46,36 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         var worldtreeLeaves = models().cubeAll(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get())).renderType("cutout");
         simpleBlockWithItem(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), worldtreeLeaves);
+
+        simpleBlockWithItem(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), cubeAll(ModBlocks.DYEDREAM_QUARTZ_ORE.get()));
+
+        simpleBlockWithItem(ModBlocks.DYEDREAM_DUST_ORE.get(), cubeAll(ModBlocks.DYEDREAM_DUST_ORE.get()));
+
+        // ===== 染梦石英建材系列 =====
+
+        var quartzTex = blockTexture(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get());
+        simpleBlockWithItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get(), cubeAll(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get()));
+        simpleBlockWithItem(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get(), cubeAll(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get()));
+        simpleBlockWithItem(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get(), cubeAll(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get()));
+
+        logBlock((RotatedPillarBlock) ModBlocks.PILLAR_DYEDREAM_QUARTZ_BLOCK.get());
+        blockItem(ModBlocks.PILLAR_DYEDREAM_QUARTZ_BLOCK);
+
+        var chiseledQuartz = models().cubeBottomTop(
+                ModBlocks.CHISELED_DYEDREAM_QUARTZ_BLOCK.getId().getPath(),
+                modLoc("block/chiseled_dyedream_quartz_block"),
+                modLoc("block/chiseled_dyedream_quartz_block_top"),
+                modLoc("block/chiseled_dyedream_quartz_block_top"));
+        simpleBlockWithItem(ModBlocks.CHISELED_DYEDREAM_QUARTZ_BLOCK.get(), chiseledQuartz);
+
+        stairsBlock((StairBlock) ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get(), quartzTex);
+        blockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS);
+
+        slabBlock((SlabBlock) ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get(), quartzTex, quartzTex);
+        blockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB);
+
+        wallBlock((WallBlock) ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get(), quartzTex);
+        // wall inventory model handled in ModItemModelsProvider
 
         simpleBlock(ModBlocks.DYEDREAM_SAPLING.get(),
                 models().cross(ModBlocks.DYEDREAM_SAPLING.getId().getPath(),

@@ -23,6 +23,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        basicItem(ModItems.DYEDREAM_QUARTZ.get());
+
+        basicItem(ModItems.DYEDREAM_DUST.get());
+        basicItem(ModItems.DYEDREAM_DUST_PIECE.get());
+
         withExistingParent(ModItems.DYEDREAM_SAPLING.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/dyedream_sapling"));
 
@@ -31,6 +36,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DYEDREAM_PLANKS_DOOR.get());
         withExistingParent(ModItems.DYEDREAM_PLANKS_PANE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/dyedream_planks_trapdoor"));
+
+        wallItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL, ModBlocks.DYEDREAM_QUARTZ_BLOCK);
     }
 
     @Override

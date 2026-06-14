@@ -57,6 +57,133 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(ModItems.DYEDREAM_PLANKS.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
                 .save(pWriter);
+
+        // ===== 染梦粉尘配方 =====
+
+        dustRecipes(pWriter);
+
+        // ===== 染梦石英配方 =====
+
+        quartzRecipes(pWriter);
+    }
+
+    private void dustRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 烧制：染梦粉尘矿石 → 染梦粉尘碎片
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.DYEDREAM_DUST_ORE.get()),
+                        RecipeCategory.MISC, ModItems.DYEDREAM_DUST_PIECE.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DUST_ORE.get()), has(ModItems.DYEDREAM_DUST_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_dust_piece_from_smelting");
+
+        // 染梦粉尘 → 9× 染梦粉尘碎片
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_DUST_PIECE.get(), 9)
+                .requires(ModItems.DYEDREAM_DUST.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DUST.get()), has(ModItems.DYEDREAM_DUST.get()))
+                .save(pWriter);
+
+        // 9× 染梦粉尘碎片 → 染梦粉尘
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_DUST.get(), 1)
+                .requires(ModItems.DYEDREAM_DUST_PIECE.get(), 9)
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DUST_PIECE.get()), has(ModItems.DYEDREAM_DUST_PIECE.get()))
+                .save(pWriter);
+    }
+
+    private void quartzRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 烧制：染梦石英矿石 → 染梦石英
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.DYEDREAM_QUARTZ_ORE.get()),
+                        RecipeCategory.MISC, ModItems.DYEDREAM_QUARTZ.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_ORE.get()), has(ModItems.DYEDREAM_QUARTZ_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_quartz_from_smelting");
+
+        // 烧制：染梦石英块 → 平滑染梦石英块
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.DYEDREAM_QUARTZ_BLOCK.get()),
+                        RecipeCategory.MISC, ModItems.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":smooth_dyedream_quartz_block_from_smelting");
+
+        // 4×染梦石英 → 染梦石英块
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_QUARTZ_BLOCK.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.DYEDREAM_QUARTZ.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ.get()), has(ModItems.DYEDREAM_QUARTZ.get()))
+                .save(pWriter);
+
+        // 4×染梦石英块 → 染梦石英砖 ×4
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.BRICKS_DYEDREAM_QUARTZ_BLOCK.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.DYEDREAM_QUARTZ_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter);
+
+        // 2×染梦石英块 → 染梦石英柱 ×2
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.PILLAR_DYEDREAM_QUARTZ_BLOCK.get(), 2)
+                .pattern("a")
+                .pattern("a")
+                .define('a', ModItems.DYEDREAM_QUARTZ_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter);
+
+        // 3×染梦石英块 → 染梦石英台阶 ×6
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_QUARTZ_BLOCK_SLAB.get(), 6)
+                .pattern("aaa")
+                .define('a', ModItems.DYEDREAM_QUARTZ_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter);
+
+        // 染梦石英块 → 染梦石英楼梯 ×4
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_QUARTZ_BLOCK_STAIRS.get(), 4)
+                .pattern("a  ")
+                .pattern("aa ")
+                .pattern("aaa")
+                .define('a', ModItems.DYEDREAM_QUARTZ_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter);
+
+        // 染梦石英块 → 染梦石英墙 ×6
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_QUARTZ_BLOCK_WALL.get(), 6)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModItems.DYEDREAM_QUARTZ_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter);
+
+        // 2×染梦石英台阶 → 錾制染梦石英块
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_DYEDREAM_QUARTZ_BLOCK.get(), 1)
+                .pattern("a")
+                .pattern("a")
+                .define('a', ModItems.DYEDREAM_QUARTZ_BLOCK_SLAB.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK_SLAB.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK_SLAB.get()))
+                .save(pWriter);
+
+        // ===== 切石机配方 =====
+
+        var quartzIngredient = Ingredient.of(ModItems.DYEDREAM_QUARTZ_BLOCK.get());
+
+        SingleItemRecipeBuilder.stonecutting(quartzIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_QUARTZ_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_quartz_block_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(quartzIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":smooth_dyedream_quartz_block_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(quartzIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.BRICKS_DYEDREAM_QUARTZ_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":bricks_dyedream_quartz_block_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(quartzIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.PILLAR_DYEDREAM_QUARTZ_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":pillar_dyedream_quartz_block_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(quartzIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_DYEDREAM_QUARTZ_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_dyedream_quartz_block_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(quartzIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_QUARTZ_BLOCK_STAIRS.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_quartz_block_stairs_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(quartzIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_QUARTZ_BLOCK_SLAB.get(), 2)
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_quartz_block_slab_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(quartzIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_QUARTZ_BLOCK_WALL.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_quartz_block_wall_from_stonecutting");
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {

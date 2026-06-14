@@ -60,6 +60,36 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SAPLINGS)
                 .add(ModBlocks.DYEDREAM_SAPLING.get());
 
+        // ===== 染梦石英矿石 =====
+
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
+                .add(ModBlocks.DYEDREAM_DUST_ORE.get())
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.PILLAR_DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.CHISELED_DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get())
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get());
+
+        tag(Tags.Blocks.ORES)
+                .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
+                .add(ModBlocks.DYEDREAM_DUST_ORE.get());
+
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.DYEDREAM_DUST_ORE.get());
+
+        tag(BlockTags.STAIRS)
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get());
+
+        tag(BlockTags.SLABS)
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get());
+
+        tag(BlockTags.WALLS)
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get());
+
         // ===== 染梦木板建材系列 =====
 
         tag(BlockTags.MINEABLE_WITH_AXE)

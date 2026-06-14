@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.datagen.lang;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.item.ModItems;
 import com.pasterdream.pasterdreammod.world.level.block.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -12,6 +13,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.DYEDREAM_QUARTZ.get(), "染梦石英");
+        add(ModItems.DYEDREAM_DUST.get(), "染梦粉尘");
+        add(ModItems.DYEDREAM_DUST_PIECE.get(), "小撮染梦粉尘");
+
         add(ModBlocks.DYEDREAM_DIRT.get(), "染梦泥土");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "染梦草方块");
         add(ModBlocks.DYEDREAM_LOG.get(), "染梦原木");
@@ -19,6 +24,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_LEAVES.get(), "染梦树叶");
         add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), "染梦世界树树叶");
         add(ModBlocks.DYEDREAM_SAPLING.get(), "染梦树苗");
+        add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "染梦石英矿石");
+        add(ModBlocks.DYEDREAM_DUST_ORE.get(), "染梦粉尘矿石");
+        add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get(), "染梦石英块");
+        add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get(), "平滑染梦石英块");
+        add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get(), "染梦石英砖");
+        add(ModBlocks.PILLAR_DYEDREAM_QUARTZ_BLOCK.get(), "染梦石英柱");
+        add(ModBlocks.CHISELED_DYEDREAM_QUARTZ_BLOCK.get(), "錾制染梦石英块");
+        add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get(), "染梦石英楼梯");
+        add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get(), "染梦石英台阶");
+        add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get(), "染梦石英墙");
         add(ModBlocks.DYEDREAM_PLANKS.get(), "染梦木板");
         add(ModBlocks.DYEDREAM_PLANKS_STAIRS.get(), "染梦木板楼梯");
         add(ModBlocks.DYEDREAM_PLANKS_SLAB.get(), "染梦木板台阶");
@@ -30,5 +45,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_PLANKS_PRESSURE_PLATE.get(), "染梦木板压力板");
         add(ModBlocks.DYEDREAM_PLANKS_BUTTON.get(), "染梦木板按钮");
         add("itemGroup.pasterdream.pasterdream_tab", "Paster Dream");
+        add("itemGroup.pasterdream.pasterdream_materials_tab", "Paster Dream 材料");
     }
 }
