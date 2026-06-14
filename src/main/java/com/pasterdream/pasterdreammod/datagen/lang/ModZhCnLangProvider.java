@@ -23,6 +23,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_INGOT.get(), "钛金锭");
         add(ModItems.TITANIUM_NUGGET.get(), "钛金粒");
         add(ModItems.RAW_TITANIUM.get(), "粗钛");
+        add(ModItems.DYEDREAM_ALLOY_NUGGET.get(), "染梦合金粒");
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "染梦泥土");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "染梦草方块");

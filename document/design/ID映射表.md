@@ -53,11 +53,11 @@
 | `flower_8` | `pink_mushroom` | 重命名，按原版风格：粉顶菇（小型花，缓速效果） | 无需客制化类，直接用 `FlowerBlock` |
 | `flower_10` | `tall_pink_mushroom` | 重命名，按原版风格：高粉顶菇（2 格高） | 无需客制化类，直接用 `DoublePlantBlock` |
 | `dyedream_sand` | `dyedream_sand` | 不改，受重力影响 | 无需客制化类，直接用 `FallingBlock` |
-| `dyedream_glass` | `dyedream_glass` | 不改，发光等级 12，仅精准采集可掉落 | 无需客制化类，直接用 `Block` |
+| `dyedream_glass` | `dyedream_glass` | 不改，发光等级 15 | 无需客制化类，直接用 `GlassBlock` |
 | `dyedream_glasspane` | `dyedream_glasspane` | 不改，发光等级 12，仅精准采集可掉落 | 无需客制化类，直接用 `IronBarsBlock` |
-| `carve_dyedream_glass` | `carve_dyedream_glass` | 不改 | 无需客制化类，直接用 `Block` |
+| `carve_dyedream_glass` | `carve_dyedream_glass` | 不改 | 无需客制化类，直接用 `GlassBlock` |
 | `carve_dyedream_glasspane` | `carve_dyedream_glasspane` | 不改 | 无需客制化类，直接用 `IronBarsBlock` |
-| `gold_carve_dyedream_glass` | `gold_carve_dyedream_glass` | 不改 | 无需客制化类，直接用 `Block` |
+| `gold_carve_dyedream_glass` | `gold_carve_dyedream_glass` | 不改 | 无需客制化类，直接用 `GlassBlock` |
 | `gold_carve_dyedream_glasspane` | `gold_carve_dyedream_glasspane` | 不改 | 无需客制化类，直接用 `IronBarsBlock` |
 | `dyedream_bud_2` | `small_dyedream_bud` | 重命名，按原版紫水晶芽风格 | 无需客制化类，直接用 `AmethystClusterBlock` |
 | `dyedream_bud_1` | `medium_dyedream_bud` | 重命名 | 无需客制化类，直接用 `AmethystClusterBlock` |
@@ -83,6 +83,12 @@
 | `mortar` | `mortar` | 不改 | 无需客制化类，直接用 `Item` |
 | `dyedream_dye` | `dyedream_dye` | 不改 | 无需客制化类，直接用 `Item` |
 | `dyedream_bud_nugget` | `dyedream_bud_nugget` | 不改 | 无需客制化类，直接用 `Item` |
+| `raw_titanium` | `raw_titanium` | 不改 | 无需客制化类，直接用 `Item` |
+| `titanium_ingot` | `titanium_ingot` | 不改 | 无需客制化类，直接用 `Item` |
+| `titanium_nugget` | `titanium_nugget` | 不改 | 无需客制化类，直接用 `Item` |
+| `dyedream_base` | `raw_dyedream_alloy_ingot` | 重命名，`dyedream_base` → `raw_dyedream_alloy_ingot`（染梦合金锭粗胚） | 无需客制化类，直接用 `Item` |
+| `dyedream_ingot` | `dyedream_alloy_ingot` | 重命名，`dyedream_ingot` → `dyedream_alloy_ingot`（染梦合金锭） | 无需客制化类，直接用 `Item` |
+| `dyedream_nugget` | `dyedream_alloy_nugget` | 重命名，补充 `alloy_` 前缀与系列一致 | 无需客制化类，直接用 `Item` |
 | `dyedreamquartz` | `dyedream_quartz` | 重命名，补下划线 | 无需客制化类，直接用 `Item` |
 
 ---

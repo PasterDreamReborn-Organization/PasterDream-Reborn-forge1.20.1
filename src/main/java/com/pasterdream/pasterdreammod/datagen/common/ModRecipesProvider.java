@@ -329,6 +329,18 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(ModItems.TITANIUM_NUGGET.get(), 9)
                 .unlockedBy(getHasName(ModItems.TITANIUM_NUGGET.get()), has(ModItems.TITANIUM_NUGGET.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_ingot_from_nuggets");
+
+        // 染梦合金锭 → 9× 染梦合金粒
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_ALLOY_NUGGET.get(), 9)
+                .requires(ModItems.DYEDREAM_ALLOY_INGOT.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_alloy_nugget_from_alloy_ingot");
+
+        // 9× 染梦合金粒 → 染梦合金锭
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_ALLOY_INGOT.get(), 1)
+                .requires(ModItems.DYEDREAM_ALLOY_NUGGET.get(), 9)
+                .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_NUGGET.get()), has(ModItems.DYEDREAM_ALLOY_NUGGET.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_alloy_ingot_from_nuggets");
     }
 
     private void quartzRecipes(Consumer<FinishedRecipe> pWriter) {

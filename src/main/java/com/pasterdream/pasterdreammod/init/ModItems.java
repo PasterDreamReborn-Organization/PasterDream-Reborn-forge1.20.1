@@ -51,6 +51,9 @@ public class ModItems {
     public static final RegistryObject<Item> RAW_TITANIUM = ITEMS.register("raw_titanium",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> DYEDREAM_ALLOY_NUGGET = ITEMS.register("dyedream_alloy_nugget",
+            () -> new Item(new Item.Properties()));
+
     // ===== 方块物品 =====
 
     public static final RegistryObject<Item> DYEDREAM_DIRT = ITEMS.register("dyedream_dirt",

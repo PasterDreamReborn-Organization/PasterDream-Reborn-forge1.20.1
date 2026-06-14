@@ -92,6 +92,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_TITANIUM.get());
                         output.accept(ModItems.TITANIUM_INGOT.get());
                         output.accept(ModItems.TITANIUM_NUGGET.get());
+                        output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
                     })
                     .build());
 

@@ -23,6 +23,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_INGOT.get(), "Titanium Ingot");
         add(ModItems.TITANIUM_NUGGET.get(), "Titanium Nugget");
         add(ModItems.RAW_TITANIUM.get(), "Raw Titanium");
+        add(ModItems.DYEDREAM_ALLOY_NUGGET.get(), "Dye Dream Alloy Nugget");
 
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "Dye Dream Dirt");
