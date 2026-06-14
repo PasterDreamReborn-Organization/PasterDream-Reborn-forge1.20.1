@@ -28,6 +28,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_SAPLING.get());
                         output.accept(ModItems.DYEDREAM_QUARTZ_ORE.get());
                         output.accept(ModItems.DYEDREAM_DUST_ORE.get());
+                        output.accept(ModItems.AMBER_CANDY_ORE.get());
                         output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK.get());
                         output.accept(ModItems.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get());
                         output.accept(ModItems.BRICKS_DYEDREAM_QUARTZ_BLOCK.get());
@@ -57,6 +58,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_QUARTZ.get());
                         output.accept(ModItems.DYEDREAM_DUST.get());
                         output.accept(ModItems.DYEDREAM_DUST_PIECE.get());
+                        output.accept(ModItems.AMBER_CANDY.get());
                     })
                     .build());
 

@@ -27,6 +27,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
         basicItem(ModItems.DYEDREAM_DUST.get());
         basicItem(ModItems.DYEDREAM_DUST_PIECE.get());
+        basicItem(ModItems.AMBER_CANDY.get());
 
         withExistingParent(ModItems.DYEDREAM_SAPLING.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/dyedream_sapling"));

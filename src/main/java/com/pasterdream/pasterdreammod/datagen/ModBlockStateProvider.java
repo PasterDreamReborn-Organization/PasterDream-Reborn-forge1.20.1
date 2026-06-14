@@ -51,6 +51,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_DUST_ORE.get(), cubeAll(ModBlocks.DYEDREAM_DUST_ORE.get()));
 
+        simpleBlockWithItem(ModBlocks.AMBER_CANDY_ORE.get(), cubeAll(ModBlocks.AMBER_CANDY_ORE.get()));
+
         // ===== 染梦石英建材系列 =====
 
         var quartzTex = blockTexture(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get());

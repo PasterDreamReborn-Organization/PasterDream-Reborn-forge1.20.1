@@ -1,0 +1,40 @@
+{
+  "blocks": {
+    "dyedream_dirt": "dyedream_dirt",
+    "dyedream_grass": "dyedream_grass_block",
+    "dyedream_log": "dyedream_log",
+    "dyedream_wood": "dyedream_wood",
+    "dyedream_leaves": "dyedream_leaves",
+    "dyedream_worldtree_leaves": "dyedream_worldtree_leaves",
+    "amber_candy_ore": "amber_candy_ore",
+    "dyedreamdust_ore": "dyedream_dust_ore",
+    "dyedreamquartz_ore": "dyedream_quartz_ore",
+    "dyedreamquartz_block": "dyedream_quartz_block",
+    "smooth_dyedreamquartz_block": "smooth_dyedream_quartz_block",
+    "bricks_dyedreamquartz_block": "bricks_dyedream_quartz_block",
+    "pillar_dyedreamquartz_block": "pillar_dyedream_quartz_block",
+    "chiseled_dyedreamquartz_block": "chiseled_dyedream_quartz_block",
+    "dyedreamquartz_block_stairs": "dyedream_quartz_block_stairs",
+    "dyedreamquartz_block_slab": "dyedream_quartz_block_slab",
+    "dyedreamquartz_block_wall": "dyedream_quartz_block_wall",
+    "dyedream_sapling": "dyedream_sapling",
+    "dyedream_planks": "dyedream_planks",
+    "dyedream_planks_stairs": "dyedream_planks_stairs",
+    "dyedream_planks_slab": "dyedream_planks_slab",
+    "dyedream_planks_fence": "dyedream_planks_fence",
+    "dyedream_planks_fencegate": "dyedream_planks_fencegate",
+    "dyedream_planks_pane": "dyedream_planks_pane",
+    "dyedream_planks_door": "dyedream_planks_door",
+    "dyedream_planks_trapdoor": "dyedream_planks_trapdoor",
+    "dyedream_planks_pressure_plate": "dyedream_planks_pressure_plate",
+    "dyedream_planks_button": "dyedream_planks_button"
+  },
+  "items": {
+    "amber_candy": "amber_candy",
+    "dyedream_dust": "dyedream_dust",
+    "dyedream_dust_piece": "dyedream_dust_piece",
+    "dyedreamquartz": "dyedream_quartz"
+  },
+  "entities": {},
+  "recipes": {}
+}

@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.item.custom.AmberCandyItem;
 import com.pasterdream.pasterdreammod.world.level.block.ModBlocks;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -24,6 +25,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> DYEDREAM_DUST_PIECE = ITEMS.register("dyedream_dust_piece",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> AMBER_CANDY = ITEMS.register("amber_candy",
+            AmberCandyItem::new);
 
     // ===== 方块物品 =====
 
@@ -53,6 +57,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> DYEDREAM_DUST_ORE = ITEMS.register("dyedream_dust_ore",
             () -> new BlockItem(ModBlocks.DYEDREAM_DUST_ORE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> AMBER_CANDY_ORE = ITEMS.register("amber_candy_ore",
+            () -> new BlockItem(ModBlocks.AMBER_CANDY_ORE.get(), new Item.Properties()));
 
     // ===== 染梦石英建材系列 =====
 
