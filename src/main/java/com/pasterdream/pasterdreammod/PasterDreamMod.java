@@ -2,9 +2,11 @@ package com.pasterdream.pasterdreammod;
 
 import com.mojang.logging.LogUtils;
 import com.pasterdream.pasterdreammod.client.ClientSetRenderLayer;
+import com.pasterdream.pasterdreammod.helper.FluidHandlerResolvers;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModCreativeModeTabs;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.init.ModNetwork;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,8 +25,6 @@ import software.bernie.geckolib.GeckoLib;
 public class PasterDreamMod
 {
     public static final String MOD_ID = "pasterdream";
-    // 直接引用 slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
 
     public PasterDreamMod(FMLJavaModLoadingContext context)
     {
@@ -35,6 +35,7 @@ public class PasterDreamMod
         ModItems.register(modEventBus);             //注册物品
         ModCreativeModeTabs.register(modEventBus);  //注册创造模式物品栏
         ModBlocks.register(modEventBus);            //注册方块
+        ModNetwork.register();
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
@@ -47,7 +48,7 @@ public class PasterDreamMod
     //在这里输入通用端注册内容
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+        FluidHandlerResolvers.FluidHandlerResolverRegister();
     }
 
     //在这里输入客户端注册内容
