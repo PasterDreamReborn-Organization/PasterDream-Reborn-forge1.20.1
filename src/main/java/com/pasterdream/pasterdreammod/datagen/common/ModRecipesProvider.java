@@ -191,6 +191,53 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
                 .save(pWriter);
 
+        // ===== 染梦水晶建材配方 =====
+
+        // 染梦玻璃 + 晶芽粒 → 4× 染梦水晶砖
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_BLOCK.get(), 4)
+                .pattern("ab")
+                .pattern("ba")
+                .define('a', ModBlocks.DYEDREAM_GLASS.get())
+                .define('b', ModItems.DYEDREAM_BUD_NUGGET.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_BUD_NUGGET.get()), has(ModItems.DYEDREAM_BUD_NUGGET.get()))
+                .save(pWriter);
+
+        // 染梦水晶砖 → 4× 楼梯
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_STAIRS.get(), 4)
+                .pattern("a  ")
+                .pattern("aa ")
+                .pattern("aaa")
+                .define('a', ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_BUD_BLOCK.get()), has(ModBlocks.DYEDREAM_BUD_BLOCK.get()))
+                .save(pWriter);
+
+        // 染梦水晶砖 → 6× 台阶
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_SLAB.get(), 6)
+                .pattern("aaa")
+                .define('a', ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_BUD_BLOCK.get()), has(ModBlocks.DYEDREAM_BUD_BLOCK.get()))
+                .save(pWriter);
+
+        // 染梦水晶砖 → 6× 墙
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_WALL.get(), 6)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_BUD_BLOCK.get()), has(ModBlocks.DYEDREAM_BUD_BLOCK.get()))
+                .save(pWriter);
+
+        // 切石机配方
+        var budBlockIngredient = Ingredient.of(ModBlocks.DYEDREAM_BUD_BLOCK.get());
+        SingleItemRecipeBuilder.stonecutting(budBlockIngredient, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_STAIRS.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_BUD_BLOCK.get()), has(ModBlocks.DYEDREAM_BUD_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_bud_stairs_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(budBlockIngredient, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_SLAB.get(), 2)
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_BUD_BLOCK.get()), has(ModBlocks.DYEDREAM_BUD_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_bud_slab_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(budBlockIngredient, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_WALL.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_BUD_BLOCK.get()), has(ModBlocks.DYEDREAM_BUD_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_bud_wall_from_stonecutting");
+
         // ===== 粉顶菇配方 =====
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.PINK_DYE, 1)

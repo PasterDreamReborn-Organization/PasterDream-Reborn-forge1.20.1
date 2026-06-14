@@ -81,6 +81,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_ICE.get())
                 .add(ModBlocks.DYEDREAM_PACKED_ICE.get())
                 .add(ModBlocks.DYEDREAM_LARTERN.get())
+                .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_BUD_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_BUD_SLAB.get())
+                .add(ModBlocks.DYEDREAM_BUD_WALL.get())
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get())
                 .add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get())
                 .add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get())
@@ -99,15 +103,22 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get())
                 .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
                 .add(ModBlocks.MEDIUM_DYEDREAM_BUD.get())
-                .add(ModBlocks.LARGE_DYEDREAM_BUD.get());
+                .add(ModBlocks.LARGE_DYEDREAM_BUD.get())
+                .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_BUD_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_BUD_SLAB.get())
+                .add(ModBlocks.DYEDREAM_BUD_WALL.get());
         tag(BlockTags.STAIRS)
-                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get());
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_BUD_STAIRS.get());
 
         tag(BlockTags.SLABS)
-                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get());
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get())
+                .add(ModBlocks.DYEDREAM_BUD_SLAB.get());
 
         tag(BlockTags.WALLS)
-                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get());
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get())
+                .add(ModBlocks.DYEDREAM_BUD_WALL.get());
 
         // ===== 染梦木板建材系列 =====
 

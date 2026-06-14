@@ -64,6 +64,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.SMALL_DYEDREAM_BUD.get(), "小型染梦晶芽");
         add(ModBlocks.MEDIUM_DYEDREAM_BUD.get(), "中型染梦晶芽");
         add(ModBlocks.LARGE_DYEDREAM_BUD.get(), "大型染梦晶芽");
+        add(ModBlocks.DYEDREAM_BUD_BLOCK.get(), "染梦水晶砖");
+        add(ModBlocks.DYEDREAM_BUD_STAIRS.get(), "染梦水晶楼梯");
+        add(ModBlocks.DYEDREAM_BUD_SLAB.get(), "染梦水晶台阶");
+        add(ModBlocks.DYEDREAM_BUD_WALL.get(), "染梦水晶墙");
         add(ModBlocks.DYEDREAM_ICE.get(), "染梦冰");
         add(ModBlocks.DYEDREAM_PACKED_ICE.get(), "染梦浮冰");
         add(ModBlocks.DYEDREAM_LARTERN.get(), "染梦水晶灯");

@@ -97,6 +97,15 @@ public class ModItems {
     public static final RegistryObject<Item> LARGE_DYEDREAM_BUD = ITEMS.register("large_dyedream_bud",
             () -> new BlockItem(ModBlocks.LARGE_DYEDREAM_BUD.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> DYEDREAM_BUD_BLOCK = ITEMS.register("dyedream_bud_block",
+            () -> new BlockItem(ModBlocks.DYEDREAM_BUD_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_BUD_STAIRS = ITEMS.register("dyedream_bud_stairs",
+            () -> new BlockItem(ModBlocks.DYEDREAM_BUD_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_BUD_SLAB = ITEMS.register("dyedream_bud_slab",
+            () -> new BlockItem(ModBlocks.DYEDREAM_BUD_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_BUD_WALL = ITEMS.register("dyedream_bud_wall",
+            () -> new BlockItem(ModBlocks.DYEDREAM_BUD_WALL.get(), new Item.Properties()));
+
     public static final RegistryObject<Item> DYEDREAM_ICE = ITEMS.register("dyedream_ice",
             () -> new BlockItem(ModBlocks.DYEDREAM_ICE.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_PACKED_ICE = ITEMS.register("dyedream_packed_ice",

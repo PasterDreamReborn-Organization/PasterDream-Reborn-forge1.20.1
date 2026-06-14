@@ -174,6 +174,19 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var largeBud = models().cross(ModBlocks.LARGE_DYEDREAM_BUD.getId().getPath(), blockTexture(ModBlocks.LARGE_DYEDREAM_BUD.get())).renderType("cutout");
         directionalBlock(ModBlocks.LARGE_DYEDREAM_BUD.get(), largeBud);
 
+        // ===== 染梦水晶建材系列 =====
+
+        var budTex = blockTexture(ModBlocks.DYEDREAM_BUD_BLOCK.get());
+        simpleBlockWithItem(ModBlocks.DYEDREAM_BUD_BLOCK.get(), cubeAll(ModBlocks.DYEDREAM_BUD_BLOCK.get()));
+
+        stairsBlock((StairBlock) ModBlocks.DYEDREAM_BUD_STAIRS.get(), budTex);
+        blockItem(ModBlocks.DYEDREAM_BUD_STAIRS);
+
+        slabBlock((SlabBlock) ModBlocks.DYEDREAM_BUD_SLAB.get(), budTex, budTex);
+        blockItem(ModBlocks.DYEDREAM_BUD_SLAB);
+
+        wallBlock((WallBlock) ModBlocks.DYEDREAM_BUD_WALL.get(), budTex);
+
         // ===== 染梦冰与水晶灯 =====
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_ICE.get(), cubeAll(ModBlocks.DYEDREAM_ICE.get()));
