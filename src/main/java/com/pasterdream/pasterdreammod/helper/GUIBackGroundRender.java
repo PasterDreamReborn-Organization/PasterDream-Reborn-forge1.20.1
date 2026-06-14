@@ -11,21 +11,20 @@ public class GUIBackGroundRender
     public static ResourceLocation SHADOW_DESK_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/shadow_desk.png");
     public static ResourceLocation STORAGE_BAG_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/storage_bag.png");
     public static ResourceLocation BIG_STORAGE_BAG_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/big_storage_bag.png");
-    public static ResourceLocation MELTDREAM_CHEST_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/meltdream_chest.png");
+    public static ResourceLocation MELT_DREAM_CHEST_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/meltdream_chest.png");
     public static ResourceLocation PICNIC_BASKET_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/picnic_basket.png");
     public static ResourceLocation SHADOW_CHEST_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/shadow_chest.png");
-    public static ResourceLocation WINDMOOR_CRATE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/windmoor_crate.png");
+    public static ResourceLocation WIND_MOOR_CRATE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/windmoor_crate.png");
     public static ResourceLocation BLUEPRINT_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/blueprint.png");
     public static ResourceLocation DREAM_ACCUMULATOR_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_accumulator.png");
     public static ResourceLocation RESEARCH_TABLE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/research_table.png");
-
-    public static ResourceLocation WEAPONWORKSHOP_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/weaponworkshop.png");
+    public static ResourceLocation WEAPON_WORKSHOP_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/weaponworkshop.png");
     public static ResourceLocation WORKSHOP_ANVIL_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/workshop_anvil.png");
     public static ResourceLocation WORKSHOP_BLAST_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/workshop_blast.png");
     public static ResourceLocation WORKSHOP_BLAST_LAVA_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/workshop_blast_lava_amount_bar.png");
 
     public static ResourceLocation DREAM_CAULDRON_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron.png");
-    public static ResourceLocation DREAM_CAULDRON_MELTDREAM_LIQUID_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_meltdream_liquid_amount_bar.png");
+    public static ResourceLocation DREAM_CAULDRON_MELT_DREAM_LIQUID_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_meltdream_liquid_amount_bar.png");
     public static ResourceLocation DREAM_CAULDRON_BUTTON_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_button.png");
     public static ResourceLocation DREAM_CAULDRON_BUTTON_HOVERED_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_button_hovered.png");
 
@@ -63,9 +62,9 @@ public class GUIBackGroundRender
         guiGraphics.blit(BIG_STORAGE_BAG_GUI, x, y, 0, 0, 128, 110, 128, 110);
     }
 
-    public static void rendMeltdreamChestGUI(GuiGraphics guiGraphics, int x, int y)
+    public static void rendMeltDreamChestGUI(GuiGraphics guiGraphics, int x, int y)
     {
-        guiGraphics.blit(MELTDREAM_CHEST_GUI, x, y, 0, 0, 66, 66, 66, 66);
+        guiGraphics.blit(MELT_DREAM_CHEST_GUI, x, y, 0, 0, 66, 66, 66, 66);
     }
 
     public static void rendPicnicBasketGUI(GuiGraphics guiGraphics, int x, int y)
@@ -78,9 +77,9 @@ public class GUIBackGroundRender
         guiGraphics.blit(SHADOW_CHEST_GUI, x, y, 0, 0, 96, 71, 96, 71);
     }
 
-    public static void rendWindmoorCrateGUI(GuiGraphics guiGraphics, int x, int y)
+    public static void rendWindMoorCrateGUI(GuiGraphics guiGraphics, int x, int y)
     {
-        guiGraphics.blit(WINDMOOR_CRATE_GUI, x, y, 0, 0, 114, 96, 114, 96);
+        guiGraphics.blit(WIND_MOOR_CRATE_GUI, x, y, 0, 0, 114, 96, 114, 96);
     }
 
     public static void rendBlueprintGUI(GuiGraphics guiGraphics, int x, int y)
@@ -98,9 +97,9 @@ public class GUIBackGroundRender
         guiGraphics.blit(RESEARCH_TABLE_GUI, x, y, 0, 0, 197, 115, 197, 115);
     }
 
-    public static void rendWeaponworkshopGUI(GuiGraphics guiGraphics, int x, int y)
+    public static void rendWeaponWorkshopGUI(GuiGraphics guiGraphics, int x, int y)
     {
-        guiGraphics.blit(WEAPONWORKSHOP_GUI, x, y, 0, 0, 174, 86, 174, 86);
+        guiGraphics.blit(WEAPON_WORKSHOP_GUI, x, y, 0, 0, 174, 86, 174, 86);
     }
 
     public static void rendWorkshopAnvilGUI(GuiGraphics guiGraphics, int x, int y)
@@ -123,9 +122,9 @@ public class GUIBackGroundRender
         guiGraphics.blit(DREAM_CAULDRON_GUI, x, y, 0, 0, 171, 93, 171, 93);
     }
 
-    public static void rendDreamCauldronMeltdreamLiquidBar(GuiGraphics guiGraphics, int x, int y, double percent)
+    public static void rendDreamCauldronMeltDreamLiquidBar(GuiGraphics guiGraphics, int x, int y, double percent)
     {
-        guiGraphics.blit(DREAM_CAULDRON_MELTDREAM_LIQUID_AMOUNT_BAR, x, y, 0, (int)(47 * (1 - percent)), 5, (int)(47 * percent), 5, 47);
+        guiGraphics.blit(DREAM_CAULDRON_MELT_DREAM_LIQUID_AMOUNT_BAR, x, y, 0, (int)(47 * (1 - percent)), 5, (int)(47 * percent), 5, 47);
     }
 
     public static void rendDreamCauldronButtonGUI(GuiGraphics guiGraphics, int x, int y)

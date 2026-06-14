@@ -65,6 +65,10 @@
 | `dyedream_ice` | `dyedream_ice` | 不改，不融化 | 无需客制化类，直接用 `Block` |
 | `dyedream_packed_ice` | `dyedream_packed_ice` | 不改，不融化 | 无需客制化类，直接用 `Block` |
 | `dyedream_lartern` | `dyedream_lartern` | 不改，发光等级 14 | 无需客制化类，直接用 `Block` |
+| `dyedream_bud_block` | `dyedream_bud_block` | 不改，透明方块 | 无需客制化类，直接用 `Block` |
+| `dyedream_bud_stairs` | `dyedream_bud_stairs` | 不改 | 无需客制化类，直接用 `StairBlock` |
+| `dyedream_bud_slab` | `dyedream_bud_slab` | 不改 | 无需客制化类，直接用 `SlabBlock` |
+| `dyedream_bud_wall` | `dyedream_bud_wall` | 不改 | 无需客制化类，直接用 `WallBlock` |
 
 ---
 

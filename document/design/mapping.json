@@ -47,7 +47,11 @@
     "dyedream_bud_0": "large_dyedream_bud",
     "dyedream_ice": "dyedream_ice",
     "dyedream_packed_ice": "dyedream_packed_ice",
-    "dyedream_lartern": "dyedream_lartern"
+    "dyedream_lartern": "dyedream_lartern",
+    "dyedream_bud_block": "dyedream_bud_block",
+    "dyedream_bud_stairs": "dyedream_bud_stairs",
+    "dyedream_bud_slab": "dyedream_bud_slab",
+    "dyedream_bud_wall": "dyedream_bud_wall"
   },
   "items": {
     "amber_candy": "amber_candy",
