@@ -15,6 +15,9 @@ public class ModFluids
     public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, PasterDreamMod.MOD_ID);
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, PasterDreamMod.MOD_ID);
 
+    public static final RegistryObject<FluidType> MELTDREAM_LIQUID_TYPE = FLUID_TYPES.register("meltdream_liquid", () -> MeltdreamLiquidFluidType.TYPE);
+    public static final RegistryObject<FluidType> SHADOW_LIQUID_TYPE = FLUID_TYPES.register("shadow_liquid", () -> MeltdreamLiquidFluidType.TYPE);
+
     public static final RegistryObject<FluidType> APPLE_JUICE_TYPE = FLUID_TYPES.register("apple_juice", () -> AppleJuiceFluidType.TYPE);
     public static final RegistryObject<FluidType> DREAMJUICE_TYPE = FLUID_TYPES.register("dreamjuice", () -> DreamjuiceFluidType.TYPE);
     public static final RegistryObject<FluidType> DYEDREAM_FLOWER_TEA_TYPE = FLUID_TYPES.register("dyedream_flower_tea", () -> DyedreamFlowerTeaFluidType.TYPE);
@@ -28,6 +31,9 @@ public class ModFluids
     public static final RegistryObject<FluidType> WATERMELON_JUICE_TYPE = FLUID_TYPES.register("watermelon_juice", () -> WatermelonJuiceFluidType.TYPE);
     public static final RegistryObject<FluidType> WIND_PLANT_EXTRACT_TYPE = FLUID_TYPES.register("wind_plant_extract", () -> WindPlantExtractFluidType.TYPE);
     public static final RegistryObject<FluidType> YEAST_TYPE = FLUID_TYPES.register("yeast", () -> YeastFluidType.TYPE);
+
+    public static final RegistryObject<Fluid> MELTDREAM_LIQUID = FLUIDS.register("meltdream_liquid", MeltdreamLiquidFluid::new);
+    public static final RegistryObject<Fluid> SHADOW_LIQUID = FLUIDS.register("shadow_liquid", ShadowLiquidFluid::new);
 
     public static final RegistryObject<Fluid> APPLE_JUICE = FLUIDS.register("apple_juice", AppleJuiceFluid::new);
     public static final RegistryObject<Fluid> DREAMJUICE = FLUIDS.register("dreamjuice", DreamjuiceFluid::new);

@@ -27,6 +27,9 @@ public class ModJEIPlugin implements IModPlugin
     {
         List<FluidStack> fluidStacks = new ArrayList<>();
 
+        fluidStacks.add(new FluidStack(ModFluids.MELTDREAM_LIQUID.get(), 1000));
+        fluidStacks.add(new FluidStack(ModFluids.SHADOW_LIQUID.get(), 1000));
+
         fluidStacks.add(new FluidStack(ModFluids.APPLE_JUICE.get(), 1000));
         fluidStacks.add(new FluidStack(ModFluids.DREAMJUICE.get(),1000));
         fluidStacks.add(new FluidStack(ModFluids.DYEDREAM_FLOWER_TEA.get(), 1000));
