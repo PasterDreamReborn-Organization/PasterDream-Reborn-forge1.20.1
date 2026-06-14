@@ -98,6 +98,13 @@ public class ModItems {
     public static final RegistryObject<Item> LARGE_DYEDREAM_BUD = ITEMS.register("large_dyedream_bud",
             () -> new BlockItem(ModBlocks.LARGE_DYEDREAM_BUD.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> DYEDREAM_ICE = ITEMS.register("dyedream_ice",
+            () -> new BlockItem(ModBlocks.DYEDREAM_ICE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_PACKED_ICE = ITEMS.register("dyedream_packed_ice",
+            () -> new BlockItem(ModBlocks.DYEDREAM_PACKED_ICE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_LARTERN = ITEMS.register("dyedream_lartern",
+            () -> new BlockItem(ModBlocks.DYEDREAM_LARTERN.get(), new Item.Properties()));
+
     // ===== 染梦石英建材系列 =====
 
     public static final RegistryObject<Item> DYEDREAM_QUARTZ_BLOCK = ITEMS.register("dyedream_quartz_block",

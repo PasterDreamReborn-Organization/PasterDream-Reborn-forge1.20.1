@@ -158,6 +158,39 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get()), has(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get()))
                 .save(pWriter);
 
+        // ===== 染梦冰与水晶灯配方 =====
+
+        // 8× 冰 + 染梦染料 → 8× 染梦冰
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_ICE.get(), 8)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', Items.ICE)
+                .define('b', ModItems.DYEDREAM_DYE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
+                .save(pWriter);
+
+        // 8× 浮冰 + 染梦染料 → 8× 染梦浮冰
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_PACKED_ICE.get(), 8)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', Items.PACKED_ICE)
+                .define('b', ModItems.DYEDREAM_DYE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
+                .save(pWriter);
+
+        // 染梦水晶灯
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_LARTERN.get(), 2)
+                .pattern("aba")
+                .pattern("bcb")
+                .pattern("aba")
+                .define('a', ModItems.DYEDREAM_QUARTZ.get())
+                .define('b', ModBlocks.DYEDREAM_GLASS.get())
+                .define('c', ModItems.DYEDREAM_DYE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
+                .save(pWriter);
+
         // ===== 粉顶菇配方 =====
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.PINK_DYE, 1)

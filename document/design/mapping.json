@@ -44,7 +44,10 @@
     "gold_carve_dyedream_glasspane": "gold_carve_dyedream_glasspane",
     "dyedream_bud_2": "small_dyedream_bud",
     "dyedream_bud_1": "medium_dyedream_bud",
-    "dyedream_bud_0": "large_dyedream_bud"
+    "dyedream_bud_0": "large_dyedream_bud",
+    "dyedream_ice": "dyedream_ice",
+    "dyedream_packed_ice": "dyedream_packed_ice",
+    "dyedream_lartern": "dyedream_lartern"
   },
   "items": {
     "amber_candy": "amber_candy",

@@ -62,6 +62,9 @@
 | `dyedream_bud_2` | `small_dyedream_bud` | 重命名，按原版紫水晶芽风格 | 无需客制化类，直接用 `AmethystClusterBlock` |
 | `dyedream_bud_1` | `medium_dyedream_bud` | 重命名 | 无需客制化类，直接用 `AmethystClusterBlock` |
 | `dyedream_bud_0` | `large_dyedream_bud` | 重命名 | 无需客制化类，直接用 `AmethystClusterBlock` |
+| `dyedream_ice` | `dyedream_ice` | 不改，不融化 | 无需客制化类，直接用 `Block` |
+| `dyedream_packed_ice` | `dyedream_packed_ice` | 不改，不融化 | 无需客制化类，直接用 `Block` |
+| `dyedream_lartern` | `dyedream_lartern` | 不改，发光等级 14 | 无需客制化类，直接用 `Block` |
 
 ---
 

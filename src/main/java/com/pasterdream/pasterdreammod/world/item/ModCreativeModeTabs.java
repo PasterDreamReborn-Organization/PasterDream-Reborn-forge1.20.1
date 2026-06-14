@@ -64,6 +64,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SMALL_DYEDREAM_BUD.get());
                         output.accept(ModItems.MEDIUM_DYEDREAM_BUD.get());
                         output.accept(ModItems.LARGE_DYEDREAM_BUD.get());
+                        output.accept(ModItems.DYEDREAM_ICE.get());
+                        output.accept(ModItems.DYEDREAM_PACKED_ICE.get());
+                        output.accept(ModItems.DYEDREAM_LARTERN.get());
                     })
                     .build());
 
