@@ -6,6 +6,9 @@ import com.pasterdream.pasterdreammod.world.item.ModItems;
 import com.pasterdream.pasterdreammod.world.level.block.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -59,7 +62,55 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
                 .save(pWriter);
 
+        // ===== 染梦染料转化配方 =====
+
+        dyeConversion(pWriter, Items.DIRT, ModBlocks.DYEDREAM_DIRT.get().asItem());
+        dyeConversion(pWriter, Items.GRASS_BLOCK, ModBlocks.DYEDREAM_GRASS_BLOCK.get().asItem());
+        dyeConversionTag(pWriter, ItemTags.LEAVES, ModBlocks.DYEDREAM_LEAVES.get().asItem());
+        dyeConversionTag(pWriter, ItemTags.LOGS, ModBlocks.DYEDREAM_LOG.get().asItem());
+        dyeConversionTag(pWriter, ItemTags.PLANKS, ModBlocks.DYEDREAM_PLANKS.get().asItem());
+        dyeConversionTag(pWriter, ItemTags.SAPLINGS, ModBlocks.DYEDREAM_SAPLING.get().asItem());
+        dyeConversion(pWriter, Items.QUARTZ, ModItems.DYEDREAM_QUARTZ.get());
+        dyeConversion(pWriter, Items.QUARTZ_BLOCK, ModItems.DYEDREAM_QUARTZ_BLOCK.get());
+        dyeConversion(pWriter, Items.SHROOMLIGHT, ModBlocks.PINK_SHROOMLIGHT.get().asItem());
+
+        // ===== 工具与材料配方 =====
+
+        // 研钵
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MORTAR.get(), 1)
+                .pattern("  a")
+                .pattern("bcb")
+                .pattern(" b ")
+                .define('a', Items.IRON_NUGGET)
+                .define('b', Items.POLISHED_DEEPSLATE)
+                .define('c', Items.IRON_INGOT)
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(pWriter);
+
+        // 染梦染料：粉尘碎片 + 骨粉 + 研钵
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_DYE.get(), 7)
+                .requires(ModItems.DYEDREAM_DUST_PIECE.get())
+                .requires(Items.BONE_MEAL)
+                .requires(ModItems.MORTAR.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DUST_PIECE.get()), has(ModItems.DYEDREAM_DUST_PIECE.get()))
+                .save(pWriter);
+
+        // 染梦染料：粉尘 + 骨块 + 研钵
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_DYE.get(), 63)
+                .requires(ModItems.DYEDREAM_DUST.get())
+                .requires(Items.BONE_BLOCK)
+                .requires(ModItems.MORTAR.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DUST.get()), has(ModItems.DYEDREAM_DUST.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_dye_from_dust");
+
         // ===== 染梦玻璃配方 =====
+
+        // 8× 原版玻璃 + 染梦染料 → 8× 染梦玻璃
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_GLASS.get(), 8)
+                .requires(Items.GLASS, 8)
+                .requires(ModItems.DYEDREAM_DYE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_glass_from_dye");
 
         // 染梦沙 → 染梦玻璃（熔炉）
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.DYEDREAM_SAND.get()),
@@ -263,6 +314,22 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
 
     protected static void oreBlasting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
         oreCooking(pFinishedRecipeConsumer, RecipeSerializer.BLASTING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTime, pGroup, "_from_blasting");
+    }
+
+    private void dyeConversion(Consumer<FinishedRecipe> writer, ItemLike material, ItemLike result) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, 8)
+                .requires(material, 8)
+                .requires(ModItems.DYEDREAM_DYE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
+                .save(writer, PasterDreamMod.MOD_ID + ":" + getItemName(result) + "_from_dye");
+    }
+
+    private void dyeConversionTag(Consumer<FinishedRecipe> writer, TagKey<Item> tag, ItemLike result) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, 8)
+                .requires(Ingredient.of(tag), 8)
+                .requires(ModItems.DYEDREAM_DYE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
+                .save(writer, PasterDreamMod.MOD_ID + ":" + getItemName(result) + "_from_dye");
     }
 
     protected static void oreCooking(Consumer<FinishedRecipe> pFinishedRecipeConsumer, RecipeSerializer<? extends AbstractCookingRecipe> pCookingSerializer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {

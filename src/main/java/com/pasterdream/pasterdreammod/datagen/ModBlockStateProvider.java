@@ -162,6 +162,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get(), cubeAll(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get()));
         var goldCarveTex = modLoc("block/gold_carve_dyedream_glass");
         paneBlock((IronBarsBlock) ModBlocks.GOLD_CARVE_DYEDREAM_GLASSPANE.get(), goldCarveTex, goldCarveTex);
+
+        // ===== 染梦晶芽系列 =====
+
+        var smallBud = models().cross(ModBlocks.SMALL_DYEDREAM_BUD.getId().getPath(), blockTexture(ModBlocks.SMALL_DYEDREAM_BUD.get())).renderType("cutout");
+        directionalBlock(ModBlocks.SMALL_DYEDREAM_BUD.get(), smallBud);
+
+        var mediumBud = models().cross(ModBlocks.MEDIUM_DYEDREAM_BUD.getId().getPath(), blockTexture(ModBlocks.MEDIUM_DYEDREAM_BUD.get())).renderType("cutout");
+        directionalBlock(ModBlocks.MEDIUM_DYEDREAM_BUD.get(), mediumBud);
+
+        var largeBud = models().cross(ModBlocks.LARGE_DYEDREAM_BUD.getId().getPath(), blockTexture(ModBlocks.LARGE_DYEDREAM_BUD.get())).renderType("cutout");
+        directionalBlock(ModBlocks.LARGE_DYEDREAM_BUD.get(), largeBud);
     }
 
     private <T extends Block> void blockItem(RegistryObject<T> block) {

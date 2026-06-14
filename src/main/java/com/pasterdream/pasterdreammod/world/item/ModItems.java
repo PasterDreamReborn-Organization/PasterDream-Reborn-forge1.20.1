@@ -28,6 +28,15 @@ public class ModItems {
     public static final RegistryObject<Item> PINK_SLIMEBALL = ITEMS.register("pink_slimeball",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> MORTAR = ITEMS.register("mortar",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> DYEDREAM_DYE = ITEMS.register("dyedream_dye",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> DYEDREAM_BUD_NUGGET = ITEMS.register("dyedream_bud_nugget",
+            () -> new Item(new Item.Properties()));
+
     // ===== 方块物品 =====
 
     public static final RegistryObject<Item> DYEDREAM_DIRT = ITEMS.register("dyedream_dirt",
@@ -81,6 +90,13 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get(), new Item.Properties()));
     public static final RegistryObject<Item> GOLD_CARVE_DYEDREAM_GLASSPANE = ITEMS.register("gold_carve_dyedream_glasspane",
             () -> new BlockItem(ModBlocks.GOLD_CARVE_DYEDREAM_GLASSPANE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> SMALL_DYEDREAM_BUD = ITEMS.register("small_dyedream_bud",
+            () -> new BlockItem(ModBlocks.SMALL_DYEDREAM_BUD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MEDIUM_DYEDREAM_BUD = ITEMS.register("medium_dyedream_bud",
+            () -> new BlockItem(ModBlocks.MEDIUM_DYEDREAM_BUD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARGE_DYEDREAM_BUD = ITEMS.register("large_dyedream_bud",
+            () -> new BlockItem(ModBlocks.LARGE_DYEDREAM_BUD.get(), new Item.Properties()));
 
     // ===== 染梦石英建材系列 =====
 

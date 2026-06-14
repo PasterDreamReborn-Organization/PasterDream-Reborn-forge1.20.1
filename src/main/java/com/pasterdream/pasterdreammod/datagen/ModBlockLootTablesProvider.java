@@ -109,6 +109,19 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
         add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASSPANE.get(),
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
+
+        add(ModBlocks.SMALL_DYEDREAM_BUD.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_BUD_NUGGET.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
+        add(ModBlocks.MEDIUM_DYEDREAM_BUD.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_BUD_NUGGET.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))));
+        add(ModBlocks.LARGE_DYEDREAM_BUD.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_BUD_NUGGET.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))))));
     }
 
     @Override

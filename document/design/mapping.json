@@ -41,13 +41,19 @@
     "carve_dyedream_glass": "carve_dyedream_glass",
     "carve_dyedream_glasspane": "carve_dyedream_glasspane",
     "gold_carve_dyedream_glass": "gold_carve_dyedream_glass",
-    "gold_carve_dyedream_glasspane": "gold_carve_dyedream_glasspane"
+    "gold_carve_dyedream_glasspane": "gold_carve_dyedream_glasspane",
+    "dyedream_bud_2": "small_dyedream_bud",
+    "dyedream_bud_1": "medium_dyedream_bud",
+    "dyedream_bud_0": "large_dyedream_bud"
   },
   "items": {
     "amber_candy": "amber_candy",
     "dyedream_dust": "dyedream_dust",
     "dyedream_dust_piece": "dyedream_dust_piece",
     "pink_slimeball": "pink_slimeball",
+    "mortar": "mortar",
+    "dyedream_dye": "dyedream_dye",
+    "dyedream_bud_nugget": "dyedream_bud_nugget",
     "dyedreamquartz": "dyedream_quartz"
   },
   "entities": {},

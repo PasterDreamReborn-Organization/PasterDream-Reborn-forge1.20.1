@@ -61,6 +61,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CARVE_DYEDREAM_GLASSPANE.get());
                         output.accept(ModItems.GOLD_CARVE_DYEDREAM_GLASS.get());
                         output.accept(ModItems.GOLD_CARVE_DYEDREAM_GLASSPANE.get());
+                        output.accept(ModItems.SMALL_DYEDREAM_BUD.get());
+                        output.accept(ModItems.MEDIUM_DYEDREAM_BUD.get());
+                        output.accept(ModItems.LARGE_DYEDREAM_BUD.get());
                     })
                     .build());
 
@@ -74,6 +77,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_DUST_PIECE.get());
                         output.accept(ModItems.AMBER_CANDY.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
+                        output.accept(ModItems.MORTAR.get());
+                        output.accept(ModItems.DYEDREAM_DYE.get());
+                        output.accept(ModItems.DYEDREAM_BUD_NUGGET.get());
                     })
                     .build());
 

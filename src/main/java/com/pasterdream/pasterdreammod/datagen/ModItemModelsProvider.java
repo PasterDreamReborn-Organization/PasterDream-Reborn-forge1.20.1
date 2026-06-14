@@ -30,6 +30,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.AMBER_CANDY.get());
         basicItem(ModItems.PINK_SLIMEBALL.get());
 
+        basicItem(ModItems.MORTAR.get());
+        basicItem(ModItems.DYEDREAM_DYE.get());
+        basicItem(ModItems.DYEDREAM_BUD_NUGGET.get());
+
         withExistingParent(ModItems.PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/pink_mushroom"));
         withExistingParent(ModItems.TALL_PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))
@@ -52,6 +56,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/carve_dyedream_glass"));
         withExistingParent(ModItems.GOLD_CARVE_DYEDREAM_GLASSPANE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/gold_carve_dyedream_glass"));
+
+        withExistingParent(ModItems.SMALL_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/small_dyedream_bud"));
+        withExistingParent(ModItems.MEDIUM_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/medium_dyedream_bud"));
+        withExistingParent(ModItems.LARGE_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/large_dyedream_bud"));
     }
 
     @Override

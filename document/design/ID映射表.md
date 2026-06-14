@@ -59,6 +59,9 @@
 | `carve_dyedream_glasspane` | `carve_dyedream_glasspane` | 不改 | 无需客制化类，直接用 `IronBarsBlock` |
 | `gold_carve_dyedream_glass` | `gold_carve_dyedream_glass` | 不改 | 无需客制化类，直接用 `Block` |
 | `gold_carve_dyedream_glasspane` | `gold_carve_dyedream_glasspane` | 不改 | 无需客制化类，直接用 `IronBarsBlock` |
+| `dyedream_bud_2` | `small_dyedream_bud` | 重命名，按原版紫水晶芽风格 | 无需客制化类，直接用 `AmethystClusterBlock` |
+| `dyedream_bud_1` | `medium_dyedream_bud` | 重命名 | 无需客制化类，直接用 `AmethystClusterBlock` |
+| `dyedream_bud_0` | `large_dyedream_bud` | 重命名 | 无需客制化类，直接用 `AmethystClusterBlock` |
 
 ---
 
@@ -70,6 +73,9 @@
 | `dyedream_dust` | `dyedream_dust` | 不改 | 无需客制化类，直接用 `Item` |
 | `dyedream_dust_piece` | `dyedream_dust_piece` | 不改 | 无需客制化类，直接用 `Item` |
 | `pink_slimeball` | `pink_slimeball` | 不改 | 无需客制化类，直接用 `Item` |
+| `mortar` | `mortar` | 不改 | 无需客制化类，直接用 `Item` |
+| `dyedream_dye` | `dyedream_dye` | 不改 | 无需客制化类，直接用 `Item` |
+| `dyedream_bud_nugget` | `dyedream_bud_nugget` | 不改 | 无需客制化类，直接用 `Item` |
 | `dyedreamquartz` | `dyedream_quartz` | 重命名，补下划线 | 无需客制化类，直接用 `Item` |
 
 ---
