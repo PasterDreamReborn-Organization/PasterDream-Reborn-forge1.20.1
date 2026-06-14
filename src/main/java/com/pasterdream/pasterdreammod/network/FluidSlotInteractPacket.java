@@ -1,7 +1,7 @@
 package com.pasterdream.pasterdreammod.network;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
-import com.pasterdream.pasterdreammod.helper.FluidHandlerResolvers;
+import com.pasterdream.pasterdreammod.helper.FluidHandler.FluidHandlerResolvers;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPos;

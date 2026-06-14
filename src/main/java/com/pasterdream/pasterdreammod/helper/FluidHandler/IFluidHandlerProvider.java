@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.helper;
+package com.pasterdream.pasterdreammod.helper.FluidHandler;
 
 import net.minecraftforge.fluids.capability.IFluidHandler;
 

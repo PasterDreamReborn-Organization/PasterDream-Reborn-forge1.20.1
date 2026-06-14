@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.helper;
+package com.pasterdream.pasterdreammod.helper.FluidHandler;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.FluidSlotInteractPacket;

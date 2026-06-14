@@ -1,6 +1,6 @@
 package com.pasterdream.pasterdreammod.component;
 
-import com.pasterdream.pasterdreammod.helper.RendFluidStackTexture;
+import com.pasterdream.pasterdreammod.helper.RenderHelper.RendFluidStackTexture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;

@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.helper;
+package com.pasterdream.pasterdreammod.helper.RenderHelper;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
