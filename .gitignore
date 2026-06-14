@@ -21,7 +21,7 @@ build
 eclipse
 run
 
-# 旧版源码参考（不参与编译，不入库）
+# 旧版源码参考（不参与编译）
 /reference/
 /reference-resources/
 
