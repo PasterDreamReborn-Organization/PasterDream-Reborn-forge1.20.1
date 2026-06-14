@@ -18,7 +18,7 @@ public class GUIBackGroundRender
     public static ResourceLocation BLUEPRINT_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/blueprint.png");
     public static ResourceLocation DREAM_ACCUMULATOR_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_accumulator.png");
     public static ResourceLocation RESEARCH_TABLE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/research_table.png");
-    public static ResourceLocation WEAPON_WORKSHOP_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/weaponworkshop.png");
+    public static ResourceLocation WEAPON_WORKSHOP_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/weapon_workshop.png");
     public static ResourceLocation WORKSHOP_ANVIL_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/workshop_anvil.png");
     public static ResourceLocation WORKSHOP_BLAST_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/workshop_blast.png");
     public static ResourceLocation WORKSHOP_BLAST_LAVA_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/workshop_blast_lava_amount_bar.png");
