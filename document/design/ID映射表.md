@@ -45,13 +45,20 @@
 | `dyedream_planks_trapdoor` | `dyedream_planks_trapdoor` | 不改 | 无需客制化类，直接用 `TrapDoorBlock` |
 | `dyedream_planks_pressure_plate` | `dyedream_planks_pressure_plate` | 不改 | 无需客制化类，直接用 `PressurePlateBlock` |
 | `dyedream_planks_button` | `dyedream_planks_button` | 不改 | 无需客制化类，直接用 `ButtonBlock` |
-| `pinkslime_block` | `pink_slime_block` | 重命名，补下划线；受重力影响（`FallingBlock`） | 客制化类 `PinkSlimeBlock`，仅继承 `FallingBlock` |
+| `pinkslime_block` | `pink_slime_block` | 重命名，补下划线；受重力影响 | 无需客制化类，直接用 `FallingBlock` |
 | `pinkagaric_0` | `pink_mushroom_block` | 重命名，按原版风格：菌盖 | 无需客制化类，直接用 `Block` |
 | `pinkagaric_1` | `pink_mushroom_stem` | 重命名，按原版风格：菌柄（有朝向） | 无需客制化类，直接用 `RotatedPillarBlock` |
 | `pinkagaric_2` | `pink_mushroom_pores` | 重命名，按原版风格：6 面菌孔 | 无需客制化类，直接用 `Block` |
 | `pinkagaric_3` | `pink_shroomlight` | 重命名，按原版风格：菌光体 | 无需客制化类，直接用 `Block`，发光等级 15，cutout 渲染 |
 | `flower_8` | `pink_mushroom` | 重命名，按原版风格：粉顶菇（小型花，缓速效果） | 无需客制化类，直接用 `FlowerBlock` |
 | `flower_10` | `tall_pink_mushroom` | 重命名，按原版风格：高粉顶菇（2 格高） | 无需客制化类，直接用 `DoublePlantBlock` |
+| `dyedream_sand` | `dyedream_sand` | 不改，受重力影响 | 无需客制化类，直接用 `FallingBlock` |
+| `dyedream_glass` | `dyedream_glass` | 不改，发光等级 12，仅精准采集可掉落 | 无需客制化类，直接用 `Block` |
+| `dyedream_glasspane` | `dyedream_glasspane` | 不改，发光等级 12，仅精准采集可掉落 | 无需客制化类，直接用 `IronBarsBlock` |
+| `carve_dyedream_glass` | `carve_dyedream_glass` | 不改 | 无需客制化类，直接用 `Block` |
+| `carve_dyedream_glasspane` | `carve_dyedream_glasspane` | 不改 | 无需客制化类，直接用 `IronBarsBlock` |
+| `gold_carve_dyedream_glass` | `gold_carve_dyedream_glass` | 不改 | 无需客制化类，直接用 `Block` |
+| `gold_carve_dyedream_glasspane` | `gold_carve_dyedream_glasspane` | 不改 | 无需客制化类，直接用 `IronBarsBlock` |
 
 ---
 

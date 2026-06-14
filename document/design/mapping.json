@@ -34,7 +34,14 @@
     "pinkagaric_2": "pink_mushroom_pores",
     "pinkagaric_3": "pink_shroomlight",
     "flower_8": "pink_mushroom",
-    "flower_10": "tall_pink_mushroom"
+    "flower_10": "tall_pink_mushroom",
+    "dyedream_sand": "dyedream_sand",
+    "dyedream_glass": "dyedream_glass",
+    "dyedream_glasspane": "dyedream_glasspane",
+    "carve_dyedream_glass": "carve_dyedream_glass",
+    "carve_dyedream_glasspane": "carve_dyedream_glasspane",
+    "gold_carve_dyedream_glass": "gold_carve_dyedream_glass",
+    "gold_carve_dyedream_glasspane": "gold_carve_dyedream_glasspane"
   },
   "items": {
     "amber_candy": "amber_candy",

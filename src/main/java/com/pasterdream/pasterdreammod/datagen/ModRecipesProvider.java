@@ -59,6 +59,54 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
                 .save(pWriter);
 
+        // ===== 染梦玻璃配方 =====
+
+        // 染梦沙 → 染梦玻璃（熔炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.DYEDREAM_SAND.get()),
+                        RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_GLASS.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_SAND.get()), has(ModBlocks.DYEDREAM_SAND.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_glass_from_smelting");
+
+        // 染梦玻璃 → 16× 染梦玻璃板
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_GLASSPANE.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModBlocks.DYEDREAM_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_GLASS.get()), has(ModBlocks.DYEDREAM_GLASS.get()))
+                .save(pWriter);
+
+        // 4× 染梦玻璃 → 4× 雕花染梦玻璃
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CARVE_DYEDREAM_GLASS.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModBlocks.DYEDREAM_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_GLASS.get()), has(ModBlocks.DYEDREAM_GLASS.get()))
+                .save(pWriter);
+
+        // 雕花染梦玻璃 → 16× 雕花玻璃板
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CARVE_DYEDREAM_GLASSPANE.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModBlocks.CARVE_DYEDREAM_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.CARVE_DYEDREAM_GLASS.get()), has(ModBlocks.CARVE_DYEDREAM_GLASS.get()))
+                .save(pWriter);
+
+        // 雕花染梦玻璃 + 金粒 → 镶金雕花染梦玻璃
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get(), 1)
+                .pattern("ab")
+                .define('a', ModBlocks.CARVE_DYEDREAM_GLASS.get())
+                .define('b', Items.GOLD_NUGGET)
+                .unlockedBy(getHasName(ModBlocks.CARVE_DYEDREAM_GLASS.get()), has(ModBlocks.CARVE_DYEDREAM_GLASS.get()))
+                .save(pWriter);
+
+        // 镶金雕花染梦玻璃 → 16× 镶金玻璃板
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GOLD_CARVE_DYEDREAM_GLASSPANE.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get()), has(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get()))
+                .save(pWriter);
+
         // ===== 粉顶菇配方 =====
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.PINK_DYE, 1)

@@ -45,6 +45,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/dyedream_planks_trapdoor"));
 
         wallItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL, ModBlocks.DYEDREAM_QUARTZ_BLOCK);
+
+        withExistingParent(ModItems.DYEDREAM_GLASSPANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dyedream_glass"));
+        withExistingParent(ModItems.CARVE_DYEDREAM_GLASSPANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/carve_dyedream_glass"));
+        withExistingParent(ModItems.GOLD_CARVE_DYEDREAM_GLASSPANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/gold_carve_dyedream_glass"));
     }
 
     @Override

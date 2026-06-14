@@ -47,8 +47,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.DYEDREAM_WOOD);
         simpleBlockWithItem(ModBlocks.DYEDREAM_LEAVES.get(), cubeAll(ModBlocks.DYEDREAM_LEAVES.get()));
 
-        var worldtreeLeaves = models().cubeAll(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get())).renderType("cutout");
-        simpleBlockWithItem(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), worldtreeLeaves);
+        simpleBlockWithItem(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), cubeAll(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get()));
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), cubeAll(ModBlocks.DYEDREAM_QUARTZ_ORE.get()));
 
@@ -119,8 +118,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         buttonBlock((ButtonBlock) ModBlocks.DYEDREAM_PLANKS_BUTTON.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
 
-        var pinkSlime = models().cubeAll(ModBlocks.PINK_SLIME_BLOCK.getId().getPath(), blockTexture(ModBlocks.PINK_SLIME_BLOCK.get())).renderType("translucent");
-        simpleBlockWithItem(ModBlocks.PINK_SLIME_BLOCK.get(), pinkSlime);
+        simpleBlockWithItem(ModBlocks.PINK_SLIME_BLOCK.get(), cubeAll(ModBlocks.PINK_SLIME_BLOCK.get()));
 
         // ===== 粉顶菌菇系列 =====
 
@@ -138,8 +136,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.PINK_MUSHROOM_PORES.get(), models().cubeAll(ModBlocks.PINK_MUSHROOM_PORES.getId().getPath(), poreTex));
 
-        var shroomlightModel = models().cubeAll(ModBlocks.PINK_SHROOMLIGHT.getId().getPath(), blockTexture(ModBlocks.PINK_SHROOMLIGHT.get())).renderType("cutout");
-        simpleBlockWithItem(ModBlocks.PINK_SHROOMLIGHT.get(), shroomlightModel);
+        simpleBlockWithItem(ModBlocks.PINK_SHROOMLIGHT.get(), cubeAll(ModBlocks.PINK_SHROOMLIGHT.get()));
 
         var pinkMushroom = models().cross(ModBlocks.PINK_MUSHROOM.getId().getPath(), blockTexture(ModBlocks.PINK_MUSHROOM.get())).renderType("cutout");
         simpleBlock(ModBlocks.PINK_MUSHROOM.get(), pinkMushroom);
@@ -149,6 +146,22 @@ public class ModBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(ModBlocks.TALL_PINK_MUSHROOM.get())
                 .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(tallLower))
                 .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(tallUpper));
+
+        // ===== 染梦玻璃系列 =====
+
+        simpleBlockWithItem(ModBlocks.DYEDREAM_SAND.get(), cubeAll(ModBlocks.DYEDREAM_SAND.get()));
+
+        simpleBlockWithItem(ModBlocks.DYEDREAM_GLASS.get(), cubeAll(ModBlocks.DYEDREAM_GLASS.get()));
+        var glassTex = modLoc("block/dyedream_glass");
+        paneBlock((IronBarsBlock) ModBlocks.DYEDREAM_GLASSPANE.get(), glassTex, glassTex);
+
+        simpleBlockWithItem(ModBlocks.CARVE_DYEDREAM_GLASS.get(), cubeAll(ModBlocks.CARVE_DYEDREAM_GLASS.get()));
+        var carveTex = modLoc("block/carve_dyedream_glass");
+        paneBlock((IronBarsBlock) ModBlocks.CARVE_DYEDREAM_GLASSPANE.get(), carveTex, carveTex);
+
+        simpleBlockWithItem(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get(), cubeAll(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get()));
+        var goldCarveTex = modLoc("block/gold_carve_dyedream_glass");
+        paneBlock((IronBarsBlock) ModBlocks.GOLD_CARVE_DYEDREAM_GLASSPANE.get(), goldCarveTex, goldCarveTex);
     }
 
     private <T extends Block> void blockItem(RegistryObject<T> block) {
@@ -158,5 +171,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private <T extends Block> void blockItem(RegistryObject<T> block, String append) {
         simpleBlockItem(block.get(), new ModelFile.UncheckedModelFile(PasterDreamMod.MOD_ID + ":block/" + block.getId().getPath() + append));
     }
+
 
 }

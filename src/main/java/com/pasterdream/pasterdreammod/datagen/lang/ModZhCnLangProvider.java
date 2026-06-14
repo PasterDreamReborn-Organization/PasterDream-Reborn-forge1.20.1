@@ -54,6 +54,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.PINK_SHROOMLIGHT.get(), "粉顶菌菌光体");
         add(ModBlocks.PINK_MUSHROOM.get(), "粉顶菇");
         add(ModBlocks.TALL_PINK_MUSHROOM.get(), "高粉顶菇");
+        add(ModBlocks.DYEDREAM_SAND.get(), "染梦沙");
+        add(ModBlocks.DYEDREAM_GLASS.get(), "染梦玻璃");
+        add(ModBlocks.DYEDREAM_GLASSPANE.get(), "染梦玻璃板");
+        add(ModBlocks.CARVE_DYEDREAM_GLASS.get(), "雕花染梦玻璃");
+        add(ModBlocks.CARVE_DYEDREAM_GLASSPANE.get(), "雕花染梦玻璃板");
+        add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get(), "镶金雕花染梦玻璃");
+        add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASSPANE.get(), "镶金雕花染梦玻璃板");
         add("itemGroup.pasterdream.pasterdream_tab", "Paster Dream");
         add("itemGroup.pasterdream.pasterdream_materials_tab", "Paster Dream 材料");
     }
