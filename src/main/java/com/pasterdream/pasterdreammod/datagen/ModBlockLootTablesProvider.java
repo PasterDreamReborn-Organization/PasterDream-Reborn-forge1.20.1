@@ -122,6 +122,10 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 block -> createSilkTouchDispatchTable(block,
                         applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_BUD_NUGGET.get())
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))))));
+
+        add(ModBlocks.DYEDREAM_ICE.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
+        dropSelf(ModBlocks.DYEDREAM_PACKED_ICE.get());
+        dropSelf(ModBlocks.DYEDREAM_LARTERN.get());
     }
 
     @Override
