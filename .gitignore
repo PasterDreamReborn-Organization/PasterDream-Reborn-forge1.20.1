@@ -22,8 +22,8 @@ eclipse
 run
 
 # 旧版源码参考（不参与编译，不入库）
-reference/
-reference-resources/
+/reference/
+/reference-resources/
 
 # 数据生成
 src/generated/
