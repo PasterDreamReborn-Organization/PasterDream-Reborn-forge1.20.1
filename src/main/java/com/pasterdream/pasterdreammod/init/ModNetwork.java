@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.FluidSlotInteractPacket;
 import com.pasterdream.pasterdreammod.network.FluidSoundPacket;
 import com.pasterdream.pasterdreammod.network.MeltDreamEnergySyncPacket;
+import com.pasterdream.pasterdreammod.network.SanSyncPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkRegistry;
@@ -21,9 +22,15 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, FluidSlotInteractPacket.class, FluidSlotInteractPacket::encode, FluidSlotInteractPacket::decode, FluidSlotInteractPacket::handle);
         CHANNEL.registerMessage(id++, FluidSoundPacket.class, FluidSoundPacket::encode, FluidSoundPacket::decode, FluidSoundPacket::handle);
         CHANNEL.registerMessage(id++, MeltDreamEnergySyncPacket.class, MeltDreamEnergySyncPacket::encode, MeltDreamEnergySyncPacket::decode, MeltDreamEnergySyncPacket::handle);
+        CHANNEL.registerMessage(id++, SanSyncPacket.class, SanSyncPacket::encode, SanSyncPacket::decode, SanSyncPacket::handle);
     }
 
-    public static void sendToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)
+    public static void sendMeltDreamEnergySyncPacketToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)
+    {
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
+    }
+
+    public static void sendSanSyncPacketToPlayer(SanSyncPacket packet, ServerPlayer player)
     {
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
     }

@@ -13,9 +13,9 @@ public class MeltDreamEnergyProvider implements ICapabilitySerializable<Compound
     private final LazyOptional<IMeltDreamEnergy> lazyOptional = LazyOptional.of(() -> instance);
 
     @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side)
+    public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction side)
     {
-        return ModCapabilities.MELT_DREAM_ENERGY.orEmpty(cap, lazyOptional);
+        return ModCapabilities.MELT_DREAM_ENERGY.orEmpty(capability, lazyOptional);
     }
 
     @Override

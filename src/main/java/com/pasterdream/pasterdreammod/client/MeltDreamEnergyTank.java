@@ -6,7 +6,7 @@ import com.pasterdream.pasterdreammod.helper.RenderHelper.GUIBackGroundRender;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
-public class MeltdreamenergyTank
+public class MeltDreamEnergyTank
 {
     public static final IGuiOverlay MELT_DREAM_ENERGY_TANK = (gui, guiGraphics, partialTick, width, height) ->
     {
@@ -22,7 +22,7 @@ public class MeltdreamenergyTank
 
             GUIBackGroundRender.rendMeltDreamEnergyBar(guiGraphics, 9, height - 17);
             GUIBackGroundRender.rendMeltDreamEnergyAmountBar(guiGraphics, 12, height - 13, energy / 100.0);
-            guiGraphics.drawCenteredString(Minecraft.getInstance().font, energy + "/100", 46, height - 25, 0xFFFFFFFF);
+            guiGraphics.drawCenteredString(Minecraft.getInstance().font, String.valueOf(energy), 46, height - 25, 0xFFFFFFFF);
 
             RenderSystem.disableBlend();
         });
