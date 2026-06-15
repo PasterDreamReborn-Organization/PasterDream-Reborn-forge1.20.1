@@ -90,9 +90,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_PACKED_ICE.get(), "Dye Dream Packed Ice");
         add(ModBlocks.DYEDREAM_LARTERN.get(), "Dye Dream Lantern");
 
-        add(ModItems.MORTAR.get(), "Mortar");
-        add(ModItems.DYEDREAM_DYE.get(), "Dye Dream Dye");
-        add(ModItems.DYEDREAM_BUD_NUGGET.get(), "Dye Dream Bud Nugget");
         add("fluid.pasterdream.melt_dream_liquid","Melt Dream Liquid");
         add("fluid.pasterdream.shadow_liquid","Shadow Liquid");
 

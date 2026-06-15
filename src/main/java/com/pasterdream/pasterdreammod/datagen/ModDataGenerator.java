@@ -46,7 +46,7 @@ public class ModDataGenerator {
         // 客户端数据生成
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModItemModelsProvider(packOutput, existingFileHelper));
-        generateBucketItem.generateBucketItem(generator, generator.getPackOutput());
+        GenerateBucketItem.generateBucketItem(generator, generator.getPackOutput());
         generator.addProvider(event.includeClient(), new ModEnUsLangProvider(packOutput));
         generator.addProvider(event.includeClient(), new ModZhCnLangProvider(packOutput));
     }
