@@ -67,7 +67,13 @@
     "dyedream_base": "raw_dyedream_alloy_ingot",
     "dyedream_ingot": "dyedream_alloy_ingot",
     "dyedream_nugget": "dyedream_alloy_nugget",
-    "dyedreamquartz": "dyedream_quartz"
+    "dyedreamquartz": "dyedream_quartz",
+    "moltengold_ingot": "molten_gold_ingot",
+    "moltengold_nugget": "molten_gold_nugget",
+    "raw_moltengold": "raw_molten_gold",
+    "glassjar": "glass_jar",
+    "water_glassjar": "glass_jar_of_water",
+    "milk_glassjar": "glass_jar_of_milk"
   },
   "entities": {},
   "recipes": {}

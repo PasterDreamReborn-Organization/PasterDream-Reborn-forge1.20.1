@@ -38,6 +38,12 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.TITANIUM_NUGGET.get());
         basicItem(ModItems.RAW_TITANIUM.get());
         basicItem(ModItems.DYEDREAM_ALLOY_NUGGET.get());
+        basicItem(ModItems.MOLTEN_GOLD_INGOT.get());
+        basicItem(ModItems.MOLTEN_GOLD_NUGGET.get());
+        basicItem(ModItems.RAW_MOLTEN_GOLD.get());
+        basicItem(ModItems.GLASS_JAR.get());
+        basicItem(ModItems.GLASS_JAR_OF_WATER.get());
+        basicItem(ModItems.GLASS_JAR_OF_MILK.get());
 
         withExistingParent(ModItems.PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/pink_mushroom"));

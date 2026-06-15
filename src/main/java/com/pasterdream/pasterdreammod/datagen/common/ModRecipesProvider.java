@@ -318,6 +318,18 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.RAW_TITANIUM.get()), has(ModItems.RAW_TITANIUM.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_ingot_from_blasting");
 
+        // 粗炙焰金 → 炙焰金锭（熔炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_MOLTEN_GOLD.get()),
+                        RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.RAW_MOLTEN_GOLD.get()), has(ModItems.RAW_MOLTEN_GOLD.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":moltengold_ingot_from_smelting");
+
+        // 粗炙焰金 → 炙焰金锭（高炉）
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.RAW_MOLTEN_GOLD.get()),
+                        RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.RAW_MOLTEN_GOLD.get()), has(ModItems.RAW_MOLTEN_GOLD.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":moltengold_ingot_from_blasting");
+
         // 钛金锭 → 9× 钛金粒
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TITANIUM_NUGGET.get(), 9)
                 .requires(ModItems.TITANIUM_INGOT.get())
@@ -341,6 +353,18 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(ModItems.DYEDREAM_ALLOY_NUGGET.get(), 9)
                 .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_NUGGET.get()), has(ModItems.DYEDREAM_ALLOY_NUGGET.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_alloy_ingot_from_nuggets");
+
+        // 炙焰金锭 → 9× 炙焰金粒
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MOLTEN_GOLD_NUGGET.get(), 9)
+                .requires(ModItems.MOLTEN_GOLD_INGOT.get())
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_INGOT.get()), has(ModItems.MOLTEN_GOLD_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":moltengold_nugget_from_ingot");
+
+        // 9× 炙焰金粒 → 炙焰金锭
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1)
+                .requires(ModItems.MOLTEN_GOLD_NUGGET.get(), 9)
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_NUGGET.get()), has(ModItems.MOLTEN_GOLD_NUGGET.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":moltengold_ingot_from_nuggets");
     }
 
     private void quartzRecipes(Consumer<FinishedRecipe> pWriter) {

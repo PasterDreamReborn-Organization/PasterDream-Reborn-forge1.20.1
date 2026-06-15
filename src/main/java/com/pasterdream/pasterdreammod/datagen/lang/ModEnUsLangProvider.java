@@ -29,6 +29,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_BUD_NUGGET.get(), "Dye Dream Bud Nugget");
         add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "Meltdream Liquid Bucket");
         add(ModItems.SHADOW_LIQUID_BUCKET.get(), "Shadow Liquid Bucket");
+        add(ModItems.MOLTEN_GOLD_INGOT.get(), "Molten Gold Ingot");
+        add(ModItems.MOLTEN_GOLD_NUGGET.get(), "Molten Gold Nugget");
+        add(ModItems.RAW_MOLTEN_GOLD.get(), "Raw Molten Gold");
+        add(ModItems.GLASS_JAR.get(), "Glass Jar");
+        add(ModItems.GLASS_JAR_OF_WATER.get(), "Glass Jar of Water");
+        add(ModItems.GLASS_JAR_OF_MILK.get(), "Glass Jar of Milk");
 
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "Dye Dream Dirt");
@@ -84,6 +90,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_PACKED_ICE.get(), "Dye Dream Packed Ice");
         add(ModBlocks.DYEDREAM_LARTERN.get(), "Dye Dream Lantern");
 
+        add(ModItems.MORTAR.get(), "Mortar");
+        add(ModItems.DYEDREAM_DYE.get(), "Dye Dream Dye");
+        add(ModItems.DYEDREAM_BUD_NUGGET.get(), "Dye Dream Bud Nugget");
         add("fluid.pasterdream.melt_dream_liquid","Melt Dream Liquid");
         add("fluid.pasterdream.shadow_liquid","Shadow Liquid");
 

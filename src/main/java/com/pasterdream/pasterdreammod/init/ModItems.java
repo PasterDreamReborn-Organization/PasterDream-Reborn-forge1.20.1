@@ -53,6 +53,24 @@ public class ModItems {
     public static final RegistryObject<Item> DYEDREAM_ALLOY_NUGGET = ITEMS.register("dyedream_alloy_nugget",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> MOLTEN_GOLD_INGOT = ITEMS.register("molten_gold_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> MOLTEN_GOLD_NUGGET = ITEMS.register("molten_gold_nugget",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> RAW_MOLTEN_GOLD = ITEMS.register("raw_molten_gold",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLASS_JAR = ITEMS.register("glass_jar",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLASS_JAR_OF_WATER = ITEMS.register("glass_jar_of_water",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLASS_JAR_OF_MILK = ITEMS.register("glass_jar_of_milk",
+            () -> new Item(new Item.Properties()));
+
     // ===== 方块物品 =====
 
     public static final RegistryObject<Item> DYEDREAM_DIRT = ITEMS.register("dyedream_dirt",
