@@ -71,6 +71,15 @@ public class ModItems {
     public static final RegistryObject<Item> GLASS_JAR_OF_MILK = ITEMS.register("glass_jar_of_milk",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> YEAST = ITEMS.register("yeast",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GUIDING_DRUG = ITEMS.register("guiding_drug",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLASS_JAR_OF_WIND_PLANT_EXTRACT = ITEMS.register("glass_jar_of_wind_plant_extract",
+            () -> new Item(new Item.Properties()));
+
     // ===== 方块物品 =====
 
     public static final RegistryObject<Item> DYEDREAM_DIRT = ITEMS.register("dyedream_dirt",

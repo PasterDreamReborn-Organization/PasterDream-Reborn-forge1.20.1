@@ -73,7 +73,10 @@
     "raw_moltengold": "raw_molten_gold",
     "glassjar": "glass_jar",
     "water_glassjar": "glass_jar_of_water",
-    "milk_glassjar": "glass_jar_of_milk"
+    "milk_glassjar": "glass_jar_of_milk",
+    "yeast": "yeast",
+    "guiding_drug": "guiding_drug",
+    "wind_plant_extract": "glass_jar_of_wind_plant_extract"
   },
   "entities": {},
   "recipes": {}
