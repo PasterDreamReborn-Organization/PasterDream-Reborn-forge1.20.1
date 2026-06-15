@@ -37,15 +37,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.PINK_MUSHROOM_PORES.get())
                 .add(ModBlocks.PINK_SHROOMLIGHT.get());
 
-        tag(BlockTags.WART_BLOCKS)
-                .add(ModBlocks.PINK_MUSHROOM_BLOCK.get())
-                .add(ModBlocks.PINK_MUSHROOM_STEM.get())
-                .add(ModBlocks.PINK_MUSHROOM_PORES.get());
-
         // 可以用斧子来挖掘
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.DYEDREAM_LOG.get())
-                .add(ModBlocks.DYEDREAM_WOOD.get());
+                .add(ModBlocks.DYEDREAM_WOOD.get())
+                .add(ModBlocks.PINK_MUSHROOM_BLOCK.get())
+                .add(ModBlocks.PINK_MUSHROOM_STEM.get())
+                .add(ModBlocks.PINK_MUSHROOM_PORES.get())
+                .add(ModBlocks.PINK_SHROOMLIGHT.get());
 
         // 寻找树的新手引导
         tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
