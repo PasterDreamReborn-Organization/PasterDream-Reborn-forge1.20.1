@@ -44,6 +44,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.GLASS_JAR.get());
         basicItem(ModItems.GLASS_JAR_OF_WATER.get());
         basicItem(ModItems.GLASS_JAR_OF_MILK.get());
+        basicItem(ModItems.YEAST.get());
+        basicItem(ModItems.GUIDING_DRUG.get());
+        basicItem(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get());
 
         withExistingParent(ModItems.PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/pink_mushroom"));
@@ -76,6 +79,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/medium_dyedream_bud"));
         withExistingParent(ModItems.LARGE_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/large_dyedream_bud"));
+
 
     }
 

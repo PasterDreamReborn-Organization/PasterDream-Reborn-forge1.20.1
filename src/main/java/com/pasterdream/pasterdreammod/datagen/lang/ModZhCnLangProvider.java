@@ -27,15 +27,19 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.MORTAR.get(), "研钵");
         add(ModItems.DYEDREAM_DYE.get(), "染梦染料");
         add(ModItems.DYEDREAM_BUD_NUGGET.get(), "染梦晶芽粒");
-        add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "融梦涌泉桶");
-        add(ModItems.SHADOW_LIQUID_BUCKET.get(), "熔融阴影桶");
-
+        add(ModItems.YEAST.get(), "酵母");
         add(ModItems.MOLTEN_GOLD_INGOT.get(), "炙焰金锭");
         add(ModItems.MOLTEN_GOLD_NUGGET.get(), "炙焰金粒");
         add(ModItems.RAW_MOLTEN_GOLD.get(), "粗炙焰金");
         add(ModItems.GLASS_JAR.get(), "玻璃罐");
         add(ModItems.GLASS_JAR_OF_WATER.get(), "水罐");
         add(ModItems.GLASS_JAR_OF_MILK.get(), "牛奶罐");
+        add(ModItems.GUIDING_DRUG.get(), "药引瓶");
+        add(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), "风植萃取液");
+        add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "融梦涌泉桶");
+        add(ModItems.SHADOW_LIQUID_BUCKET.get(), "熔融阴影桶");
+
+
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "染梦泥土");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "染梦草方块");
