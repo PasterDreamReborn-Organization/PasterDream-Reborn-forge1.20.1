@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class generateBucketItem
+public class GenerateBucketItem
 {
     public static void generateBucketItem(DataGenerator generator, PackOutput output)
     {
