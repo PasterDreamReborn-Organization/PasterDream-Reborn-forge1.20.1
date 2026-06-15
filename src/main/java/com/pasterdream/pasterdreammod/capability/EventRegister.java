@@ -3,7 +3,10 @@ package com.pasterdream.pasterdreammod.capability;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.IMeltDreamEnergy;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyProvider;
+import com.pasterdream.pasterdreammod.capability.san.ISan;
+import com.pasterdream.pasterdreammod.capability.san.SanProvider;
 import com.pasterdream.pasterdreammod.network.MeltDreamEnergySyncPacket;
+import com.pasterdream.pasterdreammod.network.SanSyncPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -23,6 +26,7 @@ public class EventRegister
         public static void onRegisterCapabilities(RegisterCapabilitiesEvent event)
         {
             event.register(IMeltDreamEnergy.class);
+            event.register(ISan.class);
         }
     }
 
@@ -36,6 +40,7 @@ public class EventRegister
             if (event.getObject() instanceof Player)
             {
                 event.addCapability(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream_energy"), new MeltDreamEnergyProvider());
+                event.addCapability(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "san"), new SanProvider());
             }
         }
 
@@ -43,7 +48,8 @@ public class EventRegister
         public static void onPlayerClone(PlayerEvent.Clone event)
         {
             event.getOriginal().reviveCaps();
-            event.getOriginal().getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(oldCap -> event.getEntity().getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(newCap -> newCap.copyValueFromOtherMeltDreamEnergy(oldCap)));
+            event.getOriginal().getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(oldCapability -> event.getEntity().getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(newCapability -> newCapability.copyValueFromOtherMeltDreamEnergy(oldCapability)));
+            event.getOriginal().getCapability(ModCapabilities.SAN).ifPresent(oldCapability -> event.getEntity().getCapability(ModCapabilities.SAN).ifPresent(newCapability -> newCapability.copyValueFromOtherSan(oldCapability)));
             event.getOriginal().invalidateCaps();
             sync(event.getEntity());
         }
@@ -71,6 +77,7 @@ public class EventRegister
             if (!player.level().isClientSide)
             {
                 player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(capability -> MeltDreamEnergySyncPacket.sendToPlayer(player, capability));
+                player.getCapability(ModCapabilities.SAN).ifPresent(capability -> SanSyncPacket.sendToPlayer(player, capability));
             }
         }
     }

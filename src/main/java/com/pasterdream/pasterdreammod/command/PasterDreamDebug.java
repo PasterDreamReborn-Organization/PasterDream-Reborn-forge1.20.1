@@ -6,6 +6,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.network.MeltDreamEnergySyncPacket;
+import com.pasterdream.pasterdreammod.network.SanSyncPacket;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
@@ -27,7 +28,18 @@ public class PasterDreamDebug
                                                 .then(Commands.argument("value", DoubleArgumentType.doubleArg(-2147483648, 2147483647))
                                                         .executes(PasterDreamDebug::addMeltDreamEnergy)))
                                         .then(Commands.literal("get")
-                                                .executes(PasterDreamDebug::getMeltDreamEnergy))))));
+                                                .executes(PasterDreamDebug::getMeltDreamEnergy)))))
+                .then(Commands.literal("san")
+                        .then(Commands.literal("sanvalue")
+                                .then(Commands.argument("player", EntityArgument.player())
+                                        .then(Commands.literal("set")
+                                                .then(Commands.argument("value", DoubleArgumentType.doubleArg(-2147483648, 2147483647))
+                                                        .executes(PasterDreamDebug::setSan)))
+                                        .then(Commands.literal("add")
+                                                .then(Commands.argument("value", DoubleArgumentType.doubleArg(-2147483648, 2147483647))
+                                                        .executes(PasterDreamDebug::addSan)))
+                                        .then(Commands.literal("get")
+                                                .executes(PasterDreamDebug::getSan))))));
     }
 
     private static int setMeltDreamEnergy(CommandContext<CommandSourceStack> context) throws CommandSyntaxException
@@ -67,6 +79,48 @@ public class PasterDreamDebug
         player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(capability ->
         {
             context.getSource().sendSuccess(() -> Component.translatable(player.getName().getString() + " 的融梦能量值为 " + capability.getMeltDreamEnergy()), true);
+        });
+
+        return 1;
+    }
+
+    private static int setSan(CommandContext<CommandSourceStack> context) throws CommandSyntaxException
+    {
+        ServerPlayer player = EntityArgument.getPlayer(context, "player");
+        double value = DoubleArgumentType.getDouble(context, "value");
+
+        player.getCapability(ModCapabilities.SAN).ifPresent(capability ->
+        {
+            capability.setSanValue(value);
+            SanSyncPacket.sendToPlayer(player, capability);
+            context.getSource().sendSuccess(() -> Component.translatable("已将 " + player.getName().getString() + " 的精神值设置为 " + value), true);
+        });
+
+        return 1;
+    }
+
+    private static int addSan(CommandContext<CommandSourceStack> context) throws CommandSyntaxException
+    {
+        ServerPlayer player = EntityArgument.getPlayer(context, "player");
+        double value = DoubleArgumentType.getDouble(context, "value");
+
+        player.getCapability(ModCapabilities.SAN).ifPresent(capability ->
+        {
+            capability.addSanValue(value);
+            SanSyncPacket.sendToPlayer(player, capability);
+            context.getSource().sendSuccess(() -> Component.translatable("已将 " + player.getName().getString() + " 的精神值增加 " + value), true);
+        });
+
+        return 1;
+    }
+
+    private static int getSan(CommandContext<CommandSourceStack> context) throws CommandSyntaxException
+    {
+        ServerPlayer player = EntityArgument.getPlayer(context, "player");
+
+        player.getCapability(ModCapabilities.SAN).ifPresent(capability ->
+        {
+            context.getSource().sendSuccess(() -> Component.translatable(player.getName().getString() + " 的精神值为 " + DoubleArgumentType.getDouble(context, "value")), true);
         });
 
         return 1;

@@ -1,7 +1,8 @@
 package com.pasterdream.pasterdreammod;
 
 import com.pasterdream.pasterdreammod.client.ClientSetRenderLayer;
-import com.pasterdream.pasterdreammod.client.MeltdreamenergyTank;
+import com.pasterdream.pasterdreammod.client.MeltDreamEnergyTank;
+import com.pasterdream.pasterdreammod.client.SanTank;
 import com.pasterdream.pasterdreammod.helper.FluidHandler.FluidHandlerResolvers;
 import com.pasterdream.pasterdreammod.helper.tooltipadder.AddTooltip;
 import com.pasterdream.pasterdreammod.init.*;
@@ -70,6 +71,7 @@ public class PasterDreamMod
 
     private void AddOverlays(RegisterGuiOverlaysEvent event)
     {
-        event.registerAboveAll("meltdream_energy", MeltdreamenergyTank.MELT_DREAM_ENERGY_TANK);
+        event.registerAboveAll("meltdream_energy", MeltDreamEnergyTank.MELT_DREAM_ENERGY_TANK);
+        event.registerAboveAll("san", SanTank.SAN_TANK);
     }
 }

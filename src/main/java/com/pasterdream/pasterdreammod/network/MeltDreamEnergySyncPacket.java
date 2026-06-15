@@ -47,13 +47,13 @@ public class MeltDreamEnergySyncPacket
     {
         context.get().enqueueWork(() ->
         {
-            Player player = Minecraft.getInstance().player;;
+            Player player = Minecraft.getInstance().player;
             if (player != null)
             {
-                player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(cap ->
+                player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(capability ->
                 {
-                    cap.setMeltDreamEnergy(packet.energy);
-                    cap.setIsOrNotNeedConsumeDreamEnergy(packet.noNeed);
+                    capability.setMeltDreamEnergy(packet.energy);
+                    capability.setIsOrNotNeedConsumeDreamEnergy(packet.noNeed);
                 });
             }
         });
@@ -64,7 +64,7 @@ public class MeltDreamEnergySyncPacket
     {
         if (player instanceof ServerPlayer serverPlayer)
         {
-            ModNetwork.sendToPlayer(new MeltDreamEnergySyncPacket(player, capability), serverPlayer);
+            ModNetwork.sendMeltDreamEnergySyncPacketToPlayer(new MeltDreamEnergySyncPacket(player, capability), serverPlayer);
         }
     }
 }
