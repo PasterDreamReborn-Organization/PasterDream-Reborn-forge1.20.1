@@ -95,14 +95,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("fluid.pasterdream.apple_juice","Apple Juice(fluid)");
         add("fluid.pasterdream.dream_juice","Dream Juice(fluid)");
-        add("fluid.pasterdream.dye_dream_flower_tea","Dye Dream Flower Tea(fluid)");
-        add("fluid.pasterdream.dye_dream_juice","Dye Dream Juice(fluid)");
-        add("fluid.pasterdream.dye_dream_perfume","Dye Dream Perfume(fluid)");
+        add("fluid.pasterdream.dyedream_flower_tea","Dyedream Flower Tea(fluid)");
+        add("fluid.pasterdream.dyedream_juice","Dyedream Juice(fluid)");
+        add("fluid.pasterdream.dyedream_perfume","Dyedream Perfume(fluid)");
         add("fluid.pasterdream.goldenrod_tea","Goldenrod Tea(fluid)");
         add("fluid.pasterdream.guiding_drug","Guiding Drug(fluid)");
         add("fluid.pasterdream.honey_juice","Honey Juice(fluid)");
         add("fluid.pasterdream.rage_elixir","Rage Elixir(fluid)");
-        add("fluid.pasterdream.uncooked_dye_dream_flower_tea","Uncooked Dye Dream Flower Tea(fluid)");
+        add("fluid.pasterdream.uncooked_dyedream_flower_tea","Uncooked Dyedream Flower Tea(fluid)");
         add("fluid.pasterdream.watermelon_juice","Watermelon Juice(fluid)");
         add("fluid.pasterdream.wind_plant_extract","Wind Plant Extract(fluid)");
         add("fluid.pasterdream.yeast","Yeast(fluid)");

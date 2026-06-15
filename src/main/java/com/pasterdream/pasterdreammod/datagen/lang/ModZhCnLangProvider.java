@@ -95,14 +95,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("fluid.pasterdream.apple_juice","苹果汁（流体）");
         add("fluid.pasterdream.dream_juice","梦境果汁（流体）");
-        add("fluid.pasterdream.dye_dream_flower_tea","染梦花茶（流体）");
-        add("fluid.pasterdream.dye_dream_juice","染梦果汁（流体）");
-        add("fluid.pasterdream.dye_dream_perfume","染梦香水（流体）");
+        add("fluid.pasterdream.dyedream_flower_tea","染梦花茶（流体）");
+        add("fluid.pasterdream.dyedream_juice","染梦果汁（流体）");
+        add("fluid.pasterdream.dyedream_perfume","染梦香水（流体）");
         add("fluid.pasterdream.goldenrod_tea","秋麒麟茶（流体）");
         add("fluid.pasterdream.guiding_drug","药引瓶（流体）");
         add("fluid.pasterdream.honey_juice","蜂蜜汁（流体）");
         add("fluid.pasterdream.rage_elixir","狂暴战意灵药（流体）");
-        add("fluid.pasterdream.uncooked_dye_dream_flower_tea","未烹饪的染梦花茶（流体）");
+        add("fluid.pasterdream.uncooked_dyedream_flower_tea","未烹饪的染梦花茶（流体）");
         add("fluid.pasterdream.watermelon_juice","西瓜汁（流体）");
         add("fluid.pasterdream.wind_plant_extract","风植萃取液（流体）");
         add("fluid.pasterdream.yeast","酵母（流体）");

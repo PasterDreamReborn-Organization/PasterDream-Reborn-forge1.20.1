@@ -6,11 +6,11 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.fluids.FluidType;
 
-public class DyeDreamFlowerTeaFluidType extends PasterDreamBaseFluidType
+public class DyedreamFlowerTeaFluidType extends PasterDreamBaseFluidType
 {
-    public static final FluidType TYPE = new DyeDreamFlowerTeaFluidType();
+    public static final FluidType TYPE = new DyedreamFlowerTeaFluidType();
 
-    private DyeDreamFlowerTeaFluidType()
+    private DyedreamFlowerTeaFluidType()
     {
         super(Properties.create().density(1000).viscosity(1000).temperature(300).canExtinguish(true).canSwim(true).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY), ResourceLocation.fromNamespaceAndPath("minecraft", "block/water_still"), ResourceLocation.fromNamespaceAndPath("minecraft", "block/water_flow"), 0x7FFFCFE7);
     }
@@ -18,6 +18,6 @@ public class DyeDreamFlowerTeaFluidType extends PasterDreamBaseFluidType
     @Override
     public String getDescriptionId()
     {
-        return "fluid." + PasterDreamMod.MOD_ID + ".dye_dream_flower_tea";
+        return "fluid." + PasterDreamMod.MOD_ID + ".dyedream_flower_tea";
     }
 }

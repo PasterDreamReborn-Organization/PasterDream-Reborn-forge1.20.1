@@ -32,14 +32,14 @@ public class ModJEIPlugin implements IModPlugin
 
         fluidStacks.add(new FluidStack(ModFluids.APPLE_JUICE.get(), 1000));
         fluidStacks.add(new FluidStack(ModFluids.DREAM_JUICE.get(),1000));
-        fluidStacks.add(new FluidStack(ModFluids.DYE_DREAM_FLOWER_TEA.get(), 1000));
-        fluidStacks.add(new FluidStack(ModFluids.DYE_DREAM_JUICE.get(),1000));
-        fluidStacks.add(new FluidStack(ModFluids.DYE_DREAM_PERFUME.get(),1000));
+        fluidStacks.add(new FluidStack(ModFluids.DYEDREAM_FLOWER_TEA.get(), 1000));
+        fluidStacks.add(new FluidStack(ModFluids.DYEDREAM_JUICE.get(),1000));
+        fluidStacks.add(new FluidStack(ModFluids.DYEDREAM_PERFUME.get(),1000));
         fluidStacks.add(new FluidStack(ModFluids.GOLDENROD_TEA.get(),1000));
         fluidStacks.add(new FluidStack(ModFluids.GUIDING_DRUG.get(),1000));
         fluidStacks.add(new FluidStack(ModFluids.HONEY_JUICE.get(),1000));
         fluidStacks.add(new FluidStack(ModFluids.RAGE_ELIXIR.get(),1000));
-        fluidStacks.add(new FluidStack(ModFluids.UNCOOKED_DYE_DREAM_FLOWER_TEA.get(),1000));
+        fluidStacks.add(new FluidStack(ModFluids.UNCOOKED_DYEDREAM_FLOWER_TEA.get(),1000));
         fluidStacks.add(new FluidStack(ModFluids.WATERMELON_JUICE.get(),1000));
         fluidStacks.add(new FluidStack(ModFluids.WIND_PLANT_EXTRACT.get(),1000));
         fluidStacks.add(new FluidStack(ModFluids.YEAST.get(),1000));
