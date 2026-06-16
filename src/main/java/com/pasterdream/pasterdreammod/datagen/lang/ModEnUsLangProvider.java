@@ -30,8 +30,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.GLASS_JAR.get(), "Glass Jar");
         add(ModItems.GLASS_JAR_OF_WATER.get(), "Water Jar");
         add(ModItems.GLASS_JAR_OF_MILK.get(), "Milk Jar");
-        add(ModItems.YEAST.get(), "Yeast");
-        add(ModItems.GUIDING_DRUG.get(), "Guiding Drug");
+        add(ModItems.GLASS_JAR_OF_YEAST.get(), "Glass Jar of Yeast");
+        add(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(), "Glass Jar of Guiding Drug");
         add(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), "Glass Jar of Wind Plant Extract");
         add(ModItems.GLASS_JAR_OF_DREAM_JUICE.get(), "Glass Jar of Dream Juice");
         add(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get(), "Glass Jar of Goldenrod Tea");

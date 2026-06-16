@@ -44,8 +44,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.GLASS_JAR.get());
         basicItem(ModItems.GLASS_JAR_OF_WATER.get());
         basicItem(ModItems.GLASS_JAR_OF_MILK.get());
-        basicItem(ModItems.YEAST.get());
-        basicItem(ModItems.GUIDING_DRUG.get());
+        basicItem(ModItems.GLASS_JAR_OF_YEAST.get());
+        basicItem(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get());
         basicItem(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get());
         basicItem(ModItems.GLASS_JAR_OF_DREAM_JUICE.get());
         basicItem(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get());

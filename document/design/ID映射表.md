@@ -74,24 +74,42 @@
 
 ## 物品映射
 
-| 旧 ID                      | 新 ID                       | 变更说明                                                      | 客制化类处理                               |
-|---------------------------|----------------------------|-----------------------------------------------------------|--------------------------------------|
-| `amber_candy`             | `amber_candy`              | 不改，食物属性：回复 0.5 饱食度 + 3s 生命恢复 I                            | 无需客制化类，直接用 `Item` + `FoodProperties` |
-| `dyedream_dust`           | `dyedream_dust`            | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `dyedream_dust_piece`     | `dyedream_dust_piece`      | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `pink_slimeball`          | `pink_slimeball`           | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `mortar`                  | `mortar`                   | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `dyedream_dye`            | `dyedream_dye`             | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `dyedream_bud_nugget`     | `dyedream_bud_nugget`      | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `raw_titanium`            | `raw_titanium`             | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `titanium_ingot`          | `titanium_ingot`           | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `titanium_nugget`         | `titanium_nugget`          | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `dyedream_base`           | `raw_dyedream_alloy_ingot` | 重命名，`dyedream_base` → `raw_dyedream_alloy_ingot`（染梦合金锭粗胚） | 无需客制化类，直接用 `Item`                    |
-| `dyedream_ingot`          | `dyedream_alloy_ingot`     | 重命名，`dyedream_ingot` → `dyedream_alloy_ingot`（染梦合金锭）      | 无需客制化类，直接用 `Item`                    |
-| `dyedream_nugget`         | `dyedream_alloy_nugget`    | 重命名，补充 `alloy_` 前缀与系列一致                                   | 无需客制化类，直接用 `Item`                    |
-| `dyedreamquartz`          | `dyedream_quartz`          | 重命名，补下划线                                                  | 无需客制化类，直接用 `Item`                    |
-| `meltdream_liquid_bucket` | `meltdream_liquid_bucket`  | 不改                                                        | 无需客制化类，直接用 `BucketItem`              |
-| `shadow_liquid_bucket` | `shadow_liquid_bucket`     | 不改                                                        | 无需客制化类，直接用 `BucketItem`              |
+| 旧 ID                        | 新 ID                                        | 变更说明                                                      | 客制化类处理                               |
+|-----------------------------|---------------------------------------------|-----------------------------------------------------------|--------------------------------------|
+| `amber_candy`               | `amber_candy`                               | 不改，食物属性：回复 0.5 饱食度 + 3s 生命恢复 I                            | 无需客制化类，直接用 `Item` + `FoodProperties` |
+| `dyedream_dust`             | `dyedream_dust`                             | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `dyedream_dust_piece`       | `dyedream_dust_piece`                       | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `pink_slimeball`            | `pink_slimeball`                            | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `mortar`                    | `mortar`                                    | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `dyedream_dye`              | `dyedream_dye`                              | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `dyedream_bud_nugget`       | `dyedream_bud_nugget`                       | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `raw_titanium`              | `raw_titanium`                              | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `titanium_ingot`            | `titanium_ingot`                            | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `titanium_nugget`           | `titanium_nugget`                           | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `dyedream_base`             | `raw_dyedream_alloy_ingot`                  | 重命名，`dyedream_base` → `raw_dyedream_alloy_ingot`（染梦合金锭粗胚） | 无需客制化类，直接用 `Item`                    |
+| `dyedream_ingot`            | `dyedream_alloy_ingot`                      | 重命名，`dyedream_ingot` → `dyedream_alloy_ingot`（染梦合金锭）      | 无需客制化类，直接用 `Item`                    |
+| `dyedream_nugget`           | `dyedream_alloy_nugget`                     | 重命名，补充 `alloy_` 前缀与系列一致                                   | 无需客制化类，直接用 `Item`                    |
+| `dyedreamquartz`            | `dyedream_quartz`                           | 重命名，补下划线                                                  | 无需客制化类，直接用 `Item`                    |
+| `moltengold_ingot`          | `molten_gold_ingot`                         | 重命名，补下划线                                                  | 无需客制化类，直接用 `Item`                    |
+| `moltengold_nugget`         | `molten_gold_nugget`                        | 重命名，补下划线                                                  | 无需客制化类，直接用 `Item`                    |
+| `raw_moltengold`            | `raw_molten_gold`                           | 重命名，补下划线                                                  | 无需客制化类，直接用 `Item`                    |
+| `meltdream_liquid_bucket`   | `meltdream_liquid_bucket`                   | 不改                                                        | 无需客制化类，直接用 `BucketItem`              |
+| `shadow_liquid_bucket`      | `shadow_liquid_bucket`                      | 不改                                                        | 无需客制化类，直接用 `BucketItem`              |
+| `glassjar`                  | `glass_jar`                                 | 重命名，补下划线                                                  | 无需客制化类，直接用 `Item`                    |
+| `water_glassjar`            | `glass_jar_of_water`                        | 重命名，更改命名格式为 `glass_jar_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
+| `milk_glassjar`             | `glass_jar_of_milk`                         | 重命名，更改命名格式为 `glass_jar_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
+| `yeast`                     | `glass_jar_of_yeast`                        | 重命名，更改命名格式为 `glass_jar_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
+| `guiding_drug`              | `glass_jar_of_guiding_drug`                 | 重命名，更改命名格式为 `glass_jar_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
+| `wind_plant_extract`        | `glass_jar_of_wind_plant_extract`           | 重命名，更改命名格式为 `glass_jar_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
+| `dreamjuice`                | `glass_jar_of_dream_juice`                  | 重命名，更改命名格式为 `glass_jar_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
+| `goldenrod_tea`             | `glass_jar_of_goldenrod_tea`                | 重命名，更改命名格式为 `glass_jar_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
+| `glass_cup`                 | `glass_cup`                                 | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `apple_juice`               | `glass_cup_of_apple_juice`                  | 重命名，更改命名格式为 `glass_cup_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
+| `dyedream_flower_tea_0`     | `glass_cup_of_uncooked_dyedream_flower_tea` | 重命名，更改命名格式为 `glass_cup_of_xxx`，加入`uncooked_` 前缀           | 无需客制化类，直接用 `Item`                    |
+| `dyedream_flower_tea`       | `glass_cup_of_cooked_dyedream_flower_tea`   | 重命名，更改命名格式为 `glass_cup_of_xxx`，加入`cooked_` 前缀             | 无需客制化类，直接用 `Item`                    |
+| `dyedream_juice`            | `glass_cup_of_dyedream_juice`               | 重命名，更改命名格式为 `glass_cup_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
+| `honey_juice`               | `glass_cup_of_honey_juice`                  | 重命名，更改命名格式为 `glass_cup_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
+| `watermelon_juice`          | `glass_cup_of_watermelon_juice`             | 重命名，更改命名格式为 `glass_cup_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
 
 ---
 
