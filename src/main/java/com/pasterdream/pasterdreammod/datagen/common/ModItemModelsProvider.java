@@ -47,6 +47,16 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.YEAST.get());
         basicItem(ModItems.GUIDING_DRUG.get());
         basicItem(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get());
+        basicItem(ModItems.GLASS_JAR_OF_DREAM_JUICE.get());
+        basicItem(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get());
+        basicItem(ModItems.GLASS_CUP.get());
+        basicItem(ModItems.GLASS_CUP_OF_APPLE_JUICE.get());
+        basicItem(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get());
+        basicItem(ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get());
+        basicItem(ModItems.GLASS_CUP_OF_HONEY_JUICE.get());
+        basicItem(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get());
+        basicItem(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
+
 
         withExistingParent(ModItems.PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/pink_mushroom"));

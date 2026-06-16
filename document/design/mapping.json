@@ -76,7 +76,16 @@
     "milk_glassjar": "glass_jar_of_milk",
     "yeast": "yeast",
     "guiding_drug": "guiding_drug",
-    "wind_plant_extract": "glass_jar_of_wind_plant_extract"
+    "wind_plant_extract": "glass_jar_of_wind_plant_extract",
+    "dreamjuice": "glass_jar_of_dream_juice",
+    "goldenrod_tea": "glass_jar_of_goldenrod_tea",
+    "glass_cup": "glass_cup",
+    "apple_juice": "glass_cup_of_apple_juice",
+    "dyedream_flower_tea_0": "glass_cup_of_uncooked_dyedream_flower_tea",
+    "dyedream_flower_tea": "glass_cup_of_cooked_dyedream_flower_tea",
+    "dyedream_juice": "glass_cup_of_dyedream_juice",
+    "honey_juice": "glass_cup_of_honey_juice",
+    "watermelon_juice": "glass_cup_of_watermelon_juice"
   },
   "entities": {},
   "recipes": {}

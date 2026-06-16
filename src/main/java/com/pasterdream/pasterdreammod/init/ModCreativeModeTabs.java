@@ -99,11 +99,21 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GLASS_JAR.get());
                         output.accept(ModItems.GLASS_JAR_OF_WATER.get());
                         output.accept(ModItems.GLASS_JAR_OF_MILK.get());
+                        output.accept(ModItems.GLASS_JAR_OF_DREAM_JUICE.get());
+                        output.accept(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get());
                         output.accept(ModItems.YEAST.get());
                         output.accept(ModItems.GUIDING_DRUG.get());
                         output.accept(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get());
                         output.accept(ModItems.MELT_DREAM_LIQUID_BUCKET.get());
                         output.accept(ModItems.SHADOW_LIQUID_BUCKET.get());
+                        output.accept(ModItems.GLASS_CUP.get());
+                        output.accept(ModItems.GLASS_CUP_OF_APPLE_JUICE.get());
+                        output.accept(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get());
+                        output.accept(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get());
+                        output.accept(ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get());
+                        output.accept(ModItems.GLASS_CUP_OF_HONEY_JUICE.get());
+                        output.accept(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
+
                     })
                     .build());
 

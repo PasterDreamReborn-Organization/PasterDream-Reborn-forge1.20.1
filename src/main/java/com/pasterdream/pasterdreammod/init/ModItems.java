@@ -80,6 +80,35 @@ public class ModItems {
     public static final RegistryObject<Item> GLASS_JAR_OF_WIND_PLANT_EXTRACT = ITEMS.register("glass_jar_of_wind_plant_extract",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> GLASS_JAR_OF_DREAM_JUICE = ITEMS.register("glass_jar_of_dream_juice",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLASS_JAR_OF_GOLDENROD_TEA = ITEMS.register("glass_jar_of_goldenrod_tea",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLASS_CUP = ITEMS.register("glass_cup",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLASS_CUP_OF_APPLE_JUICE = ITEMS.register("glass_cup_of_apple_juice",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA = ITEMS.register("glass_cup_of_uncooked_dyedream_flower_tea",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA = ITEMS.register("glass_cup_of_cooked_dyedream_flower_tea",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLASS_CUP_OF_DYEDREAM_JUICE = ITEMS.register("glass_cup_of_dyedream_juice",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLASS_CUP_OF_HONEY_JUICE = ITEMS.register("glass_cup_of_honey_juice",
+            () -> new Item(new Item.Properties()));
+
+
+    public static final RegistryObject<Item> GLASS_CUP_OF_WATERMELON_JUICE = ITEMS.register("glass_cup_of_watermelon_juice",
+            () -> new Item(new Item.Properties()));
+
+
     // ===== 方块物品 =====
 
     public static final RegistryObject<Item> DYEDREAM_DIRT = ITEMS.register("dyedream_dirt",

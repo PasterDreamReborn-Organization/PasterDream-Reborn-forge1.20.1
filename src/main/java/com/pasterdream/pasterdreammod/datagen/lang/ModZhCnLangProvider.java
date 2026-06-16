@@ -36,8 +36,17 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.GLASS_JAR_OF_MILK.get(), "牛奶罐");
         add(ModItems.GUIDING_DRUG.get(), "药引瓶");
         add(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), "风植萃取液");
+        add(ModItems.GLASS_JAR_OF_DREAM_JUICE.get(), "梦境果汁");
+        add(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get(), "秋麒麟茶");
         add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "融梦涌泉桶");
         add(ModItems.SHADOW_LIQUID_BUCKET.get(), "熔融阴影桶");
+        add(ModItems.GLASS_CUP.get(), "玻璃杯");
+        add(ModItems.GLASS_CUP_OF_APPLE_JUICE.get(), "苹果汁");
+        add(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(), "染梦花茶");
+        add(ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get(), "染梦果汁");
+        add(ModItems.GLASS_CUP_OF_HONEY_JUICE.get(), "蜂蜜汁");
+        add(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get(), "未烹调的染梦花茶");
+        add(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get(), "西瓜汁");
 
 
 

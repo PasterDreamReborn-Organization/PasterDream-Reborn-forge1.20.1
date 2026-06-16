@@ -27,14 +27,23 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MORTAR.get(), "Mortar");
         add(ModItems.DYEDREAM_DYE.get(), "Dye Dream Dye");
         add(ModItems.DYEDREAM_BUD_NUGGET.get(), "Dye Dream Bud Nugget");
-        add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "Meltdream Liquid Bucket");
-        add(ModItems.SHADOW_LIQUID_BUCKET.get(), "Shadow Liquid Bucket");
         add(ModItems.GLASS_JAR.get(), "Glass Jar");
         add(ModItems.GLASS_JAR_OF_WATER.get(), "Water Jar");
         add(ModItems.GLASS_JAR_OF_MILK.get(), "Milk Jar");
         add(ModItems.YEAST.get(), "Yeast");
         add(ModItems.GUIDING_DRUG.get(), "Guiding Drug");
         add(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), "Glass Jar of Wind Plant Extract");
+        add(ModItems.GLASS_JAR_OF_DREAM_JUICE.get(), "Glass Jar of Dream Juice");
+        add(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get(), "Glass Jar of Goldenrod Tea");
+        add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "Meltdream Liquid Bucket");
+        add(ModItems.SHADOW_LIQUID_BUCKET.get(), "Shadow Liquid Bucket");
+        add(ModItems.GLASS_CUP.get(), "Glass Cup");
+        add(ModItems.GLASS_CUP_OF_APPLE_JUICE.get(), "Glass Cup of Apple Juice");
+        add(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get(), "Glass Cup of Cooked Dyedream Flower Tea");
+        add(ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get(), "Glass Cup of Dyedream Juice");
+        add(ModItems.GLASS_CUP_OF_HONEY_JUICE.get(), "Glass Cup of Honey Juice");
+        add(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get(), "Glass Cup of Uncooked Dyedream Flower Tea");
+        add(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get(), "Glass Cup of Watermelon Juice");
 
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "Dye Dream Dirt");
