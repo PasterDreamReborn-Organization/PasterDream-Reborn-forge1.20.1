@@ -123,10 +123,10 @@
 
 ## 流体映射
 
-| 旧 ID               | 新 ID               | 变更说明 | 客制化类处理            |
-|--------------------|--------------------|----|-------------------|
-| `meltdream_liquid` | `meltdream_liquid` | 不改 | 合并变体，使用统一Fluid的注册 |
-| `shadow_liquid`    | `shadow_liquid`    | 不改 | 合并变体，使用统一Fluid的注册 |
+| 旧 ID               | 新 ID                | 变更说明 | 客制化类处理            |
+|--------------------|---------------------|----|-------------------|
+| `meltdream_liquid` | `melt_dream_liquid` | 不改 | 合并变体，使用统一Fluid的注册 |
+| `shadow_liquid`    | `shadow_liquid`     | 不改 | 合并变体，使用统一Fluid的注册 |
 
 
 ---
