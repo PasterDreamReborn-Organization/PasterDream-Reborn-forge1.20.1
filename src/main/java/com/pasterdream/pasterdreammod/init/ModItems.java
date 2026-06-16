@@ -71,10 +71,10 @@ public class ModItems {
     public static final RegistryObject<Item> GLASS_JAR_OF_MILK = ITEMS.register("glass_jar_of_milk",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> GLASS_JAR_OF_YEAST = ITEMS.register("yeast",
+    public static final RegistryObject<Item> GLASS_JAR_OF_YEAST = ITEMS.register("glass_jar_of_yeast",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> GLASS_JAR_OF_GUIDING_DRUG = ITEMS.register("guiding_drug",
+    public static final RegistryObject<Item> GLASS_JAR_OF_GUIDING_DRUG = ITEMS.register("glass_jar_of_guiding_drug",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> GLASS_JAR_OF_WIND_PLANT_EXTRACT = ITEMS.register("glass_jar_of_wind_plant_extract",

@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
+import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -42,5 +43,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "mushrooms")))
                 .add(ModBlocks.PINK_MUSHROOM.get().asItem())
                 .add(ModBlocks.TALL_PINK_MUSHROOM.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "flour")))
+                .add(ModItems.FLOUR.get().asItem());
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "flour/wheat")))
+                .add(ModItems.FLOUR.get().asItem());
     }
 }
