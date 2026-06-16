@@ -12,9 +12,9 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
-public class MeltdreamLiquidBlock extends LiquidBlock
+public class MeltDreamLiquidBlock extends LiquidBlock
 {
-    public MeltdreamLiquidBlock()
+    public MeltDreamLiquidBlock()
     {
         super(() -> (FlowingFluid) ModFluids.FLOWING_MELT_DREAM_LIQUID.get(), Properties.of().mapColor(MapColor.FIRE).strength(100.0F).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).noCollission().noLootTable().liquid().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY).replaceable());
     }

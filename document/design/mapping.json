@@ -51,7 +51,10 @@
     "dyedream_bud_block": "dyedream_bud_block",
     "dyedream_bud_stairs": "dyedream_bud_stairs",
     "dyedream_bud_slab": "dyedream_bud_slab",
-    "dyedream_bud_wall": "dyedream_bud_wall"
+    "dyedream_bud_wall": "dyedream_bud_wall",
+    "claypan_0": "claypan",
+    "claypan_1": "删除",
+    "claypan_2": "删除"
   },
   "items": {
     "amber_candy": "amber_candy",
@@ -71,11 +74,13 @@
     "moltengold_ingot": "molten_gold_ingot",
     "moltengold_nugget": "molten_gold_nugget",
     "raw_moltengold": "raw_molten_gold",
+    "meltdream_liquid_bucket": "meltdream_liquid_bucket",
+    "shadow_liquid_bucket": "shadow_liquid_bucket",
     "glassjar": "glass_jar",
     "water_glassjar": "glass_jar_of_water",
     "milk_glassjar": "glass_jar_of_milk",
-    "yeast": "yeast",
-    "guiding_drug": "guiding_drug",
+    "yeast": "glass_jar_of_yeast",
+    "guiding_drug": "glass_jar_of_guiding_drug",
     "wind_plant_extract": "glass_jar_of_wind_plant_extract",
     "dreamjuice": "glass_jar_of_dream_juice",
     "goldenrod_tea": "glass_jar_of_goldenrod_tea",
@@ -85,7 +90,12 @@
     "dyedream_flower_tea": "glass_cup_of_cooked_dyedream_flower_tea",
     "dyedream_juice": "glass_cup_of_dyedream_juice",
     "honey_juice": "glass_cup_of_honey_juice",
-    "watermelon_juice": "glass_cup_of_watermelon_juice"
+    "watermelon_juice": "glass_cup_of_watermelon_juice",
+    "ryeseed": "rye_seed",
+    "flour": "flour",
+    "dough": "dough",
+    "eggdough": "dough_with_egg",
+    "coarse_salt": "coarse_salt"
   },
   "entities": {},
   "recipes": {}
