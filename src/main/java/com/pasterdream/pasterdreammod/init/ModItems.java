@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.item.AmberCandyItem;
+import com.pasterdream.pasterdreammod.world.item.GlassJarofWaterItem;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -62,11 +63,12 @@ public class ModItems {
     public static final RegistryObject<Item> RAW_MOLTEN_GOLD = ITEMS.register("raw_molten_gold",
             () -> new Item(new Item.Properties()));
 
+    // ===== 玻璃罐系列 =====
     public static final RegistryObject<Item> GLASS_JAR = ITEMS.register("glass_jar",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> GLASS_JAR_OF_WATER = ITEMS.register("glass_jar_of_water",
-            () -> new Item(new Item.Properties()));
+            GlassJarofWaterItem::new);
 
     public static final RegistryObject<Item> GLASS_JAR_OF_MILK = ITEMS.register("glass_jar_of_milk",
             () -> new Item(new Item.Properties()));
@@ -86,6 +88,7 @@ public class ModItems {
     public static final RegistryObject<Item> GLASS_JAR_OF_GOLDENROD_TEA = ITEMS.register("glass_jar_of_goldenrod_tea",
             () -> new Item(new Item.Properties()));
 
+    // ===== 玻璃杯系列 =====
     public static final RegistryObject<Item> GLASS_CUP = ITEMS.register("glass_cup",
             () -> new Item(new Item.Properties()));
 
@@ -104,10 +107,10 @@ public class ModItems {
     public static final RegistryObject<Item> GLASS_CUP_OF_HONEY_JUICE = ITEMS.register("glass_cup_of_honey_juice",
             () -> new Item(new Item.Properties()));
 
-
     public static final RegistryObject<Item> GLASS_CUP_OF_WATERMELON_JUICE = ITEMS.register("glass_cup_of_watermelon_juice",
             () -> new Item(new Item.Properties()));
 
+    // ===== 食材系列 =====
     public static final RegistryObject<Item> FLOUR = ITEMS.register("flour",
             () -> new Item(new Item.Properties()));
 
@@ -123,6 +126,42 @@ public class ModItems {
     public static final RegistryObject<Item> COARSE_SALT = ITEMS.register("coarse_salt",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> SALT = ITEMS.register("salt",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> PINK_EGG = ITEMS.register("pink_egg",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> CHOCOLATE = ITEMS.register("chocolate",
+            () -> new Item(new Item.Properties()));
+
+    // ===== 蛋糕系列 =====
+    public static final RegistryObject<Item> CAKE_BASE = ITEMS.register("cake_base",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> CREAM_BUN_CAKE = ITEMS.register("cream_bun_cake",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BERRY_BUN_CAKE = ITEMS.register("berry_bun_cake",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> TUBER_BUN_CAKE = ITEMS.register("tuber_bun_cake",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> WATERMELON_BUN_CAKE = ITEMS.register("watermelon_bun_cake",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> PUMPKIN_BUN_CAKE = ITEMS.register("pumpkin_bun_cake",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLOW_BERRY_BUN_CAKE = ITEMS.register("glow_berry_bun_cake",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> DYEDREAM_FRUIT_BUN_CAKE = ITEMS.register("dyedream_fruit_bun_cake",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> CHOCOLATE_MATCHA_CAKE = ITEMS.register("chocolate_matcha_cake",
+            () -> new Item(new Item.Properties()));
 
     // ===== 方块物品 =====
 

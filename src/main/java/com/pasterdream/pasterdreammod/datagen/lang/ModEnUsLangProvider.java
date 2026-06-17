@@ -49,6 +49,19 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.RYE_SEED.get(), "Rye Seed");
         add(ModItems.DOUGH_WITH_EGG.get(), "Dough with Egg");
         add(ModItems.COARSE_SALT.get(), "Coarse Salt");
+        add(ModItems.SALT.get(), "Salt");
+        add(ModItems.PINK_EGG.get(), "Pink Egg");
+        add(ModItems.CHOCOLATE.get(), "Chocolate");
+        add(ModItems.CAKE_BASE.get(), "Cake Base");
+        add(ModItems.CREAM_BUN_CAKE.get(), "Cream Bun Cake");
+        add(ModItems.BERRY_BUN_CAKE.get(), "Berry Bun Cake");
+        add(ModItems.TUBER_BUN_CAKE.get(), "Tuber Bun Cake");
+        add(ModItems.WATERMELON_BUN_CAKE.get(), "Watermelon Bun Cake");
+        add(ModItems.PUMPKIN_BUN_CAKE.get(), "Pumpkin Bun Cake");
+        add(ModItems.GLOW_BERRY_BUN_CAKE.get(), "Glow Berry Bun Cake");
+        add(ModItems.DYEDREAM_FRUIT_BUN_CAKE.get(), "Dyedream Fruit Bun Cake");
+        add(ModItems.CHOCOLATE_MATCHA_CAKE.get(), "Chocolate Matcha Cake");
+
 
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "Dye Dream Dirt");

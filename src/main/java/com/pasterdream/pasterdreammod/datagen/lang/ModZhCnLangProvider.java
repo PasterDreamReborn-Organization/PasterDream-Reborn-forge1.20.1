@@ -52,6 +52,18 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.RYE_SEED.get(), "野麦粒");
         add(ModItems.DOUGH_WITH_EGG.get(), "蛋液面团");
         add(ModItems.COARSE_SALT.get(), "粗盐");
+        add(ModItems.SALT.get(), "盐");
+        add(ModItems.PINK_EGG.get(), "粉红蛋");
+        add(ModItems.CHOCOLATE.get(), "巧克力");
+        add(ModItems.CAKE_BASE.get(), "蛋糕胚");
+        add(ModItems.CREAM_BUN_CAKE.get(), "奶油小蛋糕");
+        add(ModItems.BERRY_BUN_CAKE.get(), "甜浆果小蛋糕");
+        add(ModItems.TUBER_BUN_CAKE.get(), "块茎小蛋糕");
+        add(ModItems.WATERMELON_BUN_CAKE.get(), "西瓜小蛋糕");
+        add(ModItems.PUMPKIN_BUN_CAKE.get(), "南瓜小蛋糕");
+        add(ModItems.GLOW_BERRY_BUN_CAKE.get(), "发光浆果小蛋糕");
+        add(ModItems.DYEDREAM_FRUIT_BUN_CAKE.get(), "染梦果小蛋糕");
+        add(ModItems.CHOCOLATE_MATCHA_CAKE.get(), "巧克力抹茶蛋糕");
 
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "染梦泥土");

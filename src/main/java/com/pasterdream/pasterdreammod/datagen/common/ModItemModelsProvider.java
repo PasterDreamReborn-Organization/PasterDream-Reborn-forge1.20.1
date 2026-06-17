@@ -61,6 +61,20 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.RYE_SEED.get());
         basicItem(ModItems.DOUGH_WITH_EGG.get());
         basicItem(ModItems.COARSE_SALT.get());
+        basicItem(ModItems.SALT.get());
+        basicItem(ModItems.PINK_EGG.get());
+        basicItem(ModItems.CHOCOLATE.get());
+        basicItem(ModItems.CAKE_BASE.get());
+        basicItem(ModItems.CREAM_BUN_CAKE.get());
+        basicItem(ModItems.BERRY_BUN_CAKE.get());
+        basicItem(ModItems.TUBER_BUN_CAKE.get());
+        basicItem(ModItems.WATERMELON_BUN_CAKE.get());
+        basicItem(ModItems.PUMPKIN_BUN_CAKE.get());
+        basicItem(ModItems.GLOW_BERRY_BUN_CAKE.get());
+        basicItem(ModItems.DYEDREAM_FRUIT_BUN_CAKE.get());
+        basicItem(ModItems.CHOCOLATE_MATCHA_CAKE.get());
+
+
 
 
         withExistingParent(ModItems.PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))

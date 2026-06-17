@@ -118,6 +118,18 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DOUGH.get());
                         output.accept(ModItems.DOUGH_WITH_EGG.get());
                         output.accept(ModItems.COARSE_SALT.get());
+                        output.accept(ModItems.SALT.get());
+                        output.accept(ModItems.PINK_EGG.get());
+                        output.accept(ModItems.CHOCOLATE.get());
+                        output.accept(ModItems.CAKE_BASE.get());
+                        output.accept(ModItems.CREAM_BUN_CAKE.get());
+                        output.accept(ModItems.BERRY_BUN_CAKE.get());
+                        output.accept(ModItems.TUBER_BUN_CAKE.get());
+                        output.accept(ModItems.WATERMELON_BUN_CAKE.get());
+                        output.accept(ModItems.PUMPKIN_BUN_CAKE.get());
+                        output.accept(ModItems.GLOW_BERRY_BUN_CAKE.get());
+                        output.accept(ModItems.DYEDREAM_FRUIT_BUN_CAKE.get());
+                        output.accept(ModItems.CHOCOLATE_MATCHA_CAKE.get());
 
                     })
                     .build());

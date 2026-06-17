@@ -1,0 +1,10 @@
+{
+  "type": "pasterdream:claypan",
+  "fluid":
+  {
+    "fluid": "pasterdream:watermelon_juice",
+    "amount": 125
+  },
+  "result": "minecraft:sugar",
+  "processingTime": 6000
+}
