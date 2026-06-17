@@ -36,6 +36,11 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
 {
     private static final int FLUID_CAPACITY = 1000;
 
+    public ClaypanBlockEntity(BlockPos pos, BlockState state)
+    {
+        super(ModBlockEntities.CLAYPAN.get(), pos, state);
+    }
+
     private final ItemStackHandler itemHandler = new ItemStackHandler(1)
     {
         @Override
@@ -94,11 +99,6 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
     private ItemStack currentRecipeOutput = ItemStack.EMPTY;
     private LazyOptional<IItemHandler> itemHandlerCap = LazyOptional.of(() -> itemHandler);
     private LazyOptional<IFluidHandler> fluidHandlerCap = LazyOptional.of(() -> fluidTank);
-
-    public ClaypanBlockEntity(BlockPos pos, BlockState state)
-    {
-        super(ModBlockEntities.CLAYPAN.get(), pos, state);
-    }
 
     public void tick()
     {

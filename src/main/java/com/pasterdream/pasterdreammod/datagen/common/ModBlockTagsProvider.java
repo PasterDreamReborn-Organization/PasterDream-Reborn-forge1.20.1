@@ -46,12 +46,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.PINK_MUSHROOM_PORES.get())
                 .add(ModBlocks.PINK_SHROOMLIGHT.get());
 
-        // 寻找树的新手引导
+        //整个树的结构（包含原木，木头，树叶，菌柄，菌核，菌疣）
         tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
                 .add(ModBlocks.DYEDREAM_LOG.get())
                 .add(ModBlocks.DYEDREAM_WOOD.get());
 
-        // 加了这个之后，无需额外编写烧制木炭的配方
+        //可以燃烧的木头（可制成木炭，可作为燃料）
         tag(BlockTags.LOGS_THAT_BURN)
                 .add(ModBlocks.DYEDREAM_LOG.get())
                 .add(ModBlocks.DYEDREAM_WOOD.get());
@@ -91,7 +91,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CHISELED_DYEDREAM_QUARTZ_BLOCK.get())
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get())
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get())
-                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get());
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get())
+                .add(ModBlocks.CLAYPAN.get())
+                .add(ModBlocks.DREAM_CAULDRON.get());
 
         tag(Tags.Blocks.ORES)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())

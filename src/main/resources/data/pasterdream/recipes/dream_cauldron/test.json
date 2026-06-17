@@ -1,0 +1,26 @@
+{
+  "type": "pasterdream:dream_cauldron",
+  "fluidInputs": [
+    {
+      "fluid": "pasterdream:melt_dream_liquid",
+      "amount": 100
+    },
+    {
+      "fluid": "pasterdream:guiding_drug",
+      "amount": 125
+    }
+  ],
+  "itemInputs": [
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "tag": "forge:ingots/iron"
+    }
+  ],
+  "result":
+  {
+    "item": "minecraft:diamond",
+    "count": 1
+  }
+}

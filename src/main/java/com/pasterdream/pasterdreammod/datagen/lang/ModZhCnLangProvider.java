@@ -107,6 +107,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_PACKED_ICE.get(), "染梦浮冰");
         add(ModBlocks.DYEDREAM_LARTERN.get(), "染梦水晶灯");
         add(ModBlocks.CLAYPAN.get(), "陶盆");
+        add(ModBlocks.DREAM_CAULDRON.get(), "法术工厂");
 
         add("fluid.pasterdream.melt_dream_liquid","融梦涌泉");
         add("fluid.pasterdream.shadow_liquid","熔融阴影");

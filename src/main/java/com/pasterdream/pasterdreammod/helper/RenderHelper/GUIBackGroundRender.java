@@ -130,7 +130,7 @@ public class GUIBackGroundRender
 
     public static void rendDreamCauldronMeltDreamLiquidBar(GuiGraphics guiGraphics, int x, int y, double percent)
     {
-        guiGraphics.blit(DREAM_CAULDRON_MELT_DREAM_LIQUID_AMOUNT_BAR, x, y + (int)(47 * (1 - percent)), 0, (int)(47 * (1 - percent)), 5, (int)(47 * percent), 5, 47);
+        guiGraphics.blit(DREAM_CAULDRON_MELT_DREAM_LIQUID_AMOUNT_BAR, x, y + (int)(0.5 + (47 * (1 - percent))), 0, (int)(0.5 + (47 * (1 - percent))), 5, (int)(0.49999999 + (47 * percent)), 5, 47);
     }
 
     public static void rendDreamCauldronButtonGUI(GuiGraphics guiGraphics, int x, int y)

@@ -3,12 +3,13 @@ package com.pasterdream.pasterdreammod.component;
 import com.pasterdream.pasterdreammod.helper.RenderHelper.GUIBackGroundRender;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.network.chat.Component;
 
 public class DreamCauldronButton extends Button
 {
-    public DreamCauldronButton(Builder builder)
+    public DreamCauldronButton(int x, int y, OnPress onPress)
     {
-        super(builder);
+        super(x, y, 38, 15, Component.empty(), onPress, DEFAULT_NARRATION);
     }
 
     @Override

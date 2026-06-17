@@ -128,6 +128,7 @@ public class ModCreativeModeTabs {
             .displayItems((CreativeModeTab.ItemDisplayParameters pParameters, CreativeModeTab.Output pOutput) ->
             {
                 pOutput.accept(ModBlocks.CLAYPAN.get());
+                pOutput.accept(ModBlocks.DREAM_CAULDRON.get());
             })
             .build());
 

@@ -128,6 +128,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
 
 
         dropSelf(ModBlocks.CLAYPAN.get());
+        dropSelf(ModBlocks.DREAM_CAULDRON.get());
 
     }
 

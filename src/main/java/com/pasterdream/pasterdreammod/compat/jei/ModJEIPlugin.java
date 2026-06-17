@@ -2,10 +2,13 @@ package com.pasterdream.pasterdreammod.compat.jei;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.compat.jei.claypanrecipe.ClaypanRecipeCategory;
+import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldronJEIRecipe;
+import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldronRecipeCategory;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModFluids;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import com.pasterdream.pasterdreammod.recipe.claypan.IClaypanRecipe;
+import com.pasterdream.pasterdreammod.recipe.dreamcauldron.IDreamCauldronRecipe;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanScreen;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -20,6 +23,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @JeiPlugin
 public class ModJEIPlugin implements IModPlugin
@@ -37,34 +41,32 @@ public class ModJEIPlugin implements IModPlugin
         if (level != null)
         {
             RecipeManager recipeManager = level.getRecipeManager();
-            List<IClaypanRecipe> recipes = recipeManager.getAllRecipesFor(ModRecipes.CLAYPAN.get());
-            registration.addRecipes(ClaypanRecipeCategory.CLAYPAN_RECIPE_RECIPE_TYPE, recipes);
+            List<IClaypanRecipe> claypanRecipes = recipeManager.getAllRecipesFor(ModRecipes.CLAYPAN.get());
+            registration.addRecipes(ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE, claypanRecipes);
+
+            List<IDreamCauldronRecipe> dreamCauldronRecipes = recipeManager.getAllRecipesFor(ModRecipes.DREAM_CAULDRON.get());
+            registration.addRecipes(DreamCauldronRecipeCategory.DREAM_CAULDRON_RECIPE_TYPE, dreamCauldronRecipes.stream().map(DreamCauldronJEIRecipe::new).collect(Collectors.toList()));
         }
     }
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration)
     {
-        registration.addRecipeClickArea(ClaypanScreen.class, 74, 7, 22, 15, ClaypanRecipeCategory.CLAYPAN_RECIPE_RECIPE_TYPE);
+        registration.addRecipeClickArea(ClaypanScreen.class, 74, 7, 22, 15, ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration)
     {
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.CLAYPAN.get()), ClaypanRecipeCategory.CLAYPAN_RECIPE_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.CLAYPAN.get()), ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.DREAM_CAULDRON.get()), DreamCauldronRecipeCategory.DREAM_CAULDRON_RECIPE_TYPE);
     }
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration)
     {
-        try
-        {
-            registration.addRecipeCategories(new ClaypanRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        registration.addRecipeCategories(new ClaypanRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new DreamCauldronRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     //将流体添加至JEI物品列表

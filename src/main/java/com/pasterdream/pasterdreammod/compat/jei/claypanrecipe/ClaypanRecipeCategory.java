@@ -20,7 +20,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class ClaypanRecipeCategory implements IRecipeCategory<IClaypanRecipe>
 {
-    public static final RecipeType<IClaypanRecipe> CLAYPAN_RECIPE_RECIPE_TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "claypan"), IClaypanRecipe.class);
+    public static final RecipeType<IClaypanRecipe> CLAYPAN_RECIPE_TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "claypan"), IClaypanRecipe.class);
     public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/claypan/claypan.png");
     private final IDrawable background;
     private final IDrawable icon;
@@ -34,13 +34,13 @@ public class ClaypanRecipeCategory implements IRecipeCategory<IClaypanRecipe>
     @Override
     public RecipeType<IClaypanRecipe> getRecipeType()
     {
-        return CLAYPAN_RECIPE_RECIPE_TYPE;
+        return CLAYPAN_RECIPE_TYPE;
     }
 
     @Override
     public Component getTitle()
     {
-        return Component.translatable("block.pasterdream.claypan");
+        return Component.translatable("block." + PasterDreamMod.MOD_ID + ".claypan");
     }
 
     @Override
@@ -66,7 +66,7 @@ public class ClaypanRecipeCategory implements IRecipeCategory<IClaypanRecipe>
     {
         int time = recipe.getProcessingTime();
         background.draw(guiGraphics);
-        guiGraphics.drawString(Minecraft.getInstance().font, String.format("%02d", (time / 72000)) + "h" + String.format("%02d", ((time % 72000) / 1200)) + "m" + String.format("%02d", ((time % 1200) / 20)) + "s" + String.format("%02d", (time % 20)) + "tick", 0, 34, 0x808080, false);
+        guiGraphics.drawCenteredString(Minecraft.getInstance().font, String.format("%02d", (time / 72000)) + "h" + String.format("%02d", ((time % 72000) / 1200)) + "m" + String.format("%02d", ((time % 1200) / 20)) + "s" + String.format("%02d", (time % 20)) + "tick", 41, 34, 0xFFFFFFFF);
     }
 
     @Override

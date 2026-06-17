@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.behavior.ModTreeGrowers;
 import com.pasterdream.pasterdreammod.world.block.DyedreamGrassBlock;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlock;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlock;
 import com.pasterdream.pasterdreammod.world.block.fluidblock.MeltDreamLiquidBlock;
 import com.pasterdream.pasterdreammod.world.block.fluidblock.ShadowLiquidBlock;
 import net.minecraft.world.effect.MobEffects;
@@ -109,6 +110,7 @@ public class ModBlocks {
 
     //方块实体对应方块
     public static final RegistryObject<Block> CLAYPAN = BLOCKS.register("claypan", () -> new ClaypanBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(0.5F, 10.0F).requiresCorrectToolForDrops().noOcclusion().isRedstoneConductor((blockState, blockGetter, blockPosition) -> false)));
+    public static final RegistryObject<Block> DREAM_CAULDRON = BLOCKS. register("dream_cauldron", () -> new DreamCauldronBlock(BlockBehaviour.Properties.of().sound(SoundType.CALCITE).strength(2.0F).noOcclusion().isRedstoneConductor((blockState, blockGetter, blockPos) -> false)));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
