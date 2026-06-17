@@ -310,14 +310,6 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     }
 
     private void foodRecipes(Consumer<FinishedRecipe> pWriter) {
-        // 酵母合成配方
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_YEAST.get(), 2)
-                .requires(ModItems.GLASS_JAR_OF_YEAST.get(),1)
-                .requires(ModItems.GLASS_JAR_OF_WATER.get(), 1)
-                .requires(ModItems.FLOUR.get(), 1)
-                .requires(Items.SUGAR, 1)
-                .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_YEAST.get()), has(ModItems.GLASS_JAR_OF_YEAST.get()))
-                .save(pWriter);
 
         // 玻璃罐合成（支持所有木台阶tag和玻璃板tag）
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GLASS_JAR.get(), 8)
@@ -327,54 +319,48 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('a',  Ingredient.of(ItemTags.create(
                         ResourceLocation.fromNamespaceAndPath("forge","glass_panes"))))
                 .define('b',  ItemTags.WOODEN_SLABS)
-                .unlockedBy("has_slabs", has(ItemTags.WOODEN_SLABS))
-                .unlockedBy("has_glass_panes", has(TagKey.create(Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath("forge", "glass_panes"))))
+                .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
                 .save(pWriter);
 
-        // 水罐合成配方1
+        // 酵母合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_YEAST.get(), 2)
+                .requires(ModItems.GLASS_JAR_OF_YEAST.get(),1)
+                .requires(ModItems.GLASS_JAR_OF_WATER.get(), 1)
+                .requires(ModItems.FLOUR.get(), 1)
+                .requires(Items.SUGAR, 1)
+                .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_YEAST.get()), has(ModItems.GLASS_JAR_OF_YEAST.get()))
+                .save(pWriter);
+
+
+        // 水罐合成配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_WATER.get(), 8)
                 .requires(Items.WATER_BUCKET,1)
                 .requires(ModItems.GLASS_JAR.get(), 8)
-                .unlockedBy(getHasName(ModItems.GLASS_JAR.get()), has(ModItems.GLASS_JAR.get()))
+                .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
                 .save(pWriter);
 
-        // 水罐合成配方2
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_WATER.get(), 8)
-                .pattern("aba")
-                .pattern("a a")
-                .pattern("aaa")
-                .define('a',  Ingredient.of(ItemTags.create(
-                        ResourceLocation.fromNamespaceAndPath("forge","glass_panes"))))
-                .define('b',  ItemTags.WOODEN_SLABS)
-                //.define('c',  Items.WATER_BUCKET)
-                .unlockedBy("has_slabs", has(ItemTags.WOODEN_SLABS))
-                .unlockedBy("has_glass_panes", has(TagKey.create(Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath("forge", "glass_panes"))))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":glass_jar_of_water_from_slabs_and_glass_panes");
-
-        //牛奶罐合成配方1
+        // 牛奶罐合成配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_MILK.get(), 8)
                 .requires(Items.MILK_BUCKET,1)
                 .requires(ModItems.GLASS_JAR.get(), 8)
-                .unlockedBy(getHasName(ModItems.GLASS_JAR.get()), has(ModItems.GLASS_JAR.get()))
+                .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
                 .save(pWriter);
 
-        //牛奶罐合成配方2
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_MILK.get(), 8)
-                .pattern("aba")
-                .pattern("aca")
-                .pattern("aaa")
-                .define('a',  Ingredient.of(ItemTags.create(
-                        ResourceLocation.fromNamespaceAndPath("forge","glass_panes"))))
-                .define('b',  ItemTags.WOODEN_SLABS)
-                .define('c',  Items.MILK_BUCKET)
-                .unlockedBy("has_slabs", has(ItemTags.WOODEN_SLABS))
-                .unlockedBy("has_glass_panes", has(TagKey.create(Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath("forge", "glass_panes"))))
-                .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
-                .unlockedBy(getHasName(ModItems.GLASS_JAR.get()), has(ModItems.GLASS_JAR.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":glass_jar_of_milk_from_slabs_and_glass_panes");
+        // 面团合成配方（暂时无法解决和酵母合成配方冲突问题，暂时设置为消耗水罐）
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DOUGH.get(), 1)
+                .requires(ModItems.FLOUR.get(),1)
+                .requires(ModItems.GLASS_JAR_OF_WATER.get(), 2)
+                .unlockedBy(getHasName(ModItems.FLOUR.get()), has(ModItems.FLOUR.get()))
+                .save(pWriter);
+
+        // 蛋液面团合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DOUGH_WITH_EGG.get(), 1)
+                .requires(Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge","eggs"))),1)
+                .requires(ModItems.DOUGH.get(), 2)
+                .unlockedBy(getHasName(ModItems.DOUGH.get()), has(ModItems.DOUGH.get()))
+                .save(pWriter);
+
     }
     private void alloySmeltingRecipes(Consumer<FinishedRecipe> pWriter) {
         // 染梦合金锭粗胚 → 染梦合金锭（熔炉）
