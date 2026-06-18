@@ -38,6 +38,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), "风植萃取液");
         add(ModItems.GLASS_JAR_OF_DREAM_JUICE.get(), "梦境果汁");
         add(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get(), "秋麒麟茶");
+        add(ModItems.GLASS_JAR_OF_DYEDREAM_PERFUME.get(), "染梦香水");
         add(ModItems.MELT_DREAM_LIQUID_BUCKET.get(), "融梦涌泉桶");
         add(ModItems.SHADOW_LIQUID_BUCKET.get(), "熔融阴影桶");
         add(ModItems.GLASS_CUP.get(), "玻璃杯");

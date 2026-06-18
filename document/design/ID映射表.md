@@ -107,6 +107,7 @@
 | `wind_plant_extract`      | `glass_jar_of_wind_plant_extract`           | 重命名，更改命名格式为 `glass_jar_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
 | `dreamjuice`              | `glass_jar_of_dream_juice`                  | 重命名，更改命名格式为 `glass_jar_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
 | `goldenrod_tea`           | `glass_jar_of_goldenrod_tea`                | 重命名，更改命名格式为 `glass_jar_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
+| `dyedream_perfume`        | `glass_jar_of_dyedream_perfume`             | 重命名，更改命名格式为 `glass_jar_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
 | `glass_cup`               | `glass_cup`                                 | 不改                                                        | 无需客制化类，直接用 `Item`                    |
 | `apple_juice`             | `glass_cup_of_apple_juice`                  | 重命名，更改命名格式为 `glass_cup_of_xxx`                            | 无需客制化类，直接用 `Item`                    |
 | `dyedream_flower_tea_0`   | `glass_cup_of_uncooked_dyedream_flower_tea` | 重命名，更改命名格式为 `glass_cup_of_xxx`，加入`uncooked_` 前缀           | 无需客制化类，直接用 `Item`                    |
