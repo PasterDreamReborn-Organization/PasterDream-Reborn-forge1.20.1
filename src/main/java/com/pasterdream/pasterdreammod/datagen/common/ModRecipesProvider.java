@@ -322,13 +322,14 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
                 .save(pWriter);
 
-        // 酵母合成配方
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_YEAST.get(), 2)
-                .requires(ModItems.GLASS_JAR_OF_YEAST.get(),1)
-                .requires(ModItems.GLASS_JAR_OF_WATER.get(), 1)
+        // 重做酵母合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_YEAST.get(), 4)
+                .requires(ModItems.GLASS_JAR.get(),4)
                 .requires(ModItems.FLOUR.get(), 1)
+                .requires(ModItems.GLASS_JAR_OF_WATER.get(), 1)
+                .requires(ModItems.GLASS_JAR_OF_YEAST.get(), 1)
                 .requires(Items.SUGAR, 1)
-                .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_YEAST.get()), has(ModItems.GLASS_JAR_OF_YEAST.get()))
+                .unlockedBy(getHasName(ModItems.GLASS_JAR.get()), has(ModItems.GLASS_JAR.get()))
                 .save(pWriter);
 
 
@@ -346,7 +347,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
                 .save(pWriter);
 
-        // 面团合成配方（暂时无法解决和酵母合成配方冲突问题，暂时设置为消耗水罐）
+        // 面团合成配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DOUGH.get(), 1)
                 .requires(ModItems.FLOUR.get(),1)
                 .requires(ModItems.GLASS_JAR_OF_WATER.get(), 2)
@@ -360,6 +361,15 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(ModItems.DOUGH.get(), 2)
                 .unlockedBy(getHasName(ModItems.DOUGH.get()), has(ModItems.DOUGH.get()))
                 .save(pWriter);
+
+        //蛋糕胚合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CAKE_BASE.get(), 2)
+                .requires(ModItems.DOUGH_WITH_EGG.get(),1)
+                .requires(Items.SUGAR,1)
+                .requires(ModItems.GLASS_JAR_OF_YEAST.get(), 1)
+                .unlockedBy(getHasName(ModItems.DOUGH_WITH_EGG.get()), has(ModItems.DOUGH_WITH_EGG.get()))
+                .save(pWriter);
+
 
     }
     private void alloySmeltingRecipes(Consumer<FinishedRecipe> pWriter) {

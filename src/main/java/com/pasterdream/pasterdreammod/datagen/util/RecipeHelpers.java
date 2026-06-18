@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.datagen.util;
 
+import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -138,6 +139,18 @@ public final class RecipeHelpers {
                 .save(writer);
     }
 
+    /**
+     * 蛋糕类合成配方
+     * @param material 合成材料，决定合成出来的蛋糕的效果
+     */
+    public static void cake(Consumer<FinishedRecipe> writer,
+                                         ItemLike material) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, material, 1)
+                .requires(ModItems.CREAM_BUN_CAKE.get())
+                .requires(material)
+                .unlockedBy(getHasName(ModItems.CREAM_BUN_CAKE.get()), has(ModItems.CREAM_BUN_CAKE.get()))
+                .save(writer);
+    }
     private static String getHasName(ItemLike item) {
         return BuiltInRegistries.ITEM.getKey(item.asItem()).getPath();
     }
