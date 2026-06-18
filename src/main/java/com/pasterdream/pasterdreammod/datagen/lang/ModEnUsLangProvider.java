@@ -140,5 +140,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_tab", "Paster Dream");
         add("itemGroup.pasterdream.pasterdream_materials_tab", "Paster Dream Materials");
         add("itemGroup.pasterdream.pasterdream_equipment_creative_tab", "Paster Dream Equipment");
+
+        add("button.pasterdream.mortarbutton", "grinding");
     }
 }

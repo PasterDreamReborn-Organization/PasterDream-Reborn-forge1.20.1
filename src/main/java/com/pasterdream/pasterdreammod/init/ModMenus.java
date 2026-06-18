@@ -5,8 +5,11 @@ import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanMenu;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronMenu;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -42,6 +45,13 @@ public class ModMenus
             {
                 return new DreamCauldronMenu(windowId, inv, (DreamCauldronBlockEntity)blockEntity);
             }
+    }));
+
+    public static final RegistryObject<MenuType<MortarMenu>> MORTAR = MENUS.register("mortar", () -> IForgeMenuType.create((id, inv, data) ->
+    {
+        InteractionHand hand = data.readBoolean() ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
+        ItemStack stack = inv.player.getItemInHand(hand);
+        return new MortarMenu(id, inv, stack, hand);
     }));
 
     public static void register(IEventBus eventBus)

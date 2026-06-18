@@ -81,7 +81,17 @@ public class PasterDreamFoodItem extends Item
             onFoodSpecial(player, level);
         }
 
-        return ItemStack.EMPTY;
+        if (entity instanceof Player player && player.isCreative())
+        {
+            return stack;
+        }
+
+        stack.shrink(1);
+        if (stack.isEmpty())
+        {
+            return ItemStack.EMPTY;
+        }
+        return stack;
     }
 
     protected void onFoodSpecial(Player player, Level level)

@@ -2,7 +2,7 @@ package com.pasterdream.pasterdreammod.world.block.dreamcauldron;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.FluidHandler.IFluidHandlerProvider;
-import com.pasterdream.pasterdreammod.helper.recipematchresult.RecipeMatchResult;
+import com.pasterdream.pasterdreammod.helper.recipematchresult.DreamCauldronRecipeMatchResult;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import com.pasterdream.pasterdreammod.recipe.dreamcauldron.DreamCauldronRecipe;
@@ -115,7 +115,7 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
 
     public boolean canCraft()
     {
-        RecipeMatchResult result = findMatchingRecipe();
+        DreamCauldronRecipeMatchResult result = findMatchingRecipe();
         if (result == null)
         {
             return false;
@@ -132,7 +132,7 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
             return;
         }
 
-        RecipeMatchResult result = findMatchingRecipe();
+        DreamCauldronRecipeMatchResult result = findMatchingRecipe();
         if (result == null)
         {
             return;
@@ -176,7 +176,7 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
 
     //查找匹配的配方，返回匹配结果
     @Nullable
-    private RecipeMatchResult findMatchingRecipe()
+    private DreamCauldronRecipeMatchResult findMatchingRecipe()
     {
         if (level == null)
         {

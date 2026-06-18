@@ -142,5 +142,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_tab", "帕斯特之梦 | 方块");
         add("itemGroup.pasterdream.pasterdream_materials_tab", "帕斯特之梦 | 物品");
         add("itemGroup.pasterdream.pasterdream_equipment_creative_tab", "帕斯特之梦 | 设备");
+
+        add("button.pasterdream.mortarbutton", "研磨");
     }
 }

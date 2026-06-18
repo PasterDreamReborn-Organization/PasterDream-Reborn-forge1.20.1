@@ -43,6 +43,8 @@ public class GUIBackGroundRender
 
     public static ResourceLocation MORTAR_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/mortar/mortar.png");
 
+    public static ResourceLocation EMPTY_FLUID_SLOT_BUCKET_SHAPE = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/empty_fluid_slot_bucket_shape.png");
+
     public static void rendPasterDreamInventoryGUI(GuiGraphics guiGraphics, int x, int y)
     {
         guiGraphics.blit(PASTERDREAM_INVENTORY_GUI, x, y, 0, 0, 170, 84, 170, 84);
@@ -190,6 +192,11 @@ public class GUIBackGroundRender
 
     public static void rendMortarGUI(GuiGraphics guiGraphics, int x, int y)
     {
-        guiGraphics.blit(MORTAR_GUI, x, y, 0, 0, 175, 46, 175, 46);
+        guiGraphics.blit(MORTAR_GUI, x, y, 0, 0, 128, 90, 128, 90);
+    }
+
+    public static void rendEmptyFluidSlotBucketShape(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(EMPTY_FLUID_SLOT_BUCKET_SHAPE, x, y, 0, 0, 16, 16, 16, 16);
     }
 }

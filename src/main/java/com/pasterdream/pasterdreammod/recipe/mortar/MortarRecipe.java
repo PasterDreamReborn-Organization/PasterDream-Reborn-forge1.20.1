@@ -1,7 +1,7 @@
-package com.pasterdream.pasterdreammod.recipe.dreamcauldron;
+package com.pasterdream.pasterdreammod.recipe.mortar;
 
 import com.pasterdream.pasterdreammod.helper.fluidingredient.FluidIngredient;
-import com.pasterdream.pasterdreammod.helper.recipematchresult.DreamCauldronRecipeMatchResult;
+import com.pasterdream.pasterdreammod.helper.recipematchresult.MortarRecipeMatchResult;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
@@ -16,19 +16,21 @@ import net.minecraftforge.fluids.FluidStack;
 import java.util.List;
 import java.util.Optional;
 
-public class DreamCauldronRecipe implements IDreamCauldronRecipe
+public class MortarRecipe implements IMortarRecipe
 {
     private final ResourceLocation id;
-    private final List<FluidIngredient> fluidIngredients;
-    private final List<Ingredient> itemIngredients;
-    private final ItemStack output;
+    private final List<FluidIngredient> inputFluidIngredients;
+    private final List<Ingredient> inputItemIngredients;
+    private final List<FluidIngredient> outputFluidIngredients;
+    private final List<Ingredient> outputItemIngredients;
 
-    public DreamCauldronRecipe(ResourceLocation id,  List<FluidIngredient> fluidIngredients, List<Ingredient> itemIngredients, ItemStack output)
+    public MortarRecipe(ResourceLocation id,  List<FluidIngredient> inputFluidIngredients, List<Ingredient> inputItemIngredients, List<FluidIngredient> outputFluidIngredients, List<Ingredient> outputItemIngredients)
     {
         this.id = id;
-        this.fluidIngredients = fluidIngredients;
-        this.itemIngredients = itemIngredients;
-        this.output = output;
+        this.inputFluidIngredients = inputFluidIngredients;
+        this.inputItemIngredients = inputItemIngredients;
+        this.outputFluidIngredients = outputFluidIngredients;
+        this.outputItemIngredients = outputItemIngredients;
     }
 
     @Override
@@ -36,7 +38,7 @@ public class DreamCauldronRecipe implements IDreamCauldronRecipe
     {
         //匹配流体
         boolean[] fluidUsed = new boolean[fluidStacks.size()];
-        for (FluidIngredient fluidIngredient : fluidIngredients)
+        for (FluidIngredient fluidIngredient : inputFluidIngredients)
         {
             boolean matched = false;
             for (int i = 0; i < fluidStacks.size(); i++)
@@ -57,7 +59,7 @@ public class DreamCauldronRecipe implements IDreamCauldronRecipe
 
         //匹配物品
         boolean[] itemUsed = new boolean[itemStacks.size()];
-        for (Ingredient ingredient : itemIngredients)
+        for (Ingredient ingredient : inputItemIngredients)
         {
             boolean matched = false;
             for (int i = 0; i < itemStacks.size(); i++)
@@ -78,10 +80,10 @@ public class DreamCauldronRecipe implements IDreamCauldronRecipe
     }
 
     @Override
-    public Optional<DreamCauldronRecipeMatchResult> matchesWithSlots(List<FluidStack> fluidStacks, List<ItemStack> itemStacks)
+    public Optional<MortarRecipeMatchResult> matchesWithSlots(List<FluidStack> fluidStacks, List<ItemStack> itemStacks)
     {
         //匹配流体
-        int fluidInputCount = fluidIngredients.size();
+        int fluidInputCount = inputFluidIngredients.size();
         if (fluidInputCount > fluidStacks.size())
         {
             return Optional.empty();
@@ -92,7 +94,7 @@ public class DreamCauldronRecipe implements IDreamCauldronRecipe
 
         for (int i = 0; i < fluidInputCount; i++)
         {
-            FluidIngredient fluidIngredient = fluidIngredients.get(i);
+            FluidIngredient fluidIngredient = inputFluidIngredients.get(i);
             boolean matched = false;
             for (int j = 0; j < fluidStacks.size(); j++)
             {
@@ -112,7 +114,7 @@ public class DreamCauldronRecipe implements IDreamCauldronRecipe
         }
 
         //匹配物品
-        int itemInputCount = itemIngredients.size();
+        int itemInputCount = inputItemIngredients.size();
         if (itemInputCount > itemStacks.size())
         {
             return Optional.empty();
@@ -122,7 +124,7 @@ public class DreamCauldronRecipe implements IDreamCauldronRecipe
 
         for (int i = 0; i < itemInputCount; i++)
         {
-            Ingredient ing = itemIngredients.get(i);
+            Ingredient ing = inputItemIngredients.get(i);
             boolean matched = false;
             for (int j = 0; j < itemStacks.size(); j++)
             {
@@ -141,31 +143,7 @@ public class DreamCauldronRecipe implements IDreamCauldronRecipe
             }
         }
 
-        return Optional.of(new DreamCauldronRecipeMatchResult(this, fluidSlotMap, itemSlotMap));
-    }
-
-    @Override
-    public List<FluidIngredient> getFluidIngredients()
-    {
-        return fluidIngredients;
-    }
-
-    @Override
-    public List<Ingredient> getItemIngredients()
-    {
-        return itemIngredients;
-    }
-
-    @Override
-    public ItemStack getResultItem()
-    {
-        return output.copy();
-    }
-
-    @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess)
-    {
-        return output.copy();
+        return Optional.of(new MortarRecipeMatchResult(this, fluidSlotMap, itemSlotMap));
     }
 
     @Override
@@ -177,25 +155,56 @@ public class DreamCauldronRecipe implements IDreamCauldronRecipe
     @Override
     public RecipeSerializer<?> getSerializer()
     {
-        return ModRecipes.DREAM_CAULDRON_SERIALIZER.get();
+        return ModRecipes.MORTAR_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType()
     {
-        return ModRecipes.DREAM_CAULDRON.get();
+        return ModRecipes.MORTAR.get();
+    }
+
+
+    @Override
+    public List<FluidIngredient> getInputFluidIngredients()
+    {
+        return inputFluidIngredients;
     }
 
     @Override
-    public ItemStack assemble(Container container, RegistryAccess registryAccess)
+    public List<Ingredient> getInputItemIngredients()
     {
-        return output.copy();
+        return inputItemIngredients;
+    }
+
+    @Override
+    public List<FluidIngredient> getOutputFluidIngredients()
+    {
+        return outputFluidIngredients;
+    }
+
+    @Override
+    public List<Ingredient> getOutputItemIngredients()
+    {
+        return outputItemIngredients;
     }
 
     @Override
     public boolean matches(Container container, Level level)
     {
         return false;
+    }
+
+    @Override
+    public ItemStack assemble(Container container, RegistryAccess registryAccess)
+    {
+        return ItemStack.EMPTY;
+    }
+
+    @Override
+    public ItemStack getResultItem(RegistryAccess registryAccess)
+    {
+        return ItemStack.EMPTY;
     }
 
     @Override

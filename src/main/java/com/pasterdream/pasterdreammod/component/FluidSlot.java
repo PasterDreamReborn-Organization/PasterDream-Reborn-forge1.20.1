@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.component;
 
+import com.pasterdream.pasterdreammod.helper.RenderHelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.helper.RenderHelper.RendFluidStackTexture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -46,6 +47,10 @@ public class FluidSlot extends AbstractWidget
             guiGraphics.drawString(Minecraft.getInstance().font, amountString, (2 * getX() + 33) - Minecraft.getInstance().font.width(amountString), (2 * getY() + 34) - Minecraft.getInstance().font.lineHeight, 0xFFFFFF, true);
             guiGraphics.pose().popPose();
         }
+            else
+            {
+                GUIBackGroundRender.rendEmptyFluidSlotBucketShape(guiGraphics, getX() + 1, getY() + 1);
+            }
 
         if (isHovered)
         {

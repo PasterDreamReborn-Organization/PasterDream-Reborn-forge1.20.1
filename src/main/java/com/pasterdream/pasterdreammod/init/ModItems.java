@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamDrinkAndFoodProperties;
 import com.pasterdream.pasterdreammod.world.item.AmberCandyItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDrinkItem;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -31,9 +32,6 @@ public class ModItems {
     public static final RegistryObject<Item> AMBER_CANDY = ITEMS.register("amber_candy",
             AmberCandyItem::new);
     public static final RegistryObject<Item> PINK_SLIMEBALL = ITEMS.register("pink_slimeball",
-            () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> MORTAR = ITEMS.register("mortar",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> DYEDREAM_DYE = ITEMS.register("dyedream_dye",
@@ -277,6 +275,9 @@ public class ModItems {
     //方块实体对应物品
     public static final RegistryObject<Item> CLAYPAN = ITEMS.register("claypan", () -> new BlockItem(ModBlocks.CLAYPAN.get(), new Item.Properties()));
     public static final RegistryObject<Item> DREAM_CAULDRON = ITEMS.register("dream_cauldron", () -> new BlockItem(ModBlocks.DREAM_CAULDRON.get(), new Item.Properties()));
+
+    //机器物品
+    public static final RegistryObject<Item> MORTAR = ITEMS.register("mortar", () -> new MortarItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
