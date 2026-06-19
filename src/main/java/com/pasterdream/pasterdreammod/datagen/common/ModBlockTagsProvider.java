@@ -68,7 +68,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SAPLINGS)
                 .add(ModBlocks.DYEDREAM_SAPLING.get());
 
-        // ===== 染梦石英 =====
+        // 可以用镐来挖掘
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
@@ -120,6 +120,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.WALLS)
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get())
                 .add(ModBlocks.DYEDREAM_BUD_WALL.get());
+
+
+
 
         // ===== 染梦木板建材系列 =====
 

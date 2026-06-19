@@ -3,7 +3,6 @@ package com.pasterdream.pasterdreammod.client;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 public class ClientSetRenderLayer
 {
@@ -15,11 +14,11 @@ public class ClientSetRenderLayer
 
         // ===== translucent 渲染（半透明玻璃） =====
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_GLASS.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_GLASSPANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CARVE_DYEDREAM_GLASS.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CARVE_DYEDREAM_GLASSPANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CARVE_DYEDREAM_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GOLD_CARVE_DYEDREAM_GLASSPANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINK_SLIME_BLOCK.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_ICE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_PACKED_ICE.get(), RenderType.translucent());

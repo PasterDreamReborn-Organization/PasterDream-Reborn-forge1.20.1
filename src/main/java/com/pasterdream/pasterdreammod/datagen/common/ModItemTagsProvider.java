@@ -40,6 +40,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
         copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
 
+        // 玻璃板
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "glass_panes")))
+                .add(ModBlocks.DYEDREAM_GLASS_PANE.get().asItem())
+                .add(ModBlocks.CARVE_DYEDREAM_GLASS_PANE.get().asItem())
+                .add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get().asItem());
+
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "mushrooms")))
                 .add(ModBlocks.PINK_MUSHROOM.get().asItem())
                 .add(ModBlocks.TALL_PINK_MUSHROOM.get().asItem());

@@ -53,12 +53,12 @@
 | `flower_8`                       | `pink_mushroom`                  | 重命名，按原版风格：粉顶菇（小型花，缓速效果）                   | 无需客制化类，直接用 `FlowerBlock`                            |
 | `flower_10`                      | `tall_pink_mushroom`             | 重命名，按原版风格：高粉顶菇（2 格高）                      | 无需客制化类，直接用 `DoublePlantBlock`                       |
 | `dyedream_sand`                  | `dyedream_sand`                  | 不改，受重力影响                                  | 无需客制化类，直接用 `FallingBlock`                           |
-| `dyedream_glass`                 | `dyedream_glass`                 | 不改，发光等级 15                                | 无需客制化类，直接用 `GlassBlock`                             |
-| `dyedream_glasspane`             | `dyedream_glasspane`             | 不改，发光等级 12，仅精准采集可掉落                       | 无需客制化类，直接用 `IronBarsBlock`                          |
+| `dyedream_glass`                 | `dyedream_glass`                 | 不改                                | 无需客制化类，直接用 `GlassBlock`                             |
+| `dyedream_glasspane`             | `dyedream_glass_pane`            | 重命名，补下划线                       | 无需客制化类，直接用 `IronBarsBlock`                          |
 | `carve_dyedream_glass`           | `carve_dyedream_glass`           | 不改                                        | 无需客制化类，直接用 `GlassBlock`                             |
-| `carve_dyedream_glasspane`       | `carve_dyedream_glasspane`       | 不改                                        | 无需客制化类，直接用 `IronBarsBlock`                          |
+| `carve_dyedream_glasspane`       | `carve_dyedream_glass_pane`      | 重命名，补下划线                                  | 无需客制化类，直接用 `IronBarsBlock`                          |
 | `gold_carve_dyedream_glass`      | `gold_carve_dyedream_glass`      | 不改                                        | 无需客制化类，直接用 `GlassBlock`                             |
-| `gold_carve_dyedream_glasspane`  | `gold_carve_dyedream_glasspane`  | 不改                                        | 无需客制化类，直接用 `IronBarsBlock`                          |
+| `gold_carve_dyedream_glasspane`  | `gold_carve_dyedream_glass_pane` | 重命名，补下划线                                  | 无需客制化类，直接用 `IronBarsBlock`                          |
 | `dyedream_bud_2`                 | `small_dyedream_bud`             | 重命名，按原版紫水晶芽风格                             | 无需客制化类，直接用 `AmethystClusterBlock`                   |
 | `dyedream_bud_1`                 | `medium_dyedream_bud`            | 重命名                                       | 无需客制化类，直接用 `AmethystClusterBlock`                   |
 | `dyedream_bud_0`                 | `large_dyedream_bud`             | 重命名                                       | 无需客制化类，直接用 `AmethystClusterBlock`                   |

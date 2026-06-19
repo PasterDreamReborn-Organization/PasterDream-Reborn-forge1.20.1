@@ -4,7 +4,6 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.datagen.util.RecipeHelpers;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -121,7 +120,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_glass_from_smelting");
 
         // 染梦玻璃 → 16× 染梦玻璃板
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_GLASSPANE.get(), 16)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_GLASS_PANE.get(), 16)
                 .pattern("aaa")
                 .pattern("aaa")
                 .define('a', ModBlocks.DYEDREAM_GLASS.get())
@@ -137,7 +136,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter);
 
         // 雕花染梦玻璃 → 16× 雕花玻璃板
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CARVE_DYEDREAM_GLASSPANE.get(), 16)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CARVE_DYEDREAM_GLASS_PANE.get(), 16)
                 .pattern("aaa")
                 .pattern("aaa")
                 .define('a', ModBlocks.CARVE_DYEDREAM_GLASS.get())
@@ -153,7 +152,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter);
 
         // 镶金雕花染梦玻璃 → 16× 镶金玻璃板
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GOLD_CARVE_DYEDREAM_GLASSPANE.get(), 16)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get(), 16)
                 .pattern("aaa")
                 .pattern("aaa")
                 .define('a', ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get())

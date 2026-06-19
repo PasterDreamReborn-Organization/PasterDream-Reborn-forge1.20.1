@@ -93,15 +93,15 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.DYEDREAM_SAND.get());
         add(ModBlocks.DYEDREAM_GLASS.get(),
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
-        add(ModBlocks.DYEDREAM_GLASSPANE.get(),
+        add(ModBlocks.DYEDREAM_GLASS_PANE.get(),
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
         add(ModBlocks.CARVE_DYEDREAM_GLASS.get(),
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
-        add(ModBlocks.CARVE_DYEDREAM_GLASSPANE.get(),
+        add(ModBlocks.CARVE_DYEDREAM_GLASS_PANE.get(),
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
         add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get(),
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
-        add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASSPANE.get(),
+        add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get(),
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
 
         add(ModBlocks.SMALL_DYEDREAM_BUD.get(),

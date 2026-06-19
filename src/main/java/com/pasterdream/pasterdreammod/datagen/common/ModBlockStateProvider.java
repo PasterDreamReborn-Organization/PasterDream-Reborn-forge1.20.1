@@ -2,7 +2,6 @@ package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
-import com.pasterdream.pasterdreammod.init.ModFluids;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
@@ -154,15 +153,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_GLASS.get(), cubeAll(ModBlocks.DYEDREAM_GLASS.get()));
         var glassTex = modLoc("block/dyedream_glass");
-        paneBlock((IronBarsBlock) ModBlocks.DYEDREAM_GLASSPANE.get(), glassTex, glassTex);
+        paneBlock((IronBarsBlock) ModBlocks.DYEDREAM_GLASS_PANE.get(), glassTex, glassTex);
 
         simpleBlockWithItem(ModBlocks.CARVE_DYEDREAM_GLASS.get(), cubeAll(ModBlocks.CARVE_DYEDREAM_GLASS.get()));
         var carveTex = modLoc("block/carve_dyedream_glass");
-        paneBlock((IronBarsBlock) ModBlocks.CARVE_DYEDREAM_GLASSPANE.get(), carveTex, carveTex);
+        paneBlock((IronBarsBlock) ModBlocks.CARVE_DYEDREAM_GLASS_PANE.get(), carveTex, carveTex);
 
         simpleBlockWithItem(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get(), cubeAll(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get()));
         var goldCarveTex = modLoc("block/gold_carve_dyedream_glass");
-        paneBlock((IronBarsBlock) ModBlocks.GOLD_CARVE_DYEDREAM_GLASSPANE.get(), goldCarveTex, goldCarveTex);
+        paneBlock((IronBarsBlock) ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get(), goldCarveTex, goldCarveTex);
 
         // ===== 染梦晶芽系列 =====
 

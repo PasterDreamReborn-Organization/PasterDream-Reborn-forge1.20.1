@@ -97,11 +97,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
         wallItem(ModBlocks.DYEDREAM_BUD_WALL, ModBlocks.DYEDREAM_BUD_BLOCK);
 
-        withExistingParent(ModItems.DYEDREAM_GLASSPANE.getId().getPath(), mcLoc("item/generated"))
+        withExistingParent(ModItems.DYEDREAM_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/dyedream_glass"));
-        withExistingParent(ModItems.CARVE_DYEDREAM_GLASSPANE.getId().getPath(), mcLoc("item/generated"))
+        withExistingParent(ModItems.CARVE_DYEDREAM_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/carve_dyedream_glass"));
-        withExistingParent(ModItems.GOLD_CARVE_DYEDREAM_GLASSPANE.getId().getPath(), mcLoc("item/generated"))
+        withExistingParent(ModItems.GOLD_CARVE_DYEDREAM_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/gold_carve_dyedream_glass"));
 
         withExistingParent(ModItems.SMALL_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))

@@ -56,11 +56,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TALL_PINK_MUSHROOM.get());
                         output.accept(ModItems.DYEDREAM_SAND.get());
                         output.accept(ModItems.DYEDREAM_GLASS.get());
-                        output.accept(ModItems.DYEDREAM_GLASSPANE.get());
+                        output.accept(ModItems.DYEDREAM_GLASS_PANE.get());
                         output.accept(ModItems.CARVE_DYEDREAM_GLASS.get());
-                        output.accept(ModItems.CARVE_DYEDREAM_GLASSPANE.get());
+                        output.accept(ModItems.CARVE_DYEDREAM_GLASS_PANE.get());
                         output.accept(ModItems.GOLD_CARVE_DYEDREAM_GLASS.get());
-                        output.accept(ModItems.GOLD_CARVE_DYEDREAM_GLASSPANE.get());
+                        output.accept(ModItems.GOLD_CARVE_DYEDREAM_GLASS_PANE.get());
                         output.accept(ModItems.SMALL_DYEDREAM_BUD.get());
                         output.accept(ModItems.MEDIUM_DYEDREAM_BUD.get());
                         output.accept(ModItems.LARGE_DYEDREAM_BUD.get());
