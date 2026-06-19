@@ -54,7 +54,8 @@
     "dyedream_bud_wall": "dyedream_bud_wall",
     "claypan_0": "claypan",
     "claypan_1": "删除",
-    "claypan_2": "删除"
+    "claypan_2": "删除",
+    "dream_cauldron": "dream_cauldron"
   },
   "items": {
     "amber_candy": "amber_candy",
@@ -84,6 +85,7 @@
     "wind_plant_extract": "glass_jar_of_wind_plant_extract",
     "dreamjuice": "glass_jar_of_dream_juice",
     "goldenrod_tea": "glass_jar_of_goldenrod_tea",
+    "dyedream_perfume": "glass_jar_of_dyedream_perfume",
     "glass_cup": "glass_cup",
     "apple_juice": "glass_cup_of_apple_juice",
     "dyedream_flower_tea_0": "glass_cup_of_uncooked_dyedream_flower_tea",
@@ -95,7 +97,20 @@
     "flour": "flour",
     "dough": "dough",
     "eggdough": "dough_with_egg",
-    "coarse_salt": "coarse_salt"
+    "coarse_salt": "coarse_salt",
+    "salt": "salt",
+    "pinkegg": "pink_egg",
+    "chocolate": "chocolate",
+    "dyedream_fruit": "dyedream_fruit",
+    "cake_base": "cake_base",
+    "buncake_0": "cream_bun_cake",
+    "buncake_1": "berry_bun_cake",
+    "buncake_2": "tuber_bun_cake",
+    "buncake_3": "watermelon_bun_cake",
+    "buncake_4": "pumpkin_bun_cake",
+    "buncake_5": "glow_berry_bun_cake",
+    "buncake_6": "dyedream_fruit_bun_cake",
+    "chocolate_matcha_cake": "chocolate_matcha_cake"
   },
   "entities": {},
   "recipes": {}

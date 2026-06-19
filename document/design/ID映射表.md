@@ -72,6 +72,7 @@
 | `claypan_0`                      | `claypan`                        | 重命名，删除_0后缀                                | 客制化类                                                |
 | `claypan_1`                      | 删除                               | -                                         | -                                                   |
 | `claypan_2`                      | 删除                               | -                                         | -                                                   |
+| `dream_cauldron`                 | `dream_cauldron`                 | 不改                                        | 客制化类 `DreamCauldronBlock`，含 BlockEntity、Menu、Screen |
 
 
 ---
