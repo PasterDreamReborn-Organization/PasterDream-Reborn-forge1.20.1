@@ -150,5 +150,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_equipment_tab", "Paster Dream | Equipment");
 
         add("button.pasterdream.mortarbutton", "grinding");
+
+        add("tooltip.pasterdreammod.magic_stone", "§7§oWhat kind of mage doesn't carry a few magic stones?");
+
     }
 }
