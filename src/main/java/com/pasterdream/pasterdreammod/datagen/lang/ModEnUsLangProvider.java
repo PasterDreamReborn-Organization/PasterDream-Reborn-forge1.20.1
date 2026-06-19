@@ -143,9 +143,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("fluid.pasterdream.wind_plant_extract","Wind Plant Extract(fluid)");
         add("fluid.pasterdream.yeast","Yeast(fluid)");
 
-        add("itemGroup.pasterdream.pasterdream_tab", "Paster Dream");
-        add("itemGroup.pasterdream.pasterdream_materials_tab", "Paster Dream Materials");
-        add("itemGroup.pasterdream.pasterdream_equipment_creative_tab", "Paster Dream Equipment");
+        add("itemGroup.pasterdream.pasterdream_food_tab", "Paster Dream | Food & Drinks");
+        add("itemGroup.pasterdream.pasterdream_items_tab", "Paster Dream | Items");
+        add("itemGroup.pasterdream.pasterdream_blocks_tab", "Paster Dream | Blocks");
+        add("itemGroup.pasterdream.pasterdream_plants_tab", "Paster Dream | Plants");
+        add("itemGroup.pasterdream.pasterdream_equipment_tab", "Paster Dream | Equipment");
 
         add("button.pasterdream.mortarbutton", "grinding");
     }

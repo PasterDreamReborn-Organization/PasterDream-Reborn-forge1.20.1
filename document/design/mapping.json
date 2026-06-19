@@ -56,7 +56,10 @@
     "claypan_1": "删除",
     "claypan_2": "删除",
     "dream_cauldron": "dream_cauldron",
-    "dyedream_block": "dyedream_alloy_block"
+    "dyedream_block": "dyedream_alloy_block",
+    "big_bubble": "big_bubble",
+    "ice_stone": "ice_stone",
+    "ice_bud_0": "ice_bud"
   },
   "items": {
     "amber_candy": "amber_candy",
@@ -111,8 +114,13 @@
     "buncake_4": "pumpkin_bun_cake",
     "buncake_5": "glow_berry_bun_cake",
     "buncake_6": "dyedream_fruit_bun_cake",
-    "chocolate_matcha_cake": "chocolate_matcha_cake"
+    "chocolate_matcha_cake": "chocolate_matcha_cake",
+    "magic_stone": "magic_stone"
   },
   "entities": {},
-  "recipes": {}
+  "recipes": {
+    "crafting_0.json": "待搬运",
+    "crafting_317.json": "待搬运",
+    "crafting_318.json": "待搬运"
+  }
 }
