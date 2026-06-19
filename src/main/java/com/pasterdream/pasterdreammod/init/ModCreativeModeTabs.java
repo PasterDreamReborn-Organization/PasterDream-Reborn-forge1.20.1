@@ -73,6 +73,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BIG_BUBBLE.get());
                         output.accept(ModItems.DYEDREAM_LARTERN.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_BLOCK.get());
+                        output.accept(ModItems.ICE_STONE.get());
+                        output.accept(ModItems.ICE_BUD.get());
                     })
                     .build());
 
@@ -134,6 +136,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GLOW_BERRY_BUN_CAKE.get());
                         output.accept(ModItems.DYEDREAM_FRUIT_BUN_CAKE.get());
                         output.accept(ModItems.CHOCOLATE_MATCHA_CAKE.get());
+                        output.accept(ModItems.MAGIC_STONE.get());
 
                     })
                     .build());

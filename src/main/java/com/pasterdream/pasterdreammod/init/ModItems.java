@@ -72,6 +72,9 @@ public class ModItems {
     public static final RegistryObject<Item> RAW_MOLTEN_GOLD = ITEMS.register("raw_molten_gold",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> MAGIC_STONE = ITEMS.register("magic_stone",
+            () -> new Item(new Item.Properties()));
+
     // ===== 玻璃罐系列 =====
     public static final RegistryObject<Item> GLASS_JAR = ITEMS.register("glass_jar", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GLASS_JAR_OF_WATER = ITEMS.register("glass_jar_of_water", () -> new PasterDreamDrinkItem((PasterDreamDrinkAndFoodProperties) new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().alwaysEat().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())));
@@ -253,6 +256,11 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.BIG_BUBBLE.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_LARTERN = ITEMS.register("dyedream_lartern",
             () -> new BlockItem(ModBlocks.DYEDREAM_LARTERN.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> ICE_STONE = ITEMS.register("ice_stone",
+            () -> new BlockItem(ModBlocks.ICE_STONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ICE_BUD = ITEMS.register("ice_bud",
+            () -> new BlockItem(ModBlocks.ICE_BUD.get(), new Item.Properties()));
 
     // ===== 染梦石英建材系列 =====
 

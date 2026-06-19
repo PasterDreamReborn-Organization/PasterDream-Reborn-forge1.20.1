@@ -124,6 +124,10 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.BIG_BUBBLE.get());
         dropSelf(ModBlocks.DYEDREAM_LARTERN.get());
 
+        dropSelf(ModBlocks.ICE_STONE.get());
+        add(ModBlocks.ICE_BUD.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModBlocks.ICE_BUD.get()))));
+
         dropSelf(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
 
         dropSelf(ModBlocks.DYEDREAM_BUD_BLOCK.get());

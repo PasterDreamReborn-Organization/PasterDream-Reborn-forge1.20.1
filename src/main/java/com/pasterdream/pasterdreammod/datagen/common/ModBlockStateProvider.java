@@ -197,6 +197,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.DYEDREAM_PACKED_ICE.get(), cubeAll(ModBlocks.DYEDREAM_PACKED_ICE.get()));
         simpleBlockWithItem(ModBlocks.DYEDREAM_LARTERN.get(), cubeAll(ModBlocks.DYEDREAM_LARTERN.get()));
 
+        // ===== 冰晶岩与冰凌晶芽 =====
+        simpleBlockWithItem(ModBlocks.ICE_STONE.get(), cubeAll(ModBlocks.ICE_STONE.get()));
+
+        var iceBud = models().cross(ModBlocks.ICE_BUD.getId().getPath(), blockTexture(ModBlocks.ICE_BUD.get())).renderType("cutout");
+        directionalBlock(ModBlocks.ICE_BUD.get(), iceBud);
+
         // ===== 染梦合金块 =====
         simpleBlockWithItem(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), cubeAll(ModBlocks.DYEDREAM_ALLOY_BLOCK.get()));
 

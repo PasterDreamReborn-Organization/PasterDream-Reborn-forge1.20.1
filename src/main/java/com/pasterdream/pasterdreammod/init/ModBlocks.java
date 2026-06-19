@@ -114,6 +114,10 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> DYEDREAM_LARTERN = BLOCKS.register("dyedream_lartern", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GLASS).strength(0.3f).lightLevel(s -> 14)));
 
+    // ===== 冰晶岩与冰凌晶芽 =====
+    public static final RegistryObject<Block> ICE_STONE = BLOCKS.register("ice_stone", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.ICE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(0.8f, 0.2f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> ICE_BUD = BLOCKS.register("ice_bud", () -> new AmethystClusterBlock(5, 4, BlockBehaviour.Properties.of().mapColor(MapColor.ICE).sound(SoundType.AMETHYST_CLUSTER).strength(1f, 0f).lightLevel(s -> 9).requiresCorrectToolForDrops().noOcclusion()));
+
     // ===== 染梦合金块 =====
     public static final RegistryObject<Block> DYEDREAM_ALLOY_BLOCK = BLOCKS.register("dyedream_alloy_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(11f, 7f).requiresCorrectToolForDrops()));
 

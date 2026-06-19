@@ -87,6 +87,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_ICE.get())
                 .add(ModBlocks.DYEDREAM_PACKED_ICE.get())
                 .add(ModBlocks.DYEDREAM_LARTERN.get())
+                .add(ModBlocks.ICE_STONE.get())
+                .add(ModBlocks.ICE_BUD.get())
                 .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
                 .add(ModBlocks.DYEDREAM_BUD_STAIRS.get())
                 .add(ModBlocks.DYEDREAM_BUD_SLAB.get())
@@ -103,6 +105,22 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DREAM_CAULDRON.get())
                 .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
 
+        // 需要石头工具挖掘
+        tag(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlocks.ICE_BUD.get());
+
+
+        // 需要铁工具挖掘
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.DYEDREAM_DUST_ORE.get())
+                .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
+                .add(ModBlocks.MEDIUM_DYEDREAM_BUD.get())
+                .add(ModBlocks.LARGE_DYEDREAM_BUD.get())
+                .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_BUD_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_BUD_SLAB.get())
+                .add(ModBlocks.DYEDREAM_BUD_WALL.get());
+
         // 需要钻石工具挖掘
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
@@ -116,15 +134,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get())
                 .add(ModBlocks.AMBER_CANDY_ORE.get());
 
-        tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(ModBlocks.DYEDREAM_DUST_ORE.get())
-                .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
-                .add(ModBlocks.MEDIUM_DYEDREAM_BUD.get())
-                .add(ModBlocks.LARGE_DYEDREAM_BUD.get())
-                .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
-                .add(ModBlocks.DYEDREAM_BUD_STAIRS.get())
-                .add(ModBlocks.DYEDREAM_BUD_SLAB.get())
-                .add(ModBlocks.DYEDREAM_BUD_WALL.get());
+
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get())
                 .add(ModBlocks.DYEDREAM_BUD_STAIRS.get());

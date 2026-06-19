@@ -66,6 +66,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.GLOW_BERRY_BUN_CAKE.get(), "发光浆果小蛋糕");
         add(ModItems.DYEDREAM_FRUIT_BUN_CAKE.get(), "染梦果小蛋糕");
         add(ModItems.CHOCOLATE_MATCHA_CAKE.get(), "巧克力抹茶蛋糕");
+        add(ModItems.MAGIC_STONE.get(), "魔法石");
 
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "染梦泥土");
@@ -122,6 +123,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.BIG_BUBBLE.get(), "巨型泡泡");
         add(ModBlocks.DYEDREAM_LARTERN.get(), "染梦水晶灯");
         add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), "染梦合金块");
+        add(ModBlocks.ICE_STONE.get(), "冰晶岩");
+        add(ModBlocks.ICE_BUD.get(), "冰凌晶芽");
         add(ModBlocks.CLAYPAN.get(), "陶盆");
         add(ModBlocks.DREAM_CAULDRON.get(), "法术工厂");
 

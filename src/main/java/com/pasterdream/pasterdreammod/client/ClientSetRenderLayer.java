@@ -28,5 +28,8 @@ public class ClientSetRenderLayer
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_BUD_STAIRS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_BUD_SLAB.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_BUD_WALL.get(), RenderType.translucent());
+
+        // ===== 冰凌晶芽 =====
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ICE_BUD.get(), RenderType.cutout());
     }
 }

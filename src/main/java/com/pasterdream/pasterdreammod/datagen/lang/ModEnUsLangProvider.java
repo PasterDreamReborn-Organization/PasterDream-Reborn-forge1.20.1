@@ -63,6 +63,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.GLOW_BERRY_BUN_CAKE.get(), "Glow Berry Bun Cake");
         add(ModItems.DYEDREAM_FRUIT_BUN_CAKE.get(), "Dyedream Fruit Bun Cake");
         add(ModItems.CHOCOLATE_MATCHA_CAKE.get(), "Chocolate Matcha Cake");
+        add(ModItems.MAGIC_STONE.get(), "Magic Stone");
 
 
 
@@ -120,6 +121,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.BIG_BUBBLE.get(), "Big Bubble");
         add(ModBlocks.DYEDREAM_LARTERN.get(), "Dye Dream Lantern");
         add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), "Dye Dream Alloy Block");
+        add(ModBlocks.ICE_STONE.get(), "Icestone");
+        add(ModBlocks.ICE_BUD.get(), "Ice Bud");
         add(ModBlocks.CLAYPAN.get(), "Claypan");
         add(ModBlocks.DREAM_CAULDRON.get(), "Dream Cauldron");
 

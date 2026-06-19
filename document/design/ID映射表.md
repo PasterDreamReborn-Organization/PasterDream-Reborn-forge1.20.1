@@ -75,6 +75,8 @@
 | `dream_cauldron`                 | `dream_cauldron`                 | 不改                                        | 客制化类 `DreamCauldronBlock`，含 BlockEntity、Menu、Screen |
 | `dyedream_block`                 | `dyedream_alloy_block`           | 重命名，补充 `alloy_` 前缀与系列一致                    | 无需客制化类，直接用 `Block`                                  |
 | `big_bubble`                     | `big_bubble`                     | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`；`neighborChanged` 特殊逻辑暂不实现 |
+| `ice_stone`                       | `ice_stone`                       | 不改                                        | 无需客制化类，直接用 `Block`                                  |
+| `ice_bud_0`                      | `ice_bud`                        | 重命名，删除 `_0` 后缀，仅此一种变体                         | 无需客制化类，直接用 `AmethystClusterBlock`                  |
 
 
 ---
@@ -136,6 +138,7 @@
 | `buncake_5`               | `glow_berry_bun_cake`                       | 重命名，更改命名格式为 `xxx_bun_cake`                                | 无需客制化类，直接用 `Item`                    |
 | `buncake_6`               | `dyedream_fruit_bun_cake`                   | 重命名，更改命名格式为 `xxx_bun_cake`                                | 无需客制化类，直接用 `Item`                    |
 | `chocolate_matcha_cake`   | `chocolate_matcha_cake`                     | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `magic_stone`              | `magic_stone`                               | 不改，Tooltip 文字待后续实现                                        | 无需客制化类，直接用 `Item`                    |
 ---
 
 ## 流体映射
@@ -162,4 +165,6 @@
 
 | 旧配方名 | 新配方名 | 产物 |
 |----------|---------|------|
-| `crafting_0.json` | | |
+| `crafting_0.json` | 待搬运 | 待确认 |
+| `crafting_317.json` | 待搬运 | magic_stone（钻石+灵魂粉尘），依赖 soul_dust 未搬运 |
+| `crafting_318.json` | 待搬运 | magic_stone（冰凌晶芽+灵魂粉尘），依赖 soul_dust 未搬运 |

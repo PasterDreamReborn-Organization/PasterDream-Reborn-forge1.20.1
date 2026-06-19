@@ -75,6 +75,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.GLOW_BERRY_BUN_CAKE.get());
         basicItem(ModItems.DYEDREAM_FRUIT_BUN_CAKE.get());
         basicItem(ModItems.CHOCOLATE_MATCHA_CAKE.get());
+        basicItem(ModItems.MAGIC_STONE.get());
 
 
 
@@ -110,6 +111,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/medium_dyedream_bud"));
         withExistingParent(ModItems.LARGE_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/large_dyedream_bud"));
+
+        withExistingParent(ModItems.ICE_BUD.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/ice_bud"));
 
 
     }
