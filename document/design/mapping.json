@@ -77,7 +77,8 @@
     "raw_titanium_block": "raw_titanium_block",
     "salt_block": "salt_block",
     "titanium_block": "titanium_block",
-    "moltengold_block": "molten_gold_block"
+    "moltengold_block": "molten_gold_block",
+    "charged_amethyst_block": "charged_amethyst_block"
   },
   "items": {
     "amber_candy": "amber_candy",
@@ -149,7 +150,8 @@
     "stuffed_wafer_cookies": "stuffed_wafer_cookies",
     "magic_stone": "magic_stone",
     "soul_dust": "soul_dust",
-    "soul_essence": "soul_essence"
+    "soul_essence": "soul_essence",
+    "charged_amethyst": "charged_amethyst"
   },
   "entities": {},
   "recipes": {

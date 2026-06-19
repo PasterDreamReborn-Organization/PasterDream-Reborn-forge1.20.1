@@ -94,6 +94,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MAGIC_STONE.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
                         output.accept(ModItems.PINK_EGG.get());
+                        output.accept(ModItems.CHARGED_AMETHYST.get());
                         output.accept(ModItems.RYE_SEED.get());
                         output.accept(ModItems.FLOUR.get());
                         output.accept(ModItems.SALT.get());
@@ -183,6 +184,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SALT_BLOCK.get());
                         output.accept(ModItems.TITANIUM_BLOCK.get());
                         output.accept(ModItems.MOLTEN_GOLD_BLOCK.get());
+                        output.accept(ModItems.CHARGED_AMETHYST_BLOCK.get());
                     })
                     .build());
 

@@ -95,6 +95,7 @@
 | `salt_block`                   | `salt_block`                    | 不改                                        | 无需客制化类，直接用 `Block`                                  |
 | `titanium_block`               | `titanium_block`                | 不改                                        | 无需客制化类，直接用 `Block`                                  |
 | `moltengold_block`             | `molten_gold_block`             | 重命名，补下划线                                | 无需客制化类，直接用 `Block`                                  |
+| `charged_amethyst_block`       | `charged_amethyst_block`        | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`                    |
 
 
 ---
@@ -174,6 +175,7 @@
 | `magic_stone`              | `magic_stone`                               | 不改，Tooltip 文字待后续实现                                        | 无需客制化类，直接用 `Item`                    |
 | `soul_dust`                | `soul_dust`                                 | 不改                                                        | 无需客制化类，直接用 `Item`                    |
 | `soul_essence`             | `soul_essence`                              | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `charged_amethyst`           | `charged_amethyst`                           | 不改                                                        | 无需客制化类，直接用 `Item`                    |
 ---
 
 ## 流体映射

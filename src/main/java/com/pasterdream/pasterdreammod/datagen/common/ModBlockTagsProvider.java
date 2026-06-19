@@ -80,7 +80,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
                 .add(ModBlocks.RAW_TITANIUM_BLOCK.get())
                 .add(ModBlocks.TITANIUM_BLOCK.get())
-                .add(ModBlocks.MOLTEN_GOLD_BLOCK.get());
+                .add(ModBlocks.MOLTEN_GOLD_BLOCK.get())
+                .add(ModBlocks.CHARGED_AMETHYST_BLOCK.get());
 
         //整个树的结构（包含原木，木头，树叶，菌柄，菌核，菌疣）
         tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
@@ -114,7 +115,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // 需要石头工具挖掘
         tag(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.ICE_BUD.get());
+                .add(ModBlocks.ICE_BUD.get())
+                .add(ModBlocks.CHARGED_AMETHYST_BLOCK.get());
 
 
         // 需要铁工具挖掘

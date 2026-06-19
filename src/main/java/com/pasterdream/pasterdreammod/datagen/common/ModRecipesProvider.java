@@ -488,6 +488,26 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         RecipeHelpers.storageCompress(pWriter, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_BLOCK.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(pWriter, ModItems.MOLTEN_GOLD_BLOCK.get(), ModItems.MOLTEN_GOLD_INGOT.get(), PasterDreamMod.MOD_ID);
 
+        // ===== 盈能紫水晶 =====
+        // 紫水晶碎片 + 爆裂紫颂果 + 龙息 → 盈能紫水晶
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CHARGED_AMETHYST.get(), 1)
+                .requires(Items.AMETHYST_SHARD)
+                .requires(Items.POPPED_CHORUS_FRUIT)
+                .requires(Items.DRAGON_BREATH)
+                .unlockedBy(getHasName(Items.AMETHYST_SHARD), has(Items.AMETHYST_SHARD))
+                .save(pWriter);
+        // 盈能紫水晶 ↔ 盈能紫水晶块（4:1）
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHARGED_AMETHYST_BLOCK.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.CHARGED_AMETHYST.get())
+                .unlockedBy(getHasName(ModItems.CHARGED_AMETHYST.get()), has(ModItems.CHARGED_AMETHYST.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.CHARGED_AMETHYST.get(), 4)
+                .requires(ModItems.CHARGED_AMETHYST_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.CHARGED_AMETHYST_BLOCK.get()), has(ModItems.CHARGED_AMETHYST_BLOCK.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":charged_amethyst_from_charged_amethyst_block");
+
         // ===== 盐 =====
         RecipeHelpers.storageCompress(pWriter, ModItems.SALT.get(), ModItems.SALT_BLOCK.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(pWriter, ModItems.SALT_BLOCK.get(), ModItems.SALT.get(), PasterDreamMod.MOD_ID);

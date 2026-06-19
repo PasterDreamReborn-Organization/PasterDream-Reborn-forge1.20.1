@@ -78,6 +78,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SALT_BLOCK.get());
         dropSelf(ModBlocks.TITANIUM_BLOCK.get());
         dropSelf(ModBlocks.MOLTEN_GOLD_BLOCK.get());
+        dropSelf(ModBlocks.CHARGED_AMETHYST_BLOCK.get());
 
         dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get());
         dropSelf(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get());

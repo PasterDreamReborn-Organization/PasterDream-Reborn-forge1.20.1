@@ -65,6 +65,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.TITANIUM_BLOCK.get(), cubeAll(ModBlocks.TITANIUM_BLOCK.get()));
         simpleBlockWithItem(ModBlocks.MOLTEN_GOLD_BLOCK.get(), cubeAll(ModBlocks.MOLTEN_GOLD_BLOCK.get()));
 
+        var chargedAmethystModel = models().cubeAll(ModBlocks.CHARGED_AMETHYST_BLOCK.getId().getPath(), blockTexture(ModBlocks.CHARGED_AMETHYST_BLOCK.get())).renderType("translucent");
+        simpleBlockWithItem(ModBlocks.CHARGED_AMETHYST_BLOCK.get(), chargedAmethystModel);
+
         // ===== 染梦石英建材系列 =====
 
         var quartzTex = blockTexture(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get());
