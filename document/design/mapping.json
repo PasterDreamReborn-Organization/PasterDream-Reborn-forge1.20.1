@@ -71,7 +71,8 @@
     "calcite_tiles_slab": "calcite_tiles_slab",
     "calcite_tiles_wall": "calcite_tiles_wall",
     "titanium_ore": "titanium_ore",
-    "deepslate_titanium_ore": "deepslate_titanium_ore"
+    "deepslate_titanium_ore": "deepslate_titanium_ore",
+    "moltengold_ore": "molten_gold_ore"
   },
   "items": {
     "amber_candy": "amber_candy",

@@ -89,6 +89,7 @@
 | `calcite_tiles_wall`           | `calcite_tiles_wall`            | 不改                                        | 无需客制化类，直接用 `WallBlock`                              |
 | `titanium_ore`                 | `titanium_ore`                  | 不改                                        | 无需客制化类，直接用 `Block`                                  |
 | `deepslate_titanium_ore`       | `deepslate_titanium_ore`        | 不改                                        | 无需客制化类，直接用 `Block`                                  |
+| `moltengold_ore`               | `molten_gold_ore`               | 重命名，补下划线                                | 无需客制化类，直接用 `Block`                                  |
 
 
 ---
