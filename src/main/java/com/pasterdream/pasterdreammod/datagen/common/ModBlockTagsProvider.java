@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
+import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -164,5 +165,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.WOODEN_BUTTONS)
                 .add(ModBlocks.DYEDREAM_PLANKS_BUTTON.get());
+
+        // ===== 模组玻璃板 =====
+
+        tag(ModBlockTags.MOD_GLASS_PANE)
+                .add(ModBlocks.DYEDREAM_GLASS_PANE.get())
+                .add(ModBlocks.CARVE_DYEDREAM_GLASS_PANE.get())
+                .add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get());
+
+        tag(ModBlockTags.FORGE_GLASS_PANE)
+                .addTag(ModBlockTags.MOD_GLASS_PANE);
     }
 }

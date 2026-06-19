@@ -400,6 +400,14 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
 
     }
     private void alloySmeltingRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 染梦合金锭粗胚：钛金锭 + 染梦粉尘 + 4×染梦晶芽粒
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RAW_DYEDREAM_ALLOY_INGOT.get(), 1)
+                .requires(ModItems.TITANIUM_INGOT.get())
+                .requires(ModItems.DYEDREAM_DUST.get())
+                .requires(ModItems.DYEDREAM_BUD_NUGGET.get(), 4)
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter);
+
         // 染梦合金锭粗胚 → 染梦合金锭（熔炉）
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()),
                         RecipeCategory.MISC, ModItems.DYEDREAM_ALLOY_INGOT.get(), 1.0F, 200)

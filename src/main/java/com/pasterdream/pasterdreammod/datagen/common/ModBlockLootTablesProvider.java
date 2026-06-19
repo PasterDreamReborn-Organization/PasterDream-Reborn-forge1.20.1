@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.datagen.common;
 
+import com.pasterdream.pasterdreammod.datagen.util.RecipeHelpers;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -29,8 +30,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(ModBlocks.DYEDREAM_DIRT.get())));
         dropSelf(ModBlocks.DYEDREAM_LOG.get());
         dropSelf(ModBlocks.DYEDREAM_WOOD.get());
-        add(ModBlocks.DYEDREAM_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
-        add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        add(ModBlocks.DYEDREAM_LEAVES.get(), block -> RecipeHelpers.createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), ModItems.DYEDREAM_FRUIT.get()));
+        add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), block -> RecipeHelpers.createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), ModItems.DYEDREAM_FRUIT.get()));
         dropSelf(ModBlocks.DYEDREAM_SAPLING.get());
 
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(),

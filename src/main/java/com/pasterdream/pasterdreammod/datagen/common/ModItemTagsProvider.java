@@ -3,6 +3,8 @@ package com.pasterdream.pasterdreammod.datagen.common;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.tag.ModBlockTags;
+import com.pasterdream.pasterdreammod.tag.ModItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -40,11 +42,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
         copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
 
-        // 玻璃板
+        // 玻璃板 - copy 方块标签到物品标签，再添加到 forge:glass_panes
+        copy(ModBlockTags.MOD_GLASS_PANE, ModItemTags.MOD_GLASS_PANE);
+
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "glass_panes")))
-                .add(ModBlocks.DYEDREAM_GLASS_PANE.get().asItem())
-                .add(ModBlocks.CARVE_DYEDREAM_GLASS_PANE.get().asItem())
-                .add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get().asItem());
+                .addTag(ModItemTags.MOD_GLASS_PANE);
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "mushrooms")))
                 .add(ModBlocks.PINK_MUSHROOM.get().asItem())

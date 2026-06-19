@@ -7,7 +7,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
 public class ModItemTags {
-    // 在此定义物品标签常量
+
+    public static final TagKey<Item> MOD_GLASS_PANE = bind("glass_panes");
 
     private static TagKey<Item> bind(String pName) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, pName));

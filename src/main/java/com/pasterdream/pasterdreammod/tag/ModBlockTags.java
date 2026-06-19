@@ -7,7 +7,9 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 
 public class ModBlockTags {
-    // 在此定义方块标签常量
+
+    public static final TagKey<Block> MOD_GLASS_PANE = create("glass_panes");
+    public static final TagKey<Block> FORGE_GLASS_PANE = createForgeTag("glass_panes");
 
     private static TagKey<Block> create(String pName) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, pName));
