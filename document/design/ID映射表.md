@@ -77,6 +77,8 @@
 | `big_bubble`                     | `big_bubble`                     | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`；`neighborChanged` 特殊逻辑暂不实现 |
 | `ice_stone`                       | `ice_stone`                       | 不改                                        | 无需客制化类，直接用 `Block`                                  |
 | `ice_bud_0`                      | `ice_bud`                        | 重命名，删除 `_0` 后缀，仅此一种变体                         | 无需客制化类，直接用 `AmethystClusterBlock`                  |
+| `cloud`                         | `cloud`                          | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`，旧版手动覆写 `skipRendering`/`propagatesSkylightDown` 等，新版 `HalfTransparentBlock` 内置 |
+| `dark_cloud`                    | `dark_cloud`                     | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`                  |
 
 
 ---

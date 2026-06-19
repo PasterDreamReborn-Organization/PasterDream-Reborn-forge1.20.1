@@ -121,6 +121,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.DYEDREAM_ICE.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
         add(ModBlocks.DYEDREAM_PACKED_ICE.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
 
+        dropSelf(ModBlocks.CLOUD.get());
+        dropSelf(ModBlocks.DARK_CLOUD.get());
         dropSelf(ModBlocks.BIG_BUBBLE.get());
         dropSelf(ModBlocks.DYEDREAM_LARTERN.get());
 

@@ -118,6 +118,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_BUD_WALL.get(), "Dye Dream Bud Wall");
         add(ModBlocks.DYEDREAM_ICE.get(), "Dye Dream Ice");
         add(ModBlocks.DYEDREAM_PACKED_ICE.get(), "Dye Dream Packed Ice");
+        add(ModBlocks.CLOUD.get(), "Cloud");
+        add(ModBlocks.DARK_CLOUD.get(), "Dark Cloud");
         add(ModBlocks.BIG_BUBBLE.get(), "Big Bubble");
         add(ModBlocks.DYEDREAM_LARTERN.get(), "Dye Dream Lantern");
         add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), "Dye Dream Alloy Block");
