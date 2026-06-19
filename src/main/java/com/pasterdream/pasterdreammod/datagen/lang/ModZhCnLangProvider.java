@@ -99,6 +99,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), "深层钛矿石");
         add(ModBlocks.MOLTEN_GOLD_ORE.get(), "炙焰金矿石");
         add(ModBlocks.SOUL_ORE.get(), "灵魂矿土");
+        add(ModBlocks.RAW_TITANIUM_BLOCK.get(), "粗钛金块");
+        add(ModBlocks.SALT_BLOCK.get(), "盐块");
+        add(ModBlocks.TITANIUM_BLOCK.get(), "钛金块");
+        add(ModBlocks.MOLTEN_GOLD_BLOCK.get(), "炙焰金块");
         add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get(), "染梦石英块");
         add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get(), "平滑染梦石英块");
         add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get(), "染梦石英砖");

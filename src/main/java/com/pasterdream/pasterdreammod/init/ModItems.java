@@ -273,6 +273,14 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.MOLTEN_GOLD_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SOUL_ORE = ITEMS.register("soul_ore",
             () -> new BlockItem(ModBlocks.SOUL_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> RAW_TITANIUM_BLOCK = ITEMS.register("raw_titanium_block",
+            () -> new BlockItem(ModBlocks.RAW_TITANIUM_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SALT_BLOCK = ITEMS.register("salt_block",
+            () -> new BlockItem(ModBlocks.SALT_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> TITANIUM_BLOCK = ITEMS.register("titanium_block",
+            () -> new BlockItem(ModBlocks.TITANIUM_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MOLTEN_GOLD_BLOCK = ITEMS.register("molten_gold_block",
+            () -> new BlockItem(ModBlocks.MOLTEN_GOLD_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> PINK_SLIME_BLOCK = ITEMS.register("pink_slime_block",
             () -> new BlockItem(ModBlocks.PINK_SLIME_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> PINK_MUSHROOM_BLOCK = ITEMS.register("pink_mushroom_block",

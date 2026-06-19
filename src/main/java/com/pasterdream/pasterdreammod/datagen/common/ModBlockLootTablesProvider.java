@@ -74,6 +74,11 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                                 .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
 
+        dropSelf(ModBlocks.RAW_TITANIUM_BLOCK.get());
+        dropSelf(ModBlocks.SALT_BLOCK.get());
+        dropSelf(ModBlocks.TITANIUM_BLOCK.get());
+        dropSelf(ModBlocks.MOLTEN_GOLD_BLOCK.get());
+
         dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get());
         dropSelf(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get());
         dropSelf(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get());

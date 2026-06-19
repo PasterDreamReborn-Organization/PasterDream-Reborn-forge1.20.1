@@ -73,7 +73,11 @@
     "titanium_ore": "titanium_ore",
     "deepslate_titanium_ore": "deepslate_titanium_ore",
     "moltengold_ore": "molten_gold_ore",
-    "soul_ore": "soul_ore"
+    "soul_ore": "soul_ore",
+    "raw_titanium_block": "raw_titanium_block",
+    "salt_block": "salt_block",
+    "titanium_block": "titanium_block",
+    "moltengold_block": "molten_gold_block"
   },
   "items": {
     "amber_candy": "amber_candy",

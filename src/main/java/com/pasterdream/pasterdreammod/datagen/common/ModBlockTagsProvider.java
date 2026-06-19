@@ -29,7 +29,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(ModBlocks.DYEDREAM_DIRT.get())
                 .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get())
-                .add(ModBlocks.SOUL_ORE.get());
+                .add(ModBlocks.SOUL_ORE.get())
+                .add(ModBlocks.SALT_BLOCK.get());
 
         // 可以用锄头来挖掘
         tag(BlockTags.MINEABLE_WITH_HOE)
@@ -48,6 +49,38 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.PINK_MUSHROOM_STEM.get())
                 .add(ModBlocks.PINK_MUSHROOM_PORES.get())
                 .add(ModBlocks.PINK_SHROOMLIGHT.get());
+
+        // 可以用镐来挖掘
+
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
+                .add(ModBlocks.DYEDREAM_DUST_ORE.get())
+                .add(ModBlocks.AMBER_CANDY_ORE.get())
+                .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
+                .add(ModBlocks.MEDIUM_DYEDREAM_BUD.get())
+                .add(ModBlocks.LARGE_DYEDREAM_BUD.get())
+                .add(ModBlocks.TITANIUM_ORE.get())
+                .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
+                .add(ModBlocks.MOLTEN_GOLD_ORE.get())
+                .add(ModBlocks.DYEDREAM_ICE.get())
+                .add(ModBlocks.DYEDREAM_PACKED_ICE.get())
+                .add(ModBlocks.DYEDREAM_LARTERN.get())
+                .add(ModBlocks.ICE_STONE.get())
+                .add(ModBlocks.ICE_BUD.get())
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.PILLAR_DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.CHISELED_DYEDREAM_QUARTZ_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get())
+                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get())
+                .add(ModBlocks.CLAYPAN.get())
+                .add(ModBlocks.DREAM_CAULDRON.get())
+                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
+                .add(ModBlocks.RAW_TITANIUM_BLOCK.get())
+                .add(ModBlocks.TITANIUM_BLOCK.get())
+                .add(ModBlocks.MOLTEN_GOLD_BLOCK.get());
 
         //整个树的结构（包含原木，木头，树叶，菌柄，菌核，菌疣）
         tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
@@ -77,34 +110,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SAPLINGS)
                 .add(ModBlocks.DYEDREAM_SAPLING.get());
 
-        // 可以用镐来挖掘
 
-        tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
-                .add(ModBlocks.DYEDREAM_DUST_ORE.get())
-                .add(ModBlocks.AMBER_CANDY_ORE.get())
-                .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
-                .add(ModBlocks.MEDIUM_DYEDREAM_BUD.get())
-                .add(ModBlocks.LARGE_DYEDREAM_BUD.get())
-                .add(ModBlocks.TITANIUM_ORE.get())
-                .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
-                .add(ModBlocks.MOLTEN_GOLD_ORE.get())
-                .add(ModBlocks.DYEDREAM_ICE.get())
-                .add(ModBlocks.DYEDREAM_PACKED_ICE.get())
-                .add(ModBlocks.DYEDREAM_LARTERN.get())
-                .add(ModBlocks.ICE_STONE.get())
-                .add(ModBlocks.ICE_BUD.get())
-                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get())
-                .add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get())
-                .add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get())
-                .add(ModBlocks.PILLAR_DYEDREAM_QUARTZ_BLOCK.get())
-                .add(ModBlocks.CHISELED_DYEDREAM_QUARTZ_BLOCK.get())
-                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get())
-                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get())
-                .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get())
-                .add(ModBlocks.CLAYPAN.get())
-                .add(ModBlocks.DREAM_CAULDRON.get())
-                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
 
         // 需要石头工具挖掘
         tag(BlockTags.NEEDS_STONE_TOOL)
@@ -117,16 +123,22 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
                 .add(ModBlocks.MEDIUM_DYEDREAM_BUD.get())
                 .add(ModBlocks.LARGE_DYEDREAM_BUD.get())
-                .add(ModBlocks.MOLTEN_GOLD_ORE.get());
+                .add(ModBlocks.MOLTEN_GOLD_ORE.get())
+                .add(ModBlocks.MOLTEN_GOLD_BLOCK.get());
         // 需要钻石工具挖掘
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
                 .add(ModBlocks.TITANIUM_ORE.get())
-                .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get());
+                .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
+                .add(ModBlocks.RAW_TITANIUM_BLOCK.get())
+                .add(ModBlocks.TITANIUM_BLOCK.get());
+
 
         // 可作为信标基座
         tag(BlockTags.BEACON_BASE_BLOCKS)
-                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
+                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
+                .add(ModBlocks.TITANIUM_BLOCK.get())
+                .add(ModBlocks.MOLTEN_GOLD_BLOCK.get());
 
         tag(Tags.Blocks.ORES)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())

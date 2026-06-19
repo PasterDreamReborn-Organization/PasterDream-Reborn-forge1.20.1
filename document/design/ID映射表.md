@@ -90,7 +90,11 @@
 | `titanium_ore`                 | `titanium_ore`                  | 不改                                        | 无需客制化类，直接用 `Block`                                  |
 | `deepslate_titanium_ore`       | `deepslate_titanium_ore`        | 不改                                        | 无需客制化类，直接用 `Block`                                  |
 | `moltengold_ore`               | `molten_gold_ore`               | 重命名，补下划线                                | 无需客制化类，直接用 `Block`                                  |
-| `soul_ore`                     | `soul_ore`                      | 不改                                        | 客制化类 `SoulOreBlock`，覆写 getShape 降低碰撞箱（14px 高） |
+| `soul_ore`                     | `soul_ore`                      | 不改                                        | 客制化类 `SoulOreBlock`，覆写 getCollisionShape 降低碰撞箱（14px 高） |
+| `raw_titanium_block`           | `raw_titanium_block`            | 不改                                        | 无需客制化类，直接用 `Block`                                  |
+| `salt_block`                   | `salt_block`                    | 不改                                        | 无需客制化类，直接用 `Block`                                  |
+| `titanium_block`               | `titanium_block`                | 不改                                        | 无需客制化类，直接用 `Block`                                  |
+| `moltengold_block`             | `molten_gold_block`             | 重命名，补下划线                                | 无需客制化类，直接用 `Block`                                  |
 
 
 ---

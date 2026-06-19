@@ -179,6 +179,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DEEPSLATE_TITANIUM_ORE.get());
                         output.accept(ModItems.MOLTEN_GOLD_ORE.get());
                         output.accept(ModItems.SOUL_ORE.get());
+                        output.accept(ModItems.RAW_TITANIUM_BLOCK.get());
+                        output.accept(ModItems.SALT_BLOCK.get());
+                        output.accept(ModItems.TITANIUM_BLOCK.get());
+                        output.accept(ModItems.MOLTEN_GOLD_BLOCK.get());
                     })
                     .build());
 

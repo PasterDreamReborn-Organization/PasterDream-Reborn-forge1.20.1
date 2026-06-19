@@ -37,6 +37,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         dustRecipes(pWriter);
         quartzRecipes(pWriter);
         alloyRecipes(pWriter);
+        miscOreRecipes(pWriter);
         calciteRecipes(pWriter);
         foodRecipes(pWriter);
     }
@@ -395,7 +396,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_quartz_block_wall_from_stonecutting");
     }
 
-    // ===== 锭与合金块相关配方 =====
+    // ===== 染梦合金配方 =====
 
     private void alloyRecipes(Consumer<FinishedRecipe> pWriter) {
         // 染梦合金锭粗胚：钛金锭 + 染梦粉尘 + 4×染梦晶芽粒
@@ -406,65 +407,27 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
                 .save(pWriter);
 
-        // 染梦合金锭粗胚 → 染梦合金锭（熔炉）
+        // 染梦合金锭粗胚 → 染梦合金锭（熔炉 + 高炉）
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()),
                         RecipeCategory.MISC, ModItems.DYEDREAM_ALLOY_INGOT.get(), 1.0F, 200)
                 .unlockedBy(getHasName(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()), has(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_alloy_ingot_from_smelting");
-
-        // 染梦合金锭粗胚 → 染梦合金锭（高炉）
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()),
                         RecipeCategory.MISC, ModItems.DYEDREAM_ALLOY_INGOT.get(), 1.0F, 100)
                 .unlockedBy(getHasName(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()), has(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_alloy_ingot_from_blasting");
 
-        // 灵魂矿土 → 灵魂粉尘（熔炉 + 高炉）
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.SOUL_ORE.get()),
-                        RecipeCategory.MISC, ModItems.SOUL_DUST.get(), 1.0F, 200)
-                .unlockedBy(getHasName(ModItems.SOUL_ORE.get()), has(ModItems.SOUL_ORE.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":soul_dust_from_smelting");
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.SOUL_ORE.get()),
-                        RecipeCategory.MISC, ModItems.SOUL_DUST.get(), 1.0F, 100)
-                .unlockedBy(getHasName(ModItems.SOUL_ORE.get()), has(ModItems.SOUL_ORE.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":soul_dust_from_blasting");
+        // 染梦合金锭 ↔ 粒 ↔ 块
+        RecipeHelpers.storageCompress(pWriter, ModItems.DYEDREAM_ALLOY_NUGGET.get(), ModItems.DYEDREAM_ALLOY_INGOT.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.DYEDREAM_ALLOY_INGOT.get(), ModItems.DYEDREAM_ALLOY_NUGGET.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageCompress(pWriter, ModItems.DYEDREAM_ALLOY_INGOT.get(), ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), ModItems.DYEDREAM_ALLOY_INGOT.get(), PasterDreamMod.MOD_ID);
+    }
 
-        // 灵魂精华：1×恶魂之泪 + 8×灵魂粉尘
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SOUL_ESSENCE.get(), 1)
-                .pattern("aaa")
-                .pattern("aba")
-                .pattern("aaa")
-                .define('a', ModItems.SOUL_DUST.get())
-                .define('b', Items.GHAST_TEAR)
-                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
-                .save(pWriter);
+    // ===== 矿石、锭、块杂项配方 =====
 
-        // 魔法石：1×钻石 + 8×灵魂粉尘
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGIC_STONE.get(), 32)
-                .pattern("ab")
-                .pattern("bb")
-                .define('a', Items.DIAMOND)
-                .define('b', ModItems.SOUL_DUST.get())
-                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":magic_stone_from_diamond");
-        // 魔法石：1×冰凌晶芽 + 8×灵魂粉尘
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGIC_STONE.get(), 32)
-                .pattern("ab")
-                .pattern("bb")
-                .define('a', ModBlocks.ICE_BUD.get())
-                .define('b', ModItems.SOUL_DUST.get())
-                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":magic_stone_from_ice_bud");
-
-        // 炙焰金矿石 → 炙焰金锭（熔炉 + 高炉）
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.MOLTEN_GOLD_ORE.get()),
-                        RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 200)
-                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_ORE.get()), has(ModItems.MOLTEN_GOLD_ORE.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":molten_gold_ingot_from_molten_gold_ore_smelting");
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.MOLTEN_GOLD_ORE.get()),
-                        RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 100)
-                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_ORE.get()), has(ModItems.MOLTEN_GOLD_ORE.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":molten_gold_ingot_from_molten_gold_ore_blasting");
-
+    private void miscOreRecipes(Consumer<FinishedRecipe> pWriter) {
+        // ===== 钛金系列 =====
         // 钛矿石 → 钛金锭（熔炉 + 高炉）
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.TITANIUM_ORE.get()),
                         RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 1.0F, 200)
@@ -483,42 +446,93 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 1.0F, 100)
                 .unlockedBy(getHasName(ModItems.DEEPSLATE_TITANIUM_ORE.get()), has(ModItems.DEEPSLATE_TITANIUM_ORE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_ingot_from_deepslate_titanium_ore_blasting");
-
-        // 粗钛 → 钛金锭（熔炉）
+        // 粗钛 → 钛金锭（熔炉 + 高炉）
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_TITANIUM.get()),
                         RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 1.0F, 200)
                 .unlockedBy(getHasName(ModItems.RAW_TITANIUM.get()), has(ModItems.RAW_TITANIUM.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_ingot_from_smelting");
-
-        // 粗钛 → 钛金锭（高炉）
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.RAW_TITANIUM.get()),
                         RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 1.0F, 100)
                 .unlockedBy(getHasName(ModItems.RAW_TITANIUM.get()), has(ModItems.RAW_TITANIUM.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_ingot_from_blasting");
+        // 锭 ↔ 粒 ↔ 块
+        RecipeHelpers.storageDecompress(pWriter, ModItems.TITANIUM_INGOT.get(), ModItems.TITANIUM_NUGGET.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageCompress(pWriter, ModItems.TITANIUM_NUGGET.get(), ModItems.TITANIUM_INGOT.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageCompress(pWriter, ModItems.RAW_TITANIUM.get(), ModItems.RAW_TITANIUM_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.RAW_TITANIUM_BLOCK.get(), ModItems.RAW_TITANIUM.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageCompress(pWriter, ModItems.TITANIUM_INGOT.get(), ModItems.TITANIUM_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.TITANIUM_BLOCK.get(), ModItems.TITANIUM_INGOT.get(), PasterDreamMod.MOD_ID);
 
-        // 粗炙焰金 → 炙焰金锭（熔炉）
+        // ===== 炙焰金系列 =====
+        // 炙焰金矿石 → 炙焰金锭（熔炉 + 高炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.MOLTEN_GOLD_ORE.get()),
+                        RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_ORE.get()), has(ModItems.MOLTEN_GOLD_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":molten_gold_ingot_from_molten_gold_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.MOLTEN_GOLD_ORE.get()),
+                        RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_ORE.get()), has(ModItems.MOLTEN_GOLD_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":molten_gold_ingot_from_molten_gold_ore_blasting");
+        // 粗炙焰金 → 炙焰金锭（熔炉 + 高炉）
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_MOLTEN_GOLD.get()),
                         RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 200)
                 .unlockedBy(getHasName(ModItems.RAW_MOLTEN_GOLD.get()), has(ModItems.RAW_MOLTEN_GOLD.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":moltengold_ingot_from_smelting");
-
-        // 粗炙焰金 → 炙焰金锭（高炉）
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.RAW_MOLTEN_GOLD.get()),
                         RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 100)
                 .unlockedBy(getHasName(ModItems.RAW_MOLTEN_GOLD.get()), has(ModItems.RAW_MOLTEN_GOLD.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":moltengold_ingot_from_blasting");
-
-        // 锭 ↔ 粒（9↔1）
-        RecipeHelpers.storageDecompress(pWriter, ModItems.TITANIUM_INGOT.get(), ModItems.TITANIUM_NUGGET.get(), PasterDreamMod.MOD_ID);
-        RecipeHelpers.storageCompress(pWriter, ModItems.TITANIUM_NUGGET.get(), ModItems.TITANIUM_INGOT.get(), PasterDreamMod.MOD_ID);
-        RecipeHelpers.storageDecompress(pWriter, ModItems.DYEDREAM_ALLOY_INGOT.get(), ModItems.DYEDREAM_ALLOY_NUGGET.get(), PasterDreamMod.MOD_ID);
-        RecipeHelpers.storageCompress(pWriter, ModItems.DYEDREAM_ALLOY_NUGGET.get(), ModItems.DYEDREAM_ALLOY_INGOT.get(), PasterDreamMod.MOD_ID);
+        // 锭 ↔ 粒 ↔ 块
         RecipeHelpers.storageDecompress(pWriter, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_NUGGET.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageCompress(pWriter, ModItems.MOLTEN_GOLD_NUGGET.get(), ModItems.MOLTEN_GOLD_INGOT.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageCompress(pWriter, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.MOLTEN_GOLD_BLOCK.get(), ModItems.MOLTEN_GOLD_INGOT.get(), PasterDreamMod.MOD_ID);
 
-        // 染梦合金块 ↔ 锭
-        RecipeHelpers.storageCompress(pWriter, ModItems.DYEDREAM_ALLOY_INGOT.get(), ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), PasterDreamMod.MOD_ID);
-        RecipeHelpers.storageDecompress(pWriter, ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), ModItems.DYEDREAM_ALLOY_INGOT.get(), PasterDreamMod.MOD_ID);
+        // ===== 盐 =====
+        RecipeHelpers.storageCompress(pWriter, ModItems.SALT.get(), ModItems.SALT_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.SALT_BLOCK.get(), ModItems.SALT.get(), PasterDreamMod.MOD_ID);
+        // 盐：研钵 + 粗盐
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SALT.get(), 1)
+                .requires(ModItems.MORTAR.get())
+                .requires(ModItems.COARSE_SALT.get())
+                .unlockedBy(getHasName(ModItems.COARSE_SALT.get()), has(ModItems.COARSE_SALT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":salt_from_coarse_salt");
+
+        // ===== 灵魂系列 =====
+        // 灵魂矿土 → 灵魂粉尘（熔炉 + 高炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.SOUL_ORE.get()),
+                        RecipeCategory.MISC, ModItems.SOUL_DUST.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.SOUL_ORE.get()), has(ModItems.SOUL_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":soul_dust_from_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.SOUL_ORE.get()),
+                        RecipeCategory.MISC, ModItems.SOUL_DUST.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.SOUL_ORE.get()), has(ModItems.SOUL_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":soul_dust_from_blasting");
+        // 灵魂精华：1×恶魂之泪 + 8×灵魂粉尘
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SOUL_ESSENCE.get(), 1)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', ModItems.SOUL_DUST.get())
+                .define('b', Items.GHAST_TEAR)
+                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
+                .save(pWriter);
+        // 魔法石：1×钻石 + 8×灵魂粉尘
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGIC_STONE.get(), 32)
+                .pattern("ab")
+                .pattern("bb")
+                .define('a', Items.DIAMOND)
+                .define('b', ModItems.SOUL_DUST.get())
+                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":magic_stone_from_diamond");
+        // 魔法石：1×冰凌晶芽 + 8×灵魂粉尘
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGIC_STONE.get(), 32)
+                .pattern("ab")
+                .pattern("bb")
+                .define('a', ModBlocks.ICE_BUD.get())
+                .define('b', ModItems.SOUL_DUST.get())
+                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":magic_stone_from_ice_bud");
     }
 
     // ===== 方解石系列配方 =====
