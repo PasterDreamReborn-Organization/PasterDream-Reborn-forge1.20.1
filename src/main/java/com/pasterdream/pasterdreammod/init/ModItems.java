@@ -249,6 +249,8 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.DYEDREAM_ICE.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_PACKED_ICE = ITEMS.register("dyedream_packed_ice",
             () -> new BlockItem(ModBlocks.DYEDREAM_PACKED_ICE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BIG_BUBBLE = ITEMS.register("big_bubble",
+            () -> new BlockItem(ModBlocks.BIG_BUBBLE.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_LARTERN = ITEMS.register("dyedream_lartern",
             () -> new BlockItem(ModBlocks.DYEDREAM_LARTERN.get(), new Item.Properties()));
 

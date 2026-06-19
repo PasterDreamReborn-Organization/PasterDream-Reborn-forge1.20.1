@@ -74,6 +74,7 @@
 | `claypan_2`                      | 删除                               | -                                         | -                                                   |
 | `dream_cauldron`                 | `dream_cauldron`                 | 不改                                        | 客制化类 `DreamCauldronBlock`，含 BlockEntity、Menu、Screen |
 | `dyedream_block`                 | `dyedream_alloy_block`           | 重命名，补充 `alloy_` 前缀与系列一致                    | 无需客制化类，直接用 `Block`                                  |
+| `big_bubble`                     | `big_bubble`                     | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`；`neighborChanged` 特殊逻辑暂不实现 |
 
 
 ---

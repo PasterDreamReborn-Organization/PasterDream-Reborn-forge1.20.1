@@ -70,6 +70,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_BUD_WALL.get());
                         output.accept(ModItems.DYEDREAM_ICE.get());
                         output.accept(ModItems.DYEDREAM_PACKED_ICE.get());
+                        output.accept(ModItems.BIG_BUBBLE.get());
                         output.accept(ModItems.DYEDREAM_LARTERN.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_BLOCK.get());
                     })

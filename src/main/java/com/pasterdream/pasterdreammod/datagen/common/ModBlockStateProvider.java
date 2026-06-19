@@ -187,6 +187,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         wallBlock((WallBlock) ModBlocks.DYEDREAM_BUD_WALL.get(), budTex);
 
+        // ===== 巨型泡泡 =====
+        var bubbleModel = models().cubeAll(ModBlocks.BIG_BUBBLE.getId().getPath(), modLoc("block/big_bubble")).renderType("translucent");
+        simpleBlockWithItem(ModBlocks.BIG_BUBBLE.get(), bubbleModel);
+
         // ===== 染梦冰与水晶灯 =====
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_ICE.get(), cubeAll(ModBlocks.DYEDREAM_ICE.get()));

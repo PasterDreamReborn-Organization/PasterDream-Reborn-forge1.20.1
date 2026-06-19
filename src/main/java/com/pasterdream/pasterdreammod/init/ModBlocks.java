@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlock;
 import com.pasterdream.pasterdreammod.world.block.fluidblock.MeltDreamLiquidBlock;
 import com.pasterdream.pasterdreammod.world.block.fluidblock.ShadowLiquidBlock;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoublePlantBlock;
@@ -102,6 +103,15 @@ public class ModBlocks {
     // ===== 染梦冰与水晶灯 =====
     public static final RegistryObject<Block> DYEDREAM_ICE = BLOCKS.register("dyedream_ice", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GLASS).strength(0.5f).friction(0.98f).noOcclusion()));
     public static final RegistryObject<Block> DYEDREAM_PACKED_ICE = BLOCKS.register("dyedream_packed_ice", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GLASS).strength(0.5f).friction(0.98f).noOcclusion()));
+
+    // ===== 巨型泡泡 =====
+    public static final RegistryObject<Block> BIG_BUBBLE = BLOCKS.register("big_bubble", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).sound(new SoundType(1.0f, 1.0f,
+            SoundEvents.BUBBLE_COLUMN_BUBBLE_POP,
+            SoundEvents.BUBBLE_COLUMN_BUBBLE_POP,
+            SoundEvents.BUBBLE_COLUMN_BUBBLE_POP,
+            SoundEvents.BUBBLE_COLUMN_BUBBLE_POP,
+            SoundEvents.BUBBLE_COLUMN_BUBBLE_POP)).strength(0.1f).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false)));
+
     public static final RegistryObject<Block> DYEDREAM_LARTERN = BLOCKS.register("dyedream_lartern", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GLASS).strength(0.3f).lightLevel(s -> 14)));
 
     // ===== 染梦合金块 =====
