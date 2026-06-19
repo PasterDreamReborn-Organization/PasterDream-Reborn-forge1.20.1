@@ -254,6 +254,10 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.DYEDREAM_PACKED_ICE.get(), new Item.Properties()));
     public static final RegistryObject<Item> BIG_BUBBLE = ITEMS.register("big_bubble",
             () -> new BlockItem(ModBlocks.BIG_BUBBLE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CLOUD = ITEMS.register("cloud",
+            () -> new BlockItem(ModBlocks.CLOUD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DARK_CLOUD = ITEMS.register("dark_cloud",
+            () -> new BlockItem(ModBlocks.DARK_CLOUD.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_LARTERN = ITEMS.register("dyedream_lartern",
             () -> new BlockItem(ModBlocks.DYEDREAM_LARTERN.get(), new Item.Properties()));
 

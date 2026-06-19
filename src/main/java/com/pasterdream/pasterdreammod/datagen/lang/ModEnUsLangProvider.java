@@ -118,6 +118,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_BUD_WALL.get(), "Dye Dream Bud Wall");
         add(ModBlocks.DYEDREAM_ICE.get(), "Dye Dream Ice");
         add(ModBlocks.DYEDREAM_PACKED_ICE.get(), "Dye Dream Packed Ice");
+        add(ModBlocks.CLOUD.get(), "Cloud");
+        add(ModBlocks.DARK_CLOUD.get(), "Dark Cloud");
         add(ModBlocks.BIG_BUBBLE.get(), "Big Bubble");
         add(ModBlocks.DYEDREAM_LARTERN.get(), "Dye Dream Lantern");
         add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), "Dye Dream Alloy Block");
@@ -150,5 +152,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_equipment_tab", "Paster Dream | Equipment");
 
         add("button.pasterdream.mortarbutton", "grinding");
+
+        add("tooltip.pasterdreammod.magic_stone", "§7§oWhat kind of mage doesn't carry a few magic stones?");
+
     }
 }

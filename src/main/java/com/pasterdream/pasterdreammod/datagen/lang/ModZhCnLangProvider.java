@@ -120,6 +120,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_BUD_WALL.get(), "染梦水晶墙");
         add(ModBlocks.DYEDREAM_ICE.get(), "染梦冰");
         add(ModBlocks.DYEDREAM_PACKED_ICE.get(), "染梦浮冰");
+        add(ModBlocks.CLOUD.get(), "云朵");
+        add(ModBlocks.DARK_CLOUD.get(), "乌云");
         add(ModBlocks.BIG_BUBBLE.get(), "巨型泡泡");
         add(ModBlocks.DYEDREAM_LARTERN.get(), "染梦水晶灯");
         add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), "染梦合金块");
@@ -152,5 +154,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_equipment_tab", "帕斯特之梦 | 设备");
 
         add("button.pasterdream.mortarbutton", "研磨");
+
+        add("tooltip.pasterdreammod.magic_stone", "§7§o哪个魔法师的兜里不会踹几块魔法石呢？");
+
     }
 }

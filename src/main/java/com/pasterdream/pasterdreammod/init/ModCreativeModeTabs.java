@@ -149,6 +149,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_BUD_WALL.get());
                         output.accept(ModItems.ICE_STONE.get());
                         output.accept(ModItems.ICE_BUD.get());
+                        output.accept(ModItems.CLOUD.get());
+                        output.accept(ModItems.DARK_CLOUD.get());
                     })
                     .build());
 

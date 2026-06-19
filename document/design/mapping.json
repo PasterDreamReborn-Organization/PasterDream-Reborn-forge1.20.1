@@ -59,7 +59,9 @@
     "dyedream_block": "dyedream_alloy_block",
     "big_bubble": "big_bubble",
     "ice_stone": "ice_stone",
-    "ice_bud_0": "ice_bud"
+    "ice_bud_0": "ice_bud",
+    "cloud": "cloud",
+    "dark_cloud": "dark_cloud"
   },
   "items": {
     "amber_candy": "amber_candy",

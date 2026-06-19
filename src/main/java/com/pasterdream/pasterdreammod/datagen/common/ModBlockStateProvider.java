@@ -187,6 +187,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         wallBlock((WallBlock) ModBlocks.DYEDREAM_BUD_WALL.get(), budTex);
 
+        // ===== 云朵 =====
+        var cloudModel = models().cubeAll(ModBlocks.CLOUD.getId().getPath(), blockTexture(ModBlocks.CLOUD.get())).renderType("translucent");
+        simpleBlockWithItem(ModBlocks.CLOUD.get(), cloudModel);
+        var darkCloudModel = models().cubeAll(ModBlocks.DARK_CLOUD.getId().getPath(), blockTexture(ModBlocks.DARK_CLOUD.get())).renderType("translucent");
+        simpleBlockWithItem(ModBlocks.DARK_CLOUD.get(), darkCloudModel);
+
         // ===== 巨型泡泡 =====
         var bubbleModel = models().cubeAll(ModBlocks.BIG_BUBBLE.getId().getPath(), modLoc("block/big_bubble")).renderType("translucent");
         simpleBlockWithItem(ModBlocks.BIG_BUBBLE.get(), bubbleModel);
