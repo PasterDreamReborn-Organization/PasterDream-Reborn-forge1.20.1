@@ -92,9 +92,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> GOLD_CARVE_DYEDREAM_GLASS = BLOCKS.register("gold_carve_dyedream_glass", () -> new GlassBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GLASS).strength(0.1f, 0f).lightLevel(s -> 15).noOcclusion()));
     public static final RegistryObject<Block> GOLD_CARVE_DYEDREAM_GLASS_PANE = BLOCKS.register("gold_carve_dyedream_glass_pane", () -> new IronBarsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GLASS).strength(0.1f, 0f).lightLevel(s -> 15).noOcclusion()));
     // ===== 染梦晶芽系列 =====
-    public static final RegistryObject<Block> SMALL_DYEDREAM_BUD = BLOCKS.register("small_dyedream_bud", () -> new AmethystClusterBlock(3, 4, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.AMETHYST).strength(1f, 0f).lightLevel(s -> 10).requiresCorrectToolForDrops().noOcclusion()));
-    public static final RegistryObject<Block> MEDIUM_DYEDREAM_BUD = BLOCKS.register("medium_dyedream_bud", () -> new AmethystClusterBlock(4, 3, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.AMETHYST).strength(1f, 0f).lightLevel(s -> 10).requiresCorrectToolForDrops().noOcclusion()));
-    public static final RegistryObject<Block> LARGE_DYEDREAM_BUD = BLOCKS.register("large_dyedream_bud", () -> new AmethystClusterBlock(5, 3, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.AMETHYST).strength(1f, 0f).lightLevel(s -> 10).requiresCorrectToolForDrops().noOcclusion()));
+    public static final RegistryObject<Block> SMALL_DYEDREAM_BUD = BLOCKS.register("small_dyedream_bud", () -> new AmethystClusterBlock(4, 4, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.AMETHYST).strength(1f, 0f).lightLevel(s -> 10).requiresCorrectToolForDrops().noOcclusion()));
+    public static final RegistryObject<Block> MEDIUM_DYEDREAM_BUD = BLOCKS.register("medium_dyedream_bud", () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.AMETHYST).strength(1f, 0f).lightLevel(s -> 10).requiresCorrectToolForDrops().noOcclusion()));
+    public static final RegistryObject<Block> LARGE_DYEDREAM_BUD = BLOCKS.register("large_dyedream_bud", () -> new AmethystClusterBlock(9, 3, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.AMETHYST).strength(1f, 0f).lightLevel(s -> 10).requiresCorrectToolForDrops().noOcclusion()));
     // ===== 染梦水晶建材系列 =====
     public static final RegistryObject<Block> DYEDREAM_BUD_BLOCK = BLOCKS.register("dyedream_bud_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.AMETHYST).strength(1f, 0f).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> DYEDREAM_BUD_STAIRS = BLOCKS.register("dyedream_bud_stairs", () -> new StairBlock(DYEDREAM_BUD_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.AMETHYST).strength(1f, 0f).requiresCorrectToolForDrops().dynamicShape().noOcclusion()));
@@ -116,7 +116,7 @@ public class ModBlocks {
 
     // ===== 冰晶岩与冰凌晶芽 =====
     public static final RegistryObject<Block> ICE_STONE = BLOCKS.register("ice_stone", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.ICE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(0.8f, 0.2f).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> ICE_BUD = BLOCKS.register("ice_bud", () -> new AmethystClusterBlock(5, 4, BlockBehaviour.Properties.of().mapColor(MapColor.ICE).sound(SoundType.AMETHYST_CLUSTER).strength(1f, 0f).lightLevel(s -> 9).requiresCorrectToolForDrops().noOcclusion()));
+    public static final RegistryObject<Block> ICE_BUD = BLOCKS.register("ice_bud", () -> new AmethystClusterBlock(9, 4, BlockBehaviour.Properties.of().mapColor(MapColor.ICE).sound(SoundType.AMETHYST_CLUSTER).strength(1f, 0f).lightLevel(s -> 9).requiresCorrectToolForDrops().noOcclusion()));
 
     // ===== 染梦合金块 =====
     public static final RegistryObject<Block> DYEDREAM_ALLOY_BLOCK = BLOCKS.register("dyedream_alloy_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL).strength(11f, 7f).requiresCorrectToolForDrops()));
