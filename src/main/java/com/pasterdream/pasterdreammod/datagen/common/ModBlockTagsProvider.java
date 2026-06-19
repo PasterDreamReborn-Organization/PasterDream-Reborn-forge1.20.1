@@ -100,7 +100,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_SLAB.get())
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get())
                 .add(ModBlocks.CLAYPAN.get())
-                .add(ModBlocks.DREAM_CAULDRON.get());
+                .add(ModBlocks.DREAM_CAULDRON.get())
+                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
+
+        // 需要钻石工具挖掘
+        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
+
+        // 可作为信标基座
+        tag(BlockTags.BEACON_BASE_BLOCKS)
+                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
 
         tag(Tags.Blocks.ORES)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())

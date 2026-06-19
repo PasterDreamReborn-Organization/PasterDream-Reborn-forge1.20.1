@@ -131,28 +131,30 @@ public final class RecipeHelpers {
     }
 
     /**
-     * 9→1 压缩配方：9×材料合成 1×压缩块（3×3 有序合成）。
+     * 9→1 压缩配方：9×source 合成 1×result（3×3 有序合成）。
+     * 保存 ID 格式：{@code result_from_source}
      */
     public static void storageCompress(Consumer<FinishedRecipe> writer,
-                                        ItemLike material, ItemLike block) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block, 1)
+                                        ItemLike source, ItemLike result, String modId) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result, 1)
                 .pattern("aaa")
                 .pattern("aaa")
                 .pattern("aaa")
-                .define('a', material)
-                .unlockedBy(getHasName(material), has(material))
-                .save(writer);
+                .define('a', source)
+                .unlockedBy(getHasName(source), has(source))
+                .save(writer, modId + ":" + getItemName(result) + "_from_" + getItemName(source));
     }
 
     /**
-     * 1→9 分解配方：1×压缩块分解为 9×材料（无序合成）。
+     * 1→9 分解配方：1×source 分解为 9×result（无序合成）。
+     * 保存 ID 格式：{@code result_from_source}
      */
     public static void storageDecompress(Consumer<FinishedRecipe> writer,
-                                          ItemLike block, ItemLike material) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, material, 9)
-                .requires(block)
-                .unlockedBy(getHasName(block), has(block))
-                .save(writer);
+                                          ItemLike source, ItemLike result, String modId) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, 9)
+                .requires(source)
+                .unlockedBy(getHasName(source), has(source))
+                .save(writer, modId + ":" + getItemName(result) + "_from_" + getItemName(source));
     }
 
     /**

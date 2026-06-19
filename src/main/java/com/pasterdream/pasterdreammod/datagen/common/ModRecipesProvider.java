@@ -36,7 +36,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         claypanRecipe(pWriter);
         dustRecipes(pWriter);
         quartzRecipes(pWriter);
-        alloySmeltingRecipes(pWriter);
+        alloyRecipes(pWriter);
         foodRecipes(pWriter);
     }
 
@@ -287,8 +287,8 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     // ===== 粉色粘液配方 =====
 
     private void pinkSlimeRecipes(Consumer<FinishedRecipe> pWriter) {
-        RecipeHelpers.storageCompress(pWriter, ModItems.PINK_SLIMEBALL.get(), ModItems.PINK_SLIME_BLOCK.get());
-        RecipeHelpers.storageDecompress(pWriter, ModItems.PINK_SLIME_BLOCK.get(), ModItems.PINK_SLIMEBALL.get());
+        RecipeHelpers.storageCompress(pWriter, ModItems.PINK_SLIMEBALL.get(), ModItems.PINK_SLIME_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.PINK_SLIME_BLOCK.get(), ModItems.PINK_SLIMEBALL.get(), PasterDreamMod.MOD_ID);
     }
 
     // ===== 陶盆配方 =====
@@ -425,9 +425,9 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_quartz_block_wall_from_stonecutting");
     }
 
-    // ===== 锭相关合成配方 =====
+    // ===== 锭与合金块相关配方 =====
 
-    private void alloySmeltingRecipes(Consumer<FinishedRecipe> pWriter) {
+    private void alloyRecipes(Consumer<FinishedRecipe> pWriter) {
         // 染梦合金锭粗胚：钛金锭 + 染梦粉尘 + 4×染梦晶芽粒
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RAW_DYEDREAM_ALLOY_INGOT.get(), 1)
                 .requires(ModItems.TITANIUM_INGOT.get())
@@ -472,41 +472,17 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.RAW_MOLTEN_GOLD.get()), has(ModItems.RAW_MOLTEN_GOLD.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":moltengold_ingot_from_blasting");
 
-        // 钛金锭 → 9× 钛金粒
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TITANIUM_NUGGET.get(), 9)
-                .requires(ModItems.TITANIUM_INGOT.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_nugget_from_ingot");
+        // 锭 ↔ 粒（9↔1）
+        RecipeHelpers.storageDecompress(pWriter, ModItems.TITANIUM_INGOT.get(), ModItems.TITANIUM_NUGGET.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageCompress(pWriter, ModItems.TITANIUM_NUGGET.get(), ModItems.TITANIUM_INGOT.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.DYEDREAM_ALLOY_INGOT.get(), ModItems.DYEDREAM_ALLOY_NUGGET.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageCompress(pWriter, ModItems.DYEDREAM_ALLOY_NUGGET.get(), ModItems.DYEDREAM_ALLOY_INGOT.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.MOLTEN_GOLD_INGOT.get(), ModItems.MOLTEN_GOLD_NUGGET.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageCompress(pWriter, ModItems.MOLTEN_GOLD_NUGGET.get(), ModItems.MOLTEN_GOLD_INGOT.get(), PasterDreamMod.MOD_ID);
 
-        // 9× 钛金粒 → 钛金锭
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 1)
-                .requires(ModItems.TITANIUM_NUGGET.get(), 9)
-                .unlockedBy(getHasName(ModItems.TITANIUM_NUGGET.get()), has(ModItems.TITANIUM_NUGGET.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_ingot_from_nuggets");
-
-        // 染梦合金锭 → 9× 染梦合金粒
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_ALLOY_NUGGET.get(), 9)
-                .requires(ModItems.DYEDREAM_ALLOY_INGOT.get())
-                .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_alloy_nugget_from_alloy_ingot");
-
-        // 9× 染梦合金粒 → 染梦合金锭
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_ALLOY_INGOT.get(), 1)
-                .requires(ModItems.DYEDREAM_ALLOY_NUGGET.get(), 9)
-                .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_NUGGET.get()), has(ModItems.DYEDREAM_ALLOY_NUGGET.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_alloy_ingot_from_nuggets");
-
-        // 炙焰金锭 → 9× 炙焰金粒
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MOLTEN_GOLD_NUGGET.get(), 9)
-                .requires(ModItems.MOLTEN_GOLD_INGOT.get())
-                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_INGOT.get()), has(ModItems.MOLTEN_GOLD_INGOT.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":moltengold_nugget_from_ingot");
-
-        // 9× 炙焰金粒 → 炙焰金锭
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1)
-                .requires(ModItems.MOLTEN_GOLD_NUGGET.get(), 9)
-                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_NUGGET.get()), has(ModItems.MOLTEN_GOLD_NUGGET.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":moltengold_ingot_from_nuggets");
+        // 染梦合金块 ↔ 锭
+        RecipeHelpers.storageCompress(pWriter, ModItems.DYEDREAM_ALLOY_INGOT.get(), ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), ModItems.DYEDREAM_ALLOY_INGOT.get(), PasterDreamMod.MOD_ID);
     }
 
     // ===== 食物相关合成配方 =====
