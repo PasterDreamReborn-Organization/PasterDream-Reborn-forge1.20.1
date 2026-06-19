@@ -69,7 +69,9 @@
     "calcite_tiles": "calcite_tiles",
     "calcite_tiles_stairs": "calcite_tiles_stairs",
     "calcite_tiles_slab": "calcite_tiles_slab",
-    "calcite_tiles_wall": "calcite_tiles_wall"
+    "calcite_tiles_wall": "calcite_tiles_wall",
+    "titanium_ore": "titanium_ore",
+    "deepslate_titanium_ore": "deepslate_titanium_ore"
   },
   "items": {
     "amber_candy": "amber_candy",
@@ -116,6 +118,7 @@
     "pinkegg": "pink_egg",
     "chocolate": "chocolate",
     "dyedream_fruit": "dyedream_fruit",
+    "fig": "fig",
     "cake_base": "cake_base",
     "buncake_0": "cream_bun_cake",
     "buncake_1": "berry_bun_cake",
@@ -125,6 +128,19 @@
     "buncake_5": "glow_berry_bun_cake",
     "buncake_6": "dyedream_fruit_bun_cake",
     "chocolate_matcha_cake": "chocolate_matcha_cake",
+    "ricecake": "rice_cake",
+    "dyedream_popsicle": "dyedream_popsicle",
+    "fried_egg": "fried_egg",
+    "bacon_and_egg": "bacon_and_egg",
+    "odd_bacon_and_egg": "odd_bacon_and_egg",
+    "heart_chocolate_0": "heart_chocolate",
+    "heart_chocolate_1": "white_heart_chocolate",
+    "heart_chocolate_2": "pink_heart_chocolate",
+    "bread_slice": "bread_slice",
+    "swiss_roll": "swiss_roll",
+    "sandwich_0": "sandwich",
+    "wafer_biscuit": "wafer_biscuit",
+    "stuffed_wafer_cookies": "stuffed_wafer_cookies",
     "magic_stone": "magic_stone"
   },
   "entities": {},

@@ -85,6 +85,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
                 .add(ModBlocks.MEDIUM_DYEDREAM_BUD.get())
                 .add(ModBlocks.LARGE_DYEDREAM_BUD.get())
+                .add(ModBlocks.TITANIUM_ORE.get())
+                .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
                 .add(ModBlocks.DYEDREAM_ICE.get())
                 .add(ModBlocks.DYEDREAM_PACKED_ICE.get())
                 .add(ModBlocks.DYEDREAM_LARTERN.get())
@@ -115,7 +117,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.LARGE_DYEDREAM_BUD.get());
         // 需要钻石工具挖掘
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get());
+                .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
+                .add(ModBlocks.TITANIUM_ORE.get())
+                .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get());
 
         // 可作为信标基座
         tag(BlockTags.BEACON_BASE_BLOCKS)
@@ -124,7 +128,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(Tags.Blocks.ORES)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get())
-                .add(ModBlocks.AMBER_CANDY_ORE.get());
+                .add(ModBlocks.AMBER_CANDY_ORE.get())
+                .add(ModBlocks.TITANIUM_ORE.get())
+                .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get());
 
 
         tag(BlockTags.STAIRS)

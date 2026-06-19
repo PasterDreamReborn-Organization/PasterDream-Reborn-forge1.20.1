@@ -87,6 +87,8 @@
 | `calcite_tiles_stairs`         | `calcite_tiles_stairs`          | 不改                                        | 无需客制化类，直接用 `StairBlock`                             |
 | `calcite_tiles_slab`           | `calcite_tiles_slab`            | 不改 (旧版翻译键填错成"楼梯"，实际是台阶)           | 无需客制化类，直接用 `SlabBlock`                              |
 | `calcite_tiles_wall`           | `calcite_tiles_wall`            | 不改                                        | 无需客制化类，直接用 `WallBlock`                              |
+| `titanium_ore`                 | `titanium_ore`                  | 不改                                        | 无需客制化类，直接用 `Block`                                  |
+| `deepslate_titanium_ore`       | `deepslate_titanium_ore`        | 不改                                        | 无需客制化类，直接用 `Block`                                  |
 
 
 ---

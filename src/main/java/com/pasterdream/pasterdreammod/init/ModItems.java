@@ -260,6 +260,10 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.DYEDREAM_DUST_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> AMBER_CANDY_ORE = ITEMS.register("amber_candy_ore",
             () -> new BlockItem(ModBlocks.AMBER_CANDY_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> TITANIUM_ORE = ITEMS.register("titanium_ore",
+            () -> new BlockItem(ModBlocks.TITANIUM_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DEEPSLATE_TITANIUM_ORE = ITEMS.register("deepslate_titanium_ore",
+            () -> new BlockItem(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> PINK_SLIME_BLOCK = ITEMS.register("pink_slime_block",
             () -> new BlockItem(ModBlocks.PINK_SLIME_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> PINK_MUSHROOM_BLOCK = ITEMS.register("pink_mushroom_block",

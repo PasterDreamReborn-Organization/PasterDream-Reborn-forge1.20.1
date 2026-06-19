@@ -418,6 +418,25 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()), has(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_alloy_ingot_from_blasting");
 
+        // 钛矿石 → 粗钛（熔炉 + 高炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.TITANIUM_ORE.get()),
+                        RecipeCategory.MISC, ModItems.RAW_TITANIUM.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.TITANIUM_ORE.get()), has(ModItems.TITANIUM_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":raw_titanium_from_titanium_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.TITANIUM_ORE.get()),
+                        RecipeCategory.MISC, ModItems.RAW_TITANIUM.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.TITANIUM_ORE.get()), has(ModItems.TITANIUM_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":raw_titanium_from_titanium_ore_blasting");
+        // 深层钛矿石 → 粗钛（熔炉 + 高炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.DEEPSLATE_TITANIUM_ORE.get()),
+                        RecipeCategory.MISC, ModItems.RAW_TITANIUM.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.DEEPSLATE_TITANIUM_ORE.get()), has(ModItems.DEEPSLATE_TITANIUM_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":raw_titanium_from_deepslate_titanium_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.DEEPSLATE_TITANIUM_ORE.get()),
+                        RecipeCategory.MISC, ModItems.RAW_TITANIUM.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.DEEPSLATE_TITANIUM_ORE.get()), has(ModItems.DEEPSLATE_TITANIUM_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":raw_titanium_from_deepslate_titanium_ore_blasting");
+
         // 粗钛 → 钛金锭（熔炉）
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_TITANIUM.get()),
                         RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 1.0F, 200)

@@ -173,6 +173,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CALCITE_TILES_STAIRS.get());
                         output.accept(ModItems.CALCITE_TILES_SLAB.get());
                         output.accept(ModItems.CALCITE_TILES_WALL.get());
+                        output.accept(ModItems.TITANIUM_ORE.get());
+                        output.accept(ModItems.DEEPSLATE_TITANIUM_ORE.get());
                     })
                     .build());
 
