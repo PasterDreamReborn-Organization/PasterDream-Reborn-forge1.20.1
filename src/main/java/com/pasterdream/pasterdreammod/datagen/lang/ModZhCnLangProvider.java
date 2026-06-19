@@ -145,9 +145,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("fluid.pasterdream.wind_plant_extract","风植萃取液（流体）");
         add("fluid.pasterdream.yeast","酵母（流体）");
 
-        add("itemGroup.pasterdream.pasterdream_tab", "帕斯特之梦 | 方块");
-        add("itemGroup.pasterdream.pasterdream_materials_tab", "帕斯特之梦 | 物品");
-        add("itemGroup.pasterdream.pasterdream_equipment_creative_tab", "帕斯特之梦 | 设备");
+        add("itemGroup.pasterdream.pasterdream_food_tab", "帕斯特之梦 | 饮食");
+        add("itemGroup.pasterdream.pasterdream_items_tab", "帕斯特之梦 | 物品");
+        add("itemGroup.pasterdream.pasterdream_blocks_tab", "帕斯特之梦 | 方块");
+        add("itemGroup.pasterdream.pasterdream_plants_tab", "帕斯特之梦 | 植物");
+        add("itemGroup.pasterdream.pasterdream_equipment_tab", "帕斯特之梦 | 设备");
 
         add("button.pasterdream.mortarbutton", "研磨");
     }
