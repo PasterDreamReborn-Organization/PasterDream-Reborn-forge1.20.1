@@ -128,9 +128,10 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
 
         if (maxProgress > 0)
         {
-            if (fluidTank.getFluidAmount() < recipeRequiredFluid.getAmount() || fluidTank.getFluid().getFluid() != recipeRequiredFluid.getFluid())
+            if (recipeRequiredFluid == null || fluidTank.getFluidAmount() < recipeRequiredFluid.getAmount() || fluidTank.getFluid().getFluid() != recipeRequiredFluid.getFluid())
             {
                 resetProgress();
+                return;
             }
             progress++;
 
@@ -165,6 +166,7 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
         progress = 0;
         maxProgress = 0;
         currentRecipeOutput = ItemStack.EMPTY;
+        recipeRequiredFluid = null;
         setChanged();
     }
 
@@ -176,6 +178,10 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
         fluidTank.readFromNBT(tag.getCompound("FluidTank"));
         progress = tag.getInt("Progress");
         maxProgress = tag.getInt("MaxProgress");
+        if (tag.contains("RecipeRequiredFluid"))
+        {
+            recipeRequiredFluid = FluidStack.loadFluidStackFromNBT(tag.getCompound("RecipeRequiredFluid"));
+        }
     }
 
     @Override
@@ -186,6 +192,10 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
         tag.put("FluidTank", fluidTank.writeToNBT(new CompoundTag()));
         tag.putInt("Progress", progress);
         tag.putInt("MaxProgress", maxProgress);
+        if (recipeRequiredFluid != null)
+        {
+            tag.put("RecipeRequiredFluid", recipeRequiredFluid.writeToNBT(new CompoundTag()));
+        }
     }
 
     @Override

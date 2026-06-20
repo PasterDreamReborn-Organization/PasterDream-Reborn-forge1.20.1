@@ -1,7 +1,6 @@
 package com.pasterdream.pasterdreammod.recipe;
 
 import com.pasterdream.pasterdreammod.helper.fluidingredient.FluidIngredient;
-import com.pasterdream.pasterdreammod.helper.recipematchresult.MortarRecipeMatchResult;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
