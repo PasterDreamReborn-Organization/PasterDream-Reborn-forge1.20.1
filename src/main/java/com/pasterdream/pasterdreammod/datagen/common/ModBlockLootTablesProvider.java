@@ -90,15 +90,15 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get());
 
         dropSelf(ModBlocks.DYEDREAM_PLANKS.get());
-        dropSelf(ModBlocks.DYEDREAM_PLANKS_STAIRS.get());
-        add(ModBlocks.DYEDREAM_PLANKS_SLAB.get(), block -> createSlabItemTable(ModBlocks.DYEDREAM_PLANKS_SLAB.get()));
-        dropSelf(ModBlocks.DYEDREAM_PLANKS_FENCE.get());
-        dropSelf(ModBlocks.DYEDREAM_PLANKS_FENCEGATE.get());
-        dropSelf(ModBlocks.DYEDREAM_PLANKS_PANE.get());
-        add(ModBlocks.DYEDREAM_PLANKS_DOOR.get(), createDoorTable(ModBlocks.DYEDREAM_PLANKS_DOOR.get()));
-        dropSelf(ModBlocks.DYEDREAM_PLANKS_TRAPDOOR.get());
-        dropSelf(ModBlocks.DYEDREAM_PLANKS_PRESSURE_PLATE.get());
-        dropSelf(ModBlocks.DYEDREAM_PLANKS_BUTTON.get());
+        dropSelf(ModBlocks.DYEDREAM_STAIRS.get());
+        add(ModBlocks.DYEDREAM_SLAB.get(), block -> createSlabItemTable(ModBlocks.DYEDREAM_SLAB.get()));
+        dropSelf(ModBlocks.DYEDREAM_FENCE.get());
+        dropSelf(ModBlocks.DYEDREAM_FENCE_GATE.get());
+        dropSelf(ModBlocks.DYEDREAM_PANE.get());
+        add(ModBlocks.DYEDREAM_DOOR.get(), createDoorTable(ModBlocks.DYEDREAM_DOOR.get()));
+        dropSelf(ModBlocks.DYEDREAM_TRAPDOOR.get());
+        dropSelf(ModBlocks.DYEDREAM_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.DYEDREAM_BUTTON.get());
 
         dropSelf(ModBlocks.PINK_SLIME_BLOCK.get());
 

@@ -102,34 +102,34 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_PLANKS.get(), cubeAll(ModBlocks.DYEDREAM_PLANKS.get()));
 
-        stairsBlock((StairBlock) ModBlocks.DYEDREAM_PLANKS_STAIRS.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
-        blockItem(ModBlocks.DYEDREAM_PLANKS_STAIRS);
+        stairsBlock((StairBlock) ModBlocks.DYEDREAM_STAIRS.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
+        blockItem(ModBlocks.DYEDREAM_STAIRS);
 
-        slabBlock((SlabBlock) ModBlocks.DYEDREAM_PLANKS_SLAB.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
-        blockItem(ModBlocks.DYEDREAM_PLANKS_SLAB);
+        slabBlock((SlabBlock) ModBlocks.DYEDREAM_SLAB.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
+        blockItem(ModBlocks.DYEDREAM_SLAB);
 
-        fenceBlock((FenceBlock) ModBlocks.DYEDREAM_PLANKS_FENCE.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
+        fenceBlock((FenceBlock) ModBlocks.DYEDREAM_FENCE.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
 
-        fenceGateBlock((FenceGateBlock) ModBlocks.DYEDREAM_PLANKS_FENCEGATE.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
-        blockItem(ModBlocks.DYEDREAM_PLANKS_FENCEGATE);
+        fenceGateBlock((FenceGateBlock) ModBlocks.DYEDREAM_FENCE_GATE.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
+        blockItem(ModBlocks.DYEDREAM_FENCE_GATE);
 
-        paneBlock((IronBarsBlock) ModBlocks.DYEDREAM_PLANKS_PANE.get(), modLoc("block/dyedream_planks_trapdoor"), modLoc("block/dyedream_planks_trapdoor"));
+        paneBlock((IronBarsBlock) ModBlocks.DYEDREAM_PANE.get(), modLoc("block/dyedream_trapdoor"), modLoc("block/dyedream_trapdoor"));
 
-        doorBlockWithRenderType((DoorBlock) ModBlocks.DYEDREAM_PLANKS_DOOR.get(),
-                modLoc("block/dyedream_planks_door_bottom"),
-                modLoc("block/dyedream_planks_door_top"),
+        doorBlockWithRenderType((DoorBlock) ModBlocks.DYEDREAM_DOOR.get(),
+                modLoc("block/dyedream_door_bottom"),
+                modLoc("block/dyedream_door_top"),
                 "cutout");
 
-        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.DYEDREAM_PLANKS_TRAPDOOR.get(),
-                modLoc("block/dyedream_planks_trapdoor"),
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.DYEDREAM_TRAPDOOR.get(),
+                modLoc("block/dyedream_trapdoor"),
                 true,
                 "cutout");
-        blockItem(ModBlocks.DYEDREAM_PLANKS_TRAPDOOR, "_bottom");
+        blockItem(ModBlocks.DYEDREAM_TRAPDOOR, "_bottom");
 
-        pressurePlateBlock((PressurePlateBlock) ModBlocks.DYEDREAM_PLANKS_PRESSURE_PLATE.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
-        blockItem(ModBlocks.DYEDREAM_PLANKS_PRESSURE_PLATE);
+        pressurePlateBlock((PressurePlateBlock) ModBlocks.DYEDREAM_PRESSURE_PLATE.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
+        blockItem(ModBlocks.DYEDREAM_PRESSURE_PLATE);
 
-        buttonBlock((ButtonBlock) ModBlocks.DYEDREAM_PLANKS_BUTTON.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
+        buttonBlock((ButtonBlock) ModBlocks.DYEDREAM_BUTTON.get(), blockTexture(ModBlocks.DYEDREAM_PLANKS.get()));
 
         simpleBlockWithItem(ModBlocks.PINK_SLIME_BLOCK.get(), cubeAll(ModBlocks.PINK_SLIME_BLOCK.get()));
 

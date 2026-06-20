@@ -183,42 +183,42 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.DYEDREAM_PLANKS.get())
-                .add(ModBlocks.DYEDREAM_PLANKS_STAIRS.get())
-                .add(ModBlocks.DYEDREAM_PLANKS_SLAB.get())
-                .add(ModBlocks.DYEDREAM_PLANKS_FENCE.get())
-                .add(ModBlocks.DYEDREAM_PLANKS_FENCEGATE.get())
-                .add(ModBlocks.DYEDREAM_PLANKS_PANE.get())
-                .add(ModBlocks.DYEDREAM_PLANKS_DOOR.get())
-                .add(ModBlocks.DYEDREAM_PLANKS_TRAPDOOR.get())
-                .add(ModBlocks.DYEDREAM_PLANKS_PRESSURE_PLATE.get())
-                .add(ModBlocks.DYEDREAM_PLANKS_BUTTON.get());
+                .add(ModBlocks.DYEDREAM_STAIRS.get())
+                .add(ModBlocks.DYEDREAM_SLAB.get())
+                .add(ModBlocks.DYEDREAM_FENCE.get())
+                .add(ModBlocks.DYEDREAM_FENCE_GATE.get())
+                .add(ModBlocks.DYEDREAM_PANE.get())
+                .add(ModBlocks.DYEDREAM_DOOR.get())
+                .add(ModBlocks.DYEDREAM_TRAPDOOR.get())
+                .add(ModBlocks.DYEDREAM_PRESSURE_PLATE.get())
+                .add(ModBlocks.DYEDREAM_BUTTON.get());
 
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.DYEDREAM_PLANKS.get());
 
         tag(BlockTags.WOODEN_STAIRS)
-                .add(ModBlocks.DYEDREAM_PLANKS_STAIRS.get());
+                .add(ModBlocks.DYEDREAM_STAIRS.get());
 
         tag(BlockTags.WOODEN_SLABS)
-                .add(ModBlocks.DYEDREAM_PLANKS_SLAB.get());
+                .add(ModBlocks.DYEDREAM_SLAB.get());
 
         tag(BlockTags.WOODEN_FENCES)
-                .add(ModBlocks.DYEDREAM_PLANKS_FENCE.get());
+                .add(ModBlocks.DYEDREAM_FENCE.get());
 
         tag(BlockTags.FENCE_GATES)
-                .add(ModBlocks.DYEDREAM_PLANKS_FENCEGATE.get());
+                .add(ModBlocks.DYEDREAM_FENCE_GATE.get());
 
         tag(BlockTags.WOODEN_DOORS)
-                .add(ModBlocks.DYEDREAM_PLANKS_DOOR.get());
+                .add(ModBlocks.DYEDREAM_DOOR.get());
 
         tag(BlockTags.WOODEN_TRAPDOORS)
-                .add(ModBlocks.DYEDREAM_PLANKS_TRAPDOOR.get());
+                .add(ModBlocks.DYEDREAM_TRAPDOOR.get());
 
         tag(BlockTags.WOODEN_PRESSURE_PLATES)
-                .add(ModBlocks.DYEDREAM_PLANKS_PRESSURE_PLATE.get());
+                .add(ModBlocks.DYEDREAM_PRESSURE_PLATE.get());
 
         tag(BlockTags.WOODEN_BUTTONS)
-                .add(ModBlocks.DYEDREAM_PLANKS_BUTTON.get());
+                .add(ModBlocks.DYEDREAM_BUTTON.get());
 
         // ===== 模组玻璃板 =====
 

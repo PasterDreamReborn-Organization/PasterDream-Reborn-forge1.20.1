@@ -374,24 +374,24 @@ public class ModItems {
 
     public static final RegistryObject<Item> DYEDREAM_PLANKS = ITEMS.register("dyedream_planks",
             () -> new BlockItem(ModBlocks.DYEDREAM_PLANKS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> DYEDREAM_PLANKS_STAIRS = ITEMS.register("dyedream_planks_stairs",
-            () -> new BlockItem(ModBlocks.DYEDREAM_PLANKS_STAIRS.get(), new Item.Properties()));
-    public static final RegistryObject<Item> DYEDREAM_PLANKS_SLAB = ITEMS.register("dyedream_planks_slab",
-            () -> new BlockItem(ModBlocks.DYEDREAM_PLANKS_SLAB.get(), new Item.Properties()));
-    public static final RegistryObject<Item> DYEDREAM_PLANKS_FENCE = ITEMS.register("dyedream_planks_fence",
-            () -> new BlockItem(ModBlocks.DYEDREAM_PLANKS_FENCE.get(), new Item.Properties()));
-    public static final RegistryObject<Item> DYEDREAM_PLANKS_FENCEGATE = ITEMS.register("dyedream_planks_fencegate",
-            () -> new BlockItem(ModBlocks.DYEDREAM_PLANKS_FENCEGATE.get(), new Item.Properties()));
-    public static final RegistryObject<Item> DYEDREAM_PLANKS_PANE = ITEMS.register("dyedream_planks_pane",
-            () -> new BlockItem(ModBlocks.DYEDREAM_PLANKS_PANE.get(), new Item.Properties()));
-    public static final RegistryObject<Item> DYEDREAM_PLANKS_DOOR = ITEMS.register("dyedream_planks_door",
-            () -> new BlockItem(ModBlocks.DYEDREAM_PLANKS_DOOR.get(), new Item.Properties()));
-    public static final RegistryObject<Item> DYEDREAM_PLANKS_TRAPDOOR = ITEMS.register("dyedream_planks_trapdoor",
-            () -> new BlockItem(ModBlocks.DYEDREAM_PLANKS_TRAPDOOR.get(), new Item.Properties()));
-    public static final RegistryObject<Item> DYEDREAM_PLANKS_PRESSURE_PLATE = ITEMS.register("dyedream_planks_pressure_plate",
-            () -> new BlockItem(ModBlocks.DYEDREAM_PLANKS_PRESSURE_PLATE.get(), new Item.Properties()));
-    public static final RegistryObject<Item> DYEDREAM_PLANKS_BUTTON = ITEMS.register("dyedream_planks_button",
-            () -> new BlockItem(ModBlocks.DYEDREAM_PLANKS_BUTTON.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_STAIRS = ITEMS.register("dyedream_stairs",
+            () -> new BlockItem(ModBlocks.DYEDREAM_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_SLAB = ITEMS.register("dyedream_slab",
+            () -> new BlockItem(ModBlocks.DYEDREAM_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_FENCE = ITEMS.register("dyedream_fence",
+            () -> new BlockItem(ModBlocks.DYEDREAM_FENCE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_FENCE_GATE = ITEMS.register("dyedream_fence_gate",
+            () -> new BlockItem(ModBlocks.DYEDREAM_FENCE_GATE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_PANE = ITEMS.register("dyedream_pane",
+            () -> new BlockItem(ModBlocks.DYEDREAM_PANE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_DOOR = ITEMS.register("dyedream_door",
+            () -> new BlockItem(ModBlocks.DYEDREAM_DOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_TRAPDOOR = ITEMS.register("dyedream_trapdoor",
+            () -> new BlockItem(ModBlocks.DYEDREAM_TRAPDOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_PRESSURE_PLATE = ITEMS.register("dyedream_pressure_plate",
+            () -> new BlockItem(ModBlocks.DYEDREAM_PRESSURE_PLATE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_BUTTON = ITEMS.register("dyedream_button",
+            () -> new BlockItem(ModBlocks.DYEDREAM_BUTTON.get(), new Item.Properties()));
 
     // ===== 染梦合金块 =====
     public static final RegistryObject<Item> DYEDREAM_ALLOY_BLOCK = ITEMS.register("dyedream_alloy_block",

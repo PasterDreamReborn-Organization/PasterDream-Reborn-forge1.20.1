@@ -36,15 +36,15 @@
 | `dyedreamquartz_block_wall`      | `dyedream_quartz_block_wall`     | 重命名，补下划线                                  | 无需客制化类，直接用 `WallBlock`                              |
 | `dyedream_sapling`               | `dyedream_sapling`               | 不改                                        | 无需客制化类，直接用 `SaplingBlock`，移除不必要的 BlockEntity        |
 | `dyedream_planks`                | `dyedream_planks`                | 不改                                        | 无需客制化类，直接用 `Block`                                  |
-| `dyedream_planks_stairs`         | `dyedream_planks_stairs`         | 不改                                        | 无需客制化类，直接用 `StairBlock`                             |
-| `dyedream_planks_slab`           | `dyedream_planks_slab`           | 不改                                        | 无需客制化类，直接用 `SlabBlock`                              |
-| `dyedream_planks_fence`          | `dyedream_planks_fence`          | 不改                                        | 无需客制化类，直接用 `FenceBlock`                             |
-| `dyedream_planks_fencegate`      | `dyedream_planks_fencegate`      | 不改                                        | 无需客制化类，直接用 `FenceGateBlock`                         |
-| `dyedream_planks_pane`           | `dyedream_planks_pane`           | 不改                                        | 无需客制化类，直接用 `IronBarsBlock`                          |
-| `dyedream_planks_door`           | `dyedream_planks_door`           | 不改                                        | 无需客制化类，直接用 `DoorBlock`                              |
-| `dyedream_planks_trapdoor`       | `dyedream_planks_trapdoor`       | 不改                                        | 无需客制化类，直接用 `TrapDoorBlock`                          |
-| `dyedream_planks_pressure_plate` | `dyedream_planks_pressure_plate` | 不改                                        | 无需客制化类，直接用 `PressurePlateBlock`                     |
-| `dyedream_planks_button`         | `dyedream_planks_button`         | 不改                                        | 无需客制化类，直接用 `ButtonBlock`                            |
+| `dyedream_planks_stairs`         | `dyedream_stairs`         | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `StairBlock`                             |
+| `dyedream_planks_slab`           | `dyedream_slab`           | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `SlabBlock`                              |
+| `dyedream_planks_fence`          | `dyedream_fence`          | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `FenceBlock`                             |
+| `dyedream_planks_fencegate`      | `dyedream_fence_gate`      | 重命名，删除 `_planks` 字段，加 `_` 分隔                                   | 无需客制化类，直接用 `FenceGateBlock`                         |
+| `dyedream_planks_pane`           | `dyedream_pane`           | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `IronBarsBlock`                          |
+| `dyedream_planks_door`           | `dyedream_door`           | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `DoorBlock`                              |
+| `dyedream_planks_trapdoor`       | `dyedream_trapdoor`       | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `TrapDoorBlock`                          |
+| `dyedream_planks_pressure_plate` | `dyedream_pressure_plate` | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `PressurePlateBlock`                     |
+| `dyedream_planks_button`         | `dyedream_button`         | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `ButtonBlock`                            |
 | `pinkslime_block`                | `pink_slime_block`               | 重命名，补下划线；受重力影响                            | 无需客制化类，直接用 `FallingBlock`                           |
 | `pinkagaric_0`                   | `pink_mushroom_block`            | 重命名，按原版风格：菌盖                              | 无需客制化类，直接用 `Block`                                  |
 | `pinkagaric_1`                   | `pink_mushroom_stem`             | 重命名，按原版风格：菌柄（有朝向）                         | 无需客制化类，直接用 `RotatedPillarBlock`                     |

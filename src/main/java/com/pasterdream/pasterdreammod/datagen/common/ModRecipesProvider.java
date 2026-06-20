@@ -57,14 +57,14 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         RecipeHelpers.plankFamilyRecipes(pWriter,
                 ModItems.DYEDREAM_LOG.get(),
                 ModItems.DYEDREAM_PLANKS.get(),
-                ModItems.DYEDREAM_PLANKS_STAIRS.get(),
-                ModItems.DYEDREAM_PLANKS_SLAB.get(),
-                ModItems.DYEDREAM_PLANKS_FENCE.get(),
-                ModItems.DYEDREAM_PLANKS_FENCEGATE.get(),
-                ModItems.DYEDREAM_PLANKS_DOOR.get(),
-                ModItems.DYEDREAM_PLANKS_TRAPDOOR.get(),
-                ModItems.DYEDREAM_PLANKS_PRESSURE_PLATE.get(),
-                ModItems.DYEDREAM_PLANKS_BUTTON.get(),
+                ModItems.DYEDREAM_STAIRS.get(),
+                ModItems.DYEDREAM_SLAB.get(),
+                ModItems.DYEDREAM_FENCE.get(),
+                ModItems.DYEDREAM_FENCE_GATE.get(),
+                ModItems.DYEDREAM_DOOR.get(),
+                ModItems.DYEDREAM_TRAPDOOR.get(),
+                ModItems.DYEDREAM_PRESSURE_PLATE.get(),
+                ModItems.DYEDREAM_BUTTON.get(),
                 PasterDreamMod.MOD_ID);
 
         // 染梦木头 → 染梦木板
@@ -74,7 +74,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_planks_from_wood");
 
         // 染梦木窗格 - 玻璃板 + 染梦木板
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PLANKS_PANE.get(), 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_PANE.get(), 1)
                 .requires(Items.GLASS_PANE)
                 .requires(ModItems.DYEDREAM_PLANKS.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))

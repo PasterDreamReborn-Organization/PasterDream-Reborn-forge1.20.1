@@ -105,11 +105,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.DYEDREAM_SAPLING.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/dyedream_sapling"));
 
-        fenceItem(ModBlocks.DYEDREAM_PLANKS_FENCE, ModBlocks.DYEDREAM_PLANKS);
-        buttonItem(ModBlocks.DYEDREAM_PLANKS_BUTTON, ModBlocks.DYEDREAM_PLANKS);
-        basicItem(ModItems.DYEDREAM_PLANKS_DOOR.get());
-        withExistingParent(ModItems.DYEDREAM_PLANKS_PANE.getId().getPath(), mcLoc("item/generated"))
-                .texture("layer0", modLoc("block/dyedream_planks_trapdoor"));
+        fenceItem(ModBlocks.DYEDREAM_FENCE, ModBlocks.DYEDREAM_PLANKS);
+        buttonItem(ModBlocks.DYEDREAM_BUTTON, ModBlocks.DYEDREAM_PLANKS);
+        basicItem(ModItems.DYEDREAM_DOOR.get());
+        withExistingParent(ModItems.DYEDREAM_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dyedream_trapdoor"));
 
         wallItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL, ModBlocks.DYEDREAM_QUARTZ_BLOCK);
 
