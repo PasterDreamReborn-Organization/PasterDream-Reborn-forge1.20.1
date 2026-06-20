@@ -29,10 +29,14 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get());
                         output.accept(ModItems.DOUGH.get());
                         output.accept(ModItems.DOUGH_WITH_EGG.get());
+                        output.accept(ModItems.BREAD_SLICE.get());
                         output.accept(ModItems.CAKE_BASE.get());
+                        output.accept(ModItems.WAFER_BISCUIT.get());
                         output.accept(ModItems.DYEDREAM_FRUIT.get());
+                        output.accept(ModItems.FIG.get());
                         output.accept(ModItems.GLASS_JAR_OF_DREAM_JUICE.get());
                         output.accept(ModItems.AMBER_CANDY.get());
+                        output.accept(ModItems.QUEER_SOUP.get());
                         output.accept(ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get());
                         output.accept(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get());
                         output.accept(ModItems.GLASS_CUP.get());
@@ -40,8 +44,16 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GLASS_CUP_OF_APPLE_JUICE.get());
                         output.accept(ModItems.GLASS_CUP_OF_HONEY_JUICE.get());
                         output.accept(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
+                        output.accept(ModItems.DYEDREAM_POPSICLE.get());
+                        output.accept(ModItems.FRIED_EGG.get());
+                        output.accept(ModItems.BACON_AND_EGG.get());
+                        output.accept(ModItems.RICE_CAKE.get());
+                        output.accept(ModItems.SANDWICH.get());
                         output.accept(ModItems.CHOCOLATE.get());
+                        output.accept(ModItems.POPPING_CANDY.get());
                         output.accept(ModItems.CHOCOLATE_MATCHA_CAKE.get());
+                        output.accept(ModItems.SWISS_ROLL.get());
+                        output.accept(ModItems.STUFFED_WAFER_COOKIES.get());
                         output.accept(ModItems.CREAM_BUN_CAKE.get());
                         output.accept(ModItems.BERRY_BUN_CAKE.get());
                         output.accept(ModItems.TUBER_BUN_CAKE.get());
@@ -49,22 +61,26 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PUMPKIN_BUN_CAKE.get());
                         output.accept(ModItems.GLOW_BERRY_BUN_CAKE.get());
                         output.accept(ModItems.DYEDREAM_FRUIT_BUN_CAKE.get());
-                        output.accept(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get());
-                        output.accept(ModItems.GLASS_JAR_OF_DYEDREAM_PERFUME.get());
-                        output.accept(ModItems.CAKE_BASE.get());
-                        output.accept(ModItems.RICE_CAKE.get());
-                        output.accept(ModItems.FRIED_EGG.get());
-                        output.accept(ModItems.BACON_AND_EGG.get());
-                        output.accept(ModItems.ODD_BACON_AND_EGG.get());
                         output.accept(ModItems.HEART_CHOCOLATE.get());
                         output.accept(ModItems.WHITE_HEART_CHOCOLATE.get());
                         output.accept(ModItems.PINK_HEART_CHOCOLATE.get());
-                        output.accept(ModItems.BREAD_SLICE.get());
-                        output.accept(ModItems.SWISS_ROLL.get());
-                        output.accept(ModItems.SANDWICH.get());
-                        output.accept(ModItems.WAFER_BISCUIT.get());
-                        output.accept(ModItems.STUFFED_WAFER_COOKIES.get());
-                        output.accept(ModItems.FIG.get());
+                        output.accept(ModItems.GINGERBREAD_MAN.get());
+                        output.accept(ModItems.CANDY_CANE.get());
+                        output.accept(ModItems.BUBBLE_GUM.get());
+                        output.accept(ModItems.MELT_DREAM_COTTON_CANDY.get());
+                        output.accept(ModItems.YINHUL_COTTON_CANDY.get());
+                        output.accept(ModItems.JELLYFISH_MUD.get());
+                        output.accept(ModItems.JELLYFISH_JELLO.get());
+
+
+
+
+                        output.accept(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get());
+                        output.accept(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get());
+                        output.accept(ModItems.GLASS_JAR_OF_DYEDREAM_PERFUME.get());
+                        output.accept(ModItems.LIGHT_ORGAN.get());
+                        output.accept(ModItems.ODD_BACON_AND_EGG.get());
+
                     })
                     .build());
 

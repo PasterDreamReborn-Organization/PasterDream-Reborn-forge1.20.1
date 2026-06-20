@@ -78,9 +78,18 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SANDWICH.get(), "Sandwich");
         add(ModItems.WAFER_BISCUIT.get(), "Wafer Biscuit");
         add(ModItems.STUFFED_WAFER_COOKIES.get(), "Stuffed Wafer Cookies");
-        add(ModItems.SOUL_DUST.get(), "Soul Dust");
-        add(ModItems.SOUL_ESSENCE.get(), "Soul Essence");
-        add(ModItems.CHARGED_AMETHYST.get(), "Charged Amethyst");
+        add(ModItems.GINGERBREAD_MAN.get(), "Gingerbread Man");
+        add(ModItems.CANDY_CANE.get(), "Candy Cane");
+        add(ModItems.POPPING_CANDY.get(), "Popping Candy");
+        add(ModItems.YINHUL_COTTON_CANDY.get(), "Yinhul Cotton Candy");
+        add(ModItems.MELT_DREAM_COTTON_CANDY.get(), "Melt Dream Cotton Candy");
+        add(ModItems.BUBBLE_GUM.get(), "Bubble Gum");
+        add(ModItems.LIGHT_ORGAN.get(), "Light Organ");
+        add(ModItems.JELLYFISH_MUD.get(), "Jellyfish Mud");
+        add(ModItems.JELLYFISH_JELLO.get(), "Jellfish Jello");
+        add(ModItems.QUEER_SOUP.get(), "Queer Soup");
+        add(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get(), "Legendary Dragon Horn Ice Cream");
+
 
 
 

@@ -81,6 +81,19 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SANDWICH.get(), "三明治");
         add(ModItems.WAFER_BISCUIT.get(), "威化饼干");
         add(ModItems.STUFFED_WAFER_COOKIES.get(), "威化夹心");
+        add(ModItems.GINGERBREAD_MAN.get(), "姜饼人");
+        add(ModItems.CANDY_CANE.get(), "拐杖糖");
+        add(ModItems.POPPING_CANDY.get(), "跳跳糖");
+        add(ModItems.YINHUL_COTTON_CANDY.get(), "银狐棉花糖");
+        add(ModItems.MELT_DREAM_COTTON_CANDY.get(), "融梦棉花糖");
+        add(ModItems.BUBBLE_GUM.get(), "泡泡糖");
+        add(ModItems.LIGHT_ORGAN.get(), "发光器官");
+        add(ModItems.JELLYFISH_MUD.get(), "水母泥");
+        add(ModItems.JELLYFISH_JELLO.get(), "水母果冻");
+        add(ModItems.QUEER_SOUP.get(), "奇异炖菜");
+        add(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get(), "传说龙角冰淇淋");
+
+
         add(ModItems.SOUL_DUST.get(), "灵魂粉尘");
         add(ModItems.SOUL_ESSENCE.get(), "灵魂精华");
         add(ModItems.CHARGED_AMETHYST.get(), "盈能紫水晶");

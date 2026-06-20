@@ -90,6 +90,17 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.SANDWICH.get());
         basicItem(ModItems.WAFER_BISCUIT.get());
         basicItem(ModItems.STUFFED_WAFER_COOKIES.get());
+        basicItem(ModItems.GINGERBREAD_MAN.get());
+        basicItem(ModItems.CANDY_CANE.get());
+        basicItem(ModItems.POPPING_CANDY.get());
+        basicItem(ModItems.YINHUL_COTTON_CANDY.get());
+        basicItem(ModItems.MELT_DREAM_COTTON_CANDY.get());
+        basicItem(ModItems.BUBBLE_GUM.get());
+        basicItem(ModItems.LIGHT_ORGAN.get());
+        basicItem(ModItems.JELLYFISH_MUD.get());
+        basicItem(ModItems.JELLYFISH_JELLO.get());
+        basicItem(ModItems.QUEER_SOUP.get());
+        basicItem(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get());
         basicItem(ModItems.SOUL_DUST.get());
         basicItem(ModItems.SOUL_ESSENCE.get());
         basicItem(ModItems.CHARGED_AMETHYST.get());
