@@ -182,9 +182,10 @@
 | `jellyfish_jello`              | `jellyfish_jello`                           | 不改                                                        | 无需客制化类，直接用 `Item`                    |
 | `queer_soup`                   | `queer_soup`                                | 不改                                                        | 无需客制化类，直接用 `Item`                    |
 | `legend_dragon_horn_ice_cream` | `legendary_dragon_horn_ice_cream`           | 重命名，`legend`改为`legendary`                                 | 无需客制化类，直接用 `Item`                    |
-| `stuffed_wafer_cookies`        | `stuffed_wafer_cookies`                     | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `stuffed_wafer_cookies`        | `stuffed_wafer_cookies`                     | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `stuffed_wafer_cookies`        | `stuffed_wafer_cookies`                     | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `elixir_bottle`                | `elixir_bottle`                             | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `meltdream_elixir_bottle`      | `elixir_bottle_of_melt_dream`               | 重命名，命名格式改为`elixir_bottle_of_xxx`                          | 无需客制化类，直接用 `Item`                    |
+| `rage_elixir_0`                | `elixir_bottle_of_rage_elixir`              | 重命名，命名格式改为`elixir_bottle_of_xxx`，去除`_0`                   | 无需客制化类，直接用 `Item`                    |
+| `pineapple_love_sea`           | `pineapple_love_sea`                        | 不改                                                        | 无需客制化类，直接用 `Item`                    |
 
 | `magic_stone`              | `magic_stone`                               | 不改，Tooltip 文字待后续实现                                        | 无需客制化类，直接用 `Item`                    |
 | `soul_dust`                | `soul_dust`                                 | 不改                                                        | 无需客制化类，直接用 `Item`                    |

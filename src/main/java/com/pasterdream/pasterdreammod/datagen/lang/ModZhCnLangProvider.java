@@ -92,6 +92,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.JELLYFISH_JELLO.get(), "水母果冻");
         add(ModItems.QUEER_SOUP.get(), "奇异炖菜");
         add(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get(), "传说龙角冰淇淋");
+        add(ModItems.ELIXIR_BOTTLE.get(), "灵药瓶");
+        add(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get(), "融梦灵药瓶");
+        add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "狂暴战意灵药");
+        add(ModItems.PINEAPPLE_LOVE_SEA.get(), "凤梨爱琴海");
 
 
         add(ModItems.SOUL_DUST.get(), "灵魂粉尘");
