@@ -101,6 +101,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.JELLYFISH_JELLO.get());
         basicItem(ModItems.QUEER_SOUP.get());
         basicItem(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get());
+        basicItem(ModItems.PINEAPPLE_LOVE_SEA.get());
+        basicItem(ModItems.ELIXIR_BOTTLE.get());
+        basicItem(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get());
+        basicItem(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get());
         basicItem(ModItems.SOUL_DUST.get());
         basicItem(ModItems.SOUL_ESSENCE.get());
         basicItem(ModItems.CHARGED_AMETHYST.get());

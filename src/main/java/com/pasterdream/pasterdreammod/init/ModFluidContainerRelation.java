@@ -24,5 +24,8 @@ public class ModFluidContainerRelation
         FluidContainerRegistry.register(ModItems.GLASS_CUP.get(), ModFluids.DYEDREAM_JUICE.get(), 250, ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get());
         FluidContainerRegistry.register(ModItems.GLASS_CUP.get(), ModFluids.HONEY_JUICE.get(), 250, ModItems.GLASS_CUP_OF_HONEY_JUICE.get());
         FluidContainerRegistry.register(ModItems.GLASS_CUP.get(), ModFluids.WATERMELON_JUICE.get(), 250, ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
+
+        FluidContainerRegistry.register(ModItems.ELIXIR_BOTTLE.get(), ModFluids.RAGE_ELIXIR.get(), 1000, ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get());
+        FluidContainerRegistry.register(ModItems.ELIXIR_BOTTLE.get(), ModFluids.MELT_DREAM_LIQUID.get(), 1000, ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get());
     }
 }

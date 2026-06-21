@@ -71,10 +71,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.YINHUL_COTTON_CANDY.get());
                         output.accept(ModItems.JELLYFISH_MUD.get());
                         output.accept(ModItems.JELLYFISH_JELLO.get());
-
-
-
-
+                        output.accept(ModItems.ELIXIR_BOTTLE.get());
+                        output.accept(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get());
+                        output.accept(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get());
+                        output.accept(ModItems.PINEAPPLE_LOVE_SEA.get());
                         output.accept(ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get());
                         output.accept(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get());
                         output.accept(ModItems.GLASS_JAR_OF_DYEDREAM_PERFUME.get());

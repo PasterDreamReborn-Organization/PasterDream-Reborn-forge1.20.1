@@ -89,7 +89,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.JELLYFISH_JELLO.get(), "Jellfish Jello");
         add(ModItems.QUEER_SOUP.get(), "Queer Soup");
         add(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get(), "Legendary Dragon Horn Ice Cream");
-
+        add(ModItems.ELIXIR_BOTTLE.get(), "Elixir Bottle");
+        add(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get(), "Elixir Bottle of Melt Dream");
+        add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "Elixir Bottle of Rage Elixir");
+        add(ModItems.PINEAPPLE_LOVE_SEA.get(), "Pineapple Love Sea");
 
 
 
