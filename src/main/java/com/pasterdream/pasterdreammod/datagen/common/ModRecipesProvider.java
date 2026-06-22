@@ -688,6 +688,73 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(ModItems.CHOCOLATE.get(), 1)
                 .unlockedBy(getHasName(ModItems.CAKE_BASE.get()), has(ModItems.CAKE_BASE.get()))
                 .save(pWriter);
+
+        // 三种心形巧克力合成（全部重做）
+        RecipeHelpers.heart_chocolate(pWriter, Items.COCOA_BEANS, ModItems.HEART_CHOCOLATE.get());
+        RecipeHelpers.heart_chocolate(pWriter, ModItems.GLASS_JAR_OF_MILK.get(), ModItems.WHITE_HEART_CHOCOLATE.get());
+        RecipeHelpers.heart_chocolate(pWriter, ModItems.DYEDREAM_DUST.get(), ModItems.PINK_HEART_CHOCOLATE.get());
+
+        // 拐杖糖合成配方
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CANDY_CANE.get(), 1)
+                .pattern("ab ")
+                .pattern("ba ")
+                .pattern(" b ")
+                .define('a', ModItems.AMBER_CANDY.get())
+                .define('b', Items.SUGAR)
+                .unlockedBy(getHasName(ModItems.AMBER_CANDY.get()), has(ModItems.AMBER_CANDY.get()))
+                .save(pWriter);
+
+        // 姜饼人合成配方
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GINGERBREAD_MAN.get(), 1)
+                .pattern(" b ")
+                .pattern("aca")
+                .pattern(" d ")
+                .define('a',  Items.SUGAR)
+                .define('b', Items.RED_DYE)
+                .define('c', ModItems.WAFER_BISCUIT.get())
+                .define('d', Items.SPRUCE_LEAVES)
+                .unlockedBy(getHasName(Items.SUGAR), has(Items.SUGAR))
+                .save(pWriter);
+
+        // 泡泡糖合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BUBBLE_GUM.get(), 2)
+                .requires(ModItems.AMBER_CANDY.get(),2)
+                .requires(ModItems.PINK_SLIMEBALL.get(), 1)
+                .unlockedBy(getHasName(ModItems.AMBER_CANDY.get()), has(ModItems.AMBER_CANDY.get()))
+                .save(pWriter);
+
+        // 跳跳糖合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.POPPING_CANDY.get(), 2)
+                .requires(Items.SUGAR,1)
+                .requires(ModItems.AMBER_CANDY.get(),1)
+                .requires(Items.RABBIT_FOOT,1)
+                .requires(Items.GUNPOWDER,1)
+                .unlockedBy(getHasName(ModItems.AMBER_CANDY.get()), has(ModItems.AMBER_CANDY.get()))
+                .save(pWriter);
+
+        // 染梦冰棒合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_POPSICLE.get(), 1)
+                .requires(Items.SNOWBALL, 1)
+                .requires(ModItems.DYEDREAM_DUST_PIECE.get(),1)
+                .requires(Items.STICK,1)
+                //染梦铃兰暂未加入
+                .unlockedBy(getHasName(ModItems.DYEDREAM_DUST_PIECE.get()), has(ModItems.DYEDREAM_DUST_PIECE.get()))
+                .save(pWriter);
+
+        //煎蛋合成配方
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.PINK_EGG.get()),
+                        RecipeCategory.MISC, ModItems.FRIED_EGG.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.PINK_EGG.get()), has(ModItems.PINK_EGG.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":fried_egg_from_pink_egg_smelting");
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItems.PINK_EGG.get()),
+                        RecipeCategory.MISC, ModItems.FRIED_EGG.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.PINK_EGG.get()), has(ModItems.PINK_EGG.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":fried_egg_from_pink_egg_smoking");
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItems.PINK_EGG.get()),
+                        RecipeCategory.MISC, ModItems.FRIED_EGG.get(),0,600)
+                .unlockedBy(getHasName(ModItems.PINK_EGG.get()), has(ModItems.PINK_EGG.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":fried_egg_from_pink_egg_campfire_cooking");
+
     }
 
     // ===== 配方工具方法 =====

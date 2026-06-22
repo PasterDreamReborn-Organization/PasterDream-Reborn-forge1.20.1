@@ -208,8 +208,23 @@ public final class RecipeHelpers {
                 .unlockedBy(getHasName(ModItems.CREAM_BUN_CAKE.get()), has(ModItems.CREAM_BUN_CAKE.get()))
                 .save(writer);
     }
-
-
+    /**
+     * 心形巧克力合成配方
+     * @param heart 合成配方的中心，决定合成出来的心形巧克力种类
+     *@param result 出来的心形巧克力种类
+     */
+    public static void heart_chocolate(Consumer<FinishedRecipe> writer,
+                                       ItemLike heart, ItemLike result) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result, 2)
+                .pattern("a a")
+                .pattern("aca")
+                .pattern(" b ")
+                .define('a',Items.COCOA_BEANS)
+                .define('b', Items.SUGAR)
+                .define('c', heart)
+                .unlockedBy(getHasName(heart), has(heart))
+                .save(writer);
+    }
     // === 树叶战利品相关  ===
 
     /** 普通树叶掉落树苗的概率 — 与原版 NORMAL_LEAVES_SAPLING_CHANCES 一致 */

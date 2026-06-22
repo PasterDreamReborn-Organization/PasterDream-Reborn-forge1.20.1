@@ -65,5 +65,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "fruits/fig")))
                 .add(ModItems.FIG.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "cooked_eggs")))
+                .add(ModItems.FRIED_EGG.get().asItem());
     }
 }

@@ -105,12 +105,12 @@ public class ModItems {
     // ===== 玻璃杯系列 =====
     public static final RegistryObject<Item> GLASS_CUP = ITEMS.register("glass_cup", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> GLASS_CUP_OF_APPLE_JUICE = ITEMS.register("glass_cup_of_apple_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(4).saturationMod(1).alwaysEat().build())));
+    public static final RegistryObject<Item> GLASS_CUP_OF_APPLE_JUICE = ITEMS.register("glass_cup_of_apple_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(4).saturationMod(0.5f).alwaysEat().build())));
     public static final RegistryObject<Item> GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA = ITEMS.register("glass_cup_of_uncooked_dyedream_flower_tea", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA = ITEMS.register("glass_cup_of_cooked_dyedream_flower_tea", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.HEAL, 1, 0), 1.0f).alwaysEat().build())));
-    public static final RegistryObject<Item> GLASS_CUP_OF_DYEDREAM_JUICE = ITEMS.register("glass_cup_of_dyedream_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(1).saturationMod(1).alwaysEat().build()).meltDreamEnergyAdd(0.2)));
-    public static final RegistryObject<Item> GLASS_CUP_OF_HONEY_JUICE = ITEMS.register("glass_cup_of_honey_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(6).saturationMod(1).alwaysEat().build())));
-    public static final RegistryObject<Item> GLASS_CUP_OF_WATERMELON_JUICE = ITEMS.register("glass_cup_of_watermelon_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(2).saturationMod(1).alwaysEat().build())));
+    public static final RegistryObject<Item> GLASS_CUP_OF_DYEDREAM_JUICE = ITEMS.register("glass_cup_of_dyedream_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(1).saturationMod(0.5f).alwaysEat().build()).meltDreamEnergyAdd(0.2)));
+    public static final RegistryObject<Item> GLASS_CUP_OF_HONEY_JUICE = ITEMS.register("glass_cup_of_honey_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(6).saturationMod(0.5f).alwaysEat().build())));
+    public static final RegistryObject<Item> GLASS_CUP_OF_WATERMELON_JUICE = ITEMS.register("glass_cup_of_watermelon_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.5f).alwaysEat().build())));
 
     // ===== 食材系列 =====
     public static final RegistryObject<Item> FLOUR = ITEMS.register("flour",
@@ -118,7 +118,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> DOUGH = ITEMS.register("dough",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(1).build())));
+                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(0.5f).build())));
 
     public static final RegistryObject<Item> RYE_SEED = ITEMS.register("rye_seed",
             () -> new Item(new Item.Properties()));
@@ -133,159 +133,159 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> PINK_EGG = ITEMS.register("pink_egg",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(16)));
 
     public static final RegistryObject<Item> CHOCOLATE = ITEMS.register("chocolate",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.75f).build())));
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.375f).build())));
 
     public static final RegistryObject<Item> DYEDREAM_FRUIT = ITEMS.register("dyedream_fruit",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 100, 0), 1.0f)//5秒生命回复I
-                    .nutrition(3).saturationMod(1).build())));
+                    .nutrition(3).saturationMod(0.5f).build())));
 
     public static final RegistryObject<Item> FIG = ITEMS.register("fig",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.33f).build())));
+                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.165f).build())));
 
 
     // ===== 蛋糕系列 ===== (小蛋糕都应当给予料理I buff，料理buff制作完成后补上）
     public static final RegistryObject<Item> CAKE_BASE = ITEMS.register("cake_base",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.75f).build())));
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.375f).build())));
 
     public static final RegistryObject<Item> CREAM_BUN_CAKE = ITEMS.register("cream_bun_cake",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(1.25f).build())));
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.625f).build())));
 
     public static final RegistryObject<Item> BERRY_BUN_CAKE = ITEMS.register("berry_bun_cake",
             ()  -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 0), 1.0f)
-                            .nutrition(4).saturationMod(1.25f).alwaysEat().build())));
+                            .nutrition(4).saturationMod(0.625f).alwaysEat().build())));
 
     public static final RegistryObject<Item> TUBER_BUN_CAKE = ITEMS.register("tuber_bun_cake",
             ()  -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 0), 1.0f)
-                            .nutrition(4).saturationMod(1.25f).alwaysEat().build())));
+                            .nutrition(4).saturationMod(0.625f).alwaysEat().build())));
 
     public static final RegistryObject<Item> WATERMELON_BUN_CAKE = ITEMS.register("watermelon_bun_cake",
             ()  -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400, 0), 1.0f)
-                            .nutrition(4).saturationMod(1.25f).alwaysEat().build())));
+                            .nutrition(4).saturationMod(0.625f).alwaysEat().build())));
 
     public static final RegistryObject<Item> PUMPKIN_BUN_CAKE = ITEMS.register("pumpkin_bun_cake",
             ()  -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.JUMP, 1200, 0), 1.0f)
-                            .nutrition(4).saturationMod(1.25f).alwaysEat().build())));
+                            .nutrition(4).saturationMod(0.625f).alwaysEat().build())));
 
     public static final RegistryObject<Item> GLOW_BERRY_BUN_CAKE = ITEMS.register("glow_berry_bun_cake",
             ()  -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 1200, 0), 1.0f)
-                            .nutrition(4).saturationMod(1.25f).alwaysEat().build())));
+                            .nutrition(4).saturationMod(0.625f).alwaysEat().build())));
 
     public static final RegistryObject<Item> DYEDREAM_FRUIT_BUN_CAKE = ITEMS.register("dyedream_fruit_bun_cake",
             ()  -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1).meltDreamEnergyAdd(0.3)
-                    .food(new FoodProperties.Builder().nutrition(4).alwaysEat().saturationMod(1.25f).build())));
+                    .food(new FoodProperties.Builder().nutrition(4).alwaysEat().saturationMod(0.625f).build())));
 
     public static final RegistryObject<Item> CHOCOLATE_MATCHA_CAKE = ITEMS.register("chocolate_matcha_cake",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().nutrition(8).saturationMod(2).build())));
+                    .food(new FoodProperties.Builder().nutrition(8).saturationMod(1).build())));
 
     // ===== 杂项食物系列 =====（除了染梦冰棒,泡泡糖，跳跳糖，俩棉花糖和面包片，都应当给予1分钟料理I buff，除去奇怪培根煎蛋是2分钟,料理buff制作完成后补上）
     public static final RegistryObject<Item> RICE_CAKE = ITEMS.register("rice_cake",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(6).saturationMod(0.83f).build())));
+                    .food(new FoodProperties.Builder().nutrition(6).saturationMod(0.415f).build())));
 
     public static final RegistryObject<Item> DYEDREAM_POPSICLE = ITEMS.register("dyedream_popsicle",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1).meltDreamEnergyAdd(0.2)
-                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(1).build())));//减少燃烧时间施工中
+                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(0.5f).build())));//减少燃烧时间施工中
 
     public static final RegistryObject<Item> FRIED_EGG = ITEMS.register("fried_egg",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(2).saturationMod(0.5f).build())));
+                    .food(new FoodProperties.Builder().nutrition(2).saturationMod(0.25f).build())));
 
     public static final RegistryObject<Item> BACON_AND_EGG = ITEMS.register("bacon_and_egg",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().nutrition(10).saturationMod(2.4f).build())));
+                    .food(new FoodProperties.Builder().nutrition(10).saturationMod(1.2f).build())));
 
     public static final RegistryObject<Item> ODD_BACON_AND_EGG = ITEMS.register("odd_bacon_and_egg",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(2)
-                    .food(new FoodProperties.Builder().nutrition(11).saturationMod(2.73f).build())));
+                    .food(new FoodProperties.Builder().nutrition(11).saturationMod(1.365f).build())));
 
     public static final RegistryObject<Item> HEART_CHOCOLATE = ITEMS.register("heart_chocolate",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(0.5)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.75f).build())));
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.375f).build())));
 
     public static final RegistryObject<Item> WHITE_HEART_CHOCOLATE = ITEMS.register("white_heart_chocolate",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.75f).build())));
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.375f).build())));
 
     public static final RegistryObject<Item> PINK_HEART_CHOCOLATE = ITEMS.register("pink_heart_chocolate",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1.5).meltDreamEnergyAdd(0.2)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.75f).build())));
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.375f).build())));
 
     public static final RegistryObject<Item> BREAD_SLICE = ITEMS.register("bread_slice",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(1).build())));
+                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f).build())));
 
     public static final RegistryObject<Item> SWISS_ROLL = ITEMS.register("swiss_roll",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationMod(1.5f).build())));
+                    .food(new FoodProperties.Builder().nutrition(6).saturationMod(0.75f).build())));
 
     public static final RegistryObject<Item> SANDWICH = ITEMS.register("sandwich",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().nutrition(10).saturationMod(1.8f).build())));
+                    .food(new FoodProperties.Builder().nutrition(10).saturationMod(0.9f).build())));
 
     public static final RegistryObject<Item> WAFER_BISCUIT = ITEMS.register("wafer_biscuit",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.33f).build())));
+                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.165f).build())));
 
     public static final RegistryObject<Item> STUFFED_WAFER_COOKIES = ITEMS.register("stuffed_wafer_cookies",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().nutrition(7).saturationMod(2).build())));
+                    .food(new FoodProperties.Builder().nutrition(7).saturationMod(1).build())));
 
     public static final RegistryObject<Item> GINGERBREAD_MAN = ITEMS.register("gingerbread_man",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().nutrition(5).saturationMod(1.2f).build())));
+                    .food(new FoodProperties.Builder().nutrition(5).saturationMod(0.6f).build())));
 
     public static final RegistryObject<Item> CANDY_CANE = ITEMS.register("candy_cane",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(1f).build())));
+                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f).build())));
 
     public static final RegistryObject<Item> POPPING_CANDY = ITEMS.register("popping_candy",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.JUMP, 400, 3), 1.0f)
-                            .nutrition(2).saturationMod(0.5f).alwaysEat().build())));
+                            .nutrition(2).saturationMod(0.25f).alwaysEat().build())));
 
     public static final RegistryObject<Item> YINHUL_COTTON_CANDY = ITEMS.register("yinhul_cotton_candy",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(15).meltDreamEnergyAdd(15)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationMod(1.5f).alwaysEat().build())));
+                    .food(new FoodProperties.Builder().nutrition(6).saturationMod(0.75f).alwaysEat().build())));
 
     public static final RegistryObject<Item> MELT_DREAM_COTTON_CANDY= ITEMS.register("melt_dream_cotton_candy",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().meltDreamEnergyAdd(4)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(1.25f).alwaysEat().build())));
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.625f).alwaysEat().build())));
 
     public static final RegistryObject<Item> BUBBLE_GUM = ITEMS.register("bubble_gum",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(3)
-                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(0).alwaysEat().build()).useDuration(64)));
+                    .food(new FoodProperties.Builder().nutrition(1).alwaysEat().build()).useDuration(64)));
 
     public static final RegistryObject<Item> LIGHT_ORGAN = ITEMS.register("light_organ",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(-1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.GLOWING, 100, 0), 1.0f)
-                            .nutrition(1).saturationMod(0).build())));
+                            .nutrition(1).build())));
 
     //防风buff施工中
     public static final RegistryObject<Item> JELLYFISH_MUD = ITEMS.register("jellyfish_mud",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(-3)
-                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(0).build())));
+                    .food(new FoodProperties.Builder().nutrition(1).build())));
 
     public static final RegistryObject<Item> JELLYFISH_JELLO = ITEMS.register("jellyfish_jello",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(1).build())));
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.5f).build())));
 
     public static final RegistryObject<Item> QUEER_SOUP = ITEMS.register("queer_soup",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.75f).alwaysEat().build()))
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.375f).alwaysEat().build()))
             {
                 @Override
                 protected void onFoodSpecial(Player player, Level level)
@@ -304,7 +304,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> LEGENDARY_DRAGON_HORN_ICE_CREAM = ITEMS.register("legendary_dragon_horn_ice_cream",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(10).saturationMod(2.4f).alwaysEat().build()))
+                    .food(new FoodProperties.Builder().nutrition(10).saturationMod(1.2f).alwaysEat().build()))
             {
                 @Override
                 protected void onFoodSpecial(Player player, Level level)
@@ -325,7 +325,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> ELIXIR_BOTTLE_OF_MELT_DREAM = ITEMS.register("elixir_bottle_of_melt_dream",
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).meltDreamEnergyAdd(25)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(4).alwaysEat().build())));
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(2).alwaysEat().build())));
 
     public static final RegistryObject<Item> ELIXIR_BOTTLE_OF_RAGE_ELIXIR = ITEMS.register("elixir_bottle_of_rage_elixir",
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1)
@@ -333,7 +333,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> PINEAPPLE_LOVE_SEA = ITEMS.register("pineapple_love_sea",
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().sanAdd(15)
-                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(1).alwaysEat().build())));
+                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f).alwaysEat().build())));
 
 
     // ===== 方块物品 =====
