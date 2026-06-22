@@ -14,16 +14,22 @@
   "itemInputs":
   [
     {
-      "item": "minecraft:stick"
+      "item": "minecraft:command_block",
+      "count": 1
     },
     {
-      "tag": "forge:ingots/iron"
+      "item": "minecraft:chain_command_block",
+      "count": 1
+    },
+    {
+      "item": "minecraft:repeating_command_block",
+      "count": 1
     }
   ],
-  "result":
+  "itemOutputs":
   [
     {
-      "item": "minecraft:diamond",
+      "item": "minecraft:structure_block",
       "count": 1
     }
   ]

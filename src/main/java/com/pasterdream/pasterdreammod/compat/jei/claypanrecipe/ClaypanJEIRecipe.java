@@ -1,33 +1,36 @@
 package com.pasterdream.pasterdreammod.compat.jei.claypanrecipe;
 
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
+import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanRecipe;
+
+import java.util.List;
 
 public class ClaypanJEIRecipe
 {
-    private final FluidStack fluidInput;
-    private final ItemStack output;
-    private final int time;
+    private final List<FluidIngredient> inputFluidIngredients;
+    private final List<ItemIngredient> outputItemIngredients;
+    private final int processingTime;
 
-    public ClaypanJEIRecipe(FluidStack fluidInput, ItemStack output, int time)
+    public ClaypanJEIRecipe(ClaypanRecipe recipe)
     {
-        this.fluidInput = fluidInput;
-        this.output = output;
-        this.time = time;
+        this.inputFluidIngredients = recipe.getInputFluidIngredients() != null ? recipe.getInputFluidIngredients() : List.of();
+        this.outputItemIngredients = recipe.getOutputItemIngredients() != null ? recipe.getOutputItemIngredients() : List.of();
+        this.processingTime = recipe.getProcessingTime();
     }
 
-    public FluidStack getFluidInput()
+    public List<FluidIngredient> getInputFluidIngredients()
     {
-        return fluidInput;
+        return inputFluidIngredients;
     }
 
-    public ItemStack getOutput()
+    public List<ItemIngredient> getOutputItemIngredients()
     {
-        return output;
+        return outputItemIngredients;
     }
 
-    public int getTime()
+    public int getProcessingTime()
     {
-        return time;
+        return processingTime;
     }
 }

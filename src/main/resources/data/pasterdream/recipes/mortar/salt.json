@@ -1,0 +1,17 @@
+{
+  "type": "pasterdream:mortar",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:coarse_salt",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:salt",
+      "count": 1
+    }
+  ]
+}

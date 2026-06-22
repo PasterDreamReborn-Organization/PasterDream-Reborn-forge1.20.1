@@ -1,11 +1,12 @@
 package com.pasterdream.pasterdreammod.recipe;
 
-import com.pasterdream.pasterdreammod.helper.fluidingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
+import com.pasterdream.pasterdreammod.recipe.recipematchandprocess.IProcessingRecipe;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -15,16 +16,16 @@ import net.minecraftforge.fluids.FluidStack;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class GenericPasterDreamRecipe implements IGenericPasterDreamRecipe, Recipe<Container>
+public abstract class GenericPasterDreamRecipe implements IProcessingRecipe,IGenericPasterDreamRecipe, Recipe<Container>
 {
     private final ResourceLocation id;
     private final List<FluidIngredient> inputFluidIngredients;
-    private final List<Ingredient> inputItemIngredients;
+    private final List<ItemIngredient> inputItemIngredients;
     private final List<FluidIngredient> outputFluidIngredients;
-    private final List<Ingredient> outputItemIngredients;
+    private final List<ItemIngredient> outputItemIngredients;
     private final int processingTime;
 
-    public GenericPasterDreamRecipe(ResourceLocation id, List<FluidIngredient> inputFluidIngredients, List<Ingredient> inputItemIngredients, List<FluidIngredient> outputFluidIngredients, List<Ingredient> outputItemIngredients, int processingTime)
+    public GenericPasterDreamRecipe(ResourceLocation id, List<FluidIngredient> inputFluidIngredients, List<ItemIngredient> inputItemIngredients, List<FluidIngredient> outputFluidIngredients, List<ItemIngredient> outputItemIngredients, int processingTime)
     {
         this.id = id;
         this.inputFluidIngredients = inputFluidIngredients;
@@ -99,11 +100,11 @@ public abstract class GenericPasterDreamRecipe implements IGenericPasterDreamRec
 
             for (int i = 0; i < itemInputCount; i++)
             {
-                Ingredient ing = inputItemIngredients.get(i);
+                ItemIngredient itemIngredient = inputItemIngredients.get(i);
                 boolean matched = false;
                 for (int j = 0; j < itemStacks.size(); j++)
                 {
-                    if (!itemUsed[j] && ing.test(itemStacks.get(j)))
+                    if (!itemUsed[j] && itemIngredient.test(itemStacks.get(j)))
                     {
                         itemUsed[j] = true;
                         itemSlotMap[i] = j;
@@ -123,13 +124,37 @@ public abstract class GenericPasterDreamRecipe implements IGenericPasterDreamRec
     }
 
     @Override
+    public List<ItemIngredient> getInputItems()
+    {
+        return inputItemIngredients;
+    }
+
+    @Override
+    public List<FluidIngredient> getInputFluids()
+    {
+        return inputFluidIngredients;
+    }
+
+    @Override
+    public List<ItemIngredient> getOutputItems()
+    {
+        return outputItemIngredients;
+    }
+
+    @Override
+    public List<FluidIngredient> getOutputFluids()
+    {
+        return outputFluidIngredients;
+    }
+
+    @Override
     public List<FluidIngredient> getInputFluidIngredients()
     {
         return inputFluidIngredients;
     }
 
     @Override
-    public List<Ingredient> getInputItemIngredients()
+    public List<ItemIngredient> getInputItemIngredients()
     {
         return inputItemIngredients;
     }
@@ -141,7 +166,7 @@ public abstract class GenericPasterDreamRecipe implements IGenericPasterDreamRec
     }
 
     @Override
-    public List<Ingredient> getOutputItemIngredients()
+    public List<ItemIngredient> getOutputItemIngredients()
     {
         return outputItemIngredients;
     }

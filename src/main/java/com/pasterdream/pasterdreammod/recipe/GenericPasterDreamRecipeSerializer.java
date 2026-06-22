@@ -2,7 +2,8 @@ package com.pasterdream.pasterdreammod.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.pasterdream.pasterdreammod.helper.fluidingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -27,15 +28,15 @@ public abstract class GenericPasterDreamRecipeSerializer<T extends GenericPaster
         return list;
     }
 
-    protected List<Ingredient> parseItemIngredients(JsonObject json, String key)
+    protected List<ItemIngredient> parseItemIngredients(JsonObject json, String key)
     {
-        List<Ingredient> list = new ArrayList<>();
+        List<ItemIngredient> list = new ArrayList<>();
         if (json.has(key))
         {
             JsonArray array = json.getAsJsonArray(key);
             for (var elem : array)
             {
-                list.add(Ingredient.fromJson(elem));
+                list.add(ItemIngredient.fromJson(elem));
             }
         }
         return list;

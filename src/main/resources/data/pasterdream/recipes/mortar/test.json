@@ -1,0 +1,88 @@
+{
+  "type": "pasterdream:mortar",
+  "fluidInputs":
+  [
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    },
+    {
+      "fluid": "minecraft:lava",
+      "amount": 250
+    },
+    {
+      "fluid": "pasterdream:wind_plant_extract",
+      "amount": 500
+    },
+    {
+      "fluid": "pasterdream:guiding_drug",
+      "amount": 750
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "minecraft:diamond",
+      "count": 64
+    },
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 8
+    },
+    {
+      "item": "pasterdream:dyedream_glass",
+      "count": 16
+    },
+    {
+      "item": "minecraft:oak_log",
+      "count": 32
+    },
+    {
+      "item": "minecraft:stone",
+      "count": 48
+    },
+    {
+      "item": "pasterdream:titanium_block",
+      "count": 24
+    },
+    {
+      "item": "pasterdream:mortar",
+      "count": 64,
+      "nbt": {}
+    },
+    {
+      "item": "pasterdream:claypan",
+      "count": 32
+    }
+  ],
+  "fluidOutputs":
+  [
+    {
+      "fluid": "pasterdream:melt_dream_liquid",
+      "amount": 1000
+    },
+    {
+      "fluid": "pasterdream:shadow_liquid",
+      "amount": 500
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "minecraft:bedrock",
+      "count": 2
+    },
+    {
+      "item": "minecraft:command_block",
+      "count": 64
+    },
+    {
+      "item": "minecraft:dragon_egg",
+      "count": 8
+    },
+    {
+      "item": "minecraft:end_portal_frame",
+      "count": 12
+    }
+  ]
+}

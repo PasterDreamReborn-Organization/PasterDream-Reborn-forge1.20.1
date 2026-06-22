@@ -1,6 +1,6 @@
 package com.pasterdream.pasterdreammod.init;
 
-import com.pasterdream.pasterdreammod.helper.FluidContainerCapability.FluidContainerRegistry;
+import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.FluidContainerRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.ForgeRegistries;

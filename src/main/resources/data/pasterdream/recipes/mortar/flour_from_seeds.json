@@ -1,0 +1,17 @@
+{
+  "type": "pasterdream:mortar",
+  "itemInputs":
+  [
+    {
+      "tag": "forge:seeds",
+      "count": 4
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:flour",
+      "count": 1
+    }
+  ]
+}

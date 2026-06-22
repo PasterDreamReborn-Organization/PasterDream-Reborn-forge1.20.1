@@ -1,8 +1,8 @@
 package com.pasterdream.pasterdreammod.world.block.claypan;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.pasterdream.pasterdreammod.helper.AbstractContainerMenuWithFluidSlot.AbstractContainerScreenWithFluidSlot;
-import com.pasterdream.pasterdreammod.helper.RenderHelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerScreenWithFluidSlot;
+import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;

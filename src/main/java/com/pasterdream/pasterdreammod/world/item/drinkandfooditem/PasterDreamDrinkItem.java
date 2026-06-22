@@ -1,7 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.drinkandfooditem;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
-import com.pasterdream.pasterdreammod.helper.FluidContainerCapability.FluidContainerRegistry;
+import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.FluidContainerRegistry;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamDrinkAndFoodProperties;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;

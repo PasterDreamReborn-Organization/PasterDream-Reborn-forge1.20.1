@@ -2,9 +2,14 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.*;
+import com.pasterdream.pasterdreammod.network.fluidslot.FluidSlotInteractPacket;
+import com.pasterdream.pasterdreammod.network.fluidslot.FluidSoundPacket;
+import com.pasterdream.pasterdreammod.network.fluidslot.FluidSyncPacket;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.IsNotNeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MaxMeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
+import com.pasterdream.pasterdreammod.network.mortar.MortarCraftPacket;
+import com.pasterdream.pasterdreammod.network.mortar.MortarNbtSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.IsSanEnableSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.MaxSanSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
@@ -23,12 +28,12 @@ public class ModNetwork
     public static void register()
     {
         CHANNEL.registerMessage(id++, FluidSyncPacket.class, FluidSyncPacket::encode, FluidSyncPacket::decode, FluidSyncPacket::handle);
-
         CHANNEL.registerMessage(id++, FluidSlotInteractPacket.class, FluidSlotInteractPacket::encode, FluidSlotInteractPacket::decode, FluidSlotInteractPacket::handle);
         CHANNEL.registerMessage(id++, FluidSoundPacket.class, FluidSoundPacket::encode, FluidSoundPacket::decode, FluidSoundPacket::handle);
 
         CHANNEL.registerMessage(id++, DreamCauldronCraftPacket.class, DreamCauldronCraftPacket::encode, DreamCauldronCraftPacket::decode, DreamCauldronCraftPacket::handle);
-        CHANNEL.registerMessage(id++, MortarFluidInteractPacket.class, MortarFluidInteractPacket::encode, MortarFluidInteractPacket::decode, MortarFluidInteractPacket::handle);
+        CHANNEL.registerMessage(id++, MortarNbtSyncPacket.class, MortarNbtSyncPacket::encode, MortarNbtSyncPacket::decode, MortarNbtSyncPacket::handle);
+        CHANNEL.registerMessage(id++, MortarCraftPacket.class, MortarCraftPacket::encode, MortarCraftPacket::decode, MortarCraftPacket::handle);
 
         CHANNEL.registerMessage(id++, MeltDreamEnergySyncPacket.class, MeltDreamEnergySyncPacket::encode, MeltDreamEnergySyncPacket::decode, MeltDreamEnergySyncPacket::handle);
         CHANNEL.registerMessage(id++, IsNotNeedSyncPacket.class, IsNotNeedSyncPacket::encode, IsNotNeedSyncPacket::decode, IsNotNeedSyncPacket::handle);

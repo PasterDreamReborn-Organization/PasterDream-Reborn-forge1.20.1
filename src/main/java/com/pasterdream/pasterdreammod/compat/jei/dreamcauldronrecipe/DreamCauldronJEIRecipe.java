@@ -1,37 +1,36 @@
 package com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe;
 
-import com.pasterdream.pasterdreammod.helper.fluidingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipe;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 
 public class DreamCauldronJEIRecipe
 {
-    private final List<FluidIngredient> fluidIngredients;
-    private final List<Ingredient> itemIngredients;
-    private final ItemStack outputItem;
+    private final List<FluidIngredient> inputFluidIngredients;
+    private final List<ItemIngredient> inputItemIngredients;
+    private final List<ItemIngredient> outputItemIngredients;
 
     public DreamCauldronJEIRecipe(DreamCauldronRecipe recipe)
     {
-        this.fluidIngredients = recipe.getInputFluidIngredients();
-        this.itemIngredients = recipe.getInputItemIngredients();
-        this.outputItem = recipe.getOutputItemIngredients().get(0).getItems()[0];
+        this.inputFluidIngredients = recipe.getInputFluidIngredients() != null ? recipe.getInputFluidIngredients() : List.of();
+        this.inputItemIngredients = recipe.getInputItemIngredients() != null ? recipe.getInputItemIngredients() : List.of();
+        this.outputItemIngredients = recipe.getOutputItemIngredients() != null ? recipe.getOutputItemIngredients() : List.of();
     }
 
-    public List<FluidIngredient> getFluidIngredients()
+    public List<FluidIngredient> getInputFluidIngredients()
     {
-        return fluidIngredients;
+        return inputFluidIngredients;
     }
 
-    public List<Ingredient> getItemIngredients()
+    public List<ItemIngredient> getInputItemIngredients()
     {
-        return itemIngredients;
+        return inputItemIngredients;
     }
 
-    public ItemStack getOutput()
+    public List<ItemIngredient> getOutputItemIngredients()
     {
-        return outputItem;
+        return outputItemIngredients;
     }
 }

@@ -1,7 +1,8 @@
 package com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
-import com.pasterdream.pasterdreammod.helper.fluidingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -16,14 +17,14 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class DreamCauldronRecipeCategory implements IRecipeCategory<DreamCauldronJEIRecipe>
 {
-    public static final RecipeType<DreamCauldronJEIRecipe> DREAM_CAULDRON_RECIPE_TYPE =   new RecipeType<>(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_cauldron"), DreamCauldronJEIRecipe.class);
+    public static final RecipeType<DreamCauldronJEIRecipe> DREAM_CAULDRON_RECIPE_TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_cauldron"), DreamCauldronJEIRecipe.class);
     public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron.png");
     private final IDrawable background;
     private final IDrawable icon;
@@ -56,7 +57,7 @@ public class DreamCauldronRecipeCategory implements IRecipeCategory<DreamCauldro
     public void setRecipe(IRecipeLayoutBuilder builder, DreamCauldronJEIRecipe recipe, IFocusGroup focuses)
     {
         IRecipeSlotBuilder fluidSlot0 = builder.addSlot(RecipeIngredientRole.INPUT, 154, 19).setFluidRenderer(1000, false, 16, 16);
-        FluidIngredient fluid0Ingredient = recipe.getFluidIngredients().get(0);
+        FluidIngredient fluid0Ingredient = recipe.getInputFluidIngredients().get(0);
         if (fluid0Ingredient.getFluid() != null)
         {
             fluidSlot0.addFluidStack(fluid0Ingredient.getFluid(), fluid0Ingredient.getAmount());
@@ -75,7 +76,7 @@ public class DreamCauldronRecipeCategory implements IRecipeCategory<DreamCauldro
             }
 
         IRecipeSlotBuilder fluidSlot1 = builder.addSlot(RecipeIngredientRole.INPUT, 1, 46).setFluidRenderer(1000, false, 16, 16);
-        FluidIngredient fluid1Ingredient = recipe.getFluidIngredients().get(1);
+        FluidIngredient fluid1Ingredient = recipe.getInputFluidIngredients().get(1);
         if (fluid1Ingredient.getFluid() != null)
         {
             fluidSlot1.addFluidStack(fluid1Ingredient.getFluid(), fluid1Ingredient.getAmount());
@@ -93,19 +94,51 @@ public class DreamCauldronRecipeCategory implements IRecipeCategory<DreamCauldro
                 }
             }
 
-
-        int itemX = 45, itemY = 15;
-        for (Ingredient ingredient : recipe.getItemIngredients())
+        int index = 0;
+        for (ItemIngredient inputItemIngredient : recipe.getInputItemIngredients())
         {
-            IRecipeSlotBuilder slot = builder.addSlot(RecipeIngredientRole.INPUT, itemX, itemY);
-            for (ItemStack stack : ingredient.getItems())
+            IRecipeSlotBuilder slot = builder.addSlot(RecipeIngredientRole.INPUT, 45 + (index * 28), 15);
+            if (inputItemIngredient.getItem() != null)
             {
-                slot.addItemStack(stack);
+                slot.addItemStack(inputItemIngredient.getItemStack());
             }
-            itemX += 28;
+                else
+                {
+                    if (inputItemIngredient.getTag() != null)
+                    {
+                        var tag = ForgeRegistries.ITEMS.tags().getTag(inputItemIngredient.getTag());
+                        if (tag != null)
+                        {
+                            for (Item item : tag)
+                            {
+                                slot.addItemStack(new ItemStack(item, inputItemIngredient.getCount(), inputItemIngredient.getNbt()));
+                            }
+                        }
+                    }
+                }
+            index++;
         }
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 73, 46).addItemStack(recipe.getOutput());
+        IRecipeSlotBuilder slot = builder.addSlot(RecipeIngredientRole.OUTPUT, 73, 46);
+        ItemIngredient outputItemIngredient = recipe.getOutputItemIngredients().get(0);
+        if (outputItemIngredient.getItem() != null)
+        {
+            slot.addItemStack(outputItemIngredient.getItemStack());
+        }
+            else
+            {
+                if (outputItemIngredient.getTag() != null)
+                {
+                    var tag = ForgeRegistries.ITEMS.tags().getTag(outputItemIngredient.getTag());
+                    if (tag != null)
+                    {
+                        for (Item item : tag)
+                        {
+                            fluidSlot1.addItemStack(new ItemStack(item, outputItemIngredient.getCount(), outputItemIngredient.getNbt()));
+                        }
+                    }
+                }
+            }
     }
 
     @Override

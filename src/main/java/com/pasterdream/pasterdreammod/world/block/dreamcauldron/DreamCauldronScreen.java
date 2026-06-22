@@ -1,8 +1,8 @@
 package com.pasterdream.pasterdreammod.world.block.dreamcauldron;
 
 import com.pasterdream.pasterdreammod.component.DreamCauldronButton;
-import com.pasterdream.pasterdreammod.helper.AbstractContainerMenuWithFluidSlot.AbstractContainerScreenWithFluidSlot;
-import com.pasterdream.pasterdreammod.helper.RenderHelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerScreenWithFluidSlot;
+import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.network.DreamCauldronCraftPacket;
 import net.minecraft.client.gui.GuiGraphics;

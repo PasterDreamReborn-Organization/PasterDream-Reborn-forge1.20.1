@@ -1,15 +1,21 @@
 package com.pasterdream.pasterdreammod.compat.jei;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.compat.jei.claypanrecipe.ClaypanJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.claypanrecipe.ClaypanRecipeCategory;
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldronJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldronRecipeCategory;
+import com.pasterdream.pasterdreammod.compat.jei.mortarrecipe.MortarJEIRecipe;
+import com.pasterdream.pasterdreammod.compat.jei.mortarrecipe.MortarRecipeCategory;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModFluids;
+import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanRecipe;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanScreen;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipe;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
+import com.pasterdream.pasterdreammod.world.item.mortar.MortarScreen;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.forge.ForgeTypes;
@@ -42,10 +48,13 @@ public class ModJEIPlugin implements IModPlugin
         {
             RecipeManager recipeManager = level.getRecipeManager();
             List<ClaypanRecipe> claypanRecipes = recipeManager.getAllRecipesFor(ModRecipes.CLAYPAN.get());
-            registration.addRecipes(ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE, claypanRecipes);
+            registration.addRecipes(ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE, claypanRecipes.stream().map(ClaypanJEIRecipe::new).collect(Collectors.toList()));
 
             List<DreamCauldronRecipe> dreamCauldronRecipes = recipeManager.getAllRecipesFor(ModRecipes.DREAM_CAULDRON.get());
             registration.addRecipes(DreamCauldronRecipeCategory.DREAM_CAULDRON_RECIPE_TYPE, dreamCauldronRecipes.stream().map(DreamCauldronJEIRecipe::new).collect(Collectors.toList()));
+
+            List<MortarRecipe> mortarRecipes = recipeManager.getAllRecipesFor(ModRecipes.MORTAR.get());
+            registration.addRecipes(MortarRecipeCategory.MORTAR_RECIPE_TYPE, mortarRecipes.stream().map(MortarJEIRecipe::new).collect(Collectors.toList()));
         }
     }
 
@@ -53,6 +62,7 @@ public class ModJEIPlugin implements IModPlugin
     public void registerGuiHandlers(IGuiHandlerRegistration registration)
     {
         registration.addRecipeClickArea(ClaypanScreen.class, 74, 7, 22, 15, ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE);
+        registration.addRecipeClickArea(MortarScreen.class, 26, 43, 15, 22, MortarRecipeCategory.MORTAR_RECIPE_TYPE);
     }
 
     @Override
@@ -60,6 +70,7 @@ public class ModJEIPlugin implements IModPlugin
     {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.CLAYPAN.get()), ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.DREAM_CAULDRON.get()), DreamCauldronRecipeCategory.DREAM_CAULDRON_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModItems.MORTAR.get()), MortarRecipeCategory.MORTAR_RECIPE_TYPE);
     }
 
     @Override
@@ -67,6 +78,7 @@ public class ModJEIPlugin implements IModPlugin
     {
         registration.addRecipeCategories(new ClaypanRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new DreamCauldronRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new MortarRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     //将流体添加至JEI物品列表

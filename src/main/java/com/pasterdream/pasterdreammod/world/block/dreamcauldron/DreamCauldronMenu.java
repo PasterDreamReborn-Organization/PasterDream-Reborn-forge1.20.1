@@ -1,8 +1,8 @@
 package com.pasterdream.pasterdreammod.world.block.dreamcauldron;
 
-import com.pasterdream.pasterdreammod.helper.AbstractContainerMenuWithFluidSlot.AbstractContainerMenuWithFluidSlot;
-import com.pasterdream.pasterdreammod.helper.AbstractContainerMenuWithFluidSlot.FluidContainer;
-import com.pasterdream.pasterdreammod.helper.AbstractContainerMenuWithFluidSlot.FluidSlot;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidContainer;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidSlot;
 import com.pasterdream.pasterdreammod.init.ModMenus;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
@@ -74,7 +74,7 @@ public class DreamCauldronMenu extends AbstractContainerMenuWithFluidSlot
     }
 
     @Override
-    protected FluidContainer getFluidContainer()
+    public FluidContainer getFluidContainer()
     {
         return fluidContainer;
     }
@@ -91,30 +91,22 @@ public class DreamCauldronMenu extends AbstractContainerMenuWithFluidSlot
         ItemStack stack = slot.getItem();
         ItemStack copy = stack.copy();
 
-        //输出槽移出到背包
-        if (index == 3)
+        //移出到背包
+        if (index >= 2 && index <= 5)
         {
-            if (!this.moveItemStackTo(stack, 4, 40, true))
+            if (!this.moveItemStackTo(stack, 6, 42, true))
             {
                 return ItemStack.EMPTY;
             }
         }
-        else    //输入槽移出到背包
-            if (index >= 0 && index < 3)
+        else    //背包移入输入槽
+            if (index >= 6 && index <= 41)
             {
-                if (!this.moveItemStackTo(stack, 4, 40, false))
+                if (!this.moveItemStackTo(stack, 2, 5, false))
                 {
                     return ItemStack.EMPTY;
                 }
             }
-            else    //背包移入输入槽
-                if (index >= 4 && index < 40)
-                {
-                    if (!this.moveItemStackTo(stack, 0, 3, false))
-                    {
-                        return ItemStack.EMPTY;
-                    }
-                }
 
         if (stack.isEmpty())
         {

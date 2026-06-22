@@ -1,8 +1,8 @@
 package com.pasterdream.pasterdreammod.world.block.claypan;
 
-import com.pasterdream.pasterdreammod.helper.AbstractContainerMenuWithFluidSlot.AbstractContainerMenuWithFluidSlot;
-import com.pasterdream.pasterdreammod.helper.AbstractContainerMenuWithFluidSlot.FluidContainer;
-import com.pasterdream.pasterdreammod.helper.AbstractContainerMenuWithFluidSlot.FluidSlot;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidContainer;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidSlot;
 import com.pasterdream.pasterdreammod.init.ModMenus;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;

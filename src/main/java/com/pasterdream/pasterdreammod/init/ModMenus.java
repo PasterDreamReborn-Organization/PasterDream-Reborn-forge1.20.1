@@ -47,11 +47,11 @@ public class ModMenus
             }
     }));
 
-    public static final RegistryObject<MenuType<MortarMenu>> MORTAR = MENUS.register("mortar", () -> IForgeMenuType.create((id, inv, data) ->
+    public static final RegistryObject<MenuType<MortarMenu>> MORTAR = MENUS.register("mortar", () -> IForgeMenuType.create((id, inventory, data) ->
     {
         InteractionHand hand = data.readBoolean() ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
-        ItemStack stack = inv.player.getItemInHand(hand);
-        return new MortarMenu(id, inv, stack, hand);
+        ItemStack stack = inventory.player.getItemInHand(hand);
+        return new MortarMenu(id, inventory, stack, hand);
     }));
 
     public static void register(IEventBus eventBus)

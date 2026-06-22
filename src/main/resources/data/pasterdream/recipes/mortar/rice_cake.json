@@ -1,0 +1,21 @@
+{
+  "type": "pasterdream:mortar",
+  "itemInputs":
+  [
+    {
+      "tag": "forge:dough/wheat",
+      "count": 1
+    },
+    {
+      "item": "minecraft:sugar",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:rice_cake",
+      "count": 1
+    }
+  ]
+}

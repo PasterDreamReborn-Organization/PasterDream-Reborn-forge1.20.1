@@ -1,7 +1,7 @@
 package com.pasterdream.pasterdreammod.world.block.claypan;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
-import com.pasterdream.pasterdreammod.helper.FluidHandler.IFluidHandlerProvider;
+import com.pasterdream.pasterdreammod.helper.fluidhandler.IFluidHandlerProvider;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import net.minecraft.core.BlockPos;
@@ -117,7 +117,7 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
                     recipeRequiredFluid = claypanRecipe.getInputFluidIngredients().get(0).getFluidStack();
                     if (fluidTank.getFluidAmount() >= recipeRequiredFluid.getAmount())
                     {
-                        currentRecipeOutput = claypanRecipe.getOutputItemIngredients().get(0).getItems()[0];
+                        currentRecipeOutput = claypanRecipe.getOutputItemIngredients().get(0).getItemStack();
                         maxProgress = claypanRecipe.getProcessingTime();
                         progress = 0;
                         setChanged();

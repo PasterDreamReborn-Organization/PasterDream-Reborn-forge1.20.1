@@ -1,6 +1,6 @@
 package com.pasterdream.pasterdreammod.component;
 
-import com.pasterdream.pasterdreammod.helper.RenderHelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;

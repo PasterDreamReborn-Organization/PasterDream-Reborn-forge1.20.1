@@ -1,0 +1,21 @@
+{
+  "type": "pasterdream:mortar",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:dyedream_dust_piece",
+      "count": 1
+    },
+    {
+      "item": "minecraft:bone_meal",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:dyedream_dye",
+      "count": 9
+    }
+  ]
+}

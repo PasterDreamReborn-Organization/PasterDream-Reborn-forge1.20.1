@@ -1,11 +1,11 @@
 package com.pasterdream.pasterdreammod.world.block.claypan;
 
 import com.google.gson.JsonObject;
-import com.pasterdream.pasterdreammod.helper.fluidingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import com.pasterdream.pasterdreammod.recipe.GenericPasterDreamRecipeSerializer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class ClaypanRecipeSerializer extends GenericPasterDreamRecipeSerializer<
     public ClaypanRecipe fromJson(ResourceLocation recipeId, JsonObject json)
     {
         List<FluidIngredient> fluidInputs = parseFluidIngredients(json, "fluidInputs");
-        List<Ingredient> itemOutputs = parseItemIngredients(json, "itemOutputs");
+        List<ItemIngredient> itemOutputs = parseItemIngredients(json, "itemOutputs");
         int processingTime = parseProcessingTime(json);
         return new ClaypanRecipe(recipeId, fluidInputs, itemOutputs, processingTime);
     }
@@ -32,10 +32,10 @@ public class ClaypanRecipeSerializer extends GenericPasterDreamRecipeSerializer<
         }
 
         int outputItemCount = buffer.readVarInt();
-        List<Ingredient> itemOutputs = new ArrayList<>();
+        List<ItemIngredient> itemOutputs = new ArrayList<>();
         for (int i = 0; i < outputItemCount; i++)
         {
-            itemOutputs.add(Ingredient.fromNetwork(buffer));
+            itemOutputs.add(ItemIngredient.fromNetwork(buffer));
         }
         int processingTime = buffer.readVarInt();
         return new ClaypanRecipe(recipeId, fluidInputs, itemOutputs, processingTime);
@@ -51,7 +51,7 @@ public class ClaypanRecipeSerializer extends GenericPasterDreamRecipeSerializer<
         }
 
         buffer.writeVarInt(recipe.getOutputItemIngredients().size());
-        for (Ingredient ingredient : recipe.getOutputItemIngredients())
+        for (ItemIngredient ingredient : recipe.getOutputItemIngredients())
         {
             ingredient.toNetwork(buffer);
         }

@@ -1,0 +1,17 @@
+{
+  "type": "pasterdream:mortar",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:rye_seed",
+      "count": 2
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:flour",
+      "count": 1
+    }
+  ]
+}

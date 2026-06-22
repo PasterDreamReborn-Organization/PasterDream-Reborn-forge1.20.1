@@ -2,7 +2,7 @@ package com.pasterdream.pasterdreammod.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
-import com.pasterdream.pasterdreammod.helper.RenderHelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
