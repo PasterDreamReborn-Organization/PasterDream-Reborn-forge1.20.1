@@ -109,6 +109,11 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(pWriter);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MORTAR.get(), 1)
+                .requires(ModItems.MORTAR.get())
+                .unlockedBy(getHasName(ModItems.MORTAR.get()), has(ModItems.MORTAR.get()))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "mortar_from_mortar"));
+
         // 染梦染料：粉尘碎片 + 骨粉 + 研钵
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_DYE.get(), 7)
                 .requires(ModItems.DYEDREAM_DUST_PIECE.get())

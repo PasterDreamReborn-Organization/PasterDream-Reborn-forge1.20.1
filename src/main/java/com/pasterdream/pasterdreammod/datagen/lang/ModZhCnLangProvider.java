@@ -207,8 +207,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("button.pasterdream.mortarbutton", "研磨");
 
         add("tooltip.pasterdreammod.magic_stone", "§7§o哪个魔法师的兜里不会踹几块魔法石呢？");
+        add("tooltip.pasterdream.右键打开GUI", "§7右键打开GUI");
         add("tooltip.pasterdreammod.san_value", "SAN值: ");
-        add("tooltip.pasterdreammod.melt_dream_energy", "融梦能量: %s");
+        add("tooltip.pasterdreammod.melt_dream_energy", "融梦能量: ");
 
     }
 }

@@ -202,8 +202,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("button.pasterdream.mortarbutton", "grinding");
 
         add("tooltip.pasterdreammod.magic_stone", "§7§oWhat kind of mage doesn't carry a few magic stones?");
+        add("tooltip.pasterdream.右键打开GUI", "§7Press right mouse button to open GUI");
         add("tooltip.pasterdreammod.san_value", "SAN: ");
-        add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: %s");
+        add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
 
     }
 }

@@ -33,24 +33,19 @@ public class PasterDreamFoodItem extends Item
         this.meltDreamEnergyAdd = properties.getMeltDreamEnergyAdd();
     }
 
-
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag)
     {
         super.appendHoverText(stack, level, tooltip, flag);
 
-        if(sanAdd != 0){
-            Component sanTooltip = Component.translatable("tooltip.pasterdreammod.san_value")
-                    .withStyle(ChatFormatting.BLUE)
-                    .append(Component.literal(formatValue(sanAdd))
-                            .withStyle(sanAdd < 0 ? ChatFormatting.RED : ChatFormatting.BLUE));
-            tooltip.add(sanTooltip);
+        if(sanAdd != 0)
+        {
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.san_value").withStyle(ChatFormatting.BLUE).append(Component.literal(formatValue(sanAdd)).withStyle(sanAdd < 0 ? ChatFormatting.RED : ChatFormatting.BLUE)));
         }
-        if(meltDreamEnergyAdd != 0){
-            tooltip.add(
-                    Component.translatable("tooltip.pasterdreammod.melt_dream_energy", formatValue(meltDreamEnergyAdd))
-                            .withStyle(ChatFormatting.BLUE)
-            );
+
+        if(meltDreamEnergyAdd != 0)
+        {
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_energy").withStyle(ChatFormatting.BLUE).append(Component.literal(formatValue(meltDreamEnergyAdd))).withStyle(ChatFormatting.BLUE));
         }
     }
 

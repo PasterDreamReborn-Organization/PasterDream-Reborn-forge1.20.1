@@ -2,7 +2,7 @@ package com.pasterdream.pasterdreammod;
 
 import com.pasterdream.pasterdreammod.client.*;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.FluidHandlerResolvers;
-import com.pasterdream.pasterdreammod.helper.tooltipadder.AddTooltip;
+import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
 import com.pasterdream.pasterdreammod.init.*;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -64,7 +64,7 @@ public class PasterDreamMod
 
     private void AddItemTooltip(ItemTooltipEvent event)
     {
-        AddTooltip.addTooltip(event);
+        AddToolTip.addTooltip(event);
     }
 
     private void AddCommand(RegisterCommandsEvent event)
