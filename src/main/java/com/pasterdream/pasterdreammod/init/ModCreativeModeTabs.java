@@ -112,6 +112,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MAGIC_STONE.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
                         output.accept(ModItems.PINK_EGG.get());
+                        output.accept(ModItems.DYEDREAM_COROLLA.get());
+
                         output.accept(ModItems.CHARGED_AMETHYST.get());
                         output.accept(ModItems.RYE_SEED.get());
                         output.accept(ModItems.FLOUR.get());
