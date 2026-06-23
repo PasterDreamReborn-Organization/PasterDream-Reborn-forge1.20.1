@@ -164,7 +164,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.CLOUD.get(), "Cloud");
         add(ModBlocks.DARK_CLOUD.get(), "Dark Cloud");
         add(ModBlocks.BIG_BUBBLE.get(), "Big Bubble");
-        add(ModBlocks.DYEDREAM_LARTERN.get(), "Dye Dream Lantern");
+        add(ModBlocks.DYEDREAM_SEA_LANTERN.get(), "Dye Dream Sea Lantern");
         add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), "Dye Dream Alloy Block");
         add(ModBlocks.POLISHED_CALCITE.get(), "Polished Calcite");
         add(ModBlocks.POLISHED_CALCITE_STAIRS.get(), "Polished Calcite Stairs");

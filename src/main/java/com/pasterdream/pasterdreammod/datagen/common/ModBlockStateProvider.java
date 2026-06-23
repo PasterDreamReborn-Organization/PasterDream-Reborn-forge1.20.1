@@ -204,7 +204,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_ICE.get(), cubeAll(ModBlocks.DYEDREAM_ICE.get()));
         simpleBlockWithItem(ModBlocks.DYEDREAM_PACKED_ICE.get(), cubeAll(ModBlocks.DYEDREAM_PACKED_ICE.get()));
-        simpleBlockWithItem(ModBlocks.DYEDREAM_LARTERN.get(), cubeAll(ModBlocks.DYEDREAM_LARTERN.get()));
+        simpleBlockWithItem(ModBlocks.DYEDREAM_SEA_LANTERN.get(), cubeAll(ModBlocks.DYEDREAM_SEA_LANTERN.get()));
 
         // ===== 冰晶岩与冰凌晶芽 =====
         simpleBlockWithItem(ModBlocks.ICE_STONE.get(), cubeAll(ModBlocks.ICE_STONE.get()));

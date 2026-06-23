@@ -64,7 +64,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get())
                 .add(ModBlocks.DYEDREAM_ICE.get())
                 .add(ModBlocks.DYEDREAM_PACKED_ICE.get())
-                .add(ModBlocks.DYEDREAM_LARTERN.get())
+                .add(ModBlocks.DYEDREAM_SEA_LANTERN.get())
                 .add(ModBlocks.ICE_STONE.get())
                 .add(ModBlocks.ICE_BUD.get())
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get())
