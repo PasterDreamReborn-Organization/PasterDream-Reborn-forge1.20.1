@@ -1,9 +1,0 @@
-{
-  "parent": "block/slab",
-  "textures": {
-    "bottom": "pasterdream:block/fang_jie_shi_wa_",
-    "top": "pasterdream:block/fang_jie_shi_wa_",
-    "side": "pasterdream:block/fang_jie_shi_wa_"
-  },
-  "render_type": "cutout"
-}

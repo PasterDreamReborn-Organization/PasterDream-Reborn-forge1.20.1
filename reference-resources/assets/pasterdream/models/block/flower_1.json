@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "pasterdream:block/mo_xing_lan_",
-    "particle": "pasterdream:block/mo_xing_lan_"
-  },
-  "render_type": "cutout"
-}

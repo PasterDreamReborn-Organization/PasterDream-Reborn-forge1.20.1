@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingredient": {
-    "item": "pasterdream:polished_calcite"
-  },
-  "result": "pasterdream:polished_calcite_slab"
-}

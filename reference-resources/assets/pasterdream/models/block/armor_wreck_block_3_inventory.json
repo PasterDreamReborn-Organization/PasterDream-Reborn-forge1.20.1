@@ -1,8 +1,0 @@
-{
-  "parent": "block/wall_inventory",
-  "textures": {
-    "wall": "pasterdream:block/armor_wreck",
-    "particle": "pasterdream:block/armor_wreck"
-  },
-  "render_type": "cutout"
-}

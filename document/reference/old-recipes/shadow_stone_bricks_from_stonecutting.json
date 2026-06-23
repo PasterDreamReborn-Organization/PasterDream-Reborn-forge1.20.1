@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "tag": "forge:shadow_stones"
-  },
-  "result": "pasterdream:shadow_stone_bricks"
-}

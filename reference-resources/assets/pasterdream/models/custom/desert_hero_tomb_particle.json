@@ -1,6 +1,0 @@
-{
-  "parent": "pasterdream:displaysettings/desert_hero_tomb.item",
-  "textures": {
-    "particle": "pasterdream:block/desert_hero_tomb"
-  }
-}

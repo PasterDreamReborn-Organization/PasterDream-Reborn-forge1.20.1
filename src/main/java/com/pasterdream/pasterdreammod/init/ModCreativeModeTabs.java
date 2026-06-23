@@ -169,7 +169,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK_STAIRS.get());
                         output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK_SLAB.get());
                         output.accept(ModItems.DYEDREAM_QUARTZ_BLOCK_WALL.get());
-                        output.accept(ModItems.DYEDREAM_LARTERN.get());
+                        output.accept(ModItems.DYEDREAM_SEA_LANTERN.get());
                         output.accept(ModItems.DYEDREAM_GLASS.get());
                         output.accept(ModItems.DYEDREAM_GLASS_PANE.get());
                         output.accept(ModItems.CARVE_DYEDREAM_GLASS.get());

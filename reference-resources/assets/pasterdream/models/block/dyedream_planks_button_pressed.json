@@ -1,7 +1,0 @@
-{
-  "parent": "block/button_pressed",
-  "textures": {
-    "texture": "pasterdream:block/ran_meng_mu_ban_"
-  },
-  "render_type": "cutout"
-}

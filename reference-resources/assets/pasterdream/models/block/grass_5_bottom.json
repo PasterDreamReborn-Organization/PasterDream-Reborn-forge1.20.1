@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "pasterdream:blocks/gao_jing_cao_",
-    "particle": "pasterdream:blocks/gao_jing_cao_"
-  },
-  "render_type": "cutout"
-}

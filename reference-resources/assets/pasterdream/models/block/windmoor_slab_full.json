@@ -1,9 +1,0 @@
-{
-  "parent": "block/cube_bottom_top",
-  "textures": {
-    "bottom": "pasterdream:block/feng_bo_mu_ban_",
-    "top": "pasterdream:block/feng_bo_mu_ban_",
-    "side": "pasterdream:block/feng_bo_mu_ban_"
-  },
-  "render_type": "cutout"
-}

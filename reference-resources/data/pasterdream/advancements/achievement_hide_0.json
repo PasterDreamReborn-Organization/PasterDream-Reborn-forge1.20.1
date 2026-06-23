@@ -1,8 +1,0 @@
-{
-  "criteria": {
-    "achievement_hide_0": {
-      "trigger": "minecraft:impossible"
-    }
-  },
-  "parent": "pasterdream:achievement_start"
-}

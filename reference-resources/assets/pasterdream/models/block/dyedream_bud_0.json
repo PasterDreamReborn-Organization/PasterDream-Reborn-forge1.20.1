@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "pasterdream:block/da_xing_ran_meng_jing_ya_",
-    "particle": "pasterdream:block/da_xing_ran_meng_jing_ya_"
-  },
-  "render_type": "cutout_mipped"
-}

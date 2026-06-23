@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "pasterdream:item/ran_meng_lie_xi_item"
-  },
-  "render_type": "translucent"
-}

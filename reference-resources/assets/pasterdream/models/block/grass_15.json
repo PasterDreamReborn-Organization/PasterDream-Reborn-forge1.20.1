@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "pasterdream:block/feng_yu_cao__top",
-    "particle": "pasterdream:block/feng_yu_cao__top"
-  },
-  "render_type": "cutout"
-}

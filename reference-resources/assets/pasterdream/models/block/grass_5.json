@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "pasterdream:block/fang_jie_shi_sun_0",
-    "particle": "pasterdream:block/fang_jie_shi_sun_0"
-  },
-  "render_type": "cutout"
-}

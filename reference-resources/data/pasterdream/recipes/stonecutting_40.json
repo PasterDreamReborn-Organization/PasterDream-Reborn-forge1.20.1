@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingredient": {
-    "item": "pasterdream:dyedream_bud_block"
-  },
-  "result": "pasterdream:dyedream_bud_slab"
-}

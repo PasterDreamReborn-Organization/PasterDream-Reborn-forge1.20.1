@@ -1,6 +1,0 @@
-{
-  "parent": "pasterdream:displaysettings/uuz_doll_0.item",
-  "textures": {
-    "particle": "pasterdream:block/yun_duo_"
-  }
-}

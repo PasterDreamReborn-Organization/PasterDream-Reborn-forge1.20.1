@@ -1,9 +1,0 @@
-{
-  "parent": "block/inner_stairs",
-  "textures": {
-    "bottom": "pasterdream:block/cang_qing_yan_zhuan_",
-    "top": "pasterdream:block/cang_qing_yan_zhuan_",
-    "side": "pasterdream:block/cang_qing_yan_zhuan_"
-  },
-  "render_type": "cutout"
-}

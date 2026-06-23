@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "pasterdream:shadow_stone_tiles"
-  },
-  "result": "pasterdream:shadow_stone_tiles_wall"
-}

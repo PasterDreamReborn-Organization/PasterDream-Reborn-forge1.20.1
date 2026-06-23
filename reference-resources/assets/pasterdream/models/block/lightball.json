@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "pasterdream:block/liu_ming_guang_qiu_",
-    "particle": "pasterdream:block/liu_ming_guang_qiu_"
-  },
-  "render_type": "cutout"
-}

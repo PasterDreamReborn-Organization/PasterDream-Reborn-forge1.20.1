@@ -1,8 +1,0 @@
-{
-  "parent": "block/door_bottom_right",
-  "textures": {
-    "bottom": "pasterdream:block/feng_bo_mu_men_",
-    "top": "pasterdream:block/feng_bo_mu_men__top"
-  },
-  "render_type": "cutout"
-}

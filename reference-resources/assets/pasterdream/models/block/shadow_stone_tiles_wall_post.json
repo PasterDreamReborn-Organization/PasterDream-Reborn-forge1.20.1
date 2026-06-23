@@ -1,8 +1,0 @@
-{
-  "parent": "block/template_wall_post",
-  "textures": {
-    "wall": "pasterdream:block/yin_ying_shi_wa_",
-    "particle": "pasterdream:block/yin_ying_shi_wa_"
-  },
-  "render_type": "cutout"
-}

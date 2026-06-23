@@ -1,8 +1,0 @@
-{
-  "parent": "block/fence_inventory",
-  "textures": {
-    "texture": "pasterdream:block/ran_meng_mu_ban_",
-    "particle": "pasterdream:block/ran_meng_mu_ban_"
-  },
-  "render_type": "cutout"
-}

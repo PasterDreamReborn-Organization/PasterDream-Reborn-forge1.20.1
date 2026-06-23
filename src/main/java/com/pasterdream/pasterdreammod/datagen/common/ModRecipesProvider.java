@@ -212,7 +212,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter);
 
         // 染梦水晶灯
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_LARTERN.get(), 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_SEA_LANTERN.get(), 2)
                 .pattern("aba")
                 .pattern("bcb")
                 .pattern("aba")

@@ -1,6 +1,0 @@
-{
-  "parent": "pasterdream:displaysettings/broken_shadow_dungeon_portal.item",
-  "textures": {
-    "particle": "pasterdream:block/shadow_dungeon_portal"
-  }
-}

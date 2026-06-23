@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "pasterdream:block/cang_bai_xue_lian_",
-    "particle": "pasterdream:block/cang_bai_xue_lian_"
-  },
-  "render_type": "cutout"
-}
