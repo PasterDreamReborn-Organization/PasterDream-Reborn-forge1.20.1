@@ -225,6 +225,19 @@ public final class RecipeHelpers {
                 .unlockedBy(getHasName(heart), has(heart))
                 .save(writer);
     }
+
+    /**
+     * 蛋糕类合成配方
+     * @param material 合成材料，决定合成出来的玻璃饮品
+     *@param drink 出来的饮料
+     */
+    public static void glass_cup_drink(Consumer<FinishedRecipe> writer,ItemLike material,ItemLike drink) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, drink)
+                .requires(ModItems.GLASS_CUP.get())
+                .requires(material)
+                .unlockedBy(getHasName(ModItems.GLASS_CUP.get()), has(ModItems.GLASS_CUP.get()))
+                .save(writer);
+    }
     // === 树叶战利品相关  ===
 
     /** 普通树叶掉落树苗的概率 — 与原版 NORMAL_LEAVES_SAPLING_CHANCES 一致 */

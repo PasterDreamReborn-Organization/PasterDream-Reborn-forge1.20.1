@@ -332,6 +332,9 @@ public class ModItems {
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().sanAdd(15)
                     .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f).alwaysEat().build())));
 
+    // ===== 材料物品 =====
+    public static final RegistryObject<Item> DYEDREAM_COROLLA = ITEMS.register("dyedream_corolla",
+            () -> new Item(new Item.Properties()));
 
     // ===== 方块物品 =====
 

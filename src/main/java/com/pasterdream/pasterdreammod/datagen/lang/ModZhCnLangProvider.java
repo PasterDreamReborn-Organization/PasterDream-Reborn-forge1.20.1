@@ -101,6 +101,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SOUL_DUST.get(), "灵魂粉尘");
         add(ModItems.SOUL_ESSENCE.get(), "灵魂精华");
         add(ModItems.CHARGED_AMETHYST.get(), "盈能紫水晶");
+        add(ModItems.DYEDREAM_COROLLA.get(), "梦染花冠");
 
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "染梦泥土");

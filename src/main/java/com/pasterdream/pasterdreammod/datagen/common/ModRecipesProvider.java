@@ -617,6 +617,16 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
                 .save(pWriter);
 
+        // 玻璃杯合成配方（支持所有玻璃板tag）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GLASS_CUP.get(), 4)
+                .pattern("a a")
+                .pattern("a a")
+                .pattern(" a ")
+                .define('a', Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "glass_panes"))))
+                .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
+                .save(pWriter);
+
         // 重做酵母合成配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_YEAST.get(), 4)
                 .requires(ModItems.GLASS_JAR.get(), 4)
@@ -746,19 +756,102 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DUST_PIECE.get()), has(ModItems.DYEDREAM_DUST_PIECE.get()))
                 .save(pWriter);
 
-        //煎蛋合成配方
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.PINK_EGG.get()),
+        // 煎蛋合成配方（熔炉，烟熏炉，篝火）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ItemTags.create(
+                                ResourceLocation.fromNamespaceAndPath("forge", "eggs"))),
                         RecipeCategory.MISC, ModItems.FRIED_EGG.get(), 1.0F, 200)
                 .unlockedBy(getHasName(ModItems.PINK_EGG.get()), has(ModItems.PINK_EGG.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":fried_egg_from_pink_egg_smelting");
-        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItems.PINK_EGG.get()),
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ItemTags.create(
+                                ResourceLocation.fromNamespaceAndPath("forge", "eggs"))),
                         RecipeCategory.MISC, ModItems.FRIED_EGG.get(), 1.0F, 100)
                 .unlockedBy(getHasName(ModItems.PINK_EGG.get()), has(ModItems.PINK_EGG.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":fried_egg_from_pink_egg_smoking");
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItems.PINK_EGG.get()),
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ItemTags.create(
+                                ResourceLocation.fromNamespaceAndPath("forge", "eggs"))),
                         RecipeCategory.MISC, ModItems.FRIED_EGG.get(),0,600)
                 .unlockedBy(getHasName(ModItems.PINK_EGG.get()), has(ModItems.PINK_EGG.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":fried_egg_from_pink_egg_campfire_cooking");
+
+        // 面包片合成配方（熔炉，烟熏炉，篝火）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.FLOUR.get()),
+                        RecipeCategory.MISC, ModItems.BREAD_SLICE.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.FLOUR.get()), has(ModItems.FLOUR.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":bread_slice_from_flour_smelting");
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItems.FLOUR.get()),
+                        RecipeCategory.MISC, ModItems.BREAD_SLICE.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.FLOUR.get()), has(ModItems.FLOUR.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":bread_slice_from_flour_smoking");
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItems.FLOUR.get()),
+                        RecipeCategory.MISC, ModItems.BREAD_SLICE.get(),0,600)
+                .unlockedBy(getHasName(ModItems.FLOUR.get()), has(ModItems.FLOUR.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":bread_slice_from_flour_campfire_cooking");
+
+        // 威化饼干合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.WAFER_BISCUIT.get(), 2)
+                .requires(ModItems.BREAD_SLICE.get(),2)
+                .requires(ModItems.GLASS_JAR_OF_YEAST.get(),1)
+                .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_YEAST.get()), has(ModItems.GLASS_JAR_OF_YEAST.get()))
+                .save(pWriter);
+
+        // 瑞士卷合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SWISS_ROLL.get(), 1)
+                .requires(ModItems.BREAD_SLICE.get(),2)
+                .requires(ModItems.GLASS_JAR_OF_MILK.get(),1)
+                .requires(ModItems.GLASS_JAR_OF_YEAST.get(),1)
+                .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_YEAST.get()), has(ModItems.GLASS_JAR_OF_YEAST.get()))
+                .save(pWriter);
+
+        // 威化夹心合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.STUFFED_WAFER_COOKIES.get(), 1)
+                .requires(ModItems.WAFER_BISCUIT.get(),2)
+                .requires(ModItems.GLASS_JAR_OF_MILK.get(),1)
+                .requires(Items.SUGAR,1)
+                .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_MILK.get()), has(ModItems.GLASS_JAR_OF_MILK.get()))
+                .save(pWriter);
+
+        // 三明治合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SANDWICH.get(), 1)
+                .requires(Items.BREAD,1)
+                .requires(Items.CHICKEN,1)
+                .requires(Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "cooked_eggs"))),1)
+                .requires(Items.KELP,1)
+                .unlockedBy(getHasName(Items.BREAD), has(Items.BREAD))
+                .save(pWriter);
+
+        // 培根煎蛋合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BACON_AND_EGG.get(), 1)
+                .requires(Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "cooked_eggs"))),2)
+                .requires(Items.COOKED_PORKCHOP,1)
+                .requires(ModItems.SALT.get(),1)
+                .unlockedBy(getHasName(ModItems.SALT.get()), has(ModItems.SALT.get()))
+                .save(pWriter);
+
+        // 水母果冻合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.JELLYFISH_JELLO.get(), 2)
+                .requires(ModItems.JELLYFISH_MUD.get(), 2)
+                .requires(Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "fruits/fig"))),1)
+                .requires(Items.SUGAR,1)
+                .requires(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(),1)
+                .unlockedBy(getHasName(ModItems.JELLYFISH_MUD.get()), has(ModItems.JELLYFISH_MUD.get()))
+                .save(pWriter);
+
+        // 饮料（玻璃杯类）合成配方
+        RecipeHelpers.glass_cup_drink(pWriter,Items.APPLE, ModItems.GLASS_CUP_OF_APPLE_JUICE.get());
+        RecipeHelpers.glass_cup_drink(pWriter,Items.HONEYCOMB, ModItems.GLASS_CUP_OF_HONEY_JUICE.get());
+        RecipeHelpers.glass_cup_drink(pWriter,Items.MELON_SLICE, ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
+
+        // 染梦花茶（未烹调）合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA.get(), 1)
+                .requires(ModItems.GLASS_CUP.get(),1)
+                .requires(ModItems.AMBER_CANDY.get(),1)
+                .requires(ModItems.DYEDREAM_LEAVES.get(),1)
+                .requires(ModItems.DYEDREAM_COROLLA.get(),1)
+                .unlockedBy(getHasName(ModItems.AMBER_CANDY.get()), has(ModItems.AMBER_CANDY.get()))
+                .save(pWriter);
 
     }
 
