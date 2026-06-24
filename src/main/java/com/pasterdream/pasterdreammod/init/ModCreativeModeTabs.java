@@ -238,6 +238,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MORTAR.get());
                         output.accept(ModBlocks.DYEDREAM_DESK.get());
                         output.accept(ModBlocks.SHADOW_DESK.get());
+                        output.accept(ModBlocks.PICNIC_BASKET.get());
+                        output.accept(ModBlocks.SHADOW_CHEST.get());
                         output.accept(ModBlocks.WIND_MOOR_CRATE.get());
                     })
                     .build());

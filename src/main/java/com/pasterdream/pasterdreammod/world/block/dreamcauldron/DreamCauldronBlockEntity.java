@@ -13,7 +13,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -218,10 +217,6 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player)
     {
-        if (player instanceof ServerPlayer serverPlayer)
-        {
-            return new DreamCauldronMenu(id, inventory, this, serverPlayer);
-        }
         return new DreamCauldronMenu(id, inventory, this);
     }
 

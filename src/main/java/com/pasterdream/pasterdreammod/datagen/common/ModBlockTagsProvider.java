@@ -51,6 +51,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.PINK_SHROOMLIGHT.get())
                 .add(ModBlocks.DYEDREAM_DESK.get())
                 .add(ModBlocks.SHADOW_DESK.get())
+                .add(ModBlocks.PICNIC_BASKET.get())
                 .add(ModBlocks.WIND_MOOR_CRATE.get());
 
         // 可以用镐来挖掘
@@ -84,7 +85,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.RAW_TITANIUM_BLOCK.get())
                 .add(ModBlocks.TITANIUM_BLOCK.get())
                 .add(ModBlocks.MOLTEN_GOLD_BLOCK.get())
-                .add(ModBlocks.CHARGED_AMETHYST_BLOCK.get());
+                .add(ModBlocks.CHARGED_AMETHYST_BLOCK.get())
+                .add(ModBlocks.SHADOW_CHEST.get());
 
         //整个树的结构（包含原木，木头，树叶，菌柄，菌核，菌疣）
         tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)

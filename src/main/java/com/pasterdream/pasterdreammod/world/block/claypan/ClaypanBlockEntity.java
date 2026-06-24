@@ -233,10 +233,6 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player)
     {
-        if (player instanceof ServerPlayer serverPlayer)
-        {
-            return new ClaypanMenu(id, inventory, this, serverPlayer);
-        }
         return new ClaypanMenu(id, inventory, this);
     }
 

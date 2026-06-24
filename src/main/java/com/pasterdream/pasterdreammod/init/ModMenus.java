@@ -1,6 +1,10 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket.PicnicBasketBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket.PicnicBasketMenu;
+import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestMenu;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.windmoorcrate.WindMoorCrateBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.windmoorcrate.WindMoorCrateMenu;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntity;
@@ -12,7 +16,6 @@ import com.pasterdream.pasterdreammod.world.block.ItemContainer.desk.shadowdesk.
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronMenu;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.ItemStack;
@@ -30,27 +33,13 @@ public class ModMenus
     public static final RegistryObject<MenuType<ClaypanMenu>> CLAYPAN = MENUS.register("claypan", () -> IForgeMenuType.create((windowId, inv, data) ->
     {
         BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
-        if (inv.player instanceof ServerPlayer serverPlayer)
-        {
-            return new ClaypanMenu(windowId, inv, (ClaypanBlockEntity)blockEntity, serverPlayer);
-        }
-            else
-            {
-                return new ClaypanMenu(windowId, inv, (ClaypanBlockEntity)blockEntity);
-            }
+        return new ClaypanMenu(windowId, inv, (ClaypanBlockEntity)blockEntity);
     }));
 
     public static final RegistryObject<MenuType<DreamCauldronMenu>> DREAM_CAULDRON = MENUS.register("dream_cauldron", () -> IForgeMenuType.create((windowId, inv, data) ->
     {
         BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
-        if (inv.player instanceof ServerPlayer serverPlayer)
-        {
-            return new DreamCauldronMenu(windowId, inv, (DreamCauldronBlockEntity)blockEntity, serverPlayer);
-        }
-            else
-            {
-                return new DreamCauldronMenu(windowId, inv, (DreamCauldronBlockEntity)blockEntity);
-            }
+        return new DreamCauldronMenu(windowId, inv, (DreamCauldronBlockEntity)blockEntity);
     }));
 
     public static final RegistryObject<MenuType<MortarMenu>> MORTAR = MENUS.register("mortar", () -> IForgeMenuType.create((id, inventory, data) ->
@@ -70,6 +59,18 @@ public class ModMenus
     {
         BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
         return new ShadowDeskMenu(windowId, inv, (ShadowDeskBlockEntity) blockEntity);
+    }));
+
+    public static final RegistryObject<MenuType<PicnicBasketMenu>> PICNIC_BASKET = MENUS.register("picnic_basket", () -> IForgeMenuType.create((windowId, inv, data) ->
+    {
+        BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+        return new PicnicBasketMenu(windowId, inv, (PicnicBasketBlockEntity) blockEntity);
+    }));
+
+    public static final RegistryObject<MenuType<ShadowChestMenu>> SHADOW_CHEST = MENUS.register("shadow_chest", () -> IForgeMenuType.create((windowId, inv, data) ->
+    {
+        BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+        return new ShadowChestMenu(windowId, inv, (ShadowChestBlockEntity) blockEntity);
     }));
 
     public static final RegistryObject<MenuType<WindMoorCrateMenu>> WIND_MOOR_CRATE = MENUS.register("wind_moor_crate", () -> IForgeMenuType.create((windowId, inv, data) ->

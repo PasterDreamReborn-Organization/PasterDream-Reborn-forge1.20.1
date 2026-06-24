@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket.PicnicBasketBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -19,5 +21,7 @@ public class ModBlockEntityRenderer
     public static void EntityRenderersEventRegister(EntityRenderersEvent.RegisterRenderers event)
     {
         event.registerBlockEntityRenderer(ModBlockEntities.DREAM_CAULDRON.get(), DreamCauldronBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_CHEST.get(), ShadowChestBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.PICNIC_BASKET.get(), PicnicBasketBlockEntityRenderer::new);
     }
 }

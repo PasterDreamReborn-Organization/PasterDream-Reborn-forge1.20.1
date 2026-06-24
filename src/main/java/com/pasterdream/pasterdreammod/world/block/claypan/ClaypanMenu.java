@@ -21,7 +21,7 @@ public class ClaypanMenu extends AbstractContainerMenuWithFluidSlot
     private final ContainerData data;
     private final FluidContainer fluidContainer;
 
-    public ClaypanMenu(int id, Inventory inventory, ClaypanBlockEntity blockEntity, ServerPlayer serverPlayer)
+    public ClaypanMenu(int id, Inventory inventory, ClaypanBlockEntity blockEntity)
     {
         super(ModMenus.CLAYPAN.get(), id);
         this.blockEntity = blockEntity;
@@ -55,11 +55,6 @@ public class ClaypanMenu extends AbstractContainerMenuWithFluidSlot
 
         addDataSlots(data);
         reBuildLastFluids();
-    }
-
-    public ClaypanMenu(int id, Inventory inventory, ClaypanBlockEntity blockEntity)
-    {
-        this(id, inventory, blockEntity, null);
     }
 
     private static class ClaypanFluidContainer implements FluidContainer

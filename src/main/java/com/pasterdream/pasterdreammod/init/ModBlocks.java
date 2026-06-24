@@ -3,6 +3,8 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.behavior.ModTreeGrowers;
 import com.pasterdream.pasterdreammod.world.block.DyedreamGrassBlock;
+import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket.PicnicBasketBlock;
+import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestBlock;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.windmoorcrate.WindMoorCrateBlock;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlock;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.desk.dyedreamdesk.DyedreamDeskBlock;
@@ -163,6 +165,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> DREAM_CAULDRON = BLOCKS.register("dream_cauldron", () -> new DreamCauldronBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.CALCITE).strength(2.0F).noOcclusion()));
     public static final RegistryObject<Block> DYEDREAM_DESK = BLOCKS.register("dyedream_desk", () -> new DyedreamDeskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1f).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> SHADOW_DESK = BLOCKS.register("shadow_desk", () -> new ShadowDeskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1f).requiresCorrectToolForDrops().noOcclusion()));
+    public static final RegistryObject<Block> PICNIC_BASKET = BLOCKS.register("picnic_basket", () -> new PicnicBasketBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).ignitedByLava().sound(SoundType.SCAFFOLDING).strength(0.4f).noOcclusion()));
+    public static final RegistryObject<Block> SHADOW_CHEST = BLOCKS.register("shadow_chest", () -> new ShadowChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.DEEPSLATE_TILES).strength(1f, 0.5f).noOcclusion()));
     public static final RegistryObject<Block> WIND_MOOR_CRATE = BLOCKS.register("wind_moor_crate", () -> new WindMoorCrateBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1f).noOcclusion()));
 
     public static void register(IEventBus eventBus) {

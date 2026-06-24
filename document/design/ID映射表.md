@@ -72,7 +72,7 @@
 | `claypan_0`                      | `claypan`                        | 重命名，删除_0后缀                                | 客制化类                                                                                                             |
 | `claypan_1`                      | 删除                               | -                                         | -                                                                                                                |
 | `claypan_2`                      | 删除                               | -                                         | -                                                                                                                |
-| `dream_cauldron`                 | `dream_cauldron`                 | 不改                                        | 客制化类 `DreamCauldronBlock`，含 BlockEntity、Menu、Screen                                                              |
+| `dream_cauldron`                 | `dream_cauldron`                 | 不改                                        | 客制化类 `DreamCauldronBlock`，含 BlockEntity、Menu、Screen以及Geckolib特殊渲染                                                |
 | `dyedream_block`                 | `dyedream_alloy_block`           | 重命名，补充 `alloy_` 前缀与系列一致                   | 无需客制化类，直接用 `Block`                                                                                               |
 | `big_bubble`                     | `big_bubble`                     | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`；`neighborChanged` 特殊逻辑暂不实现                                                     |
 | `ice_stone`                      | `ice_stone`                      | 不改                                        | 无需客制化类，直接用 `Block`                                                                                               |
@@ -97,7 +97,16 @@
 | `moltengold_block`               | `molten_gold_block`              | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                                                                               |
 | `charged_amethyst_block`         | `charged_amethyst_block`         | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`                                                                                |
 | `goldenrod`                      | `goldenrod`                      | 不改                                        | 无需客制化类，直接用 `FlowerBlock`                                                                                         |
-| `grass_7`                        | `dyedream_moss`                  | 重命名，染梦苔藓                                  | 无需客制化类，直接用 `FlowerBlock`                                                                                               |
+| `grass_7`                        | `dyedream_moss`                  | 重命名，染梦苔藓                                  | 无需客制化类，直接用 `FlowerBlock`                                                                                         |
+| `dyedream_desk`                  | `dyedream_desk`                  | 不改                                        | 客制化类 `DyedreamDeskBlock`，含 BlockEntity、Menu、Screen                                                               |
+| `shadow_desk`                    | `shadow_desk`                    | 不改                                        | 客制化类 `ShadowDeskBlock`，含 BlockEntity、Menu、Screen                                                                 |
+| `picnic_basket`                  | `picnic_basket`                  | 不改                                        | 客制化类 `PicnicBusketBlock`，含 BlockEntity、Menu、Screen以及Geckolib特殊渲染                                                               |
+| `shadow_chest`                   | `shadow_chest`                   | 不改                                        | 客制化类 `ShadowChestBlock`，含 BlockEntity、Menu、Screen以及Geckolib特殊渲染                                                                |
+| `windmoor_crate`                 | `wind_moor_crate`                | 重命名，补下划线                                        | 客制化类 `WindMoorCrate`，含 BlockEntity、Menu、Screen                                                                   |
+
+
+
+
 
 
 ---
@@ -194,6 +203,26 @@
 | `charged_amethyst`             | `charged_amethyst`                          | 不改                                                        | 无需客制化类，直接用 `Item`                    |
 | `dyedream_corolla`             | `dyedream_corolla`                          | 不改                                                        | 无需客制化类，直接用 `Item`                    |
 | `meltdream_crystal_0`          | `melt_dream_crystal_fragment`               | 重命名，添加下划线和`fragment`，去除`_0`                               | 无需客制化类，直接用 `Item`                    |
+| `dreamnotes_0`                 | `dream_notes_dyedream_world`                | 整个物品机制重做，合并相同类型，使用NBT区分（NBT内容使用特殊绑定框架）                    | 客制化类 `DreamNotesItem`                |
+| `dreamnotes_1`                 | 删除                                          | -                                                         | -                                    |
+| `dreamnotes_2`                 | 删除                                          | -                                                         | -                                    |
+| `dreamnotes_3`                 | 删除                                          | -                                                         | -                                    |
+| `dreamnotes_4`                 | 删除                                          | -                                                         | -                                    |
+| `dreamnotes_5`                 | 删除                                          | -                                                         | -                                    |
+| `dreamnotes_6`                 | 删除                                          | -                                                         | -                                    |
+| `dreamnotes_7`                 | 删除                                          | -                                                         | -                                    |
+| `dreamnotes_8`                 | `dream_notes_lamp_shadow_world`             | 整个物品机制重做，合并相同类型，使用NBT区分（NBT内容使用特殊绑定框架）                                                         | 客制化类 `DreamNotesItem`                                    |
+| `dreamnotes_9`                 | 删除                                          | -                                                         | -                                    |
+| `dreamnotes_10`                | 删除                                          | -                                                         | -                                    |
+| `dreamnotes_11`                | 删除                                          | -                                                         | -                                    |
+| `dreamnotes_12`                | 删除                                          | -                                                         | -                                    |
+| `dreamnotes_13`                | 删除                                          | -                                                         | -                                    |
+| `dreamnotes_14`                | `dream_notes_wind_journey_world`            | 整个物品机制重做，合并相同类型，使用NBT区分（NBT内容使用特殊绑定框架）                                                         | 客制化类 `DreamNotesItem`                                    |
+
+
+
+
+
 ---
 
 ## 流体映射

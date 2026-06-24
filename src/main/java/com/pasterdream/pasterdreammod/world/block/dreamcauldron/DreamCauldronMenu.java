@@ -19,7 +19,7 @@ public class DreamCauldronMenu extends AbstractContainerMenuWithFluidSlot
     private final DreamCauldronBlockEntity blockEntity;
     private final FluidContainer fluidContainer;
 
-    public DreamCauldronMenu(int id, Inventory inventory, DreamCauldronBlockEntity blockEntity, ServerPlayer serverPlayer)
+    public DreamCauldronMenu(int id, Inventory inventory, DreamCauldronBlockEntity blockEntity)
     {
         super(ModMenus.DREAM_CAULDRON.get(), id);
         this.blockEntity = blockEntity;
@@ -55,11 +55,6 @@ public class DreamCauldronMenu extends AbstractContainerMenuWithFluidSlot
         }
 
         reBuildLastFluids();
-    }
-
-    public DreamCauldronMenu(int id, Inventory inventory, DreamCauldronBlockEntity blockEntity)
-    {
-        this(id, inventory, blockEntity, null);
     }
 
     public DreamCauldronBlockEntity getBlockEntity()
