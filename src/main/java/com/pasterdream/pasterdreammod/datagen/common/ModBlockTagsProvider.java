@@ -112,6 +112,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SAPLINGS)
                 .add(ModBlocks.DYEDREAM_SAPLING.get());
 
+        tag(BlockTags.FLOWERS)
+                .add(ModBlocks.GOLDENROD.get());
+
+
 
 
         // 需要石头工具挖掘

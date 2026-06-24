@@ -109,6 +109,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.SOUL_ESSENCE.get());
         basicItem(ModItems.CHARGED_AMETHYST.get());
         basicItem(ModItems.DYEDREAM_COROLLA.get());
+        basicItem(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
         basicItem(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get());
         basicItem(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get());
         basicItem(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get());
@@ -155,7 +156,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.ICE_BUD.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/ice_bud"));
 
+        withExistingParent(ModItems.GOLDENROD.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/goldenrod"));
 
+        withExistingParent(ModItems.DYEDREAM_MOSS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dyedream_moss"));
     }
 
     @Override

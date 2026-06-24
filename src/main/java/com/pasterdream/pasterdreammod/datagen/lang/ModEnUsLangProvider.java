@@ -183,6 +183,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_DESK.get(), "Dyedream Desk");
         add(ModBlocks.SHADOW_DESK.get(), "Shadow Desk");
 
+        add(ModBlocks.GOLDENROD.get(), "Goldenrod");
+        add(ModBlocks.DYEDREAM_MOSS.get(), "Dyedream Moss");
+        add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "Melt Dream Crystal Fragment");
+
         add("fluid.pasterdream.melt_dream_liquid","Melt Dream Liquid");
         add("fluid.pasterdream.shadow_liquid","Shadow Liquid");
 

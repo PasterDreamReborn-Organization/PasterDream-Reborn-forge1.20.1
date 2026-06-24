@@ -114,7 +114,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PINK_SLIMEBALL.get());
                         output.accept(ModItems.PINK_EGG.get());
                         output.accept(ModItems.DYEDREAM_COROLLA.get());
-
+                        output.accept(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
                         output.accept(ModItems.CHARGED_AMETHYST.get());
                         output.accept(ModItems.RYE_SEED.get());
                         output.accept(ModItems.FLOUR.get());
@@ -219,7 +219,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_SAPLING.get());
                         output.accept(ModItems.PINK_MUSHROOM.get());
                         output.accept(ModItems.TALL_PINK_MUSHROOM.get());
-
+                        output.accept(ModItems.GOLDENROD.get());
+                        output.accept(ModItems.DYEDREAM_MOSS.get());
 
                     })
                     .build());

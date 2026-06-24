@@ -84,6 +84,12 @@ public class ModItems {
     public static final RegistryObject<Item> CHARGED_AMETHYST = ITEMS.register("charged_amethyst",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> DYEDREAM_COROLLA = ITEMS.register("dyedream_corolla",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.register("melt_dream_crystal_fragment",
+            () -> new Item(new Item.Properties()));
+
     // ===== 玻璃罐系列 =====
     public static final RegistryObject<Item> GLASS_JAR = ITEMS.register("glass_jar", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GLASS_JAR_OF_WATER = ITEMS.register("glass_jar_of_water", () -> new PasterDreamDrinkItem((PasterDreamDrinkAndFoodProperties) new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().alwaysEat().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())));
@@ -336,9 +342,6 @@ public class ModItems {
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().sanAdd(15)
                     .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f).alwaysEat().build())));
 
-    // ===== 材料物品 =====
-    public static final RegistryObject<Item> DYEDREAM_COROLLA = ITEMS.register("dyedream_corolla",
-            () -> new Item(new Item.Properties()));
 
     // ===== 方块物品 =====
 
@@ -512,8 +515,15 @@ public class ModItems {
     public static final RegistryObject<Item> CALCITE_TILES_WALL = ITEMS.register("calcite_tiles_wall",
             () -> new BlockItem(ModBlocks.CALCITE_TILES_WALL.get(), new Item.Properties()));
 
+    // =====植物系列 =====
+    public static final RegistryObject<Item> GOLDENROD = ITEMS.register("goldenrod",
+            () -> new BlockItem(ModBlocks.GOLDENROD.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> DYEDREAM_MOSS = ITEMS.register("dyedream_moss",
+            () -> new BlockItem(ModBlocks.DYEDREAM_MOSS.get(), new Item.Properties()));
+
     //流体桶物品
-    public static final RegistryObject<Item> MELT_DREAM_LIQUID_BUCKET = ITEMS.register("melt_dream_liquid_bucket", () -> new BucketItem(ModFluids.MELT_DREAM_LIQUID, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> MELT_DREAM_LIQUID_BUCKET = ITEMS.register("melt_dream_liquid_bucket", () -> new BucketItem(ModFluids.MELT_DREAM_LIQUID, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON).craftRemainder(Items.BUCKET)));
     public static final RegistryObject<Item> SHADOW_LIQUID_BUCKET = ITEMS.register("shadow_liquid_bucket", () -> new BucketItem(ModFluids.SHADOW_LIQUID, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON)));
 
     //方块实体对应物品

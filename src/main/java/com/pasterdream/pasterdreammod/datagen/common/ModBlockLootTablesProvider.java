@@ -118,6 +118,10 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
 
         dropSelf(ModBlocks.PINK_MUSHROOM.get());
         add(ModBlocks.TALL_PINK_MUSHROOM.get(), block -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        dropSelf((ModBlocks.GOLDENROD.get()));
+        add(ModBlocks.DYEDREAM_MOSS.get(),
+                block -> RecipeHelpers.creategrassesDrops(ModBlocks.DYEDREAM_MOSS.get()));
+
 
         dropSelf(ModBlocks.DYEDREAM_SAND.get());
         add(ModBlocks.DYEDREAM_GLASS.get(),

@@ -15,87 +15,89 @@
 
 ## 方块映射
 
-| 旧 ID                             | 新 ID                             | 变更说明                                      | 客制化类处理                                              |
-|----------------------------------|----------------------------------|-------------------------------------------|-----------------------------------------------------|
-| `dyedream_dirt`                  | `dyedream_dirt`                  | 不改                                        | 无需客制化类，直接用 `Block`                                  |
-| `dyedream_grass`                 | `dyedream_grass_block`           | 重命名，加 `_block` 后缀                         | 客制化类 `DyedreamGrassBlock`，仅覆写 `canSustainPlant`     |
-| `dyedream_log`                   | `dyedream_log`                   | 不改                                        | 无需客制化类，直接用 `RotatedPillarBlock`                     |
-| `dyedream_wood`                  | `dyedream_wood`                  | 不改                                        | 无需客制化类，直接用 `RotatedPillarBlock`                     |
-| `dyedream_leaves`                | `dyedream_leaves`                | 不改                                        | 无需客制化类，直接用 `LeavesBlock`                            |
-| `dyedream_worldtree_leaves`      | `dyedream_worldtree_leaves`      | 不改，材质从拼音 `ran_meng_shi_jie_shu_xie_` 重命名  | 无需客制化类，直接用 `LeavesBlock`                            |
-| `amber_candy_ore`                | `amber_candy_ore`                | 不改                                        | 无需客制化类，直接用 `Block`                                  |
-| `dyedreamdust_ore`               | `dyedream_dust_ore`              | 重命名，`dyedreamdust` → `dyedream_dust`，补下划线 | 无需客制化类，直接用 `Block`                                  |
-| `dyedreamquartz_ore`             | `dyedream_quartz_ore`            | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                  |
-| `dyedreamquartz_block`           | `dyedream_quartz_block`          | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                  |
-| `smooth_dyedreamquartz_block`    | `smooth_dyedream_quartz_block`   | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                  |
-| `bricks_dyedreamquartz_block`    | `bricks_dyedream_quartz_block`   | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                  |
-| `pillar_dyedreamquartz_block`    | `pillar_dyedream_quartz_block`   | 重命名，补下划线                                  | 无需客制化类，直接用 `RotatedPillarBlock`，旧版用自定义 FACING 代替轴旋转 |
-| `chiseled_dyedreamquartz_block`  | `chiseled_dyedream_quartz_block` | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                  |
-| `dyedreamquartz_block_stairs`    | `dyedream_quartz_block_stairs`   | 重命名，补下划线                                  | 无需客制化类，直接用 `StairBlock`                             |
-| `dyedreamquartz_block_slab`      | `dyedream_quartz_block_slab`     | 重命名，补下划线                                  | 无需客制化类，直接用 `SlabBlock`                              |
-| `dyedreamquartz_block_wall`      | `dyedream_quartz_block_wall`     | 重命名，补下划线                                  | 无需客制化类，直接用 `WallBlock`                              |
-| `dyedream_sapling`               | `dyedream_sapling`               | 不改                                        | 无需客制化类，直接用 `SaplingBlock`，移除不必要的 BlockEntity        |
-| `dyedream_planks`                | `dyedream_planks`                | 不改                                        | 无需客制化类，直接用 `Block`                                  |
-| `dyedream_planks_stairs`         | `dyedream_stairs`         | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `StairBlock`                             |
-| `dyedream_planks_slab`           | `dyedream_slab`           | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `SlabBlock`                              |
-| `dyedream_planks_fence`          | `dyedream_fence`          | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `FenceBlock`                             |
-| `dyedream_planks_fencegate`      | `dyedream_fence_gate`      | 重命名，删除 `_planks` 字段，加 `_` 分隔                                   | 无需客制化类，直接用 `FenceGateBlock`                         |
-| `dyedream_planks_pane`           | `dyedream_pane`           | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `IronBarsBlock`                          |
-| `dyedream_planks_door`           | `dyedream_door`           | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `DoorBlock`                              |
-| `dyedream_planks_trapdoor`       | `dyedream_trapdoor`       | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `TrapDoorBlock`                          |
-| `dyedream_planks_pressure_plate` | `dyedream_pressure_plate` | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `PressurePlateBlock`                     |
-| `dyedream_planks_button`         | `dyedream_button`         | 重命名，删除 `_planks` 字段                                        | 无需客制化类，直接用 `ButtonBlock`                            |
-| `pinkslime_block`                | `pink_slime_block`               | 重命名，补下划线；受重力影响                            | 无需客制化类，直接用 `FallingBlock`                           |
-| `pinkagaric_0`                   | `pink_mushroom_block`            | 重命名，按原版风格：菌盖                              | 无需客制化类，直接用 `Block`                                  |
-| `pinkagaric_1`                   | `pink_mushroom_stem`             | 重命名，按原版风格：菌柄（有朝向）                         | 无需客制化类，直接用 `RotatedPillarBlock`                     |
-| `pinkagaric_2`                   | `pink_mushroom_pores`            | 重命名，按原版风格：6 面菌孔                           | 无需客制化类，直接用 `Block`                                  |
-| `pinkagaric_3`                   | `pink_shroomlight`               | 重命名，按原版风格：菌光体                             | 无需客制化类，直接用 `Block`，发光等级 15，cutout 渲染                |
-| `flower_8`                       | `pink_mushroom`                  | 重命名，按原版风格：粉顶菇（小型花，缓速效果）                   | 无需客制化类，直接用 `FlowerBlock`                            |
-| `flower_10`                      | `tall_pink_mushroom`             | 重命名，按原版风格：高粉顶菇（2 格高）                      | 无需客制化类，直接用 `DoublePlantBlock`                       |
-| `dyedream_sand`                  | `dyedream_sand`                  | 不改，受重力影响                                  | 无需客制化类，直接用 `FallingBlock`                           |
-| `dyedream_glass`                 | `dyedream_glass`                 | 不改                                | 无需客制化类，直接用 `GlassBlock`                             |
-| `dyedream_glasspane`             | `dyedream_glass_pane`            | 重命名，补下划线                       | 无需客制化类，直接用 `IronBarsBlock`                          |
-| `carve_dyedream_glass`           | `carve_dyedream_glass`           | 不改                                        | 无需客制化类，直接用 `GlassBlock`                             |
-| `carve_dyedream_glasspane`       | `carve_dyedream_glass_pane`      | 重命名，补下划线                                  | 无需客制化类，直接用 `IronBarsBlock`                          |
-| `gold_carve_dyedream_glass`      | `gold_carve_dyedream_glass`      | 不改                                        | 无需客制化类，直接用 `GlassBlock`                             |
-| `gold_carve_dyedream_glasspane`  | `gold_carve_dyedream_glass_pane` | 重命名，补下划线                                  | 无需客制化类，直接用 `IronBarsBlock`                          |
-| `dyedream_bud_2`                 | `small_dyedream_bud`             | 重命名，按原版紫水晶芽风格                             | 无需客制化类，直接用 `AmethystClusterBlock`                   |
-| `dyedream_bud_1`                 | `medium_dyedream_bud`            | 重命名                                       | 无需客制化类，直接用 `AmethystClusterBlock`                   |
-| `dyedream_bud_0`                 | `large_dyedream_bud`             | 重命名                                       | 无需客制化类，直接用 `AmethystClusterBlock`                   |
-| `dyedream_ice`                   | `dyedream_ice`                   | 不改，不融化                                    | 无需客制化类，直接用 `Block`                                  |
-| `dyedream_packed_ice`            | `dyedream_packed_ice`            | 不改，不融化                                    | 无需客制化类，直接用 `Block`                                  |
-| `dyedream_lartern`               | `dyedream_sea_lantern`           | 重命名，修正拼写错误（原 lartern→sea_lantern），发光等级 14 | 无需客制化类，直接用 `Block`                                  |
-| `dyedream_bud_block`             | `dyedream_bud_block`             | 不改，透明方块                                   | 无需客制化类，直接用 `Block`                                  |
-| `dyedream_bud_stairs`            | `dyedream_bud_stairs`            | 不改                                        | 无需客制化类，直接用 `StairBlock`                             |
-| `dyedream_bud_slab`              | `dyedream_bud_slab`              | 不改                                        | 无需客制化类，直接用 `SlabBlock`                              |
-| `dyedream_bud_wall`              | `dyedream_bud_wall`              | 不改                                        | 无需客制化类，直接用 `WallBlock`                              |
-| `claypan_0`                      | `claypan`                        | 重命名，删除_0后缀                                | 客制化类                                                |
-| `claypan_1`                      | 删除                               | -                                         | -                                                   |
-| `claypan_2`                      | 删除                               | -                                         | -                                                   |
-| `dream_cauldron`                 | `dream_cauldron`                 | 不改                                        | 客制化类 `DreamCauldronBlock`，含 BlockEntity、Menu、Screen |
-| `dyedream_block`                 | `dyedream_alloy_block`           | 重命名，补充 `alloy_` 前缀与系列一致                    | 无需客制化类，直接用 `Block`                                  |
-| `big_bubble`                     | `big_bubble`                     | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`；`neighborChanged` 特殊逻辑暂不实现 |
-| `ice_stone`                       | `ice_stone`                       | 不改                                        | 无需客制化类，直接用 `Block`                                  |
-| `ice_bud_0`                      | `ice_bud`                        | 重命名，删除 `_0` 后缀，仅此一种变体                         | 无需客制化类，直接用 `AmethystClusterBlock`                  |
-| `cloud`                         | `cloud`                          | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`，旧版手动覆写 `skipRendering`/`propagatesSkylightDown` 等，新版 `HalfTransparentBlock` 内置 |
-| `dark_cloud`                    | `dark_cloud`                     | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`                  |
-| `polished_calcite`             | `polished_calcite`              | 不改                                        | 无需客制化类，直接用 `Block`                                  |
-| `polished_calcite_stairs`      | `polished_calcite_stairs`       | 不改                                        | 无需客制化类，直接用 `StairBlock`                             |
-| `polished_calcite_slab`        | `polished_calcite_slab`         | 不改                                        | 无需客制化类，直接用 `SlabBlock`                              |
-| `polished_calcite_wall`        | `polished_calcite_wall`         | 不改                                        | 无需客制化类，直接用 `WallBlock`                              |
-| `calcite_tiles`                | `calcite_tiles`                 | 不改 | 无需客制化类，直接用 `Block`                                  |
-| `calcite_tiles_stairs`         | `calcite_tiles_stairs`          | 不改                                        | 无需客制化类，直接用 `StairBlock`                             |
-| `calcite_tiles_slab`           | `calcite_tiles_slab`            | 不改 (旧版翻译键填错成"楼梯"，实际是台阶)           | 无需客制化类，直接用 `SlabBlock`                              |
-| `calcite_tiles_wall`           | `calcite_tiles_wall`            | 不改                                        | 无需客制化类，直接用 `WallBlock`                              |
-| `titanium_ore`                 | `titanium_ore`                  | 不改                                        | 无需客制化类，直接用 `Block`                                  |
-| `deepslate_titanium_ore`       | `deepslate_titanium_ore`        | 不改                                        | 无需客制化类，直接用 `Block`                                  |
-| `moltengold_ore`               | `molten_gold_ore`               | 重命名，补下划线                                | 无需客制化类，直接用 `Block`                                  |
-| `soul_ore`                     | `soul_ore`                      | 不改                                        | 客制化类 `SoulOreBlock`，覆写 getCollisionShape 降低碰撞箱（14px 高） |
-| `raw_titanium_block`           | `raw_titanium_block`            | 不改                                        | 无需客制化类，直接用 `Block`                                  |
-| `salt_block`                   | `salt_block`                    | 不改                                        | 无需客制化类，直接用 `Block`                                  |
-| `titanium_block`               | `titanium_block`                | 不改                                        | 无需客制化类，直接用 `Block`                                  |
-| `moltengold_block`             | `molten_gold_block`             | 重命名，补下划线                                | 无需客制化类，直接用 `Block`                                  |
-| `charged_amethyst_block`       | `charged_amethyst_block`        | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`                    |
+| 旧 ID                             | 新 ID                             | 变更说明                                      | 客制化类处理                                                                                                           |
+|----------------------------------|----------------------------------|-------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| `dyedream_dirt`                  | `dyedream_dirt`                  | 不改                                        | 无需客制化类，直接用 `Block`                                                                                               |
+| `dyedream_grass`                 | `dyedream_grass_block`           | 重命名，加 `_block` 后缀                         | 客制化类 `DyedreamGrassBlock`，仅覆写 `canSustainPlant`                                                                  |
+| `dyedream_log`                   | `dyedream_log`                   | 不改                                        | 无需客制化类，直接用 `RotatedPillarBlock`                                                                                  |
+| `dyedream_wood`                  | `dyedream_wood`                  | 不改                                        | 无需客制化类，直接用 `RotatedPillarBlock`                                                                                  |
+| `dyedream_leaves`                | `dyedream_leaves`                | 不改                                        | 无需客制化类，直接用 `LeavesBlock`                                                                                         |
+| `dyedream_worldtree_leaves`      | `dyedream_worldtree_leaves`      | 不改，材质从拼音 `ran_meng_shi_jie_shu_xie_` 重命名  | 无需客制化类，直接用 `LeavesBlock`                                                                                         |
+| `amber_candy_ore`                | `amber_candy_ore`                | 不改                                        | 无需客制化类，直接用 `Block`                                                                                               |
+| `dyedreamdust_ore`               | `dyedream_dust_ore`              | 重命名，`dyedreamdust` → `dyedream_dust`，补下划线 | 无需客制化类，直接用 `Block`                                                                                               |
+| `dyedreamquartz_ore`             | `dyedream_quartz_ore`            | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                                                                               |
+| `dyedreamquartz_block`           | `dyedream_quartz_block`          | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                                                                               |
+| `smooth_dyedreamquartz_block`    | `smooth_dyedream_quartz_block`   | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                                                                               |
+| `bricks_dyedreamquartz_block`    | `bricks_dyedream_quartz_block`   | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                                                                               |
+| `pillar_dyedreamquartz_block`    | `pillar_dyedream_quartz_block`   | 重命名，补下划线                                  | 无需客制化类，直接用 `RotatedPillarBlock`，旧版用自定义 FACING 代替轴旋转                                                              |
+| `chiseled_dyedreamquartz_block`  | `chiseled_dyedream_quartz_block` | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                                                                               |
+| `dyedreamquartz_block_stairs`    | `dyedream_quartz_block_stairs`   | 重命名，补下划线                                  | 无需客制化类，直接用 `StairBlock`                                                                                          |
+| `dyedreamquartz_block_slab`      | `dyedream_quartz_block_slab`     | 重命名，补下划线                                  | 无需客制化类，直接用 `SlabBlock`                                                                                           |
+| `dyedreamquartz_block_wall`      | `dyedream_quartz_block_wall`     | 重命名，补下划线                                  | 无需客制化类，直接用 `WallBlock`                                                                                           |
+| `dyedream_sapling`               | `dyedream_sapling`               | 不改                                        | 无需客制化类，直接用 `SaplingBlock`，移除不必要的 BlockEntity                                                                     |
+| `dyedream_planks`                | `dyedream_planks`                | 不改                                        | 无需客制化类，直接用 `Block`                                                                                               |
+| `dyedream_planks_stairs`         | `dyedream_stairs`                | 重命名，删除 `_planks` 字段                       | 无需客制化类，直接用 `StairBlock`                                                                                          |
+| `dyedream_planks_slab`           | `dyedream_slab`                  | 重命名，删除 `_planks` 字段                       | 无需客制化类，直接用 `SlabBlock`                                                                                           |
+| `dyedream_planks_fence`          | `dyedream_fence`                 | 重命名，删除 `_planks` 字段                       | 无需客制化类，直接用 `FenceBlock`                                                                                          |
+| `dyedream_planks_fencegate`      | `dyedream_fence_gate`            | 重命名，删除 `_planks` 字段，加 `_` 分隔              | 无需客制化类，直接用 `FenceGateBlock`                                                                                      |
+| `dyedream_planks_pane`           | `dyedream_pane`                  | 重命名，删除 `_planks` 字段                       | 无需客制化类，直接用 `IronBarsBlock`                                                                                       |
+| `dyedream_planks_door`           | `dyedream_door`                  | 重命名，删除 `_planks` 字段                       | 无需客制化类，直接用 `DoorBlock`                                                                                           |
+| `dyedream_planks_trapdoor`       | `dyedream_trapdoor`              | 重命名，删除 `_planks` 字段                       | 无需客制化类，直接用 `TrapDoorBlock`                                                                                       |
+| `dyedream_planks_pressure_plate` | `dyedream_pressure_plate`        | 重命名，删除 `_planks` 字段                       | 无需客制化类，直接用 `PressurePlateBlock`                                                                                  |
+| `dyedream_planks_button`         | `dyedream_button`                | 重命名，删除 `_planks` 字段                       | 无需客制化类，直接用 `ButtonBlock`                                                                                         |
+| `pinkslime_block`                | `pink_slime_block`               | 重命名，补下划线；受重力影响                            | 无需客制化类，直接用 `FallingBlock`                                                                                        |
+| `pinkagaric_0`                   | `pink_mushroom_block`            | 重命名，按原版风格：菌盖                              | 无需客制化类，直接用 `Block`                                                                                               |
+| `pinkagaric_1`                   | `pink_mushroom_stem`             | 重命名，按原版风格：菌柄（有朝向）                         | 无需客制化类，直接用 `RotatedPillarBlock`                                                                                  |
+| `pinkagaric_2`                   | `pink_mushroom_pores`            | 重命名，按原版风格：6 面菌孔                           | 无需客制化类，直接用 `Block`                                                                                               |
+| `pinkagaric_3`                   | `pink_shroomlight`               | 重命名，按原版风格：菌光体                             | 无需客制化类，直接用 `Block`，发光等级 15，cutout 渲染                                                                             |
+| `flower_8`                       | `pink_mushroom`                  | 重命名，按原版风格：粉顶菇（小型花，缓速效果）                   | 无需客制化类，直接用 `FlowerBlock`                                                                                         |
+| `flower_10`                      | `tall_pink_mushroom`             | 重命名，按原版风格：高粉顶菇（2 格高）                      | 无需客制化类，直接用 `DoublePlantBlock`                                                                                    |
+| `dyedream_sand`                  | `dyedream_sand`                  | 不改，受重力影响                                  | 无需客制化类，直接用 `FallingBlock`                                                                                        |
+| `dyedream_glass`                 | `dyedream_glass`                 | 不改                                        | 无需客制化类，直接用 `GlassBlock`                                                                                          |
+| `dyedream_glasspane`             | `dyedream_glass_pane`            | 重命名，补下划线                                  | 无需客制化类，直接用 `IronBarsBlock`                                                                                       |
+| `carve_dyedream_glass`           | `carve_dyedream_glass`           | 不改                                        | 无需客制化类，直接用 `GlassBlock`                                                                                          |
+| `carve_dyedream_glasspane`       | `carve_dyedream_glass_pane`      | 重命名，补下划线                                  | 无需客制化类，直接用 `IronBarsBlock`                                                                                       |
+| `gold_carve_dyedream_glass`      | `gold_carve_dyedream_glass`      | 不改                                        | 无需客制化类，直接用 `GlassBlock`                                                                                          |
+| `gold_carve_dyedream_glasspane`  | `gold_carve_dyedream_glass_pane` | 重命名，补下划线                                  | 无需客制化类，直接用 `IronBarsBlock`                                                                                       |
+| `dyedream_bud_2`                 | `small_dyedream_bud`             | 重命名，按原版紫水晶芽风格                             | 无需客制化类，直接用 `AmethystClusterBlock`                                                                                |
+| `dyedream_bud_1`                 | `medium_dyedream_bud`            | 重命名                                       | 无需客制化类，直接用 `AmethystClusterBlock`                                                                                |
+| `dyedream_bud_0`                 | `large_dyedream_bud`             | 重命名                                       | 无需客制化类，直接用 `AmethystClusterBlock`                                                                                |
+| `dyedream_ice`                   | `dyedream_ice`                   | 不改，不融化                                    | 无需客制化类，直接用 `Block`                                                                                               |
+| `dyedream_packed_ice`            | `dyedream_packed_ice`            | 不改，不融化                                    | 无需客制化类，直接用 `Block`                                                                                               |
+| `dyedream_lartern`               | `dyedream_sea_lantern`           | 重命名，修正拼写错误（原 lartern→sea_lantern），发光等级 14 | 无需客制化类，直接用 `Block`                                                                                               |
+| `dyedream_bud_block`             | `dyedream_bud_block`             | 不改，透明方块                                   | 无需客制化类，直接用 `Block`                                                                                               |
+| `dyedream_bud_stairs`            | `dyedream_bud_stairs`            | 不改                                        | 无需客制化类，直接用 `StairBlock`                                                                                          |
+| `dyedream_bud_slab`              | `dyedream_bud_slab`              | 不改                                        | 无需客制化类，直接用 `SlabBlock`                                                                                           |
+| `dyedream_bud_wall`              | `dyedream_bud_wall`              | 不改                                        | 无需客制化类，直接用 `WallBlock`                                                                                           |
+| `claypan_0`                      | `claypan`                        | 重命名，删除_0后缀                                | 客制化类                                                                                                             |
+| `claypan_1`                      | 删除                               | -                                         | -                                                                                                                |
+| `claypan_2`                      | 删除                               | -                                         | -                                                                                                                |
+| `dream_cauldron`                 | `dream_cauldron`                 | 不改                                        | 客制化类 `DreamCauldronBlock`，含 BlockEntity、Menu、Screen                                                              |
+| `dyedream_block`                 | `dyedream_alloy_block`           | 重命名，补充 `alloy_` 前缀与系列一致                   | 无需客制化类，直接用 `Block`                                                                                               |
+| `big_bubble`                     | `big_bubble`                     | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`；`neighborChanged` 特殊逻辑暂不实现                                                     |
+| `ice_stone`                      | `ice_stone`                      | 不改                                        | 无需客制化类，直接用 `Block`                                                                                               |
+| `ice_bud_0`                      | `ice_bud`                        | 重命名，删除 `_0` 后缀，仅此一种变体                     | 无需客制化类，直接用 `AmethystClusterBlock`                                                                                |
+| `cloud`                          | `cloud`                          | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`，旧版手动覆写 `skipRendering`/`propagatesSkylightDown` 等，新版 `HalfTransparentBlock` 内置 |
+| `dark_cloud`                     | `dark_cloud`                     | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`                                                                                |
+| `polished_calcite`               | `polished_calcite`               | 不改                                        | 无需客制化类，直接用 `Block`                                                                                               |
+| `polished_calcite_stairs`        | `polished_calcite_stairs`        | 不改                                        | 无需客制化类，直接用 `StairBlock`                                                                                          |
+| `polished_calcite_slab`          | `polished_calcite_slab`          | 不改                                        | 无需客制化类，直接用 `SlabBlock`                                                                                           |
+| `polished_calcite_wall`          | `polished_calcite_wall`          | 不改                                        | 无需客制化类，直接用 `WallBlock`                                                                                           |
+| `calcite_tiles`                  | `calcite_tiles`                  | 不改                                        | 无需客制化类，直接用 `Block`                                                                                               |
+| `calcite_tiles_stairs`           | `calcite_tiles_stairs`           | 不改                                        | 无需客制化类，直接用 `StairBlock`                                                                                          |
+| `calcite_tiles_slab`             | `calcite_tiles_slab`             | 不改 (旧版翻译键填错成"楼梯"，实际是台阶)                   | 无需客制化类，直接用 `SlabBlock`                                                                                           |
+| `calcite_tiles_wall`             | `calcite_tiles_wall`             | 不改                                        | 无需客制化类，直接用 `WallBlock`                                                                                           |
+| `titanium_ore`                   | `titanium_ore`                   | 不改                                        | 无需客制化类，直接用 `Block`                                                                                               |
+| `deepslate_titanium_ore`         | `deepslate_titanium_ore`         | 不改                                        | 无需客制化类，直接用 `Block`                                                                                               |
+| `moltengold_ore`                 | `molten_gold_ore`                | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                                                                               |
+| `soul_ore`                       | `soul_ore`                       | 不改                                        | 客制化类 `SoulOreBlock`，覆写 getCollisionShape 降低碰撞箱（14px 高）                                                           |
+| `raw_titanium_block`             | `raw_titanium_block`             | 不改                                        | 无需客制化类，直接用 `Block`                                                                                               |
+| `salt_block`                     | `salt_block`                     | 不改                                        | 无需客制化类，直接用 `Block`                                                                                               |
+| `titanium_block`                 | `titanium_block`                 | 不改                                        | 无需客制化类，直接用 `Block`                                                                                               |
+| `moltengold_block`               | `molten_gold_block`              | 重命名，补下划线                                  | 无需客制化类，直接用 `Block`                                                                                               |
+| `charged_amethyst_block`         | `charged_amethyst_block`         | 不改                                        | 无需客制化类，直接用 `HalfTransparentBlock`                                                                                |
+| `goldenrod`                      | `goldenrod`                      | 不改                                        | 无需客制化类，直接用 `FlowerBlock`                                                                                         |
+| `grass_7`                        | `dyedream_moss`                  | 重命名，染梦苔藓                                  | 无需客制化类，直接用 `FlowerBlock`                                                                                               |
 
 
 ---
@@ -186,11 +188,12 @@
 | `meltdream_elixir_bottle`      | `elixir_bottle_of_melt_dream`               | 重命名，命名格式改为`elixir_bottle_of_xxx`                          | 无需客制化类，直接用 `Item`                    |
 | `rage_elixir_0`                | `elixir_bottle_of_rage_elixir`              | 重命名，命名格式改为`elixir_bottle_of_xxx`，去除`_0`                   | 无需客制化类，直接用 `Item`                    |
 | `pineapple_love_sea`           | `pineapple_love_sea`                        | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-
-| `magic_stone`              | `magic_stone`                               | 不改，Tooltip 文字待后续实现                                        | 无需客制化类，直接用 `Item`                    |
-| `soul_dust`                | `soul_dust`                                 | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `soul_essence`             | `soul_essence`                              | 不改                                                        | 无需客制化类，直接用 `Item`                    |
-| `charged_amethyst`           | `charged_amethyst`                           | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `magic_stone`                  | `magic_stone`                               | 不改，Tooltip 文字待后续实现                                        | 无需客制化类，直接用 `Item`                    |
+| `soul_dust`                    | `soul_dust`                                 | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `soul_essence`                 | `soul_essence`                              | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `charged_amethyst`             | `charged_amethyst`                          | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `dyedream_corolla`             | `dyedream_corolla`                          | 不改                                                        | 无需客制化类，直接用 `Item`                    |
+| `meltdream_crystal_0`          | `melt_dream_crystal_fragment`               | 重命名，添加下划线和`fragment`，去除`_0`                               | 无需客制化类，直接用 `Item`                    |
 ---
 
 ## 流体映射
