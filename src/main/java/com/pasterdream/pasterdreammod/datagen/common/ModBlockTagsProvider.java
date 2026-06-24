@@ -48,11 +48,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.PINK_MUSHROOM_BLOCK.get())
                 .add(ModBlocks.PINK_MUSHROOM_STEM.get())
                 .add(ModBlocks.PINK_MUSHROOM_PORES.get())
-                .add(ModBlocks.PINK_SHROOMLIGHT.get())
-                .add(ModBlocks.DYEDREAM_DESK.get())
-                .add(ModBlocks.SHADOW_DESK.get());
+                .add(ModBlocks.PINK_SHROOMLIGHT.get());
 
         // 可以用镐来挖掘
+
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get())
