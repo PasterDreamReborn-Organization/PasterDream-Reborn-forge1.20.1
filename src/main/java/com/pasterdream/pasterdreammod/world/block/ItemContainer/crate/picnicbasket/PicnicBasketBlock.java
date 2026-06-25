@@ -32,9 +32,9 @@ public class PicnicBasketBlock extends CrateBlock
         {
             return box(0, 0, 3, 16, 9, 13);
         }
-        else
-        {
-            return box(3, 0, 0, 13, 9, 16);
-        }
+            else
+            {
+                return box(3, 0, 0, 13, 9, 16);
+            }
     }
 }

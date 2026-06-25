@@ -230,9 +230,11 @@ public class ModCreativeModeTabs {
     public static final RegistryObject<CreativeModeTab> PASTERDREAM_EQUIPMENT_TAB = CREATIVE_MODE_TABS.register("pasterdream_equipment_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_equipment_tab"))
-                    .icon(() -> new ItemStack(ModBlocks.CLAYPAN.get()))
+                    .icon(() -> new ItemStack(ModBlocks.QYM_DOLL.get()))
                     .displayItems((parameters, output) ->
                     {
+                        output.accept(ModBlocks.QYM_DOLL.get());
+                        output.accept(ModBlocks.UUZ_DOLL.get());
                         output.accept(ModBlocks.CLAYPAN.get());
                         output.accept(ModBlocks.DREAM_CAULDRON.get());
                         output.accept(ModItems.MORTAR.get());

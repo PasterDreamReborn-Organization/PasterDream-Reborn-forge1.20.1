@@ -1,0 +1,6 @@
+{
+  "parent": "pasterdream:displaysettings/qym_doll.item",
+  "textures": {
+    "particle": "pasterdream:block/cloud"
+  }
+}

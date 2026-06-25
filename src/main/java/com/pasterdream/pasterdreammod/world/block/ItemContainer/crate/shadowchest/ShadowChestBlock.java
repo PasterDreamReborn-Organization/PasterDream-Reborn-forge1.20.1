@@ -32,9 +32,9 @@ public class ShadowChestBlock extends CrateBlock
         {
             return box(2, 0, 4, 14, 6, 12);
         }
-        else
-        {
-            return box(4, 0, 2, 12, 6, 14);
-        }
+            else
+            {
+                return box(4, 0, 2, 12, 6, 14);
+            }
     }
 }
