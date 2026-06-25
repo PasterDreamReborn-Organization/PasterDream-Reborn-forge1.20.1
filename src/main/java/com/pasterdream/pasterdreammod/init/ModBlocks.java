@@ -119,7 +119,7 @@ public class ModBlocks {
     // ===== 染梦冰与水晶灯 =====
     public static final RegistryObject<Block> DYEDREAM_ICE = BLOCKS.register("dyedream_ice", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GLASS).strength(0.5f).friction(0.98f).noOcclusion()));
     public static final RegistryObject<Block> DYEDREAM_PACKED_ICE = BLOCKS.register("dyedream_packed_ice", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GLASS).strength(0.5f).friction(0.98f).noOcclusion()));
-    public static final RegistryObject<Block> DYEDREAM_SEA_LANTERN = BLOCKS.register("dyedream_sea_lantern", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GLASS).strength(0.3f).lightLevel(s -> 14)));
+    public static final RegistryObject<Block> DYEDREAM_CRYSTAL_LANTERN = BLOCKS.register("dyedream_crystal_lantern", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.GLASS).strength(0.3f).lightLevel(s -> 14)));
     public static final RegistryObject<Block> DYEDREAM_LANTERN = BLOCKS.register("dyedream_lantern", () -> new LanternBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.LANTERN).strength(0.3f).lightLevel(s -> 15).noOcclusion()));
 
     // ===== 云朵 =====

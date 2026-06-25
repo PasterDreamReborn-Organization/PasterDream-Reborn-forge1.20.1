@@ -156,7 +156,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.CLOUD.get());
         dropSelf(ModBlocks.DARK_CLOUD.get());
         dropSelf(ModBlocks.BIG_BUBBLE.get());
-        dropSelf(ModBlocks.DYEDREAM_SEA_LANTERN.get());
+        dropSelf(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get());
         dropSelf(ModBlocks.DYEDREAM_LANTERN.get());
 
         dropSelf(ModBlocks.ICE_STONE.get());

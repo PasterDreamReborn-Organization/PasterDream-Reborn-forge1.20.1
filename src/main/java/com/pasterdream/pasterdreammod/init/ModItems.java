@@ -443,8 +443,8 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.CLOUD.get(), new Item.Properties()));
     public static final RegistryObject<Item> DARK_CLOUD = ITEMS.register("dark_cloud",
             () -> new BlockItem(ModBlocks.DARK_CLOUD.get(), new Item.Properties()));
-    public static final RegistryObject<Item> DYEDREAM_SEA_LANTERN = ITEMS.register("dyedream_sea_lantern",
-            () -> new BlockItem(ModBlocks.DYEDREAM_SEA_LANTERN.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_CRYSTAL_LANTERN = ITEMS.register("dyedream_crystal_lantern",
+            () -> new BlockItem(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_LANTERN = ITEMS.register("dyedream_lantern",
             () -> new BlockItem(ModBlocks.DYEDREAM_LANTERN.get(), new Item.Properties()));
 
