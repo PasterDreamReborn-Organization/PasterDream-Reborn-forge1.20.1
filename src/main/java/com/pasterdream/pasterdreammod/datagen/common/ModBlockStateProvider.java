@@ -205,7 +205,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_ICE.get(), cubeAll(ModBlocks.DYEDREAM_ICE.get()));
         simpleBlockWithItem(ModBlocks.DYEDREAM_PACKED_ICE.get(), cubeAll(ModBlocks.DYEDREAM_PACKED_ICE.get()));
-        simpleBlockWithItem(ModBlocks.DYEDREAM_SEA_LANTERN.get(), cubeAll(ModBlocks.DYEDREAM_SEA_LANTERN.get()));
+        simpleBlockWithItem(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get(), cubeAll(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get()));
         // 染梦灯笼
         var lanternStanding = models().withExistingParent("dyedream_lantern", mcLoc("block/template_lantern"))
                 .texture("lantern", modLoc("block/dyedream_lantern")).renderType("cutout");

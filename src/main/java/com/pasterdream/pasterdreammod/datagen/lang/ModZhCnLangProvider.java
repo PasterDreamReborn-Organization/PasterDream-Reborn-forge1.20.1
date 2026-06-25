@@ -172,7 +172,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.CLOUD.get(), "云朵");
         add(ModBlocks.DARK_CLOUD.get(), "乌云");
         add(ModBlocks.BIG_BUBBLE.get(), "巨型泡泡");
-        add(ModBlocks.DYEDREAM_SEA_LANTERN.get(), "染梦水晶灯");
+        add(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get(), "染梦水晶灯");
         add(ModBlocks.DYEDREAM_LANTERN.get(), "染梦灯笼");
         add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get(), "染梦合金块");
         add(ModBlocks.POLISHED_CALCITE.get(), "磨制方解石");
