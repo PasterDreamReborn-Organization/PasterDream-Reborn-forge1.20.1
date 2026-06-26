@@ -55,10 +55,10 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> DYEDREAM_ALLOY_INGOT = ITEMS.register("dyedream_alloy_ingot",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> TITANIUM_NUGGET = ITEMS.register("titanium_nugget",
             () -> new Item(new Item.Properties()));
@@ -96,7 +96,12 @@ public class ModItems {
     public static final RegistryObject<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.register("melt_dream_crystal_fragment",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().rarity(Rarity.EPIC)) {
+                @Override
+                public boolean isFoil(ItemStack stack) {
+                    return true;
+                }
+            });
 
     // ===== 玻璃罐系列 =====
     public static final RegistryObject<Item> GLASS_JAR = ITEMS.register("glass_jar", () -> new Item(new Item.Properties()));
@@ -122,7 +127,12 @@ public class ModItems {
 
     public static final RegistryObject<Item> GLASS_CUP_OF_APPLE_JUICE = ITEMS.register("glass_cup_of_apple_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(4).saturationMod(0.5f).alwaysEat().build())));
     public static final RegistryObject<Item> GLASS_CUP_OF_UNCOOKED_DYEDREAM_FLOWER_TEA = ITEMS.register("glass_cup_of_uncooked_dyedream_flower_tea", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA = ITEMS.register("glass_cup_of_cooked_dyedream_flower_tea", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.HEAL, 1, 0), 1.0f).alwaysEat().build())));
+    public static final RegistryObject<Item> GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA = ITEMS.register("glass_cup_of_cooked_dyedream_flower_tea", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.HEAL, 1, 0), 1.0f).alwaysEat().build())) {
+        @Override
+        public boolean isFoil(ItemStack stack) {
+            return true;
+        }
+    });
     public static final RegistryObject<Item> GLASS_CUP_OF_DYEDREAM_JUICE = ITEMS.register("glass_cup_of_dyedream_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(1).saturationMod(0.5f).alwaysEat().build()).meltDreamEnergyAdd(0.2)));
     public static final RegistryObject<Item> GLASS_CUP_OF_HONEY_JUICE = ITEMS.register("glass_cup_of_honey_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(6).saturationMod(0.5f).alwaysEat().build())));
     public static final RegistryObject<Item> GLASS_CUP_OF_WATERMELON_JUICE = ITEMS.register("glass_cup_of_watermelon_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.5f).alwaysEat().build())));
@@ -273,7 +283,7 @@ public class ModItems {
                             .nutrition(2).saturationMod(0.25f).alwaysEat().build())));
 
     public static final RegistryObject<Item> YINHUL_COTTON_CANDY = ITEMS.register("yinhul_cotton_candy",
-            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(15).meltDreamEnergyAdd(15)
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(15).meltDreamEnergyAdd(15).rarity(Rarity.EPIC)
                     .food(new FoodProperties.Builder().nutrition(6).saturationMod(0.75f).alwaysEat().build())));
 
     public static final RegistryObject<Item> MELT_DREAM_COTTON_CANDY= ITEMS.register("melt_dream_cotton_candy",
@@ -319,16 +329,13 @@ public class ModItems {
 
     public static final RegistryObject<Item> LEGENDARY_DRAGON_HORN_ICE_CREAM = ITEMS.register("legendary_dragon_horn_ice_cream",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(10).saturationMod(1.2f).alwaysEat().build()))
-            {
+                    .food(new FoodProperties.Builder().nutrition(10).saturationMod(1.2f).alwaysEat().build())
+                    .rarity(Rarity.EPIC)) {
                 @Override
-                protected void onFoodSpecial(Player player, Level level)
-                {
-                    if (!level.isClientSide&&!player.isCreative())
-                    {
+                protected void onFoodSpecial(Player player, Level level) {
+                    if (!level.isClientSide && !player.isCreative()) {
                         ItemStack containerStack = new ItemStack(Items.BOWL);
-                        if (!player.getInventory().add(containerStack))
-                        {
+                        if (!player.getInventory().add(containerStack)) {
                             player.drop(containerStack, false);
                         }
                     }
@@ -339,15 +346,15 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> ELIXIR_BOTTLE_OF_MELT_DREAM = ITEMS.register("elixir_bottle_of_melt_dream",
-            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).meltDreamEnergyAdd(25)
+            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).meltDreamEnergyAdd(25).rarity(Rarity.UNCOMMON)
                     .food(new FoodProperties.Builder().nutrition(4).saturationMod(2).alwaysEat().build())));
 
     public static final RegistryObject<Item> ELIXIR_BOTTLE_OF_RAGE_ELIXIR = ITEMS.register("elixir_bottle_of_rage_elixir",
-            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1)
+            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).rarity(Rarity.UNCOMMON)
                     .food(new FoodProperties.Builder().alwaysEat().build())));
 
     public static final RegistryObject<Item> PINEAPPLE_LOVE_SEA = ITEMS.register("pineapple_love_sea",
-            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().sanAdd(15)
+            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().sanAdd(15).rarity(Rarity.UNCOMMON)
                     .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f).alwaysEat().build())));
 
 
@@ -544,12 +551,12 @@ public class ModItems {
     public static final RegistryObject<Item> COTTON_CROP = ITEMS.register("cotton_crop", () -> new BlockItem(ModBlocks.COTTON_CROP.get(), new Item.Properties()));
 
     //流体桶物品
-    public static final RegistryObject<Item> MELT_DREAM_LIQUID_BUCKET = ITEMS.register("melt_dream_liquid_bucket", () -> new BucketItem(ModFluids.MELT_DREAM_LIQUID, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON).craftRemainder(Items.BUCKET)));
+    public static final RegistryObject<Item> MELT_DREAM_LIQUID_BUCKET = ITEMS.register("melt_dream_liquid_bucket", () -> new BucketItem(ModFluids.MELT_DREAM_LIQUID, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.RARE).craftRemainder(Items.BUCKET)));
     public static final RegistryObject<Item> SHADOW_LIQUID_BUCKET = ITEMS.register("shadow_liquid_bucket", () -> new BucketItem(ModFluids.SHADOW_LIQUID, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON)));
 
     //方块实体对应物品
-    public static final RegistryObject<Item> QYM_DOLL = ITEMS.register("qym_doll", () -> new QYMDollItem(ModBlocks.QYM_DOLL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> UUZ_DOLL = ITEMS.register("uuz_doll", () -> new UUZDollItem(ModBlocks.UUZ_DOLL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> QYM_DOLL = ITEMS.register("qym_doll", () -> new QYMDollItem(ModBlocks.QYM_DOLL.get(), new Item.Properties().rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> UUZ_DOLL = ITEMS.register("uuz_doll", () -> new UUZDollItem(ModBlocks.UUZ_DOLL.get(), new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> CLAYPAN = ITEMS.register("claypan", () -> new BlockItem(ModBlocks.CLAYPAN.get(), new Item.Properties()));
     public static final RegistryObject<Item> DREAM_CAULDRON = ITEMS.register("dream_cauldron", () -> new DreamCauldronItem(ModBlocks.DREAM_CAULDRON.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_DESK = ITEMS.register("dyedream_desk", () -> new BlockItem(ModBlocks.DYEDREAM_DESK.get(), new Item.Properties()));

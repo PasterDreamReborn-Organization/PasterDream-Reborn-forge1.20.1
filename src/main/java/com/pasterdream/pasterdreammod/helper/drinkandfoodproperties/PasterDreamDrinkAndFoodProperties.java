@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.helper.drinkandfoodproperties;
 
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 
 public class PasterDreamDrinkAndFoodProperties extends Item.Properties
 {
@@ -20,6 +21,13 @@ public class PasterDreamDrinkAndFoodProperties extends Item.Properties
     public PasterDreamDrinkAndFoodProperties stacksTo(int size)
     {
         super.stacksTo(size);
+        return this;
+    }
+
+    @Override
+    public PasterDreamDrinkAndFoodProperties rarity(Rarity rarity)
+    {
+        super.rarity(rarity);
         return this;
     }
 

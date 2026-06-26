@@ -18,6 +18,9 @@ public class AddToolTip
         if(stack.is(ModItems.MAGIC_STONE.get())){
             tooltip.add(Component.translatable("tooltip.pasterdreammod.magic_stone"));
         }
+        if(stack.is(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_crystal_fragment"));
+        }
 
     }
 }
