@@ -122,7 +122,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_SAPLING.get());
 
         tag(BlockTags.FLOWERS)
-                .add(ModBlocks.GOLDENROD.get());
+                .add(ModBlocks.GOLDENROD.get())
+                .add(ModBlocks.FERRARIA_CRISPA.get())
+                .add(ModBlocks.EUSTOMA.get())
+                .add(ModBlocks.MALVA_SINENSIS_CAVAN.get());
+
+        tag(BlockTags.SMALL_FLOWERS)
+                .add(ModBlocks.GOLDENROD.get())
+                .add(ModBlocks.FERRARIA_CRISPA.get())
+                .add(ModBlocks.EUSTOMA.get())
+                .add(ModBlocks.MALVA_SINENSIS_CAVAN.get());
 
 
 

@@ -530,10 +530,29 @@ public class ModItems {
     public static final RegistryObject<Item> CALCITE_TILES_WALL = ITEMS.register("calcite_tiles_wall",
             () -> new BlockItem(ModBlocks.CALCITE_TILES_WALL.get(), new Item.Properties()));
 
-    // =====植物系列 =====
+    // =====植物系列（花） =====
     public static final RegistryObject<Item> GOLDENROD = ITEMS.register("goldenrod",
             () -> new BlockItem(ModBlocks.GOLDENROD.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> FERRARIA_CRISPA = ITEMS.register("ferraria_crispa",//f1
+            () -> new BlockItem(ModBlocks.FERRARIA_CRISPA.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> EUSTOMA = ITEMS.register("eustoma",//f2
+            () -> new BlockItem(ModBlocks.EUSTOMA.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> MALVA_SINENSIS_CAVAN = ITEMS.register("malva_sinensis_cavan",//f5
+            () -> new BlockItem(ModBlocks.MALVA_SINENSIS_CAVAN.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> LINHT_FLOWER = ITEMS.register("linht_flower",
+            () -> new BlockItem(ModBlocks.LINHT_FLOWER.get(), new Item.Properties()));//f9
+
+    public static final RegistryObject<Item> DREAMING_LOTUS = ITEMS.register("dreaming_lotus",
+            () -> new BlockItem(ModBlocks.DREAMING_LOTUS.get(), new Item.Properties()));//f11
+
+    public static final RegistryObject<Item> MISTY_DREAMING_LOTUS = ITEMS.register("misty_dreaming_lotus",
+            () -> new BlockItem(ModBlocks.MISTY_DREAMING_LOTUS.get(), new Item.Properties()));//f12
+
+    // =====植物系列（草） =====
     public static final RegistryObject<Item> DYEDREAM_MOSS = ITEMS.register("dyedream_moss",
             () -> new BlockItem(ModBlocks.DYEDREAM_MOSS.get(), new Item.Properties()));
 
@@ -555,6 +574,11 @@ public class ModItems {
     public static final RegistryObject<Item> LIGHT_BALL_CROP_AGE_1 = ITEMS.register("light_ball_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.LIGHT_BALL_CROP.get()));
     public static final RegistryObject<Item> CLOUD_CROP_AGE_1 = ITEMS.register("cloud_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.CLOUD_CROP.get()));
     public static final RegistryObject<Item> COTTON_CROP_AGE_1 = ITEMS.register("cotton_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.COTTON_CROP.get()));
+
+    public static final RegistryObject<Item> SINGULARITY_FERN = ITEMS.register("singularity_fern",
+            () -> new BlockItem(ModBlocks.SINGULARITY_FERN.get(), new Item.Properties()));//f14
+
+
 
     //流体桶物品
     public static final RegistryObject<Item> MELT_DREAM_LIQUID_BUCKET = ITEMS.register("melt_dream_liquid_bucket", () -> new BucketItem(ModFluids.MELT_DREAM_LIQUID, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.RARE).craftRemainder(Items.BUCKET)));

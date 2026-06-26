@@ -237,6 +237,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_MOSS.get());
                         output.accept(ModItems.STEM_GRASS.get());
                         output.accept(ModItems.TALL_STEM_GRASS.get());
+                        output.accept(ModItems.FERRARIA_CRISPA.get());
+                        output.accept(ModItems.EUSTOMA.get());
+                        output.accept(ModItems.MALVA_SINENSIS_CAVAN.get());
+                        output.accept(ModItems.LINHT_FLOWER.get());
+                        output.accept(ModItems.DREAMING_LOTUS.get());
+                        output.accept(ModItems.MISTY_DREAMING_LOTUS.get());
+                        output.accept(ModItems.SINGULARITY_FERN.get());
 
                     })
                     .build());

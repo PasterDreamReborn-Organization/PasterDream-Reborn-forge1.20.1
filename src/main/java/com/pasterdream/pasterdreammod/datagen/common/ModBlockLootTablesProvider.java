@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.datagen.common;
 
+import com.pasterdream.pasterdreammod.datagen.util.LootHelpers;
 import com.pasterdream.pasterdreammod.datagen.util.RecipeHelpers;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
@@ -42,8 +43,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(ModBlocks.DYEDREAM_DIRT.get())));
         dropSelf(ModBlocks.DYEDREAM_LOG.get());
         dropSelf(ModBlocks.DYEDREAM_WOOD.get());
-        add(ModBlocks.DYEDREAM_LEAVES.get(), block -> RecipeHelpers.createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), ModItems.DYEDREAM_FRUIT.get()));
-        add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), block -> RecipeHelpers.createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), ModItems.DYEDREAM_FRUIT.get()));
+        add(ModBlocks.DYEDREAM_LEAVES.get(), block -> LootHelpers.createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), ModItems.DYEDREAM_FRUIT.get()));
+        add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get(), block -> LootHelpers.createLeavesDrops(block, ModBlocks.DYEDREAM_SAPLING.get(), ModItems.DYEDREAM_FRUIT.get()));
         dropSelf(ModBlocks.DYEDREAM_SAPLING.get());
 
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(),
@@ -130,12 +131,25 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.PINK_MUSHROOM.get());
         add(ModBlocks.TALL_PINK_MUSHROOM.get(), block -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         dropSelf((ModBlocks.GOLDENROD.get()));
+        dropSelf((ModBlocks.FERRARIA_CRISPA.get()));
+        dropSelf((ModBlocks.EUSTOMA.get()));
+        dropSelf((ModBlocks.MALVA_SINENSIS_CAVAN.get()));
+        dropSelf(ModBlocks.LINHT_FLOWER.get());
+        dropSelf(ModBlocks.DREAMING_LOTUS.get());
+        dropSelf(ModBlocks.MISTY_DREAMING_LOTUS.get());
+        add(ModBlocks.DREAMING_LOTUS.get(),
+                block -> LootHelpers.createhighflowerDrops(ModBlocks.DREAMING_LOTUS.get()));
+        add(ModBlocks.MISTY_DREAMING_LOTUS.get(),
+                block -> LootHelpers.createhighflowerDrops(ModBlocks.MISTY_DREAMING_LOTUS.get()));
+
         add(ModBlocks.DYEDREAM_MOSS.get(),
-                block -> RecipeHelpers.creategrassesDrops(ModBlocks.DYEDREAM_MOSS.get()));
+                block -> LootHelpers.creategrassesDrops(ModBlocks.DYEDREAM_MOSS.get()));
         add(ModBlocks.STEM_GRASS.get(),
-                block -> RecipeHelpers.creategrassesDrops(ModBlocks.STEM_GRASS.get()));
+                block -> LootHelpers.creategrassesDrops(ModBlocks.STEM_GRASS.get()));
         add(ModBlocks.TALL_STEM_GRASS.get(),
-                block -> RecipeHelpers.createhighgrassesDrops(ModBlocks.STEM_GRASS.get(),ModBlocks.TALL_STEM_GRASS.get()));
+                block -> LootHelpers.createhighgrassesDrops(ModBlocks.STEM_GRASS.get(),ModBlocks.TALL_STEM_GRASS.get()));
+        add(ModBlocks.SINGULARITY_FERN.get(),
+                block -> LootHelpers.creategrassesDrops(ModBlocks.SINGULARITY_FERN.get()));
 
 
         dropSelf(ModBlocks.DYEDREAM_SAND.get());

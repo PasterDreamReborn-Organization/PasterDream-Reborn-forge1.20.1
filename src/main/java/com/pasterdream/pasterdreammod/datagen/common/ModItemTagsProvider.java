@@ -45,6 +45,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
         copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
         copy(BlockTags.FLOWERS, ItemTags.FLOWERS);
+        copy(BlockTags.SMALL_FLOWERS, ItemTags.SMALL_FLOWERS);
 
         copy(ModBlockTags.STRIPPED_LOGS, ModItemTags.STRIPPED_LOGS);
         copy(ModBlockTags.STRIPPED_WOOD, ModItemTags.STRIPPED_WOOD);

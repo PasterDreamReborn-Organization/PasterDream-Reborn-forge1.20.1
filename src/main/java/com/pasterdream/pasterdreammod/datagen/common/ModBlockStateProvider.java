@@ -220,13 +220,30 @@ public class ModBlockStateProvider extends BlockStateProvider {
         // ===== 植物系列 =====
         var goldenrod = models().cross(ModBlocks.GOLDENROD.getId().getPath(), blockTexture(ModBlocks.GOLDENROD.get())).renderType("cutout");
         simpleBlock(ModBlocks.GOLDENROD.get(), goldenrod);
+        var ferraria_crispa = models().cross(ModBlocks.FERRARIA_CRISPA.getId().getPath(), blockTexture(ModBlocks.FERRARIA_CRISPA.get())).renderType("cutout");
+        simpleBlock(ModBlocks.FERRARIA_CRISPA.get(), ferraria_crispa);
+        var eustoma = models().cross(ModBlocks.EUSTOMA.getId().getPath(), blockTexture(ModBlocks.EUSTOMA.get())).renderType("cutout");
+        simpleBlock(ModBlocks.EUSTOMA.get(), eustoma);
+        var dreaming_lotus_Upper = models().cross(ModBlocks.DREAMING_LOTUS.getId().getPath(),
+                modLoc("block/dreaming_lotus_top")).renderType("cutout");
+        var dreaming_lotus_Lower = models().cross(ModBlocks.DREAMING_LOTUS.getId().getPath() + "_bottom",
+                modLoc("block/dreaming_lotus")).renderType("cutout");
+        var misty_dreaming_lotus_Upper = models().cross(ModBlocks.MISTY_DREAMING_LOTUS.getId().getPath(),
+                modLoc("block/misty_dreaming_lotus_top")).renderType("cutout");
+        var misty_dreaming_lotus_Lower = models().cross(ModBlocks.MISTY_DREAMING_LOTUS.getId().getPath() + "_bottom",
+                modLoc("block/dreaming_lotus")).renderType("cutout");
+        getVariantBuilder(ModBlocks.DREAMING_LOTUS.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(dreaming_lotus_Lower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(dreaming_lotus_Upper));
+        getVariantBuilder(ModBlocks.MISTY_DREAMING_LOTUS.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(misty_dreaming_lotus_Lower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(misty_dreaming_lotus_Upper));
+        var linht_flower = models().cross(ModBlocks.LINHT_FLOWER.getId().getPath(), blockTexture(ModBlocks.LINHT_FLOWER.get())).renderType("cutout");
+        simpleBlock(ModBlocks.LINHT_FLOWER.get(), linht_flower);
 
-        var dyedreamMoss = models().cross(ModBlocks.DYEDREAM_MOSS.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_MOSS.get())).renderType("cutout");
-        simpleBlock(ModBlocks.DYEDREAM_MOSS.get(), dyedreamMoss);
 
-        var stemGrass = models().cross(ModBlocks.STEM_GRASS.getId().getPath(), blockTexture(ModBlocks.STEM_GRASS.get())).renderType("cutout");
-        simpleBlock(ModBlocks.STEM_GRASS.get(), stemGrass);
-
+        var malva_sinensis_cavan = models().cross(ModBlocks.MALVA_SINENSIS_CAVAN.getId().getPath(), blockTexture(ModBlocks.MALVA_SINENSIS_CAVAN.get())).renderType("cutout");
+        simpleBlock(ModBlocks.MALVA_SINENSIS_CAVAN.get(), malva_sinensis_cavan);
         var GrassTallUpper = models().cross(ModBlocks.TALL_STEM_GRASS.getId().getPath() + "_top", modLoc("block/stem_grass")).renderType("cutout");
         var GrassTallLower = models().cross(ModBlocks.TALL_STEM_GRASS.getId().getPath() + "_bottom", modLoc("block/tall_stem_grass")).renderType("cutout");
         getVariantBuilder(ModBlocks.TALL_STEM_GRASS.get())
@@ -245,6 +262,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         generateTwoStageCropBlockModel("light_ball_crop");
         generateTwoStageCropBlockModel("cloud_crop");
         generateTwoStageCropBlockModel("cotton_crop");
+
+        var dyedreamMoss = models().cross(ModBlocks.DYEDREAM_MOSS.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_MOSS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.DYEDREAM_MOSS.get(), dyedreamMoss);
+
+        var stemGrass = models().cross(ModBlocks.STEM_GRASS.getId().getPath(), blockTexture(ModBlocks.STEM_GRASS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.STEM_GRASS.get(), stemGrass);
+
+        var singularity_fern = models().cross(ModBlocks.SINGULARITY_FERN.getId().getPath(), blockTexture(ModBlocks.SINGULARITY_FERN.get())).renderType("cutout");
+        simpleBlock(ModBlocks.SINGULARITY_FERN.get(), singularity_fern);
+
 
         //流体方块
         simpleBlock(ModBlocks.MELTDREAM_LIQUID.get(), models().cubeAll(ModBlocks.MELTDREAM_LIQUID.getId().getPath(), modLoc("block/meltdream_liquid_flowing")));

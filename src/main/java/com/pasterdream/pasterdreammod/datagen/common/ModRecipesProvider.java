@@ -40,6 +40,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         miscOreRecipes(pWriter);
         calciteRecipes(pWriter);
         foodRecipes(pWriter);
+        othersRecipes(pWriter);
     }
 
     // ===== 染梦木建材配方 =====
@@ -923,6 +924,15 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter);
     }
 
+    // ===== 其他杂项类合成配方 =====
+    private void othersRecipes(Consumer<FinishedRecipe> pWriter) {
+
+        //三种染料合成配方
+        RecipeHelpers.dye(pWriter,ModItems.FERRARIA_CRISPA.get(), Items.BLACK_DYE);
+        RecipeHelpers.dye(pWriter,ModItems.EUSTOMA.get(), Items.GREEN_DYE);
+        RecipeHelpers.dye(pWriter,ModItems.MALVA_SINENSIS_CAVAN.get(), Items.PINK_DYE);
+
+    }
     // ===== 配方工具方法 =====
 
     private void dyeConversion(Consumer<FinishedRecipe> writer, ItemLike material, ItemLike result) {
