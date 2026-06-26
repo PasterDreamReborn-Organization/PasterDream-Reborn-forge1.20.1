@@ -199,10 +199,15 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.SHADOW_CHEST.get(), "浸影宝盒");
         add(ModBlocks.WIND_MOOR_CRATE.get(), "风泊板条筐");
         add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "梦染茶花植株");
+        add(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), "成熟的梦染茶花植株");
         add(ModBlocks.WHITE_COROLLA_CROP.get(), "苍白雪莲植株");
+        add(ModItems.WHITE_COROLLA_CROP_AGE_1.get(), "成熟的苍白雪莲植株");
         add(ModBlocks.LIGHT_BALL_CROP.get(), "流明堇植株");
+        add(ModItems.LIGHT_BALL_CROP_AGE_1.get(), "成熟的流明堇植株");
         add(ModBlocks.CLOUD_CROP.get(), "玲云花植株");
+        add(ModItems.CLOUD_CROP_AGE_1.get(), "成熟的玲云花植株");
         add(ModBlocks.COTTON_CROP.get(), "棉花植株");
+        add(ModItems.COTTON_CROP_AGE_1.get(), "成熟的棉花植株");
 
         add(ModBlocks.GOLDENROD.get(), "秋麒麟");
         add(ModBlocks.DYEDREAM_MOSS.get(), "染梦苔藓");

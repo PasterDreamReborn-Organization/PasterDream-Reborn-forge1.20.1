@@ -26,10 +26,10 @@ public class ModCropRelation
 
     public static void registerCropRelation()
     {
-        register(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new CropBindingContent(ModItems.DYEDREAM_COROLLA.get(), 1, TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt"))));
-        register(ModBlocks.WHITE_COROLLA_CROP.get(), new CropBindingContent(ModItems.WHITE_COROLLA.get(), 1, TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "white_corolla_can_place_on"))));
-        register(ModBlocks.LIGHT_BALL_CROP.get(), new CropBindingContent(ModItems.LIGHT_BALL.get(), 1, TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt"))));
-        register(ModBlocks.CLOUD_CROP.get(), new CropBindingContent(ModItems.CLOUD.get(), 5, TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt"))));
-        register(ModBlocks.COTTON_CROP.get(), new CropBindingContent(ModItems.COTTON.get(), 1, BlockTags.DIRT));
+        register(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new CropBindingContent(ModItems.DYEDREAM_COROLLA.get(), 1, TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt")), ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get()));
+        register(ModBlocks.WHITE_COROLLA_CROP.get(), new CropBindingContent(ModItems.WHITE_COROLLA.get(), 1, TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "white_corolla_can_place_on")), ModItems.WHITE_COROLLA_CROP_AGE_1.get()));
+        register(ModBlocks.LIGHT_BALL_CROP.get(), new CropBindingContent(ModItems.LIGHT_BALL.get(), 1, TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt")), ModItems.LIGHT_BALL_CROP_AGE_1.get()));
+        register(ModBlocks.CLOUD_CROP.get(), new CropBindingContent(ModItems.CLOUD.get(), 5, TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt")), ModItems.CLOUD_CROP_AGE_1.get()));
+        register(ModBlocks.COTTON_CROP.get(), new CropBindingContent(ModItems.COTTON.get(), 1, BlockTags.DIRT, ModItems.COTTON_CROP_AGE_1.get()));
     }
 }

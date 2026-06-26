@@ -80,32 +80,7 @@ public class PasterDreamCropBlock extends BushBlock implements IPlantable
     @Override
     public void spawnAfterBreak(BlockState state, ServerLevel level, BlockPos pos, ItemStack stack, boolean dropExperience)
     {
-        CropBindingContent binding = ModCropRelation.getBinding(this);
-        if (binding == null)
-        {
-            return;
-        }
-
-        int age = state.getValue(AGE);
-        boolean isShears = stack.is(Tags.Items.SHEARS);
-        boolean hasSilkTouch = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, stack) > 0;
-
-        if (age == 0)
-        {
-            if (isShears || hasSilkTouch)
-            {
-                popResource(level, pos, new ItemStack(this));
-            }
-        }
-        else
-            if (age == 1)
-            {
-                popResource(level, pos, new ItemStack(binding.productItem(), binding.productCount()));
-                if (isShears || hasSilkTouch)
-                {
-                    popResource(level, pos, new ItemStack(this));
-                }
-            }
+        super.spawnAfterBreak(state, level, pos, stack, dropExperience);
     }
 
     @Override
@@ -147,6 +122,11 @@ public class PasterDreamCropBlock extends BushBlock implements IPlantable
     @Override
     public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state)
     {
+        CropBindingContent binding = ModCropRelation.getBinding(this);
+        if (state.getValue(AGE) == 1 && binding != null && binding.matureItem() != null)
+        {
+            return new ItemStack(binding.matureItem());
+        }
         return new ItemStack(this);
     }
 

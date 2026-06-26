@@ -112,11 +112,6 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.WHITE_COROLLA.get());
         basicItem(ModItems.LIGHT_BALL.get());
         basicItem(ModItems.COTTON.get());
-        basicItem(ModItems.DYEDREAM_COROLLA_CROP.get());
-        basicItem(ModItems.WHITE_COROLLA_CROP.get());
-        basicItem(ModItems.LIGHT_BALL_CROP.get());
-        basicItem(ModItems.CLOUD_CROP.get());
-        basicItem(ModItems.COTTON_CROP.get());
         basicItem(ModItems.DREAM_FERTILIZER.get());
         basicItem(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
         basicItem(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get());
@@ -124,9 +119,17 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get());
         basicItem(ModItems.BLUE_PRINT.get());
 
+        basicItem(ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
+        basicItem(ModItems.WHITE_COROLLA_CROP_AGE_0.get());
+        basicItem(ModItems.LIGHT_BALL_CROP_AGE_0.get());
+        basicItem(ModItems.CLOUD_CROP_AGE_0.get());
+        basicItem(ModItems.COTTON_CROP_AGE_0.get());
 
-
-
+        itemModelWithResource(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), "dyedream_corolla_crop");
+        itemModelWithResource(ModItems.WHITE_COROLLA_CROP_AGE_1.get(), "white_corolla_crop");
+        itemModelWithResource(ModItems.LIGHT_BALL_CROP_AGE_1.get(), "light_ball_crop");
+        itemModelWithResource(ModItems.CLOUD_CROP_AGE_1.get(), "cloud_crop");
+        itemModelWithResource(ModItems.COTTON_CROP_AGE_1.get(), "cotton_crop");
 
         withExistingParent(ModItems.PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/pink_mushroom"));
@@ -192,6 +195,16 @@ public class ModItemModelsProvider extends ItemModelProvider {
         return getBuilder(path)
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", ResourceLocation.tryParse(item.getNamespace() + ":" + "item/" + item.getPath()));
+    }
+
+    public ItemModelBuilder itemModelWithResource(Item item, String resource)
+    {
+        String path = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getPath();
+        if (path.contains("/"))
+        {
+            path = folder + "/" + path;
+        }
+        return getBuilder(path).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", ResourceLocation.tryParse(PasterDreamMod.MOD_ID + ":" + "item/" + resource));
     }
 
     private <T extends Block> void buttonItem(RegistryObject<T> block, RegistryObject<Block> base) {

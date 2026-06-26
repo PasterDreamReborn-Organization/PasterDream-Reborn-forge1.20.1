@@ -221,11 +221,16 @@ public class ModCreativeModeTabs {
                     .icon(() -> new ItemStack(ModBlocks.DYEDREAM_SAPLING.get()))
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.DYEDREAM_SAPLING.get());
-                        output.accept(ModItems.DYEDREAM_COROLLA_CROP.get());
-                        output.accept(ModItems.WHITE_COROLLA_CROP.get());
-                        output.accept(ModItems.LIGHT_BALL_CROP.get());
-                        output.accept(ModItems.CLOUD_CROP.get());
-                        output.accept(ModItems.COTTON_CROP.get());
+                        output.accept(ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
+                        output.accept(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get());
+                        output.accept(ModItems.WHITE_COROLLA_CROP_AGE_0.get());
+                        output.accept(ModItems.WHITE_COROLLA_CROP_AGE_1.get());
+                        output.accept(ModItems.LIGHT_BALL_CROP_AGE_0.get());
+                        output.accept(ModItems.LIGHT_BALL_CROP_AGE_1.get());
+                        output.accept(ModItems.CLOUD_CROP_AGE_0.get());
+                        output.accept(ModItems.CLOUD_CROP_AGE_1.get());
+                        output.accept(ModItems.COTTON_CROP_AGE_0.get());
+                        output.accept(ModItems.COTTON_CROP_AGE_1.get());
                         output.accept(ModItems.PINK_MUSHROOM.get());
                         output.accept(ModItems.TALL_PINK_MUSHROOM.get());
                         output.accept(ModItems.GOLDENROD.get());

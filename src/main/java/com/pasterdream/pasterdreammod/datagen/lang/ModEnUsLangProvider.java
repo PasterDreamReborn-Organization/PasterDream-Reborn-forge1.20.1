@@ -189,10 +189,15 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.SHADOW_CHEST.get(), "Shadow Chest");
         add(ModBlocks.WIND_MOOR_CRATE.get(), "Wind Moor Crate");
         add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "Dyedream Corolla");
+        add(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), "Mature Dyedream Corolla");
         add(ModBlocks.WHITE_COROLLA_CROP.get(), "White Corolla Crop");
+        add(ModItems.WHITE_COROLLA_CROP_AGE_1.get(), "Mature White Corolla Crop");
         add(ModBlocks.LIGHT_BALL_CROP.get(), "Light Ball Crop");
+        add(ModItems.LIGHT_BALL_CROP_AGE_1.get(), "Mature Light Ball Crop");
         add(ModBlocks.CLOUD_CROP.get(), "Cloud Crop");
+        add(ModItems.CLOUD_CROP_AGE_1.get(), "Mature Cloud Crop");
         add(ModBlocks.COTTON_CROP.get(), "Cotton Crop");
+        add(ModItems.COTTON_CROP_AGE_1.get(), "Mature Cotton Crop");
 
         add(ModBlocks.GOLDENROD.get(), "Goldenrod");
         add(ModBlocks.DYEDREAM_MOSS.get(), "Dyedream Moss");

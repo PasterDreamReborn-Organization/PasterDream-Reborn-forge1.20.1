@@ -4,10 +4,10 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamDrinkAndFoodProperties;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket.PicnicBasketItem;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestItem;
+import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem;
-import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItemRenderer;
 import com.pasterdream.pasterdreammod.world.item.blueprints.BluePrintItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotes.DreamNotesItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDrinkItem;
@@ -544,11 +544,17 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.TALL_STEM_GRASS.get(), new Item.Properties()));
 
     //作物方块物品
-    public static final RegistryObject<Item> DYEDREAM_COROLLA_CROP = ITEMS.register("dyedream_corolla_crop", () -> new BlockItem(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new Item.Properties()));
-    public static final RegistryObject<Item> WHITE_COROLLA_CROP = ITEMS.register("white_corolla_crop", () -> new BlockItem(ModBlocks.WHITE_COROLLA_CROP.get(), new Item.Properties()));
-    public static final RegistryObject<Item> LIGHT_BALL_CROP = ITEMS.register("light_ball_crop", () -> new BlockItem(ModBlocks.LIGHT_BALL_CROP.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CLOUD_CROP = ITEMS.register("cloud_crop", () -> new BlockItem(ModBlocks.CLOUD_CROP.get(), new Item.Properties()));
-    public static final RegistryObject<Item> COTTON_CROP = ITEMS.register("cotton_crop", () -> new BlockItem(ModBlocks.COTTON_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_COROLLA_CROP_AGE_0 = ITEMS.register("dyedream_corolla_crop_age_0", () -> new BlockItem(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WHITE_COROLLA_CROP_AGE_0 = ITEMS.register("white_corolla_crop_age_0", () -> new BlockItem(ModBlocks.WHITE_COROLLA_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LIGHT_BALL_CROP_AGE_0 = ITEMS.register("light_ball_crop_age_0", () -> new BlockItem(ModBlocks.LIGHT_BALL_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CLOUD_CROP_AGE_0 = ITEMS.register("cloud_crop_age_0", () -> new BlockItem(ModBlocks.CLOUD_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> COTTON_CROP_AGE_0 = ITEMS.register("cotton_crop_age_0", () -> new BlockItem(ModBlocks.COTTON_CROP.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> DYEDREAM_COROLLA_CROP_AGE_1 = ITEMS.register("dyedream_corolla_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.DYEDREAM_COROLLA_CROP.get()));
+    public static final RegistryObject<Item> WHITE_COROLLA_CROP_AGE_1 = ITEMS.register("white_corolla_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.WHITE_COROLLA_CROP.get()));
+    public static final RegistryObject<Item> LIGHT_BALL_CROP_AGE_1 = ITEMS.register("light_ball_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.LIGHT_BALL_CROP.get()));
+    public static final RegistryObject<Item> CLOUD_CROP_AGE_1 = ITEMS.register("cloud_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.CLOUD_CROP.get()));
+    public static final RegistryObject<Item> COTTON_CROP_AGE_1 = ITEMS.register("cotton_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.COTTON_CROP.get()));
 
     //流体桶物品
     public static final RegistryObject<Item> MELT_DREAM_LIQUID_BUCKET = ITEMS.register("melt_dream_liquid_bucket", () -> new BucketItem(ModFluids.MELT_DREAM_LIQUID, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.RARE).craftRemainder(Items.BUCKET)));
