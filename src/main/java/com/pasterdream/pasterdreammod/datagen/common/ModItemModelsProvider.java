@@ -109,6 +109,15 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.SOUL_ESSENCE.get());
         basicItem(ModItems.CHARGED_AMETHYST.get());
         basicItem(ModItems.DYEDREAM_COROLLA.get());
+        basicItem(ModItems.WHITE_COROLLA.get());
+        basicItem(ModItems.LIGHT_BALL.get());
+        basicItem(ModItems.COTTON.get());
+        basicItem(ModItems.DYEDREAM_COROLLA_CROP.get());
+        basicItem(ModItems.WHITE_COROLLA_CROP.get());
+        basicItem(ModItems.LIGHT_BALL_CROP.get());
+        basicItem(ModItems.CLOUD_CROP.get());
+        basicItem(ModItems.COTTON_CROP.get());
+        basicItem(ModItems.DREAM_FERTILIZER.get());
         basicItem(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
         basicItem(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get());
         basicItem(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get());

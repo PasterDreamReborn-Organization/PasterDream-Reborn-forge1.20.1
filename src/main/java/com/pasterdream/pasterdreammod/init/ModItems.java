@@ -88,8 +88,12 @@ public class ModItems {
     public static final RegistryObject<Item> CHARGED_AMETHYST = ITEMS.register("charged_amethyst",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> DYEDREAM_COROLLA = ITEMS.register("dyedream_corolla",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DREAM_FERTILIZER = ITEMS.register("dream_fertilizer", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> DYEDREAM_COROLLA = ITEMS.register("dyedream_corolla", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> WHITE_COROLLA = ITEMS.register("white_corolla", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LIGHT_BALL = ITEMS.register("light_ball", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.register("melt_dream_crystal_fragment",
             () -> new Item(new Item.Properties()));
@@ -531,6 +535,13 @@ public class ModItems {
 
     public static final RegistryObject<Item> TALL_STEM_GRASS = ITEMS.register("tall_stem_grass",
             () -> new BlockItem(ModBlocks.TALL_STEM_GRASS.get(), new Item.Properties()));
+
+    //作物方块物品
+    public static final RegistryObject<Item> DYEDREAM_COROLLA_CROP = ITEMS.register("dyedream_corolla_crop", () -> new BlockItem(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WHITE_COROLLA_CROP = ITEMS.register("white_corolla_crop", () -> new BlockItem(ModBlocks.WHITE_COROLLA_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LIGHT_BALL_CROP = ITEMS.register("light_ball_crop", () -> new BlockItem(ModBlocks.LIGHT_BALL_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CLOUD_CROP = ITEMS.register("cloud_crop", () -> new BlockItem(ModBlocks.CLOUD_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> COTTON_CROP = ITEMS.register("cotton_crop", () -> new BlockItem(ModBlocks.COTTON_CROP.get(), new Item.Properties()));
 
     //流体桶物品
     public static final RegistryObject<Item> MELT_DREAM_LIQUID_BUCKET = ITEMS.register("melt_dream_liquid_bucket", () -> new BucketItem(ModFluids.MELT_DREAM_LIQUID, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON).craftRemainder(Items.BUCKET)));

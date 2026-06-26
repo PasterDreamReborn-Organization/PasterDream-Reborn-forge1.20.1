@@ -102,6 +102,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SOUL_ESSENCE.get(), "灵魂精华");
         add(ModItems.CHARGED_AMETHYST.get(), "盈能紫水晶");
         add(ModItems.DYEDREAM_COROLLA.get(), "梦染花冠");
+        add(ModItems.WHITE_COROLLA.get(), "苍白花冠");
+        add(ModItems.LIGHT_BALL.get(), "流明光球");
+        add(ModItems.COTTON.get(), "棉花");
+        add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
 
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "寻梦者笔记-染梦世界");
@@ -194,6 +198,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.PICNIC_BASKET.get(), "野餐篮");
         add(ModBlocks.SHADOW_CHEST.get(), "浸影宝盒");
         add(ModBlocks.WIND_MOOR_CRATE.get(), "风泊板条筐");
+        add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "梦染茶花植株");
+        add(ModBlocks.WHITE_COROLLA_CROP.get(), "苍白雪莲植株");
+        add(ModBlocks.LIGHT_BALL_CROP.get(), "流明堇植株");
+        add(ModBlocks.CLOUD_CROP.get(), "玲云花植株");
+        add(ModBlocks.COTTON_CROP.get(), "棉花植株");
 
         add(ModBlocks.GOLDENROD.get(), "秋麒麟");
         add(ModBlocks.DYEDREAM_MOSS.get(), "染梦苔藓");

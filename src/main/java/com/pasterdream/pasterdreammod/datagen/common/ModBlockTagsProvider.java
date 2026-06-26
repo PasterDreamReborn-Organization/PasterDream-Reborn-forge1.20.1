@@ -5,8 +5,12 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.util.BuildingBlockFamily;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -239,6 +243,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(ModBlockTags.FORGE_GLASS_PANE)
                 .addTag(ModBlockTags.MOD_GLASS_PANE);
+
+
+        //植株底下的方块
+        tag(TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt")))
+                .add(ModBlocks.DYEDREAM_DIRT.get())
+                .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get());
+
+        tag(TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "white_corolla_can_place_on")))
+                .add(Blocks.SNOW_BLOCK);
     }
 
     private void addBuildingFamilyToTags(BuildingBlockFamily family) {

@@ -93,7 +93,7 @@ public class ItemIngredient
                 catch (Exception e)
                 {
                     nbt = null;
-                    System.err.println("NBT解析出错，" + e);
+                    System.err.println("物品NBT解析出错，" + e);
                 }
         }
 

@@ -4,20 +4,8 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.util.BuildingBlockFamily;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ButtonBlock;
-import net.minecraft.world.level.block.DoorBlock;
-import net.minecraft.world.level.block.FenceBlock;
-import net.minecraft.world.level.block.FenceGateBlock;
-import net.minecraft.world.level.block.IronBarsBlock;
-import net.minecraft.world.level.block.PressurePlateBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.TrapDoorBlock;
-import net.minecraft.world.level.block.WallBlock;
-import net.minecraft.world.level.block.DoublePlantBlock;
-import net.minecraft.world.level.block.LanternBlock;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -245,6 +233,19 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(GrassTallLower))
                 .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(GrassTallUpper));
 
+        //植株方块
+        generateTwoStageCrop(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "dyedream_corolla_crop");
+        generateTwoStageCrop(ModBlocks.WHITE_COROLLA_CROP.get(), "white_corolla_crop");
+        generateTwoStageCrop(ModBlocks.LIGHT_BALL_CROP.get(), "light_ball_crop");
+        generateTwoStageCrop(ModBlocks.CLOUD_CROP.get(), "cloud_crop");
+        generateTwoStageCrop(ModBlocks.COTTON_CROP.get(), "cotton_crop");
+
+        generateTwoStageCropBlockModel("dyedream_corolla_crop");
+        generateTwoStageCropBlockModel("white_corolla_crop");
+        generateTwoStageCropBlockModel("light_ball_crop");
+        generateTwoStageCropBlockModel("cloud_crop");
+        generateTwoStageCropBlockModel("cotton_crop");
+
         //流体方块
         simpleBlock(ModBlocks.MELTDREAM_LIQUID.get(), models().cubeAll(ModBlocks.MELTDREAM_LIQUID.getId().getPath(), modLoc("block/meltdream_liquid_flowing")));
         simpleBlock(ModBlocks.SHADOW_LIQUID.get(), models().cubeAll(ModBlocks.SHADOW_LIQUID.getId().getPath(), modLoc("block/shadow_liquid_flowing")));
@@ -258,6 +259,26 @@ public class ModBlockStateProvider extends BlockStateProvider {
         slabBlock((SlabBlock) family.slab().get(), tex, tex);
         blockItem(family.slab());
         wallBlock((WallBlock) family.wall().get(), tex);
+    }
+
+    private void generateTwoStageCrop(Block block, String baseName)
+    {
+        getVariantBuilder(block)
+                .partialState().with(BlockStateProperties.AGE_1, 0)
+                .modelForState().modelFile(modelFile(baseName + "_age_0")).addModel()
+                .partialState().with(BlockStateProperties.AGE_1, 1)
+                .modelForState().modelFile(modelFile(baseName)).addModel();
+    }
+
+    private ModelFile modelFile(String name)
+    {
+        return new ModelFile.UncheckedModelFile(modLoc("block/" + name));
+    }
+
+    private void generateTwoStageCropBlockModel(String baseName)
+    {
+        models().withExistingParent(baseName + "_age_0", mcLoc("block/cross")).texture("cross", modLoc("block/" + baseName + "_age_0")).renderType("cutout");
+        models().withExistingParent(baseName, mcLoc("block/cross")).texture("cross", modLoc("block/" + baseName)).renderType("cutout");
     }
 
     private <T extends Block> void blockItem(RegistryObject<T> block) {

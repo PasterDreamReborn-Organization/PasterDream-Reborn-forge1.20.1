@@ -94,13 +94,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "Elixir Bottle of Rage Elixir");
         add(ModItems.PINEAPPLE_LOVE_SEA.get(), "Pineapple Love Sea");
         add(ModItems.DYEDREAM_COROLLA.get(), "Dyedream Corolla");
+        add(ModItems.WHITE_COROLLA.get(), "White Corolla");
+        add(ModItems.LIGHT_BALL.get(), "Light Ball");
+        add(ModItems.COTTON.get(), "Cotton");
+        add(ModItems.DREAM_FERTILIZER.get(), "Dream Fertilizer");
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "Dream Notes - Dyedream World");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "Dream Notes - Lamp Shadow World");
         add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "Dream Notes - Wind Journey World");
         add(ModItems.BLUE_PRINT.get(), "Blue Print");
-
-
-
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "Dye Dream Dirt");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "Dye Dream Grass Block");
@@ -187,6 +188,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.PICNIC_BASKET.get(), "Picnic Basket");
         add(ModBlocks.SHADOW_CHEST.get(), "Shadow Chest");
         add(ModBlocks.WIND_MOOR_CRATE.get(), "Wind Moor Crate");
+        add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "Dyedream Corolla");
+        add(ModBlocks.WHITE_COROLLA_CROP.get(), "White Corolla Crop");
+        add(ModBlocks.LIGHT_BALL_CROP.get(), "Light Ball Crop");
+        add(ModBlocks.CLOUD_CROP.get(), "Cloud Crop");
+        add(ModBlocks.COTTON_CROP.get(), "Cotton Crop");
 
         add(ModBlocks.GOLDENROD.get(), "Goldenrod");
         add(ModBlocks.DYEDREAM_MOSS.get(), "Dyedream Moss");

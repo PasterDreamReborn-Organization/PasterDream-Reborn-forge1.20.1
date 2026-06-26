@@ -4,12 +4,10 @@ import com.pasterdream.pasterdreammod.client.*;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.FluidHandlerResolvers;
 import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
 import com.pasterdream.pasterdreammod.init.*;
-import com.pasterdream.pasterdreammod.world.block.doll.SetDollInvincible;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -57,6 +55,7 @@ public class PasterDreamMod
         FluidHandlerResolvers.FluidHandlerResolverRegister();
         ModFluidContainerRelation.registerFluidContainerRelation();
         ModDreamNotesContentRelation.registerDreamNotesContentRelation();
+        ModCropRelation.registerCropRelation();
     }
 
     //在这里输入客户端注册内容
@@ -79,7 +78,7 @@ public class PasterDreamMod
 
     private void AddOverlays(RegisterGuiOverlaysEvent event)
     {
-        event.registerAboveAll("meltdream_energy", MeltDreamEnergyTank.MELT_DREAM_ENERGY_TANK);
+        event.registerAboveAll("melt_dream_energy", MeltDreamEnergyTank.MELT_DREAM_ENERGY_TANK);
         event.registerAboveAll("san", SanTank.SAN_TANK);
     }
 

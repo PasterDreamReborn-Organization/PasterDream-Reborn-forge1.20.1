@@ -173,6 +173,12 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         buildingFamily(new BuildingBlockFamily(ModBlocks.CALCITE_TILES, ModBlocks.CALCITE_TILES_STAIRS, ModBlocks.CALCITE_TILES_SLAB, ModBlocks.CALCITE_TILES_WALL));
         buildingFamily(new BuildingBlockFamily(ModBlocks.DYEDREAM_BUD_BLOCK, ModBlocks.DYEDREAM_BUD_STAIRS, ModBlocks.DYEDREAM_BUD_SLAB, ModBlocks.DYEDREAM_BUD_WALL));
 
+        dropNone(ModBlocks.DYEDREAM_COROLLA_CROP.get());
+        dropNone(ModBlocks.WHITE_COROLLA_CROP.get());
+        dropNone(ModBlocks.LIGHT_BALL_CROP.get());
+        dropNone(ModBlocks.CLOUD_CROP.get());
+        dropNone(ModBlocks.COTTON_CROP.get());
+
         dropSelf(ModBlocks.QYM_DOLL.get());
         dropSelf(ModBlocks.UUZ_DOLL.get());
         dropSelf(ModBlocks.CLAYPAN.get());
@@ -203,6 +209,11 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
     @Override
     protected Iterable<Block> getKnownBlocks() {
         return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+    }
+
+    protected void dropNone(Block block)
+    {
+        this.add(block, LootTable.lootTable());
     }
 
 }

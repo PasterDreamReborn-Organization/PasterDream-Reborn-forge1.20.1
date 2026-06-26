@@ -95,7 +95,7 @@ public class FluidIngredient
                 catch (Exception e)
                 {
                     nbt = null;
-                    System.err.println("NBT解析出错，" + e);
+                    System.err.println("流体NBT解析出错，" + e);
                 }
         }
 

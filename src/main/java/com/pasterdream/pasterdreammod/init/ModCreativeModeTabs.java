@@ -114,7 +114,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PINK_SLIMEBALL.get());
                         output.accept(ModItems.PINK_EGG.get());
                         output.accept(ModItems.DYEDREAM_COROLLA.get());
+                        output.accept(ModItems.WHITE_COROLLA.get());
+                        output.accept(ModItems.LIGHT_BALL.get());
+                        output.accept(ModItems.COTTON.get());
                         output.accept(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
+                        output.accept(ModItems.DREAM_FERTILIZER.get());
                         output.accept(ModItems.CHARGED_AMETHYST.get());
                         output.accept(ModItems.RYE_SEED.get());
                         output.accept(ModItems.FLOUR.get());
@@ -217,6 +221,11 @@ public class ModCreativeModeTabs {
                     .icon(() -> new ItemStack(ModBlocks.DYEDREAM_SAPLING.get()))
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.DYEDREAM_SAPLING.get());
+                        output.accept(ModItems.DYEDREAM_COROLLA_CROP.get());
+                        output.accept(ModItems.WHITE_COROLLA_CROP.get());
+                        output.accept(ModItems.LIGHT_BALL_CROP.get());
+                        output.accept(ModItems.CLOUD_CROP.get());
+                        output.accept(ModItems.COTTON_CROP.get());
                         output.accept(ModItems.PINK_MUSHROOM.get());
                         output.accept(ModItems.TALL_PINK_MUSHROOM.get());
                         output.accept(ModItems.GOLDENROD.get());
