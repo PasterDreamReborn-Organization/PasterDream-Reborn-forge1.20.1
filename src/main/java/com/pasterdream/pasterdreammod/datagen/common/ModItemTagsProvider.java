@@ -81,6 +81,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.FRIED_EGG.get().asItem());
 
 
+        // 铜工具标签
+        tag(ItemTags.SWORDS).add(ModItems.COPPER_SWORD.get());
+        tag(ItemTags.PICKAXES).add(ModItems.COPPER_PICKAXE.get());
+        tag(ItemTags.AXES).add(ModItems.COPPER_AXE.get());
+        tag(ItemTags.SHOVELS).add(ModItems.COPPER_SHOVEL.get());
+        tag(ItemTags.HOES).add(ModItems.COPPER_HOE.get());
+
         //植株底下的方块
         tag(TagKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_dirt")))
                 .add(ModItems.DYEDREAM_DIRT.get())

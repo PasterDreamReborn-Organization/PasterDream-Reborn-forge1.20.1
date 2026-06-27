@@ -47,6 +47,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         blackStickRecipes(pWriter);
         upgradeKitRecipes(pWriter);
         copperToolRecipes(pWriter);
+        copperArmorRecipes(pWriter);
         toolRecipes(pWriter);
         glassRecipes(pWriter);
         iceAndLanternRecipes(pWriter);
@@ -177,6 +178,37 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .pattern(" b")
                 .define('a', Items.COPPER_INGOT)
                 .define('b', Items.STICK)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+    }
+
+    // ===== 铜装备配方 =====
+
+    private void copperArmorRecipes(Consumer<FinishedRecipe> pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COPPER_HELMET.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .define('a', Items.COPPER_INGOT)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COPPER_CHESTPLATE.get())
+                .pattern("a a")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', Items.COPPER_INGOT)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COPPER_LEGGINGS.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern("a a")
+                .define('a', Items.COPPER_INGOT)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COPPER_BOOTS.get())
+                .pattern("a a")
+                .pattern("a a")
+                .define('a', Items.COPPER_INGOT)
                 .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(pWriter);
     }

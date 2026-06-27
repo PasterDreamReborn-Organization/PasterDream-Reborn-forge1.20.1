@@ -237,6 +237,10 @@
 | `copper_axe`                   | `copper_axe`                                | 不改                                                        | 无需客制化类，直接用 `AxeItem`                     |
 | `copper_shovel`                | `copper_shovel`                             | 不改                                                        | 无需客制化类，直接用 `ShovelItem`                   |
 | `copper_hoe`                   | `copper_hoe`                                | 不改                                                        | 无需客制化类，直接用 `HoeItem`                      |
+| `copper_armor_helmet`           | `copper_helmet`                             | 删除 `armor` 字段，保持原版风格                                   | 无需客制化类，直接用 `ArmorItem`                     |
+| `copper_armor_chestplate`       | `copper_chestplate`                         | 删除 `armor` 字段                                            | 无需客制化类，直接用 `ArmorItem`                     |
+| `copper_armor_leggings`         | `copper_leggings`                           | 删除 `armor` 字段                                            | 无需客制化类，直接用 `ArmorItem`                     |
+| `copper_armor_boots`            | `copper_boots`                              | 删除 `armor` 字段                                            | 无需客制化类，直接用 `ArmorItem`                     |
 
 
 
