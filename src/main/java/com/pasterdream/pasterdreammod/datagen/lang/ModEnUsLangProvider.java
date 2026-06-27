@@ -99,6 +99,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.COTTON.get(), "Cotton");
         add(ModItems.SCULK_HEART.get(), "Sculk Heart");
         add(ModItems.BLACK_STICK.get(), "Black Stick");
+        add(ModItems.SPOOL.get(), "Spool");
+        add(ModItems.FABRIC.get(), "Fabric");
+        add(ModItems.PROTECT_DECK.get(), "Protect Deck");
         add(ModItems.TITANIUM_UPGRADE.get(), "Titanium Upgrade");
         add(ModItems.SCULK_UPGRADE.get(), "Sculk Upgrade");
         add(ModItems.DYEDREAM_UPGRADE.get(), "Dyedream Upgrade");
@@ -116,6 +119,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_AXE.get(), "Titanium Axe");
         add(ModItems.TITANIUM_SHOVEL.get(), "Titanium Shovel");
         add(ModItems.TITANIUM_HOE.get(), "Titanium Hoe");
+        add(ModItems.TITANIUM_HELMET.get(), "Titanium Helmet");
+        add(ModItems.TITANIUM_CHESTPLATE.get(), "Titanium Chestplate");
+        add(ModItems.TITANIUM_LEGGINGS.get(), "Titanium Leggings");
+        add(ModItems.TITANIUM_BOOTS.get(), "Titanium Boots");
         add(ModItems.DREAM_FERTILIZER.get(), "Dream Fertilizer");
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "Dream Notes - Dyedream World");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "Dream Notes - Lamp Shadow World");

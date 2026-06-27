@@ -129,6 +129,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_LIQUID_BUCKET.get());
                         output.accept(ModItems.SCULK_HEART.get());
                         output.accept(ModItems.BLACK_STICK.get());
+                        output.accept(ModItems.SPOOL.get());
+                        output.accept(ModItems.FABRIC.get());
+                        output.accept(ModItems.PROTECT_DECK.get());
                     })
                     .build());
 
@@ -160,6 +163,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_AXE.get());
                         output.accept(ModItems.TITANIUM_SHOVEL.get());
                         output.accept(ModItems.TITANIUM_HOE.get());
+                        // 钛金装备
+                        output.accept(ModItems.TITANIUM_HELMET.get());
+                        output.accept(ModItems.TITANIUM_CHESTPLATE.get());
+                        output.accept(ModItems.TITANIUM_LEGGINGS.get());
+                        output.accept(ModItems.TITANIUM_BOOTS.get());
                     })
                     .build());
 

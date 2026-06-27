@@ -102,6 +102,13 @@ public class ModItems {
     public static final RegistryObject<Item> BLACK_STICK = ITEMS.register("black_stick",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> SPOOL = ITEMS.register("spool",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FABRIC = ITEMS.register("fabric",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PROTECT_DECK = ITEMS.register("protect_deck",
+            () -> new Item(new Item.Properties()));
+
     // ===== 升级套件 =====
     public static final RegistryObject<Item> TITANIUM_UPGRADE = ITEMS.register("titanium_upgrade",
             () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)));
@@ -143,6 +150,16 @@ public class ModItems {
             () -> new ShovelItem(ModToolTiers.TITANIUM, 2.0f, -3.0f, new Item.Properties()));
     public static final RegistryObject<Item> TITANIUM_HOE = ITEMS.register("titanium_hoe",
             () -> new HoeItem(ModToolTiers.TITANIUM, -3, 0.0f, new Item.Properties()));
+
+    // ===== 钛金装备 =====
+    public static final RegistryObject<Item> TITANIUM_HELMET = ITEMS.register("titanium_helmet",
+            () -> new ArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> TITANIUM_CHESTPLATE = ITEMS.register("titanium_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> TITANIUM_LEGGINGS = ITEMS.register("titanium_leggings",
+            () -> new ArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> TITANIUM_BOOTS = ITEMS.register("titanium_boots",
+            () -> new ArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.register("melt_dream_crystal_fragment",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC)) {
