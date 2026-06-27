@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.itemwithnbt.blueprintwithnbt.BluePrintWithNBT;
 import com.pasterdream.pasterdreammod.helper.itemwithnbt.dreamnoteswithnbt.DreamNotesWithNBT;
 import com.pasterdream.pasterdreammod.world.item.blueprints.AddBluePrintContentListTag;
+import com.pasterdream.pasterdreammod.world.item.dreamnotes.NBTBookRegisterToCreativeModTab;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -357,6 +358,40 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "content", "notHaveWingsBirdHaveSpreadWingsDreamToo"));
 
                         output.accept(BluePrintWithNBT.bluePrintWithNBT(ModItems.BLUE_PRINT.get(), "content", "wraponWorkshop", AddBluePrintContentListTag.weaponWorkshop()));
+
+                        output.accept(NBTBookRegisterToCreativeModTab.GardenDecryption.MistyDreamingLotus());
+                        output.accept(NBTBookRegisterToCreativeModTab.GardenDecryption.PiercingEdelweiss());
+                        output.accept(NBTBookRegisterToCreativeModTab.GardenDecryption.GoldenFox());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamTravelogue.DyedreamTravelogue_0());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamTravelogue.DyedreamTravelogue_1());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamTravelogue.DyedreamTravelogue_2());
+                        output.accept(NBTBookRegisterToCreativeModTab.DreamChurch.DreamChurch_0());
+                        output.accept(NBTBookRegisterToCreativeModTab.DreamChurch.DreamChurch_1());
+                        output.accept(NBTBookRegisterToCreativeModTab.DreamChurch.DreamChurch_2());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.CrystalBall());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.DreamWishingTree());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.WarmColdWind());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.PinkAgalicHouse());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.MeltDreamLiquidWell());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.FloatingIslandDiary());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.FallingLeavesReturnToTheirRoots_CrackedPodsReturnToTheirCrowns());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.DreamFloating());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.BigBubble());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.DreamLaboratory());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.InteractingWithDream());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.DyedreamWorldTree());
+                        output.accept(NBTBookRegisterToCreativeModTab.DyedreamWorld.WingsOfDaiDaLuoSiAndFloatingIsland());
+                        output.accept(NBTBookRegisterToCreativeModTab.OverWorld.DesertCottage());
+                        output.accept(NBTBookRegisterToCreativeModTab.lampShadowWorld.ResearchNotes_BlackMetal());
+                        output.accept(NBTBookRegisterToCreativeModTab.lampShadowWorld.LampShadowTravelogue_1());
+                        output.accept(NBTBookRegisterToCreativeModTab.lampShadowWorld.ShadowPlace());
+                        output.accept(NBTBookRegisterToCreativeModTab.lampShadowWorld.ShadowFungusHouse());
+                        output.accept(NBTBookRegisterToCreativeModTab.lampShadowWorld.ShadowUndergroundWorkroom());
+                        output.accept(NBTBookRegisterToCreativeModTab.lampShadowWorld.ShadowDyedSloppyHandwritingNotes());
+                        output.accept(NBTBookRegisterToCreativeModTab.lampShadowWorld.RegardingShadowHandsEssay());
+                        output.accept(NBTBookRegisterToCreativeModTab.lampShadowWorld.DecisiveBattleWithShadowHandsAndFail());
+                        output.accept(NBTBookRegisterToCreativeModTab.WindJourneyWorld.WindBreakKnight());
+                        output.accept(NBTBookRegisterToCreativeModTab.WindJourneyWorld.MorningNewWind());
                     })
                     .build());
 

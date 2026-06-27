@@ -1257,7 +1257,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(Items.SNOWBALL, 1)
                 .requires(ModItems.DYEDREAM_DUST_PIECE.get(),1)
                 .requires(Items.STICK,1)
-                //染梦铃兰暂未加入
+                .requires(ModItems.DYEDREAM_LILY_OF_THE_VALLEY.get(),1)
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DUST_PIECE.get()), has(ModItems.DYEDREAM_DUST_PIECE.get()))
                 .save(pWriter);
 
@@ -1416,6 +1416,17 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(ModItems.DYEDREAM_MOSS.get(),1)
                 .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_WATER.get()), has(ModItems.GLASS_JAR_OF_WATER.get()))
                 .save(pWriter);
+
+        // 奇异炖菜合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.QUEER_SOUP.get(), 1)
+                .requires(Items.MUSHROOM_STEW,1)
+                .requires(ModItems.SINGULARITY_FERN.get(),1)
+                .requires(ModItems.MISTY_DREAMING_LOTUS.get(),1)
+                .requires(ModItems.DYEDREAM_COROLLA.get(),1)
+                .requires(Items.GHAST_TEAR,1)
+                .unlockedBy(getHasName(ModItems.MISTY_DREAMING_LOTUS.get()), has(ModItems.MISTY_DREAMING_LOTUS.get()))
+                .save(pWriter);
+
     }
 
     // ===== 其他杂项类合成配方 =====
