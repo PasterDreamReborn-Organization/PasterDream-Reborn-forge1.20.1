@@ -253,6 +253,10 @@
 | `titanium_armor_chestplate`    | `titanium_chestplate`                       | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
 | `titanium_armor_leggings`      | `titanium_leggings`                         | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
 | `titanium_armor_boots`         | `titanium_boots`                            | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
+| `sculk_armor_helmet`           | `sculk_helmet`                              | 删除 `armor` 字段                                             | 客制化类 `SculkArmorItem`（fireResistant + 套装检测）     |
+| `sculk_armor_chestplate`       | `sculk_chestplate`                          | 删除 `armor` 字段                                             | 同上                                               |
+| `sculk_armor_leggings`         | `sculk_leggings`                            | 删除 `armor` 字段                                             | 同上                                               |
+| `sculk_armor_boots`            | `sculk_boots`                               | 删除 `armor` 字段                                             | 同上                                               |
 
 
 

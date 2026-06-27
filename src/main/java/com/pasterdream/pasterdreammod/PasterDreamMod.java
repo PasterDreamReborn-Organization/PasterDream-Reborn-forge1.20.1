@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.client.*;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.FluidHandlerResolvers;
 import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
 import com.pasterdream.pasterdreammod.init.*;
+import com.pasterdream.pasterdreammod.world.item.SculkArmorItem;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -13,6 +14,8 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -42,6 +45,7 @@ public class PasterDreamMod
         ModFluids.register(modEventBus);            //注册流体
         ModMenus.register(modEventBus);             //注册菜单
         ModRecipes.register(modEventBus);           //注册配方
+        ModEffects.register(modEventBus);           //注册药水效果
         ModNetwork.register();                      //注册网络包
 
         modEventBus.addListener(this::commonSetup);
@@ -50,6 +54,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(this::AddCommand);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onLivingDrops);
+        MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onLivingTick);
         modEventBus.addListener(this::AddOverlays);
         modEventBus.addListener(this::AddEntityRenderersEvent);
 
@@ -112,6 +117,15 @@ public class PasterDreamMod
                     event.getEntity().level(),
                     event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(),
                     new ItemStack(ModItems.SCULK_HEART.get())));
+        }
+    }
+
+    // 回响套装效果
+    public static void onLivingTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END || event.player.level().isClientSide) return;
+        if (SculkArmorItem.hasFullSet(event.player)) {
+            event.player.addEffect(new MobEffectInstance(ModEffects.SCULK_ARMOR_BUFF.get(), 25, 0,
+                    true, false, true));
         }
     }
 }

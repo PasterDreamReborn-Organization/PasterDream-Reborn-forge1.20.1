@@ -28,9 +28,10 @@ public enum ModArmorMaterials implements ArmorMaterial {
             SoundEvents.ARMOR_EQUIP_DIAMOND, 3.0F, 0.1F,
             () -> Ingredient.of(ModItems.DYEDREAM_ALLOY_INGOT.get())),
 
-    // SCULK("sculk", 42, new int[]{3, 8, 6, 3}, 9,
-    //         SoundEvents.ARMOR_EQUIP_NETHERITE, 3.5F, 0.15F,
-    //         () -> Ingredient.of(ModItems.SCULK_HEART.get())),  // TODO: sculk_heart 未注册
+    // 幽匿回响
+    SCULK("sculk", 42, new int[]{3, 8, 6, 3}, 9,
+            SoundEvents.EMPTY, 3.5F, 0.15F,
+            () -> Ingredient.of(ModItems.SCULK_HEART.get())),
 
     // QYM("qym", 0, new int[]{2, 10, 10, 10}, 99,
     //         SoundEvents.ARMOR_EQUIP_NETHERITE, 10.0F, 1.0F,

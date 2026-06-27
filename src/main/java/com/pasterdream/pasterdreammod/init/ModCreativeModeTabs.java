@@ -168,6 +168,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_CHESTPLATE.get());
                         output.accept(ModItems.TITANIUM_LEGGINGS.get());
                         output.accept(ModItems.TITANIUM_BOOTS.get());
+                        // 回响装备
+                        output.accept(ModItems.SCULK_HELMET.get());
+                        output.accept(ModItems.SCULK_CHESTPLATE.get());
+                        output.accept(ModItems.SCULK_LEGGINGS.get());
+                        output.accept(ModItems.SCULK_BOOTS.get());
                     })
                     .build());
 

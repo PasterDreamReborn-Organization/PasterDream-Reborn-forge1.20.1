@@ -130,6 +130,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.TITANIUM_CHESTPLATE.get());
         basicItem(ModItems.TITANIUM_LEGGINGS.get());
         basicItem(ModItems.TITANIUM_BOOTS.get());
+        basicItem(ModItems.SCULK_HELMET.get());
+        basicItem(ModItems.SCULK_CHESTPLATE.get());
+        basicItem(ModItems.SCULK_LEGGINGS.get());
+        basicItem(ModItems.SCULK_BOOTS.get());
         handheldItem(ModItems.TITANIUM_SWORD);
         handheldItem(ModItems.TITANIUM_PICKAXE);
         handheldItem(ModItems.TITANIUM_AXE);

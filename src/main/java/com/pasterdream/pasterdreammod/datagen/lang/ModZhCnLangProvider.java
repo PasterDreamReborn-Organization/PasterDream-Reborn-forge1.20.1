@@ -131,6 +131,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_CHESTPLATE.get(), "钛金胸甲");
         add(ModItems.TITANIUM_LEGGINGS.get(), "钛金护腿");
         add(ModItems.TITANIUM_BOOTS.get(), "钛金靴子");
+        add(ModItems.SCULK_HELMET.get(), "回响头盔");
+        add(ModItems.SCULK_CHESTPLATE.get(), "回响胸甲");
+        add(ModItems.SCULK_LEGGINGS.get(), "回响护腿");
+        add(ModItems.SCULK_BOOTS.get(), "回响靴子");
         add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
 
@@ -280,6 +284,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7此世间一切拥有灵魂的生物皆有梦\n那些醒来时无法想起的细缕回忆\n破碎并融化被埋藏在世界各处凝结成晶\n等待着被新的灵魂发现");
         add("tooltip.pasterdreammod.upgrade_kit", "§7用于在锻造台处升级装备 可以保留装备的原有强化属性");
         add("tooltip.pasterdream.右键打开GUI", "§7右键打开GUI");
+
+        add("effect.pasterdream.sculk_armor_buff", "幽匿回响");
+        add("tooltip.pasterdreammod.sculk_armor",
+                "§7套装效果：§2幽匿回响\n§9最大生命值+4\n§9身处深层时效果增强\n§9免疫幽匿的黑暗恐惧\n§9受到黑暗效果时提高移速和免伤");
         add("tooltip.pasterdreammod.san_value", "SAN值: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "融梦能量: ");
 

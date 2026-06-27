@@ -14,6 +14,7 @@ import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDri
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
+import com.pasterdream.pasterdreammod.world.item.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -160,6 +161,16 @@ public class ModItems {
             () -> new ArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.LEGGINGS, new Item.Properties()));
     public static final RegistryObject<Item> TITANIUM_BOOTS = ITEMS.register("titanium_boots",
             () -> new ArmorItem(ModArmorMaterials.TITANIUM, ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    // ===== 回响装备 =====
+    public static final RegistryObject<Item> SCULK_HELMET = ITEMS.register("sculk_helmet",
+            () -> new SculkArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> SCULK_CHESTPLATE = ITEMS.register("sculk_chestplate",
+            () -> new SculkArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> SCULK_LEGGINGS = ITEMS.register("sculk_leggings",
+            () -> new SculkArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> SCULK_BOOTS = ITEMS.register("sculk_boots",
+            () -> new SculkArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.register("melt_dream_crystal_fragment",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC)) {

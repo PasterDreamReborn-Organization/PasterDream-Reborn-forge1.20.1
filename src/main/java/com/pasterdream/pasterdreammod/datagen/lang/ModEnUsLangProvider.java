@@ -123,6 +123,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_CHESTPLATE.get(), "Titanium Chestplate");
         add(ModItems.TITANIUM_LEGGINGS.get(), "Titanium Leggings");
         add(ModItems.TITANIUM_BOOTS.get(), "Titanium Boots");
+        add(ModItems.SCULK_HELMET.get(), "Sculk Helmet");
+        add(ModItems.SCULK_CHESTPLATE.get(), "Sculk Chestplate");
+        add(ModItems.SCULK_LEGGINGS.get(), "Sculk Leggings");
+        add(ModItems.SCULK_BOOTS.get(), "Sculk Boots");
         add(ModItems.DREAM_FERTILIZER.get(), "Dream Fertilizer");
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "Dream Notes - Dyedream World");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "Dream Notes - Lamp Shadow World");
@@ -272,6 +276,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7All creatures with souls in this world have dreams\nThose fleeting memories that cannot be recalled upon waking\nShatter and melt, buried across the world, condensing into crystals\nWaiting to be discovered by new souls");
         add("tooltip.pasterdreammod.upgrade_kit", "§7Used at the smithing table to upgrade equipment Can preserve the original enhancement properties of the equipment");
         add("tooltip.pasterdream.右键打开GUI", "§7Press right mouse button to open GUI");
+
+        add("effect.pasterdream.sculk_armor_buff", "Sculk Echo");
+        add("tooltip.pasterdreammod.sculk_armor",
+                "§7Set Bonus: §2Sculk Echo\n§9Max Health +4\n§9Enhanced when below Y=0\n§9Immune to Sculk's Darkness\n§9Gain Speed and Resistance when hit by Darkness");
         add("tooltip.pasterdreammod.san_value", "SAN: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
 
