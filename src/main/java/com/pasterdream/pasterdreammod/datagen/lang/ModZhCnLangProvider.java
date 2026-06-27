@@ -110,6 +110,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_UPGRADE.get(), "钛金升级套件");
         add(ModItems.SCULK_UPGRADE.get(), "回响升级套件");
         add(ModItems.DYEDREAM_UPGRADE.get(), "染梦升级套件");
+        add(ModItems.COPPER_SWORD.get(), "铜剑");
+        add(ModItems.COPPER_PICKAXE.get(), "铜镐");
+        add(ModItems.COPPER_AXE.get(), "铜斧");
+        add(ModItems.COPPER_SHOVEL.get(), "铜锹");
+        add(ModItems.COPPER_HOE.get(), "铜锄");
         add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
 

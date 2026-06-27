@@ -143,6 +143,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_UPGRADE.get());
                         output.accept(ModItems.SCULK_UPGRADE.get());
                         output.accept(ModItems.DYEDREAM_UPGRADE.get());
+                        // 铜工具
+                        output.accept(ModItems.COPPER_SWORD.get());
+                        output.accept(ModItems.COPPER_PICKAXE.get());
+                        output.accept(ModItems.COPPER_AXE.get());
+                        output.accept(ModItems.COPPER_SHOVEL.get());
+                        output.accept(ModItems.COPPER_HOE.get());
                     })
                     .build());
 

@@ -55,9 +55,9 @@ public class DyedreamFarmlandBlock extends FarmBlock {
     @Override
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
         if (!level.isClientSide && level.random.nextFloat() < fallDistance - 0.5F) {
-            if (!(entity instanceof net.minecraft.world.entity.LivingEntity) ||
-                    entity instanceof net.minecraft.world.entity.Mob &&
-                    net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(level, entity)) {
+            if (entity instanceof net.minecraft.world.entity.LivingEntity &&
+                    (entity instanceof net.minecraft.world.entity.player.Player ||
+                            net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(level, entity))) {
                 turnToDyedreamDirt(level, pos);
             }
         }

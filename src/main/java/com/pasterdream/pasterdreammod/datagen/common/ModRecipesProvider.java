@@ -46,6 +46,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         dyeConversionRecipes(pWriter);
         blackStickRecipes(pWriter);
         upgradeKitRecipes(pWriter);
+        copperToolRecipes(pWriter);
         toolRecipes(pWriter);
         glassRecipes(pWriter);
         iceAndLanternRecipes(pWriter);
@@ -133,6 +134,51 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('b', Items.CRYING_OBSIDIAN)
                 .unlockedBy(getHasName(Items.CRYING_OBSIDIAN), has(Items.CRYING_OBSIDIAN))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":black_stick_from_crying_obsidian");
+    }
+
+    // ===== 铜工具配方 =====
+
+    private void copperToolRecipes(Consumer<FinishedRecipe> pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COPPER_SWORD.get())
+                .pattern("a")
+                .pattern("a")
+                .pattern("b")
+                .define('a', Items.COPPER_INGOT)
+                .define('b', Items.STICK)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.COPPER_PICKAXE.get())
+                .pattern("aaa")
+                .pattern(" b ")
+                .pattern(" b ")
+                .define('a', Items.COPPER_INGOT)
+                .define('b', Items.STICK)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.COPPER_AXE.get())
+                .pattern("aa")
+                .pattern("ab")
+                .pattern(" b")
+                .define('a', Items.COPPER_INGOT)
+                .define('b', Items.STICK)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.COPPER_SHOVEL.get())
+                .pattern("a")
+                .pattern("b")
+                .pattern("b")
+                .define('a', Items.COPPER_INGOT)
+                .define('b', Items.STICK)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.COPPER_HOE.get())
+                .pattern("aa")
+                .pattern(" b")
+                .pattern(" b")
+                .define('a', Items.COPPER_INGOT)
+                .define('b', Items.STICK)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
     }
 
     // ===== 升级套件配方 =====

@@ -114,6 +114,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.COTTON.get());
         basicItem(ModItems.SCULK_HEART.get());
         basicItem(ModItems.BLACK_STICK.get());
+        handheldItem(ModItems.COPPER_SWORD);
+        handheldItem(ModItems.COPPER_PICKAXE);
+        handheldItem(ModItems.COPPER_AXE);
+        handheldItem(ModItems.COPPER_SHOVEL);
+        handheldItem(ModItems.COPPER_HOE);
         basicItem(ModItems.TITANIUM_UPGRADE.get());
         basicItem(ModItems.SCULK_UPGRADE.get());
         basicItem(ModItems.DYEDREAM_UPGRADE.get());
