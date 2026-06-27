@@ -56,7 +56,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         dyedreamArmorRecipes(pWriter);
         toolRecipes(pWriter);
         glassRecipes(pWriter);
-        iceAndLanternRecipes(pWriter);
+        lanternRecipes(pWriter);
         budBuildingRecipes(pWriter);
         pinkMushroomRecipes(pWriter);
         pinkSlimeRecipes(pWriter);
@@ -608,6 +608,10 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         dyeConversion(pWriter, Items.QUARTZ, ModItems.DYEDREAM_QUARTZ.get());
         dyeConversion(pWriter, Items.QUARTZ_BLOCK, ModItems.DYEDREAM_QUARTZ_BLOCK.get());
         dyeConversion(pWriter, Items.SHROOMLIGHT, ModBlocks.PINK_SHROOMLIGHT.get().asItem());
+        dyeConversion(pWriter, Items.SUGAR, ModItems.AMBER_CANDY.get());
+        dyeConversion(pWriter, Items.ICE, ModBlocks.DYEDREAM_ICE.get().asItem());
+        dyeConversion(pWriter, Items.PACKED_ICE, ModBlocks.DYEDREAM_PACKED_ICE.get().asItem());
+        dyeConversion(pWriter, Items.GLASS,ModBlocks.DYEDREAM_GLASS.get().asItem());
     }
 
     // ===== 工具与基础材料配方 =====
@@ -651,13 +655,6 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     // ===== 染梦玻璃系列配方 =====
 
     private void glassRecipes(Consumer<FinishedRecipe> pWriter) {
-        // 8× 原版玻璃 + 染梦染料 → 8× 染梦玻璃
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_GLASS.get(), 8)
-                .requires(Items.GLASS, 8)
-                .requires(ModItems.DYEDREAM_DYE.get())
-                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_glass_from_dye");
-
         // 染梦沙 → 染梦玻璃（熔炉）
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.DYEDREAM_SAND.get()),
                         RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_GLASS.get(), 1.0F, 200)
@@ -705,29 +702,9 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter);
     }
 
-    // ===== 染梦冰与水晶灯配方 =====
 
-    private void iceAndLanternRecipes(Consumer<FinishedRecipe> pWriter) {
-        // 8× 冰 + 染梦染料 → 8× 染梦冰
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_ICE.get(), 8)
-                .pattern("aaa")
-                .pattern("aba")
-                .pattern("aaa")
-                .define('a', Items.ICE)
-                .define('b', ModItems.DYEDREAM_DYE.get())
-                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
-                .save(pWriter);
 
-        // 8× 浮冰 + 染梦染料 → 8× 染梦浮冰
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_PACKED_ICE.get(), 8)
-                .pattern("aaa")
-                .pattern("aba")
-                .pattern("aaa")
-                .define('a', Items.PACKED_ICE)
-                .define('b', ModItems.DYEDREAM_DYE.get())
-                .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
-                .save(pWriter);
-
+    private void lanternRecipes(Consumer<FinishedRecipe> pWriter) {
         // 染梦水晶灯
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get(), 2)
                 .pattern("aba")
@@ -1453,17 +1430,23 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     // ===== 配方工具方法 =====
 
     private void dyeConversion(Consumer<FinishedRecipe> writer, ItemLike material, ItemLike result) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, 8)
-                .requires(material, 8)
-                .requires(ModItems.DYEDREAM_DYE.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result, 8)
+                .pattern("aaa")
+                .pattern("ada")
+                .pattern("aaa")
+                .define('a', material)
+                .define('d', ModItems.DYEDREAM_DYE.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
                 .save(writer, PasterDreamMod.MOD_ID + ":" + getItemName(result) + "_from_dye");
     }
 
     private void dyeConversionTag(Consumer<FinishedRecipe> writer, TagKey<Item> tag, ItemLike result) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, 8)
-                .requires(Ingredient.of(tag), 8)
-                .requires(ModItems.DYEDREAM_DYE.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result, 8)
+                .pattern("aaa")
+                .pattern("ada")
+                .pattern("aaa")
+                .define('a', Ingredient.of(tag))
+                .define('d', ModItems.DYEDREAM_DYE.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
                 .save(writer, PasterDreamMod.MOD_ID + ":" + getItemName(result) + "_from_dye");
     }
