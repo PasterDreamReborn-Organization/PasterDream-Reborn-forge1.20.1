@@ -105,6 +105,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.WHITE_COROLLA.get(), "苍白花冠");
         add(ModItems.LIGHT_BALL.get(), "流明光球");
         add(ModItems.COTTON.get(), "棉花");
+        add(ModItems.SCULK_HEART.get(), "回响之心");
+        add(ModItems.BLACK_STICK.get(), "黑石棍");
         add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
 

@@ -97,6 +97,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.WHITE_COROLLA.get(), "White Corolla");
         add(ModItems.LIGHT_BALL.get(), "Light Ball");
         add(ModItems.COTTON.get(), "Cotton");
+        add(ModItems.SCULK_HEART.get(), "Sculk Heart");
+        add(ModItems.BLACK_STICK.get(), "Black Stick");
         add(ModItems.DREAM_FERTILIZER.get(), "Dream Fertilizer");
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "Dream Notes - Dyedream World");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "Dream Notes - Lamp Shadow World");

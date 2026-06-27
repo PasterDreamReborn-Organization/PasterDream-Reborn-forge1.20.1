@@ -95,6 +95,11 @@ public class ModItems {
     public static final RegistryObject<Item> LIGHT_BALL = ITEMS.register("light_ball", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> SCULK_HEART = ITEMS.register("sculk_heart",
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> BLACK_STICK = ITEMS.register("black_stick",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.register("melt_dream_crystal_fragment",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC)) {
                 @Override

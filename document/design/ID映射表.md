@@ -227,6 +227,8 @@
 | `dreamnotes_12`                | 删除                                          | -                                                         | -                                    |
 | `dreamnotes_13`                | 删除                                          | -                                                         | -                                    |
 | `dreamnotes_14`                | `dream_notes_wind_journey_world`            | 整个物品机制重做，合并相同类型，使用NBT区分（NBT内容使用特殊绑定框架）                                                         | 客制化类 `DreamNotesItem`                                    |
+| `sculk_heart`                  | `sculk_heart`                               | 不改                                                        | 无需客制化类，直接用 `Item`                        |
+| `blackstick`                   | `black_stick`                               | 重命名，加下划线                                                  | 无需客制化类，直接用 `Item`                        |
 
 
 

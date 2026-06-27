@@ -44,6 +44,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
         woodRecipes(pWriter);
         dyeConversionRecipes(pWriter);
+        blackStickRecipes(pWriter);
         toolRecipes(pWriter);
         glassRecipes(pWriter);
         iceAndLanternRecipes(pWriter);
@@ -97,6 +98,40 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(ModItems.DYEDREAM_PLANKS.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_PLANKS.get()), has(ModItems.DYEDREAM_PLANKS.get()))
                 .save(pWriter);
+    }
+
+    // ===== 黑石棍配方 =====
+
+    private void blackStickRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 黑石 + 黑曜石 → 黑石棍（斜向）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLACK_STICK.get(), 1)
+                .pattern("  a")
+                .pattern(" b ")
+                .pattern("a  ")
+                .define('a', Items.BLACKSTONE)
+                .define('b', Items.OBSIDIAN)
+                .unlockedBy(getHasName(Items.BLACKSTONE), has(Items.BLACKSTONE))
+                .save(pWriter);
+
+        // 黑石 + 黑曜石 → 黑石棍（直向）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLACK_STICK.get(), 1)
+                .pattern("a")
+                .pattern("b")
+                .pattern("a")
+                .define('a', Items.BLACKSTONE)
+                .define('b', Items.OBSIDIAN)
+                .unlockedBy(getHasName(Items.BLACKSTONE), has(Items.BLACKSTONE))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":black_stick_straight");
+
+        // 黑石 + 哭泣黑曜石 → 黑石棍（斜向）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLACK_STICK.get(), 1)
+                .pattern("  a")
+                .pattern(" b ")
+                .pattern("a  ")
+                .define('a', Items.BLACKSTONE)
+                .define('b', Items.CRYING_OBSIDIAN)
+                .unlockedBy(getHasName(Items.CRYING_OBSIDIAN), has(Items.CRYING_OBSIDIAN))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":black_stick_from_crying_obsidian");
     }
 
     // ===== 染梦染料转化配方 =====

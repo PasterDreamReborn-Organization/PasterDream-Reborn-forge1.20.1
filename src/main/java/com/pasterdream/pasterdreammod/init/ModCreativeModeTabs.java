@@ -92,8 +92,9 @@ public class ModCreativeModeTabs {
     public static final RegistryObject<CreativeModeTab> PASTERDREAM_ITEMS_TAB = CREATIVE_MODE_TABS.register("pasterdream_items_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_items_tab"))
-                    .icon(() -> new ItemStack(ModItems.DYEDREAM_ALLOY_INGOT.get()))
+                    .icon(() -> new ItemStack(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
                     .displayItems((parameters, output) -> {
+                        output.accept(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
                         output.accept(ModItems.DYEDREAM_DUST.get());
                         output.accept(ModItems.DYEDREAM_DUST_PIECE.get());
                         output.accept(ModItems.DYEDREAM_DYE.get());
@@ -112,13 +113,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SOUL_ESSENCE.get());
                         output.accept(ModItems.MAGIC_STONE.get());
                         output.accept(ModItems.PINK_SLIMEBALL.get());
+                        output.accept(ModItems.DREAM_FERTILIZER.get());
                         output.accept(ModItems.PINK_EGG.get());
+                        output.accept(ModItems.LIGHT_BALL.get());
                         output.accept(ModItems.DYEDREAM_COROLLA.get());
                         output.accept(ModItems.WHITE_COROLLA.get());
-                        output.accept(ModItems.LIGHT_BALL.get());
                         output.accept(ModItems.COTTON.get());
-                        output.accept(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
-                        output.accept(ModItems.DREAM_FERTILIZER.get());
                         output.accept(ModItems.CHARGED_AMETHYST.get());
                         output.accept(ModItems.RYE_SEED.get());
                         output.accept(ModItems.FLOUR.get());
@@ -127,6 +127,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get());
                         output.accept(ModItems.MELT_DREAM_LIQUID_BUCKET.get());
                         output.accept(ModItems.SHADOW_LIQUID_BUCKET.get());
+                        output.accept(ModItems.SCULK_HEART.get());
+                        output.accept(ModItems.BLACK_STICK.get());
                     })
                     .build());
 

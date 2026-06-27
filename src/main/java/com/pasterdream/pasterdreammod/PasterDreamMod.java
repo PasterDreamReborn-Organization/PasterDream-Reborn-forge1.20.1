@@ -11,6 +11,9 @@ import net.minecraftforge.common.ToolActions;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraft.world.entity.monster.warden.Warden;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -46,6 +49,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(this::AddItemTooltip);
         MinecraftForge.EVENT_BUS.addListener(this::AddCommand);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
+        MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onLivingDrops);
         modEventBus.addListener(this::AddOverlays);
         modEventBus.addListener(this::AddEntityRenderersEvent);
 
@@ -92,11 +96,22 @@ public class PasterDreamMod
         ModBlockEntityRenderer.EntityRenderersEventRegister(event);
     }
 
+    // 染梦耕地相关
     public static void onHoeTill(BlockEvent.BlockToolModificationEvent event) {
         if (event.getToolAction() != ToolActions.HOE_TILL) return;
         Block block = event.getState().getBlock();
         if (block == ModBlocks.DYEDREAM_GRASS_BLOCK.get() || block == ModBlocks.DYEDREAM_DIRT.get()) {
             event.setFinalState(ModBlocks.DYEDREAM_FARMLAND.get().defaultBlockState());
+        }
+    }
+
+    // 回响之心掉落
+    public static void onLivingDrops(LivingDropsEvent event) {
+        if (event.getEntity() instanceof Warden) {
+            event.getDrops().add(new net.minecraft.world.entity.item.ItemEntity(
+                    event.getEntity().level(),
+                    event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(),
+                    new ItemStack(ModItems.SCULK_HEART.get())));
         }
     }
 }
