@@ -1449,6 +1449,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(Items.GHAST_TEAR,1)
                 .unlockedBy(getHasName(ModItems.MISTY_DREAMING_LOTUS.get()), has(ModItems.MISTY_DREAMING_LOTUS.get()))
                 .save(pWriter);
+
     }
 
     // ===== 其他杂项类合成配方 =====
