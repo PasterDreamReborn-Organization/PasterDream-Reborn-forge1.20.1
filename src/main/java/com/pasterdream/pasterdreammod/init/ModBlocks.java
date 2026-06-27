@@ -17,9 +17,13 @@ import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlo
 import com.pasterdream.pasterdreammod.world.block.fluidblock.MeltDreamLiquidBlock;
 import com.pasterdream.pasterdreammod.world.block.fluidblock.ShadowLiquidBlock;
 import com.pasterdream.pasterdreammod.world.block.SoulOreBlock;
+import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -142,27 +146,44 @@ public class ModBlocks {
                     .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
 
     public static final RegistryObject<Block> FERRARIA_CRISPA = BLOCKS.register("ferraria_crispa",
-            () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SLOWDOWN, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
+            () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
                     .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
 
     public static final RegistryObject<Block> EUSTOMA = BLOCKS.register("eustoma",
-            () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SLOWDOWN, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)
+            () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)
                     .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
 
     public static final RegistryObject<Block> MALVA_SINENSIS_CAVAN = BLOCKS.register("malva_sinensis_cavan",
-            () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SLOWDOWN, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
+            () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
                     .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
 
     public static final RegistryObject<Block> LINHT_FLOWER = BLOCKS.register("linht_flower",
-            () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SLOWDOWN, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
+            () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
                     .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).lightLevel(s->12)));
+
+    public static final RegistryObject<Block> DYEDREAM_LILY_OF_THE_VALLEY = BLOCKS.register("dyedream_lily_of_the_valley",
+            () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistryObject<Block> BLAZE_FLOWER = BLOCKS.register("blaze_flower",
+            () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED)
+                    .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY))
+            {
+                @Override
+                public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+                    BlockPos belowPos = pPos.below();
+                    BlockState belowState = pLevel.getBlockState(belowPos);
+                    if (belowState.isAir()) return false;
+                    return belowState.is(Blocks.CRIMSON_NYLIUM);
+                }
+            });
 
     public static final RegistryObject<Block> DREAMING_LOTUS = BLOCKS.register("dreaming_lotus", () -> new DoublePlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()));
 
     public static final RegistryObject<Block> MISTY_DREAMING_LOTUS = BLOCKS.register("misty_dreaming_lotus", () -> new DoublePlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()));
 
     //植物系列（草）
-    public static final RegistryObject<Block> DYEDREAM_MOSS = BLOCKS.register("dyedream_moss", () -> new GrassBlock(
+    public static final RegistryObject<Block> DYEDREAM_MOSS = BLOCKS.register("dyedream_moss", () -> new BushBlock(
             BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_PINK)
                     .instabreak()
@@ -173,7 +194,7 @@ public class ModBlocks {
                     .pushReaction(PushReaction.DESTROY)
                     .lightLevel(s -> 7)
     ));
-    public static final RegistryObject<Block> STEM_GRASS = BLOCKS.register("stem_grass", () -> new GrassBlock(
+    public static final RegistryObject<Block> STEM_GRASS = BLOCKS.register("stem_grass", () -> new BushBlock(
             BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_PINK)
                     .instabreak()
@@ -185,6 +206,23 @@ public class ModBlocks {
 
     ));
     public static final RegistryObject<Block> TALL_STEM_GRASS = BLOCKS.register("tall_stem_grass", () -> new DoublePlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()));
+    public static final RegistryObject<Block> CRIMSON_THORNS = BLOCKS.register("crimson_thorns", () ->
+            new DoublePlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
+            .instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY).replaceable())
+            {
+                @Override
+                public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+                    DoubleBlockHalf half = pState.getValue(DoublePlantBlock.HALF);
+                    if (half == DoubleBlockHalf.UPPER) {
+                        return super.canSurvive(pState, pLevel, pPos);
+                    }
+                    BlockPos belowPos = pPos.below();
+                    BlockState belowState = pLevel.getBlockState(belowPos);
+                    if (belowState.isAir()) return false;
+                    return belowState.is(Blocks.CRIMSON_NYLIUM);
+                }
+            });
 
     //作物方块
     public static final RegistryObject<Block> DYEDREAM_COROLLA_CROP = BLOCKS.register("dyedream_corolla_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).noCollission().randomTicks().instabreak()));
@@ -194,7 +232,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> COTTON_CROP = BLOCKS.register("cotton_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).noCollission().randomTicks().instabreak()));
 
 
-    public static final RegistryObject<Block> SINGULARITY_FERN = BLOCKS.register("singularity_fern", () -> new GrassBlock(
+    public static final RegistryObject<Block> SINGULARITY_FERN = BLOCKS.register("singularity_fern", () -> new BushBlock(
             BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_PINK)
                     .instabreak()

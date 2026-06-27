@@ -218,6 +218,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/dreaming_lotus_top"));
         withExistingParent(ModItems.MISTY_DREAMING_LOTUS.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/misty_dreaming_lotus_top"));
+        withExistingParent(ModItems.DYEDREAM_LILY_OF_THE_VALLEY.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/dyedream_lily_of_the_valley"));
+        withExistingParent(ModItems.BLAZE_FLOWER.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/blaze_flower"));
 
 
         withExistingParent(ModItems.DYEDREAM_MOSS.getId().getPath(), mcLoc("item/generated"))
@@ -228,6 +232,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/stem_grass"));
         withExistingParent(ModItems.SINGULARITY_FERN.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/singularity_fern"));
+        withExistingParent(ModItems.CRIMSON_THORNS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/crimson_thorns_top"));
     }
 
     @Override

@@ -85,6 +85,18 @@ public final class LootHelpers{
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))))
         );
     }
+    public static LootTable.Builder createhighgrassesDropsNeedScissor(Block highgrasses) {
+        return LootTable.lootTable().withPool(
+                LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(highgrasses)
+                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                        .hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)
+                                ))
+                        .when(HAS_SHEARS_OR_SILK_TOUCH)
+                        .add(LootItem.lootTableItem(highgrasses)
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
+        );
+    }
     /**
      * 构建高花战利品表：直接掉落花
      */
