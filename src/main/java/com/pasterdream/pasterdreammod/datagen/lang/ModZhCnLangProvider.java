@@ -141,6 +141,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SCULK_CHESTPLATE.get(), "回响胸甲");
         add(ModItems.SCULK_LEGGINGS.get(), "回响护腿");
         add(ModItems.SCULK_BOOTS.get(), "回响靴子");
+        add(ModItems.DYEDREAM_HELMET.get(), "染梦头盔");
+        add(ModItems.DYEDREAM_CHESTPLATE.get(), "染梦胸甲");
+        add(ModItems.DYEDREAM_LEGGINGS.get(), "染梦护腿");
+        add(ModItems.DYEDREAM_BOOTS.get(), "染梦靴子");
         add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
 
@@ -292,9 +296,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.右键打开GUI", "§7右键打开GUI");
 
         add("effect.pasterdream.sculk_armor_buff", "幽匿回响");
+        add("effect.pasterdream.dyedream_armor_buff", "染梦守护");
+        add("effect.pasterdream.dyedream_up_buff", "染梦工具增强");
         add("tooltip.pasterdreammod.sculk_armor",
                 "§7套装效果：§2幽匿回响\n§9最大生命值+4\n§9身处深层时效果增强\n§9免疫幽匿的黑暗恐惧\n§9受到黑暗效果时提高移速和免伤");
         add("tooltip.pasterdreammod.dyedream_hammer", "§9▪ 范围挖掘 3×3×3");
+        add("tooltip.pasterdreammod.dyedream_armor",
+                "§7套装效果：§d染梦守护\n§9最大生命值+4\n§9每 30 秒获得 6 颗吸收之♡\n§9增强手持的染梦工具");
         add("tooltip.pasterdreammod.san_value", "SAN值: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "融梦能量: ");
 

@@ -262,6 +262,10 @@
 | `sculk_armor_chestplate`       | `sculk_chestplate`                          | 删除 `armor` 字段                                             | 同上                                               |
 | `sculk_armor_leggings`         | `sculk_leggings`                            | 删除 `armor` 字段                                             | 同上                                               |
 | `sculk_armor_boots`            | `sculk_boots`                               | 删除 `armor` 字段                                             | 同上                                               |
+| `dyedream_armor_helmet`        | `dyedream_helmet`                           | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
+| `dyedream_armor_chestplate`    | `dyedream_chestplate`                       | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
+| `dyedream_armor_leggings`      | `dyedream_leggings`                         | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
+| `dyedream_armor_boots`         | `dyedream_boots`                            | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
 
 
 
@@ -269,6 +273,19 @@
 
 ---
 
+## 状态效果映射
+
+| 旧 ID                              | 新 ID                              | 变更说明             | 备注                          |
+|-----------------------------------|-----------------------------------|------------------|-----------------------------|
+| `dyedreamup_buff`                 | `dyedream_up_buff`                | 重命名，加下划线          | 标记效果，已实现                    |
+| `dyedream_armor_buff`             | `dyedream_armor_buff`             | 不改               | `DyedreamArmorBuffEffect`   |
+| `sculk_armor_buff`                | `sculk_armor_buff`                | 不改               | `SculkArmorBuffEffect`      |
+| `dreamwish_buff`                  | 待搬运                               | -                | -                           |
+| `expup_buff`                      | 待搬运                               | -                | -                           |
+| `teleportation_buff`              | 待搬运                               | -                | -                           |
+| `fondillusion_buff`               | 待搬运                               | -                | -                           |
+
+---
 ## 流体映射
 
 | 旧 ID               | 新 ID                | 变更说明 | 客制化类处理            |

@@ -133,6 +133,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SCULK_CHESTPLATE.get(), "Sculk Chestplate");
         add(ModItems.SCULK_LEGGINGS.get(), "Sculk Leggings");
         add(ModItems.SCULK_BOOTS.get(), "Sculk Boots");
+        add(ModItems.DYEDREAM_HELMET.get(), "Dyedream Helmet");
+        add(ModItems.DYEDREAM_CHESTPLATE.get(), "Dyedream Chestplate");
+        add(ModItems.DYEDREAM_LEGGINGS.get(), "Dyedream Leggings");
+        add(ModItems.DYEDREAM_BOOTS.get(), "Dyedream Boots");
         add(ModItems.DREAM_FERTILIZER.get(), "Dream Fertilizer");
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "Dream Notes - Dyedream World");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "Dream Notes - Lamp Shadow World");
@@ -284,9 +288,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.右键打开GUI", "§7Press right mouse button to open GUI");
 
         add("effect.pasterdream.sculk_armor_buff", "Sculk Echo");
+        add("effect.pasterdream.dyedream_armor_buff", "Dyedream Protection");
+        add("effect.pasterdream.dyedream_up_buff", "Dyedream Tool Boost");
         add("tooltip.pasterdreammod.sculk_armor",
                 "§7Set Bonus: §2Sculk Echo\n§9Max Health +4\n§9Enhanced when below Y=0\n§9Immune to Sculk's Darkness\n§9Gain Speed and Resistance when hit by Darkness");
         add("tooltip.pasterdreammod.dyedream_hammer", "§9▪ Area Mining 3×3×3");
+        add("tooltip.pasterdreammod.dyedream_armor",
+                "§7Set Bonus: §dDyedream Protection\n§9Max Health +4\n§9Gain 6 Absorption hearts every 30s\n§9Enhances wielded Dyedream tools");
         add("tooltip.pasterdreammod.san_value", "SAN: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
 
