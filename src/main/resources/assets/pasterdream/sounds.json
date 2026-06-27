@@ -1,0 +1,10 @@
+{
+  "sharp_dyedream_sword_use": {
+    "sounds": [
+      {
+        "name": "pasterdream:sharp_dyedream_sword_use",
+        "stream": false
+      }
+    ]
+  }
+}

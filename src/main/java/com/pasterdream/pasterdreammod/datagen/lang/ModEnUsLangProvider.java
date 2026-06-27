@@ -125,6 +125,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_SHOVEL.get(), "Dyedream Shovel");
         add(ModItems.DYEDREAM_HOE.get(), "Dyedream Hoe");
         add(ModItems.DYEDREAM_HAMMER.get(), "Dyedream Hammer");
+        add(ModItems.SHARP_DYEDREAM_SWORD.get(), "Dyedream Sharp Sword");
         add(ModItems.TITANIUM_HELMET.get(), "Titanium Helmet");
         add(ModItems.TITANIUM_CHESTPLATE.get(), "Titanium Chestplate");
         add(ModItems.TITANIUM_LEGGINGS.get(), "Titanium Leggings");
@@ -293,11 +294,21 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.sculk_armor_buff", "Sculk Echo");
         add("effect.pasterdream.dyedream_armor_buff", "Dyedream Protection");
         add("effect.pasterdream.dyedream_up_buff", "Dyedream Tool Boost");
-        add("tooltip.pasterdreammod.sculk_armor",
-                "§7Set Bonus: §2Sculk Echo\n§9Max Health +4\n§9Enhanced when below Y=0\n§9Immune to Sculk's Darkness\n§9Gain Speed and Resistance when hit by Darkness");
-        add("tooltip.pasterdreammod.dyedream_hammer", "§9▪ Area Mining 3×3×3");
-        add("tooltip.pasterdreammod.dyedream_armor",
-                "§7Set Bonus: §dDyedream Protection\n§9Max Health +4\n§9Gain 6 Absorption hearts every 30s\n§9Enhances wielded Dyedream tools");
+        add("tooltip.pasterdreammod.sculk_armor.1", "§7Set Bonus: §2Sculk Echo");
+        add("tooltip.pasterdreammod.sculk_armor.2", "§7▪ §9Max Health +4");
+        add("tooltip.pasterdreammod.sculk_armor.3", "§7▪ §9Enhanced when below Y=0");
+        add("tooltip.pasterdreammod.sculk_armor.4", "§7▪ §9Immune to Sculk's Darkness");
+        add("tooltip.pasterdreammod.sculk_armor.5", "§7▪ §9Gain Speed and Resistance when hit by Darkness");
+        add("tooltip.pasterdreammod.dyedream_hammer", "§7▪ §9Area Mining 3×3×3");
+        add("tooltip.pasterdreammod.dyedream_armor.1", "§7Set Bonus: §dDyedream Protection");
+        add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9Max Health +4");
+        add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9Gain 2 Absorption hearts every 30s");
+        add("tooltip.pasterdreammod.dyedream_armor.4", "§7▪ §9Enhances wielded Dyedream tools");
+        add("tooltip.pasterdreammod.sharp_dyedream_sword.1", "Inlaid: §dMelt Dream Crystal Fragment");
+        add("tooltip.pasterdreammod.sharp_dyedream_sword.2", "Combat Art: §bSora-giri");
+        add("tooltip.pasterdreammod.sharp_dyedream_sword.3", "§7▪ §9Slash and launch enemies upward, deals 2+ATK*1.2 bonus damage");
+        add("tooltip.pasterdreammod.sharp_dyedream_sword.4", "§7▪ §9Cooldown: 5s");
+        add("tooltip.pasterdreammod.sharp_dyedream_sword.5", "§7▪ §9Cooldown reduced to 3s while Dyedream Protection is active");
         add("tooltip.pasterdreammod.san_value", "SAN: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
 

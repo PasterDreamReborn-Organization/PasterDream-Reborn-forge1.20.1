@@ -166,6 +166,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_HOE.get());
                         // 染梦合金工具
                         output.accept(ModItems.DYEDREAM_SWORD.get());
+                        output.accept(ModItems.SHARP_DYEDREAM_SWORD.get());
                         output.accept(ModItems.DYEDREAM_PICKAXE.get());
                         output.accept(ModItems.DYEDREAM_AXE.get());
                         output.accept(ModItems.DYEDREAM_SHOVEL.get());

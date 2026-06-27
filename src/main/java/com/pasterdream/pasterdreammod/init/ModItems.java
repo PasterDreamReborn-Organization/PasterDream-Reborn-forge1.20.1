@@ -16,6 +16,7 @@ import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.DyedreamArmorItem;
 import com.pasterdream.pasterdreammod.world.item.DyedreamHammerItem;
+import com.pasterdream.pasterdreammod.world.item.DyedreamSharpSwordItem;
 import com.pasterdream.pasterdreammod.world.item.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -167,6 +168,8 @@ public class ModItems {
             () -> new HoeItem(ModToolTiers.DYEDREAM, -3, 0.0f, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> DYEDREAM_HAMMER = ITEMS.register("dyedream_hammer",
             () -> new DyedreamHammerItem(ModToolTiers.DYEDREAM, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> SHARP_DYEDREAM_SWORD = ITEMS.register("sharp_dyedream_sword",
+            () -> new DyedreamSharpSwordItem(ModToolTiers.DYEDREAM, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     // ===== 钛金装备 =====
     public static final RegistryObject<Item> TITANIUM_HELMET = ITEMS.register("titanium_helmet",

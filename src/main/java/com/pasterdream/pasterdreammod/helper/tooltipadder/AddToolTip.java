@@ -26,11 +26,18 @@ public class AddToolTip
         }
         if(stack.is(ModItems.SCULK_HELMET.get()) || stack.is(ModItems.SCULK_CHESTPLATE.get())
                 || stack.is(ModItems.SCULK_LEGGINGS.get()) || stack.is(ModItems.SCULK_BOOTS.get())){
-            tooltip.add(Component.translatable("tooltip.pasterdreammod.sculk_armor"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.sculk_armor.1"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.sculk_armor.2"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.sculk_armor.3"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.sculk_armor.4"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.sculk_armor.5"));
         }
         if(stack.is(ModItems.DYEDREAM_HELMET.get()) || stack.is(ModItems.DYEDREAM_CHESTPLATE.get())
                 || stack.is(ModItems.DYEDREAM_LEGGINGS.get()) || stack.is(ModItems.DYEDREAM_BOOTS.get())){
-            tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor.1"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor.2"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor.3"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor.4"));
         }
 
     }

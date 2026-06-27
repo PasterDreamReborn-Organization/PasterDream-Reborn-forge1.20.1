@@ -362,6 +362,15 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_hoe_smithing");
 
+        // 极锋染梦合金剑
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_DUST.get()),
+                        Ingredient.of(ModItems.DYEDREAM_SWORD.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        RecipeCategory.COMBAT, ModItems.SHARP_DYEDREAM_SWORD.get())
+                .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_sharp_sword_smithing");
+
         // 染梦合金锤（工作台合成）
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.DYEDREAM_HAMMER.get())
                 .pattern("aaa")

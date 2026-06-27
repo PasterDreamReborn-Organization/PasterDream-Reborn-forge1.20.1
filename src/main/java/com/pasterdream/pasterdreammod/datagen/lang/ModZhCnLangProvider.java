@@ -133,6 +133,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_SHOVEL.get(), "染梦合金锹");
         add(ModItems.DYEDREAM_HOE.get(), "染梦合金锄");
         add(ModItems.DYEDREAM_HAMMER.get(), "染梦合金锤");
+        add(ModItems.SHARP_DYEDREAM_SWORD.get(), "极锋染梦合金剑");
         add(ModItems.TITANIUM_HELMET.get(), "钛金头盔");
         add(ModItems.TITANIUM_CHESTPLATE.get(), "钛金胸甲");
         add(ModItems.TITANIUM_LEGGINGS.get(), "钛金护腿");
@@ -301,11 +302,21 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.sculk_armor_buff", "幽匿回响");
         add("effect.pasterdream.dyedream_armor_buff", "染梦守护");
         add("effect.pasterdream.dyedream_up_buff", "染梦工具增强");
-        add("tooltip.pasterdreammod.sculk_armor",
-                "§7套装效果：§2幽匿回响\n§9最大生命值+4\n§9身处深层时效果增强\n§9免疫幽匿的黑暗恐惧\n§9受到黑暗效果时提高移速和免伤");
-        add("tooltip.pasterdreammod.dyedream_hammer", "§9▪ 范围挖掘 3×3×3");
-        add("tooltip.pasterdreammod.dyedream_armor",
-                "§7套装效果：§d染梦守护\n§9最大生命值+4\n§9每 30 秒获得 6 颗吸收之♡\n§9增强手持的染梦工具");
+        add("tooltip.pasterdreammod.sculk_armor.1", "§7套装效果：§2幽匿回响");
+        add("tooltip.pasterdreammod.sculk_armor.2", "§7▪ §9最大生命值+4");
+        add("tooltip.pasterdreammod.sculk_armor.3", "§7▪ §9身处深层时效果增强");
+        add("tooltip.pasterdreammod.sculk_armor.4", "§7▪ §9免疫幽匿的黑暗恐惧");
+        add("tooltip.pasterdreammod.sculk_armor.5", "§7▪ §9受到黑暗效果时提高移速和免伤");
+        add("tooltip.pasterdreammod.dyedream_hammer", "§7▪ §9范围挖掘 3×3×3");
+        add("tooltip.pasterdreammod.dyedream_armor.1", "§7套装效果：§d染梦守护");
+        add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9最大生命值+4");
+        add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9每 30 秒获得 2 颗吸收之♡");
+        add("tooltip.pasterdreammod.dyedream_armor.4", "§7▪ §9增强手持的染梦工具");
+        add("tooltip.pasterdreammod.sharp_dyedream_sword.1", "镶嵌：§d融梦水晶碎片");
+        add("tooltip.pasterdreammod.sharp_dyedream_sword.2", "战技：§b凌空斩");
+        add("tooltip.pasterdreammod.sharp_dyedream_sword.3", "§7▪ §9斩击并将敌人向上击飞 造成2+当前攻击力*1.2点伤害");
+        add("tooltip.pasterdreammod.sharp_dyedream_sword.4", "§7▪ §9冷却时间：5秒");
+        add("tooltip.pasterdreammod.sharp_dyedream_sword.5", "§7▪ §9拥有染梦守护效果时 冷却时间缩短为3秒");
         add("tooltip.pasterdreammod.san_value", "SAN值: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "融梦能量: ");
 
