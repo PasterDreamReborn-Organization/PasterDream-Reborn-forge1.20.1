@@ -1,9 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item;
 
 import com.pasterdream.pasterdreammod.init.ModEffects;
-import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModSounds;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -20,12 +18,12 @@ import java.util.List;
  * 镶嵌：融梦水晶碎片<br>
  * 战技：凌空斩 —— 冷却 5 秒，拥有染梦守护缩短为 3 秒。
  */
-public class DyedreamSharpSwordItem extends SwordItem {
+public class SharpDyedreamSwordItem extends SwordItem {
 
     private static final String TAG_COOLDOWN = "SharpCooldown";
     private static final String TAG_CHARGED = "SharpCharged";
 
-    public DyedreamSharpSwordItem(Tier tier, Properties properties) {
+    public SharpDyedreamSwordItem(Tier tier, Properties properties) {
         super(tier, 4, -2.4f, properties);
     }
 
@@ -60,6 +58,8 @@ public class DyedreamSharpSwordItem extends SwordItem {
             stack.getOrCreateTag().putBoolean(TAG_CHARGED, false);
             target.setDeltaMovement(target.getDeltaMovement().add(0, 0.6, 0));
             target.hurtMarked = true;
+            target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
+                    ModSounds.SHARP_DYEDREAM_SWORD_HIT.get(), target.getSoundSource(), 1.0f, 1.0f);
         }
         return super.hurtEnemy(stack, target, attacker);
     }
