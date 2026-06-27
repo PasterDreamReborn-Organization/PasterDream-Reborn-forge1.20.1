@@ -127,6 +127,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_AXE.get(), "钛金斧");
         add(ModItems.TITANIUM_SHOVEL.get(), "钛金锹");
         add(ModItems.TITANIUM_HOE.get(), "钛金锄");
+        add(ModItems.DYEDREAM_SWORD.get(), "染梦合金剑");
+        add(ModItems.DYEDREAM_PICKAXE.get(), "染梦合金镐");
+        add(ModItems.DYEDREAM_AXE.get(), "染梦合金斧");
+        add(ModItems.DYEDREAM_SHOVEL.get(), "染梦合金锹");
+        add(ModItems.DYEDREAM_HOE.get(), "染梦合金锄");
+        add(ModItems.DYEDREAM_HAMMER.get(), "染梦合金锤");
         add(ModItems.TITANIUM_HELMET.get(), "钛金头盔");
         add(ModItems.TITANIUM_CHESTPLATE.get(), "钛金胸甲");
         add(ModItems.TITANIUM_LEGGINGS.get(), "钛金护腿");
@@ -288,6 +294,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.sculk_armor_buff", "幽匿回响");
         add("tooltip.pasterdreammod.sculk_armor",
                 "§7套装效果：§2幽匿回响\n§9最大生命值+4\n§9身处深层时效果增强\n§9免疫幽匿的黑暗恐惧\n§9受到黑暗效果时提高移速和免伤");
+        add("tooltip.pasterdreammod.dyedream_hammer", "§9▪ 范围挖掘 3×3×3");
         add("tooltip.pasterdreammod.san_value", "SAN值: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "融梦能量: ");
 

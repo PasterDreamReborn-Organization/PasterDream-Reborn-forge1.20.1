@@ -249,6 +249,11 @@
 | `titanium_axe`                  | `titanium_axe`                              | 不改                                                        | 无需客制化类，直接用 `AxeItem`                     |
 | `titanium_shovel`               | `titanium_shovel`                           | 不改                                                        | 无需客制化类，直接用 `ShovelItem`                   |
 | `titanium_hoe`                  | `titanium_hoe`                              | 不改                                                        | 无需客制化类，直接用 `HoeItem`                      |
+| `dyedream_sword`                | `dyedream_sword`                            | 不改                                                        | 无需客制化类，直接用 `SwordItem`                    |
+| `dyedream_pickaxe`              | `dyedream_pickaxe`                          | 不改                                                        | 无需客制化类，直接用 `PickaxeItem`                  |
+| `dyedream_axe`                  | `dyedream_axe`                              | 不改                                                        | 无需客制化类，直接用 `AxeItem`                     |
+| `dyedream_shovel`               | `dyedream_shovel`                           | 不改                                                        | 无需客制化类，直接用 `ShovelItem`                   |
+| `dyedream_hoe`                  | `dyedream_hoe`                              | 不改                                                        | 无需客制化类，直接用 `HoeItem`                      |
 | `titanium_armor_helmet`        | `titanium_helmet`                           | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
 | `titanium_armor_chestplate`    | `titanium_chestplate`                       | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
 | `titanium_armor_leggings`      | `titanium_leggings`                         | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |

@@ -50,6 +50,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         copperToolRecipes(pWriter);
         copperArmorRecipes(pWriter);
         titaniumToolRecipes(pWriter);
+        dyedreamToolRecipes(pWriter);
         titaniumArmorRecipes(pWriter);
         sculkArmorRecipes(pWriter);
         toolRecipes(pWriter);
@@ -318,6 +319,56 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('b', Items.LEATHER)
                 .define('c', ModItems.FABRIC.get())
                 .unlockedBy(getHasName(ModItems.FABRIC.get()), has(ModItems.FABRIC.get()))
+                .save(pWriter);
+    }
+
+    // ===== 染梦合金工具配方 =====
+
+    private void dyedreamToolRecipes(Consumer<FinishedRecipe> pWriter) {
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_BUD_NUGGET.get()),
+                        Ingredient.of(ModItems.TITANIUM_SWORD.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.DYEDREAM_SWORD.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_sword_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_BUD_NUGGET.get()),
+                        Ingredient.of(ModItems.TITANIUM_PICKAXE.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.DYEDREAM_PICKAXE.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_pickaxe_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_BUD_NUGGET.get()),
+                        Ingredient.of(ModItems.TITANIUM_AXE.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.DYEDREAM_AXE.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_axe_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_BUD_NUGGET.get()),
+                        Ingredient.of(ModItems.TITANIUM_SHOVEL.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.DYEDREAM_SHOVEL.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_shovel_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_BUD_NUGGET.get()),
+                        Ingredient.of(ModItems.TITANIUM_HOE.get()),
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.DYEDREAM_HOE.get())
+                .unlocks("has_dyedream_upgrade", has(ModItems.DYEDREAM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_hoe_smithing");
+
+        // 染梦合金锤（工作台合成）
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.DYEDREAM_HAMMER.get())
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern(" b ")
+                .define('a', ModItems.DYEDREAM_ALLOY_INGOT.get())
+                .define('b', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
                 .save(pWriter);
     }
 

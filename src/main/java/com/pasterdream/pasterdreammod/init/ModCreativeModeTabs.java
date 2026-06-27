@@ -163,6 +163,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_AXE.get());
                         output.accept(ModItems.TITANIUM_SHOVEL.get());
                         output.accept(ModItems.TITANIUM_HOE.get());
+                        // 染梦合金工具
+                        output.accept(ModItems.DYEDREAM_SWORD.get());
+                        output.accept(ModItems.DYEDREAM_PICKAXE.get());
+                        output.accept(ModItems.DYEDREAM_AXE.get());
+                        output.accept(ModItems.DYEDREAM_SHOVEL.get());
+                        output.accept(ModItems.DYEDREAM_HOE.get());
+                        output.accept(ModItems.DYEDREAM_HAMMER.get());
                         // 钛金装备
                         output.accept(ModItems.TITANIUM_HELMET.get());
                         output.accept(ModItems.TITANIUM_CHESTPLATE.get());

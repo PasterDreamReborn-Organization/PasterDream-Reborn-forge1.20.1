@@ -119,6 +119,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_AXE.get(), "Titanium Axe");
         add(ModItems.TITANIUM_SHOVEL.get(), "Titanium Shovel");
         add(ModItems.TITANIUM_HOE.get(), "Titanium Hoe");
+        add(ModItems.DYEDREAM_SWORD.get(), "Dyedream Sword");
+        add(ModItems.DYEDREAM_PICKAXE.get(), "Dyedream Pickaxe");
+        add(ModItems.DYEDREAM_AXE.get(), "Dyedream Axe");
+        add(ModItems.DYEDREAM_SHOVEL.get(), "Dyedream Shovel");
+        add(ModItems.DYEDREAM_HOE.get(), "Dyedream Hoe");
+        add(ModItems.DYEDREAM_HAMMER.get(), "Dyedream Hammer");
         add(ModItems.TITANIUM_HELMET.get(), "Titanium Helmet");
         add(ModItems.TITANIUM_CHESTPLATE.get(), "Titanium Chestplate");
         add(ModItems.TITANIUM_LEGGINGS.get(), "Titanium Leggings");
@@ -280,6 +286,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.sculk_armor_buff", "Sculk Echo");
         add("tooltip.pasterdreammod.sculk_armor",
                 "§7Set Bonus: §2Sculk Echo\n§9Max Health +4\n§9Enhanced when below Y=0\n§9Immune to Sculk's Darkness\n§9Gain Speed and Resistance when hit by Darkness");
+        add("tooltip.pasterdreammod.dyedream_hammer", "§9▪ Area Mining 3×3×3");
         add("tooltip.pasterdreammod.san_value", "SAN: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
 
