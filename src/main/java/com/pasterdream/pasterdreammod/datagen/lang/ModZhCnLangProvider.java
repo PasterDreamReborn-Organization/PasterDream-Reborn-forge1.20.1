@@ -107,6 +107,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.COTTON.get(), "棉花");
         add(ModItems.SCULK_HEART.get(), "回响之心");
         add(ModItems.BLACK_STICK.get(), "黑石棍");
+        add(ModItems.SPOOL.get(), "线轴");
+        add(ModItems.FABRIC.get(), "纺织布料");
+        add(ModItems.PROTECT_DECK.get(), "护甲板");
         add(ModItems.TITANIUM_UPGRADE.get(), "钛金升级套件");
         add(ModItems.SCULK_UPGRADE.get(), "回响升级套件");
         add(ModItems.DYEDREAM_UPGRADE.get(), "染梦升级套件");
@@ -124,6 +127,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_AXE.get(), "钛金斧");
         add(ModItems.TITANIUM_SHOVEL.get(), "钛金锹");
         add(ModItems.TITANIUM_HOE.get(), "钛金锄");
+        add(ModItems.TITANIUM_HELMET.get(), "钛金头盔");
+        add(ModItems.TITANIUM_CHESTPLATE.get(), "钛金胸甲");
+        add(ModItems.TITANIUM_LEGGINGS.get(), "钛金护腿");
+        add(ModItems.TITANIUM_BOOTS.get(), "钛金靴子");
         add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
 

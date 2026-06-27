@@ -229,6 +229,9 @@
 | `dreamnotes_14`                | `dream_notes_wind_journey_world`            | 整个物品机制重做，合并相同类型，使用NBT区分（NBT内容使用特殊绑定框架）                                                         | 客制化类 `DreamNotesItem`                                    |
 | `sculk_heart`                  | `sculk_heart`                               | 不改                                                        | 无需客制化类，直接用 `Item`                        |
 | `blackstick`                   | `black_stick`                               | 重命名，加下划线                                                  | 无需客制化类，直接用 `Item`                        |
+| `spool`                        | `spool`                                     | 不改                                                        | 无需客制化类，直接用 `Item`                        |
+| `fabric`                       | `fabric`                                    | 不改                                                        | 无需客制化类，直接用 `Item`                        |
+| `protect_deck`                 | `protect_deck`                              | 不改                                                        | 无需客制化类，直接用 `Item`                        |
 | `titanium_upgrade`             | `titanium_upgrade`                          | 不改                                                        | 无需客制化类，直接用 `Item`                        |
 | `sculk_upgrade`                | `sculk_upgrade`                             | 不改                                                        | 无需客制化类，直接用 `Item`                        |
 | `dyedream_upgrade`             | `dyedream_upgrade`                          | 不改                                                        | 无需客制化类，直接用 `Item`                        |
@@ -246,6 +249,10 @@
 | `titanium_axe`                  | `titanium_axe`                              | 不改                                                        | 无需客制化类，直接用 `AxeItem`                     |
 | `titanium_shovel`               | `titanium_shovel`                           | 不改                                                        | 无需客制化类，直接用 `ShovelItem`                   |
 | `titanium_hoe`                  | `titanium_hoe`                              | 不改                                                        | 无需客制化类，直接用 `HoeItem`                      |
+| `titanium_armor_helmet`        | `titanium_helmet`                           | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
+| `titanium_armor_chestplate`    | `titanium_chestplate`                       | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
+| `titanium_armor_leggings`      | `titanium_leggings`                         | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
+| `titanium_armor_boots`         | `titanium_boots`                            | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                     |
 
 
 

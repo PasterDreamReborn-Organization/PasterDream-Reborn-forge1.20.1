@@ -114,6 +114,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.COTTON.get());
         basicItem(ModItems.SCULK_HEART.get());
         basicItem(ModItems.BLACK_STICK.get());
+        basicItem(ModItems.SPOOL.get());
+        basicItem(ModItems.FABRIC.get());
+        basicItem(ModItems.PROTECT_DECK.get());
         handheldItem(ModItems.COPPER_SWORD);
         handheldItem(ModItems.COPPER_PICKAXE);
         handheldItem(ModItems.COPPER_AXE);
@@ -123,6 +126,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.COPPER_CHESTPLATE.get());
         basicItem(ModItems.COPPER_LEGGINGS.get());
         basicItem(ModItems.COPPER_BOOTS.get());
+        basicItem(ModItems.TITANIUM_HELMET.get());
+        basicItem(ModItems.TITANIUM_CHESTPLATE.get());
+        basicItem(ModItems.TITANIUM_LEGGINGS.get());
+        basicItem(ModItems.TITANIUM_BOOTS.get());
         handheldItem(ModItems.TITANIUM_SWORD);
         handheldItem(ModItems.TITANIUM_PICKAXE);
         handheldItem(ModItems.TITANIUM_AXE);

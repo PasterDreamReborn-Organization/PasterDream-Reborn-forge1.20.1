@@ -45,10 +45,12 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         woodRecipes(pWriter);
         dyeConversionRecipes(pWriter);
         blackStickRecipes(pWriter);
+        materialRecipes(pWriter);
         upgradeKitRecipes(pWriter);
         copperToolRecipes(pWriter);
         copperArmorRecipes(pWriter);
         titaniumToolRecipes(pWriter);
+        titaniumArmorRecipes(pWriter);
         toolRecipes(pWriter);
         glassRecipes(pWriter);
         iceAndLanternRecipes(pWriter);
@@ -284,6 +286,120 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         RecipeCategory.TOOLS, ModItems.TITANIUM_HOE.get())
                 .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_hoe_smithing");
+    }
+
+    // ===== 材料配方 =====
+
+    private void materialRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 线轴
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SPOOL.get(), 1)
+                .pattern(" a ")
+                .pattern("aba")
+                .pattern(" a ")
+                .define('a', Items.STRING)
+                .define('b', Items.STICK)
+                .unlockedBy(getHasName(Items.STRING), has(Items.STRING))
+                .save(pWriter);
+
+        // 纺织布料
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FABRIC.get(), 1)
+                .requires(Ingredient.of(ItemTags.WOOL))
+                .requires(ModItems.COTTON.get())
+                .requires(ModItems.SPOOL.get())
+                .unlockedBy(getHasName(ModItems.SPOOL.get()), has(ModItems.SPOOL.get()))
+                .save(pWriter);
+
+        // 护甲板
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PROTECT_DECK.get(), 1)
+                .pattern("aa")
+                .pattern("bc")
+                .define('a', Items.IRON_INGOT)
+                .define('b', Items.LEATHER)
+                .define('c', ModItems.FABRIC.get())
+                .unlockedBy(getHasName(ModItems.FABRIC.get()), has(ModItems.FABRIC.get()))
+                .save(pWriter);
+    }
+
+    // ===== 钛金装备配方 =====
+
+    private void titaniumArmorRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 工作台升级：钻石装备 + 2钛金锭 + 黑石棍 → 钛金装备
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_HELMET.get())
+                .requires(Items.DIAMOND_HELMET)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_helmet_crafting");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_CHESTPLATE.get())
+                .requires(Items.DIAMOND_CHESTPLATE)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_chestplate_crafting");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_LEGGINGS.get())
+                .requires(Items.DIAMOND_LEGGINGS)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_leggings_crafting");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_BOOTS.get())
+                .requires(Items.DIAMOND_BOOTS)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_boots_crafting");
+
+        // 工作台合成：钛金锭 + 护甲板 → 钛金装备
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_HELMET.get())
+                .pattern("aba").pattern("a a")
+                .define('a', ModItems.TITANIUM_INGOT.get()).define('b', ModItems.PROTECT_DECK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_helmet_from_protect_deck");
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_CHESTPLATE.get())
+                .pattern("a a").pattern("bbb").pattern("aba")
+                .define('a', ModItems.PROTECT_DECK.get()).define('b', ModItems.TITANIUM_INGOT.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_chestplate_from_protect_deck");
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_LEGGINGS.get())
+                .pattern("aba").pattern("a a").pattern("b b")
+                .define('a', ModItems.TITANIUM_INGOT.get()).define('b', ModItems.PROTECT_DECK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_leggings_from_protect_deck");
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_BOOTS.get())
+                .pattern("a a").pattern("a a")
+                .define('a', ModItems.TITANIUM_INGOT.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_boots_from_protect_deck");
+
+        // 锻造台配方：护甲板 + 钻石装备 + 钛金升级套件 → 钛金装备
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.PROTECT_DECK.get()),
+                        Ingredient.of(Items.DIAMOND_HELMET),
+                        Ingredient.of(ModItems.TITANIUM_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.TITANIUM_HELMET.get())
+                .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_helmet_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.PROTECT_DECK.get()),
+                        Ingredient.of(Items.DIAMOND_CHESTPLATE),
+                        Ingredient.of(ModItems.TITANIUM_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.TITANIUM_CHESTPLATE.get())
+                .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_chestplate_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.PROTECT_DECK.get()),
+                        Ingredient.of(Items.DIAMOND_LEGGINGS),
+                        Ingredient.of(ModItems.TITANIUM_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.TITANIUM_LEGGINGS.get())
+                .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_leggings_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.PROTECT_DECK.get()),
+                        Ingredient.of(Items.DIAMOND_BOOTS),
+                        Ingredient.of(ModItems.TITANIUM_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.TITANIUM_BOOTS.get())
+                .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_boots_smithing");
     }
 
     // ===== 升级套件配方 =====
