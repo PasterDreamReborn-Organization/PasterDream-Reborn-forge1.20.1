@@ -239,10 +239,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "Paster Dream | Food & Drinks");
         add("itemGroup.pasterdream.pasterdream_items_tab", "Paster Dream | Items");
-        add("itemGroup.pasterdream.pasterdream_gear_tab", "Paster Dream | Equipment");
+        add("itemGroup.pasterdream.pasterdream_gear_tab", "Paster Dream | Gear");
         add("itemGroup.pasterdream.pasterdream_blocks_tab", "Paster Dream | Blocks");
         add("itemGroup.pasterdream.pasterdream_plants_tab", "Paster Dream | Plants");
-        add("itemGroup.pasterdream.pasterdream_equipment_tab", "Paster Dream | Devices");
+        add("itemGroup.pasterdream.pasterdream_equipment_tab", "Paster Dream | Equipment");
         add("itemGroup.pasterdream.pasterdream_dream_notes_tab", "Paster Dream | Dream Notes");
 
         add("button.pasterdream.mortarbutton", "grinding");
