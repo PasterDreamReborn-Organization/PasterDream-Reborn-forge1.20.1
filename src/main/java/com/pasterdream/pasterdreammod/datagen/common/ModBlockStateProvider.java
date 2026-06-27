@@ -248,6 +248,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var dyedream_lily_of_the_valley = models().cross(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get())).renderType("cutout");
         simpleBlock(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get(), dyedream_lily_of_the_valley);
 
+        var white_orchid_flower = models().cross(ModBlocks.WHITE_ORCHID_FLOWER.getId().getPath(), blockTexture(ModBlocks.WHITE_ORCHID_FLOWER.get())).renderType("cutout");
+        simpleBlock(ModBlocks.WHITE_ORCHID_FLOWER.get(), white_orchid_flower);
+        var edelweiss = models().cross(ModBlocks.EDELWEISS.getId().getPath(), blockTexture(ModBlocks.EDELWEISS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.EDELWEISS.get(), edelweiss);
+        var nippy_edelweiss = models().cross(ModBlocks.NIPPY_EDELWEISS.getId().getPath(), blockTexture(ModBlocks.NIPPY_EDELWEISS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.NIPPY_EDELWEISS.get(), nippy_edelweiss);
+
 
         var malva_sinensis_cavan = models().cross(ModBlocks.MALVA_SINENSIS_CAVAN.getId().getPath(), blockTexture(ModBlocks.MALVA_SINENSIS_CAVAN.get())).renderType("cutout");
         simpleBlock(ModBlocks.MALVA_SINENSIS_CAVAN.get(), malva_sinensis_cavan);
@@ -262,6 +269,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(ModBlocks.CRIMSON_THORNS.get())
                 .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(crimson_thorns_Lower))
                 .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(crimson_thorns_Upper));
+        var rye = models().cross(ModBlocks.RYE.getId().getPath(), blockTexture(ModBlocks.RYE.get())).renderType("cutout");
+        simpleBlock(ModBlocks.RYE.get(), rye);
 
         //植株方块
         generateTwoStageCrop(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "dyedream_corolla_crop");

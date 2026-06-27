@@ -678,6 +678,15 @@ public class ModItems {
     public static final RegistryObject<Item> DYEDREAM_LILY_OF_THE_VALLEY = ITEMS.register("dyedream_lily_of_the_valley",
             () -> new BlockItem(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get(), new Item.Properties()));//f13
 
+    public static final RegistryObject<Item> WHITE_ORCHID_FLOWER = ITEMS.register("white_orchid_flower",
+            () -> new BlockItem(ModBlocks.WHITE_ORCHID_FLOWER.get(), new Item.Properties()));//f15
+
+    public static final RegistryObject<Item> EDELWEISS = ITEMS.register("edelweiss",
+            () -> new BlockItem(ModBlocks.EDELWEISS.get(), new Item.Properties()));//f16
+
+    public static final RegistryObject<Item> NIPPY_EDELWEISS = ITEMS.register("nippy_edelweiss",
+            () -> new BlockItem(ModBlocks.NIPPY_EDELWEISS.get(), new Item.Properties()));//f17
+
     // =====植物系列（草） =====
     public static final RegistryObject<Item> DYEDREAM_MOSS = ITEMS.register("dyedream_moss",
             () -> new BlockItem(ModBlocks.DYEDREAM_MOSS.get(), new Item.Properties()));
@@ -693,6 +702,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> CRIMSON_THORNS = ITEMS.register("crimson_thorns",
             () -> new BlockItem(ModBlocks.CRIMSON_THORNS.get(), new Item.Properties()));//f7
+
+    public static final RegistryObject<Item> RYE = ITEMS.register("rye",
+            () -> new BlockItem(ModBlocks.RYE.get(), new Item.Properties()));//f3
 
     //作物方块物品
     public static final RegistryObject<Item> DYEDREAM_COROLLA_CROP_AGE_0 = ITEMS.register("dyedream_corolla_crop_age_0", () -> new BlockItem(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new Item.Properties()));

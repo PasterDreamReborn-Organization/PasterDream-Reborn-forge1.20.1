@@ -314,6 +314,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CRIMSON_THORNS.get());
                         output.accept(ModItems.BLAZE_FLOWER.get());
                         output.accept(ModItems.DYEDREAM_LILY_OF_THE_VALLEY.get());
+                        output.accept(ModItems.WHITE_ORCHID_FLOWER.get());
+                        output.accept(ModItems.NIPPY_EDELWEISS.get());
+                        output.accept(ModItems.EDELWEISS.get());
+                        output.accept(ModItems.RYE.get());
 
                     })
                     .build());

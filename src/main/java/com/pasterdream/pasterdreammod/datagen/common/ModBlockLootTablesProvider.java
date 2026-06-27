@@ -152,6 +152,9 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                         )
                 )
         );
+        dropSelf(ModBlocks.WHITE_ORCHID_FLOWER.get());
+        dropSelf(ModBlocks.EDELWEISS.get());
+        dropSelf(ModBlocks.NIPPY_EDELWEISS.get());
 
         add(ModBlocks.DYEDREAM_MOSS.get(),
                 block -> LootHelpers.creategrassesDrops(ModBlocks.DYEDREAM_MOSS.get()));
@@ -163,6 +166,14 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 block -> LootHelpers.creategrassesDrops(ModBlocks.SINGULARITY_FERN.get()));
         add(ModBlocks.CRIMSON_THORNS.get(),
                 block -> LootHelpers.createhighgrassesDropsNeedScissor(ModBlocks.CRIMSON_THORNS.get()));
+        add(ModBlocks.RYE.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(ModItems.RYE_SEED.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
+                        )
+                )
+        );
 
         dropSelf(ModBlocks.DYEDREAM_SAND.get());
         add(ModBlocks.DYEDREAM_GLASS.get(),

@@ -265,12 +265,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.MISTY_DREAMING_LOTUS.get(), "迷梦冶梦莲");
         add(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get(), "染梦铃兰");
         add(ModBlocks.BLAZE_FLOWER.get(), "烈焰花");
+        add(ModBlocks.WHITE_ORCHID_FLOWER.get(), "白厄花");
+        add(ModBlocks.EDELWEISS.get(), "雪绒花");
+        add(ModBlocks.NIPPY_EDELWEISS.get(), "凛冽雪绒花");
 
         add(ModBlocks.DYEDREAM_MOSS.get(), "染梦苔藓");
         add(ModBlocks.STEM_GRASS.get(),"茎草");
         add(ModBlocks.TALL_STEM_GRASS.get(),"高茎草");
         add(ModBlocks.SINGULARITY_FERN.get(), "奇异蕨");
         add(ModBlocks.CRIMSON_THORNS.get(), "赤荆棘");
+        add(ModBlocks.RYE.get(), "洋麦");
 
         add("fluid.pasterdream.melt_dream_liquid","融梦涌泉");
         add("fluid.pasterdream.shadow_liquid","熔融阴影");

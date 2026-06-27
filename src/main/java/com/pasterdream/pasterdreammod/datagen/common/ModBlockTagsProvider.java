@@ -126,13 +126,27 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.GOLDENROD.get())
                 .add(ModBlocks.FERRARIA_CRISPA.get())
                 .add(ModBlocks.EUSTOMA.get())
-                .add(ModBlocks.MALVA_SINENSIS_CAVAN.get());
+                .add(ModBlocks.MALVA_SINENSIS_CAVAN.get())
+                .add(ModBlocks.BLAZE_FLOWER.get())
+                .add(ModBlocks.WHITE_ORCHID_FLOWER.get())
+                .add(ModBlocks.EDELWEISS.get())
+                .add(ModBlocks.NIPPY_EDELWEISS.get())
+                .add(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get())
+                .add(ModBlocks.LINHT_FLOWER.get())
+                .add(ModBlocks.MISTY_DREAMING_LOTUS.get())
+                .add(ModBlocks.DREAMING_LOTUS.get());
 
         tag(BlockTags.SMALL_FLOWERS)
                 .add(ModBlocks.GOLDENROD.get())
                 .add(ModBlocks.FERRARIA_CRISPA.get())
                 .add(ModBlocks.EUSTOMA.get())
-                .add(ModBlocks.MALVA_SINENSIS_CAVAN.get());
+                .add(ModBlocks.MALVA_SINENSIS_CAVAN.get())
+                .add(ModBlocks.BLAZE_FLOWER.get())
+                .add(ModBlocks.WHITE_ORCHID_FLOWER.get())
+                .add(ModBlocks.EDELWEISS.get())
+                .add(ModBlocks.NIPPY_EDELWEISS.get())
+                .add(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get())
+                .add(ModBlocks.LINHT_FLOWER.get());
 
 
 
