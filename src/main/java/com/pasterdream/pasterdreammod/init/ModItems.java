@@ -12,6 +12,7 @@ import com.pasterdream.pasterdreammod.world.item.blueprints.BluePrintItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotes.DreamNotesItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDrinkItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
+import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -120,6 +121,16 @@ public class ModItems {
             () -> new ShovelItem(ModToolTiers.COPPER, 1.5f, -3.0f, new Item.Properties()));
     public static final RegistryObject<Item> COPPER_HOE = ITEMS.register("copper_hoe",
             () -> new HoeItem(ModToolTiers.COPPER, 0, -1.5f, new Item.Properties()));
+
+    // ===== 铜装备 =====
+    public static final RegistryObject<Item> COPPER_HELMET = ITEMS.register("copper_helmet",
+            () -> new ArmorItem(ModArmorMaterials.COPPER, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_CHESTPLATE = ITEMS.register("copper_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.COPPER, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_LEGGINGS = ITEMS.register("copper_leggings",
+            () -> new ArmorItem(ModArmorMaterials.COPPER, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_BOOTS = ITEMS.register("copper_boots",
+            () -> new ArmorItem(ModArmorMaterials.COPPER, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.register("melt_dream_crystal_fragment",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC)) {

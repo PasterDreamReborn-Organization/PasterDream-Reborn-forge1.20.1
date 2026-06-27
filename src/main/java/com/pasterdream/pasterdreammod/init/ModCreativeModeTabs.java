@@ -149,6 +149,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.COPPER_AXE.get());
                         output.accept(ModItems.COPPER_SHOVEL.get());
                         output.accept(ModItems.COPPER_HOE.get());
+                        // 铜装备
+                        output.accept(ModItems.COPPER_HELMET.get());
+                        output.accept(ModItems.COPPER_CHESTPLATE.get());
+                        output.accept(ModItems.COPPER_LEGGINGS.get());
+                        output.accept(ModItems.COPPER_BOOTS.get());
                     })
                     .build());
 
