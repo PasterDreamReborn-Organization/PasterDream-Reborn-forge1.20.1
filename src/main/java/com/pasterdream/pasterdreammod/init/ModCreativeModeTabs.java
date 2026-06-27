@@ -303,6 +303,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DREAMING_LOTUS.get());
                         output.accept(ModItems.MISTY_DREAMING_LOTUS.get());
                         output.accept(ModItems.SINGULARITY_FERN.get());
+                        output.accept(ModItems.CRIMSON_THORNS.get());
+                        output.accept(ModItems.BLAZE_FLOWER.get());
+                        output.accept(ModItems.DYEDREAM_LILY_OF_THE_VALLEY.get());
 
                     })
                     .build());

@@ -243,6 +243,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(misty_dreaming_lotus_Upper));
         var linht_flower = models().cross(ModBlocks.LINHT_FLOWER.getId().getPath(), blockTexture(ModBlocks.LINHT_FLOWER.get())).renderType("cutout");
         simpleBlock(ModBlocks.LINHT_FLOWER.get(), linht_flower);
+        var blaze_flower = models().cross(ModBlocks.BLAZE_FLOWER.getId().getPath(), blockTexture(ModBlocks.BLAZE_FLOWER.get())).renderType("cutout");
+        simpleBlock(ModBlocks.BLAZE_FLOWER.get(), blaze_flower);
+        var dyedream_lily_of_the_valley = models().cross(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get())).renderType("cutout");
+        simpleBlock(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get(), dyedream_lily_of_the_valley);
 
 
         var malva_sinensis_cavan = models().cross(ModBlocks.MALVA_SINENSIS_CAVAN.getId().getPath(), blockTexture(ModBlocks.MALVA_SINENSIS_CAVAN.get())).renderType("cutout");
@@ -252,6 +256,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(ModBlocks.TALL_STEM_GRASS.get())
                 .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(GrassTallLower))
                 .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(GrassTallUpper));
+
+        var crimson_thorns_Upper = models().cross(ModBlocks.CRIMSON_THORNS.getId().getPath(), modLoc("block/crimson_thorns_top")).renderType("cutout");
+        var crimson_thorns_Lower = models().cross(ModBlocks.CRIMSON_THORNS.getId().getPath() + "_bottom", modLoc("block/crimson_thorns")).renderType("cutout");
+        getVariantBuilder(ModBlocks.CRIMSON_THORNS.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(crimson_thorns_Lower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(crimson_thorns_Upper));
 
         //植株方块
         generateTwoStageCrop(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "dyedream_corolla_crop");

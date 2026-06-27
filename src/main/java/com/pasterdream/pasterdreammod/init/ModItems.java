@@ -648,6 +648,9 @@ public class ModItems {
     public static final RegistryObject<Item> MALVA_SINENSIS_CAVAN = ITEMS.register("malva_sinensis_cavan",//f5
             () -> new BlockItem(ModBlocks.MALVA_SINENSIS_CAVAN.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> BLAZE_FLOWER = ITEMS.register("blaze_flower",//f6
+            () -> new BlockItem(ModBlocks.BLAZE_FLOWER.get(), new Item.Properties()));
+
     public static final RegistryObject<Item> LINHT_FLOWER = ITEMS.register("linht_flower",
             () -> new BlockItem(ModBlocks.LINHT_FLOWER.get(), new Item.Properties()));//f9
 
@@ -656,6 +659,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> MISTY_DREAMING_LOTUS = ITEMS.register("misty_dreaming_lotus",
             () -> new BlockItem(ModBlocks.MISTY_DREAMING_LOTUS.get(), new Item.Properties()));//f12
+
+    public static final RegistryObject<Item> DYEDREAM_LILY_OF_THE_VALLEY = ITEMS.register("dyedream_lily_of_the_valley",
+            () -> new BlockItem(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get(), new Item.Properties()));//f13
 
     // =====植物系列（草） =====
     public static final RegistryObject<Item> DYEDREAM_MOSS = ITEMS.register("dyedream_moss",
@@ -666,6 +672,12 @@ public class ModItems {
 
     public static final RegistryObject<Item> TALL_STEM_GRASS = ITEMS.register("tall_stem_grass",
             () -> new BlockItem(ModBlocks.TALL_STEM_GRASS.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> SINGULARITY_FERN = ITEMS.register("singularity_fern",
+            () -> new BlockItem(ModBlocks.SINGULARITY_FERN.get(), new Item.Properties()));//f14
+
+    public static final RegistryObject<Item> CRIMSON_THORNS = ITEMS.register("crimson_thorns",
+            () -> new BlockItem(ModBlocks.CRIMSON_THORNS.get(), new Item.Properties()));//f7
 
     //作物方块物品
     public static final RegistryObject<Item> DYEDREAM_COROLLA_CROP_AGE_0 = ITEMS.register("dyedream_corolla_crop_age_0", () -> new BlockItem(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new Item.Properties()));
@@ -680,8 +692,6 @@ public class ModItems {
     public static final RegistryObject<Item> CLOUD_CROP_AGE_1 = ITEMS.register("cloud_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.CLOUD_CROP.get()));
     public static final RegistryObject<Item> COTTON_CROP_AGE_1 = ITEMS.register("cotton_crop_age_1", () -> new MatureCropItem(new Item.Properties(), ModBlocks.COTTON_CROP.get()));
 
-    public static final RegistryObject<Item> SINGULARITY_FERN = ITEMS.register("singularity_fern",
-            () -> new BlockItem(ModBlocks.SINGULARITY_FERN.get(), new Item.Properties()));//f14
 
 
 
