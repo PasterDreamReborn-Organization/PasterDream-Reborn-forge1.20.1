@@ -13,6 +13,7 @@ import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -142,6 +143,15 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 block -> LootHelpers.createhighflowerDrops(ModBlocks.DREAMING_LOTUS.get()));
         add(ModBlocks.MISTY_DREAMING_LOTUS.get(),
                 block -> LootHelpers.createhighflowerDrops(ModBlocks.MISTY_DREAMING_LOTUS.get()));
+        dropSelf(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get());
+        add(ModBlocks.BLAZE_FLOWER.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(Items.BLAZE_POWDER)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                                        .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
+                        )
+                )
+        );
 
         add(ModBlocks.DYEDREAM_MOSS.get(),
                 block -> LootHelpers.creategrassesDrops(ModBlocks.DYEDREAM_MOSS.get()));
@@ -151,7 +161,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 block -> LootHelpers.createhighgrassesDrops(ModBlocks.STEM_GRASS.get(),ModBlocks.TALL_STEM_GRASS.get()));
         add(ModBlocks.SINGULARITY_FERN.get(),
                 block -> LootHelpers.creategrassesDrops(ModBlocks.SINGULARITY_FERN.get()));
-
+        add(ModBlocks.CRIMSON_THORNS.get(),
+                block -> LootHelpers.createhighgrassesDropsNeedScissor(ModBlocks.CRIMSON_THORNS.get()));
 
         dropSelf(ModBlocks.DYEDREAM_SAND.get());
         add(ModBlocks.DYEDREAM_GLASS.get(),

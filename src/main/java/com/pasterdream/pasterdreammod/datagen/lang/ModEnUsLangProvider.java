@@ -243,11 +243,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.LINHT_FLOWER.get(), "Linht Flower");
         add(ModBlocks.DREAMING_LOTUS.get(), "Dreaming Lotus");
         add(ModBlocks.MISTY_DREAMING_LOTUS.get(), "Misty Dreaming Lotus");
+        add(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get(), "Dyedream Lily of the Valley");
+        add(ModBlocks.BLAZE_FLOWER.get(), "Blaze Flower");
 
         add(ModBlocks.DYEDREAM_MOSS.get(), "Dyedream Moss");
         add(ModBlocks.STEM_GRASS.get(),"Stem Grass");
         add(ModBlocks.TALL_STEM_GRASS.get(),"Tall Stem Grass");
         add(ModBlocks.SINGULARITY_FERN.get(), "Singularity Fern");
+        add(ModBlocks.CRIMSON_THORNS.get(), "Crimson Thorns");
 
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "Melt Dream Crystal Fragment");
 
