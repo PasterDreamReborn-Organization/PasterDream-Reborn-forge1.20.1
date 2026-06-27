@@ -119,6 +119,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.COPPER_CHESTPLATE.get(), "铜胸甲");
         add(ModItems.COPPER_LEGGINGS.get(), "铜护腿");
         add(ModItems.COPPER_BOOTS.get(), "铜靴子");
+        add(ModItems.TITANIUM_SWORD.get(), "钛金剑");
+        add(ModItems.TITANIUM_PICKAXE.get(), "钛金镐");
+        add(ModItems.TITANIUM_AXE.get(), "钛金斧");
+        add(ModItems.TITANIUM_SHOVEL.get(), "钛金锹");
+        add(ModItems.TITANIUM_HOE.get(), "钛金锄");
         add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
 

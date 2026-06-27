@@ -111,6 +111,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.COPPER_CHESTPLATE.get(), "Copper Chestplate");
         add(ModItems.COPPER_LEGGINGS.get(), "Copper Leggings");
         add(ModItems.COPPER_BOOTS.get(), "Copper Boots");
+        add(ModItems.TITANIUM_SWORD.get(), "Titanium Sword");
+        add(ModItems.TITANIUM_PICKAXE.get(), "Titanium Pickaxe");
+        add(ModItems.TITANIUM_AXE.get(), "Titanium Axe");
+        add(ModItems.TITANIUM_SHOVEL.get(), "Titanium Shovel");
+        add(ModItems.TITANIUM_HOE.get(), "Titanium Hoe");
         add(ModItems.DREAM_FERTILIZER.get(), "Dream Fertilizer");
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "Dream Notes - Dyedream World");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "Dream Notes - Lamp Shadow World");

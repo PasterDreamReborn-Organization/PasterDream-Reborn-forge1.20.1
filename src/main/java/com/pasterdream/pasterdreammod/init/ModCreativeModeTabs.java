@@ -154,6 +154,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.COPPER_CHESTPLATE.get());
                         output.accept(ModItems.COPPER_LEGGINGS.get());
                         output.accept(ModItems.COPPER_BOOTS.get());
+                        // 钛金工具
+                        output.accept(ModItems.TITANIUM_SWORD.get());
+                        output.accept(ModItems.TITANIUM_PICKAXE.get());
+                        output.accept(ModItems.TITANIUM_AXE.get());
+                        output.accept(ModItems.TITANIUM_SHOVEL.get());
+                        output.accept(ModItems.TITANIUM_HOE.get());
                     })
                     .build());
 

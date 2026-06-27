@@ -48,6 +48,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         upgradeKitRecipes(pWriter);
         copperToolRecipes(pWriter);
         copperArmorRecipes(pWriter);
+        titaniumToolRecipes(pWriter);
         toolRecipes(pWriter);
         glassRecipes(pWriter);
         iceAndLanternRecipes(pWriter);
@@ -211,6 +212,78 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('a', Items.COPPER_INGOT)
                 .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(pWriter);
+    }
+
+    // ===== 钛金工具配方（升级配方） =====
+
+    private void titaniumToolRecipes(Consumer<FinishedRecipe> pWriter) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_SWORD.get())
+                .requires(Items.DIAMOND_SWORD)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_PICKAXE.get())
+                .requires(Items.DIAMOND_PICKAXE)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_AXE.get())
+                .requires(Items.DIAMOND_AXE)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_SHOVEL.get())
+                .requires(Items.DIAMOND_SHOVEL)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_HOE.get())
+                .requires(Items.DIAMOND_HOE)
+                .requires(ModItems.TITANIUM_INGOT.get(), 2)
+                .requires(ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
+                .save(pWriter);
+
+        // 锻造台配方：燧石 + 钻石工具 + 钛金升级套件 → 钛金工具
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.FLINT),
+                        Ingredient.of(Items.DIAMOND_SWORD),
+                        Ingredient.of(ModItems.TITANIUM_UPGRADE.get()),
+                        RecipeCategory.COMBAT, ModItems.TITANIUM_SWORD.get())
+                .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_sword_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.FLINT),
+                        Ingredient.of(Items.DIAMOND_PICKAXE),
+                        Ingredient.of(ModItems.TITANIUM_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.TITANIUM_PICKAXE.get())
+                .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_pickaxe_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.FLINT),
+                        Ingredient.of(Items.DIAMOND_AXE),
+                        Ingredient.of(ModItems.TITANIUM_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.TITANIUM_AXE.get())
+                .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_axe_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.FLINT),
+                        Ingredient.of(Items.DIAMOND_SHOVEL),
+                        Ingredient.of(ModItems.TITANIUM_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.TITANIUM_SHOVEL.get())
+                .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_shovel_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.FLINT),
+                        Ingredient.of(Items.DIAMOND_HOE),
+                        Ingredient.of(ModItems.TITANIUM_UPGRADE.get()),
+                        RecipeCategory.TOOLS, ModItems.TITANIUM_HOE.get())
+                .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_hoe_smithing");
     }
 
     // ===== 升级套件配方 =====

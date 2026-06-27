@@ -241,6 +241,11 @@
 | `copper_armor_chestplate`       | `copper_chestplate`                         | 删除 `armor` 字段                                            | 无需客制化类，直接用 `ArmorItem`                     |
 | `copper_armor_leggings`         | `copper_leggings`                           | 删除 `armor` 字段                                            | 无需客制化类，直接用 `ArmorItem`                     |
 | `copper_armor_boots`            | `copper_boots`                              | 删除 `armor` 字段                                            | 无需客制化类，直接用 `ArmorItem`                     |
+| `titanium_sword`                | `titanium_sword`                            | 不改                                                        | 无需客制化类，直接用 `SwordItem`                    |
+| `titanium_pickaxe`              | `titanium_pickaxe`                          | 不改                                                        | 无需客制化类，直接用 `PickaxeItem`                  |
+| `titanium_axe`                  | `titanium_axe`                              | 不改                                                        | 无需客制化类，直接用 `AxeItem`                     |
+| `titanium_shovel`               | `titanium_shovel`                           | 不改                                                        | 无需客制化类，直接用 `ShovelItem`                   |
+| `titanium_hoe`                  | `titanium_hoe`                              | 不改                                                        | 无需客制化类，直接用 `HoeItem`                      |
 
 
 
