@@ -28,6 +28,10 @@ public class AddToolTip
                 || stack.is(ModItems.SCULK_LEGGINGS.get()) || stack.is(ModItems.SCULK_BOOTS.get())){
             tooltip.add(Component.translatable("tooltip.pasterdreammod.sculk_armor"));
         }
+        if(stack.is(ModItems.DYEDREAM_HELMET.get()) || stack.is(ModItems.DYEDREAM_CHESTPLATE.get())
+                || stack.is(ModItems.DYEDREAM_LEGGINGS.get()) || stack.is(ModItems.DYEDREAM_BOOTS.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor"));
+        }
 
     }
 }

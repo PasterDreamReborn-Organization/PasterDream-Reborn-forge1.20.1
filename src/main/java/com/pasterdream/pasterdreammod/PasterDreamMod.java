@@ -4,7 +4,9 @@ import com.pasterdream.pasterdreammod.client.*;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.FluidHandlerResolvers;
 import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
 import com.pasterdream.pasterdreammod.init.*;
+import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.SculkArmorItem;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -16,7 +18,11 @@ import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraftforge.event.TickEvent;
+import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.TieredItem;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -54,7 +60,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(this::AddCommand);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onLivingDrops);
-        MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onLivingTick);
+        MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
         modEventBus.addListener(this::AddOverlays);
         modEventBus.addListener(this::AddEntityRenderersEvent);
 
@@ -120,12 +126,15 @@ public class PasterDreamMod
         }
     }
 
-    // 回响套装效果
-    public static void onLivingTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || event.player.level().isClientSide) return;
-        if (SculkArmorItem.hasFullSet(event.player)) {
-            event.player.addEffect(new MobEffectInstance(ModEffects.SCULK_ARMOR_BUFF.get(), 25, 0,
-                    true, false, true));
+    // 染梦工具增强：持有染梦工具时伤害 +50%
+    public static void onLivingHurt(LivingHurtEvent event) {
+        if (event.getSource().getEntity() instanceof Player player
+                && player.hasEffect(ModEffects.DYEDREAM_UP_BUFF.get())) {
+            ItemStack weapon = player.getMainHandItem();
+            if (weapon.getItem() instanceof TieredItem tiered
+                    && tiered.getTier() == ModToolTiers.DYEDREAM) {
+                event.setAmount(event.getAmount() * 1.5f);
+            }
         }
     }
 }

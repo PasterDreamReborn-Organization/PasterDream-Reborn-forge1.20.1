@@ -180,6 +180,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SCULK_CHESTPLATE.get());
                         output.accept(ModItems.SCULK_LEGGINGS.get());
                         output.accept(ModItems.SCULK_BOOTS.get());
+                        // 染梦合金装备
+                        output.accept(ModItems.DYEDREAM_HELMET.get());
+                        output.accept(ModItems.DYEDREAM_CHESTPLATE.get());
+                        output.accept(ModItems.DYEDREAM_LEGGINGS.get());
+                        output.accept(ModItems.DYEDREAM_BOOTS.get());
                     })
                     .build());
 

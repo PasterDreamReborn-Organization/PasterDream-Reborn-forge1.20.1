@@ -11,7 +11,8 @@
       "items":  { "旧ID": "新ID", ... },
       "entities": { ... },
       "dimensions": { ... },
-      "biomes": { ... }
+      "biomes": { ... },
+      "effects": { ... }
     }
 """
 
@@ -29,6 +30,7 @@ SECTION_HEADERS = {
     "实体映射": "entities",
     "维度映射": "dimensions",
     "群系映射": "biomes",
+    "状态效果映射": "effects",
 }
 
 
@@ -71,6 +73,7 @@ def main():
         "entities": {},
         "dimensions": {},
         "biomes": {},
+        "effects": {},
     }
 
     current_section: str | None = None

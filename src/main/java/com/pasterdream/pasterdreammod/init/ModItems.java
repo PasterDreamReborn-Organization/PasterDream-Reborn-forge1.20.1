@@ -14,6 +14,7 @@ import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDri
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
 import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
+import com.pasterdream.pasterdreammod.world.item.DyedreamArmorItem;
 import com.pasterdream.pasterdreammod.world.item.DyedreamHammerItem;
 import com.pasterdream.pasterdreammod.world.item.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
@@ -181,11 +182,21 @@ public class ModItems {
     public static final RegistryObject<Item> SCULK_HELMET = ITEMS.register("sculk_helmet",
             () -> new SculkArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> SCULK_CHESTPLATE = ITEMS.register("sculk_chestplate",
-            () -> new SculkArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+            () -> new ArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> SCULK_LEGGINGS = ITEMS.register("sculk_leggings",
-            () -> new SculkArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+            () -> new ArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> SCULK_BOOTS = ITEMS.register("sculk_boots",
-            () -> new SculkArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.BOOTS, new Item.Properties()));
+            () -> new ArmorItem(ModArmorMaterials.SCULK, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
+
+    // ===== 染梦合金装备 =====
+    public static final RegistryObject<Item> DYEDREAM_HELMET = ITEMS.register("dyedream_helmet",
+            () -> new DyedreamArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> DYEDREAM_CHESTPLATE = ITEMS.register("dyedream_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> DYEDREAM_LEGGINGS = ITEMS.register("dyedream_leggings",
+            () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> DYEDREAM_BOOTS = ITEMS.register("dyedream_boots",
+            () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.register("melt_dream_crystal_fragment",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC)) {
