@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -24,6 +25,7 @@ import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import com.pasterdream.pasterdreammod.world.block.cropblock.PasterDreamCropBlock;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 
 import java.util.List;
 
@@ -54,6 +56,19 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CLOUD_CROP_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cloud_crop_patch"));
+    // ===== 染梦维度矿石 =====
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TITANIUM_ORE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "titanium_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> AMBER_CANDY_ORE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "amber_candy_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_DUST_ORE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_dust_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_QUARTZ_ORE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_quartz_ore"));
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> GOLDENROD_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "goldenrod_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> FERRARIA_CRISPA_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ferraria_crispa_patch"));
@@ -70,6 +85,23 @@ public class ModConfiguredFeatures {
                 new SimpleBlockConfiguration(provider),
                 BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.AIR))
         );
+    }
+
+    /** 方解石替换目标（单一目标） */
+    private static final RuleTest TARGET_CALCITE = new BlockMatchTest(Blocks.CALCITE);
+    /** 方解石 + 石头变种替换目标 */
+    private static final List<RuleTest> TARGET_CALCITE_AND_STONES = List.of(
+            new BlockMatchTest(Blocks.CALCITE),
+            new BlockMatchTest(Blocks.STONE),
+            new BlockMatchTest(Blocks.GRANITE),
+            new BlockMatchTest(Blocks.DIORITE),
+            new BlockMatchTest(Blocks.ANDESITE)
+    );
+
+    private static List<OreConfiguration.TargetBlockState> oreTargets(Block oreBlock, List<RuleTest> ruleTests) {
+        return ruleTests.stream()
+                .<OreConfiguration.TargetBlockState>map(rt -> OreConfiguration.target(rt, oreBlock.defaultBlockState()))
+                .toList();
     }
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
@@ -155,5 +187,18 @@ public class ModConfiguredFeatures {
 
         //棉花植株
         context.register(COTTON_CROP_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(12, 6, 3, simpleBlockInAir(BlockStateProvider.simple(ModBlocks.COTTON_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1))))));
+        // ===== 染梦维度矿石 =====
+        // 钛矿 — 原作 size=3, 钻石分布
+        context.register(TITANIUM_ORE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.TITANIUM_ORE.get(), List.of(TARGET_CALCITE)), 8, 0f)));
+        // 琥珀糖矿 — 原作 size=12
+        context.register(AMBER_CANDY_ORE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.AMBER_CANDY_ORE.get(), List.of(TARGET_CALCITE)), 12, 0f)));
+        // 染梦尘矿 — 原作 size=6
+        context.register(DYEDREAM_DUST_ORE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.DYEDREAM_DUST_ORE.get(), TARGET_CALCITE_AND_STONES), 8, 0f)));
+        // 染梦石英矿 — 原作 size=13
+        context.register(DYEDREAM_QUARTZ_ORE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), TARGET_CALCITE_AND_STONES), 13, 0f)));
     }
 }

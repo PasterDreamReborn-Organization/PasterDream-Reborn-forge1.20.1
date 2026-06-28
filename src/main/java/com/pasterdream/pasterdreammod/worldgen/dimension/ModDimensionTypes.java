@@ -32,7 +32,7 @@ public class ModDimensionTypes {
                 384,                        // 逻辑高度（最高建筑高度 = -64+384 = 320）
                 BlockTags.INFINIBURN_OVERWORLD, // 可无限燃烧的方块标签
                 ResourceLocation.parse("overworld"), // 天空/雾/云效果同主世界
-                1f,                       // 环境光照
+                0f,                       // 环境光照
                 new DimensionType.MonsterSettings(
                         false,              // 猪灵不会僵尸化
                         false,              // 禁止袭击

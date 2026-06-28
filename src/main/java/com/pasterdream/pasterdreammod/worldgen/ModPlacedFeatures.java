@@ -42,6 +42,19 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> CLOUD_CROP_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cloud_crop_patch"));
+    // ===== 染梦维度矿石 =====
+    public static final ResourceKey<PlacedFeature> TITANIUM_ORE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "titanium_ore"));
+    public static final ResourceKey<PlacedFeature> AMBER_CANDY_ORE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "amber_candy_ore"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_DUST_ORE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_dust_ore"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_QUARTZ_ORE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_quartz_ore"));
 
     public static final ResourceKey<PlacedFeature> GOLDENROD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "goldenrod_patch"));
     public static final ResourceKey<PlacedFeature> FERRARIA_CRISPA_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ferraria_crispa_patch"));
@@ -139,5 +152,31 @@ public class ModPlacedFeatures {
         //棉花植株
         context.register(COTTON_CROP_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.COTTON_CROP_PATCH), List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
+        // ===== 染梦维度矿石 =====
+        // 钛矿 — 钻石分布: count=7, triangle aboveBottom(-80)~aboveBottom(80)
+        context.register(TITANIUM_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.TITANIUM_ORE),
+                List.of(CountPlacement.of(7), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(
+                                VerticalAnchor.aboveBottom(-80),
+                                VerticalAnchor.aboveBottom(80)))));
+
+        // 琥珀糖矿 — count=10, y=-60~200
+        context.register(AMBER_CANDY_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.AMBER_CANDY_ORE),
+                List.of(CountPlacement.of(10), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(200)))));
+
+        // 染梦粉尘矿 — count=5, y=-60~200
+        context.register(DYEDREAM_DUST_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_DUST_ORE),
+                List.of(CountPlacement.of(5), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(200)))));
+
+        // 染梦石英矿 — count=18, y=-60~60
+        context.register(DYEDREAM_QUARTZ_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_QUARTZ_ORE),
+                List.of(CountPlacement.of(18), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(200)))));
     }
 }

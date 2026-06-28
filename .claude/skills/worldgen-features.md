@@ -25,6 +25,16 @@
 | `biome_dyedream_0_tree` | `dyedream_tree` | tree | dyedream_log + dyedream_leaves | PL, SP |
 | `ground_feature_dyedream_0` | `dyedream_ice_pillar` | block_column(冰柱 4~11) | dyedream_ice | SP |
 | `ground_feature_dyedream_12` | `dyedream_icestone_blobs` | ore(替换方解石 r=6~9) | ice_stone | SP, FO |
+| `grass_3` | `stem_grass_patch` | random_patch(分散 tries=32,xz=16) | stem_grass | PL |
+| `grass_4` | `tall_stem_grass_patch` | random_patch(分散 tries=24,xz=16) | tall_stem_grass | PL |
+| `crop_0a` | `dyedream_corolla_patch` | random_patch(团簇 tries=10,xz=4,rarity=6) | dyedream_corolla_crop [age=1] | PL |
+| `crop_2a` | `light_ball_patch` | random_patch(团簇 tries=10,xz=4,rarity=6) | light_ball_crop [age=1] | PL |
+| `crop_3a` | `cloud_crop_patch` | random_patch(团簇 tries=10,xz=4,rarity=6) | cloud_crop [age=1] | PL |
+
+> 技术要点：
+> - 所有地表地物使用 `onHeightmap()` 反射方法创建 `HeightmapPlacement`（Forge 1.20.1 私有构造函数）
+> - 作物地物直接生成 `age=1` 成熟态，避免随机刻开销
+> - 草类分散生成（xz_spread=16）、作物团簇生成（xz_spread=4, rarity=6）
 
 ---
 
@@ -86,8 +96,8 @@
 | 旧 ID | 新 ID | 说明 | 群系 | 状态 |
 |-------|-------|------|------|------|
 | `grass_1` | — | — | ? | 未映射 |
-| `grass_3` | `stem_grass` | 茎草 | ? | 待搬运 |
-| `grass_4` | `tall_stem_grass` | 高茎草 | ? | 待搬运 |
+| `grass_3` | `stem_grass_patch` | 茎草 | **PL** | ✅ |
+| `grass_4` | `tall_stem_grass_patch` | 高茎草 | **PL** | ✅ |
 | `grass_5` | `polished_calcite_stalicripe` | 磨制方解石笋(大) | PL, MM, SP | 待搬运 |
 | `grass_6` | `small_polished_calcite_stalicripe` | 磨制方解石笋(小) | PL, MM, SP | 待搬运 |
 | `grass_7` | `dyedream_moss` | 染梦苔藓 | ? | 待搬运 |
@@ -123,7 +133,11 @@
 | `deepslate_titanium_ore` | `deepslate_titanium_ore` | 深层钛矿 | ? | 待搬运 |
 | `moltengold_ore` | `molten_gold_ore` | 炙焰金矿 | ? | 待搬运 |
 | `soul_ore` | `soul_ore` | 灵魂矿 | ? | 待搬运 |
-| `crop_0a`~`4a` | 见映射表 | 作物野生生成 | ? | 待搬运 |
+| `crop_0a` | `dyedream_corolla_patch` | 梦染茶花 | **PL** | ✅ |
+| `crop_1a` | 待分配 | 苍白雪莲 | ? | 待搬运 |
+| `crop_2a` | `light_ball_patch` | 流明堇 | **PL** | ✅ |
+| `crop_3a` | `cloud_crop_patch` | 玲云花 | **PL** | ✅ |
+| `crop_4a` | 待分配 | 棉花 | ? | 待搬运 |
 
 ---
 
@@ -137,7 +151,7 @@
 
 ---
 
-## 下一步：立即可搬 (方块已就绪)
+## 下一步：染梦雪原 (SP) 优先
 
 | 顺序 | 旧 ID | 内容 | 群系 |
 |------|-------|------|------|
@@ -145,10 +159,11 @@
 | 2 | `ground_feature_dyedream_15` | 方解石块 (forest_rock) | PL, MM, SP |
 | 3 | `grass_5` + `grass_6` | 方解石笋(大/小) | PL, MM, SP |
 | 4 | `ground_feature_dyedream_13` | 冰团块 | PL, MM, SP |
-| 5 | `ground_feature_dyedream_6~8` | 珊瑚 tree/claw/mushroom | FO |
+| 5 | `ground_feature_dyedream_3` | 浮冰冰柱 | ? |
 | 6 | `ground_feature_dyedream_14` | 冰芽 (ice_bud) | ? |
 | 7 | `ground_feature_dyedream_9~11` | 染梦芽 (bud) | ? |
-| 8 | `ground_feature_dyedream_3` | 浮冰冰柱 | ? |
+| 8 | `ground_feature_dyedream_6~8` | 珊瑚 tree/claw/mushroom | FO |
 | 9 | 花草类 flower_*, grass_* | 各花各草 | 待确认群系 |
 
+> ~~PL 地表地物完成，聚焦 SP~~  
 > 每搬完一个即填入 mapping.json 新 ID、更新本文档状态
