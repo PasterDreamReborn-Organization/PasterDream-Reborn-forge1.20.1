@@ -703,6 +703,8 @@ public class ModItems {
     public static final RegistryObject<Item> CRIMSON_THORNS = ITEMS.register("crimson_thorns",
             () -> new BlockItem(ModBlocks.CRIMSON_THORNS.get(), new Item.Properties()));//f7
 
+    public static final RegistryObject<Item> OATS = ITEMS.register("oats",
+            () -> new BlockItem(ModBlocks.OATS.get(), new Item.Properties()));//g2
     public static final RegistryObject<Item> RYE = ITEMS.register("rye",
             () -> new BlockItem(ModBlocks.RYE.get(), new Item.Properties()));//f3
 

@@ -274,7 +274,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.TALL_STEM_GRASS.get(),"高茎草");
         add(ModBlocks.SINGULARITY_FERN.get(), "奇异蕨");
         add(ModBlocks.CRIMSON_THORNS.get(), "赤荆棘");
-        add(ModBlocks.RYE.get(), "洋麦");
+        add(ModBlocks.OATS.get(), "洋麦");
+        add(ModBlocks.RYE.get(), "兰麦");
 
         add("fluid.pasterdream.melt_dream_liquid","融梦涌泉");
         add("fluid.pasterdream.shadow_liquid","熔融阴影");

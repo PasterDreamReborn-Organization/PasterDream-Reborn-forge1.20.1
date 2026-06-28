@@ -252,6 +252,18 @@ public class ModBlocks {
                     }
                 }
             });
+    public static final RegistryObject<Block> OATS = BLOCKS.register("oats", () -> new BushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BROWN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+
+    ));
+
     public static final RegistryObject<Block> RYE = BLOCKS.register("rye", () -> new BushBlock(
             BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BROWN)

@@ -269,8 +269,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(ModBlocks.CRIMSON_THORNS.get())
                 .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(crimson_thorns_Lower))
                 .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(crimson_thorns_Upper));
+        var oats = models().cross(ModBlocks.OATS.getId().getPath(), blockTexture(ModBlocks.OATS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.OATS.get(), oats);
         var rye = models().cross(ModBlocks.RYE.getId().getPath(), blockTexture(ModBlocks.RYE.get())).renderType("cutout");
         simpleBlock(ModBlocks.RYE.get(), rye);
+
 
         //植株方块
         generateTwoStageCrop(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "dyedream_corolla_crop");

@@ -166,10 +166,18 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 block -> LootHelpers.creategrassesDrops(ModBlocks.SINGULARITY_FERN.get()));
         add(ModBlocks.CRIMSON_THORNS.get(),
                 block -> LootHelpers.createhighgrassesDropsNeedScissor(ModBlocks.CRIMSON_THORNS.get()));
+        add(ModBlocks.OATS.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(ModItems.RYE_SEED.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
+                        )
+                )
+        );
         add(ModBlocks.RYE.get(),
                 block -> createSilkTouchDispatchTable(block,
                         applyExplosionDecay(block, LootItem.lootTableItem(ModItems.RYE_SEED.get())
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
                                 .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
                         )
                 )

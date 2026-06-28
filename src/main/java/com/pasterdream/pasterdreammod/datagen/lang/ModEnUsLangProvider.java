@@ -264,6 +264,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.TALL_STEM_GRASS.get(),"Tall Stem Grass");
         add(ModBlocks.SINGULARITY_FERN.get(), "Singularity Fern");
         add(ModBlocks.CRIMSON_THORNS.get(), "Crimson Thorns");
+        add(ModBlocks.OATS.get(), "oats");
         add(ModBlocks.RYE.get(), "Rye");
 
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "Melt Dream Crystal Fragment");
