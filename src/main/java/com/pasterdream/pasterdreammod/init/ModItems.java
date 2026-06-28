@@ -182,9 +182,9 @@ public class ModItems {
 
     // ===== 狱炎工具 =====
     public static final RegistryObject<Item> HELLFIRE_SWORD = ITEMS.register("hellfire_sword",
-            () -> new HellfireSwordItem(ModToolTiers.HELLFIRE, 3, -2.2f, new Item.Properties()));
+            () -> new HellfireSwordItem(ModToolTiers.HELLFIRE, 3, -2.2f, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> HELLFIRE_PICKAXE = ITEMS.register("hellfire_pickaxe",
-            () -> new HellfirePickaxeItem(ModToolTiers.HELLFIRE, 1, -2.6f, new Item.Properties()));
+            () -> new HellfirePickaxeItem(ModToolTiers.HELLFIRE, 1, -2.6f, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> INFERNO_SWORD = ITEMS.register("inferno_sword",
             () -> new InfernoSwordItem(ModToolTiers.HELLFIRE, 4, -2.15f, new Item.Properties().rarity(Rarity.UNCOMMON)));
 

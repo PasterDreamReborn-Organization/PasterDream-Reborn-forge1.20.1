@@ -141,7 +141,7 @@ public class ModCreativeModeTabs {
     public static final RegistryObject<CreativeModeTab> PASTERDREAM_GEAR_TAB = CREATIVE_MODE_TABS.register("pasterdream_gear_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_gear_tab"))
-                    .icon(() -> new ItemStack(ModItems.TITANIUM_UPGRADE.get()))
+                    .icon(() -> new ItemStack(ModItems.SHARP_DYEDREAM_SWORD.get()))
                     .displayItems((parameters, output) -> {
                         // 升级套件
                         output.accept(ModItems.TITANIUM_UPGRADE.get());
