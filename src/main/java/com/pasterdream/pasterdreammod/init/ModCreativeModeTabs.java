@@ -323,7 +323,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.EDELWEISS.get());
                         output.accept(ModItems.OATS.get());
                         output.accept(ModItems.RYE.get());
-
+                        output.accept(ModItems.POLISHED_CALCITE_STALICRIPE.get());
+                        output.accept(ModItems.SMALL_POLISHED_CALCITE_STALICRIPE.get());
                     })
                     .build());
 

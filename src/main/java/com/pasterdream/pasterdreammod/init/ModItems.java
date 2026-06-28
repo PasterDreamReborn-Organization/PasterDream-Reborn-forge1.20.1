@@ -715,9 +715,15 @@ public class ModItems {
 
     public static final RegistryObject<Item> OATS = ITEMS.register("oats",
             () -> new BlockItem(ModBlocks.OATS.get(), new Item.Properties()));//g2
+
     public static final RegistryObject<Item> RYE = ITEMS.register("rye",
             () -> new BlockItem(ModBlocks.RYE.get(), new Item.Properties()));//f3
 
+    public static final RegistryObject<Item> POLISHED_CALCITE_STALICRIPE = ITEMS.register("polished_calcite_stalicripe",
+            () -> new BlockItem(ModBlocks.POLISHED_CALCITE_STALICRIPE.get(), new Item.Properties()));//g5
+
+    public static final RegistryObject<Item> SMALL_POLISHED_CALCITE_STALICRIPE = ITEMS.register("small_polished_calcite_stalicripe",
+            () -> new BlockItem(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), new Item.Properties()));//g6
     //作物方块物品
     public static final RegistryObject<Item> DYEDREAM_COROLLA_CROP_AGE_0 = ITEMS.register("dyedream_corolla_crop_age_0", () -> new BlockItem(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> WHITE_COROLLA_CROP_AGE_0 = ITEMS.register("white_corolla_crop_age_0", () -> new BlockItem(ModBlocks.WHITE_COROLLA_CROP.get(), new Item.Properties()));

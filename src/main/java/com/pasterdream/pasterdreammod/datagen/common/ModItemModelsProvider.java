@@ -257,6 +257,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/oats"));
         withExistingParent(ModItems.RYE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/rye"));
+        withExistingParent(ModItems.POLISHED_CALCITE_STALICRIPE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/polished_calcite_stalicripe"));
+        withExistingParent(ModItems.SMALL_POLISHED_CALCITE_STALICRIPE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/small_polished_calcite_stalicripe"));
     }
 
     @Override
