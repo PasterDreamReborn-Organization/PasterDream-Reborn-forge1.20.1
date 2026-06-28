@@ -317,6 +317,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WHITE_ORCHID_FLOWER.get());
                         output.accept(ModItems.NIPPY_EDELWEISS.get());
                         output.accept(ModItems.EDELWEISS.get());
+                        output.accept(ModItems.OATS.get());
                         output.accept(ModItems.RYE.get());
 
                     })

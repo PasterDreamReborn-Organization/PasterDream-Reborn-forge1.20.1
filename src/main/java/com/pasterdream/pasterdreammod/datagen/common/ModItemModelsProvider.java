@@ -250,6 +250,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/singularity_fern"));
         withExistingParent(ModItems.CRIMSON_THORNS.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/crimson_thorns_top"));
+        withExistingParent(ModItems.OATS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/oats"));
         withExistingParent(ModItems.RYE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/rye"));
     }
