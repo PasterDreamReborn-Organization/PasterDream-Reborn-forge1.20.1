@@ -1,12 +1,14 @@
 package com.pasterdream.pasterdreammod.world.block.cropblock;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class MatureCropItem extends Item
@@ -32,6 +34,8 @@ public class MatureCropItem extends Item
             {
                 BlockState matureState = cropBlock.defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1);
                 level.setBlock(pos, matureState, 3);
+                SoundType soundType = SoundType.GRASS;
+                level.playSound(null, pos, soundType.getPlaceSound(), SoundSource.BLOCKS, (soundType.getVolume() + 1.0F) / 2.0F, soundType.getPitch() * 0.8F);
                 if (!context.getPlayer().isCreative())
                 {
                     stack.shrink(1);
