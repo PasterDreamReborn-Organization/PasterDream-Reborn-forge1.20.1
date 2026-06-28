@@ -56,6 +56,15 @@ public class ModPlacedFeatures {
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_quartz_ore"));
 
+    public static final ResourceKey<PlacedFeature> GOLDENROD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "goldenrod_patch"));
+    public static final ResourceKey<PlacedFeature> FERRARIA_CRISPA_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ferraria_crispa_patch"));
+    public static final ResourceKey<PlacedFeature> MALVA_SINENSIS_CAVAN_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "malva_sinensis_cavan_patch"));
+    public static final ResourceKey<PlacedFeature> EUSTOMA_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "eustoma_patch"));
+    public static final ResourceKey<PlacedFeature> OATS_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "oats_patch"));
+    public static final ResourceKey<PlacedFeature> RYE_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "rye_patch"));
+    public static final ResourceKey<PlacedFeature> WHITE_COROLLA_CROP_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "white_corolla_crop_patch"));
+    public static final ResourceKey<PlacedFeature> COTTON_CROP_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cotton_crop_patch"));
+
     /** HeightmapPlacement 在 Forge 1.20.1 中构造函数为 private，通过反射创建 */
     private static PlacementModifier onHeightmap(Heightmap.Types type) {
         try {
@@ -118,6 +127,30 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.CLOUD_CROP_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        //秋麒麟
+        context.register(GOLDENROD_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.GOLDENROD_PATCH), List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        //魔星兰
+        context.register(FERRARIA_CRISPA_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.FERRARIA_CRISPA_PATCH), List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        //锦葵
+        context.register(MALVA_SINENSIS_CAVAN_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.MALVA_SINENSIS_CAVAN_PATCH), List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        //洋桔梗
+        context.register(EUSTOMA_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.EUSTOMA_PATCH), List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        //洋麦
+        context.register(OATS_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.OATS_PATCH), List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        //兰麦
+        context.register(RYE_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.RYE_PATCH), List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        //苍白雪莲植株
+        context.register(WHITE_COROLLA_CROP_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.WHITE_COROLLA_CROP_PATCH), List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        //棉花植株
+        context.register(COTTON_CROP_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.COTTON_CROP_PATCH), List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
         // ===== 染梦维度矿石 =====
         // 钛矿 — 钻石分布: count=7, triangle aboveBottom(-80)~aboveBottom(80)

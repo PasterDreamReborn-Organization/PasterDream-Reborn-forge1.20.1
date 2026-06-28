@@ -66,10 +66,6 @@ public class ModBiomes {
                         .build())
                 .generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, carvers)
                         .addCarver(GenerationStep.Carving.AIR, Carvers.CAVE)
-                        //.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE_EXTRA_UNDERGROUND)
-                        //.addCarver(GenerationStep.Carving.AIR, Carvers.CANYON)
-                        //.addFeature(GenerationStep.Decoration.LAKES,
-                        //       MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.DYEDREAM_TREE)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
@@ -113,8 +109,6 @@ public class ModBiomes {
                         .build())
                 .generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, carvers)
                         .addCarver(GenerationStep.Carving.AIR, Carvers.CAVE)
-                        .addCarver(GenerationStep.Carving.AIR, Carvers.CAVE_EXTRA_UNDERGROUND)
-                        .addCarver(GenerationStep.Carving.AIR, Carvers.CANYON)
                         // TODO: dyedream_forest_tree feature
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                                 ModPlacedFeatures.TITANIUM_ORE)
@@ -149,10 +143,6 @@ public class ModBiomes {
                         .build())
                 .generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, carvers)
                         .addCarver(GenerationStep.Carving.AIR, Carvers.CAVE)
-                        .addCarver(GenerationStep.Carving.AIR, Carvers.CAVE_EXTRA_UNDERGROUND)
-                        .addCarver(GenerationStep.Carving.AIR, Carvers.CANYON)
-                        .addFeature(GenerationStep.Decoration.LAKES,
-                                MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.DYEDREAM_TREE)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
