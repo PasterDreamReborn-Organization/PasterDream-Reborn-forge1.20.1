@@ -271,11 +271,11 @@
 | `dyedream_shovel`              | `dyedream_shovel`                           | 不改                                                        | 无需客制化类，直接用 `ShovelItem`                     |
 | `dyedream_hoe`                 | `dyedream_hoe`                              | 不改                                                        | 无需客制化类，直接用 `HoeItem`                        |
 | `dyedream_sword_0`             | `sharp_dyedream_sword`                      | 去后缀，加 `sharp`                                                | 客制化类 `DyedreamSharpSwordItem`                |
-| `moltengold_sword`             | `molten_gold_sword`                         | 重命名，加下划线                                                  | 无需客制化类，直接用 `SwordItem`                      |
-| `moltengold_pickaxe`           | `molten_gold_pickaxe`                       | 重命名，加下划线                                                  | 同上                                                |
-| `moltengold_axe`               | `molten_gold_axe`                           | 重命名，加下划线                                                  | 同上                                                |
-| `moltengold_shovel`            | `molten_gold_shovel`                        | 重命名，加下划线                                                  | 同上                                                |
-| `moltengold_hoe`               | `molten_gold_hoe`                           | 重命名，加下划线                                                  | 同上                                                |
+| `moltengold_sword`             | `molten_gold_sword`                         | 重命名，加下划线                                                  | 客制化类 `MoltenGoldSwordItem`                    |
+| `moltengold_pickaxe`           | `molten_gold_pickaxe`                       | 重命名，加下划线                                                  | 客制化类 `MoltenGoldPickaxeItem`                  |
+| `moltengold_axe`               | `molten_gold_axe`                           | 重命名，加下划线                                                  | 客制化类 `MoltenGoldAxeItem`                     |
+| `moltengold_shovel`            | `molten_gold_shovel`                        | 重命名，加下划线                                                  | 客制化类 `MoltenGoldShovelItem`                   |
+| `moltengold_hoe`               | `molten_gold_hoe`                           | 重命名，加下划线                                                  | 客制化类 `MoltenGoldHoeItem`                      |
 | `titanium_armor_helmet`        | `titanium_helmet`                           | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                      |
 | `titanium_armor_chestplate`    | `titanium_chestplate`                       | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                      |
 | `titanium_armor_leggings`      | `titanium_leggings`                         | 删除 `armor` 字段                                             | 无需客制化类，直接用 `ArmorItem`                      |

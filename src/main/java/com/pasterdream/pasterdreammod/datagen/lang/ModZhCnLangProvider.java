@@ -318,6 +318,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.sculk_armor.4", "§7▪ §9免疫幽匿的黑暗恐惧");
         add("tooltip.pasterdreammod.sculk_armor.5", "§7▪ §9受到黑暗效果时提高移速和免伤");
         add("tooltip.pasterdreammod.dyedream_hammer", "§7▪ §9范围挖掘 3×3×3");
+        add("tooltip.pasterdreammod.molten_gold_sword.1", "镶嵌：§7无");
+        add("tooltip.pasterdreammod.molten_gold_sword.2", "§7▪ §9攻击将使目标引燃3秒");
+        add("tooltip.pasterdreammod.molten_gold_tool.1", "镶嵌：§7无");
+        add("tooltip.pasterdreammod.molten_gold_tool.2", "§7▪ §9右键使用将消耗饱食度来获得短暂急迫效果");
+        add("tooltip.pasterdreammod.molten_gold_tool.3", "§7▪ §9冷却时间：10秒");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7套装效果：§d染梦守护");
         add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9最大生命值+4");
         add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9每 30 秒获得 2 颗吸收之♡");

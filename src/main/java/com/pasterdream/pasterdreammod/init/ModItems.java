@@ -16,6 +16,7 @@ import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.ModToolTiers;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
 import com.pasterdream.pasterdreammod.world.item.DyedreamHammerItem;
+import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import com.pasterdream.pasterdreammod.world.item.SharpDyedreamSwordItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
@@ -168,15 +169,15 @@ public class ModItems {
             () -> new HoeItem(ModToolTiers.DYEDREAM, -3, 0.0f, new Item.Properties().rarity(Rarity.UNCOMMON)));
     // ===== 炙焰金工具 =====
     public static final RegistryObject<Item> MOLTEN_GOLD_SWORD = ITEMS.register("molten_gold_sword",
-            () -> new SwordItem(ModToolTiers.MOLTEN_GOLD, 3, -2.3f, new Item.Properties().fireResistant()));
+            () -> new MoltenGoldSwordItem(ModToolTiers.MOLTEN_GOLD, 3, -2.3f, new Item.Properties()));
     public static final RegistryObject<Item> MOLTEN_GOLD_PICKAXE = ITEMS.register("molten_gold_pickaxe",
-            () -> new PickaxeItem(ModToolTiers.MOLTEN_GOLD, 1, -2.7f, new Item.Properties().fireResistant()));
+            () -> new MoltenGoldPickaxeItem(ModToolTiers.MOLTEN_GOLD, 1, -2.7f, new Item.Properties()));
     public static final RegistryObject<Item> MOLTEN_GOLD_AXE = ITEMS.register("molten_gold_axe",
-            () -> new AxeItem(ModToolTiers.MOLTEN_GOLD, 6.0f, -3.0f, new Item.Properties().fireResistant()));
+            () -> new MoltenGoldAxeItem(ModToolTiers.MOLTEN_GOLD, 6.0f, -3.0f, new Item.Properties()));
     public static final RegistryObject<Item> MOLTEN_GOLD_SHOVEL = ITEMS.register("molten_gold_shovel",
-            () -> new ShovelItem(ModToolTiers.MOLTEN_GOLD, 1.5f, -2.9f, new Item.Properties().fireResistant()));
+            () -> new MoltenGoldShovelItem(ModToolTiers.MOLTEN_GOLD, 1.5f, -2.9f, new Item.Properties()));
     public static final RegistryObject<Item> MOLTEN_GOLD_HOE = ITEMS.register("molten_gold_hoe",
-            () -> new HoeItem(ModToolTiers.MOLTEN_GOLD, -2, -0.5f, new Item.Properties().fireResistant()));
+            () -> new MoltenGoldHoeItem(ModToolTiers.MOLTEN_GOLD, -2, -0.5f, new Item.Properties()));
 
     public static final RegistryObject<Item> DYEDREAM_HAMMER = ITEMS.register("dyedream_hammer",
             () -> new DyedreamHammerItem(ModToolTiers.DYEDREAM, new Item.Properties().rarity(Rarity.UNCOMMON)));

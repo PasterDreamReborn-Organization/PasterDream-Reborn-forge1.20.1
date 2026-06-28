@@ -310,6 +310,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.sculk_armor.4", "§7▪ §9Immune to Sculk's Darkness");
         add("tooltip.pasterdreammod.sculk_armor.5", "§7▪ §9Gain Speed and Resistance when hit by Darkness");
         add("tooltip.pasterdreammod.dyedream_hammer", "§7▪ §9Area Mining 3×3×3");
+        add("tooltip.pasterdreammod.molten_gold_sword.1", "Inlaid: §7None");
+        add("tooltip.pasterdreammod.molten_gold_sword.2", "§7▪ §9Sets target on fire for 3 seconds");
+        add("tooltip.pasterdreammod.molten_gold_tool.1", "Inlaid: §7None");
+        add("tooltip.pasterdreammod.molten_gold_tool.2", "§7▪ §9Right-click to consume hunger for Haste");
+        add("tooltip.pasterdreammod.molten_gold_tool.3", "§7▪ §9Cooldown: 10s");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7Set Bonus: §dDyedream Protection");
         add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9Max Health +4");
         add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9Gain 2 Absorption hearts every 30s");
