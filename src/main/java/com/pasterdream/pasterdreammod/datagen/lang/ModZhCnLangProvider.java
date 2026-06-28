@@ -134,6 +134,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.MOLTEN_GOLD_HOE.get(), "炙焰金锄");
         add(ModItems.HELLFIRE_SWORD.get(), "狱炎剑");
         add(ModItems.HELLFIRE_PICKAXE.get(), "狱炎镐");
+        add(ModItems.MELT_DREAM_PICKAXE.get(), "融梦水晶镐");
+        add(ModItems.MELT_DREAM_AXE.get(), "融梦水晶斧");
+        add(ModItems.MELT_DREAM_SHOVEL.get(), "融梦水晶锹");
+        add(ModItems.MELT_DREAM_HOE.get(), "融梦水晶锄");
         add(ModItems.INFERNO_SWORD.get(), "『融骸』狱炎剑");
         add(ModItems.DYEDREAM_SWORD.get(), "染梦合金剑");
         add(ModItems.DYEDREAM_PICKAXE.get(), "染梦合金镐");

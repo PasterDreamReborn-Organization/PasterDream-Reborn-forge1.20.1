@@ -128,7 +128,8 @@ public class PasterDreamMod
                 && player.hasEffect(ModEffects.DYEDREAM_UP_BUFF.get())) {
             ItemStack weapon = player.getMainHandItem();
             if (weapon.getItem() instanceof TieredItem tiered
-                    && tiered.getTier() == ModToolTiers.DYEDREAM) {
+                    && (tiered.getTier() == ModToolTiers.DYEDREAM
+                            || tiered.getTier() == ModToolTiers.MELT_DREAM)) {
                 event.setAmount(event.getAmount() * 1.5f);
             }
         }

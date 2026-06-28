@@ -197,6 +197,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.HELLFIRE_SWORD.get());
                         output.accept(ModItems.HELLFIRE_PICKAXE.get());
                         output.accept(ModItems.INFERNO_SWORD.get());
+                        // 融梦水晶工具
+                        output.accept(ModItems.MELT_DREAM_PICKAXE.get());
+                        output.accept(ModItems.MELT_DREAM_AXE.get());
+                        output.accept(ModItems.MELT_DREAM_SHOVEL.get());
+                        output.accept(ModItems.MELT_DREAM_HOE.get());
                     })
                     .build());
 

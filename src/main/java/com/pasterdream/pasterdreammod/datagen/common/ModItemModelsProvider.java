@@ -146,6 +146,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.HELLFIRE_SWORD);
         handheldItem(ModItems.HELLFIRE_PICKAXE);
         handheldItem(ModItems.INFERNO_SWORD);
+        handheldItem(ModItems.MELT_DREAM_PICKAXE);
+        handheldItem(ModItems.MELT_DREAM_AXE);
+        handheldItem(ModItems.MELT_DREAM_SHOVEL);
+        handheldItem(ModItems.MELT_DREAM_HOE);
         handheldItem(ModItems.TITANIUM_SWORD);
         handheldItem(ModItems.TITANIUM_PICKAXE);
         handheldItem(ModItems.TITANIUM_AXE);
