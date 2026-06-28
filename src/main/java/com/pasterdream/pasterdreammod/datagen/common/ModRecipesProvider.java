@@ -36,6 +36,30 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         }), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name));
     }
 
+    /**
+     * 保留 NBT 的无序配方包装器：升级配方保留附魔等数据。
+     */
+    private void saveNbtPreserving(ShapelessRecipeBuilder builder, Consumer<FinishedRecipe> writer, String name) {
+        builder.save(wrapped -> writer.accept(new FinishedRecipe() {
+            @Override public void serializeRecipeData(JsonObject json) { wrapped.serializeRecipeData(json); }
+            @Override public ResourceLocation getId() { return ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name); }
+            @Override public RecipeSerializer<?> getType() { return ModRecipes.NBT_PRESERVING_SHAPELESS_SERIALIZER.get(); }
+            @Override public JsonObject serializeAdvancement() { return wrapped.serializeAdvancement(); }
+            @Override public ResourceLocation getAdvancementId() { return wrapped.getAdvancementId(); }
+        }), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name));
+    }
+
+    /** 有序配方版本 */
+    private void saveNbtPreservingShaped(ShapedRecipeBuilder builder, Consumer<FinishedRecipe> writer, String name) {
+        builder.save(wrapped -> writer.accept(new FinishedRecipe() {
+            @Override public void serializeRecipeData(JsonObject json) { wrapped.serializeRecipeData(json); }
+            @Override public ResourceLocation getId() { return ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name); }
+            @Override public RecipeSerializer<?> getType() { return ModRecipes.NBT_PRESERVING_SHAPED_SERIALIZER.get(); }
+            @Override public JsonObject serializeAdvancement() { return wrapped.serializeAdvancement(); }
+            @Override public ResourceLocation getAdvancementId() { return wrapped.getAdvancementId(); }
+        }), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, name));
+    }
+
     public ModRecipesProvider(PackOutput pOutput) {
         super(pOutput);
     }
@@ -48,6 +72,8 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         materialRecipes(pWriter);
         upgradeKitRecipes(pWriter);
         moltenGoldToolRecipes(pWriter);
+        hellfireToolRecipes(pWriter);
+        meltDreamToolRecipes(pWriter);
         copperToolRecipes(pWriter);
         copperArmorRecipes(pWriter);
         titaniumToolRecipes(pWriter);
@@ -174,6 +200,69 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter);
     }
 
+    // ===== 狱炎工具配方 =====
+
+    private void hellfireToolRecipes(Consumer<FinishedRecipe> pWriter) {
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.HELLFIRE_SWORD.get())
+                .pattern(" a ").pattern("bcb").pattern(" d ")
+                .define('a', Items.BLAZE_POWDER)
+                .define('b', Items.NETHERITE_SCRAP)
+                .define('c', ModItems.MOLTEN_GOLD_SWORD.get())
+                .define('d', ModItems.MOLTEN_GOLD_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_SWORD.get()), has(ModItems.MOLTEN_GOLD_SWORD.get())),
+                pWriter, "hellfire_sword");
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.HELLFIRE_PICKAXE.get())
+                .pattern(" a ").pattern("bcb").pattern(" d ")
+                .define('a', Items.BLAZE_POWDER)
+                .define('b', Items.NETHERITE_SCRAP)
+                .define('c', ModItems.MOLTEN_GOLD_PICKAXE.get())
+                .define('d', ModItems.MOLTEN_GOLD_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_PICKAXE.get()), has(ModItems.MOLTEN_GOLD_PICKAXE.get())),
+                pWriter, "hellfire_pickaxe");
+
+        // 融骸狱炎剑
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.NETHER_BRICK),
+                        Ingredient.of(ModItems.HELLFIRE_SWORD.get()),
+                        Ingredient.of(Items.NETHER_STAR),
+                        RecipeCategory.COMBAT, ModItems.INFERNO_SWORD.get())
+                .unlocks("has_nether_star", has(Items.NETHER_STAR))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":inferno_sword_smithing");
+    }
+
+    // ===== 融梦水晶工具配方 =====
+
+    private void meltDreamToolRecipes(Consumer<FinishedRecipe> pWriter) {
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        Ingredient.of(ModItems.DYEDREAM_PICKAXE.get()),
+                        RecipeCategory.TOOLS, ModItems.MELT_DREAM_PICKAXE.get())
+                .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":melt_dream_pickaxe_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        Ingredient.of(ModItems.DYEDREAM_AXE.get()),
+                        RecipeCategory.TOOLS, ModItems.MELT_DREAM_AXE.get())
+                .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":melt_dream_axe_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        Ingredient.of(ModItems.DYEDREAM_SHOVEL.get()),
+                        RecipeCategory.TOOLS, ModItems.MELT_DREAM_SHOVEL.get())
+                .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":melt_dream_shovel_smithing");
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
+                        Ingredient.of(ModItems.DYEDREAM_HOE.get()),
+                        RecipeCategory.TOOLS, ModItems.MELT_DREAM_HOE.get())
+                .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":melt_dream_hoe_smithing");
+    }
+
     // ===== 铜工具配方 =====
 
     private void copperToolRecipes(Consumer<FinishedRecipe> pWriter) {
@@ -253,36 +342,37 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     // ===== 钛金工具配方（升级配方） =====
 
     private void titaniumToolRecipes(Consumer<FinishedRecipe> pWriter) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_SWORD.get())
+        // 工作台升级：钻石工具 + 2钛金锭 + 黑石棍 → 钛金工具（保留附魔）
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_SWORD.get())
                 .requires(Items.DIAMOND_SWORD)
                 .requires(ModItems.TITANIUM_INGOT.get(), 2)
                 .requires(ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
-                .save(pWriter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_PICKAXE.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_sword_crafting");
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_PICKAXE.get())
                 .requires(Items.DIAMOND_PICKAXE)
                 .requires(ModItems.TITANIUM_INGOT.get(), 2)
                 .requires(ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
-                .save(pWriter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_AXE.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_pickaxe_crafting");
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_AXE.get())
                 .requires(Items.DIAMOND_AXE)
                 .requires(ModItems.TITANIUM_INGOT.get(), 2)
                 .requires(ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
-                .save(pWriter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_SHOVEL.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_axe_crafting");
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_SHOVEL.get())
                 .requires(Items.DIAMOND_SHOVEL)
                 .requires(ModItems.TITANIUM_INGOT.get(), 2)
                 .requires(ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
-                .save(pWriter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_HOE.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_shovel_crafting");
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TITANIUM_HOE.get())
                 .requires(Items.DIAMOND_HOE)
                 .requires(ModItems.TITANIUM_INGOT.get(), 2)
                 .requires(ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
-                .save(pWriter);
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_hoe_crafting");
 
         // 锻造台配方：燧石 + 钻石工具 + 钛金升级套件 → 钛金工具
         SmithingTransformRecipeBuilder.smithing(
@@ -398,7 +488,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         Ingredient.of(ModItems.DYEDREAM_DUST.get()),
                         Ingredient.of(ModItems.DYEDREAM_SWORD.get()),
                         Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
-                        RecipeCategory.COMBAT, ModItems.SHARP_DYEDREAM_SWORD.get())
+                        RecipeCategory.COMBAT, ModItems.SHARP_MELT_DREAM_SWORD.get())
                 .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_sharp_sword_smithing");
 
@@ -416,31 +506,31 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     // ===== 钛金装备配方 =====
 
     private void titaniumArmorRecipes(Consumer<FinishedRecipe> pWriter) {
-        // 工作台升级：钻石装备 + 2钛金锭 + 黑石棍 → 钛金装备
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_HELMET.get())
+        // 工作台升级：钻石装备 + 2钛金锭 + 黑石棍 → 钛金装备（保留附魔）
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_HELMET.get())
                 .requires(Items.DIAMOND_HELMET)
                 .requires(ModItems.TITANIUM_INGOT.get(), 2)
                 .requires(ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_helmet_crafting");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_CHESTPLATE.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_helmet_crafting");
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_CHESTPLATE.get())
                 .requires(Items.DIAMOND_CHESTPLATE)
                 .requires(ModItems.TITANIUM_INGOT.get(), 2)
                 .requires(ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_chestplate_crafting");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_LEGGINGS.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_chestplate_crafting");
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_LEGGINGS.get())
                 .requires(Items.DIAMOND_LEGGINGS)
                 .requires(ModItems.TITANIUM_INGOT.get(), 2)
                 .requires(ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_leggings_crafting");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_BOOTS.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_leggings_crafting");
+        saveNbtPreserving(ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.TITANIUM_BOOTS.get())
                 .requires(Items.DIAMOND_BOOTS)
                 .requires(ModItems.TITANIUM_INGOT.get(), 2)
                 .requires(ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_boots_crafting");
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get())),
+                pWriter, "titanium_boots_crafting");
 
         // 工作台合成：钛金锭 + 护甲板 → 钛金装备
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TITANIUM_HELMET.get())

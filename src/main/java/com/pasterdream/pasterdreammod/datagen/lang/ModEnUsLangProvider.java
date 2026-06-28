@@ -124,13 +124,20 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MOLTEN_GOLD_AXE.get(), "Molten Gold Axe");
         add(ModItems.MOLTEN_GOLD_SHOVEL.get(), "Molten Gold Shovel");
         add(ModItems.MOLTEN_GOLD_HOE.get(), "Molten Gold Hoe");
+        add(ModItems.HELLFIRE_SWORD.get(), "Hellfire Sword");
+        add(ModItems.HELLFIRE_PICKAXE.get(), "Hellfire Pickaxe");
+        add(ModItems.MELT_DREAM_PICKAXE.get(), "Melt Dream Pickaxe");
+        add(ModItems.MELT_DREAM_AXE.get(), "Melt Dream Axe");
+        add(ModItems.MELT_DREAM_SHOVEL.get(), "Melt Dream Shovel");
+        add(ModItems.MELT_DREAM_HOE.get(), "Melt Dream Hoe");
+        add(ModItems.INFERNO_SWORD.get(), "Inferno Sword");
         add(ModItems.DYEDREAM_SWORD.get(), "Dyedream Sword");
         add(ModItems.DYEDREAM_PICKAXE.get(), "Dyedream Pickaxe");
         add(ModItems.DYEDREAM_AXE.get(), "Dyedream Axe");
         add(ModItems.DYEDREAM_SHOVEL.get(), "Dyedream Shovel");
         add(ModItems.DYEDREAM_HOE.get(), "Dyedream Hoe");
         add(ModItems.DYEDREAM_HAMMER.get(), "Dyedream Hammer");
-        add(ModItems.SHARP_DYEDREAM_SWORD.get(), "Dyedream Sharp Sword");
+        add(ModItems.SHARP_MELT_DREAM_SWORD.get(), "Dyedream Sharp Sword");
         add(ModItems.TITANIUM_HELMET.get(), "Titanium Helmet");
         add(ModItems.TITANIUM_CHESTPLATE.get(), "Titanium Chestplate");
         add(ModItems.TITANIUM_LEGGINGS.get(), "Titanium Leggings");
@@ -266,6 +273,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.CRIMSON_THORNS.get(), "Crimson Thorns");
         add(ModBlocks.OATS.get(), "oats");
         add(ModBlocks.RYE.get(), "Rye");
+        add(ModBlocks.POLISHED_CALCITE_STALICRIPE.get(), "Polished Calcite Stalicripe");
+        add(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), "Small Polished Calcite Stalicripe");
 
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "Melt Dream Crystal Fragment");
 
@@ -315,15 +324,32 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.molten_gold_tool.1", "Inlaid: §7None");
         add("tooltip.pasterdreammod.molten_gold_tool.2", "§7▪ §9Right-click to consume hunger for Haste");
         add("tooltip.pasterdreammod.molten_gold_tool.3", "§7▪ §9Cooldown: 10s");
+        add("tooltip.pasterdreammod.hellfire_sword.1", "Inlaid: §7None");
+        add("tooltip.pasterdreammod.hellfire_sword.2", "§7▪ §9Ignites target for 4 seconds");
+        add("tooltip.pasterdreammod.hellfire_sword.3", "§7▪ §9If already burning, adds 2 seconds (stackable)");
+        add("tooltip.pasterdreammod.hellfire_tool.1", "Inlaid: §7None");
+        add("tooltip.pasterdreammod.hellfire_tool.2", "§7▪ §9Right-click to consume hunger for Haste");
+        add("tooltip.pasterdreammod.hellfire_tool.3", "§7▪ §9Cooldown: 8s");
+        add("tooltip.pasterdreammod.inferno_sword.1", "Inlaid: §bNether Star");
+        add("tooltip.pasterdreammod.inferno_sword.2", "Combat Art: §6Bone-melting Slash");
+        add("tooltip.pasterdreammod.inferno_sword.3", "§7▪ §9Converts damage type to Lava");
+        add("tooltip.pasterdreammod.inferno_sword.4", "§7▪ §9Deals 2+ATK+FireSeconds*0.6 bonus damage");
+        add("tooltip.pasterdreammod.inferno_sword.5", "§7▪ §9If fire >10s, reduces target speed by 30%");
+        add("tooltip.pasterdreammod.inferno_sword.6", "§7▪ §9Clears target's fire effect");
+        add("tooltip.pasterdreammod.inferno_sword.7", "§7▪ §9Cooldown: 10s");
+        add("tooltip.pasterdreammod.inferno_sword.8", "§7Passive:");
+        add("tooltip.pasterdreammod.inferno_sword.9", "§7▪ §9Ignites 4s; if burning, adds 3s");
+        add("tooltip.pasterdreammod.melt_dream_tool.1", "While held");
+        add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §bMelt-Repair: 0.01E/1 Durability");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7Set Bonus: §dDyedream Protection");
         add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9Max Health +4");
         add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9Gain 2 Absorption hearts every 30s");
         add("tooltip.pasterdreammod.dyedream_armor.4", "§7▪ §9Enhances wielded Dyedream tools");
-        add("tooltip.pasterdreammod.sharp_dyedream_sword.1", "Inlaid: §dMelt Dream Crystal Fragment");
-        add("tooltip.pasterdreammod.sharp_dyedream_sword.2", "Combat Art: §bSora-giri");
-        add("tooltip.pasterdreammod.sharp_dyedream_sword.3", "§7▪ §9Slash and launch enemies upward, deals 2+ATK*1.2 bonus damage");
-        add("tooltip.pasterdreammod.sharp_dyedream_sword.4", "§7▪ §9Cooldown: 5s");
-        add("tooltip.pasterdreammod.sharp_dyedream_sword.5", "§7▪ §9Cooldown reduced to 3s while Dyedream Protection is active");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.1", "Inlaid: §dMelt Dream Crystal Fragment");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.2", "Combat Art: §bSora-giri");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.3", "§7▪ §9Slash and launch enemies upward, deals 2+ATK*1.2 bonus damage");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.4", "§7▪ §9Cooldown: 5s");
+        add("tooltip.pasterdreammod.sharp_melt_dream_sword.5", "§7▪ §9Cooldown reduced to 3s while Dyedream Protection is active");
         add("tooltip.pasterdreammod.san_value", "SAN: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
 

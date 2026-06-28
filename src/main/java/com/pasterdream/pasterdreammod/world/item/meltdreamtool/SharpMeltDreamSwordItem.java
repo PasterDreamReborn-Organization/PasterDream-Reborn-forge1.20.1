@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.item;
+package com.pasterdream.pasterdreammod.world.item.meltdreamtool;
 
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
@@ -8,6 +8,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -20,12 +21,12 @@ import java.util.List;
  * 镶嵌：融梦水晶碎片<br>
  * 战技：凌空斩 —— 冷却 5 秒，拥有染梦守护缩短为 3 秒。
  */
-public class SharpDyedreamSwordItem extends SwordItem {
+public class SharpMeltDreamSwordItem extends SwordItem {
 
     private static final String TAG_COOLDOWN = "SharpCooldown";
     private static final String TAG_CHARGED = "SharpCharged";
 
-    public SharpDyedreamSwordItem(Tier tier, Properties properties) {
+    public SharpMeltDreamSwordItem(Tier tier, Properties properties) {
         super(tier, 4, -2.4f, properties);
     }
 
@@ -45,7 +46,7 @@ public class SharpDyedreamSwordItem extends SwordItem {
                 stack.getOrCreateTag().putBoolean(TAG_CHARGED, true);
                 player.getCooldowns().addCooldown(this, cooldownTicks);
                 level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                        ModSounds.SHARP_DYEDREAM_SWORD_USE.get(), player.getSoundSource(), 1.0f, 1.0f);
+                        ModSounds.SHARP_MELT_DREAM_SWORD_USE.get(), player.getSoundSource(), 1.0f, 1.0f);
             }
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
@@ -61,7 +62,7 @@ public class SharpDyedreamSwordItem extends SwordItem {
             target.setDeltaMovement(target.getDeltaMovement().add(0, 0.8, 0));
             target.hurtMarked = true;
             target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
-                    ModSounds.SHARP_DYEDREAM_SWORD_HIT.get(), target.getSoundSource(), 1.5f, 1.0f);
+                    ModSounds.SHARP_MELT_DREAM_SWORD_HIT.get(), target.getSoundSource(), 1.5f, 1.0f);
             // 脚下粒子爆发：40 个，位置 (x, y+0.3, z)，速度 (0.05, 0.3, 0.05)，速度随机偏移 0.4
             if (target.level() instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(ModParticleTypes.SHARP_SWORD_SLASH.get(),
@@ -73,12 +74,19 @@ public class SharpDyedreamSwordItem extends SwordItem {
     }
 
     @Override
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
+        super.inventoryTick(stack, level, entity, slot, selected);
+        MeltDreamToolHelper.onInventoryTick(stack, level, entity, slot, selected);
+    }
+
+    @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_dyedream_sword.1"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_dyedream_sword.2"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_dyedream_sword.3"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_dyedream_sword.4"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_dyedream_sword.5"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_melt_dream_sword.1"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_melt_dream_sword.2"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_melt_dream_sword.3"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_melt_dream_sword.4"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_melt_dream_sword.5"));
+        MeltDreamToolHelper.appendHoverText(stack, level, tooltip, flag);
     }
 }
