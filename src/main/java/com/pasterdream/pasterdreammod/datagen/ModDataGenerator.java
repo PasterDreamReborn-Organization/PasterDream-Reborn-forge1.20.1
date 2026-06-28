@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.datagen.common.*;
 import com.pasterdream.pasterdreammod.datagen.lang.ModEnUsLangProvider;
 import com.pasterdream.pasterdreammod.datagen.lang.ModZhCnLangProvider;
 import com.pasterdream.pasterdreammod.datagen.common.ModWorldGenProvider;
+import com.pasterdream.pasterdreammod.worldgen.biome.ModBiomeModifierProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -42,6 +43,9 @@ public class ModDataGenerator {
 
         generator.addProvider(event.includeServer(),
                 new ModItemTagsProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper));
+
+        generator.addProvider(event.includeServer(), new ModBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModBiomeModifierProvider(packOutput, lookupProvider));
 
         // 客户端数据生成
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(packOutput, existingFileHelper));
