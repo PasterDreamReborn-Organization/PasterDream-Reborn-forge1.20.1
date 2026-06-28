@@ -1,18 +1,11 @@
 {
-  "sharp_dyedream_sword_use": {
-    "sounds": [
-      {
-        "name": "pasterdream:sharp_dyedream_sword_use",
-        "stream": false
-      }
-    ]
+  "sharp_melt_dream_sword_use": {
+    "sounds": [{"name": "pasterdream:sharp_melt_dream_sword_use", "stream": false}]
   },
-  "sharp_dyedream_sword_hit": {
-    "sounds": [
-      {
-        "name": "pasterdream:sharp_dyedream_sword_hit",
-        "stream": false
-      }
-    ]
+  "sharp_melt_dream_sword_hit": {
+    "sounds": [{"name": "pasterdream:sharp_melt_dream_sword_hit", "stream": false}]
+  },
+  "inferno_sword_skill": {
+    "sounds": [{"name": "pasterdream:inferno_sword_skill", "stream": false}]
   }
 }

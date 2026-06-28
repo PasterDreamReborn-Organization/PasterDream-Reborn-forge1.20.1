@@ -86,12 +86,15 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.MOLTEN_GOLD_SWORD.get())
                 .add(ModItems.COPPER_SWORD.get())
                 .add(ModItems.TITANIUM_SWORD.get())
-                .add(ModItems.DYEDREAM_SWORD.get());
+                .add(ModItems.DYEDREAM_SWORD.get())
+                .add(ModItems.HELLFIRE_SWORD.get())
+                .add(ModItems.INFERNO_SWORD.get());
         tag(ItemTags.PICKAXES)
                 .add(ModItems.MOLTEN_GOLD_PICKAXE.get())
                 .add(ModItems.COPPER_PICKAXE.get())
                 .add(ModItems.TITANIUM_PICKAXE.get())
-                .add(ModItems.DYEDREAM_PICKAXE.get());
+                .add(ModItems.DYEDREAM_PICKAXE.get())
+                .add(ModItems.HELLFIRE_PICKAXE.get());
         tag(ItemTags.AXES)
                 .add(ModItems.MOLTEN_GOLD_AXE.get())
                 .add(ModItems.COPPER_AXE.get())

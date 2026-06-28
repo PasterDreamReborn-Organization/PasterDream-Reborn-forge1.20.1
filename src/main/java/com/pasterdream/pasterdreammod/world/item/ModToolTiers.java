@@ -15,7 +15,7 @@ public enum ModToolTiers implements Tier {
             () -> Ingredient.of(Items.COPPER_INGOT)),
 
     // 炙焰金
-    MOLTEN_GOLD(251, 14.0F, 2.0F, 1, 23,
+    MOLTEN_GOLD(251, 14.0F, 2.0F, 2, 23,
             () -> Ingredient.of(ModItems.MOLTEN_GOLD_INGOT.get())),
     // 钛金
     TITANIUM(1721, 9.0F, 3.5F, 4, 17,
@@ -32,8 +32,8 @@ public enum ModToolTiers implements Tier {
     MELT_DREAM(1728, 14.0F, 4.5F, 5, 12,
             () -> Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())),
 
-    // 炼狱
-    TRUE_MOLTEN_GOLD(1255, 16.0F, 3.0F, 1, 23,
+    // 狱炎
+    HELLFIRE(1255, 16.0F, 3.0F, 4, 23,
             () -> Ingredient.of(ModItems.MOLTEN_GOLD_INGOT.get())),
 
     // ==== 独立武器 ====

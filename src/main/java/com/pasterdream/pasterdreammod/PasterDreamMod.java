@@ -122,13 +122,14 @@ public class PasterDreamMod
         }
     }
 
-    // 染梦工具增强：持有染梦工具时伤害 +50%
+    // 染梦工具增强：持有染梦(染梦合金与融梦水晶)工具时伤害 +50%
     public static void onLivingHurt(LivingHurtEvent event) {
         if (event.getSource().getEntity() instanceof Player player
                 && player.hasEffect(ModEffects.DYEDREAM_UP_BUFF.get())) {
             ItemStack weapon = player.getMainHandItem();
             if (weapon.getItem() instanceof TieredItem tiered
-                    && tiered.getTier() == ModToolTiers.DYEDREAM) {
+                    && (tiered.getTier() == ModToolTiers.DYEDREAM
+                            || tiered.getTier() == ModToolTiers.MELT_DREAM)) {
                 event.setAmount(event.getAmount() * 1.5f);
             }
         }

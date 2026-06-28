@@ -143,6 +143,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.MOLTEN_GOLD_AXE);
         handheldItem(ModItems.MOLTEN_GOLD_SHOVEL);
         handheldItem(ModItems.MOLTEN_GOLD_HOE);
+        handheldItem(ModItems.HELLFIRE_SWORD);
+        handheldItem(ModItems.HELLFIRE_PICKAXE);
+        handheldItem(ModItems.INFERNO_SWORD);
+        handheldItem(ModItems.MELT_DREAM_PICKAXE);
+        handheldItem(ModItems.MELT_DREAM_AXE);
+        handheldItem(ModItems.MELT_DREAM_SHOVEL);
+        handheldItem(ModItems.MELT_DREAM_HOE);
         handheldItem(ModItems.TITANIUM_SWORD);
         handheldItem(ModItems.TITANIUM_PICKAXE);
         handheldItem(ModItems.TITANIUM_AXE);
@@ -154,7 +161,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.DYEDREAM_SHOVEL);
         handheldItem(ModItems.DYEDREAM_HOE);
         handheldItem(ModItems.DYEDREAM_HAMMER);
-        handheldItem(ModItems.SHARP_DYEDREAM_SWORD);
+        handheldItem(ModItems.SHARP_MELT_DREAM_SWORD);
         basicItem(ModItems.TITANIUM_UPGRADE.get());
         basicItem(ModItems.SCULK_UPGRADE.get());
         basicItem(ModItems.DYEDREAM_UPGRADE.get());
@@ -254,6 +261,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/oats"));
         withExistingParent(ModItems.RYE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/rye"));
+        withExistingParent(ModItems.POLISHED_CALCITE_STALICRIPE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/polished_calcite_stalicripe"));
+        withExistingParent(ModItems.SMALL_POLISHED_CALCITE_STALICRIPE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/small_polished_calcite_stalicripe"));
     }
 
     @Override

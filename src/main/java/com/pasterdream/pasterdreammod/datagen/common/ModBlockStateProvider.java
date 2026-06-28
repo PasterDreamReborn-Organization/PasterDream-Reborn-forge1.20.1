@@ -274,6 +274,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var rye = models().cross(ModBlocks.RYE.getId().getPath(), blockTexture(ModBlocks.RYE.get())).renderType("cutout");
         simpleBlock(ModBlocks.RYE.get(), rye);
 
+        var stalicripe = models().cross(ModBlocks.POLISHED_CALCITE_STALICRIPE.getId().getPath(), blockTexture(ModBlocks.POLISHED_CALCITE_STALICRIPE.get())).renderType("cutout");
+        simpleBlock(ModBlocks.POLISHED_CALCITE_STALICRIPE.get(), stalicripe);
+        var small_stalicripe = models().cross(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.getId().getPath(), blockTexture(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get())).renderType("cutout");
+        simpleBlock(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), small_stalicripe);
+
 
         //植株方块
         generateTwoStageCrop(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "dyedream_corolla_crop");

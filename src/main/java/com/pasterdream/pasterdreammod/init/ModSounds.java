@@ -13,12 +13,15 @@ public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUNDS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, PasterDreamMod.MOD_ID);
 
-    public static final RegistryObject<SoundEvent> SHARP_DYEDREAM_SWORD_USE =
-            SOUNDS.register("sharp_dyedream_sword_use", () -> SoundEvent.createVariableRangeEvent(
-                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sharp_dyedream_sword_use")));
-    public static final RegistryObject<SoundEvent> SHARP_DYEDREAM_SWORD_HIT =
-            SOUNDS.register("sharp_dyedream_sword_hit", () -> SoundEvent.createVariableRangeEvent(
-                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sharp_dyedream_sword_hit")));
+    public static final RegistryObject<SoundEvent> SHARP_MELT_DREAM_SWORD_USE =
+            SOUNDS.register("sharp_melt_dream_sword_use", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sharp_melt_dream_sword_use")));
+    public static final RegistryObject<SoundEvent> SHARP_MELT_DREAM_SWORD_HIT =
+            SOUNDS.register("sharp_melt_dream_sword_hit", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sharp_melt_dream_sword_hit")));
+    public static final RegistryObject<SoundEvent> INFERNO_SWORD_SKILL =
+            SOUNDS.register("inferno_sword_skill", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "inferno_sword_skill")));
 
     public static void register(IEventBus eventBus) {
         SOUNDS.register(eventBus);
