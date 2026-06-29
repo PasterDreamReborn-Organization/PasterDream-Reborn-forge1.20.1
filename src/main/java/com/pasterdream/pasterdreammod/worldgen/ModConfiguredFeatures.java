@@ -41,10 +41,15 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_ICE_PILLAR =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_pillar"));
+    // ===== 团块 =====
     // 冰晶石团块
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_ICESTONE_BLOBS =
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_ICE_STONE_BLOBS =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
-                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_icestone_blobs"));
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_stone_blobs"));
+    // 方解石团块 — 原作 ground_feature_dyedream_15
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_BOULDER =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_boulder"));
     // 茎草
     public static final ResourceKey<ConfiguredFeature<?, ?>> STEM_GRASS_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -73,7 +78,6 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DREAMING_LOTUS_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dreaming_lotus_patch"));
-
     public static final ResourceKey<ConfiguredFeature<?, ?>> GOLDENROD_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "goldenrod_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> FERRARIA_CRISPA_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ferraria_crispa_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> MALVA_SINENSIS_CAVAN_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "malva_sinensis_cavan_patch"));
@@ -159,7 +163,7 @@ public class ModConfiguredFeatures {
                         false
                 )));
 
-        context.register(DYEDREAM_ICESTONE_BLOBS, new ConfiguredFeature<>(Feature.ORE,
+        context.register(DYEDREAM_ICE_STONE_BLOBS, new ConfiguredFeature<>(Feature.ORE,
                 new OreConfiguration(
                         List.of(OreConfiguration.target(
                                 new BlockMatchTest(Blocks.CALCITE),
@@ -168,6 +172,9 @@ public class ModConfiguredFeatures {
                         9,
                         0f
                 )));
+        // 方解石团块 — 原作 ground_feature_dyedream_15
+        context.register(CALCITE_BOULDER, new ConfiguredFeature<>(Feature.FOREST_ROCK,
+                new BlockStateConfiguration(Blocks.CALCITE.defaultBlockState())));
 
         // 茎草 — 原作 grass_3（分散生成）
         // 三个参数是：尝试生成次数，水平扩散半径，垂直扩散半径
@@ -244,12 +251,13 @@ public class ModConfiguredFeatures {
         context.register(DYEDREAM_QUARTZ_ORE, new ConfiguredFeature<>(Feature.ORE,
                 new OreConfiguration(oreTargets(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), TARGET_CALCITE_AND_STONES), 28, 0f)));
 
-        // ===== 方解石笋 =====
+        // ===== 方解石笋（同草类分散生成） =====
         context.register(CALCITE_STALICRIPE, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(16, 4, 4,
+                new RandomPatchConfiguration(32, 16, 16,
                         simpleBlockInAir(BlockStateProvider.simple(ModBlocks.POLISHED_CALCITE_STALICRIPE.get())))));
         context.register(SMALL_CALCITE_STALICRIPE, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(16, 4, 4,
+                new RandomPatchConfiguration(32, 16, 16,
                         simpleBlockInAir(BlockStateProvider.simple(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get())))));
+
     }
 }

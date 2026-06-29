@@ -24,9 +24,12 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_ICE_PILLAR =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_pillar"));
-    public static final ResourceKey<PlacedFeature> DYEDREAM_ICESTONE_BLOBS =
+    public static final ResourceKey<PlacedFeature> DYEDREAM_ICE_STONE_BLOBS =
             ResourceKey.create(Registries.PLACED_FEATURE,
-                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_icestone_blobs"));
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_stone_blobs"));
+    public static final ResourceKey<PlacedFeature> CALCITE_BOULDER =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_boulder"));
     public static final ResourceKey<PlacedFeature> STEM_GRASS_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stem_grass_patch"));
@@ -110,10 +113,15 @@ public class ModPlacedFeatures {
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
 
         // 冰晶岩团块 — 地下 y=-64~64
-        context.register(DYEDREAM_ICESTONE_BLOBS, new PlacedFeature(
-                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_ICESTONE_BLOBS),
+        context.register(DYEDREAM_ICE_STONE_BLOBS, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_ICE_STONE_BLOBS),
                 List.of(CountPlacement.of(20), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
+        // 方解石团块 — 原作 ground_feature_dyedream_15: count=2, MOTION_BLOCKING
+        context.register(CALCITE_BOULDER, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_BOULDER),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
 
         // 茎草 — WORLD_SURFACE_WG
         context.register(STEM_GRASS_PATCH, new PlacedFeature(
@@ -188,33 +196,33 @@ public class ModPlacedFeatures {
                 List.of(CountPlacement.of(7), InSquarePlacement.spread(),
                         HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
 
-        // 琥珀糖矿 — count=10, y=-60~200
+        // 琥珀糖矿 — count=10, y=-60~320（含团块层）
         context.register(AMBER_CANDY_ORE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.AMBER_CANDY_ORE),
                 List.of(CountPlacement.of(10), InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(200)))));
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
 
-        // 染梦粉尘矿 — count=5, y=-60~200
+        // 染梦粉尘矿 — count=5, y=-60~320（含团块层）
         context.register(DYEDREAM_DUST_ORE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_DUST_ORE),
                 List.of(CountPlacement.of(5), InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(200)))));
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
 
-        // 染梦石英矿 — count=18, y=-60~60
+        // 染梦石英矿 — count=18, y=-60~320（含团块层）
         context.register(DYEDREAM_QUARTZ_ORE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_QUARTZ_ORE),
                 List.of(CountPlacement.of(18), InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(200)))));
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
 
-        // 方解石笋
+        // 方解石笋(大) — 不限制高度
         context.register(CALCITE_STALICRIPE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.CALCITE_STALICRIPE),
-                List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
-        // 方解石笋
+                List.of(CountPlacement.of(20), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
+        // 方解石笋(小) — 不限制高度
         context.register(SMALL_CALCITE_STALICRIPE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.SMALL_CALCITE_STALICRIPE),
-                List.of(RarityFilter.onAverageOnceEvery(256), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                List.of(CountPlacement.of(20), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
     }
 }
