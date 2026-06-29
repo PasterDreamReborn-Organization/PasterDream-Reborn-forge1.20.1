@@ -103,6 +103,11 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> WHITE_COROLLA_CROP_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "white_corolla_crop_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> COTTON_CROP_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cotton_crop_patch"));
 
+    //原版维度矿石
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DEEPSLATE_TITANIUM_ORE_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "deepslate_titanium_ore_patch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MOLTEN_GOLD_ORE_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "molten_gold_ore_patch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SOUL_ORE_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "soul_ore_patch"));
+
     // ===== 染梦维度矿石 =====
     // 钛矿
     public static final ResourceKey<ConfiguredFeature<?, ?>> TITANIUM_ORE =
@@ -148,6 +153,15 @@ public class ModConfiguredFeatures {
             new BlockMatchTest(Blocks.DIORITE),
             new BlockMatchTest(Blocks.ANDESITE)
     );
+
+    //深层钛矿石替换：深板岩，花岗岩，闪长岩，安山岩
+    private static final List<RuleTest> DEEPSLATE_TITANIUM_ORE_CAN_REPLACE = List.of(new BlockMatchTest(Blocks.DEEPSLATE), new BlockMatchTest(Blocks.GRANITE), new BlockMatchTest(Blocks.DIORITE), new BlockMatchTest(Blocks.ANDESITE));
+
+    //炙焰金矿石替换：下界岩
+    private static final List<RuleTest> MOLTEN_GOLD_ORE_CAN_REPLACE = List.of(new BlockMatchTest(Blocks.NETHERRACK));
+
+    //灵魂矿土替换：灵魂土
+    private static final List<RuleTest> SOUL_ORE_CAN_REPLACE = List.of(new BlockMatchTest(Blocks.SOUL_SOIL));
 
     private static List<OreConfiguration.TargetBlockState> oreTargets(Block oreBlock, List<RuleTest> ruleTests) {
         return ruleTests.stream()
@@ -267,6 +281,16 @@ public class ModConfiguredFeatures {
 
         //棉花植株
         context.register(COTTON_CROP_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(12, 6, 3, simpleBlockInAir(BlockStateProvider.simple(ModBlocks.COTTON_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1))))));
+
+        //深层钛矿石
+        context.register(DEEPSLATE_TITANIUM_ORE_PATCH, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(oreTargets(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), DEEPSLATE_TITANIUM_ORE_CAN_REPLACE), 8, 0f)));
+
+        //炙焰金矿石
+        context.register(MOLTEN_GOLD_ORE_PATCH, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(oreTargets(ModBlocks.MOLTEN_GOLD_ORE.get(), MOLTEN_GOLD_ORE_CAN_REPLACE), 16, 0f)));
+
+        //灵魂矿土
+        context.register(SOUL_ORE_PATCH, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(oreTargets(ModBlocks.SOUL_ORE.get(), SOUL_ORE_CAN_REPLACE), 16, 0f)));
+
         // ===== 染梦维度矿石 =====
         // 钛矿 — 原作 size=3, 钻石分布
         context.register(TITANIUM_ORE, new ConfiguredFeature<>(Feature.ORE,
