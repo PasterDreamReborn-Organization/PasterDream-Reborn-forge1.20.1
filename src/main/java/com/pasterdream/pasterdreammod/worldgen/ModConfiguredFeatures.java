@@ -41,6 +41,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_ICE_PILLAR =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_pillar"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_PACKED_ICE_PILLAR =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_packed_ice_pillar"));
     // ===== 团块 =====
     // 冰晶石团块
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_ICE_STONE_BLOBS =
@@ -225,6 +228,18 @@ public class ModConfiguredFeatures {
                         BlockPredicate.matchesBlocks(Blocks.AIR),
                         false
                 )));
+
+        context.register(DYEDREAM_PACKED_ICE_PILLAR, new ConfiguredFeature<>(Feature.BLOCK_COLUMN,
+                new BlockColumnConfiguration(
+                        List.of(new BlockColumnConfiguration.Layer(
+                                UniformInt.of(4, 11),
+                                BlockStateProvider.simple(ModBlocks.DYEDREAM_PACKED_ICE.get())
+                        )),
+                        Direction.UP,
+                        BlockPredicate.matchesBlocks(Blocks.AIR),
+                        false
+                )));
+
 
         context.register(DYEDREAM_ICE_STONE_BLOBS, new ConfiguredFeature<>(Feature.ORE,
                 new OreConfiguration(

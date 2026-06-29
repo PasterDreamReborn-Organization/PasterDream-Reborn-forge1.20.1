@@ -26,6 +26,9 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_ICE_PILLAR =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_pillar"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_PACKED_ICE_PILLAR =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_packed_ice_pillar"));
     public static final ResourceKey<PlacedFeature> DYEDREAM_ICE_STONE_BLOBS =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_stone_blobs"));
@@ -167,6 +170,11 @@ public class ModPlacedFeatures {
         context.register(DYEDREAM_ICE_PILLAR, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_ICE_PILLAR),
                 List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
+
+        context.register(DYEDREAM_PACKED_ICE_PILLAR, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_PACKED_ICE_PILLAR),
+                List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
 
         // 冰晶岩团块 — 地下 y=-64~64
