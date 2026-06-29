@@ -131,6 +131,14 @@ public class ModPlacedFeatures {
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_calcite_stalicripe"));
 
+    // ===== 染梦冻洋 — 自定义冰山 placed feature（比原版更高频率） =====
+    public static final ResourceKey<PlacedFeature> DYEDREAM_ICEBERG_PACKED =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_iceberg_packed"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_ICEBERG_BLUE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_iceberg_blue"));
+
     //原版维度花草
     public static final ResourceKey<PlacedFeature> GOLDENROD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "goldenrod_patch"));
     public static final ResourceKey<PlacedFeature> FERRARIA_CRISPA_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ferraria_crispa_patch"));
@@ -184,6 +192,23 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_PACKED_ICE_PILLAR),
                 List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
+
+        // ===== 染梦冻洋 — 自定义冰山 placed feature =====
+        // 引用原版 configured feature，但使用更高的生成频率（原版 packed=1/16, blue=1/32 区块）
+        ResourceKey<ConfiguredFeature<?, ?>> VANILLA_ICEBERG_PACKED_CF =
+                ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.withDefaultNamespace("iceberg_packed"));
+        ResourceKey<ConfiguredFeature<?, ?>> VANILLA_ICEBERG_BLUE_CF =
+                ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.withDefaultNamespace("iceberg_blue"));
+        // packed 冰山：每 8 个区块生成 1 个（原版为 1/16）
+        context.register(DYEDREAM_ICEBERG_PACKED, new PlacedFeature(
+                cf.getOrThrow(VANILLA_ICEBERG_PACKED_CF),
+                List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
+        // blue 冰山：每 16 个区块生成 1 个（原版为 1/32）
+        context.register(DYEDREAM_ICEBERG_BLUE, new PlacedFeature(
+                cf.getOrThrow(VANILLA_ICEBERG_BLUE_CF),
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
 
         // 冰晶岩团块 — 地下 y=-64~64
         context.register(DYEDREAM_ICE_STONE_BLOBS, new PlacedFeature(

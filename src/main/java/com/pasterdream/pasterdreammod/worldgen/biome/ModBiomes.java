@@ -35,10 +35,6 @@ public class ModBiomes {
 
     private static final ResourceKey<PlacedFeature> FREEZE_TOP_LAYER =
             ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.withDefaultNamespace("freeze_top_layer"));
-    private static final ResourceKey<PlacedFeature> ICEBERG_PACKED =
-            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.withDefaultNamespace("iceberg_packed"));
-    private static final ResourceKey<PlacedFeature> ICEBERG_BLUE =
-            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.withDefaultNamespace("iceberg_blue"));
 
     public static void bootstrap(BootstapContext<Biome> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -288,9 +284,9 @@ public class ModBiomes {
                         .build())
                 .generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, carvers)
                         .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS,
-                                ICEBERG_PACKED)
+                                ModPlacedFeatures.DYEDREAM_ICEBERG_PACKED)
                         .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS,
-                                ICEBERG_BLUE)
+                                ModPlacedFeatures.DYEDREAM_ICEBERG_BLUE)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.DYEDREAM_MOSS_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
