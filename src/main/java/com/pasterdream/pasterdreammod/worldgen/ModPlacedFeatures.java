@@ -30,6 +30,18 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> CALCITE_BOULDER =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_boulder"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_ICE_BLOBS =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_blobs"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_PACKED_ICE_BLOBS =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_packed_ice_blobs"));
+    public static final ResourceKey<PlacedFeature> VANILLA_ICE_BLOBS =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "vanilla_ice_blobs"));
+    public static final ResourceKey<PlacedFeature> VANILLA_PACKED_ICE_BLOBS =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "vanilla_packed_ice_blobs"));
     public static final ResourceKey<PlacedFeature> STEM_GRASS_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stem_grass_patch"));
@@ -126,7 +138,27 @@ public class ModPlacedFeatures {
         // 冰晶岩团块 — 地下 y=-64~64
         context.register(DYEDREAM_ICE_STONE_BLOBS, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_ICE_STONE_BLOBS),
-                List.of(CountPlacement.of(20), InSquarePlacement.spread(),
+                List.of(CountPlacement.of(12), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
+        // 染梦冰团块 — y=-64~64
+        context.register(DYEDREAM_ICE_BLOBS, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_ICE_BLOBS),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
+        // 染梦浮冰团块 — y=-64~64
+        context.register(DYEDREAM_PACKED_ICE_BLOBS, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_PACKED_ICE_BLOBS),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
+        // 原版冰团块 — y=-64~64
+        context.register(VANILLA_ICE_BLOBS, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.VANILLA_ICE_BLOBS),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
+        // 原版浮冰团块 — y=-64~64
+        context.register(VANILLA_PACKED_ICE_BLOBS, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.VANILLA_PACKED_ICE_BLOBS),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
         // 方解石团块 — 原作 ground_feature_dyedream_15: count=2, MOTION_BLOCKING
         context.register(CALCITE_BOULDER, new PlacedFeature(
