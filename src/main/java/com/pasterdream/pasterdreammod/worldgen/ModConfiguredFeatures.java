@@ -66,8 +66,17 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> VANILLA_PACKED_ICE_BLOBS =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "vanilla_packed_ice_blobs"));
-    // ===== 洞穴晶芽 =====
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_MOSS_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_moss_patch"));
+    // ===== 云团柱 =====
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CLOUD_PILLAR_SMALL = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cloud_pillar_small"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CLOUD_PILLAR_LARGE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cloud_pillar_large"));
+    // ===== 水下装饰 =====
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CORAL_TREE_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "coral_tree_patch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CORAL_CLAW_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "coral_claw_patch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CORAL_MUSHROOM_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "coral_mushroom_patch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SEA_PICKLE_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sea_pickle_patch"));
+    // ===== 洞穴晶芽 =====
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_DYEDREAM_BUD_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_dyedream_bud_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> MEDIUM_DYEDREAM_BUD_PATCH =
@@ -393,6 +402,26 @@ public class ModConfiguredFeatures {
         context.register(DYEDREAM_MOSS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(48, 8, 8,
                         simpleBlockInAir(BlockStateProvider.simple(ModBlocks.DYEDREAM_MOSS.get())))));
+
+        // ===== 云团柱 =====
+        // 小云团柱 — 原作 ground_feature_dyedream_2: tries=64, xz=2, y=24
+        context.register(CLOUD_PILLAR_SMALL, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(64, 2, 24,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.CLOUD.get())))));
+        // 大云团柱 — 原作 ground_feature_dyedream_4: tries=256, xz=5, y=48
+        context.register(CLOUD_PILLAR_LARGE, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(256, 5, 48,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.CLOUD.get())))));
+
+        // ===== 水下装饰 =====
+        context.register(CORAL_TREE_PATCH, new ConfiguredFeature<>(Feature.CORAL_TREE,
+                NoneFeatureConfiguration.INSTANCE));
+        context.register(CORAL_CLAW_PATCH, new ConfiguredFeature<>(Feature.CORAL_CLAW,
+                NoneFeatureConfiguration.INSTANCE));
+        context.register(CORAL_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.CORAL_MUSHROOM,
+                NoneFeatureConfiguration.INSTANCE));
+        context.register(SEA_PICKLE_PATCH, new ConfiguredFeature<>(Feature.SEA_PICKLE,
+                new CountConfiguration(UniformInt.of(1, 4))));
 
         // ===== 洞穴晶芽 =====
         context.register(SMALL_DYEDREAM_BUD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,

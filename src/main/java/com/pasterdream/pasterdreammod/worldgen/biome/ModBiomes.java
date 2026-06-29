@@ -93,6 +93,14 @@ public class ModBiomes {
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.DYEDREAM_MOSS_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CORAL_TREE_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CORAL_CLAW_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CORAL_MUSHROOM_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.SEA_PICKLE_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.CALCITE_BOULDER)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                                 ModPlacedFeatures.DYEDREAM_ICE_BLOBS)
@@ -144,6 +152,14 @@ public class ModBiomes {
                                 ModPlacedFeatures.SINGULARITY_FERN_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.DYEDREAM_MOSS_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CORAL_TREE_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CORAL_CLAW_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CORAL_MUSHROOM_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.SEA_PICKLE_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.CALCITE_BOULDER)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
@@ -206,7 +222,19 @@ public class ModBiomes {
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.DYEDREAM_MOSS_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CORAL_TREE_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CORAL_CLAW_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CORAL_MUSHROOM_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.SEA_PICKLE_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.CALCITE_BOULDER)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CLOUD_PILLAR_SMALL)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CLOUD_PILLAR_LARGE)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                                 ModPlacedFeatures.DYEDREAM_ICE_STONE_BLOBS)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
@@ -263,6 +291,14 @@ public class ModBiomes {
                                 ICEBERG_BLUE)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.DYEDREAM_MOSS_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CORAL_TREE_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CORAL_CLAW_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.CORAL_MUSHROOM_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.SEA_PICKLE_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.CALCITE_BOULDER)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,

@@ -59,6 +59,24 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> CLOUD_CROP_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cloud_crop_patch"));
+    public static final ResourceKey<PlacedFeature> CLOUD_PILLAR_SMALL =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cloud_pillar_small"));
+    public static final ResourceKey<PlacedFeature> CLOUD_PILLAR_LARGE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "cloud_pillar_large"));
+    public static final ResourceKey<PlacedFeature> CORAL_TREE_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "coral_tree_patch"));
+    public static final ResourceKey<PlacedFeature> CORAL_CLAW_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "coral_claw_patch"));
+    public static final ResourceKey<PlacedFeature> CORAL_MUSHROOM_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "coral_mushroom_patch"));
+    public static final ResourceKey<PlacedFeature> SEA_PICKLE_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sea_pickle_patch"));
     public static final ResourceKey<PlacedFeature> DYEDREAM_LILY_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_lily_patch"));
@@ -136,7 +154,8 @@ public class ModPlacedFeatures {
         // RarityFilter.onAverageOnceEvery(16)是平均每16个区块生成1个
         // HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
         // 表示生成的Y轴范围
-
+        // 可以用SurfaceWaterDepthFilter.forMaxDepth(0)避免在水上生成
+        
         // 染梦树 — MOTION_BLOCKING 高度图 + would_survive
         context.register(DYEDREAM_TREE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_TREE),
@@ -179,6 +198,7 @@ public class ModPlacedFeatures {
         context.register(CALCITE_BOULDER, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.CALCITE_BOULDER),
                 List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(),
+                        // 避免水上生成(水深不超过0)
                         SurfaceWaterDepthFilter.forMaxDepth(0),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
@@ -213,6 +233,34 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.CLOUD_CROP_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        // 云团柱 — SP, rarity=4, MOTION_BLOCKING
+        context.register(CLOUD_PILLAR_SMALL, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CLOUD_PILLAR_SMALL),
+                List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
+        context.register(CLOUD_PILLAR_LARGE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CLOUD_PILLAR_LARGE),
+                List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
+
+        // ===== 水下装饰（OCEAN_FLOOR 放置于海床） =====
+        context.register(CORAL_TREE_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CORAL_TREE_PATCH),
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
+        context.register(CORAL_CLAW_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CORAL_CLAW_PATCH),
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
+        context.register(CORAL_MUSHROOM_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CORAL_MUSHROOM_PATCH),
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
+        context.register(SEA_PICKLE_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SEA_PICKLE_PATCH),
+                List.of(CountPlacement.of(4), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
 
         // 染梦铃兰
         context.register(DYEDREAM_LILY_PATCH, new PlacedFeature(
