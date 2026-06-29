@@ -93,6 +93,10 @@ public class ModBiomes {
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.CALCITE_BOULDER)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
+                                ModPlacedFeatures.DYEDREAM_ICE_BLOBS)
+                        .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
+                                ModPlacedFeatures.DYEDREAM_PACKED_ICE_BLOBS)
+                        .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                                 ModPlacedFeatures.TITANIUM_ORE)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                                 ModPlacedFeatures.AMBER_CANDY_ORE)
@@ -132,6 +136,10 @@ public class ModBiomes {
                                 ModPlacedFeatures.SINGULARITY_FERN_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.CALCITE_BOULDER)
+                        .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
+                                ModPlacedFeatures.DYEDREAM_ICE_BLOBS)
+                        .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
+                                ModPlacedFeatures.DYEDREAM_PACKED_ICE_BLOBS)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                                 ModPlacedFeatures.TITANIUM_ORE)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
@@ -181,8 +189,12 @@ public class ModBiomes {
                                 ModPlacedFeatures.SINGULARITY_FERN_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.CALCITE_BOULDER)
-                        .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION,
+                        .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                                 ModPlacedFeatures.DYEDREAM_ICE_STONE_BLOBS)
+                        .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
+                                ModPlacedFeatures.VANILLA_ICE_BLOBS)
+                        .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
+                                ModPlacedFeatures.VANILLA_PACKED_ICE_BLOBS)
                         .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION,
                                 FREEZE_TOP_LAYER)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
@@ -225,8 +237,12 @@ public class ModBiomes {
                                 ICEBERG_BLUE)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.CALCITE_BOULDER)
-                        .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION,
+                        .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                                 ModPlacedFeatures.DYEDREAM_ICE_STONE_BLOBS)
+                        .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
+                                ModPlacedFeatures.VANILLA_ICE_BLOBS)
+                        .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
+                                ModPlacedFeatures.VANILLA_PACKED_ICE_BLOBS)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                                 ModPlacedFeatures.TITANIUM_ORE)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,

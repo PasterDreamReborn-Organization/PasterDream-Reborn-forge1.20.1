@@ -50,6 +50,22 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_BOULDER =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_boulder"));
+    // 染梦冰团块
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_ICE_BLOBS =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_blobs"));
+    // 染梦浮冰团块
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_PACKED_ICE_BLOBS =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_packed_ice_blobs"));
+    // 原版冰团块
+    public static final ResourceKey<ConfiguredFeature<?, ?>> VANILLA_ICE_BLOBS =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "vanilla_ice_blobs"));
+    // 原版浮冰团块
+    public static final ResourceKey<ConfiguredFeature<?, ?>> VANILLA_PACKED_ICE_BLOBS =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "vanilla_packed_ice_blobs"));
 
     // ==== 染梦维度花草 =====
     // 茎草
@@ -197,8 +213,48 @@ public class ModConfiguredFeatures {
                                 new BlockMatchTest(Blocks.CALCITE),
                                 ModBlocks.ICE_STONE.get().defaultBlockState()
                         )),
-                        9,
-                        0f
+                        64,
+                        0.5f
+                )));
+        // 染梦冰团块 — size=60, PL + MM
+        context.register(DYEDREAM_ICE_BLOBS, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(
+                        List.of(OreConfiguration.target(
+                                new BlockMatchTest(Blocks.CALCITE),
+                                ModBlocks.DYEDREAM_ICE.get().defaultBlockState()
+                        )),
+                        64,
+                        0.5f
+                )));
+        // 染梦浮冰团块 — size=6, PL + MM
+        context.register(DYEDREAM_PACKED_ICE_BLOBS, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(
+                        List.of(OreConfiguration.target(
+                                new BlockMatchTest(Blocks.CALCITE),
+                                ModBlocks.DYEDREAM_PACKED_ICE.get().defaultBlockState()
+                        )),
+                        64,
+                        0.5f
+                )));
+        // 原版冰团块 — size=6, SP + FO
+        context.register(VANILLA_ICE_BLOBS, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(
+                        List.of(OreConfiguration.target(
+                                new BlockMatchTest(Blocks.CALCITE),
+                                Blocks.ICE.defaultBlockState()
+                        )),
+                        64,
+                        0.5f
+                )));
+        // 原版浮冰团块 — size=6, SP + FO
+        context.register(VANILLA_PACKED_ICE_BLOBS, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(
+                        List.of(OreConfiguration.target(
+                                new BlockMatchTest(Blocks.CALCITE),
+                                Blocks.PACKED_ICE.defaultBlockState()
+                        )),
+                        64,
+                        0.5f
                 )));
         // 方解石团块 — 原作 ground_feature_dyedream_15
         context.register(CALCITE_BOULDER, new ConfiguredFeature<>(Feature.FOREST_ROCK,
@@ -241,7 +297,7 @@ public class ModConfiguredFeatures {
 
         // 冶梦莲 - 原作 flower_11
         context.register(DREAMING_LOTUS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(25, 5, 5,
+                new RandomPatchConfiguration(16, 4, 4,
                         simpleBlockInAir(BlockStateProvider.simple(ModBlocks.DREAMING_LOTUS.get())))));
 
         //雪绒花 — 原作 flower_16

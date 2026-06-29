@@ -32,6 +32,18 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> CALCITE_BOULDER =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_boulder"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_ICE_BLOBS =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_blobs"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_PACKED_ICE_BLOBS =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_packed_ice_blobs"));
+    public static final ResourceKey<PlacedFeature> VANILLA_ICE_BLOBS =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "vanilla_ice_blobs"));
+    public static final ResourceKey<PlacedFeature> VANILLA_PACKED_ICE_BLOBS =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "vanilla_packed_ice_blobs"));
     public static final ResourceKey<PlacedFeature> STEM_GRASS_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stem_grass_patch"));
@@ -116,6 +128,7 @@ public class ModPlacedFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> cf = context.lookup(Registries.CONFIGURED_FEATURE);
 
         // CountPlacement.of()是在每个区块内尝试生成多少个
+        // RarityFilter.onAverageOnceEvery(16)是平均每16个区块生成1个
         // HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
         // 表示生成的Y轴范围
 
@@ -129,18 +142,38 @@ public class ModPlacedFeatures {
         // 染梦冰柱 — MOTION_BLOCKING 高度图
         context.register(DYEDREAM_ICE_PILLAR, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_ICE_PILLAR),
-                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
 
         // 冰晶岩团块 — 地下 y=-64~64
         context.register(DYEDREAM_ICE_STONE_BLOBS, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_ICE_STONE_BLOBS),
-                List.of(CountPlacement.of(20), InSquarePlacement.spread(),
+                List.of(CountPlacement.of(12), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
+        // 染梦冰团块 — y=-64~64
+        context.register(DYEDREAM_ICE_BLOBS, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_ICE_BLOBS),
+                List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
+        // 染梦浮冰团块 — y=-64~64
+        context.register(DYEDREAM_PACKED_ICE_BLOBS, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_PACKED_ICE_BLOBS),
+                List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
+        // 原版冰团块 — y=-64~64
+        context.register(VANILLA_ICE_BLOBS, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.VANILLA_ICE_BLOBS),
+                List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
+        // 原版浮冰团块 — y=-64~64
+        context.register(VANILLA_PACKED_ICE_BLOBS, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.VANILLA_PACKED_ICE_BLOBS),
+                List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
         // 方解石团块 — 原作 ground_feature_dyedream_15: count=2, MOTION_BLOCKING
         context.register(CALCITE_BOULDER, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.CALCITE_BOULDER),
-                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
 
 
@@ -184,7 +217,7 @@ public class ModPlacedFeatures {
         //冶梦莲
         context.register(DREAMING_LOTUS_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DREAMING_LOTUS_PATCH),
-                List.of(RarityFilter.onAverageOnceEvery(1), InSquarePlacement.spread(),
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
         //雪绒花 — 原作 flower_16: count=5, rarity=32
