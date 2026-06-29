@@ -381,6 +381,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("tooltip.pasterdream.wraponWorkshop", "§b精铸工坊");
 
+        add("biome.pasterdream.dyedream_plains","染梦平原");
+        add("biome.pasterdream.dyedream_mushroom_mountains","粉顶菇山地");
+        add("biome.pasterdream.dyedream_snowy_plains","染梦雪原");
+        add("biome.pasterdream.dyedream_frozen_ocean","染梦冻洋");
+
         add("book.pasterdream.花园解密-迷梦冶梦莲_第1页", "         花园解密\n\n西北的风吹过叮铃作响\n\n东北的云彩遮住了暖阳\n\n西南的光芒婉流明夕阳\n\n东南的亭亭小伞生其旁\n\n四周的矮草依花微风岸\n\n得以迷醉那冶梦的花莲");
         add("book.pasterdream.花园解密-凛冽雪绒花_第1页", "         花园解密\n\n北方的大树抵挡了刺骨寒风\n\n南方的花朵染上了梦的颜色\n\n西方的灯笼代替了落日暖阳\n\n东方的草从见证了时间流淌\n\n这座花园的园丁们\n是由雪组成的小人\n和会飞的蓝色精灵\n\n");
         add("book.pasterdream.花园解密-九尾狐_第1页", "         花园解密\n\n朝霞如梦似幻，熠熠生辉\n\n漂浮着的水晶花盆，高大的莲花燃烧着灵魂色的火焰\n\n浮空岛屿之上的水池中央\n一座九尾狐狸的雕像\n\n满足她的味蕾\n即可完成你许下的小小愿望\n\n发出金色光芒的甜蜜浆果\n");

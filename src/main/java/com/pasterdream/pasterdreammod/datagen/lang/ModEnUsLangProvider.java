@@ -372,5 +372,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.notHaveWingsBirdHaveSpreadWingsDreamToo", "§aNot Have Wings Bird Have Spread Wings Dream Too");
 
         add("tooltip.pasterdream.wraponWorkshop", "§bWeapon Work Shop");
+
+        add("biome.pasterdream.dyedream_plains","Dyedream Plains");
+        add("biome.pasterdream.dyedream_mushroom_mountains","Dyedream Mushroom Mountains");
+        add("biome.pasterdream.dyedream_snowy_plains","Dyedream Snowy Plains");
+        add("biome.pasterdream.dyedream_frozen_ocean","Dyedream Frozen Ocean");
     }
 }
