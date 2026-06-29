@@ -146,10 +146,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.EDELWEISS.get())
                 .add(ModBlocks.NIPPY_EDELWEISS.get())
                 .add(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get())
-                .add(ModBlocks.LINHT_FLOWER.get());
+                .add(ModBlocks.LINHT_FLOWER.get())
+                .add(ModBlocks.DYEDREAM_LILY_PAD.get())
+                .add(ModBlocks.DYEDREAM_LOTUS.get());
 
-
-
+        tag(BlockTags.SMALL_FLOWERS)
+                .add(ModBlocks.DYEDREAM_LILY_PAD.get())
+                .add(ModBlocks.DYEDREAM_LOTUS.get());
 
         // 需要石头工具挖掘
         tag(BlockTags.NEEDS_STONE_TOOL)

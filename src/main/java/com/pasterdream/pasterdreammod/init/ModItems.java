@@ -709,6 +709,11 @@ public class ModItems {
     public static final RegistryObject<Item> NIPPY_EDELWEISS = ITEMS.register("nippy_edelweiss",
             () -> new BlockItem(ModBlocks.NIPPY_EDELWEISS.get(), new Item.Properties()));//f17
 
+    public static final RegistryObject<Item> DYEDREAM_LILY_PAD = ITEMS.register("dyedream_lily_pad",
+            () -> new PlaceOnWaterBlockItem(ModBlocks.DYEDREAM_LILY_PAD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_LOTUS = ITEMS.register("dyedream_lotus",
+            () -> new PlaceOnWaterBlockItem(ModBlocks.DYEDREAM_LOTUS.get(), new Item.Properties()));
+
     // =====植物系列（草） =====
     public static final RegistryObject<Item> DYEDREAM_MOSS = ITEMS.register("dyedream_moss",
             () -> new BlockItem(ModBlocks.DYEDREAM_MOSS.get(), new Item.Properties()));

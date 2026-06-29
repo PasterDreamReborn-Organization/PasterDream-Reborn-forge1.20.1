@@ -26,6 +26,9 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_ICE_PILLAR =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_pillar"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_PACKED_ICE_PILLAR =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_packed_ice_pillar"));
     public static final ResourceKey<PlacedFeature> DYEDREAM_ICE_STONE_BLOBS =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_stone_blobs"));
@@ -112,6 +115,14 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_QUARTZ_ORE =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_quartz_ore"));
+    // ===== 染梦睡莲 / 染梦莲花 =====
+    public static final ResourceKey<PlacedFeature> DYEDREAM_LILY_PAD_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_lily_pad"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_LOTUS_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_lotus"));
+
     // ===== 方解石笋 =====
     public static final ResourceKey<PlacedFeature> CALCITE_STALICRIPE =
             ResourceKey.create(Registries.PLACED_FEATURE,
@@ -167,6 +178,11 @@ public class ModPlacedFeatures {
         context.register(DYEDREAM_ICE_PILLAR, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_ICE_PILLAR),
                 List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
+
+        context.register(DYEDREAM_PACKED_ICE_PILLAR, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_PACKED_ICE_PILLAR),
+                List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
 
         // 冰晶岩团块 — 地下 y=-64~64
@@ -347,6 +363,18 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_QUARTZ_ORE),
                 List.of(CountPlacement.of(18), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
+
+        // 染梦睡莲 — 原作 dyedream_lily_pad: count=7, rarity=32
+        context.register(DYEDREAM_LILY_PAD_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_LILY_PAD_PATCH),
+                List.of(CountPlacement.of(7), RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        // 染梦莲花 — 原作 dyedream_lotus: count=6, rarity=32
+        context.register(DYEDREAM_LOTUS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_LOTUS_PATCH),
+                List.of(CountPlacement.of(6), RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
         // 方解石笋(大) — 不限制高度
         context.register(CALCITE_STALICRIPE, new PlacedFeature(

@@ -1,0 +1,9 @@
+{
+  "parent": "pasterdream:custom/dyedream_lotus",
+  "textures": {
+    "all": "pasterdream:block/dyedream_lotus",
+    "particle": "pasterdream:block/dyedream_lotus",
+    "0": "pasterdream:block/dyedream_lotus"
+  },
+  "render_type": "cutout"
+}

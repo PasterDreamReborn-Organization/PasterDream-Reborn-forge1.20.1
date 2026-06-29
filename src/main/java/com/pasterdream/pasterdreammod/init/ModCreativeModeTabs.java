@@ -330,6 +330,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RYE.get());
                         output.accept(ModItems.POLISHED_CALCITE_STALICRIPE.get());
                         output.accept(ModItems.SMALL_POLISHED_CALCITE_STALICRIPE.get());
+                        output.accept(ModItems.DYEDREAM_LILY_PAD.get());
+                        output.accept(ModItems.DYEDREAM_LOTUS.get());
                     })
                     .build());
 

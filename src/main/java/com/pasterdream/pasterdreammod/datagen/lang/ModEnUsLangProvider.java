@@ -265,6 +265,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.WHITE_ORCHID_FLOWER.get(), "White Orchid Flower");
         add(ModBlocks.EDELWEISS.get(), "Edelweiss");
         add(ModBlocks.NIPPY_EDELWEISS.get(), "Nippy Edelweiss");
+        add(ModBlocks.DYEDREAM_LILY_PAD.get(), "Dye Dream Lily Pad");
+        add(ModBlocks.DYEDREAM_LOTUS.get(), "Dye Dream Lotus");
 
         add(ModBlocks.DYEDREAM_MOSS.get(), "Dyedream Moss");
         add(ModBlocks.STEM_GRASS.get(),"Stem Grass");

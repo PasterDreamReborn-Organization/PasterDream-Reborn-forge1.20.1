@@ -275,6 +275,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.WHITE_ORCHID_FLOWER.get(), "白厄花");
         add(ModBlocks.EDELWEISS.get(), "雪绒花");
         add(ModBlocks.NIPPY_EDELWEISS.get(), "凛冽雪绒花");
+        add(ModBlocks.DYEDREAM_LILY_PAD.get(), "染梦睡莲");
+        add(ModBlocks.DYEDREAM_LOTUS.get(), "染梦莲花");
 
         add(ModBlocks.DYEDREAM_MOSS.get(), "染梦苔藓");
         add(ModBlocks.STEM_GRASS.get(),"茎草");

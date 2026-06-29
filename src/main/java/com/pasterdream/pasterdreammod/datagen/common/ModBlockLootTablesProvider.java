@@ -155,6 +155,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.WHITE_ORCHID_FLOWER.get());
         dropSelf(ModBlocks.EDELWEISS.get());
         dropSelf(ModBlocks.NIPPY_EDELWEISS.get());
+        dropSelf(ModBlocks.DYEDREAM_LILY_PAD.get());
+        dropSelf(ModBlocks.DYEDREAM_LOTUS.get());
 
         add(ModBlocks.DYEDREAM_MOSS.get(),
                 block -> LootHelpers.creategrassesDrops(ModBlocks.DYEDREAM_MOSS.get()));

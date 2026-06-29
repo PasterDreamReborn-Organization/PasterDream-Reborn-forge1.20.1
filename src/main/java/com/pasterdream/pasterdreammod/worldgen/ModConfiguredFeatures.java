@@ -41,6 +41,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_ICE_PILLAR =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_pillar"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_PACKED_ICE_PILLAR =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_packed_ice_pillar"));
     // ===== 团块 =====
     // 冰晶石团块
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_ICE_STONE_BLOBS =
@@ -160,6 +163,14 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_QUARTZ_ORE =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_quartz_ore"));
+    // ===== 染梦睡莲 / 染梦莲花 =====
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_LILY_PAD_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_lily_pad"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_LOTUS_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_lotus"));
+
     // ===== 方解石笋 =====
     // 方解石笋
     public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_STALICRIPE =
@@ -225,6 +236,18 @@ public class ModConfiguredFeatures {
                         BlockPredicate.matchesBlocks(Blocks.AIR),
                         false
                 )));
+
+        context.register(DYEDREAM_PACKED_ICE_PILLAR, new ConfiguredFeature<>(Feature.BLOCK_COLUMN,
+                new BlockColumnConfiguration(
+                        List.of(new BlockColumnConfiguration.Layer(
+                                UniformInt.of(4, 11),
+                                BlockStateProvider.simple(ModBlocks.DYEDREAM_PACKED_ICE.get())
+                        )),
+                        Direction.UP,
+                        BlockPredicate.matchesBlocks(Blocks.AIR),
+                        false
+                )));
+
 
         context.register(DYEDREAM_ICE_STONE_BLOBS, new ConfiguredFeature<>(Feature.ORE,
                 new OreConfiguration(
@@ -389,6 +412,15 @@ public class ModConfiguredFeatures {
         // 染梦石英矿 — size=28
         context.register(DYEDREAM_QUARTZ_ORE, new ConfiguredFeature<>(Feature.ORE,
                 new OreConfiguration(oreTargets(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), TARGET_CALCITE_AND_STONES), 28, 0f)));
+
+        // 染梦睡莲 — 原作 dyedream_lily_pad: tries=32
+        context.register(DYEDREAM_LILY_PAD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(32, 7, 5,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.DYEDREAM_LILY_PAD.get())))));
+        // 染梦莲花 — 原作 dyedream_lotus: tries=24
+        context.register(DYEDREAM_LOTUS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(24, 6, 5,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.DYEDREAM_LOTUS.get())))));
 
         // ===== 方解石笋（同草类分散生成） =====
         context.register(CALCITE_STALICRIPE, new ConfiguredFeature<>(Feature.RANDOM_PATCH,

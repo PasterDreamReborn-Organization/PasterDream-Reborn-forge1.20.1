@@ -117,6 +117,8 @@
 | `grass_5`                       | `polished_calcite_stalicripe`       | 重命名，方解石笋                                      | 无需客制化类，直接用 `BushBlock`                                                                                           |
 | `grass_6`                       | `small_polished_calcite_stalicripe` | 重命名，小方解石笋                                     | 无需客制化类，直接用 `BushBlock`                                                                                           |
 | `grass_7`                       | `dyedream_moss`                     | 重命名，染梦苔藓                                      | 无需客制化类，直接用 `BushBlock`                                                                                           |
+| `dyedream_lily_pad`             | `dyedream_lily_pad`                 | 不改                                            | 客制化类 `DyedreamLilyPadBlock`，覆写 getShape/getFlammability/canSurvive/mayPlaceOn 等                                              |
+| `dyedream_lotus`                | `dyedream_lotus`                    | 不改                                            | 客制化类 `DyedreamLotusBlock`，覆写 getShape/getFlammability/canSurvive/mayPlaceOn 等                                                 |
 | `dyedream_desk`                 | `dyedream_desk`                     | 不改                                            | 客制化类 `DyedreamDeskBlock`，含 BlockEntity、Menu、Screen                                                               |
 | `shadow_desk`                   | `shadow_desk`                       | 不改                                            | 客制化类 `ShadowDeskBlock`，含 BlockEntity、Menu、Screen                                                                 |
 | `picnic_basket`                 | `picnic_basket`                     | 不改                                            | 客制化类 `PicnicBusketBlock`，含 BlockEntity、Menu、Screen以及Geckolib特殊渲染                                                 |
@@ -394,6 +396,8 @@
 | `ground_feature_dyedream_10`      | 待搬运                               | -       | 待确认                 |
 | `ground_feature_dyedream_11`      | 待搬运                               | -       | 待确认                 |
 | `ground_feature_dyedream_12`      | `dyedream_icestone_blobs`         | 重命名，已实现 | 待确认                 |
+| `dyedream_lily_pad`              | `dyedream_lily_pad`               | 不改，已实现 | 染梦维度水域               |
+| `dyedream_lotus`                 | `dyedream_lotus`                  | 不改，已实现 | 染梦维度水域               |
 | `ground_feature_dyedream_13`      | 待搬运                               | -       | 待确认                 |
 | `ground_feature_dyedream_14`      | 待搬运                               | -       | 待确认                 |
 | `ground_feature_dyedream_15`      | 待搬运                               | -       | 待确认                 |
