@@ -393,15 +393,12 @@ public class ModPlacedFeatures {
         context.register(DYEDREAM_LILY_PAD_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_LILY_PAD_PATCH),
                 List.of(CountPlacement.of(7), RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(),
-                        // 水深至少1格
-                        SurfaceWaterDepthFilter.forMaxDepth(1),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
         // 染梦莲花 — 原作 dyedream_lotus: count=6, rarity=32
         context.register(DYEDREAM_LOTUS_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_LOTUS_PATCH),
                 List.of(CountPlacement.of(6), RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(),
-                        SurfaceWaterDepthFilter.forMaxDepth(0),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
         // 方解石笋(大) — 不限制高度
