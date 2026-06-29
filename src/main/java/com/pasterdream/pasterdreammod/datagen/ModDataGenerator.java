@@ -5,7 +5,12 @@ import com.pasterdream.pasterdreammod.datagen.common.*;
 import com.pasterdream.pasterdreammod.datagen.lang.ModEnUsLangProvider;
 import com.pasterdream.pasterdreammod.datagen.lang.ModZhCnLangProvider;
 import com.pasterdream.pasterdreammod.datagen.common.ModWorldGenProvider;
+import com.pasterdream.pasterdreammod.helper.structuregenerate.StructureGenerationConfig;
 import com.pasterdream.pasterdreammod.worldgen.biome.ModBiomeModifierProvider;
+import com.pasterdream.pasterdreammod.worldgen.structures.ModStructureConfig;
+import com.pasterdream.pasterdreammod.worldgen.structures.ModStructureProvider;
+import com.pasterdream.pasterdreammod.worldgen.structures.ModStructureSetProvider;
+import com.pasterdream.pasterdreammod.worldgen.structures.ModTemplatePoolProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -46,6 +51,11 @@ public class ModDataGenerator {
 
         generator.addProvider(event.includeServer(), new ModBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ModBiomeModifierProvider(packOutput, lookupProvider));
+
+        List<StructureGenerationConfig> structures = ModStructureConfig.getStructureConfig();
+        generator.addProvider(event.includeServer(), new ModTemplatePoolProvider(packOutput, structures));
+        generator.addProvider(event.includeServer(), new ModStructureProvider(packOutput, structures));
+        generator.addProvider(event.includeServer(), new ModStructureSetProvider(packOutput, structures));
 
         // 客户端数据生成
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(packOutput, existingFileHelper));
