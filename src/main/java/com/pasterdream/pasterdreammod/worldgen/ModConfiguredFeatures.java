@@ -70,6 +70,19 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_QUARTZ_ORE =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_quartz_ore"));
+    // ===== 花卉 / 方解石笋 =====
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_LILY_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_lily_patch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DREAMING_LOTUS_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dreaming_lotus_patch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_STALICRIPE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_stalicripe"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_CALCITE_STALICRIPE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_calcite_stalicripe"));
 
     private static Holder<PlacedFeature> simpleBlockInAir(BlockStateProvider provider) {
         return PlacementUtils.inlinePlaced(
@@ -129,45 +142,63 @@ public class ModConfiguredFeatures {
                 )));
 
         // 茎草 — 原作 grass_3（分散生成）
+        // 三个参数是：尝试生成次数，水平扩散半径，垂直扩散半径
         context.register(STEM_GRASS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(32, 16, 3,
+                new RandomPatchConfiguration(32, 16, 5,
                         simpleBlockInAir(BlockStateProvider.simple(ModBlocks.STEM_GRASS.get())))));
 
         // 高茎草 — 原作 grass_4（分散生成）
         context.register(TALL_STEM_GRASS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(24, 16, 3,
+                new RandomPatchConfiguration(24, 16, 5,
                         simpleBlockInAir(BlockStateProvider.simple(ModBlocks.TALL_STEM_GRASS.get())))));
 
         // 野生梦染茶花 — 原作 crop_0a（团簇生成）
         context.register(DYEDREAM_COROLLA_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(10, 4, 2,
+                new RandomPatchConfiguration(20, 5, 5,
                         simpleBlockInAir(BlockStateProvider.simple(
                         ModBlocks.DYEDREAM_COROLLA_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1))))));
 
         // 野生流明堇 — 原作 crop_2a（团簇生成）
         context.register(LIGHT_BALL_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(10, 4, 2,
+                new RandomPatchConfiguration(20, 5, 5,
                         simpleBlockInAir(BlockStateProvider.simple(
                         ModBlocks.LIGHT_BALL_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1))))));
 
         // 野生玲云花 — 原作 crop_3a（团簇生成）
         context.register(CLOUD_CROP_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(10, 4, 2,
+                new RandomPatchConfiguration(20, 5, 5,
                         simpleBlockInAir(BlockStateProvider.simple(
                         ModBlocks.CLOUD_CROP.get().defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1))))));
+        // 染梦铃兰 - 原作 flower_13
+        context.register(DYEDREAM_LILY_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(20, 5, 5,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.DYEDREAM_LILY_OF_THE_VALLEY.get())))));
+        // 冶梦莲 - 原作 flower_11
+        context.register(DREAMING_LOTUS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(25, 5, 5,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.DREAMING_LOTUS.get())))));
+
 
         // ===== 染梦维度矿石 =====
         // 钛矿 — 原作 size=3, 钻石分布
         context.register(TITANIUM_ORE, new ConfiguredFeature<>(Feature.ORE,
                 new OreConfiguration(oreTargets(ModBlocks.TITANIUM_ORE.get(), List.of(TARGET_CALCITE)), 8, 0f)));
-        // 琥珀糖矿 — 原作 size=12
+        // 琥珀糖矿 — size=24
         context.register(AMBER_CANDY_ORE, new ConfiguredFeature<>(Feature.ORE,
-                new OreConfiguration(oreTargets(ModBlocks.AMBER_CANDY_ORE.get(), List.of(TARGET_CALCITE)), 12, 0f)));
-        // 染梦尘矿 — 原作 size=6
+                new OreConfiguration(oreTargets(ModBlocks.AMBER_CANDY_ORE.get(), List.of(TARGET_CALCITE)), 24, 0f)));
+        // 染梦尘矿 — size=16
         context.register(DYEDREAM_DUST_ORE, new ConfiguredFeature<>(Feature.ORE,
-                new OreConfiguration(oreTargets(ModBlocks.DYEDREAM_DUST_ORE.get(), TARGET_CALCITE_AND_STONES), 8, 0f)));
-        // 染梦石英矿 — 原作 size=13
+                new OreConfiguration(oreTargets(ModBlocks.DYEDREAM_DUST_ORE.get(), TARGET_CALCITE_AND_STONES), 16, 0f)));
+        // 染梦石英矿 — size=28
         context.register(DYEDREAM_QUARTZ_ORE, new ConfiguredFeature<>(Feature.ORE,
-                new OreConfiguration(oreTargets(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), TARGET_CALCITE_AND_STONES), 13, 0f)));
+                new OreConfiguration(oreTargets(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), TARGET_CALCITE_AND_STONES), 28, 0f)));
+
+        // ===== 方解石笋 =====
+        context.register(CALCITE_STALICRIPE, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(16, 4, 4,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.POLISHED_CALCITE_STALICRIPE.get())))));
+        context.register(SMALL_CALCITE_STALICRIPE, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(16, 4, 4,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get())))));
     }
 }
