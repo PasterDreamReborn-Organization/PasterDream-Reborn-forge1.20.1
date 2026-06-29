@@ -30,6 +30,14 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
         tag(TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_soul_ore_spawn_biome")))
                 .addOptional(ResourceLocation.fromNamespaceAndPath("minecraft", "soul_sand_valley"));
 
+        tag(TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_fisherman_hut_spawn_biome")))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("minecraft", "river"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("minecraft", "beach"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("minecraft", "swamp"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("minecraft", "mangrove_swamp"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("minecraft", "plains"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("minecraft", "forest"));
+
         tag(TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_world_biome")))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_plains"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_mushroom_mountains"))

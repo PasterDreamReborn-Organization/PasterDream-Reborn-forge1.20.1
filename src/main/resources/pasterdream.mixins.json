@@ -3,7 +3,7 @@
   "package": "com.pasterdream.pasterdreammod.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "pasterdream.refmap.json",
-  "mixins": [],
+  "mixins": ["NoiseGeneratorSettingsMixin"],
   "client": [],
   "server": [],
   "minVersion": "0.8"
