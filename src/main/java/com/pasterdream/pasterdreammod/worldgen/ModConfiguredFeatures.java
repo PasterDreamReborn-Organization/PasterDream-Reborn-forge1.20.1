@@ -67,6 +67,7 @@ public class ModConfiguredFeatures {
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "vanilla_packed_ice_blobs"));
     // ===== 洞穴晶芽 =====
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_MOSS_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_moss_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_DYEDREAM_BUD_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_dyedream_bud_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> MEDIUM_DYEDREAM_BUD_PATCH =
@@ -266,8 +267,18 @@ public class ModConfiguredFeatures {
                         0.5f
                 )));
         // 方解石团块 — 原作 ground_feature_dyedream_15
-        context.register(CALCITE_BOULDER, new ConfiguredFeature<>(Feature.FOREST_ROCK,
-                new BlockStateConfiguration(Blocks.CALCITE.defaultBlockState())));
+        context.register(CALCITE_BOULDER, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(
+                        List.of(
+                                OreConfiguration.target(new BlockMatchTest(ModBlocks.DYEDREAM_GRASS_BLOCK.get()), Blocks.CALCITE.defaultBlockState()),
+                                OreConfiguration.target(new BlockMatchTest(ModBlocks.DYEDREAM_DIRT.get()), Blocks.CALCITE.defaultBlockState()),
+                                OreConfiguration.target(new BlockMatchTest(ModBlocks.DYEDREAM_SAND.get()), Blocks.CALCITE.defaultBlockState()),
+                                OreConfiguration.target(new BlockMatchTest(Blocks.AIR), Blocks.CALCITE.defaultBlockState()),
+                                OreConfiguration.target(new BlockMatchTest(Blocks.CAVE_AIR), Blocks.CALCITE.defaultBlockState())
+                        ),
+                        24,
+                        0.0f
+                )));
 
         // ===== 染梦维度花草 =====
         // 茎草 — 原作 grass_3（分散生成）
@@ -377,6 +388,11 @@ public class ModConfiguredFeatures {
         context.register(SMALL_CALCITE_STALICRIPE, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(48, 8, 8,
                         simpleBlockInAir(BlockStateProvider.simple(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get())))));
+
+        // 染梦苔藓 — 原作 grass_7，同方解石笋
+        context.register(DYEDREAM_MOSS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(48, 8, 8,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.DYEDREAM_MOSS.get())))));
 
         // ===== 洞穴晶芽 =====
         context.register(SMALL_DYEDREAM_BUD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,

@@ -75,6 +75,7 @@ public class ModPlacedFeatures {
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "linht_flower_patch"));
     // ===== 洞穴晶芽 =====
+    public static final ResourceKey<PlacedFeature> DYEDREAM_MOSS_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_moss_patch"));
     public static final ResourceKey<PlacedFeature> SMALL_DYEDREAM_BUD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_dyedream_bud_patch"));
     public static final ResourceKey<PlacedFeature> MEDIUM_DYEDREAM_BUD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "medium_dyedream_bud_patch"));
     public static final ResourceKey<PlacedFeature> LARGE_DYEDREAM_BUD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "large_dyedream_bud_patch"));
@@ -174,11 +175,12 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.VANILLA_PACKED_ICE_BLOBS),
                 List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
-        // 方解石团块 — 原作 ground_feature_dyedream_15: count=2, MOTION_BLOCKING
+        // 方解石团块 — WORLD_SURFACE_WG + SurfaceWaterDepth 避免水上生成
         context.register(CALCITE_BOULDER, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.CALCITE_BOULDER),
                 List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
+                        SurfaceWaterDepthFilter.forMaxDepth(0),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
 
         // === 染梦维度花草 ===
@@ -303,6 +305,8 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.CALCITE_STALICRIPE),
                 List.of(CountPlacement.of(20), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
+        // 染梦苔藓 — 同方解石笋，不限制高度
+        context.register(DYEDREAM_MOSS_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_MOSS_PATCH), List.of(CountPlacement.of(20), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
         // 方解石笋(小) — 不限制高度
         context.register(SMALL_CALCITE_STALICRIPE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.SMALL_CALCITE_STALICRIPE),

@@ -91,6 +91,8 @@ public class ModBiomes {
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.SMALL_CALCITE_STALICRIPE)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.DYEDREAM_MOSS_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.CALCITE_BOULDER)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                                 ModPlacedFeatures.DYEDREAM_ICE_BLOBS)
@@ -140,6 +142,8 @@ public class ModBiomes {
                                 ModPlacedFeatures.LINHT_FLOWER_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.SINGULARITY_FERN_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.DYEDREAM_MOSS_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.CALCITE_BOULDER)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
@@ -200,6 +204,8 @@ public class ModBiomes {
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.SINGULARITY_FERN_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.DYEDREAM_MOSS_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.CALCITE_BOULDER)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                                 ModPlacedFeatures.DYEDREAM_ICE_STONE_BLOBS)
@@ -255,6 +261,8 @@ public class ModBiomes {
                                 ICEBERG_PACKED)
                         .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS,
                                 ICEBERG_BLUE)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.DYEDREAM_MOSS_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.CALCITE_BOULDER)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
