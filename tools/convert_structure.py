@@ -37,8 +37,8 @@ def find_mapping(program_dir):
     """查找 mapping.json。必须与程序同目录，否则报错退出。"""
     candidates = [
         program_dir / "mapping.json",
-        program_dir / "dist" / "mapping.json",
-        program_dir.parent / "dist" / "mapping.json",   # 从 tools/ 运行时
+        program_dir / "document" / "design" / "mapping.json",
+        program_dir.parent / "document" / "design" / "mapping.json",   # 从 tools/ 运行时
     ]
     for mapping_path in candidates:
         if mapping_path.exists():
@@ -57,10 +57,10 @@ def find_mapping(program_dir):
 
 
 def load_block_mapping(path):
-    """加载 mapping.json 并返回 blocks 映射字典。"""
+    """加载 mapping.json 并返回 (blocks 映射, 属性覆盖)。"""
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
-    return data.get("blocks", {})
+    return data.get("blocks", {}), data.get("block_properties", {})
 
 
 def scan_nbt_files(directory):
@@ -77,12 +77,14 @@ def palette_key(entry):
     return (name, props)
 
 
-def convert_one(input_path, mapping, output_path, delete_unmapped=False):
+def convert_one(input_path, mapping, block_properties, output_path, delete_unmapped=False):
     """
     转换单个 .nbt 结构文件。
 
     参数:
-        delete_unmapped: True 则把未映射的模组方块也替换为空气。
+        mapping:           旧名 → 新名 的映射字典
+        block_properties:  旧名 → {属性: 值} 的属性覆盖字典
+        delete_unmapped:   True 则把未映射的模组方块也替换为空气。
     返回:
         (changes, unchanged, pending, deleted_unmapped)
     """
@@ -140,6 +142,15 @@ def convert_one(input_path, mapping, output_path, delete_unmapped=False):
             if new_short != short_name:
                 entry["Name"] = String(f"{namespace}:{new_short}")
                 changes[(short_name, new_short)] += 1
+
+        # 应用 block_properties 中的属性覆盖
+        if short_name in block_properties:
+            props_tag = entry.get("Properties")
+            if props_tag is None:
+                props_tag = Compound()
+                entry["Properties"] = props_tag
+            for prop_key, prop_val in block_properties[short_name].items():
+                props_tag[prop_key] = String(prop_val)
 
     # --- 阶段 2：合并重复的 palette 条目 ---
     seen = OrderedDict()
@@ -207,7 +218,7 @@ def run_interactive():
 
     program_dir = get_program_dir()
     mapping_path = find_mapping(program_dir)
-    mapping = load_block_mapping(mapping_path)
+    mapping, block_properties = load_block_mapping(mapping_path)
 
     output_base = program_dir / "converted"
 
@@ -312,7 +323,7 @@ def run_interactive():
                 print()
                 print(f">> 正在转换: {selected.name} ...")
 
-            convert_one(selected, mapping, output_path, delete_unmapped=delete_unmapped)
+            convert_one(selected, mapping, block_properties, output_path, delete_unmapped=delete_unmapped)
             print()
             print(f"[OK] 转换完成！已保存至: {output_path}")
         else:
@@ -351,7 +362,7 @@ def main():
     if args.input is not None:
         program_dir = get_program_dir()
         mapping_path = find_mapping(program_dir)
-        mapping = load_block_mapping(mapping_path)
+        mapping, block_properties = load_block_mapping(mapping_path)
 
         if not args.input.exists():
             print(f"错误：输入文件不存在 — {args.input}")
@@ -387,7 +398,7 @@ def main():
                 print(f"  --delete-unmapped: 将 {len(pending)} 种待搬运方块替换为空气")
 
         print(f">> 正在转换: {args.input.name} ...")
-        convert_one(args.input, mapping, output_path, delete_unmapped=args.delete_unmapped)
+        convert_one(args.input, mapping, block_properties, output_path, delete_unmapped=args.delete_unmapped)
         print(f"[OK] 转换完成！已保存至: {output_path}")
     else:
         run_interactive()

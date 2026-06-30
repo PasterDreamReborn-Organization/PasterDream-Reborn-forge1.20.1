@@ -12,7 +12,7 @@ from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent          # tools/
 PROJECT_ROOT = SCRIPT_DIR.parent                      # 项目根目录
-MAPPING = PROJECT_ROOT / "dist" / "mapping.json"      # 与 exe 同目录
+MAPPING = PROJECT_ROOT / "document" / "design" / "mapping.json"
 
 
 def load():
