@@ -62,6 +62,9 @@ public class ModBiomes {
                         .build())
                 .generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, carvers)
                         .addCarver(GenerationStep.Carving.AIR, Carvers.CAVE)
+                        // 染梦海草 — 原作 ground_feature_dyedream_5
+                        .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES,
+                                ModPlacedFeatures.DYEDREAM_SEAGRASS_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.DYEDREAM_TREE)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
@@ -141,6 +144,8 @@ public class ModBiomes {
                         .build())
                 .generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, carvers)
                         .addCarver(GenerationStep.Carving.AIR, Carvers.CAVE)
+                        .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES,
+                                ModPlacedFeatures.DYEDREAM_SEAGRASS_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.PINK_MUSHROOM_TREE)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
@@ -213,6 +218,9 @@ public class ModBiomes {
                         // 雪块底水池 — 原作 ground_feature_dyedream_1
                         .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES,
                                 ModPlacedFeatures.SNOWY_WATER_POOL)
+                        // 染梦海草 — 原作 ground_feature_dyedream_5
+                        .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES,
+                                ModPlacedFeatures.DYEDREAM_SEAGRASS_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.DYEDREAM_TREE)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
@@ -295,6 +303,8 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(EntityType.DOLPHIN, 20, 1, 3))
                         .build())
                 .generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, carvers)
+                        .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES,
+                                ModPlacedFeatures.DYEDREAM_SEAGRASS_PATCH)
                         .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS,
                                 ModPlacedFeatures.DYEDREAM_ICEBERG_PACKED)
                         .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS,

@@ -30,6 +30,7 @@ import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import com.pasterdream.pasterdreammod.world.block.cropblock.PasterDreamCropBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 
@@ -96,6 +97,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CORAL_CLAW_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "coral_claw_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> CORAL_MUSHROOM_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "coral_mushroom_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> SEA_PICKLE_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sea_pickle_patch"));
+    // 染梦海草 — 原作 ground_feature_dyedream_5
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_SEAGRASS_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_seagrass_patch"));
     // ===== 洞穴晶芽 =====
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_DYEDREAM_BUD_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_dyedream_bud_patch"));
@@ -211,6 +214,19 @@ public class ModConfiguredFeatures {
                 Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(provider),
                 BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.AIR))
+        );
+    }
+
+    private static Holder<PlacedFeature> simpleBlockInWater(BlockStateProvider provider) {
+        return PlacementUtils.inlinePlaced(
+                Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(provider),
+                BlockPredicateFilter.forPredicate(
+                        BlockPredicate.allOf(List.of(
+                                BlockPredicate.matchesBlocks(Blocks.WATER),
+                                BlockPredicate.solid(Direction.DOWN.getNormal())
+                        ))
+                )
         );
     }
 
@@ -515,6 +531,12 @@ public class ModConfiguredFeatures {
                 NoneFeatureConfiguration.INSTANCE));
         context.register(SEA_PICKLE_PATCH, new ConfiguredFeature<>(Feature.SEA_PICKLE,
                 new CountConfiguration(UniformInt.of(1, 4))));
+        // 染梦海草 — 原作 ground_feature_dyedream_5: tries=7
+        context.register(DYEDREAM_SEAGRASS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(7, 7, 3,
+                        simpleBlockInWater(BlockStateProvider.simple(
+                                ModBlocks.DYEDREAM_SEAGRASS.get().defaultBlockState()
+                                        .setValue(BlockStateProperties.WATERLOGGED, true))))));
 
         // ===== 洞穴晶芽 =====
         context.register(SMALL_DYEDREAM_BUD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,

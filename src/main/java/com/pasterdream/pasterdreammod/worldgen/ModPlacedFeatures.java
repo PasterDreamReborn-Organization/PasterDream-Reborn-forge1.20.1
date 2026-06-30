@@ -96,6 +96,10 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SEA_PICKLE_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "sea_pickle_patch"));
+    // 染梦海草 — 原作 ground_feature_dyedream_5
+    public static final ResourceKey<PlacedFeature> DYEDREAM_SEAGRASS_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_seagrass_patch"));
     public static final ResourceKey<PlacedFeature> DYEDREAM_LILY_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_lily_patch"));
@@ -348,6 +352,12 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.SEA_PICKLE_PATCH),
                 List.of(CountPlacement.of(4), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
+        // 染梦海草 — 原作 ground_feature_dyedream_5: count=64, OCEAN_FLOOR_WG, y=20~59
+        context.register(DYEDREAM_SEAGRASS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_SEAGRASS_PATCH),
+                List.of(CountPlacement.of(64), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(20), VerticalAnchor.absolute(59)))));
 
         // 染梦铃兰
         context.register(DYEDREAM_LILY_PATCH, new PlacedFeature(
