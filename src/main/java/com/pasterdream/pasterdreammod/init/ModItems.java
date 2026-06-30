@@ -27,7 +27,9 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -115,6 +117,13 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PROTECT_DECK = ITEMS.register("protect_deck",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> REED_ROD = ITEMS.register("reed_rod",
+            () -> new Item(new Item.Properties()) {
+                @Override
+                public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
+                    return 100;
+                }
+            });
 
     // ===== 升级套件 =====
     public static final RegistryObject<Item> TITANIUM_UPGRADE = ITEMS.register("titanium_upgrade",
@@ -363,7 +372,15 @@ public class ModItems {
 
     public static final RegistryObject<Item> DYEDREAM_POPSICLE = ITEMS.register("dyedream_popsicle",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1).meltDreamEnergyAdd(0.2)
-                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(0.5f).build())));//减少燃烧时间施工中
+                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(0.5f).alwaysEat().build())){
+                @Override
+                protected void onFoodSpecial(Player player, Level level) {
+                    if (player.isOnFire()) {
+                        int remainingTicks = player.getRemainingFireTicks();
+                        player.setRemainingFireTicks(Math.max(0, remainingTicks - 100));
+                    }
+                }
+            });//减少燃烧时间
 
     public static final RegistryObject<Item> FRIED_EGG = ITEMS.register("fried_egg",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
@@ -746,6 +763,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> DYEDREAM_SEAGRASS = ITEMS.register("dyedream_seagrass",
             () -> new BlockItem(ModBlocks.DYEDREAM_SEAGRASS.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> REED = ITEMS.register("reed",
+        () -> new BlockItem(ModBlocks.REED.get(), new Item.Properties()));//g1
     //作物方块物品
     public static final RegistryObject<Item> DYEDREAM_COROLLA_CROP_AGE_0 = ITEMS.register("dyedream_corolla_crop_age_0", () -> new BlockItem(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> WHITE_COROLLA_CROP_AGE_0 = ITEMS.register("white_corolla_crop_age_0", () -> new BlockItem(ModBlocks.WHITE_COROLLA_CROP.get(), new Item.Properties()));

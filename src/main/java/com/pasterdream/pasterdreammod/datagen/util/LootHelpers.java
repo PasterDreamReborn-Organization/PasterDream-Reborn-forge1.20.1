@@ -14,6 +14,7 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.*;
@@ -70,6 +71,24 @@ public final class LootHelpers{
                         .add(LootItem.lootTableItem(grasses)
                                 .when(HAS_SHEARS_OR_SILK_TOUCH).otherwise(EmptyLootItem.emptyItem())));
     }
+    /**
+     * 构建战利品表：精准采集/剪刀 → 掉落方块自身；否则 → 掉落指定物品（数量受时运影响，并应用爆炸衰减）。
+     *
+     * @param block   被破坏的方块
+     * @param dropItem 无精准采集/剪刀时掉落的物品
+     */
+    public static LootTable.Builder createShearsOrSilkTouchSelfElseItem(Block block, ItemLike dropItem,float min,float max) {
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(block)
+                                .when(HAS_SHEARS_OR_SILK_TOUCH))
+                        .add(LootItem.lootTableItem(dropItem)
+                                .when(HAS_SHEARS_OR_SILK_TOUCH.invert())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
+                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
+                                .apply(ApplyExplosionDecay.explosionDecay())));
+    }
+
     /**
      * 构建高草战利品表：精准采集/剪刀 → x2草
      */

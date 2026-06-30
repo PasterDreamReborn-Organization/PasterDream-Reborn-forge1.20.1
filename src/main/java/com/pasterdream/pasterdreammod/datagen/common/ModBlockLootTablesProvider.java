@@ -1,7 +1,6 @@
 package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.datagen.util.LootHelpers;
-import com.pasterdream.pasterdreammod.datagen.util.RecipeHelpers;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.util.BuildingBlockFamily;
@@ -188,6 +187,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
         add(ModBlocks.DYEDREAM_SEAGRASS.get(),
                 block -> LootHelpers.creategrassesDrops(ModBlocks.DYEDREAM_SEAGRASS.get()));
+        add(ModBlocks.REED.get(),
+                block -> LootHelpers.createShearsOrSilkTouchSelfElseItem(ModBlocks.REED.get(),ModItems.REED_ROD.get(),1.0F,3.0F));
 
         dropSelf(ModBlocks.DYEDREAM_SAND.get());
         add(ModBlocks.DYEDREAM_GLASS.get(),

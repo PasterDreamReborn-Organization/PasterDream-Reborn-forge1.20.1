@@ -373,9 +373,25 @@ public class ModBlocks {
             if (belowState.isAir()) return false;
             return belowState.is(Blocks.CALCITE);
         }
-    });
+    }
+    );
     public static final RegistryObject<Block> DYEDREAM_SEAGRASS = BLOCKS.register("dyedream_seagrass", DyedreamSeagrassBlock::new);
 
+    public static final RegistryObject<Block> REED = BLOCKS.register("reed", () -> new BushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BROWN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .pushReaction(PushReaction.DESTROY)
+    ){
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            Vec3 offset = state.getOffset(world, pos);
+            return box(0, 0, 0, 16, 8, 16).move(offset.x, offset.y, offset.z);
+        }
+    });
     //作物方块
     public static final RegistryObject<Block> DYEDREAM_COROLLA_CROP = BLOCKS.register("dyedream_corolla_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).noCollission().randomTicks().instabreak()));
     public static final RegistryObject<Block> WHITE_COROLLA_CROP = BLOCKS.register("white_corolla_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).noCollission().randomTicks().instabreak()));

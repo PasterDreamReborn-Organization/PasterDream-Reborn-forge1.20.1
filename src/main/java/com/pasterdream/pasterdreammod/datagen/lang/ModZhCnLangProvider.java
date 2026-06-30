@@ -165,6 +165,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "寻梦者笔记-灯影之下");
         add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "寻梦者笔记-风之旅途");
         add(ModItems.BLUE_PRINT.get(), "蓝图");
+        add(ModItems.REED_ROD.get(), "芦苇杆");
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "染梦泥土");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "染梦草方块");
@@ -289,6 +290,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.POLISHED_CALCITE_STALICRIPE.get(), "方解石笋");
         add(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), "小方解石笋");
         add(ModBlocks.DYEDREAM_SEAGRASS.get(), "染梦海草");
+        add(ModBlocks.REED.get(), "芦苇");
 
         add("fluid.pasterdream.melt_dream_liquid","融梦涌泉");
         add("fluid.pasterdream.shadow_liquid","熔融阴影");

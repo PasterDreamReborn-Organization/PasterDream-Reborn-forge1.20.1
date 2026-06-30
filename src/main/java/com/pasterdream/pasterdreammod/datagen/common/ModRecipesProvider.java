@@ -1582,6 +1582,14 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('b', ItemTags.PLANKS)
                 .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
                 .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 3)
+                .pattern("   ")
+                .pattern("aaa")
+                .pattern("   ")
+                .define('a', ModItems.REED_ROD.get())
+                .unlockedBy(getHasName(ModItems.REED_ROD.get()), has(ModItems.REED_ROD.get()))
+                .save(pWriter);
     }
     // ===== 配方工具方法 =====
 
