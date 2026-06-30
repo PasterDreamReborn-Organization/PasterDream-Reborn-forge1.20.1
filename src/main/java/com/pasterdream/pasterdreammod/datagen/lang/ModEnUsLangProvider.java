@@ -236,6 +236,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.ICE_BUD.get(), "Ice Bud");
         add(ModBlocks.QYM_DOLL.get(), "琴雨梦Doll");
         add(ModBlocks.UUZ_DOLL.get(), "幼幼紫Doll");
+        add(ModBlocks.DYEDREAM_CRACK.get(), "Dyedream Crack");
         add(ModBlocks.CLAYPAN.get(), "Claypan");
         add(ModBlocks.DREAM_CAULDRON.get(), "Dream Cauldron");
         add(ModBlocks.DYEDREAM_DESK.get(), "Dyedream Desk");
