@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.worldgen;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
+import com.pasterdream.pasterdreammod.init.ModFeatures;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -125,6 +126,14 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_LILY_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_lily_patch"));
+    // 粉顶菌 (小型, 地表)
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PINK_MUSHROOM_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pink_mushroom_patch"));
+    // 高粉顶菌 (高草丛形态, 地表)
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_PINK_MUSHROOM_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "tall_pink_mushroom_patch"));
     // 冶梦莲
     public static final ResourceKey<ConfiguredFeature<?, ?>> DREAMING_LOTUS_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -249,8 +258,8 @@ public class ModConfiguredFeatures {
                         .ignoreVines()
                         .build()));
 
-        // 粉顶菌巨菇 — 单株骨粉催熟，原版红蘑菇形态
-        context.register(PINK_HUGE_MUSHROOM, new ConfiguredFeature<>(Feature.HUGE_RED_MUSHROOM,
+        // 粉顶菌巨菇 — 单株骨粉催熟，使用自定义特征附加菌光体
+        context.register(PINK_HUGE_MUSHROOM, new ConfiguredFeature<>(ModFeatures.PINK_HUGE_MUSHROOM.get(),
                 new HugeMushroomFeatureConfiguration(
                         BlockStateProvider.simple(ModBlocks.PINK_MUSHROOM_BLOCK.get()),
                         BlockStateProvider.simple(ModBlocks.PINK_MUSHROOM_STEM.get()),
@@ -353,6 +362,16 @@ public class ModConfiguredFeatures {
         context.register(TALL_STEM_GRASS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(24, 16, 5,
                         simpleBlockInAir(BlockStateProvider.simple(ModBlocks.TALL_STEM_GRASS.get())))));
+
+        // 粉顶菌 — 分散生成，类似草
+        context.register(PINK_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(32, 16, 5,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.PINK_MUSHROOM.get())))));
+
+        // 高粉顶菌 — 分散生成，类似高草
+        context.register(TALL_PINK_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(24, 16, 5,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.TALL_PINK_MUSHROOM.get())))));
 
         // 野生梦染茶花 — 原作 crop_0a（团簇生成）
         context.register(DYEDREAM_COROLLA_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,

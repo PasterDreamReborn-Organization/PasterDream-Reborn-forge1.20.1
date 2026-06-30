@@ -53,6 +53,18 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> TALL_STEM_GRASS_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "tall_stem_grass_patch"));
+    public static final ResourceKey<PlacedFeature> PINK_MUSHROOM_TREE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pink_mushroom_tree"));
+    public static final ResourceKey<PlacedFeature> PINK_HUGE_MUSHROOM =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pink_huge_mushroom"));
+    public static final ResourceKey<PlacedFeature> PINK_MUSHROOM_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pink_mushroom_patch"));
+    public static final ResourceKey<PlacedFeature> TALL_PINK_MUSHROOM_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "tall_pink_mushroom_patch"));
     public static final ResourceKey<PlacedFeature> DYEDREAM_COROLLA_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_corolla_patch"));
@@ -254,6 +266,30 @@ public class ModPlacedFeatures {
         // 高茎草 — WORLD_SURFACE_WG
         context.register(TALL_STEM_GRASS_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.TALL_STEM_GRASS_PATCH),
+                List.of(CountPlacement.of(3), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        // 粉顶菌巨树 — MOTION_BLOCKING 高度图
+        context.register(PINK_MUSHROOM_TREE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.PINK_MUSHROOM_TREE),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
+
+        // 粉顶菌巨菇 — MOTION_BLOCKING 高度图
+        context.register(PINK_HUGE_MUSHROOM, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.PINK_HUGE_MUSHROOM),
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
+
+        // 粉顶菌 (小型地表) — WORLD_SURFACE_WG
+        context.register(PINK_MUSHROOM_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.PINK_MUSHROOM_PATCH),
+                List.of(CountPlacement.of(5), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        // 高粉顶菌 (地表) — WORLD_SURFACE_WG
+        context.register(TALL_PINK_MUSHROOM_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.TALL_PINK_MUSHROOM_PATCH),
                 List.of(CountPlacement.of(3), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 

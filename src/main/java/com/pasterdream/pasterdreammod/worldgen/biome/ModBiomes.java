@@ -131,6 +131,8 @@ public class ModBiomes {
                         .waterFogColor(0x050533)
                         .foliageColorOverride(0xFFFCB3ED)
                         .grassColorOverride(0xFFFFABEE)
+                        .ambientParticle(
+                                new AmbientParticleSettings(ModParticleTypes.LEAVES_PARTICLE.get(), 0.005f))
                         .build())
                 .mobSpawnSettings(new MobSpawnSettings.Builder()
                         .addSpawn(MobCategory.CREATURE,
@@ -139,7 +141,14 @@ public class ModBiomes {
                         .build())
                 .generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, carvers)
                         .addCarver(GenerationStep.Carving.AIR, Carvers.CAVE)
-                        // TODO: dyedream_forest_tree feature
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.PINK_MUSHROOM_TREE)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.PINK_HUGE_MUSHROOM)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.PINK_MUSHROOM_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                                ModPlacedFeatures.TALL_PINK_MUSHROOM_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                                 ModPlacedFeatures.DREAMING_LOTUS_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
