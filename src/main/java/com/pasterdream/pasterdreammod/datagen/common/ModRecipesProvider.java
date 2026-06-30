@@ -1567,6 +1567,15 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         RecipeHelpers.dye(pWriter,ModItems.EUSTOMA.get(), Items.GREEN_DYE);
         RecipeHelpers.dye(pWriter,ModItems.MALVA_SINENSIS_CAVAN.get(), Items.PINK_DYE);
 
+        //野餐篮合成配方
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PICNIC_BASKET.get(), 1)
+                .pattern("aaa")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('a', Items.STICK)
+                .define('b', ItemTags.PLANKS)
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .save(pWriter);
     }
     // ===== 配方工具方法 =====
 
