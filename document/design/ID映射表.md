@@ -136,7 +136,7 @@
 | `crop_2b`                        | `light_ball_crop`                   | 重命名，流明堇植株（生长阶段，合并至同一方块）                       | 客制化类 `PasterDreamCropBlock`                                                                                      |
 | `crop_3a`                        | `cloud_crop`                        | 重命名，玲云花成熟植株（世界生成用）                            | 客制化类 `PasterDreamCropBlock`                                                                                      |
 | `crop_3b`                        | `cloud_crop`                        | 重命名，玲云花植株（生长阶段，合并至同一方块）                       | 客制化类 `PasterDreamCropBlock`                                                                                      |
-| `crop_4a`                        | 删除                                  |                                               |                                                                                                                  |
+| `crop_4a`                        | `cotton_crop_age`                   | 重命名，棉花植株（生长阶段，合并至同一方块）                | 客制化类 `PasterdreamCropBlock`                                                                                   |
 | `crop_4b`                        | `cotton_crop_age`                   | 重命名，棉花植株                                      | 客制化类 `PasterdreamCropBlock`                                                                                      |
 
 

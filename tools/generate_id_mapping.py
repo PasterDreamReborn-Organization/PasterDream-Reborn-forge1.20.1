@@ -22,7 +22,7 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent          # tools/
 PROJECT_ROOT = SCRIPT_DIR.parent                      # 项目根目录
 MD_PATH = PROJECT_ROOT / "document" / "design" / "ID映射表.md"
-OUT_PATH = PROJECT_ROOT / "dist" / "mapping.json"     # 随 exe 一同分发
+OUT_PATH = PROJECT_ROOT / "document" / "design" / "mapping.json"
 
 SECTION_HEADERS = {
     "方块映射": "blocks",
@@ -100,6 +100,14 @@ def main():
         key = SECTION_HEADERS.get(current_section)
         if key:
             result[key].update(parse_table(section_lines, 0, 1))
+
+    # 保留现有 mapping.json 中的手动维护字段（如 block_properties）
+    preserved_sections = {"block_properties"}
+    if OUT_PATH.exists():
+        existing = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+        for section in preserved_sections:
+            if section in existing:
+                result[section] = existing[section]
 
     # 统计
     for k, v in result.items():
