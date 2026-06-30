@@ -36,3 +36,9 @@ run-data/
 vanilla_temp/
 mc_temp/
 .log/
+dirt_temp/
+
+# PyInstaller 编译产物
+dist/
+build/
+*.spec
