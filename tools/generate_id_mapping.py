@@ -2,8 +2,7 @@
 从 ID映射表.md 生成 mapping.json，供后续 NBT 转换工具使用。
 
 用法：
-    cd document/design
-    python generate_id_mapping.py
+    python tools/generate_id_mapping.py
 
 输出：mapping.json
     {
@@ -20,9 +19,10 @@ import json
 import re
 from pathlib import Path
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-MD_PATH = SCRIPT_DIR / "ID映射表.md"
-OUT_PATH = SCRIPT_DIR / "mapping.json"
+SCRIPT_DIR = Path(__file__).resolve().parent          # tools/
+PROJECT_ROOT = SCRIPT_DIR.parent                      # 项目根目录
+MD_PATH = PROJECT_ROOT / "document" / "design" / "ID映射表.md"
+OUT_PATH = PROJECT_ROOT / "dist" / "mapping.json"     # 随 exe 一同分发
 
 SECTION_HEADERS = {
     "方块映射": "blocks",
@@ -45,7 +45,7 @@ def is_header_row(first_cell: str) -> bool:
 
 
 def parse_table(lines: list[str], col_old: int, col_new: int) -> dict[str, str]:
-    """从 markdown 表格行中提取 旧ID → 新ID 的映射。col 为 0-based 列索引。"""
+    """从 markdown 表格行中提取 旧ID -> 新ID 的映射。col 为 0-based 列索引。"""
     mapping = {}
     for line in lines:
         # 跳过标题分隔行（如 |---|---|）
