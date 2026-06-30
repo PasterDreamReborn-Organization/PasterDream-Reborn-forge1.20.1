@@ -155,6 +155,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "Dream Notes - Lamp Shadow World");
         add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "Dream Notes - Wind Journey World");
         add(ModItems.BLUE_PRINT.get(), "Blue Print");
+        add(ModItems.REED_ROD.get(), "Reed Rod");
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "Dye Dream Dirt");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "Dye Dream Grass Block");
@@ -236,6 +237,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.ICE_BUD.get(), "Ice Bud");
         add(ModBlocks.QYM_DOLL.get(), "琴雨梦Doll");
         add(ModBlocks.UUZ_DOLL.get(), "幼幼紫Doll");
+        add(ModBlocks.DYEDREAM_CRACK.get(), "Dyedream Crack");
         add(ModBlocks.CLAYPAN.get(), "Claypan");
         add(ModBlocks.DREAM_CAULDRON.get(), "Dream Cauldron");
         add(ModBlocks.DYEDREAM_DESK.get(), "Dyedream Desk");
@@ -279,6 +281,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.POLISHED_CALCITE_STALICRIPE.get(), "Polished Calcite Stalicripe");
         add(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), "Small Polished Calcite Stalicripe");
         add(ModBlocks.DYEDREAM_SEAGRASS.get(), "Dyedream Seagrass");
+        add(ModBlocks.REED.get(), "Reed");
 
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "Melt Dream Crystal Fragment");
 

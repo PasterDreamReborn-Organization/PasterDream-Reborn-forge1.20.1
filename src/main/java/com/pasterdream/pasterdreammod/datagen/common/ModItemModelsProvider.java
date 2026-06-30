@@ -171,6 +171,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get());
         basicItem(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get());
         basicItem(ModItems.BLUE_PRINT.get());
+        basicItem(ModItems.REED_ROD.get());
 
         basicItem(ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
         basicItem(ModItems.WHITE_COROLLA_CROP_AGE_0.get());
@@ -267,6 +268,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/small_polished_calcite_stalicripe"));
         withExistingParent(ModItems.DYEDREAM_SEAGRASS.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/dyedream_seagrass"));
+        withExistingParent(ModItems.REED.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/reed"));
     }
 
     @Override

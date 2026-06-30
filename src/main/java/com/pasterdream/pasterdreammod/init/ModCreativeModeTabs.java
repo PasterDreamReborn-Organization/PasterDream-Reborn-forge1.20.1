@@ -133,6 +133,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SPOOL.get());
                         output.accept(ModItems.FABRIC.get());
                         output.accept(ModItems.PROTECT_DECK.get());
+                        output.accept(ModItems.REED_ROD.get());
                     })
                     .build());
 
@@ -333,6 +334,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_LILY_PAD.get());
                         output.accept(ModItems.DYEDREAM_LOTUS.get());
                         output.accept(ModItems.DYEDREAM_SEAGRASS.get());
+                        output.accept(ModItems.REED.get());
                     })
                     .build());
 
@@ -346,6 +348,7 @@ public class ModCreativeModeTabs {
                     {
                         output.accept(ModBlocks.QYM_DOLL.get());
                         output.accept(ModBlocks.UUZ_DOLL.get());
+                        output.accept(ModBlocks.DYEDREAM_CRACK.get());
                         output.accept(ModBlocks.CLAYPAN.get());
                         output.accept(ModBlocks.DREAM_CAULDRON.get());
                         output.accept(ModItems.MORTAR.get());
