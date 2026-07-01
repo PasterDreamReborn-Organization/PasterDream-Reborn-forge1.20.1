@@ -171,6 +171,10 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> JUNGLE_SPORANGIUM_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "jungle_sporangium_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> REED_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "reed_patch"));
 
+    // ===== 下界维度两种植物 =====
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLAZE_FLOWER_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "blaze_flower_patch"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CRIMSON_THORNS_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "crimson_thorns_patch"));
+
     //原版维度矿石
     public static final ResourceKey<ConfiguredFeature<?, ?>> DEEPSLATE_TITANIUM_ORE_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "deepslate_titanium_ore_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> MOLTEN_GOLD_ORE_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "molten_gold_ore_patch"));
@@ -224,6 +228,11 @@ public class ModConfiguredFeatures {
             ModBlocks.DYEDREAM_GRASS_BLOCK.get(),
             Blocks.CALCITE,
             ModBlocks.DYEDREAM_BUDDING_BLOCK.get()
+    );
+
+    /** 绯红森林地面 */
+    private static final List<Block> CRIMSON_FOREST_GROUND = List.of(
+            Blocks.CRIMSON_NYLIUM
     );
 
     /** 冰晶芽地面：不含母岩 */
@@ -504,6 +513,11 @@ public class ModConfiguredFeatures {
 
         //芦苇
         context.register(REED_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(24, 6, 5, simpleBlockInAir(BlockStateProvider.simple(ModBlocks.REED.get())))));
+
+        //烈焰花
+        context.register(BLAZE_FLOWER_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(12, 6, 3, simpleBudInAir(BlockStateProvider.simple(ModBlocks.BLAZE_FLOWER.get()), CRIMSON_FOREST_GROUND))));
+        //赤荆棘
+        context.register(CRIMSON_THORNS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(24, 16, 5, simpleBudInAir(BlockStateProvider.simple(ModBlocks.CRIMSON_THORNS.get()), CRIMSON_FOREST_GROUND))));
 
         //深层钛矿石
         context.register(DEEPSLATE_TITANIUM_ORE_PATCH, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(oreTargets(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), DEEPSLATE_TITANIUM_ORE_CAN_REPLACE), 8, 0f)));

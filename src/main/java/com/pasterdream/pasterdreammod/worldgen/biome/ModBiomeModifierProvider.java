@@ -44,9 +44,10 @@ public class ModBiomeModifierProvider implements DataProvider
             HolderLookup.RegistryLookup<PlacedFeature> featureLookup = provider.lookupOrThrow(Registries.PLACED_FEATURE);
 
             addPatch(entries, "goldenrod_patch", ModPlacedFeatures.GOLDENROD_PATCH, featureLookup, BiomeTags.IS_OVERWORLD);
-            addPatch(entries, "ferraria_crispa_patch", ModPlacedFeatures.FERRARIA_CRISPA_PATCH, featureLookup, BiomeTags.IS_OVERWORLD);
-            addPatch(entries, "malva_sinensis_cavan_patch", ModPlacedFeatures.MALVA_SINENSIS_CAVAN_PATCH, featureLookup, BiomeTags.IS_OVERWORLD);
-            addPatch(entries, "eustoma_patch", ModPlacedFeatures.EUSTOMA_PATCH, featureLookup, BiomeTags.IS_OVERWORLD);
+            TagKey<Biome> flowerFieldTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_flower_field_spawn_biome"));
+            addPatch(entries, "ferraria_crispa_patch", ModPlacedFeatures.FERRARIA_CRISPA_PATCH, featureLookup, flowerFieldTag);
+            addPatch(entries, "malva_sinensis_cavan_patch", ModPlacedFeatures.MALVA_SINENSIS_CAVAN_PATCH, featureLookup, flowerFieldTag);
+            addPatch(entries, "eustoma_patch", ModPlacedFeatures.EUSTOMA_PATCH, featureLookup, BiomeTags.IS_JUNGLE);
             addPatch(entries, "oats_patch", ModPlacedFeatures.OATS_PATCH, featureLookup, BiomeTags.IS_OVERWORLD);
             addPatch(entries, "rye_patch", ModPlacedFeatures.RYE_PATCH, featureLookup, BiomeTags.IS_OVERWORLD);
             addPatch(entries, "white_corolla_crop_patch", ModPlacedFeatures.WHITE_COROLLA_CROP_PATCH, featureLookup, TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_white_corolla_spawn_biome")));
@@ -56,6 +57,10 @@ public class ModBiomeModifierProvider implements DataProvider
 
             TagKey<Biome> reedSpawnTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_reed_spawn_biome"));
             addPatch(entries, "reed_patch", ModPlacedFeatures.REED_PATCH, featureLookup, reedSpawnTag);
+
+            TagKey<Biome> crimsonForestTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_spawn_in_crimson_forest"));
+            addPatch(entries, "blaze_flower_patch", ModPlacedFeatures.BLAZE_FLOWER_PATCH, featureLookup, crimsonForestTag);
+            addPatch(entries, "crimson_thorns_patch", ModPlacedFeatures.CRIMSON_THORNS_PATCH, featureLookup, crimsonForestTag);
 
             addPatch(entries, "deepslate_titanium_ore_patch", ModPlacedFeatures.DEEPSLATE_TITANIUM_ORE_PATCH, featureLookup, BiomeTags.IS_OVERWORLD);
             addPatch(entries, "molten_gold_ore_patch", ModPlacedFeatures.MOLTEN_GOLD_ORE_PATCH, featureLookup, BiomeTags.IS_NETHER);

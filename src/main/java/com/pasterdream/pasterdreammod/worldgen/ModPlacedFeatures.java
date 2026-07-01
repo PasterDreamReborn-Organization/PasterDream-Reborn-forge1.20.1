@@ -178,6 +178,10 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> JUNGLE_SPORANGIUM_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "jungle_sporangium_patch"));
     public static final ResourceKey<PlacedFeature> REED_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "reed_patch"));
 
+    //下界维度两种植物
+    public static final ResourceKey<PlacedFeature> BLAZE_FLOWER_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "blaze_flower_patch"));
+    public static final ResourceKey<PlacedFeature> CRIMSON_THORNS_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "crimson_thorns_patch"));
+
     //原版维度矿石
     public static final ResourceKey<PlacedFeature> DEEPSLATE_TITANIUM_ORE_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "deepslate_titanium_ore_patch"));
     public static final ResourceKey<PlacedFeature> MOLTEN_GOLD_ORE_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "molten_gold_ore_patch"));
@@ -459,6 +463,11 @@ public class ModPlacedFeatures {
 
         //芦苇
         context.register(REED_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.REED_PATCH), List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        //烈焰花
+        context.register(BLAZE_FLOWER_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.BLAZE_FLOWER_PATCH), List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+        //赤荆棘（因为算作危险植物，理应有更低的生成权重）
+        context.register(CRIMSON_THORNS_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.CRIMSON_THORNS_PATCH), List.of(RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
         //深层钛矿石
         context.register(DEEPSLATE_TITANIUM_ORE_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.DEEPSLATE_TITANIUM_ORE_PATCH), List.of(CountPlacement.of(8), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(0)))));
