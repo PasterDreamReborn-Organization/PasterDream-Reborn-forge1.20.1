@@ -299,6 +299,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "Melt Dream Crystal Fragment");
 
+        add(ModItems.DEBUG_SWORD.get(), "Debug Sword");
+        add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get(), "Model Break Particle Provider Block 0");
+        add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get(), "Model Break Particle Provider Block 1");
+        add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get(), "Model Break Particle Provider Block 2");
+        add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), "Model Break Particle Provider Block 3");
+
         add("fluid.pasterdream.melt_dream_liquid","Melt Dream Liquid");
         add("fluid.pasterdream.shadow_liquid","Shadow Liquid");
 
@@ -323,6 +329,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_plants_tab", "Paster Dream | Plants");
         add("itemGroup.pasterdream.pasterdream_equipment_tab", "Paster Dream | Equipment");
         add("itemGroup.pasterdream.pasterdream_dream_notes_tab", "Paster Dream | Dream Notes");
+        add("itemGroup.pasterdream.pasterdream_dream_debug_tab", "Paster Dream | Debug");
 
         add("button.pasterdream.mortarbutton", "grinding");
 
@@ -330,6 +337,18 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7All creatures with souls in this world have dreams\nThose fleeting memories that cannot be recalled upon waking\nShatter and melt, buried across the world, condensing into crystals\nWaiting to be discovered by new souls");
         add("tooltip.pasterdreammod.upgrade_kit", "§7Used at the smithing table to upgrade equipment Can preserve the original enhancement properties of the equipment");
         add("tooltip.pasterdream.右键打开GUI", "§7Press right mouse button to open GUI");
+        add("tooltip.pasterdream.此方块仅用于提供粒子效果，生存模式无法获取", "§7This block only use to provide particle effect, Can't get on Survival mode");
+        add("tooltip.pasterdream.左键实体：直接删除此实体", "§7Left Button Press Entity: Delete This Entity");
+        add("tooltip.pasterdream.左键方块：模拟破坏此方块", "§7Left Button Press Block: Simulate Destroy This Block");
+        add("tooltip.pasterdream.右键实体：在聊天框打印此实体NBT", "§7Right Button Press Entity: Print This Entity's NBT In The Chat Box");
+        add("tooltip.pasterdream.右键方块：在聊天框打印此方块BlockState和NBT", "§7Right Button Press Block: Print This Entity's BlockState And NBT In The Chat Box");
+
+        add("option.pasterdream.Q: 模拟无工具破坏", "Q: Simulate Break Without Tool");
+        add("option.pasterdream.W: 模拟下界合金镐破坏", "W: Simulate Break With Netherite Pickaxe");
+        add("option.pasterdream.E: 模拟下界合金镐时运III破坏", "E: Simulate Break With Fortune III Netherite Pickaxe");
+        add("option.pasterdream.A: 模拟下界合金镐精准采集破坏", "A: Simulate Break With Silk Touch Netherite Pickaxe");
+        add("option.pasterdream.S: 获取对应的BlockItem并掉落，并将方块设置为空气", "S: Get Corresponding BlockItem And Drop, And Set Block To Air");
+        add("option.pasterdream.D: 将方块设置为空气的同时不触发方块更新", "D: Set The Block To Air Without NeighborChange");
 
         add("effect.pasterdream.sculk_armor_buff", "Sculk Echo");
         add("effect.pasterdream.dyedream_armor_buff", "Dyedream Protection");

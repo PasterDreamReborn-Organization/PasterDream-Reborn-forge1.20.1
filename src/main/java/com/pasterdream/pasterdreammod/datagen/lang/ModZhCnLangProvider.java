@@ -307,6 +307,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.REED.get(), "芦苇");
         add(ModBlocks.JUNGLE_SPORANGIUM.get(), "丛林孢子囊");
 
+        add(ModItems.DEBUG_SWORD.get(), "调试之剑");
+        add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get(), "破碎粒子提供方块0");
+        add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get(), "破碎粒子提供方块1");
+        add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get(), "破碎粒子提供方块2");
+        add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), "破碎粒子提供方块3");
+
         add("fluid.pasterdream.melt_dream_liquid","融梦涌泉");
         add("fluid.pasterdream.shadow_liquid","熔融阴影");
 
@@ -331,6 +337,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_blocks_tab", "帕斯特之梦 | 方块");
         add("itemGroup.pasterdream.pasterdream_plants_tab", "帕斯特之梦 | 植物");
         add("itemGroup.pasterdream.pasterdream_dream_notes_tab", "帕斯特之梦 | 笔记");
+        add("itemGroup.pasterdream.pasterdream_dream_debug_tab", "帕斯特之梦 | 调试栏");
 
         add("button.pasterdream.mortarbutton", "研磨");
 
@@ -338,6 +345,18 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7此世间一切拥有灵魂的生物皆有梦\n那些醒来时无法想起的细缕回忆\n破碎并融化被埋藏在世界各处凝结成晶\n等待着被新的灵魂发现");
         add("tooltip.pasterdreammod.upgrade_kit", "§7用于在锻造台处升级装备 可以保留装备的原有强化属性");
         add("tooltip.pasterdream.右键打开GUI", "§7右键打开GUI");
+        add("tooltip.pasterdream.此方块仅用于提供粒子效果，生存模式无法获取", "§7此方块仅用于提供粒子效果，生存模式无法获取");
+        add("tooltip.pasterdream.左键实体：直接删除此实体", "§7左键实体：直接删除此实体");
+        add("tooltip.pasterdream.左键方块：模拟破坏此方块", "§7左键方块：模拟破坏此方块");
+        add("tooltip.pasterdream.右键实体：在聊天框打印此实体NBT", "§7右键实体：在聊天框打印此实体NBT");
+        add("tooltip.pasterdream.右键方块：在聊天框打印此方块BlockState和NBT", "§7右键方块：在聊天框打印此方块BlockState和NBT");
+
+        add("option.pasterdream.Q: 模拟无工具破坏", "Q: 模拟无工具破坏");
+        add("option.pasterdream.W: 模拟下界合金镐破坏", "W: 模拟下界合金镐破坏");
+        add("option.pasterdream.E: 模拟下界合金镐时运III破坏", "E: 模拟下界合金镐时运III破坏");
+        add("option.pasterdream.A: 模拟下界合金镐精准采集破坏", "A: 模拟下界合金镐精准采集破坏");
+        add("option.pasterdream.S: 获取对应的BlockItem并掉落，并将方块设置为空气", "S: 获取对应的BlockItem并掉落，并将方块设置为空气");
+        add("option.pasterdream.D: 将方块设置为空气的同时不触发方块更新", "D: 将方块设置为空气的同时不触发方块更新");
 
         add("effect.pasterdream.sculk_armor_buff", "幽匿回响");
         add("effect.pasterdream.dyedream_armor_buff", "染梦守护");
