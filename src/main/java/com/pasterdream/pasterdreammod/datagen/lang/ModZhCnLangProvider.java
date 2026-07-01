@@ -267,6 +267,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.PICNIC_BASKET.get(), "野餐篮");
         add(ModBlocks.SHADOW_CHEST.get(), "浸影宝盒");
         add(ModBlocks.WIND_MOOR_CRATE.get(), "风泊板条筐");
+        add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), "寻梦者的永恒书卷");
         add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "梦染茶花植株");
         add(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), "成熟的梦染茶花植株");
         add(ModBlocks.WHITE_COROLLA_CROP.get(), "苍白雪莲植株");

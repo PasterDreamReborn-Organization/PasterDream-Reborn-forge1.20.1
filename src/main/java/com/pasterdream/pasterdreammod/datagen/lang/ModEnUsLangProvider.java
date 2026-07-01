@@ -257,6 +257,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.PICNIC_BASKET.get(), "Picnic Basket");
         add(ModBlocks.SHADOW_CHEST.get(), "Shadow Chest");
         add(ModBlocks.WIND_MOOR_CRATE.get(), "Wind Moor Crate");
+        add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), "The Endless Book Of Dream Seekers");
         add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "Dyedream Corolla");
         add(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), "Mature Dyedream Corolla");
         add(ModBlocks.WHITE_COROLLA_CROP.get(), "White Corolla Crop");

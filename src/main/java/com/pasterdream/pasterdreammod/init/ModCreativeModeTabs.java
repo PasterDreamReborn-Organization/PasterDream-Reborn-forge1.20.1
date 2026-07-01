@@ -376,6 +376,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.PICNIC_BASKET.get());
                         output.accept(ModBlocks.SHADOW_CHEST.get());
                         output.accept(ModBlocks.WIND_MOOR_CRATE.get());
+                        output.accept(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get());
                     })
                     .build());
 
