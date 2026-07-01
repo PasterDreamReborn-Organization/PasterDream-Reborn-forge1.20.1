@@ -282,11 +282,21 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath("pasterdream", "white_corolla_can_place_on")))
                 .add(Blocks.SNOW_BLOCK);
 
+
+        // 暂时无法自动填充到
         tag(ModBlockTags.DYEDREAM_BUD_CAN_SPAWN_ON)
                 .add(ModBlocks.DYEDREAM_DIRT.get())
                 .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get())
                 .add(Blocks.CALCITE)
                 .add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get());
+
+
+        // 暂时无法自动填充到ON_DYEDREAM_GROUND中，需要手动添加
+        tag(ModBlockTags.DYEDREAM_GROUND_PLANTS_CAN_SPAWN_ON)
+                .add(ModBlocks.DYEDREAM_DIRT.get())
+                .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get());
+
+
     }
 
     private void addBuildingFamilyToTags(BuildingBlockFamily family) {
