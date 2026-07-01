@@ -302,6 +302,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         generateTwoStageCropBlockModel("cloud_crop");
         generateTwoStageCropBlockModel("cotton_crop");
 
+        simpleBlockWithItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get(), cubeAll(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get()));
+        simpleBlockWithItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get(), cubeAll(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get()));
+        simpleBlockWithItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get(), cubeAll(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get()));
+        simpleBlockWithItem(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), cubeAll(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get()));
+
         var dyedreamMoss = models().cross(ModBlocks.DYEDREAM_MOSS.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_MOSS.get())).renderType("cutout");
         simpleBlock(ModBlocks.DYEDREAM_MOSS.get(), dyedreamMoss);
 

@@ -262,6 +262,10 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SHADOW_CHEST.get());
         dropSelf(ModBlocks.WIND_MOOR_CRATE.get());
 
+        dropSelf(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get());
+        dropSelf(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get());
+        dropSelf(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get());
+        dropSelf(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get());
     }
 
     private void buildingFamily(BuildingBlockFamily family) {

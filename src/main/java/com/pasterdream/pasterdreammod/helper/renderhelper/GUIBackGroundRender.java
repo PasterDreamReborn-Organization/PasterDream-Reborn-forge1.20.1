@@ -71,6 +71,15 @@ public class GUIBackGroundRender
     public static ResourceLocation NEXT_BUTTON = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/arrow_button/next_button.png");
     public static ResourceLocation NEXT_BUTTON_HOVERED = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/arrow_button/next_button_hover.png");
 
+    public static final ResourceLocation MINECRAFT_GUI_LEFT_TOP = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/left_top.png");
+    public static final ResourceLocation MINECRAFT_GUI_TOP = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/multipart_top.png");
+    public static final ResourceLocation MINECRAFT_GUI_RIGHT_TOP = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/right_top.png");
+    public static final ResourceLocation MINECRAFT_GUI_LEFT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/multipart_left.png");
+    public static final ResourceLocation MINECRAFT_GUI_RIGHT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/multipart_right.png");
+    public static final ResourceLocation MINECRAFT_GUI_LEFT_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/left_bottom.png");
+    public static final ResourceLocation MINECRAFT_GUI_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/multipart_bottom.png");
+    public static final ResourceLocation MINECRAFT_GUI_RIGHT_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/right_bottom.png");
+
     public static void rendPasterDreamInventoryGUI(GuiGraphics guiGraphics, int x, int y)
     {
         guiGraphics.blit(PASTERDREAM_INVENTORY_GUI, x, y, 0, 0, 170, 84, 170, 84);
@@ -255,5 +264,18 @@ public class GUIBackGroundRender
     public static void rendNextButtonHovered(GuiGraphics guiGraphics, int x, int y)
     {
         guiGraphics.blit(NEXT_BUTTON_HOVERED, x, y, 0, 0, 15, 22, 15, 22);
+    }
+
+    public static void rendMinecraftGUIBackground(GuiGraphics guiGraphics, int x, int y, int width, int height)
+    {
+        guiGraphics.blit(MINECRAFT_GUI_LEFT_TOP, x, y, 0, 0, 4, 4, 4, 4);
+        guiGraphics.blit(MINECRAFT_GUI_TOP, x + 4, y, 0, 0, width - 8, 4, 1, 4);
+        guiGraphics.blit(MINECRAFT_GUI_RIGHT_TOP, x + width - 4, y, 0, 0, 4, 4, 4, 4);
+        guiGraphics.blit(MINECRAFT_GUI_LEFT, x, y + 4, 0, 0, 4, height - 8, 4, 1);
+        guiGraphics.fill(x + 4, y + 4, x + width - 4, y + height - 4, 0xFFC6C6C6);
+        guiGraphics.blit(MINECRAFT_GUI_RIGHT, x + width - 4, y + 4, 0, 0, 4, height- 8, 4, 1);
+        guiGraphics.blit(MINECRAFT_GUI_LEFT_BOTTOM, x, y + height - 4, 0, 0, 4, 4, 4, 4);
+        guiGraphics.blit(MINECRAFT_GUI_BOTTOM, x + 4, y + height - 4, 0, 0, width - 8, 4, 1, 4);
+        guiGraphics.blit(MINECRAFT_GUI_RIGHT_BOTTOM, x + width - 4, y + height - 4, 0, 0, 4, 4, 4, 4);
     }
 }
