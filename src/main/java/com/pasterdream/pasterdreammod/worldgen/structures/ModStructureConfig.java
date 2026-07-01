@@ -20,6 +20,7 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dream_church_2", "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 32, 8, 64595175, 1));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dream_church_4", "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 32, 8, 13271459, 1));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dream_church_6", "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 32, 8, 34549862, 1));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:crystal_ball", "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 32, 8, 62594864, 1));
 
         return STRUCTURES;
     }
