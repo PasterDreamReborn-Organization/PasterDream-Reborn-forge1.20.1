@@ -292,6 +292,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_SEAGRASS.get(), "Dyedream Seagrass");
         add(ModBlocks.REED.get(), "Reed");
         add(ModBlocks.DYEDREAM_VINE.get(), "Dyedream Vine");
+        add(ModBlocks.JUNGLE_SPORANGIUM.get(), "Jungle Sporangium");
 
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "Melt Dream Crystal Fragment");
 

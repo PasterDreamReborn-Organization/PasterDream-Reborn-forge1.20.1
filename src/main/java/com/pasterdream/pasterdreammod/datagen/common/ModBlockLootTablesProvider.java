@@ -191,7 +191,10 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 block -> LootHelpers.createShearsOrSilkTouchSelfElseItem(ModBlocks.REED.get(),ModItems.REED_ROD.get(),1.0F,3.0F));
 
         add(ModBlocks.DYEDREAM_VINE.get(),
-                block -> LootHelpers.createShearsOrSilkTouchSelfElseItem(ModBlocks.DYEDREAM_VINE.get(),ModItems.DYEDREAM_FRUIT.get(),0.0F,2.0F));
+                block -> LootHelpers.createShearsOrSilkTouchSelfElseItem(ModBlocks.DYEDREAM_VINE.get(),ModItems.DYEDREAM_FRUIT.get(),0.0F,1.0F));
+
+        add(ModBlocks.JUNGLE_SPORANGIUM.get(),
+                block -> LootHelpers.createShearsOrSilkTouchSelfElseItem(ModBlocks.JUNGLE_SPORANGIUM.get(),ModItems.JUNGLE_SPORE.get(),1.0F,1.0F));
 
         dropSelf(ModBlocks.DYEDREAM_SAND.get());
         add(ModBlocks.DYEDREAM_GLASS.get(),

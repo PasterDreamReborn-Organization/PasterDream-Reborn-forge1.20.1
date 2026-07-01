@@ -338,7 +338,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.COTTON_CROP_AGE_1.get());
                         output.accept(ModItems.FERRARIA_CRISPA.get());
                         output.accept(ModItems.EUSTOMA.get());
-
+                        output.accept(ModItems.JUNGLE_SPORANGIUM.get());
                         output.accept(ModItems.MALVA_SINENSIS_CAVAN.get());
                         output.accept(ModItems.REED.get());
                         output.accept(ModItems.RYE.get());
