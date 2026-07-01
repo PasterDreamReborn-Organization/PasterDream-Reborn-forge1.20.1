@@ -258,6 +258,7 @@
 | `spool`                        | `spool`                                     | 不改                                                        | 无需客制化类，直接用 `Item`                           |
 | `fabric`                       | `fabric`                                    | 不改                                                        | 无需客制化类，直接用 `Item`                           |
 | `protect_deck`                 | `protect_deck`                              | 不改                                                        | 无需客制化类，直接用 `Item`                           |
+| `jungle_spore`                 | `jungle_spore`                              | 不改                                                        | 无需客制化类，直接用 `Item`                           |
 | `titanium_upgrade`             | `titanium_upgrade`                          | 不改                                                        | 无需客制化类，直接用 `Item`                           |
 | `sculk_upgrade`                | `sculk_upgrade`                             | 不改                                                        | 无需客制化类，直接用 `Item`                           |
 | `dyedream_upgrade`             | `dyedream_upgrade`                          | 不改                                                        | 无需客制化类，直接用 `Item`                           |

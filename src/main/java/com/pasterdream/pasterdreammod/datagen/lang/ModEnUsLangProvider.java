@@ -164,6 +164,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.REED_ROD.get(), "Reed Rod");
         add(ModItems.MELT_DREAM_COIN.get(), "Melt Dream Coin");
         add(ModItems.MELT_DREAM_COIN_PILE.get(), "Melt Dream Coin Pile");
+        add(ModItems.JUNGLE_SPORE.get(), "Jungle Spore");
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "Dye Dream Dirt");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "Dye Dream Grass Block");

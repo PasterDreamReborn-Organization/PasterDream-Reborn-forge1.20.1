@@ -172,6 +172,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "寻梦者笔记-风之旅途");
         add(ModItems.BLUE_PRINT.get(), "蓝图");
         add(ModItems.REED_ROD.get(), "芦苇杆");
+        add(ModItems.JUNGLE_SPORE.get(), "丛林孢子");
         add(ModItems.MELT_DREAM_COIN.get(), "融梦星币");
         add(ModItems.MELT_DREAM_COIN_PILE.get(), "融梦星币堆");
         add(ModBlocks.DYEDREAM_VINE.get(), "染梦藤蔓");
@@ -289,6 +290,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.NIPPY_EDELWEISS.get(), "凛冽雪绒花");
         add(ModBlocks.DYEDREAM_LILY_PAD.get(), "染梦睡莲");
         add(ModBlocks.DYEDREAM_LOTUS.get(), "染梦莲花");
+        add(ModBlocks.DYEDREAM_VINE.get(), "染梦藤蔓");
 
         add(ModBlocks.DYEDREAM_MOSS.get(), "染梦苔藓");
         add(ModBlocks.STEM_GRASS.get(),"茎草");

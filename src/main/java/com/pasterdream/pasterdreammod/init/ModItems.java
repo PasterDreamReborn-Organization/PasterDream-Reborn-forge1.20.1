@@ -134,6 +134,9 @@ public class ModItems {
                     return 100;
                 }
             });
+    public static final RegistryObject<Item> JUNGLE_SPORE = ITEMS.register("jungle_spore",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(0).build())));
 
     // ===== 升级套件 =====
     public static final RegistryObject<Item> TITANIUM_UPGRADE = ITEMS.register("titanium_upgrade",
