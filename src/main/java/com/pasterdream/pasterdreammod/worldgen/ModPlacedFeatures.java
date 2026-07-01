@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.worldgen;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.lang.reflect.Constructor;
@@ -186,6 +188,13 @@ public class ModPlacedFeatures {
         }
     }
 
+    /** 限制植物只能生成在染梦地表方块（染梦草方块/染梦泥土）上 */
+    private static final PlacementModifier ON_DYEDREAM_GROUND = BlockPredicateFilter.forPredicate(
+            BlockPredicate.matchesBlocks(
+                    Direction.DOWN.getNormal(),
+                    ModBlocks.DYEDREAM_GRASS_BLOCK.get(),
+                    ModBlocks.DYEDREAM_DIRT.get()));
+
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> cf = context.lookup(Registries.CONFIGURED_FEATURE);
 
@@ -275,57 +284,69 @@ public class ModPlacedFeatures {
         context.register(STEM_GRASS_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.STEM_GRASS_PATCH),
                 List.of(CountPlacement.of(5), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
 
         // 高茎草 — WORLD_SURFACE_WG
         context.register(TALL_STEM_GRASS_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.TALL_STEM_GRASS_PATCH),
                 List.of(CountPlacement.of(3), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
 
-        // 粉顶菌巨树 — MOTION_BLOCKING 高度图，避免水上生成
+        // 粉顶菌巨树 — 仅生成在染梦草方块/染梦泥土上
         context.register(PINK_MUSHROOM_TREE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.PINK_MUSHROOM_TREE),
                 List.of(CountPlacement.of(1), InSquarePlacement.spread(),
                         SurfaceWaterDepthFilter.forMaxDepth(0),
-                        onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(
+                                Direction.DOWN.getNormal(),
+                                ModBlocks.DYEDREAM_GRASS_BLOCK.get(),
+                                ModBlocks.DYEDREAM_DIRT.get())))));
 
         // 粉顶菌巨菇 — MOTION_BLOCKING 高度图，避免水上生成
         context.register(PINK_HUGE_MUSHROOM, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.PINK_HUGE_MUSHROOM),
                 List.of(CountPlacement.of(2), InSquarePlacement.spread(),
                         SurfaceWaterDepthFilter.forMaxDepth(0),
-                        onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        ON_DYEDREAM_GROUND)));
 
         // 粉顶菌 (小型地表) — WORLD_SURFACE_WG
         context.register(PINK_MUSHROOM_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.PINK_MUSHROOM_PATCH),
                 List.of(CountPlacement.of(5), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
 
         // 高粉顶菌 (地表) — WORLD_SURFACE_WG
         context.register(TALL_PINK_MUSHROOM_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.TALL_PINK_MUSHROOM_PATCH),
                 List.of(CountPlacement.of(3), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
 
         // 野生梦染茶花 — 团簇稀疏
         context.register(DYEDREAM_COROLLA_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_COROLLA_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
 
         // 野生流明堇 — 团簇稀疏
         context.register(LIGHT_BALL_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.LIGHT_BALL_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
 
         // 野生玲云花 — 团簇稀疏
         context.register(CLOUD_CROP_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.CLOUD_CROP_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
 
         // 云团柱 — SP, rarity=4, MOTION_BLOCKING
         context.register(CLOUD_PILLAR_SMALL, new PlacedFeature(
@@ -365,29 +386,34 @@ public class ModPlacedFeatures {
         context.register(DYEDREAM_LILY_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_LILY_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
 
         //冶梦莲
         context.register(DREAMING_LOTUS_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.DREAMING_LOTUS_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
 
         //雪绒花 — 原作 flower_16: count=5, rarity=32
         context.register(EDELWEISS_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.EDELWEISS_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
         //奇异蕨 — 原作 flower_14: count=2, rarity=32
         context.register(SINGULARITY_FERN_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.SINGULARITY_FERN_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
         //苓灯花 — 原作 flower_9: count=2, rarity=32
         context.register(LINHT_FLOWER_PATCH, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.LINHT_FLOWER_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_DYEDREAM_GROUND)));
 
         //秋麒麟
         context.register(GOLDENROD_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.GOLDENROD_PATCH), List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));

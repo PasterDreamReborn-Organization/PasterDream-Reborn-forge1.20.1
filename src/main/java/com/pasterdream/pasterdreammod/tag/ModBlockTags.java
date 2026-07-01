@@ -13,7 +13,7 @@ public class ModBlockTags {
     public static final TagKey<Block> STRIPPED_WOOD = createForgeTag("stripped_wood");
     public static final TagKey<Block> FORGE_GLASS_PANE = createForgeTag("glass_panes");
     public static final TagKey<Block> DYEDREAM_BUD_CAN_SPAWN_ON = create("dyedream_bud_can_spawn_on");
-
+    public static final TagKey<Block> DYEDREAM_GROUND_PLANTS_CAN_SPAWN_ON = create("dyedream_ground_plants_can_spawn_on");
     private static TagKey<Block> create(String pName) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, pName));
     }
