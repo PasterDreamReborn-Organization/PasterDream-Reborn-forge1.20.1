@@ -433,6 +433,19 @@ public class ModCreativeModeTabs {
                     })
                     .build());
 
+    public static final RegistryObject<CreativeModeTab> PASTERDREAM_DREAM_DEBUG_TAB = CREATIVE_MODE_TABS.register("pasterdream_dream_debug_tab",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_dream_debug_tab"))
+                    .icon(() -> new ItemStack(ModItems.DEBUG_SWORD.get()))
+                    .displayItems((parameters, output) ->
+                    {
+                        output.accept(ModItems.DEBUG_SWORD.get());
+                        output.accept(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get());
+                        output.accept(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get());
+                        output.accept(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get());
+                        output.accept(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get());
+                    }).build());
+
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TABS.register(eventBus);
     }

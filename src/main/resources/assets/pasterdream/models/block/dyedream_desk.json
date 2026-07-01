@@ -3,7 +3,7 @@
   "textures":
   {
     "all": "pasterdream:block/dyedream_desk",
-    "particle": "pasterdream:block/model_break_particle",
+    "particle": "pasterdream:block/model_break_particle_provider_block_0",
     "0": "pasterdream:block/dyedream_desk",
     "missing": "pasterdream:block/dyedream_desk"
   },

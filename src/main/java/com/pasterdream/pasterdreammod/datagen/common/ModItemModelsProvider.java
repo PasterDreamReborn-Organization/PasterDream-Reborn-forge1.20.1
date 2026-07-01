@@ -193,6 +193,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         itemModelWithResource(ModItems.CLOUD_CROP_AGE_1.get(), "cloud_crop");
         itemModelWithResource(ModItems.COTTON_CROP_AGE_1.get(), "cotton_crop");
 
+        basicItem(ModItems.DEBUG_SWORD.get());
+
         withExistingParent(ModItems.PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/pink_mushroom"));
         withExistingParent(ModItems.TALL_PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))

@@ -417,6 +417,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> SHADOW_CHEST = BLOCKS.register("shadow_chest", () -> new ShadowChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.DEEPSLATE_TILES).strength(1F, 0.5F).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> WIND_MOOR_CRATE = BLOCKS.register("wind_moor_crate", () -> new WindMoorCrateBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1F).noOcclusion()));
 
+    //破碎粒子提供方块
+    public static final RegistryObject<Block> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0 = BLOCKS.register("model_break_particle_provider_block_0", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0,2147483647)));
+    public static final RegistryObject<Block> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1 = BLOCKS.register("model_break_particle_provider_block_1", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0,2147483647)));
+    public static final RegistryObject<Block> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2 = BLOCKS.register("model_break_particle_provider_block_2", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0,2147483647)));
+    public static final RegistryObject<Block> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3 = BLOCKS.register("model_break_particle_provider_block_3", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(0,2147483647)));
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }

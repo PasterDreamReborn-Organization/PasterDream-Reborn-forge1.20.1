@@ -1,6 +1,6 @@
 {
   "parent": "pasterdream:displaysettings/picnic_basket.item",
   "textures": {
-    "particle": "pasterdream:block/picnic_basket_break"
+    "particle": "pasterdream:block/model_break_particle_provider_block_3"
   }
 }
