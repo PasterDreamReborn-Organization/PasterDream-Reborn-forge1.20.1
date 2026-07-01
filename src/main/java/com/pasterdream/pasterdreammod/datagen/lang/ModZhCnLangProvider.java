@@ -172,9 +172,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "寻梦者笔记-风之旅途");
         add(ModItems.BLUE_PRINT.get(), "蓝图");
         add(ModItems.REED_ROD.get(), "芦苇杆");
+        add(ModItems.JUNGLE_SPORE.get(), "丛林孢子");
         add(ModItems.MELT_DREAM_COIN.get(), "融梦星币");
         add(ModItems.MELT_DREAM_COIN_PILE.get(), "融梦星币堆");
-        add(ModBlocks.DYEDREAM_VINE.get(), "染梦藤蔓");
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "染梦泥土");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "染梦草方块");
@@ -289,6 +289,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.NIPPY_EDELWEISS.get(), "凛冽雪绒花");
         add(ModBlocks.DYEDREAM_LILY_PAD.get(), "染梦睡莲");
         add(ModBlocks.DYEDREAM_LOTUS.get(), "染梦莲花");
+        add(ModBlocks.DYEDREAM_VINE.get(), "染梦藤蔓");
 
         add(ModBlocks.DYEDREAM_MOSS.get(), "染梦苔藓");
         add(ModBlocks.STEM_GRASS.get(),"茎草");
@@ -301,6 +302,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), "小方解石笋");
         add(ModBlocks.DYEDREAM_SEAGRASS.get(), "染梦海草");
         add(ModBlocks.REED.get(), "芦苇");
+        add(ModBlocks.JUNGLE_SPORANGIUM.get(), "丛林孢子囊");
 
         add("fluid.pasterdream.melt_dream_liquid","融梦涌泉");
         add("fluid.pasterdream.shadow_liquid","熔融阴影");

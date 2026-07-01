@@ -134,6 +134,9 @@ public class ModItems {
                     return 100;
                 }
             });
+    public static final RegistryObject<Item> JUNGLE_SPORE = ITEMS.register("jungle_spore",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(0).build())));
 
     // ===== 升级套件 =====
     public static final RegistryObject<Item> TITANIUM_UPGRADE = ITEMS.register("titanium_upgrade",
@@ -794,6 +797,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> DYEDREAM_VINE = ITEMS.register("dyedream_vine",
             () -> new BlockItem(ModBlocks.DYEDREAM_VINE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> JUNGLE_SPORANGIUM = ITEMS.register("jungle_sporangium",
+            () -> new BlockItem(ModBlocks.JUNGLE_SPORANGIUM.get(), new Item.Properties()));
     //作物方块物品
     public static final RegistryObject<Item> DYEDREAM_COROLLA_CROP_AGE_0 = ITEMS.register("dyedream_corolla_crop_age_0", () -> new BlockItem(ModBlocks.DYEDREAM_COROLLA_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> WHITE_COROLLA_CROP_AGE_0 = ITEMS.register("white_corolla_crop_age_0", () -> new BlockItem(ModBlocks.WHITE_COROLLA_CROP.get(), new Item.Properties()));

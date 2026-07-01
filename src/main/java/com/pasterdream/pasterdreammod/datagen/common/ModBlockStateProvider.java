@@ -286,8 +286,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.REED.get(), reed);
         var Dyedream_vine = models().cross(ModBlocks.DYEDREAM_VINE.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_VINE.get())).renderType("cutout");
         simpleBlock(ModBlocks.DYEDREAM_VINE.get(), Dyedream_vine);
-
-
+        var Jungle_sporangium = models().cross(ModBlocks.JUNGLE_SPORANGIUM.getId().getPath(), blockTexture(ModBlocks.JUNGLE_SPORANGIUM.get())).renderType("cutout");
+        simpleBlock(ModBlocks.JUNGLE_SPORANGIUM.get(),Jungle_sporangium);
 
         //植株方块
         generateTwoStageCrop(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "dyedream_corolla_crop");

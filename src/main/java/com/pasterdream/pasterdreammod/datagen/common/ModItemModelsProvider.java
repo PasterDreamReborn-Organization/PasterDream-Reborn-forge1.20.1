@@ -180,6 +180,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.BLUE_DEW.get());
         basicItem(ModItems.MELT_DREAM_COIN.get());
         basicItem(ModItems.MELT_DREAM_COIN_PILE.get());
+        basicItem(ModItems.JUNGLE_SPORE.get());
 
         basicItem(ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
         basicItem(ModItems.WHITE_COROLLA_CROP_AGE_0.get());
@@ -280,6 +281,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("block/reed"));
         withExistingParent(ModItems.DYEDREAM_VINE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/dyedream_vine"));
+        withExistingParent(ModItems.JUNGLE_SPORANGIUM.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/jungle_sporangium"));
     }
 
     @Override
