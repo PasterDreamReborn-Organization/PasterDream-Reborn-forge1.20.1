@@ -24,6 +24,7 @@ import com.pasterdream.pasterdreammod.world.item.moltengoldtool.*;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.SharpMeltDreamSwordItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
+import com.pasterdream.pasterdreammod.world.item.MeltDreamCoinItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -100,6 +101,11 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CHARGED_AMETHYST = ITEMS.register("charged_amethyst",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> MELT_DREAM_COIN = ITEMS.register("melt_dream_coin",
+            () -> new MeltDreamCoinItem(new Item.Properties(), false));
+    public static final RegistryObject<Item> MELT_DREAM_COIN_PILE = ITEMS.register("melt_dream_coin_pile",
+            () -> new MeltDreamCoinItem(new Item.Properties(), true));
 
     public static final RegistryObject<Item> DREAM_FERTILIZER = ITEMS.register("dream_fertilizer", () -> new Item(new Item.Properties()));
 

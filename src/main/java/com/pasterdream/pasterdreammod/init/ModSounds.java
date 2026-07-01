@@ -22,6 +22,12 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> INFERNO_SWORD_SKILL =
             SOUNDS.register("inferno_sword_skill", () -> SoundEvent.createVariableRangeEvent(
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "inferno_sword_skill")));
+    public static final RegistryObject<SoundEvent> COIN_DROP =
+            SOUNDS.register("coin_drop", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "coin_drop")));
+    public static final RegistryObject<SoundEvent> COIN_EXCHANGE =
+            SOUNDS.register("coin_exchange", () -> SoundEvent.createVariableRangeEvent(
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "coin_exchange")));
 
     public static void register(IEventBus eventBus) {
         SOUNDS.register(eventBus);

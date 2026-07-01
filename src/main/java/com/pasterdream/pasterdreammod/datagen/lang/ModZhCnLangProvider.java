@@ -168,6 +168,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "寻梦者笔记-风之旅途");
         add(ModItems.BLUE_PRINT.get(), "蓝图");
         add(ModItems.REED_ROD.get(), "芦苇杆");
+        add(ModItems.MELT_DREAM_COIN.get(), "融梦星币");
+        add(ModItems.MELT_DREAM_COIN_PILE.get(), "融梦星币堆");
         add(ModBlocks.DYEDREAM_VINE.get(), "染梦藤蔓");
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "染梦泥土");
@@ -514,5 +516,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.drink_effect", "§7饮用后获得效果:");
         add("tooltip.pasterdream.red_dew.effect", "§7▪ §9瞬间治疗I");
         add("tooltip.pasterdream.blue_dew.effect", "§7▪ §9水下呼吸I (1:00)");
+
+        add("tooltip.pasterdream.melt_dream_coin", "§7右键使用10个以上可合成为融梦星币堆");
+        add("tooltip.pasterdream.melt_dream_coin_pile", "§7右键使用可分解为10个融梦星币");
+        add("tooltip.pasterdream.melt_dream_coin.value", "§7▪ §6价值面额 : ");
     }
 }

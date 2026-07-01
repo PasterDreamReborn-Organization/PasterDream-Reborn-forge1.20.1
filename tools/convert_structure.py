@@ -78,7 +78,64 @@ def palette_key(entry):
     return (name, props)
 
 
-def convert_one(input_path, mapping, block_properties, output_path, delete_unmapped=False):
+def strip_air_from_structure(nbt):
+    """
+    从结构中移除所有 minecraft:air 方块（真正的结构空位化，而非替换为 structure_void）。
+
+    逻辑：
+      1. 找到 palette 中 minecraft:air 的索引
+      2. 删除 blocks 中所有引用该索引的条目
+      3. 从 palette 中移除 minecraft:air
+      4. 将大于该索引的所有 block state 值向前递推
+
+    返回: 移除的空气方块数量
+    """
+    palette = nbt["palette"]
+    blocks = nbt["blocks"]
+
+    air_indices = []
+    for i, entry in enumerate(palette):
+        if str(entry["Name"]) == "minecraft:air":
+            air_indices.append(i)
+
+    if not air_indices:
+        return 0
+
+    air_set = set(air_indices)
+
+    # 构建旧索引 → 新索引的映射（跳过 air，后续索引向前递推）
+    index_map = {}
+    new_idx = 0
+    for old_idx in range(len(palette)):
+        if old_idx in air_set:
+            continue
+        index_map[old_idx] = new_idx
+        new_idx += 1
+
+    # 过滤掉空气方块，并更新剩余方块的 state 索引
+    new_blocks = List[Compound]()
+    removed_count = 0
+    for block_entry in blocks:
+        state = int(block_entry["state"])
+        if state in air_set:
+            removed_count += 1
+        else:
+            block_entry["state"] = Int(index_map[state])
+            new_blocks.append(block_entry)
+
+    nbt["blocks"] = new_blocks
+
+    # 重建 palette（去掉 air 条目）
+    new_palette = List[Compound]()
+    for i, entry in enumerate(palette):
+        if i not in air_set:
+            new_palette.append(entry)
+    nbt["palette"] = new_palette
+
+    return removed_count
+
+
+def convert_one(input_path, mapping, block_properties, output_path, delete_unmapped=False, strip_air=False):
     """
     转换单个 .nbt 结构文件。
 
@@ -86,8 +143,10 @@ def convert_one(input_path, mapping, block_properties, output_path, delete_unmap
         mapping:           旧名 → 新名 的映射字典
         block_properties:  旧名 → {属性: 值} 的属性覆盖字典
         delete_unmapped:   True 则把未映射的模组方块也替换为空气。
+        strip_air:         True 则把 palette 中的 minecraft:air 删掉，
+                           并从 blocks 中移除所有空气方块，剩余索引向前递推。
     返回:
-        (changes, unchanged, pending, deleted_unmapped)
+        (changes, unchanged, pending)
     """
     nbt = nbtlib.load(str(input_path))
     palette = nbt["palette"]
@@ -178,7 +237,12 @@ def convert_one(input_path, mapping, block_properties, output_path, delete_unmap
         old_idx = int(block_entry["state"])
         block_entry["state"] = Int(index_map.get(old_idx, old_idx))
 
-    # --- 阶段 4：保存 ---
+    # --- 阶段 4：可选 —— 移除空气方块（真正的结构空位化） ---
+    air_stripped = 0
+    if strip_air:
+        air_stripped = strip_air_from_structure(nbt)
+
+    # --- 阶段 5：保存 ---
     output_path.parent.mkdir(parents=True, exist_ok=True)
     nbt.save(str(output_path))
 
@@ -192,6 +256,9 @@ def convert_one(input_path, mapping, block_properties, output_path, delete_unmap
                 print(f"    {old} -> {new} [{count}次]")
     else:
         print("  该文件中没有需要转换的模组方块。")
+
+    if air_stripped > 0:
+        print(f"  已移除 {air_stripped} 个空气方块，palette 索引已向前递推。")
 
     if unchanged_unmapped:
         print(f"  [!] 提示：{len(unchanged_unmapped)} 个模组方块未在 mapping 中找到，保持原样：")
@@ -277,8 +344,13 @@ def run_interactive():
             nbt = nbtlib.load(str(selected))
             unmapped = set()
             pending = set()
+            has_air = False
+            air_block_count = 0
             for entry in nbt["palette"]:
                 full_name = str(entry["Name"])
+                if full_name == "minecraft:air":
+                    has_air = True
+                    continue
                 if full_name.startswith("minecraft:"):
                     continue
                 if ":" in full_name:
@@ -324,7 +396,29 @@ def run_interactive():
                 print()
                 print(f">> 正在转换: {selected.name} ...")
 
-            convert_one(selected, mapping, block_properties, output_path, delete_unmapped=delete_unmapped)
+            # --- 预扫描：检查 palette 中的空气方块数量 ---
+            if has_air:
+                air_palette_indices = set()
+                for i, entry in enumerate(nbt["palette"]):
+                    if str(entry["Name"]) == "minecraft:air":
+                        air_palette_indices.add(i)
+                air_block_count = sum(1 for b in nbt["blocks"] if int(b["state"]) in air_palette_indices)
+
+            strip_air = False
+            if has_air:
+                print()
+                print(f"  palette 中包含 minecraft:air（共 {air_block_count} 个方块引用）。")
+                print("  是否将其从结构中彻底移除（真正删除空位，非替换为 structure_void）？")
+                answer = input("  移除空气方块？[y/N] > ").strip().lower()
+                if answer in ("y", "yes"):
+                    strip_air = True
+                    print()
+                    print("  已选择：移除空气方块，palette 索引向前递推。")
+                else:
+                    print()
+                    print("  已选择：保留空气方块。")
+
+            convert_one(selected, mapping, block_properties, output_path, delete_unmapped=delete_unmapped, strip_air=strip_air)
             print()
             print(f"[OK] 转换完成！已保存至: {output_path}")
         else:
@@ -356,6 +450,11 @@ def main():
         "--delete-unmapped",
         action="store_true",
         help="将未映射和待搬运的模组方块也替换为空气（仅在指定 -i 时有效）",
+    )
+    parser.add_argument(
+        "--strip-air",
+        action="store_true",
+        help="移除结构中的 minecraft:air 方块（真正删除，而非替换为 structure_void），palette 索引向前递推",
     )
 
     args = parser.parse_args()
@@ -399,7 +498,7 @@ def main():
                 print(f"  --delete-unmapped: 将 {len(pending)} 种待搬运方块替换为空气")
 
         print(f">> 正在转换: {args.input.name} ...")
-        convert_one(args.input, mapping, block_properties, output_path, delete_unmapped=args.delete_unmapped)
+        convert_one(args.input, mapping, block_properties, output_path, delete_unmapped=args.delete_unmapped, strip_air=args.strip_air)
         print(f"[OK] 转换完成！已保存至: {output_path}")
     else:
         run_interactive()

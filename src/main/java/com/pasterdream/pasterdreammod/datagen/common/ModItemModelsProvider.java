@@ -174,6 +174,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.REED_ROD.get());
         basicItem(ModItems.RED_DEW.get());
         basicItem(ModItems.BLUE_DEW.get());
+        basicItem(ModItems.MELT_DREAM_COIN.get());
+        basicItem(ModItems.MELT_DREAM_COIN_PILE.get());
 
         basicItem(ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
         basicItem(ModItems.WHITE_COROLLA_CROP_AGE_0.get());

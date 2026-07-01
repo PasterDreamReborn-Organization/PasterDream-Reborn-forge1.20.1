@@ -158,6 +158,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "Dream Notes - Wind Journey World");
         add(ModItems.BLUE_PRINT.get(), "Blue Print");
         add(ModItems.REED_ROD.get(), "Reed Rod");
+        add(ModItems.MELT_DREAM_COIN.get(), "Melt Dream Coin");
+        add(ModItems.MELT_DREAM_COIN_PILE.get(), "Melt Dream Coin Pile");
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "Dye Dream Dirt");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "Dye Dream Grass Block");
@@ -392,5 +394,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.drink_effect", "§7When consumed:");
         add("tooltip.pasterdream.red_dew.effect", "§7▪ §9Instant Health I");
         add("tooltip.pasterdream.blue_dew.effect", "§7▪ §9Water Breathing I (1:00)");
+
+        add("tooltip.pasterdream.melt_dream_coin", "§7Right-click with 10+ to combine into a coin pile");
+        add("tooltip.pasterdream.melt_dream_coin_pile", "§7Right-click to split into 10 Melt Dream Coins");
+        add("tooltip.pasterdream.melt_dream_coin.value", "§7▪ §6Face Value : ");
     }
 }

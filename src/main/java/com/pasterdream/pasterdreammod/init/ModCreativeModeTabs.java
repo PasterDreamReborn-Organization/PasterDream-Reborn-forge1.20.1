@@ -136,6 +136,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FABRIC.get());
                         output.accept(ModItems.PROTECT_DECK.get());
                         output.accept(ModItems.REED_ROD.get());
+                        output.accept(ModItems.MELT_DREAM_COIN.get());
+                        output.accept(ModItems.MELT_DREAM_COIN_PILE.get());
                     })
                     .build());
 

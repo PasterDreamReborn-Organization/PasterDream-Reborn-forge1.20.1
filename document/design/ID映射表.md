@@ -236,6 +236,8 @@
 | `soul_essence`                 | `soul_essence`                              | 不改                                                        | 无需客制化类，直接用 `Item`                           |
 | `charged_amethyst`             | `charged_amethyst`                          | 不改                                                        | 无需客制化类，直接用 `Item`                           |
 | `meltdream_crystal_0`          | `melt_dream_crystal_fragment`               | 重命名，添加下划线和`fragment`，去除`_0`                               | 无需客制化类，直接用 `Item`                           |
+| `dream_coin_0`                 | `melt_dream_coin`                           | 重命名，`dream_coin_0` → `melt_dream_coin`（融梦星币）           | 客制化类 `MeltDreamCoinItem`，右键合成为堆 + 丢弃音效 + ToolTip |
+| `dream_coin_1`                 | `melt_dream_coin_pile`                      | 重命名，`dream_coin_1` → `melt_dream_coin_pile`（融梦星币堆）     | 客制化类 `MeltDreamCoinItem`，右键分解 + 音效 + ToolTip       |
 | `dreamnotes_0`                 | `dream_notes_dyedream_world`                | 整个物品机制重做，合并相同类型，使用NBT区分（NBT内容使用特殊绑定框架）                    | 客制化类 `DreamNotesItem`                       |
 | `dreamnotes_1`                 | 删除                                          | -                                                         | -                                           |
 | `dreamnotes_2`                 | 删除                                          | -                                                         | -                                           |
