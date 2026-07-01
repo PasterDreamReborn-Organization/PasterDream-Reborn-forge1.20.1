@@ -93,6 +93,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get(), "Elixir Bottle of Melt Dream");
         add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "Elixir Bottle of Rage Elixir");
         add(ModItems.PINEAPPLE_LOVE_SEA.get(), "Pineapple Love Sea");
+        add(ModItems.RED_DEW.get(), "Red Dew");
+        add(ModItems.BLUE_DEW.get(), "Blue Dew");
         add(ModItems.DYEDREAM_COROLLA.get(), "Dyedream Corolla");
         add(ModItems.WHITE_COROLLA.get(), "White Corolla");
         add(ModItems.LIGHT_BALL.get(), "Light Ball");
@@ -385,5 +387,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("biome.pasterdream.dyedream_mushroom_mountains","Dyedream Mushroom Mountains");
         add("biome.pasterdream.dyedream_snowy_plains","Dyedream Snowy Plains");
         add("biome.pasterdream.dyedream_frozen_ocean","Dyedream Frozen Ocean");
+
+        // Dew Tooltip
+        add("tooltip.pasterdream.drink_effect", "§7When consumed:");
+        add("tooltip.pasterdream.red_dew.effect", "§7▪ §9Instant Health I");
+        add("tooltip.pasterdream.blue_dew.effect", "§7▪ §9Water Breathing I (1:00)");
     }
 }

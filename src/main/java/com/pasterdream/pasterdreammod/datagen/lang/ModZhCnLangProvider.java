@@ -96,6 +96,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get(), "融梦灵药瓶");
         add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "狂暴战意灵药");
         add(ModItems.PINEAPPLE_LOVE_SEA.get(), "凤梨爱琴海");
+        add(ModItems.RED_DEW.get(), "鲜红露滴");
+        add(ModItems.BLUE_DEW.get(), "蔚蓝露滴");
 
 
         add(ModItems.SOUL_DUST.get(), "灵魂粉尘");
@@ -507,5 +509,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("book.pasterdream.清晨的新风_第1页", "这是新的一天的开始，也是新的风向的到来。\n\n伴随着风铃的声音，飘落的羽毛，以及从东方升起的阳光。\n\n风是属于这里的恩赐，顺应风的方向将是我们探索的助力，而逆风将可能使我们寸步难行。\n\n风不仅指引我们旅途的方向，也是一种特殊的钥匙。");
         add("book.pasterdream.清晨的新风_第2页", "风只会在新的方向到来的时候吹拂，无法通过任何方式预言。\n\n如果错过了清晨风的指引，或是在这个梦境之外无法用身体去感受，风向标可以跨越现实与梦来告诉你当今的风向。\n\n以及在这里散落的一些宝藏，将可以改变风对我们的影响。");
         add("book.pasterdream.清晨的新风_第3页", "还有许多风的秘密... 也许风会在某时某刻向我们揭晓。\n\n\nBy 琴雨梦");
+
+        // 露滴 Tooltip
+        add("tooltip.pasterdream.drink_effect", "§7饮用后获得效果:");
+        add("tooltip.pasterdream.red_dew.effect", "§7▪ §9瞬间治疗I");
+        add("tooltip.pasterdream.blue_dew.effect", "§7▪ §9水下呼吸I (1:00)");
     }
 }

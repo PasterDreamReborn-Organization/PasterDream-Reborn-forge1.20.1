@@ -1590,7 +1590,19 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('a', ModItems.REED_ROD.get())
                 .unlockedBy(getHasName(ModItems.REED_ROD.get()), has(ModItems.REED_ROD.get()))
                 .save(pWriter);
+
+        // 鲜红露滴合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RED_DEW.get(), 1)
+                .requires(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get())
+                .requires(Items.GLISTERING_MELON_SLICE)
+                .requires(Items.GOLDEN_APPLE)
+                .requires(Items.HONEY_BOTTLE)
+                .requires(Items.RED_DYE)
+                .unlockedBy(getHasName(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get()),
+                        has(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get()))
+                .save(pWriter);
     }
+
     // ===== 配方工具方法 =====
 
     private void dyeConversion(Consumer<FinishedRecipe> writer, ItemLike material, ItemLike result) {

@@ -9,6 +9,8 @@ import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem;
 import com.pasterdream.pasterdreammod.world.item.blueprints.BluePrintItem;
+import com.pasterdream.pasterdreammod.world.item.BlueDewItem;
+import com.pasterdream.pasterdreammod.world.item.RedDewItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotes.DreamNotesItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDrinkItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
@@ -514,6 +516,11 @@ public class ModItems {
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().sanAdd(15).rarity(Rarity.UNCOMMON)
                     .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f).alwaysEat().build())));
 
+    // ===== 露滴 =====
+    public static final RegistryObject<Item> RED_DEW = ITEMS.register("red_dew",
+            () -> new RedDewItem());
+    public static final RegistryObject<Item> BLUE_DEW = ITEMS.register("blue_dew",
+            () -> new BlueDewItem());
 
     // ===== 方块物品 =====
 
