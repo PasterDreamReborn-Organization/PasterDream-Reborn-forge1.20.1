@@ -53,6 +53,7 @@ public class ModLevelStems {
         Holder<Biome> dyedreamMushroomMountains = biomes.getOrThrow(ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS);
         Holder<Biome> dyedreamSnowyPlains = biomes.getOrThrow(ModBiomes.DYEDREAM_SNOWY_PLAINS);
         Holder<Biome> dyedreamFrozenOcean = biomes.getOrThrow(ModBiomes.DYEDREAM_FROZEN_OCEAN);
+        Holder<Biome> dyedreamOcean = biomes.getOrThrow(ModBiomes.DYEDREAM_OCEAN);
         // 引用自定义的维度类型和噪声设置
         Holder<DimensionType> dimType = dimensionTypes.getOrThrow(ModDimensionTypes.DYEDREAM_WORLD);
         Holder<NoiseGeneratorSettings> dimNoise = noiseSettings.getOrThrow(ModNoiseSettings.DYEDREAM_WORLD);
@@ -113,6 +114,19 @@ public class ModLevelStems {
                                 0L
                         ),
                         dyedreamFrozenOcean
+                ),
+                // 染梦海洋 — 与冻洋争夺海洋空间，weirdness 相邻区间
+                Pair.of(
+                        new Climate.ParameterPoint(
+                                Climate.Parameter.span(0.5F, 1.0F),
+                                Climate.Parameter.span(-1.0F, 1.0F),
+                                Climate.Parameter.span(-1.05F, -0.19F),
+                                Climate.Parameter.span(-1.0F, 1.0F),
+                                Climate.Parameter.point(0.0F),
+                                Climate.Parameter.span(-0.45F, 0.0F),
+                                0L
+                        ),
+                        dyedreamOcean
                 )
         ));
         MultiNoiseBiomeSource biomeSource = createMultiNoiseSource(biomeParams);

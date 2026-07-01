@@ -161,6 +161,11 @@ public class ModPlacedFeatures {
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_iceberg_blue"));
 
+    // ===== 染梦海洋 — 海带 =====
+    public static final ResourceKey<PlacedFeature> DYEDREAM_KELP_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_kelp_patch"));
+
     //原版维度花草
     public static final ResourceKey<PlacedFeature> GOLDENROD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "goldenrod_patch"));
     public static final ResourceKey<PlacedFeature> FERRARIA_CRISPA_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ferraria_crispa_patch"));
@@ -227,6 +232,14 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.SNOWY_WATER_POOL),
                 List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
+
+        // ===== 染梦海洋 — 海带 =====
+        ResourceKey<ConfiguredFeature<?, ?>> VANILLA_KELP_CF =
+                ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.withDefaultNamespace("kelp"));
+        context.register(DYEDREAM_KELP_PATCH, new PlacedFeature(
+                cf.getOrThrow(VANILLA_KELP_CF),
+                List.of(CountPlacement.of(8), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
 
         // ===== 染梦冻洋 — 自定义冰山 placed feature =====
         // 引用原版 configured feature，但使用更高的生成频率（原版 packed=1/16, blue=1/32 区块）

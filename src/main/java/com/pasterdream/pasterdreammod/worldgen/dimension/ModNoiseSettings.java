@@ -69,7 +69,7 @@ public class ModNoiseSettings {
                 ),
                 // 染梦平原 / 粉顶菇山地 / 染梦雪原地表
                 SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_PLAINS, ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS, ModBiomes.DYEDREAM_SNOWY_PLAINS),
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_PLAINS, ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS, ModBiomes.DYEDREAM_SNOWY_PLAINS, ModBiomes.DYEDREAM_OCEAN),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.abovePreliminarySurface(),
                                 SurfaceRules.sequence(
