@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.meltdreamcrystalchestresettool;
 
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
+import com.pasterdream.pasterdreammod.helper.meltdreamenergycostcalculator.MeltDreamEnergyCostCalculator;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlock;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlockEntity;
@@ -56,6 +57,7 @@ public class MeltDreamCrystalChestResetToolItem extends Item
                         tooltip.add(Component.translatable("tooltip.pasterdream.legend_loot_table", legendLootTable.getString("LootTable"), legendLootTable.getInt("weight"), legendLootTable.getDouble("luck_multiplier_increase")));
                     }
                 }
+                tooltip.add(Component.translatable("tooltip.pasterdream.reset_cost_melt_dream_energy", MeltDreamEnergyCostCalculator.calculate(itemStack.getTag().getList("LootTables", Tag.TAG_COMPOUND))));
             }
         }
             else
@@ -79,14 +81,16 @@ public class MeltDreamCrystalChestResetToolItem extends Item
             return InteractionResult.PASS;
         }
 
-        if (!level.isClientSide)
+        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
         {
             CompoundTag itemTag = meltDreamCrystalChestResetTool.getTag();
             if (itemTag != null && itemTag.contains("LootTables", Tag.TAG_LIST))
             {
+                ListTag lootTableListTag = itemTag.getList("LootTables", Tag.TAG_COMPOUND);
+
                 if(player != null && !player.isCreative())
                 {
-                    //MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync((ServerPlayer) player, -40);
+                    MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -MeltDreamEnergyCostCalculator.calculate(lootTableListTag));
                     meltDreamCrystalChestResetTool.shrink(1);
                 }
 
@@ -98,7 +102,7 @@ public class MeltDreamCrystalChestResetToolItem extends Item
                 BlockEntity blockEntity = level.getBlockEntity(pos);
                 if (blockEntity instanceof MeltDreamCrystalChestBlockEntity meltDreamCrystalChest)
                 {
-                    meltDreamCrystalChest.setLootTablesNbt(itemTag.getList("LootTables", Tag.TAG_COMPOUND));
+                    meltDreamCrystalChest.setLootTablesNbt(lootTableListTag);
                 }
             }
         }
