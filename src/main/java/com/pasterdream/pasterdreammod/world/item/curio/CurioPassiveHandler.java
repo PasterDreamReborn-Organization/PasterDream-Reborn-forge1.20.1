@@ -17,6 +17,7 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PacketDistributor;
@@ -49,6 +50,20 @@ public class CurioPassiveHandler {
     public static void onLivingKnockBack(LivingKnockBackEvent event) {
         // 塞西莉娅的加护：免疫击退
         if (event.getEntity().hasEffect(ModEffects.CECILIA_BLESSING_BUFF.get())) {
+            event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onMobEffectRemove(MobEffectEvent.Remove event) {
+        // 佩戴塞西莉娅的加护 / 失色的塞西莉娅的加护时，效果不可被移除
+        var instance = event.getEffectInstance();
+        if (instance == null || instance.getEffect() != ModEffects.CECILIA_BLESSING_BUFF.get()) return;
+        if (event.getEntity() instanceof Player player
+                && CuriosApi.getCuriosInventory(player).map(h ->
+                    h.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).isPresent()
+                    || h.findFirstCurio(ModItems.FADED_BLESSING_OF_CECILIA.get()).isPresent()
+                ).orElse(false)) {
             event.setCanceled(true);
         }
     }
