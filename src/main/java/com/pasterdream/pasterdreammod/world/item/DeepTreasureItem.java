@@ -37,7 +37,11 @@ public class DeepTreasureItem extends Item {
     }
 
     public static ItemStack createSuper(Item item) {
-        ItemStack stack = new ItemStack(item);
+        return createSuper(item, 1);
+    }
+
+    public static ItemStack createSuper(Item item, int count) {
+        ItemStack stack = new ItemStack(item, count);
         stack.getOrCreateTag().putBoolean("deep_treasure_super", true);
         return stack;
     }

@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.datagen.util.RecipeHelpers;
 import com.pasterdream.pasterdreammod.helper.ContainerBalanceHelper;
-import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT;
+import com.pasterdream.pasterdreammod.world.item.DeepTreasureItem;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
@@ -2447,7 +2447,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         saveGoldenFoxTrade(pWriter, Ingredient.of(Items.BUCKET),
                 new ItemStack(ModItems.MELT_DREAM_LIQUID_BUCKET.get()), "golden_fox_trade_bucket");
         saveGoldenFoxTrade(pWriter, Ingredient.of(ModItems.MELT_DREAM_COIN_PILE.get()),
-                MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestDyedreamWorldNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()),
+                DeepTreasureItem.createSuper(ModItems.DYEDREAM_DEEP_SEA_TREASURE.get(), 3),
                 "golden_fox_trade_coin_pile");
         saveGoldenFoxTrade(pWriter, Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
                 new ItemStack(ModItems.KAICHU_OMAMORI.get()), "golden_fox_trade_crystal_fragment");
