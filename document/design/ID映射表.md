@@ -478,6 +478,9 @@
 | `blackmetal_grain`            | `black_metal_grain`                        | 重命名，`blackmetal` → `black_metal`                                | 无需客制化类，直接用 `Item`                                                                                        |
 | `nightmare_fuel`              | `nightmare_fuel`                            | 不改                                                               | 客制化类 `NightmareFuelItem`，tooltip "傻子和疯子使用的邪恶残渣"                                                        |
 | `shadow_dungeon_key`          | `shadow_dungeon_key`                       | 不改                                                               | 客制化类 `ShadowDungeonKeyItem`，stacksTo(1)，tooltip "用于打开暗影地牢下层的大门"                                   |
+| `machine_wing_chestplate`     | `machine_light_wing`                       | 重命名，去 `_chestplate` + 加 `light`（光）                          | 客制化类 `MachineLightWingItem`（GeckoLib 动画盔甲），每20tick消耗0.02融梦能量启用飞行                                  |
+| `angel_wing_chestplate`       | `angel_wing`                               | 去 `_chestplate`                                                  | 客制化类 `AngelWingItem`（GeckoLib 动画盔甲），无条件飞行 + 免疫摔落伤害                                                |
+| `forsakens_wing_chestplate`   | `forsakens_wing`                           | 去 `_chestplate`                                                  | 客制化类 `ForsakensWingItem`（GeckoLib 动画盔甲），无条件飞行 + 免疫摔落/缓慢/凋零                                           |
 
 ---
 

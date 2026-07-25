@@ -278,6 +278,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.QYM_WIND_SHIRT.get());
                         output.accept(ModItems.QYM_SWAYING_SKIRT.get());
                         output.accept(ModItems.QYM_CLOUD_BOOTS.get());
+                        // 机械光翼
+                        output.accept(ModItems.MACHINE_LIGHT_WING.get());
                         // 饰品
                         output.accept(ModItems.GOLD_CHARM.get());
                         output.accept(ModItems.ENDEYE_CHARM.get());
@@ -710,6 +712,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TERRA_FLOATING_ISLAND.get());
                         output.accept(ModItems.BLESSING_OF_CECILIA.get());
                         output.accept(ModItems.STRAWBERRY_HEART.get());
+                        output.accept(ModItems.ANGEL_WING.get());
+                        output.accept(ModItems.FORSAKENS_WING.get());
                     })
                     .build());
 

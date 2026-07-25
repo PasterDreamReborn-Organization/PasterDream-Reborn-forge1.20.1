@@ -205,6 +205,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_CHESTPLATE.get(), "Dyedream Chestplate");
         add(ModItems.DYEDREAM_LEGGINGS.get(), "Dyedream Leggings");
         add(ModItems.DYEDREAM_BOOTS.get(), "Dyedream Boots");
+        add(ModItems.MACHINE_LIGHT_WING.get(), "Machine Light Wing");
+        add(ModItems.ANGEL_WING.get(), "Angel Wing");
+        add(ModItems.FORSAKENS_WING.get(), "Forsakens Wing");
         add(ModItems.DREAM_FERTILIZER.get(), "Dream Fertilizer");
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "Dream Notes - Dyedream World");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "Dream Notes - Lamp Shadow World");
@@ -560,6 +563,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.sculk_armor_buff", "Sculk Echo");
         add("effect.pasterdream.dyedream_armor_buff", "Dyedream Protection");
         add("effect.pasterdream.dyedream_up_buff", "Dyedream Tool Boost");
+        add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9Enables flight");
+        add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4Melt Dream Energy Cost: 1.2/min");
+        add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
+        add("tooltip.pasterdream.angel_wing.flavor", "§7§o-- Based on Angel Player, developed on my dorm PC");
+        add("tooltip.pasterdream.forsakens_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
+        add("tooltip.pasterdream.forsakens_wing.immune", "§7▪ §9Grants slow and wither immunity");
+        add("tooltip.pasterdream.forsakens_wing.flavor", "§7§o-- See you at the Nexus");
         add("tooltip.pasterdreammod.sculk_armor.1", "§7Set Bonus: §2Sculk Echo");
         add("tooltip.pasterdreammod.sculk_armor.2", "§7▪ §9Max Health +4");
         add("tooltip.pasterdreammod.sculk_armor.3", "§7▪ §9Enhanced when below Y=0");
