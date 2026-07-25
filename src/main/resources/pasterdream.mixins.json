@@ -16,7 +16,8 @@
     "WardenTargetMixin",
     "WorldGenRegionMixin",
     "ServerboundSetStructureBlockPacketMixin",
-    "StructureBlockEntityMixin"
+    "StructureBlockEntityMixin",
+    "StructureTemplateMixin"
   ],
   "client": [
     "FogRendererMixin",
