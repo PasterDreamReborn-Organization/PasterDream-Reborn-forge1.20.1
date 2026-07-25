@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 946202329,
+    "separation": 18,
+    "spacing": 37
+  },
+  "structures": [
+    {
+      "structure": "pasterdream:dyedream_laboratory",
+      "weight": 1
+    }
+  ]
+}
