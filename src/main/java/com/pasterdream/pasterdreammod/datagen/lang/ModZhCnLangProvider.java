@@ -213,6 +213,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_CHESTPLATE.get(), "染梦胸甲");
         add(ModItems.DYEDREAM_LEGGINGS.get(), "染梦护腿");
         add(ModItems.DYEDREAM_BOOTS.get(), "染梦靴子");
+        add(ModItems.MACHINE_LIGHT_WING.get(), "机械光翼");
+        add(ModItems.ANGEL_WING.get(), "天使之翼");
+        add(ModItems.FORSAKENS_WING.get(), "遗忘之翼");
         add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
         add(ModItems.MELT_DREAM_AURORIAN_STEEL.get(), "融梦极光钢锭");
@@ -566,6 +569,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.sculk_armor_buff", "幽匿回响");
         add("effect.pasterdream.dyedream_armor_buff", "染梦守护");
         add("effect.pasterdream.dyedream_up_buff", "染梦工具增强");
+        add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9启用飞行能力");
+        add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4融梦能量消耗：1.2/min");
+        add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9获得飞行能力且免疫摔落伤害");
+        add("tooltip.pasterdream.angel_wing.flavor", "§7§o-- 在宿舍电脑上基于《Angel Player》幻想开发");
+        add("tooltip.pasterdream.forsakens_wing.flight", "§7▪ §9获得飞行能力且免疫摔落伤害");
+        add("tooltip.pasterdream.forsakens_wing.immune", "§7▪ §9免疫缓慢与凋零效果");
+        add("tooltip.pasterdream.forsakens_wing.flavor", "§7§o-- 我们时空枢纽见");
         add("tooltip.pasterdreammod.sculk_armor.1", "§7套装效果：§2幽匿回响");
         add("tooltip.pasterdreammod.sculk_armor.2", "§7▪ §9最大生命值+4");
         add("tooltip.pasterdreammod.sculk_armor.3", "§7▪ §9身处深层时效果增强");

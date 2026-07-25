@@ -39,6 +39,8 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("fox_fire_1_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> DREAMFERTILIZER_PARTICLE =
             PARTICLE_TYPES.register("dreamfertilizer_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> FEATHER_WHITE_PARTICLE =
+            PARTICLE_TYPES.register("feather_white_particle", () -> new SimpleParticleType(false));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

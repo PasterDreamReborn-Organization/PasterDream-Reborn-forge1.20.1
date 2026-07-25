@@ -43,12 +43,12 @@ public enum ModArmorMaterials implements ArmorMaterial {
             SoundEvents.ARMOR_EQUIP_ELYTRA, 2.0F, 0.0F,
             () -> Ingredient.of(Items.FEATHER)),
 
-    // FORSAKENS_WING("forsakens_wing", 30, new int[]{2, 7, 5, 2}, 7,
-    //         SoundEvents.ARMOR_EQUIP_ELYTRA, 3.0F, 0.0F,
-    //         () -> Ingredient.of(ModItems.NIGHTMARE_FUEL.get())),  // TODO: nightmare_fuel 未注册
+    FORSAKENS_WING("forsakens_wing", 30, new int[]{2, 7, 5, 2}, 7,
+            SoundEvents.ARMOR_EQUIP_ELYTRA, 3.0F, 0.0F,
+            () -> Ingredient.of(ModItems.NIGHTMARE_FUEL.get())),
 
     // 机械光翼
-    MACHINE_WING("machine_wing", 34, new int[]{2, 7, 5, 2}, 9,
+    MACHINE_LIGHT_WING("machine_light_wing", 34, new int[]{2, 7, 5, 2}, 9,
             SoundEvents.ARMOR_EQUIP_NETHERITE, 1.0F, 0.0F,
             Ingredient::of);
 
