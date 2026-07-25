@@ -1020,6 +1020,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.create_pliers.description", "Make a pair of pliers");
         add("advancements.pasterdream.story.create_research_table.title", "Afternoon Tea Time");
         add("advancements.pasterdream.story.create_research_table.description", "Craft a research table to carry out research.");
+        add("advancements.pasterdream.story.galaxy_jelly.title", "Star Gel");
+        add("advancements.pasterdream.story.galaxy_jelly.description", "Get the Galaxy Jelly, a jelly that can be found in the deep-sea treasures and chests in the dream, and it can make you soar to the clouds.");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "Space Professional Voice Actor");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "Eat the Galaxy Jelly at the building height limit... Kaz finally has company now...");
 
         // Advancements - Adventure Expansion
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.title", "The Forgotten Sword Tomb");
