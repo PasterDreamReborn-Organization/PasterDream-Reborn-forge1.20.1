@@ -39,8 +39,8 @@ public class ModNoiseSettings {
                 originalRouter.erosion(),                           //侵蚀
                 originalRouter.depth(),                             //深度
                 originalRouter.ridges(),                            //山脊
-                baseTerrain,                                        //初始密度
-                smoothTerrain,                                      //最终密度
+                smoothTerrain,                                      //初始密度（平滑，与最终密度一致）
+                smoothTerrain,                                      //最终密度（插值平滑，无洞穴噪声）
                 DensityFunctions.constant(1.0D),          //矿脉开关→1（禁用）
                 DensityFunctions.constant(1.0D),          //矿脉脊状→1（禁用）
                 DensityFunctions.constant(1.0D)           //矿脉间隙→1（禁用）
@@ -78,7 +78,7 @@ public class ModNoiseSettings {
                 lampShadowOriginalRouter.erosion(),
                 lampShadowOriginalRouter.depth(),
                 lampShadowOriginalRouter.ridges(),
-                lampShadowBaseTerrain,                              //初始密度（无锯齿，与染梦一致）
+                lampShadowSmoothTerrain,                            //初始密度（平滑，与最终密度一致）
                 lampShadowSmoothTerrain,                            //最终密度（插值平滑，无洞穴噪声）
                 DensityFunctions.constant(1.0D),           //矿脉开关→1（禁用）
                 DensityFunctions.constant(1.0D),           //矿脉脊状→1（禁用）
