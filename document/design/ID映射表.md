@@ -211,7 +211,7 @@
 | `shadowshelf_2`                     | `cobweb_shadow_bookshelf`           | 重命名，语义化 ID                                    | 无需客制化类，直接用 `HorizontalDirectionalBlock`                                                                          |
 | `shadowshelf_3`                     | `key_shadow_bookshelf`              | 重命名，语义化 ID                                    | 客制化类 `KeyShadowBookshelfBlock`，覆写 `getDrops` 掉落 `shadow_dungeon_key`                                             |
 | `shadowcandle`                      | `shadow_candle`                     | 重命名，加下划线                                      | 客制化类 `ShadowCandleBlock`，蜡烛形状 + 发光13 + 每tick生成灵魂粒子                                                               |
-| `dream_accumulator`                 | `dream_accumulator`                                    | 不改                                            | 客制化类 `DreamAccumulatorBlock`                                                                                     |
+| `dream_accumulator`                 | `dream_accumulator`                 | 不改                                            | 客制化类 `DreamAccumulatorBlock`                                                                                     |
 
 ---
 

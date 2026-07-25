@@ -55,6 +55,7 @@
     "claypan_0": "claypan",
     "claypan_1": "删除",
     "claypan_2": "删除",
+    "clay_pot_0": "clay_pot",
     "dream_cauldron": "dream_cauldron",
     "dyedream_block": "dyedream_alloy_block",
     "big_bubble": "big_bubble",
@@ -192,7 +193,8 @@
     "shadowshelf_1": "worn_shadow_bookshelf",
     "shadowshelf_2": "cobweb_shadow_bookshelf",
     "shadowshelf_3": "key_shadow_bookshelf",
-    "shadowcandle": "shadow_candle"
+    "shadowcandle": "shadow_candle",
+    "dream_accumulator": "dream_accumulator"
   },
   "items": {
     "amber_candy": "amber_candy",
@@ -434,6 +436,7 @@
     "white_crystal": "white_crystal",
     "boboji_curio": "boboji_curio",
     "counter_ring": "counter_ring",
+    "meltdream_energy_0_ring": "melt_dream_energy_ring",
     "duke_coin_curio": "duke_coin_curio",
     "qym_head": "qym_butterfly_star_hairpin",
     "hiyori_head": "hiyori_butterfly_hairpin",
