@@ -754,6 +754,11 @@ public class ModItems {
                         level.playSound(null, player.getX(), player.getY(), player.getZ(),
                                 SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 3.0F, 1.0F);
                     }
+
+                    // 进度触发器：在建筑高度上限吃下星河果冻
+                    if (player instanceof ServerPlayer sp) {
+                        ModCriteriaTriggers.EAT_GALAXY_JELLY_AT_HEIGHT.trigger(sp, sp.getY());
+                    }
                 }
                 @Override
                 public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {

@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundDesertFortressTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundTombTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDrawingTrigger;
@@ -28,11 +29,15 @@ public class ModCriteriaTriggers {
     /** 进入沙漠堡垒结构 */
     public static final FoundDesertFortressTrigger FOUND_DESERT_FORTRESS = new FoundDesertFortressTrigger();
 
+    /** 在指定高度以上食用星河果冻 */
+    public static final EatGalaxyJellyAtHeightTrigger EAT_GALAXY_JELLY_AT_HEIGHT = new EatGalaxyJellyAtHeightTrigger();
+
     public static void init() {
         CriteriaTriggers.register(USE_BONE_NEEDLE);
         CriteriaTriggers.register(FOUND_TOMB);
         CriteriaTriggers.register(NEW_STANDARD_SWORD_DRAWING);
         CriteriaTriggers.register(READ_DREAM_NOTE);
         CriteriaTriggers.register(FOUND_DESERT_FORTRESS);
+        CriteriaTriggers.register(EAT_GALAXY_JELLY_AT_HEIGHT);
     }
 }

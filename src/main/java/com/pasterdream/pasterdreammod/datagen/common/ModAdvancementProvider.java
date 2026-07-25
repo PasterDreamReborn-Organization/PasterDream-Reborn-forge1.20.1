@@ -235,6 +235,39 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/melt_dream_liquid_bucket"), existingFileHelper);
 
+            // ========== 染梦世界子进度：星辰凝胶 ==========
+            Advancement galaxyJelly = Advancement.Builder.advancement()
+                    .parent(dyedreamWorld)
+                    .display(
+                            ModItems.GALAXY_JELLY.get(),
+                            Component.translatable("advancements.pasterdream.story.galaxy_jelly.title"),
+                            Component.translatable("advancements.pasterdream.story.galaxy_jelly.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("has_galaxy_jelly", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.GALAXY_JELLY.get()))
+                    .rewards(AdvancementRewards.Builder.experience(10))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/galaxy_jelly"), existingFileHelper);
+
+            // ========== 星辰凝胶子进度：太空专业配音员 ==========
+            Advancement.Builder.advancement()
+                    .parent(galaxyJelly)
+                    .display(
+                            ModItems.GALAXY_JELLY.get(),
+                            Component.translatable("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title"),
+                            Component.translatable("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("eat_galaxy_jelly_on_high_height", EatGalaxyJellyAtHeightTrigger.TriggerInstance.atBuildHeight())
+                    .rewards(AdvancementRewards.Builder.experience(10))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/eat_galaxy_jelly_on_high_height"), existingFileHelper);
+
             // ========== 子进度：纯洁无暇 ==========
             Advancement pureAndFlawless = Advancement.Builder.advancement()
                     .parent(root)
