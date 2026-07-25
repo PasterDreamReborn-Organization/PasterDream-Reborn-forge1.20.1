@@ -90,7 +90,13 @@ public class MeltDreamCrystalChestResetToolItem extends Item
 
                 if(player != null && !player.isCreative())
                 {
-                    MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -MeltDreamEnergyCostCalculator.calculate(lootTableListTag));
+                    double meltDreamEnergyCost = MeltDreamEnergyCostCalculator.calculate(lootTableListTag);
+                    if(MeltDreamEnergyHelper.getPlayerMeltDreamEnergyIsNeed(serverPlayer) && MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(serverPlayer) < meltDreamEnergyCost)
+                    {
+                        player.displayClientMessage(Component.translatable("message.pasterdream.融梦能量不足"), true);
+                        return InteractionResult.PASS;
+                    }
+                    MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -meltDreamEnergyCost);
                     meltDreamCrystalChestResetTool.shrink(1);
                 }
 

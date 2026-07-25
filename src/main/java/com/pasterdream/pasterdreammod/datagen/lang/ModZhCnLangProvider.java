@@ -549,6 +549,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("message.pasterdream.融梦水晶箱重置工具只能重置打开的融梦水晶箱", "融梦水晶箱重置工具只能重置打开的融梦水晶箱");
         add("message.pasterdream.融梦水晶箱战利品品质应为1，2或3，但是此时为", "融梦水晶箱战利品品质应为1，2或3，但是此时为%d");
+        add("message.pasterdream.融梦能量不足", "融梦能量不足");
 
         add("message.pasterdream.loot_generator.no_loot_table", "§c战利品生成器未设置战利品表");
         add("message.pasterdream.loot_generator.not_container", "§c目标方块不是容器");
