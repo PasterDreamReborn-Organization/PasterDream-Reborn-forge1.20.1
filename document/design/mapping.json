@@ -455,7 +455,10 @@
     "blackmetal_ingot": "black_metal_ingot",
     "blackmetal_grain": "black_metal_grain",
     "nightmare_fuel": "nightmare_fuel",
-    "shadow_dungeon_key": "shadow_dungeon_key"
+    "shadow_dungeon_key": "shadow_dungeon_key",
+    "machine_wing_chestplate": "machine_light_wing",
+    "angel_wing_chestplate": "angel_wing",
+    "forsakens_wing_chestplate": "forsakens_wing"
   },
   "entities": {
     "pink_chicken": "pink_chicken",
