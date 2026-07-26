@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateMan
 import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
 import com.pasterdream.pasterdreammod.event.ModMobDrops;
 import com.pasterdream.pasterdreammod.event.ModMobSpawnEvents;
+import com.pasterdream.pasterdreammod.datagen.common.ModRaidRewardsProvider;
 import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
 import com.pasterdream.pasterdreammod.event.PlayerEvents;
 import com.pasterdream.pasterdreammod.init.*;
@@ -39,6 +40,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.item.TieredItem;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -90,6 +92,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(this::AddCommand);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
         MinecraftForge.EVENT_BUS.addListener(ModMobDrops::onLivingDrops);
+        MinecraftForge.EVENT_BUS.addListener(ModRaidRewardsProvider::onLootTableLoad);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onFoxFireVulnerableHurt);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onLivingHurt);
