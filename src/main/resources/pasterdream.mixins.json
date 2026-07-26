@@ -8,6 +8,7 @@
     "CampfireBlockEntityMixin",
     "EatBlockGoalMixin",
     "FlowerPotBlockMixin",
+    "FoxTargetMixin",
     "GoldenrodTeaBuffMixin",
     "HolyGrailBuffMixin",
     "NaturalSpawnerMixin",
