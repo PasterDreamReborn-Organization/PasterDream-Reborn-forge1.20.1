@@ -235,6 +235,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "galaxy_jelly_boost")))
                 .add(Items.ELYTRA);
 
+        // 狐狸食物
+        tag(ItemTags.FOX_FOOD)
+                .add(ModItems.DYEDREAM_FRUIT.get());
+
         // 音乐唱片
         tag(ItemTags.MUSIC_DISCS)
                 .add(ModItems.SWEET_DREAM_MUSIC_DISC.get())

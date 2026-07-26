@@ -932,6 +932,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.CARAPAX_CHARM.get(), "龟壳护身符");
         add(ModItems.WORLDTREE_SEEDPOD.get(), "世界树种荚");
         add(ModItems.GARLAND.get(), "花环");
+        add(ModItems.REST_BUFF_ICON.get(), "休憩图标");
+        add(ModItems.CHEER_UP_BUFF_ICON.get(), "振奋图标");
+        add(ModItems.LETHARGY_BUFF_ICON.get(), "不振图标");
+        add(ModItems.TRANCE_BUFF_ICON.get(), "恍惚图标");
+        add(ModItems.INSAND_BUFF_ICON.get(), "疯狂图标");
         add(ModItems.BLESSING_OF_CECILIA.get(), "塞西莉娅的加护");
         add("tooltip.pasterdream.blessing_of_cecilia.effect0", "§7▪ §9常驻：强制20%减伤");
         add("tooltip.pasterdream.blessing_of_cecilia.effect1", "§7 受到致命伤害时：");
@@ -1356,6 +1361,41 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.desert_ruins.page1", "沙漠遗迹地面景观展示。");
         add("pasterdream.seniors_dream.entry.desert_ruins.page2", "传说中，那里埋葬着一位未完成遗志的战士，被深埋于地下，等待着能有一位迷途的旅行者前来，来完成他的遗愿，继承他的衣钵……");
         add("pasterdream.seniors_dream.entry.desert_ruins.page3", "沙漠遗迹地底景观展示。");
+
+        // 此梦先觉-新增buff效果
+        add("pasterdream.seniors_dream.category.foretold_dream_buffs", "新增buff效果");
+        add("pasterdream.seniors_dream.category.foretold_dream_buffs.desc", "模组中新增的buff效果。");
+
+        add("pasterdream.seniors_dream.entry.rest", "休憩");
+        add("pasterdream.seniors_dream.entry.rest.page0", "休憩是一种可以为玩家逐渐恢复san值的buff效果，每级增加1.2理智光环。$(br2)通过在原版的床上躺下、身处娇小琴雨梦玩偶或者营火附近，玩家都可以获得该buff。");
+
+        add("pasterdream.seniors_dream.entry.cheer_up", "振奋");
+        add("pasterdream.seniors_dream.entry.cheer_up.page0", "当玩家san值>=90%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间-10%；$(br)移动速度+5%；");
+        add("pasterdream.seniors_dream.entry.cheer_up.page1", "攻击速度+0.05；$(br)技能冷却时间-10%。");
+
+        add("pasterdream.seniors_dream.entry.lethargy", "不振");
+        add("pasterdream.seniors_dream.entry.lethargy.page0", "当玩家san值<=60%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+50%；$(br)移动速度-10%；");
+        add("pasterdream.seniors_dream.entry.lethargy.page1", "攻击速度-0.1；$(br)技能冷却时间+20%。");
+
+        add("pasterdream.seniors_dream.entry.trance", "恍惚");
+        add("pasterdream.seniors_dream.entry.trance.page0", "当玩家san值<=40%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+100%；$(br)移动速度-20%；");
+        add("pasterdream.seniors_dream.entry.trance.page1", "攻击速度-0.2，攻击力-1；$(br)技能冷却时间+50%。");
+
+        add("pasterdream.seniors_dream.entry.insand", "疯狂");
+        add("pasterdream.seniors_dream.entry.insand.page0", "当玩家san值<=20%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+200%；$(br)移动速度-30%；$(br)攻击速度-0.4，攻击力-2；$(br)技能冷却时间+100%；$(br)攻击和触及距离-0.2。");
+        add("pasterdream.seniors_dream.entry.insand.page1", "持有此状态时，视野会不受控制地抖动。且每隔一段时间，就会给予玩家短暂的失明状态，并在玩家身上生成恐怖尖喙和暗影之手。");
+        add("pasterdream.seniors_dream.entry.insand.page2", "随着疯狂状态等级的提升，玩家画面抖动强度会逐渐上升，且暗影怪物的刷新数量增加、刷新时间间隔缩短。疯狂状态达到III级时，会每隔几秒就刷新一只恐怖尖喙。");
+
+        add("pasterdream.seniors_dream.entry.cook", "料理");
+        add("pasterdream.seniors_dream.entry.cook.page0", "通过食用部分本模组内食物，以及有联动的模组食物，可以获得此buff。每级增加1.2理智光环。");
+
+        add("pasterdream.seniors_dream.entry.sculk_armor", "幽匿回响");
+        add("pasterdream.seniors_dream.entry.sculk_armor.page0", "当玩家穿戴全套回响套装时获得此buff。具体效果为：$(br)最大生命值+4；$(br)当玩家身处Y<0的环境时，玩家周围出现绿色粒子效果，并获得抗性提升buff；");
+        add("pasterdream.seniors_dream.entry.sculk_armor.page1", "免疫幽匿的黑暗恐惧；$(br)受到黑暗buff时，改为获得1分钟的速度II和抗性提升II；$(br)监守者不会攻击持有此buff的玩家。");
+
+        add("pasterdream.seniors_dream.entry.dyedream_armor", "染梦守护");
+        add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "当玩家穿戴全套染梦套装时获得此buff。具体效果为：$(br)最大生命值+4；$(br)每30秒获得伤害吸收I；");
+        add("pasterdream.seniors_dream.entry.dyedream_armor.page1", "获得染梦工具增强效果：染梦合金工具和融梦水晶工具的伤害增加50%。");
 
 
         // 实体

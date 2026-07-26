@@ -779,6 +779,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.CARAPAX_CHARM.get(), "Carapax Charm");
         add(ModItems.WORLDTREE_SEEDPOD.get(), "Worldtree Seedpod");
         add(ModItems.GARLAND.get(), "Garland");
+        add(ModItems.REST_BUFF_ICON.get(), "Rest Icon");
+        add(ModItems.CHEER_UP_BUFF_ICON.get(), "Cheer Up Icon");
+        add(ModItems.LETHARGY_BUFF_ICON.get(), "Lethargy Icon");
+        add(ModItems.TRANCE_BUFF_ICON.get(), "Trance Icon");
+        add(ModItems.INSAND_BUFF_ICON.get(), "Madness Icon");
         add(ModItems.BLESSING_OF_CECILIA.get(), "Blessing of Cecilia");
         add("tooltip.pasterdream.blessing_of_cecilia.effect0", "§7▪ §9Passive: Forced 20% DMG Reduction");
         add("tooltip.pasterdream.blessing_of_cecilia.effect1", "§7 Upon receiving fatal damage:");
@@ -1191,6 +1196,41 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.desert_ruins.page1", "A view of the Desert Ruins surface.");
         add("pasterdream.seniors_dream.entry.desert_ruins.page2", "Legend has it that a warrior who died with unfinished business is buried deep underground here, waiting for a lost traveler to come, fulfill his final wish, and inherit his legacy...");
         add("pasterdream.seniors_dream.entry.desert_ruins.page3", "A view of the Desert Ruins underground.");
+
+        // The Dream Foretold - New Buff Effects
+        add("pasterdream.seniors_dream.category.foretold_dream_buffs", "New Buff Effects");
+        add("pasterdream.seniors_dream.category.foretold_dream_buffs.desc", "New buff effects added by the mod.");
+
+        add("pasterdream.seniors_dream.entry.rest", "Rest");
+        add("pasterdream.seniors_dream.entry.rest.page0", "Rest is a buff that gradually restores Sanity for the player, increasing Sanity Aura by 1.2 per level.$(br2)Players can obtain this buff by lying in a vanilla bed, being near a QYM doll, or near a campfire.");
+
+        add("pasterdream.seniors_dream.entry.cheer_up", "Vigor");
+        add("pasterdream.seniors_dream.entry.cheer_up.page0", "Obtained when Sanity >= 90%. Effects:$(br)Evasion cooldown -10%;$(br)Movement Speed +5%;");
+        add("pasterdream.seniors_dream.entry.cheer_up.page1", "Attack Speed +0.05;$(br)Skill cooldown -10%.");
+
+        add("pasterdream.seniors_dream.entry.lethargy", "Lethargy");
+        add("pasterdream.seniors_dream.entry.lethargy.page0", "Obtained when Sanity <= 60%. Effects:$(br)Evasion cooldown +50%;$(br)Movement Speed -10%;");
+        add("pasterdream.seniors_dream.entry.lethargy.page1", "Attack Speed -0.1;$(br)Skill cooldown +20%.");
+
+        add("pasterdream.seniors_dream.entry.trance", "Trance");
+        add("pasterdream.seniors_dream.entry.trance.page0", "Obtained when Sanity <= 40%. Effects:$(br)Evasion cooldown +100%;$(br)Movement Speed -20%;");
+        add("pasterdream.seniors_dream.entry.trance.page1", "Attack Speed -0.2, Attack Damage -1;$(br)Skill cooldown +50%.");
+
+        add("pasterdream.seniors_dream.entry.insand", "Madness");
+        add("pasterdream.seniors_dream.entry.insand.page0", "Obtained when Sanity <= 20%. Effects:$(br)Evasion cooldown +200%;$(br)Movement Speed -30%;$(br)Attack Speed -0.4, Attack Damage -2;$(br)Skill cooldown +100%;$(br)Attack Reach and Entity Reach -0.2.");
+        add("pasterdream.seniors_dream.entry.insand.page1", "While this effect is active, your vision will shake uncontrollably. Periodically, you will be inflicted with brief Blindness, and Terror Beaks and Shadow Hands will spawn around you.");
+        add("pasterdream.seniors_dream.entry.insand.page2", "As the Madness level increases, the screen shaking intensifies, the number of shadow creatures spawned increases, and the spawn interval decreases. At Madness III, a Terror Beak will spawn every few seconds.");
+
+        add("pasterdream.seniors_dream.entry.cook", "Cuisine");
+        add("pasterdream.seniors_dream.entry.cook.page0", "Obtained by eating certain foods from this mod and compatible mods. Each level increases Sanity Aura by 1.2.");
+
+        add("pasterdream.seniors_dream.entry.sculk_armor", "Sculk Echoes");
+        add("pasterdream.seniors_dream.entry.sculk_armor.page0", "Obtained when wearing the full Echo Set. Effects:$(br)Max Health +4;$(br)When below Y<0, green particles appear around the player and the Resistance buff is granted;");
+        add("pasterdream.seniors_dream.entry.sculk_armor.page1", "Immunity to Sculk's darkness fear;$(br)When inflicted with Darkness, gain Speed II and Resistance II for 1 minute instead;$(br)Wardens will not attack players with this buff.");
+
+        add("pasterdream.seniors_dream.entry.dyedream_armor", "Dyedream Ward");
+        add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "Obtained when wearing the full Dyedream Set. Effects:$(br)Max Health +4;$(br)Absorption I every 30 seconds;");
+        add("pasterdream.seniors_dream.entry.dyedream_armor.page1", "Dyedream Tool Enhancement: Dyedream Alloy tools and Melt Dream Crystal tools deal 50% more damage.");
 
         // Entities
         add(ModEntities.PINK_CHICKEN.get(), "Pink Chicken");

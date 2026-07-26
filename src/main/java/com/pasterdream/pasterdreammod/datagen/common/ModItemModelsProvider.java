@@ -242,6 +242,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.TERRA_FLOATING_ISLAND.get());
         basicItem(ModItems.WORLDTREE_SEEDPOD.get());
         basicItem(ModItems.GARLAND.get());
+        basicItem(ModItems.REST_BUFF_ICON.get());
+        basicItem(ModItems.CHEER_UP_BUFF_ICON.get());
+        basicItem(ModItems.LETHARGY_BUFF_ICON.get());
+        basicItem(ModItems.TRANCE_BUFF_ICON.get());
+        basicItem(ModItems.INSAND_BUFF_ICON.get());
         withExistingParent(ModItems.FOURLEAF_CLOVER_CURIO.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/fourleaf_clover"));
         basicItem(ModItems.SNOW_VOW_HEAD.get());

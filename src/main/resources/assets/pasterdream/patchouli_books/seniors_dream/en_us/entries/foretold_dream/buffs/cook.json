@@ -1,0 +1,12 @@
+{
+  "sortnum": 5,
+  "name": "pasterdream.seniors_dream.entry.cook",
+  "icon": "pasterdream:glass_cup_of_cooked_dyedream_flower_tea",
+  "category": "pasterdream:foretold_dream/buffs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.cook.page0"
+    }
+  ]
+}

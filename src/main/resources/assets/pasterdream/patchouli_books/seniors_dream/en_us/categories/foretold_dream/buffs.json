@@ -1,0 +1,7 @@
+{
+  "sortnum": 2,
+  "name": "pasterdream.seniors_dream.category.foretold_dream_buffs",
+  "description": "pasterdream.seniors_dream.category.foretold_dream_buffs.desc",
+  "icon": "pasterdream:glass_jar_of_goldenrod_tea",
+  "parent": "pasterdream:foretold_dream"
+}
