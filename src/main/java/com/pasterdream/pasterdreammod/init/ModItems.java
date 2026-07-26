@@ -1457,6 +1457,18 @@ public class ModItems {
     public static final RegistryObject<Item> BLUE_PRINT = ITEMS.register("blue_print", () -> new BluePrintItem(new Item.Properties()));
     public static final RegistryObject<Item> DREAM_NOTES_BOOK = ITEMS.register("dream_notes_book", () -> new DreamNotesBookItem(new Item.Properties()));
 
+    // 帕秋莉宝典 - buff图标物品
+    public static final RegistryObject<Item> REST_BUFF_ICON = ITEMS.register("rest_buff_icon",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CHEER_UP_BUFF_ICON = ITEMS.register("cheer_up_buff_icon",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LETHARGY_BUFF_ICON = ITEMS.register("lethargy_buff_icon",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TRANCE_BUFF_ICON = ITEMS.register("trance_buff_icon",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> INSAND_BUFF_ICON = ITEMS.register("insand_buff_icon",
+            () -> new Item(new Item.Properties()));
+
     // 帕秋莉宝典
     public static final RegistryObject<Item> SENIORS_DREAM_BOOK = ITEMS.register("seniors_dream_book",
             () -> new Item(new Item.Properties().stacksTo(1)));

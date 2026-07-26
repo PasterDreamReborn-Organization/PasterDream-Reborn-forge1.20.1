@@ -1,0 +1,16 @@
+{
+  "sortnum": 3,
+  "name": "pasterdream.seniors_dream.entry.trance",
+  "icon": "pasterdream:trance_buff_icon",
+  "category": "pasterdream:foretold_dream/buffs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.trance.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.trance.page1"
+    }
+  ]
+}

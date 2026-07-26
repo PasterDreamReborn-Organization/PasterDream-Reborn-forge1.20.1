@@ -1,0 +1,16 @@
+{
+  "sortnum": 6,
+  "name": "pasterdream.seniors_dream.entry.sculk_armor",
+  "icon": "pasterdream:sculk_helmet",
+  "category": "pasterdream:foretold_dream/buffs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.sculk_armor.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.sculk_armor.page1"
+    }
+  ]
+}
