@@ -4,16 +4,12 @@ import com.pasterdream.pasterdreammod.world.dimension.DyedreamDimension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.FrontAndTop;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.JigsawBlock;
@@ -32,13 +28,10 @@ public class ModWorldGenEvents {
 
     private static final int WORLDTREE_X = 2002;
     private static final int WORLDTREE_Z = 1128;
-    private static final int HEIGHT_OFFSET = -25;
     private static final ResourceLocation WORLDTREE_TOP =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_worldtree_top");
     private static final ResourceLocation WORLDTREE_BOTTOM =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_worldtree_bottom");
-    private static final TagKey<Biome> OCEAN_BIOMES = TagKey.create(Registries.BIOME,
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_fishing_biomes"));
 
     private static volatile boolean worldtreeNeedsPlacement = false;
 
@@ -86,12 +79,7 @@ public class ModWorldGenEvents {
         StructurePlaceSettings settings = new StructurePlaceSettings();
         RandomSource random = serverLevel.getRandom();
 
-        Holder<Biome> biome = serverLevel.getBiome(new BlockPos(WORLDTREE_X, 64, WORLDTREE_Z));
-        boolean isOcean = biome.is(OCEAN_BIOMES);
-        int surfaceY = serverLevel.getHeight(Heightmap.Types.WORLD_SURFACE_WG, WORLDTREE_X, WORLDTREE_Z);
-        int baseY = isOcean ? serverLevel.getSeaLevel() : surfaceY;
-        int offsetY = isOcean ? 0 : HEIGHT_OFFSET;
-        BlockPos topOrigin = new BlockPos(WORLDTREE_X, baseY + offsetY, WORLDTREE_Z);
+        BlockPos topOrigin = new BlockPos(WORLDTREE_X, serverLevel.getHeight(Heightmap.Types.WORLD_SURFACE_WG, WORLDTREE_X, WORLDTREE_Z), WORLDTREE_Z);
 
         topTemplate.placeInWorld(serverLevel, topOrigin, topOrigin, settings, random, 2);
 
