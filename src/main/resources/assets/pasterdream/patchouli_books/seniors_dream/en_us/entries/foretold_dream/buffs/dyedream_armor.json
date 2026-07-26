@@ -1,0 +1,16 @@
+{
+  "sortnum": 7,
+  "name": "pasterdream.seniors_dream.entry.dyedream_armor",
+  "icon": "pasterdream:dyedream_helmet",
+  "category": "pasterdream:foretold_dream/buffs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.dyedream_armor.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.dyedream_armor.page1"
+    }
+  ]
+}

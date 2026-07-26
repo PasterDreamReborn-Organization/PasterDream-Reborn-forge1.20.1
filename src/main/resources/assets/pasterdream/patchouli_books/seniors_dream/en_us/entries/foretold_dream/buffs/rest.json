@@ -1,0 +1,12 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.entry.rest",
+  "icon": "pasterdream:rest_buff_icon",
+  "category": "pasterdream:foretold_dream/buffs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.rest.page0"
+    }
+  ]
+}
