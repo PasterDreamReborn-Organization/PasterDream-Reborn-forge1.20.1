@@ -10,6 +10,6 @@
   },
   "start_pool": "pasterdream:dyedream_worldtree_top_pool",
   "step": "surface_structures",
-  "terrain_adaptation": "none",
+  "terrain_adaptation": "beard_box",
   "use_expansion_hack": false
 }
