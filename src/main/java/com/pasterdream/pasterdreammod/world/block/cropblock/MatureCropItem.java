@@ -32,8 +32,15 @@ public class MatureCropItem extends BlockItem {
     @Override
     protected BlockState getPlacementState(BlockPlaceContext context) {
         BlockState state = this.cropBlock.getStateForPlacement(context);
-        if (state != null) return state.setValue(PasterDreamCropBlock.AGE, 1);
-        return this.cropBlock.defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1);
+        if (state != null) {
+            state = state.setValue(PasterDreamCropBlock.AGE, 1);
+        } else {
+            state = this.cropBlock.defaultBlockState().setValue(PasterDreamCropBlock.AGE, 1);
+        }
+        if (!this.canPlace(context, state)) {
+            return null;
+        }
+        return state;
     }
 
     @Override
