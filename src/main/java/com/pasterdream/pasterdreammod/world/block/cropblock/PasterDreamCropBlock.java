@@ -4,7 +4,6 @@ import com.pasterdream.pasterdreammod.init.ModCropRelation;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -31,6 +30,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.util.FakePlayer;
 
 public class PasterDreamCropBlock extends BushBlock implements IPlantable
 {
@@ -77,7 +77,7 @@ public class PasterDreamCropBlock extends BushBlock implements IPlantable
     {
         BlockPos below = pos.below();
         BlockState groundState = level.getBlockState(below);
-        return groundState.canSustainPlant(level, below, Direction.UP, this) || super.canSurvive(state, level, pos);
+        return mayPlaceOn(groundState, level, below);
     }
 
     @Override
@@ -111,7 +111,7 @@ public class PasterDreamCropBlock extends BushBlock implements IPlantable
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        if (state.getValue(AGE) == 1 && (held.is(Tags.Items.SHEARS) || held.is(ModItems.PLIERS.get())))
+        if (state.getValue(AGE) == 1 && (player instanceof FakePlayer || held.is(Tags.Items.SHEARS) || held.is(ModItems.PLIERS.get())))
         {
             if (!level.isClientSide)
             {
@@ -120,7 +120,10 @@ public class PasterDreamCropBlock extends BushBlock implements IPlantable
                 {
                     popResource(level, pos, new ItemStack(binding.productItem(), binding.productCount()));
                     level.setBlock(pos, state.setValue(AGE, 0), 2);
-                    held.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
+                    if (!held.isEmpty())
+                    {
+                        held.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
+                    }
                     level.playSound(null, pos, SoundEvents.SHEEP_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
                     if (level instanceof ServerLevel serverLevel)
                         serverLevel.sendParticles(ModParticleTypes.DUST_0_PARTICLE.get(), pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 10, 0.5, 0.5, 0.5, 0.1);
@@ -139,7 +142,7 @@ public class PasterDreamCropBlock extends BushBlock implements IPlantable
         {
             return new ItemStack(binding.matureItem());
         }
-        return new ItemStack(this);
+        return binding != null ? new ItemStack(binding.immatureItem()) : new ItemStack(this);
     }
 
     @Override

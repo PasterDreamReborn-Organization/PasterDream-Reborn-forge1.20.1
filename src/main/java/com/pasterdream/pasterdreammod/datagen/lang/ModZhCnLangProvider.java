@@ -213,6 +213,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_CHESTPLATE.get(), "染梦胸甲");
         add(ModItems.DYEDREAM_LEGGINGS.get(), "染梦护腿");
         add(ModItems.DYEDREAM_BOOTS.get(), "染梦靴子");
+        add(ModItems.MACHINE_LIGHT_WING.get(), "机械光翼");
+        add(ModItems.ANGEL_WING.get(), "天使之翼");
+        add(ModItems.FORSAKENS_WING.get(), "遗忘之翼");
         add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
         add(ModItems.MELT_DREAM_AURORIAN_STEEL.get(), "融梦极光钢锭");
@@ -480,6 +483,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get(), "破碎粒子提供方块1");
         add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get(), "破碎粒子提供方块2");
         add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), "破碎粒子提供方块3");
+        add(ModBlocks.DREAM_TRAIN_STRUCTURE.get(), "逐梦列车结构");
 
         add("fluid.pasterdream.melt_dream_liquid","融梦涌泉");
         add("fluid.pasterdream.shadow_liquid","熔融阴影");
@@ -566,6 +570,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.sculk_armor_buff", "幽匿回响");
         add("effect.pasterdream.dyedream_armor_buff", "染梦守护");
         add("effect.pasterdream.dyedream_up_buff", "染梦工具增强");
+        add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9启用飞行能力");
+        add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4融梦能量消耗：1.2/min");
+        add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9获得飞行能力且免疫摔落伤害");
+        add("tooltip.pasterdream.angel_wing.flavor", "§7§o-- 在宿舍电脑上基于《Angel Player》幻想开发");
+        add("tooltip.pasterdream.forsakens_wing.flight", "§7▪ §9获得飞行能力且免疫摔落伤害");
+        add("tooltip.pasterdream.forsakens_wing.immune", "§7▪ §9免疫缓慢与凋零效果");
+        add("tooltip.pasterdream.forsakens_wing.flavor", "§7§o-- 我们时空枢纽见");
         add("tooltip.pasterdreammod.sculk_armor.1", "§7套装效果：§2幽匿回响");
         add("tooltip.pasterdreammod.sculk_armor.2", "§7▪ §9最大生命值+4");
         add("tooltip.pasterdreammod.sculk_armor.3", "§7▪ §9身处深层时效果增强");
@@ -1172,6 +1183,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.create_pliers.description", "制作一把园艺钳");
         add("advancements.pasterdream.story.create_research_table.title", "下午茶时光");
         add("advancements.pasterdream.story.create_research_table.description", "制作研究台以开展研究");
+        add("advancements.pasterdream.story.galaxy_jelly.title", "星辰凝胶");
+        add("advancements.pasterdream.story.galaxy_jelly.description", "获得星河果冻，一种能在梦境中的深海秘宝和箱子中找到的果冻，它能让你飞至云霄。");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "太空专业配音员");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "在建筑高度上限吃下星河果冻……卡兹这下有伴了……");
 
         // 进度 - 冒险拓展
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.title", "被遗忘的剑冢");
@@ -1388,6 +1403,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.story.pure_and_flawless.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");
         add("message.pasterdream.story.dream_fertilizer.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");
         add("message.pasterdream.dream_accumulator.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");
+
+        add("message.pasterdream.dream_train.train_pass", "一辆逐梦列车呼啸而过...");
+        add("message.pasterdream.dream_train.location_info", "列车向我们暴露了一个位置信息... §aX：%s §aZ：%s");
 
         // 沙漠英雄墓 - 任务对话
         add("message.pasterdream.desert_hero_tomb.line1", "良久，竟有来者。");

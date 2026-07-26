@@ -5,7 +5,7 @@ import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.util.BuildingBlockFamily;
 import com.pasterdream.pasterdreammod.world.block.cropblock.PasterDreamCropBlock;
-import com.pasterdream.pasterdreammod.world.conditions.RealPlayerEmptyHandCondition;
+import com.pasterdream.pasterdreammod.world.conditions.RealPlayerCondition;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
@@ -338,11 +338,11 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                         .when(HAS_SILK_TOUCH.invert())));
         add(ModBlocks.KEY_SHADOW_BOOKSHELF.get(), block -> LootTable.lootTable());
 
-        generateCropLoot(ModBlocks.DYEDREAM_COROLLA_CROP.get(), ModItems.DYEDREAM_COROLLA.get(), 1, ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get());
-        generateCropLoot(ModBlocks.WHITE_COROLLA_CROP.get(), ModItems.WHITE_COROLLA.get(), 1, ModItems.WHITE_COROLLA_CROP_AGE_1.get());
-        generateCropLoot(ModBlocks.LIGHT_BALL_CROP.get(), ModItems.LIGHT_BALL.get(), 1, ModItems.LIGHT_BALL_CROP_AGE_1.get());
-        generateCropLoot(ModBlocks.CLOUD_CROP.get(), ModItems.CLOUD.get(), 5, ModItems.CLOUD_CROP_AGE_1.get());
-        generateCropLoot(ModBlocks.COTTON_CROP.get(), ModItems.COTTON.get(), 1, ModItems.COTTON_CROP_AGE_1.get());
+        generateCropLoot(ModBlocks.DYEDREAM_COROLLA_CROP.get(), ModItems.DYEDREAM_COROLLA.get(), 1, ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
+        generateCropLoot(ModBlocks.WHITE_COROLLA_CROP.get(), ModItems.WHITE_COROLLA.get(), 1, ModItems.WHITE_COROLLA_CROP_AGE_1.get(), ModItems.WHITE_COROLLA_CROP_AGE_0.get());
+        generateCropLoot(ModBlocks.LIGHT_BALL_CROP.get(), ModItems.LIGHT_BALL.get(), 1, ModItems.LIGHT_BALL_CROP_AGE_1.get(), ModItems.LIGHT_BALL_CROP_AGE_0.get());
+        generateCropLoot(ModBlocks.CLOUD_CROP.get(), ModItems.CLOUD.get(), 5, ModItems.CLOUD_CROP_AGE_1.get(), ModItems.CLOUD_CROP_AGE_0.get());
+        generateCropLoot(ModBlocks.COTTON_CROP.get(), ModItems.COTTON.get(), 1, ModItems.COTTON_CROP_AGE_1.get(), ModItems.COTTON_CROP_AGE_0.get());
 
         dropSelf(ModBlocks.QYM_DOLL.get());
         dropSelf(ModBlocks.UUZ_DOLL.get());
@@ -386,6 +386,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.FOX_SCULPTURE.get());
         dropSelf(ModBlocks.DESERT_HERO_TOMB.get());
         dropSelf(ModBlocks.DREAM_ACCUMULATOR.get());
+        dropNone(ModBlocks.DREAM_TRAIN_STRUCTURE.get());
 
         dropSelf(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get());
         dropSelf(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get());
@@ -440,27 +441,27 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
     }
 
-    private void generateCropLoot(Block cropBlock, Item productItem, int productCount, Item matureItem)
+    private void generateCropLoot(Block cropBlock, Item productItem, int productCount, Item matureItem, Item immatureItem)
     {
         var matureCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(cropBlock)
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PasterDreamCropBlock.AGE, 1));
-        var emptyHandCondition = RealPlayerEmptyHandCondition.builder();
+        var realPlayerCondition = RealPlayerCondition.builder();
         var immatureCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(cropBlock)
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PasterDreamCropBlock.AGE, 0));
 
         this.add(cropBlock, LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .when(matureCondition)
-                        .when(emptyHandCondition)
+                        .when(realPlayerCondition)
                         .add(LootItem.lootTableItem(matureItem)))
                 .withPool(LootPool.lootPool()
                         .when(matureCondition)
-                        .when(emptyHandCondition.invert())
+                        .when(realPlayerCondition.invert())
                         .add(LootItem.lootTableItem(productItem)
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(productCount)))))
                 .withPool(LootPool.lootPool()
                         .when(immatureCondition)
-                        .add(LootItem.lootTableItem(cropBlock))));
+                        .add(LootItem.lootTableItem(immatureItem))));
     }
 
     protected void dropNone(Block block)

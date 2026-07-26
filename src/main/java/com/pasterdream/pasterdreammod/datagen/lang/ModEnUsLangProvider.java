@@ -205,6 +205,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_CHESTPLATE.get(), "Dyedream Chestplate");
         add(ModItems.DYEDREAM_LEGGINGS.get(), "Dyedream Leggings");
         add(ModItems.DYEDREAM_BOOTS.get(), "Dyedream Boots");
+        add(ModItems.MACHINE_LIGHT_WING.get(), "Machine Light Wing");
+        add(ModItems.ANGEL_WING.get(), "Angel Wing");
+        add(ModItems.FORSAKENS_WING.get(), "Forsakens Wing");
         add(ModItems.DREAM_FERTILIZER.get(), "Dream Fertilizer");
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "Dream Notes - Dyedream World");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "Dream Notes - Lamp Shadow World");
@@ -471,6 +474,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get(), "Model Break Particle Provider Block 1");
         add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get(), "Model Break Particle Provider Block 2");
         add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), "Model Break Particle Provider Block 3");
+        add(ModBlocks.DREAM_TRAIN_STRUCTURE.get(), "Dream Train Structure");
 
         add("fluid.pasterdream.melt_dream_liquid","Melt Dream Liquid");
         add("fluid.pasterdream.shadow_liquid","Shadow Liquid");
@@ -560,6 +564,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.sculk_armor_buff", "Sculk Echo");
         add("effect.pasterdream.dyedream_armor_buff", "Dyedream Protection");
         add("effect.pasterdream.dyedream_up_buff", "Dyedream Tool Boost");
+        add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9Enables flight");
+        add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4Melt Dream Energy Cost: 1.2/min");
+        add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
+        add("tooltip.pasterdream.angel_wing.flavor", "§7§o-- Based on Angel Player, developed on my dorm PC");
+        add("tooltip.pasterdream.forsakens_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
+        add("tooltip.pasterdream.forsakens_wing.immune", "§7▪ §9Grants slow and wither immunity");
+        add("tooltip.pasterdream.forsakens_wing.flavor", "§7§o-- See you at the Nexus");
         add("tooltip.pasterdreammod.sculk_armor.1", "§7Set Bonus: §2Sculk Echo");
         add("tooltip.pasterdreammod.sculk_armor.2", "§7▪ §9Max Health +4");
         add("tooltip.pasterdreammod.sculk_armor.3", "§7▪ §9Enhanced when below Y=0");
@@ -1010,6 +1021,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.create_pliers.description", "Make a pair of pliers");
         add("advancements.pasterdream.story.create_research_table.title", "Afternoon Tea Time");
         add("advancements.pasterdream.story.create_research_table.description", "Craft a research table to carry out research.");
+        add("advancements.pasterdream.story.galaxy_jelly.title", "Star Gel");
+        add("advancements.pasterdream.story.galaxy_jelly.description", "Get the Galaxy Jelly, a jelly that can be found in the deep-sea treasures and chests in the dream, and it can make you soar to the clouds.");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "Space Professional Voice Actor");
+        add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "Eat the Galaxy Jelly at the building height limit... Kaz finally has company now...");
 
         // Advancements - Adventure Expansion
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.title", "The Forgotten Sword Tomb");
@@ -1220,6 +1235,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.story.pure_and_flawless.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
         add("message.pasterdream.story.dream_fertilizer.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
         add("message.pasterdream.dream_accumulator.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
+
+        add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past...");
+        add("message.pasterdream.dream_train.location_info", "The train revealed a location... §aX：%s §aZ：%s");
 
         add("message.pasterdream.desert_hero_tomb.line1", "At long last, a visitor has come.");
         add("message.pasterdream.desert_hero_tomb.line2", "I have no regrets, only one final request.");

@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.conditions.RealPlayerCondition;
 import com.pasterdream.pasterdreammod.world.conditions.RealPlayerEmptyHandCondition;
 import com.pasterdream.pasterdreammod.world.functions.SpawnEntityFunction;
 import net.minecraft.core.registries.Registries;
@@ -44,6 +45,15 @@ public class ModLootTables {
                     () -> {
                         LootItemConditionType type = new LootItemConditionType(new RealPlayerEmptyHandCondition.ConditionSerializer());
                         RealPlayerEmptyHandCondition.TYPE = type;
+                        return type;
+                    });
+
+    /** 真实玩家破坏（不限工具） — 排除 FakePlayer（机械动力等自动化模组） */
+    public static final RegistryObject<LootItemConditionType> REAL_PLAYER =
+            LOOT_CONDITION_TYPES.register("real_player",
+                    () -> {
+                        LootItemConditionType type = new LootItemConditionType(new RealPlayerCondition.ConditionSerializer());
+                        RealPlayerCondition.TYPE = type;
                         return type;
                     });
 

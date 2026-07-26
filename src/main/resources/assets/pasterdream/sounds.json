@@ -82,5 +82,9 @@
   "zipper":
   {
     "sounds": [{"name": "pasterdream:zipper", "stream": false}]
+  },
+  "wind_chime":
+  {
+    "sounds": [{"name": "pasterdream:wind_chime", "stream": false}]
   }
 }

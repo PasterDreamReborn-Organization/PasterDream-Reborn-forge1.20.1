@@ -54,6 +54,9 @@ import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymWindShirtItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymSwayingSkirtItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCloudBootsItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.MachineLightWingItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.AngelWingItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.ForsakensWingItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import com.pasterdream.pasterdreammod.world.item.MeltDreamCoinItem;
 import com.pasterdream.pasterdreammod.world.item.PaleBoneneedleItem;
@@ -754,6 +757,11 @@ public class ModItems {
                         level.playSound(null, player.getX(), player.getY(), player.getZ(),
                                 SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 3.0F, 1.0F);
                     }
+
+                    // 进度触发器：在建筑高度上限吃下星河果冻
+                    if (player instanceof ServerPlayer sp) {
+                        ModCriteriaTriggers.EAT_GALAXY_JELLY_AT_HEIGHT.trigger(sp, sp.getY());
+                    }
                 }
                 @Override
                 public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
@@ -1435,6 +1443,7 @@ public class ModItems {
     public static final RegistryObject<Item> GOLDEN_FOX_SCULPTURE = ITEMS.register("golden_fox_sculpture", () -> new GoldenFoxSculptureItem(ModBlocks.GOLDEN_FOX_SCULPTURE.get(), new Item.Properties()));
     public static final RegistryObject<Item> FOX_SCULPTURE = ITEMS.register("fox_sculpture", () -> new FoxSculptureItem(ModBlocks.FOX_SCULPTURE.get(), new Item.Properties()));
     public static final RegistryObject<Item> DESERT_HERO_TOMB = ITEMS.register("desert_hero_tomb", () -> new DesertHeroTombItem(ModBlocks.DESERT_HERO_TOMB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DREAM_TRAIN_STRUCTURE = ITEMS.register("dream_train_structure", () -> new BlockItem(ModBlocks.DREAM_TRAIN_STRUCTURE.get(), new Item.Properties()));
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_CHEST = ITEMS.register("melt_dream_crystal_chest", () -> new MeltDreamCrystalChestItem(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), new Item.Properties()));
     public static final RegistryObject<Item> OPENED_MELT_DREAM_CRYSTAL_CHEST = ITEMS.register("opened_melt_dream_crystal_chest", () -> new OpenedMeltDreamCrystalChestItem(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), new Item.Properties()));
     public static final RegistryObject<Item> DREAM_ACCUMULATOR = ITEMS.register("dream_accumulator", () -> new DreamAccumulatorItem(ModBlocks.DREAM_ACCUMULATOR.get(), new Item.Properties()));
@@ -1498,6 +1507,21 @@ public class ModItems {
     public static final RegistryObject<Item> QYM_CLOUD_BOOTS = ITEMS.register("qym_cloud_boots",
             () -> new QymCloudBootsItem(ModArmorMaterials.QYM, ArmorItem.Type.BOOTS,
                     new Item.Properties().fireResistant().rarity(ModRarities.MIRACLE)));
+
+    // 机械光翼
+    public static final RegistryObject<Item> MACHINE_LIGHT_WING = ITEMS.register("machine_light_wing",
+            () -> new MachineLightWingItem(ModArmorMaterials.MACHINE_LIGHT_WING, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    // 天使之翼
+    public static final RegistryObject<Item> ANGEL_WING = ITEMS.register("angel_wing",
+            () -> new AngelWingItem(ModArmorMaterials.ANGEL_WING, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    // 遗忘之翼
+    public static final RegistryObject<Item> FORSAKENS_WING = ITEMS.register("forsakens_wing",
+            () -> new ForsakensWingItem(ModArmorMaterials.FORSAKENS_WING, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
     // 刷怪蛋
     public static final RegistryObject<Item> PINK_CHICKEN_SPAWN_EGG = ITEMS.register("pink_chicken_spawn_egg",
