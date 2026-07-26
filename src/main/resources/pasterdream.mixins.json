@@ -17,7 +17,8 @@
     "WorldGenRegionMixin",
     "ServerboundSetStructureBlockPacketMixin",
     "StructureBlockEntityMixin",
-    "StructureTemplateMixin"
+    "StructureTemplateMixin",
+    "StructureTemplateManagerMixin"
   ],
   "client": [
     "FogRendererMixin",

@@ -474,6 +474,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get(), "Model Break Particle Provider Block 1");
         add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get(), "Model Break Particle Provider Block 2");
         add(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get(), "Model Break Particle Provider Block 3");
+        add(ModBlocks.DREAM_TRAIN_STRUCTURE.get(), "Dream Train Structure");
 
         add("fluid.pasterdream.melt_dream_liquid","Melt Dream Liquid");
         add("fluid.pasterdream.shadow_liquid","Shadow Liquid");
@@ -1234,6 +1235,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.story.pure_and_flawless.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
         add("message.pasterdream.story.dream_fertilizer.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
         add("message.pasterdream.dream_accumulator.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
+
+        add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past...");
+        add("message.pasterdream.dream_train.location_info", "The train revealed a location... §aX：%s §aZ：%s");
 
         add("message.pasterdream.desert_hero_tomb.line1", "At long last, a visitor has come.");
         add("message.pasterdream.desert_hero_tomb.line2", "I have no regrets, only one final request.");
