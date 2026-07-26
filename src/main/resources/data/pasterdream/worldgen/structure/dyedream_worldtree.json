@@ -6,10 +6,10 @@
   "size": 2,
   "spawn_overrides": {},
   "start_height": {
-    "absolute": 0
+    "absolute": 5
   },
   "start_pool": "pasterdream:dyedream_worldtree_top_pool",
   "step": "surface_structures",
-  "terrain_adaptation": "beard_thin",
+  "terrain_adaptation": "none",
   "use_expansion_hack": false
 }
