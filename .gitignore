@@ -32,6 +32,9 @@ run-data/
 # 备份
 *.bak
 
+# Claude Code 配置（不纳入版本管理）
+.claude/
+
 # 临时文件
 vanilla_temp/
 mc_temp/
