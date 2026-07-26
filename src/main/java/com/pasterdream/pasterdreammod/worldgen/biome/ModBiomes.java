@@ -279,6 +279,8 @@ public class ModBiomes {
                 .mobSpawnSettings(new MobSpawnSettings.Builder()
                         .addSpawn(MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(EntityType.ALLAY, 15, 1, 2))
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4))
                         // TODO: pink_slime (weight 20, 1-3)
                         .build())
                 .generationSettings(gen.build())
