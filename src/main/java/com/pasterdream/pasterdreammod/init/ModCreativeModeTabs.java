@@ -558,6 +558,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MELT_DREAM_CRYSTAL_CHEST.get());
                         output.accept(ModItems.OPENED_MELT_DREAM_CRYSTAL_CHEST.get());
                         output.accept(ModItems.DREAM_ACCUMULATOR.get());
+                        output.accept(ModItems.DREAM_TRAIN_STRUCTURE.get());
                         output.accept(ModItems.SORBENT.get());
                     })
                     .build());

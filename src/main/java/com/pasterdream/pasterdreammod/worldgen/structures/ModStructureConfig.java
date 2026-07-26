@@ -33,6 +33,7 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_tavern", "pasterdream:can_dyedream_plains_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 16, 60483715, 1));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_campsite", "pasterdream:can_dyedream_plains_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 28, 7, 92741583, 1));
         //STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_worldtree", "pasterdream:dyedream_world_biome", "surface_structures", "none", -25, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 156, 87, 1208134265, 1));
+        // dream_train 改为手动 JSON（template_pool 引用 dream_train_marker，绕开 max_distance_from_center 限制）
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_ecosystem_bubble", "pasterdream:can_ecosystem_bubble_spawn_biome", "surface_structures", "none", "very_biased_to_bottom", 19, 25, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 25, 6, 38472910, 1));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:ecosystem_bubble", "pasterdream:can_ecosystem_bubble_spawn_biome", "surface_structures", "none", "very_biased_to_bottom", 19, 25, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 24, 6, 75018364, 1));
 
