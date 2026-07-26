@@ -35,6 +35,10 @@ run-data/
 # Claude Code 配置（不纳入版本管理）
 .claude/
 
+# Minecraft Dev MCP 工具（独立仓库，本地开发使用）
+minecraft-dev-mcp/
+package-lock.json
+
 # 临时文件
 vanilla_temp/
 mc_temp/
