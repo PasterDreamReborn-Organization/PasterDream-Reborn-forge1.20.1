@@ -1241,6 +1241,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.GOLDEN_FOX_SPAWN_EGG.get(), "Golden Fox Spawn Egg");
         add(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), "Melt Dream Crystal Entity");
         add(ModEntities.FOX_FIRE.get(), "Fox Fire");
+        add(ModEntities.SHADOW_GOLEM.get(), "Shadow Golem");
+        add(ModItems.SHADOW_GOLEM_SPAWN_EGG.get(), "Shadow Golem Spawn Egg");
         add("entity.pasterdream.golden_fox.vanish", "The golden fox vanished after fulfilling your wish...");
 
         //jeed Compatible

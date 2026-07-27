@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
 import com.pasterdream.pasterdreammod.world.entity.PinkChickenEntity;
 import com.pasterdream.pasterdreammod.world.entity.PinkSlimeEntity;
 import com.pasterdream.pasterdreammod.world.entity.TerraswordWaveEntity;
+import com.pasterdream.pasterdreammod.world.entity.ShadowGolemEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -83,6 +84,14 @@ public class ModEntities {
                     .setCustomClientFactory(GoldenFoxEntity::new)
                     .sized(0.6f, 0.6f));
 
+    public static final RegistryObject<EntityType<ShadowGolemEntity>> SHADOW_GOLEM = register("shadow_golem",
+            EntityType.Builder.<ShadowGolemEntity>of(ShadowGolemEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(ShadowGolemEntity::new)
+                    .sized(2.2f, 3.5f));
+
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder) {
         return REGISTRY.register(name, () -> builder.build(name));
     }
@@ -99,6 +108,7 @@ public class ModEntities {
         event.enqueueWork(PinkChickenEntity::init);
         event.enqueueWork(PinkSlimeEntity::init);
         event.enqueueWork(GoldenFoxEntity::init);
+        event.enqueueWork(ShadowGolemEntity::init);
     }
 
     @SubscribeEvent
@@ -109,5 +119,6 @@ public class ModEntities {
         event.put(PINK_CHICKEN.get(), PinkChickenEntity.createAttributes().build());
         event.put(PINK_SLIME.get(), PinkSlimeEntity.createAttributes().build());
         event.put(GOLDEN_FOX.get(), GoldenFoxEntity.createAttributes().build());
+        event.put(SHADOW_GOLEM.get(), ShadowGolemEntity.createAttributes().build());
     }
 }

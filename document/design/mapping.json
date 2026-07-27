@@ -455,11 +455,19 @@
     "blackmetal_ingot": "black_metal_ingot",
     "blackmetal_grain": "black_metal_grain",
     "nightmare_fuel": "nightmare_fuel",
-    "shadow_dungeon_key": "shadow_dungeon_key"
+    "shadow_dungeon_key": "shadow_dungeon_key",
+    "machine_wing_chestplate": "machine_light_wing",
+    "angel_wing_chestplate": "angel_wing",
+    "forsakens_wing_chestplate": "forsakens_wing"
   },
   "entities": {
     "pink_chicken": "pink_chicken",
-    "pink_slime": "pink_slime"
+    "pink_slime": "pink_slime",
+    "golden_fox": "golden_fox",
+    "shadow_golem": "shadow_golem",
+    "meltdream_crystal_entity": "melt_dream_crystal_entity",
+    "terrasword_wave": "terrasword_wave",
+    "fox_fire": "fox_fire"
   },
   "dimensions": {
     "dyedream_world": "dyedream_world",

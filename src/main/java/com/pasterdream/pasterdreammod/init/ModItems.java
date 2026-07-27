@@ -1542,6 +1542,8 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.PINK_SLIME, 0xe4a8d9, 0xd46daf, new Item.Properties()));
     public static final RegistryObject<Item> GOLDEN_FOX_SPAWN_EGG = ITEMS.register("golden_fox_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.GOLDEN_FOX, 0xe8c13a, 0x8b6914, new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_GOLEM_SPAWN_EGG = ITEMS.register("shadow_golem_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.SHADOW_GOLEM, 0x191926, 0xA7A5B1, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

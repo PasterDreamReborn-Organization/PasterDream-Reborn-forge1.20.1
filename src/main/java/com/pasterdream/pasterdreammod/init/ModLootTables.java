@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.conditions.RealPlayerCondition;
 import com.pasterdream.pasterdreammod.world.conditions.RealPlayerEmptyHandCondition;
+import com.pasterdream.pasterdreammod.world.functions.ApplyEntityLootingFunction;
 import com.pasterdream.pasterdreammod.world.functions.SpawnEntityFunction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -38,6 +39,11 @@ public class ModLootTables {
     public static final RegistryObject<LootItemFunctionType> SPAWN_ENTITY_FUNCTION_TYPE =
             LOOT_FUNCTION_TYPES.register("spawn_entity",
                     () -> new LootItemFunctionType(new SpawnEntityFunction.Serializer()));
+
+    /** 实体战利品抢夺函数 — 不声明 tool 参数，可在 ENTITY 上下文中通过 datagen 验证 */
+    public static final RegistryObject<LootItemFunctionType> APPLY_ENTITY_LOOTING_FUNCTION =
+            LOOT_FUNCTION_TYPES.register("apply_entity_looting",
+                    () -> new LootItemFunctionType(new ApplyEntityLootingFunction.Serializer()));
 
     /** 真实玩家空手破坏 — 排除 FakePlayer（机械动力等自动化模组） */
     public static final RegistryObject<LootItemConditionType> REAL_PLAYER_EMPTY_HAND =
