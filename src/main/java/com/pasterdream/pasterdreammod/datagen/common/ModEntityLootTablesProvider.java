@@ -75,5 +75,20 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 7)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
         );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/terrorbeak"),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
+        );
     }
 }

@@ -22,6 +22,7 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
         tag(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob")))
-                .add(ModEntities.SHADOW_GOLEM.get());
+                .add(ModEntities.SHADOW_GOLEM.get())
+                .add(ModEntities.TERRORBEAK.get());
     }
 }

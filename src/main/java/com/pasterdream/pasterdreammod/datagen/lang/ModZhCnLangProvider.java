@@ -1055,6 +1055,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.cheer_up_buff", "振奋");
         add("effect.pasterdream.lethargy_buff", "不振");
         add("effect.pasterdream.trance_buff", "恍惚");
+        add("effect.pasterdream.confusion_buff", "混乱");
         add("effect.pasterdream.insand_buff", "疯狂");
         add("effect.pasterdream.evasion_buff", "回避");
         add("effect.pasterdream.blink_cooldown", "瞬身术冷却");
@@ -1409,6 +1410,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModEntities.FOX_FIRE.get(), "狐火");
         add(ModEntities.SHADOW_GOLEM.get(), "阴影傀儡");
         add(ModItems.SHADOW_GOLEM_SPAWN_EGG.get(), "阴影傀儡刷怪蛋");
+        add(ModEntities.TERRORBEAK.get(), "恐怖尖喙");
+        add(ModItems.TERRORBEAK_SPAWN_EGG.get(), "恐怖尖喙刷怪蛋");
         add("entity.pasterdream.golden_fox.vanish", "金色狐狸在完成了你许下的愿望之后消失了...");
 
         //jeed兼容

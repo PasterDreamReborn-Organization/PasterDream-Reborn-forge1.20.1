@@ -695,6 +695,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PINK_SLIME_SPAWN_EGG.get());
                         output.accept(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_GOLEM_SPAWN_EGG.get());
+                        output.accept(ModItems.TERRORBEAK_SPAWN_EGG.get());
                     }).build());
 
     // ===== 拓展 =====

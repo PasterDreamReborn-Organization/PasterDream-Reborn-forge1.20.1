@@ -115,6 +115,7 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_snowy_plains"));
 
         tag(TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob_spawn_biome")))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "biome_shadow_0"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "biome_shadow_2"));
     }
 }
