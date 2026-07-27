@@ -513,6 +513,11 @@
 |-------|-------|---------|
 | `pink_chicken` | `pink_chicken` | 不改 |
 | `pink_slime` | `pink_slime` | 不改 |
+| `golden_fox` | `golden_fox` | 不改 |
+| `shadow_golem` | `shadow_golem` | 不改 |
+| `meltdream_crystal_entity` | `melt_dream_crystal_entity` | 重命名，补下划线 |
+| `terrasword_wave` | `terrasword_wave` | 不改 |
+| `fox_fire` | `fox_fire` | 不改 |
 
 ---
 

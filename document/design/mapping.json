@@ -462,7 +462,12 @@
   },
   "entities": {
     "pink_chicken": "pink_chicken",
-    "pink_slime": "pink_slime"
+    "pink_slime": "pink_slime",
+    "golden_fox": "golden_fox",
+    "shadow_golem": "shadow_golem",
+    "meltdream_crystal_entity": "melt_dream_crystal_entity",
+    "terrasword_wave": "terrasword_wave",
+    "fox_fire": "fox_fire"
   },
   "dimensions": {
     "dyedream_world": "dyedream_world",

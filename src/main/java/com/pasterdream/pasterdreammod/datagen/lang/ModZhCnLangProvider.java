@@ -1407,6 +1407,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.GOLDEN_FOX_SPAWN_EGG.get(), "金狐狸刷怪蛋");
         add(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), "融梦水晶");
         add(ModEntities.FOX_FIRE.get(), "狐火");
+        add(ModEntities.SHADOW_GOLEM.get(), "阴影傀儡");
+        add(ModItems.SHADOW_GOLEM_SPAWN_EGG.get(), "阴影傀儡刷怪蛋");
         add("entity.pasterdream.golden_fox.vanish", "金色狐狸在完成了你许下的愿望之后消失了...");
 
         //jeed兼容

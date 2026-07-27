@@ -86,5 +86,8 @@
   "wind_chime":
   {
     "sounds": [{"name": "pasterdream:wind_chime", "stream": false}]
+  },
+  "roar0": {
+    "sounds": [{"name": "pasterdream:roar0", "stream": false}]
   }
 }
