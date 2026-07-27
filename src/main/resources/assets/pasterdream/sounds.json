@@ -92,5 +92,11 @@
   },
   "terrorbeak_roar": {
     "sounds": [{"name": "pasterdream:terrorbeak_roar", "stream": false}]
+  },
+  "ghost0": {
+    "sounds": [{"name": "pasterdream:ghost0", "stream": false}]
+  },
+  "squeal_wave": {
+    "sounds": [{"name": "pasterdream:squeal_wave", "stream": false}]
   }
 }

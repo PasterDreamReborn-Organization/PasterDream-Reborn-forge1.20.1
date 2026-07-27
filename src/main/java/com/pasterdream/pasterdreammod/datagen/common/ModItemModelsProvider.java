@@ -436,6 +436,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG);
         spawnEggItem(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG);
         spawnEggItem(ModItems.SHADOW_HAND_SPAWN_EGG);
+        spawnEggItem(ModItems.SHADOW_GHOST_SPAWN_EGG);
+        spawnEggItem(ModItems.SHADOW_SQUEAL_GHOST_SPAWN_EGG);
+        spawnEggItem(ModItems.WAILING_SHADOW_GHOST_SPAWN_EGG);
+        spawnEggItem(ModItems.FRIENDLY_SHADOW_GHOST_SPAWN_EGG);
     }
 
     @Override

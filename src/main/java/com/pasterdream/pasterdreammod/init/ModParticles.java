@@ -25,5 +25,6 @@ public class ModParticles {
         event.registerSpriteSet(ModParticleTypes.FOX_FIRE_1_PARTICLE.get(), FoxFire1Particle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.DREAMFERTILIZER_PARTICLE.get(), DreamFertilizerParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.FEATHER_WHITE_PARTICLE.get(), FeatherWhiteParticle::provider);
+        event.registerSpriteSet(ModParticleTypes.SQUEAL_WAVE_PARTICLE.get(), SquealWaveParticle.Provider::new);
     }
 }

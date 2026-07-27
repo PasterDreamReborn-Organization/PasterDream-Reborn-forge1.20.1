@@ -13,6 +13,10 @@ import com.pasterdream.pasterdreammod.world.entity.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.world.entity.CrazyTerrorbeakEntity;
 import com.pasterdream.pasterdreammod.world.entity.WeakenessTerrorbeakEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
+import com.pasterdream.pasterdreammod.world.entity.ShadowGhostEntity;
+import com.pasterdream.pasterdreammod.world.entity.WailingShadowGhostEntity;
+import com.pasterdream.pasterdreammod.world.entity.FriendlyShadowGhostEntity;
+import com.pasterdream.pasterdreammod.world.entity.SquealWaveProjectileEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -131,6 +135,50 @@ public class ModEntities {
                     .fireImmune()
                     .sized(0.6f, 0.8f));
 
+    public static final RegistryObject<EntityType<ShadowGhostEntity>> SHADOW_GHOST = register("shadow_ghost",
+            EntityType.Builder.<ShadowGhostEntity>of(ShadowGhostEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(ShadowGhostEntity::new)
+                    .fireImmune()
+                    .sized(0.7f, 1.2f));
+
+    public static final RegistryObject<EntityType<ShadowGhostEntity>> SHADOW_SQUEAL_GHOST = register("shadow_squeal_ghost",
+            EntityType.Builder.<ShadowGhostEntity>of(ShadowGhostEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(ShadowGhostEntity::new)
+                    .fireImmune()
+                    .sized(0.7f, 1.2f));
+
+    public static final RegistryObject<EntityType<WailingShadowGhostEntity>> WAILING_SHADOW_GHOST = register("wailing_shadow_ghost",
+            EntityType.Builder.<WailingShadowGhostEntity>of(WailingShadowGhostEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(WailingShadowGhostEntity::new)
+                    .fireImmune()
+                    .sized(0.8f, 1.3f));
+
+    public static final RegistryObject<EntityType<FriendlyShadowGhostEntity>> FRIENDLY_SHADOW_GHOST = register("friendly_shadow_ghost",
+            EntityType.Builder.<FriendlyShadowGhostEntity>of(FriendlyShadowGhostEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(FriendlyShadowGhostEntity::new)
+                    .fireImmune()
+                    .sized(0.7f, 1.2f));
+
+    public static final RegistryObject<EntityType<SquealWaveProjectileEntity>> SQUEAL_WAVE_PROJECTILE = register("squeal_wave_projectile",
+            EntityType.Builder.<SquealWaveProjectileEntity>of(SquealWaveProjectileEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(SquealWaveProjectileEntity::new)
+                    .sized(0.5f, 0.5f));
+
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder) {
         return REGISTRY.register(name, () -> builder.build(name));
     }
@@ -152,6 +200,9 @@ public class ModEntities {
         event.enqueueWork(CrazyTerrorbeakEntity::init);
         event.enqueueWork(WeakenessTerrorbeakEntity::init);
         event.enqueueWork(ShadowHandEntity::init);
+        event.enqueueWork(ShadowGhostEntity::init);
+        event.enqueueWork(WailingShadowGhostEntity::init);
+        event.enqueueWork(FriendlyShadowGhostEntity::init);
     }
 
     @SubscribeEvent
@@ -167,5 +218,9 @@ public class ModEntities {
         event.put(CRAZY_TERRORBEAK.get(), CrazyTerrorbeakEntity.createAttributes().build());
         event.put(WEAKENESS_TERRORBEAK.get(), WeakenessTerrorbeakEntity.createAttributes().build());
         event.put(SHADOW_HAND.get(), ShadowHandEntity.createAttributes().build());
+        event.put(SHADOW_GHOST.get(), ShadowGhostEntity.createShadowGhostAttributes().build());
+        event.put(SHADOW_SQUEAL_GHOST.get(), ShadowGhostEntity.createShadowSquealGhostAttributes().build());
+        event.put(WAILING_SHADOW_GHOST.get(), WailingShadowGhostEntity.createAttributes().build());
+        event.put(FRIENDLY_SHADOW_GHOST.get(), FriendlyShadowGhostEntity.createAttributes().build());
     }
 }

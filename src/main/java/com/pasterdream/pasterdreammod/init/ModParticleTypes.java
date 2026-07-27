@@ -43,6 +43,8 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("feather_white_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> SHADOW_STONE_PARTICLE =
             PARTICLE_TYPES.register("shadow_stone_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> SQUEAL_WAVE_PARTICLE =
+            PARTICLE_TYPES.register("squeal_wave_particle", () -> new SimpleParticleType(false));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
