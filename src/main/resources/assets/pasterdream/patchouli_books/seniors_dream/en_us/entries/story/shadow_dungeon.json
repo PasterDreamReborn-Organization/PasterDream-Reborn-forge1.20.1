@@ -1,0 +1,17 @@
+{
+  "sortnum": 2,
+  "name": "pasterdream.seniors_dream.entry.shadow_dungeon",
+  "icon": "pasterdream:dream_notes_lamp_shadow_world",
+  "category": "pasterdream:story",
+  "advancement": "pasterdream:story/shadow_dungeon",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_dungeon.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_dungeon.page1"
+    }
+  ]
+}

@@ -30,6 +30,7 @@ import com.pasterdream.pasterdreammod.world.item.curio.KaichuOmamoriItem;
 import com.pasterdream.pasterdreammod.world.item.debugsword.DebugSwordItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotes.DreamNotesItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookItem;
+import com.pasterdream.pasterdreammod.world.item.StoryProgressItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDrinkItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
@@ -1454,6 +1455,7 @@ public class ModItems {
     public static final RegistryObject<Item> DREAM_NOTES_DYEDREAM_WORLD = ITEMS.register("dream_notes_dyedream_world", () -> new DreamNotesItem(new Item.Properties()));
     public static final RegistryObject<Item> DREAM_NOTES_LAMP_SHADOW_WORLD = ITEMS.register("dream_notes_lamp_shadow_world", () -> new DreamNotesItem(new Item.Properties()));
     public static final RegistryObject<Item> DREAM_NOTES_WIND_JOURNEY_WORLD = ITEMS.register("dream_notes_wind_journey_world", () -> new DreamNotesItem(new Item.Properties()));
+    public static final RegistryObject<Item> DREAM_NOTES_STORY_GUIDE = ITEMS.register("dream_notes_story_guide", () -> new StoryProgressItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> BLUE_PRINT = ITEMS.register("blue_print", () -> new BluePrintItem(new Item.Properties()));
     public static final RegistryObject<Item> DREAM_NOTES_BOOK = ITEMS.register("dream_notes_book", () -> new DreamNotesBookItem(new Item.Properties()));
 

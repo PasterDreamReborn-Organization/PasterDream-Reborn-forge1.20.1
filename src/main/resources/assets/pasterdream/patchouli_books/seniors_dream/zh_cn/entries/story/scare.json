@@ -1,0 +1,29 @@
+{
+  "sortnum": 3,
+  "name": "pasterdream.seniors_dream.entry.scare",
+  "icon": "pasterdream:dream_notes_lamp_shadow_world",
+  "category": "pasterdream:story",
+  "advancement": "pasterdream:story/scare",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.scare.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.scare.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.scare.page2"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.scare.page3"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.scare.page4"
+    }
+  ]
+}
