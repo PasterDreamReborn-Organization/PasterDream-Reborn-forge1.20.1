@@ -1537,5 +1537,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_campsite", "染梦营地");
         add("structure.pasterdream.dyedream_ecosystem_bubble", "染梦气泡生态球");
         add("structure.pasterdream.ecosystem_bubble", "气泡生态球");
+        add("structure.pasterdream.pinkagaric_house", "粉顶蘑菇屋");
     }
 }
