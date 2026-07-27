@@ -84,6 +84,7 @@ public class GUIBackGroundRender
     public static final ResourceLocation MINECRAFT_GUI_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/multipart_bottom.png");
     public static final ResourceLocation MINECRAFT_GUI_RIGHT_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/right_bottom.png");
 
+    public static ResourceLocation EMPTY_NOTES = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/empty_notes.png");
     public static ResourceLocation DREAM_NOTES_BOOK = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book.png");
 
     public static void rendPasterDreamInventoryGUI(GuiGraphics guiGraphics, int x, int y)
