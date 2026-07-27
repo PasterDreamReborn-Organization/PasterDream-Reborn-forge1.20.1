@@ -32,7 +32,7 @@ public class InsandBuffEffect extends MobEffect {
     public void applyEffectTick(LivingEntity entity, int amplifier) {
         if (!(entity instanceof ServerPlayer player) || !player.isAlive()) return;
         // 画面抖动在客户端 LoseMind#GUI_OVERLAY 中处理
-        // TODO: 随机刷怪 — Terrorbeak / ShadowHand / CrazyTerrorbeak 实体尚未搬运
+        // TODO: 随机刷怪 — Terrorbeak / ShadowHand / CrazyTerrorbeak 刷怪逻辑尚未实现
         // TODO: Lv2 检测 DegenerateBodys 饰品，未装备时持续扣血
     }
 

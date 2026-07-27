@@ -1546,6 +1546,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.SHADOW_GOLEM, 0x191926, 0xA7A5B1, new Item.Properties()));
     public static final RegistryObject<Item> TERRORBEAK_SPAWN_EGG = ITEMS.register("terrorbeak_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.TERRORBEAK, 0x1c1c1c, 0x3d3d3d, new Item.Properties()));
+    public static final RegistryObject<Item> CRAZY_TERRORBEAK_SPAWN_EGG = ITEMS.register("crazy_terrorbeak_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.CRAZY_TERRORBEAK, -16777216, -11271421, new Item.Properties()));
+    public static final RegistryObject<Item> WEAKENESS_TERRORBEAK_SPAWN_EGG = ITEMS.register("weakeness_terrorbeak_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.WEAKENESS_TERRORBEAK, -16777216, -13421773, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_HAND_SPAWN_EGG = ITEMS.register("shadow_hand_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.SHADOW_HAND, -12763843, -16316665, new Item.Properties()));
 

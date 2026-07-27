@@ -696,6 +696,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_GOLEM_SPAWN_EGG.get());
                         output.accept(ModItems.TERRORBEAK_SPAWN_EGG.get());
+                        output.accept(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get());
+                        output.accept(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_HAND_SPAWN_EGG.get());
                     }).build());
 

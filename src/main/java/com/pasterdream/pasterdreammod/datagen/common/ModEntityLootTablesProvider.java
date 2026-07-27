@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.functions.ApplyEntityLootingFunction;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceLocation;
+import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -88,6 +89,36 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem.lootTableItem(ModItems.SHADOW.get())
                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
+        );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/crazy_terrorbeak"),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 5)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModBlocks.THICK_SHADOW.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
+        );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/weakeness_terrorbeak"),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModBlocks.THICK_SHADOW.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
         );
 

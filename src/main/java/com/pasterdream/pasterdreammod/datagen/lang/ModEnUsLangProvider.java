@@ -1246,6 +1246,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_GOLEM_SPAWN_EGG.get(), "Shadow Golem Spawn Egg");
         add(ModEntities.TERRORBEAK.get(), "Terrorbeak");
         add(ModItems.TERRORBEAK_SPAWN_EGG.get(), "Terrorbeak Spawn Egg");
+        add(ModEntities.CRAZY_TERRORBEAK.get(), "Crazy Terrorbeak");
+        add(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get(), "Crazy Terrorbeak Spawn Egg");
+        add(ModEntities.WEAKENESS_TERRORBEAK.get(), "Weakness Terrorbeak");
+        add(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get(), "Weakness Terrorbeak Spawn Egg");
         add(ModEntities.SHADOW_HAND.get(), "Shadow Hand");
         add(ModItems.SHADOW_HAND_SPAWN_EGG.get(), "Shadow Hand Spawn Egg");
         add("entity.pasterdream.golden_fox.vanish", "The golden fox vanished after fulfilling your wish...");

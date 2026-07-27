@@ -1412,6 +1412,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_GOLEM_SPAWN_EGG.get(), "阴影傀儡刷怪蛋");
         add(ModEntities.TERRORBEAK.get(), "恐怖尖喙");
         add(ModItems.TERRORBEAK_SPAWN_EGG.get(), "恐怖尖喙刷怪蛋");
+        add(ModEntities.CRAZY_TERRORBEAK.get(), "疯狂恐怖尖喙");
+        add(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get(), "疯狂恐怖尖喙刷怪蛋");
+        add(ModEntities.WEAKENESS_TERRORBEAK.get(), "虚弱恐怖尖喙");
+        add(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get(), "虚弱恐怖尖喙刷怪蛋");
         add(ModEntities.SHADOW_HAND.get(), "暗影之手");
         add(ModItems.SHADOW_HAND_SPAWN_EGG.get(), "暗影之手刷怪蛋");
         add("entity.pasterdream.golden_fox.vanish", "金色狐狸在完成了你许下的愿望之后消失了...");
