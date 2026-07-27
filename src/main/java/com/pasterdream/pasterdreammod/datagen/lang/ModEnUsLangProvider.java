@@ -1252,6 +1252,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get(), "Weakness Terrorbeak Spawn Egg");
         add(ModEntities.SHADOW_HAND.get(), "Shadow Hand");
         add(ModItems.SHADOW_HAND_SPAWN_EGG.get(), "Shadow Hand Spawn Egg");
+        add(ModEntities.SHADOW_GHOST.get(), "Shadow Ghost");
+        add(ModItems.SHADOW_GHOST_SPAWN_EGG.get(), "Shadow Ghost Spawn Egg");
+        add(ModEntities.SHADOW_SQUEAL_GHOST.get(), "Squeal Shadow Ghost");
+        add(ModItems.SHADOW_SQUEAL_GHOST_SPAWN_EGG.get(), "Squeal Shadow Ghost Spawn Egg");
+        add(ModEntities.WAILING_SHADOW_GHOST.get(), "Wailing Shadow Ghost");
+        add(ModItems.WAILING_SHADOW_GHOST_SPAWN_EGG.get(), "Wailing Shadow Ghost Spawn Egg");
+        add(ModEntities.FRIENDLY_SHADOW_GHOST.get(), "Friendly Shadow Ghost");
+        add(ModItems.FRIENDLY_SHADOW_GHOST_SPAWN_EGG.get(), "Friendly Shadow Ghost Spawn Egg");
         add("entity.pasterdream.golden_fox.vanish", "The golden fox vanished after fulfilling your wish...");
 
         //jeed Compatible

@@ -1552,6 +1552,14 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.WEAKENESS_TERRORBEAK, -16777216, -13421773, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_HAND_SPAWN_EGG = ITEMS.register("shadow_hand_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.SHADOW_HAND, -12763843, -16316665, new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_GHOST_SPAWN_EGG = ITEMS.register("shadow_ghost_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.SHADOW_GHOST, -591623, -9012613, new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_SQUEAL_GHOST_SPAWN_EGG = ITEMS.register("shadow_squeal_ghost_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.SHADOW_SQUEAL_GHOST, -722951, -5317392, new Item.Properties()));
+    public static final RegistryObject<Item> WAILING_SHADOW_GHOST_SPAWN_EGG = ITEMS.register("wailing_shadow_ghost_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.WAILING_SHADOW_GHOST, -985609, -9851188, new Item.Properties()));
+    public static final RegistryObject<Item> FRIENDLY_SHADOW_GHOST_SPAWN_EGG = ITEMS.register("friendly_shadow_ghost_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.FRIENDLY_SHADOW_GHOST, -985866, -4334102, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

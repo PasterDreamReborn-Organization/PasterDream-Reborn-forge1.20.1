@@ -3,7 +3,7 @@ package com.pasterdream.pasterdreammod.client.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.pasterdream.pasterdreammod.client.model.TerrorbeakModel;
-import com.pasterdream.pasterdreammod.world.entity.TerrorbeakEntity;
+import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -30,9 +30,8 @@ public class TerrorbeakRenderer extends GeoEntityRenderer<TerrorbeakEntity> {
                           MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender,
                           float partialTick, int packedLight, int packedOverlay, float red,
                           float green, float blue, float alpha) {
-        float scale = 1f;
-        this.scaleHeight = scale;
-        this.scaleWidth = scale;
+        this.scaleHeight = 1f;
+        this.scaleWidth = 1f;
         super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick,
                 packedLight, packedOverlay, red, green, blue, alpha);
     }

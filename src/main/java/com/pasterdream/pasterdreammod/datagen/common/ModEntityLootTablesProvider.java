@@ -126,5 +126,44 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/shadow_hand"),
                 LootTable.lootTable()
         );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/shadow_ghost"),
+                ghostLoot()
+        );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/shadow_squeal_ghost"),
+                ghostLoot()
+        );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/wailing_shadow_ghost"),
+                ghostLoot()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
+        );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/friendly_shadow_ghost"),
+                ghostLoot()
+        );
+    }
+
+    private LootTable.Builder ghostLoot() {
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ModItems.SOUL_DUST.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
+                                .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))));
     }
 }

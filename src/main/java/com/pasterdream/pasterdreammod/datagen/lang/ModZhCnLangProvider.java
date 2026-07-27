@@ -1418,6 +1418,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.WEAKENESS_TERRORBEAK_SPAWN_EGG.get(), "虚弱恐怖尖喙刷怪蛋");
         add(ModEntities.SHADOW_HAND.get(), "暗影之手");
         add(ModItems.SHADOW_HAND_SPAWN_EGG.get(), "暗影之手刷怪蛋");
+        add(ModEntities.SHADOW_GHOST.get(), "怨魂");
+        add(ModItems.SHADOW_GHOST_SPAWN_EGG.get(), "怨魂刷怪蛋");
+        add(ModEntities.SHADOW_SQUEAL_GHOST.get(), "尖啸怨魂");
+        add(ModItems.SHADOW_SQUEAL_GHOST_SPAWN_EGG.get(), "尖啸怨魂刷怪蛋");
+        add(ModEntities.WAILING_SHADOW_GHOST.get(), "悲泣尖啸怨魂");
+        add(ModItems.WAILING_SHADOW_GHOST_SPAWN_EGG.get(), "悲泣尖啸怨魂刷怪蛋");
+        add(ModEntities.FRIENDLY_SHADOW_GHOST.get(), "友善怨魂");
+        add(ModItems.FRIENDLY_SHADOW_GHOST_SPAWN_EGG.get(), "友善怨魂刷怪蛋");
         add("entity.pasterdream.golden_fox.vanish", "金色狐狸在完成了你许下的愿望之后消失了...");
 
         //jeed兼容

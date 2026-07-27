@@ -1,10 +1,10 @@
-package com.pasterdream.pasterdreammod.world.entity;
+package com.pasterdream.pasterdreammod.world.entity.terrorbeak;
 
-import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.entity.ghost.ITextureVariant;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -40,25 +40,76 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
 
-public class CrazyTerrorbeakEntity extends Monster implements GeoEntity {
-    public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(CrazyTerrorbeakEntity.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(CrazyTerrorbeakEntity.class, EntityDataSerializers.STRING);
-    public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(CrazyTerrorbeakEntity.class, EntityDataSerializers.STRING);
+public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVariant {
+
+    public enum Variant {
+        NORMAL("terrorbeak", 40, 16, 0.3, 1.8, 12,
+                true, false, 9, -2, 7, -0.02, true),
+        CRAZY("crazy_terrorbeak", 60, 20, 0.31, 1.8, 10,
+                true, true, 10, -3, 30, -0.2, false),
+        WEAKENESS("weakness_terrorbeak", 30, 12, 0.3, 1.6, 4,
+                false, false, 0, 0, 7, -0.02, true);
+
+        final String texture;
+        final double maxHealth, attackDamage, movementSpeed, meleeSpeed;
+        final int xpReward;
+        final boolean hasRoar, roarOnlyNonImmune;
+        final int roarRange, roarSanPenalty, dieSanReward;
+        final double touchSanPenalty;
+        final boolean touchSanGt0;
+
+        Variant(String texture, double maxHealth, double attackDamage, double movementSpeed,
+                double meleeSpeed, int xpReward, boolean hasRoar, boolean roarOnlyNonImmune,
+                int roarRange, int roarSanPenalty, int dieSanReward,
+                double touchSanPenalty, boolean touchSanGt0) {
+            this.texture = texture;
+            this.maxHealth = maxHealth;
+            this.attackDamage = attackDamage;
+            this.movementSpeed = movementSpeed;
+            this.meleeSpeed = meleeSpeed;
+            this.xpReward = xpReward;
+            this.hasRoar = hasRoar;
+            this.roarOnlyNonImmune = roarOnlyNonImmune;
+            this.roarRange = roarRange;
+            this.roarSanPenalty = roarSanPenalty;
+            this.dieSanReward = dieSanReward;
+            this.touchSanPenalty = touchSanPenalty;
+            this.touchSanGt0 = touchSanGt0;
+        }
+    }
+
+    private static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(TerrorbeakEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(TerrorbeakEntity.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(TerrorbeakEntity.class, EntityDataSerializers.STRING);
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private boolean swinging;
     private long lastSwing;
     public String animationprocedure = "empty";
-
     private int roarCooldown;
+    private Variant variant; // lazily resolved — must not be accessed directly during super() chain
 
-    public CrazyTerrorbeakEntity(PlayMessages.SpawnEntity packet, Level world) {
-        this(ModEntities.CRAZY_TERRORBEAK.get(), world);
+    public TerrorbeakEntity(PlayMessages.SpawnEntity packet, Level world) {
+        super((EntityType<? extends TerrorbeakEntity>)
+                net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.byId(packet.getTypeId()), world);
+        xpReward = getVariant().xpReward;
+        setNoAi(false);
     }
 
-    public CrazyTerrorbeakEntity(EntityType<CrazyTerrorbeakEntity> type, Level world) {
+    public TerrorbeakEntity(EntityType<? extends TerrorbeakEntity> type, Level world) {
         super(type, world);
-        xpReward = 10;
+        xpReward = getVariant().xpReward;
         setNoAi(false);
+    }
+
+    /** Safe to call from super() chain — resolves from EntityType without relying on the variant field. */
+    private Variant getVariant() {
+        if (variant == null) {
+            EntityType<?> type = this.getType();
+            if (type == ModEntities.CRAZY_TERRORBEAK.get()) variant = Variant.CRAZY;
+            else if (type == ModEntities.WEAKENESS_TERRORBEAK.get()) variant = Variant.WEAKENESS;
+            else variant = Variant.NORMAL;
+        }
+        return variant;
     }
 
     @Override
@@ -66,13 +117,14 @@ public class CrazyTerrorbeakEntity extends Monster implements GeoEntity {
         super.defineSynchedData();
         this.entityData.define(SHOOT, false);
         this.entityData.define(ANIMATION, "undefined");
-        this.entityData.define(TEXTURE, "crazy_terrorbeak");
+        this.entityData.define(TEXTURE, getVariant().texture);
     }
 
     public void setTexture(String texture) {
         this.entityData.set(TEXTURE, texture);
     }
 
+    @Override
     public String getTexture() {
         return this.entityData.get(TEXTURE);
     }
@@ -85,7 +137,7 @@ public class CrazyTerrorbeakEntity extends Monster implements GeoEntity {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.8, false) {
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, getVariant().meleeSpeed, false) {
             @Override
             protected double getAttackReachSqr(LivingEntity entity) {
                 return this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth();
@@ -115,23 +167,27 @@ public class CrazyTerrorbeakEntity extends Monster implements GeoEntity {
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (!this.level().isClientSide() && this.isAlive() && roarCooldown <= 0) {
-            if (!source.is(DamageTypes.IN_FIRE) && !source.is(DamageTypes.CACTUS)
-                    && !source.is(DamageTypes.WITHER) && !source.is(DamageTypes.WITHER_SKULL)) {
-                this.playSound(ModSounds.TERRORBEAK_ROAR.get(), 0.7f, 1);
+        if (!this.level().isClientSide() && this.isAlive() && getVariant().hasRoar && roarCooldown <= 0) {
+            boolean shouldRoar = true;
+            if (getVariant().roarOnlyNonImmune) {
+                shouldRoar = !source.is(DamageTypes.IN_FIRE) && !source.is(DamageTypes.CACTUS)
+                        && !source.is(DamageTypes.WITHER) && !source.is(DamageTypes.WITHER_SKULL);
+            }
+            if (shouldRoar) {
+                this.playSound(ModSounds.TERRORBEAK_ROAR.get(), variant == Variant.CRAZY ? 0.7f : 0.6f, 1);
                 this.setAnimation("roar");
                 Vec3 look = this.getLookAngle();
                 Vec3 center = this.position().add(look.x, 0, look.z);
-                AABB area = AABB.ofSize(center, 10, 10, 10);
+                AABB area = AABB.ofSize(center, getVariant().roarRange, getVariant().roarRange, getVariant().roarRange);
                 List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, area,
-                        e -> e != this && !(e instanceof CrazyTerrorbeakEntity));
+                        e -> e != this && !(e instanceof TerrorbeakEntity));
                 for (LivingEntity target : entities) {
                     target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 30, 1));
                     target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 30, 0));
                     target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 1));
                 }
                 for (ServerPlayer sp : this.level().getEntitiesOfClass(ServerPlayer.class, area, e -> true)) {
-                    sp.getCapability(ModCapabilities.SAN).ifPresent(cap -> cap.addSanValue(-3));
+                    sp.getCapability(ModCapabilities.SAN).ifPresent(cap -> cap.addSanValue(getVariant().roarSanPenalty));
                 }
                 roarCooldown = 200;
             }
@@ -153,7 +209,7 @@ public class CrazyTerrorbeakEntity extends Monster implements GeoEntity {
         if (source.getEntity() instanceof ServerPlayer sp) {
             sp.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
                 if (cap.getSanValue() <= 20) {
-                    cap.addSanValue(30);
+                    cap.addSanValue(getVariant().dieSanReward);
                 }
             });
         }
@@ -164,8 +220,14 @@ public class CrazyTerrorbeakEntity extends Monster implements GeoEntity {
         super.playerTouch(player);
         if (player instanceof ServerPlayer sp) {
             sp.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
-                if (cap.getSanValue() <= 20) {
-                    cap.addSanValue(-0.2);
+                if (getVariant().touchSanGt0) {
+                    if (cap.getSanValue() > 0) {
+                        cap.addSanValue(getVariant().touchSanPenalty);
+                    }
+                } else {
+                    if (cap.getSanValue() <= 20) {
+                        cap.addSanValue(getVariant().touchSanPenalty);
+                    }
                 }
             });
         }
@@ -201,26 +263,42 @@ public class CrazyTerrorbeakEntity extends Monster implements GeoEntity {
     }
 
     public static void init() {
-        SpawnPlacements.register(ModEntities.CRAZY_TERRORBEAK.get(),
-                SpawnPlacements.Type.ON_GROUND,
-                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, world, reason, pos, random) ->
-                        world.getDifficulty() != net.minecraft.world.Difficulty.PEACEFUL
-                                && Monster.isDarkEnoughToSpawn(world, pos, random)
-                                && Mob.checkMobSpawnRules(entityType, world, reason, pos, random));
+        // Spawn placements deferred
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
+    public static AttributeSupplier.Builder createTerrorbeakAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MOVEMENT_SPEED, 0.31)
-                .add(Attributes.MAX_HEALTH, 60)
+                .add(Attributes.MOVEMENT_SPEED, Variant.NORMAL.movementSpeed)
+                .add(Attributes.MAX_HEALTH, Variant.NORMAL.maxHealth)
                 .add(Attributes.ARMOR, 0)
-                .add(Attributes.ATTACK_DAMAGE, 20)
+                .add(Attributes.ATTACK_DAMAGE, Variant.NORMAL.attackDamage)
                 .add(Attributes.FOLLOW_RANGE, 24)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1);
     }
 
-    private PlayState movementPredicate(software.bernie.geckolib.core.animation.AnimationState<CrazyTerrorbeakEntity> event) {
+    public static AttributeSupplier.Builder createCrazyTerrorbeakAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MOVEMENT_SPEED, Variant.CRAZY.movementSpeed)
+                .add(Attributes.MAX_HEALTH, Variant.CRAZY.maxHealth)
+                .add(Attributes.ARMOR, 0)
+                .add(Attributes.ATTACK_DAMAGE, Variant.CRAZY.attackDamage)
+                .add(Attributes.FOLLOW_RANGE, 24)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1);
+    }
+
+    public static AttributeSupplier.Builder createWeakenessTerrorbeakAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MOVEMENT_SPEED, Variant.WEAKENESS.movementSpeed)
+                .add(Attributes.MAX_HEALTH, Variant.WEAKENESS.maxHealth)
+                .add(Attributes.ARMOR, 0)
+                .add(Attributes.ATTACK_DAMAGE, Variant.WEAKENESS.attackDamage)
+                .add(Attributes.FOLLOW_RANGE, 24)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1);
+    }
+
+    // ===== GeckoLib =====
+
+    private PlayState movementPredicate(software.bernie.geckolib.core.animation.AnimationState<TerrorbeakEntity> event) {
         if (this.animationprocedure.equals("empty")) {
             if ((event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F))) {
                 return event.setAndContinue(RawAnimation.begin().thenLoop("walk"));
@@ -233,7 +311,7 @@ public class CrazyTerrorbeakEntity extends Monster implements GeoEntity {
         return PlayState.STOP;
     }
 
-    private PlayState attackingPredicate(software.bernie.geckolib.core.animation.AnimationState<CrazyTerrorbeakEntity> event) {
+    private PlayState attackingPredicate(software.bernie.geckolib.core.animation.AnimationState<TerrorbeakEntity> event) {
         double d1 = this.getX() - this.xOld;
         double d0 = this.getZ() - this.zOld;
         if (getAttackAnim(event.getPartialTick()) > 0f && !this.swinging) {
@@ -250,7 +328,7 @@ public class CrazyTerrorbeakEntity extends Monster implements GeoEntity {
         return PlayState.CONTINUE;
     }
 
-    private PlayState procedurePredicate(software.bernie.geckolib.core.animation.AnimationState<CrazyTerrorbeakEntity> event) {
+    private PlayState procedurePredicate(software.bernie.geckolib.core.animation.AnimationState<TerrorbeakEntity> event) {
         if (!animationprocedure.equals("empty") && event.getController().getAnimationState() == AnimationController.State.STOPPED) {
             event.getController().setAnimation(RawAnimation.begin().thenPlay(this.animationprocedure));
             if (event.getController().getAnimationState() == AnimationController.State.STOPPED) {

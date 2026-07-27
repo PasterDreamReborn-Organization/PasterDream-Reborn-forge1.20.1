@@ -15,9 +15,14 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.GOLDEN_FOX.get(), GoldenFoxRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_GOLEM.get(), ShadowGolemRenderer::new);
         event.registerEntityRenderer(ModEntities.TERRORBEAK.get(), TerrorbeakRenderer::new);
-        event.registerEntityRenderer(ModEntities.CRAZY_TERRORBEAK.get(), CrazyTerrorbeakRenderer::new);
-        event.registerEntityRenderer(ModEntities.WEAKENESS_TERRORBEAK.get(), WeakenessTerrorbeakRenderer::new);
+        event.registerEntityRenderer(ModEntities.CRAZY_TERRORBEAK.get(), TerrorbeakRenderer::new);
+        event.registerEntityRenderer(ModEntities.WEAKENESS_TERRORBEAK.get(), TerrorbeakRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_HAND.get(), ShadowHandRenderer::new);
+        event.registerEntityRenderer(ModEntities.SHADOW_GHOST.get(), ShadowGhostRenderer::new);
+        event.registerEntityRenderer(ModEntities.SHADOW_SQUEAL_GHOST.get(), ShadowGhostRenderer::new);
+        event.registerEntityRenderer(ModEntities.WAILING_SHADOW_GHOST.get(), ShadowGhostRenderer::new);
+        event.registerEntityRenderer(ModEntities.FRIENDLY_SHADOW_GHOST.get(), ShadowGhostRenderer::new);
+        event.registerEntityRenderer(ModEntities.SQUEAL_WAVE_PROJECTILE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.THROWN_PINK_EGG.get(), ThrownItemRenderer::new);
     }
 
