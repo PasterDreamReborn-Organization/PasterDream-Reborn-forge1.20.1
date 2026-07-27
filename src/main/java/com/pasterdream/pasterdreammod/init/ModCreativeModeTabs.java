@@ -595,6 +595,8 @@ public class ModCreativeModeTabs {
 
                         output.accept(BluePrintWithNBT.bluePrintWithNBT(ModItems.BLUE_PRINT.get(), "content", "wraponWorkshop", AddBluePrintContentListTag.weaponWorkshop()));
 
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("使用说明"));
+
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("misty_dreaming_lotus"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("piercing_edel_weiss"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("golden_fox"));

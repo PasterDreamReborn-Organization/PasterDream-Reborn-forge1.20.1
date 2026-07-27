@@ -13,6 +13,8 @@ public class ModDreamNotesBookContentRelation
 
     public static void registerDreamNotesBookContentRelation()
     {
+        DreamNotesBookRegistry.register("使用说明", Component.translatable("book.pasterdream.title.使用说明"), "2884omgpy", Component.translatable("book.pasterdream.content.使用说明"), GUIBackGroundRender.EMPTY_NOTES, 360, 180, 1, 1, 359, 179);
+
         DreamNotesBookRegistry.register("misty_dreaming_lotus", Component.translatable("book.pasterdream.title.花园解密:迷梦冶梦莲"), "琴雨梦", Component.translatable("book.pasterdream.content.花园解密:迷梦冶梦莲"), GUIBackGroundRender.DREAM_NOTES_BOOK, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y);
         DreamNotesBookRegistry.register("piercing_edel_weiss", Component.translatable("book.pasterdream.title.花园解密:凛冽雪绒花"), "琴雨梦", Component.translatable("book.pasterdream.content.花园解密:凛冽雪绒花"), GUIBackGroundRender.DREAM_NOTES_BOOK, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y);
         DreamNotesBookRegistry.register("golden_fox", Component.translatable("book.pasterdream.title.花园解密:九尾狐"), "琴雨梦", Component.translatable("book.pasterdream.content.花园解密:九尾狐"), GUIBackGroundRender.DREAM_NOTES_BOOK, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y);
