@@ -85,6 +85,9 @@ dependencies {
 
     // Patchouli（本地 libs）
     implementation fg.deobf("blank:Patchouli:1.20.1-85-FORGE")
+
+    // KubeJS（可选兼容）
+    compileOnly fg.deobf("blank:kubejs-forge:2001.6.5-build.16")
 }
 
 tasks.named('processResources', ProcessResources).configure {

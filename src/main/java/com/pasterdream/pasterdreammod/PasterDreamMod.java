@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod;
 
 import com.pasterdream.pasterdreammod.client.*;
+import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.FluidHandlerResolvers;
 import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateManager;
 import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
@@ -120,6 +121,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.register(this);
 
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);     //加载配置文件
+        context.registerConfig(ModConfig.Type.CLIENT, PasterDreamClientConfig.SPEC, "PasterDream-Client.toml");
     }
 
     //在这里输入通用端注册内容
