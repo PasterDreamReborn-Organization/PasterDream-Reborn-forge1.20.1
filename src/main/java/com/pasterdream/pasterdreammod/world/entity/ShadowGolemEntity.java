@@ -15,7 +15,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -188,8 +187,7 @@ public class ShadowGolemEntity extends Monster implements GeoEntity {
 
             // 1 tick after start: play roar sound
             if (skillTimer == 43) {
-                world.playSound(null, BlockPos.containing(x, y, z),
-                        ModSounds.ROAR0.get(), SoundSource.MASTER, 1.2f, 1);
+                this.playSound(ModSounds.ROAR0.get(), 1.2f, 1);
             }
 
             // 8 ticks after start: set skill animation
@@ -203,8 +201,7 @@ public class ShadowGolemEntity extends Monster implements GeoEntity {
                     serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE, x, y, z, 200, 3, 0.1, 3, 0.2);
                     serverLevel.sendParticles(ModParticleTypes.SHADOW_STONE_PARTICLE.get(), x, y, z, 200, 3, 0.4, 3, 0.1);
                 }
-                world.playSound(null, BlockPos.containing(x, y, z),
-                        net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, SoundSource.NEUTRAL, 1, 1);
+                this.playSound(net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, 1, 1);
 
                 // 以实体脚部为中心，上下各5格覆盖
                 AABB area = AABB.ofSize(new Vec3(x, y, z), 10, 10, 10);
