@@ -2,10 +2,10 @@ package com.pasterdream.pasterdreammod.world.entity.ghost;
 
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
+import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
@@ -84,7 +84,7 @@ public class SquealWaveProjectileEntity extends AbstractArrow implements ItemSup
         arrow.setKnockback(knockback);
         world.addFreshEntity(arrow);
         world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                SoundEvents.WARDEN_SONIC_BOOM, SoundSource.PLAYERS,
+                ModSounds.SQUEAL_WAVE.get(), SoundSource.PLAYERS,
                 1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
     }
 
@@ -100,7 +100,7 @@ public class SquealWaveProjectileEntity extends AbstractArrow implements ItemSup
         arrow.setCritArrow(false);
         entity.level().addFreshEntity(arrow);
         entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                SoundEvents.WARDEN_SONIC_BOOM, SoundSource.PLAYERS,
+                ModSounds.SQUEAL_WAVE.get(), SoundSource.PLAYERS,
                 1, 1f / (RandomSource.create().nextFloat() * 0.5f + 1));
     }
 }
