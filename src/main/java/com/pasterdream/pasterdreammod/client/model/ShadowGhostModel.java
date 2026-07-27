@@ -1,7 +1,7 @@
 package com.pasterdream.pasterdreammod.client.model;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
-import com.pasterdream.pasterdreammod.world.entity.ITextureVariant;
+import com.pasterdream.pasterdreammod.world.entity.ghost.ITextureVariant;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import software.bernie.geckolib.animatable.GeoEntity;

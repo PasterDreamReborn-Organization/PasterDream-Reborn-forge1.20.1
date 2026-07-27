@@ -3,7 +3,7 @@ package com.pasterdream.pasterdreammod.client.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.pasterdream.pasterdreammod.client.model.ShadowGhostModel;
-import com.pasterdream.pasterdreammod.world.entity.ITextureVariant;
+import com.pasterdream.pasterdreammod.world.entity.ghost.ITextureVariant;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

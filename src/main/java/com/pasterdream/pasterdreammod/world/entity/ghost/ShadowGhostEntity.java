@@ -1,22 +1,15 @@
-package com.pasterdream.pasterdreammod.world.entity;
+package com.pasterdream.pasterdreammod.world.entity.ghost;
 
-import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModEntities;
-import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
@@ -26,15 +19,12 @@ import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -46,27 +36,43 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAttackMob, GeoEntity, ITextureVariant {
-    private static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(FriendlyShadowGhostEntity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(FriendlyShadowGhostEntity.class, EntityDataSerializers.STRING);
-    private static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(FriendlyShadowGhostEntity.class, EntityDataSerializers.STRING);
-    private static final TagKey<EntityType<?>> SHADOW_MOB = TagKey.create(Registries.ENTITY_TYPE,
-            net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob"));
+import java.util.EnumSet;
+
+public class ShadowGhostEntity extends Monster implements RangedAttackMob, GeoEntity, ITextureVariant {
+    private static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(ShadowGhostEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(ShadowGhostEntity.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(ShadowGhostEntity.class, EntityDataSerializers.STRING);
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private boolean swinging;
     private long lastSwing;
     private int shootAnimTimer;
     public String animationprocedure = "empty";
 
-    public FriendlyShadowGhostEntity(PlayMessages.SpawnEntity packet, Level world) {
-        this(ModEntities.FRIENDLY_SHADOW_GHOST.get(), world);
+    public ShadowGhostEntity(PlayMessages.SpawnEntity packet, Level world) {
+        super((EntityType<? extends ShadowGhostEntity>)
+                net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.byId(packet.getTypeId()), world);
+        xpReward = 2;
+        setNoAi(false);
+        this.moveControl = new FlyingMoveControl(this, 10, true);
     }
 
-    public FriendlyShadowGhostEntity(EntityType<? extends FriendlyShadowGhostEntity> type, Level world) {
+    public ShadowGhostEntity(EntityType<? extends ShadowGhostEntity> type, Level world) {
         super(type, world);
         xpReward = 2;
         setNoAi(false);
         this.moveControl = new FlyingMoveControl(this, 10, true);
+    }
+
+    protected boolean isRangedVariant() {
+        return this.getType() == ModEntities.SHADOW_SQUEAL_GHOST.get();
+    }
+
+    protected int getRangedAttackInterval() {
+        return 30;
+    }
+
+    protected float getRangedAttackRadius() {
+        return 12f;
     }
 
     @Override
@@ -99,15 +105,53 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.targetSelector.addGoal(1, new OwnerHurtTargetGoal(this));
-        this.goalSelector.addGoal(2, new OwnerHurtByTargetGoal(this));
+        if (isRangedVariant()) {
+            this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25, getRangedAttackInterval(), getRangedAttackRadius()) {
+                @Override
+                public boolean canContinueToUse() {
+                    return this.canUse();
+                }
+            });
+        }
+        this.goalSelector.addGoal(2, new Goal() {
+            { this.setFlags(EnumSet.of(Goal.Flag.MOVE)); }
+            public boolean canUse() {
+                return ShadowGhostEntity.this.getTarget() != null
+                        && !ShadowGhostEntity.this.getMoveControl().hasWanted();
+            }
+            @Override
+            public boolean canContinueToUse() {
+                return ShadowGhostEntity.this.getMoveControl().hasWanted()
+                        && ShadowGhostEntity.this.getTarget() != null
+                        && ShadowGhostEntity.this.getTarget().isAlive();
+            }
+            @Override
+            public void start() {
+                LivingEntity target = ShadowGhostEntity.this.getTarget();
+                Vec3 vec = target.getEyePosition(1);
+                ShadowGhostEntity.this.moveControl.setWantedPosition(vec.x, vec.y, vec.z, 0.6);
+            }
+            @Override
+            public void tick() {
+                LivingEntity target = ShadowGhostEntity.this.getTarget();
+                if (ShadowGhostEntity.this.getBoundingBox().intersects(target.getBoundingBox())) {
+                    ShadowGhostEntity.this.doHurtTarget(target);
+                } else {
+                    double d0 = ShadowGhostEntity.this.distanceToSqr(target);
+                    if (d0 < 5) {
+                        Vec3 vec = target.getEyePosition(1);
+                        ShadowGhostEntity.this.moveControl.setWantedPosition(vec.x, vec.y, vec.z, 0.6);
+                    }
+                }
+            }
+        });
         this.goalSelector.addGoal(3, new RandomStrollGoal(this, 0.8, 20) {
             @Override
             protected Vec3 getPosition() {
-                var random = FriendlyShadowGhostEntity.this.getRandom();
-                double dx = FriendlyShadowGhostEntity.this.getX() + ((random.nextFloat() * 2 - 1) * 16);
-                double dy = FriendlyShadowGhostEntity.this.getY() + ((random.nextFloat() * 2 - 1) * 16);
-                double dz = FriendlyShadowGhostEntity.this.getZ() + ((random.nextFloat() * 2 - 1) * 16);
+                var random = ShadowGhostEntity.this.getRandom();
+                double dx = ShadowGhostEntity.this.getX() + ((random.nextFloat() * 2 - 1) * 16);
+                double dy = ShadowGhostEntity.this.getY() + ((random.nextFloat() * 2 - 1) * 16);
+                double dz = ShadowGhostEntity.this.getZ() + ((random.nextFloat() * 2 - 1) * 16);
                 return new Vec3(dx, dy, dz);
             }
         });
@@ -117,17 +161,9 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
                 return this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth();
             }
         });
-        this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 1, 10f, 2f, false));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(7, new NearestAttackableTargetGoal<>(this, Mob.class, 10, false, false,
-                target -> !target.getType().is(SHADOW_MOB)));
-        this.targetSelector.addGoal(8, new HurtByTargetGoal(this));
-        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25, 30, 12f) {
-            @Override
-            public boolean canContinueToUse() {
-                return this.canUse();
-            }
-        });
+        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Player.class, false, false));
+        this.targetSelector.addGoal(6, new HurtByTargetGoal(this));
     }
 
     @Override
@@ -166,45 +202,6 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
     }
 
     @Override
-    public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        ItemStack itemstack = player.getItemInHand(hand);
-        if (itemstack.getItem() instanceof SpawnEggItem) {
-            return super.mobInteract(player, hand);
-        }
-        if (this.level().isClientSide()) {
-            return (this.isTame() && this.isOwnedBy(player) || this.isFood(itemstack))
-                    ? InteractionResult.sidedSuccess(this.level().isClientSide())
-                    : InteractionResult.PASS;
-        }
-        if (this.isTame()) {
-            if (this.isOwnedBy(player)) {
-                if (itemstack.isEdible() && this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
-                    this.usePlayerItem(player, hand, itemstack);
-                    this.heal((float) itemstack.getFoodProperties(null).getNutrition());
-                    return InteractionResult.sidedSuccess(this.level().isClientSide());
-                } else if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
-                    this.usePlayerItem(player, hand, itemstack);
-                    this.heal(4);
-                    return InteractionResult.sidedSuccess(this.level().isClientSide());
-                } else {
-                    return super.mobInteract(player, hand);
-                }
-            }
-        } else if (this.isFood(itemstack)) {
-            this.usePlayerItem(player, hand, itemstack);
-            if (this.random.nextInt(3) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player)) {
-                this.tame(player);
-                this.level().broadcastEntityEvent(this, (byte) 7);
-            } else {
-                this.level().broadcastEntityEvent(this, (byte) 6);
-            }
-            this.setPersistenceRequired();
-            return InteractionResult.sidedSuccess(this.level().isClientSide());
-        }
-        return super.mobInteract(player, hand);
-    }
-
-    @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putString("Texture", this.getTexture());
@@ -232,25 +229,6 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
     }
 
     @Override
-    public void performRangedAttack(LivingEntity target, float flval) {
-        this.entityData.set(SHOOT, true);
-        shootAnimTimer = 5;
-        SquealWaveProjectileEntity.shoot(this, target);
-    }
-
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
-        FriendlyShadowGhostEntity retval = ModEntities.FRIENDLY_SHADOW_GHOST.get().create(serverWorld);
-        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null, null);
-        return retval;
-    }
-
-    @Override
-    public boolean isFood(ItemStack stack) {
-        return stack.is(ModItems.SOUL_ESSENCE.get());
-    }
-
-    @Override
     protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) {
     }
 
@@ -262,7 +240,6 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
     @Override
     public void aiStep() {
         super.aiStep();
-        this.updateSwingTime();
         this.setNoGravity(true);
         if (shootAnimTimer > 0) {
             shootAnimTimer--;
@@ -270,6 +247,13 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
                 this.entityData.set(SHOOT, false);
             }
         }
+    }
+
+    @Override
+    public void performRangedAttack(LivingEntity target, float flval) {
+        this.entityData.set(SHOOT, true);
+        shootAnimTimer = 5;
+        SquealWaveProjectileEntity.shoot(this, target);
     }
 
     @Override
@@ -303,7 +287,7 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
         return this.cache;
     }
 
-    private PlayState movementPredicate(software.bernie.geckolib.core.animation.AnimationState<FriendlyShadowGhostEntity> event) {
+    private PlayState movementPredicate(software.bernie.geckolib.core.animation.AnimationState<ShadowGhostEntity> event) {
         if (this.animationprocedure.equals("empty")) {
             if ((event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F))) {
                 return event.setAndContinue(RawAnimation.begin().thenLoop("walk"));
@@ -313,7 +297,7 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
         return PlayState.STOP;
     }
 
-    private PlayState attackingPredicate(software.bernie.geckolib.core.animation.AnimationState<FriendlyShadowGhostEntity> event) {
+    protected PlayState attackingPredicate(software.bernie.geckolib.core.animation.AnimationState<ShadowGhostEntity> event) {
         if (getAttackAnim(event.getPartialTick()) > 0f && !this.swinging) {
             this.swinging = true;
             this.lastSwing = level().getGameTime();
@@ -321,7 +305,7 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
         if (this.swinging && this.lastSwing + 7L <= level().getGameTime()) {
             this.swinging = false;
         }
-        boolean shouldAttack = this.swinging || this.entityData.get(SHOOT);
+        boolean shouldAttack = this.swinging || (isRangedVariant() && this.entityData.get(SHOOT));
         if (shouldAttack && event.getController().getAnimationState() == AnimationController.State.STOPPED) {
             event.getController().forceAnimationReset();
             return event.setAndContinue(RawAnimation.begin().thenPlay("attack"));
@@ -329,7 +313,7 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
         return PlayState.CONTINUE;
     }
 
-    private PlayState procedurePredicate(software.bernie.geckolib.core.animation.AnimationState<FriendlyShadowGhostEntity> event) {
+    private PlayState procedurePredicate(software.bernie.geckolib.core.animation.AnimationState<ShadowGhostEntity> event) {
         if (!animationprocedure.equals("empty") && event.getController().getAnimationState() == AnimationController.State.STOPPED) {
             event.getController().setAnimation(RawAnimation.begin().thenPlay(this.animationprocedure));
             if (event.getController().getAnimationState() == AnimationController.State.STOPPED) {
@@ -342,7 +326,9 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
         return PlayState.CONTINUE;
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
+    // ===== Attributes =====
+
+    public static AttributeSupplier.Builder createShadowGhostAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.8)
                 .add(Attributes.MAX_HEALTH, 10)
@@ -351,6 +337,17 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
                 .add(Attributes.FOLLOW_RANGE, 20)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.5)
                 .add(Attributes.FLYING_SPEED, 0.8);
+    }
+
+    public static AttributeSupplier.Builder createShadowSquealGhostAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MOVEMENT_SPEED, 0.7)
+                .add(Attributes.MAX_HEALTH, 10)
+                .add(Attributes.ARMOR, 0)
+                .add(Attributes.ATTACK_DAMAGE, 5)
+                .add(Attributes.FOLLOW_RANGE, 20)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.5)
+                .add(Attributes.FLYING_SPEED, 0.7);
     }
 
     public static void init() {

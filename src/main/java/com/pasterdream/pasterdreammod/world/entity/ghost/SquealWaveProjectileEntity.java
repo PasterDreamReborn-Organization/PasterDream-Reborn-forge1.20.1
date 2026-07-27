@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.entity;
+package com.pasterdream.pasterdreammod.world.entity.ghost;
 
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
