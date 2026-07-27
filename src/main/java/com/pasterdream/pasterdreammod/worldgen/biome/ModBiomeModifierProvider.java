@@ -80,8 +80,6 @@ public class ModBiomeModifierProvider implements DataProvider
             // 实体生成
             addSpawns(entries, "pink_chicken_biome_modifier", ModEntities.PINK_CHICKEN, dyedreamWorldTag, 5, 4, 4);
             addSpawns(entries, "pink_slime_biome_modifier", ModEntities.PINK_SLIME, dyedreamWorldTag, 20, 5, 6);
-            TagKey<Biome> shadowBiomeTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob_spawn_biome"));
-            addSpawns(entries, "shadow_golem_biome_modifier", ModEntities.SHADOW_GOLEM, shadowBiomeTag, 4, 1, 1);
 
             return saveAll(cache, entries);
         });

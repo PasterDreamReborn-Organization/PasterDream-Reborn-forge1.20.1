@@ -60,6 +60,7 @@ public class ModDataGenerator {
 
         generator.addProvider(event.includeServer(), new ModBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ModBiomeModifierProvider(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(packOutput, lookupProvider, existingFileHelper));
 
         List<StructureGenerationConfig> structures = ModStructureConfig.getStructureConfig();
         generator.addProvider(event.includeServer(), new ModTemplatePoolProvider(packOutput, structures));
