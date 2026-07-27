@@ -10,6 +10,7 @@ import com.pasterdream.pasterdreammod.world.entity.TerraswordWaveEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowGolemEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
 import com.pasterdream.pasterdreammod.world.entity.TerrorbeakEntity;
+import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -101,6 +102,15 @@ public class ModEntities {
                     .setCustomClientFactory(TerrorbeakEntity::new)
                     .sized(1.8f, 3.5f));
 
+    public static final RegistryObject<EntityType<ShadowHandEntity>> SHADOW_HAND = register("shadow_hand",
+            EntityType.Builder.<ShadowHandEntity>of(ShadowHandEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(ShadowHandEntity::new)
+                    .fireImmune()
+                    .sized(0.6f, 0.8f));
+
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder) {
         return REGISTRY.register(name, () -> builder.build(name));
     }
@@ -119,6 +129,7 @@ public class ModEntities {
         event.enqueueWork(GoldenFoxEntity::init);
         event.enqueueWork(ShadowGolemEntity::init);
         event.enqueueWork(TerrorbeakEntity::init);
+        event.enqueueWork(ShadowHandEntity::init);
     }
 
     @SubscribeEvent
@@ -131,5 +142,6 @@ public class ModEntities {
         event.put(GOLDEN_FOX.get(), GoldenFoxEntity.createAttributes().build());
         event.put(SHADOW_GOLEM.get(), ShadowGolemEntity.createAttributes().build());
         event.put(TERRORBEAK.get(), TerrorbeakEntity.createAttributes().build());
+        event.put(SHADOW_HAND.get(), ShadowHandEntity.createAttributes().build());
     }
 }

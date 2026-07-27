@@ -433,6 +433,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.GOLDEN_FOX_SPAWN_EGG);
         spawnEggItem(ModItems.SHADOW_GOLEM_SPAWN_EGG);
         spawnEggItem(ModItems.TERRORBEAK_SPAWN_EGG);
+        spawnEggItem(ModItems.SHADOW_HAND_SPAWN_EGG);
     }
 
     @Override

@@ -90,5 +90,10 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
         );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/shadow_hand"),
+                LootTable.lootTable()
+        );
     }
 }
