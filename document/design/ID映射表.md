@@ -509,15 +509,24 @@
 
 ## 实体映射
 
-| 旧 ID | 新 ID | 变更说明 |
-|-------|-------|---------|
-| `pink_chicken` | `pink_chicken` | 不改 |
-| `pink_slime` | `pink_slime` | 不改 |
-| `golden_fox` | `golden_fox` | 不改 |
-| `shadow_golem` | `shadow_golem` | 不改 |
-| `meltdream_crystal_entity` | `melt_dream_crystal_entity` | 重命名，补下划线 |
-| `terrasword_wave` | `terrasword_wave` | 不改 |
-| `fox_fire` | `fox_fire` | 不改 |
+| 旧 ID | 新 ID | 变更说明 | 客制化类处理 |
+|-------|-------|---------|------------|
+| `pink_chicken` | `pink_chicken` | 不改 | 客制化类 `PinkChickenEntity`，含动画 |
+| `pink_slime` | `pink_slime` | 不改 | 客制化类 `PinkSlimeEntity`，含动画 |
+| `golden_fox` | `golden_fox` | 不改 | 客制化类 `GoldenFoxEntity` |
+| `meltdream_crystal_entity` | `melt_dream_crystal_entity` | 重命名，补下划线 | 客制化类 `MeltDreamCrystalEntityEntity` |
+| `terrasword_wave` | `terrasword_wave` | 不改 | 弹射物，`TerraswordWaveEntity` |
+| `fox_fire` | `fox_fire` | 不改 | 弹射物，`FoxFireEntity` |
+| `shadow_golem` | `shadow_golem` | 不改 | 客制化类 `ShadowGolemEntity`，含技能系统 |
+| `shadow_ghost` | `shadow_ghost` | 不改，合并纯近战变体 | 客制化类 `ShadowGhostEntity`（`world/entity/ghost/`），`isRangedVariant()` 区分远程 |
+| `shadow_squeal_ghost` | `shadow_squeal_ghost` | 不改，并入 `ShadowGhostEntity` 同类的远程变体 | 同上，`isRangedVariant()=true` + `RangedAttackMob` |
+| `shadow_squeal_ghost_0` | `wailing_shadow_ghost` | 重命名，去 `_0` 数字后缀，`wailing` 对应"悲泣" | 客制化类 `WailingShadowGhostEntity extends ShadowGhostEntity`，受伤召唤随从 |
+| `friendly_ghost` | `friendly_shadow_ghost` | 重命名，加 `shadow_` 前缀统一命名 | 客制化类 `FriendlyShadowGhostEntity extends TamableAnimal`，灵魂精华驯服 |
+| `shadow_hand` | `shadow_hand` | 不改 | 客制化类 `ShadowHandEntity` |
+| `terrorbeak` | `terrorbeak` | 不改 | 客制化类 `TerrorbeakEntity`（`world/entity/terrorbeak/`），`Variant.NORMAL` |
+| `crazy_terrorbeak` | `crazy_terrorbeak` | 不改，并入 `TerrorbeakEntity` 同类的 `Variant.CRAZY` | 同上，更大/更强/咆哮更强 |
+| `weakeness_terrorbeak` | `weakeness_terrorbeak` | 不改，并入 `TerrorbeakEntity` 同类的 `Variant.WEAKENESS` | 同上，更弱/无咆哮 |
+| `projectile_squeal_wave_projectile` | `squeal_wave_projectile` | 重命名，去 `projectile_` 前缀 | 弹射物 `SquealWaveProjectileEntity`（`world/entity/ghost/`） |
 
 ---
 
