@@ -10,6 +10,8 @@ import com.pasterdream.pasterdreammod.world.entity.TerraswordWaveEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowGolemEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
 import com.pasterdream.pasterdreammod.world.entity.TerrorbeakEntity;
+import com.pasterdream.pasterdreammod.world.entity.CrazyTerrorbeakEntity;
+import com.pasterdream.pasterdreammod.world.entity.WeakenessTerrorbeakEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -102,6 +104,24 @@ public class ModEntities {
                     .setCustomClientFactory(TerrorbeakEntity::new)
                     .sized(1.8f, 3.5f));
 
+    public static final RegistryObject<EntityType<CrazyTerrorbeakEntity>> CRAZY_TERRORBEAK = register("crazy_terrorbeak",
+            EntityType.Builder.<CrazyTerrorbeakEntity>of(CrazyTerrorbeakEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(CrazyTerrorbeakEntity::new)
+                    .fireImmune()
+                    .sized(1.8f, 4f));
+
+    public static final RegistryObject<EntityType<WeakenessTerrorbeakEntity>> WEAKENESS_TERRORBEAK = register("weakeness_terrorbeak",
+            EntityType.Builder.<WeakenessTerrorbeakEntity>of(WeakenessTerrorbeakEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(WeakenessTerrorbeakEntity::new)
+                    .fireImmune()
+                    .sized(1.5f, 3f));
+
     public static final RegistryObject<EntityType<ShadowHandEntity>> SHADOW_HAND = register("shadow_hand",
             EntityType.Builder.<ShadowHandEntity>of(ShadowHandEntity::new, MobCategory.MONSTER)
                     .setShouldReceiveVelocityUpdates(true)
@@ -129,6 +149,8 @@ public class ModEntities {
         event.enqueueWork(GoldenFoxEntity::init);
         event.enqueueWork(ShadowGolemEntity::init);
         event.enqueueWork(TerrorbeakEntity::init);
+        event.enqueueWork(CrazyTerrorbeakEntity::init);
+        event.enqueueWork(WeakenessTerrorbeakEntity::init);
         event.enqueueWork(ShadowHandEntity::init);
     }
 
@@ -142,6 +164,8 @@ public class ModEntities {
         event.put(GOLDEN_FOX.get(), GoldenFoxEntity.createAttributes().build());
         event.put(SHADOW_GOLEM.get(), ShadowGolemEntity.createAttributes().build());
         event.put(TERRORBEAK.get(), TerrorbeakEntity.createAttributes().build());
+        event.put(CRAZY_TERRORBEAK.get(), CrazyTerrorbeakEntity.createAttributes().build());
+        event.put(WEAKENESS_TERRORBEAK.get(), WeakenessTerrorbeakEntity.createAttributes().build());
         event.put(SHADOW_HAND.get(), ShadowHandEntity.createAttributes().build());
     }
 }
