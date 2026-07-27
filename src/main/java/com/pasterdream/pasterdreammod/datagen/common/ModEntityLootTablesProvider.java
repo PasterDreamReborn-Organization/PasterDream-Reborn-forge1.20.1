@@ -156,6 +156,25 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/friendly_shadow_ghost"),
                 ghostLoot()
         );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/black_beetle_mother"),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_DUNGEON_KEY.get())
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.BLACK_BEETLE_CARAPACE.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 5)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.BLACK_BEETLE_VOCALCORD.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
+        );
     }
 
     private LootTable.Builder ghostLoot() {

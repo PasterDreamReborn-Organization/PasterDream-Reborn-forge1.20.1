@@ -1260,6 +1260,15 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.WAILING_SHADOW_GHOST_SPAWN_EGG.get(), "Wailing Shadow Ghost Spawn Egg");
         add(ModEntities.FRIENDLY_SHADOW_GHOST.get(), "Friendly Shadow Ghost");
         add(ModItems.FRIENDLY_SHADOW_GHOST_SPAWN_EGG.get(), "Friendly Shadow Ghost Spawn Egg");
+        add(ModEntities.BLACK_BEETLE.get(), "Black Beetle");
+        add(ModItems.BLACK_BEETLE_SPAWN_EGG.get(), "Black Beetle Spawn Egg");
+        add(ModEntities.BLACK_BEETLE_MOTHER.get(), "Black Beetle Mother");
+        add(ModItems.BLACK_BEETLE_MOTHER_SPAWN_EGG.get(), "Black Beetle Mother Spawn Egg");
+        add(ModItems.BLACK_BEETLE_CARAPACE.get(), "Black Beetle Carapace");
+        add(ModItems.BLACK_BEETLE_VOCALCORD.get(), "Black Beetle Vocalcord");
+        add("tooltip.pasterdream.black_beetle_vocalcord", "§7You can still faintly feel its vibration");
+        add("message.pasterdream.black_beetle.easter_egg_1", "Come on, Xiao Liang, show us what you got!");
+        add("message.pasterdream.black_beetle.easter_egg_2", "Grass, walk, ignore! ጿ ኈ ቼ ዽ ጿ");
         add("entity.pasterdream.golden_fox.vanish", "The golden fox vanished after fulfilling your wish...");
 
         //jeed Compatible

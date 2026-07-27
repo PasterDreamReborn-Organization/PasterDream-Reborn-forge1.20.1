@@ -24,6 +24,8 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.FRIENDLY_SHADOW_GHOST.get(), ShadowGhostRenderer::new);
         event.registerEntityRenderer(ModEntities.SQUEAL_WAVE_PROJECTILE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.THROWN_PINK_EGG.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.BLACK_BEETLE.get(), BlackBeetleRenderer::new);
+        event.registerEntityRenderer(ModEntities.BLACK_BEETLE_MOTHER.get(), BlackBeetleMotherRenderer::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {

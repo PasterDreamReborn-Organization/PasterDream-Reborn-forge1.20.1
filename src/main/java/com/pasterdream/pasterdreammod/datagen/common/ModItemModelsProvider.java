@@ -440,6 +440,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.SHADOW_SQUEAL_GHOST_SPAWN_EGG);
         spawnEggItem(ModItems.WAILING_SHADOW_GHOST_SPAWN_EGG);
         spawnEggItem(ModItems.FRIENDLY_SHADOW_GHOST_SPAWN_EGG);
+        spawnEggItem(ModItems.BLACK_BEETLE_SPAWN_EGG);
+        spawnEggItem(ModItems.BLACK_BEETLE_MOTHER_SPAWN_EGG);
+
+        basicItem(ModItems.BLACK_BEETLE_CARAPACE.get());
+        basicItem(ModItems.BLACK_BEETLE_VOCALCORD.get());
     }
 
     @Override

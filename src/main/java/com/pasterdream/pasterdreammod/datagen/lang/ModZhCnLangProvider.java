@@ -1426,6 +1426,15 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.WAILING_SHADOW_GHOST_SPAWN_EGG.get(), "悲泣尖啸怨魂刷怪蛋");
         add(ModEntities.FRIENDLY_SHADOW_GHOST.get(), "友善怨魂");
         add(ModItems.FRIENDLY_SHADOW_GHOST_SPAWN_EGG.get(), "友善怨魂刷怪蛋");
+        add(ModEntities.BLACK_BEETLE.get(), "厚翅甲虫");
+        add(ModItems.BLACK_BEETLE_SPAWN_EGG.get(), "厚翅甲虫刷怪蛋");
+        add(ModEntities.BLACK_BEETLE_MOTHER.get(), "厚翅甲虫之母");
+        add(ModItems.BLACK_BEETLE_MOTHER_SPAWN_EGG.get(), "厚翅甲虫之母刷怪蛋");
+        add(ModItems.BLACK_BEETLE_CARAPACE.get(), "厚翅甲壳");
+        add(ModItems.BLACK_BEETLE_VOCALCORD.get(), "振音声膜");
+        add("tooltip.pasterdream.black_beetle_vocalcord", "§7还能隐约感觉到它的震动");
+        add("message.pasterdream.black_beetle.easter_egg_1", "来,小亮给大家整个活！");
+        add("message.pasterdream.black_beetle.easter_egg_2", "草,走,忽略!ጿ ኈ ቼ ዽ ጿ");
         add("entity.pasterdream.golden_fox.vanish", "金色狐狸在完成了你许下的愿望之后消失了...");
 
         //jeed兼容

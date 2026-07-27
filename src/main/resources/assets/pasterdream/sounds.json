@@ -98,5 +98,11 @@
   },
   "squeal_wave": {
     "sounds": [{"name": "pasterdream:squeal_wave", "stream": false}]
+  },
+  "beetle_attack": {
+    "sounds": [{"name": "pasterdream:beetle_attack", "stream": false}]
+  },
+  "beetle_skill": {
+    "sounds": [{"name": "pasterdream:beetle_skill", "stream": false}]
   }
 }
