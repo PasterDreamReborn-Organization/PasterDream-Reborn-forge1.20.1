@@ -77,9 +77,13 @@ public class ModBiomeModifierProvider implements DataProvider
             // 方解石尖锥 — 表面结构 step
             addFeature(entries, "calcite_spike", ModPlacedFeatures.CALCITE_SPIKE, featureLookup, dyedreamWorldTag, GenerationStep.Decoration.SURFACE_STRUCTURES);
 
+            // 阴影群系标签
+            TagKey<Biome> shadowTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob_spawn_biome"));
+
             // 实体生成
             addSpawns(entries, "pink_chicken_biome_modifier", ModEntities.PINK_CHICKEN, dyedreamWorldTag, 5, 4, 4);
             addSpawns(entries, "pink_slime_biome_modifier", ModEntities.PINK_SLIME, dyedreamWorldTag, 20, 5, 6);
+            addSpawns(entries, "black_beetle_biome_modifier", ModEntities.BLACK_BEETLE, shadowTag, 20, 2, 4);
 
             return saveAll(cache, entries);
         });

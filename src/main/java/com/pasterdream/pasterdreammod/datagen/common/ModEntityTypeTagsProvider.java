@@ -30,6 +30,8 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.SHADOW_GHOST.get())
                 .add(ModEntities.SHADOW_SQUEAL_GHOST.get())
                 .add(ModEntities.WAILING_SHADOW_GHOST.get())
-                .add(ModEntities.FRIENDLY_SHADOW_GHOST.get());
+                .add(ModEntities.FRIENDLY_SHADOW_GHOST.get())
+                .add(ModEntities.BLACK_BEETLE.get())
+                .add(ModEntities.BLACK_BEETLE_MOTHER.get());
     }
 }

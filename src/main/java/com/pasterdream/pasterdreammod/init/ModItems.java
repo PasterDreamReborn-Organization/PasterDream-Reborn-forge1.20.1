@@ -1535,6 +1535,19 @@ public class ModItems {
             () -> new ForsakensWingItem(ModArmorMaterials.FORSAKENS_WING, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
+    // 厚翅甲壳
+    public static final RegistryObject<Item> BLACK_BEETLE_CARAPACE = ITEMS.register("black_beetle_carapace",
+            () -> new Item(new Item.Properties()));
+
+    // 振音声膜
+    public static final RegistryObject<Item> BLACK_BEETLE_VOCALCORD = ITEMS.register("black_beetle_vocalcord",
+            () -> new Item(new Item.Properties()) {
+                @Override
+                public void appendHoverText(ItemStack stack, Level level, java.util.List<Component> tooltipComponents, TooltipFlag isAdvanced) {
+                    tooltipComponents.add(Component.translatable("tooltip.pasterdream.black_beetle_vocalcord"));
+                }
+            });
+
     // 刷怪蛋
     public static final RegistryObject<Item> PINK_CHICKEN_SPAWN_EGG = ITEMS.register("pink_chicken_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.PINK_CHICKEN, 0xf3e3f2, 0xbf038f, new Item.Properties()));
@@ -1560,6 +1573,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.WAILING_SHADOW_GHOST, -985609, -9851188, new Item.Properties()));
     public static final RegistryObject<Item> FRIENDLY_SHADOW_GHOST_SPAWN_EGG = ITEMS.register("friendly_shadow_ghost_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.FRIENDLY_SHADOW_GHOST, -985866, -4334102, new Item.Properties()));
+    public static final RegistryObject<Item> BLACK_BEETLE_SPAWN_EGG = ITEMS.register("black_beetle_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.BLACK_BEETLE, -2698583, -11316914, new Item.Properties()));
+    public static final RegistryObject<Item> BLACK_BEETLE_MOTHER_SPAWN_EGG = ITEMS.register("black_beetle_mother_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.BLACK_BEETLE_MOTHER, -2436181, -9876718, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

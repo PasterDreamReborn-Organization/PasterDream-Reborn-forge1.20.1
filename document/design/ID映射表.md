@@ -476,6 +476,8 @@
 | `rust_black_metal_grain`      | `rust_black_metal_grain`                   | 不改                                                               | 无需客制化类，直接用 `Item`                                                                                        |
 | `blackmetal_ingot`            | `black_metal_ingot`                        | 重命名，`blackmetal` → `black_metal`                                | 无需客制化类，直接用 `Item`                                                                                        |
 | `blackmetal_grain`            | `black_metal_grain`                        | 重命名，`blackmetal` → `black_metal`                                | 无需客制化类，直接用 `Item`                                                                                        |
+| `black_beetle_carapace`        | `black_beetle_carapace`                    | 不改                                                               | 无需客制化类，直接用 `Item`，厚翅甲虫掉落                                                                             |
+| `black_beetle_vocalcord`       | `black_beetle_vocalcord`                   | 不改                                                               | 客制化类（`appendHoverText` 添加 tooltip），厚翅甲虫之母掉落                                                              |
 | `nightmare_fuel`              | `nightmare_fuel`                            | 不改                                                               | 客制化类 `NightmareFuelItem`，tooltip "傻子和疯子使用的邪恶残渣"                                                        |
 | `shadow_dungeon_key`          | `shadow_dungeon_key`                       | 不改                                                               | 客制化类 `ShadowDungeonKeyItem`，stacksTo(1)，tooltip "用于打开暗影地牢下层的大门"                                   |
 | `machine_wing_chestplate`     | `machine_light_wing`                       | 重命名，去 `_chestplate` + 加 `light`（光）                          | 客制化类 `MachineLightWingItem`（GeckoLib 动画盔甲），每20tick消耗0.02融梦能量启用飞行                                  |
@@ -527,6 +529,8 @@
 | `crazy_terrorbeak` | `crazy_terrorbeak` | 不改，并入 `TerrorbeakEntity` 同类的 `Variant.CRAZY` | 同上，更大/更强/咆哮更强 |
 | `weakeness_terrorbeak` | `weakeness_terrorbeak` | 不改，并入 `TerrorbeakEntity` 同类的 `Variant.WEAKENESS` | 同上，更弱/无咆哮 |
 | `projectile_squeal_wave_projectile` | `squeal_wave_projectile` | 重命名，去 `projectile_` 前缀 | 弹射物 `SquealWaveProjectileEntity`（`world/entity/ghost/`） |
+| `black_beetle` | `black_beetle` | 不改 | 客制化类 `BlackBeetleEntity`（`world/entity/beetle/`），可驯服 TamableAnimal，食物为白厄花 |
+| `black_beetle_mother` | `black_beetle_mother` | 不改 | 客制化类 `BlackBeetleMotherEntity`（`world/entity/beetle/`），Boss，受击触发技能：召唤小甲虫 + buff 周围甲虫 |
 
 ---
 

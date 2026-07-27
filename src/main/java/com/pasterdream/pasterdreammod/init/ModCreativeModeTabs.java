@@ -170,6 +170,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PALE_BONENEEDLE.get());
                         output.accept(ModItems.ROOTS_PALE_BONENEEDLE.get());
                         output.accept(SandofTimeItem.createReady(ModItems.SAND_OF_TIME.get()));
+                        output.accept(ModItems.BLACK_BEETLE_CARAPACE.get());
+                        output.accept(ModItems.BLACK_BEETLE_VOCALCORD.get());
                         // 饰品
                         output.accept(ModItems.EMBRYO_CHARM.get());
                         output.accept(ModItems.EMBRYO_NECKLACE.get());
@@ -703,6 +705,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_SQUEAL_GHOST_SPAWN_EGG.get());
                         output.accept(ModItems.WAILING_SHADOW_GHOST_SPAWN_EGG.get());
                         output.accept(ModItems.FRIENDLY_SHADOW_GHOST_SPAWN_EGG.get());
+                        output.accept(ModItems.BLACK_BEETLE_SPAWN_EGG.get());
+                        output.accept(ModItems.BLACK_BEETLE_MOTHER_SPAWN_EGG.get());
                     }).build());
 
     // ===== 拓展 =====

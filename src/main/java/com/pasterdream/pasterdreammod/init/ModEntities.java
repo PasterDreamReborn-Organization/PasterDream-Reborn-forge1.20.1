@@ -15,6 +15,8 @@ import com.pasterdream.pasterdreammod.world.entity.ghost.ShadowGhostEntity;
 import com.pasterdream.pasterdreammod.world.entity.ghost.WailingShadowGhostEntity;
 import com.pasterdream.pasterdreammod.world.entity.ghost.FriendlyShadowGhostEntity;
 import com.pasterdream.pasterdreammod.world.entity.ghost.SquealWaveProjectileEntity;
+import com.pasterdream.pasterdreammod.world.entity.beetle.BlackBeetleEntity;
+import com.pasterdream.pasterdreammod.world.entity.beetle.BlackBeetleMotherEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -177,6 +179,22 @@ public class ModEntities {
                     .setCustomClientFactory(SquealWaveProjectileEntity::new)
                     .sized(0.5f, 0.5f));
 
+    public static final RegistryObject<EntityType<BlackBeetleEntity>> BLACK_BEETLE = register("black_beetle",
+            EntityType.Builder.<BlackBeetleEntity>of(BlackBeetleEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(48)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(BlackBeetleEntity::new)
+                    .sized(0.6f, 0.5f));
+
+    public static final RegistryObject<EntityType<BlackBeetleMotherEntity>> BLACK_BEETLE_MOTHER = register("black_beetle_mother",
+            EntityType.Builder.<BlackBeetleMotherEntity>of(BlackBeetleMotherEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(48)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(BlackBeetleMotherEntity::new)
+                    .sized(2f, 1f));
+
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder) {
         return REGISTRY.register(name, () -> builder.build(name));
     }
@@ -199,6 +217,8 @@ public class ModEntities {
         event.enqueueWork(ShadowGhostEntity::init);
         event.enqueueWork(WailingShadowGhostEntity::init);
         event.enqueueWork(FriendlyShadowGhostEntity::init);
+        event.enqueueWork(BlackBeetleEntity::init);
+        event.enqueueWork(BlackBeetleMotherEntity::init);
     }
 
     @SubscribeEvent
@@ -218,5 +238,7 @@ public class ModEntities {
         event.put(SHADOW_SQUEAL_GHOST.get(), ShadowGhostEntity.createShadowSquealGhostAttributes().build());
         event.put(WAILING_SHADOW_GHOST.get(), WailingShadowGhostEntity.createAttributes().build());
         event.put(FRIENDLY_SHADOW_GHOST.get(), FriendlyShadowGhostEntity.createAttributes().build());
+        event.put(BLACK_BEETLE.get(), BlackBeetleEntity.createAttributes().build());
+        event.put(BLACK_BEETLE_MOTHER.get(), BlackBeetleMotherEntity.createAttributes().build());
     }
 }
