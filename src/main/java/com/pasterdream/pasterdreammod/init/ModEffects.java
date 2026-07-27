@@ -59,6 +59,8 @@ public class ModEffects {
             EFFECTS.register("rapid_reaction_buff", RapidReactionEffect::new);
     public static final RegistryObject<MobEffect> HOLY_GRAIL_BUFF =
             EFFECTS.register("holy_grail_buff", HolyGrailEffect::new);
+    public static final RegistryObject<MobEffect> CONFUSION_BUFF =
+            EFFECTS.register("confusion_buff", ConfusionBuffEffect::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

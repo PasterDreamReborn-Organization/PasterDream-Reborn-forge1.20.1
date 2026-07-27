@@ -208,9 +208,9 @@ public class ShadowGolemEntity extends Monster implements GeoEntity {
 
                 // 以实体脚部为中心，上下各5格覆盖
                 AABB area = AABB.ofSize(new Vec3(x, y, z), 10, 10, 10);
-                List<Entity> entities = world.getEntitiesOfClass(Entity.class, area,
+                List<LivingEntity> entities = world.getEntitiesOfClass(LivingEntity.class, area,
                         e -> !e.getType().is(SHADOW_MOB));
-                for (Entity target : entities) {
+                for (LivingEntity target : entities) {
                     target.hurt(new DamageSource(world.registryAccess()
                             .registryOrThrow(Registries.DAMAGE_TYPE)
                             .getHolderOrThrow(DamageTypes.MOB_ATTACK), this), 15);

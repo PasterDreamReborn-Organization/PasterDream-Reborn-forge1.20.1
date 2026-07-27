@@ -894,6 +894,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.cheer_up_buff", "Cheer Up");
         add("effect.pasterdream.lethargy_buff", "Lethargy");
         add("effect.pasterdream.trance_buff", "Trance");
+        add("effect.pasterdream.confusion_buff", "Confusion");
         add("effect.pasterdream.insand_buff", "Insanity");
         add("effect.pasterdream.evasion_buff", "Evasion");
         add("effect.pasterdream.blink_cooldown", "Blink Cooldown");
@@ -1243,6 +1244,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModEntities.FOX_FIRE.get(), "Fox Fire");
         add(ModEntities.SHADOW_GOLEM.get(), "Shadow Golem");
         add(ModItems.SHADOW_GOLEM_SPAWN_EGG.get(), "Shadow Golem Spawn Egg");
+        add(ModEntities.TERRORBEAK.get(), "Terrorbeak");
+        add(ModItems.TERRORBEAK_SPAWN_EGG.get(), "Terrorbeak Spawn Egg");
         add("entity.pasterdream.golden_fox.vanish", "The golden fox vanished after fulfilling your wish...");
 
         //jeed Compatible
