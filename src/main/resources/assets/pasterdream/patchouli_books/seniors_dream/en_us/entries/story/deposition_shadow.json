@@ -1,0 +1,22 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.entry.deposition_shadow",
+  "icon": "pasterdream:dream_notes_lamp_shadow_world",
+  "category": "pasterdream:story",
+  "advancement": "pasterdream:story/deposition_shadow",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.deposition_shadow.page0"
+    },
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/story/deposition_shadow_1.png"],
+      "text": "pasterdream.seniors_dream.entry.deposition_shadow.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.deposition_shadow.page2"
+    }
+  ]
+}

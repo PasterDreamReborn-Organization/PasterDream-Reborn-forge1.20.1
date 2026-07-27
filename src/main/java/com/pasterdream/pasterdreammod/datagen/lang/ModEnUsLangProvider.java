@@ -212,6 +212,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "Dream Notes - Dyedream World");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "Dream Notes - Lamp Shadow World");
         add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "Dream Notes - Wind Journey World");
+        add(ModItems.DREAM_NOTES_STORY_GUIDE.get(), "Resolved Notes");
         add(ModItems.BLUE_PRINT.get(), "Blue Print");
         add(ModItems.REED_ROD.get(), "Reed Rod");
         add(ModItems.MELT_DREAM_COIN.get(), "Melt Dream Coin");
@@ -1232,6 +1233,31 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.dyedream_armor", "Dyedream Ward");
         add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "Obtained when wearing the full Dyedream Set. Effects:$(br)Max Health +4;$(br)Absorption I every 30 seconds;");
         add("pasterdream.seniors_dream.entry.dyedream_armor.page1", "Dyedream Tool Enhancement: Dyedream Alloy tools and Melt Dream Crystal tools deal 50% more damage.");
+
+        // Story
+        add("pasterdream.seniors_dream.category.story", "Story");
+        add("pasterdream.seniors_dream.category.story.desc", "The story of the mod.");
+
+        add("pasterdream.seniors_dream.entry.deposition_shadow", "Deposition of Shadows");
+        add("pasterdream.seniors_dream.entry.deposition_shadow.page0", "Sedimented shadows, abandoned civilization, and a livingness that symbolizes death. The environment here made me feel extremely oppressed. I cannot find even a trace of color belonging to this world. There are so many... unnatural monsters, like dreams detached from reality.");
+        add("pasterdream.seniors_dream.entry.deposition_shadow.page1", "Deposition of Shadows — The desolate Lamp Shadow World.");
+        add("pasterdream.seniors_dream.entry.deposition_shadow.page2", "Strangely enough... these shadow-like monsters do not attack me, but those traveling with me are not so lucky. And the scattered pots and jars, the towering chains, the bones strewn everywhere... who built all of these... or is it all just my imagination...");
+
+        add("pasterdream.seniors_dream.entry.shadow_travelogue", "Shadow Travelogue");
+        add("pasterdream.seniors_dream.entry.shadow_travelogue.page0", "Here are some records of exploration:");
+        add("pasterdream.seniors_dream.entry.shadow_travelogue.page1", "Shadow Travelogue — Exploration record illustration.");
+        add("pasterdream.seniors_dream.entry.shadow_travelogue.page2", "Defeating black transparent monsters drops some... \"squirming\" black gelatinous substance.$(br)A kind of tile-stone terrain has pottery jars and graves, from which you can dig out some good stuff.$(br)Some chains and ruins contain rusted metal, an element that doesn't seem to belong to reality.$(br)Where mushrooms flourish live some beetles, who love eating a native white flower — you can befriend them.$(br)Liquid \"shadow\" lakes flow across the surface of the Deposition of Shadows.");
+
+        add("pasterdream.seniors_dream.entry.shadow_dungeon", "Shadow Dungeon");
+        add("pasterdream.seniors_dream.entry.shadow_dungeon.page0", "I remember finding a strange ruin during exploration, like a ritual altar enshrining something in the center. But when I reached out to touch it, there was no response at all. Judging from the dilapidated structure, it must have been long broken?");
+        add("pasterdream.seniors_dream.entry.shadow_dungeon.page1", "But the black metal we've recently refined is very similar in material to that core... and that glowing white lamp block in the center — I should try to repair it. If I succeed... I will record the repair method. And... my intuition tells me this ruin is more than just the part above ground... This bright core is like a lamp, and its existence breeds the shadows beneath.");
+
+        add("pasterdream.seniors_dream.entry.scare", "Fear");
+        add("pasterdream.seniors_dream.entry.scare.page0", "\"Is there still feeling here? Hey, don't fall asleep! Hang on!\" His face had been mangled beyond recognition, his body as if trampled. He had lost all sensation below the waist — his spine must have been torn apart. \"You won't die, drink this. Over here — can you feel anything?\" A scream. When I ran toward the sound, I saw this sight — a man lying in a pool of blood.");
+        add("pasterdream.seniors_dream.entry.scare.page1", "\"Can you tell me what happened? Rescue is on the way.\" \"Don't... don't go any further... don't...\" he said with difficulty, his hoarse, low voice barely audible with my ear pressed close. \"You're... still young... don't touch... the darkness...\" Then his throat could no longer produce a sound, and his hand fell limp.");
+        add("pasterdream.seniors_dream.entry.scare.page2", "Around his neck hung a pendant symbolizing an explorer. In his open palm was a photo of his family, along with a list of medical debt for his wife's serious illness. \"So it was... trying to earn money for the medicine...\" I held his hand that clutched the paper. \"I'll take care of this...\"");
+        add("pasterdream.seniors_dream.entry.scare.page3", "I lowered my head and closed my eyes in silent mourning. Suddenly a ringing in my ears, accompanied by dizziness — before my closed eyes, images appeared. Two enormous hand-like monsters, and whose... perspective was this? It seemed to be that explorer's! One of the hands, with a tremendous gust, slammed \"me\" against the wall, then clasped its four fingers together and shattered the ground and my legs. Under this immense impact, the bone needle in the pocket also pierced into \"my\" thigh.");
+        add("pasterdream.seniors_dream.entry.scare.page4", "The entire dream process lasted mere seconds, yet it was incredibly real... I gasped for breath. The dizziness gradually subsided, but the feeling of fear permeated my whole body. Because at the very end, the \"eye\" in the center of that palm... seemed to have glanced at the real me...");
 
         // Entities
         add(ModEntities.PINK_CHICKEN.get(), "Pink Chicken");

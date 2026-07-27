@@ -314,6 +314,35 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/human_falls_out_of_dream"), existingFileHelper);
 
+            // ========== 灯影世界剧情线（纯逻辑进度，不在进度界面显示）==========
+            Advancement depositionShadow = Advancement.Builder.advancement()
+                    .parent(root)
+                    .addCriterion("read_deposition_shadow_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("depositionShadow"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/deposition_shadow"), existingFileHelper);
+
+            Advancement shadowTravelogue = Advancement.Builder.advancement()
+                    .parent(depositionShadow)
+                    .addCriterion("read_shadow_travelogue_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("shadowTravelogue"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_travelogue"), existingFileHelper);
+
+            Advancement shadowDungeon = Advancement.Builder.advancement()
+                    .parent(shadowTravelogue)
+                    .addCriterion("read_shadow_dungeon_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("shadowDungeon"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_dungeon"), existingFileHelper);
+
+            Advancement scare = Advancement.Builder.advancement()
+                    .parent(shadowDungeon)
+                    .addCriterion("read_scare_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("scare"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/scare"), existingFileHelper);
+
             // ========== 冒险Tab子进度：被遗忘的剑冢 ==========
             Advancement find_tomb = Advancement.Builder.advancement()
                     .parent(ADVENTURE_ROOT)

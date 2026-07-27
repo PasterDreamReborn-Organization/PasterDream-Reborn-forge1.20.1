@@ -224,6 +224,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "寻梦者笔记-染梦世界");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "寻梦者笔记-灯影之下");
         add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "寻梦者笔记-风之旅途");
+        add(ModItems.DREAM_NOTES_STORY_GUIDE.get(), "已解析的笔记");
         add(ModItems.BLUE_PRINT.get(), "蓝图");
         add(ModItems.DREAM_NOTES_BOOK.get(), "寻梦者笔记书");
 
@@ -1397,6 +1398,31 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.dyedream_armor", "染梦守护");
         add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "当玩家穿戴全套染梦套装时获得此buff。具体效果为：$(br)最大生命值+4；$(br)每30秒获得伤害吸收I；");
         add("pasterdream.seniors_dream.entry.dyedream_armor.page1", "获得染梦工具增强效果：染梦合金工具和融梦水晶工具的伤害增加50%。");
+
+        // 剧情
+        add("pasterdream.seniors_dream.category.story", "剧情");
+        add("pasterdream.seniors_dream.category.story.desc", "本篇为模组剧情整合。");
+
+        add("pasterdream.seniors_dream.entry.deposition_shadow", "沉淀阴影");
+        add("pasterdream.seniors_dream.entry.deposition_shadow.page0", "沉淀的影子，废弃的文明，以及象征死亡的生机。这里的环境让我感觉异常的压抑，我没法从这个世界中找到一丝属于它自己的颜色。还有许多...不符合常理的怪物，就像是脱离现实的梦一样。");
+        add("pasterdream.seniors_dream.entry.deposition_shadow.page1", "沉淀阴影——荒寂的灯影世界。");
+        add("pasterdream.seniors_dream.entry.deposition_shadow.page2", "不过让人感到奇怪的是...这些影子一样的怪物并不会攻击我，但与我随行的人就没那么幸运。还有散落在这里的一些瓶瓶罐罐，通天的锁链，遍地的骸骨...又是谁建造了这些...或者说，这些只是我的想象罢了...");
+
+        add("pasterdream.seniors_dream.entry.shadow_travelogue", "阴影游记");
+        add("pasterdream.seniors_dream.entry.shadow_travelogue.page0", "这里是一些有关在这里探索的记录：");
+        add("pasterdream.seniors_dream.entry.shadow_travelogue.page1", "阴影游记——探索记录附图。");
+        add("pasterdream.seniors_dream.entry.shadow_travelogue.page2", "打败黑色透明的怪物会掉落一些...会\"蠕动\"的黑色胶状物。$(br)一种瓦石地形上会有一些陶罐和坟墓，能从里面掏出来一些好东西。$(br)部分锁链和遗迹里会有些锈蚀的金属，这种金属貌似并不属于现实存在的元素。$(br)长满蘑菇的地方生活着一些甲虫，它们很喜欢吃一种本地的白色花朵，可以和它们成为朋友。$(br)液体状的\"阴影\"小湖会在沉淀阴影的表面流淌。");
+
+        add("pasterdream.seniors_dream.entry.shadow_dungeon", "暗影地牢");
+        add("pasterdream.seniors_dream.entry.shadow_dungeon.page0", "还记得之前在探索的时候发现了一种奇怪的遗迹，像是一种仪式供奉着中间的一个东西。但当时我伸手去触碰它，却毫无反应，从残破的结构来看应该是年久失修坏掉了？");
+        add("pasterdream.seniors_dream.entry.shadow_dungeon.page1", "但我们最近提炼出来的黑金属和那个核心的材质很相似...还有中间那个会发光的白色灯块，我应该尝试去修复它。如果我能成功...我会把修复方法记录下来。以及...我的感觉告诉我这个遗迹不会只有地上的这部分...这个明亮的核心就像是盏灯，它的存在酝生了下面的影子。");
+
+        add("pasterdream.seniors_dream.entry.scare", "恐惧");
+        add("pasterdream.seniors_dream.entry.scare.page0", "\"这里还有感觉吗？嘿，不要睡过去！撑住！\"$(br)脸已经被摧残的血肉模糊，身体像是被蹂躏了一样，他的腰部及以下已经没有了知觉，脊柱应该是被撕裂了。$(br)\"你不会死的，把这个喝下去，这边呢？还能感觉到吗？\"$(br)一声惨叫，当我向着声音跑过去的时候看到了眼前的景象，躺在血泊里的这个人。");
+        add("pasterdream.seniors_dream.entry.scare.page1", "\"能告诉我发生了什么事吗，救援正在路上\"$(br)\"不要...不要再向前了...不要...\"他艰难地说着，沙哑低沉的声音需要把耳朵凑进去才能听到。$(br)\"你还...年轻...不要再去触碰...黑暗...\"随后他的嗓子再也发不出声音，手滑落下来。");
+        add("pasterdream.seniors_dream.entry.scare.page2", "他的脖头上戴着象征着探险家的坠饰，张开的手心握着自己家人的照片，和妻子重病的药费欠款清单。$(br)\"看来已经是...为了通过这个赚取药费吗...\"$(br)我握住了他那个拿着纸团的手\"这个就由我来吧...\"");
+        add("pasterdream.seniors_dream.entry.scare.page3", "我低下头，闭上眼默哀。$(br)忽然间一阵耳鸣，伴随着眩晕的感觉，我合上的双眼前显现出了画面。$(br)两只巨大的像手一样的怪物，而\"我\"的视角好像就是那个探险家！$(br)其中一只手伴随着巨大的破风声将\"我\"冲撞到墙上，然后四指合十砸碎了地面和我的双腿。$(br)在这巨大的冲击之下，口袋里的骨针也刺入了\"我\"的大腿。");
+        add("pasterdream.seniors_dream.entry.scare.page4", "整个梦的过程只过了数秒，但却无比真实...$(br)我喘着气，眩晕的感觉逐渐消散，但恐惧的感觉弥漫全身。$(br)因为在最后，那个手心中间的\"眼睛\"，好像...看了真正的我一眼...");
 
 
         // 实体
