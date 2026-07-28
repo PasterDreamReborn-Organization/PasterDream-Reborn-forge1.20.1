@@ -129,8 +129,7 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             FrameType.TASK,
                             true, true, false
                     )
-                    .addCriterion("read_dyedream_world_note",
-                            ReadDreamNoteTrigger.TriggerInstance.forContent("dyedreamWorld"))
+                    .addCriterion("first_enter_dyedream", new ImpossibleTrigger.TriggerInstance())
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/dyedream_world"), existingFileHelper);
 
