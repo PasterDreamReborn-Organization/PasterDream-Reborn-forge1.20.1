@@ -676,6 +676,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("recipe.pasterdream.copy", "Copy");
         add("recipe.pasterdream.research", "Research");
 
+        add("book.pasterdream.title.使用说明", "Use Guide");
         add("book.pasterdream.title.花园解密:迷梦冶梦莲", "Garden Decode: Misty Dreaming Lotus");
         add("book.pasterdream.title.花园解密:凛冽雪绒花", "Garden Decode: Piercing Edel Weiss");
         add("book.pasterdream.title.花园解密:九尾狐", "Garden Decode: Golden Fox");
