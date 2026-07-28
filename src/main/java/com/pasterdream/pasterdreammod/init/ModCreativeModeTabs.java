@@ -597,39 +597,42 @@ public class ModCreativeModeTabs {
 
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("使用说明"));
 
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("misty_dreaming_lotus"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("piercing_edel_weiss"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("golden_fox"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("dyedream_travelogue_1"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("dyedream_travelogue_2"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("dyedream_travelogue_3"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("dream_church_1"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("dream_church_2"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("dream_church_3"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("dyedream_crystal_ball"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("dream_wishing_tree"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("warm_cold_wind"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("pink_agalic_house"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("melt_dream_liquid_well"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("floating_island_diary"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("falling_leaves_return_to_their_roots_cracked_pods_return_to_their_crowns"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("dream_floating"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("big_bubble"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("dream_laboratory"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("interacting_with_dream"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("dyedream_world_tree"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("wings_of_dai_da_luo_si_and_floating_island"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("desert_cottage"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("research_notes_black_metal"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("lamp_shadow_travelogue_2"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("shadow_place"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("shadow_fungus_house"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("shadow_underground_workroom"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("shadow_dyed_sloppy_handwriting_notes"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("regarding_shadow_hands_essay"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("decisive_battle_with_shadow_hands_and_fail"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("wind_break_knight"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("morning_new_wind"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("花园解密:迷梦冶梦莲"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("花园解密:凛冽雪绒花"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("花园解密:九尾狐"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦游记 其一"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦游记 其二"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦游记 其三"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦教堂 其一"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦教堂 其二"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦教堂 其三"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦水晶球"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("祈愿树"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("温暖的“寒风”"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("粉顶蘑菇屋"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("融梦涌泉井"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("浮空岛日记"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("落叶归根 裂荚归冠"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("梦境漂泊"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("气泡生态球"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦实验室"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("来往于梦"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦世界树"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("代达罗斯之翼与浮空岛"));
+
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("探求秘辛"));
+
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("研究笔记:黑金属"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("灯影游记 其二"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("黑暗之地"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("阴影小木屋"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("阴影地下工作室"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT(">被阴影浸染的字迹潦草的笔记<"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("关于黑暗之手的随笔"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("与黑色双手的决战和败北"));
+
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("破风的骑士"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("清晨的新风"));
 
                         output.accept(NBTBookRegisterToCreativeModTab.GardenDecryption.MistyDreamingLotus());
                         output.accept(NBTBookRegisterToCreativeModTab.GardenDecryption.PiercingEdelweiss());

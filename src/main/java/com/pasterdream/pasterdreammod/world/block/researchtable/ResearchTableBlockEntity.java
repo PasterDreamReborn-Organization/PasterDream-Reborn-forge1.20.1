@@ -35,7 +35,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class ResearchTableBlockEntity extends BlockEntity implements MenuProvider, IFluidHandlerProvider, GeoBlockEntity
 {
-    private static final int FLUID_CAPACITY = 125;
+    private static final int FLUID_CAPACITY = 250;
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public ResearchTableBlockEntity(BlockPos pos, BlockState state)
