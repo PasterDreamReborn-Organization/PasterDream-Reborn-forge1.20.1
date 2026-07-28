@@ -1,0 +1,17 @@
+{
+  "sortnum": 1,
+  "name": "pasterdream.seniors_dream.entry.melt_dream_crystal_fragment",
+  "icon": "pasterdream:melt_dream_crystal_fragment",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:melt_dream_crystal_fragment",
+      "text": "pasterdream.seniors_dream.entry.melt_dream_crystal_fragment.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.melt_dream_crystal_fragment.page1"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "sortnum": 3,
+  "name": "pasterdream.seniors_dream.entry.galaxy_jelly",
+  "icon": "pasterdream:galaxy_jelly",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:galaxy_jelly",
+      "text": "pasterdream.seniors_dream.entry.galaxy_jelly.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.galaxy_jelly.page1"
+    }
+  ]
+}

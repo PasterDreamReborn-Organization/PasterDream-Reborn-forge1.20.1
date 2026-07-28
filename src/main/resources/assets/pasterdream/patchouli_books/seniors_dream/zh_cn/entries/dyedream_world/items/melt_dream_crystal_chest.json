@@ -1,0 +1,17 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.entry.melt_dream_crystal_chest",
+  "icon": "pasterdream:melt_dream_crystal_chest",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:melt_dream_crystal_chest",
+      "text": "pasterdream.seniors_dream.entry.melt_dream_crystal_chest.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.melt_dream_crystal_chest.page1"
+    }
+  ]
+}

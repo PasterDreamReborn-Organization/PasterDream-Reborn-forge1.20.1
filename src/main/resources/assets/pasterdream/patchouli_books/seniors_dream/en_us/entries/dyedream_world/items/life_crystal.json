@@ -1,0 +1,17 @@
+{
+  "sortnum": 4,
+  "name": "pasterdream.seniors_dream.entry.life_crystal",
+  "icon": "pasterdream:life_crystal",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:life_crystal",
+      "text": "pasterdream.seniors_dream.entry.life_crystal.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.life_crystal.page1"
+    }
+  ]
+}

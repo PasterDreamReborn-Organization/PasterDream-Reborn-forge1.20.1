@@ -1,0 +1,17 @@
+{
+  "sortnum": 6,
+  "name": "pasterdream.seniors_dream.entry.qym_armor_set",
+  "icon": "pasterdream:qym_cat_ears",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:qym_cat_ears,pasterdream:qym_wind_shirt,pasterdream:qym_swaying_skirt,pasterdream:qym_cloud_boots",
+      "text": "pasterdream.seniors_dream.entry.qym_armor_set.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.qym_armor_set.page1"
+    }
+  ]
+}
