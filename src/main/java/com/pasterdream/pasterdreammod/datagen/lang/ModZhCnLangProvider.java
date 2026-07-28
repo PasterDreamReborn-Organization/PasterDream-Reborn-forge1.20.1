@@ -1424,6 +1424,24 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.dyedream_worldtree.page0", "在染梦世界的平原，长着这样一种参天大树，这里是融梦能量最为密集的区域，可以见到大量的融梦水晶箱，传说世界树的种荚有着奇妙的效果，你或许应该大胆地探索，无需拘泥于小节，这样说不定可以探索到更多的隐秘……$(br2)传说在最初曾有一真一假两种世界树，不过现在仅仅剩下真世界树了，当你找不到世界树时，或许可以想一想最初的那位创造梦境之人……");
         add("pasterdream.seniors_dream.entry.dyedream_worldtree.page1", "——连通天地的世界树，支撑着整个梦境的美好。");
 
+        // 花园解密-迷梦冶梦莲
+        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus", "花园解密-迷梦冶梦莲");
+        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page0", "你可以在染梦平原发现这种奇怪的遗迹，顶上种有一种名为「冶梦莲」的美丽花朵，在花朵下方有着来自最早的寻梦者的提示，你或许应该根据她的提示来寻找对应的植物……");
+        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page1", "或许应该从琴雨梦的提示中的铃、云、流明和小伞来寻找答案？");
+        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page2", "解开谜题后获得的花朵似乎可以用于前往风的梦境，也可以去寻找传说中的神狐……");
+
+        // 花园解密-凛冽雪绒花
+        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss", "花园解密-凛冽雪绒花");
+        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page0", "在染梦世界的雪原，你可能会发现这种奇特的结构，在下方的书桌上，你会找到来自最初那位寻梦者的笔记，你需要根据她的提示来找到对应的植物和生物。");
+        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page1", "似乎需要从梦染、灯、奇异几个字入手，去找找看吧。");
+        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page2", "解开谜题后获得的花朵似乎有着奇特的低温触感……");
+
+        // 花园解密-九尾狐
+        add("pasterdream.seniors_dream.entry.garden_golden_fox", "花园解密-九尾狐");
+        add("pasterdream.seniors_dream.entry.garden_golden_fox.page0", "在梦境中，有时你会看见这种有着狐狸样子的雕像的遗迹，上方的寻梦者永恒书卷中有着琴雨梦给予的提示，或许需要一种奇特的莲花，也许你应该先去看看其他的花园解密……");
+        add("pasterdream.seniors_dream.entry.garden_golden_fox.page1", "当你唤醒九尾狐后，她会满足你一个愿望，至于满足愿望的方法，那位少女也在书中一并告诉你了……");
+        add("pasterdream.seniors_dream.entry.garden_golden_fox.page2", "——那奇妙的神狐，她将满足你的愿望，或是给予你御邪的护符。");
+
         // 剧情
         add("pasterdream.seniors_dream.category.story", "剧情");
         add("pasterdream.seniors_dream.category.story.desc", "本篇为模组剧情整合。");
