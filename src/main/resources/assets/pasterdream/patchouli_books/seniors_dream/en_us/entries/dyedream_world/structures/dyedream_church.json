@@ -1,0 +1,17 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.entry.dyedream_church",
+  "icon": "pasterdream:dyedream_lantern",
+  "category": "pasterdream:dyedream_world/structures",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.dyedream_church.page0"
+    },
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/dyedream_church.png"],
+      "text": "pasterdream.seniors_dream.entry.dyedream_church.page1"
+    }
+  ]
+}

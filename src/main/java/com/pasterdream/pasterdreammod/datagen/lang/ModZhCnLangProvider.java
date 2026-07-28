@@ -1347,12 +1347,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 染梦空岛
         add("pasterdream.seniors_dream.entry.dyedream_sky_island", "染梦空岛");
         add("pasterdream.seniors_dream.entry.dyedream_sky_island.page0", "初来之时，你会在主世界发现这种粉红色的空岛，它的存在似乎有那么一些不合理，就像是……梦一般。登上这座岛，就能看到一道奇怪的裂隙，可是第一次接触却并没有什么反应，直到再一次从梦中醒来，会有一份笔记突然出现在口袋。根据笔记的指引，回到空岛重新调查裂隙，就会……$(br2)——如果说这座空岛就是梦境力量的映射，那当穿过裂隙，我究竟身处的是「现实」还是「梦境」？");
-        add("pasterdream.seniors_dream.entry.dyedream_sky_island.page1", "染梦空岛景观展示。");
+        add("pasterdream.seniors_dream.entry.dyedream_sky_island.page1", "");
 
         // 失落剑冢
         add("pasterdream.seniors_dream.entry.lost_sword_tomb", "失落剑冢");
         add("pasterdream.seniors_dream.entry.lost_sword_tomb.page0", "失落剑冢是一个只能在丛林群系发现的结构，中间有一把插在石头里面的石中剑，需要用大力出奇迹的方法才能拔出来，除非……$(br2)获取到的失落之剑可以赋予丛林的力量升级为草薙，不过这柄剑似乎有点嗜杀，试着满足它，也许可以引出它所没表现出来的更多强大力量……");
-        add("pasterdream.seniors_dream.entry.lost_sword_tomb.page1", "失落剑冢景观展示。");
+        add("pasterdream.seniors_dream.entry.lost_sword_tomb.page1", "");
 
         // 渔夫小屋
         add("pasterdream.seniors_dream.entry.fisherman_hut", "渔夫小屋");
@@ -1362,9 +1362,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 沙漠遗迹
         add("pasterdream.seniors_dream.entry.desert_ruins", "沙漠遗迹");
         add("pasterdream.seniors_dream.entry.desert_ruins.page0", "在主世界的沙漠里，有时会发现这种奇怪的遗迹，看来似乎已经被掠夺者和尸壳占领，或许你可以在探索之余顺手处理掉这些敌人……");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page1", "沙漠遗迹地面景观展示。");
+        add("pasterdream.seniors_dream.entry.desert_ruins.page1", "");
         add("pasterdream.seniors_dream.entry.desert_ruins.page2", "传说中，那里埋葬着一位未完成遗志的战士，被深埋于地下，等待着能有一位迷途的旅行者前来，来完成他的遗愿，继承他的衣钵……");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page3", "沙漠遗迹地底景观展示。");
+        add("pasterdream.seniors_dream.entry.desert_ruins.page3", "");
 
         // 此梦先觉-新增buff效果
         add("pasterdream.seniors_dream.category.foretold_dream_buffs", "新增buff效果");
@@ -1400,6 +1400,47 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.dyedream_armor", "染梦守护");
         add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "当玩家穿戴全套染梦套装时获得此buff。具体效果为：$(br)最大生命值+4；$(br)每30秒获得伤害吸收I；");
         add("pasterdream.seniors_dream.entry.dyedream_armor.page1", "获得染梦工具增强效果：染梦合金工具和融梦水晶工具的伤害增加50%。");
+
+        // 染梦世间
+        add("pasterdream.seniors_dream.category.dyedream_world", "染梦世间");
+        add("pasterdream.seniors_dream.category.dyedream_world.desc", "起源之梦。当你穿过染梦裂隙时，眼前豁然开朗，映入你眼帘的是充满飞花和粉红的奇幻世界，眼前的所有景象如同一位少女最绮丽的幻想具现而成，这就是你寻梦之旅的第一站，开始你追寻梦幻的旅途吧，寻梦者。");
+        add("pasterdream.seniors_dream.category.dyedream_world_items", "方块与物品");
+        add("pasterdream.seniors_dream.category.dyedream_world_items.desc", "染梦维度中的方块与物品。");
+        add("pasterdream.seniors_dream.category.dyedream_world_structures", "结构");
+        add("pasterdream.seniors_dream.category.dyedream_world_structures.desc", "染梦维度中的结构。");
+
+        // 染梦教堂
+        add("pasterdream.seniors_dream.entry.dyedream_church", "染梦教堂");
+        add("pasterdream.seniors_dream.entry.dyedream_church.page0", "当你在染梦世界探索时，有可能会发现这种漂浮在天空中的神秘教堂，你可以在这个教堂内发现一个融梦水晶箱，讲经台上还有来自寻梦者前辈们的随记，或许你应该仔细检查一下教堂内部的边边角角，说不定能有意外之喜……");
+        add("pasterdream.seniors_dream.entry.dyedream_church.page1", "——这些教堂出自何人之手，他们信奉何种宗教，有待后来的寻梦者找到答案……");
+
+        // 逐梦列车
+        add("pasterdream.seniors_dream.entry.dream_train", "逐梦列车");
+        add("pasterdream.seniors_dream.entry.dream_train.page0", "在梦境中，有时你会听到列车的呼啸声，那便是逐梦列车，当你听见列车的声音时，脑海中会自然而然地闪过列车的大概方位，你可以登上这列梦幻的列车，探索它隐藏的奥秘……$(br2)如果条件允许的话，或许应该从头到尾完全探索一下列车？");
+        add("pasterdream.seniors_dream.entry.dream_train.page1", "——追逐着梦幻的列车汽笛响彻地平，我们的旅途也将继续。");
+
+        // 染梦世界树
+        add("pasterdream.seniors_dream.entry.dyedream_worldtree", "染梦世界树");
+        add("pasterdream.seniors_dream.entry.dyedream_worldtree.page0", "在染梦世界的平原，长着这样一种参天大树，这里是融梦能量最为密集的区域，可以见到大量的融梦水晶箱，传说世界树的种荚有着奇妙的效果，你或许应该大胆地探索，无需拘泥于小节，这样说不定可以探索到更多的隐秘……$(br2)传说在最初曾有一真一假两种世界树，不过现在仅仅剩下真世界树了，当你找不到世界树时，或许可以想一想最初的那位创造梦境之人……");
+        add("pasterdream.seniors_dream.entry.dyedream_worldtree.page1", "——连通天地的世界树，支撑着整个梦境的美好。");
+
+        // 花园解密-迷梦冶梦莲
+        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus", "花园解密-迷梦冶梦莲");
+        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page0", "你可以在染梦平原发现这种奇怪的遗迹，顶上种有一种名为「冶梦莲」的美丽花朵，在花朵下方有着来自最早的寻梦者的提示，你或许应该根据她的提示来寻找对应的植物……");
+        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page1", "或许应该从琴雨梦的提示中的铃、云、流明和小伞来寻找答案？");
+        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page2", "解开谜题后获得的花朵似乎可以用于前往风的梦境，也可以去寻找传说中的神狐……");
+
+        // 花园解密-凛冽雪绒花
+        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss", "花园解密-凛冽雪绒花");
+        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page0", "在染梦世界的雪原，你可能会发现这种奇特的结构，在下方的书桌上，你会找到来自最初那位寻梦者的笔记，你需要根据她的提示来找到对应的植物和生物。");
+        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page1", "似乎需要从梦染、灯、奇异几个字入手，去找找看吧。");
+        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page2", "解开谜题后获得的花朵似乎有着奇特的低温触感……");
+
+        // 花园解密-九尾狐
+        add("pasterdream.seniors_dream.entry.garden_golden_fox", "花园解密-九尾狐");
+        add("pasterdream.seniors_dream.entry.garden_golden_fox.page0", "在梦境中，有时你会看见这种有着狐狸样子的雕像的遗迹，上方的寻梦者永恒书卷中有着琴雨梦给予的提示，或许需要一种奇特的莲花，也许你应该先去看看其他的花园解密……");
+        add("pasterdream.seniors_dream.entry.garden_golden_fox.page1", "当你唤醒九尾狐后，她会满足你一个愿望，至于满足愿望的方法，那位少女也在书中一并告诉你了……");
+        add("pasterdream.seniors_dream.entry.garden_golden_fox.page2", "——那奇妙的神狐，她将满足你的愿望，或是给予你御邪的护符。");
 
         // 剧情
         add("pasterdream.seniors_dream.category.story", "剧情");

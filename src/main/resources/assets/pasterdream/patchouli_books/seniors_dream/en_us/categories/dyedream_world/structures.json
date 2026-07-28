@@ -1,0 +1,7 @@
+{
+  "sortnum": 1,
+  "name": "pasterdream.seniors_dream.category.dyedream_world_structures",
+  "description": "pasterdream.seniors_dream.category.dyedream_world_structures.desc",
+  "icon": "pasterdream:dyedream_desk",
+  "parent": "pasterdream:dyedream_world"
+}
