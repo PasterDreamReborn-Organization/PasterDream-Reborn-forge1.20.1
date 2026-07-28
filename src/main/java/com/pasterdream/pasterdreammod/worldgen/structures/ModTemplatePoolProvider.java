@@ -25,7 +25,9 @@ public class ModTemplatePoolProvider implements DataProvider
     @Override
     public CompletableFuture<?> run(CachedOutput cache)
     {
-        CompletableFuture<?>[] futures = configs.stream().map(config ->
+        CompletableFuture<?>[] futures = configs.stream()
+                .filter(StructureGenerationConfig::generateStructureFiles)
+                .map(config ->
         {
             JsonObject pool = new JsonObject();
             pool.addProperty("fallback", "minecraft:empty");
