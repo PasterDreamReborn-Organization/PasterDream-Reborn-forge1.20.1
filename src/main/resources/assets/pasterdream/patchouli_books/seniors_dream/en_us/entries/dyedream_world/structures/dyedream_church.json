@@ -5,13 +5,17 @@
   "category": "pasterdream:dyedream_world/structures",
   "pages": [
     {
-      "type": "patchouli:text",
-      "text": "pasterdream.seniors_dream.entry.dyedream_church.page0"
-    },
-    {
       "type": "patchouli:image",
       "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/dyedream_church.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
       "text": "pasterdream.seniors_dream.entry.dyedream_church.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.dyedream_church.page2"
     }
   ]
 }

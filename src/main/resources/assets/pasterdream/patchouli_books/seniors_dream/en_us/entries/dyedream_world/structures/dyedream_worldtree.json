@@ -5,13 +5,17 @@
   "category": "pasterdream:dyedream_world/structures",
   "pages": [
     {
-      "type": "patchouli:text",
-      "text": "pasterdream.seniors_dream.entry.dyedream_worldtree.page0"
-    },
-    {
       "type": "patchouli:image",
       "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/dyedream_worldtree.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
       "text": "pasterdream.seniors_dream.entry.dyedream_worldtree.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.dyedream_worldtree.page2"
     }
   ]
 }
