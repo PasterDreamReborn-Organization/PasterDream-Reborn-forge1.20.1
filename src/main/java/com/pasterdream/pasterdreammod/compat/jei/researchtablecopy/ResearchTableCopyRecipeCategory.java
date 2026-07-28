@@ -56,7 +56,7 @@ public class ResearchTableCopyRecipeCategory implements IRecipeCategory<Research
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, ResearchTableCopyJEIRecipe recipe, IFocusGroup focuses)
     {
-        IRecipeSlotBuilder fluidSlot = builder.addSlot(RecipeIngredientRole.INPUT, 170, 17).setFluidRenderer(125, false, 16, 16);
+        IRecipeSlotBuilder fluidSlot = builder.addSlot(RecipeIngredientRole.INPUT, 170, 17).setFluidRenderer(250, false, 16, 16);
         FluidIngredient fluidIngredient = recipe.getInputFluidIngredients().get(0);
         if (fluidIngredient.getFluid() != null)
         {
