@@ -1,0 +1,17 @@
+{
+  "sortnum": 5,
+  "name": "pasterdream.seniors_dream.entry.machine_light_wing",
+  "icon": "pasterdream:machine_light_wing",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:machine_light_wing",
+      "text": "pasterdream.seniors_dream.entry.machine_light_wing.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.machine_light_wing.page1"
+    }
+  ]
+}

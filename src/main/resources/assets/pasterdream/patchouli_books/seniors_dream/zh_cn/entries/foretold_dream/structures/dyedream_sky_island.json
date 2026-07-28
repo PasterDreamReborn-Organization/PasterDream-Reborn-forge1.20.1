@@ -3,7 +3,6 @@
   "name": "pasterdream.seniors_dream.entry.dyedream_sky_island",
   "icon": "pasterdream:cloud",
   "category": "pasterdream:foretold_dream/structures",
-  "advancement": "pasterdream:story/first_contact_dyedream_crack",
   "pages": [
     {
       "type": "patchouli:text",

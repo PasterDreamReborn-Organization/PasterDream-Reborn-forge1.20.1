@@ -1075,189 +1075,64 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
 
         // Patchouli book
-        add(ModItems.SENIORS_DREAM_BOOK.get(), "Seniors Dream");
-        add("pasterdream.seniors_dream", "Seniors Dream");
-        add("pasterdream.seniors_dream.catalyst.test", "Test");
-        add("pasterdream.seniors_dream.catalyst.test.desc", "A test catalyst.");
-        add("pasterdream.seniors_dream.entry.welcome", "Welcome");
-        add("pasterdream.seniors_dream.entry.welcome.page0", "If you can see this, the book works!");
-        add("pasterdream.seniors_dream.landing_text", "Welcome to PasterDream: Reborn, a remake of PasterDream. While preserving the original content, the gameplay and progression have been optimized. This book provides the guidance and item information that you may be missing. Now, Dreamseeker — may the stars lead you into dreams, and the wind rest by your side.");
 
         // Categories
-        add("pasterdream.seniors_dream.category.rules", "Mechanics");
-        add("pasterdream.seniors_dream.category.rules.desc", "This chapter introduces the core mechanics of the mod.");
 
         // Meltdream Energy
-        add("pasterdream.seniors_dream.entry.meltdream", "Meltdream Energy");
-        add("pasterdream.seniors_dream.entry.meltdream.page0", "In the bottom-left corner of your screen, there is an energy bar icon — this is your Meltdream Energy. For weapons with combat skills, right-clicking consumes Meltdream Energy to activate the corresponding skill.");
-        add("pasterdream.seniors_dream.entry.meltdream.page1", "The Meltdream Energy bar interface.");
-        add("pasterdream.seniors_dream.entry.meltdream.page2", "Ways to obtain Meltdream Energy:$(br)Each Meltdream Crystal Chest opened grants 2 Meltdream Energy;$(br)Eating certain foods grants some Meltdream Energy;$(br)Equipping certain curios also restores Meltdream Energy, primarily the Meltdream Aura Ring and World Tree Seed Pod.");
-        add("pasterdream.seniors_dream.entry.meltdream.page3", "A showcase of items related to Meltdream Energy.");
 
         // Sanity
-        add("pasterdream.seniors_dream.entry.san", "Sanity");
-        add("pasterdream.seniors_dream.entry.san.page0", "You may have noticed a brain-like icon in the bottom-right corner of your screen — this is your Sanity (SAN) value.");
-        add("pasterdream.seniors_dream.entry.san.page1", "The Sanity bar interface.");
-        add("pasterdream.seniors_dream.entry.san.page2", "Sanity level effects:$(br)SAN>=90%: Vigor$(br)SAN<=60%: Lethargy$(br)SAN<=40%: Trance$(br)SAN<=20%: Madness I$(br)SAN<=10%: Madness II$(br)SAN<=1%:  Madness III");
-        add("pasterdream.seniors_dream.entry.san.page3", "Environmental Sanity changes:$(br)Sanity is affected by biome type and light level. Formula:$(br)Total Change Rate = (Sanity Aura / 1200) + Biome Effect + (Light Level - 7) * 0.0001");
-        add("pasterdream.seniors_dream.entry.san.page4", "Biome effects:$(br)Deep Dark and Lamp Shadow biomes decrease Sanity;$(br)Dyedream biomes increase Sanity;$(br)Other biomes have no strong interference.$(br2)Sanity Aura value of n means that, excluding other factors (biome and light level), the player gains n Sanity points per minute.");
-        add("pasterdream.seniors_dream.entry.san.page5", "Other ways to lose Sanity:$(br)Being within a Shadow creature's Madness Aura;$(br)Holding items with Madness Aura;$(br)Certain item skills also consume Sanity.$(br2)Ways to restore Sanity:$(br)Using specific items or foods;$(br)Equipping curios with Sanity Aura;$(br)Having the Cuisine or Rest buff;$(br)Staying in a brightly-lit environment.");
-        add("pasterdream.seniors_dream.entry.san.page6", "A showcase of items related to Sanity.");
 
         // Evasion (Blink)
-        add("pasterdream.seniors_dream.entry.evasion", "Evasion (Blink)");
-        add("pasterdream.seniors_dream.entry.evasion.page0", "Default key: C. Using Evasion consumes 2 hunger points, performs a quick dash, and resets fall distance. It grants brief invincibility frames. Default cooldown: 1 second (no cooldown in Creative mode).");
-        add("pasterdream.seniors_dream.entry.evasion.page1", "On land: dashes toward where your crosshair points.$(br)On land while sneaking: dashes in the opposite direction of your crosshair.$(br)In water: vertical crosshair offset has no effect.");
 
         // Fishing
-        add("pasterdream.seniors_dream.entry.fishing", "Fishing");
-        add("pasterdream.seniors_dream.entry.fishing.page0", "In your spare time, you might sit by the water with a fishing rod, receiving the ocean's bounty. Now, fishing near the ocean may yield treasures from the deep — Deep Sea Treasures. Even in the vast dream oceans, you can cast your line and obtain treasures. The higher your Luck, the more likely you are to obtain Deep Sea Treasures. Sometimes, you may even obtain treasures shimmering with a peculiar glow...");
-        add("pasterdream.seniors_dream.entry.fishing.page1", "Even in the vast dream oceans, you can cast your line for treasures. The higher your Luck, the more likely you are to obtain a Deep Sea Treasure with a peculiar shimmering glow.");
 
         // Foretold Dream
-        add("pasterdream.seniors_dream.category.foretold_dream", "The Dream Foretold");
-        add("pasterdream.seniors_dream.category.foretold_dream.desc", "New mechanics and knowledge added to vanilla dimensions.");
-        add("pasterdream.seniors_dream.category.foretold_dream_items", "New Items");
-        add("pasterdream.seniors_dream.category.foretold_dream_items.desc", "New items added to vanilla dimensions.");
-        add("pasterdream.seniors_dream.category.foretold_dream_structures", "New Structures");
-        add("pasterdream.seniors_dream.category.foretold_dream_structures.desc", "New structures added to vanilla dimensions.");
 
         // Titanium
-        add("pasterdream.seniors_dream.entry.titanium", "Titanium");
-        add("pasterdream.seniors_dream.entry.titanium.page0", "Deep underground in the Overworld, you may occasionally discover a new ore called Titanium. It requires a pickaxe made of material stronger and harder than iron to mine. Like most ores, when your pickaxe bears the magical power of Fortune, you can obtain more raw ore. Tools made from Titanium are slightly more effective than those crafted from diamond. Perhaps you could infuse Titanium products with the dream power from the Dyedream...");
-        add("pasterdream.seniors_dream.entry.titanium.page1", "-- Titanium, with its extreme corrosion resistance, still gleams after enduring years of weathering — just like that unawakened dream, still moving when revisited after a long parting.");
 
         // Molten Gold
-        add("pasterdream.seniors_dream.entry.molten_gold", "Molten Gold");
-        add("pasterdream.seniors_dream.entry.molten_gold.page0", "When exploring deep in the Nether, you may find a peculiar new ore resembling gold that shines with a strange glow. This unusual ore can be mined with just an iron pickaxe, and naturally, with Fortune enchantment you can obtain more ore. When using tools forged from Molten Gold, you can actively harness the strange energy within (default: right-click) to move faster, at the cost of hunger — you may need an extra meal afterwards. The swords and pickaxes forged from it seem to have even greater upgrades...");
-        add("pasterdream.seniors_dream.entry.molten_gold.page1", "-- A metal forged amidst raging flames and scorching heat. If one truly wishes to obtain its power, one may need the resolve to plunge into the sea of fire.");
 
         // Soul Dust
-        add("pasterdream.seniors_dream.entry.soul_dust", "Soul Dust");
-        add("pasterdream.seniors_dream.entry.soul_dust.page0", "In the Soul Sand Valley of the Nether, you may sometimes find strange soul soil mixed with white substances — this is called Soul Ore. Mining it yields Soul Dust. These ore soils can be mined by hand, but using tools is not only faster — with Fortune enchantment you can obtain even more Soul Dust. Soul Dust can be used to craft Soul Essence, which in turn can be used to make Necklace Blanks, Ring Blanks, and Belt Blanks, which can then be crafted into various curios.");
-        add("pasterdream.seniors_dream.entry.soul_dust.page1", "-- May the restless spirits of the Nether find release, and may the Dreamseeker give the departed the peace of the living.");
 
         // Sculk Upgrade
-        add("pasterdream.seniors_dream.entry.sculk_upgrade", "Sculk Upgrade Kit");
-        add("pasterdream.seniors_dream.entry.sculk_upgrade.page0", "A fallen dynasty can never see the light of day again, but its stored power flows endlessly. Now that you have defeated the strongest guardian here, try infusing it into Netherite armor and let this forbidden power from the ancient civilization serve you. The upgraded Echo Set is not only more durable, but also grants you the protection of Echoes, freeing you from the intimidation of Sculk. Even when facing deeper darkness, the power of Echoes will grant you a sliver of courage.");
-        add("pasterdream.seniors_dream.entry.sculk_upgrade.page1", "-- When wearing the Echo Set, what you feel is not just power, but also a deeper and more ancient darkness and fear coiling around your ears, impossible to shake off. Like a nightmare, it beckons you to embrace it...");
 
         // Inferno Sword
-        add("pasterdream.seniors_dream.entry.inferno_sword", "Inferno Sword 'Bone-melter'");
-        add("pasterdream.seniors_dream.entry.inferno_sword.page0", "Use Netherite Scrap, Blaze Powder, and Molten Gold Blocks to upgrade the Molten Gold Sword into the Hellfire Sword. Its sharpness rivals that of a Diamond Sword, and it inflicts long-lasting fire upon enemies. If the enemy is already suffering from fire, this sword extends their torment.");
-        add("pasterdream.seniors_dream.entry.inferno_sword.page1", "After further enhancement, the sword is named 'Bone-melter.' It becomes lighter, and its wielder can actively unleash a combat art called 'Bone-melting Slash' to make the next strike deadlier. If the enemy is about to suffer prolonged fire damage, Bone-melting Slash will also extinguish their flames, slowing them down.$(br2)-- Bathed in the flames of battle, forged upon the anvil of war.");
 
         // Kusanagi
-        add("pasterdream.seniors_dream.entry.kusanagi", "Kusanagi 'Murakumo'");
-        add("pasterdream.seniors_dream.entry.kusanagi.page0", "A sword named 'Kusanagi,' as sharp as a diamond-forged blade. It also inflicts painful poison upon those it wounds. Once two hundred lives have fallen beneath its edge, it reveals its full divine power — becoming even sharper and inflicting longer-lasting poison upon its victims.");
-        add("pasterdream.seniors_dream.entry.kusanagi.page1", "Its wielder can also actively unleash a combat art called 'Extreme Sharpness,' making the divine blade's next strike even deadlier.$(br2)-- Though this sword is called Murakumo no Kusanagi, this mod has no Yamata-no-Orochi, it cannot be used as a catalyst to summon a Heroic Spirit, nor can it unleash its Noble Phantasm to bring an Eight-Armed Raging Waves upon hostile creatures.");
 
         // Tide Sword
-        add("pasterdream.seniors_dream.entry.tide_sword", "Beihai Ruo Tide Sword");
-        add("pasterdream.seniors_dream.entry.tide_sword.page0", "One day, you sense the Azure Dewdrop found in the Deep Sea Treasure resonating with the Tide Sword you forged. So you carefully polish the Azure Dewdrop and try embedding it into the Tide Sword. Now, this blade is named after an ancient sea god, becoming not only sharper but also granting its wielder the ability to unleash 'Surging Current' combat art — dashing swiftly through the water.");
-        add("pasterdream.seniors_dream.entry.tide_sword.page1", "Furthermore, if your enemy fights you in the water, your next slash after releasing Surging Current will be even deadlier.$(br2)-- Nine rivers flow across and return to the Sea God; a lone peak overlooks, intimidating the heavens.");
 
         // Desert Sword
-        add("pasterdream.seniors_dream.entry.desert_sword", "Chenjingmen Desert");
-        add("pasterdream.seniors_dream.entry.desert_sword.page0", "The warrior buried in the desert has not found peace — now it is your turn to fulfill his unfinished will. After fulfilling his final wish, he will help you unlock the full power of the Desert Greatsword. Now this ancient hero's blade has recovered its true name — 'Chenjingmen' Desert. Not only has its former sharpness returned, but it also grants its wielder the 'Desperate Counterattack' ability.");
-        add("pasterdream.seniors_dream.entry.desert_sword.page1", "Upon activating Desperate Counterattack, you briefly gain more life to endure attacks — and the more damage you take, the deadlier your next counterstrike will be.$(br2)-- Looking back, the tainted aura remains uncleansed; I ask this mortal world, where have the heroes gone?");
 
         // Deep Sea Treasure
-        add("pasterdream.seniors_dream.entry.deep_sea_treasure", "Deep Sea Treasure");
-        add("pasterdream.seniors_dream.entry.deep_sea_treasure.page0", "While fishing across the dimensions, you may sometimes discover these delicate little chests. Opening them yields small treasures. Your Luck level affects the rarity of the treasures inside, and some chests seem to emit a glow — the contents appear anything but ordinary. Aside from common items, rumor has it there's a weapon from the deep sea, along with precious collectibles born from dreams.");
-        add("pasterdream.seniors_dream.entry.deep_sea_treasure.page1", "Perhaps you could try fishing for good fortune in dreams?$(br2)-- A dream melded with the sea... wait, what do you mean I fished out an Axolotl?");
 
         // Thermal Dagger
-        add("pasterdream.seniors_dream.entry.thermal_dagger", "Thermal Dagger");
-        add("pasterdream.seniors_dream.entry.thermal_dagger.page0", "When opening Deep Sea Treasures, you may sometimes find this peculiar little dagger. While held in your main hand, your swimming speed increases. This dagger is slightly faster and sharper than an iron sword. Amusingly, when you strike enemies with it, it makes a sizzling, oily searing sound.");
-        add("pasterdream.seniors_dream.entry.thermal_dagger.page1", "Long ago, an extraterrestrial visitor crash-landed in the ocean, lost and seeking a way home. This peculiar dagger must have come from the hands of that visitor.$(br2)-- Disclaimer: This dagger is not suitable for soloing a Reaper Leviathan. Upon leaving the ocean, please check yourself for Kharaa infection.");
 
         // Fortune Jelly
-        add("pasterdream.seniors_dream.entry.fortune_jelly", "Fortune Jelly");
-        add("pasterdream.seniors_dream.entry.fortune_jelly.page0", "During your exploration of this world, you should have already found this green jelly in certain chests. Eating this bouncy little treat will earn you an extra blessing from Lady Luck herself.");
-        add("pasterdream.seniors_dream.entry.fortune_jelly.page1", "Though I haven't quite figured out how this jelly is made, I seem to be able to extract its lucky essence using brewing methods.");
 
         // Dyedream Sky Island
-        add("pasterdream.seniors_dream.entry.dyedream_sky_island", "Dyedream Sky Island");
-        add("pasterdream.seniors_dream.entry.dyedream_sky_island.page0", "When you first arrive, you'll notice these pink floating islands in the Overworld. Their existence seems somewhat... irrational, as if from a dream. Climb onto one and you'll find a strange rift. Upon first touch, nothing happens — until you wake from sleep again, and a set of notes suddenly appears in your pocket. Following the notes' guidance, return to the sky island and investigate the rift once more, and then...$(br2)-- If this sky island is a reflection of the Dream's power, then when I step through the rift — am I in [reality] or still in the [dream]?");
-        add("pasterdream.seniors_dream.entry.dyedream_sky_island.page1", "A view of the Dyedream Sky Island.");
 
         // Lost Sword Tomb
-        add("pasterdream.seniors_dream.entry.lost_sword_tomb", "Lost Sword Tomb");
-        add("pasterdream.seniors_dream.entry.lost_sword_tomb.page0", "The Lost Sword Tomb is a structure found only in jungle biomes. At its center stands a sword embedded in stone — the Sword in the Stone. It takes brute force to pull it free, unless...$(br2)The Lost Sword you obtain can be imbued with the power of the jungle and upgraded into Kusanagi. However, this blade seems to thirst for blood. Try to satisfy its craving, and you may unlock even greater power that lies dormant within...");
-        add("pasterdream.seniors_dream.entry.lost_sword_tomb.page1", "A view of the Lost Sword Tomb.");
 
         // Fisherman's Hut
-        add("pasterdream.seniors_dream.entry.fisherman_hut", "Fisherman's Hut");
-        add("pasterdream.seniors_dream.entry.fisherman_hut.page0", "On the beach biomes of the Overworld, you may sometimes come across these fisherman's huts — homes of fisherman villagers who have left their villages to make a living by the sea alone. Inside the hut's chest, you can find treasures the fisherman has salvaged from the ocean.$(br2)Occasionally, there may even be a Deep Sea Treasure inside. Perhaps the fisherman never realized it could be opened, keeping it merely as a keepsake — valuing the casket over the pearl within.");
-        add("pasterdream.seniors_dream.entry.fisherman_hut.page1", "-- I believe they must have other reasons for choosing a solitary life by the sea. Perhaps, there are even deeper secrets hidden beneath these waters.");
 
         // Desert Ruins
-        add("pasterdream.seniors_dream.entry.desert_ruins", "Desert Ruins");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page0", "In the deserts of the Overworld, you may occasionally stumble upon these strange ruins. They appear to have been occupied by Pillagers and Husks — perhaps you could deal with these foes while you're exploring...");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page1", "A view of the Desert Ruins surface.");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page2", "Legend has it that a warrior who died with unfinished business is buried deep underground here, waiting for a lost traveler to come, fulfill his final wish, and inherit his legacy...");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page3", "A view of the Desert Ruins underground.");
 
         // The Dream Foretold - New Buff Effects
-        add("pasterdream.seniors_dream.category.foretold_dream_buffs", "New Buff Effects");
-        add("pasterdream.seniors_dream.category.foretold_dream_buffs.desc", "New buff effects added by the mod.");
 
-        add("pasterdream.seniors_dream.entry.rest", "Rest");
-        add("pasterdream.seniors_dream.entry.rest.page0", "Rest is a buff that gradually restores Sanity for the player, increasing Sanity Aura by 1.2 per level.$(br2)Players can obtain this buff by lying in a vanilla bed, being near a QYM doll, or near a campfire.");
 
-        add("pasterdream.seniors_dream.entry.cheer_up", "Vigor");
-        add("pasterdream.seniors_dream.entry.cheer_up.page0", "Obtained when Sanity >= 90%. Effects:$(br)Evasion cooldown -10%;$(br)Movement Speed +5%;");
-        add("pasterdream.seniors_dream.entry.cheer_up.page1", "Attack Speed +0.05;$(br)Skill cooldown -10%.");
 
-        add("pasterdream.seniors_dream.entry.lethargy", "Lethargy");
-        add("pasterdream.seniors_dream.entry.lethargy.page0", "Obtained when Sanity <= 60%. Effects:$(br)Evasion cooldown +50%;$(br)Movement Speed -10%;");
-        add("pasterdream.seniors_dream.entry.lethargy.page1", "Attack Speed -0.1;$(br)Skill cooldown +20%.");
 
-        add("pasterdream.seniors_dream.entry.trance", "Trance");
-        add("pasterdream.seniors_dream.entry.trance.page0", "Obtained when Sanity <= 40%. Effects:$(br)Evasion cooldown +100%;$(br)Movement Speed -20%;");
-        add("pasterdream.seniors_dream.entry.trance.page1", "Attack Speed -0.2, Attack Damage -1;$(br)Skill cooldown +50%.");
 
-        add("pasterdream.seniors_dream.entry.insand", "Madness");
-        add("pasterdream.seniors_dream.entry.insand.page0", "Obtained when Sanity <= 20%. Effects:$(br)Evasion cooldown +200%;$(br)Movement Speed -30%;$(br)Attack Speed -0.4, Attack Damage -2;$(br)Skill cooldown +100%;$(br)Attack Reach and Entity Reach -0.2.");
-        add("pasterdream.seniors_dream.entry.insand.page1", "While this effect is active, your vision will shake uncontrollably. Periodically, you will be inflicted with brief Blindness, and Terror Beaks and Shadow Hands will spawn around you.");
-        add("pasterdream.seniors_dream.entry.insand.page2", "As the Madness level increases, the screen shaking intensifies, the number of shadow creatures spawned increases, and the spawn interval decreases. At Madness III, a Terror Beak will spawn every few seconds.");
 
-        add("pasterdream.seniors_dream.entry.cook", "Cuisine");
-        add("pasterdream.seniors_dream.entry.cook.page0", "Obtained by eating certain foods from this mod and compatible mods. Each level increases Sanity Aura by 1.2.");
 
-        add("pasterdream.seniors_dream.entry.sculk_armor", "Sculk Echoes");
-        add("pasterdream.seniors_dream.entry.sculk_armor.page0", "Obtained when wearing the full Echo Set. Effects:$(br)Max Health +4;$(br)When below Y<0, green particles appear around the player and the Resistance buff is granted;");
-        add("pasterdream.seniors_dream.entry.sculk_armor.page1", "Immunity to Sculk's darkness fear;$(br)When inflicted with Darkness, gain Speed II and Resistance II for 1 minute instead;$(br)Wardens will not attack players with this buff.");
 
-        add("pasterdream.seniors_dream.entry.dyedream_armor", "Dyedream Ward");
-        add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "Obtained when wearing the full Dyedream Set. Effects:$(br)Max Health +4;$(br)Absorption I every 30 seconds;");
-        add("pasterdream.seniors_dream.entry.dyedream_armor.page1", "Dyedream Tool Enhancement: Dyedream Alloy tools and Melt Dream Crystal tools deal 50% more damage.");
 
         // Story
-        add("pasterdream.seniors_dream.category.story", "Story");
-        add("pasterdream.seniors_dream.category.story.desc", "The story of the mod.");
 
-        add("pasterdream.seniors_dream.entry.deposition_shadow", "Deposition of Shadows");
-        add("pasterdream.seniors_dream.entry.deposition_shadow.page0", "Sedimented shadows, abandoned civilization, and a livingness that symbolizes death. The environment here made me feel extremely oppressed. I cannot find even a trace of color belonging to this world. There are so many... unnatural monsters, like dreams detached from reality.");
-        add("pasterdream.seniors_dream.entry.deposition_shadow.page1", "Deposition of Shadows — The desolate Lamp Shadow World.");
-        add("pasterdream.seniors_dream.entry.deposition_shadow.page2", "Strangely enough... these shadow-like monsters do not attack me, but those traveling with me are not so lucky. And the scattered pots and jars, the towering chains, the bones strewn everywhere... who built all of these... or is it all just my imagination...");
 
-        add("pasterdream.seniors_dream.entry.shadow_travelogue", "Shadow Travelogue");
-        add("pasterdream.seniors_dream.entry.shadow_travelogue.page0", "Here are some records of exploration:");
-        add("pasterdream.seniors_dream.entry.shadow_travelogue.page1", "Shadow Travelogue — Exploration record illustration.");
-        add("pasterdream.seniors_dream.entry.shadow_travelogue.page2", "Defeating black transparent monsters drops some... \"squirming\" black gelatinous substance.$(br)A kind of tile-stone terrain has pottery jars and graves, from which you can dig out some good stuff.$(br)Some chains and ruins contain rusted metal, an element that doesn't seem to belong to reality.$(br)Where mushrooms flourish live some beetles, who love eating a native white flower — you can befriend them.$(br)Liquid \"shadow\" lakes flow across the surface of the Deposition of Shadows.");
 
-        add("pasterdream.seniors_dream.entry.shadow_dungeon", "Shadow Dungeon");
-        add("pasterdream.seniors_dream.entry.shadow_dungeon.page0", "I remember finding a strange ruin during exploration, like a ritual altar enshrining something in the center. But when I reached out to touch it, there was no response at all. Judging from the dilapidated structure, it must have been long broken?");
-        add("pasterdream.seniors_dream.entry.shadow_dungeon.page1", "But the black metal we've recently refined is very similar in material to that core... and that glowing white lamp block in the center — I should try to repair it. If I succeed... I will record the repair method. And... my intuition tells me this ruin is more than just the part above ground... This bright core is like a lamp, and its existence breeds the shadows beneath.");
 
-        add("pasterdream.seniors_dream.entry.scare", "Fear");
-        add("pasterdream.seniors_dream.entry.scare.page0", "\"Is there still feeling here? Hey, don't fall asleep! Hang on!\" His face had been mangled beyond recognition, his body as if trampled. He had lost all sensation below the waist — his spine must have been torn apart. \"You won't die, drink this. Over here — can you feel anything?\" A scream. When I ran toward the sound, I saw this sight — a man lying in a pool of blood.");
-        add("pasterdream.seniors_dream.entry.scare.page1", "\"Can you tell me what happened? Rescue is on the way.\" \"Don't... don't go any further... don't...\" he said with difficulty, his hoarse, low voice barely audible with my ear pressed close. \"You're... still young... don't touch... the darkness...\" Then his throat could no longer produce a sound, and his hand fell limp.");
-        add("pasterdream.seniors_dream.entry.scare.page2", "Around his neck hung a pendant symbolizing an explorer. In his open palm was a photo of his family, along with a list of medical debt for his wife's serious illness. \"So it was... trying to earn money for the medicine...\" I held his hand that clutched the paper. \"I'll take care of this...\"");
-        add("pasterdream.seniors_dream.entry.scare.page3", "I lowered my head and closed my eyes in silent mourning. Suddenly a ringing in my ears, accompanied by dizziness — before my closed eyes, images appeared. Two enormous hand-like monsters, and whose... perspective was this? It seemed to be that explorer's! One of the hands, with a tremendous gust, slammed \"me\" against the wall, then clasped its four fingers together and shattered the ground and my legs. Under this immense impact, the bone needle in the pocket also pierced into \"my\" thigh.");
-        add("pasterdream.seniors_dream.entry.scare.page4", "The entire dream process lasted mere seconds, yet it was incredibly real... I gasped for breath. The dizziness gradually subsided, but the feeling of fear permeated my whole body. Because at the very end, the \"eye\" in the center of that palm... seemed to have glanced at the real me...");
 
         // Entities
         add(ModEntities.PINK_CHICKEN.get(), "Pink Chicken");

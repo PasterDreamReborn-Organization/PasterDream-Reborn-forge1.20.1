@@ -202,7 +202,7 @@ public class PlayerEvents {
                 Component.translatable("message.pasterdream.sleep.dream_of_crack.3"), false);
     }
 
-    /** 玩家首次进入染梦世界时，给予关于染梦世界的第二份笔记。 */
+    /** 玩家首次进入染梦世界时，授予进度并给予笔记。 */
     public static void onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event)
     {
         if (!(event.getEntity() instanceof ServerPlayer serverPlayer))
@@ -216,15 +216,24 @@ public class PlayerEvents {
         }
 
         Advancement worldAdv = serverPlayer.server.getAdvancements().getAdvancement(DYEDREAM_WORLD_ADV);
+        boolean alreadyGranted = worldAdv != null && serverPlayer.getAdvancements().getOrStartProgress(worldAdv).isDone();
+
+        if (alreadyGranted)
+        {
+            return;
+        }
+
+        // 首次进入染梦维度 → 授予"哥德堡安眠曲"进度
         if (worldAdv != null)
         {
             AdvancementProgress progress = serverPlayer.getAdvancements().getOrStartProgress(worldAdv);
-            if (progress.isDone())
+            for (String criteria : progress.getRemainingCriteria())
             {
-                return;
+                serverPlayer.getAdvancements().award(worldAdv, criteria);
             }
         }
 
+        // 发放笔记
         ItemStack note = DreamNotesWithNBT.dreamNotesWithNBT(
                 ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "dyedreamWorld");
         if (!serverPlayer.getInventory().add(note))

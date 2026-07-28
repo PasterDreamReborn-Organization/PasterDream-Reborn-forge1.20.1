@@ -1,0 +1,17 @@
+{
+  "sortnum": 7,
+  "name": "pasterdream.seniors_dream.entry.pale_boneneedle",
+  "icon": "pasterdream:pale_boneneedle",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:pale_boneneedle",
+      "text": "pasterdream.seniors_dream.entry.pale_boneneedle.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.pale_boneneedle.page1"
+    }
+  ]
+}

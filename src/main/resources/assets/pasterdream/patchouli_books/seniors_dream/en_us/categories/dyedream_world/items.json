@@ -1,0 +1,7 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.category.dyedream_world_items",
+  "description": "pasterdream.seniors_dream.category.dyedream_world_items.desc",
+  "icon": "pasterdream:melt_dream_crystal_fragment",
+  "parent": "pasterdream:dyedream_world"
+}

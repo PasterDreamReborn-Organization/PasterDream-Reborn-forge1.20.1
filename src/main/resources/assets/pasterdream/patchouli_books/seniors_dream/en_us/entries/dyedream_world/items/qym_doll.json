@@ -1,0 +1,17 @@
+{
+  "sortnum": 2,
+  "name": "pasterdream.seniors_dream.entry.qym_doll",
+  "icon": "pasterdream:qym_doll",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:qym_doll",
+      "text": "pasterdream.seniors_dream.entry.qym_doll.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.qym_doll.page1"
+    }
+  ]
+}
