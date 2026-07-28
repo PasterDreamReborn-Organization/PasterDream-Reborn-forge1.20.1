@@ -23,7 +23,9 @@ public class ModStructureProvider implements DataProvider
     @Override
     public CompletableFuture<?> run(CachedOutput cache)
     {
-        CompletableFuture<?>[] futures = configs.stream().map(config ->
+        CompletableFuture<?>[] futures = configs.stream()
+                .filter(StructureGenerationConfig::generateStructureFiles)
+                .map(config ->
         {
             JsonObject structure = new JsonObject();
             structure.addProperty("type", "minecraft:jigsaw");

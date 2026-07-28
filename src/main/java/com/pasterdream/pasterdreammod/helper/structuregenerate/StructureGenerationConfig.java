@@ -20,10 +20,12 @@ public record StructureGenerationConfig(
         int spacing,                //结构在世界中生成的平均距离间隔（区块）
         int separation,             //结构在世界中生成的最小距离间隔（区块）
         int salt,                   //随机种子盐
-        int structureSetWeight      //结构集内该结构的权重
+        int structureSetWeight,     //结构集内该结构的权重
+        String groupSetId,          //若不为null，结构归入此共享结构集（如"dyedream_structures"），不再生成独立结构集
+        boolean generateStructureFiles //是否由datagen生成structure/pool JSON（手工结构已有静态文件时设为false）
 )
 {
-    /** 兼容旧构造函数：固定绝对高度 */
+    /** 兼容旧构造函数：固定绝对高度，独立结构集 */
     public StructureGenerationConfig(
             String name, String biomeTag, String step, String terrainAdaptation,
             int startHeight, String heightmap, int maxDistanceFromCenter, int size,
@@ -34,7 +36,40 @@ public record StructureGenerationConfig(
                 "absolute", startHeight, startHeight,
                 heightmap, maxDistanceFromCenter, size,
                 useExpansionHack, projection, processors,
-                poolElementWeight, spacing, separation, salt, structureSetWeight);
+                poolElementWeight, spacing, separation, salt, structureSetWeight,
+                null, true);
+    }
+
+    /** 固定绝对高度 + 共享结构集分组 */
+    public StructureGenerationConfig(
+            String name, String biomeTag, String step, String terrainAdaptation,
+            int startHeight, String heightmap, int maxDistanceFromCenter, int size,
+            boolean useExpansionHack, String projection, String processors,
+            int poolElementWeight, int spacing, int separation, int salt, int structureSetWeight,
+            String groupSetId)
+    {
+        this(name, biomeTag, step, terrainAdaptation,
+                "absolute", startHeight, startHeight,
+                heightmap, maxDistanceFromCenter, size,
+                useExpansionHack, projection, processors,
+                poolElementWeight, spacing, separation, salt, structureSetWeight,
+                groupSetId, true);
+    }
+
+    /** 固定绝对高度 + 共享结构集分组 + 控制是否生成结构文件 */
+    public StructureGenerationConfig(
+            String name, String biomeTag, String step, String terrainAdaptation,
+            int startHeight, String heightmap, int maxDistanceFromCenter, int size,
+            boolean useExpansionHack, String projection, String processors,
+            int poolElementWeight, int spacing, int separation, int salt, int structureSetWeight,
+            String groupSetId, boolean generateStructureFiles)
+    {
+        this(name, biomeTag, step, terrainAdaptation,
+                "absolute", startHeight, startHeight,
+                heightmap, maxDistanceFromCenter, size,
+                useExpansionHack, projection, processors,
+                poolElementWeight, spacing, separation, salt, structureSetWeight,
+                groupSetId, generateStructureFiles);
     }
 
     public String modId()
