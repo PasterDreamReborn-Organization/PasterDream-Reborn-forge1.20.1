@@ -1409,38 +1409,89 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.category.dyedream_world_structures", "结构");
         add("pasterdream.seniors_dream.category.dyedream_world_structures.desc", "染梦维度中的结构。");
 
+        // 染梦世间-方块与物品
+        add("pasterdream.seniors_dream.entry.melt_dream_crystal_chest", "融梦水晶箱");
+        add("pasterdream.seniors_dream.entry.melt_dream_crystal_chest.page0", "在你探索这个梦境的各个结构时，经常会发现这种精致的小箱子，你只需要和它互动，箱子就会自行开启。你也会注意到，打开前箱子会震动，而且震动的次数越多，开出来的战利品越好，或许你应该想办法让自己更幸运再来开一开箱子。$(br2)据说梦中有一种特殊的工具，可以凝聚来自你身上的染梦力量，为打开的融梦水晶箱重新填满宝藏……");
+        add("pasterdream.seniors_dream.entry.melt_dream_crystal_chest.page1", "——幸运的是，融梦水晶箱不会变成宝箱怪，也不会有传送陷阱，放心开吧。");
+
+        add("pasterdream.seniors_dream.entry.melt_dream_crystal_fragment", "融梦水晶碎片");
+        add("pasterdream.seniors_dream.entry.melt_dream_crystal_fragment.page0", "凝聚了巨大梦境力量的水晶散落于梦境各地，比如染梦世界树，逐梦列车中。当然，某些箱子里偶尔也能发现这种碎片。$(br2)这种碎片不仅可以镶嵌在染梦合金的工具上，将后者强化为融梦工具，而且可以放置下来，变成一个水晶簇状的小实体。或许，你需要用它来触及梦境中无比深沉的黑暗……");
+        add("pasterdream.seniors_dream.entry.melt_dream_crystal_fragment.page1", "——蕴含着巨大能量的水晶碎片，似乎可以用它来更好地利用梦境的力量，或者……");
+
+        add("pasterdream.seniors_dream.entry.qym_doll", "娇小琴雨梦玩偶");
+        add("pasterdream.seniors_dream.entry.qym_doll.page0", "有时你打开融梦水晶箱时，会发现这么一种软乎乎的玩偶，它参照着那位最早的寻梦少女的形象而设计出来，极其可爱的外观让你能在这个玩偶周围感到轻松，可以有效缓解你的精神压力。$(br2)当然，你也可以和玩偶互动(rua)，每一次互动之后，你的精神压力都会减少一点。");
+        add("pasterdream.seniors_dream.entry.qym_doll.page1", "——这是什么，这是琴雨梦，可爱捏，rua一下。");
+
+        add("pasterdream.seniors_dream.entry.galaxy_jelly", "星河果冻");
+        add("pasterdream.seniors_dream.entry.galaxy_jelly.page0", "这种奇怪的小果冻会在被你食用之后让你“嗖”地一下飞起来，当然，你不用担心会摔死，它会给予你缓降效果，能保证你安全落地，总而言之，这是一个探索梦境，翻山越岭的家庭必备好帮手。$(br2)注意：严禁连续食用，否则有摔死的风险。");
+        add("pasterdream.seniors_dream.entry.galaxy_jelly.page1", "——仰望天空，不禁让人感叹星河广阔神秘。我虽不是嫦娥可以一步登天，但我愿意成为万户，行走在追逐星河的路上。");
+
+        add("pasterdream.seniors_dream.entry.life_crystal", "生命水晶");
+        add("pasterdream.seniors_dream.entry.life_crystal.page0", "当你进入逐梦列车和生命水晶洞窟中，也许会注意到这种心形的水晶，和它互动可以增加你的生命上限，不过可惜的是，你只能使用它一次，好消息是，这种水晶可以挖掘后带走，当你之后再发现这种水晶后或许可以考虑一下把它拿回去做装饰品。不过，生命水晶的效果似乎会随着你的死亡而流失……");
+        add("pasterdream.seniors_dream.entry.life_crystal.page1", "——Heart Breaker");
+
+        add("pasterdream.seniors_dream.entry.machine_light_wing", "机械光翼");
+        add("pasterdream.seniors_dream.entry.machine_light_wing.page0", "当你好奇地装上这双从融梦水晶箱中获得的翅膀时，它会立刻吸收你的融梦能量并让你浮空，而且它会不断让你维持飞行状态。除非你的能量耗尽或者是摘下它，否则它可不会让你安稳地踩在地面上。$(br2)虽说大家都想要一双飞行的翅膀，但是这对光翼的能量消耗速度实在太快，还是必要时再使用吧。");
+        add("pasterdream.seniors_dream.entry.machine_light_wing.page1", "——三叶草：你双脚离地了，对吧？");
+
+        add("pasterdream.seniors_dream.entry.qym_armor_set", "琴雨梦套装");
+        add("pasterdream.seniors_dream.entry.qym_armor_set.page0", "这些是过去曾经属于那位追寻梦幻的少女的随身物品，穿戴上这些衣物时，一股梦幻般的感觉游走在你的身体内，你或许可以永远保持清醒，或许会获得无穷无尽的染梦能量，或许可以自由自在地在天空飞翔。");
+        add("pasterdream.seniors_dream.entry.qym_armor_set.page1", "而你穿上全部套装后，还会在梦境中自行闪避所有针对你的攻击，不过，如果你以凡人之躯行于大地的话，是没有办法获得这位前辈寻梦者的随身物品的，你或许需要足以创造万物的神明之力……$(br2)——最初的寻梦少女沉眠于长虹中，静待后来的入梦之人探寻未知。");
+
+        add("pasterdream.seniors_dream.entry.pale_boneneedle", "苍白骨针");
+        add("pasterdream.seniors_dream.entry.pale_boneneedle.page0", "你在雪山上发现的苍白雪莲具有强烈的香气，这种香气具有明显的提神效果，已经成为寻梦者，曾经在梦中迷失的你想到一个妙计，将苍白雪莲的花冠和骨质针具绑在一起，剧烈的疼痛和香气的刺激想必能让你迅速清醒，离开梦境。$(br2)而如果把来自末地的珍珠和古城的回响融入到苍白骨针中，也许会有奇效……");
+        add("pasterdream.seniors_dream.entry.pale_boneneedle.page1", "——无论梦幻是洁净的染梦还是深邃的阴影，梦醒之时，我们将会重逢。");
+
         // 染梦教堂
         add("pasterdream.seniors_dream.entry.dyedream_church", "染梦教堂");
-        add("pasterdream.seniors_dream.entry.dyedream_church.page0", "当你在染梦世界探索时，有可能会发现这种漂浮在天空中的神秘教堂，你可以在这个教堂内发现一个融梦水晶箱，讲经台上还有来自寻梦者前辈们的随记，或许你应该仔细检查一下教堂内部的边边角角，说不定能有意外之喜……");
-        add("pasterdream.seniors_dream.entry.dyedream_church.page1", "——这些教堂出自何人之手，他们信奉何种宗教，有待后来的寻梦者找到答案……");
+        add("pasterdream.seniors_dream.entry.dyedream_church.page1", "当你在染梦世界探索时，有可能会发现这种漂浮在天空中的神秘教堂，你可以在这个教堂内发现一个融梦水晶箱，讲经台上还有来自寻梦者前辈们的随记，或许你应该仔细检查一下教堂内部的边边角角，说不定能有意外之喜……");
+        add("pasterdream.seniors_dream.entry.dyedream_church.page2", "——这些教堂出自何人之手，他们信奉何种宗教，有待后来的寻梦者找到答案……");
 
         // 逐梦列车
         add("pasterdream.seniors_dream.entry.dream_train", "逐梦列车");
-        add("pasterdream.seniors_dream.entry.dream_train.page0", "在梦境中，有时你会听到列车的呼啸声，那便是逐梦列车，当你听见列车的声音时，脑海中会自然而然地闪过列车的大概方位，你可以登上这列梦幻的列车，探索它隐藏的奥秘……$(br2)如果条件允许的话，或许应该从头到尾完全探索一下列车？");
-        add("pasterdream.seniors_dream.entry.dream_train.page1", "——追逐着梦幻的列车汽笛响彻地平，我们的旅途也将继续。");
+        add("pasterdream.seniors_dream.entry.dream_train.page1", "在梦境中，有时你会听到列车的呼啸声，那便是逐梦列车，当你听见列车的声音时，脑海中会自然而然地闪过列车的大概方位，你可以登上这列梦幻的列车，探索它隐藏的奥秘……$(br2)如果条件允许的话，或许应该从头到尾完全探索一下列车？");
+        add("pasterdream.seniors_dream.entry.dream_train.page2", "——追逐着梦幻的列车汽笛响彻地平，我们的旅途也将继续。");
 
         // 染梦世界树
         add("pasterdream.seniors_dream.entry.dyedream_worldtree", "染梦世界树");
-        add("pasterdream.seniors_dream.entry.dyedream_worldtree.page0", "在染梦世界的平原，长着这样一种参天大树，这里是融梦能量最为密集的区域，可以见到大量的融梦水晶箱，传说世界树的种荚有着奇妙的效果，你或许应该大胆地探索，无需拘泥于小节，这样说不定可以探索到更多的隐秘……$(br2)传说在最初曾有一真一假两种世界树，不过现在仅仅剩下真世界树了，当你找不到世界树时，或许可以想一想最初的那位创造梦境之人……");
-        add("pasterdream.seniors_dream.entry.dyedream_worldtree.page1", "——连通天地的世界树，支撑着整个梦境的美好。");
+        add("pasterdream.seniors_dream.entry.dyedream_worldtree.page1", "在染梦世界的平原，长着这样一种参天大树，这里是融梦能量最为密集的区域，可以见到大量的融梦水晶箱，传说世界树的种荚有着奇妙的效果，你或许应该大胆地探索，无需拘泥于小节，这样说不定可以探索到更多的隐秘……$(br2)传说在最初曾有一真一假两种世界树，不过现在仅仅剩下真世界树了，当你找不到世界树时，或许可以想一想最初的那位创造梦境之人……");
+        add("pasterdream.seniors_dream.entry.dyedream_worldtree.page2", "——连通天地的世界树，支撑着整个梦境的美好。");
 
         // 花园解密-迷梦冶梦莲
         add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus", "花园解密-迷梦冶梦莲");
-        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page0", "你可以在染梦平原发现这种奇怪的遗迹，顶上种有一种名为「冶梦莲」的美丽花朵，在花朵下方有着来自最早的寻梦者的提示，你或许应该根据她的提示来寻找对应的植物……");
-        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page1", "或许应该从琴雨梦的提示中的铃、云、流明和小伞来寻找答案？");
-        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page2", "解开谜题后获得的花朵似乎可以用于前往风的梦境，也可以去寻找传说中的神狐……");
+        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page1", "你可以在染梦平原发现这种奇怪的遗迹，顶上种有一种名为「冶梦莲」的美丽花朵，在花朵下方有着来自最早的寻梦者的提示，你或许应该根据她的提示来寻找对应的植物……");
+        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page2", "或许应该从琴雨梦的提示中的铃、云、流明和小伞来寻找答案？");
+        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page3", "解开谜题后获得的花朵似乎可以用于前往风的梦境，也可以去寻找传说中的神狐……");
 
         // 花园解密-凛冽雪绒花
         add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss", "花园解密-凛冽雪绒花");
-        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page0", "在染梦世界的雪原，你可能会发现这种奇特的结构，在下方的书桌上，你会找到来自最初那位寻梦者的笔记，你需要根据她的提示来找到对应的植物和生物。");
-        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page1", "似乎需要从梦染、灯、奇异几个字入手，去找找看吧。");
-        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page2", "解开谜题后获得的花朵似乎有着奇特的低温触感……");
+        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page1", "在染梦世界的雪原，你可能会发现这种奇特的结构，在下方的书桌上，你会找到来自最初那位寻梦者的笔记，你需要根据她的提示来找到对应的植物和生物。");
+        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page2", "似乎需要从梦染、灯、奇异几个字入手，去找找看吧。");
+        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page3", "解开谜题后获得的花朵似乎有着奇特的低温触感……");
 
         // 花园解密-九尾狐
         add("pasterdream.seniors_dream.entry.garden_golden_fox", "花园解密-九尾狐");
-        add("pasterdream.seniors_dream.entry.garden_golden_fox.page0", "在梦境中，有时你会看见这种有着狐狸样子的雕像的遗迹，上方的寻梦者永恒书卷中有着琴雨梦给予的提示，或许需要一种奇特的莲花，也许你应该先去看看其他的花园解密……");
-        add("pasterdream.seniors_dream.entry.garden_golden_fox.page1", "当你唤醒九尾狐后，她会满足你一个愿望，至于满足愿望的方法，那位少女也在书中一并告诉你了……");
-        add("pasterdream.seniors_dream.entry.garden_golden_fox.page2", "——那奇妙的神狐，她将满足你的愿望，或是给予你御邪的护符。");
+        add("pasterdream.seniors_dream.entry.garden_golden_fox.page1", "在梦境中，有时你会看见这种有着狐狸样子的雕像的遗迹，上方的寻梦者永恒书卷中有着琴雨梦给予的提示，或许需要一种奇特的莲花，也许你应该先去看看其他的花园解密……");
+        add("pasterdream.seniors_dream.entry.garden_golden_fox.page2", "当你唤醒九尾狐后，她会满足你一个愿望，至于满足愿望的方法，那位少女也在书中一并告诉你了……");
+        add("pasterdream.seniors_dream.entry.garden_golden_fox.page3", "——那奇妙的神狐，她将满足你的愿望，或是给予你御邪的护符。");
+
+        // 染梦实验室
+        add("pasterdream.seniors_dream.entry.dream_lab", "染梦实验室");
+        add("pasterdream.seniors_dream.entry.dream_lab.page1", "在染梦的平原，你会发现这种前辈的遗迹，外观上看并不起眼，可是内部别有洞天……");
+        add("pasterdream.seniors_dream.entry.dream_lab.page3", "看起来，这似乎是前辈寻梦者进行某种实验所做出的尝试，那名为蓄梦池的装置似乎是前辈们尝试的最终结果，至于他们为什么离开，就不得而知了……");
+        add("pasterdream.seniors_dream.entry.dream_lab.page4", "——这里是寻梦者们驾驭梦境力量的尝试，是探寻梦境真实的一大步……");
+
+        // 融梦涌泉井
+        add("pasterdream.seniors_dream.entry.melt_dream_well", "融梦涌泉井");
+        add("pasterdream.seniors_dream.entry.melt_dream_well.page1", "在染梦世界的平原，有时会分布着这样一种水井，或许你应该纵身一跃，亲自到井底一探究竟……");
+        add("pasterdream.seniors_dream.entry.melt_dream_well.page3", "在这种奇妙的水井中，流淌的并非一般的清水，而是一种一直在变幻色彩的神秘液体，这种液体充斥着融梦能量，你可以尝试着效仿前辈寻梦者，找到一种可以利用它的办法……");
+        add("pasterdream.seniors_dream.entry.melt_dream_well.page4", "井内的一些小角落还有可能会有一些箱子，积极地寻找一下吧。");
+        add("pasterdream.seniors_dream.entry.melt_dream_well.page5", "——井下静静地闪耀着流光，照耀着地下的生灵。");
+
+        // 染梦小客栈
+        add("pasterdream.seniors_dream.entry.dyedream_inn", "染梦小客栈");
+        add("pasterdream.seniors_dream.entry.dyedream_inn.page1", "染梦世界存在着这种小客栈，它不知出自何人之手，却能为疲惫的梦境旅行者们提供歇脚的地方。");
+        add("pasterdream.seniors_dream.entry.dyedream_inn.page2", "上层的箱子里似乎还有前辈们留下来的物品，你当然可以拿它们为你的探索做些补给。下层不仅有丰富的矿石，那书卷中还记载着两位前辈寻梦者那比肩神话的尝试……");
 
         // 剧情
         add("pasterdream.seniors_dream.category.story", "剧情");

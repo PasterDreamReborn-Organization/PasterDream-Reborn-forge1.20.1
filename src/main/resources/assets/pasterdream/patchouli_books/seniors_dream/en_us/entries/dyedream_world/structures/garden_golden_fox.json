@@ -5,10 +5,6 @@
   "category": "pasterdream:dyedream_world/structures",
   "pages": [
     {
-      "type": "patchouli:text",
-      "text": "pasterdream.seniors_dream.entry.garden_golden_fox.page0"
-    },
-    {
       "type": "patchouli:image",
       "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/garden_golden_fox.png"],
       "text": ""
@@ -20,6 +16,10 @@
     {
       "type": "patchouli:text",
       "text": "pasterdream.seniors_dream.entry.garden_golden_fox.page2"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.garden_golden_fox.page3"
     }
   ]
 }
