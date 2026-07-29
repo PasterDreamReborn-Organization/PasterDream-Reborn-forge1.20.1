@@ -87,6 +87,25 @@ public class TerraswordWaveEntity extends PathfinderMob {
     }
 
     @Override
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
+    public boolean isPickable() {
+        return false;
+    }
+
+    @Override
+    public boolean canBeCollidedWith() {
+        return false;
+    }
+
+    @Override
+    protected void pushEntities() {
+    }
+
+    @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         if (compound.hasUUID("Owner")) {

@@ -632,7 +632,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.kusanagi.evolve", "武器成长到了新的阶段");
         add("tooltip.pasterdreammod.murakumo_kusanagi.1", "镶嵌：§7%d亡魂");
         add("tooltip.pasterdreammod.murakumo_kusanagi.2", "战技：§b极致锋利");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.3", "§7▪ §9首次攻击目标时触发");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.3", "§7▪ §9右键激活后下一次攻击触发");
         add("tooltip.pasterdreammod.murakumo_kusanagi.4", "§7▪ §9攻击造成7+武器锋利等级*武器基础面板/2点伤害");
         add("tooltip.pasterdreammod.murakumo_kusanagi.5", "§7▪ §9冷却时间：4秒");
         add("tooltip.pasterdreammod.murakumo_kusanagi.6", "被动：");
@@ -1107,6 +1107,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.terra_blade.skill_on", "§a剑气状态：开启");
         add("tooltip.pasterdream.terra_blade.skill_off", "§7剑气状态：关闭");
         add("tooltip.pasterdream.terra_blade.no_energy", "融梦能量不足，剑气状态已关闭");
+        add("entity.pasterdream.terrasword_wave", "泰拉剑气");
 
         // 泰拉浮岛模型
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "泰拉浮岛模型");
