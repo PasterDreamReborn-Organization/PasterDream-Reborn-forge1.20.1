@@ -5,22 +5,35 @@ import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -236,7 +249,10 @@ public class ProphecyCardItem extends Item {
         }
         switch (type) {
             case TYPE_BALANCE-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.balance.description"));
-            case TYPE_CHAOS-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.chaos.description"));
+            case TYPE_CHAOS-> {
+                tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.chaos.description.1"));
+                tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.chaos.description.2"));
+            }
             case TYPE_CONFLICT-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.conflict.description"));
             case TYPE_GRAVEYARD-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.graveyard.description"));
             case TYPE_GUARD-> {
@@ -244,7 +260,12 @@ public class ProphecyCardItem extends Item {
                 tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.guard.description.2",(Config.healthpercentguardneed*100),(Config.resistdamage*100)).withStyle(ChatFormatting.BLUE));
             }
             case TYPE_HOLY_GRAIL-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.holy_grail.description"));
-            case TYPE_SIN-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.sin.description"));
+            case TYPE_SIN-> {
+                tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.sin.description.1"));
+                tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.sin.description.2"));
+                tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.sin.description.3"));
+                tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.sin.description.4"));
+            }
             case TYPE_SPRINT-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.sprint.description"));
             case TYPE_WIELDING_SWORD-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.wielding_sword.description"));
             default->{
@@ -308,6 +329,7 @@ public class ProphecyCardItem extends Item {
                 case TYPE_GUARD    -> guardEffect();
                 case TYPE_SPRINT   -> sprintEffect();
                 case TYPE_HOLY_GRAIL   -> holygrailEffect();
+                case TYPE_SIN -> sinEffect();
                 // 未匹配的不注册效果（右键空挥）
                 default -> null;
             });
@@ -371,8 +393,31 @@ public class ProphecyCardItem extends Item {
 
     private static ProphecyCardEffect chaosEffect() {
         return (level, player, hand, stack) -> {
-            // TODO: 混沌卡效果
-            return InteractionResultHolder.success(stack);
+            if (!level.isClientSide()) {
+                // 以自身为中心，7x7 范围
+                Vec3 center = player.position();
+                AABB area = AABB.ofSize(center, 7, 7, 7);
+
+                // 获取范围内所有生物（排除玩家自身及其他玩家）
+                List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, area,
+                        e -> e != player && !(e instanceof Player));
+
+                // 对每个敌人施加混乱效果，持续 10 秒（200 ticks）
+                for (LivingEntity target : entities) {
+                    target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 10 * 20, 0));
+                }
+
+                // 音效
+                level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        ModSounds.EVASION.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                // 消耗
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+            } else {
+                showTotemEffect(stack);
+            }
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
         };
     }
 
@@ -381,6 +426,107 @@ public class ProphecyCardItem extends Item {
             // TODO: 纷争卡效果
             return InteractionResultHolder.success(stack);
         };
+    }
+
+    private static ProphecyCardEffect sinEffect() {
+        return (level, player, hand, stack) -> {
+            if (!level.isClientSide()) {
+                // 以自身为中心，19x19 范围
+                Vec3 center = player.position();
+                AABB area = AABB.ofSize(center, 19, 19, 19);
+
+                ServerLevel serverLevel = (ServerLevel) level;
+
+                // 获取范围内所有生物（排除自身）
+                List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, area,
+                        e -> e != player);
+
+                // 归属于玩家的火焰伤害源（亡灵/灾厄村民用）
+                DamageSource fireSource = new DamageSource(
+                        level.registryAccess()
+                                .registryOrThrow(Registries.DAMAGE_TYPE)
+                                .getHolderOrThrow(DamageTypes.IN_FIRE),
+                        player);
+                // 归属于玩家的通用伤害源（秒杀用，不会被火焰免疫拦截）
+                DamageSource genericSource = new DamageSource(
+                        level.registryAccess()
+                                .registryOrThrow(Registries.DAMAGE_TYPE)
+                                .getHolderOrThrow(DamageTypes.GENERIC),
+                        player);
+
+                for (LivingEntity target : entities) {
+                    if (Config.isSinInstakillTarget(target.getType())) {
+                        // 配置列表中指定的实体：直接秒杀（通用伤害，免疫无效）
+                        target.hurt(genericSource, target.getMaxHealth() * 2);
+                    } else if (target instanceof ZombieVillager zombieVillager) {
+                        // 僵尸村民：转化为普通村民，不受伤害（含小僵尸村民）
+                        convertZombieVillager(serverLevel, zombieVillager);
+                    } else if (target instanceof Zombie zombie && zombie.isBaby()) {
+                        // 小僵尸（非僵尸村民）：直接秒杀（通用伤害，免疫无效）
+                        zombie.hurt(genericSource, zombie.getMaxHealth() * 2);
+                    } else if (target.getMobType() == MobType.UNDEAD
+                            || target instanceof Pillager
+                            || target instanceof Vindicator
+                            || target instanceof Evoker
+                            || target instanceof Ravager) {
+                        // 亡灵生物和灾厄村民：引燃 15 秒 + 25 点火焰伤害
+                        target.setSecondsOnFire(15);
+                        target.hurt(fireSource, 25);
+                    }
+                }
+
+                // 音效
+                level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        ModSounds.EVASION.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                // 消耗
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+            } else {
+                showTotemEffect(stack);
+            }
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+        };
+    }
+
+    /**
+     * 将僵尸村民立即转化为普通村民，保留原交易项目。
+     * 若僵尸村民是由村民被感染而来，其 NBT 中会保存原村民的交易/职业数据，
+     * 此处将其提取并恢复到新生成的村民上。
+     */
+    private static void convertZombieVillager(ServerLevel serverLevel, ZombieVillager zombieVillager) {
+        double x = zombieVillager.getX();
+        double y = zombieVillager.getY();
+        double z = zombieVillager.getZ();
+        float yRot = zombieVillager.getYRot();
+        float xRot = zombieVillager.getXRot();
+
+        // 保存僵尸村民完整 NBT（含被感染前的村民交易/职业数据）
+        CompoundTag zombieData = zombieVillager.serializeNBT();
+        zombieVillager.discard();
+
+        Entity entity = EntityType.VILLAGER.spawn(serverLevel,
+                BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
+        if (entity != null) {
+            // 获取新村民当前 NBT，并覆盖村民相关的键
+            CompoundTag villagerData = entity.serializeNBT();
+            if (zombieData.contains("Offers")) {
+                villagerData.put("Offers", zombieData.get("Offers"));
+            }
+            if (zombieData.contains("VillagerData")) {
+                villagerData.put("VillagerData", zombieData.get("VillagerData"));
+            }
+            if (zombieData.contains("Gossips")) {
+                villagerData.put("Gossips", zombieData.get("Gossips"));
+            }
+            if (zombieData.contains("Xp")) {
+                villagerData.putInt("Xp", zombieData.getInt("Xp"));
+            }
+
+            entity.deserializeNBT(villagerData);
+            entity.setYRot(yRot);
+            entity.setXRot(xRot);
+        }
     }
 
     private static ProphecyCardEffect guardEffect() {
