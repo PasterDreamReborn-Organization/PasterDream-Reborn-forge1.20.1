@@ -118,6 +118,31 @@ public class Config
             .comment("玩家首次加入世界时是否发放帕秋莉宝典（需要安装帕秋莉模组才生效），默认 true")
             .define("givePatchouliBookOnFirstJoin", true);
 
+    // === SAN 阈值（ratio = 当前SAN / 最大SAN） ===
+    private static final ForgeConfigSpec.DoubleValue SAN_CHEER_UP_THRESHOLD = BUILDER
+            .comment("振奋效果触发阈值（ratio >= 该值），默认 0.9（90%）")
+            .defineInRange("sanCheerUpThreshold", 0.9, 0.0, 1.0);
+
+    private static final ForgeConfigSpec.DoubleValue SAN_LETHARGY_UPPER_THRESHOLD = BUILDER
+            .comment("不振效果上界（ratio < 该值且 >= 下界时触发），默认 0.6（60%）")
+            .defineInRange("sanLethargyUpperThreshold", 0.6, 0.0, 1.0);
+
+    private static final ForgeConfigSpec.DoubleValue SAN_LETHARGY_LOWER_THRESHOLD = BUILDER
+            .comment("不振效果下界 / 恍惚效果上界，默认 0.4（40%）")
+            .defineInRange("sanLethargyLowerThreshold", 0.4, 0.0, 1.0);
+
+    private static final ForgeConfigSpec.DoubleValue SAN_TRANCE_LOWER_THRESHOLD = BUILDER
+            .comment("恍惚效果下界 / 疯狂效果上界，默认 0.2（20%）")
+            .defineInRange("sanTranceLowerThreshold", 0.2, 0.0, 1.0);
+
+    private static final ForgeConfigSpec.DoubleValue SAN_INSAND_LV2_THRESHOLD = BUILDER
+            .comment("疯狂 II 触发阈值（ratio < 该值时升级为 Lv2），默认 0.1（10%）")
+            .defineInRange("sanInsandLv2Threshold", 0.1, 0.0, 1.0);
+
+    private static final ForgeConfigSpec.DoubleValue SAN_INSAND_LV3_THRESHOLD = BUILDER
+            .comment("疯狂 III 触发阈值（ratio < 该值时升级为 Lv3），默认 0.01（1%）")
+            .defineInRange("sanInsandLv3Threshold", 0.01, 0.0, 1.0);
+
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
@@ -136,6 +161,14 @@ public class Config
 
     // === 雪绒花转化 ===
     public static boolean destroyDeskOnEdelweissConversion;
+
+    // === SAN 阈值 ===
+    public static double sanCheerUpThreshold;
+    public static double sanLethargyUpperThreshold;
+    public static double sanLethargyLowerThreshold;
+    public static double sanTranceLowerThreshold;
+    public static double sanInsandLv2Threshold;
+    public static double sanInsandLv3Threshold;
 
     // === 低 San 效果开关（可通过 /pasterdreamdebug lowsan 指令运行时切换） ===
     public static boolean lowSanOverlay = true;
@@ -211,6 +244,12 @@ public class Config
         resistdamage= RESIST_DAMAGE.get();
         givePatchouliBookOnFirstJoin = GIVE_PATCHOULI_BOOK_ON_FIRST_JOIN.get();
         graveyarddamage = GRAVEYARD_DAMAGE.get();
+        sanCheerUpThreshold = SAN_CHEER_UP_THRESHOLD.get();
+        sanLethargyUpperThreshold = SAN_LETHARGY_UPPER_THRESHOLD.get();
+        sanLethargyLowerThreshold = SAN_LETHARGY_LOWER_THRESHOLD.get();
+        sanTranceLowerThreshold = SAN_TRANCE_LOWER_THRESHOLD.get();
+        sanInsandLv2Threshold = SAN_INSAND_LV2_THRESHOLD.get();
+        sanInsandLv3Threshold = SAN_INSAND_LV3_THRESHOLD.get();
 
         rebuildSinInstakillCache();
     }
