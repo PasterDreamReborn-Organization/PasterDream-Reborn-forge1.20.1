@@ -1081,6 +1081,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.guard_buff", "守护");
         add("effect.pasterdream.rapid_reaction_buff", "高速反射");
         add("effect.pasterdream.holy_grail_buff", "圣杯");
+        add("effect.pasterdream.flare_up_buff", "怒气爆发");
         add("attribute.pasterdream.blink_cd", "瞬身术冷却");
         add("attribute.pasterdream.blink_consume", "瞬身术消耗");
         add("attribute.pasterdream.blink_range", "瞬身术距离");
@@ -1642,7 +1643,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.prophecy_card.balance", "预言卡-平衡");
         add("item.pasterdream.prophecy_card.chaos", "预言卡-混乱");
         add("item.pasterdream.prophecy_card.conflict", "预言卡-对立");
-        add("item.pasterdream.prophecy_card.graveyard", "预言卡-墓地");
+        add("item.pasterdream.prophecy_card.graveyard", "预言卡-墓园");
         add("item.pasterdream.prophecy_card.guard", "预言卡-守护");
         add("item.pasterdream.prophecy_card.holy_grail", "预言卡-圣杯");
         add("item.pasterdream.prophecy_card.sin", "预言卡-罪恶");
@@ -1669,7 +1670,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.prophecy_card.balance.description", "§9使用卡牌时，当前自身拥有的部分药水效果的等级翻倍，但持续时间缩短至一半。");
         add("tooltip.pasterdream.prophecy_card.chaos.description", "§9使用卡牌时，对以自身为中心，7*7范围内的所有敌人陷入混乱并失去行动能力，持续10秒。（此效果不对玩家生效）");
         add("tooltip.pasterdream.prophecy_card.conflict.description", "§9重做中……");
-        add("tooltip.pasterdream.prophecy_card.graveyard.description", "§9使用卡牌时，对以自身为中心，5*5范围内的所有敌人造成100点魔法伤害。（此效果不对玩家生效）");
+        add("tooltip.pasterdream.prophecy_card.graveyard.description", "§9使用卡牌时，对以自身为中心，7*7范围内的所有敌人造成%.1f点伤害，该伤害不被减伤所降低。（此效果不对玩家生效）");
         add("tooltip.pasterdream.prophecy_card.sprint.description", "§9使用卡牌时，获得速度III、跳跃提升II、高速反射效果，持续120秒。效果持续期间增加上坡高度，-30%瞬身术冷却并免疫摔落伤害。");
         add("tooltip.pasterdream.prophecy_card.guard.description.1", "§9使用卡牌时，获得120秒伤害吸收III和60秒守护效果。");
         add("tooltip.pasterdream.prophecy_card.guard.description.2", "§9玩家若受到的任何超过其最大生命值%.1f%%的伤害，超出的部分都会减少%.1f%%。这种减伤是在护甲的减伤作用之前应用的。");
@@ -1678,8 +1679,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.prophecy_card.chaos.description.2", "§7§O --THE TRUE AND NEO CHAOS");
         add("tooltip.pasterdream.prophecy_card.sin.description.1", "§9使用卡牌时，对以自身为中心，引燃19*19范围内的所有亡灵生物和灾厄村民15秒并造成25点火焰伤害。");
         add("tooltip.pasterdream.prophecy_card.sin.description.2", "§9如果此实体为僵尸村民，则不会受到伤害且转化为村民。");
-        add("tooltip.pasterdream.prophecy_card.sin.description.3", "§9对于那些极为烦人的生物，则直接秒杀，至于什么是极为烦人的生物，相信预言卡的判断。");
+        add("tooltip.pasterdream.prophecy_card.sin.description.3", "§9对于那些极为烦人的生物，则直接抹杀，至于什么是极为烦人的生物，相信预言卡的判断。");
         add("tooltip.pasterdream.prophecy_card.sin.description.4", "§5§O --直面汝罪");
+        add("tooltip.pasterdream.prophecy_card.wielding_sword.description", "§9使用卡牌时，获得怒气爆发效果，持续120秒。效果期间，攻击力+3，攻击速度+0.2，战技伤害倍率+30%，技能冷却-20%。");
+
 
         add("tooltip.pasterdream.prophecy_card.unknown.description.1", "§9你是怎么获得这张卡的？");
         add("tooltip.pasterdream.prophecy_card.unknown.description.2", "§9请把你做了什么发送到github或者mcmod方便我们定位问题，而不是只发送这张错误的截图");
