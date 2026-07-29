@@ -86,7 +86,7 @@ public class CurioPassiveHandler {
 
         // 塞西莉娅的加护：拦截致命伤害
         if (!(event.getEntity() instanceof Player player)) return;
-        if (player.getHealth() - event.getAmount() > 0.0F) return; // 非致命伤害
+        if (player.getHealth() + player.getAbsorptionAmount() - event.getAmount() > 0.0F) return; // 非致命伤害
 
         boolean hasCharm = CuriosApi.getCuriosInventory(player)
                 .map(h -> h.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).isPresent())
