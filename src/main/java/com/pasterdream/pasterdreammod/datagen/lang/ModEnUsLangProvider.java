@@ -564,6 +564,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("effect.pasterdream.sculk_armor_buff", "Sculk Echo");
         add("effect.pasterdream.dyedream_armor_buff", "Dyedream Protection");
+        add("effect.pasterdream.titanium_armor_buff", "Titanium Protection");
         add("effect.pasterdream.dyedream_up_buff", "Dyedream Tool Boost");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9Enables flight");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4Melt Dream Energy Cost: 1.2/min");
@@ -572,6 +573,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.forsakens_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
         add("tooltip.pasterdream.forsakens_wing.immune", "§7▪ §9Grants slow and wither immunity");
         add("tooltip.pasterdream.forsakens_wing.flavor", "§7§o-- See you at the Nexus");
+        add("tooltip.pasterdreammod.titanium_armor.1", "§7Set Bonus: §eTitanium Protection");
+        add("tooltip.pasterdreammod.titanium_armor.2", "§7▪ §9Gain 2 Absorption hearts every 30s");
         add("tooltip.pasterdreammod.sculk_armor.1", "§7Set Bonus: §2Sculk Echo");
         add("tooltip.pasterdreammod.sculk_armor.2", "§7▪ §9Max Health +4");
         add("tooltip.pasterdreammod.sculk_armor.3", "§7▪ §9Enhanced when below Y=0");
@@ -604,7 +607,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §bMelt-Repair: 0.01E/1 Durability");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7Set Bonus: §dDyedream Protection");
         add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9Max Health +4");
-        add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9Gain 2 Absorption hearts every 30s");
+        add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9Gain 4 Absorption hearts every 30s");
         add("tooltip.pasterdreammod.dyedream_armor.4", "§7▪ §9Enhances wielded Dyedream tools");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.1", "Inlaid: §dMelt Dream Crystal Fragment");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.2", "Combat Art: §bSora-giri");
@@ -1035,6 +1038,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.galaxy_jelly.description", "Get the Galaxy Jelly, a jelly that can be found in the deep-sea treasures and chests in the dream, and it can make you soar to the clouds.");
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "Space Professional Voice Actor");
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "Eat the Galaxy Jelly at the building height limit... Kaz finally has company now...");
+        add("advancements.pasterdream.story.look_at_pink_sheep.title", "Do Block People Dream of Pink Sheep?");
+        add("advancements.pasterdream.story.look_at_pink_sheep.description", "Block people only dream of block sheep, of course.");
 
         // Advancements - Adventure Expansion
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.title", "The Forgotten Sword Tomb");
@@ -1185,7 +1190,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.snow_vow_buff.description", "During the effect period, grants 3 Luck, immunity to burn and freeze effects, provided by Snow Vow Head curios within range.");
         add("effect.pasterdream.goldenrod_tea_buff.description", "During the duration of the effect, it provides immunity to hunger and nausea.");
         add("effect.pasterdream.sculk_armor_buff.description", "Obtained when wearing the full Sculk set, increases maximum health, grants resistance buff when in the depths and removes darkness debuff while giving speed and resistance effects when affected by darkness debuff.");
-        add("effect.pasterdream.dyedream_armor_buff.description", "Obtained when wearing the full Dyedream Alloy set, increases maximum health and grants Absorption I every 30 seconds.");
+        add("effect.pasterdream.dyedream_armor_buff.description", "Obtained when wearing the full Dyedream Alloy set, increases maximum health and grants Absorption II every 30 seconds.");
+        add("effect.pasterdream.titanium_armor_buff.description", "Obtained when wearing the full Titanium set, grants Absorption I every 30 seconds.");
         add("effect.pasterdream.dyedream_up_buff.description", "Obtained when wearing the full Dyedream Alloy set, deals 50% more damage when holding Dyedream (Dyedream Alloy and Melt Dream Crystal) tools.");
         add("effect.pasterdream.dream_wish_buff.description", "Drink the dream fruit juice to get it, and having this effect lets you enter the Dyedream World when you sleep at night.");
         add("effect.pasterdream.dyedream_perfume_buff.description", "Obtained by drinking the Dyedream Perfume, Phantom don't attack you for the duration of its effect.");

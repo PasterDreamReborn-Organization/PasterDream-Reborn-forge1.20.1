@@ -9,6 +9,7 @@ import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.Items;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -132,6 +133,21 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .addCriterion("first_enter_dyedream", new ImpossibleTrigger.TriggerInstance())
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/dyedream_world"), existingFileHelper);
+
+            // ========== 染梦世界子进度：方块人会梦见粉红羊吗 ==========
+            Advancement.Builder.advancement()
+                    .parent(dyedreamWorld)
+                    .display(
+                            Items.PINK_WOOL,
+                            Component.translatable("advancements.pasterdream.story.look_at_pink_sheep.title"),
+                            Component.translatable("advancements.pasterdream.story.look_at_pink_sheep.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, false
+                    )
+                    .addCriterion("look_at_pink_sheep", LookAtPinkSheepTrigger.TriggerInstance.look())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/look_at_pink_sheep"), existingFileHelper);
 
             // ========== 染梦世界子进度：不可食用果冻 ==========
             Advancement.Builder.advancement()

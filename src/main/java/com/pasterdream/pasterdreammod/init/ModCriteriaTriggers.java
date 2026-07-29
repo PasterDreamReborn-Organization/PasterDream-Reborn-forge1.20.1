@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundDesertFortressTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundTombTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDrawingTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
@@ -32,6 +33,9 @@ public class ModCriteriaTriggers {
     /** 在指定高度以上食用星河果冻 */
     public static final EatGalaxyJellyAtHeightTrigger EAT_GALAXY_JELLY_AT_HEIGHT = new EatGalaxyJellyAtHeightTrigger();
 
+    /** 在染梦维度准星指向粉色羊 */
+    public static final LookAtPinkSheepTrigger LOOK_AT_PINK_SHEEP = new LookAtPinkSheepTrigger();
+
     public static void init() {
         CriteriaTriggers.register(USE_BONE_NEEDLE);
         CriteriaTriggers.register(FOUND_TOMB);
@@ -39,5 +43,6 @@ public class ModCriteriaTriggers {
         CriteriaTriggers.register(READ_DREAM_NOTE);
         CriteriaTriggers.register(FOUND_DESERT_FORTRESS);
         CriteriaTriggers.register(EAT_GALAXY_JELLY_AT_HEIGHT);
+        CriteriaTriggers.register(LOOK_AT_PINK_SHEEP);
     }
 }

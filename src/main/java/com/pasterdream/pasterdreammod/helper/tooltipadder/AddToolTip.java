@@ -24,6 +24,11 @@ public class AddToolTip
         if(stack.is(ModItems.TITANIUM_UPGRADE.get()) || stack.is(ModItems.SCULK_UPGRADE.get()) || stack.is(ModItems.DYEDREAM_UPGRADE.get())){
             tooltip.add(Component.translatable("tooltip.pasterdreammod.upgrade_kit"));
         }
+        if(stack.is(ModItems.TITANIUM_HELMET.get()) || stack.is(ModItems.TITANIUM_CHESTPLATE.get())
+                || stack.is(ModItems.TITANIUM_LEGGINGS.get()) || stack.is(ModItems.TITANIUM_BOOTS.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.titanium_armor.1"));
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.titanium_armor.2"));
+        }
         if(stack.is(ModItems.SCULK_HELMET.get()) || stack.is(ModItems.SCULK_CHESTPLATE.get())
                 || stack.is(ModItems.SCULK_LEGGINGS.get()) || stack.is(ModItems.SCULK_BOOTS.get())){
             tooltip.add(Component.translatable("tooltip.pasterdreammod.sculk_armor.1"));
