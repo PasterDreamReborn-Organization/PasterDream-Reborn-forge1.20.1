@@ -7,8 +7,23 @@ import java.util.List;
 
 public class ModStructureConfig
 {
+    // ============================================================
+    // 关于 spacing / separation / salt 的说明：
+    //
+    // groupSetId == null 的独立结构（主世界结构、气泡）：
+    //   spacing/separation/salt 直接写入结构集 JSON，由该结构独占使用。
+    //
+    // groupSetId != null 的分组结构（染梦统一集、气泡集等）：
+    //   spacing/separation/salt 仅用于计算 structureSetWeight（权重），
+    //   参考公式：weight = round(258 / 原spacing)
+    //   实际生成间距由 ModStructureSetProvider 中的 GROUP_CONFIG 按组配置，
+    //   未配置的组使用 DEFAULT_SHARED_SPACING / DEFAULT_SHARED_SEPARATION。
+    //   各结构在共享集内通过权重竞争，spacing/separation 参数本身不生效。
+    // ============================================================
+    //
     // 统一结构集权重基准：dream_train 原 spacing=258 为最稀有结构，权重 1
     // 其余结构权重 = round(258 / 原spacing)
+    // structureSetWeight 为真实生成权重，直接写入结构集 JSON
 
     public static List<StructureGenerationConfig> getStructureConfig()
     {
@@ -40,11 +55,19 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_floating_temple",      "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 64, 48, 47912638, 4, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_tavern",       "pasterdream:can_dyedream_plains_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 16, 60483715, 8, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_campsite",     "pasterdream:can_dyedream_plains_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 28, 7, 92741583, 9, "dyedream_structures"));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_ecosystem_bubble", "pasterdream:can_ecosystem_bubble_spawn_biome", "surface_structures", "none", "very_biased_to_bottom", 19, 25, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 25, 6, 38472910, 10, "dyedream_structures", true));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:ecosystem_bubble",      "pasterdream:can_ecosystem_bubble_spawn_biome", "surface_structures", "none", "very_biased_to_bottom", 19, 25, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 24, 6, 75018364, 11, "dyedream_structures", true));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:pinkagaric_house",      "pasterdream:can_pinkagaric_house_spawn_biome", "surface_structures", "beard_thin", -3, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 26, 8, 18365492, 10, "dyedream_structures"));
 
+        // === 染梦世界冻洋气泡（独立结构集 pasterdream:dyedream_bubbles，仅冻洋上空生成，互不重叠） ===
+        // 生态气泡（代码生成 structure/template_pool）
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_ecosystem_bubble", "pasterdream:can_ecosystem_bubble_spawn_biome", "surface_structures", "none", "very_biased_to_bottom", 19, 25, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 25, 6, 38472910, 1, "dyedream_bubbles", true));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:ecosystem_bubble",      "pasterdream:can_ecosystem_bubble_spawn_biome", "surface_structures", "none", "very_biased_to_bottom", 19, 25, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 24, 6, 75018364, 1, "dyedream_bubbles", true));
+        // 大气泡（静态 structure/template_pool，三个不同高度层）
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:big_bubbles_0", "pasterdream:can_ecosystem_bubble_spawn_biome", "surface_structures", "none", "very_biased_to_bottom", 24, 40, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 8, 3, 5740443, 4, "dyedream_bubbles", false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:big_bubbles_1", "pasterdream:can_ecosystem_bubble_spawn_biome", "surface_structures", "none", "very_biased_to_bottom", 18, 32, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 7, 3, 6317566, 4, "dyedream_bubbles", false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:big_bubbles_2", "pasterdream:can_ecosystem_bubble_spawn_biome", "surface_structures", "none", "very_biased_to_bottom", 12, 24, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 8, 4, 6125192, 4, "dyedream_bubbles", false));
+
         // === 染梦世界手工结构（已有静态 structure/template_pool JSON，仅加入统一结构集） ===
+        // 注：此处 spacing/separation/salt 仅用于权重计算，实际间距由 SHARED_SPACING 统一控制
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_worldtree",    "pasterdream:dyedream_world_biome", "surface_structures", "beard_box",  0,   "WORLD_SURFACE_WG", 96, 2, false, "rigid", "minecraft:empty", 1, 156, 87,  1208134265, 2,  "dyedream_structures", false));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_laboratory",   "pasterdream:dyedream_world_biome", "surface_structures", "beard_thin", 0,   "WORLD_SURFACE_WG", 64, 2, false, "rigid", "minecraft:empty", 1, 37,  18,  946202329,  7,  "dyedream_structures", false));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dream_train",           "pasterdream:dyedream_world_biome", "surface_structures", "none",      145, "WORLD_SURFACE_WG", 16, 1, false, "rigid", "minecraft:empty", 1, 258, 179, 109243324,  1,  "dyedream_structures", false));

@@ -8,10 +8,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 public class ModStructureSetProvider implements DataProvider
@@ -19,10 +16,16 @@ public class ModStructureSetProvider implements DataProvider
     private final PackOutput output;
     private final List<StructureGenerationConfig> configs;
 
-    /** 统一结构集的网格间距（区块），世界每 SHARED_SPACING 区块尝试生成一个结构 */
-    private static final int SHARED_SPACING = 16;
-    /** 统一结构集中两个结构之间的最小距离（区块） */
-    private static final int SHARED_SEPARATION = 6;
+    /** 默认统一结构集网格间距（区块），未在 GROUP_CONFIG 中配置的组使用此值 */
+    private static final int DEFAULT_SHARED_SPACING = 16;
+    /** 默认统一结构集中结构之间的最小距离（区块） */
+    private static final int DEFAULT_SHARED_SEPARATION = 6;
+
+    /** 各组独立的 spacing/separation 配置，key=groupSetId, value[0]=spacing, value[1]=separation */
+    private static final Map<String, int[]> GROUP_CONFIG = Map.of(
+        "dyedream_structures", new int[]{16, 6},
+        "dyedream_bubbles",    new int[]{4, 2}
+    );
 
     public ModStructureSetProvider(PackOutput output, List<StructureGenerationConfig> configs)
     {
@@ -110,11 +113,13 @@ public class ModStructureSetProvider implements DataProvider
         }
         set.add("structures", structures);
 
+        int[] cfg = GROUP_CONFIG.getOrDefault(groupId, new int[]{DEFAULT_SHARED_SPACING, DEFAULT_SHARED_SEPARATION});
+
         JsonObject placement = new JsonObject();
         placement.addProperty("type", "minecraft:random_spread");
         placement.addProperty("salt", 987654321);
-        placement.addProperty("separation", SHARED_SEPARATION);
-        placement.addProperty("spacing", SHARED_SPACING);
+        placement.addProperty("separation", cfg[1]);
+        placement.addProperty("spacing", cfg[0]);
 
         set.add("placement", placement);
 
