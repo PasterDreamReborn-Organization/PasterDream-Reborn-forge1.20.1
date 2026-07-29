@@ -26,17 +26,10 @@ import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.GeoBlockEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.object.PlayState;
-import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class ResearchTableBlockEntity extends BlockEntity implements MenuProvider, IFluidHandlerProvider, GeoBlockEntity
+public class ResearchTableBlockEntity extends BlockEntity implements MenuProvider, IFluidHandlerProvider
 {
     private static final int FLUID_CAPACITY = 250;
-    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public ResearchTableBlockEntity(BlockPos pos, BlockState state)
     {
@@ -196,18 +189,6 @@ public class ResearchTableBlockEntity extends BlockEntity implements MenuProvide
         {
             load(tag);
         }
-    }
-
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache()
-    {
-        return this.cache;
-    }
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers)
-    {
-        controllers.add(new AnimationController<>(this, "state", 0, event -> PlayState.STOP));
     }
 
     public ItemStackHandler getItemHandler()

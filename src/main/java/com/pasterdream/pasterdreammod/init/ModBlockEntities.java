@@ -13,6 +13,7 @@ import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumula
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableAddonBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.LifeCrystalBlockEntity;
@@ -42,6 +43,7 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<WindMoorCrateBlockEntity>> WIND_MOOR_CRATE = BLOCK_ENTITIES.register("wind_moor_crate", () -> BlockEntityType.Builder.of(WindMoorCrateBlockEntity::new, ModBlocks.WIND_MOOR_CRATE.get()).build(null));
     public static final RegistryObject<BlockEntityType<TheEndlessBookOfDreamSeekersBlockEntity>> THE_ENDLESS_BOOK_OF_DREAM_SEEKERS = BLOCK_ENTITIES.register("the_endless_book_of_dream_seekers", () -> BlockEntityType.Builder.of(TheEndlessBookOfDreamSeekersBlockEntity::new, ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get()).build(null));
     public static final RegistryObject<BlockEntityType<ResearchTableBlockEntity>> RESEARCH_TABLE = BLOCK_ENTITIES.register("research_table", () -> BlockEntityType.Builder.of(ResearchTableBlockEntity::new, ModBlocks.RESEARCH_TABLE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ResearchTableAddonBlockEntity>> RESEARCH_TABLE_ADDON = BLOCK_ENTITIES.register("research_table_addon", () -> BlockEntityType.Builder.of(ResearchTableAddonBlockEntity::new, ModBlocks.RESEARCH_TABLE.get()).build(null));
     public static final RegistryObject<BlockEntityType<LostSwordTombBlockEntity>> LOST_SWORD_TOMB = BLOCK_ENTITIES.register("lost_sword_tomb", () -> BlockEntityType.Builder.of(LostSwordTombBlockEntity::new, ModBlocks.LOST_SWORD_TOMB.get()).build(null));
     public static final RegistryObject<BlockEntityType<LifeCrystalBlockEntity>> LIFE_CRYSTAL = BLOCK_ENTITIES.register("life_crystal", () -> BlockEntityType.Builder.of(LifeCrystalBlockEntity::new, ModBlocks.LIFE_CRYSTAL.get()).build(null));
     public static final RegistryObject<BlockEntityType<GoldenFoxSculptureBlockEntity>> GOLDEN_FOX_SCULPTURE = BLOCK_ENTITIES.register("golden_fox_sculpture", () -> BlockEntityType.Builder.of(GoldenFoxSculptureBlockEntity::new, ModBlocks.GOLDEN_FOX_SCULPTURE.get()).build(null));
