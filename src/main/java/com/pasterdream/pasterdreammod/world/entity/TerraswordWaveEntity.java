@@ -14,7 +14,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.player.Player;
@@ -48,8 +47,7 @@ public class TerraswordWaveEntity extends PathfinderMob {
     public TerraswordWaveEntity(EntityType<TerraswordWaveEntity> type, Level world) {
         super(type, world);
         xpReward = 0;
-        setNoAi(false);
-        this.moveControl = new FlyingMoveControl(this, 10, true);
+        this.setNoGravity(true);
     }
 
     @Override
@@ -216,9 +214,13 @@ public class TerraswordWaveEntity extends PathfinderMob {
     @Override
     public void aiStep() {
         super.aiStep();
-        this.setNoGravity(true);
         this.yBodyRot = this.getYRot();
         this.yHeadRot = this.getYRot();
+    }
+
+    @Override
+    public void travel(Vec3 input) {
+        this.move(MoverType.SELF, this.getDeltaMovement());
     }
 
     public static void init() {
