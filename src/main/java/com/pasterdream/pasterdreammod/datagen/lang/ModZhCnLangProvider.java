@@ -1642,7 +1642,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.prophecy_card", "预言卡");
         add("item.pasterdream.prophecy_card.balance", "预言卡-平衡");
         add("item.pasterdream.prophecy_card.chaos", "预言卡-混乱");
-        add("item.pasterdream.prophecy_card.conflict", "预言卡-对立");
+        add("item.pasterdream.prophecy_card.conflict", "预言卡-纷争");
         add("item.pasterdream.prophecy_card.graveyard", "预言卡-墓园");
         add("item.pasterdream.prophecy_card.guard", "预言卡-守护");
         add("item.pasterdream.prophecy_card.holy_grail", "预言卡-圣杯");
@@ -1653,7 +1653,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.prophecy_card.empty", "§7一张空白的预言卡，似乎还未被赋予种类");
         add("tooltip.pasterdream.prophecy_card.type.balance", "§b种类：平衡");
         add("tooltip.pasterdream.prophecy_card.type.chaos", "§b种类：混乱");
-        add("tooltip.pasterdream.prophecy_card.type.conflict", "§b种类：对立");
+        add("tooltip.pasterdream.prophecy_card.type.conflict", "§b种类：纷争");
         add("tooltip.pasterdream.prophecy_card.type.graveyard", "§b种类：墓园");
         add("tooltip.pasterdream.prophecy_card.type.guard", "§b种类：守护");
         add("tooltip.pasterdream.prophecy_card.type.holy_grail", "§b种类：圣杯");
@@ -1669,7 +1669,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("tooltip.pasterdream.prophecy_card.balance.description", "§9使用卡牌时，当前自身拥有的部分药水效果的等级翻倍，但持续时间缩短至一半。");
         add("tooltip.pasterdream.prophecy_card.chaos.description", "§9使用卡牌时，对以自身为中心，7*7范围内的所有敌人陷入混乱并失去行动能力，持续10秒。（此效果不对玩家生效）");
-        add("tooltip.pasterdream.prophecy_card.conflict.description", "§9重做中……");
+        add("tooltip.pasterdream.prophecy_card.conflict.description.1", "§9使用卡牌时，将光标对应的实体标记，被标记的实体将会被成为其它实体的攻击对象，持续120秒");
+        add("tooltip.pasterdream.prophecy_card.conflict.description.2", "§7§O --至少你用完这张卡不用担心被一位白衣少女捅成玻璃碴子");
+        add("message.pasterdream.prophecy_card.conflict.marked", "让现场腥风血雨起来吧！");
+        add("message.pasterdream.prophecy_card.conflict.no_target", "没有选中目标。");
         add("tooltip.pasterdream.prophecy_card.graveyard.description", "§9使用卡牌时，对以自身为中心，7*7范围内的所有敌人造成%.1f点伤害，该伤害不被减伤所降低。（此效果不对玩家生效）");
         add("tooltip.pasterdream.prophecy_card.sprint.description", "§9使用卡牌时，获得速度III、跳跃提升II、高速反射效果，持续120秒。效果持续期间增加上坡高度，-30%瞬身术冷却并免疫摔落伤害。");
         add("tooltip.pasterdream.prophecy_card.guard.description.1", "§9使用卡牌时，获得120秒伤害吸收III和60秒守护效果。");

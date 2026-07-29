@@ -65,6 +65,8 @@ public class ModEffects {
             EFFECTS.register("confusion_buff", ConfusionBuffEffect::new);
     public static final RegistryObject<MobEffect> FLARE_UP_BUFF =
             EFFECTS.register("flare_up_buff", FlareupBuffEffect::new);
+    public static final RegistryObject<MobEffect> CONFLICT_MARK =
+            EFFECTS.register("conflict_mark", ConflictMarkEffect::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);
