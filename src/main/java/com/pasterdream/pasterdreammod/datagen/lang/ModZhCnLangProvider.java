@@ -1265,7 +1265,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.san", "san值");
         add("pasterdream.seniors_dream.entry.san.page0", "或许你也已经注意到了，在你屏幕的右下角有一个大脑一样的图标，即为san值。");
         add("pasterdream.seniors_dream.entry.san.page1", "san值界面展示。");
-        add("pasterdream.seniors_dream.entry.san.page2", "san值效果影响：$(br)san>=90% 获得振奋$(br)san<=60% 获得不振$(br)san<=40% 获得恍惚$(br)san<=20% 获得疯狂I$(br)san<=10% 获得疯狂II$(br)san<=1%  获得疯狂III");
+        add("pasterdream.seniors_dream.entry.san.page2", "san值效果影响：$(br)san>=90%% 获得振奋$(br)san<=60%% 获得不振$(br)san<=40%% 获得恍惚$(br)san<=20%% 获得疯狂I$(br)san<=10%% 获得疯狂II$(br)san<=1%%  获得疯狂III");
         add("pasterdream.seniors_dream.entry.san.page3", "环境带来的san值变化：$(br)san的变化受到群系类型和光照强度的影响，计算公式为：$(br)总变化率 = (理智光环 / 1200) + 群系影响 + (光照等级 - 7) * 0.0001");
         add("pasterdream.seniors_dream.entry.san.page4", "群系的影响主要表现为：$(br)在深暗之域和灯影之下的群系会降低玩家san值；$(br)在染梦世界的群系会提升玩家的san值；$(br)在其他群系不会产生强干扰。$(br2)理智光环为n则代表玩家在除开其它影响（群系影响和光照等级）的条件下一分钟内会增加n点理智。");
         add("pasterdream.seniors_dream.entry.san.page5", "其他掉san的情况：$(br)处于阴影生物的疯狂光环下；$(br)手持带有疯狂光环的物品；$(br)某些物品的技能也会消耗san值。$(br2)主动恢复san值的方法：$(br)使用特定物品或食物；$(br)装备带有理智光环的饰品；$(br)拥有料理和休憩buff；$(br)让自己处于亮度较高的环境。");
@@ -1374,19 +1374,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.rest.page0", "休憩是一种可以为玩家逐渐恢复san值的buff效果，每级增加1.2理智光环。$(br2)通过在原版的床上躺下、身处娇小琴雨梦玩偶或者营火附近，玩家都可以获得该buff。");
 
         add("pasterdream.seniors_dream.entry.cheer_up", "振奋");
-        add("pasterdream.seniors_dream.entry.cheer_up.page0", "当玩家san值>=90%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间-10%；$(br)移动速度+5%；");
-        add("pasterdream.seniors_dream.entry.cheer_up.page1", "攻击速度+0.05；$(br)技能冷却时间-10%。");
+        add("pasterdream.seniors_dream.entry.cheer_up.page0", "当玩家san值>=90%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间-10%%；$(br)移动速度+5%%；$(br)攻击速度+0.05；$(br)技能冷却时间-10%%。");
 
         add("pasterdream.seniors_dream.entry.lethargy", "不振");
-        add("pasterdream.seniors_dream.entry.lethargy.page0", "当玩家san值<=60%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+50%；$(br)移动速度-10%；");
-        add("pasterdream.seniors_dream.entry.lethargy.page1", "攻击速度-0.1；$(br)技能冷却时间+20%。");
+        add("pasterdream.seniors_dream.entry.lethargy.page0", "当玩家san值<=60%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+50%%；$(br)移动速度-10%%；$(br)攻击速度-0.1；$(br)技能冷却时间+20%%。");
 
         add("pasterdream.seniors_dream.entry.trance", "恍惚");
-        add("pasterdream.seniors_dream.entry.trance.page0", "当玩家san值<=40%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+100%；$(br)移动速度-20%；");
-        add("pasterdream.seniors_dream.entry.trance.page1", "攻击速度-0.2，攻击力-1；$(br)技能冷却时间+50%。");
+        add("pasterdream.seniors_dream.entry.trance.page0", "当玩家san值<=40%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+100%%；$(br)移动速度-20%%；$(br)攻击速度-0.2，攻击力-1；$(br)技能冷却时间+50%%。");
 
         add("pasterdream.seniors_dream.entry.insand", "疯狂");
-        add("pasterdream.seniors_dream.entry.insand.page0", "当玩家san值<=20%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+200%；$(br)移动速度-30%；$(br)攻击速度-0.4，攻击力-2；$(br)技能冷却时间+100%；$(br)攻击和触及距离-0.2。");
+        add("pasterdream.seniors_dream.entry.insand.page0", "当玩家san值<=20%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+200%%；$(br)移动速度-30%%；$(br)攻击速度-0.4，攻击力-2；$(br)技能冷却时间+100%%；$(br)攻击和触及距离-0.2。");
         add("pasterdream.seniors_dream.entry.insand.page1", "持有此状态时，视野会不受控制地抖动。且每隔一段时间，就会给予玩家短暂的失明状态，并在玩家身上生成恐怖尖喙和暗影之手。");
         add("pasterdream.seniors_dream.entry.insand.page2", "随着疯狂状态等级的提升，玩家画面抖动强度会逐渐上升，且暗影怪物的刷新数量增加、刷新时间间隔缩短。疯狂状态达到III级时，会每隔几秒就刷新一只恐怖尖喙。");
 
@@ -1398,8 +1395,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.sculk_armor.page1", "免疫幽匿的黑暗恐惧；$(br)受到黑暗buff时，改为获得1分钟的速度II和抗性提升II；$(br)监守者不会攻击持有此buff的玩家。");
 
         add("pasterdream.seniors_dream.entry.dyedream_armor", "染梦守护");
-        add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "当玩家穿戴全套染梦套装时获得此buff。具体效果为：$(br)最大生命值+4；$(br)每30秒获得伤害吸收I；");
-        add("pasterdream.seniors_dream.entry.dyedream_armor.page1", "获得染梦工具增强效果：染梦合金工具和融梦水晶工具的伤害增加50%。");
+        add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "当玩家穿戴全套染梦套装时获得此buff。具体效果为：$(br)最大生命值+4；$(br)每30秒获得伤害吸收I；$(br)获得染梦工具增强效果：染梦合金工具和融梦水晶工具的伤害增加50%%。");
 
         // 染梦世间
         add("pasterdream.seniors_dream.category.dyedream_world", "染梦世间");
