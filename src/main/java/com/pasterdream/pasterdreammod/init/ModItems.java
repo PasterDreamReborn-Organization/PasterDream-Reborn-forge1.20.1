@@ -70,6 +70,7 @@ import com.pasterdream.pasterdreammod.world.item.StarWishRodItem;
 import com.pasterdream.pasterdreammod.world.item.ThermalDaggerItem;
 import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
+import com.pasterdream.pasterdreammod.world.item.PebbleItem;
 import com.pasterdream.pasterdreammod.world.item.WhiteCrystalItem;
 
 import net.minecraft.core.BlockPos;
@@ -1002,6 +1003,9 @@ public class ModItems {
     // ===== 陶罐 =====
     public static final RegistryObject<Item> CLAY_POT = ITEMS.register("clay_pot",
             () -> new BlockItem(ModBlocks.CLAY_POT.get(), new Item.Properties()));
+    // ===== 小石子 =====
+    public static final RegistryObject<Item> PEBBLE = ITEMS.register("pebble",
+            () -> new PebbleItem(ModBlocks.PEBBLE.get(), new Item.Properties()));
 
     // ===== 方块物品 =====
 

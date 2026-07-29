@@ -194,7 +194,8 @@
     "shadowshelf_2": "cobweb_shadow_bookshelf",
     "shadowshelf_3": "key_shadow_bookshelf",
     "shadowcandle": "shadow_candle",
-    "dream_accumulator": "dream_accumulator"
+    "dream_accumulator": "dream_accumulator",
+    "pebble_0": "pebble"
   },
   "items": {
     "amber_candy": "amber_candy",

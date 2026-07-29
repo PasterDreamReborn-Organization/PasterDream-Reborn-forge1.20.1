@@ -348,6 +348,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.UUZ_DOLL.get());
         dropSelf(ModBlocks.DYEDREAM_CRACK.get());
         dropSelf(ModBlocks.CLAYPAN.get());
+        // 小石子
+        dropSelf(ModBlocks.PEBBLE.get());
         // 陶罐：精准采集掉落自身，否则从战利品池随机抽取
         add(ModBlocks.CLAY_POT.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))

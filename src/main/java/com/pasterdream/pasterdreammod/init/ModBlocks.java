@@ -36,6 +36,7 @@ import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombB
 import com.pasterdream.pasterdreammod.world.block.dreamtrain.DreamTrainStructureBlock;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlock;
 import com.pasterdream.pasterdreammod.world.block.ClayPotBlock;
+import com.pasterdream.pasterdreammod.world.block.PebbleBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -627,6 +628,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> FOX_SCULPTURE = BLOCKS.register("fox_sculpture", FoxSculptureBlock::new);
     // ===== 陶罐 =====
     public static final RegistryObject<Block> CLAY_POT = BLOCKS.register("clay_pot", ClayPotBlock::new);
+    // ===== 小石子 =====
+    public static final RegistryObject<Block> PEBBLE = BLOCKS.register("pebble", PebbleBlock::new);
     //荒漠英雄之墓
     public static final RegistryObject<Block> DESERT_HERO_TOMB = BLOCKS.register("desert_hero_tomb", DesertHeroTombBlock::new);
     //逐梦列车结构

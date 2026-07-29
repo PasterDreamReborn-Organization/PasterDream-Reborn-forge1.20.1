@@ -428,6 +428,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
         // 陶罐
         withExistingParent(ModItems.CLAY_POT.getId().getPath(), modLoc("block/clay_pot"));
+        basicItem(ModItems.PEBBLE.get());
 
         // 刷怪蛋
         spawnEggItem(ModItems.PINK_CHICKEN_SPAWN_EGG);

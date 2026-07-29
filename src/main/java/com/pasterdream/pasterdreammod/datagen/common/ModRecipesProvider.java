@@ -1514,6 +1514,30 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         .unlockedBy(getHasName(ModItems.COARSE_SALT.get()), has(ModItems.COARSE_SALT.get())),
                 pWriter, "salt_from_coarse_salt");
 
+        // 小石子（圆石 + 研钵）
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PEBBLE.get(), 2)
+                        .requires(Items.COBBLESTONE)
+                        .requires(ModItems.MORTAR.get())
+                        .unlockedBy(getHasName(Items.COBBLESTONE), has(Items.COBBLESTONE)),
+                pWriter, "pebble");
+
+        // 小石子 → 圆石
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.COBBLESTONE, 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.PEBBLE.get())
+                .unlockedBy(getHasName(ModItems.PEBBLE.get()), has(ModItems.PEBBLE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":cobblestone_from_pebble");
+
+        // 小石子 → 燧石
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.FLINT, 1)
+                .pattern("aa")
+                .pattern("a ")
+                .define('a', ModItems.PEBBLE.get())
+                .unlockedBy(getHasName(ModItems.PEBBLE.get()), has(ModItems.PEBBLE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":flint_from_pebble");
+
         // ===== 灵魂系列 =====
         // 灵魂矿土 → 灵魂粉尘（熔炉 + 高炉）
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.SOUL_ORE.get()),

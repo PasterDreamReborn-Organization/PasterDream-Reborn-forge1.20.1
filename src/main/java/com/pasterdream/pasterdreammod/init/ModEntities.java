@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.world.entity.PinkSlimeEntity;
 import com.pasterdream.pasterdreammod.world.entity.TerraswordWaveEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowGolemEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
+import com.pasterdream.pasterdreammod.world.entity.PebbleProjectile;
 import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.ghost.ShadowGhostEntity;
@@ -82,6 +83,14 @@ public class ModEntities {
                     .setTrackingRange(64)
                     .setUpdateInterval(3)
                     .setCustomClientFactory(ThrownPinkEgg::new)
+                    .sized(0.25f, 0.25f));
+
+    public static final RegistryObject<EntityType<PebbleProjectile>> PEBBLE_PROJECTILE = register("pebble_projectile",
+            EntityType.Builder.<PebbleProjectile>of(PebbleProjectile::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(PebbleProjectile::new)
                     .sized(0.25f, 0.25f));
 
     public static final RegistryObject<EntityType<GoldenFoxEntity>> GOLDEN_FOX = register("golden_fox",
