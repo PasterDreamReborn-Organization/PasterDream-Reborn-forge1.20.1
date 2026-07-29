@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "pasterdream:block/lost_sword_tomb",
+      "y": 90
+    },
+    "facing=north": {
       "model": "pasterdream:block/lost_sword_tomb"
+    },
+    "facing=south": {
+      "model": "pasterdream:block/lost_sword_tomb",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "pasterdream:block/lost_sword_tomb",
+      "y": 270
     }
   }
 }
