@@ -81,7 +81,7 @@ public class PasterDreamMod
         ModAttributes.register(modEventBus);        //注册属性
         ModTreeDecoratorTypes.register(modEventBus); //注册树木装饰器类型
         ModFeatures.register(modEventBus);          //注册自定义特征
-        ModEntities.register(modEventBus);          //注册实体
+                ModEntities.register(modEventBus);          //注册实体
         ModLootTables.register(modEventBus);        //注册自定义战利品函数类型
         ModNetwork.register();                      //注册网络包
         ModEnchantment.register(modEventBus);       //注册附魔
