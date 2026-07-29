@@ -47,6 +47,7 @@ import org.slf4j.LoggerFactory;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class ProphecyCardItem extends Item {
 
@@ -255,7 +256,10 @@ public class ProphecyCardItem extends Item {
                 tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.chaos.description.1"));
                 tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.chaos.description.2"));
             }
-            case TYPE_CONFLICT-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.conflict.description"));
+            case TYPE_CONFLICT-> {
+                tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.conflict.description.1"));
+                tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.conflict.description.2"));
+            }
             case TYPE_GRAVEYARD-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.graveyard.description",Config.graveyarddamage).withStyle(ChatFormatting.BLUE));
             case TYPE_GUARD-> {
                 tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.guard.description.1"));
@@ -434,8 +438,61 @@ public class ProphecyCardItem extends Item {
 
     private static ProphecyCardEffect conflictEffect() {
         return (level, player, hand, stack) -> {
-            // TODO: 纷争卡效果
-            return InteractionResultHolder.success(stack);
+            // 射线追踪寻找玩家准星指向的实体（双端执行，客户端用于判断图腾特效）
+            double reach = Config.conflictCardReach;
+            Vec3 eyePos = player.getEyePosition();
+            Vec3 lookVec = player.getViewVector(1.0F);
+            Vec3 endPos = eyePos.add(lookVec.scale(reach));
+            AABB searchBox = new AABB(eyePos, endPos).inflate(1.0);
+
+            List<LivingEntity> candidates = level.getEntitiesOfClass(LivingEntity.class, searchBox,
+                    e -> e != player && e.isAlive());
+
+            LivingEntity target = null;
+            double closestDist = reach;
+            for (LivingEntity entity : candidates) {
+                // 黑名单检查
+                if (Config.isConflictMarkBlacklisted(entity.getType())) {
+                    continue;
+                }
+                Optional<Vec3> clip = entity.getBoundingBox().inflate(0.3).clip(eyePos, endPos);
+                if (clip.isPresent()) {
+                    double dist = eyePos.distanceToSqr(clip.get());
+                    if (dist < closestDist * closestDist) {
+                        closestDist = Math.sqrt(dist);
+                        target = entity;
+                    }
+                }
+            }
+
+            if (target != null) {
+                if (!level.isClientSide()) {
+                    // 施加纷争标记效果，持续 120 秒
+                    target.addEffect(new MobEffectInstance(
+                            ModEffects.CONFLICT_MARK.get(), 120 * 20, 0));
+                    // 音效
+                    level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                            ModSounds.EVASION.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                    // 提示玩家
+                    player.displayClientMessage(
+                            Component.translatable("message.pasterdream.prophecy_card.conflict.marked",
+                                    target.getName()).withStyle(ChatFormatting.GOLD), true);
+                    // 消耗
+                    if (!player.getAbilities().instabuild) {
+                        stack.shrink(1);
+                    }
+                } else {
+                    showTotemEffect(stack);
+                }
+            } else {
+                if (!level.isClientSide()) {
+                    // 未找到有效目标
+                    player.displayClientMessage(
+                            Component.translatable("message.pasterdream.prophecy_card.conflict.no_target")
+                                    .withStyle(ChatFormatting.RED), true);
+                }
+            }
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
         };
     }
 

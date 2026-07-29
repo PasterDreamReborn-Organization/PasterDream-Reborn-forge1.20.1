@@ -113,6 +113,23 @@ public class Config
             .comment("墓园预言卡伤害，默认50")
             .defineInRange("graveyard_damage", 50.0, 0.0, Double.MAX_VALUE);
 
+    //纷争
+    private static final ForgeConfigSpec.DoubleValue CONFLICT_MARK_RANGE = BUILDER
+            .comment("纷争预言卡标记后，敌对生物检测被标记实体的范围（格），默认 16")
+            .defineInRange("conflict_mark_range", 16.0, 1.0, 128.0);
+
+    private static final ForgeConfigSpec.DoubleValue CONFLICT_CARD_REACH = BUILDER
+            .comment("纷争预言卡右键选中实体的最远距离（格），默认 32")
+            .defineInRange("conflict_card_reach", 32.0, 4.0, 128.0);
+
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> CONFLICT_MARK_BLACKLIST = BUILDER
+            .comment("纷争预言卡无法标记的实体类型 ID 列表（格式：modid:entity_id），"
+                    + "\n例：minecraft:iron_golem 为铁傀儡"
+                    + "\n用于排除实验假人等不应被标记的实体")
+            .defineListAllowEmpty("conflict_mark_blacklist",
+                    List.of("dummmmmmy:target_dummy"),
+                    obj -> obj instanceof String);
+
     // === 帕秋莉宝典 ===
     private static final ForgeConfigSpec.BooleanValue GIVE_PATCHOULI_BOOK_ON_FIRST_JOIN = BUILDER
             .comment("玩家首次加入世界时是否发放帕秋莉宝典（需要安装帕秋莉模组才生效），默认 true")
@@ -190,6 +207,12 @@ public class Config
     //墓园
     public static Double graveyarddamage;
 
+    //纷争
+    public static Double conflictMarkRange;
+    public static Double conflictCardReach;
+    public static List<? extends String> conflictMarkBlacklist;
+    private static Set<EntityType<?>> cachedConflictMarkBlacklistTypes = Set.of();
+
     //守护
     public static Double healthpercentguardneed;
     public static Double resistdamage;
@@ -203,6 +226,13 @@ public class Config
      */
     public static boolean isSinInstakillTarget(EntityType<?> type) {
         return cachedSinInstakillTypes.contains(type);
+    }
+
+    /**
+     * 查询指定实体类型是否在纷争预言卡标记黑名单中。
+     */
+    public static boolean isConflictMarkBlacklisted(EntityType<?> type) {
+        return cachedConflictMarkBlacklistTypes.contains(type);
     }
 
     private static void rebuildSinInstakillCache() {
@@ -222,6 +252,25 @@ public class Config
         }
         cachedSinInstakillTypes = Set.copyOf(set);
         LOGGER.info("sin_instakill_entities: loaded {} entity types", cachedSinInstakillTypes.size());
+    }
+
+    private static void rebuildConflictMarkBlacklistCache() {
+        Set<EntityType<?>> set = new HashSet<>();
+        for (String idStr : conflictMarkBlacklist) {
+            ResourceLocation rl = ResourceLocation.tryParse(idStr);
+            if (rl == null) {
+                LOGGER.warn("conflict_mark_blacklist: invalid resource location '{}', skipping", idStr);
+                continue;
+            }
+            EntityType<?> et = ForgeRegistries.ENTITY_TYPES.getValue(rl);
+            if (et == null) {
+                LOGGER.warn("conflict_mark_blacklist: unknown entity type '{}', skipping", idStr);
+                continue;
+            }
+            set.add(et);
+        }
+        cachedConflictMarkBlacklistTypes = Set.copyOf(set);
+        LOGGER.info("conflict_mark_blacklist: loaded {} entity types", cachedConflictMarkBlacklistTypes.size());
     }
 
     @SubscribeEvent
@@ -244,6 +293,9 @@ public class Config
         resistdamage= RESIST_DAMAGE.get();
         givePatchouliBookOnFirstJoin = GIVE_PATCHOULI_BOOK_ON_FIRST_JOIN.get();
         graveyarddamage = GRAVEYARD_DAMAGE.get();
+        conflictMarkRange = CONFLICT_MARK_RANGE.get();
+        conflictCardReach = CONFLICT_CARD_REACH.get();
+        conflictMarkBlacklist = CONFLICT_MARK_BLACKLIST.get();
         sanCheerUpThreshold = SAN_CHEER_UP_THRESHOLD.get();
         sanLethargyUpperThreshold = SAN_LETHARGY_UPPER_THRESHOLD.get();
         sanLethargyLowerThreshold = SAN_LETHARGY_LOWER_THRESHOLD.get();
@@ -252,5 +304,6 @@ public class Config
         sanInsandLv3Threshold = SAN_INSAND_LV3_THRESHOLD.get();
 
         rebuildSinInstakillCache();
+        rebuildConflictMarkBlacklistCache();
     }
 }
