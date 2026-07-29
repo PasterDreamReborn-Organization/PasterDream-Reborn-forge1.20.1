@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.capability.san;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateManager;
@@ -60,16 +61,16 @@ public class SanAuraHandler {
         // 4. San 阈值效果
         player.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
             double ratio = cap.getSanValue() / cap.getMaxSanValue();
-            if (ratio >= 0.9) {
+            if (ratio >= Config.sanCheerUpThreshold) {
                 player.addEffect(new MobEffectInstance(ModEffects.CHEER_UP_BUFF.get(), 20, 0, false, false));
-            } else if (ratio < 0.6 && ratio >= 0.4) {
+            } else if (ratio < Config.sanLethargyUpperThreshold && ratio >= Config.sanLethargyLowerThreshold) {
                 if (!player.getPersistentData().getBoolean("pasterdream:strawberry_san_aura")) {
                     player.addEffect(new MobEffectInstance(ModEffects.LETHARGY_BUFF.get(), 20, 0, false, false));
                 }
-            } else if (ratio < 0.4 && ratio >= 0.2) {
+            } else if (ratio < Config.sanLethargyLowerThreshold && ratio >= Config.sanTranceLowerThreshold) {
                 player.addEffect(new MobEffectInstance(ModEffects.TRANCE_BUFF.get(), 20, 0, false, false));
-            } else if (ratio < 0.2) {
-                int lv = ratio < 0.01 ? 2 : ratio < 0.1 ? 1 : 0;
+            } else if (ratio < Config.sanTranceLowerThreshold) {
+                int lv = ratio < Config.sanInsandLv3Threshold ? 2 : ratio < Config.sanInsandLv2Threshold ? 1 : 0;
                 player.addEffect(new MobEffectInstance(ModEffects.INSAND_BUFF.get(), 20, lv, false, false));
             }
         });
