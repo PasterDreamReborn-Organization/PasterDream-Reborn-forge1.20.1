@@ -95,7 +95,8 @@ public class Config
             .defineListAllowEmpty("sin_instakill_entities",
                     List.of("minecraft:vex", "minecraft:bat", "minecraft:endermite",
                             "minecraft:silverfish", "minecraft:creeper","minecraft:cave_spider","alexsmobs:centipede_head",
-                            "alexsmobs:centipede_body","alexsmobs:centipede_tail","alexsmobs:crimson_mosquito","twilightforest:pinch_beetle"),
+                            "alexsmobs:centipede_body","alexsmobs:centipede_tail","alexsmobs:crimson_mosquito",
+                            "alexsmobs:seagull","iceandfire:pixie","twilightforest:pinch_beetle"),
                     obj -> obj instanceof String);
 
     //守护
@@ -106,6 +107,11 @@ public class Config
     private static final ForgeConfigSpec.DoubleValue RESIST_DAMAGE = BUILDER
             .comment("守护效果触发时超过最大生命值部分减伤比例，默认0.6（60%）")
             .defineInRange("resist_damage", 0.6, 0.0,1.0);
+
+    //墓园
+    private static final ForgeConfigSpec.DoubleValue GRAVEYARD_DAMAGE = BUILDER
+            .comment("墓园预言卡伤害，默认50")
+            .defineInRange("graveyard_damage", 50.0, 0.0, Double.MAX_VALUE);
 
     // === 帕秋莉宝典 ===
     private static final ForgeConfigSpec.BooleanValue GIVE_PATCHOULI_BOOK_ON_FIRST_JOIN = BUILDER
@@ -144,9 +150,12 @@ public class Config
     public static int maxlevel;
     public static List<? extends String> balanceAllowedEffects;
 
-    //罪
+    //罪恶
     public static List<? extends String> sinInstakillEntities;
     private static Set<EntityType<?>> cachedSinInstakillTypes = Set.of();
+
+    //墓园
+    public static Double graveyarddamage;
 
     //守护
     public static Double healthpercentguardneed;
@@ -201,6 +210,7 @@ public class Config
         healthpercentguardneed= HEALTH_PERCENT.get();
         resistdamage= RESIST_DAMAGE.get();
         givePatchouliBookOnFirstJoin = GIVE_PATCHOULI_BOOK_ON_FIRST_JOIN.get();
+        graveyarddamage = GRAVEYARD_DAMAGE.get();
 
         rebuildSinInstakillCache();
     }

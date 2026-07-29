@@ -63,6 +63,8 @@ public class ModEffects {
             EFFECTS.register("holy_grail_buff", HolyGrailEffect::new);
     public static final RegistryObject<MobEffect> CONFUSION_BUFF =
             EFFECTS.register("confusion_buff", ConfusionBuffEffect::new);
+    public static final RegistryObject<MobEffect> FLARE_UP_BUFF =
+            EFFECTS.register("flare_up_buff", FlareupBuffEffect::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

@@ -915,6 +915,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.dream_harp_of_wanderer_buff", "DreamHarp of Wanderer");
         add("effect.pasterdream.guard_buff", "Guard");
         add("effect.pasterdream.holy_grail_buff", "Holy Grail");
+        add("effect.pasterdream.flare_up_buff", "Flare up");
         add("attribute.pasterdream.blink_cd", "Blink Cooldown");
         add("attribute.pasterdream.blink_consume", "Blink Hunger Cost");
         add("attribute.pasterdream.blink_range", "Blink Distance");

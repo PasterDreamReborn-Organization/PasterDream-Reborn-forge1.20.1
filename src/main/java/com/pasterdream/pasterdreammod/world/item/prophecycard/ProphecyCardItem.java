@@ -15,7 +15,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -254,7 +256,7 @@ public class ProphecyCardItem extends Item {
                 tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.chaos.description.2"));
             }
             case TYPE_CONFLICT-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.conflict.description"));
-            case TYPE_GRAVEYARD-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.graveyard.description"));
+            case TYPE_GRAVEYARD-> tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.graveyard.description",Config.graveyarddamage).withStyle(ChatFormatting.BLUE));
             case TYPE_GUARD-> {
                 tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.guard.description.1"));
                 tooltip.add(Component.translatable("tooltip.pasterdream.prophecy_card.guard.description.2",(Config.healthpercentguardneed*100),(Config.resistdamage*100)).withStyle(ChatFormatting.BLUE));
@@ -300,6 +302,13 @@ public class ProphecyCardItem extends Item {
         return InteractionResultHolder.fail(stack);
     }
 
+    @Override
+    public InteractionResult useOn(UseOnContext context) {
+        // 准心指向方块时也触发卡牌效果，避免抬头/指向方块时范围不生效
+        InteractionResultHolder<ItemStack> result = use(context.getLevel(), context.getPlayer(), context.getHand());
+        return result.getResult();
+    }
+
     // ===== 工具方法：帮助资源包作者计算哈希 predicate 值 =====
 
     /**
@@ -330,6 +339,8 @@ public class ProphecyCardItem extends Item {
                 case TYPE_SPRINT   -> sprintEffect();
                 case TYPE_HOLY_GRAIL   -> holygrailEffect();
                 case TYPE_SIN -> sinEffect();
+                case TYPE_GRAVEYARD -> graveyardEffect();
+                case TYPE_WIELDING_SWORD -> wieldingswordEffect();
                 // 未匹配的不注册效果（右键空挥）
                 default -> null;
             });
@@ -428,12 +439,31 @@ public class ProphecyCardItem extends Item {
         };
     }
 
+    private static ProphecyCardEffect wieldingswordEffect() {
+        return (level, player, hand, stack) -> {
+            if (!level.isClientSide()) {
+                // 服务端：给予 120 秒怒气爆发
+                player.addEffect(new MobEffectInstance(ModEffects.FLARE_UP_BUFF.get(), 120 * 20, 0));
+                // 音效
+                level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        ModSounds.EVASION.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                // 消耗
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+            } else {
+                showTotemEffect(stack);
+            }
+            return InteractionResultHolder.success(stack);
+        };
+    }
+
     private static ProphecyCardEffect sinEffect() {
         return (level, player, hand, stack) -> {
             if (!level.isClientSide()) {
-                // 以自身为中心，19x19 范围
+                // 以自身为中心，19x100x19 范围
                 Vec3 center = player.position();
-                AABB area = AABB.ofSize(center, 19, 19, 19);
+                AABB area = AABB.ofSize(center, 19, 100, 19);
 
                 ServerLevel serverLevel = (ServerLevel) level;
 
@@ -586,6 +616,38 @@ public class ProphecyCardItem extends Item {
                 showTotemEffect(stack);
             }
             return InteractionResultHolder.success(stack);
+        };
+    }
+    private static ProphecyCardEffect graveyardEffect() {
+        return (level, player, hand, stack) -> {
+            if (!level.isClientSide()) {
+                // 以自身为中心，7x7x20 范围
+                Vec3 center = player.position();
+                AABB area = AABB.ofSize(center, 7, 20, 7);
+
+                List<Monster> entities = level.getEntitiesOfClass(Monster.class, area,
+                        e -> true);
+
+                DamageSource VoidSource = new DamageSource(
+                        level.registryAccess()
+                                .registryOrThrow(Registries.DAMAGE_TYPE)
+                                .getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD),
+                        player);
+                for (LivingEntity target : entities) {
+                    target.hurt(VoidSource, Config.graveyarddamage.floatValue());
+                }
+
+                // 音效
+                level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        ModSounds.EVASION.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                // 消耗
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+            } else {
+                showTotemEffect(stack);
+            }
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
         };
     }
 }
