@@ -946,6 +946,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.LETHARGY_BUFF_ICON.get(), "不振图标");
         add(ModItems.TRANCE_BUFF_ICON.get(), "恍惚图标");
         add(ModItems.INSAND_BUFF_ICON.get(), "疯狂图标");
+        add(ModItems.CHAOS_BUFF_ICON.get(), "混乱图标");
+        add(ModItems.DREAM_WISH_BUFF_ICON.get(), "美梦祈愿图标");
+        add(ModItems.COOK_BUFF_ICON.get(), "料理图标");
         add(ModItems.BLESSING_OF_CECILIA.get(), "塞西莉娅的加护");
         add("tooltip.pasterdream.blessing_of_cecilia.effect0", "§7▪ §9常驻：强制20%减伤");
         add("tooltip.pasterdream.blessing_of_cecilia.effect1", "§7 受到致命伤害时：");
@@ -1401,12 +1404,18 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.cook", "料理");
         add("pasterdream.seniors_dream.entry.cook.page0", "通过食用部分本模组内食物，以及有联动的模组食物，可以获得此buff。每级增加1.2理智光环。");
 
+        add("pasterdream.seniors_dream.entry.chaos", "混乱");
+        add("pasterdream.seniors_dream.entry.chaos.page0", "部分武器和道具对敌人施加的buff效果，具体效果为：$(br)当玩家持有混乱效果时，玩家视野会发生类似“疯狂”效果下的抖动。$(br)当其他生物获得混乱效果时，它们的朝向会发生随机性的变化，同时被按压在地上，短暂失去行动能力。");
+
         add("pasterdream.seniors_dream.entry.sculk_armor", "幽匿回响");
         add("pasterdream.seniors_dream.entry.sculk_armor.page0", "当玩家穿戴全套回响套装时获得此buff。具体效果为：$(br)最大生命值+4；$(br)当玩家身处Y<0的环境时，玩家周围出现绿色粒子效果，并获得抗性提升buff；");
         add("pasterdream.seniors_dream.entry.sculk_armor.page1", "免疫幽匿的黑暗恐惧；$(br)受到黑暗buff时，改为获得1分钟的速度II和抗性提升II；$(br)监守者不会攻击持有此buff的玩家。");
 
         add("pasterdream.seniors_dream.entry.dyedream_armor", "染梦守护");
         add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "当玩家穿戴全套染梦套装时获得此buff。具体效果为：$(br)最大生命值+4；$(br)每30秒获得伤害吸收II；$(br)获得染梦工具增强效果：染梦合金工具和融梦水晶工具的伤害增加50%%。");
+
+        add("pasterdream.seniors_dream.entry.dream_wish", "美梦祈愿");
+        add("pasterdream.seniors_dream.entry.dream_wish.page0", "当玩家饮用梦境果汁后获得的buff效果。具体效果为：$(br)持有此buff睡觉时会进入染梦世界");
 
         // 染梦世间
         add("pasterdream.seniors_dream.category.dyedream_world", "染梦世间");
@@ -1448,6 +1457,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.pale_boneneedle", "苍白骨针");
         add("pasterdream.seniors_dream.entry.pale_boneneedle.page0", "你在雪山上发现的苍白雪莲具有强烈的香气，这种香气具有明显的提神效果，已经成为寻梦者，曾经在梦中迷失的你想到一个妙计，将苍白雪莲的花冠和骨质针具绑在一起，剧烈的疼痛和香气的刺激想必能让你迅速清醒，离开梦境。$(br2)而如果把来自末地的珍珠和古城的回响融入到苍白骨针中，也许会有奇效……");
         add("pasterdream.seniors_dream.entry.pale_boneneedle.page1", "——无论梦幻是洁净的染梦还是深邃的阴影，梦醒之时，我们将会重逢。");
+
+        add("pasterdream.seniors_dream.entry.dyedream_perfume", "染梦香水");
+        add("pasterdream.seniors_dream.entry.dyedream_perfume.page0", "在染梦的梦境中，地上的植物吸引了你的注意力，那香气让你有了一种新思路：或许可以把它们收集起来，用它们制作香水……$(br2)当你饮用这独特的饮料后，一定时间内幻翼不会来打扰你，并且梦境的力量让你就像睡了一觉一样，接下来几天都不会有幻翼像苍蝇一样飞在你头顶了……");
+        add("pasterdream.seniors_dream.entry.dyedream_perfume.page1", "——Q：为什么要喝香水？A：你都在做梦了就不要考虑这些小事了~");
 
         // 染梦教堂
         add("pasterdream.seniors_dream.entry.dyedream_church", "染梦教堂");

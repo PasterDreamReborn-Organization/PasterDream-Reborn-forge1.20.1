@@ -1,0 +1,16 @@
+{
+  "sortnum": 8,
+  "name": "pasterdream.seniors_dream.entry.dyedream_perfume",
+  "icon": "pasterdream:glass_jar_of_dyedream_perfume",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.dyedream_perfume.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.dyedream_perfume.page1"
+    }
+  ]
+}

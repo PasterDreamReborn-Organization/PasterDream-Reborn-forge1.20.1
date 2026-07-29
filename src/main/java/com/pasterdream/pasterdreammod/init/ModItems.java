@@ -1475,6 +1475,12 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> INSAND_BUFF_ICON = ITEMS.register("insand_buff_icon",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CHAOS_BUFF_ICON = ITEMS.register("chaos_buff_icon",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DREAM_WISH_BUFF_ICON = ITEMS.register("dream_wish_buff_icon",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COOK_BUFF_ICON = ITEMS.register("cook_buff_icon",
+            () -> new Item(new Item.Properties()));
 
     // 帕秋莉宝典
     public static final RegistryObject<Item> SENIORS_DREAM_BOOK = ITEMS.register("seniors_dream_book",
