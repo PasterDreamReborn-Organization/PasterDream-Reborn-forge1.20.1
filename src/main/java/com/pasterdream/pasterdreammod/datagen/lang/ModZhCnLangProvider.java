@@ -1650,7 +1650,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
 
 
-        add("tooltip.pasterdream.prophecy_card.balance.description", "§9使用卡牌时，当前自身拥有的部分药水效果的等级翻倍，但持续时间缩短至一半。（仅对部分有等级加成的效果生效）");
+        add("tooltip.pasterdream.prophecy_card.balance.description", "§9使用卡牌时，当前自身拥有的部分药水效果的等级翻倍，但持续时间缩短至一半。");
         add("tooltip.pasterdream.prophecy_card.chaos.description", "§9使用卡牌时，对以自身为中心，7*7范围内的所有敌人陷入混乱并失去行动能力，持续10秒。（此效果不对玩家生效）");
         add("tooltip.pasterdream.prophecy_card.conflict.description", "§9重做中……");
         add("tooltip.pasterdream.prophecy_card.graveyard.description", "§9使用卡牌时，对以自身为中心，5*5范围内的所有敌人造成100点魔法伤害。（此效果不对玩家生效）");
@@ -1658,6 +1658,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.prophecy_card.guard.description.1", "§9使用卡牌时，获得120秒伤害吸收III和60秒守护效果。");
         add("tooltip.pasterdream.prophecy_card.guard.description.2", "§9玩家若受到的任何超过其最大生命值%.1f%%的伤害，超出的部分都会减少%.1f%%。这种减伤是在护甲的减伤作用之前应用的。");
         add("tooltip.pasterdream.prophecy_card.holy_grail.description", "§9使用卡牌时，获得圣杯效果，持续120秒。效果持续期间+15最大生命值，并免疫一部分负面状态，获得自然生命恢复且血量越低，回血速度越快，低于33%的时候达到最快。");
+        add("tooltip.pasterdream.prophecy_card.chaos.description.1", "§9使用卡牌时，对以自身为中心，7*7范围内的所有敌人陷入混乱并失去行动能力，持续10秒。（此效果不对玩家生效）");
+        add("tooltip.pasterdream.prophecy_card.chaos.description.2", "§7§O --THE TRUE AND NEO CHAOS");
+        add("tooltip.pasterdream.prophecy_card.sin.description.1", "§9使用卡牌时，对以自身为中心，引燃19*19范围内的所有亡灵生物和灾厄村民15秒并造成25点火焰伤害。");
+        add("tooltip.pasterdream.prophecy_card.sin.description.2", "§9如果此实体为僵尸村民，则不会受到伤害且转化为村民。");
+        add("tooltip.pasterdream.prophecy_card.sin.description.3", "§9对于那些极为烦人的生物，则直接秒杀，至于什么是极为烦人的生物，相信预言卡的判断。");
+        add("tooltip.pasterdream.prophecy_card.sin.description.4", "§5§O --直面汝罪");
+
         add("tooltip.pasterdream.prophecy_card.unknown.description.1", "§9你是怎么获得这张卡的？");
         add("tooltip.pasterdream.prophecy_card.unknown.description.2", "§9请把你做了什么发送到github或者mcmod方便我们定位问题，而不是只发送这张错误的截图");
 

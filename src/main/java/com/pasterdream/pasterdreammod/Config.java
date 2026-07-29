@@ -1,15 +1,23 @@
 package com.pasterdream.pasterdreammod;
 
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = PasterDreamMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Config
 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Config.class);
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
     // === 时之沙 ===
@@ -79,6 +87,17 @@ public class Config
                             "minecraft:jump_boost","minecraft:health_boost","pasterdream:cook_buff"),
                     obj -> obj instanceof String);
 
+    //罪恶
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> SIN_INSTAKILL_ENTITIES = BUILDER
+            .comment("罪之预言卡直接秒杀的实体类型 ID 列表（格式：modid:entity_id），"
+                    + "\n例：minecraft:vex 为恼鬼，minecraft:creeper 为苦力怕"
+                    + "\n支持模组实体。小僵尸（isBaby）的秒杀逻辑为硬编码，不在此列表中。")
+            .defineListAllowEmpty("sin_instakill_entities",
+                    List.of("minecraft:vex", "minecraft:bat", "minecraft:endermite",
+                            "minecraft:silverfish", "minecraft:creeper","minecraft:cave_spider","alexsmobs:centipede_head",
+                            "alexsmobs:centipede_body","alexsmobs:centipede_tail","alexsmobs:crimson_mosquito","twilightforest:pinch_beetle"),
+                    obj -> obj instanceof String);
+
     //守护
     private static final ForgeConfigSpec.DoubleValue HEALTH_PERCENT = BUILDER
             .comment("守护效果触发时，需要伤害为最大生命值的占比，默认0.3（30%）")
@@ -125,12 +144,43 @@ public class Config
     public static int maxlevel;
     public static List<? extends String> balanceAllowedEffects;
 
+    //罪
+    public static List<? extends String> sinInstakillEntities;
+    private static Set<EntityType<?>> cachedSinInstakillTypes = Set.of();
+
     //守护
     public static Double healthpercentguardneed;
     public static Double resistdamage;
 
     // === 帕秋莉宝典 ===
     public static boolean givePatchouliBookOnFirstJoin;
+
+    /**
+     * 查询指定实体类型是否在罪之预言卡秒杀列表中。
+     * 应在服务端调用（缓存基于配置加载时填充）。
+     */
+    public static boolean isSinInstakillTarget(EntityType<?> type) {
+        return cachedSinInstakillTypes.contains(type);
+    }
+
+    private static void rebuildSinInstakillCache() {
+        Set<EntityType<?>> set = new HashSet<>();
+        for (String idStr : sinInstakillEntities) {
+            ResourceLocation rl = ResourceLocation.tryParse(idStr);
+            if (rl == null) {
+                LOGGER.warn("sin_instakill_entities: invalid resource location '{}', skipping", idStr);
+                continue;
+            }
+            EntityType<?> et = ForgeRegistries.ENTITY_TYPES.getValue(rl);
+            if (et == null) {
+                LOGGER.warn("sin_instakill_entities: unknown entity type '{}', skipping", idStr);
+                continue;
+            }
+            set.add(et);
+        }
+        cachedSinInstakillTypes = Set.copyOf(set);
+        LOGGER.info("sin_instakill_entities: loaded {} entity types", cachedSinInstakillTypes.size());
+    }
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
@@ -147,8 +197,11 @@ public class Config
         maxtakeeffectduration= MAX_TAKE_EFFECT_DURATION.get();
         maxlevel= MAX_LEVEL.get();
         balanceAllowedEffects = BALANCE_ALLOWED_EFFECTS.get();
+        sinInstakillEntities = SIN_INSTAKILL_ENTITIES.get();
         healthpercentguardneed= HEALTH_PERCENT.get();
         resistdamage= RESIST_DAMAGE.get();
         givePatchouliBookOnFirstJoin = GIVE_PATCHOULI_BOOK_ON_FIRST_JOIN.get();
+
+        rebuildSinInstakillCache();
     }
 }
