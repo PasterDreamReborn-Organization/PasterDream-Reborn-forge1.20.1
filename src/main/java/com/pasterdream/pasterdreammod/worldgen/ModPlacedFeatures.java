@@ -230,6 +230,11 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> JUNGLE_SPORANGIUM_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "jungle_sporangium_patch"));
     public static final ResourceKey<PlacedFeature> REED_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "reed_patch"));
 
+    // ===== 小石子 =====
+    public static final ResourceKey<PlacedFeature> PEBBLE_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pebble_patch"));
+
     //下界维度两种植物
     public static final ResourceKey<PlacedFeature> BLAZE_FLOWER_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "blaze_flower_patch"));
     public static final ResourceKey<PlacedFeature> CRIMSON_THORNS_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "crimson_thorns_patch"));
@@ -619,6 +624,13 @@ public class ModPlacedFeatures {
 
         //芦苇
         context.register(REED_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.REED_PATCH), List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        // 小石子 — 原作 ground_overworld_0: OCEAN_FLOOR heightmap, biome filter
+        context.register(PEBBLE_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.PEBBLE_PATCH),
+                List.of(InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                        BiomeFilter.biome())));
 
         //烈焰花
         context.register(BLAZE_FLOWER_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.BLAZE_FLOWER_PATCH), List.of(CountPlacement.of(16), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(35), VerticalAnchor.absolute(90)))));

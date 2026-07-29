@@ -264,6 +264,11 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> JUNGLE_SPORANGIUM_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "jungle_sporangium_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> REED_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "reed_patch"));
 
+    // 小石子 — 原作 ground_overworld_0: random_patch tries=6, 主世界地表生成
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PEBBLE_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pebble_patch"));
+
     // ===== 下界维度两种植物 =====
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLAZE_FLOWER_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "blaze_flower_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> CRIMSON_THORNS_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "crimson_thorns_patch"));
@@ -660,6 +665,20 @@ public class ModConfiguredFeatures {
 
         //芦苇
         context.register(REED_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(24, 6, 5, simpleBlockInAir(BlockStateProvider.simple(ModBlocks.REED.get())))));
+
+        // 小石子 — 原作 ground_overworld_0: random_patch tries=6, 放置于有固体支撑的空气上
+        context.register(PEBBLE_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(6, 7, 3,
+                        PlacementUtils.inlinePlaced(
+                                Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PEBBLE.get())),
+                                BlockPredicateFilter.forPredicate(
+                                        BlockPredicate.allOf(List.of(
+                                                BlockPredicate.matchesBlocks(Blocks.AIR),
+                                                BlockPredicate.solid(Direction.DOWN.getNormal())
+                                        ))
+                                )
+                        ))));
 
         //烈焰花
         context.register(BLAZE_FLOWER_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(12, 6, 7, simpleBudInAir(BlockStateProvider.simple(ModBlocks.BLAZE_FLOWER.get()), CRIMSON_FOREST_GROUND))));
