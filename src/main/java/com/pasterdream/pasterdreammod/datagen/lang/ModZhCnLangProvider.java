@@ -570,6 +570,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("effect.pasterdream.sculk_armor_buff", "幽匿回响");
         add("effect.pasterdream.dyedream_armor_buff", "染梦守护");
+        add("effect.pasterdream.titanium_armor_buff", "钛金守护");
         add("effect.pasterdream.dyedream_up_buff", "染梦工具增强");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9启用飞行能力");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4融梦能量消耗：1.2/min");
@@ -578,6 +579,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.forsakens_wing.flight", "§7▪ §9获得飞行能力且免疫摔落伤害");
         add("tooltip.pasterdream.forsakens_wing.immune", "§7▪ §9免疫缓慢与凋零效果");
         add("tooltip.pasterdream.forsakens_wing.flavor", "§7§o-- 我们时空枢纽见");
+        add("tooltip.pasterdreammod.titanium_armor.1", "§7套装效果：§e钛金守护");
+        add("tooltip.pasterdreammod.titanium_armor.2", "§7▪ §9每 30 秒获得 2 颗吸收之♡");
         add("tooltip.pasterdreammod.sculk_armor.1", "§7套装效果：§2幽匿回响");
         add("tooltip.pasterdreammod.sculk_armor.2", "§7▪ §9最大生命值+4");
         add("tooltip.pasterdreammod.sculk_armor.3", "§7▪ §9身处深层时效果增强");
@@ -610,7 +613,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §b融梦修补：0.01E/1耐久");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7套装效果：§d染梦守护");
         add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9最大生命值+4");
-        add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9每 30 秒获得 2 颗吸收之♡");
+        add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9每 30 秒获得 4 颗吸收之♡");
         add("tooltip.pasterdreammod.dyedream_armor.4", "§7▪ §9增强手持的染梦工具");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.1", "镶嵌：§d融梦水晶碎片");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.2", "战技：§b凌空斩");
@@ -1397,7 +1400,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.sculk_armor.page1", "免疫幽匿的黑暗恐惧；$(br)受到黑暗buff时，改为获得1分钟的速度II和抗性提升II；$(br)监守者不会攻击持有此buff的玩家。");
 
         add("pasterdream.seniors_dream.entry.dyedream_armor", "染梦守护");
-        add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "当玩家穿戴全套染梦套装时获得此buff。具体效果为：$(br)最大生命值+4；$(br)每30秒获得伤害吸收I；$(br)获得染梦工具增强效果：染梦合金工具和融梦水晶工具的伤害增加50%%。");
+        add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "当玩家穿戴全套染梦套装时获得此buff。具体效果为：$(br)最大生命值+4；$(br)每30秒获得伤害吸收II；$(br)获得染梦工具增强效果：染梦合金工具和融梦水晶工具的伤害增加50%%。");
 
         // 染梦世间
         add("pasterdream.seniors_dream.category.dyedream_world", "染梦世间");
@@ -1565,7 +1568,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.snow_vow_buff.description", "效果期间+3幸运，免疫燃烧和冻结效果，由雪下的誓言饰品在范围内给予。");
         add("effect.pasterdream.goldenrod_tea_buff.description", "效果持续期间免疫饥饿和反胃效果。");
         add("effect.pasterdream.sculk_armor_buff.description", "穿戴全套回响套装时获得，增加最大生命值，身处深层时获得抗性提升，受到黑暗效果时移除黑暗并给予速度和抗性效果。");
-        add("effect.pasterdream.dyedream_armor_buff.description", "穿戴全套染梦合金套装时获得，增加最大生命值并每30秒获得伤害吸收I。");
+        add("effect.pasterdream.dyedream_armor_buff.description", "穿戴全套染梦合金套装时获得，增加最大生命值并每30秒获得伤害吸收II。");
+        add("effect.pasterdream.titanium_armor_buff.description", "穿戴全套钛金套装时获得，每30秒获得伤害吸收I。");
         add("effect.pasterdream.dyedream_up_buff.description", "穿戴全套染梦合金套装时获得，持有染梦(染梦合金与融梦水晶)工具时伤害+50%");
         add("effect.pasterdream.dream_wish_buff.description", "饮用梦境果汁获得，拥有该效果在晚上睡觉以进入染梦世界。");
         add("effect.pasterdream.dyedream_perfume_buff.description", "饮用染梦香水获得，效果持续期间幻翼不会攻击你。");

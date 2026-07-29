@@ -15,6 +15,8 @@ public class ModEffects {
     public static final DeferredRegister<MobEffect> EFFECTS =
             DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, PasterDreamMod.MOD_ID);
 
+    public static final RegistryObject<MobEffect> TITANIUM_ARMOR_BUFF =
+            EFFECTS.register("titanium_armor_buff", TitaniumArmorBuffEffect::new);
     public static final RegistryObject<MobEffect> SCULK_ARMOR_BUFF =
             EFFECTS.register("sculk_armor_buff", SculkArmorBuffEffect::new);
     public static final RegistryObject<MobEffect> DYEDREAM_ARMOR_BUFF =
