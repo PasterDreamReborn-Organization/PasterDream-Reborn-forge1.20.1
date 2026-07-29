@@ -32,8 +32,10 @@ public class LightButterflyCurioItem extends Item implements ICurioItem {
         if (level.getMaxLocalRawBrightness(BlockPos.containing(entity.getX(), entity.getY(), entity.getZ())) > 7) return;
 
         if (entity instanceof ServerPlayer sp
-                && MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(sp) >= 0.004) {
-            MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(sp, -0.004);
+                && (sp.isCreative() || MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(sp) >= 0.004)) {
+            if (!sp.isCreative()) {
+                MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(sp, -0.004);
+            }
             sp.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 240, 0, false, false));
         }
     }

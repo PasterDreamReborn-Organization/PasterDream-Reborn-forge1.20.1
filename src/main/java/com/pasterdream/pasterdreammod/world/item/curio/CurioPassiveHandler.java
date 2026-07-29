@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
+import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -60,10 +61,11 @@ public class CurioPassiveHandler {
         var instance = event.getEffectInstance();
         if (instance == null || instance.getEffect() != ModEffects.CECILIA_BLESSING_BUFF.get()) return;
         if (event.getEntity() instanceof Player player
-                && CuriosApi.getCuriosInventory(player).map(h ->
+                && (CuriosApi.getCuriosInventory(player).map(h ->
                     h.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).isPresent()
                     || h.findFirstCurio(ModItems.FADED_BLESSING_OF_CECILIA.get()).isPresent()
-                ).orElse(false)) {
+                ).orElse(false)
+                || QymCatEarsItem.hasFullSet(player))) {
             event.setCanceled(true);
         }
     }

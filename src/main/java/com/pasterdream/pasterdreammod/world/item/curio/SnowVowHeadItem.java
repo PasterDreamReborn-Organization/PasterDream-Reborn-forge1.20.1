@@ -19,7 +19,7 @@ import java.util.List;
 public class SnowVowHeadItem extends Item implements ICurioItem {
 
     public SnowVowHeadItem() {
-        super(new Item.Properties().stacksTo(1).rarity(ModRarities.SUPERIOR));
+        super(new Item.Properties().stacksTo(1).rarity(ModRarities.SUPERIOR).fireResistant());
     }
 
     @Override

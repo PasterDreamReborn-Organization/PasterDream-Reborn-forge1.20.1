@@ -16,6 +16,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
@@ -33,6 +34,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class TerraBladeItem extends SwordItem {
@@ -40,8 +42,8 @@ public class TerraBladeItem extends SwordItem {
     private static final double ENERGY_COST = 0.1;
     private static final double ENERGY_COST_WITH_CHARM = 0.05;
 
-    public TerraBladeItem(Tier tier, int damage, float speed, Properties properties) {
-        super(tier, damage, speed, properties.rarity(ModRarities.LEGENDARY));
+    public TerraBladeItem(Tier tier, int damage, float speed) {
+        super(tier, damage, speed, new Properties().fireResistant().rarity(ModRarities.LEGENDARY));
     }
 
     @Override
@@ -90,8 +92,10 @@ public class TerraBladeItem extends SwordItem {
         double cost = hasCharm ? ENERGY_COST_WITH_CHARM : ENERGY_COST;
         double currentEnergy = MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(serverPlayer);
 
-        if (currentEnergy >= cost) {
-            MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -cost);
+        if (player.isCreative() || currentEnergy >= cost) {
+            if (!player.isCreative()) {
+                MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -cost);
+            }
             executeSkillWave(level, player, stack, hasCharm);
         } else {
             tag.putBoolean("skill_active", false);
@@ -167,5 +171,19 @@ public class TerraBladeItem extends SwordItem {
                 ModNetwork.CHANNEL.sendToServer(new TerraBladeSwingPacket());
             }
         }
+    }
+
+    @Override
+    public boolean hasCustomEntity(ItemStack stack) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public Entity createEntity(Level level, Entity location, ItemStack stack) {
+        var entity = new IndestructibleItemEntity(level, location.getX(), location.getY(), location.getZ(), stack);
+        entity.setDefaultPickUpDelay();
+        entity.setDeltaMovement(location.getDeltaMovement());
+        return entity;
     }
 }

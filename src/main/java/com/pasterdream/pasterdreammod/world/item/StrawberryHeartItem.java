@@ -47,12 +47,14 @@ public class StrawberryHeartItem extends Item {
                 return InteractionResultHolder.fail(stack);
             }
             double currentEnergy = MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(serverPlayer);
-            if (currentEnergy < ENERGY_COST) {
+            if (!player.isCreative() && currentEnergy < ENERGY_COST) {
                 serverPlayer.displayClientMessage(
                         Component.translatable("tooltip.pasterdream.strawberry_heart.no_energy"), true);
                 return InteractionResultHolder.fail(stack);
             }
-            MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -ENERGY_COST);
+            if (!player.isCreative()) {
+                MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -ENERGY_COST);
+            }
             serverPlayer.getCooldowns().addCooldown(this, COOLDOWN_TICKS);
 
             CompoundTag tag = stack.getOrCreateTag();

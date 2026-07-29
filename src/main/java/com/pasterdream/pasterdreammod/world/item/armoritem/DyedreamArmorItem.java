@@ -15,7 +15,7 @@ import net.minecraft.world.level.Level;
 public class DyedreamArmorItem extends ArmorItem {
 
     public DyedreamArmorItem(ArmorMaterial material, Type type, Properties properties) {
-        super(material, type, properties);
+        super(material, type, properties.fireResistant());
     }
 
     @Override

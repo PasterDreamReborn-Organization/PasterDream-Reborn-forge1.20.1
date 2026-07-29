@@ -376,7 +376,7 @@ public class ModItems {
 
     // 大地之刃
     public static final RegistryObject<Item> TERRA_BLADE = ITEMS.register("terra_blade",
-            () -> new TerraBladeItem(ModToolTiers.TERRA_SWORD, 7, -2.4f, new Item.Properties()));
+            () -> new TerraBladeItem(ModToolTiers.TERRA_SWORD, 7, -2.4f));
 
     // ===== 朔漠系列 =====
     public static final RegistryObject<Item> DESERT_SWORD = ITEMS.register("desert_sword",
@@ -410,11 +410,11 @@ public class ModItems {
     public static final RegistryObject<Item> DYEDREAM_HELMET = ITEMS.register("dyedream_helmet",
             () -> new DyedreamArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> DYEDREAM_CHESTPLATE = ITEMS.register("dyedream_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
     public static final RegistryObject<Item> DYEDREAM_LEGGINGS = ITEMS.register("dyedream_leggings",
-            () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
     public static final RegistryObject<Item> DYEDREAM_BOOTS = ITEMS.register("dyedream_boots",
-            () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
 
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.register("melt_dream_crystal_fragment",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)) {
