@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.event;
 
 import com.pasterdream.pasterdreammod.helper.itemwithnbt.dreamnoteswithnbt.DreamNotesWithNBT;
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.skill.EvasionEffectHandler;
@@ -17,9 +18,13 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BedBlock;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AdvancementEvent;
@@ -39,6 +44,7 @@ public class PlayerEvents {
     private static final ResourceLocation DYEDREAM_WORLD_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_world");
     private static final ResourceLocation PURE_AND_FLAWLESS_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/pure_and_flawless");
     private static final ResourceLocation DREAM_FERTILIZER_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dream_fertilizer");
+    private static final ResourceLocation LOOK_AT_PINK_SHEEP_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/look_at_pink_sheep");
 
     /** 进度 ID → 笔记 content 键列表 的映射 */
     private static final java.util.Map<ResourceLocation, java.util.List<String>> ADVANCEMENT_NOTE_CONTENT = java.util.Map.of(
@@ -86,6 +92,26 @@ public class PlayerEvents {
                     player.getPersistentData().remove("pasterdream:dream_bed_z");
                 } else {
                     player.getPersistentData().putInt("pasterdream:dream_teleport_ticks", dreamTeleportTicks);
+                }
+            }
+
+            // 检查玩家是否在染梦维度注视粉色羊（已获得成就则跳过）
+            if (player instanceof ServerPlayer serverPlayer
+                    && player.level().dimension().equals(DYEDREAM_WORLD)
+                    && player.tickCount % 20 == 0
+                    && !isAdvancementDone(serverPlayer, LOOK_AT_PINK_SHEEP_ADV)) {
+                Vec3 eyePos = serverPlayer.getEyePosition(1.0F);
+                Vec3 lookVec = serverPlayer.getViewVector(1.0F);
+                AABB nearby = serverPlayer.getBoundingBox().inflate(16.0);
+                var nearbySheep = serverPlayer.level().getEntitiesOfClass(
+                        Sheep.class, nearby,
+                        s -> s.getColor() == DyeColor.PINK);
+                for (Sheep sheep : nearbySheep) {
+                    Vec3 toSheep = sheep.getEyePosition(1.0F).subtract(eyePos).normalize();
+                    if (lookVec.dot(toSheep) > 0.95) {
+                        ModCriteriaTriggers.LOOK_AT_PINK_SHEEP.trigger(serverPlayer);
+                        break;
+                    }
                 }
             }
         }
@@ -271,5 +297,10 @@ public class PlayerEvents {
 
         serverPlayer.displayClientMessage(
                 Component.translatable("message.pasterdream." + advancement.getId().getPath().replace('/', '.') + ".found_note"), false);
+    }
+
+    private static boolean isAdvancementDone(ServerPlayer player, ResourceLocation id) {
+        var adv = player.server.getAdvancements().getAdvancement(id);
+        return adv != null && player.getAdvancements().getOrStartProgress(adv).isDone();
     }
 }

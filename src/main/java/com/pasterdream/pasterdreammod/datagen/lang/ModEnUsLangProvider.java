@@ -1038,6 +1038,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.galaxy_jelly.description", "Get the Galaxy Jelly, a jelly that can be found in the deep-sea treasures and chests in the dream, and it can make you soar to the clouds.");
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "Space Professional Voice Actor");
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "Eat the Galaxy Jelly at the building height limit... Kaz finally has company now...");
+        add("advancements.pasterdream.story.look_at_pink_sheep.title", "Do Block People Dream of Pink Sheep?");
+        add("advancements.pasterdream.story.look_at_pink_sheep.description", "Block people only dream of block sheep, of course.");
 
         // Advancements - Adventure Expansion
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.title", "The Forgotten Sword Tomb");

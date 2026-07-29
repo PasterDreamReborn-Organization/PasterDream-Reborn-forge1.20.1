@@ -1201,6 +1201,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.galaxy_jelly.description", "获得星河果冻，一种能在梦境中的深海秘宝和箱子中找到的果冻，它能让你飞至云霄。");
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "太空专业配音员");
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.description", "在建筑高度上限吃下星河果冻……卡兹这下有伴了……");
+        add("advancements.pasterdream.story.look_at_pink_sheep.title", "方块人会梦见粉红羊吗");
+        add("advancements.pasterdream.story.look_at_pink_sheep.description", "方块人当然只会梦见方块羊");
 
         // 进度 - 冒险拓展
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.title", "被遗忘的剑冢");
