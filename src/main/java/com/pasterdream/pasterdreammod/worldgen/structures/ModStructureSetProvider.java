@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.helper.structuregenerate.StructureGenerati
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
+
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -18,8 +19,8 @@ public class ModStructureSetProvider implements DataProvider
     private final PackOutput output;
     private final List<StructureGenerationConfig> configs;
 
-    /** 统一结构集的网格间距（区块），世界每SHARED_SPACING区块尝试生成一个结构 */
-    private static final int SHARED_SPACING = 18;
+    /** 统一结构集的网格间距（区块），世界每 SHARED_SPACING 区块尝试生成一个结构 */
+    private static final int SHARED_SPACING = 16;
     /** 统一结构集中两个结构之间的最小距离（区块） */
     private static final int SHARED_SEPARATION = 6;
 
@@ -49,13 +50,13 @@ public class ModStructureSetProvider implements DataProvider
 
         List<CompletableFuture<?>> futures = new ArrayList<>();
 
-        // 独立结构集（非分组结构）
+        // 独立结构集（非分组结构），使用 minecraft:random_spread
         for (var config : individualConfigs)
         {
             futures.add(generateIndividualSet(cache, config));
         }
 
-        // 共享结构集（分组结构）
+        // 共享结构集（分组结构统一到一个 set，权重控制稀有度）
         for (var entry : groups.entrySet())
         {
             String groupId = entry.getKey();
