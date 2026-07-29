@@ -172,6 +172,7 @@ public class ModCreativeModeTabs {
                         output.accept(SandofTimeItem.createReady(ModItems.SAND_OF_TIME.get()));
                         output.accept(ModItems.BLACK_BEETLE_CARAPACE.get());
                         output.accept(ModItems.BLACK_BEETLE_VOCALCORD.get());
+                        output.accept(ModItems.PEBBLE.get());
                         // 饰品
                         output.accept(ModItems.EMBRYO_CHARM.get());
                         output.accept(ModItems.EMBRYO_NECKLACE.get());

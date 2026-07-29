@@ -14,6 +14,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModBlocks.PEBBLE.get(), "Pebble");
+        add("tooltip.pasterdream.pebble.throw", "§7Right-click to throw");
+        add("tooltip.pasterdream.pebble.place", "§7Sneak + Right-click to place");
         add(ModItems.LIFE_CRYSTAL.get(), "Life Crystal");
         add("message.pasterdream.life_crystal.already_used", "You have already absorbed a Life Crystal!");
         add("message.pasterdream.life_crystal.absorbed", "The Life Crystal shatters and flows into you §aMax Health +2");

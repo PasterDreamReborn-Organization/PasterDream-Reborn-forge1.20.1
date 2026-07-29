@@ -470,6 +470,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var clayPotModel = models().getExistingFile(modLoc("block/clay_pot"));
         horizontalBlock(ModBlocks.CLAY_POT.get(), clayPotModel);
 
+        // 小石子
+        var pebbleModel = models().getExistingFile(modLoc("block/pebble"));
+        horizontalBlock(ModBlocks.PEBBLE.get(), pebbleModel);
+
         //流体方块
         simpleBlock(ModBlocks.MELTDREAM_LIQUID.get(), models().cubeAll(ModBlocks.MELTDREAM_LIQUID.getId().getPath(), modLoc("block/melt_dream_liquid_flowing")));
         simpleBlock(ModBlocks.SHADOW_LIQUID.get(), models().cubeAll(ModBlocks.SHADOW_LIQUID.getId().getPath(), modLoc("block/shadow_liquid_flowing")));
