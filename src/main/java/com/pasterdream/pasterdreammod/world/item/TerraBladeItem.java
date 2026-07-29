@@ -41,7 +41,7 @@ public class TerraBladeItem extends SwordItem {
     private static final double ENERGY_COST_WITH_CHARM = 0.05;
 
     public TerraBladeItem(Tier tier, int damage, float speed, Properties properties) {
-        super(tier, damage, speed, properties);
+        super(tier, damage, speed, properties.rarity(ModRarities.LEGENDARY));
     }
 
     @Override
@@ -140,6 +140,7 @@ public class TerraBladeItem extends SwordItem {
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
+        tooltip.add(ModRarities.qualityTooltip(ModRarities.LEGENDARY));
         tooltip.add(Component.translatable("tooltip.pasterdream.terra_blade.skill_name"));
         tooltip.add(Component.translatable("tooltip.pasterdream.terra_blade.desc1"));
         tooltip.add(Component.translatable("tooltip.pasterdream.terra_blade.desc2"));

@@ -221,6 +221,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         meltDreamToolRecipes(pWriter);
         tideSwordRecipes(pWriter);
         grassSwordRecipe(pWriter);
+        terraBladeRecipe(pWriter);
         copperToolRecipes(pWriter);
         copperArmorRecipes(pWriter);
         titaniumToolRecipes(pWriter);
@@ -1109,6 +1110,26 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 RecipeCategory.COMBAT, ModItems.BEIHAI_RUO_TIDE_SWORD.get())
                 .unlocks("has_tide_sword", has(ModItems.TIDE_SWORD.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":beihairuo_tide_sword_smithing");
+    }
+
+    // ===== 大地之刃配方 =====
+
+    private void terraBladeRecipe(Consumer<FinishedRecipe> pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.TERRA_BLADE.get())
+                .pattern("abc")
+                .pattern("def")
+                .pattern("ghi")
+                .define('a', ModItems.SHARP_MELT_DREAM_SWORD.get())
+                .define('b', ModItems.INFERNO_SWORD.get())
+                .define('c', ModItems.MURAKUMO_KUSANAGI.get())
+                .define('d', ModItems.CHENJINGMEN_DESERT_SWORD.get())
+                .define('e', ModItems.MELT_DREAM_LIQUID_BUCKET.get())
+                .define('f', ModItems.BROKEN_HERO_SWORD.get())
+                .define('g', ModItems.BEIHAI_RUO_TIDE_SWORD.get())
+                .define('h', ModItems.THERMAL_DAGGER.get())
+                .define('i', Items.NETHERITE_SWORD)
+                .unlockedBy(getHasName(ModItems.BROKEN_HERO_SWORD.get()), has(ModItems.BROKEN_HERO_SWORD.get()))
+                .save(pWriter);
     }
 
     // ===== 染梦玻璃系列配方 =====

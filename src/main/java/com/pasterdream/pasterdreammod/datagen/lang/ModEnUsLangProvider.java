@@ -626,7 +626,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.kusanagi.evolve", "The weapon has grown to a new stage");
         add("tooltip.pasterdreammod.murakumo_kusanagi.1", "Inlaid: §7%d Souls");
         add("tooltip.pasterdreammod.murakumo_kusanagi.2", "Combat Art: §bExtreme Sharpness");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.3", "§7▪ §9Triggers on first hit against a target");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.3", "§7▪ §9Triggers on next attack after activation");
         add("tooltip.pasterdreammod.murakumo_kusanagi.4", "§7▪ §9Deals 7+Sharpness*BaseATK/2 bonus damage");
         add("tooltip.pasterdreammod.murakumo_kusanagi.5", "§7▪ §9Cooldown: 4s");
         add("tooltip.pasterdreammod.murakumo_kusanagi.6", "§7Passive:");
@@ -944,6 +944,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.terra_blade.skill_on", "§aSword Wave: ON");
         add("tooltip.pasterdream.terra_blade.skill_off", "§7Sword Wave: OFF");
         add("tooltip.pasterdream.terra_blade.no_energy", "Not enough Melt Dream Energy, sword wave deactivated");
+        add("entity.pasterdream.terrasword_wave", "Terra Sword Wave");
 
         // Terra Floating Island
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "Terra Floating Island");

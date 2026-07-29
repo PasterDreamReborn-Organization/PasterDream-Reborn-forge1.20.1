@@ -375,7 +375,7 @@ public class ModItems {
 
     // 大地之刃
     public static final RegistryObject<Item> TERRA_BLADE = ITEMS.register("terra_blade",
-            () -> new TerraBladeItem(ModToolTiers.TERRA_SWORD, 3, -2.4f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new TerraBladeItem(ModToolTiers.TERRA_SWORD, 7, -2.4f, new Item.Properties()));
 
     // ===== 朔漠系列 =====
     public static final RegistryObject<Item> DESERT_SWORD = ITEMS.register("desert_sword",
