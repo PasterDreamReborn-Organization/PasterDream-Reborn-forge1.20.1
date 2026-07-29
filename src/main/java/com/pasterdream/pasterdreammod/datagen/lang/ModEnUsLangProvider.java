@@ -936,19 +936,20 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // Terra Blade
         add(ModItems.TERRA_BLADE.get(), "Terra Blade");
         add("tooltip.pasterdream.terra_blade.skill_name", "Combat Art: §aTerra Sword Skill");
-        add("tooltip.pasterdream.terra_blade.desc1", "§7▪ §9Right-click to empower your next 3 attacks as sword waves");
-        add("tooltip.pasterdream.terra_blade.desc2", "§7▪ §9Unleash up to 3 sword waves in the direction you face");
-        add("tooltip.pasterdream.terra_blade.desc3", "§7▪ §9Each wave deals 2+ATK damage");
-        add("tooltip.pasterdream.terra_blade.desc4", "§7▪ §9Third wave gets doubled attribute bonus");
-        add("tooltip.pasterdream.terra_blade.desc5", "§7▪ §9Cooldown: 5s | Melt Dream Energy Cost: §c0.3");
-        add("tooltip.pasterdream.terra_blade.no_energy", "Not enough Melt Dream Energy");
+        add("tooltip.pasterdream.terra_blade.desc1", "§7▪ §9Shift+Right-click to toggle sword wave mode");
+        add("tooltip.pasterdream.terra_blade.desc2", "§7▪ §9When active, each swing releases a sword wave");
+        add("tooltip.pasterdream.terra_blade.desc3", "§7▪ §9Each wave deals §c2+ATK §9damage");
+        add("tooltip.pasterdream.terra_blade.desc4", "§7▪ §9Each wave costs §c0.1 §9Melt Dream Energy");
+        add("tooltip.pasterdream.terra_blade.desc5", "§7▪ §9Auto-deactivates when energy is depleted");
+        add("tooltip.pasterdream.terra_blade.skill_on", "§aSword Wave: ON");
+        add("tooltip.pasterdream.terra_blade.skill_off", "§7Sword Wave: OFF");
+        add("tooltip.pasterdream.terra_blade.no_energy", "Not enough Melt Dream Energy, sword wave deactivated");
 
         // Terra Floating Island
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "Terra Floating Island");
-        add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9Terra Sword Skill cooldown -60%");
-        add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9Sword wave damage attribute bonus +30%");
-        add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9Terra Sword Skill energy cost -0.2");
-        add("tooltip.pasterdream.terra_floating_island.desc4", "§7▪ §9Sword wave ignores invulnerability frames");
+        add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9Sword wave cost reduced by 0.05 (§c0.05 §9per swing)");
+        add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9Sword wave damage +30%");
+        add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9Sword wave ignores invulnerability frames");
 
         // Strawberry Heart
         add(ModItems.STRAWBERRY_HEART.get(), "Strawberry Heart");

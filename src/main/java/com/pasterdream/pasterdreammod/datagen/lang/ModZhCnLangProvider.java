@@ -1099,19 +1099,20 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 大地之刃
         add(ModItems.TERRA_BLADE.get(), "大地之刃");
         add("tooltip.pasterdream.terra_blade.skill_name", "战技：§a泰拉剑技");
-        add("tooltip.pasterdream.terra_blade.desc1", "§7▪ §9右键以强化下3次攻击为剑气攻击");
-        add("tooltip.pasterdream.terra_blade.desc2", "§7▪ §9技能开启后共可向自身朝向挥出3次剑气");
-        add("tooltip.pasterdream.terra_blade.desc3", "§7▪ §9每段造成2+当前攻击力伤害");
-        add("tooltip.pasterdream.terra_blade.desc4", "§7▪ §9第三段剑气获得翻倍的属性加成");
-        add("tooltip.pasterdream.terra_blade.desc5", "§7▪ §9冷却时间：5秒 | 融梦能量消耗：§c0.3");
-        add("tooltip.pasterdream.terra_blade.no_energy", "融梦能量不足");
+        add("tooltip.pasterdream.terra_blade.desc1", "§7▪ §9Shift+右键切换剑气状态");
+        add("tooltip.pasterdream.terra_blade.desc2", "§7▪ §9剑气状态开启时，每次挥剑释放一道剑气");
+        add("tooltip.pasterdream.terra_blade.desc3", "§7▪ §9每道剑气造成 §c2+当前攻击力 §9伤害");
+        add("tooltip.pasterdream.terra_blade.desc4", "§7▪ §9每道剑气消耗 §c0.1 §9融梦能量");
+        add("tooltip.pasterdream.terra_blade.desc5", "§7▪ §9能量不足时自动退出剑气状态");
+        add("tooltip.pasterdream.terra_blade.skill_on", "§a剑气状态：开启");
+        add("tooltip.pasterdream.terra_blade.skill_off", "§7剑气状态：关闭");
+        add("tooltip.pasterdream.terra_blade.no_energy", "融梦能量不足，剑气状态已关闭");
 
         // 泰拉浮岛模型
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "泰拉浮岛模型");
-        add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9大地之刃战技冷却时间 -60%");
-        add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9剑气攻击力属性加成倍率 +30%");
-        add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9泰拉剑技融梦能量消耗 -0.2");
-        add("tooltip.pasterdream.terra_floating_island.desc4", "§7▪ §9剑气攻击无视无敌帧");
+        add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9剑气消耗减少 0.05（每次挥剑消耗 §c0.05§9）");
+        add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9剑气攻击力 +30%");
+        add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9剑气攻击无视无敌帧");
 
         add("message.pasterdream.lost_sword_tomb.lack_strength", "你的力气不足以拔出这柄剑");
         add("tooltip.pasterdream.lost_sword_tomb", "§7既然拔不出来，那就带着石头用吧！");

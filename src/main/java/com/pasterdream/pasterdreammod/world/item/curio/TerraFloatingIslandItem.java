@@ -22,12 +22,11 @@ public class TerraFloatingIslandItem extends Item implements ICurioItem {
         list.add(Component.translatable("tooltip.pasterdream.terra_floating_island.desc1"));
         list.add(Component.translatable("tooltip.pasterdream.terra_floating_island.desc2"));
         list.add(Component.translatable("tooltip.pasterdream.terra_floating_island.desc3"));
-        list.add(Component.translatable("tooltip.pasterdream.terra_floating_island.desc4"));
     }
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-        // TODO: Apply Terra Blade skill enhancement when entity system is in place
-        // Effects: cooldown -60%, sword wave damage +30%, energy cost -0.2
+        // Effects are handled in TerraBladeItem.tryFireSwordWave:
+        // energy cost -0.05 (0.1 → 0.05), sword wave damage +30%, ignores i-frames
     }
 }

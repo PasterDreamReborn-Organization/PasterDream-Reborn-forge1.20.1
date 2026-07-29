@@ -26,7 +26,7 @@ public class TerraBladeSwingPacket {
                 ItemStack stack = player.getMainHandItem();
                 if (stack.getItem() instanceof TerraBladeItem) {
                     player.swing(InteractionHand.MAIN_HAND);
-                    TerraBladeItem.executeSkillWave(player.level(), player, stack);
+                    TerraBladeItem.tryFireSwordWave(player, stack);
                 }
             }
         });
