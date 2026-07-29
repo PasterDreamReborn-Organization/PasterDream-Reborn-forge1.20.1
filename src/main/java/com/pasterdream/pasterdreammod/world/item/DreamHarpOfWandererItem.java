@@ -66,8 +66,10 @@ public class DreamHarpOfWandererItem extends Item {
         ItemStack stack = player.getItemInHand(hand);
         if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
             double currentEnergy = MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(serverPlayer);
-            if (currentEnergy >= ENERGY_COST) {
-                MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -ENERGY_COST);
+            if (player.isCreative() || currentEnergy >= ENERGY_COST) {
+                if (!player.isCreative()) {
+                    MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -ENERGY_COST);
+                }
                 SanHelper.addPlayerSanAndSync(serverPlayer, 5);
 
                 // Heart particles in 3 waves

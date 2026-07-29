@@ -99,13 +99,15 @@ public class KaichuOmamoriItem extends Item implements ICurioItem {
                 return false;
 
             double currentEnergy = MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(serverPlayer);
-            if (currentEnergy < ENERGY_COST) {
+            if (!player.isCreative() && currentEnergy < ENERGY_COST) {
                 player.displayClientMessage(Component.translatable("tooltip.pasterdream.terra_blade.no_energy"), true);
                 return false;
             }
 
             // 消耗能量 + 设置冷却
-            MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -ENERGY_COST);
+            if (!player.isCreative()) {
+                MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -ENERGY_COST);
+            }
             player.getCooldowns().addCooldown(ModItems.KAICHU_OMAMORI.get(), Config.KaichuOmamoriCooldownSeconds * 20);
 
             // 生成狐火

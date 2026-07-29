@@ -92,8 +92,10 @@ public class TerraBladeItem extends SwordItem {
         double cost = hasCharm ? ENERGY_COST_WITH_CHARM : ENERGY_COST;
         double currentEnergy = MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(serverPlayer);
 
-        if (currentEnergy >= cost) {
-            MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -cost);
+        if (player.isCreative() || currentEnergy >= cost) {
+            if (!player.isCreative()) {
+                MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -cost);
+            }
             executeSkillWave(level, player, stack, hasCharm);
         } else {
             tag.putBoolean("skill_active", false);

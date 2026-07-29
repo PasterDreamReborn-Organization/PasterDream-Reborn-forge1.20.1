@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.item.armoritem.qym;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
+import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
@@ -22,10 +23,12 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Nullable;
+
 public class QymCloudBootsItem extends ArmorItem {
 
     public QymCloudBootsItem(ArmorMaterial material, Type type, Properties properties) {
-        super(material, type, properties);
+        super(material, type, properties.fireResistant());
     }
 
     @Override
@@ -60,5 +63,19 @@ public class QymCloudBootsItem extends ArmorItem {
             BuiltInRegistries.ITEM.getTagOrEmpty(ModItemTags.SKILL_COOLDOWN)
                     .forEach(holder -> sp.getCooldowns().removeCooldown(holder.value()));
         }
+    }
+
+    @Override
+    public boolean hasCustomEntity(ItemStack stack) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public Entity createEntity(Level level, Entity location, ItemStack stack) {
+        var entity = new IndestructibleItemEntity(level, location.getX(), location.getY(), location.getZ(), stack);
+        entity.setDefaultPickUpDelay();
+        entity.setDeltaMovement(location.getDeltaMovement());
+        return entity;
     }
 }
