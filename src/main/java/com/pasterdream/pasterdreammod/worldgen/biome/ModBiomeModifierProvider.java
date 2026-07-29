@@ -45,6 +45,9 @@ public class ModBiomeModifierProvider implements DataProvider
             Map<ResourceLocation, JsonObject> entries = new HashMap<>();
             HolderLookup.RegistryLookup<PlacedFeature> featureLookup = provider.lookupOrThrow(Registries.PLACED_FEATURE);
 
+            // 小石子 — 原作 ground_overworld_0: surface_structures step, 主世界
+            addFeature(entries, "pebble_patch", ModPlacedFeatures.PEBBLE_PATCH, featureLookup, BiomeTags.IS_OVERWORLD, GenerationStep.Decoration.SURFACE_STRUCTURES);
+
             addPatch(entries, "goldenrod_patch", ModPlacedFeatures.GOLDENROD_PATCH, featureLookup, BiomeTags.IS_OVERWORLD);
             TagKey<Biome> flowerFieldTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_flower_field_spawn_biome"));
             addPatch(entries, "ferraria_crispa_patch", ModPlacedFeatures.FERRARIA_CRISPA_PATCH, featureLookup, flowerFieldTag);
