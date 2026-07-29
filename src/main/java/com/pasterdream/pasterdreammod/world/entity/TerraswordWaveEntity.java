@@ -26,14 +26,16 @@ import net.minecraftforge.network.PlayMessages;
 
 import javax.annotation.Nullable;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 public class TerraswordWaveEntity extends PathfinderMob {
 
     private int lifeTicks = 0;
     private static final int MAX_LIFE_TICKS = 25;
-    private boolean hasHit = false;
+    private final Set<UUID> hitEntities = new HashSet<>();
     @Nullable
     private Player owner;
     @Nullable
@@ -134,7 +136,9 @@ public class TerraswordWaveEntity extends PathfinderMob {
                     .stream().sorted(Comparator.comparingDouble(e -> e.distanceToSqr(center))).toList();
             Player owner = resolveOwner();
             for (LivingEntity target : entities) {
-                if (target != owner && !(target instanceof TerraswordWaveEntity)) {
+                if (target != owner && !(target instanceof TerraswordWaveEntity)
+                        && !hitEntities.contains(target.getUUID())) {
+                    hitEntities.add(target.getUUID());
                     float damage = (float) (2 + pasterAtk);
                     if (smite > 0 && target.getMobType() == MobType.UNDEAD) {
                         damage += smite * 2.5f;
@@ -157,19 +161,16 @@ public class TerraswordWaveEntity extends PathfinderMob {
                         Vec3 kb = target.position().subtract(center).normalize().scale(knockback * 0.6);
                         target.push(kb.x, 0.2, kb.z);
                     }
-                    hasHit = true;
+                    if (level instanceof ServerLevel serverLevel) {
+                        serverLevel.sendParticles(ParticleTypes.SWEEP_ATTACK,
+                                target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
+                                3, 0.3, 0.3, 0.3, 0.1);
+                    }
                 }
             }
 
-            if (lifeTicks >= MAX_LIFE_TICKS || hasHit) {
-                if (hasHit) {
-                    int deathParticles = 1 + sweepingEdge;
-                    double deathSpread = 0.5 + sweepingEdge * 0.3;
-                    if (level instanceof ServerLevel serverLevel) {
-                        serverLevel.sendParticles(ParticleTypes.SWEEP_ATTACK,
-                                this.getX(), this.getY(), this.getZ(),
-                                deathParticles, deathSpread, deathSpread, deathSpread, 0.1);
-                    }
+            if (lifeTicks >= MAX_LIFE_TICKS) {
+                if (!hitEntities.isEmpty()) {
                     level.playSound(null, BlockPos.containing(this.getX(), this.getY(), this.getZ()),
                             SoundEvents.DRAGON_FIREBALL_EXPLODE, SoundSource.NEUTRAL, 0.7f, 1.0f);
                 }
