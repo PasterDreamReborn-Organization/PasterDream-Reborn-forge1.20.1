@@ -1,56 +1,46 @@
 package com.pasterdream.pasterdreammod.world.block.researchtable;
 
-import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
-import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.object.PlayState;
-import software.bernie.geckolib.util.GeckoLibUtil;
+import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.function.Consumer;
+import java.util.function.Function;
 
-public class ResearchTableItem extends BlockItem implements GeoItem
+public class ResearchTableItem extends BlockItem
 {
-    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-
     public ResearchTableItem(Block block, Properties properties)
     {
         super(block, properties);
     }
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers)
+    protected boolean placeBlock(BlockPlaceContext context, BlockState state)
     {
-        controllers.add(new AnimationController<GeoAnimatable>(this, "state", 0, state -> PlayState.STOP));
-    }
+        Level level = context.getLevel();
+        BlockPos mainPos = context.getClickedPos();
 
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache()
-    {
-        return cache;
-    }
-
-    @Override
-    public void initializeClient(Consumer<IClientItemExtensions> consumer)
-    {
-        consumer.accept(new IClientItemExtensions()
+        ResearchTableBlock block = (ResearchTableBlock) getBlock();
+        if (!(state.getBlock() instanceof ResearchTableBlock))
         {
-            private BlockEntityWithoutLevelRenderer renderer;
+            return super.placeBlock(context, state);
+        }
 
-            @Override
-            public BlockEntityWithoutLevelRenderer getCustomRenderer()
-            {
-                if (renderer == null)
-                {
-                    renderer = new ResearchTableItemRenderer();
-                }
-                return renderer;
-            }
-        });
+        Function<BlockState, BlockPos> getAddonPos = (blockState) ->
+        {
+            Direction facing = blockState.getValue(ResearchTableBlock.FACING);
+            return mainPos.relative(facing.getCounterClockWise());
+        };
+        BlockPos addonPos = getAddonPos.apply(state);
+
+        if (!level.getBlockState(addonPos).canBeReplaced())
+        {
+            return false;
+        }
+
+        return super.placeBlock(context, state);
     }
 }
