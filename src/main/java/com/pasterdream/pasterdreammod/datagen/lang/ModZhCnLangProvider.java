@@ -224,6 +224,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
         add(ModItems.MELT_DREAM_AURORIAN_STEEL.get(), "融梦极光钢锭");
         add("tooltip.pasterdreammod.melt_dream_aurorian_steel", "§7§o孩子们，问了吗？");
+        add("block.pasterdream.shadow_liquid", "熔融阴影");
+        add("block.pasterdream.melt_dream_liquid", "融梦涌泉");
 
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "寻梦者笔记-染梦世界");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "寻梦者笔记-灯影之下");
