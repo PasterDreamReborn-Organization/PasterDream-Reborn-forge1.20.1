@@ -1706,6 +1706,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_crystal_ball", "染梦水晶球");
         add("structure.pasterdream.garden_decryption_misty_dreaming_lotus", "花园解密·迷梦冶梦莲");
         add("structure.pasterdream.garden_decryption_nippy_edelweiss", "花园解密·凌冽雪绒花");
+        add("structure.pasterdream.garden_decryption_nine_tailed_fox", "花园解密·九尾狐");
         add("structure.pasterdream.traveler_house", "旅者小屋");
         add("structure.pasterdream.dyedream_pavilion_plain", "染梦凉亭");
         add("structure.pasterdream.dyedream_pavilion_snowy_plain", "雪原染梦凉亭");
@@ -1717,5 +1718,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_ecosystem_bubble", "染梦气泡生态球");
         add("structure.pasterdream.ecosystem_bubble", "气泡生态球");
         add("structure.pasterdream.pinkagaric_house", "粉顶蘑菇屋");
+        add("structure.pasterdream.big_bubbles_0", "大气泡0");
+        add("structure.pasterdream.big_bubbles_1", "大气泡1");
+        add("structure.pasterdream.big_bubbles_2", "大气泡2");
+        add("structure.pasterdream.desert_fortress", "沙漠遗迹");
+        add("structure.pasterdream.dream_train", "逐梦列车");
+        add("structure.pasterdream.dyedream_laboratory", "染梦实验室");
+        add("structure.pasterdream.lifecrystal_cave", "生命水晶洞穴");
+        add("structure.pasterdream.melt_dream_liquid_well", "融梦涌泉井");
     }
 }
