@@ -29,6 +29,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -66,14 +67,11 @@ public class TerraBladeItem extends SwordItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (attacker instanceof Player player) {
-            tryFireSwordWave(player, stack);
-        }
         return super.hurtEnemy(stack, target, attacker);
     }
 
     /**
-     * Called from hurtEnemy (server-side entity hit) and TerraBladeSwingPacket (client-to-server air swing).
+     * Called from TerraBladeSwingPacket (client-to-server) on every left-click while skill is active.
      */
     public static void tryFireSwordWave(Player player, ItemStack stack) {
         CompoundTag tag = stack.getOrCreateTag();
@@ -81,9 +79,6 @@ public class TerraBladeItem extends SwordItem {
         if (!(player instanceof ServerPlayer serverPlayer)) return;
 
         Level level = player.level();
-        long lastWaveTick = tag.getLong("last_wave_tick");
-        if (level.getGameTime() == lastWaveTick) return;
-        tag.putLong("last_wave_tick", level.getGameTime());
 
         boolean hasCharm = CuriosApi.getCuriosInventory(serverPlayer)
                 .map(inv -> inv.findFirstCurio(ModItems.TERRA_FLOATING_ISLAND.get()).isPresent())
@@ -162,6 +157,11 @@ public class TerraBladeItem extends SwordItem {
 
         @SubscribeEvent
         public static void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
+            sendSwingPacket(event.getEntity());
+        }
+
+        @SubscribeEvent
+        public static void onAttackEntity(AttackEntityEvent event) {
             sendSwingPacket(event.getEntity());
         }
 
