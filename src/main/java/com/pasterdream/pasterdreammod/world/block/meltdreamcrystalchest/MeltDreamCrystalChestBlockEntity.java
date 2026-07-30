@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.*;
 import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
 import com.pasterdream.pasterdreammod.world.block.geckolibblock.AnimatableSync;
@@ -337,9 +338,9 @@ public class MeltDreamCrystalChestBlockEntity extends BlockEntity implements Geo
 
         double ySpeed = switch(animationState)
         {
-            case 1 -> 0.375;
-            case 2 -> 0.5;
-            case 3 -> 0.75;
+            case 1 -> Config.meltDreamCrystalChestNormalYSpeed;
+            case 2 -> Config.meltDreamCrystalChestRareYSpeed;
+            case 3 -> Config.meltDreamCrystalChestLegendYSpeed;
             default-> 2147483647;
         };
 

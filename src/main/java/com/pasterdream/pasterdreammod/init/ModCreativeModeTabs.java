@@ -169,7 +169,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_DUNGEON_KEY.get());
                         output.accept(ModItems.PALE_BONENEEDLE.get());
                         output.accept(ModItems.ROOTS_PALE_BONENEEDLE.get());
-                        output.accept(SandofTimeItem.createReady(ModItems.SAND_OF_TIME.get()));
                         output.accept(ModItems.BLACK_BEETLE_CARAPACE.get());
                         output.accept(ModItems.BLACK_BEETLE_VOCALCORD.get());
                         output.accept(ModItems.PEBBLE.get());
