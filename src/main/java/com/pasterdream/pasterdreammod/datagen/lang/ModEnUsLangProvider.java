@@ -223,6 +223,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MELT_DREAM_COIN_PILE.get(), "Melt Dream Coin Pile");
         add(ModItems.JUNGLE_SPORE.get(), "Jungle Spore");
         add(ModItems.PERGAMYN.get(), "Pergamyn");
+        add("block.pasterdream.shadow_liquid", "Shadow Liquid");
+        add("block.pasterdream.melt_dream_liquid", "Melt Dream Liquid");
 
         add(ModBlocks.DYEDREAM_DIRT.get(), "Dye Dream Dirt");
         add(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), "Dye Dream Grass Block");
