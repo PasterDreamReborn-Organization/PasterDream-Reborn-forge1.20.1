@@ -135,6 +135,19 @@ public class Config
             .comment("玩家首次加入世界时是否发放帕秋莉宝典（需要安装帕秋莉模组才生效），默认 true")
             .define("givePatchouliBookOnFirstJoin", true);
 
+    // === 融梦水晶箱 ===
+    private static final ForgeConfigSpec.DoubleValue MELT_DREAM_CRYSTAL_CHEST_NORMAL_Y_SPEED = BUILDER
+            .comment("融梦水晶箱普通品质物品抛出速度，默认 0.375")
+            .defineInRange("meltDreamCrystalChestNormalYSpeed", 0.375, 0.0, 5.0);
+
+    private static final ForgeConfigSpec.DoubleValue MELT_DREAM_CRYSTAL_CHEST_RARE_Y_SPEED = BUILDER
+            .comment("融梦水晶箱稀有品质物品抛出速度，默认 0.375")
+            .defineInRange("meltDreamCrystalChestRareYSpeed", 0.375, 0.0, 5.0);
+
+    private static final ForgeConfigSpec.DoubleValue MELT_DREAM_CRYSTAL_CHEST_LEGEND_Y_SPEED = BUILDER
+            .comment("融梦水晶箱传奇品质物品抛出速度，默认 0.375")
+            .defineInRange("meltDreamCrystalChestLegendYSpeed", 0.375, 0.0, 5.0);
+
     // === SAN 阈值（ratio = 当前SAN / 最大SAN） ===
     private static final ForgeConfigSpec.DoubleValue SAN_CHEER_UP_THRESHOLD = BUILDER
             .comment("振奋效果触发阈值（ratio >= 该值），默认 0.9（90%）")
@@ -172,6 +185,11 @@ public class Config
 
     // ===『天丛云』草薙 ===
     public static int TheNumberofKillEnemytoEvolve;
+
+    // === 融梦水晶箱 ===
+    public static double meltDreamCrystalChestNormalYSpeed;
+    public static double meltDreamCrystalChestRareYSpeed;
+    public static double meltDreamCrystalChestLegendYSpeed;
 
     // === 冶梦莲转化 ===
     public static boolean destroyDeskOnDreamingLotusConversion;
@@ -282,6 +300,9 @@ public class Config
         KaichuOmamoriCooldownSeconds = KAICHU_OMAMORI_COOLDOWN.get();
         FoxFireLifetimeSeconds= FOX_FIRE_LIFETIME.get();
         TheNumberofKillEnemytoEvolve= NEED_KILL_ENEMY.get();
+        meltDreamCrystalChestNormalYSpeed = MELT_DREAM_CRYSTAL_CHEST_NORMAL_Y_SPEED.get();
+        meltDreamCrystalChestRareYSpeed = MELT_DREAM_CRYSTAL_CHEST_RARE_Y_SPEED.get();
+        meltDreamCrystalChestLegendYSpeed = MELT_DREAM_CRYSTAL_CHEST_LEGEND_Y_SPEED.get();
         destroyDeskOnDreamingLotusConversion = DESTROY_DESK_ON_DREAMING_LOTUS_CONVERSION.get();
         destroyDeskOnEdelweissConversion = DESTROY_DESK_ON_EDELWEISS_CONVERSION.get();
         mintakeeffectduration= MIN_TAKE_EFFECT_DURATION.get();
