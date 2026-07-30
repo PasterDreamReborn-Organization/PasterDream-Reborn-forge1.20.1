@@ -1,0 +1,39 @@
+{
+  "variants": {
+    "facing=north,part=main":
+    {
+      "model": "pasterdream:block/research_table",
+      "y": 270
+    },
+    "facing=east,part=main":
+    {
+      "model": "pasterdream:block/research_table"
+    },
+    "facing=south,part=main":
+    {
+      "model": "pasterdream:block/research_table",
+      "y": 90
+    },
+    "facing=west,part=main":
+    {
+      "model": "pasterdream:block/research_table",
+      "y": 180
+    },
+    "facing=north,part=addon":
+    {
+      "model": "pasterdream:block/research_table_multipart"
+    },
+    "facing=east,part=addon":
+    {
+      "model": "pasterdream:block/research_table_multipart"
+    },
+    "facing=south,part=addon":
+    {
+      "model": "pasterdream:block/research_table_multipart"
+    },
+    "facing=west,part=addon":
+    {
+      "model": "pasterdream:block/research_table_multipart"
+    }
+  }
+}

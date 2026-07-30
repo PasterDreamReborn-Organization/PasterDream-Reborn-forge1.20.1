@@ -1,3 +1,112 @@
 {
-  "parent": "pasterdream:displaysettings/research_table.item"
+  "parent": "pasterdream:block/research_table",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        -164.27,
+        45.73,
+        -154.89
+      ],
+      "translation": [
+        -1.25,
+        -0.75,
+        -3.75
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        -164.27,
+        45.73,
+        -154.89
+      ],
+      "translation": [
+        -1.25,
+        -0.75,
+        -3.75
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -160.9,
+        34.32,
+        -170.47
+      ],
+      "translation": [
+        -0.5,
+        -3.25,
+        -3.75
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -160.9,
+        34.32,
+        -170.47
+      ],
+      "translation": [
+        -0.5,
+        -3.25,
+        -3.75
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "ground": {
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "gui": {
+      "rotation": [
+        -150,
+        -45,
+        -180
+      ],
+      "translation": [
+        -2.75,
+        0.5,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "head": {
+      "translation": [
+        6.25,
+        -6.75,
+        -0.5
+      ]
+    },
+    "fixed": {
+      "translation": [
+        0,
+        -9.75,
+        -7.5
+      ]
+    }
+  }
+
 }
