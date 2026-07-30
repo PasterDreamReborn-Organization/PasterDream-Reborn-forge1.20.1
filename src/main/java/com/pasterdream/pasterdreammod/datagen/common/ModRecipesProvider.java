@@ -222,6 +222,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         tideSwordRecipes(pWriter);
         grassSwordRecipe(pWriter);
         terraBladeRecipe(pWriter);
+        starWishRodRecipe(pWriter);
         copperToolRecipes(pWriter);
         copperArmorRecipes(pWriter);
         titaniumToolRecipes(pWriter);
@@ -1129,6 +1130,23 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('h', ModItems.THERMAL_DAGGER.get())
                 .define('i', Items.NETHERITE_SWORD)
                 .unlockedBy(getHasName(ModItems.BROKEN_HERO_SWORD.get()), has(ModItems.BROKEN_HERO_SWORD.get()))
+                .save(pWriter);
+    }
+
+    // ===== 占星者的祈愿配方 =====
+
+    private void starWishRodRecipe(Consumer<FinishedRecipe> pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.STAR_WISH_ROD.get())
+                .pattern("aba")
+                .pattern("cde")
+                .pattern("afa")
+                .define('a', ModItems.TITANIUM_INGOT.get())
+                .define('b', ModItems.SNOW_VOW_HEAD.get())
+                .define('c', Items.POWDER_SNOW_BUCKET)
+                .define('d', Items.FISHING_ROD)
+                .define('e', Items.DIAMOND)
+                .define('f', ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
                 .save(pWriter);
     }
 
