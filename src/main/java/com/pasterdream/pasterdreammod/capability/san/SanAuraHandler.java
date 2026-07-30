@@ -6,11 +6,13 @@ import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateManager;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
+import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -54,7 +56,9 @@ public class SanAuraHandler {
         double lightRate = (light - 7) * 0.0001;
 
         double totalRate = attributeRate + biomeRate + lightRate;
-        if (totalRate != 0) {
+        // 猫耳饰品保持 SAN 始终为上限，跳过环境 SAN 变化，避免时序冲突
+        boolean hasCatEars = player.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof QymCatEarsItem;
+        if (totalRate != 0 && !hasCatEars) {
             SanHelper.addPlayerSanAndSync(player, totalRate);
         }
 

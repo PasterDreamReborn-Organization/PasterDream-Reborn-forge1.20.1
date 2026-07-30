@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.item;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModEntities;
+import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -22,8 +23,6 @@ public class ShadowHandFishingHandler {
             ResourceKey.create(Registries.DIMENSION,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_world"));
 
-    private static final double SPAWN_CHANCE = 0.15;
-
     @SubscribeEvent
     public static void onItemFished(ItemFishedEvent event) {
         Player player = event.getEntity();
@@ -40,19 +39,26 @@ public class ShadowHandFishingHandler {
         if (level.isClientSide()) return;
         if (!level.dimension().equals(LAMP_SHADOW_WORLD)) return;
 
-        if (level.getRandom().nextDouble() >= SPAWN_CHANCE) return;
+        // 10% 概率发出阴影傀儡吼叫声，但什么都不生成
+        if (level.getRandom().nextDouble() < 0.10) {
+            level.playSound(player, player.blockPosition(),
+                    ModSounds.ROAR0.get(), SoundSource.HOSTILE, 1.0F, 1.0F);
+        }
 
-        ShadowHandEntity shadowHand = new ShadowHandEntity(ModEntities.SHADOW_HAND.get(), level);
-        double spawnX = player.getX() + (level.getRandom().nextDouble() - 0.5) * 4;
-        double spawnY = player.getY() + 1.5;
-        double spawnZ = player.getZ() + (level.getRandom().nextDouble() - 0.5) * 4;
-        shadowHand.setPos(spawnX, spawnY, spawnZ);
-        shadowHand.setTarget(player);
-        level.addFreshEntity(shadowHand);
+        // 15% 概率生成阴影之手
+        if (level.getRandom().nextDouble() < 0.15) {
+            ShadowHandEntity shadowHand = new ShadowHandEntity(ModEntities.SHADOW_HAND.get(), level);
+            double spawnX = player.getX() + (level.getRandom().nextDouble() - 0.5) * 4;
+            double spawnY = player.getY() + 1.5;
+            double spawnZ = player.getZ() + (level.getRandom().nextDouble() - 0.5) * 4;
+            shadowHand.setPos(spawnX, spawnY, spawnZ);
+            shadowHand.setTarget(player);
+            level.addFreshEntity(shadowHand);
 
-        level.playSound(null, player.blockPosition(),
-                SoundEvents.GUARDIAN_AMBIENT, SoundSource.HOSTILE, 1.0F, 0.5F);
+            level.playSound(player, player.blockPosition(),
+                    SoundEvents.GUARDIAN_AMBIENT, SoundSource.HOSTILE, 1.0F, 0.5F);
 
-        event.damageRodBy(2);
+            event.damageRodBy(2);
+        }
     }
 }
