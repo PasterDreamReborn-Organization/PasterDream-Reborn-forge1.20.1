@@ -56,7 +56,7 @@ public class WailingShadowGhostEntity extends ShadowGhostEntity {
             summonGate = true;
             summonTimer = 44; // Total countdown
             this.playSound(ModSounds.GHOST0.get(), 1f, 1f);
-            this.setAnimation("attack");
+            this.setAnimation("skill");
         }
         return result;
     }
