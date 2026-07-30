@@ -19,6 +19,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.pebble.place", "§7Sneak + Right-click to place");
         add(ModItems.LIFE_CRYSTAL.get(), "Life Crystal");
         add("message.pasterdream.life_crystal.already_used", "You have already absorbed a Life Crystal!");
+        add("message.pasterdream.life_crystal.already_absorbing", "You are already absorbing another Life Crystal!");
         add("message.pasterdream.life_crystal.absorbed", "The Life Crystal shatters and flows into you §aMax Health +2");
         add(ModItems.DYEDREAM_QUARTZ.get(), "Dye Dream Quartz");
         add(ModItems.DYEDREAM_DUST.get(), "Dye Dream Dust");
@@ -1298,6 +1299,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_ecosystem_bubble", "Dyedream Ecosystem Bubble");
         add("structure.pasterdream.ecosystem_bubble", "Ecosystem Bubble");
         add("structure.pasterdream.pinkagaric_house", "Pinkagaric House");
+        add("structure.pasterdream.dyedream_tower_0", "Dyedream Cloud-Piercing Tower 0");
+        add("structure.pasterdream.dyedream_tower_1", "Dyedream Cloud-Piercing Tower 1");
         add("structure.pasterdream.big_bubbles_0", "Big Bubble 0");
         add("structure.pasterdream.big_bubbles_1", "Big Bubble 1");
         add("structure.pasterdream.big_bubbles_2", "Big Bubble 2");

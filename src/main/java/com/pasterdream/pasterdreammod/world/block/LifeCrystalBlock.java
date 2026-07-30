@@ -36,12 +36,15 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 public class LifeCrystalBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private static final UUID LIFE_CRYSTAL_MODIFIER_UUID = UUID.fromString("4619a21e-8140-4f6b-a384-5a3e83b65e3c");
+    private static final Set<UUID> ABSORBING_PLAYERS = new HashSet<>();
 
     private static final VoxelShape SHAPE_NORTH = box(3, 2, 5, 13, 14, 11);
     private static final VoxelShape SHAPE_SOUTH = box(3, 2, 5, 13, 14, 11);
@@ -109,6 +112,20 @@ public class LifeCrystalBlock extends BaseEntityBlock implements SimpleWaterlogg
     }
 
     @Override
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (!state.is(newState.getBlock())) {
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof LifeCrystalBlockEntity lcbe) {
+                UUID uuid = lcbe.getAbsorbingPlayer();
+                if (uuid != null) {
+                    ABSORBING_PLAYERS.remove(uuid);
+                }
+            }
+        }
+        super.onRemove(state, level, pos, newState, isMoving);
+    }
+
+    @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(FACING)) {
             case NORTH, SOUTH -> SHAPE_NORTH;
@@ -151,6 +168,11 @@ public class LifeCrystalBlock extends BaseEntityBlock implements SimpleWaterlogg
             return InteractionResult.SUCCESS;
         }
 
+        if (!ABSORBING_PLAYERS.add(player.getUUID())) {
+            player.displayClientMessage(Component.translatable("message.pasterdream.life_crystal.already_absorbing"), false);
+            return InteractionResult.SUCCESS;
+        }
+
         BlockEntity be = level.getBlockEntity(pos);
         if (be instanceof LifeCrystalBlockEntity lcbe) {
             lcbe.setAnimationState(1);
@@ -163,6 +185,9 @@ public class LifeCrystalBlock extends BaseEntityBlock implements SimpleWaterlogg
 
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (!(level.getBlockState(pos).getBlock() instanceof LifeCrystalBlock)) {
+            return;
+        }
         BlockEntity be = level.getBlockEntity(pos);
         UUID playerUUID = null;
         if (be instanceof LifeCrystalBlockEntity lcbe) {
@@ -174,11 +199,13 @@ public class LifeCrystalBlock extends BaseEntityBlock implements SimpleWaterlogg
         level.removeBlock(pos, false);
 
         if (playerUUID != null) {
+            ABSORBING_PLAYERS.remove(playerUUID);
             Player player = level.getPlayerByUUID(playerUUID);
             if (player != null) {
                 AttributeInstance instance = player.getAttribute(Attributes.MAX_HEALTH);
-                if (instance != null) {
-                    instance.addPermanentModifier(new AttributeModifier(LIFE_CRYSTAL_MODIFIER_UUID, "life_crystal", 2, AttributeModifier.Operation.ADDITION));
+                AttributeModifier modifier = new AttributeModifier(LIFE_CRYSTAL_MODIFIER_UUID, "life_crystal", 2, AttributeModifier.Operation.ADDITION);
+                if (instance != null && !instance.hasModifier(modifier)) {
+                    instance.addPermanentModifier(modifier);
                 }
                 player.displayClientMessage(Component.translatable("message.pasterdream.life_crystal.absorbed"), false);
             }

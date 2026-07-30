@@ -19,6 +19,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.pebble.place", "§7潜行+右键放置");
         add(ModItems.LIFE_CRYSTAL.get(), "生命水晶");
         add("message.pasterdream.life_crystal.already_used", "你已经吸收过生命水晶了！");
+        add("message.pasterdream.life_crystal.already_absorbing", "你已经在吸收另一个生命水晶了！");
         add("message.pasterdream.life_crystal.absorbed", "生命水晶破碎并涌入你的体内 §a最大生命值+2");
         add(ModItems.DYEDREAM_QUARTZ.get(), "染梦石英");
         add(ModItems.DYEDREAM_DUST.get(), "染梦粉尘");
@@ -1718,6 +1719,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_ecosystem_bubble", "染梦气泡生态球");
         add("structure.pasterdream.ecosystem_bubble", "气泡生态球");
         add("structure.pasterdream.pinkagaric_house", "粉顶蘑菇屋");
+        add("structure.pasterdream.dyedream_tower_0", "染梦穿云塔_0");
+        add("structure.pasterdream.dyedream_tower_1", "染梦穿云塔_1");
         add("structure.pasterdream.big_bubbles_0", "大气泡0");
         add("structure.pasterdream.big_bubbles_1", "大气泡1");
         add("structure.pasterdream.big_bubbles_2", "大气泡2");
