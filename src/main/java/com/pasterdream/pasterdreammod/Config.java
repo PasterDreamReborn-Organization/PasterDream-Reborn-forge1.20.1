@@ -96,7 +96,8 @@ public class Config
                     List.of("minecraft:vex", "minecraft:bat", "minecraft:endermite",
                             "minecraft:silverfish", "minecraft:creeper","minecraft:cave_spider","alexsmobs:centipede_head",
                             "alexsmobs:centipede_body","alexsmobs:centipede_tail","alexsmobs:crimson_mosquito",
-                            "alexsmobs:seagull","iceandfire:pixie","twilightforest:pinch_beetle"),
+                            "alexsmobs:seagull","iceandfire:pixie","twilightforest:pinch_beetle","born_in_chaos_v1:maggot",
+                            "born_in_chaos_v1:diamond_termite","born_in_chaos_v1:firelight"),
                     obj -> obj instanceof String);
 
     //守护

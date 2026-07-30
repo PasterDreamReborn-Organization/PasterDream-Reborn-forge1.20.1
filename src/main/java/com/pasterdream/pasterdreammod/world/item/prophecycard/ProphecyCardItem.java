@@ -538,7 +538,7 @@ public class ProphecyCardItem extends Item {
                 DamageSource genericSource = new DamageSource(
                         level.registryAccess()
                                 .registryOrThrow(Registries.DAMAGE_TYPE)
-                                .getHolderOrThrow(DamageTypes.GENERIC),
+                                .getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD),
                         player);
 
                 for (LivingEntity target : entities) {

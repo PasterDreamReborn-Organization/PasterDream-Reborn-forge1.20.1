@@ -1088,6 +1088,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.rapid_reaction_buff", "高速反射");
         add("effect.pasterdream.holy_grail_buff", "圣杯");
         add("effect.pasterdream.flare_up_buff", "怒气爆发");
+        add("effect.pasterdream.conflict_mark", "纷争标记");
         add("attribute.pasterdream.blink_cd", "瞬身术冷却");
         add("attribute.pasterdream.blink_consume", "瞬身术消耗");
         add("attribute.pasterdream.blink_range", "瞬身术距离");
@@ -1674,7 +1675,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
 
         add("tooltip.pasterdream.prophecy_card.balance.description", "§9使用卡牌时，当前自身拥有的部分药水效果的等级翻倍，但持续时间缩短至一半。");
-        add("tooltip.pasterdream.prophecy_card.chaos.description", "§9使用卡牌时，对以自身为中心，7*7范围内的所有敌人陷入混乱并失去行动能力，持续10秒。（此效果不对玩家生效）");
         add("tooltip.pasterdream.prophecy_card.conflict.description.1", "§9使用卡牌时，将光标对应的实体标记，被标记的实体将会被成为其它实体的攻击对象，持续120秒");
         add("tooltip.pasterdream.prophecy_card.conflict.description.2", "§7§O --至少你用完这张卡不用担心被一位白衣少女捅成玻璃碴子");
         add("message.pasterdream.prophecy_card.conflict.marked", "让现场腥风血雨起来吧！");
