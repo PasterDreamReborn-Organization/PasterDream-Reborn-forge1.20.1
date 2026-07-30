@@ -19,6 +19,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.pebble.place", "§7潜行+右键放置");
         add(ModItems.LIFE_CRYSTAL.get(), "生命水晶");
         add("message.pasterdream.life_crystal.already_used", "你已经吸收过生命水晶了！");
+        add("message.pasterdream.life_crystal.already_absorbing", "你已经在吸收另一个生命水晶了！");
         add("message.pasterdream.life_crystal.absorbed", "生命水晶破碎并涌入你的体内 §a最大生命值+2");
         add(ModItems.DYEDREAM_QUARTZ.get(), "染梦石英");
         add(ModItems.DYEDREAM_DUST.get(), "染梦粉尘");
