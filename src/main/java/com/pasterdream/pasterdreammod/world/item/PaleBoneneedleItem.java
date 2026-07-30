@@ -23,6 +23,9 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
@@ -92,6 +95,7 @@ public class PaleBoneneedleItem extends Item {
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
         tooltip.add(Component.translatable("tooltip.pasterdream.pale_boneneedle"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.pale_boneneedle.use"));
     }
 
     @Override
@@ -159,6 +163,58 @@ public class PaleBoneneedleItem extends Item {
             }
             sp.teleportTo(spawnX, spawnY, spawnZ);
             sp.fallDistance = 0;
+        }
+    }
+
+    @Mod.EventBusSubscriber(modid = "pasterdream", bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public static class AttackHandler {
+        @SubscribeEvent
+        public static void onAttackEntity(AttackEntityEvent event) {
+            Player attacker = event.getEntity();
+            if (attacker.level().isClientSide()) return;
+
+            ItemStack stack = attacker.getMainHandItem();
+            Item item = stack.getItem();
+
+            if (!(item instanceof PaleBoneneedleItem) && !(item instanceof RootsPaleBoneneedleItem)) return;
+            if (!(event.getTarget() instanceof Player target)) return;
+
+            // RootsPaleBoneneedleItem: only works if waypoint is set
+            if (item instanceof RootsPaleBoneneedleItem && !stack.getOrCreateTag().getBoolean("switch")) return;
+
+            event.setCanceled(true);
+
+            Level level = attacker.level();
+            target.hurt(level.damageSources().generic(), 1.0f);
+
+            if (isDreamDimension(level) && level instanceof ServerLevel serverLevel) {
+                boolean wasFalling = target.fallDistance > 10;
+
+                serverLevel.sendParticles(ModParticleTypes.DUST_0_PARTICLE.get(),
+                        target.getX(), target.getY(), target.getZ(),
+                        64, 0.1, 1, 0.1, 0.2);
+                level.playSound(null, BlockPos.containing(target.getX(), target.getY(), target.getZ()),
+                        ModSounds.DREAM0.get(), SoundSource.NEUTRAL, 0.5f, 1.0f);
+
+                scheduleDelayed(() -> {
+                    teleportToOverworldAndSpawn(serverLevel, target);
+                    if (item instanceof RootsPaleBoneneedleItem) {
+                        RootsPaleBoneneedleItem.teleportToWaypoint(stack, target);
+                    }
+                    if (target instanceof ServerPlayer sp) {
+                        ModCriteriaTriggers.USE_BONE_NEEDLE.trigger(sp, false);
+                    }
+                    if (wasFalling && target instanceof ServerPlayer sp) {
+                        ModCriteriaTriggers.USE_BONE_NEEDLE.trigger(sp, true);
+                    }
+                    target.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 100, 0));
+                    attacker.getCooldowns().addCooldown(item, 100);
+                });
+            }
+
+            if (item instanceof PaleBoneneedleItem) {
+                stack.hurtAndBreak(1, attacker, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+            }
         }
     }
 }

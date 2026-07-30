@@ -743,9 +743,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         // Pale Boneneedle
         add("tooltip.pasterdream.pale_boneneedle", "§7Awakens you from dreams...");
+        add("tooltip.pasterdream.pale_boneneedle.use", "§7Left-click on other players | Right-click on yourself");
         add("tooltip.pasterdream.roots_pale_boneneedle.1", "§7Awakens you from dreams... and returns to the marked location");
         add("tooltip.pasterdream.roots_pale_boneneedle.2", "§7Sneak + right-click to set a waypoint");
         add("tooltip.pasterdream.roots_pale_boneneedle.3", "§7If no waypoint is set, returns to spawn by default");
+        add("tooltip.pasterdream.roots_pale_boneneedle.4", "§7Left-click on other players | Right-click on yourself");
         add("message.pasterdream.roots_pale_boneneedle.waypoint_set", "Waypoint recorded");
 
         //Other Items
