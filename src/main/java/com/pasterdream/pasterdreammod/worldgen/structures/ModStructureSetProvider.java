@@ -23,7 +23,7 @@ public class ModStructureSetProvider implements DataProvider
 
     /** 各组独立的 spacing/separation 配置，key=groupSetId, value[0]=spacing, value[1]=separation */
     private static final Map<String, int[]> GROUP_CONFIG = Map.of(
-        "dyedream_structures", new int[]{16, 6},
+        "dyedream_structures", new int[]{14, 6},
         "dyedream_bubbles",    new int[]{4, 2}
     );
 

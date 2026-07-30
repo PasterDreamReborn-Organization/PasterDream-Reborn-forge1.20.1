@@ -58,8 +58,8 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_tavern",       "pasterdream:can_dyedream_plains_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 16, 60483715, 8, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_campsite",     "pasterdream:can_dyedream_plains_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 28, 7, 92741583, 9, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:pinkagaric_house",      "pasterdream:can_pinkagaric_house_spawn_biome", "surface_structures", "beard_thin", -3, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 26, 8, 18365492, 10, "dyedream_structures"));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_tower_0", "pasterdream:dyedream_world_land_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 96, 45, 524960775, 3, "dyedream_structures"));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_tower_1", "pasterdream:dyedream_world_land_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 98, 48, 524768400, 3, "dyedream_structures"));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_tower_0", "pasterdream:dyedream_world_land_biome", "surface_structures", "beard_thin", 1, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 96, 45, 524960775, 3, "dyedream_structures"));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_tower_1", "pasterdream:dyedream_world_land_biome", "surface_structures", "beard_thin", 1, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 98, 48, 524768400, 3, "dyedream_structures"));
 
         // === 染梦世界手工结构（已有静态 structure/template_pool JSON，仅加入统一结构集） ===
         // 注：此处 spacing/separation/salt 仅用于权重计算，实际间距由 SHARED_SPACING 统一控制
