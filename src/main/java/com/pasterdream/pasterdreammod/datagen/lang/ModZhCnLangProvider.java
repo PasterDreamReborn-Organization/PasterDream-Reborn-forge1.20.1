@@ -1718,6 +1718,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_ecosystem_bubble", "染梦气泡生态球");
         add("structure.pasterdream.ecosystem_bubble", "气泡生态球");
         add("structure.pasterdream.pinkagaric_house", "粉顶蘑菇屋");
+        add("structure.pasterdream.dyedream_tower_0", "染梦穿云塔_0");
+        add("structure.pasterdream.dyedream_tower_1", "染梦穿云塔_1");
         add("structure.pasterdream.big_bubbles_0", "大气泡0");
         add("structure.pasterdream.big_bubbles_1", "大气泡1");
         add("structure.pasterdream.big_bubbles_2", "大气泡2");

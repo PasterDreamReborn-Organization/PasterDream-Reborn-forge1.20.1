@@ -1298,6 +1298,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_ecosystem_bubble", "Dyedream Ecosystem Bubble");
         add("structure.pasterdream.ecosystem_bubble", "Ecosystem Bubble");
         add("structure.pasterdream.pinkagaric_house", "Pinkagaric House");
+        add("structure.pasterdream.dyedream_tower_0", "Dyedream Cloud-Piercing Tower 0");
+        add("structure.pasterdream.dyedream_tower_1", "Dyedream Cloud-Piercing Tower 1");
         add("structure.pasterdream.big_bubbles_0", "Big Bubble 0");
         add("structure.pasterdream.big_bubbles_1", "Big Bubble 1");
         add("structure.pasterdream.big_bubbles_2", "Big Bubble 2");
