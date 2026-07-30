@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.client.model;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.entity.ghost.ITextureVariant;
+import com.pasterdream.pasterdreammod.world.entity.ghost.WailingShadowGhostEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -10,6 +11,9 @@ import software.bernie.geckolib.model.GeoModel;
 public class ShadowGhostModel<T extends LivingEntity & GeoEntity & ITextureVariant> extends GeoModel<T> {
     @Override
     public ResourceLocation getAnimationResource(T entity) {
+        if (entity instanceof WailingShadowGhostEntity) {
+            return ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "animations/shadow_squeal_wave.animation.json");
+        }
         return ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "animations/shadow_ghost.animation.json");
     }
 

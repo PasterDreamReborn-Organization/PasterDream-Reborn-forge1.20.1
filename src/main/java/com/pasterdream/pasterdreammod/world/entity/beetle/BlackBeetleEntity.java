@@ -318,6 +318,14 @@ public class BlackBeetleEntity extends TamableAnimal implements GeoEntity {
         }
     }
 
+    @Override
+    public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+        super.onSyncedDataUpdated(key);
+        if (ANIMATION.equals(key)) {
+            this.animationprocedure = this.entityData.get(ANIMATION);
+        }
+    }
+
     public void setAnimation(String animation) {
         this.animationprocedure = animation;
         this.entityData.set(ANIMATION, animation);

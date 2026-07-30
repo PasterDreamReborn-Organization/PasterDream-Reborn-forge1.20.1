@@ -322,7 +322,16 @@ public class ShadowGolemEntity extends Monster implements GeoEntity {
         return this.entityData.get(ANIMATION);
     }
 
+    @Override
+    public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+        super.onSyncedDataUpdated(key);
+        if (ANIMATION.equals(key)) {
+            this.animationprocedure = this.entityData.get(ANIMATION);
+        }
+    }
+
     public void setAnimation(String animation) {
+        this.animationprocedure = animation;
         this.entityData.set(ANIMATION, animation);
     }
 
