@@ -35,6 +35,7 @@ public class RootsPaleBoneneedleItem extends Item {
         tooltip.add(Component.translatable("tooltip.pasterdream.roots_pale_boneneedle.1"));
         tooltip.add(Component.translatable("tooltip.pasterdream.roots_pale_boneneedle.2"));
         tooltip.add(Component.translatable("tooltip.pasterdream.roots_pale_boneneedle.3"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.roots_pale_boneneedle.4"));
     }
 
     @Override
@@ -105,7 +106,7 @@ public class RootsPaleBoneneedleItem extends Item {
         return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
     }
 
-    private static void teleportToWaypoint(ItemStack itemstack, Player player) {
+    static void teleportToWaypoint(ItemStack itemstack, Player player) {
         double x = itemstack.getOrCreateTag().getDouble("x");
         double y = itemstack.getOrCreateTag().getDouble("y");
         double z = itemstack.getOrCreateTag().getDouble("z");

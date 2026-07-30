@@ -898,9 +898,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 苍白骨针
         add("tooltip.pasterdream.pale_boneneedle", "§7让你从梦中清醒...");
+        add("tooltip.pasterdream.pale_boneneedle.use", "§7左键对其他玩家使用 | 右键对自己使用");
         add("tooltip.pasterdream.roots_pale_boneneedle.1", "§7让你从梦中清醒...并回到标记的位置");
         add("tooltip.pasterdream.roots_pale_boneneedle.2", "§7潜行右键以设置标记点");
         add("tooltip.pasterdream.roots_pale_boneneedle.3", "§7如未设置标记将默认返回重生点");
+        add("tooltip.pasterdream.roots_pale_boneneedle.4", "§7左键对其他玩家使用 | 右键对自己使用");
         add("message.pasterdream.roots_pale_boneneedle.waypoint_set", "已记录坐标点");
 
         // 其他道具
