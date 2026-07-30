@@ -25,7 +25,8 @@
     "FogRendererMixin",
     "LevelRendererMixin",
     "MusicManagerMixin",
-    "SituationalMusicMixin"
+    "SituationalMusicMixin",
+    "BlockElementMixin"
   ],
   "server": [],
   "minVersion": "0.8"

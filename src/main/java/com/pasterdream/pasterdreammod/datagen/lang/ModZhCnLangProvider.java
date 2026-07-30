@@ -403,6 +403,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), "打开的融梦水晶箱");
         add(ModBlocks.DREAM_ACCUMULATOR.get(), "蓄梦池");
         add(ModItems.SORBENT.get(), "吸附剂");
+        add(ModBlocks.WEAPON_WORKSHOP_CORE.get(), "精铸工坊核心");
 
         add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "梦染茶花植株");
         add(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), "成熟的梦染茶花植株");

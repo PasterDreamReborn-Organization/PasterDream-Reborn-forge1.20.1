@@ -37,6 +37,7 @@ import com.pasterdream.pasterdreammod.world.block.dreamtrain.DreamTrainStructure
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlock;
 import com.pasterdream.pasterdreammod.world.block.ClayPotBlock;
 import com.pasterdream.pasterdreammod.world.block.PebbleBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.weaponworkshopcore.WeaponWorkshopCoreBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -616,6 +617,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> MELT_DREAM_CRYSTAL_CHEST = BLOCKS.register("melt_dream_crystal_chest", () -> new MeltDreamCrystalChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).sound(SoundType.STONE).strength(-1F, 2147483647F).noOcclusion().lightLevel(state -> 12)));
     public static final RegistryObject<Block> OPENED_MELT_DREAM_CRYSTAL_CHEST = BLOCKS.register("opened_melt_dream_crystal_chest", () -> new OpenedMeltDreamCrystalChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).sound(SoundType.STONE).strength(10f).lightLevel(state -> 12).noOcclusion()));
     public static final RegistryObject<Block> DREAM_ACCUMULATOR = BLOCKS.register("dream_accumulator", () -> new DreamAccumulatorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.CALCITE).strength(1f).requiresCorrectToolForDrops().noOcclusion()));
+    public static final RegistryObject<Block> WEAPON_WORKSHOP_CORE = BLOCKS.register("weapon_workshop_core", () -> new WeaponWorkshopCoreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.ANVIL).strength(2f, 10f).requiresCorrectToolForDrops().noOcclusion()));
 
     //失落剑冢
     public static final RegistryObject<Block> LOST_SWORD_TOMB = BLOCKS.register("lost_sword_tomb", LostSwordTombBlock::new);

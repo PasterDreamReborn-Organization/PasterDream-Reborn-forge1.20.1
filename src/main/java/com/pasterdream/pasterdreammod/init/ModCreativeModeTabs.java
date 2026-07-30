@@ -562,6 +562,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DREAM_ACCUMULATOR.get());
                         output.accept(ModItems.DREAM_TRAIN_STRUCTURE.get());
                         output.accept(ModItems.SORBENT.get());
+                        output.accept(ModItems.WEAPON_WORKSHOP_CORE.get());
                     })
                     .build());
 

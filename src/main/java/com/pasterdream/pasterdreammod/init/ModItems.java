@@ -1437,6 +1437,7 @@ public class ModItems {
     public static final RegistryObject<Item> CLAYPAN = ITEMS.register("claypan", () -> new BlockItem(ModBlocks.CLAYPAN.get(), new Item.Properties()));
     public static final RegistryObject<Item> DREAM_CAULDRON = ITEMS.register("dream_cauldron", () -> new DreamCauldronItem(ModBlocks.DREAM_CAULDRON.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_DESK = ITEMS.register("dyedream_desk", () -> new BlockItem(ModBlocks.DYEDREAM_DESK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MORTAR = ITEMS.register("mortar", () -> new MortarItem(new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_DESK = ITEMS.register("shadow_desk", () -> new BlockItem(ModBlocks.SHADOW_DESK.get(), new Item.Properties()));
     public static final RegistryObject<Item> PICNIC_BASKET = ITEMS.register("picnic_basket", () -> new PicnicBasketItem(ModBlocks.PICNIC_BASKET.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_CHEST = ITEMS.register("shadow_chest", () -> new ShadowChestItem(ModBlocks.SHADOW_CHEST.get(), new Item.Properties()));
@@ -1454,8 +1455,7 @@ public class ModItems {
     public static final RegistryObject<Item> OPENED_MELT_DREAM_CRYSTAL_CHEST = ITEMS.register("opened_melt_dream_crystal_chest", () -> new OpenedMeltDreamCrystalChestItem(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), new Item.Properties()));
     public static final RegistryObject<Item> DREAM_ACCUMULATOR = ITEMS.register("dream_accumulator", () -> new DreamAccumulatorItem(ModBlocks.DREAM_ACCUMULATOR.get(), new Item.Properties()));
     public static final RegistryObject<Item> SORBENT = ITEMS.register("sorbent", () -> new Item(new Item.Properties().durability(54000)));
-
-    public static final RegistryObject<Item> MORTAR = ITEMS.register("mortar", () -> new MortarItem(new Item.Properties()));
+    public static final RegistryObject<Item> WEAPON_WORKSHOP_CORE = ITEMS.register("weapon_workshop_core", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_CORE.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> DREAM_NOTES_DYEDREAM_WORLD = ITEMS.register("dream_notes_dyedream_world", () -> new DreamNotesItem(new Item.Properties()));
     public static final RegistryObject<Item> DREAM_NOTES_LAMP_SHADOW_WORLD = ITEMS.register("dream_notes_lamp_shadow_world", () -> new DreamNotesItem(new Item.Properties()));
