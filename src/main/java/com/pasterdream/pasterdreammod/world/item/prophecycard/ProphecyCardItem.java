@@ -529,10 +529,10 @@ public class ProphecyCardItem extends Item {
                         e -> e != player);
 
                 // 归属于玩家的火焰伤害源（亡灵/灾厄村民用）
-                DamageSource fireSource = new DamageSource(
+                DamageSource Source = new DamageSource(
                         level.registryAccess()
                                 .registryOrThrow(Registries.DAMAGE_TYPE)
-                                .getHolderOrThrow(DamageTypes.IN_FIRE),
+                                .getHolderOrThrow(DamageTypes.GENERIC),
                         player);
                 // 归属于玩家的通用伤害源（秒杀用，不会被火焰免疫拦截）
                 DamageSource genericSource = new DamageSource(
@@ -555,10 +555,11 @@ public class ProphecyCardItem extends Item {
                             || target instanceof Pillager
                             || target instanceof Vindicator
                             || target instanceof Evoker
-                            || target instanceof Ravager) {
+                            || target instanceof Ravager
+                            || target instanceof Witch) {
                         // 亡灵生物和灾厄村民：引燃 15 秒 + 25 点火焰伤害
                         target.setSecondsOnFire(15);
-                        target.hurt(fireSource, 25);
+                        target.hurt(Source, 25);
                     }
                 }
 
