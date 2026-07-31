@@ -16,7 +16,7 @@
 
 ## 授权
 
-本项目已获得原作者"异星之尘"的授权发布，沿用原模组 ID `pasterdream`。美术资源（纹理、模型、音效等）大部分来自原模组，采用 ARR 协议，版权归原作者及原模组美术贡献者所有；部分贴图已由重写团队重新绘制或全新创作，版权归重写团队所有。详见 [ASSETS_MANIFEST.md](src/main/resources/ASSETS_MANIFEST.md)。
+本项目已获得原作者"异星之尘"的授权发布，沿用原模组 ID `pasterdream`。授权证明见 [PERMISSION_GRANTED.md](PERMISSION_GRANTED.md)。美术资源（纹理、模型、音效等）大部分来自原模组，采用 ARR 协议，版权归原作者及原模组美术贡献者所有；部分贴图已由重写团队重新绘制或全新创作，版权归重写团队所有。详见 [ASSETS_MANIFEST.md](src/main/resources/ASSETS_MANIFEST.md)。
 
 ## 协议
 

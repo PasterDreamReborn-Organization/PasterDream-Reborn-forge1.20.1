@@ -16,7 +16,7 @@ A community rewrite of the original PasterDream mod, rebuilt from scratch on Min
 
 ## Authorization
 
-This project is released with permission from the original author "Aerolite_Dust." The mod ID `pasterdream` is retained. Most art assets (textures, models, sounds, etc.) are from the original mod, licensed under All Rights Reserved, copyright by the original author and contributors. Some textures have been redrawn or newly created by the rewrite team, copyright by the rewrite team. See [ASSETS_MANIFEST.md](src/main/resources/ASSETS_MANIFEST.md).
+This project is released with permission from the original author "Aerolite_Dust." The mod ID `pasterdream` is retained. See [PERMISSION_GRANTED.md](PERMISSION_GRANTED.md) for authorization proof. Most art assets (textures, models, sounds, etc.) are from the original mod, licensed under All Rights Reserved, copyright by the original author and contributors. Some textures have been redrawn or newly created by the rewrite team, copyright by the rewrite team. See [ASSETS_MANIFEST.md](src/main/resources/ASSETS_MANIFEST.md).
 
 ## License
 
