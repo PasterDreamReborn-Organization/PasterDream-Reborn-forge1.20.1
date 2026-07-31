@@ -14,6 +14,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.player.Player;
@@ -35,6 +36,7 @@ public class TerraswordWaveEntity extends PathfinderMob {
     private int lifeTicks = 0;
     private static final int MAX_LIFE_TICKS = 25;
     private final Set<UUID> hitEntities = new HashSet<>();
+    private final Set<UUID> reflectedProjectiles = new HashSet<>();
     @Nullable
     private Player owner;
     @Nullable
@@ -183,6 +185,27 @@ public class TerraswordWaveEntity extends PathfinderMob {
                                 target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
                                 3, 0.3, 0.3, 0.3, 0.1);
                     }
+                }
+            }
+
+            // Reflect incoming projectiles
+            List<Projectile> projectiles = level.getEntitiesOfClass(Projectile.class,
+                    new AABB(center, center).inflate(radius), e -> true)
+                    .stream().filter(p -> !reflectedProjectiles.contains(p.getUUID())).toList();
+            for (Projectile projectile : projectiles) {
+                Entity projOwner = projectile.getOwner();
+                if (owner != null && projOwner != null && projOwner.getUUID().equals(owner.getUUID())) {
+                    continue;
+                }
+                reflectedProjectiles.add(projectile.getUUID());
+                projectile.setDeltaMovement(projectile.getDeltaMovement().reverse());
+                if (owner != null) {
+                    projectile.setOwner(owner);
+                }
+                if (level instanceof ServerLevel serverLevel) {
+                    serverLevel.sendParticles(ParticleTypes.CRIT,
+                            projectile.getX(), projectile.getY(), projectile.getZ(),
+                            8, 0.3, 0.3, 0.3, 0.1);
                 }
             }
 
