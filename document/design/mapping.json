@@ -195,7 +195,8 @@
     "shadowshelf_3": "key_shadow_bookshelf",
     "shadowcandle": "shadow_candle",
     "dream_accumulator": "dream_accumulator",
-    "pebble_0": "pebble"
+    "pebble_0": "pebble",
+    "weapon_table": "weapon_workshop_core"
   },
   "items": {
     "amber_candy": "amber_candy",
