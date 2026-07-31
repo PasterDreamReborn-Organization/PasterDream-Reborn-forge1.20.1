@@ -1,0 +1,21 @@
+{
+  "sortnum": 10,
+  "name": "pasterdream.seniors_dream.entry.floating_temple",
+  "icon": "pasterdream:dream_notes_book",
+  "category": "pasterdream:dyedream_world/structures",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/floating_temple.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.floating_temple.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.floating_temple.page2"
+    }
+  ]
+}
