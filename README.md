@@ -51,16 +51,18 @@
 | Minecraft Forge | 47+ |
 | Curios | 5.14.1+ |
 | GeckoLib | 4.8.3+ |
+| Patchouli | 1.20.1-84+ |
 | JEI (可选) | 15.20.0.112+ |
-| Patchouli (可选) | 1.20.1-85+ |
+| KubeJS (可选) | 2001.6.5+ |
 
 ## 文档
 
 项目文档见 [`document/`](document/) 目录：
 
-- [`document/design/`](document/design/) — 策划文档、ID 映射表、命名规范
-- [`document/rule/`](document/rule/) — 代码架构规范
-- [`document/reference/`](document/reference/) — 源模组参考文件
+- [`document/design/`](document/design/) — 策划文档、ID 映射表、命名规范、新内容列表
+- [`document/rule/program/`](document/rule/program/) — 代码架构规范、程序规范、目录结构组织、容器配方平衡系统
+- [`document/reference/`](document/reference/) — 源模组结构分析与参考文件
+- [`document/patchouli_books/`](document/patchouli_books/) — 帕斯特之梦旧梦归引指南书设计
 
 ## 致谢
 

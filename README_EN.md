@@ -51,16 +51,18 @@ If libraries are missing or you encounter issues, run:
 | Minecraft Forge | 47+ |
 | Curios | 5.14.1+ |
 | GeckoLib | 4.8.3+ |
+| Patchouli | 1.20.1-84+ |
 | JEI (Optional) | 15.20.0.112+ |
-| Patchouli (Optional) | 1.20.1-85+ |
+| KubeJS (Optional) | 2001.6.5+ |
 
 ## Documentation
 
 Project documentation is available in the [`document/`](document/) directory:
 
-- [`document/design/`](document/design/) — Design documents, ID mapping, naming conventions
-- [`document/rule/`](document/rule/) — Code architecture guidelines
-- [`document/reference/`](document/reference/) — Original mod reference files
+- [`document/design/`](document/design/) — Design documents, ID mapping, naming conventions, new content list
+- [`document/rule/program/`](document/rule/program/) — Code architecture guidelines, programming standards, directory structure, recipe balance system
+- [`document/reference/`](document/reference/) — Original mod structural analysis and reference files
+- [`document/patchouli_books/`](document/patchouli_books/) — PasterDream guidebook design
 
 ## Credits
 
