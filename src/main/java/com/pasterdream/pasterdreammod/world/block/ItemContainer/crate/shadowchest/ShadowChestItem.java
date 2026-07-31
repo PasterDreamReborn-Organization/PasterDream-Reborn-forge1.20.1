@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest;
 
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket.PicnicBasketItemRenderer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;

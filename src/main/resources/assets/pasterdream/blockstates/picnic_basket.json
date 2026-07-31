@@ -1,18 +1,18 @@
 {
   "variants": {
     "facing=north": {
-      "model": "pasterdream:custom/picnic_basket_particle"
+      "model": "pasterdream:block/picnic_basket"
     },
     "facing=east": {
-      "model": "pasterdream:custom/picnic_basket_particle",
+      "model": "pasterdream:block/picnic_basket",
       "y": 90
     },
     "facing=south": {
-      "model": "pasterdream:custom/picnic_basket_particle",
+      "model": "pasterdream:block/picnic_basket",
       "y": 180
     },
     "facing=west": {
-      "model": "pasterdream:custom/picnic_basket_particle",
+      "model": "pasterdream:block/picnic_basket",
       "y": 270
     }
   }
