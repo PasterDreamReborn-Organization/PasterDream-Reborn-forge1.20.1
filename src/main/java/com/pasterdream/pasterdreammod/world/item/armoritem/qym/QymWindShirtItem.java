@@ -47,6 +47,7 @@ public class QymWindShirtItem extends ArmorItem {
         list.add(Component.translatable("tooltip.pasterdream.qym_wind_shirt.fall_immune"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.set_bonus"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.damage_reduce"));
+        list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.void_damage"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.dream_evasion"));
         super.appendHoverText(stack, level, list, flag);
     }
@@ -59,6 +60,11 @@ public class QymWindShirtItem extends ArmorItem {
             player.getAbilities().mayfly = true;
             player.onUpdateAbilities();
         }
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
     }
 
     @Override

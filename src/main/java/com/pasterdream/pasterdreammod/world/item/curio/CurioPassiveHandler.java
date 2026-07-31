@@ -12,6 +12,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -84,6 +85,22 @@ public class CurioPassiveHandler {
                     .map(h -> h.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).isPresent())
                     .orElse(false)) {
             event.setAmount(event.getAmount() * 0.8F);
+        }
+
+        // QYM套装：常驻强制80%减伤
+        if (event.getEntity() instanceof Player player
+                && QymCatEarsItem.hasFullSet(player)) {
+            event.setAmount(event.getAmount() * 0.2F);
+        }
+
+        // QYM套装：攻击附带额外50%虚空伤害
+        if (event.getSource().getEntity() instanceof Player player
+                && event.getSource().getEntity() != event.getEntity()
+                && QymCatEarsItem.hasFullSet(player)) {
+            float voidDamage = event.getAmount() * 0.5F;
+            LivingEntity target = event.getEntity();
+            target.invulnerableTime = 0;
+            target.hurt(target.level().damageSources().fellOutOfWorld(), voidDamage);
         }
 
         // 塞西莉娅的加护：拦截致命伤害

@@ -14,7 +14,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -55,6 +54,7 @@ public class QymCatEarsItem extends ArmorItem {
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.san"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.set_bonus"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.damage_reduce"));
+        list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.void_damage"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.dream_evasion"));
         super.appendHoverText(stack, level, list, flag);
     }
@@ -70,8 +70,6 @@ public class QymCatEarsItem extends ArmorItem {
                 if (dim == ResourceKey.create(Registries.DIMENSION, ResourceLocation.tryParse("pasterdream:dyedream_world"))
                         || dim == ResourceKey.create(Registries.DIMENSION, ResourceLocation.tryParse("pasterdream:lamp_shadow_world"))) {
                     sp.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING_BUFF.get(), 20, 0, false, false));
-                } else {
-                    sp.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 20, 3, false, false));
                 }
             }
         }
@@ -87,6 +85,11 @@ public class QymCatEarsItem extends ArmorItem {
                 }
             }
         }
+        return true;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
         return true;
     }
 
