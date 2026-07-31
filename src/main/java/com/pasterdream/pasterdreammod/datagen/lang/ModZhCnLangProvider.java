@@ -1158,7 +1158,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.qym_cat_ears.san", "§7▪ §9精神值始终为精神值上限");
         add("tooltip.pasterdream.qym_cat_ears.set_bonus", "§7套装效果： §d沉眠长虹的少女");
         add("tooltip.pasterdream.qym_cat_ears.damage_reduce", "§f▪ §9获得80%伤害减免");
-        add("tooltip.pasterdream.qym_cat_ears.void_damage", "§f▪ §9攻击附带50%额外虚空真伤");
+        add("tooltip.pasterdream.qym_cat_ears.magic_damage", "§f▪ §9攻击附带目标当前生命值5%的魔法伤害");
         add("tooltip.pasterdream.qym_cat_ears.dream_evasion", "§f▪ §9在梦境中时免疫一切伤害");
         add(ModItems.QYM_WIND_SHIRT.get(), "琴雨梦的凌风衬衫");
         add("tooltip.pasterdream.qym_wind_shirt.flight", "§7▪ §9获得飞行能力");
