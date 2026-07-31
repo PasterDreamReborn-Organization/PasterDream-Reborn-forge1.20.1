@@ -49,7 +49,7 @@ public class SandofTimeItem extends Item {
             long now = level.getGameTime();
             long lastUse = stack.getOrCreateTag().getLong(TAG_COOLDOWN);
             int cooldownTicks = Config.timeOfSandCooldownSeconds * 20;
-            boolean ready = lastUse > 0 && (now - lastUse >= cooldownTicks);
+            boolean ready = lastUse == 0 || (now - lastUse >= cooldownTicks);
             boolean currentFlag = stack.getOrCreateTag().getBoolean(TAG_READY);
             if (ready != currentFlag) {
                 stack.getOrCreateTag().putBoolean(TAG_READY, ready);

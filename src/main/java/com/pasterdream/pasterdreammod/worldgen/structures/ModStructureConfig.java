@@ -58,7 +58,6 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_floating_temple",      "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 64, 48, 47912638, 9, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_tavern",       "pasterdream:can_dyedream_plains_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 16, 60483715, 14, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_campsite",     "pasterdream:can_dyedream_plains_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 28, 7, 92741583, 13, "dyedream_structures"));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:pinkagaric_house",      "pasterdream:can_pinkagaric_house_spawn_biome", "surface_structures", "none", -3, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 26, 8, 18365492, 14, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_tower_0", "pasterdream:dyedream_world_land_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 96, 45, 524960775, 10, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_tower_1", "pasterdream:dyedream_world_land_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 98, 48, 524768400, 10, "dyedream_structures"));
 
@@ -68,6 +67,7 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_laboratory",   "pasterdream:dyedream_world_biome", "surface_structures", "beard_thin", 0,   "WORLD_SURFACE_WG", 64, 2, false, "rigid", "minecraft:empty", 1, 37,  18,  946202329,  9,  "dyedream_structures", false));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dream_train",           "pasterdream:dyedream_world_biome", "surface_structures", "none",      145, "WORLD_SURFACE_WG", 16, 1, false, "rigid", "minecraft:empty", 1, 258, 179, 109243324,  1,  "dyedream_structures", false));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:melt_dream_liquid_well","pasterdream:dyedream_world_biome", "surface_structures", "beard_thin", 0,   "WORLD_SURFACE_WG", 64, 2, false, "rigid", "minecraft:empty", 1, 32,  8,   234876502,  10,  "dyedream_structures", false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:pinkagaric_house",      "pasterdream:can_pinkagaric_house_spawn_biome", "surface_structures", "none", 0, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 26, 8, 18365492, 14, "dyedream_structures", false));
 
         // === 染梦世界冻洋气泡（独立结构集 pasterdream:dyedream_bubbles，仅冻洋上空生成，互不重叠） ===
         // 生态气泡（代码生成 structure/template_pool）
