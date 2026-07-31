@@ -3,7 +3,6 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamDrinkAndFoodProperties;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket.PicnicBasketItem;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestItem;
 import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
@@ -1439,7 +1438,7 @@ public class ModItems {
     public static final RegistryObject<Item> DYEDREAM_DESK = ITEMS.register("dyedream_desk", () -> new BlockItem(ModBlocks.DYEDREAM_DESK.get(), new Item.Properties()));
     public static final RegistryObject<Item> MORTAR = ITEMS.register("mortar", () -> new MortarItem(new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_DESK = ITEMS.register("shadow_desk", () -> new BlockItem(ModBlocks.SHADOW_DESK.get(), new Item.Properties()));
-    public static final RegistryObject<Item> PICNIC_BASKET = ITEMS.register("picnic_basket", () -> new PicnicBasketItem(ModBlocks.PICNIC_BASKET.get(), new Item.Properties()));
+    public static final RegistryObject<Item> PICNIC_BASKET = ITEMS.register("picnic_basket", () -> new BlockItem(ModBlocks.PICNIC_BASKET.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_CHEST = ITEMS.register("shadow_chest", () -> new ShadowChestItem(ModBlocks.SHADOW_CHEST.get(), new Item.Properties()));
     public static final RegistryObject<Item> WIND_MOOR_CRATE = ITEMS.register("wind_moor_crate", () -> new BlockItem(ModBlocks.WIND_MOOR_CRATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> THE_ENDLESS_BOOK_OF_DREAM_SEEKERS = ITEMS.register("the_endless_book_of_dream_seekers", () -> new TheEndlessBookOfDreamSeekersItem(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), new Item.Properties()));
