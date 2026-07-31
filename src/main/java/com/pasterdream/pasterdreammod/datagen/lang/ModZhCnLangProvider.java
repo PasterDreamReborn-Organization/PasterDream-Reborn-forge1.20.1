@@ -1520,6 +1520,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.dyedream_inn.page1", "染梦世界存在着这种小客栈，它不知出自何人之手，却能为疲惫的梦境旅行者们提供歇脚的地方。");
         add("pasterdream.seniors_dream.entry.dyedream_inn.page2", "上层的箱子里似乎还有前辈们留下来的物品，你当然可以拿它们为你的探索做些补给。下层不仅有丰富的矿石，那书卷中还记载着两位前辈寻梦者那比肩神话的尝试……");
 
+        // 染梦穿云塔
+        add("pasterdream.seniors_dream.entry.dyedream_cloud_tower", "染梦穿云塔");
+        add("pasterdream.seniors_dream.entry.dyedream_cloud_tower.page1", "在染梦的梦境中，这种高耸入云的尖塔很容易引起你的注意力。它有两种不同的建筑样式，每座塔的底部房间里都能找到先来者的游记……$(br2)说到塔，爬到顶端似乎是必备的环节，塔顶应该会有一些战利品，也许你应该仔细在塔顶寻找一下？不过，塔的样式不同，战利品的位置似乎也会有所差异……");
+        add("pasterdream.seniors_dream.entry.dyedream_cloud_tower.page2", "——爬到塔顶→鸟瞰点同步→信仰之跃→bang！同步失败~");
+
+        // 浮空神庙
+        add("pasterdream.seniors_dream.entry.floating_temple", "浮空神庙");
+        add("pasterdream.seniors_dream.entry.floating_temple.page1", "在染梦世界的天空中，会有这样的建筑被云朵衬托着，浮在天上。这座古典时代的神庙让所有进入这座建筑被它的神圣肃穆所打动。你会在神庙里发现一个融梦水晶箱，以及一份前辈们的书卷……");
+        add("pasterdream.seniors_dream.entry.floating_temple.page2", "——当神庙飘浮于染梦的苍穹，万神也将流连于迷梦之中");
+
         // 剧情
         add("pasterdream.seniors_dream.category.story", "剧情");
         add("pasterdream.seniors_dream.category.story.desc", "本篇为模组剧情整合。");
