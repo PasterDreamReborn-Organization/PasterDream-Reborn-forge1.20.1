@@ -1697,7 +1697,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.prophecy_card.holy_grail.description", "§9使用卡牌时，获得圣杯效果，持续120秒。效果持续期间+15最大生命值，并免疫一部分负面状态，获得自然生命恢复且血量越低，回血速度越快，低于33%的时候达到最快。");
         add("tooltip.pasterdream.prophecy_card.chaos.description.1", "§9使用卡牌时，对以自身为中心，7*7范围内的所有敌人陷入混乱并失去行动能力，持续10秒。（此效果不对玩家生效）");
         add("tooltip.pasterdream.prophecy_card.chaos.description.2", "§7§O --THE TRUE AND NEO CHAOS");
-        add("tooltip.pasterdream.prophecy_card.sin.description.1", "§9使用卡牌时，对以自身为中心，引燃19*19范围内的所有亡灵生物和灾厄村民15秒并造成25点火焰伤害。");
+        add("tooltip.pasterdream.prophecy_card.sin.description.1", "§9使用卡牌时，对以自身为中心，引燃19*19范围内的所有亡灵生物和灾厄村民15秒并造成25点伤害。");
         add("tooltip.pasterdream.prophecy_card.sin.description.2", "§9如果此实体为僵尸村民，则不会受到伤害且转化为村民。");
         add("tooltip.pasterdream.prophecy_card.sin.description.3", "§9对于那些极为烦人的生物，则直接抹杀，至于什么是极为烦人的生物，相信预言卡的判断。");
         add("tooltip.pasterdream.prophecy_card.sin.description.4", "§5§O --直面汝罪");
