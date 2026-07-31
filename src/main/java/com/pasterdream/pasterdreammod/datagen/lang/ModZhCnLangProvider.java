@@ -997,8 +997,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.light_butterfly_curio.effect", "§7▪ §9自身处于低亮度环境下获得夜视");
         add("tooltip.pasterdream.light_butterfly_curio.energy", "§7▪ §4融梦能量消耗：0.24/min");
         add(ModItems.BRIGHT_BUTTERFLY_CURIO.get(), "光明飞蝶");
-        add("tooltip.pasterdream.bright_butterfly_curio.effect.night_vision", "§7▪ §9在低亮度环境下获得夜视");
-        add("tooltip.pasterdream.bright_butterfly_curio.effect.darkness_immune", "§7▪ §9免疫黑暗效果");
+        add("tooltip.pasterdream.bright_butterfly_curio.effect.gamma", "§7▪ §9提高画面亮度（伽马值覆写）");
+        add("tooltip.pasterdream.bright_butterfly_curio.effect.darkness_immune", "§7▪ §9免疫黑暗和失明效果");
         add(ModItems.BOBOJI_CURIO.get(), "啵啵鸡的华丽飞羽");
         add("tooltip.pasterdream.boboji_curio.stat.speed", "§7▪ §9+5% 速度");
         add("tooltip.pasterdream.boboji_curio.stat.range", "§7▪ §9+0.1 瞬身术距离");
