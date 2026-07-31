@@ -1289,11 +1289,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.prophecy_card.holy_grail.description", "§9When using the card, you gain the Holy Grail effect for 120 seconds. During this time, you get 15 maximum HP, are immune to some negative statuses, and naturally regenerate health—the lower your HP, the faster the regeneration, reaching the maximum speed when below 33%.");
         add("tooltip.pasterdream.prophecy_card.chaos.description.1", "§9When using the card, all enemies within a 7*7 area centered on yourself will become confused and unable to act for 10 seconds. (This effect does not apply to players)");
         add("tooltip.pasterdream.prophecy_card.chaos.description.2", "§7§O --THE TRUE AND NEO CHAOS");
-        add("tooltip.pasterdream.prophecy_card.sin.description.1", "§9When using the card, it ignites all undead mobs and Illagers within a 19*19 area centered on yourself for 15 seconds, dealing 25 points of fire damage.");
+        add("tooltip.pasterdream.prophecy_card.sin.description.1", "§9When using the card, it ignites all undead mobs and Illagers within a 19*19 area centered on yourself for 15 seconds, dealing 25 points damage.");
         add("tooltip.pasterdream.prophecy_card.sin.description.2", "§9If this entity is a zombie villager, it won't take damage and will turn into a villager.");
         add("tooltip.pasterdream.prophecy_card.sin.description.3", "§9As for those extremely annoying creatures, just ERASE them. As for what counts as extremely annoying, trust the prophecy card's judgment.");
         add("tooltip.pasterdream.prophecy_card.sin.description.4", "§5§O --FACE YOUR SIN.");
-        add("tooltip.pasterdream.prophecy_card.wielding_sword.description", "§9When using the card, you gain the Rage Burst effect for 120 seconds. During this effect, attack damage +3, attack speed +0.2, skill damage multiplier +30%, and skill cooldown -20%.");
+        add("tooltip.pasterdream.prophecy_card.wielding_sword.description", "§9When using the card, you gain the Flare up effect for 120 seconds. During this effect, attack damage +3, attack speed +0.2, skill damage multiplier +30%, and skill cooldown -20%.");
 
         add("tooltip.pasterdream.prophecy_card.unknown.description.1", "§9How did you get this card? ");
         add("tooltip.pasterdream.prophecy_card.unknown.description.2", "§9Please send what you did during game to GitHub or mcmod so we can pinpoint the issue, instead of just sending this error screenshot.");

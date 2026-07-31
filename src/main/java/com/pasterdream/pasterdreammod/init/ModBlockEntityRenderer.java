@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.init;
 
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket.PicnicBasketBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollBlockEntityRenderer;
@@ -34,9 +33,8 @@ public class ModBlockEntityRenderer
         event.registerBlockEntityRenderer(ModBlockEntities.UUZ_DOLL.get(), UUZDollBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.DREAM_CAULDRON.get(), DreamCauldronBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_CHEST.get(), ShadowChestBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.PICNIC_BASKET.get(), PicnicBasketBlockEntityRenderer::new);
+        //event.registerBlockEntityRenderer(ModBlockEntities.PICNIC_BASKET.get(), PicnicBasketBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), TheEndlessBookOfDreamSeekersBlockEntityRenderer::new);
-        //event.registerBlockEntityRenderer(ModBlockEntities.RESEARCH_TABLE.get(), ResearchTableBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.LIFE_CRYSTAL.get(), LifeCrystalBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.GOLDEN_FOX_SCULPTURE.get(), GoldenFoxSculptureBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.DESERT_HERO_TOMB.get(), DesertHeroTombBlockEntityRenderer::new);
