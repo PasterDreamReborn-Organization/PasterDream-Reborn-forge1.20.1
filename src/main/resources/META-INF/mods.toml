@@ -19,6 +19,7 @@ Community remake of PasterDream for 1.20.1, authorized by the original author.
 §l特别感谢:§r 福米花_flow
 '''
 logoFile="logo.png"
+displayURL="https://www.mcmod.cn/class/28280.html"
 
 [[dependencies.${mod_id}]]
     modId="forge"
