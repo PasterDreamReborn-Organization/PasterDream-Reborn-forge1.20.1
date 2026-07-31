@@ -93,14 +93,19 @@ public class CurioPassiveHandler {
             event.setAmount(event.getAmount() * 0.2F);
         }
 
-        // QYM套装：攻击附带额外50%虚空伤害
+        // QYM套装：攻击附带目标当前生命值5%的魔法伤害（20tick冷却）
         if (event.getSource().getEntity() instanceof Player player
                 && event.getSource().getEntity() != event.getEntity()
                 && QymCatEarsItem.hasFullSet(player)) {
-            float voidDamage = event.getAmount() * 0.5F;
-            LivingEntity target = event.getEntity();
-            target.invulnerableTime = 0;
-            target.hurt(target.level().damageSources().fellOutOfWorld(), voidDamage);
+            long gameTime = player.level().getGameTime();
+            long lastProc = player.getPersistentData().getLong("pasterdream.qym_magic_last");
+            if (gameTime - lastProc >= 20) {
+                player.getPersistentData().putLong("pasterdream.qym_magic_last", gameTime);
+                LivingEntity target = event.getEntity();
+                float magicDamage = target.getHealth() * 0.05F;
+                target.invulnerableTime = 0;
+                target.hurt(target.level().damageSources().magic(), magicDamage);
+            }
         }
 
         // 塞西莉娅的加护：拦截致命伤害

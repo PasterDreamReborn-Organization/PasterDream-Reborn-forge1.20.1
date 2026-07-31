@@ -50,7 +50,7 @@ public class QymCloudBootsItem extends ArmorItem {
         list.add(Component.translatable("tooltip.pasterdream.qym_cloud_boots.skill_cd"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.set_bonus"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.damage_reduce"));
-        list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.void_damage"));
+        list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.magic_damage"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.dream_evasion"));
         super.appendHoverText(stack, level, list, flag);
     }
