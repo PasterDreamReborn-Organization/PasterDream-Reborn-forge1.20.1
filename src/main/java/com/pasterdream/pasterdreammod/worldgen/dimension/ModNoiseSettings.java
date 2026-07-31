@@ -39,8 +39,8 @@ public class ModNoiseSettings {
                 originalRouter.erosion(),                           //侵蚀
                 originalRouter.depth(),                             //深度
                 originalRouter.ridges(),                            //山脊
-                smoothTerrain,                                      //初始密度（平滑，与最终密度一致）
-                smoothTerrain,                                      //最终密度（插值平滑，无洞穴噪声）
+                smoothTerrain,                                      //初始密度（平滑插值，用于群系放置）
+                originalRouter.finalDensity(),                      //最终密度（原版，含地形噪声与洞穴）
                 DensityFunctions.constant(1.0D),          //矿脉开关→1（禁用）
                 DensityFunctions.constant(1.0D),          //矿脉脊状→1（禁用）
                 DensityFunctions.constant(1.0D)           //矿脉间隙→1（禁用）
