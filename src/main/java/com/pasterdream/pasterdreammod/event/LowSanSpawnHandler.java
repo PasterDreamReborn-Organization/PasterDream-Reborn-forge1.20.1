@@ -28,7 +28,7 @@ public class LowSanSpawnHandler {
         player.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
             double ratio = cap.getSanValue() / cap.getMaxSanValue();
 
-            int tier = ShadowDifficultyHelper.getDifficulty(player.serverLevel());
+            int tier = ShadowDifficultyHelper.getDifficulty(player);
             double highThreshold = getValue(Config.lowSanSpawnHighThresholds, tier, 0.825);
             if (ratio >= highThreshold) {
                 ShadowDifficultyHelper.tryLowSanSpawn(player, "high");

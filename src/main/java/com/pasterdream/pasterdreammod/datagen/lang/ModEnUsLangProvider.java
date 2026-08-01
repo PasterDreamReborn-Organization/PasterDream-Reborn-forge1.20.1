@@ -949,8 +949,21 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.star_wish_rod", "§7§O --Fish as numerous as stars");
         add("command.pasterdream.lowsan.enabled", "enabled");
         add("command.pasterdream.lowsan.disabled", "disabled");
-        add("gamerule.pasterdream.shadowDifficulty.set", "Shadow difficulty set to %s");
-        add("gamerule.pasterdream.shadowDifficulty.get", "Current shadow difficulty: %s");
+        add("gamerule.category.pasterdream", "PasterDream");
+        add("gamerule.shadowDifficulty", "World Shadow Difficulty");
+        add("gamerule.playerShadowDifficulty", "Default Player Shadow Difficulty");
+        // Shadow difficulty command
+        add("command.pasterdream.shadowDifficulty.tier.0", "Very Easy");
+        add("command.pasterdream.shadowDifficulty.tier.1", "Easy");
+        add("command.pasterdream.shadowDifficulty.tier.2", "Normal");
+        add("command.pasterdream.shadowDifficulty.tier.3", "Hard");
+        add("command.pasterdream.shadowDifficulty.set.playerDefault", "Player shadow difficulty set to %s");
+        add("command.pasterdream.shadowDifficulty.set.world", "World shadow difficulty set to %s");
+        add("command.pasterdream.shadowDifficulty.set.forPlayer", "Set %s's shadow difficulty to %s");
+        add("command.pasterdream.shadowDifficulty.source.personal", "personal override");
+        add("command.pasterdream.shadowDifficulty.source.playerDefault", "player default");
+        add("command.pasterdream.shadowDifficulty.get.playerEffective", "Player %s: %s [%s]");
+        add("command.pasterdream.shadowDifficulty.get.gameruleSummary", "shadowDifficulty (world): %s | playerShadowDifficulty (player default): %s");
 
         // Terra Blade
         add(ModItems.TERRA_BLADE.get(), "Terra Blade");
