@@ -999,6 +999,11 @@ public class ModItems {
     // ===== 饰品（胸饰） =====
     public static final RegistryObject<Item> KAICHU_OMAMORI = ITEMS.register("kaichu_omamori",
             KaichuOmamoriItem::new);
+
+    // ===== 饰品（通用） =====
+    public static final RegistryObject<Item> WAR_FLAG = ITEMS.register("war_flag",
+            WarFlagItem::new);
+
     // ===== 陶罐 =====
     public static final RegistryObject<Item> CLAY_POT = ITEMS.register("clay_pot",
             () -> new BlockItem(ModBlocks.CLAY_POT.get(), new Item.Properties()));

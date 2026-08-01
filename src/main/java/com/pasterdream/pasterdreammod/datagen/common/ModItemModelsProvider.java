@@ -278,6 +278,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.KAICHU_OMAMORI.get());
         basicItem(ModItems.BLESSING_OF_CECILIA.get());
         basicItem(ModItems.FADED_BLESSING_OF_CECILIA.get());
+        basicItem(ModItems.WAR_FLAG.get());
 
         basicItem(ModItems.DEBUG_SWORD.get());
         basicItem(ModItems.LOOT_GENERATOR.get());

@@ -15,8 +15,10 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.Entity;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
@@ -151,5 +153,39 @@ public class CurioPassiveHandler {
         player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 4, false, false));
         player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false));
 
+    }
+
+    /**
+     * 战旗饰品：杀敌后给予战旗 buff（攻击力+回血），持续时间和等级可叠加
+     */
+    @SubscribeEvent
+    public static void onLivingDeath(LivingDeathEvent event) {
+        if (event.getEntity().level().isClientSide) return;
+
+        Entity attacker = event.getSource().getEntity();
+        if (!(attacker instanceof Player player)) return;
+
+        // 检测玩家是否装备了战旗饰品
+        boolean hasWarFlag = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.WAR_FLAG.get()).isPresent())
+                .orElse(false);
+        if (!hasWarFlag) return;
+
+        // 获取当前已有的战旗 buff 等级，叠加 1 级
+        MobEffectInstance existing = player.getEffect(ModEffects.WAR_FLAG_BUFF.get());
+        int newAmplifier = (existing != null) ? existing.getAmplifier() + 1 : 0;
+
+        // 上限 Ⅲ 级（amplifier=2）
+        if (newAmplifier > 2) newAmplifier = 2;
+
+        // 等级越高持续时间越短：Ⅰ=60秒, Ⅱ=30秒, Ⅲ=15秒
+        int duration = switch (newAmplifier) {
+            case 0 -> 1200; // 60秒
+            case 1 -> 600;  // 30秒
+            case 2 -> 300;  // 15秒
+            default -> 1200;
+        };
+        player.addEffect(new MobEffectInstance(ModEffects.WAR_FLAG_BUFF.get(), duration, newAmplifier,
+                false, false, true));
     }
 }
