@@ -10,6 +10,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
@@ -27,6 +28,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
@@ -356,6 +358,19 @@ public class ShadowGhostEntity extends Monster implements RangedAttackMob, GeoEn
     }
 
     public static void init() {
-        // Spawn placements deferred - natural spawning not yet configured
+        SpawnPlacements.register(ModEntities.SHADOW_GHOST.get(),
+                SpawnPlacements.Type.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, world, reason, pos, random) ->
+                        world.getDifficulty() != Difficulty.PEACEFUL
+                                && Monster.isDarkEnoughToSpawn(world, pos, random)
+                                && Mob.checkMobSpawnRules(entityType, world, reason, pos, random));
+        SpawnPlacements.register(ModEntities.SHADOW_SQUEAL_GHOST.get(),
+                SpawnPlacements.Type.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, world, reason, pos, random) ->
+                        world.getDifficulty() != Difficulty.PEACEFUL
+                                && Monster.isDarkEnoughToSpawn(world, pos, random)
+                                && Mob.checkMobSpawnRules(entityType, world, reason, pos, random));
     }
 }
