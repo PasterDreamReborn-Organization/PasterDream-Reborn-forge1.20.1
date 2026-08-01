@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.effect.*;
+import com.pasterdream.pasterdreammod.world.item.curio.WarFlagItem;
 import net.minecraft.client.renderer.entity.layers.HorseArmorLayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -67,6 +68,8 @@ public class ModEffects {
             EFFECTS.register("flare_up_buff", FlareupBuffEffect::new);
     public static final RegistryObject<MobEffect> CONFLICT_MARK =
             EFFECTS.register("conflict_mark", ConflictMarkEffect::new);
+    public static final RegistryObject<MobEffect> WAR_FLAG_BUFF =
+            EFFECTS.register("war_flag_buff", WarFlagBuffEffect::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

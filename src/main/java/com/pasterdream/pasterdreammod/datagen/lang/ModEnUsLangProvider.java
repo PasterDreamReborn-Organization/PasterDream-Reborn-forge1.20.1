@@ -1022,6 +1022,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.counter_attack_buff", "Counterattack");
         add("effect.pasterdream.memento_buff", "Dream Seeker's Prayer");
 
+        // War Flag
+        add(ModItems.WAR_FLAG.get(), "War Flag");
+        add("tooltip.pasterdream.war_flag.effect1", "§7▪ §9 Give a battle intention effect when killing enemies. Each kill increases it by 1 level, up to a maximum of 3 levels.");
+        add("tooltip.pasterdream.war_flag.effect2", "§7▪ §9Increase attack damage and increase healing speed while the effect lasts.");
+        add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9This effect can be shared with nearby players.");
+        add("tooltip.pasterdream.war_flag.description", "§7§O --The shadows flowing on this flag seem to be telling stories of a distant past...");
+        add("effect.pasterdream.war_flag_buff", "Battle Intention");
+
         // Advancements - Story
         add("advancements.pasterdream.story.root.title", "PasterDream");
         add("advancements.pasterdream.story.root.description", "Begins with a wish from the heart");

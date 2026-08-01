@@ -312,6 +312,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MELT_DREAM_ENERGY_RING.get());
                         output.accept(ModItems.STORAGE_BAG.get());
                         output.accept(ModItems.LARGE_STORAGE_BAG.get());
+                        output.accept(ModItems.WAR_FLAG.get());
                     })
                     .build());
 
