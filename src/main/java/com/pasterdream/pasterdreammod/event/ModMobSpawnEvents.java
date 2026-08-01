@@ -32,10 +32,10 @@ public class ModMobSpawnEvents {
     }
 
     private static void applyDifficultyScaling(LivingEntity entity) {
-        var level = entity.level();
-        double healthMult = ShadowDifficultyHelper.getHealthMultiplier(level);
-        double attackMult = ShadowDifficultyHelper.getAttackMultiplier(level);
-        double speedMult = ShadowDifficultyHelper.getSpeedMultiplier(level);
+        int tier = ShadowDifficultyHelper.getDifficultyContext(entity);
+        double healthMult = ShadowDifficultyHelper.getHealthMultiplier(tier);
+        double attackMult = ShadowDifficultyHelper.getAttackMultiplier(tier);
+        double speedMult = ShadowDifficultyHelper.getSpeedMultiplier(tier);
 
         var maxHp = entity.getAttribute(Attributes.MAX_HEALTH);
         if (maxHp != null) {

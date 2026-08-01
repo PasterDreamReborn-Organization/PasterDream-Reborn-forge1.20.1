@@ -164,14 +164,16 @@ public class ShadowHandEntity extends Monster implements GeoEntity {
 
     @Override
     public boolean doHurtTarget(Entity target) {
-        if (target instanceof ServerPlayer sp) {
+        boolean result = super.doHurtTarget(target);
+        if (target instanceof ServerPlayer sp
+                && ShadowDifficultyHelper.isSpecialSkillEnabled(sp)) {
             sp.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
                 if (cap.getSanValue() > 0) {
-                    cap.addSanValue(-ShadowDifficultyHelper.getShadowHandSanDrain(this.level()));
+                    cap.addSanValue(-ShadowDifficultyHelper.getShadowHandSanDrain(sp));
                 }
             });
         }
-        return super.doHurtTarget(target);
+        return result;
     }
 
     @Override
@@ -191,10 +193,11 @@ public class ShadowHandEntity extends Monster implements GeoEntity {
     @Override
     public void playerTouch(Player player) {
         super.playerTouch(player);
-        if (player instanceof ServerPlayer sp) {
+        if (player instanceof ServerPlayer sp
+                && ShadowDifficultyHelper.isSpecialSkillEnabled(sp)) {
             sp.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
                 if (cap.getSanValue() > 0) {
-                    cap.addSanValue(-ShadowDifficultyHelper.getShadowHandSanDrain(this.level()));
+                    cap.addSanValue(-ShadowDifficultyHelper.getShadowHandSanDrain(sp));
                 }
             });
         }

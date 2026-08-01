@@ -200,16 +200,24 @@ public class ShadowGolemEntity extends Monster implements GeoEntity {
                 this.playSound(net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, 1, 1);
 
                 // 以实体脚部为中心，上下各5格覆盖
-                if (!ShadowDifficultyHelper.isSpecialSkillEnabled(world)) return;
+                int difficultyTier = ShadowDifficultyHelper.getDifficultyContext(this);
+                if (!ShadowDifficultyHelper.isSpecialSkillEnabled(difficultyTier)) return;
 
                 AABB area = AABB.ofSize(new Vec3(x, y, z), 10, 10, 10);
                 List<LivingEntity> entities = world.getEntitiesOfClass(LivingEntity.class, area,
                         e -> !e.getType().is(ModEntityTypeTags.SHADOW_MOB));
                 for (LivingEntity target : entities) {
+                    // 对该玩家禁用特殊技能时，完全跳过（不受 AoE 伤害和击飞）
+                    if (target instanceof Player player
+                            && !ShadowDifficultyHelper.isSpecialSkillEnabled(player)) {
+                        continue;
+                    }
+                    float dmg = target instanceof Player player
+                            ? ShadowDifficultyHelper.getGolemSkillDamage(player)
+                            : ShadowDifficultyHelper.getGolemSkillDamage(difficultyTier);
                     target.hurt(new DamageSource(world.registryAccess()
                             .registryOrThrow(Registries.DAMAGE_TYPE)
-                            .getHolderOrThrow(DamageTypes.MOB_ATTACK), this),
-                            ShadowDifficultyHelper.getGolemSkillDamage(world));
+                            .getHolderOrThrow(DamageTypes.MOB_ATTACK), this), dmg);
                     target.setDeltaMovement(new Vec3(0, 1.5, 0));
                 }
             }

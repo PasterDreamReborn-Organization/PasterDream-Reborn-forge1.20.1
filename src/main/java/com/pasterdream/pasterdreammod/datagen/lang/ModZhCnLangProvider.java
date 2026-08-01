@@ -1112,8 +1112,21 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.star_wish_rod", "§7§O --鱼儿如满天繁星");
         add("command.pasterdream.lowsan.enabled", "启用");
         add("command.pasterdream.lowsan.disabled", "禁用");
-        add("gamerule.pasterdream.shadowDifficulty.set", "暗影难度已设置为 %s");
-        add("gamerule.pasterdream.shadowDifficulty.get", "当前暗影难度: %s");
+        add("gamerule.category.pasterdream", "帕斯特之梦");
+        add("gamerule.shadowDifficulty", "世界暗影难度");
+        add("gamerule.playerShadowDifficulty", "默认玩家暗影难度");
+        // Shadow difficulty command
+        add("command.pasterdream.shadowDifficulty.tier.0", "Very Easy (极简单)");
+        add("command.pasterdream.shadowDifficulty.tier.1", "Easy (简单)");
+        add("command.pasterdream.shadowDifficulty.tier.2", "Normal (普通)");
+        add("command.pasterdream.shadowDifficulty.tier.3", "Hard (困难)");
+        add("command.pasterdream.shadowDifficulty.set.playerDefault", "默认玩家暗影难度已设置为 %s");
+        add("command.pasterdream.shadowDifficulty.set.world", "世界暗影难度已设置为 %s");
+        add("command.pasterdream.shadowDifficulty.set.forPlayer", "已将 %s 的暗影难度设置为 %s");
+        add("command.pasterdream.shadowDifficulty.source.personal", "个人覆盖");
+        add("command.pasterdream.shadowDifficulty.source.playerDefault", "玩家默认");
+        add("command.pasterdream.shadowDifficulty.get.playerEffective", "玩家 %s: %s [%s]");
+        add("command.pasterdream.shadowDifficulty.get.gameruleSummary", "shadowDifficulty (世界): %s | playerShadowDifficulty (玩家默认): %s");
 
         // 大地之刃
         add(ModItems.TERRA_BLADE.get(), "大地之刃");

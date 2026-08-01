@@ -28,7 +28,12 @@ public class ModMobDrops {
                     new ItemStack(ModItems.ELDER_GUARDIAN_SCALE.get())));
         }
         if (event.getEntity().getType().is(ModEntityTypeTags.SHADOW_MOB)) {
-            double multiplier = ShadowDifficultyHelper.getLootMultiplier(event.getEntity().level());
+            double multiplier;
+            if (event.getSource().getEntity() instanceof net.minecraft.world.entity.player.Player player) {
+                multiplier = ShadowDifficultyHelper.getLootMultiplier(player);
+            } else {
+                multiplier = ShadowDifficultyHelper.getLootMultiplier(event.getEntity().level());
+            }
             if (multiplier > 1.0) {
                 double extraChance = multiplier - 1.0;
                 List<ItemEntity> extraDrops = new ArrayList<>();
