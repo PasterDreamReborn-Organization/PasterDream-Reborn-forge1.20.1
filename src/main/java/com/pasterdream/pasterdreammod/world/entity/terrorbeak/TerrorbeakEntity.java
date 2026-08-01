@@ -1,9 +1,11 @@
 package com.pasterdream.pasterdreammod.world.entity.terrorbeak;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.helper.ShadowDifficultyHelper;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import com.pasterdream.pasterdreammod.world.entity.ghost.ITextureVariant;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -167,7 +169,8 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (!this.level().isClientSide() && this.isAlive() && getVariant().hasRoar && roarCooldown <= 0) {
+        if (!this.level().isClientSide() && this.isAlive() && getVariant().hasRoar && roarCooldown <= 0
+                && ShadowDifficultyHelper.getDifficulty(this.level()) > 0) {
             boolean shouldRoar = true;
             if (getVariant().roarOnlyNonImmune) {
                 shouldRoar = !source.is(DamageTypes.IN_FIRE) && !source.is(DamageTypes.CACTUS)
@@ -179,7 +182,8 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
                 Vec3 center = this.position().add(look.x, 0, look.z);
                 AABB area = AABB.ofSize(center, getVariant().roarRange, getVariant().roarRange, getVariant().roarRange);
                 List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, area,
-                        e -> e != this && !(e instanceof TerrorbeakEntity));
+                        e -> e != this && !(e instanceof TerrorbeakEntity)
+                                && !e.getType().is(ModEntityTypeTags.SHADOW_MOB));
                 for (LivingEntity target : entities) {
                     target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 30, 1));
                     target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 30, 0));

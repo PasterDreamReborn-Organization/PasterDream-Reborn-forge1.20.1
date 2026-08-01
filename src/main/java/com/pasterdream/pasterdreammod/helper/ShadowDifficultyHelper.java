@@ -68,6 +68,11 @@ public final class ShadowDifficultyHelper {
         return (float) (Config.shadowHandSanDrain * getAttackMultiplier(level));
     }
 
+    /** 获取当前暗影难度的战利品掉落倍率 */
+    public static double getLootMultiplier(Level level) {
+        return getValue(Config.shadowLootMultipliers, getDifficulty(level), 1.0);
+    }
+
     // ===== 低理智刷怪 =====
 
     /**

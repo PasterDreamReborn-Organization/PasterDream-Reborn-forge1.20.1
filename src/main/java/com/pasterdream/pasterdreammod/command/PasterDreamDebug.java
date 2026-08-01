@@ -3,7 +3,6 @@ package com.pasterdream.pasterdreammod.command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.pasterdream.pasterdreammod.command.meltdreamenergy.IsNotNeed;
 import com.pasterdream.pasterdreammod.command.meltdreamenergy.MaxMeltDreamEnergy;
 import com.pasterdream.pasterdreammod.command.meltdreamenergy.MeltDreamEnergy;
@@ -101,10 +100,14 @@ public class PasterDreamDebug
                         .then(Commands.literal("check")
                                 .executes(MusicDebug::checkMusic)))
                 .then(Commands.literal("shadowDifficulty")
-                        .then(Commands.literal("get")
-                                .executes(ShadowDifficulty::get))
-                        .then(Commands.argument("tier", IntegerArgumentType.integer(0, 3))
-                                .suggests(ShadowDifficulty.TIER_SUGGESTIONS)
-                                .executes(ShadowDifficulty::set))));
+                        .then(Commands.literal("very_easy")
+                                .executes(ctx -> ShadowDifficulty.set(ctx, "very_easy")))
+                        .then(Commands.literal("easy")
+                                .executes(ctx -> ShadowDifficulty.set(ctx, "easy")))
+                        .then(Commands.literal("normal")
+                                .executes(ctx -> ShadowDifficulty.set(ctx, "normal")))
+                        .then(Commands.literal("hard")
+                                .executes(ctx -> ShadowDifficulty.set(ctx, "hard")))
+                        .executes(ShadowDifficulty::get)));
     }
 }

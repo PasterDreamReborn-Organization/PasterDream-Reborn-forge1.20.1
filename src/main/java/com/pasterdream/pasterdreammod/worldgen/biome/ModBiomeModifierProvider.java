@@ -95,12 +95,13 @@ public class ModBiomeModifierProvider implements DataProvider
             addSpawns(entries, "terrorbeak_biome_modifier", ModEntities.TERRORBEAK, shadowNyliumWastesSpawnTag, 10, 1, 2);
             addSpawns(entries, "shadow_hand_biome_modifier", ModEntities.SHADOW_HAND, shadowNyliumWastesSpawnTag, 15, 1, 3);
 
-            // biome_shadow_1（阴影森林）: 原作有两处 black_beetle 生成 —
-            //   群系 JSON monster spawn (weight 20, 5-7) + biome_modifier add_spawns (weight 20, 2-4)
+            // biome_shadow_1（阴影森林）: black_beetle(20,5-7 + 20,2-4) + friendly_shadow_ghost(10,1,3)
+            //   原作有两处 black_beetle 生成 — 群系 JSON monster spawn + biome_modifier add_spawns
             addSpawns(entries, "black_beetle_biome_spawn", ModEntities.BLACK_BEETLE, shadowForestSpawnTag, 20, 5, 7);
             addSpawns(entries, "black_beetle_biome_modifier", ModEntities.BLACK_BEETLE, shadowForestSpawnTag, 20, 2, 4);
+            addSpawns(entries, "friendly_shadow_ghost_biome_modifier", ModEntities.FRIENDLY_SHADOW_GHOST, shadowForestSpawnTag, 10, 1, 3);
 
-            // biome_shadow_1 + biome_shadow_2: 幽灵系三变体
+            // biome_shadow_1（阴影古迹）: 幽灵系三变体
             addSpawns(entries, "shadow_ghost_biome_modifier", ModEntities.SHADOW_GHOST, shadowGhostSpawnTag, 15, 4, 5);
             addSpawns(entries, "shadow_squeal_ghost_biome_modifier", ModEntities.SHADOW_SQUEAL_GHOST, shadowGhostSpawnTag, 15, 3, 4);
             addSpawns(entries, "wailing_shadow_ghost_biome_modifier", ModEntities.WAILING_SHADOW_GHOST, shadowGhostSpawnTag, 6, 1, 1);
