@@ -88,9 +88,11 @@ public final class ShadowDifficultyHelper {
      * @param zone 区间名: "high" / "medium" / "low" / "critical"
      */
     public static void tryLowSanSpawn(ServerPlayer player, String zone) {
-        int tier = getDifficulty(player.serverLevel());
+        var level = player.serverLevel();
+        int tier = getDifficulty(level);
         if (tier == 0) return;
-        if (isLowSanSpawnGated(player.serverLevel())) return;
+        if (level.isDay()) return;
+        if (isLowSanSpawnGated(level)) return;
 
         double prob = getZoneBaseProb(zone, tier);
         if (prob <= 0) return;

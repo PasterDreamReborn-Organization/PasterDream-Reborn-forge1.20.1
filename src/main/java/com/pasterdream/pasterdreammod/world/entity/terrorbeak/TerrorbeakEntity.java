@@ -255,6 +255,9 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
         if (roarCooldown > 0)
             roarCooldown--;
         this.refreshDimensions();
+        if (!this.level().isClientSide() && this.level().canSeeSky(this.blockPosition()) && this.level().isDay()) {
+            this.kill();
+        }
     }
 
     @Override

@@ -217,6 +217,9 @@ public class ShadowHandEntity extends Monster implements GeoEntity {
     public void baseTick() {
         super.baseTick();
         this.refreshDimensions();
+        if (!this.level().isClientSide() && this.level().canSeeSky(this.blockPosition()) && this.level().isDay()) {
+            this.kill();
+        }
     }
 
     @Override
