@@ -1185,6 +1185,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.counter_attack_buff", "反击");
         add("effect.pasterdream.memento_buff", "寻梦者的祈愿");
 
+        // 战争旗帜
+        add(ModItems.WAR_FLAG.get(), "战争旗帜");
+        add("tooltip.pasterdream.war_flag.effect1", "§7▪ §9击杀敌人获得战意效果，每击杀一个敌人增加1级，最高3级");
+        add("tooltip.pasterdream.war_flag.effect2", "§7▪ §9效果持续期间增加攻击并提升回血速度");
+        add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9该效果可以共享给周围玩家");
+        add("tooltip.pasterdream.war_flag.description", "§7§O --这面旗帜上流淌的暗影似乎在述说遥远的过往……");
+        add("effect.pasterdream.war_flag_buff", "战意");
+
         // 进度 - 故事
         add("advancements.pasterdream.story.root.title", "帕斯特之梦");
         add("advancements.pasterdream.story.root.description", "以心之祈愿为始");
