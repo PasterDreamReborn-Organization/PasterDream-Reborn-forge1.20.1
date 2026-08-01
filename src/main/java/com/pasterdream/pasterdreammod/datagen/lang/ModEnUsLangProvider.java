@@ -829,7 +829,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.light_butterfly_curio.effect", "§7▪ §9Grants Night Vision in low light");
         add("tooltip.pasterdream.light_butterfly_curio.energy", "§7▪ §4Melt Dream Energy cost: 0.24/min");
         add(ModItems.BRIGHT_BUTTERFLY_CURIO.get(), "Bright Butterfly Curio");
-        add("tooltip.pasterdream.bright_butterfly_curio.effect.gamma", "§7▪ §9Increases screen brightness (Gamma Override)");
+        add("tooltip.pasterdream.bright_butterfly_curio.effect.gamma", "§7▪ §9Grants Night Vision effect");
         add("tooltip.pasterdream.bright_butterfly_curio.effect.darkness_immune", "§7▪ §9Immune to Darkness and Blindness");
         add(ModItems.BOBOJI_CURIO.get(), "Boboji's Gorgeous Feather");
         add("tooltip.pasterdream.boboji_curio.stat.speed", "§7▪ §9+5% Speed");

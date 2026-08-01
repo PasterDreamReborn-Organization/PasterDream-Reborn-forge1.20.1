@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.curio;
 
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -25,6 +26,7 @@ public class BrightButterflyCurioItem extends Item implements ICurioItem {
 
         entity.removeEffect(MobEffects.DARKNESS);
         entity.removeEffect(MobEffects.BLINDNESS);
+        entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 240, 0, false, false));
     }
 
     @Override
