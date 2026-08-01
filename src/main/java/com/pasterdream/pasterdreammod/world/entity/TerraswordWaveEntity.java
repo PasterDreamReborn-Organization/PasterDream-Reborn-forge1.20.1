@@ -14,6 +14,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
@@ -201,6 +202,9 @@ public class TerraswordWaveEntity extends PathfinderMob {
                 projectile.setDeltaMovement(projectile.getDeltaMovement().reverse());
                 if (owner != null) {
                     projectile.setOwner(owner);
+                }
+                if (projectile instanceof AbstractArrow arrow) {
+                    arrow.pickup = AbstractArrow.Pickup.DISALLOWED;
                 }
                 if (level instanceof ServerLevel serverLevel) {
                     serverLevel.sendParticles(ParticleTypes.CRIT,

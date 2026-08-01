@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.item.curio;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
@@ -10,6 +11,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -24,11 +26,26 @@ import net.minecraftforge.items.ItemHandlerHelper;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class FadedBlessingOfCeciliaItem extends Item implements ICurioItem {
     public FadedBlessingOfCeciliaItem() {
-        super(new Item.Properties().stacksTo(1).rarity(ModRarities.MASTER));
+        super(new Item.Properties().stacksTo(1).fireResistant().rarity(ModRarities.MASTER));
+    }
+
+    @Override
+    public boolean hasCustomEntity(ItemStack stack) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public Entity createEntity(Level level, Entity location, ItemStack stack) {
+        var entity = new IndestructibleItemEntity(level, location.getX(), location.getY(), location.getZ(), stack);
+        entity.setDefaultPickUpDelay();
+        entity.setDeltaMovement(location.getDeltaMovement());
+        return entity;
     }
 
     @Override

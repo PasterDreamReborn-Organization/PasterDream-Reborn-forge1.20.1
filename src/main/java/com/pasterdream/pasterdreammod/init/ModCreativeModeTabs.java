@@ -177,7 +177,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.EMBRYO_NECKLACE.get());
                         output.accept(ModItems.EMBRYO_RING.get());
                         output.accept(ModItems.EMBRYO_BELT.get());
-                        output.accept(ModItems.FADED_BLESSING_OF_CECILIA.get());
                         // 音乐唱片
                         output.accept(ModItems.SWEET_DREAM_MUSIC_DISC.get());
                         output.accept(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get());
@@ -733,6 +732,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MELT_DREAM_AURORIAN_STEEL.get());
                         output.accept(ModItems.TERRA_BLADE.get());
                         output.accept(ModItems.TERRA_FLOATING_ISLAND.get());
+                        output.accept(ModItems.FADED_BLESSING_OF_CECILIA.get());
                         output.accept(ModItems.BLESSING_OF_CECILIA.get());
                         output.accept(ModItems.STRAWBERRY_HEART.get());
                         output.accept(ModItems.ANGEL_WING.get());
