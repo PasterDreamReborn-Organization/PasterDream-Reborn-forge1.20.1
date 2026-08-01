@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.entity.ghost;
 
+import com.pasterdream.pasterdreammod.helper.ShadowDifficultyHelper;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.core.BlockPos;
@@ -52,7 +53,8 @@ public class WailingShadowGhostEntity extends ShadowGhostEntity {
     @Override
     public boolean hurt(DamageSource source, float amount) {
         boolean result = super.hurt(source, amount);
-        if (!this.level().isClientSide() && !summonGate && summonTimer <= 0) {
+        if (!this.level().isClientSide() && !summonGate && summonTimer <= 0
+                && ShadowDifficultyHelper.isSpecialSkillEnabled(this.level())) {
             summonGate = true;
             summonTimer = 44; // Total countdown
             this.playSound(ModSounds.GHOST0.get(), 1f, 1f);

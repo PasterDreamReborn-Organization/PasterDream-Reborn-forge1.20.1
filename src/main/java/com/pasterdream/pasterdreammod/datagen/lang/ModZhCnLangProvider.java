@@ -1112,6 +1112,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.star_wish_rod", "§7§O --鱼儿如满天繁星");
         add("command.pasterdream.lowsan.enabled", "启用");
         add("command.pasterdream.lowsan.disabled", "禁用");
+        add("gamerule.pasterdream.shadowDifficulty.set", "暗影难度已设置为 %s");
 
         // 大地之刃
         add(ModItems.TERRA_BLADE.get(), "大地之刃");

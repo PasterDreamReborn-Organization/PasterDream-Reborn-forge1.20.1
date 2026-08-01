@@ -174,6 +174,97 @@ public class Config
             .comment("疯狂 III 触发阈值（ratio < 该值时升级为 Lv3），默认 0.01（1%）")
             .defineInRange("sanInsandLv3Threshold", 0.01, 0.0, 1.0);
 
+    // === 暗影生物独立难度 ===
+    private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> SHADOW_HEALTH_MULTIPLIERS = BUILDER
+            .comment("暗影生物血量倍率，按难度等级排列 [极简单, 简单, 普通, 困难]，默认 [0.5, 1.0, 1.5, 2.0]")
+            .define("shadowHealthMultipliers", List.of(0.5, 1.0, 1.5, 2.0));
+
+    private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> SHADOW_ATTACK_MULTIPLIERS = BUILDER
+            .comment("暗影生物攻击倍率，按难度等级排列 [极简单, 简单, 普通, 困难]，默认 [0.5, 1.0, 1.3, 1.8]")
+            .define("shadowAttackMultipliers", List.of(0.5, 1.0, 1.3, 1.8));
+
+    private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> SHADOW_SPEED_MULTIPLIERS = BUILDER
+            .comment("暗影生物移速倍率，按难度等级排列 [极简单, 简单, 普通, 困难]，默认 [0.7, 1.0, 1.1, 1.25]")
+            .define("shadowSpeedMultipliers", List.of(0.7, 1.0, 1.1, 1.25));
+
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> SHADOW_SPECIAL_SKILLS_ENABLED = BUILDER
+            .comment("各难度是否启用暗影生物特殊技能（阴影傀儡AoE、悲泣尖啸怨魂召唤等），按难度等级排列，默认 [false, true, true, true]")
+            .defineListAllowEmpty("shadowSpecialSkillsEnabled", List.of("false", "true", "true", "true"),
+                    obj -> obj instanceof String);
+
+    private static final ForgeConfigSpec.DoubleValue SHADOW_GOLEM_SKILL_DAMAGE = BUILDER
+            .comment("阴影傀儡 AoE 技能基础伤害，默认 15")
+            .defineInRange("shadowGolemSkillDamage", 15.0, 0.0, 1000.0);
+
+    private static final ForgeConfigSpec.DoubleValue SHADOW_HAND_SAN_DRAIN = BUILDER
+            .comment("暗影之手每次命中扣除的 SAN 基础值，默认 0.02")
+            .defineInRange("shadowHandSanDrain", 0.02, 0.0, 100.0);
+
+    // === 低理智刷怪（四区间制） ===
+    // 区间边界沿用上方 SAN 阈值，此处仅配置各区间的刷怪概率与实体权重
+    // 概率为 4 个值，按暗影难度排列 [极简单, 简单, 普通, 困难]
+    // 实体格式: "modid:entity_id:weight"，weight 为 0~1 的相对权重
+
+    // 高理智区间 (ratio >= sanCheerUpThreshold)
+    private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_HIGH_PROBS = BUILDER
+            .comment("振奋区间每 tick 刷怪概率 [极简单, 简单, 普通, 困难]，默认 [0, 0, 0, 0]")
+            .define("lowSanSpawnHighProbs", List.of(0.0, 0.0, 0.0, 0.0));
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_HIGH_ENTITIES = BUILDER
+            .comment("振奋区间可生成的实体及权重，默认空")
+            .defineListAllowEmpty("lowSanSpawnHighEntities", List.of(), obj -> obj instanceof String);
+
+    // 中理智区间 (sanLethargyLowerThreshold <= ratio < sanLethargyUpperThreshold)
+    private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_MEDIUM_PROBS = BUILDER
+            .comment("不振区间每 tick 刷怪概率 [极简单, 简单, 普通, 困难]，简单难度不刷，默认 [0, 0, 0.001, 0.002]")
+            .define("lowSanSpawnMediumProbs", List.of(0.0, 0.0, 0.001, 0.002));
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_MEDIUM_ENTITIES = BUILDER
+            .comment("不振区间可生成的实体及权重，默认虚弱恐怖尖喙:0.15, 暗影之手:0.3")
+            .defineListAllowEmpty("lowSanSpawnMediumEntities",
+                    List.of("pasterdream:weakeness_terrorbeak:0.15", "pasterdream:shadow_hand:0.3"),
+                    obj -> obj instanceof String);
+
+    // 低理智区间 (sanTranceLowerThreshold <= ratio < sanLethargyLowerThreshold)
+    private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_LOW_PROBS = BUILDER
+            .comment("恍惚区间每 tick 刷怪概率 [极简单, 简单, 普通, 困难]，简单难度不刷，默认 [0, 0, 0.002, 0.004]")
+            .define("lowSanSpawnLowProbs", List.of(0.0, 0.0, 0.002, 0.004));
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_LOW_ENTITIES = BUILDER
+            .comment("恍惚区间可生成的实体及权重，默认虚弱恐怖尖喙:0.4, 暗影之手:0.2")
+            .defineListAllowEmpty("lowSanSpawnLowEntities",
+                    List.of("pasterdream:weakeness_terrorbeak:0.4", "pasterdream:shadow_hand:0.2",
+                            "pasterdream:terrorbeak:0.1"),
+                    obj -> obj instanceof String);
+
+    // 极低理智区间 (ratio < sanTranceLowerThreshold)
+    private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_CRITICAL_PROBS = BUILDER
+            .comment("极低理智区间每 tick 刷怪概率 [极简单, 简单, 普通, 困难]，默认 [0, 0.005, 0.005, 0.006]")
+            .define("lowSanSpawnCriticalProbs", List.of(0.0, 0.005, 0.005, 0.006));
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_CRITICAL_ENTITIES = BUILDER
+            .comment("极低理智区间可生成的实体及权重，默认疯狂恐怖尖喙:0.25, 恐怖尖喙:0.2, 虚弱恐怖尖喙:0.15, 暗影之手:0.15")
+            .defineListAllowEmpty("lowSanSpawnCriticalEntities",
+                    List.of("pasterdream:crazy_terrorbeak:0.25", "pasterdream:terrorbeak:0.2",
+                            "pasterdream:weakeness_terrorbeak:0.15", "pasterdream:shadow_hand:0.15"),
+                    obj -> obj instanceof String);
+
+    private static final ForgeConfigSpec.IntValue LOW_SAN_SPAWN_MAX_LIGHT = BUILDER
+            .comment("低理智刷怪允许的最大亮度（方块光照），默认 5。设为 15 则无光照限制")
+            .defineInRange("lowSanSpawnMaxLight", 5, 0, 15);
+
+    private static final ForgeConfigSpec.DoubleValue LOW_SAN_SPAWN_RADIUS_MIN = BUILDER
+            .comment("低理智刷怪距玩家的最小距离（格），默认 7")
+            .defineInRange("lowSanSpawnRadiusMin", 7.0, 0.0, 64.0);
+
+    private static final ForgeConfigSpec.DoubleValue LOW_SAN_SPAWN_RADIUS_MAX = BUILDER
+            .comment("低理智刷怪距玩家的最大距离（格），默认 12")
+            .defineInRange("lowSanSpawnRadiusMax", 12.0, 1.0, 64.0);
+
+    private static final ForgeConfigSpec.IntValue LOW_SAN_SPAWN_MAX_NEARBY = BUILDER
+            .comment("低理智刷怪时玩家周围允许存在的最大暗影生物数量，默认 2（饥荒上限）")
+            .defineInRange("lowSanSpawnMaxNearby", 2, 0, 20);
+
+    private static final ForgeConfigSpec.BooleanValue LOW_SAN_SPAWN_REQUIRES_SPECIAL_SKILL = BUILDER
+            .comment("低理智刷怪是否受暗影难度特殊技能开关控制，默认 true")
+            .define("lowSanSpawnRequiresSpecialSkill", true);
+
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
@@ -235,6 +326,29 @@ public class Config
     //守护
     public static Double healthpercentguardneed;
     public static Double resistdamage;
+
+    // === 暗影生物独立难度 ===
+    public static List<? extends Double> shadowHealthMultipliers;
+    public static List<? extends Double> shadowAttackMultipliers;
+    public static List<? extends Double> shadowSpeedMultipliers;
+    public static List<String> shadowSpecialSkillsEnabled;
+    public static double shadowGolemSkillDamage;
+    public static double shadowHandSanDrain;
+
+    // === 低理智刷怪 ===
+    public static List<? extends Double> lowSanSpawnHighProbs;
+    public static List<? extends String> lowSanSpawnHighEntities;
+    public static List<? extends Double> lowSanSpawnMediumProbs;
+    public static List<? extends String> lowSanSpawnMediumEntities;
+    public static List<? extends Double> lowSanSpawnLowProbs;
+    public static List<? extends String> lowSanSpawnLowEntities;
+    public static List<? extends Double> lowSanSpawnCriticalProbs;
+    public static List<? extends String> lowSanSpawnCriticalEntities;
+    public static int lowSanSpawnMaxLight;
+    public static double lowSanSpawnRadiusMin;
+    public static double lowSanSpawnRadiusMax;
+    public static int lowSanSpawnMaxNearby;
+    public static boolean lowSanSpawnRequiresSpecialSkill;
 
     // === 帕秋莉宝典 ===
     public static boolean givePatchouliBookOnFirstJoin;
@@ -324,6 +438,25 @@ public class Config
         sanTranceLowerThreshold = SAN_TRANCE_LOWER_THRESHOLD.get();
         sanInsandLv2Threshold = SAN_INSAND_LV2_THRESHOLD.get();
         sanInsandLv3Threshold = SAN_INSAND_LV3_THRESHOLD.get();
+        shadowHealthMultipliers = SHADOW_HEALTH_MULTIPLIERS.get();
+        shadowAttackMultipliers = SHADOW_ATTACK_MULTIPLIERS.get();
+        shadowSpeedMultipliers = SHADOW_SPEED_MULTIPLIERS.get();
+        shadowSpecialSkillsEnabled = List.copyOf(SHADOW_SPECIAL_SKILLS_ENABLED.get());
+        shadowGolemSkillDamage = SHADOW_GOLEM_SKILL_DAMAGE.get();
+        shadowHandSanDrain = SHADOW_HAND_SAN_DRAIN.get();
+        lowSanSpawnHighProbs = LOW_SAN_SPAWN_HIGH_PROBS.get();
+        lowSanSpawnHighEntities = LOW_SAN_SPAWN_HIGH_ENTITIES.get();
+        lowSanSpawnMediumProbs = LOW_SAN_SPAWN_MEDIUM_PROBS.get();
+        lowSanSpawnMediumEntities = LOW_SAN_SPAWN_MEDIUM_ENTITIES.get();
+        lowSanSpawnLowProbs = LOW_SAN_SPAWN_LOW_PROBS.get();
+        lowSanSpawnLowEntities = LOW_SAN_SPAWN_LOW_ENTITIES.get();
+        lowSanSpawnCriticalProbs = LOW_SAN_SPAWN_CRITICAL_PROBS.get();
+        lowSanSpawnCriticalEntities = LOW_SAN_SPAWN_CRITICAL_ENTITIES.get();
+        lowSanSpawnMaxLight = LOW_SAN_SPAWN_MAX_LIGHT.get();
+        lowSanSpawnRadiusMin = LOW_SAN_SPAWN_RADIUS_MIN.get();
+        lowSanSpawnRadiusMax = LOW_SAN_SPAWN_RADIUS_MAX.get();
+        lowSanSpawnMaxNearby = LOW_SAN_SPAWN_MAX_NEARBY.get();
+        lowSanSpawnRequiresSpecialSkill = LOW_SAN_SPAWN_REQUIRES_SPECIAL_SKILL.get();
 
         rebuildSinInstakillCache();
         rebuildConflictMarkBlacklistCache();

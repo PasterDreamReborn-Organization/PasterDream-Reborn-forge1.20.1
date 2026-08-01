@@ -3,8 +3,10 @@ package com.pasterdream.pasterdreammod.command.san;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.pasterdream.pasterdreammod.Config;
+import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 
 public class LowSanEffect {
 
@@ -14,9 +16,22 @@ public class LowSanEffect {
         return Component.translatable(PREFIX + (value ? "enabled" : "disabled"));
     }
 
+    private static void persistAndSync(CommandContext<CommandSourceStack> context) {
+        ServerLevel overworld = context.getSource().getServer().overworld();
+        LowSanWorldData data = LowSanWorldData.get(overworld);
+        boolean o = Config.lowSanOverlay;
+        boolean j = Config.lowSanJitter;
+        boolean s = Config.lowSanSound;
+        data.setOverlay(o);
+        data.setJitter(j);
+        data.setSound(s);
+        LowSanConfigSyncPacket.syncToAll(o, j, s);
+    }
+
     public static int setOverlay(CommandContext<CommandSourceStack> context) {
         boolean value = BoolArgumentType.getBool(context, "boolean");
         Config.lowSanOverlay = value;
+        persistAndSync(context);
         context.getSource().sendSuccess(() -> Component.translatable(PREFIX + "overlay.set", onOff(value)), true);
         return 1;
     }
@@ -30,6 +45,7 @@ public class LowSanEffect {
     public static int setJitter(CommandContext<CommandSourceStack> context) {
         boolean value = BoolArgumentType.getBool(context, "boolean");
         Config.lowSanJitter = value;
+        persistAndSync(context);
         context.getSource().sendSuccess(() -> Component.translatable(PREFIX + "jitter.set", onOff(value)), true);
         return 1;
     }
@@ -43,6 +59,7 @@ public class LowSanEffect {
     public static int setSound(CommandContext<CommandSourceStack> context) {
         boolean value = BoolArgumentType.getBool(context, "boolean");
         Config.lowSanSound = value;
+        persistAndSync(context);
         context.getSource().sendSuccess(() -> Component.translatable(PREFIX + "sound.set", onOff(value)), true);
         return 1;
     }
@@ -51,5 +68,13 @@ public class LowSanEffect {
         context.getSource().sendSuccess(() -> Component.translatable(PREFIX + "sound.get",
                 Component.translatable(PREFIX + "sound"), onOff(Config.lowSanSound)), true);
         return 1;
+    }
+
+    /** 服务端启动/重载时从世界数据恢复 Config 字段 */
+    public static void restoreFromWorld(ServerLevel overworld) {
+        LowSanWorldData data = LowSanWorldData.get(overworld);
+        Config.lowSanOverlay = data.overlay();
+        Config.lowSanJitter = data.jitter();
+        Config.lowSanSound = data.sound();
     }
 }

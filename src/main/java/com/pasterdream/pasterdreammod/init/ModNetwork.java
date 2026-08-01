@@ -19,6 +19,7 @@ import com.pasterdream.pasterdreammod.network.curio.KaichuOmamoriActivationPacke
 import com.pasterdream.pasterdreammod.network.skill.BlinkPacket;
 import com.pasterdream.pasterdreammod.network.skill.TerraBladeSwingPacket;
 import com.pasterdream.pasterdreammod.network.san.IsSanEnableSyncPacket;
+import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.MaxSanSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -54,6 +55,7 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, SanSyncPacket.class, SanSyncPacket::encode, SanSyncPacket::decode, SanSyncPacket::handle);
         CHANNEL.registerMessage(id++, IsSanEnableSyncPacket.class, IsSanEnableSyncPacket::encode, IsSanEnableSyncPacket::decode, IsSanEnableSyncPacket::handle);
         CHANNEL.registerMessage(id++, MaxSanSyncPacket.class, MaxSanSyncPacket::encode, MaxSanSyncPacket::decode, MaxSanSyncPacket::handle);
+        CHANNEL.registerMessage(id++, LowSanConfigSyncPacket.class, LowSanConfigSyncPacket::encode, LowSanConfigSyncPacket::decode, LowSanConfigSyncPacket::handle);
 
         CHANNEL.registerMessage(id++, AnimationStateChangePacket.class, AnimationStateChangePacket::encode, AnimationStateChangePacket::decode, AnimationStateChangePacket::handle);
 

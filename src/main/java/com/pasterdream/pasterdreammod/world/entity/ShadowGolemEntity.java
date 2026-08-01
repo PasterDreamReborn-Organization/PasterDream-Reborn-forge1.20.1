@@ -1,9 +1,10 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
-import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.ShadowDifficultyHelper;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
@@ -13,9 +14,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
@@ -56,9 +55,6 @@ public class ShadowGolemEntity extends Monster implements GeoEntity {
 
     private int skillTimer;
     private int timeCounter;
-
-    private static final TagKey<EntityType<?>> SHADOW_MOB = TagKey.create(Registries.ENTITY_TYPE,
-            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob"));
 
     public ShadowGolemEntity(PlayMessages.SpawnEntity packet, Level world) {
         this(ModEntities.SHADOW_GOLEM.get(), world);
@@ -204,13 +200,16 @@ public class ShadowGolemEntity extends Monster implements GeoEntity {
                 this.playSound(net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, 1, 1);
 
                 // 以实体脚部为中心，上下各5格覆盖
+                if (!ShadowDifficultyHelper.isSpecialSkillEnabled(world)) return;
+
                 AABB area = AABB.ofSize(new Vec3(x, y, z), 10, 10, 10);
                 List<LivingEntity> entities = world.getEntitiesOfClass(LivingEntity.class, area,
-                        e -> !e.getType().is(SHADOW_MOB));
+                        e -> !e.getType().is(ModEntityTypeTags.SHADOW_MOB));
                 for (LivingEntity target : entities) {
                     target.hurt(new DamageSource(world.registryAccess()
                             .registryOrThrow(Registries.DAMAGE_TYPE)
-                            .getHolderOrThrow(DamageTypes.MOB_ATTACK), this), 15);
+                            .getHolderOrThrow(DamageTypes.MOB_ATTACK), this),
+                            ShadowDifficultyHelper.getGolemSkillDamage(world));
                     target.setDeltaMovement(new Vec3(0, 1.5, 0));
                 }
             }

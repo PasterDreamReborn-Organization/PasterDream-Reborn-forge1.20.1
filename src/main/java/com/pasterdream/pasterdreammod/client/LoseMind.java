@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
 /**
- * 低理智时全屏画面叠加 + 视角抖动，根据癫狂等级渐进。
+ * 低理智时全屏画面叠加 + 视角抖动，根据疯狂等级渐进。
  */
 @OnlyIn(Dist.CLIENT)
 public class LoseMind {
