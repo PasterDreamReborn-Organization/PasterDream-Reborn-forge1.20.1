@@ -643,6 +643,232 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             ModItems.BEIHAI_RUO_TIDE_SWORD.get()))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "husbandry/get_beihairuo_tide_sword"), existingFileHelper);
+
+            // =========== 染梦珍藏 ==========
+            Advancement root_dyedream_treasure = Advancement.Builder.advancement()
+                    .display(
+                            ModItems.DYEDREAM_DUST.get(),
+                            Component.translatable("advancements.pasterdream.root_dyedream_treasure.title"),
+                            Component.translatable("advancements.pasterdream.root_dyedream_treasure.description"),
+                            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                    "textures/screens/guiblock_dyedream_treasure.png"),
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("tick", PlayerTrigger.TriggerInstance.tick())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/root_dyedream_treasure"), existingFileHelper);
+
+            Advancement sand_of_time = Advancement.Builder.advancement()
+                    .parent(root_dyedream_treasure)
+                    .display(
+                            ModItems.SAND_OF_TIME.get(),
+                            Component.translatable("advancements.pasterdream.get_sand_of_time.title"),
+                            Component.translatable("advancements.pasterdream.get_sand_of_time.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, true
+                    )
+                    .addCriterion("get_sand_of_time", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.SAND_OF_TIME.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_sand_of_time"), existingFileHelper);
+
+            Advancement broken_hero_sword = Advancement.Builder.advancement()
+                    .parent(sand_of_time)
+                    .display(
+                            ModItems.BROKEN_HERO_SWORD.get(),
+                            Component.translatable("advancements.pasterdream.get_broken_hero_sword.title"),
+                            Component.translatable("advancements.pasterdream.get_broken_hero_sword.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, true
+                    )
+                    .addCriterion("get_broken_hero_sword", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.BROKEN_HERO_SWORD.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_broken_hero_sword"), existingFileHelper);
+
+
+            Advancement terra_sword = Advancement.Builder.advancement()
+                    .parent(broken_hero_sword)
+                    .display(
+                            ModItems.TERRA_BLADE.get(),
+                            Component.translatable("advancements.pasterdream.get_terra_sword.title"),
+                            Component.translatable("advancements.pasterdream.get_terra_sword.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("get_terra_sword", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.BOBOJI_CURIO.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_terra_sword"), existingFileHelper);
+
+            Advancement boboji_curios = Advancement.Builder.advancement()
+                    .parent(broken_hero_sword)
+                    .display(
+                            ModItems.BOBOJI_CURIO.get(),
+                            Component.translatable("advancements.pasterdream.get_boboji_curios.title"),
+                            Component.translatable("advancements.pasterdream.get_boboji_curios.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, true
+                    )
+                    .addCriterion("get_boboji_curios", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.BOBOJI_CURIO.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_boboji_curios"), existingFileHelper);
+
+            Advancement allkinds_ring = Advancement.Builder.advancement()
+                    .parent(boboji_curios)
+                    .display(
+                            ModItems.ALLKINDS_RING.get(),
+                            Component.translatable("advancements.pasterdream.get_allkinds_ring.title"),
+                            Component.translatable("advancements.pasterdream.get_allkinds_ring.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, true
+                    )
+                    .addCriterion("get_allkinds_ring", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.ALLKINDS_RING.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_allkinds_ring"), existingFileHelper);
+
+            Advancement hiyori_butterfly_hairpin = Advancement.Builder.advancement()
+                    .parent(allkinds_ring)
+                    .display(
+                            ModItems.HIYORI_BUTTERFLY_HAIRPIN.get(),
+                            Component.translatable("advancements.pasterdream.get_hiyori_butterfly_hairpin.title"),
+                            Component.translatable("advancements.pasterdream.get_hiyori_butterfly_hairpin.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, true
+                    )
+                    .addCriterion("get_hiyori_butterfly_hairpin", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.HIYORI_BUTTERFLY_HAIRPIN.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_hiyori_butterfly_hairpin"), existingFileHelper);
+
+            Advancement snow_vow_head = Advancement.Builder.advancement()
+                    .parent(hiyori_butterfly_hairpin)
+                    .display(
+                            ModItems.SNOW_VOW_HEAD.get(),
+                            Component.translatable("advancements.pasterdream.get_snow_vow_head.title"),
+                            Component.translatable("advancements.pasterdream.get_snow_vow_head.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, true
+                    )
+                    .addCriterion("get_snow_vow_head", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.SNOW_VOW_HEAD.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_snow_vow_head"), existingFileHelper);
+
+            Advancement star_wish_rod = Advancement.Builder.advancement()
+                    .parent(snow_vow_head)
+                    .display(
+                            ModItems.STAR_WISH_ROD.get(),
+                            Component.translatable("advancements.pasterdream.get_star_wish_rod.title"),
+                            Component.translatable("advancements.pasterdream.get_star_wish_rod.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("get_star_wish_rod", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.STAR_WISH_ROD.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_star_wish_rod"), existingFileHelper);
+
+            Advancement blessing_of_cecilia = Advancement.Builder.advancement()
+                    .parent(snow_vow_head)
+                    .display(
+                            ModItems.BLESSING_OF_CECILIA.get(),
+                            Component.translatable("advancements.pasterdream.get_blessing_of_cecilia.title"),
+                            Component.translatable("advancements.pasterdream.get_blessing_of_cecilia.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, true
+                    )
+                    .addCriterion("get_blessing_of_cecilia", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.BLESSING_OF_CECILIA.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_blessing_of_cecilia"), existingFileHelper);
+
+            Advancement light_butterfly_curio = Advancement.Builder.advancement()
+                    .parent(blessing_of_cecilia)
+                    .display(
+                            ModItems.LIGHT_BUTTERFLY_CURIO.get(),
+                            Component.translatable("advancements.pasterdream.get_light_butterfly_curio.title"),
+                            Component.translatable("advancements.pasterdream.get_light_butterfly_curio.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, true
+                    )
+                    .addCriterion("get_light_butterfly_curio", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.LIGHT_BUTTERFLY_CURIO.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_light_butterfly_curio"), existingFileHelper);
+
+            Advancement qym_doll = Advancement.Builder.advancement()
+                    .parent(light_butterfly_curio)
+                    .display(
+                            ModItems.QYM_DOLL.get(),
+                            Component.translatable("advancements.pasterdream.get_qym_doll.title"),
+                            Component.translatable("advancements.pasterdream.get_qym_doll.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, true
+                    )
+                    .addCriterion("get_qym_doll", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.QYM_DOLL.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_qym_doll"), existingFileHelper);
+
+            Advancement terra_floating_island = Advancement.Builder.advancement()
+                    .parent(qym_doll)
+                    .display(
+                            ModItems.TERRA_FLOATING_ISLAND.get(),
+                            Component.translatable("advancements.pasterdream.get_terra_floating_island.title"),
+                            Component.translatable("advancements.pasterdream.get_terra_floating_island.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, true
+                    )
+                    .addCriterion("get_terra_floating_island", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.TERRA_FLOATING_ISLAND.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_terra_floating_island"), existingFileHelper);
+
+            Advancement dream_harp_of_wanderer = Advancement.Builder.advancement()
+                    .parent(terra_floating_island)
+                    .display(
+                            ModItems.DREAM_HARP_OF_WANDERER.get(),
+                            Component.translatable("advancements.pasterdream.get_dream_harp_of_wanderer.title"),
+                            Component.translatable("advancements.pasterdream.get_dream_harp_of_wanderer.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("get_dream_harp_of_wanderer", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.DREAM_HARP_OF_WANDERER.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_dream_harp_of_wanderer"), existingFileHelper);
+
+            Advancement worldtree_seedpod = Advancement.Builder.advancement()
+                    .parent(dream_harp_of_wanderer)
+                    .display(
+                            ModItems.WORLDTREE_SEEDPOD.get(),
+                            Component.translatable("advancements.pasterdream.get_worldtree_seedpod.title"),
+                            Component.translatable("advancements.pasterdream.get_worldtree_seedpod.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("get_worldtree_seedpod", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.WORLDTREE_SEEDPOD.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_worldtree_seedpod"), existingFileHelper);
         }
     }
 }

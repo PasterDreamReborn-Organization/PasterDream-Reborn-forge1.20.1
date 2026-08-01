@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.advancement.critereon.FoundDesertFortressT
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundTombTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDrawingTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.OpenDyedreamCrystalChestTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -36,6 +37,9 @@ public class ModCriteriaTriggers {
     /** 在染梦维度准星指向粉色羊 */
     public static final LookAtPinkSheepTrigger LOOK_AT_PINK_SHEEP = new LookAtPinkSheepTrigger();
 
+    /** 在染梦世界打开融梦水晶箱 */
+    public static final OpenDyedreamCrystalChestTrigger OPEN_DYEDREAM_CRYSTAL_CHEST = new OpenDyedreamCrystalChestTrigger();
+
     public static void init() {
         CriteriaTriggers.register(USE_BONE_NEEDLE);
         CriteriaTriggers.register(FOUND_TOMB);
@@ -44,5 +48,6 @@ public class ModCriteriaTriggers {
         CriteriaTriggers.register(FOUND_DESERT_FORTRESS);
         CriteriaTriggers.register(EAT_GALAXY_JELLY_AT_HEIGHT);
         CriteriaTriggers.register(LOOK_AT_PINK_SHEEP);
+        CriteriaTriggers.register(OPEN_DYEDREAM_CRYSTAL_CHEST);
     }
 }
