@@ -175,7 +175,6 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
             }
             if (shouldRoar) {
                 this.playSound(ModSounds.TERRORBEAK_ROAR.get(), variant == Variant.CRAZY ? 0.7f : 0.6f, 1);
-                this.setAnimation("roar");
                 Vec3 look = this.getLookAngle();
                 Vec3 center = this.position().add(look.x, 0, look.z);
                 AABB area = AABB.ofSize(center, getVariant().roarRange, getVariant().roarRange, getVariant().roarRange);
@@ -255,6 +254,9 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
         if (roarCooldown > 0)
             roarCooldown--;
         this.refreshDimensions();
+        if (!this.level().isClientSide() && this.level().canSeeSky(this.blockPosition()) && this.level().isDay()) {
+            this.kill();
+        }
     }
 
     @Override
@@ -304,7 +306,7 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
                 return event.setAndContinue(RawAnimation.begin().thenLoop("walk"));
             }
             if (this.isDeadOrDying()) {
-                return event.setAndContinue(RawAnimation.begin().thenPlay("death"));
+                return event.setAndContinue(RawAnimation.begin().thenLoop("idle"));
             }
             return event.setAndContinue(RawAnimation.begin().thenLoop("idle"));
         }

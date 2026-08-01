@@ -101,6 +101,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerSleepInBed);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onAttackEntity);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerChangedDimension);
+        MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerLoggedIn);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onAdvancementEarned);
         MinecraftForge.EVENT_BUS.addListener(QymArmorEvents::onEquipChange);
         MinecraftForge.EVENT_BUS.addListener(MachineLightWingItem::onEquipChange);

@@ -1,7 +1,11 @@
 package com.pasterdream.pasterdreammod.world.effect;
 
+import com.pasterdream.pasterdreammod.helper.ShadowDifficultyHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -31,9 +35,15 @@ public class InsandBuffEffect extends MobEffect {
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
         if (!(entity instanceof ServerPlayer player) || !player.isAlive()) return;
-        // 画面抖动在客户端 LoseMind#GUI_OVERLAY 中处理
-        // TODO: 随机刷怪 — Terrorbeak / ShadowHand / CrazyTerrorbeak 刷怪逻辑尚未实现
-        // TODO: Lv2 检测 DegenerateBodys 饰品，未装备时持续扣血
+        if (player.isCreative() || player.isSpectator()) return;
+        // 刷怪逻辑已移至 SanAuraHandler，此处只保留 III 级持续扣血
+        if (amplifier >= 2 && player.getHealth() > 1
+                && ShadowDifficultyHelper.getDifficulty(player.serverLevel()) > 0) {
+            // TODO: 检测 DegenerateBodys 饰品，未装备时持续扣血
+            player.hurt(new DamageSource(player.serverLevel().registryAccess()
+                    .registryOrThrow(Registries.DAMAGE_TYPE)
+                    .getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD)), 1);
+        }
     }
 
     @Override

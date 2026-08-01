@@ -949,6 +949,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.star_wish_rod", "§7§O --Fish as numerous as stars");
         add("command.pasterdream.lowsan.enabled", "enabled");
         add("command.pasterdream.lowsan.disabled", "disabled");
+        add("gamerule.pasterdream.shadowDifficulty.set", "Shadow difficulty set to %s");
+        add("gamerule.pasterdream.shadowDifficulty.get", "Current shadow difficulty: %s");
 
         // Terra Blade
         add(ModItems.TERRA_BLADE.get(), "Terra Blade");

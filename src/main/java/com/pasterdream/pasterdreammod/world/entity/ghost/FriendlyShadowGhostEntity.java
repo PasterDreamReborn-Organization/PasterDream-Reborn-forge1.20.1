@@ -1,10 +1,9 @@
 package com.pasterdream.pasterdreammod.world.entity.ghost;
 
-import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -14,7 +13,6 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -50,8 +48,6 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
     private static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(FriendlyShadowGhostEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(FriendlyShadowGhostEntity.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(FriendlyShadowGhostEntity.class, EntityDataSerializers.STRING);
-    private static final TagKey<EntityType<?>> SHADOW_MOB = TagKey.create(Registries.ENTITY_TYPE,
-            net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob"));
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private boolean swinging;
     private long lastSwing;
@@ -120,7 +116,7 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
         this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 1, 10f, 2f, false));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(7, new NearestAttackableTargetGoal<>(this, Mob.class, 10, false, false,
-                target -> !target.getType().is(SHADOW_MOB)));
+                target -> !target.getType().is(ModEntityTypeTags.SHADOW_MOB)));
         this.targetSelector.addGoal(8, new HurtByTargetGoal(this));
         this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25, 30, 12f) {
             @Override

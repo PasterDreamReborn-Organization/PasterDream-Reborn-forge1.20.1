@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.helper.ShadowDifficultyHelper;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -166,7 +167,7 @@ public class ShadowHandEntity extends Monster implements GeoEntity {
         if (target instanceof ServerPlayer sp) {
             sp.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
                 if (cap.getSanValue() > 0) {
-                    cap.addSanValue(-0.02);
+                    cap.addSanValue(-ShadowDifficultyHelper.getShadowHandSanDrain(this.level()));
                 }
             });
         }
@@ -193,7 +194,7 @@ public class ShadowHandEntity extends Monster implements GeoEntity {
         if (player instanceof ServerPlayer sp) {
             sp.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
                 if (cap.getSanValue() > 0) {
-                    cap.addSanValue(-0.02);
+                    cap.addSanValue(-ShadowDifficultyHelper.getShadowHandSanDrain(this.level()));
                 }
             });
         }
@@ -216,6 +217,9 @@ public class ShadowHandEntity extends Monster implements GeoEntity {
     public void baseTick() {
         super.baseTick();
         this.refreshDimensions();
+        if (!this.level().isClientSide() && this.level().canSeeSky(this.blockPosition()) && this.level().isDay()) {
+            this.kill();
+        }
     }
 
     @Override

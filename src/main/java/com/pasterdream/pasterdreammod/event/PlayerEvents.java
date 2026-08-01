@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.event;
 
+import com.pasterdream.pasterdreammod.command.san.LowSanEffect;
 import com.pasterdream.pasterdreammod.helper.itemwithnbt.dreamnoteswithnbt.DreamNotesWithNBT;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
@@ -302,5 +303,15 @@ public class PlayerEvents {
     private static boolean isAdvancementDone(ServerPlayer player, ResourceLocation id) {
         var adv = player.server.getAdvancements().getAdvancement(id);
         return adv != null && player.getAdvancements().getOrStartProgress(adv).isDone();
+    }
+
+    /** 玩家登录时从世界数据恢复 lowSan 配置并同步到客户端 */
+    public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        LowSanEffect.restoreFromWorld(player.serverLevel());
+        com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket.syncToPlayer(player,
+                com.pasterdream.pasterdreammod.Config.lowSanOverlay,
+                com.pasterdream.pasterdreammod.Config.lowSanJitter,
+                com.pasterdream.pasterdreammod.Config.lowSanSound);
     }
 }

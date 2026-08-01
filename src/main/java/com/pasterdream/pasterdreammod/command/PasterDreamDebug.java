@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.pasterdream.pasterdreammod.command.meltdreamenergy.IsNotNeed;
 import com.pasterdream.pasterdreammod.command.meltdreamenergy.MaxMeltDreamEnergy;
 import com.pasterdream.pasterdreammod.command.meltdreamenergy.MeltDreamEnergy;
@@ -11,6 +12,7 @@ import com.pasterdream.pasterdreammod.command.san.IsSanEnabled;
 import com.pasterdream.pasterdreammod.command.san.LowSanEffect;
 import com.pasterdream.pasterdreammod.command.san.MaxSan;
 import com.pasterdream.pasterdreammod.command.san.San;
+import com.pasterdream.pasterdreammod.command.san.ShadowDifficulty;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
@@ -97,6 +99,12 @@ public class PasterDreamDebug
                                                 .executes(LowSanEffect::getSound)))))
                 .then(Commands.literal("music")
                         .then(Commands.literal("check")
-                                .executes(MusicDebug::checkMusic))));
+                                .executes(MusicDebug::checkMusic)))
+                .then(Commands.literal("shadowDifficulty")
+                        .then(Commands.literal("get")
+                                .executes(ShadowDifficulty::get))
+                        .then(Commands.argument("tier", IntegerArgumentType.integer(0, 3))
+                                .suggests(ShadowDifficulty.TIER_SUGGESTIONS)
+                                .executes(ShadowDifficulty::set))));
     }
 }
