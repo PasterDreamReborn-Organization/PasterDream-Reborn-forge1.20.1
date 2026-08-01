@@ -218,6 +218,11 @@ public class ModPlacedFeatures {
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_chain_pillar"));
 
+    /** 阴影锁链柱（海底变体）— 向下搜索至海底固体方块 */
+    public static final ResourceKey<PlacedFeature> SHADOW_CHAIN_PILLAR_OCEAN =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_chain_pillar_ocean"));
+
     //原版维度花草
     public static final ResourceKey<PlacedFeature> GOLDENROD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "goldenrod_patch"));
     public static final ResourceKey<PlacedFeature> FERRARIA_CRISPA_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ferraria_crispa_patch"));
@@ -551,6 +556,13 @@ public class ModPlacedFeatures {
                 List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
                         SurfaceWaterDepthFilter.forMaxDepth(0),
                         onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        ON_SHADOW_GROUND)));
+
+        // 阴影锁链柱（海底变体）— 使用 OCEAN_FLOOR_WG 定位海底
+        context.register(SHADOW_CHAIN_PILLAR_OCEAN, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_CHAIN_PILLAR),
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG),
                         ON_SHADOW_GROUND)));
 
         // 影芽 — WORLD_SURFACE_WG，比染梦茎草更稀疏
