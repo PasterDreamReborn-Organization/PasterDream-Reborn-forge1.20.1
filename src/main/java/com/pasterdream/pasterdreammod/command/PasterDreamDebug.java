@@ -101,6 +101,8 @@ public class PasterDreamDebug
                         .then(Commands.literal("check")
                                 .executes(MusicDebug::checkMusic)))
                 .then(Commands.literal("shadowDifficulty")
+                        .then(Commands.literal("get")
+                                .executes(ShadowDifficulty::get))
                         .then(Commands.argument("tier", IntegerArgumentType.integer(0, 3))
                                 .suggests(ShadowDifficulty.TIER_SUGGESTIONS)
                                 .executes(ShadowDifficulty::set))));

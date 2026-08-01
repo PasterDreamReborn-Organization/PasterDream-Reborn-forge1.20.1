@@ -28,15 +28,23 @@ public class LowSanSpawnHandler {
         player.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
             double ratio = cap.getSanValue() / cap.getMaxSanValue();
 
-            if (ratio >= Config.sanCheerUpThreshold) {
+            int tier = ShadowDifficultyHelper.getDifficulty(player.serverLevel());
+            double highThreshold = getValue(Config.lowSanSpawnHighThresholds, tier, 0.825);
+            if (ratio >= highThreshold) {
                 ShadowDifficultyHelper.tryLowSanSpawn(player, "high");
-            } else if (ratio < Config.sanLethargyUpperThreshold && ratio >= Config.sanLethargyLowerThreshold) {
+            } else if (ratio >= Config.sanLethargyLowerThreshold) {
                 ShadowDifficultyHelper.tryLowSanSpawn(player, "medium");
-            } else if (ratio < Config.sanLethargyLowerThreshold && ratio >= Config.sanTranceLowerThreshold) {
+            } else if (ratio >= Config.sanTranceLowerThreshold) {
                 ShadowDifficultyHelper.tryLowSanSpawn(player, "low");
-            } else if (ratio < Config.sanTranceLowerThreshold) {
+            } else {
                 ShadowDifficultyHelper.tryLowSanSpawn(player, "critical");
             }
         });
+    }
+
+    private static double getValue(java.util.List<? extends Double> list, int index, double fallback) {
+        if (list == null || list.isEmpty()) return fallback;
+        if (index < list.size()) return list.get(index);
+        return list.get(list.size() - 1);
     }
 }

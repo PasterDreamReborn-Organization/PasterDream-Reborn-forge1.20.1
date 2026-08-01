@@ -25,4 +25,13 @@ public class ShadowDifficulty {
                 Component.literal(TIER_NAMES[tier])), true);
         return tier;
     }
+
+    public static int get(CommandContext<CommandSourceStack> ctx) {
+        int tier = ctx.getSource().getServer().getGameRules()
+                .getInt(ModGameRules.SHADOW_DIFFICULTY);
+        ctx.getSource().sendSuccess(() -> Component.translatable(
+                "gamerule.pasterdream.shadowDifficulty.get",
+                Component.literal(tier + "-" + TIER_NAMES[tier])), true);
+        return tier;
+    }
 }

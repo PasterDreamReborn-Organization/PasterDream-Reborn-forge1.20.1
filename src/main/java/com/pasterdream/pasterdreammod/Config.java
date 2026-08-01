@@ -205,9 +205,9 @@ public class Config
     // 概率为 4 个值，按暗影难度排列 [极简单, 简单, 普通, 困难]
     // 实体格式: "modid:entity_id:weight"，weight 为 0~1 的相对权重
 
-    // 高理智区间 (ratio >= sanCheerUpThreshold)
+    // 安全理智区间（上界由 lowSanSpawnHighThresholds 按难度控制）
     private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_HIGH_PROBS = BUILDER
-            .comment("振奋区间每 tick 刷怪概率 [极简单, 简单, 普通, 困难]，默认 [0, 0, 0, 0]")
+            .comment("安全理智区间每 tick 刷怪概率 [极简单, 简单, 普通, 困难]，默认 [0, 0, 0, 0]")
             .define("lowSanSpawnHighProbs", List.of(0.0, 0.0, 0.0, 0.0));
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_HIGH_ENTITIES = BUILDER
             .comment("振奋区间可生成的实体及权重，默认空")
@@ -244,6 +244,10 @@ public class Config
                     List.of("pasterdream:crazy_terrorbeak:0.25", "pasterdream:terrorbeak:0.2",
                             "pasterdream:weakeness_terrorbeak:0.15", "pasterdream:shadow_hand:0.15"),
                     obj -> obj instanceof String);
+
+    private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_HIGH_THRESHOLDS = BUILDER
+            .comment("各暗影难度下安全理智区间的下界（低于此值开始刷怪）[极简单, 简单, 普通, 困难]，默认 [0.0, 0.2, 0.6, 0.825]")
+            .define("lowSanSpawnHighThresholds", List.of(0.0, 0.2, 0.6, 0.825));
 
     private static final ForgeConfigSpec.IntValue LOW_SAN_SPAWN_MAX_LIGHT = BUILDER
             .comment("低理智刷怪允许的最大亮度（方块光照），默认 5。设为 15 则无光照限制")
@@ -344,6 +348,7 @@ public class Config
     public static List<? extends String> lowSanSpawnLowEntities;
     public static List<? extends Double> lowSanSpawnCriticalProbs;
     public static List<? extends String> lowSanSpawnCriticalEntities;
+    public static List<? extends Double> lowSanSpawnHighThresholds;
     public static int lowSanSpawnMaxLight;
     public static double lowSanSpawnRadiusMin;
     public static double lowSanSpawnRadiusMax;
@@ -452,6 +457,7 @@ public class Config
         lowSanSpawnLowEntities = LOW_SAN_SPAWN_LOW_ENTITIES.get();
         lowSanSpawnCriticalProbs = LOW_SAN_SPAWN_CRITICAL_PROBS.get();
         lowSanSpawnCriticalEntities = LOW_SAN_SPAWN_CRITICAL_ENTITIES.get();
+        lowSanSpawnHighThresholds = LOW_SAN_SPAWN_HIGH_THRESHOLDS.get();
         lowSanSpawnMaxLight = LOW_SAN_SPAWN_MAX_LIGHT.get();
         lowSanSpawnRadiusMin = LOW_SAN_SPAWN_RADIUS_MIN.get();
         lowSanSpawnRadiusMax = LOW_SAN_SPAWN_RADIUS_MAX.get();

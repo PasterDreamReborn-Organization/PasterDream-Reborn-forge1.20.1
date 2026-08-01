@@ -950,6 +950,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("command.pasterdream.lowsan.enabled", "enabled");
         add("command.pasterdream.lowsan.disabled", "disabled");
         add("gamerule.pasterdream.shadowDifficulty.set", "Shadow difficulty set to %s");
+        add("gamerule.pasterdream.shadowDifficulty.get", "Current shadow difficulty: %s");
 
         // Terra Blade
         add(ModItems.TERRA_BLADE.get(), "Terra Blade");

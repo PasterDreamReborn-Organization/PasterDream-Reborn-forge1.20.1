@@ -1113,6 +1113,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("command.pasterdream.lowsan.enabled", "启用");
         add("command.pasterdream.lowsan.disabled", "禁用");
         add("gamerule.pasterdream.shadowDifficulty.set", "暗影难度已设置为 %s");
+        add("gamerule.pasterdream.shadowDifficulty.get", "当前暗影难度: %s");
 
         // 大地之刃
         add(ModItems.TERRA_BLADE.get(), "大地之刃");
