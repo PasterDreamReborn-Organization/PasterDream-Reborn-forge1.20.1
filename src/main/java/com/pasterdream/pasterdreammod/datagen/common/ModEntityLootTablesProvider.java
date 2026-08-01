@@ -73,7 +73,7 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem.lootTableItem(ModItems.RUST_BLACK_METAL_GRAIN.get())
                                         .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 7)))
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
         );
 
@@ -83,12 +83,12 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem.lootTableItem(ModItems.SHADOW.get())
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
         );
 
@@ -98,12 +98,12 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 5)))
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem.lootTableItem(ModBlocks.THICK_SHADOW.get())
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
         );
 
@@ -117,8 +117,8 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
-                                .add(LootItem.lootTableItem(ModBlocks.THICK_SHADOW.get())
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
+                                .add(LootItem.lootTableItem(ModBlocks.SHADOW.get())
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
         );
 

@@ -357,10 +357,11 @@ public class ModBiomes {
                 .waterFogColor(0x202020);
     }
 
-    /** 灯影群系共享：洞穴 + 峡谷 */
+    /** 灯影群系共享：洞穴 + 峡谷 + 锁链柱 */
     private static void addShadowLandFeatures(BiomeGenerationSettings.Builder builder) {
         builder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE)
-                .addCarver(GenerationStep.Carving.AIR, Carvers.CANYON);
+                .addCarver(GenerationStep.Carving.AIR, Carvers.CANYON)
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.SHADOW_CHAIN_PILLAR);
     }
 
     /** 全部灯影群系共享的地表植被（影芽、影蕨） */
@@ -369,12 +370,11 @@ public class ModBiomes {
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_FERN_PATCH);
     }
 
-    /** 菌索荒原特有（植被 + 锁链柱） */
+    /** 菌索荒原特有（植被） */
     private static void addShadowNyliumWastesVegetation(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_SHORT_ROOTS_PATCH)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_ROOTS_PATCH)
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_FUNGUS_PATCH)
-                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.SHADOW_CHAIN_PILLAR);
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_FUNGUS_PATCH);
     }
 
     /** 阴影森林特有植被（四种 + 巨型蘑菇树） */
@@ -448,6 +448,7 @@ public class ModBiomes {
                                       HolderGetter<ConfiguredWorldCarver<?>> carvers) {
         BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
         addShadowLandFeatures(gen);
+        gen.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.SHADOW_CHAIN_PILLAR_OCEAN);
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
                 .temperature(0.5f)
