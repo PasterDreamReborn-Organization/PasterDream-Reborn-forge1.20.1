@@ -80,13 +80,33 @@ public class ModBiomeModifierProvider implements DataProvider
             // 方解石尖锥 — 表面结构 step
             addFeature(entries, "calcite_spike", ModPlacedFeatures.CALCITE_SPIKE, featureLookup, dyedreamWorldTag, GenerationStep.Decoration.SURFACE_STRUCTURES);
 
-            // 阴影群系标签
-            TagKey<Biome> shadowTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob_spawn_biome"));
+            // ===== 阴影群系标签 =====
+            TagKey<Biome> shadowNyliumWastesSpawnTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_nylium_wastes_spawn_biome"));
+            TagKey<Biome> shadowForestSpawnTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_forest_spawn_biome"));
+            TagKey<Biome> shadowGhostSpawnTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_ghost_spawn_biome"));
+            TagKey<Biome> shadowRuinsSpawnTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_ruins_spawn_biome"));
 
-            // 实体生成
+            // ===== 非阴影实体生成（染梦世界等） =====
             addSpawns(entries, "pink_chicken_biome_modifier", ModEntities.PINK_CHICKEN, dyedreamWorldTag, 5, 4, 4);
             addSpawns(entries, "pink_slime_biome_modifier", ModEntities.PINK_SLIME, dyedreamWorldTag, 20, 5, 6);
-            addSpawns(entries, "black_beetle_biome_modifier", ModEntities.BLACK_BEETLE, shadowTag, 20, 2, 4);
+
+            // ===== 灯影之下维度实体生成（对照原作 NOT_MODIFY 中的 biome_modifier + 群系 JSON） =====
+            // biome_shadow_0（菌索荒原）: terrorbeak(10,1-2), shadow_hand(15,1-3)
+            addSpawns(entries, "terrorbeak_biome_modifier", ModEntities.TERRORBEAK, shadowNyliumWastesSpawnTag, 10, 1, 2);
+            addSpawns(entries, "shadow_hand_biome_modifier", ModEntities.SHADOW_HAND, shadowNyliumWastesSpawnTag, 15, 1, 3);
+
+            // biome_shadow_1（阴影森林）: 原作有两处 black_beetle 生成 —
+            //   群系 JSON monster spawn (weight 20, 5-7) + biome_modifier add_spawns (weight 20, 2-4)
+            addSpawns(entries, "black_beetle_biome_spawn", ModEntities.BLACK_BEETLE, shadowForestSpawnTag, 20, 5, 7);
+            addSpawns(entries, "black_beetle_biome_modifier", ModEntities.BLACK_BEETLE, shadowForestSpawnTag, 20, 2, 4);
+
+            // biome_shadow_1 + biome_shadow_2: 幽灵系三变体
+            addSpawns(entries, "shadow_ghost_biome_modifier", ModEntities.SHADOW_GHOST, shadowGhostSpawnTag, 15, 4, 5);
+            addSpawns(entries, "shadow_squeal_ghost_biome_modifier", ModEntities.SHADOW_SQUEAL_GHOST, shadowGhostSpawnTag, 15, 3, 4);
+            addSpawns(entries, "wailing_shadow_ghost_biome_modifier", ModEntities.WAILING_SHADOW_GHOST, shadowGhostSpawnTag, 6, 1, 1);
+
+            // biome_shadow_2（阴影古迹）: shadow_golem(4,1-1)
+            addSpawns(entries, "shadow_golem_biome_modifier", ModEntities.SHADOW_GOLEM, shadowRuinsSpawnTag, 4, 1, 1);
 
             return saveAll(cache, entries);
         });
