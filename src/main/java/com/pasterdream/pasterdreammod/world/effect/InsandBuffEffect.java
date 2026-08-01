@@ -36,18 +36,17 @@ public class InsandBuffEffect extends MobEffect {
     public void applyEffectTick(LivingEntity entity, int amplifier) {
         if (!(entity instanceof ServerPlayer player) || !player.isAlive()) return;
         if (player.isCreative() || player.isSpectator()) return;
-        // 刷怪逻辑已移至 SanAuraHandler，此处只保留 III 级持续扣血
-        if (amplifier >= 2 && player.getHealth() > 1
-                && ShadowDifficultyHelper.getDifficulty(player.serverLevel()) > 0) {
-            // TODO: 检测 DegenerateBodys 饰品，未装备时持续扣血
-            player.hurt(new DamageSource(player.serverLevel().registryAccess()
-                    .registryOrThrow(Registries.DAMAGE_TYPE)
-                    .getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD)), 1);
-        }
+        if (player.getHealth() <= 1) return;
+        if (ShadowDifficultyHelper.getDifficulty(player.serverLevel()) <= 0) return;
+        // TODO: 检测 DegenerateBodys 饰品，未装备时持续扣血
+        player.hurt(new DamageSource(player.serverLevel().registryAccess()
+                .registryOrThrow(Registries.DAMAGE_TYPE)
+                .getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD)), 1);
     }
 
     @Override
     public boolean isDurationEffectTick(int duration, int amplifier) {
-        return true;
+        int interval = amplifier == 0 ? 20 : 10;
+        return duration % interval == 0;
     }
 }
