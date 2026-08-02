@@ -1287,7 +1287,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 进度 - 染梦珍藏
         add("advancements.pasterdream.root_dyedream_treasure.title", "染梦珍藏");
-        add("advancements.pasterdream.root_dyedream_treasure.description", "开启位于染梦世界的融梦水晶箱。");
+        add("advancements.pasterdream.root_dyedream_treasure.description", "在粉红的世界又会有什么宝藏。");
         add("advancements.pasterdream.get_sand_of_time.title", "你的时间非常值钱");
         add("advancements.pasterdream.get_sand_of_time.description", "获得时之沙，一个可以转换昼夜的沙漏，不过它工作完以后会休息……");
         add("advancements.pasterdream.get_broken_hero_sword.title", "日食遗物");
@@ -1804,5 +1804,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_laboratory", "染梦实验室");
         add("structure.pasterdream.lifecrystal_cave", "生命水晶洞穴");
         add("structure.pasterdream.melt_dream_liquid_well", "融梦涌泉井");
+        add("structure.pasterdream.dyedream_sky_island", "染梦空岛");
+        add("structure.pasterdream.shadownote_ruin_0", "阴影笔记废墟");
+        add("structure.pasterdream.shadownote_ruin_1", "阴影笔记废墟");
+        add("structure.pasterdream.shadownote_ruin_2", "阴影笔记废墟");
     }
 }
