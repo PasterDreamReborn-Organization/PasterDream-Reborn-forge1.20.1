@@ -1007,6 +1007,8 @@ public class ModItems {
     // ===== 饰品（胸饰） =====
     public static final RegistryObject<Item> KAICHU_OMAMORI = ITEMS.register("kaichu_omamori",
             KaichuOmamoriItem::new);
+    public static final RegistryObject<Item> WHITE_ORCHID_FLOWER_BROOCH = ITEMS.register("white_orchid_flower_brooch",
+            WhiteOrchidFlowerBroochItem::new);
 
     // ===== 饰品（通用） =====
     public static final RegistryObject<Item> WAR_FLAG = ITEMS.register("war_flag",

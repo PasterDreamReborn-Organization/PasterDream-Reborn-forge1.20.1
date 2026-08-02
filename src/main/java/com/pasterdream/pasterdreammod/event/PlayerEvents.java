@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.helper.itemwithnbt.dreamnoteswithnbt.Dream
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import com.pasterdream.pasterdreammod.world.skill.EvasionEffectHandler;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
@@ -18,6 +19,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
@@ -152,10 +154,19 @@ public class PlayerEvents {
         }
     }
 
-    /** 反击 buff 命中后移除：只让闪避后第一次攻击吃到加成 */
+    /** 反击 buff 命中后移除 + 白厄剑近战沉默暗影生物 */
     public static void onAttackEntity(AttackEntityEvent event) {
         Player player = event.getEntity();
         if (player.level().isClientSide()) return;
+
+        // 白厄剑近战：攻击暗影生物前施加沉默+束缚，确保第一刀压制受击技能
+        if (player.getMainHandItem().is(ModItems.WHITE_SWORD.get())
+                && event.getTarget() instanceof LivingEntity target
+                && target.getType().is(ModEntityTypeTags.SHADOW_MOB)) {
+            target.addEffect(new MobEffectInstance(ModEffects.SHADOW_SILENCE_BUFF.get(), 200, 0));
+            target.addEffect(new MobEffectInstance(ModEffects.BIND_BUFF.get(), 40, 0));
+        }
+
         if (!player.hasEffect(ModEffects.COUNTER_ATTACK_BUFF.get())) return;
         player.removeEffect(ModEffects.COUNTER_ATTACK_BUFF.get());
         player.removeEffect(MobEffects.DAMAGE_BOOST);

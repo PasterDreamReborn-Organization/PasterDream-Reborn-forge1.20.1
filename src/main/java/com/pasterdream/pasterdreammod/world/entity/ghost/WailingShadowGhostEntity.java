@@ -57,7 +57,8 @@ public class WailingShadowGhostEntity extends ShadowGhostEntity {
         boolean result = super.hurt(source, amount);
         if (!this.level().isClientSide() && !summonGate && summonTimer <= 0
                 && ShadowDifficultyHelper.isSpecialSkillEnabled(
-                        ShadowDifficultyHelper.getDifficultyContext(this))) {
+                        ShadowDifficultyHelper.getDifficultyContext(this))
+                && canUseSkill()) {
             summonGate = true;
             summonTimer = 44; // Total countdown
             this.playSound(ModSounds.GHOST0.get(), 1f, 1f);

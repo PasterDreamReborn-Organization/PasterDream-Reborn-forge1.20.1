@@ -137,19 +137,19 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
         if (targets.isEmpty()) return;
         LivingEntity target = targets.get(0);
 
+        // ShadowSilence 10s on shadow_mob entities — apply BEFORE damage to suppress on-hurt skills
+        if (target.getType().is(SHADOW_MOB)) {
+            target.addEffect(new MobEffectInstance(ModEffects.SHADOW_SILENCE_BUFF.get(), 200, 0));
+        }
+
+        // Bind 2s
+        target.addEffect(new MobEffectInstance(ModEffects.BIND_BUFF.get(), 40, 0));
+
         // Melee damage
         if (owner instanceof Player player) {
             target.hurt(this.damageSources().playerAttack(player), this.damage);
         }
         target.invulnerableTime = 0;
-
-        // Bind 2s
-        target.addEffect(new MobEffectInstance(ModEffects.BIND_BUFF.get(), 40, 0));
-
-        // ShadowSilence 10s on shadow_mob entities
-        if (target.getType().is(SHADOW_MOB)) {
-            target.addEffect(new MobEffectInstance(ModEffects.SHADOW_SILENCE_BUFF.get(), 200, 0));
-        }
 
         this.discard();
     }

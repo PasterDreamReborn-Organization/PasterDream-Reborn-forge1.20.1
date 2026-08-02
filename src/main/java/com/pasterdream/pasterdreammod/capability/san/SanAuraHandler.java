@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateManager;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
+import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
@@ -13,7 +14,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import top.theillusivec4.curios.api.CuriosApi;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -51,13 +54,27 @@ public class SanAuraHandler {
                 .map(ResourceKey::location).orElse(null);
         double biomeRate = biomeId != null ? SanBiomeRateManager.getRate(biomeId) : 0.0;
 
+        // 猫耳饰品保持 SAN 始终为上限，跳过环境 SAN 变化，避免时序冲突
+        boolean hasCatEars = player.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof QymCatEarsItem;
+        boolean hasWhiteOrchidBrooch = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get()).isPresent())
+                .orElse(false);
+        // 白厄花胸针：拦截负向群系修正
+        if (hasWhiteOrchidBrooch && biomeRate < 0) {
+            biomeRate = 0;
+        }
+
         // 3. 光照修正：亮度 < 7 时 San 下降，亮度 > 7 时 San 回升
         int light = level.getMaxLocalRawBrightness(pos);
         double lightRate = (light - 7) * 0.0001;
 
-        double totalRate = attributeRate + biomeRate + lightRate;
-        // 猫耳饰品保持 SAN 始终为上限，跳过环境 SAN 变化，避免时序冲突
-        boolean hasCatEars = player.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof QymCatEarsItem;
+        double envRate = biomeRate + lightRate;
+        // 白厄花胸针：拦截负向环境 SAN 变化（群系+光照），attributeRate 不受影响
+        if (hasWhiteOrchidBrooch && envRate < 0) {
+            envRate = 0;
+        }
+
+        double totalRate = attributeRate + envRate;
         if (totalRate != 0 && !hasCatEars) {
             SanHelper.addPlayerSanAndSync(player, totalRate);
         }

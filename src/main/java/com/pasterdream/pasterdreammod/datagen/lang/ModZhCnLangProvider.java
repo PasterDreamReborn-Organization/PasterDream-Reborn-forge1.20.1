@@ -975,6 +975,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.hiyori_butterfly_hairpin.lore", "§7§o-- 因为常轨脱离 所以creative");
 
         add(ModItems.KAICHU_OMAMORI.get(), "怀中御守");
+        add(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get(), "白厄花胸针");
+        add("tooltip.pasterdream.white_orchid_flower_brooch.effect", "§7▪ §9不再会受到环境造成的降san影响");
+        add("tooltip.pasterdream.white_orchid_flower_brooch.flavor", "§o§7 -- 我消逝于无形  此刻享受你应得的荣耀");
         add("tooltip.pasterdream.kaichu_omamori.effect.foxfire", "§7▪ §9对12*12区域范围内生成狐火立场");
         add("tooltip.pasterdream.kaichu_omamori.effect.vulnerable", "§7▪ §9使除玩家外的生物受到20%的易伤和缓慢V效果");
         add("tooltip.pasterdream.kaichu_omamori.effect.regen", "§7▪ §9给予玩家生命恢复");

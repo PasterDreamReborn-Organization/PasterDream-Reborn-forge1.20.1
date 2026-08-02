@@ -44,7 +44,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
 
-public class ShadowGolemEntity extends Monster implements GeoEntity {
+public class ShadowGolemEntity extends Monster implements GeoEntity, IShadowMob {
     public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(ShadowGolemEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(ShadowGolemEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(ShadowGolemEntity.class, EntityDataSerializers.STRING);
@@ -137,8 +137,8 @@ public class ShadowGolemEntity extends Monster implements GeoEntity {
             return false;
         if (source.is(DamageTypes.CACTUS))
             return false;
-        // When hurt, accelerate skill timer
-        if (timeCounter < 189) {
+        // When hurt, accelerate skill timer (unless silenced)
+        if (timeCounter < 189 && canUseSkill()) {
             timeCounter += 10;
         }
         return super.hurt(source, amount);
@@ -177,6 +177,12 @@ public class ShadowGolemEntity extends Monster implements GeoEntity {
         double x = this.getX();
         double y = this.getY();
         double z = this.getZ();
+
+        if (!canUseSkill()) {
+            timeCounter = 0;
+            skillTimer = 0;
+            return;
+        }
 
         if (skillTimer > 0) {
             skillTimer--;

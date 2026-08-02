@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.entity.ghost;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
+import com.pasterdream.pasterdreammod.world.entity.IShadowMob;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -49,7 +50,7 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAttackMob, GeoEntity, ITextureVariant {
+public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAttackMob, GeoEntity, ITextureVariant, IShadowMob {
     private static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(FriendlyShadowGhostEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(FriendlyShadowGhostEntity.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(FriendlyShadowGhostEntity.class, EntityDataSerializers.STRING);
@@ -239,6 +240,7 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
 
     @Override
     public void performRangedAttack(LivingEntity target, float flval) {
+        if (!canUseSkill()) return;
         this.entityData.set(SHOOT, true);
         shootAnimTimer = 5;
         SquealWaveProjectileEntity.shoot(this, target);
