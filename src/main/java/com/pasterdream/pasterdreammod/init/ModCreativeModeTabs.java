@@ -315,6 +315,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.STORAGE_BAG.get());
                         output.accept(ModItems.LARGE_STORAGE_BAG.get());
                         output.accept(ModItems.WAR_FLAG.get());
+                        output.accept(ModItems.CALAIS_SPICE_BOTTLE.get());
                     })
                     .build());
 

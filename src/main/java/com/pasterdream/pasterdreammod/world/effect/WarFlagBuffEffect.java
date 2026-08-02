@@ -23,7 +23,7 @@ public class WarFlagBuffEffect extends MobEffect {
         super(MobEffectCategory.BENEFICIAL, 0x0F74AE);
         // 攻击力属性加成，amplifier 自动缩放
         this.addAttributeModifier(Attributes.ATTACK_DAMAGE, UUID,
-                2.0, AttributeModifier.Operation.ADDITION);
+                0.15, AttributeModifier.Operation.MULTIPLY_TOTAL);
     }
 
     @Override
