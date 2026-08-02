@@ -849,6 +849,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.KAICHU_OMAMORI.get(), "Kaichu Omamori");
         add(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get(), "White Orchid Flower Brooch");
         add("tooltip.pasterdream.white_orchid_flower_brooch.effect", "§7▪ §9No longer affected by environmental SAN reduction");
+        add("tooltip.pasterdream.white_orchid_flower_brooch.effect2", "§7▪ §9White Sword Rain +50% damage to all creatures");
+        add("tooltip.pasterdream.white_orchid_flower_brooch.effect3", "§7▪ §9White Sword Rain ignores invulnerability frames");
         add("tooltip.pasterdream.white_orchid_flower_brooch.flavor", "§o§7 -- I fade into formlessness, now enjoy the glory you deserve");
         add("tooltip.pasterdream.kaichu_omamori.effect.foxfire", "§7▪ §9Generates a Foxfire field in a 12×12 area");
         add("tooltip.pasterdream.kaichu_omamori.effect.vulnerable", "§7▪ §9Non-player creatures take 20% more damage and get Slowness V effect");
@@ -991,9 +993,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.white_sword.desc2", "§7▪ §9If no entity, targets the block at crosshair, or the air 10 blocks away");
         add("tooltip.pasterdream.white_sword.desc3", "§7▪ §9Each hit deals 3+ATK*0.4 damage and binds the target");
         add("tooltip.pasterdream.white_sword.desc4", "§7▪ §9Silences shadow mobs for 10s on hit");
-        add("tooltip.pasterdream.white_sword.desc5", "§7▪ §9Cooldown: 4.2s");
+        add("tooltip.pasterdream.white_sword.desc5", "§7▪ §9Cooldown: §c2.0s");
         add("tooltip.pasterdream.white_sword.desc6", "§7▪ §9Melt Dream Energy Cost: §c0.1");
-        add("tooltip.pasterdream.white_sword.desc7", "§7▪ §9+50% damage to shadow mobs");
+        add("tooltip.pasterdream.white_sword.desc7", "§7▪ §9§c+50% §9damage to shadow mobs");
         add("message.pasterdream.white_sword.no_energy", "Not enough Melt Dream Energy");
         add(ModItems.WHITE_SWORD_RAIN.get(), "White Sword Rain");
 
