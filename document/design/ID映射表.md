@@ -458,6 +458,8 @@
 | `light_butterfly_curio`        | `light_butterfly_curio`                     | 不改                                                               | 客制化类 `LightButterflyCurioItem`，实现 `ICurioItem`，低亮度环境消耗融梦能量获得夜视                                           |
 | `bright_butterfly_curio`       | `bright_butterfly_curio`                    | 不改                                                               | 客制化类 `BrightButterflyCurioItem`，实现 `ICurioItem`，低亮度夜视 + 免疫黑暗效果                                           |
 | `white_crystal`                | `white_crystal`                             | 不改                                                               | 客制化类 `WhiteCrystalItem`，制作白厄剑的核心材料                                                                       |
+| `white_sword`                  | `white_sword`                               | 不改                                                               | 客制化类 `WhiteSwordItem`，右键战技「白厄剑雨」：选取准星10格内实体/方块为落点，消耗 0.1 融梦能量释放多波剑雨，命中造成近战伤害+束缚+暗影沉寐              |
+| `white_sword_rain`             | `white_sword_rain`                          | 不改                                                               | 客制化类 `WhiteSwordRainItem`，弹射物视觉载体                                                                         |
 | `boboji_curio`                 | `boboji_curio`                              | 不改                                                               | 客制化类 `BobojiCurioItem`，实现 `ICurioItem`，+5%速度、+0.1瞬身术距离、-0.2冷却、-0.4消耗，禁止重复装备                              |
 | `counter_ring`                 | `counter_ring`                              | 不改                                                               | 客制化类 `CounterRingItem`，实现 `ICurioItem`，成功闪避时获得反击 buff（力量 I + 战技伤害 +50%，2s）                        |
 | `meltdream_energy_0_ring`     | `melt_dream_energy_ring`                    | 重命名，补下划线 + 去 `_0` 后缀                                           | 客制化类 `MeltDreamEnergyRingItem`，实现 `ICurioItem`，curioTick 每秒增加融梦能量（梦境内+0.3/min，梦境外+0.15/min）       |
@@ -466,6 +468,7 @@
 | `hiyori_head`                  | `hiyori_butterfly_hairpin`                  | 重命名，`hiyori_head` → `hiyori_butterfly_hairpin`                   | 客制化类 `HiyoriButterflyHairpinItem`，实现 `ICurioItem`，+2 最大生命值、+15 幸运、+0.96 理智光环，品质 EPIC，禁止重复装备              |
 | `allkinds_ring`                | `allkinds_ring`                             | 不改                                                               | 客制化类 `AllkindsRingItem`，实现 `ICurioItem`，+4 生命、+2 攻击、+0.1 攻速、+0.2 触及、+0.5 方块触及、+5% 移速，品质 LEGENDARY，跳过战技属性 |
 | `cradle_in_ones_arms`          | `kaichu_omamori`                            | 重命名，`cradle_in_ones_arms` → `kaichu_omamori`                     | 客制化类 `KaichuOmamoriItem`，实现 `ICurioItem`，现在可佩戴，佩戴后启动激活专属热键，+5幸运，品质 LEGENDARY                             |
+| `white_flower_body`           | `white_orchid_flower_brooch`                | 重命名，`white_flower_body` → `white_orchid_flower_brooch`            | 客制化类 `WhiteOrchidFlowerBroochItem`，实现 `ICurioItem`，免疫环境降SAN效果，品质 EPIC                                          |
 | `sweetdream_disc`              | `sweet_dream_music_disc`                    | 重命名，修复 word glueing + `_disc` → `_music_disc`                    | 无需客制化类，直接用 `RecordItem`（旧类无有效覆写）                                                                         |
 | `snowfalldream_disc`           | `snowfall_dream_music_disc`                 | 重命名，修复 word glueing + `_disc` → `_music_disc`                    | 无需客制化类，直接用 `RecordItem`（旧类无有效覆写）                                                                         |
 | `time_hourglass`               | `sand_of_time`                              | 重命名，时之沙                                                          | 客制化类 `SandofTimeItem`,使用NBT标签控制冷却时间                                                                      |
@@ -508,6 +511,8 @@
 | `rest_buff`             | `rest_buff`             | 不改        | `RestBuffEffect`，+0.9 理智光环                          |
 | `dream_harp_of_wanderer_buff` | `dream_harp_of_wanderer_buff` | 不改    | `DreamharpOfWandererBuffEffect`，+4最大生命、+2.4SAN光环、+1%速度、治疗 |
 | -                          | `counter_attack_buff`   | 新增        | `CounterAttackBuffEffect`，战技伤害倍率 +50%，配合反击戒指触发          |
+| `bind_buff`                | `bind_buff`             | 不改        | `BindBuffEffect`，移速降至 0，由白厄剑雨命中施加，持续 2s                    |
+| `shadow_silence_buff`      | `shadow_silence_buff`   | 不改        | `ShadowSilenceBuffEffect`，标记效果，由白厄剑雨命中 shadow_mob 实体时施加，持续 10s |
 
 ---
 
@@ -533,6 +538,7 @@
 | `projectile_squeal_wave_projectile` | `squeal_wave_projectile` | 重命名，去 `projectile_` 前缀 | 弹射物 `SquealWaveProjectileEntity`（`world/entity/ghost/`） |
 | `black_beetle` | `black_beetle` | 不改 | 客制化类 `BlackBeetleEntity`（`world/entity/beetle/`），可驯服 TamableAnimal，食物为白厄花 |
 | `black_beetle_mother` | `black_beetle_mother` | 不改 | 客制化类 `BlackBeetleMotherEntity`（`world/entity/beetle/`），Boss，受击触发技能：召唤小甲虫 + buff 周围甲虫 |
+| `white_sword_rain_projectile` | `white_sword_rain_projectile` | 不改 | 弹射物 `WhiteSwordRainProjectileEntity`，穿透方块，25tick 寿命，命中造成近战伤害+束缚+暗影沉寐 |
 
 ---
 

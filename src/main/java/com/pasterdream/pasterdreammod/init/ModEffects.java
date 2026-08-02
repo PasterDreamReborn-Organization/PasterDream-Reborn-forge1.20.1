@@ -70,6 +70,10 @@ public class ModEffects {
             EFFECTS.register("conflict_mark", ConflictMarkEffect::new);
     public static final RegistryObject<MobEffect> WAR_FLAG_BUFF =
             EFFECTS.register("war_flag_buff", WarFlagBuffEffect::new);
+    public static final RegistryObject<MobEffect> BIND_BUFF =
+            EFFECTS.register("bind_buff", BindBuffEffect::new);
+    public static final RegistryObject<MobEffect> SHADOW_SILENCE_BUFF =
+            EFFECTS.register("shadow_silence_buff", ShadowSilenceBuffEffect::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

@@ -40,7 +40,9 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.EnumSet;
 
-public class ShadowGhostEntity extends Monster implements RangedAttackMob, GeoEntity, ITextureVariant {
+import com.pasterdream.pasterdreammod.world.entity.IShadowMob;
+
+public class ShadowGhostEntity extends Monster implements RangedAttackMob, GeoEntity, ITextureVariant, IShadowMob {
     private static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(ShadowGhostEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(ShadowGhostEntity.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(ShadowGhostEntity.class, EntityDataSerializers.STRING);
@@ -253,6 +255,7 @@ public class ShadowGhostEntity extends Monster implements RangedAttackMob, GeoEn
 
     @Override
     public void performRangedAttack(LivingEntity target, float flval) {
+        if (!canUseSkill()) return;
         this.entityData.set(SHOOT, true);
         shootAnimTimer = 5;
         SquealWaveProjectileEntity.shoot(this, target);

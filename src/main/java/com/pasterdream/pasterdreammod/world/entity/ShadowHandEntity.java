@@ -41,7 +41,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.EnumSet;
 
-public class ShadowHandEntity extends Monster implements GeoEntity {
+public class ShadowHandEntity extends Monster implements GeoEntity, IShadowMob {
     public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(ShadowHandEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(ShadowHandEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(ShadowHandEntity.class, EntityDataSerializers.STRING);
@@ -166,7 +166,8 @@ public class ShadowHandEntity extends Monster implements GeoEntity {
     public boolean doHurtTarget(Entity target) {
         boolean result = super.doHurtTarget(target);
         if (target instanceof ServerPlayer sp
-                && ShadowDifficultyHelper.isSpecialSkillEnabled(sp)) {
+                && ShadowDifficultyHelper.isSpecialSkillEnabled(sp)
+                && canUseSkill()) {
             sp.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
                 if (cap.getSanValue() > 0) {
                     cap.addSanValue(-ShadowDifficultyHelper.getShadowHandSanDrain(sp));
@@ -194,7 +195,8 @@ public class ShadowHandEntity extends Monster implements GeoEntity {
     public void playerTouch(Player player) {
         super.playerTouch(player);
         if (player instanceof ServerPlayer sp
-                && ShadowDifficultyHelper.isSpecialSkillEnabled(sp)) {
+                && ShadowDifficultyHelper.isSpecialSkillEnabled(sp)
+                && canUseSkill()) {
             sp.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
                 if (cap.getSanValue() > 0) {
                     cap.addSanValue(-ShadowDifficultyHelper.getShadowHandSanDrain(sp));

@@ -45,6 +45,8 @@ import com.pasterdream.pasterdreammod.world.item.prophecycard.EmptyProphecyCardI
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.tidetool.BeihaiRuoTideSwordItem;
 import com.pasterdream.pasterdreammod.world.item.tidetool.TideSwordItem;
+import com.pasterdream.pasterdreammod.world.item.whiteswordtool.WhiteSwordItem;
+import com.pasterdream.pasterdreammod.world.item.whiteswordtool.WhiteSwordRainItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.TerraBladeItem;
@@ -385,6 +387,12 @@ public class ModItems {
             () -> new ChenjingmenDesertSwordItem(ModToolTiers.CHENJINGMEN_DESERT_SWORD, 3, -3.1f, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> BROKEN_HERO_SWORD = ITEMS.register("broken_hero_sword",
             () -> new SwordItem(ModToolTiers.BROKEN_HERO_SWORD, 3, -2.4f, new Item.Properties().fireResistant()));
+
+    // 白厄
+    public static final RegistryObject<Item> WHITE_SWORD = ITEMS.register("white_sword",
+            () -> new WhiteSwordItem(ModToolTiers.WHITE_SWORD, 7, -2.4f));
+    public static final RegistryObject<Item> WHITE_SWORD_RAIN = ITEMS.register("white_sword_rain",
+            () -> new WhiteSwordRainItem());
 
     // ===== 钛金装备 =====
     public static final RegistryObject<Item> TITANIUM_HELMET = ITEMS.register("titanium_helmet",
@@ -999,6 +1007,8 @@ public class ModItems {
     // ===== 饰品（胸饰） =====
     public static final RegistryObject<Item> KAICHU_OMAMORI = ITEMS.register("kaichu_omamori",
             KaichuOmamoriItem::new);
+    public static final RegistryObject<Item> WHITE_ORCHID_FLOWER_BROOCH = ITEMS.register("white_orchid_flower_brooch",
+            WhiteOrchidFlowerBroochItem::new);
 
     // ===== 饰品（通用） =====
     public static final RegistryObject<Item> WAR_FLAG = ITEMS.register("war_flag",

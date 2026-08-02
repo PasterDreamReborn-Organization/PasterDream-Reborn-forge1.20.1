@@ -190,6 +190,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD);
         handheldItem(ModItems.BROKEN_HERO_SWORD);
         handheldItem(ModItems.TERRA_BLADE);
+        handheldItem(ModItems.WHITE_SWORD);
+        handheldItem(ModItems.WHITE_SWORD_RAIN);
         basicItem(ModItems.TITANIUM_UPGRADE.get());
         basicItem(ModItems.SCULK_UPGRADE.get());
         basicItem(ModItems.DYEDREAM_UPGRADE.get());
@@ -276,6 +278,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DREAM_TRAVELER_BELT.get());
         basicItem(ModItems.DUKE_COIN_CURIO.get());
         basicItem(ModItems.KAICHU_OMAMORI.get());
+        basicItem(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get());
         basicItem(ModItems.BLESSING_OF_CECILIA.get());
         basicItem(ModItems.FADED_BLESSING_OF_CECILIA.get());
         basicItem(ModItems.WAR_FLAG.get());

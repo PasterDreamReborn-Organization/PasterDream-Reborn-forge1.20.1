@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
 import com.pasterdream.pasterdreammod.world.entity.PinkChickenEntity;
 import com.pasterdream.pasterdreammod.world.entity.PinkSlimeEntity;
 import com.pasterdream.pasterdreammod.world.entity.TerraswordWaveEntity;
+import com.pasterdream.pasterdreammod.world.entity.WhiteSwordRainProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowGolemEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
 import com.pasterdream.pasterdreammod.world.entity.PebbleProjectile;
@@ -187,6 +188,14 @@ public class ModEntities {
                     .setUpdateInterval(1)
                     .setCustomClientFactory(SquealWaveProjectileEntity::new)
                     .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<WhiteSwordRainProjectileEntity>> WHITE_SWORD_RAIN_PROJECTILE = register("white_sword_rain_projectile",
+            EntityType.Builder.<WhiteSwordRainProjectileEntity>of(WhiteSwordRainProjectileEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(WhiteSwordRainProjectileEntity::new)
+                    .sized(0.25f, 0.25f));
 
     public static final RegistryObject<EntityType<BlackBeetleEntity>> BLACK_BEETLE = register("black_beetle",
             EntityType.Builder.<BlackBeetleEntity>of(BlackBeetleEntity::new, MobCategory.MONSTER)

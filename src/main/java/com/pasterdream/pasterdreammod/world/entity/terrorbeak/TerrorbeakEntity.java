@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
+import com.pasterdream.pasterdreammod.world.entity.IShadowMob;
 import com.pasterdream.pasterdreammod.world.entity.ghost.ITextureVariant;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -44,7 +45,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
 
-public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVariant {
+public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVariant, IShadowMob {
 
     public enum Variant {
         NORMAL("terrorbeak", 40, 16, 0.3, 1.8, 12,
@@ -172,7 +173,8 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
     @Override
     public boolean hurt(DamageSource source, float amount) {
         if (!this.level().isClientSide() && this.isAlive() && getVariant().hasRoar && roarCooldown <= 0
-                && ShadowDifficultyHelper.getDifficultyContext(this) > 0) {
+                && ShadowDifficultyHelper.getDifficultyContext(this) > 0
+                && canUseSkill()) {
             boolean shouldRoar = true;
             if (getVariant().roarOnlyNonImmune) {
                 shouldRoar = !source.is(DamageTypes.IN_FIRE) && !source.is(DamageTypes.CACTUS)

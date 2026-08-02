@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.entity.beetle;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.entity.IShadowMob;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -57,7 +58,7 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class BlackBeetleEntity extends TamableAnimal implements GeoEntity {
+public class BlackBeetleEntity extends TamableAnimal implements GeoEntity, IShadowMob {
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(BlackBeetleEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(BlackBeetleEntity.class, EntityDataSerializers.STRING);
     private static final String EASTER_EGG_NAME = "小亮";

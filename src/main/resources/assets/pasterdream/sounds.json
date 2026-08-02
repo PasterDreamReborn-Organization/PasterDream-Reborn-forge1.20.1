@@ -104,5 +104,8 @@
   },
   "beetle_skill": {
     "sounds": [{"name": "pasterdream:beetle_skill", "stream": false}]
+  },
+  "white_sword_rain": {
+    "sounds": [{"name": "pasterdream:white_sword_rain", "stream": false}]
   }
 }

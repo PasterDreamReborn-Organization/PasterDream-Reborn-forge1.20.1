@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.entity.beetle;
 
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.entity.IShadowMob;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -53,7 +54,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.Comparator;
 import java.util.List;
 
-public class BlackBeetleMotherEntity extends Monster implements GeoEntity {
+public class BlackBeetleMotherEntity extends Monster implements GeoEntity, IShadowMob {
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(BlackBeetleMotherEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(BlackBeetleMotherEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<Integer> SKILL_COOLDOWN = SynchedEntityData.defineId(BlackBeetleMotherEntity.class, EntityDataSerializers.INT);
@@ -131,6 +132,7 @@ public class BlackBeetleMotherEntity extends Monster implements GeoEntity {
 
     private void triggerSkill() {
         if (this.level().isClientSide()) return;
+        if (!canUseSkill()) return;
         if (this.entityData.get(SKILL_COOLDOWN) > 0) return;
         if (this.getHealth() <= 1) return;
 
@@ -152,6 +154,7 @@ public class BlackBeetleMotherEntity extends Monster implements GeoEntity {
     private void executeSkillPhase() {
         if (this.level().isClientSide()) return;
         if (!this.isAlive()) return;
+        if (!canUseSkill()) return;
 
         if (skillPhase == 1) {
             // Summon 4 beetles
