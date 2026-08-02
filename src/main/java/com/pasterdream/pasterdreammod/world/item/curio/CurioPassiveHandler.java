@@ -1,15 +1,21 @@
 package com.pasterdream.pasterdreammod.world.item.curio;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
+import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,6 +25,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
@@ -27,8 +34,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PacketDistributor;
 import top.theillusivec4.curios.api.CuriosApi;
 
+import java.util.List;
+
 @Mod.EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
 public class CurioPassiveHandler {
+
 
     @SubscribeEvent
     public static void onLivingChangeTarget(LivingChangeTargetEvent event) {
@@ -187,5 +197,150 @@ public class CurioPassiveHandler {
         };
         player.addEffect(new MobEffectInstance(ModEffects.WAR_FLAG_BUFF.get(), duration, newAmplifier,
                 false, false, true));
+    }
+
+    /**
+     * 卡莱调料瓶：佩戴时食用速度提升 40%（对所有食物有效）
+     * 每 3 tick 中额外减少 2 tick，等效 1.667x 速度
+     */
+    @SubscribeEvent
+    public static void onItemUseTick(LivingEntityUseItemEvent.Tick event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        // 只对食物加速
+        if (!event.getItem().isEdible()) return;
+        // 检查是否佩戴了卡莱调料瓶
+        boolean hasBottle = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.CALAIS_SPICE_BOTTLE.get()).isPresent())
+                .orElse(false);
+        if (!hasBottle) return;
+
+        // 每 3 tick 中 2 tick 额外减少 1 点 duration，即 5/3 = 1.667x 速度 ≈ -40% 时间
+        long gameTime = player.level().getGameTime();
+        if (gameTime % 3 != 0) {
+            event.setDuration(event.getDuration() - 1);
+        }
+    }
+
+    /**
+     * 卡莱调料瓶：攻击命中敌人时消耗 1 级增益
+     */
+    @SubscribeEvent
+    public static void onCalaisSpiceAttack(LivingHurtEvent event) {
+        if (!(event.getSource().getEntity() instanceof Player player)) return;
+        if (event.getSource().getEntity() == event.getEntity()) return; // 跳过自伤
+
+        MobEffectInstance buff = player.getEffect(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get());
+        if (buff == null) return;
+
+        int level = buff.getAmplifier() + 1; // 1-10 级
+        player.removeEffect(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get());
+        if (level > 1) {
+            // 降级
+            player.addEffect(new MobEffectInstance(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get(),
+                    -1, level - 2, false, false, true));
+        } else {
+            // Ⅰ 级被消耗 → 枯竭，必须通过进食才能恢复
+            player.getPersistentData().putBoolean("pasterdream.calais_depleted", true);
+        }
+
+        // === 层数消耗后随机触发一种效果（仅服务端，权重见 Config） ===
+        if (!player.level().isClientSide()) {
+            // 加权随机选择效果
+            List<? extends Double> weights = Config.calaisSpiceBottleWeights;
+            double totalWeight = 0;
+            for (double w : weights) totalWeight += w;
+            if (totalWeight <= 0) return;
+
+            double r = player.getRandom().nextDouble() * totalWeight;
+            double cumulative = 0;
+            int roll = -1;
+            for (int i = 0; i < weights.size(); i++) {
+                cumulative += weights.get(i);
+                if (r < cumulative) {
+                    roll = i;
+                    break;
+                }
+            }
+            if (roll < 0) roll = weights.size() - 1; // 浮点精度兜底
+
+            switch (roll) {
+                case 0 -> {
+                    // 随机增益（15 秒，可叠加，上限 Ⅲ 级，效果池见 Config）
+                    List<MobEffect> buffPool = Config.getCalaisSpiceBottleBuffs();
+                    if (buffPool.isEmpty()) return;
+                    MobEffect picked = buffPool.get(player.getRandom().nextInt(buffPool.size()));
+                    MobEffectInstance existingBuff = player.getEffect(picked);
+                    int newAmp = existingBuff != null ? Math.min(existingBuff.getAmplifier() + 1, 2) : 0;
+                    player.addEffect(new MobEffectInstance(picked, 300, newAmp, false, true, true));
+                }
+                case 1 -> {
+                    if (player instanceof ServerPlayer sp) {
+                        double s = Config.calaisSpiceBottleSanMin + sp.getRandom().nextDouble()
+                                * (Config.calaisSpiceBottleSanMax - Config.calaisSpiceBottleSanMin);
+                        SanHelper.addPlayerSanAndSync(sp, s);
+                    }
+                }
+                case 2 -> {
+                    float amount = (float)(Config.calaisSpiceBottleHealMin + player.getRandom().nextDouble()
+                            * (Config.calaisSpiceBottleHealMax - Config.calaisSpiceBottleHealMin));
+                    player.heal(amount);
+                }
+                case 3 -> {
+                    // 随机负面效果（效果池见 Config）
+                    List<MobEffect> debuffPool = Config.getCalaisSpiceBottleDebuffs();
+                    if (debuffPool.isEmpty()) return;
+                    MobEffect picked = debuffPool.get(player.getRandom().nextInt(debuffPool.size()));
+                    LivingEntity target = event.getEntity();
+                    target.addEffect(new MobEffectInstance(picked,
+                            Config.calaisSpiceBottleDebuffDuration,
+                            Config.calaisSpiceBottleDebuffAmplifier,
+                            false, true, true));
+                }
+                case 4 -> {
+                    player.level().playSound(null, player.blockPosition(), ModSounds.EVASION.get(),
+                            SoundSource.PLAYERS, 1.0F, 1.0F);
+                    player.addEffect(new MobEffectInstance(ModEffects.EVASION_BUFF.get(),
+                            Config.calaisSpiceBottleEvasionDuration, 0,
+                            false, false, false));
+                }
+                case 5 -> {
+                    player.level().playSound(null, player.blockPosition(), ModSounds.DOLL.get(),
+                            SoundSource.PLAYERS, 1.0F, 1.0F);
+                    player.displayClientMessage(Component.literal("?"), true);
+                }
+            }
+        }
+    }
+
+    /**
+     * 卡莱调料瓶：进食后根据恢复的饥饿值叠加增益层数（每 3 饥饿度 +1 级，上限 Ⅹ）
+     */
+    @SubscribeEvent
+    public static void onCalaisSpiceEat(LivingEntityUseItemEvent.Finish event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        if (!event.getItem().isEdible()) return;
+
+        boolean hasBottle = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.CALAIS_SPICE_BOTTLE.get()).isPresent())
+                .orElse(false);
+        if (!hasBottle) return;
+
+        var foodProps = event.getItem().getFoodProperties(player);
+        if (foodProps == null) return;
+        int nutrition = foodProps.getNutrition();
+        if (nutrition < 3) return; // 不足 3 饥饿度不叠层
+
+        int levelsGained = nutrition / 3;
+        MobEffectInstance existing = player.getEffect(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get());
+        int currentLevel = existing != null ? existing.getAmplifier() + 1 : 0;
+        int newLevel = Math.min(currentLevel + levelsGained, 10);
+
+        if (existing != null) {
+            player.removeEffect(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get());
+        }
+        player.addEffect(new MobEffectInstance(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get(),
+                -1, newLevel - 1, false, false, true));
+        // 进食后清除枯竭标记，使 buff 可以正常恢复
+        player.getPersistentData().remove("pasterdream.calais_depleted");
     }
 }

@@ -1014,6 +1014,9 @@ public class ModItems {
     public static final RegistryObject<Item> WAR_FLAG = ITEMS.register("war_flag",
             WarFlagItem::new);
 
+    public static final RegistryObject<Item> CALAIS_SPICE_BOTTLE = ITEMS.register("calais_spice_bottle",
+            CalaisSpiceBottleItem::new);
+
     // ===== 陶罐 =====
     public static final RegistryObject<Item> CLAY_POT = ITEMS.register("clay_pot",
             () -> new BlockItem(ModBlocks.CLAY_POT.get(), new Item.Properties()));
