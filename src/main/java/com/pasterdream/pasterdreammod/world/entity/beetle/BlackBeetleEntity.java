@@ -44,6 +44,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
@@ -75,6 +76,11 @@ public class BlackBeetleEntity extends TamableAnimal implements GeoEntity {
         super(type, world);
         xpReward = 1;
         setNoAi(false);
+    }
+
+    @Override
+    public boolean checkSpawnRules(LevelAccessor level, MobSpawnType spawnReason) {
+        return true;
     }
 
     @Override
@@ -254,10 +260,9 @@ public class BlackBeetleEntity extends TamableAnimal implements GeoEntity {
     public static void init() {
         SpawnPlacements.register(ModEntities.BLACK_BEETLE.get(), SpawnPlacements.Type.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, world, reason, pos, random) ->
-                        (world.getDifficulty() != net.minecraft.world.Difficulty.PEACEFUL
-                                && Monster.isDarkEnoughToSpawn(world, pos, random)
-                                && Mob.checkMobSpawnRules(entityType, world, reason, pos, random)));
+                (entityType, level, reason, pos, random) ->
+                        level.getBlockState(pos.below()).is(net.minecraft.tags.BlockTags.VALID_SPAWN)
+                                && level.getRawBrightness(pos, 0) <= 11);
     }
 
     public static AttributeSupplier.Builder createAttributes() {

@@ -378,6 +378,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(Blocks.CRIMSON_NYLIUM)
                 .add(Blocks.WARPED_NYLIUM);
 
+        tag(BlockTags.VALID_SPAWN)
+                .add(ModBlocks.SHADOW_NYLIUM.get())
+                .add(ModBlocks.SHADOW_WART_BLOCK.get())
+                .add(ModBlocks.SHADOW_STONE.get());
+
         // 暂时无法自动填充到
         tag(ModBlockTags.DYEDREAM_BUD_CAN_SPAWN_ON)
                 .add(ModBlocks.DYEDREAM_DIRT.get())
