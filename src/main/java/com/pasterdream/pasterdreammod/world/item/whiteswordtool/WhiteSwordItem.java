@@ -35,15 +35,27 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 
+import com.pasterdream.pasterdreammod.world.item.ModRarities;
+import com.pasterdream.pasterdreammod.init.ModItems;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import top.theillusivec4.curios.api.CuriosApi;
+
 import java.util.List;
 
 public class WhiteSwordItem extends SwordItem {
 
     private static final double ENERGY_COST = 0.1;
-    private static final int COOLDOWN_TICKS = 84;
+    private static final int COOLDOWN_TICKS = 40;
 
     public WhiteSwordItem(Tier tier, int damage, float speed) {
-        super(tier, damage, speed, new Properties().fireResistant());
+        super(tier, damage, speed, new Properties().fireResistant().rarity(ModRarities.LEGENDARY));
     }
 
     @Override
@@ -168,6 +180,11 @@ public class WhiteSwordItem extends SwordItem {
         RandomSource random = RandomSource.create();
 
         float damage = (float) (3 + 0.4 * player.getAttributeValue(Attributes.ATTACK_DAMAGE));
+        ItemStack weapon = player.getMainHandItem();
+        int sharpness = weapon.getEnchantmentLevel(Enchantments.SHARPNESS);
+        int smite = weapon.getEnchantmentLevel(Enchantments.SMITE);
+        int bane = weapon.getEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS);
+        int fireAspect = weapon.getEnchantmentLevel(Enchantments.FIRE_ASPECT);
 
         for (int i = 0; i < count; i++) {
             WhiteSwordRainProjectileEntity projectile = new WhiteSwordRainProjectileEntity(
@@ -179,6 +196,10 @@ public class WhiteSwordItem extends SwordItem {
                     targetPos.z + Mth.nextDouble(random, -spread, spread));
             projectile.setDeltaMovement(0, -1, 0);
             projectile.setDamage(damage);
+            projectile.getPersistentData().putInt("paster_sharpness", sharpness);
+            projectile.getPersistentData().putInt("paster_smite", smite);
+            projectile.getPersistentData().putInt("paster_bane", bane);
+            projectile.getPersistentData().putInt("paster_fire_aspect", fireAspect);
             serverLevel.addFreshEntity(projectile);
         }
     }
@@ -186,6 +207,7 @@ public class WhiteSwordItem extends SwordItem {
     @Override
     public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(stack, world, list, flag);
+        list.add(ModRarities.qualityTooltip(ModRarities.LEGENDARY));
         list.add(Component.translatable("tooltip.pasterdream.white_sword.skill_name"));
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc1"));
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc2"));
@@ -194,5 +216,24 @@ public class WhiteSwordItem extends SwordItem {
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc5"));
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc6"));
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc7"));
+    }
+
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public static class ShadowDamageHandler {
+        private static final TagKey<EntityType<?>> SHADOW_MOB = TagKey.create(Registries.ENTITY_TYPE,
+                ResourceLocation.fromNamespaceAndPath("pasterdream", "shadow_mob"));
+
+        @SubscribeEvent
+        public static void onLivingHurt(LivingHurtEvent event) {
+            if (event.getSource().getEntity() instanceof Player player
+                    && player.getMainHandItem().getItem() instanceof WhiteSwordItem) {
+                boolean hasBrooch = CuriosApi.getCuriosInventory(player)
+                        .map(inv -> inv.findFirstCurio(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get()).isPresent())
+                        .orElse(false);
+                if (event.getEntity().getType().is(SHADOW_MOB) || hasBrooch) {
+                    event.setAmount(event.getAmount() * 1.5f);
+                }
+            }
+        }
     }
 }

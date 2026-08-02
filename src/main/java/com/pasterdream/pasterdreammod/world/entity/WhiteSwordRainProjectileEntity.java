@@ -16,6 +16,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ItemSupplier;
@@ -27,6 +28,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
+import top.theillusivec4.curios.api.CuriosApi;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -137,11 +139,31 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
         if (targets.isEmpty()) return;
         LivingEntity target = targets.get(0);
 
+        boolean hasBrooch = owner instanceof Player player
+                && CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get()).isPresent())
+                .orElse(false);
+
         // ShadowSilence 10s on shadow_mob entities — apply BEFORE damage to suppress on-hurt skills
         if (target.getType().is(SHADOW_MOB)) {
             target.addEffect(new MobEffectInstance(ModEffects.SHADOW_SILENCE_BUFF.get(), 200, 0));
-            this.damage *= 1.5f;
             target.getPersistentData().putBoolean("pasterdream:white_sword_boosted", true);
+        }
+
+        // Enchantment bonuses
+        CompoundTag projectileData = this.getPersistentData();
+        this.damage += projectileData.getInt("paster_sharpness") * 0.5f;
+        if (projectileData.getInt("paster_smite") > 0 && target.getMobType() == MobType.UNDEAD) {
+            this.damage += projectileData.getInt("paster_smite") * 2.5f;
+        }
+        if (projectileData.getInt("paster_bane") > 0 && target.getMobType() == MobType.ARTHROPOD) {
+            this.damage += projectileData.getInt("paster_bane") * 2.5f;
+        }
+
+        // Fire Aspect
+        int fireAspect = projectileData.getInt("paster_fire_aspect");
+        if (fireAspect > 0) {
+            target.setSecondsOnFire(fireAspect * 4);
         }
 
         // Bind 2s
@@ -151,7 +173,11 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
         if (owner instanceof Player player) {
             target.hurt(this.damageSources().playerAttack(player), this.damage);
         }
-        target.invulnerableTime = 0;
+
+        // Brooch: pierce invulnerability frames
+        if (hasBrooch) {
+            target.invulnerableTime = 0;
+        }
 
         this.discard();
     }

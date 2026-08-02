@@ -26,6 +26,8 @@ public class WhiteOrchidFlowerBroochItem extends Item implements ICurioItem {
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
         list.add(ModRarities.qualityTooltip(ModRarities.EPIC));
         list.add(Component.translatable("tooltip.pasterdream.white_orchid_flower_brooch.effect"));
+        list.add(Component.translatable("tooltip.pasterdream.white_orchid_flower_brooch.effect2"));
+        list.add(Component.translatable("tooltip.pasterdream.white_orchid_flower_brooch.effect3"));
         list.add(Component.translatable("tooltip.pasterdream.white_orchid_flower_brooch.flavor"));
     }
 }
