@@ -840,8 +840,23 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "treasure/get_terra_floating_island"), existingFileHelper);
 
-            Advancement dream_harp_of_wanderer = Advancement.Builder.advancement()
+            Advancement sliver_bell = Advancement.Builder.advancement()
                     .parent(terra_floating_island)
+                    .display(
+                            ModItems.SLIVER_BELL.get(),
+                            Component.translatable("advancements.pasterdream.get_sliver_bell.title"),
+                            Component.translatable("advancements.pasterdream.get_sliver_bell.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, true
+                    )
+                    .addCriterion("get_sliver_bell", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.SLIVER_BELL.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_sliver_bell"), existingFileHelper);
+
+            Advancement dream_harp_of_wanderer = Advancement.Builder.advancement()
+                    .parent(sliver_bell)
                     .display(
                             ModItems.DREAM_HARP_OF_WANDERER.get(),
                             Component.translatable("advancements.pasterdream.get_dream_harp_of_wanderer.title"),
@@ -869,6 +884,23 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             ModItems.WORLDTREE_SEEDPOD.get()))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "treasure/get_worldtree_seedpod"), existingFileHelper);
+
+            Advancement kaichu_omamori = Advancement.Builder.advancement()
+                    .parent(root_dyedream_treasure)
+                    .display(
+                            ModItems.KAICHU_OMAMORI.get(),
+                            Component.translatable("advancements.pasterdream.get_kaichu_omamori.title"),
+                            Component.translatable("advancements.pasterdream.get_kaichu_omamori.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("get_kaichu_omamori", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.KAICHU_OMAMORI.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "treasure/get_kaichu_omamori"), existingFileHelper);
+
+
         }
     }
 }

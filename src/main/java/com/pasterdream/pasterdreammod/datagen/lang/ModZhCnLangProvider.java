@@ -1152,6 +1152,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 草莓甜心
         add(ModItems.STRAWBERRY_HEART.get(), "草莓甜心");
+        add(ModItems.SLIVER_BELL.get(),"银色铃铛");
+        add("tooltip.pasterdream.sliver_bell", "§7§O --希安喵！");
         add("tooltip.pasterdream.strawberry_heart.desc1", "§7▪ §9右键演奏 §4消耗1融梦能量");
         add("tooltip.pasterdream.strawberry_heart.desc2", "§7▪ §9为范围内玩家回复4点生命 并给予短暂生命恢复，力量和速度效果");
         add("tooltip.pasterdream.strawberry_heart.desc3", "§7▪ §7冷却: 12秒 §7| §6范围: 8格");
@@ -1247,7 +1249,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.description", "发现失落剑冢，深藏于丛林深处的剑冢");
         add("advancements.pasterdream.story.get_the_lost_sword.title", "遗忘之剑");
         add("advancements.pasterdream.story.get_the_lost_sword.description", "获得失落之剑，它与丛林的力量似乎共鸣……");
-        add("advancements.pasterdream.story.dig_up_a_tomb.title", "邻家有女初长成，力拔三兮气盖世");
+        add("advancements.pasterdream.story.dig_up_a_tomb.title", "邻家有女初长成，力拔山兮气盖世");
         add("advancements.pasterdream.story.dig_up_a_tomb.description", "你……你把什么东西挖下来了？？？");
         add("advancements.pasterdream.new_standard_sword_drawing.title", "新概念拔剑");
         add("advancements.pasterdream.new_standard_sword_drawing.description", "因为你拔不出这把剑，气急败坏之下，索性你把你的敌人当作了开石头的工具！");
@@ -1314,6 +1316,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_dream_harp_of_wanderer.description", "获得漂泊旅者的染梦竖琴，列车漂泊旅者留下的赠礼。");
         add("advancements.pasterdream.get_worldtree_seedpod.title", "落叶归根 裂荚归冠");
         add("advancements.pasterdream.get_worldtree_seedpod.description", "获得世界树种荚。");
+        add("advancements.pasterdream.get_sliver_bell.title", "希安喵！");
+        add("advancements.pasterdream.get_sliver_bell.description", "获得银色铃铛，当你把从深邃黑暗找到的光明与之结合，它方能展现它的真实形态。");
+        add("advancements.pasterdream.get_kaichu_omamori.title", "金狐的愿望");
+        add("advancements.pasterdream.get_kaichu_omamori.description", "获得怀中御守，当你真正将正在睡觉的金色狐狸的梦变为现实，她会给予你这个特殊的纪念品。");
 
 
         // 帕秋莉宝典
