@@ -1123,7 +1123,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         // Advancements - Dyedream Treasure
         add("advancements.pasterdream.root_dyedream_treasure.title", "Dyedream Collection");
-        add("advancements.pasterdream.root_dyedream_treasure.description", "Open the Melting Dream Crystal Chest in the Dyedream World.");
+        add("advancements.pasterdream.root_dyedream_treasure.description", "What kind of treasures could there be in a pink world? ");
         add("advancements.pasterdream.get_sand_of_time.title", "Your Time is really Valuable");
         add("advancements.pasterdream.get_sand_of_time.description", "Get the Sand of Time, a sandglass that can switch day and night, but it takes a break after working...");
         add("advancements.pasterdream.get_broken_hero_sword.title", "Solar Eclipse Relic");
@@ -1394,5 +1394,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_laboratory", "Dyedream Laboratory");
         add("structure.pasterdream.lifecrystal_cave", "Life Crystal Cave");
         add("structure.pasterdream.melt_dream_liquid_well", "Melt Dream Liquid Well");
+        add("structure.pasterdream.dyedream_sky_island", "Dyedream Sky Island");
+        add("structure.pasterdream.shadownote_ruin_0", "Shadow Note Ruin");
+        add("structure.pasterdream.shadownote_ruin_1", "Shadow Note Ruin");
+        add("structure.pasterdream.shadownote_ruin_2", "Shadow Note Ruin");
     }
 }

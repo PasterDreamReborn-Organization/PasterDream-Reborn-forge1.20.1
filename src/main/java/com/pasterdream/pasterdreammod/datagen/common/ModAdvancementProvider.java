@@ -653,9 +653,9 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                                     "textures/screens/guiblock_dyedream_treasure.png"),
                             FrameType.TASK,
-                            true, true, false
+                            false, false, false
                     )
-                    .addCriterion("tick", PlayerTrigger.TriggerInstance.tick())
+                    .addCriterion("enter_dyedream", new ImpossibleTrigger.TriggerInstance())
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "treasure/root_dyedream_treasure"), existingFileHelper);
 
