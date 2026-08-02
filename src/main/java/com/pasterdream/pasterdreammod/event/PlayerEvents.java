@@ -43,6 +43,7 @@ public class PlayerEvents {
     private static final ResourceLocation FIRST_CONTACT_DYEDREAM_CRACK_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/first_contact_dyedream_crack");
     private static final ResourceLocation DYEDREAM_CRACK_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_crack");
     private static final ResourceLocation DYEDREAM_WORLD_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_world");
+    private static final ResourceLocation ROOT_DYEDREAM_TREASURE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "treasure/root_dyedream_treasure");
     private static final ResourceLocation PURE_AND_FLAWLESS_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/pure_and_flawless");
     private static final ResourceLocation DREAM_FERTILIZER_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dream_fertilizer");
     private static final ResourceLocation LOOK_AT_PINK_SHEEP_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/look_at_pink_sheep");
@@ -240,6 +241,17 @@ public class PlayerEvents {
         if (!event.getTo().equals(DYEDREAM_WORLD))
         {
             return;
+        }
+
+        // 进入染梦维度 → 授予"染梦珍藏"进度（仅弹窗，不显示在聊天栏）
+        Advancement treasureAdv = serverPlayer.server.getAdvancements().getAdvancement(ROOT_DYEDREAM_TREASURE_ADV);
+        if (treasureAdv != null && !serverPlayer.getAdvancements().getOrStartProgress(treasureAdv).isDone())
+        {
+            AdvancementProgress treasureProgress = serverPlayer.getAdvancements().getOrStartProgress(treasureAdv);
+            for (String criteria : treasureProgress.getRemainingCriteria())
+            {
+                serverPlayer.getAdvancements().award(treasureAdv, criteria);
+            }
         }
 
         Advancement worldAdv = serverPlayer.server.getAdvancements().getAdvancement(DYEDREAM_WORLD_ADV);
