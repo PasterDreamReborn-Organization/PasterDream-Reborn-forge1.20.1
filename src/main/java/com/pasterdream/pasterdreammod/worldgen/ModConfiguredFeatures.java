@@ -251,6 +251,11 @@ public class ModConfiguredFeatures {
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_chain_pillar"));
 
+    // 暗影之手 — NBT 结构物 Feature
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_HAND =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_hand"));
+
 
     // ===== 原版维度花草 =====
     public static final ResourceKey<ConfiguredFeature<?, ?>> GOLDENROD_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "goldenrod_patch"));
@@ -633,6 +638,10 @@ public class ModConfiguredFeatures {
 
         // 阴影锁链柱 — 交替朝向镂空矩形单元堆叠，3-8 单元随机高度
         context.register(SHADOW_CHAIN_PILLAR, new ConfiguredFeature<>(ModFeatures.SHADOW_CHAIN_PILLAR.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
+        // 暗影之手 — NBT 结构地物
+        context.register(SHADOW_HAND, new ConfiguredFeature<>(ModFeatures.SHADOW_HAND.get(),
                 NoneFeatureConfiguration.INSTANCE));
 
 
