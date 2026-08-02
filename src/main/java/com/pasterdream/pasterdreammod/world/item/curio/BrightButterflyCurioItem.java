@@ -33,6 +33,7 @@ public class BrightButterflyCurioItem extends Item implements ICurioItem {
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
         list.add(ModRarities.qualityTooltip(ModRarities.ANCIENT));
         list.add(Component.translatable("tooltip.pasterdream.bright_butterfly_curio.effect.gamma"));
+        list.add(Component.translatable("tooltip.pasterdream.bright_butterfly_curio.effect.brightness"));
         list.add(Component.translatable("tooltip.pasterdream.bright_butterfly_curio.effect.darkness_immune"));
     }
 }

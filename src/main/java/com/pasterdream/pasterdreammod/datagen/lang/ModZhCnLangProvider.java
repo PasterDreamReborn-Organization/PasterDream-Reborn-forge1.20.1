@@ -998,6 +998,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.light_butterfly_curio.energy", "§7▪ §4融梦能量消耗：0.24/min");
         add(ModItems.BRIGHT_BUTTERFLY_CURIO.get(), "光明飞蝶");
         add("tooltip.pasterdream.bright_butterfly_curio.effect.gamma", "§7▪ §9获得夜视效果");
+        add("tooltip.pasterdream.bright_butterfly_curio.effect.brightness", "§7▪ §9大幅提升画面亮度");
         add("tooltip.pasterdream.bright_butterfly_curio.effect.darkness_immune", "§7▪ §9免疫黑暗和失明效果");
         add(ModItems.BOBOJI_CURIO.get(), "啵啵鸡的华丽飞羽");
         add("tooltip.pasterdream.boboji_curio.stat.speed", "§7▪ §9+5% 速度");

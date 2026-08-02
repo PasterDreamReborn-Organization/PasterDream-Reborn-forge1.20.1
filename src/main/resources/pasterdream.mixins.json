@@ -24,7 +24,9 @@
   ],
   "client": [
     "FogRendererMixin",
+    "IMixinOptionInstance",
     "LevelRendererMixin",
+    "LightTextureGammaMixin",
     "MusicManagerMixin",
     "SituationalMusicMixin",
     "BlockElementMixin"
