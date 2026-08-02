@@ -122,6 +122,16 @@ public class PlayerEvents {
     }
 
     public static void onLivingHurt(LivingHurtEvent event) {
+        // 白厄剑对暗影生物伤害+50%（剑雨已在弹射物中标记，避免重复加成）
+        if (event.getSource().getEntity() instanceof Player player
+                && player.getMainHandItem().is(ModItems.WHITE_SWORD.get())
+                && event.getEntity().getType().is(ModEntityTypeTags.SHADOW_MOB)) {
+            if (!event.getEntity().getPersistentData().getBoolean("pasterdream:white_sword_boosted")) {
+                event.setAmount(event.getAmount() * 1.5f);
+            }
+            event.getEntity().getPersistentData().remove("pasterdream:white_sword_boosted");
+        }
+
         if (!(event.getEntity() instanceof Player player)) return;
         if (!player.hasEffect(ModEffects.EVASION_BUFF.get())) return;
 

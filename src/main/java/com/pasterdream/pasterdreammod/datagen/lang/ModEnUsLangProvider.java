@@ -993,6 +993,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.white_sword.desc4", "§7▪ §9Silences shadow mobs for 10s on hit");
         add("tooltip.pasterdream.white_sword.desc5", "§7▪ §9Cooldown: 4.2s");
         add("tooltip.pasterdream.white_sword.desc6", "§7▪ §9Melt Dream Energy Cost: §c0.1");
+        add("tooltip.pasterdream.white_sword.desc7", "§7▪ §9+50% damage to shadow mobs");
         add("message.pasterdream.white_sword.no_energy", "Not enough Melt Dream Energy");
         add(ModItems.WHITE_SWORD_RAIN.get(), "White Sword Rain");
 

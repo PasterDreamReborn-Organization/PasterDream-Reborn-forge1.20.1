@@ -292,6 +292,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FOURLEAF_CLOVER_CURIO.get());
                         output.accept(ModItems.SNOW_VOW_HEAD.get());
                         output.accept(ModItems.QYM_BUTTERFLY_STAR_HAIRPIN.get());
+                        output.accept(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get());
                         output.accept(ModItems.LIGHT_BUTTERFLY_CURIO.get());
                         output.accept(ModItems.BRIGHT_BUTTERFLY_CURIO.get());
                         output.accept(ModItems.BOBOJI_CURIO.get());
@@ -730,7 +731,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.HIYORI_BUTTERFLY_HAIRPIN.get());
                         output.accept(ModItems.ALLKINDS_RING.get());
                         output.accept(ModItems.KAICHU_OMAMORI.get());
-                        output.accept(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get());
                         output.accept(ModItems.THERMAL_DAGGER.get());
                         output.accept(ModItems.MELT_DREAM_AURORIAN_STEEL.get());
                         output.accept(ModItems.TERRA_BLADE.get());

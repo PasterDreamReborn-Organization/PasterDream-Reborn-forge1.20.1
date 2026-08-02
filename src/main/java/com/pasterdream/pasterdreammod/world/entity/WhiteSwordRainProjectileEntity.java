@@ -140,6 +140,8 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
         // ShadowSilence 10s on shadow_mob entities — apply BEFORE damage to suppress on-hurt skills
         if (target.getType().is(SHADOW_MOB)) {
             target.addEffect(new MobEffectInstance(ModEffects.SHADOW_SILENCE_BUFF.get(), 200, 0));
+            this.damage *= 1.5f;
+            target.getPersistentData().putBoolean("pasterdream:white_sword_boosted", true);
         }
 
         // Bind 2s

@@ -193,5 +193,6 @@ public class WhiteSwordItem extends SwordItem {
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc4"));
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc5"));
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc6"));
+        list.add(Component.translatable("tooltip.pasterdream.white_sword.desc7"));
     }
 }

@@ -1154,6 +1154,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.white_sword.desc4", "§7▪ §9命中暗影生物时使其沉默10秒");
         add("tooltip.pasterdream.white_sword.desc5", "§7▪ §9冷却时间：4.2秒");
         add("tooltip.pasterdream.white_sword.desc6", "§7▪ §9融梦能量消耗：§c0.1");
+        add("tooltip.pasterdream.white_sword.desc7", "§7▪ §9对暗影生物伤害§c+50%");
         add("message.pasterdream.white_sword.no_energy", "融梦能量不足");
         add(ModItems.WHITE_SWORD_RAIN.get(), "白厄剑雨");
 
