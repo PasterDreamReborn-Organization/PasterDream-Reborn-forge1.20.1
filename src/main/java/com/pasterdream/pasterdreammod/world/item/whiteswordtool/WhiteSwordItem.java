@@ -230,8 +230,15 @@ public class WhiteSwordItem extends SwordItem {
                 boolean hasBrooch = CuriosApi.getCuriosInventory(player)
                         .map(inv -> inv.findFirstCurio(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get()).isPresent())
                         .orElse(false);
-                if (event.getEntity().getType().is(SHADOW_MOB) || hasBrooch) {
-                    event.setAmount(event.getAmount() * 1.5f);
+                float multiplier = 1.0f;
+                if (event.getEntity().getType().is(SHADOW_MOB)) {
+                    multiplier += 0.5f;
+                }
+                if (hasBrooch) {
+                    multiplier += 0.5f;
+                }
+                if (multiplier > 1.0f) {
+                    event.setAmount(event.getAmount() * multiplier);
                 }
             }
         }
