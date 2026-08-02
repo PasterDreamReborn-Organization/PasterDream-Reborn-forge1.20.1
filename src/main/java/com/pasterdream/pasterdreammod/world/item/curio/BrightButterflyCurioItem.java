@@ -24,8 +24,6 @@ public class BrightButterflyCurioItem extends Item implements ICurioItem {
         if (entity.level().isClientSide()) return;
         if (entity.tickCount % 20 != 0) return;
 
-        entity.removeEffect(MobEffects.DARKNESS);
-        entity.removeEffect(MobEffects.BLINDNESS);
         entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 240, 0, false, false));
     }
 

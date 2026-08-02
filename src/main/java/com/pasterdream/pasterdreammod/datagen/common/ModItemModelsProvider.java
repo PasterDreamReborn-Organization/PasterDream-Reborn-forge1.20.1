@@ -190,6 +190,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD);
         handheldItem(ModItems.BROKEN_HERO_SWORD);
         handheldItem(ModItems.TERRA_BLADE);
+        handheldItem(ModItems.WHITE_SWORD);
+        handheldItem(ModItems.WHITE_SWORD_RAIN);
         basicItem(ModItems.TITANIUM_UPGRADE.get());
         basicItem(ModItems.SCULK_UPGRADE.get());
         basicItem(ModItems.DYEDREAM_UPGRADE.get());

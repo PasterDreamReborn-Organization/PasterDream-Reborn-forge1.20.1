@@ -981,6 +981,18 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.terra_blade.no_energy", "Not enough Melt Dream Energy, sword wave deactivated");
         add("entity.pasterdream.terrasword_wave", "Terra Sword Wave");
 
+        // White Sword
+        add(ModItems.WHITE_SWORD.get(), "White Sword");
+        add("tooltip.pasterdream.white_sword.skill_name", "Combat Art: §fWhite Sword Rain");
+        add("tooltip.pasterdream.white_sword.desc1", "§7▪ §9Targets the entity at crosshair within 10 blocks as the center");
+        add("tooltip.pasterdream.white_sword.desc2", "§7▪ §9If no entity, targets the block at crosshair, or the air 10 blocks away");
+        add("tooltip.pasterdream.white_sword.desc3", "§7▪ §9Each hit deals 3+ATK*0.4 damage and binds the target");
+        add("tooltip.pasterdream.white_sword.desc4", "§7▪ §9Silences shadow mobs for 10s on hit");
+        add("tooltip.pasterdream.white_sword.desc5", "§7▪ §9Cooldown: 4.2s");
+        add("tooltip.pasterdream.white_sword.desc6", "§7▪ §9Melt Dream Energy Cost: §c0.1");
+        add("message.pasterdream.white_sword.no_energy", "Not enough Melt Dream Energy");
+        add(ModItems.WHITE_SWORD_RAIN.get(), "White Sword Rain");
+
         // Terra Floating Island
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "Terra Floating Island");
         add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9Sword wave cost reduced by 0.05 (§c0.05 §9per swing)");
@@ -1045,6 +1057,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9This effect can be shared with nearby players.");
         add("tooltip.pasterdream.war_flag.description", "§7§O --The shadows flowing on this flag seem to be telling stories of a distant past...");
         add("effect.pasterdream.war_flag_buff", "Battle Intention");
+        add("effect.pasterdream.bind_buff", "Bind");
+        add("effect.pasterdream.shadow_silence_buff", "Shadow Silence");
 
         // Advancements - Story
         add("advancements.pasterdream.story.root.title", "PasterDream");

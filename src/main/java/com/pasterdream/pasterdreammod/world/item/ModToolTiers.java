@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item;
 
+import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
@@ -67,8 +68,8 @@ public enum ModToolTiers implements Tier {
     //         () -> Ingredient.of(ModItems.NIGHTMARE_FUEL.get())),  // TODO: nightmare_fuel 未注册
 
     // 白厄
-    // WHITE_SWORD(1771, 0.0F, 5.0F, 1, 10,
-    //         () -> Ingredient.of(ModBlocks.SHADOW_LIGHT.get())),  // TODO: shadow_light
+    WHITE_SWORD(1771, 0.0F, 5.0F, 1, 10,
+            () -> Ingredient.of(ModBlocks.SHADOW_LIGHT.get())),
 
     // 大地之刃
     TERRA_SWORD(2011, 4.0F, 8.0F, 1, 2,
