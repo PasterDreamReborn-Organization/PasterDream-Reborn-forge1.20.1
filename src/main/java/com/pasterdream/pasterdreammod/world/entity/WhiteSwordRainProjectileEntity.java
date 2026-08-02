@@ -12,6 +12,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -172,11 +173,7 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
         // Melee damage
         if (owner instanceof Player player) {
             target.hurt(this.damageSources().playerAttack(player), this.damage);
-        }
-
-        // Brooch: pierce invulnerability frames
-        if (hasBrooch) {
-            target.invulnerableTime = 0;
+            target.invulnerableTime = hasBrooch ? 0 : 9;
         }
 
         this.discard();
@@ -187,6 +184,16 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
         if (target instanceof OwnableEntity ownable) {
             return ownable.getOwner() == owner;
         }
+        return false;
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        return false;
+    }
+
+    @Override
+    public boolean canBeCollidedWith() {
         return false;
     }
 
