@@ -1512,6 +1512,13 @@ public class ModItems {
     public static final RegistryObject<Item> STORAGE_BAG = ITEMS.register("storage_bag", StorageBagItem::new);
     public static final RegistryObject<Item> LARGE_STORAGE_BAG = ITEMS.register("large_storage_bag", LargeStorageBagItem::new);
     public static final RegistryObject<Item> STRAWBERRY_HEART = ITEMS.register("strawberry_heart", StrawberryHeartItem::new);
+    public static final RegistryObject<Item> SLIVER_BELL = ITEMS.register("silver_bell", () -> new Item(new Item.Properties().rarity(Rarity.COMMON)) {
+        @Override
+        public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+            super.appendHoverText(stack, level, tooltip, flag);
+            tooltip.add(Component.translatable("tooltip.pasterdream.sliver_bell"));
+        }
+    });
 
     //预言卡
     public static final RegistryObject<Item> EMPTY_PROPHECY_CARD = ITEMS.register("empty_prophecy_card",

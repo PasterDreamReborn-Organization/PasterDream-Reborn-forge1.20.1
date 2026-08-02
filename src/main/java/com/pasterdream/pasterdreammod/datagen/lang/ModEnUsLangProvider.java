@@ -762,6 +762,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.STORAGE_BAG.get(), "Storage Bag");
         add(ModItems.LARGE_STORAGE_BAG.get(), "Large Storage Bag");
         add(ModItems.DREAM_HARP_OF_WANDERER.get(), "DreamHarp of Wanderer");
+        add(ModItems.SLIVER_BELL.get(),"Sliver Bell");
+        add("tooltip.pasterdream.sliver_bell", "§7§O --Sheyann Meow!");
         add("message.pasterdream.dream_harp_of_wanderer.no_energy", "Not enough Melt Dream Energy");
         add("tooltip.pasterdream.dream_harp_of_wanderer.line1", "§7Plays to provide effects to players within 10 blocks (1:00):");
         add("tooltip.pasterdream.dream_harp_of_wanderer.line2", "§7▪ §9Max HP+4, restore 4 HP, Speed+10%");
@@ -1119,7 +1121,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_beihairuo_tide_sword.title", "God of Tides");
         add("advancements.pasterdream.get_beihairuo_tide_sword.description", "Get the BeiHairuo Tide Sword; it holds the power of surging waves and riptide...");
 
-        // 进度 - 染梦珍藏
+        // Advancements - Dyedream Treasure
         add("advancements.pasterdream.root_dyedream_treasure.title", "Dyedream Collection");
         add("advancements.pasterdream.root_dyedream_treasure.description", "Open the Melting Dream Crystal Chest in the Dyedream World.");
         add("advancements.pasterdream.get_sand_of_time.title", "Your Time is really Valuable");
@@ -1150,6 +1152,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_dream_harp_of_wanderer.description", "Get the Dream Harp of the Wandering, a gift left behind by the Train-wandering Traveler.");
         add("advancements.pasterdream.get_worldtree_seedpod.title", "Fallen leaves return to their roots, split pods return to their crown");
         add("advancements.pasterdream.get_worldtree_seedpod.description", "Get the Worldtree Seedpod.");
+        add("advancements.pasterdream.get_sliver_bell.title", "Sheyann Meow!");
+        add("advancements.pasterdream.get_sliver_bell.description", "Get the silver bell, and it will only show its true form when you combine it with the light you found in the deep darkness.");
+        add("advancements.pasterdream.get_kaichu_omamori.title", "The Golden Fox's Wish");
+        add("advancements.pasterdream.get_kaichu_omamori.description", "Get the Kaichu Omamori. When you actually make the sleeping golden fox's dream come true, she will give you this special keepsake.");
 
         // Patchouli book
 
