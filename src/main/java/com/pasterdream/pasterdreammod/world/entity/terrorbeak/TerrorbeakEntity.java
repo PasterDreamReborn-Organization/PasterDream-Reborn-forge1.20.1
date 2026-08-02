@@ -21,6 +21,7 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -30,6 +31,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
@@ -274,7 +276,27 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
     }
 
     public static void init() {
-        // Spawn placements deferred
+        SpawnPlacements.register(ModEntities.TERRORBEAK.get(),
+                SpawnPlacements.Type.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, world, reason, pos, random) ->
+                        world.getDifficulty() != Difficulty.PEACEFUL
+                                && Monster.isDarkEnoughToSpawn(world, pos, random)
+                                && Mob.checkMobSpawnRules(entityType, world, reason, pos, random));
+        SpawnPlacements.register(ModEntities.CRAZY_TERRORBEAK.get(),
+                SpawnPlacements.Type.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, world, reason, pos, random) ->
+                        world.getDifficulty() != Difficulty.PEACEFUL
+                                && Monster.isDarkEnoughToSpawn(world, pos, random)
+                                && Mob.checkMobSpawnRules(entityType, world, reason, pos, random));
+        SpawnPlacements.register(ModEntities.WEAKENESS_TERRORBEAK.get(),
+                SpawnPlacements.Type.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, world, reason, pos, random) ->
+                        world.getDifficulty() != Difficulty.PEACEFUL
+                                && Monster.isDarkEnoughToSpawn(world, pos, random)
+                                && Mob.checkMobSpawnRules(entityType, world, reason, pos, random));
     }
 
     public static AttributeSupplier.Builder createTerrorbeakAttributes() {
