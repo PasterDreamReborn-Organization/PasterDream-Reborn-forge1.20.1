@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -10,6 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -275,6 +277,53 @@ public class Config
             .define("lowSanSpawnRequiresSpecialSkill", true);
 
 
+    // === 卡莱调料瓶 ===
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> CALAIS_SPICE_BOTTLE_BUFFS = BUILDER
+            .comment("卡莱调料瓶消耗层数时可获得的随机增益效果 ID 列表（格式：modid:effect_id），"
+                    + "\n例：minecraft:regeneration 为生命恢复，minecraft:speed 为速度"
+                    + "\n支持模组药水")
+            .defineListAllowEmpty("calaisSpiceBottleBuffs",
+                    List.of("minecraft:speed", "minecraft:haste", "minecraft:strength",
+                            "minecraft:regeneration", "minecraft:resistance", "minecraft:fire_resistance",
+                            "minecraft:absorption", "pasterdream:rest_buff", "pasterdream:cook_buff"),
+                    obj -> obj instanceof String);
+
+    private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> CALAIS_SPICE_BOTTLE_WEIGHTS = BUILDER
+            .comment("卡莱调料瓶消耗层数时各效果的触发权重（6 个值，依次为：随机增益、san恢复、生命恢复、随机负面、回避增益、doll音效），"
+                    + "\n设为 0 则禁用该效果")
+            .define("calaisSpiceBottleWeights", List.of(4.0, 4.0, 2.0, 3.0, 1.0, 1.0));
+
+    private static final ForgeConfigSpec.DoubleValue CALAIS_SPICE_BOTTLE_HEAL_MIN = BUILDER
+            .comment("卡莱调料瓶生命恢复最小值（半心），默认 1.0")
+            .defineInRange("calaisSpiceBottleHealMin", 1.0, 0.5, 20.0);
+    private static final ForgeConfigSpec.DoubleValue CALAIS_SPICE_BOTTLE_HEAL_MAX = BUILDER
+            .comment("卡莱调料瓶生命恢复最大值（半心），默认 2.0")
+            .defineInRange("calaisSpiceBottleHealMax", 2.0, 0.5, 20.0);
+
+    private static final ForgeConfigSpec.DoubleValue CALAIS_SPICE_BOTTLE_SAN_MIN = BUILDER
+            .comment("卡莱调料瓶 SAN 恢复最小值，默认 0.5")
+            .defineInRange("calaisSpiceBottleSanMin", 0.5, 0.0, 100.0);
+    private static final ForgeConfigSpec.DoubleValue CALAIS_SPICE_BOTTLE_SAN_MAX = BUILDER
+            .comment("卡莱调料瓶 SAN 恢复最大值，默认 3.0")
+            .defineInRange("calaisSpiceBottleSanMax", 3.0, 0.0, 100.0);
+
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> CALAIS_SPICE_BOTTLE_DEBUFFS = BUILDER
+            .comment("卡莱调料瓶消耗层数时可施加给敌人的随机负面效果 ID 列表（格式：modid:effect_id），"
+                    + "\n例：minecraft:slowness 为缓慢，minecraft:weakness 为虚弱")
+            .defineListAllowEmpty("calaisSpiceBottleDebuffs",
+                    List.of("pasterdream:confusion_buff"),
+                    obj -> obj instanceof String);
+    private static final ForgeConfigSpec.IntValue CALAIS_SPICE_BOTTLE_DEBUFF_DURATION = BUILDER
+            .comment("卡莱调料瓶负面效果的持续时间（tick），默认 100（5 秒）")
+            .defineInRange("calaisSpiceBottleDebuffDuration", 100, 0, 6000);
+    private static final ForgeConfigSpec.IntValue CALAIS_SPICE_BOTTLE_DEBUFF_AMPLIFIER = BUILDER
+            .comment("卡莱调料瓶负面效果的等级（0=I, 1=II, ...），默认 0")
+            .defineInRange("calaisSpiceBottleDebuffAmplifier", 0, 0, 255);
+
+    private static final ForgeConfigSpec.IntValue CALAIS_SPICE_BOTTLE_EVASION_DURATION = BUILDER
+            .comment("卡莱调料瓶回避增益持续时间（tick），默认 20（1 秒）")
+            .defineInRange("calaisSpiceBottleEvasionDuration", 20, 0, 200);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     // === 时之沙 ===
@@ -319,6 +368,18 @@ public class Config
     public static int maxlevel;
     public static List<? extends String> balanceAllowedEffects;
 
+    //卡莱调料瓶
+    public static List<? extends String> calaisSpiceBottleBuffs;
+    public static List<? extends Double> calaisSpiceBottleWeights;
+    public static double calaisSpiceBottleHealMin;
+    public static double calaisSpiceBottleHealMax;
+    public static double calaisSpiceBottleSanMin;
+    public static double calaisSpiceBottleSanMax;
+    public static List<? extends String> calaisSpiceBottleDebuffs;
+    public static int calaisSpiceBottleDebuffDuration;
+    public static int calaisSpiceBottleDebuffAmplifier;
+    public static int calaisSpiceBottleEvasionDuration;
+
     //罪恶
     public static List<? extends String> sinInstakillEntities;
     private static Set<EntityType<?>> cachedSinInstakillTypes = Set.of();
@@ -331,6 +392,20 @@ public class Config
     public static Double conflictCardReach;
     public static List<? extends String> conflictMarkBlacklist;
     private static Set<EntityType<?>> cachedConflictMarkBlacklistTypes = Set.of();
+
+    /** 卡莱调料瓶随机增益缓存（解析后的 MobEffect 列表） */
+    private static List<MobEffect> cachedCalaisSpiceBottleBuffs = List.of();
+
+    public static List<MobEffect> getCalaisSpiceBottleBuffs() {
+        return cachedCalaisSpiceBottleBuffs;
+    }
+
+    /** 卡莱调料瓶随机负面效果缓存 */
+    private static List<MobEffect> cachedCalaisSpiceBottleDebuffs = List.of();
+
+    public static List<MobEffect> getCalaisSpiceBottleDebuffs() {
+        return cachedCalaisSpiceBottleDebuffs;
+    }
 
     //守护
     public static Double healthpercentguardneed;
@@ -417,6 +492,44 @@ public class Config
         LOGGER.info("conflict_mark_blacklist: loaded {} entity types", cachedConflictMarkBlacklistTypes.size());
     }
 
+    private static void rebuildCalaisSpiceBottleCache() {
+        List<MobEffect> list = new ArrayList<>();
+        for (String idStr : calaisSpiceBottleBuffs) {
+            ResourceLocation rl = ResourceLocation.tryParse(idStr);
+            if (rl == null) {
+                LOGGER.warn("calaisSpiceBottleBuffs: invalid resource location '{}', skipping", idStr);
+                continue;
+            }
+            MobEffect effect = ForgeRegistries.MOB_EFFECTS.getValue(rl);
+            if (effect == null) {
+                LOGGER.warn("calaisSpiceBottleBuffs: unknown effect '{}', skipping", idStr);
+                continue;
+            }
+            list.add(effect);
+        }
+        cachedCalaisSpiceBottleBuffs = List.copyOf(list);
+        LOGGER.info("calaisSpiceBottleBuffs: loaded {} effects", cachedCalaisSpiceBottleBuffs.size());
+    }
+
+    private static void rebuildCalaisSpiceBottleDebuffCache() {
+        List<MobEffect> list = new ArrayList<>();
+        for (String idStr : calaisSpiceBottleDebuffs) {
+            ResourceLocation rl = ResourceLocation.tryParse(idStr);
+            if (rl == null) {
+                LOGGER.warn("calaisSpiceBottleDebuffs: invalid resource location '{}', skipping", idStr);
+                continue;
+            }
+            MobEffect effect = ForgeRegistries.MOB_EFFECTS.getValue(rl);
+            if (effect == null) {
+                LOGGER.warn("calaisSpiceBottleDebuffs: unknown effect '{}', skipping", idStr);
+                continue;
+            }
+            list.add(effect);
+        }
+        cachedCalaisSpiceBottleDebuffs = List.copyOf(list);
+        LOGGER.info("calaisSpiceBottleDebuffs: loaded {} effects", cachedCalaisSpiceBottleDebuffs.size());
+    }
+
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
@@ -471,7 +584,20 @@ public class Config
         lowSanSpawnMaxNearby = LOW_SAN_SPAWN_MAX_NEARBY.get();
         lowSanSpawnRequiresSpecialSkill = LOW_SAN_SPAWN_REQUIRES_SPECIAL_SKILL.get();
 
+        calaisSpiceBottleBuffs = CALAIS_SPICE_BOTTLE_BUFFS.get();
+        calaisSpiceBottleWeights = CALAIS_SPICE_BOTTLE_WEIGHTS.get();
+        calaisSpiceBottleHealMin = CALAIS_SPICE_BOTTLE_HEAL_MIN.get();
+        calaisSpiceBottleHealMax = CALAIS_SPICE_BOTTLE_HEAL_MAX.get();
+        calaisSpiceBottleSanMin = CALAIS_SPICE_BOTTLE_SAN_MIN.get();
+        calaisSpiceBottleSanMax = CALAIS_SPICE_BOTTLE_SAN_MAX.get();
+        calaisSpiceBottleDebuffs = CALAIS_SPICE_BOTTLE_DEBUFFS.get();
+        calaisSpiceBottleDebuffDuration = CALAIS_SPICE_BOTTLE_DEBUFF_DURATION.get();
+        calaisSpiceBottleDebuffAmplifier = CALAIS_SPICE_BOTTLE_DEBUFF_AMPLIFIER.get();
+        calaisSpiceBottleEvasionDuration = CALAIS_SPICE_BOTTLE_EVASION_DURATION.get();
+
         rebuildSinInstakillCache();
         rebuildConflictMarkBlacklistCache();
+        rebuildCalaisSpiceBottleCache();
+        rebuildCalaisSpiceBottleDebuffCache();
     }
 }

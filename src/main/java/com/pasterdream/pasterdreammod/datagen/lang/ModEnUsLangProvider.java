@@ -1064,6 +1064,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.bind_buff", "Bind");
         add("effect.pasterdream.shadow_silence_buff", "Shadow Silence");
 
+        //卡莱的调料瓶
+        add(ModItems.CALAIS_SPICE_BOTTLE.get(), "Calais Spice Bottle");
+        add("tooltip.pasterdream.calais_spice_bottle.effect1", "§7▪ §9+40% eating speed");
+        add("tooltip.pasterdream.calais_spice_bottle.effect2", "§7▪ §9Gain Calais Spice X buff when equipped. Each attack consumes a stack, and after chopping until it disappears, you need to eat to restore it. Eating accumulates stacks (1 stack per 3 hunger, up to level X).");
+        add("tooltip.pasterdream.calais_spice_bottle.effect3", "§7▪ §9Each stack consumed grants a random effect");
+        add("effect.pasterdream.calais_spice_bottle_buff", "Calais Spice");
+
         // Advancements - Story
         add("advancements.pasterdream.story.root.title", "PasterDream");
         add("advancements.pasterdream.story.root.description", "Begins with a wish from the heart");
