@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.worldgen.feature.CalciteSpikeFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.PinkHugeMushroomFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.ShadowChainPillarFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.ShadowHandFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.ShadowRuinWallFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
@@ -33,6 +34,10 @@ public class ModFeatures {
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> SHADOW_RUIN_WALL =
             FEATURES.register("shadow_ruin_wall",
                     () -> new ShadowRuinWallFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> SHADOW_HAND =
+            FEATURES.register("shadow_hand",
+                    () -> new ShadowHandFeature(NoneFeatureConfiguration.CODEC));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);

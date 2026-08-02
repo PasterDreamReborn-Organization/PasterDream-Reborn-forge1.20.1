@@ -95,6 +95,10 @@ public class ModBiomeModifierProvider implements DataProvider
             addSpawns(entries, "terrorbeak_biome_modifier", ModEntities.TERRORBEAK, shadowNyliumWastesSpawnTag, 10, 1, 2);
             addSpawns(entries, "shadow_hand_biome_modifier", ModEntities.SHADOW_HAND, shadowNyliumWastesSpawnTag, 15, 1, 3);
 
+            // ===== 灯影之下维度地物（对照原作 NOT_MODIFY 中的 structure/structure_set） =====
+            // 暗影之手 — 原作 shadow_hand_0 结构: biome_shadow_0, surface_structures step
+            addFeature(entries, "shadow_hand_feature", ModPlacedFeatures.SHADOW_HAND, featureLookup, shadowNyliumWastesSpawnTag, GenerationStep.Decoration.SURFACE_STRUCTURES);
+
             // biome_shadow_1（阴影森林）: black_beetle(20,5-7 + 20,2-4) + friendly_shadow_ghost(10,1,3)
             //   原作有两处 black_beetle 生成 — 群系 JSON monster spawn + biome_modifier add_spawns
             addSpawns(entries, "black_beetle_biome_spawn", ModEntities.BLACK_BEETLE, shadowForestSpawnTag, 20, 5, 7);
