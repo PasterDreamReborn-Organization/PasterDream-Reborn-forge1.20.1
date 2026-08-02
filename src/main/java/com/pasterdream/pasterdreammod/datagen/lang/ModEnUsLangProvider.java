@@ -762,6 +762,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.STORAGE_BAG.get(), "Storage Bag");
         add(ModItems.LARGE_STORAGE_BAG.get(), "Large Storage Bag");
         add(ModItems.DREAM_HARP_OF_WANDERER.get(), "DreamHarp of Wanderer");
+        add(ModItems.SLIVER_BELL.get(),"Sliver Bell");
+        add("tooltip.pasterdream.sliver_bell", "§7§O --Sheyann Meow!");
         add("message.pasterdream.dream_harp_of_wanderer.no_energy", "Not enough Melt Dream Energy");
         add("tooltip.pasterdream.dream_harp_of_wanderer.line1", "§7Plays to provide effects to players within 10 blocks (1:00):");
         add("tooltip.pasterdream.dream_harp_of_wanderer.line2", "§7▪ §9Max HP+4, restore 4 HP, Speed+10%");
@@ -1119,6 +1121,41 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_beihairuo_tide_sword.title", "God of Tides");
         add("advancements.pasterdream.get_beihairuo_tide_sword.description", "Get the BeiHairuo Tide Sword; it holds the power of surging waves and riptide...");
 
+        // Advancements - Dyedream Treasure
+        add("advancements.pasterdream.root_dyedream_treasure.title", "Dyedream Collection");
+        add("advancements.pasterdream.root_dyedream_treasure.description", "Open the Melting Dream Crystal Chest in the Dyedream World.");
+        add("advancements.pasterdream.get_sand_of_time.title", "Your Time is really Valuable");
+        add("advancements.pasterdream.get_sand_of_time.description", "Get the Sand of Time, a sandglass that can switch day and night, but it takes a break after working...");
+        add("advancements.pasterdream.get_broken_hero_sword.title", "Solar Eclipse Relic");
+        add("advancements.pasterdream.get_broken_hero_sword.description", "Got the Broken Hero Sword. Wait a minute? Isn't this thing drop from a big flappy moth?");
+        add("advancements.pasterdream.get_terra_sword.title", "Racing with a Turtle");
+        add("advancements.pasterdream.get_terra_sword.description", "Get the Terra Blade. You should consider whether you might get crushed by a turtle falling from the sky.");
+        add("advancements.pasterdream.get_boboji_curios.title", "Boboji's Dream");
+        add("advancements.pasterdream.get_boboji_curios.description", "Get the Boboji Curios.");
+        add("advancements.pasterdream.get_allkinds_ring.title", "Who taught you to add attribute like this?");
+        add("advancements.pasterdream.get_allkinds_ring.description", "Get the Allkinds Ring, a ring that boosts a little bit of every attribute.");
+        add("advancements.pasterdream.get_hiyori_butterfly_hairpin.title", "Hanging out with my Real Sister");
+        add("advancements.pasterdream.get_hiyori_butterfly_hairpin.description", "Get the Hiyori Butterfly Hairpin.");
+        add("advancements.pasterdream.get_snow_vow_head.title", "Permafrost Snowflake");
+        add("advancements.pasterdream.get_snow_vow_head.description", "Get The Snow Vow Head.");
+        add("advancements.pasterdream.get_star_wish_rod.title", "Fish are like Countless Stars in the Vast Sky");
+        add("advancements.pasterdream.get_star_wish_rod.description", "Get the Star Wish Rod. Look for more tempting treasures in the sea.");
+        add("advancements.pasterdream.get_blessing_of_cecilia.title", "I hate you like a block of wood");
+        add("advancements.pasterdream.get_blessing_of_cecilia.description", "Getting Blessing of Cecilia. It is an even stronger life-saving curios than the Undying Totem.");
+        add("advancements.pasterdream.get_light_butterfly_curio.title", "Night Butterfly");
+        add("advancements.pasterdream.get_light_butterfly_curio.description", "Get the night-glow butterfly, a special butterfly that provides night vision. Maybe you should look for something to upgrade it in the deepest darkness.");
+        add("advancements.pasterdream.get_qym_doll.title", "Cuteness is Justice");
+        add("advancements.pasterdream.get_qym_doll.description", "Get the QYM doll, be nice to her.");
+        add("advancements.pasterdream.get_terra_floating_island.title", "Why not give Terraria a try?");
+        add("advancements.pasterdream.get_terra_floating_island.description", "Get the Terra Floating Island.");
+        add("advancements.pasterdream.get_dream_harp_of_wanderer.title", "A Gift from the Wandering Traveler");
+        add("advancements.pasterdream.get_dream_harp_of_wanderer.description", "Get the Dream Harp of the Wandering, a gift left behind by the Train-wandering Traveler.");
+        add("advancements.pasterdream.get_worldtree_seedpod.title", "Fallen leaves return to their roots, split pods return to their crown");
+        add("advancements.pasterdream.get_worldtree_seedpod.description", "Get the Worldtree Seedpod.");
+        add("advancements.pasterdream.get_sliver_bell.title", "Sheyann Meow!");
+        add("advancements.pasterdream.get_sliver_bell.description", "Get the silver bell, and it will only show its true form when you combine it with the light you found in the deep darkness.");
+        add("advancements.pasterdream.get_kaichu_omamori.title", "The Golden Fox's Wish");
+        add("advancements.pasterdream.get_kaichu_omamori.description", "Get the Kaichu Omamori. When you actually make the sleeping golden fox's dream come true, she will give you this special keepsake.");
 
         // Patchouli book
 

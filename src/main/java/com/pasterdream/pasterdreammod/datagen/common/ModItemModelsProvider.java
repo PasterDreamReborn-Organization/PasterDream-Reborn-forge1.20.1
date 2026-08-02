@@ -294,6 +294,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.STORAGE_BAG.get());
         basicItem(ModItems.LARGE_STORAGE_BAG.get());
         basicItem(ModItems.STRAWBERRY_HEART.get());
+        basicItem(ModItems.SLIVER_BELL.get());
 
         basicItem(ModItems.EMPTY_PROPHECY_CARD.get());
 

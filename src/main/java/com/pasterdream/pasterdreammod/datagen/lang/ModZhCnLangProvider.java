@@ -1152,6 +1152,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 草莓甜心
         add(ModItems.STRAWBERRY_HEART.get(), "草莓甜心");
+        add(ModItems.SLIVER_BELL.get(),"银色铃铛");
+        add("tooltip.pasterdream.sliver_bell", "§7§O --希安喵！");
         add("tooltip.pasterdream.strawberry_heart.desc1", "§7▪ §9右键演奏 §4消耗1融梦能量");
         add("tooltip.pasterdream.strawberry_heart.desc2", "§7▪ §9为范围内玩家回复4点生命 并给予短暂生命恢复，力量和速度效果");
         add("tooltip.pasterdream.strawberry_heart.desc3", "§7▪ §7冷却: 12秒 §7| §6范围: 8格");
@@ -1247,7 +1249,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.description", "发现失落剑冢，深藏于丛林深处的剑冢");
         add("advancements.pasterdream.story.get_the_lost_sword.title", "遗忘之剑");
         add("advancements.pasterdream.story.get_the_lost_sword.description", "获得失落之剑，它与丛林的力量似乎共鸣……");
-        add("advancements.pasterdream.story.dig_up_a_tomb.title", "邻家有女初长成，力拔三兮气盖世");
+        add("advancements.pasterdream.story.dig_up_a_tomb.title", "邻家有女初长成，力拔山兮气盖世");
         add("advancements.pasterdream.story.dig_up_a_tomb.description", "你……你把什么东西挖下来了？？？");
         add("advancements.pasterdream.new_standard_sword_drawing.title", "新概念拔剑");
         add("advancements.pasterdream.new_standard_sword_drawing.description", "因为你拔不出这把剑，气急败坏之下，索性你把你的敌人当作了开石头的工具！");
@@ -1283,7 +1285,41 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_beihairuo_tide_sword.title", "潮汐之神");
         add("advancements.pasterdream.get_beihairuo_tide_sword.description", "获得『北海若』引潮，它掌握着潮涌和激流的力量……");
 
-
+        // 进度 - 染梦珍藏
+        add("advancements.pasterdream.root_dyedream_treasure.title", "染梦珍藏");
+        add("advancements.pasterdream.root_dyedream_treasure.description", "开启位于染梦世界的融梦水晶箱。");
+        add("advancements.pasterdream.get_sand_of_time.title", "你的时间非常值钱");
+        add("advancements.pasterdream.get_sand_of_time.description", "获得时之沙，一个可以转换昼夜的沙漏，不过它工作完以后会休息……");
+        add("advancements.pasterdream.get_broken_hero_sword.title", "日食遗物");
+        add("advancements.pasterdream.get_broken_hero_sword.description", "获得断裂英雄剑。等等？这个玩意不是打一个大扑棱蛾子掉的吗？");
+        add("advancements.pasterdream.get_terra_sword.title", "和乌龟赛跑");
+        add("advancements.pasterdream.get_terra_sword.description", "获得大地之刃，你应该考虑会不会被从天而降的乌龟砸死。");
+        add("advancements.pasterdream.get_boboji_curios.title", "啵啵鸡之梦");
+        add("advancements.pasterdream.get_boboji_curios.description", "获得啵啵鸡的华丽飞羽。");
+        add("advancements.pasterdream.get_allkinds_ring.title", "谁教你这么加点的？");
+        add("advancements.pasterdream.get_allkinds_ring.description", "获得万象之戒，一个什么属性都加一点的戒指。");
+        add("advancements.pasterdream.get_hiyori_butterfly_hairpin.title", "实妹相伴");
+        add("advancements.pasterdream.get_hiyori_butterfly_hairpin.description", "获得妃爱的蝴蝶结发夹。");
+        add("advancements.pasterdream.get_snow_vow_head.title", "永冻雪花");
+        add("advancements.pasterdream.get_snow_vow_head.description", "获得雪下的誓言，配合博人传食用更佳。");
+        add("advancements.pasterdream.get_star_wish_rod.title", "鱼儿如浩空繁星");
+        add("advancements.pasterdream.get_star_wish_rod.description", "获得占星者的祈愿，去寻求海中更诱人的宝藏吧。");
+        add("advancements.pasterdream.get_blessing_of_cecilia.title", "我恨你是一块木头");
+        add("advancements.pasterdream.get_blessing_of_cecilia.description", "获得塞西莉娅的加护，比不死图腾更强大的保命饰品。");
+        add("advancements.pasterdream.get_light_butterfly_curio.title", "黑夜蝴蝶");
+        add("advancements.pasterdream.get_light_butterfly_curio.description", "获得夜明蝶，提供夜视的特殊蝴蝶，也许，你应当从最深邃的黑暗寻求升级它的东西。");
+        add("advancements.pasterdream.get_qym_doll.title", "可爱即是正义");
+        add("advancements.pasterdream.get_qym_doll.description", "获得娇小琴雨梦玩偶，请对她好一点。");
+        add("advancements.pasterdream.get_terra_floating_island.title", "为什么不试试泰拉瑞亚呢？");
+        add("advancements.pasterdream.get_terra_floating_island.description", "获得泰拉浮岛模型。请输入文本。");
+        add("advancements.pasterdream.get_dream_harp_of_wanderer.title", "漂泊旅者之赠礼");
+        add("advancements.pasterdream.get_dream_harp_of_wanderer.description", "获得漂泊旅者的染梦竖琴，列车漂泊旅者留下的赠礼。");
+        add("advancements.pasterdream.get_worldtree_seedpod.title", "落叶归根 裂荚归冠");
+        add("advancements.pasterdream.get_worldtree_seedpod.description", "获得世界树种荚。");
+        add("advancements.pasterdream.get_sliver_bell.title", "希安喵！");
+        add("advancements.pasterdream.get_sliver_bell.description", "获得银色铃铛，当你把从深邃黑暗找到的光明与之结合，它方能展现它的真实形态。");
+        add("advancements.pasterdream.get_kaichu_omamori.title", "金狐的愿望");
+        add("advancements.pasterdream.get_kaichu_omamori.description", "获得怀中御守，当你真正将正在睡觉的金色狐狸的梦变为现实，她会给予你这个特殊的纪念品。");
 
 
         // 帕秋莉宝典
