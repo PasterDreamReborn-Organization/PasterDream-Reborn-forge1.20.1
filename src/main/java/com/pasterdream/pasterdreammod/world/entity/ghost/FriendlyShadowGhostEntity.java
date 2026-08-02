@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.entity.ghost;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -36,6 +37,7 @@ import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
@@ -66,6 +68,11 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
         xpReward = 2;
         setNoAi(false);
         this.moveControl = new FlyingMoveControl(this, 10, true);
+    }
+
+    @Override
+    public boolean checkSpawnRules(LevelAccessor level, MobSpawnType spawnReason) {
+        return true;
     }
 
     @Override
@@ -365,9 +372,8 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
         SpawnPlacements.register(ModEntities.FRIENDLY_SHADOW_GHOST.get(),
                 SpawnPlacements.Type.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, world, reason, pos, random) ->
-                        world.getDifficulty() != Difficulty.PEACEFUL
-                                && Monster.isDarkEnoughToSpawn(world, pos, random)
-                                && Mob.checkMobSpawnRules(entityType, world, reason, pos, random));
+                (entityType, level, reason, pos, random) ->
+                        level.getBlockState(pos.below()).is(net.minecraft.tags.BlockTags.VALID_SPAWN)
+                                && level.getRawBrightness(pos, 0) <= 11);
     }
 }
