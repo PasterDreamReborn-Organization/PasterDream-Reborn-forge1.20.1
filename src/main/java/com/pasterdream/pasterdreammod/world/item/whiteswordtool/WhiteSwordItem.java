@@ -17,18 +17,14 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
@@ -47,12 +43,13 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
 
-import java.util.List;
-
 public class WhiteSwordItem extends SwordItem {
 
-    private static final double ENERGY_COST = 0.1;
+    private static final double ENERGY_COST = 1.5;
     private static final int COOLDOWN_TICKS = 40;
+    private static final double PASSIVE_CHANCE = 0.5;
+    private static final int PASSIVE_PROJECTILE_COUNT = 6;
+    private static final double PASSIVE_SPREAD = 2.5;
 
     public WhiteSwordItem(Tier tier, int damage, float speed) {
         super(tier, damage, speed, new Properties().fireResistant().rarity(ModRarities.LEGENDARY));
@@ -79,7 +76,26 @@ public class WhiteSwordItem extends SwordItem {
         return MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(player) >= ENERGY_COST;
     }
 
-    private static final double TARGET_REACH = 10.0;
+    @Nullable
+    private static LivingEntity findEntityAtCrosshair(Level level, Player player, Vec3 eye, Vec3 far) {
+        AABB searchBox = new AABB(eye, far).inflate(1.0);
+        List<LivingEntity> candidates = level.getEntitiesOfClass(LivingEntity.class, searchBox,
+                e -> e != player && e.isAlive());
+
+        LivingEntity closest = null;
+        double closestDist = Double.MAX_VALUE;
+        for (LivingEntity entity : candidates) {
+            Optional<Vec3> clip = entity.getBoundingBox().inflate(0.3).clip(eye, far);
+            if (clip.isPresent()) {
+                double dist = eye.distanceToSqr(clip.get());
+                if (dist < closestDist) {
+                    closestDist = dist;
+                    closest = entity;
+                }
+            }
+        }
+        return closest;
+    }
 
     private void executeSkill(Level level, Player player) {
         level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()),
@@ -91,25 +107,22 @@ public class WhiteSwordItem extends SwordItem {
         if (server == null) return;
 
         int baseTick = server.getTickCount();
+
+        Vec3 eye = player.getEyePosition(1f);
+        Vec3 look = player.getViewVector(1f);
+        Vec3 far = eye.add(look.x * 20, look.y * 20, look.z * 20);
+        LivingEntity homingTarget = findEntityAtCrosshair(level, player, eye, far);
+
+        scheduleWave(server, level, player, homingTarget, baseTick + 9, 6, 4, false);
+        scheduleWave(server, level, player, homingTarget, baseTick + 12, 6, 4, false);
+        scheduleWave(server, level, player, homingTarget, baseTick + 15, 6, 4, true);
+        scheduleWave(server, level, player, homingTarget, baseTick + 18, 5, 4, true);
+        scheduleWave(server, level, player, homingTarget, baseTick + 21, 5, 3, true);
+        scheduleWave(server, level, player, homingTarget, baseTick + 24, 4, 3, true);
+
         double px = player.getX();
         double py = player.getY();
         double pz = player.getZ();
-
-        // Find target: entity at crosshair > block at crosshair > air 10 blocks ahead
-        Vec3 eye = player.getEyePosition(1f);
-        Vec3 look = player.getViewVector(1f);
-        Vec3 far = eye.add(look.x * TARGET_REACH, look.y * TARGET_REACH, look.z * TARGET_REACH);
-        Vec3 targetPos = findTargetPos(level, player, eye, far);
-
-        // Waves at ticks 9, 12, 15, 18, 21, 24 (relative to current tick)
-        scheduleWave(server, level, player, targetPos, px, py, pz, baseTick + 9, 6, 4, false);
-        scheduleWave(server, level, player, targetPos, px, py, pz, baseTick + 12, 6, 4, false);
-        scheduleWave(server, level, player, targetPos, px, py, pz, baseTick + 15, 6, 4, true);
-        scheduleWave(server, level, player, targetPos, px, py, pz, baseTick + 18, 5, 4, true);
-        scheduleWave(server, level, player, targetPos, px, py, pz, baseTick + 21, 5, 3, true);
-        scheduleWave(server, level, player, targetPos, px, py, pz, baseTick + 24, 4, 3, true);
-
-        // Closing amethyst sounds
         server.tell(new TickTask(baseTick + 27, () -> {
             level.playSound(null, BlockPos.containing(px, py, pz),
                     net.minecraft.sounds.SoundEvents.AMETHYST_CLUSTER_PLACE, SoundSource.PLAYERS, 2, 1);
@@ -120,86 +133,112 @@ public class WhiteSwordItem extends SwordItem {
         }));
     }
 
-    /** Find target position: closest entity at crosshair → block at crosshair → air 10 blocks out */
-    private Vec3 findTargetPos(Level level, Player player, Vec3 eye, Vec3 far) {
-        // 1. Try to find an entity along the ray
-        AABB searchBox = new AABB(eye, far).inflate(1.0);
-        List<LivingEntity> candidates = level.getEntitiesOfClass(LivingEntity.class, searchBox,
-                e -> e != player && e.isAlive() && !isOwnedBy(e, player));
-
-        LivingEntity closestEntity = null;
-        double closestDist = TARGET_REACH;
-        for (LivingEntity entity : candidates) {
-            Optional<Vec3> clip = entity.getBoundingBox().inflate(0.3).clip(eye, far);
-            if (clip.isPresent()) {
-                double dist = eye.distanceToSqr(clip.get());
-                if (dist < closestDist * closestDist) {
-                    closestDist = Math.sqrt(dist);
-                    closestEntity = entity;
-                }
-            }
-        }
-
-        if (closestEntity != null) {
-            return closestEntity.position();
-        }
-
-        // 2. No entity — try block at crosshair
-        BlockHitResult blockHit = level.clip(new ClipContext(eye, far, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
-        if (blockHit.getType() == HitResult.Type.BLOCK) {
-            return blockHit.getLocation();
-        }
-
-        // 3. No entity, no block — air position 10 blocks ahead
-        return far;
-    }
-
-    private static boolean isOwnedBy(LivingEntity target, Player owner) {
-        if (target instanceof OwnableEntity ownable) {
-            return ownable.getOwner() == owner;
-        }
-        return false;
-    }
-
-    private void scheduleWave(MinecraftServer server, Level level, Player player,
-                              Vec3 targetPos, double playerX, double playerY, double playerZ,
-                              int fireTick, int outerCount, int innerCount, boolean playSound) {
-        server.tell(new TickTask(fireTick, () -> {
-            spawnProjectiles(level, player, targetPos, 3.5, outerCount);
-            spawnProjectiles(level, player, targetPos, 2.5, innerCount);
-            if (playSound) {
-                level.playSound(null, BlockPos.containing(playerX, playerY, playerZ),
-                        net.minecraft.sounds.SoundEvents.AMETHYST_CLUSTER_PLACE, SoundSource.PLAYERS, 2, 1);
-            }
-        }));
-    }
-
-    private void spawnProjectiles(Level level, Player player, Vec3 targetPos,
-                                  double spread, int count) {
+    /** Passive: 50% chance on melee attack to release homing arrow rain toward the target. */
+    public static void triggerHomingRain(Level level, Player player, LivingEntity target) {
         if (!(level instanceof ServerLevel serverLevel)) return;
-        RandomSource random = RandomSource.create();
 
-        float damage = (float) (3 + 0.4 * player.getAttributeValue(Attributes.ATTACK_DAMAGE));
+        Vec3 look = player.getViewVector(1f);
+        Vec3 right = new Vec3(-look.z, 0, look.x).normalize();
         ItemStack weapon = player.getMainHandItem();
+        RandomSource random = player.getRandom();
+
+        float damage = (float) (0.01 * player.getAttributeValue(Attributes.ATTACK_DAMAGE));
         int sharpness = weapon.getEnchantmentLevel(Enchantments.SHARPNESS);
         int smite = weapon.getEnchantmentLevel(Enchantments.SMITE);
         int bane = weapon.getEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS);
         int fireAspect = weapon.getEnchantmentLevel(Enchantments.FIRE_ASPECT);
+        int sweepingEdge = weapon.getEnchantmentLevel(Enchantments.SWEEPING_EDGE);
+        int knockback = weapon.getEnchantmentLevel(Enchantments.KNOCKBACK);
+        int looting = weapon.getEnchantmentLevel(Enchantments.MOB_LOOTING);
+        double effectiveSpread = PASSIVE_SPREAD + sweepingEdge * 0.5;
 
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < PASSIVE_PROJECTILE_COUNT; i++) {
             WhiteSwordRainProjectileEntity projectile = new WhiteSwordRainProjectileEntity(
                     ModEntities.WHITE_SWORD_RAIN_PROJECTILE.get(), level);
             projectile.setOwner(player);
+            projectile.setTarget(target);
             projectile.setPos(
-                    targetPos.x + Mth.nextDouble(random, -spread, spread),
-                    player.getY() + Mth.nextDouble(random, 13, 15),
-                    targetPos.z + Mth.nextDouble(random, -spread, spread));
-            projectile.setDeltaMovement(0, -1, 0);
+                    player.getX() - look.x * (2.0 + random.nextDouble())
+                            + right.x * Mth.nextDouble(random, -effectiveSpread, effectiveSpread),
+                    player.getY() + Mth.nextDouble(random, 1.5, 3.5),
+                    player.getZ() - look.z * (2.0 + random.nextDouble())
+                            + right.z * Mth.nextDouble(random, -effectiveSpread, effectiveSpread));
+            projectile.setDeltaMovement(
+                    look.x * 1.2 + Mth.nextDouble(random, -0.15, 0.15),
+                    look.y * 1.2 + Mth.nextDouble(random, -0.1, 0.1),
+                    look.z * 1.2 + Mth.nextDouble(random, -0.15, 0.15));
             projectile.setDamage(damage);
             projectile.getPersistentData().putInt("paster_sharpness", sharpness);
             projectile.getPersistentData().putInt("paster_smite", smite);
             projectile.getPersistentData().putInt("paster_bane", bane);
             projectile.getPersistentData().putInt("paster_fire_aspect", fireAspect);
+            projectile.getPersistentData().putInt("paster_sweeping_edge", sweepingEdge);
+            projectile.getPersistentData().putInt("paster_knockback", knockback);
+            projectile.getPersistentData().putInt("paster_looting", looting);
+            serverLevel.addFreshEntity(projectile);
+        }
+
+        level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()),
+                ModSounds.WHITE_SWORD_RAIN.get(), SoundSource.PLAYERS, 0.3f, 1.5f);
+    }
+
+    private void scheduleWave(MinecraftServer server, Level level, Player player,
+                              @Nullable LivingEntity target,
+                              int fireTick, int outerCount, int innerCount, boolean playSound) {
+        server.tell(new TickTask(fireTick, () -> {
+            spawnProjectiles(level, player, target, 3.5, outerCount);
+            spawnProjectiles(level, player, target, 2.5, innerCount);
+            if (playSound) {
+                level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()),
+                        net.minecraft.sounds.SoundEvents.AMETHYST_CLUSTER_PLACE, SoundSource.PLAYERS, 2, 1);
+            }
+        }));
+    }
+
+    private void spawnProjectiles(Level level, Player player, @Nullable LivingEntity target,
+                                  double spread, int count) {
+        if (!(level instanceof ServerLevel serverLevel)) return;
+        RandomSource random = RandomSource.create();
+
+        Vec3 look = player.getViewVector(1f);
+        Vec3 right = new Vec3(-look.z, 0, look.x).normalize();
+
+        float damage = (float) (0.15 * player.getAttributeValue(Attributes.ATTACK_DAMAGE));
+        ItemStack weapon = player.getMainHandItem();
+        int sharpness = weapon.getEnchantmentLevel(Enchantments.SHARPNESS);
+        int smite = weapon.getEnchantmentLevel(Enchantments.SMITE);
+        int bane = weapon.getEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS);
+        int fireAspect = weapon.getEnchantmentLevel(Enchantments.FIRE_ASPECT);
+        int sweepingEdge = weapon.getEnchantmentLevel(Enchantments.SWEEPING_EDGE);
+        int knockback = weapon.getEnchantmentLevel(Enchantments.KNOCKBACK);
+        int looting = weapon.getEnchantmentLevel(Enchantments.MOB_LOOTING);
+        double effectiveSpread = spread + sweepingEdge * 0.5;
+
+        for (int i = 0; i < count; i++) {
+            WhiteSwordRainProjectileEntity projectile = new WhiteSwordRainProjectileEntity(
+                    ModEntities.WHITE_SWORD_RAIN_PROJECTILE.get(), level);
+            projectile.setOwner(player);
+            if (target != null) {
+                projectile.setTarget(target);
+            }
+            projectile.setPos(
+                    player.getX() - look.x * (2.0 + random.nextDouble())
+                            + right.x * Mth.nextDouble(random, -effectiveSpread, effectiveSpread),
+                    player.getY() + Mth.nextDouble(random, 1.5, 3.5),
+                    player.getZ() - look.z * (2.0 + random.nextDouble())
+                            + right.z * Mth.nextDouble(random, -effectiveSpread, effectiveSpread));
+            projectile.setDeltaMovement(
+                    look.x * 1.5 + Mth.nextDouble(random, -0.2, 0.2),
+                    look.y * 1.5 + Mth.nextDouble(random, -0.1, 0.1),
+                    look.z * 1.5 + Mth.nextDouble(random, -0.2, 0.2));
+            projectile.setDamage(damage);
+            projectile.getPersistentData().putInt("paster_sharpness", sharpness);
+            projectile.getPersistentData().putInt("paster_smite", smite);
+            projectile.getPersistentData().putInt("paster_bane", bane);
+            projectile.getPersistentData().putInt("paster_fire_aspect", fireAspect);
+            projectile.getPersistentData().putInt("paster_sweeping_edge", sweepingEdge);
+            projectile.getPersistentData().putInt("paster_knockback", knockback);
+            projectile.getPersistentData().putInt("paster_looting", looting);
             serverLevel.addFreshEntity(projectile);
         }
     }
@@ -216,6 +255,8 @@ public class WhiteSwordItem extends SwordItem {
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc5"));
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc6"));
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc7"));
+        list.add(Component.translatable("tooltip.pasterdream.white_sword.skill_passive_name"));
+        list.add(Component.translatable("tooltip.pasterdream.white_sword.desc8"));
     }
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -225,6 +266,9 @@ public class WhiteSwordItem extends SwordItem {
 
         @SubscribeEvent
         public static void onLivingHurt(LivingHurtEvent event) {
+            if (event.getEntity().getPersistentData().getBoolean("pasterdream:rain_damage")) {
+                return;
+            }
             if (event.getSource().getEntity() instanceof Player player
                     && player.getMainHandItem().getItem() instanceof WhiteSwordItem) {
                 boolean hasBrooch = CuriosApi.getCuriosInventory(player)
@@ -239,6 +283,11 @@ public class WhiteSwordItem extends SwordItem {
                 }
                 if (multiplier > 1.0f) {
                     event.setAmount(event.getAmount() * multiplier);
+                }
+
+                // 50% chance passive: homing arrow rain on melee attack
+                if (player.getRandom().nextDouble() < PASSIVE_CHANCE) {
+                    triggerHomingRain(player.level(), player, event.getEntity());
                 }
             }
         }

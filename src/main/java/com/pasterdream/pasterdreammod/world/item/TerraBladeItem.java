@@ -40,8 +40,8 @@ import java.util.List;
 
 public class TerraBladeItem extends SwordItem {
 
-    private static final double ENERGY_COST = 0.1;
-    private static final double ENERGY_COST_WITH_CHARM = 0.05;
+    private static final double ENERGY_COST = 0.5;
+    private static final double ENERGY_COST_WITH_CHARM = 0.4;
 
     public TerraBladeItem(Tier tier, int damage, float speed) {
         super(tier, damage, speed, new Properties().fireResistant().rarity(ModRarities.LEGENDARY));
