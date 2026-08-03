@@ -52,6 +52,9 @@ public class ShadowSwordItem extends SwordItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        if (hand == InteractionHand.OFF_HAND) {
+            return InteractionResultHolder.fail(player.getItemInHand(hand));
+        }
         ItemStack stack = player.getItemInHand(hand);
         if (!level.isClientSide() && player instanceof ServerPlayer sp) {
             if (player.getCooldowns().isOnCooldown(stack.getItem())) {

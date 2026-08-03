@@ -847,11 +847,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.boboji_curio.dedication", "§7§o-- A yellow-green budgerigar named Boboji");
 
         add(ModItems.KAICHU_OMAMORI.get(), "Kaichu Omamori");
-        add(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get(), "White Orchid Flower Brooch");
-        add("tooltip.pasterdream.white_orchid_flower_brooch.effect", "§7▪ §9No longer affected by environmental SAN reduction");
-        add("tooltip.pasterdream.white_orchid_flower_brooch.effect2", "§7▪ §9White Sword Rain +50% damage to all creatures");
-        add("tooltip.pasterdream.white_orchid_flower_brooch.effect3", "§7▪ §9White Sword Rain ignores invulnerability frames");
-        add("tooltip.pasterdream.white_orchid_flower_brooch.flavor", "§o§7 -- I fade into formlessness, now enjoy the glory you deserve");
+        add(ModItems.BROOCH_OF_WHITE_ORCHID.get(), "Brooch of White Orchid");
+        add("tooltip.pasterdream.brooch_of_white_orchid.effect", "§7▪ §9No longer affected by environmental SAN reduction");
+        add("tooltip.pasterdream.brooch_of_white_orchid.effect2", "§7▪ §9White Sword Rain +50% damage to all creatures");
+        add("tooltip.pasterdream.brooch_of_white_orchid.effect3", "§7▪ §9White Sword Rain ignores invulnerability frames");
+        add("tooltip.pasterdream.brooch_of_white_orchid.flavor", "§o§7 -- I fade into formlessness, now enjoy the glory you deserve");
         add("tooltip.pasterdream.kaichu_omamori.effect.foxfire", "§7▪ §9Generates a Foxfire field in a 12×12 area");
         add("tooltip.pasterdream.kaichu_omamori.effect.vulnerable", "§7▪ §9Non-player creatures take 20% more damage and get Slowness V effect");
         add("tooltip.pasterdream.kaichu_omamori.effect.regen", "§7▪ §9Grants the player Regeneration");

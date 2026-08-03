@@ -57,6 +57,9 @@ public class WhiteSwordItem extends SwordItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        if (hand == InteractionHand.OFF_HAND) {
+            return InteractionResultHolder.fail(player.getItemInHand(hand));
+        }
         ItemStack stack = player.getItemInHand(hand);
         if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
             // TODO: Check for advancement achievement_talent_light once advancement system is ported
@@ -272,7 +275,7 @@ public class WhiteSwordItem extends SwordItem {
             if (event.getSource().getEntity() instanceof Player player
                     && player.getMainHandItem().getItem() instanceof WhiteSwordItem) {
                 boolean hasBrooch = CuriosApi.getCuriosInventory(player)
-                        .map(inv -> inv.findFirstCurio(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get()).isPresent())
+                        .map(inv -> inv.findFirstCurio(ModItems.BROOCH_OF_WHITE_ORCHID.get()).isPresent())
                         .orElse(false);
                 float multiplier = 1.0f;
                 if (event.getEntity().getType().is(SHADOW_MOB)) {

@@ -278,7 +278,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DREAM_TRAVELER_BELT.get());
         basicItem(ModItems.DUKE_COIN_CURIO.get());
         basicItem(ModItems.KAICHU_OMAMORI.get());
-        basicItem(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get());
+        basicItem(ModItems.BROOCH_OF_WHITE_ORCHID.get());
         basicItem(ModItems.SEAL_OF_THE_CORRUPTED.get());
         basicItem(ModItems.BLESSING_OF_CECILIA.get());
         basicItem(ModItems.FADED_BLESSING_OF_CECILIA.get());

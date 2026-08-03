@@ -57,7 +57,7 @@ public class SanAuraHandler {
         // 猫耳饰品保持 SAN 始终为上限，跳过环境 SAN 变化，避免时序冲突
         boolean hasCatEars = player.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof QymCatEarsItem;
         boolean hasWhiteOrchidBrooch = CuriosApi.getCuriosInventory(player)
-                .map(h -> h.findFirstCurio(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get()).isPresent())
+                .map(h -> h.findFirstCurio(ModItems.BROOCH_OF_WHITE_ORCHID.get()).isPresent())
                 .orElse(false);
         boolean hasSealOfCorrupted = CuriosApi.getCuriosInventory(player)
                 .map(h -> h.findFirstCurio(ModItems.SEAL_OF_THE_CORRUPTED.get()).isPresent())

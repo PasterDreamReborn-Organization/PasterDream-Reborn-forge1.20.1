@@ -1009,8 +1009,8 @@ public class ModItems {
     // ===== 饰品（胸饰） =====
     public static final RegistryObject<Item> KAICHU_OMAMORI = ITEMS.register("kaichu_omamori",
             KaichuOmamoriItem::new);
-    public static final RegistryObject<Item> WHITE_ORCHID_FLOWER_BROOCH = ITEMS.register("white_orchid_flower_brooch",
-            WhiteOrchidFlowerBroochItem::new);
+    public static final RegistryObject<Item> BROOCH_OF_WHITE_ORCHID = ITEMS.register("brooch_of_white_orchid",
+            BroochOfWhiteOrchidItem::new);
     public static final RegistryObject<Item> SEAL_OF_THE_CORRUPTED = ITEMS.register("seal_of_the_corrupted",
             SealOfTheCorruptedItem::new);
 
