@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket;
 
+import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.VoxelShapeCalculator;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.CrateBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -9,6 +10,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class PicnicBasketBlock extends CrateBlock
 {
@@ -27,14 +30,15 @@ public class PicnicBasketBlock extends CrateBlock
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
     {
+        List<VoxelShape> ListVoxelShape = VoxelShapeCalculator.calculateAllDirectionVoxelShapeFromEastVoxelShape(3 / 16.0, 0, 0, 13 / 16.0, 9 / 16.0, 16 / 16.0);
         Direction facing = state.getValue(FACING);
-        if(facing == Direction.NORTH || facing == Direction.SOUTH)
+        return switch (facing)
         {
-            return box(0, 0, 3, 16, 9, 13);
-        }
-            else
-            {
-                return box(3, 0, 0, 13, 9, 16);
-            }
+            case EAST  -> ListVoxelShape.get(0);
+            case SOUTH -> ListVoxelShape.get(1);
+            case WEST  -> ListVoxelShape.get(2);
+            case NORTH -> ListVoxelShape.get(3);
+            default -> box(0, 0, 0, 16, 16, 16);
+        };
     }
 }

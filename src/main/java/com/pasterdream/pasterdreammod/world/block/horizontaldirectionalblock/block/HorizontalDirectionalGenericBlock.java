@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblockbenchblock.block;
+package com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.block;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;

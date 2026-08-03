@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.block.researchtable;
 
 import com.pasterdream.pasterdreammod.helper.multiblockproperties._2Part;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.MultiBlockProperties;
+import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.blockentity.HorizontalDirectionalBlockBenchBaseEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -31,9 +32,8 @@ import org.jetbrains.annotations.Nullable;
 
 import static net.minecraft.world.Containers.dropItemStack;
 
-public class ResearchTableBlock extends BaseEntityBlock
+public class ResearchTableBlock extends HorizontalDirectionalBlockBenchBaseEntityBlock
 {
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final EnumProperty<_2Part> PART = MultiBlockProperties._2PART;
 
     public ResearchTableBlock(Properties properties)
@@ -57,33 +57,9 @@ public class ResearchTableBlock extends BaseEntityBlock
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState blockState)
-    {
-        return RenderShape.MODEL;
-    }
-
-    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
     {
         builder.add(FACING, PART);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context)
-    {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    public BlockState rotate(BlockState state, Rotation rotation)
-    {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState mirror(BlockState state, Mirror mirror)
-    {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest;
 
+import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.VoxelShapeCalculator;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.CrateBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -9,6 +10,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class ShadowChestBlock extends CrateBlock
 {
@@ -27,14 +30,15 @@ public class ShadowChestBlock extends CrateBlock
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
     {
+        List<VoxelShape> ListVoxelShape = VoxelShapeCalculator.calculateAllDirectionVoxelShapeFromEastVoxelShape(4 / 16.0, 0, 2 / 16.0, 12 / 16.0, 6 / 16.0, 14 / 16.0);
         Direction facing = state.getValue(FACING);
-        if(facing == Direction.NORTH || facing == Direction.SOUTH)
+        return switch (facing)
         {
-            return box(2, 0, 4, 14, 6, 12);
-        }
-            else
-            {
-                return box(4, 0, 2, 12, 6, 14);
-            }
+            case EAST  -> ListVoxelShape.get(0);
+            case SOUTH -> ListVoxelShape.get(1);
+            case WEST  -> ListVoxelShape.get(2);
+            case NORTH -> ListVoxelShape.get(3);
+            default -> box(0, 0, 0, 16, 16, 16);
+        };
     }
 }

@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.world.block.dreamcauldron;
 
+import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.VoxelShapeCalculator;
+import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.blockentity.HorizontalDirectionalGeckolibBaseEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -8,33 +10,27 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 import static net.minecraft.world.Containers.dropItemStack;
 
-public class DreamCauldronBlock extends BaseEntityBlock
+public class DreamCauldronBlock extends HorizontalDirectionalGeckolibBaseEntityBlock
 {
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-
     public DreamCauldronBlock(Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
     @Nullable
@@ -43,49 +39,20 @@ public class DreamCauldronBlock extends BaseEntityBlock
     {
         return new DreamCauldronBlockEntity(blockPosition, blockState);
     }
-
-    @Override
-    public RenderShape getRenderShape(BlockState blockState)
-    {
-        return RenderShape.ENTITYBLOCK_ANIMATED;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
-    {
-        builder.add(FACING);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context)
-    {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    public BlockState rotate(BlockState state, Rotation rotation)
-    {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState mirror(BlockState state, Mirror mirror)
-    {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
     {
+        List<VoxelShape> ListVoxelShape = VoxelShapeCalculator.calculateAllDirectionVoxelShapeFromEastVoxelShape(-5 / 16.0, 0, -7 / 16.0, 21 / 16.0, 14 / 16.0, 23 / 16.0);
+
         Direction facing = state.getValue(FACING);
-        if(facing == Direction.NORTH || facing == Direction.SOUTH)
+        return switch (facing)
         {
-            return box(-7, 0, -5, 23, 14, 21);
-        }
-            else
-            {
-                return box(-5, 0, -7, 21, 14, 23);
-            }
+            case EAST  -> ListVoxelShape.get(0);
+            case SOUTH -> ListVoxelShape.get(1);
+            case WEST  -> ListVoxelShape.get(2);
+            case NORTH -> ListVoxelShape.get(3);
+            default -> box(0, 0, 0, 16, 16, 16);
+        };
     }
 
     @Override
