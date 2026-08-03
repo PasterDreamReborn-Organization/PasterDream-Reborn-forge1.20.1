@@ -49,6 +49,9 @@ public class TerraBladeItem extends SwordItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        if (hand == InteractionHand.OFF_HAND) {
+            return InteractionResultHolder.fail(player.getItemInHand(hand));
+        }
         ItemStack stack = player.getItemInHand(hand);
         if (player.isShiftKeyDown()) {
             if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
@@ -87,11 +90,15 @@ public class TerraBladeItem extends SwordItem {
         double cost = hasCharm ? ENERGY_COST_WITH_CHARM : ENERGY_COST;
         double currentEnergy = MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(serverPlayer);
 
+        if (player.getCooldowns().isOnCooldown(stack.getItem())) {
+            return;
+        }
         if (player.isCreative() || currentEnergy >= cost) {
             if (!player.isCreative()) {
                 MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -cost);
             }
             executeSkillWave(level, player, stack, hasCharm);
+            player.getCooldowns().addCooldown(stack.getItem(), 5);
         } else {
             tag.putBoolean("skill_active", false);
             player.displayClientMessage(Component.translatable("tooltip.pasterdream.terra_blade.no_energy"), true);

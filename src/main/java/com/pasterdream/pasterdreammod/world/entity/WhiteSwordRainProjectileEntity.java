@@ -175,7 +175,7 @@ public class WhiteSwordRainProjectileEntity extends Entity {
 
         boolean hasBrooch = owner instanceof Player player
                 && CuriosApi.getCuriosInventory(player)
-                .map(h -> h.findFirstCurio(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get()).isPresent())
+                .map(h -> h.findFirstCurio(ModItems.BROOCH_OF_WHITE_ORCHID.get()).isPresent())
                 .orElse(false);
 
         // ShadowSilence 10s on shadow_mob entities — apply BEFORE damage to suppress on-hurt skills

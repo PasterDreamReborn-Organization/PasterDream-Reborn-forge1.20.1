@@ -38,6 +38,7 @@ public class TerraswordWaveEntity extends PathfinderMob {
     private static final int MAX_LIFE_TICKS = 25;
     private final Set<UUID> hitEntities = new HashSet<>();
     private final Set<UUID> reflectedProjectiles = new HashSet<>();
+    private int penetrationCount = 0;
     @Nullable
     private Player owner;
     @Nullable
@@ -169,11 +170,14 @@ public class TerraswordWaveEntity extends PathfinderMob {
                     if (data.getBoolean("ignore_iframe")) {
                         target.invulnerableTime = 0;
                     }
+                    float decayMultiplier = 1.0f - penetrationCount * 0.25f;
+                    float finalDamage = damage * decayMultiplier;
                     if (owner != null) {
-                        target.hurt(this.damageSources().playerAttack(owner), damage);
+                        target.hurt(this.damageSources().playerAttack(owner), finalDamage);
                     } else {
-                        target.hurt(this.damageSources().magic(), damage);
+                        target.hurt(this.damageSources().magic(), finalDamage);
                     }
+                    penetrationCount++;
                     if (fireAspect > 0) {
                         target.setSecondsOnFire(fireAspect * 4);
                     }
@@ -185,6 +189,15 @@ public class TerraswordWaveEntity extends PathfinderMob {
                         serverLevel.sendParticles(ParticleTypes.SWEEP_ATTACK,
                                 target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
                                 3, 0.3, 0.3, 0.3, 0.1);
+                    }
+                    if (penetrationCount >= 4) {
+                        if (level instanceof ServerLevel sl) {
+                            sl.sendParticles(ParticleTypes.EXPLOSION,
+                                    this.getX(), this.getY(), this.getZ(),
+                                    3, 0.3, 0.3, 0.3, 0.1);
+                        }
+                        this.discard();
+                        return;
                     }
                 }
             }

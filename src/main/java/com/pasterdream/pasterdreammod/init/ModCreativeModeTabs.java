@@ -293,7 +293,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FOURLEAF_CLOVER_CURIO.get());
                         output.accept(ModItems.SNOW_VOW_HEAD.get());
                         output.accept(ModItems.QYM_BUTTERFLY_STAR_HAIRPIN.get());
-                        output.accept(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get());
+                        output.accept(ModItems.BROOCH_OF_WHITE_ORCHID.get());
                         output.accept(ModItems.SEAL_OF_THE_CORRUPTED.get());
                         output.accept(ModItems.LIGHT_BUTTERFLY_CURIO.get());
                         output.accept(ModItems.BRIGHT_BUTTERFLY_CURIO.get());

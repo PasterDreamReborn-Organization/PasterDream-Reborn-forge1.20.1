@@ -37,6 +37,9 @@ public class InfernoSwordItem extends SwordItem {
     /** 右键蓄力：冷却 10 秒。 */
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        if (hand == InteractionHand.OFF_HAND) {
+            return InteractionResultHolder.fail(player.getItemInHand(hand));
+        }
         ItemStack stack = player.getItemInHand(hand);
         if (!level.isClientSide && !stack.getOrCreateTag().getBoolean(TAG_SKILL)) {
             stack.getOrCreateTag().putBoolean(TAG_SKILL, true);
