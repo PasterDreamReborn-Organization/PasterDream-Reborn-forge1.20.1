@@ -114,8 +114,8 @@ public class ShadowSwordItem extends SwordItem {
                 if (selected) {
                     double maxSan = SanHelper.getPlayerMaxSan(sp);
                     double newRatio = maxSan > 0.0 ? SanHelper.getPlayerSan(sp) / maxSan : 1.0;
-                    double oldRatio = itemstack.getOrCreateTag().getDouble("sanRatio");
-                    if (Math.abs(newRatio - oldRatio) > 0.01) {
+                    boolean hasKey = itemstack.getOrCreateTag().contains("sanRatio");
+                    if (!hasKey || Math.abs(newRatio - itemstack.getOrCreateTag().getDouble("sanRatio")) > 0.01) {
                         itemstack.getOrCreateTag().putDouble("sanRatio", newRatio);
                     }
                 }
