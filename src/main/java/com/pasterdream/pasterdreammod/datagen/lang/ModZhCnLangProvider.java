@@ -1164,6 +1164,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 影刃
         add(ModItems.SHADOW_SWORD.get(), "影刃");
+        add("tooltip.pasterdream.shadow_sword.skill_name", "战技：§5夜魔斩击");
+        add("tooltip.pasterdream.shadow_sword.skill_desc1", "§7▪ §9右键消耗§c5 §9精神值（不足时消耗§c5生命值§9，不致死）");
+        add("tooltip.pasterdream.shadow_sword.skill_desc2", "§7▪ §9下一次斩击变为§d魔法伤害§9，造成§c攻击力×(2-SAN%)§9伤害");
+        add("tooltip.pasterdream.shadow_sword.skill_desc3", "§7▪ §9冷却时间：§c2.0秒");
         add("tooltip.pasterdream.shadow_sword.passive_name", "被动：§5暗影");
         add("tooltip.pasterdream.shadow_sword.desc1", "§7▪ §9持剑者的精神值越低 造成的伤害越高");
         add("tooltip.pasterdream.shadow_sword.desc2", "§7▪ §9最高攻击力§c+75%§9 攻击速度§c+50%");
@@ -1173,7 +1177,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 堕落者之印
         add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "堕落者之印");
-        add("tooltip.pasterdream.seal_of_the_corrupted.effect1", "§7▪ §9精神值归零时不再损失生命值");
+        add("tooltip.pasterdream.seal_of_the_corrupted.effect1", "§7▪ §9精神值归零时不会触发负面效果");
+        add("tooltip.pasterdream.seal_of_the_corrupted.effect2", "§7▪ §9暗影生物对你保持中立");
+        add("tooltip.pasterdream.seal_of_the_corrupted.effect3", "§7▪ §9因低精神值诞生的暗影生物为你而战");
         add("tooltip.pasterdream.seal_of_the_corrupted.flavor", "§7§o——我将成为你的阴影 一并体会你的痛苦");
 
         // 泰拉浮岛模型

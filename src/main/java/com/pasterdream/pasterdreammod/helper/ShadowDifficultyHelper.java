@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.helper;
 
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.ModGameRules;
+import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -19,6 +20,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import top.theillusivec4.curios.api.CuriosApi;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -329,6 +331,12 @@ public final class ShadowDifficultyHelper {
                 e.setYRot(random.nextFloat() * 360F);
                 // 标记源玩家，供后续属性缩放和行为判定使用
                 e.getPersistentData().putUUID("ShadowSourcePlayer", player.getUUID());
+                // 堕落者之印：源玩家佩戴封印时，暗影生物协助作战
+                if (CuriosApi.getCuriosInventory(player)
+                        .map(h -> h.findFirstCurio(ModItems.SEAL_OF_THE_CORRUPTED.get()).isPresent())
+                        .orElse(false)) {
+                    e.getPersistentData().putBoolean("pasterdream:seal_friendly", true);
+                }
                 return;
             }
         }

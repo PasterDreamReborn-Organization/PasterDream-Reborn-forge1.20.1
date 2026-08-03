@@ -1003,6 +1003,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         // Shadow Sword
         add(ModItems.SHADOW_SWORD.get(), "Shadow Sword");
+        add("tooltip.pasterdream.shadow_sword.skill_name", "Skill: §5Nightmare Slash");
+        add("tooltip.pasterdream.shadow_sword.skill_desc1", "§7▪ §9Right-click consumes §c5 SAN §9(or §c5 HP §9if insufficient, non-lethal)");
+        add("tooltip.pasterdream.shadow_sword.skill_desc2", "§7▪ §9Next attack becomes §dMagic Damage§9, dealing §cATK×(2-SAN%)§9");
+        add("tooltip.pasterdream.shadow_sword.skill_desc3", "§7▪ §9Cooldown: §c2.0s");
         add("tooltip.pasterdream.shadow_sword.passive_name", "Passive: §5Shadow");
         add("tooltip.pasterdream.shadow_sword.desc1", "§7▪ §9The lower the wielder's sanity, the higher the damage");
         add("tooltip.pasterdream.shadow_sword.desc2", "§7▪ §9Max §c+75% ATK§9, §c+50% §9attack speed");
@@ -1012,7 +1016,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         // Seal of the Fallen
         add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "Seal of the Corrupted");
-        add("tooltip.pasterdream.seal_of_the_corrupted.effect1", "§7▪ §9No longer loses health when sanity reaches zero");
+        add("tooltip.pasterdream.seal_of_the_corrupted.effect1", "§7▪ §9Immune to negative sanity effects (Lethargy, Trance, Insanity)");
+        add("tooltip.pasterdream.seal_of_the_corrupted.effect2", "§7▪ §9Shadow mobs become neutral to you");
+        add("tooltip.pasterdream.seal_of_the_corrupted.effect3", "§7▪ §9Shadow mobs spawned by low sanity fight for you");
         add("tooltip.pasterdream.seal_of_the_corrupted.flavor", "§7§o——I will become your shadow and share your suffering");
 
         // Terra Floating Island

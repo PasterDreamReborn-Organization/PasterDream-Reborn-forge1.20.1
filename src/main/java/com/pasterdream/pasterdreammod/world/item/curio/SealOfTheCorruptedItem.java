@@ -21,7 +21,6 @@ import java.util.UUID;
 
 public class SealOfTheCorruptedItem extends Item implements ICurioItem {
 
-    private static final UUID HEALTH_UUID = UUID.fromString("5253b2de-f6fa-4b10-b1fb-42a2de2be49b");
     private static final UUID ENTITY_REACH_UUID = UUID.fromString("b84e7f10-74e3-43f5-95f9-968877248549");
     private static final UUID BLOCK_REACH_UUID = UUID.fromString("f55792ba-17c1-43bb-86ac-ff805d06ce3c");
     private static final UUID ATTACK_DAMAGE_UUID = UUID.fromString("4b798e40-aac3-43a2-b93b-c927ec3a2c59");
@@ -44,12 +43,9 @@ public class SealOfTheCorruptedItem extends Item implements ICurioItem {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext,
                                                                          UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> modifiers = HashMultimap.create();
-        modifiers.put(Attributes.MAX_HEALTH,
-                new AttributeModifier(HEALTH_UUID, "seal_of_the_corrupted.max_health",
-                        -4.0, AttributeModifier.Operation.ADDITION));
         modifiers.put(ForgeMod.ENTITY_REACH.get(),
                 new AttributeModifier(ENTITY_REACH_UUID, "seal_of_the_corrupted.entity_reach",
-                        0.2, AttributeModifier.Operation.ADDITION));
+                        1.0, AttributeModifier.Operation.ADDITION));
         modifiers.put(ForgeMod.BLOCK_REACH.get(),
                 new AttributeModifier(BLOCK_REACH_UUID, "seal_of_the_corrupted.block_reach",
                         1.0, AttributeModifier.Operation.ADDITION));
@@ -63,6 +59,8 @@ public class SealOfTheCorruptedItem extends Item implements ICurioItem {
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
         list.add(ModRarities.qualityTooltip(ModRarities.EPIC));
         list.add(Component.translatable("tooltip.pasterdream.seal_of_the_corrupted.effect1"));
+        list.add(Component.translatable("tooltip.pasterdream.seal_of_the_corrupted.effect2"));
+        list.add(Component.translatable("tooltip.pasterdream.seal_of_the_corrupted.effect3"));
         list.add(Component.translatable("tooltip.pasterdream.seal_of_the_corrupted.flavor"));
     }
 }
