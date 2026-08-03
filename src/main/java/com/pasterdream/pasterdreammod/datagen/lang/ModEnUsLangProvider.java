@@ -1312,8 +1312,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.dyedream_crack.first_contact.3", "§5Perhaps it's not the time yet. Let's leave the answer to the time that flows between day and night.");
         add("message.pasterdream.dyedream_crack.first_contact.4", "§5Maybe I should flip through the Seniors Dream... there might be records about this kind of crack.");
         add("message.pasterdream.sleep.dream_of_crack.1", "§5You wake up startled from your sleep, with cold sweat on your back. You recall dreaming of the strange crack you encountered during your past explorations, slowly approaching and staring at you.");
-        add("message.pasterdream.sleep.dream_of_crack.2", "§5You quickly use nearby materials to record these dreams, and afterward you lose all memory of this dream.");
+        add("message.pasterdream.sleep.dream_of_crack.2", "§5That crack is likely suspicious. Perhaps you should return there to investigate.");
         add("message.pasterdream.sleep.dream_of_crack.3", "§5I must find out what happened...");
+        add("message.pasterdream.sleep.dream_of_crack.4", "A Dream Seeker's note appeared in your pocket");
         add("message.pasterdream.dyedream_world.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
         add("message.pasterdream.story.pure_and_flawless.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
         add("message.pasterdream.story.dream_fertilizer.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
