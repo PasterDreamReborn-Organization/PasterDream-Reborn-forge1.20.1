@@ -979,7 +979,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.terra_blade.desc1", "§7▪ §9Shift+Right-click to toggle sword wave mode");
         add("tooltip.pasterdream.terra_blade.desc2", "§7▪ §9When active, each swing releases a sword wave");
         add("tooltip.pasterdream.terra_blade.desc3", "§7▪ §9Each wave deals §c2+ATK §9damage");
-        add("tooltip.pasterdream.terra_blade.desc4", "§7▪ §9Each wave costs §c0.1 §9Melt Dream Energy");
+        add("tooltip.pasterdream.terra_blade.desc4", "§7▪ §9Each wave costs §c0.5 §9Melt Dream Energy");
         add("tooltip.pasterdream.terra_blade.desc5", "§7▪ §9Auto-deactivates when energy is depleted");
         add("tooltip.pasterdream.terra_blade.skill_on", "§aSword Wave: ON");
         add("tooltip.pasterdream.terra_blade.skill_off", "§7Sword Wave: OFF");
@@ -989,21 +989,23 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // White Sword
         add(ModItems.WHITE_SWORD.get(), "White Sword");
         add("tooltip.pasterdream.white_sword.skill_name", "Combat Art: §fWhite Sword Rain");
-        add("tooltip.pasterdream.white_sword.desc1", "§7▪ §9Targets the entity at crosshair within 10 blocks as the center");
-        add("tooltip.pasterdream.white_sword.desc2", "§7▪ §9If no entity, targets the block at crosshair, or the air 10 blocks away");
-        add("tooltip.pasterdream.white_sword.desc3", "§7▪ §9Each hit deals 3+ATK*0.4 damage and binds the target");
+        add("tooltip.pasterdream.white_sword.desc1", "§7▪ §9Summons sword rain from behind and above, firing toward the crosshair");
+        add("tooltip.pasterdream.white_sword.desc2", "§7▪ §9Deals §dmagic damage§9, ignores armor and binds the target");
+        add("tooltip.pasterdream.white_sword.desc3", "§7▪ §9Each hit deals §cATK*0.01 §9damage");
         add("tooltip.pasterdream.white_sword.desc4", "§7▪ §9Silences shadow mobs for 10s on hit");
         add("tooltip.pasterdream.white_sword.desc5", "§7▪ §9Cooldown: §c2.0s");
-        add("tooltip.pasterdream.white_sword.desc6", "§7▪ §9Melt Dream Energy Cost: §c0.1");
+        add("tooltip.pasterdream.white_sword.desc6", "§7▪ §9Melt Dream Energy Cost: §c1.5");
         add("tooltip.pasterdream.white_sword.desc7", "§7▪ §9§c+50% §9damage to shadow mobs");
+        add("tooltip.pasterdream.white_sword.skill_passive_name", "Passive: §6Light Chaser");
+        add("tooltip.pasterdream.white_sword.desc8", "§7▪ §9§c50% §9chance on melee attack to fire homing sword rain at the target");
         add("message.pasterdream.white_sword.no_energy", "Not enough Melt Dream Energy");
-        add(ModItems.WHITE_SWORD_RAIN.get(), "White Sword Rain");
+        add("entity.pasterdream.white_sword_rain_projectile", "White Sword Rain");
 
         // Terra Floating Island
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "Terra Floating Island");
-        add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9Sword wave cost reduced by 0.05 (§c0.05 §9per swing)");
-        add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9Sword wave damage +30%");
-        add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9Sword wave ignores invulnerability frames");
+        add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9Terra Sword wave cost reduced to §c0.4");
+        add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9Terra Sword wave damage +30%");
+        add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9Terra Sword wave ignores invulnerability frames");
 
         // Strawberry Heart
         add(ModItems.STRAWBERRY_HEART.get(), "Strawberry Heart");

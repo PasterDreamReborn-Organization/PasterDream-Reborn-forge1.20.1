@@ -46,7 +46,6 @@ import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.tidetool.BeihaiRuoTideSwordItem;
 import com.pasterdream.pasterdreammod.world.item.tidetool.TideSwordItem;
 import com.pasterdream.pasterdreammod.world.item.whiteswordtool.WhiteSwordItem;
-import com.pasterdream.pasterdreammod.world.item.whiteswordtool.WhiteSwordRainItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.TerraBladeItem;
@@ -390,9 +389,7 @@ public class ModItems {
 
     // 白厄
     public static final RegistryObject<Item> WHITE_SWORD = ITEMS.register("white_sword",
-            () -> new WhiteSwordItem(ModToolTiers.WHITE_SWORD, 7, -2.4f));
-    public static final RegistryObject<Item> WHITE_SWORD_RAIN = ITEMS.register("white_sword_rain",
-            () -> new WhiteSwordRainItem());
+            () -> new WhiteSwordItem(ModToolTiers.WHITE_SWORD, 3, -2.4f));
 
     // ===== 钛金装备 =====
     public static final RegistryObject<Item> TITANIUM_HELMET = ITEMS.register("titanium_helmet",

@@ -14,38 +14,40 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ItemSupplier;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import javax.annotation.Nullable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
-@OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
-public class WhiteSwordRainProjectileEntity extends Entity implements ItemSupplier {
+public class WhiteSwordRainProjectileEntity extends Entity {
 
-    private static final ItemStack PROJECTILE_ITEM = new ItemStack(ModItems.WHITE_SWORD_RAIN.get());
     private static final TagKey<EntityType<?>> SHADOW_MOB = TagKey.create(Registries.ENTITY_TYPE,
             ResourceLocation.fromNamespaceAndPath("pasterdream", "shadow_mob"));
-    private static final int MAX_LIFE = 25;
+    private static final int MAX_LIFE = 30;
 
     @Nullable
     private UUID ownerUUID;
+    @Nullable
+    private UUID targetUUID;
     private float damage;
+    private final Set<UUID> reflectedProjectiles = new HashSet<>();
 
     public WhiteSwordRainProjectileEntity(EntityType<?> type, Level level) {
         super(type, level);
@@ -65,6 +67,9 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
         if (tag.hasUUID("Owner")) {
             this.ownerUUID = tag.getUUID("Owner");
         }
+        if (tag.hasUUID("Target")) {
+            this.targetUUID = tag.getUUID("Target");
+        }
         this.damage = tag.getFloat("Damage");
     }
 
@@ -73,6 +78,9 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
         if (this.ownerUUID != null) {
             tag.putUUID("Owner", this.ownerUUID);
         }
+        if (this.targetUUID != null) {
+            tag.putUUID("Target", this.targetUUID);
+        }
         tag.putFloat("Damage", this.damage);
     }
 
@@ -80,11 +88,24 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
         this.ownerUUID = owner.getUUID();
     }
 
+    public void setTarget(@Nullable LivingEntity target) {
+        this.targetUUID = target != null ? target.getUUID() : null;
+    }
+
     @Nullable
     private LivingEntity resolveOwner() {
         if (this.ownerUUID != null && this.level() instanceof net.minecraft.server.level.ServerLevel sl) {
             Entity e = sl.getEntity(this.ownerUUID);
             if (e instanceof LivingEntity le) return le;
+        }
+        return null;
+    }
+
+    @Nullable
+    private LivingEntity resolveTarget() {
+        if (this.targetUUID != null && this.level() instanceof net.minecraft.server.level.ServerLevel sl) {
+            Entity e = sl.getEntity(this.targetUUID);
+            if (e instanceof LivingEntity le && le.isAlive()) return le;
         }
         return null;
     }
@@ -99,12 +120,6 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
-    public ItemStack getItem() {
-        return PROJECTILE_ITEM;
-    }
-
-    @Override
     public void tick() {
         super.tick();
 
@@ -114,6 +129,15 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
             return;
         }
 
+        // Homing: steer toward target if set
+        if (!this.level().isClientSide && this.targetUUID != null) {
+            LivingEntity target = resolveTarget();
+            if (target != null) {
+                Vec3 toTarget = target.getEyePosition().subtract(this.position()).normalize();
+                this.setDeltaMovement(toTarget.scale(0.7));
+            }
+        }
+
         // Movement
         Vec3 delta = this.getDeltaMovement();
         this.setPos(this.getX() + delta.x, this.getY() + delta.y, this.getZ() + delta.z);
@@ -121,18 +145,27 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
         // Entity collision (server only)
         if (!this.level().isClientSide && this.isAlive()) {
             checkEntityCollision();
+            reflectProjectiles();
         }
 
         // Particles (client only)
         if (this.level().isClientSide) {
-            this.level().addParticle(ParticleTypes.END_ROD, this.getX(), this.getY(), this.getZ(), 0, -1, 0);
+            Vec3 motion = this.getDeltaMovement().normalize();
+            this.level().addParticle((SimpleParticleType) ModParticleTypes.WHITE_SWORD_SPARK_PARTICLE.get(),
+                    this.getX(), this.getY(), this.getZ(),
+                    motion.x * 0.2, motion.y * 0.2, motion.z * 0.2);
             this.level().addParticle((SimpleParticleType) ModParticleTypes.DUST_0_PARTICLE.get(),
-                    this.getX(), this.getY(), this.getZ(), 0.1, 0, 0.1);
+                    this.getX(), this.getY(), this.getZ(), motion.x * 0.1, motion.y * 0.1, motion.z * 0.1);
         }
     }
 
     private void checkEntityCollision() {
-        AABB aabb = this.getBoundingBox().inflate(0.3);
+        CompoundTag projectileData = this.getPersistentData();
+        int sweepingEdge = projectileData.getInt("paster_sweeping_edge");
+        int knockback = projectileData.getInt("paster_knockback");
+
+        double hitboxSize = 0.3 + sweepingEdge * 0.3;
+        AABB aabb = this.getBoundingBox().inflate(hitboxSize);
         LivingEntity owner = resolveOwner();
         List<LivingEntity> targets = this.level().getEntitiesOfClass(LivingEntity.class, aabb,
                 e -> e.isAlive() && e != owner && !isOwnedBy(e, owner));
@@ -152,7 +185,6 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
         }
 
         // Enchantment bonuses
-        CompoundTag projectileData = this.getPersistentData();
         this.damage += projectileData.getInt("paster_sharpness") * 0.5f;
         if (projectileData.getInt("paster_smite") > 0 && target.getMobType() == MobType.UNDEAD) {
             this.damage += projectileData.getInt("paster_smite") * 2.5f;
@@ -160,6 +192,16 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
         if (projectileData.getInt("paster_bane") > 0 && target.getMobType() == MobType.ARTHROPOD) {
             this.damage += projectileData.getInt("paster_bane") * 2.5f;
         }
+
+        // Shadow/Brooch damage multiplier
+        float rainMultiplier = 1.0f;
+        if (target.getType().is(SHADOW_MOB)) {
+            rainMultiplier += 0.5f;
+        }
+        if (hasBrooch) {
+            rainMultiplier += 0.5f;
+        }
+        this.damage *= rainMultiplier;
 
         // Fire Aspect
         int fireAspect = projectileData.getInt("paster_fire_aspect");
@@ -172,11 +214,46 @@ public class WhiteSwordRainProjectileEntity extends Entity implements ItemSuppli
 
         // Melee damage
         if (owner instanceof Player player) {
-            target.hurt(this.damageSources().playerAttack(player), this.damage);
+            target.getPersistentData().putBoolean("pasterdream:rain_damage", true);
+            target.hurt(this.damageSources().indirectMagic(this, player), this.damage);
+            target.getPersistentData().remove("pasterdream:rain_damage");
             target.invulnerableTime = hasBrooch ? 0 : 9;
+
+            // Knockback
+            if (knockback > 0) {
+                Vec3 kb = target.position().subtract(this.position()).normalize().scale(knockback * 0.6);
+                target.push(kb.x, 0.2, kb.z);
+            }
         }
 
         this.discard();
+    }
+
+    private void reflectProjectiles() {
+        double radius = 1.5;
+        AABB aabb = this.getBoundingBox().inflate(radius);
+        LivingEntity owner = resolveOwner();
+        List<Projectile> projectiles = this.level().getEntitiesOfClass(Projectile.class, aabb,
+                p -> !reflectedProjectiles.contains(p.getUUID()));
+        for (Projectile projectile : projectiles) {
+            Entity projOwner = projectile.getOwner();
+            if (owner != null && projOwner != null && projOwner.getUUID().equals(owner.getUUID())) {
+                continue;
+            }
+            reflectedProjectiles.add(projectile.getUUID());
+            projectile.setDeltaMovement(projectile.getDeltaMovement().reverse());
+            if (owner != null) {
+                projectile.setOwner(owner);
+            }
+            if (projectile instanceof AbstractArrow arrow) {
+                arrow.pickup = AbstractArrow.Pickup.DISALLOWED;
+            }
+            if (this.level() instanceof ServerLevel serverLevel) {
+                serverLevel.sendParticles(ParticleTypes.CRIT,
+                        projectile.getX(), projectile.getY() + projectile.getBbHeight() / 2, projectile.getZ(),
+                        8, 0.3, 0.3, 0.3, 0.1);
+            }
+        }
     }
 
     private static boolean isOwnedBy(LivingEntity target, @Nullable LivingEntity owner) {

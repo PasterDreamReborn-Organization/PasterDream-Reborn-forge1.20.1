@@ -1140,7 +1140,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.terra_blade.desc1", "§7▪ §9Shift+右键切换剑气状态");
         add("tooltip.pasterdream.terra_blade.desc2", "§7▪ §9剑气状态开启时，每次挥剑释放一道剑气");
         add("tooltip.pasterdream.terra_blade.desc3", "§7▪ §9每道剑气造成 §c2+当前攻击力 §9伤害");
-        add("tooltip.pasterdream.terra_blade.desc4", "§7▪ §9每道剑气消耗 §c0.1 §9融梦能量");
+        add("tooltip.pasterdream.terra_blade.desc4", "§7▪ §9每道剑气消耗 §c0.5 §9融梦能量");
         add("tooltip.pasterdream.terra_blade.desc5", "§7▪ §9能量不足时自动退出剑气状态");
         add("tooltip.pasterdream.terra_blade.skill_on", "§a剑气状态：开启");
         add("tooltip.pasterdream.terra_blade.skill_off", "§7剑气状态：关闭");
@@ -1150,21 +1150,23 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 白厄剑
         add(ModItems.WHITE_SWORD.get(), "白厄剑");
         add("tooltip.pasterdream.white_sword.skill_name", "战技：§f白厄剑雨");
-        add("tooltip.pasterdream.white_sword.desc1", "§7▪ §9选取准星10格内的生物为中心释放剑雨");
-        add("tooltip.pasterdream.white_sword.desc2", "§7▪ §9未选中生物时以准星方块为中心，若无方块则以10格处为中心");
-        add("tooltip.pasterdream.white_sword.desc3", "§7▪ §9每发剑雨造成3+攻击力*0.4点伤害并将其束缚");
+        add("tooltip.pasterdream.white_sword.desc1", "§7▪ §9从身后上方召唤剑雨阵列向准星方向发射");
+        add("tooltip.pasterdream.white_sword.desc2", "§7▪ §9剑雨造成§d魔法伤害§9，无视护甲并束缚目标");
+        add("tooltip.pasterdream.white_sword.desc3", "§7▪ §9每发剑雨造成§c攻击力*0.01§9点伤害");
         add("tooltip.pasterdream.white_sword.desc4", "§7▪ §9命中暗影生物时使其沉默10秒");
         add("tooltip.pasterdream.white_sword.desc5", "§7▪ §9冷却时间：§c2.0秒");
-        add("tooltip.pasterdream.white_sword.desc6", "§7▪ §9融梦能量消耗：§c0.1");
+        add("tooltip.pasterdream.white_sword.desc6", "§7▪ §9融梦能量消耗：§c1.5");
         add("tooltip.pasterdream.white_sword.desc7", "§7▪ §9对暗影生物伤害§c+50%");
+        add("tooltip.pasterdream.white_sword.skill_passive_name", "被动：§6光之追逐");
+        add("tooltip.pasterdream.white_sword.desc8", "§7▪ §9近战攻击时有§c50% §9概率向目标释放追踪剑雨");
         add("message.pasterdream.white_sword.no_energy", "融梦能量不足");
-        add(ModItems.WHITE_SWORD_RAIN.get(), "白厄剑雨");
+        add("entity.pasterdream.white_sword_rain_projectile", "白厄剑雨");
 
         // 泰拉浮岛模型
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "泰拉浮岛模型");
-        add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9剑气消耗减少 0.05（每次挥剑消耗 §c0.05§9）");
-        add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9剑气攻击力 +30%");
-        add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9剑气攻击无视无敌帧");
+        add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9泰拉剑气消耗减少至 §c0.4§9");
+        add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9泰拉剑气攻击力 +30%");
+        add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9泰拉剑气攻击无视无敌帧");
 
         add("message.pasterdream.lost_sword_tomb.lack_strength", "你的力气不足以拔出这柄剑");
         add("tooltip.pasterdream.lost_sword_tomb", "§7既然拔不出来，那就带着石头用吧！");
