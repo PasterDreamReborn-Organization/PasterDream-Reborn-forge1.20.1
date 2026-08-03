@@ -274,6 +274,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CHENJINGMEN_DESERT_SWORD.get());
                         output.accept(ModItems.BROKEN_HERO_SWORD.get());
                         output.accept(ModItems.WHITE_SWORD.get());
+                        output.accept(ModItems.SHADOW_SWORD.get());
                         // 特殊道具
                         output.accept(ModItems.DREAM_HARP_OF_WANDERER.get());
                         output.accept(ModItems.QYM_CAT_EARS.get());
@@ -293,6 +294,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SNOW_VOW_HEAD.get());
                         output.accept(ModItems.QYM_BUTTERFLY_STAR_HAIRPIN.get());
                         output.accept(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get());
+                        output.accept(ModItems.SEAL_OF_THE_CORRUPTED.get());
                         output.accept(ModItems.LIGHT_BUTTERFLY_CURIO.get());
                         output.accept(ModItems.BRIGHT_BUTTERFLY_CURIO.get());
                         output.accept(ModItems.BOBOJI_CURIO.get());

@@ -436,6 +436,8 @@
     "light_butterfly_curio": "light_butterfly_curio",
     "bright_butterfly_curio": "bright_butterfly_curio",
     "white_crystal": "white_crystal",
+    "white_sword": "white_sword",
+    "white_sword_rain": "white_sword_rain",
     "boboji_curio": "boboji_curio",
     "counter_ring": "counter_ring",
     "meltdream_energy_0_ring": "melt_dream_energy_ring",
@@ -445,6 +447,7 @@
     "allkinds_ring": "allkinds_ring",
     "cradle_in_ones_arms": "kaichu_omamori",
     "white_flower_body": "white_orchid_flower_brooch",
+    "degenerate_bodys": "seal_of_the_fallen",
     "sweetdream_disc": "sweet_dream_music_disc",
     "snowfalldream_disc": "snowfall_dream_music_disc",
     "time_hourglass": "sand_of_time",
@@ -483,7 +486,8 @@
     "weakeness_terrorbeak": "weakeness_terrorbeak",
     "projectile_squeal_wave_projectile": "squeal_wave_projectile",
     "black_beetle": "black_beetle",
-    "black_beetle_mother": "black_beetle_mother"
+    "black_beetle_mother": "black_beetle_mother",
+    "white_sword_rain_projectile": "white_sword_rain_projectile"
   },
   "dimensions": {
     "dyedream_world": "dyedream_world",
@@ -518,7 +522,9 @@
     "teleportation_buff": "待搬运",
     "fondillusion_buff": "待搬运",
     "rest_buff": "rest_buff",
-    "dream_harp_of_wanderer_buff": "dream_harp_of_wanderer_buff"
+    "dream_harp_of_wanderer_buff": "dream_harp_of_wanderer_buff",
+    "bind_buff": "bind_buff",
+    "shadow_silence_buff": "shadow_silence_buff"
   },
   "enchantments": {
     "enchantment_atkspd": "swift_strike",

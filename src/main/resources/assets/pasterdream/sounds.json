@@ -107,5 +107,8 @@
   },
   "white_sword_rain": {
     "sounds": [{"name": "pasterdream:white_sword_rain", "stream": false}]
+  },
+  "shadow_sword": {
+    "sounds": [{"name": "pasterdream:shadow_sword", "stream": false}]
   }
 }
