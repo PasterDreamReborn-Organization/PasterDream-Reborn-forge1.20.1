@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.weaponworkshop.core;
 
+import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.VoxelShapeCalculator;
 import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.block.HorizontalDirectionalBlockBenchBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -7,6 +8,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import java.util.List;
 
 public class WeaponWorkshopCoreBlock extends HorizontalDirectionalBlockBenchBlock
 {
@@ -18,14 +21,15 @@ public class WeaponWorkshopCoreBlock extends HorizontalDirectionalBlockBenchBloc
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
     {
+        List<VoxelShape> ListVoxelShape = VoxelShapeCalculator.calculateAllDirectionVoxelShapeFromEastVoxelShape(-1 / 16.0, 0, -3 / 16.0, 17 / 16.0, 13 / 16.0, 19 / 16.0);
         Direction facing = state.getValue(FACING);
-        if(facing == Direction.NORTH || facing == Direction.SOUTH)
+        return switch (facing)
         {
-            return box(-3, 0, -1, 19, 13, 17);
-        }
-            else
-            {
-                return box(-1, 0, -3, 17, 13, 19);
-            }
+            case EAST  -> ListVoxelShape.get(0);
+            case SOUTH -> ListVoxelShape.get(1);
+            case WEST  -> ListVoxelShape.get(2);
+            case NORTH -> ListVoxelShape.get(3);
+            default -> box(0, 0, 0, 16, 16, 16);
+        };
     }
 }

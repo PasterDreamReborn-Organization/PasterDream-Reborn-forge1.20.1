@@ -213,7 +213,12 @@
 | `shadowcandle`                      | `shadow_candle`                     | 重命名，加下划线                                      | 客制化类 `ShadowCandleBlock`，蜡烛形状 + 发光13 + 每tick生成灵魂粒子                                                               |
 | `dream_accumulator`                 | `dream_accumulator`                 | 不改                                            | 客制化类 `DreamAccumulatorBlock`                                                                                     |
 | `pebble_0`                          | `pebble`                            | 重命名，删除 `_0` 后缀                                | 客制化类 `PebbleBlock`，水平朝向 + 含水 + 下方方块不可遮挡时掉落自身                                                                     |
-| `weapon_table`                      | `weapon_workshop_core`              | 重命名                                           | 客制化类 `WeaponWorkshopBlock`                                                                                       |
+| `weapon_table`                      | `weapon_workshop_core`              | 重命名                                           | 客制化类 `WeaponWorkshopCoreBlock`                                                                                   |
+| `workshop_anvil`                    | `weapon_workshop_anvil`             | 重命名                                           | 客制化类 `WeaponWorkshopAnvilBlock`                                                                                  |
+| `workshop_blast`                    | `weapon_workshop_blast_furnace`     | 重命名                                           | 客制化类 `WeaponWorkshopBlastFurnaceBlock`                                                                           |
+| `workshop_cauldeon`                 | `weapon_workshop_cooler_pot`        | 重命名                                           | 客制化类 `WeaponWorkshopCoolerPotBlock`                                                                              |
+| `workshop_grind`                    | `weapon_workshop_grind_stone`       | 重命名                                           | 客制化类 `WeaponWorkshopGrindStoneBlock`                                                                             |
+
 
 ---
 
