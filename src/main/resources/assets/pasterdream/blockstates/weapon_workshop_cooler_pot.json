@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "facing=north":
+    {
+      "model": "pasterdream:block/weapon_workshop_cooler_pot"
+    },
+    "facing=east":
+    {
+      "model": "pasterdream:block/weapon_workshop_cooler_pot",
+      "y": 90
+    },
+    "facing=south":
+    {
+      "model": "pasterdream:block/weapon_workshop_cooler_pot",
+      "y": 180
+    },
+    "facing=west":
+    {
+      "model": "pasterdream:block/weapon_workshop_cooler_pot",
+      "y": 270
+    }
+  }
+}

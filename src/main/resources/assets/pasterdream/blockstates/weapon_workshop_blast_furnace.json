@@ -1,0 +1,83 @@
+{
+  "variants": {
+    "facing=north,part=main":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace",
+      "y": 90
+    },
+    "facing=east,part=main":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace",
+      "y": 180
+    },
+    "facing=south,part=main":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace",
+      "y": 270
+    },
+    "facing=west,part=main":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace"
+    },
+    "part=addon_1_0_0":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_0_0_1":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_1_0_1":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_0_1_0":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_1_1_0":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_0_1_1":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_1_1_1":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_0_2_0":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_1_2_0":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_0_2_1":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_1_2_1":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_0_3_0":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_1_3_0":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_0_3_1":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    },
+    "part=addon_1_3_1":
+    {
+      "model": "pasterdream:block/weapon_workshop_blast_furnace_multipart"
+    }
+  }
+}

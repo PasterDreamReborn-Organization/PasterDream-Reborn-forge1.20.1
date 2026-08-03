@@ -1,5 +1,5 @@
 {
-  "parent": "pasterdream:block/weapon_workshop_core",
+  "parent": "pasterdream:block/weapon_workshop_grind_stone",
   "display": {
     "thirdperson_righthand": {
       "rotation": [
@@ -88,8 +88,8 @@
         -179.02
       ],
       "translation": [
-        0,
-        0.5,
+        -0.25,
+        -0.25,
         0
       ],
       "scale": [

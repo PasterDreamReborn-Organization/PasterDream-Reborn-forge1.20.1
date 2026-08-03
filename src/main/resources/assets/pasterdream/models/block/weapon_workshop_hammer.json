@@ -1,0 +1,50 @@
+{
+  "format_version": "1.9.0",
+  "credit": "Made with Blockbench",
+  "texture_size": [64, 64],
+  "textures": {
+    "1": "pasterdream:block/weapon_workshop_hammer",
+    "particle": "pasterdream:block/weapon_workshop_hammer"
+  },
+  "elements": [
+    {
+      "name": "dachui",
+      "from": [3, 0, 5],
+      "to": [13, 5, 11],
+      "rotation": {"angle": 0, "axis": "y", "origin": [-14, -2, 4]},
+      "faces": {
+        "north": {"uv": [1.5, 1.5, 4, 2.75], "texture": "#1"},
+        "east": {"uv": [0, 1.5, 1.5, 2.75], "texture": "#1"},
+        "south": {"uv": [5.5, 1.5, 8, 2.75], "texture": "#1"},
+        "west": {"uv": [4, 1.5, 5.5, 2.75], "texture": "#1"},
+        "up": {"uv": [4, 1.5, 1.5, 0], "texture": "#1"},
+        "down": {"uv": [6.5, 0, 4, 1.5], "texture": "#1"}
+      }
+    },
+    {
+      "name": "dachui",
+      "from": [7, 0, 7],
+      "to": [9, 26, 9],
+      "rotation": {"angle": 0, "axis": "y", "origin": [-14, -2, 4]},
+      "faces": {
+        "north": {"uv": [0.5, 3.25, 1, 9.75], "texture": "#1"},
+        "east": {"uv": [0, 3.25, 0.5, 9.75], "texture": "#1"},
+        "south": {"uv": [1.5, 3.25, 2, 9.75], "texture": "#1"},
+        "west": {"uv": [1, 3.25, 1.5, 9.75], "texture": "#1"},
+        "up": {"uv": [1, 3.25, 0.5, 2.75], "texture": "#1"},
+        "down": {"uv": [1.5, 2.75, 1, 3.25], "texture": "#1"}
+      }
+    }
+  ],
+  "groups": [
+    {
+      "name": "dachui",
+      "origin": [8, 0, 8],
+      "scope": 0,
+      "color": 5,
+      "children": []
+    },
+    0,
+    1
+  ]
+}
