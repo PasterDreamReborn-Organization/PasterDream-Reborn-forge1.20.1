@@ -1,5 +1,5 @@
 {
-  "parent": "pasterdream:block/weapon_workshop_core",
+  "parent": "pasterdream:block/weapon_workshop_hammer",
   "display": {
     "thirdperson_righthand": {
       "rotation": [
@@ -89,7 +89,7 @@
       ],
       "translation": [
         0,
-        0.5,
+        -2.25,
         0
       ],
       "scale": [

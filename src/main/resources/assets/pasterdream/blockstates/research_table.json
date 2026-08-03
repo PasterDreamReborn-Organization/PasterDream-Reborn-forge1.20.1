@@ -19,19 +19,7 @@
       "model": "pasterdream:block/research_table",
       "y": 180
     },
-    "facing=north,part=addon":
-    {
-      "model": "pasterdream:block/research_table_multipart"
-    },
-    "facing=east,part=addon":
-    {
-      "model": "pasterdream:block/research_table_multipart"
-    },
-    "facing=south,part=addon":
-    {
-      "model": "pasterdream:block/research_table_multipart"
-    },
-    "facing=west,part=addon":
+    "part=addon":
     {
       "model": "pasterdream:block/research_table_multipart"
     }

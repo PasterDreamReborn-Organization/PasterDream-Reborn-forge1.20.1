@@ -1,5 +1,5 @@
 {
-  "parent": "pasterdream:block/weapon_workshop_core",
+  "parent": "pasterdream:block/weapon_workshop_blast_furnace",
   "display": {
     "thirdperson_righthand": {
       "rotation": [
@@ -88,14 +88,14 @@
         -179.02
       ],
       "translation": [
-        0,
-        0.5,
+        1.25,
+        -5.25,
         0
       ],
       "scale": [
-        0.6,
-        0.6,
-        0.6
+        0.25,
+        0.25,
+        0.25
       ]
     },
     "fixed": {

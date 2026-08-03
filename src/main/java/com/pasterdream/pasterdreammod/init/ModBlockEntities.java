@@ -22,6 +22,11 @@ import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSc
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.NippyEdelweissBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceAddonBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -53,6 +58,11 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<FoxSculptureBlockEntity>> FOX_SCULPTURE = BLOCK_ENTITIES.register("fox_sculpture", () -> BlockEntityType.Builder.of(FoxSculptureBlockEntity::new, ModBlocks.FOX_SCULPTURE.get()).build(null));
     public static final RegistryObject<BlockEntityType<NippyEdelweissBlockEntity>> NIPPY_EDELWEISS = BLOCK_ENTITIES.register("nippy_edelweiss", () -> BlockEntityType.Builder.of(NippyEdelweissBlockEntity::new, ModBlocks.NIPPY_EDELWEISS.get()).build(null));
     public static final RegistryObject<BlockEntityType<DreamAccumulatorBlockEntity>> DREAM_ACCUMULATOR = BLOCK_ENTITIES.register("dream_accumulator", () -> BlockEntityType.Builder.of(DreamAccumulatorBlockEntity::new, ModBlocks.DREAM_ACCUMULATOR.get()).build(null));
+    public static final RegistryObject<BlockEntityType<WeaponWorkshopAnvilBlockEntity>> WEAPON_WORKSHOP_ANVIL = BLOCK_ENTITIES.register("weapon_workshop_anvil", () -> BlockEntityType.Builder.of(WeaponWorkshopAnvilBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_ANVIL.get()).build(null));
+    public static final RegistryObject<BlockEntityType<WeaponWorkshopCoolerPotBlockEntity>> WEAPON_WORKSHOP_COOLER_POT = BLOCK_ENTITIES.register("weapon_workshop_cooler_pot", () -> BlockEntityType.Builder.of(WeaponWorkshopCoolerPotBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get()).build(null));
+    public static final RegistryObject<BlockEntityType<WeaponWorkshopGrindStoneBlockEntity>> WEAPON_WORKSHOP_GRIND_STONE = BLOCK_ENTITIES.register("weapon_workshop_grind_stone", () -> BlockEntityType.Builder.of(WeaponWorkshopGrindStoneBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<WeaponWorkshopBlastFurnaceBlockEntity>> WEAPON_WORKSHOP_BLAST_FURNACE = BLOCK_ENTITIES.register("weapon_workshop_blast_furnace", () -> BlockEntityType.Builder.of(WeaponWorkshopBlastFurnaceBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<WeaponWorkshopBlastFurnaceAddonBlockEntity>> WEAPON_WORKSHOP_BLAST_FURNACE_ADDON = BLOCK_ENTITIES.register("weapon_workshop_blast_furnace_addon", () -> BlockEntityType.Builder.of(WeaponWorkshopBlastFurnaceAddonBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get()).build(null));
 
     public static void register(IEventBus eventBus)
     {
