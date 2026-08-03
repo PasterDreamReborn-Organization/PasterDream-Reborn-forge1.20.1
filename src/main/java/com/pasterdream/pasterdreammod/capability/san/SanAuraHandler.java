@@ -59,6 +59,9 @@ public class SanAuraHandler {
         boolean hasWhiteOrchidBrooch = CuriosApi.getCuriosInventory(player)
                 .map(h -> h.findFirstCurio(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get()).isPresent())
                 .orElse(false);
+        boolean hasSealOfCorrupted = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.SEAL_OF_THE_CORRUPTED.get()).isPresent())
+                .orElse(false);
         // 白厄花胸针：拦截负向群系修正
         if (hasWhiteOrchidBrooch && biomeRate < 0) {
             biomeRate = 0;
@@ -84,6 +87,8 @@ public class SanAuraHandler {
             double ratio = cap.getSanValue() / cap.getMaxSanValue();
             if (ratio >= Config.sanCheerUpThreshold) {
                 player.addEffect(new MobEffectInstance(ModEffects.CHEER_UP_BUFF.get(), 20, 0, false, false));
+            } else if (hasSealOfCorrupted) {
+                // 堕落者之印：免疫不振/恍惚/疯狂负面效果，不施加任何负面效果
             } else if (ratio < Config.sanLethargyUpperThreshold && ratio >= Config.sanLethargyLowerThreshold) {
                 if (!player.getPersistentData().getBoolean("pasterdream:strawberry_san_aura")) {
                     player.addEffect(new MobEffectInstance(ModEffects.LETHARGY_BUFF.get(), 20, 0, false, false));
