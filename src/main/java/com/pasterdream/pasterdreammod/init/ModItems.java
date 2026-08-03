@@ -46,6 +46,7 @@ import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.tidetool.BeihaiRuoTideSwordItem;
 import com.pasterdream.pasterdreammod.world.item.tidetool.TideSwordItem;
 import com.pasterdream.pasterdreammod.world.item.whiteswordtool.WhiteSwordItem;
+import com.pasterdream.pasterdreammod.world.item.shadowswordtool.ShadowSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.TerraBladeItem;
@@ -390,6 +391,10 @@ public class ModItems {
     // 白厄
     public static final RegistryObject<Item> WHITE_SWORD = ITEMS.register("white_sword",
             () -> new WhiteSwordItem(ModToolTiers.WHITE_SWORD, 3, -2.4f));
+
+    // 影刃
+    public static final RegistryObject<Item> SHADOW_SWORD = ITEMS.register("shadow_sword",
+            () -> new ShadowSwordItem(ModToolTiers.SHADOW_SWORD, 3, -2.4f));
 
     // ===== 钛金装备 =====
     public static final RegistryObject<Item> TITANIUM_HELMET = ITEMS.register("titanium_helmet",
@@ -1006,6 +1011,8 @@ public class ModItems {
             KaichuOmamoriItem::new);
     public static final RegistryObject<Item> WHITE_ORCHID_FLOWER_BROOCH = ITEMS.register("white_orchid_flower_brooch",
             WhiteOrchidFlowerBroochItem::new);
+    public static final RegistryObject<Item> SEAL_OF_THE_CORRUPTED = ITEMS.register("seal_of_the_corrupted",
+            SealOfTheCorruptedItem::new);
 
     // ===== 饰品（通用） =====
     public static final RegistryObject<Item> WAR_FLAG = ITEMS.register("war_flag",

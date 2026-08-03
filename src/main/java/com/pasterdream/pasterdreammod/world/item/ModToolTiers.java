@@ -64,8 +64,8 @@ public enum ModToolTiers implements Tier {
             Ingredient::of),
 
     // 影刃
-    // SHADOW_SWORD(1771, 0.0F, 8.0F, 1, 10,
-    //         () -> Ingredient.of(ModItems.NIGHTMARE_FUEL.get())),  // TODO: nightmare_fuel 未注册
+    SHADOW_SWORD(1771, 0.0F, 8.0F, 1, 10,
+            () -> Ingredient.of(ModItems.NIGHTMARE_FUEL.get())),
 
     // 白厄
     WHITE_SWORD(1771, 0.0F, 5.0F, 1, 10,

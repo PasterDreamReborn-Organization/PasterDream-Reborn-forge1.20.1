@@ -191,6 +191,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.BROKEN_HERO_SWORD);
         handheldItem(ModItems.TERRA_BLADE);
         handheldItem(ModItems.WHITE_SWORD);
+        handheldItem(ModItems.SHADOW_SWORD);
         basicItem(ModItems.TITANIUM_UPGRADE.get());
         basicItem(ModItems.SCULK_UPGRADE.get());
         basicItem(ModItems.DYEDREAM_UPGRADE.get());
@@ -278,6 +279,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DUKE_COIN_CURIO.get());
         basicItem(ModItems.KAICHU_OMAMORI.get());
         basicItem(ModItems.WHITE_ORCHID_FLOWER_BROOCH.get());
+        basicItem(ModItems.SEAL_OF_THE_CORRUPTED.get());
         basicItem(ModItems.BLESSING_OF_CECILIA.get());
         basicItem(ModItems.FADED_BLESSING_OF_CECILIA.get());
         basicItem(ModItems.WAR_FLAG.get());

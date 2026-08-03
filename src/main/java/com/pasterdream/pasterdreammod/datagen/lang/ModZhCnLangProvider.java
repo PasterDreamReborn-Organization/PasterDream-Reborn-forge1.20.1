@@ -1162,6 +1162,20 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.white_sword.no_energy", "融梦能量不足");
         add("entity.pasterdream.white_sword_rain_projectile", "白厄剑雨");
 
+        // 影刃
+        add(ModItems.SHADOW_SWORD.get(), "影刃");
+        add("tooltip.pasterdream.shadow_sword.passive_name", "被动：§5暗影");
+        add("tooltip.pasterdream.shadow_sword.desc1", "§7▪ §9持剑者的精神值越低 造成的伤害越高");
+        add("tooltip.pasterdream.shadow_sword.desc2", "§7▪ §9最高攻击力§c+75%§9 攻击速度§c+50%");
+        add("tooltip.pasterdream.shadow_sword.desc3", "§7▪ §4当没有精神值可供消耗时 挥砍会反噬自身生命");
+        add("tooltip.pasterdream.shadow_sword.flavor", "§7§o——梦魇渐渐变得尖锐，铸成了这把利剑");
+        add("message.pasterdream.shadow_sword.san_disabled", "§c影刃拒绝了你");
+
+        // 堕落者之印
+        add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "堕落者之印");
+        add("tooltip.pasterdream.seal_of_the_corrupted.effect1", "§7▪ §9精神值归零时不再损失生命值");
+        add("tooltip.pasterdream.seal_of_the_corrupted.flavor", "§7§o——我将成为你的阴影 一并体会你的痛苦");
+
         // 泰拉浮岛模型
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "泰拉浮岛模型");
         add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9泰拉剑气消耗减少至 §c0.4§9");

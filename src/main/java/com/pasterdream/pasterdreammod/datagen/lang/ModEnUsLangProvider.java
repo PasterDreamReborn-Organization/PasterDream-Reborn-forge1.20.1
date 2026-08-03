@@ -1001,6 +1001,20 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.white_sword.no_energy", "Not enough Melt Dream Energy");
         add("entity.pasterdream.white_sword_rain_projectile", "White Sword Rain");
 
+        // Shadow Sword
+        add(ModItems.SHADOW_SWORD.get(), "Shadow Sword");
+        add("tooltip.pasterdream.shadow_sword.passive_name", "Passive: §5Shadow");
+        add("tooltip.pasterdream.shadow_sword.desc1", "§7▪ §9The lower the wielder's sanity, the higher the damage");
+        add("tooltip.pasterdream.shadow_sword.desc2", "§7▪ §9Max §c+75% ATK§9, §c+50% §9attack speed");
+        add("tooltip.pasterdream.shadow_sword.desc3", "§7▪ §4Swings consume your own life when sanity is depleted");
+        add("tooltip.pasterdream.shadow_sword.flavor", "§7§o——The nightmare sharpened into this blade");
+        add("message.pasterdream.shadow_sword.san_disabled", "§cThe Shadow Sword rejects you");
+
+        // Seal of the Fallen
+        add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "Seal of the Corrupted");
+        add("tooltip.pasterdream.seal_of_the_corrupted.effect1", "§7▪ §9No longer loses health when sanity reaches zero");
+        add("tooltip.pasterdream.seal_of_the_corrupted.flavor", "§7§o——I will become your shadow and share your suffering");
+
         // Terra Floating Island
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "Terra Floating Island");
         add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9Terra Sword wave cost reduced to §c0.4");

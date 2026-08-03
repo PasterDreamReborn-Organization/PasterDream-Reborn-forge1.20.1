@@ -61,6 +61,7 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> BEETLE_ATTACK = SOUNDS.register("beetle_attack", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "beetle_attack")));
     public static final RegistryObject<SoundEvent> BEETLE_SKILL = SOUNDS.register("beetle_skill", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "beetle_skill")));
     public static final RegistryObject<SoundEvent> WHITE_SWORD_RAIN = SOUNDS.register("white_sword_rain", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "white_sword_rain")));
+    public static final RegistryObject<SoundEvent> SHADOW_SWORD = SOUNDS.register("shadow_sword", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_sword")));
 
     public static void register(IEventBus eventBus) {
         SOUNDS.register(eventBus);
