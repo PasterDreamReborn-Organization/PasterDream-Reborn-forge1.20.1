@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblockbenchblock.blockentity;
+package com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.blockentity;
 
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;

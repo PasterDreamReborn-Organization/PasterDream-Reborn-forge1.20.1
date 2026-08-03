@@ -1,11 +1,11 @@
-package com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblockbenchblock.block;
+package com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.blockentity;
 
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class HorizontalDirectionalGeckolibBlock extends HorizontalDirectionalGenericBlock
+public abstract class HorizontalDirectionalGeckolibBaseEntityBlock extends HorizontalDirectionalGenericBaseEntityBlock
 {
-    public HorizontalDirectionalGeckolibBlock(Properties properties)
+    public HorizontalDirectionalGeckolibBaseEntityBlock(Properties properties)
     {
         super(properties);
     }

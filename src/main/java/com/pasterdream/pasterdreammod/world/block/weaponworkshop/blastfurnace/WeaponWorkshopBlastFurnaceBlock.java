@@ -4,7 +4,7 @@ import com.pasterdream.pasterdreammod.helper.multiblockproperties.MultiBlockProp
 import com.pasterdream.pasterdreammod.helper.multiblockproperties._2x4x2Part;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition.CalculatePartPosition;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.SingleFloorVoxelShapeCalculator;
-import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblockbenchblock.blockentity.HorizontalDirectionalBlockBenchBaseEntityBlock;
+import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.blockentity.HorizontalDirectionalBlockBenchBaseEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.LivingEntity;

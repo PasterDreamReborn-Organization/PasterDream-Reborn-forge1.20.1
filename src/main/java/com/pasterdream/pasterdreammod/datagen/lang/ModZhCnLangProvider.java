@@ -404,6 +404,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DREAM_ACCUMULATOR.get(), "蓄梦池");
         add(ModItems.SORBENT.get(), "吸附剂");
         add(ModBlocks.WEAPON_WORKSHOP_CORE.get(), "精铸工坊核心");
+        add(ModBlocks.WEAPON_WORKSHOP_ANVIL.get(), "精铸工坊铁砧");
+        add(ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get(), "精铸工坊冷却盆");
+        add(ModBlocks.WEAPON_WORKSHOP_HAMMER.get(), "精铸工坊锤子");
+        add(ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get(), "精铸工坊砂轮");
+        add(ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get(), "精铸工坊锻炉");
 
         add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "梦染茶花植株");
         add(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), "成熟的梦染茶花植株");

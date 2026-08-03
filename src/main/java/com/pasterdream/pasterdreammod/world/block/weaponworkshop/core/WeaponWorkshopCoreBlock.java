@@ -1,6 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.weaponworkshop.core;
 
-import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblockbenchblock.block.HorizontalDirectionalBlockBenchBlock;
+import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.block.HorizontalDirectionalBlockBenchBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
