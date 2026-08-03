@@ -21,9 +21,8 @@ public class ResearchTableItem extends BlockItem
     protected boolean placeBlock(BlockPlaceContext context, BlockState state)
     {
         Level level = context.getLevel();
-        BlockPos mainPos = context.getClickedPos();
+        BlockPos mainPosition = context.getClickedPos();
 
-        ResearchTableBlock block = (ResearchTableBlock) getBlock();
         if (!(state.getBlock() instanceof ResearchTableBlock))
         {
             return super.placeBlock(context, state);
@@ -32,7 +31,7 @@ public class ResearchTableItem extends BlockItem
         Function<BlockState, BlockPos> getAddonPos = (blockState) ->
         {
             Direction facing = blockState.getValue(ResearchTableBlock.FACING);
-            return mainPos.relative(facing.getCounterClockWise());
+            return mainPosition.relative(facing.getCounterClockWise());
         };
         BlockPos addonPos = getAddonPos.apply(state);
 

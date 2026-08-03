@@ -37,7 +37,12 @@ import com.pasterdream.pasterdreammod.world.block.dreamtrain.DreamTrainStructure
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlock;
 import com.pasterdream.pasterdreammod.world.block.ClayPotBlock;
 import com.pasterdream.pasterdreammod.world.block.PebbleBlock;
-import com.pasterdream.pasterdreammod.world.block.weaponworkshop.weaponworkshopcore.WeaponWorkshopCoreBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.core.WeaponWorkshopCoreBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneBlock;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.hammer.WeaponWorkshopHammerBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -618,6 +623,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> OPENED_MELT_DREAM_CRYSTAL_CHEST = BLOCKS.register("opened_melt_dream_crystal_chest", () -> new OpenedMeltDreamCrystalChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).sound(SoundType.STONE).strength(10f).lightLevel(state -> 12).noOcclusion()));
     public static final RegistryObject<Block> DREAM_ACCUMULATOR = BLOCKS.register("dream_accumulator", () -> new DreamAccumulatorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.CALCITE).strength(1f).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> WEAPON_WORKSHOP_CORE = BLOCKS.register("weapon_workshop_core", () -> new WeaponWorkshopCoreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.ANVIL).strength(2f, 10f).requiresCorrectToolForDrops().noOcclusion()));
+    public static final RegistryObject<Block> WEAPON_WORKSHOP_ANVIL = BLOCKS.register("weapon_workshop_anvil", () -> new WeaponWorkshopAnvilBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)));
+    public static final RegistryObject<Block> WEAPON_WORKSHOP_COOLER_POT = BLOCKS.register("weapon_workshop_cooler_pot", () -> new WeaponWorkshopCoolerPotBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON)));
+    public static final RegistryObject<Block> WEAPON_WORKSHOP_HAMMER = BLOCKS.register("weapon_workshop_hammer", () -> new WeaponWorkshopHammerBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)));
+    public static final RegistryObject<Block> WEAPON_WORKSHOP_GRIND_STONE = BLOCKS.register("weapon_workshop_grind_stone", () -> new WeaponWorkshopGrindStoneBlock(BlockBehaviour.Properties.copy(Blocks.GRINDSTONE).noOcclusion()));
+    public static final RegistryObject<Block> WEAPON_WORKSHOP_BLAST_FURNACE = BLOCKS.register("weapon_workshop_blast_furnace", () -> new WeaponWorkshopBlastFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).noOcclusion()));
 
     //失落剑冢
     public static final RegistryObject<Block> LOST_SWORD_TOMB = BLOCKS.register("lost_sword_tomb", LostSwordTombBlock::new);

@@ -1,0 +1,8 @@
+{
+  "parent": "block/block",
+  "elements": [],
+  "textures":
+  {
+    "particle": "pasterdream:block/weapon_workshop_blast_furnace"
+  }
+}

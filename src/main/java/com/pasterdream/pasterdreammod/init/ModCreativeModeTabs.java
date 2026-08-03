@@ -563,6 +563,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DREAM_TRAIN_STRUCTURE.get());
                         output.accept(ModItems.SORBENT.get());
                         output.accept(ModItems.WEAPON_WORKSHOP_CORE.get());
+                        output.accept(ModItems.WEAPON_WORKSHOP_ANVIL.get());
+                        output.accept(ModItems.WEAPON_WORKSHOP_COOLER_POT.get());
+                        output.accept(ModItems.WEAPON_WORKSHOP_HAMMER.get());
+                        output.accept(ModItems.WEAPON_WORKSHOP_GRIND_STONE.get());
+                        output.accept(ModItems.WEAPON_WORKSHOP_BLAST_FURNACE.get());
                     })
                     .build());
 

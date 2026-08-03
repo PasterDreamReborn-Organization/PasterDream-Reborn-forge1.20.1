@@ -18,6 +18,7 @@ import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombIte
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureItem;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombItem;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureItem;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceItem;
 import com.pasterdream.pasterdreammod.world.item.*;
 import com.pasterdream.pasterdreammod.world.item.FireproofBlockItem;
 import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.StorageBagItem;
@@ -1460,6 +1461,11 @@ public class ModItems {
     public static final RegistryObject<Item> DREAM_ACCUMULATOR = ITEMS.register("dream_accumulator", () -> new DreamAccumulatorItem(ModBlocks.DREAM_ACCUMULATOR.get(), new Item.Properties()));
     public static final RegistryObject<Item> SORBENT = ITEMS.register("sorbent", () -> new Item(new Item.Properties().durability(54000)));
     public static final RegistryObject<Item> WEAPON_WORKSHOP_CORE = ITEMS.register("weapon_workshop_core", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_CORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WEAPON_WORKSHOP_ANVIL = ITEMS.register("weapon_workshop_anvil", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_ANVIL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WEAPON_WORKSHOP_COOLER_POT = ITEMS.register("weapon_workshop_cooler_pot", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WEAPON_WORKSHOP_HAMMER = ITEMS.register("weapon_workshop_hammer", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_HAMMER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WEAPON_WORKSHOP_GRIND_STONE = ITEMS.register("weapon_workshop_grind_stone", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WEAPON_WORKSHOP_BLAST_FURNACE = ITEMS.register("weapon_workshop_blast_furnace", () -> new WeaponWorkshopBlastFurnaceItem(ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> DREAM_NOTES_DYEDREAM_WORLD = ITEMS.register("dream_notes_dyedream_world", () -> new DreamNotesItem(new Item.Properties()));
     public static final RegistryObject<Item> DREAM_NOTES_LAMP_SHADOW_WORLD = ITEMS.register("dream_notes_lamp_shadow_world", () -> new DreamNotesItem(new Item.Properties()));

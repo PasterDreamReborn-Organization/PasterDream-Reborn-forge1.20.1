@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "facing=north":
+    {
+      "model": "pasterdream:block/weapon_workshop_anvil"
+    },
+    "facing=east":
+    {
+      "model": "pasterdream:block/weapon_workshop_anvil",
+      "y": 90
+    },
+    "facing=south":
+    {
+      "model": "pasterdream:block/weapon_workshop_anvil",
+      "y": 180
+    },
+    "facing=west":
+    {
+      "model": "pasterdream:block/weapon_workshop_anvil",
+      "y": 270
+    }
+  }
+}
