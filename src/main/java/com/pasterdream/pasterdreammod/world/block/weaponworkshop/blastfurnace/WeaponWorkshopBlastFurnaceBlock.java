@@ -286,7 +286,7 @@ public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockB
                     BlockState mainState = level.getBlockState(mainPos);
                     if (mainState.getBlock() instanceof WeaponWorkshopBlastFurnaceBlock)
                     {
-                        level.destroyBlock(mainPos, true);
+                        level.removeBlock(mainPos, true);
                     }
                 }
         }

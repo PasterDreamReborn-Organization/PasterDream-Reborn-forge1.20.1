@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone;
 
+import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.VoxelShapeCalculator;
 import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.blockentity.HorizontalDirectionalBlockBenchBaseEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -12,6 +13,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class WeaponWorkshopGrindStoneBlock extends HorizontalDirectionalBlockBenchBaseEntityBlock
 {
@@ -30,15 +33,16 @@ public class WeaponWorkshopGrindStoneBlock extends HorizontalDirectionalBlockBen
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
     {
+        List<VoxelShape> ListVoxelShape = VoxelShapeCalculator.calculateAllDirectionVoxelShapeFromEastVoxelShape(0 / 16.0, 0, -1 / 16.0, 18 / 16.0, 20 / 16.0, 17 / 16.0);
         Direction facing = state.getValue(FACING);
-        switch (facing)
+        return switch (facing)
         {
-            case EAST : return box(0, 0, -1, 18, 20, 17);
-            case SOUTH: return box(-1, 0, 0, 17, 20, 18);
-            case WEST : return box(-2, 0, -1, 16, 20, 17);
-            case NORTH: return box(-1, 0, -2, 17, 20, 16);
-            default   : return box(0, 0, 0, 16, 16, 16);
-        }
+            case EAST  -> ListVoxelShape.get(0);
+            case SOUTH -> ListVoxelShape.get(1);
+            case WEST  -> ListVoxelShape.get(2);
+            case NORTH -> ListVoxelShape.get(3);
+            default -> box(0, 0, 0, 16, 16, 16);
+        };
     }
 
     @Nullable
