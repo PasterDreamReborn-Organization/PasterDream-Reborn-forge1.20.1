@@ -1713,8 +1713,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.dyedream_crack.first_contact.3", "§5现在可能还不是时候，让我们交给在日夜轮转之间的时光中给予答案。");
         add("message.pasterdream.dyedream_crack.first_contact.4", "§5也许我该翻翻那本旧梦归引……或许其中有关于这类裂隙的记载。");
         add("message.pasterdream.sleep.dream_of_crack.1", "§5你在睡梦中惊醒，背后冒出了些许冷汗，你回忆起自己梦见了往日探索中遇见的奇怪裂隙，在慢慢靠近并凝视着你。");
-        add("message.pasterdream.sleep.dream_of_crack.2", "§5你拿起附近的材料迅速地把这些梦境记录下来，在这之后你就失去了对这段梦境的记忆。");
+        add("message.pasterdream.sleep.dream_of_crack.2", "§5那裂隙很可能有古怪，或许应该返回那里去调查一下");
         add("message.pasterdream.sleep.dream_of_crack.3", "§5我必须知道发生了什么...");
+        add("message.pasterdream.sleep.dream_of_crack.4", "一张寻梦者笔记出现在了你的口袋里");
         add("message.pasterdream.dyedream_world.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");
         add("message.pasterdream.story.pure_and_flawless.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");
         add("message.pasterdream.story.dream_fertilizer.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");

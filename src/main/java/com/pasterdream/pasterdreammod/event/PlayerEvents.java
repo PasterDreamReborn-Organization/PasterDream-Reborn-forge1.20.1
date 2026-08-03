@@ -222,6 +222,13 @@ public class PlayerEvents {
             return;
         }
 
+        // 仅在玩家真正躺在床上时计时；起床则重置倒计时
+        if (!player.isSleeping())
+        {
+            data.remove(NOTE_DELAY_TAG);
+            return;
+        }
+
         int delay = data.getInt(NOTE_DELAY_TAG) - 1;
         if (delay > 0)
         {
@@ -249,6 +256,8 @@ public class PlayerEvents {
                 Component.translatable("message.pasterdream.sleep.dream_of_crack.2"), false);
         serverPlayer.displayClientMessage(
                 Component.translatable("message.pasterdream.sleep.dream_of_crack.3"), false);
+        serverPlayer.displayClientMessage(
+                Component.translatable("message.pasterdream.sleep.dream_of_crack.4"), false);
     }
 
     /** 玩家首次进入染梦世界时，授予进度并给予笔记。 */
