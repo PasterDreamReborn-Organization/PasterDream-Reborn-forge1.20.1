@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
+import com.pasterdream.pasterdreammod.Config;
+import com.pasterdream.pasterdreammod.helper.BossDamageLimiter;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
@@ -89,6 +91,7 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
     private int hitCd = 0;
     private int swordCd = 0;
     private boolean bloodLock = false;
+    private final BossDamageLimiter damageLimiter;
 
     private enum SkillType { NONE, SPRINT, HIT, SWORD }
 
@@ -103,6 +106,8 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
         setPersistenceRequired();
         this.moveControl = new FlyingMoveControl(this, 10, true);
         this.bossInfo.setVisible(false);
+        this.damageLimiter = new BossDamageLimiter(
+                (float) Config.bossDamageCap, (float) Config.bossDpsCap, Config.bossRangeCap);
     }
 
     @Override
@@ -213,7 +218,13 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
         }
         if (source.is(DamageTypes.IN_FIRE))
             return false;
-        return super.hurt(source, amount);
+
+        float prevBucket = damageLimiter.getDamageBucket();
+        amount = damageLimiter.limit(this, source, amount);
+        if (amount < 0) return false;
+        boolean result = super.hurt(source, amount);
+        if (!result) damageLimiter.rollback(prevBucket);
+        return result;
     }
 
     @Override
@@ -253,6 +264,7 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
     @Override
     public void baseTick() {
         super.baseTick();
+        damageLimiter.tick();
 
         if (!level().isClientSide()) {
             // Spawn sequence
@@ -292,6 +304,7 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
 
     private void runSpawnSequence() {
         if (spawnTick == 0) {
+            this.invulnerableTime = 20;
             setAnimation("spawn");
             addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 4, false, false));
             addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 4, false, false));
