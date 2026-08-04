@@ -1128,6 +1128,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.calais_spice_bottle.effect3", "§7▪ §9Each stack consumed grants a random effect");
         add("effect.pasterdream.calais_spice_bottle_buff", "Calais Spice");
 
+        add(ModItems.GHOST_FACE.get(), "Ghost Face");
+        add("tooltip.pasterdream.ghost_face.effect.1", "§7▪ §9When using ranged weapons, fire an extra ghost projectile, with a 20% chance to fire another one.");
+        add("tooltip.pasterdream.ghost_face.effect.2", "§7▪ §9The ghost projectile ignores invincibility frames.");
+
         // Advancements - Story
         add("advancements.pasterdream.story.root.title", "PasterDream");
         add("advancements.pasterdream.story.root.description", "Begins with a wish from the heart");

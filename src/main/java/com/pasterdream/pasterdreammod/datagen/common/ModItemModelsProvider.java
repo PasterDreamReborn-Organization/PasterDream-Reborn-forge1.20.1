@@ -286,6 +286,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.FADED_BLESSING_OF_CECILIA.get());
         basicItem(ModItems.WAR_FLAG.get());
         basicItem(ModItems.CALAIS_SPICE_BOTTLE.get());
+        basicItem(ModItems.GHOST_FACE.get());
 
         basicItem(ModItems.DEBUG_SWORD.get());
         basicItem(ModItems.LOOT_GENERATOR.get());
