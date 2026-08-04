@@ -116,5 +116,17 @@
   },
   "shadow_vortex_book": {
     "sounds": [{"name": "pasterdream:shadow_vortex_book", "stream": false}]
+  },
+  "aaroncos_spawn": {
+    "sounds": [{"name": "pasterdream:aaroncos_spawn", "stream": false}]
+  },
+  "aaroncos_music": {
+    "sounds": [{"name": "pasterdream:aaroncos_music", "stream": true}]
+  },
+  "stone_break": {
+    "sounds": [{"name": "pasterdream:stone_break", "stream": false}]
+  },
+  "stone_break_0": {
+    "sounds": [{"name": "pasterdream:stone_break_0", "stream": false}]
   }
 }
