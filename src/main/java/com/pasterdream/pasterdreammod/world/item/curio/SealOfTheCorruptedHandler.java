@@ -88,23 +88,25 @@ public class SealOfTheCorruptedHandler {
     }
 
     /**
-     * 在玩家附近搜索一个非暗影的敌对生物作为攻击目标。
-     * 优先选择正在以玩家为目标的生物。
+     * 在玩家附近搜索一个非暗影的战斗目标。
+     * 优先选择正在以玩家为目标的生物（含被激怒的中立生物），其次选择天生敌对生物。
      */
     private static LivingEntity findNearbyHostile(Mob self, Player player, double range) {
         AABB area = self.getBoundingBox().inflate(range);
-        List<Monster> candidates = self.level().getEntitiesOfClass(Monster.class, area,
+        List<Mob> candidates = self.level().getEntitiesOfClass(Mob.class, area,
                 e -> e.isAlive()
-                        && !e.getType().is(ModEntityTypeTags.SHADOW_MOB));
+                        && e.canAttack(e)
+                        && !e.getType().is(ModEntityTypeTags.SHADOW_MOB)
+                        && e != self);
 
-        // 优先：正在攻击玩家的生物
-        for (Monster m : candidates) {
+        // 优先：正在攻击玩家的生物（含被激怒的中立生物如狼、末影人等）
+        for (Mob m : candidates) {
             if (m.getTarget() == player) return m;
         }
-        // 其次：返回最近的
-        if (candidates.isEmpty()) return null;
-        candidates.sort((a, b) -> Double.compare(
-                a.distanceToSqr(self), b.distanceToSqr(self)));
-        return candidates.get(0);
+        // 其次：天生敌对生物 (Monster 子类)
+        for (Mob m : candidates) {
+            if (m instanceof Monster) return m;
+        }
+        return null;
     }
 }
