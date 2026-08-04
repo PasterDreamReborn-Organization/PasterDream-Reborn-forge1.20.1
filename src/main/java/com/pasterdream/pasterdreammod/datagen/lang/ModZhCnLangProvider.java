@@ -1271,6 +1271,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.war_flag_buff", "战意");
         add("effect.pasterdream.bind_buff", "束缚");
         add("effect.pasterdream.shadow_silence_buff", "暗影沉默");
+        add("effect.pasterdream.restrainmove_block_buff", "行动抑制");
+        add("effect.pasterdream.oppression_buff", "压抑");
+        // TODO: shadow_spyon_buff ("暗影窥视") 待后续搬运
+        add("item.pasterdream.shadow_magicball_spawn_egg", "暗影魔法球刷怪蛋");
+        add("item.pasterdream.shadow_tune_totem_spawn_egg", "暗影符文塔刷怪蛋");
+        add("entity.pasterdream.shadow_magicball", "暗影魔法球");
+        add("entity.pasterdream.shadow_tune_totem", "暗影符文塔");
+        add("block.pasterdream.shadow_vortex", "暗影漩涡");
 
         //卡莱的调料瓶
         add(ModItems.CALAIS_SPICE_BOTTLE.get(), "卡莱的调料瓶");

@@ -13,6 +13,8 @@ import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
 import com.pasterdream.pasterdreammod.world.entity.PebbleProjectile;
 import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
+import com.pasterdream.pasterdreammod.world.entity.ShadowMagicballEntity;
+import com.pasterdream.pasterdreammod.world.entity.ShadowTuneTotemEntity;
 import com.pasterdream.pasterdreammod.world.entity.ghost.ShadowGhostEntity;
 import com.pasterdream.pasterdreammod.world.entity.ghost.WailingShadowGhostEntity;
 import com.pasterdream.pasterdreammod.world.entity.ghost.FriendlyShadowGhostEntity;
@@ -146,6 +148,24 @@ public class ModEntities {
                     .fireImmune()
                     .sized(0.6f, 0.8f));
 
+    public static final RegistryObject<EntityType<ShadowMagicballEntity>> SHADOW_MAGICBALL = register("shadow_magicball",
+            EntityType.Builder.<ShadowMagicballEntity>of(ShadowMagicballEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(ShadowMagicballEntity::new)
+                    .fireImmune()
+                    .sized(1f, 1.5f));
+
+    public static final RegistryObject<EntityType<ShadowTuneTotemEntity>> SHADOW_TUNE_TOTEM = register("shadow_tune_totem",
+            EntityType.Builder.<ShadowTuneTotemEntity>of(ShadowTuneTotemEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(ShadowTuneTotemEntity::new)
+                    .fireImmune()
+                    .sized(2f, 8f));
+
     public static final RegistryObject<EntityType<ShadowGhostEntity>> SHADOW_GHOST = register("shadow_ghost",
             EntityType.Builder.<ShadowGhostEntity>of(ShadowGhostEntity::new, MobCategory.MONSTER)
                     .setShouldReceiveVelocityUpdates(true)
@@ -248,6 +268,8 @@ public class ModEntities {
         event.enqueueWork(BlackBeetleEntity::init);
         event.enqueueWork(BlackBeetleMotherEntity::init);
         event.enqueueWork(ShakingCrystalEntity::init);
+        event.enqueueWork(ShadowMagicballEntity::init);
+        event.enqueueWork(ShadowTuneTotemEntity::init);
     }
 
     @SubscribeEvent
@@ -270,5 +292,7 @@ public class ModEntities {
         event.put(BLACK_BEETLE.get(), BlackBeetleEntity.createAttributes().build());
         event.put(BLACK_BEETLE_MOTHER.get(), BlackBeetleMotherEntity.createAttributes().build());
         event.put(SHAKING_CRYSTAL.get(), ShakingCrystalEntity.createAttributes().build());
+        event.put(SHADOW_MAGICBALL.get(), ShadowMagicballEntity.createAttributes().build());
+        event.put(SHADOW_TUNE_TOTEM.get(), ShadowTuneTotemEntity.createAttributes().build());
     }
 }

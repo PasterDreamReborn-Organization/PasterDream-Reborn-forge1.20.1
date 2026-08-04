@@ -16,13 +16,13 @@ public class ShadowStoneParticle extends TextureSheetParticle {
         super(level, x, y, z);
         this.spriteSet = spriteSet;
         this.setSize(0.2f, 0.2f);
-        this.quadSize *= 1.2f;
-        this.lifetime = (int) Math.max(1, 15 + (this.random.nextInt(10) - 5));
+        this.quadSize *= 5f;
+        this.lifetime = (int) Math.max(1, 25 + (this.random.nextInt(10) - 5));
         this.gravity = 0.2f;
         this.hasPhysics = true;
-        this.xd = vx * 0.5 + (random.nextDouble() - 0.5) * 0.1;
-        this.yd = vy * 0.3 + random.nextDouble() * 0.1;
-        this.zd = vz * 0.5 + (random.nextDouble() - 0.5) * 0.1;
+        this.xd = vx * 1;
+        this.yd = vy * 1;
+        this.zd = vz * 1;
         this.pickSprite(spriteSet);
     }
 
@@ -34,7 +34,6 @@ public class ShadowStoneParticle extends TextureSheetParticle {
     @Override
     public void tick() {
         super.tick();
-        this.setAlpha(1.0f - (float) this.age / this.lifetime);
     }
 
     @OnlyIn(Dist.CLIENT)

@@ -214,6 +214,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> SHADOW_FISSURE_3 = BLOCKS.register("shadow_fissure_3", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).noOcclusion()));
     public static final RegistryObject<Block> SHADOW_FISSURE_4 = BLOCKS.register("shadow_fissure_4", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
     public static final RegistryObject<Block> SHADOW_FISSURE_5 = BLOCKS.register("shadow_fissure_5", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).noOcclusion()));
+    // 暗影漩涡 (亚伦柯斯之触技能)
+    public static final RegistryObject<Block> SHADOW_VORTEX = BLOCKS.register("shadow_vortex", ShadowVortexBlock::new);
 
     // ===== 阴影菌岩 / 影灯 / 阴影菌光体 =====
     public static final RegistryObject<Block> SHADOW_NYLIUM = BLOCKS.register("shadow_nylium", () -> new ShadowNyliumBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).sound(SoundType.NYLIUM).strength(0.4f).requiresCorrectToolForDrops()));
