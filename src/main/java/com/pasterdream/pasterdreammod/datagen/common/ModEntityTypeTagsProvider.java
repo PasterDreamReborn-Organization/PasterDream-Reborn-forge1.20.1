@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModEntities;
+import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -33,5 +34,15 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.FRIENDLY_SHADOW_GHOST.get())
                 .add(ModEntities.BLACK_BEETLE.get())
                 .add(ModEntities.BLACK_BEETLE_MOTHER.get());
+
+        tag(ModEntityTypeTags.SPECIAL_ENTITY)
+                .add(EntityType.ITEM)
+                .add(EntityType.EXPERIENCE_ORB)
+                .add(EntityType.ITEM_FRAME)
+                .add(EntityType.GLOW_ITEM_FRAME)
+                .add(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get())
+                .add(ModEntities.TERRASWORD_WAVE.get())
+                .add(ModEntities.SHAKING_CRYSTAL.get())
+                .add(ModEntities.FOX_FIRE.get());
     }
 }

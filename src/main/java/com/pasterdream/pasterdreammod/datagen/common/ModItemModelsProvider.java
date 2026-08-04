@@ -185,6 +185,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.KUSANAGI);
         handheldItem(ModItems.MURAKUMO_KUSANAGI);
         handheldItem(ModItems.SWORD_EMBRYO);
+        handheldItem(ModItems.ICE_SHADOW_HAMMER);
         handheldItem(ModItems.THERMAL_DAGGER);
         handheldItem(ModItems.DESERT_SWORD);
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD);
@@ -261,6 +262,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.HIYORI_BUTTERFLY_HAIRPIN.get());
         basicItem(ModItems.LIGHT_BUTTERFLY_CURIO.get());
         basicItem(ModItems.BRIGHT_BUTTERFLY_CURIO.get());
+        basicItem(ModItems.ICE_SHADOW_CURIO.get());
         basicItem(ModItems.BOBOJI_CURIO.get());
         basicItem(ModItems.EMBRYO_NECKLACE.get());
         basicItem(ModItems.EMBRYO_RING.get());

@@ -193,6 +193,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.KUSANAGI.get(), "Kusanagi");
         add(ModItems.MURAKUMO_KUSANAGI.get(), "Murakumo Kusanagi");
         add(ModItems.SWORD_EMBRYO.get(), "Sword Embryo");
+        add(ModItems.ICE_SHADOW_HAMMER.get(), "Ice Shadow Hammer");
         add(ModItems.THERMAL_DAGGER.get(), "Thermal Dagger");
         add(ModItems.DESERT_SWORD.get(), "Desert Greatsword");
         add(ModItems.CHENJINGMEN_DESERT_SWORD.get(), "Chenjingmen Desert");
@@ -839,6 +840,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.bright_butterfly_curio.effect.gamma", "§7▪ §9Grants Night Vision effect");
         add("tooltip.pasterdream.bright_butterfly_curio.effect.brightness", "§7▪ §9Greatly boosts screen brightness");
         add("tooltip.pasterdream.bright_butterfly_curio.effect.darkness_immune", "§7▪ §9Immune to Darkness and Blindness");
+        add(ModItems.ICE_SHADOW_CURIO.get(), "Ice Shadow Curio");
+        add("tooltip.pasterdream.ice_shadow_curio.0", "§7▪ §9Ice Shadow Hammer's skill spawns 2 extra Shaking Crystals");
+        add("tooltip.pasterdream.ice_shadow_curio.1", "§7▪ §9Crystal spacing is affected by cast distance");
         add(ModItems.BOBOJI_CURIO.get(), "Boboji's Gorgeous Feather");
         add("tooltip.pasterdream.boboji_curio.stat.speed", "§7▪ §9+5% Speed");
         add("tooltip.pasterdream.boboji_curio.stat.range", "§7▪ §9+0.1 Blink Range");
@@ -990,6 +994,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.terra_blade.skill_off", "§7Sword Wave: OFF");
         add("tooltip.pasterdream.terra_blade.no_energy", "Not enough Melt Dream Energy, sword wave deactivated");
         add("entity.pasterdream.terrasword_wave", "Terra Sword Wave");
+        add("entity.pasterdream.shaking_crystal", "Shaking Crystal");
 
         // White Sword
         add(ModItems.WHITE_SWORD.get(), "White Sword");
@@ -1018,6 +1023,17 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.shadow_sword.desc3", "§7▪ §4Swings consume your own life when sanity is depleted");
         add("tooltip.pasterdream.shadow_sword.flavor", "§7§o——The nightmare sharpened into this blade");
         add("message.pasterdream.shadow_sword.san_disabled", "§cThe Shadow Sword rejects you");
+
+        // Ice Shadow Hammer
+        add("tooltip.pasterdream.ice_shadow_hammer.skill_name", "Battle Art: §3Eno's Earthshaker");
+        add("tooltip.pasterdream.ice_shadow_hammer.0", "§7▪ §9Launches you upward and summons a §3Shaking Crystal");
+        add("tooltip.pasterdream.ice_shadow_hammer.1", "§7▪ §9Crystal continuously §dConfuses §9and §bFreezes §9nearby enemies");
+        add("tooltip.pasterdream.ice_shadow_hammer.2", "§7▪ §9Deals 3 waves of damage: §cATK×0.4§9, §cATK×0.6§9, §cATK×1.0§9(explosion)");
+        add("tooltip.pasterdream.ice_shadow_hammer.3", "§7▪ §9Grants §eAbsorption I §9to the caster after explosion");
+        add("tooltip.pasterdream.ice_shadow_hammer.4", "§7Right-click on ground to unleash");
+        add("tooltip.pasterdream.ice_shadow_hammer.5", "§7▪ §9Cooldown: §c4s");
+        add("tooltip.pasterdream.ice_shadow_hammer.cost", "§7▪ §4Melt Dream Energy Cost: §c0.5");
+        add("message.pasterdream.ice_shadow_hammer.no_energy", "§cNot enough Melt Dream Energy");
 
         // Seal of the Fallen
         add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "Seal of the Corrupted");
