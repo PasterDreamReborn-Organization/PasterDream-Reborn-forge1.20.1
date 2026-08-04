@@ -1,0 +1,16 @@
+{
+  "sortnum": 11,
+  "name": "pasterdream.seniors_dream.entry.mortar",
+  "icon": "pasterdream:mortar",
+  "category": "pasterdream:foretold_dream/items",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.mortar.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.mortar.page1"
+    }
+  ]
+}

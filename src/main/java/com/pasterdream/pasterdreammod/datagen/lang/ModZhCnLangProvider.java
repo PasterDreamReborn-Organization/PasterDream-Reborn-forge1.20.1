@@ -1417,7 +1417,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.san", "san值");
         add("pasterdream.seniors_dream.entry.san.page0", "或许你也已经注意到了，在你屏幕的右下角有一个大脑一样的图标，即为san值。");
         add("pasterdream.seniors_dream.entry.san.page1", "san值界面展示。");
-        add("pasterdream.seniors_dream.entry.san.page2", "san值效果影响：$(br)san>=90%% 获得振奋$(br)san<=60%% 获得不振$(br)san<=40%% 获得恍惚$(br)san<=20%% 获得疯狂I$(br)san<=10%% 获得疯狂II$(br)san<=1%%  获得疯狂III");
+        add("pasterdream.seniors_dream.entry.san.page2", "san值效果影响：$(br)san>=90%% 获得振奋$(br)san<=60%% 获得不振$(br)san<=40%% 获得恍惚$(br)san<=20%% 获得疯狂I$(br)san<=10%% 获得疯狂II$(br)san<=1%%  获得疯狂III$(br2)每个buff的详细效果请自行查阅对应的章节");
         add("pasterdream.seniors_dream.entry.san.page3", "环境带来的san值变化：$(br)san的变化受到群系类型和光照强度的影响，计算公式为：$(br)总变化率 = (理智光环 / 1200) + 群系影响 + (光照等级 - 7) * 0.0001");
         add("pasterdream.seniors_dream.entry.san.page4", "群系的影响主要表现为：$(br)在深暗之域和灯影之下的群系会降低玩家san值；$(br)在染梦世界的群系会提升玩家的san值；$(br)在其他群系不会产生强干扰。$(br2)理智光环为n则代表玩家在除开其它影响（群系影响和光照等级）的条件下一分钟内会增加n点理智。");
         add("pasterdream.seniors_dream.entry.san.page5", "其他掉san的情况：$(br)处于阴影生物的疯狂光环下；$(br)手持带有疯狂光环的物品；$(br)某些物品的技能也会消耗san值。$(br2)主动恢复san值的方法：$(br)使用特定物品或食物；$(br)装备带有理智光环的饰品；$(br)拥有料理和休憩buff；$(br)让自己处于亮度较高的环境。");
@@ -1431,7 +1431,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 钓鱼
         add("pasterdream.seniors_dream.entry.fishing", "钓鱼");
         add("pasterdream.seniors_dream.entry.fishing.page0", "在闲暇时光，我们也许会坐在水边，拿着钓竿，接受海洋的恩赐。现在在海洋附近钓鱼有可能钓出来自海洋深处的宝藏——深海秘宝，哪怕在梦境的辽阔海洋中，你也能甩出浮标，获得宝藏。你的幸运值越高，就越有可能获得深海秘宝，有的时候，你可能会获得闪耀着奇特光芒的深海秘宝……");
-        add("pasterdream.seniors_dream.entry.fishing.page1", "哪怕在梦境的辽阔海洋中，你也能甩出浮标获得宝藏，你的幸运值越高，就越有可能获得闪耀着奇特光芒的深海秘宝。");
+        add("pasterdream.seniors_dream.entry.fishing.page1", "也许，在梦境中钓出来的深海秘宝能获得一些较为独特的宝藏，比如色彩缤纷的水晶碎片，以及闪烁着光芒的一桶泉水……");
 
         // 此梦先觉
         add("pasterdream.seniors_dream.category.foretold_dream", "此梦先觉");
@@ -1443,12 +1443,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 钛金
         add("pasterdream.seniors_dream.entry.titanium", "钛金");
-        add("pasterdream.seniors_dream.entry.titanium.page0", "在主世界的深层地下，有时会发现一种名为钛金的新矿石，需要比铁更强大更坚硬的材料制作成的镐来采集。和大部分矿石一样，当你的镐拥有时运的魔法力量时，你可以获得更多粗矿。使用钛金制成的工具会比钻石制作而来的工具稍稍趁手一点，或许，你可以在钛金制品中引入来自染梦的梦境力量……");
+        add("pasterdream.seniors_dream.entry.titanium.page0", "在主世界的深层地下，有时会发现一种名为钛金的矿石，需要比铁更强大更坚硬的材料制作成的镐来采集，和大部分矿石一样，可以通过时运附魔获得更多粗矿。使用钛金制成的工具会比钻石制作而来的工具稍稍趁手一点，或许，你可以在钛金制品中引入来自梦境的力量……");
         add("pasterdream.seniors_dream.entry.titanium.page1", "——拥有极强耐腐蚀性的钛金，即使久经风霜仍熠熠生辉；就像那段未醒的梦，时隔许久再次回味也宛如昨日。");
 
         // 炙焰金
         add("pasterdream.seniors_dream.entry.molten_gold", "炙焰金");
-        add("pasterdream.seniors_dream.entry.molten_gold.page0", "当你在下界的深层探索时，可以发现一种闪耀着奇特光芒的类似黄金的新矿石。这种奇特的矿石只需要铁镐就能挖掘，当你的矿镐有时运的力量时，你可以挖到更多矿石。当你拿着炙焰金制作成的工具时，你可以主动使用工具内的奇特能量（默认为右键使用）来让你行动更快速，代价是你需要消耗你的饱食度，在之后可能需要加餐，制成的剑和镐好像也有更强的升级……");
+        add("pasterdream.seniors_dream.entry.molten_gold.page0", "当你在下界的深层探索时，可以发现一种闪耀着奇特光芒，类似黄金的矿石，这种奇特的矿石只需要铁镐就能挖掘，也可以享受时运的加成。当你拿着炙焰金制作成的工具时，你可以右键消耗你的饱食度来获取迅捷效果。制成的剑和镐好像也有更强的升级……");
         add("pasterdream.seniors_dream.entry.molten_gold.page1", "——在烈火与热浪中锻成的一种金属，如果真的想要获取它的力量，或许需要身赴火海的决心。");
 
         // 灵魂粉尘
@@ -1464,37 +1464,42 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 狱炎剑
         add("pasterdream.seniors_dream.entry.inferno_sword", "『融骸』狱炎剑");
         add("pasterdream.seniors_dream.entry.inferno_sword.page0", "利用远古残骸，配上烈焰粉和炙焰金块来强化炙焰金剑后，便将它升级成狱炎剑。它的锋利程度和钻石剑不相上下，而它也会给予敌人长时间的烈焰炙烤，如果敌人原本就在承受着火焰的灼烧，那么，这把剑会延长他们受到折磨的时间。");
-        add("pasterdream.seniors_dream.entry.inferno_sword.page1", "强化后，这把剑获名『融骸』，它变得更加轻便，它的使用者可以主动释放战技，让这把剑获得「融骸斩击」，使它下一击更致命，如果敌人将会受到长时间的火焰灼烧，融骸斩击还会熄灭他们身上的火焰，让他们的行动更加迟缓。$(br2)——浴身于战火，铸炼于战砧。");
+        add("pasterdream.seniors_dream.entry.inferno_sword.page1", "强化后，这把剑获名『融骸』，它变得更加轻便，使用者可以主动释放战技，让这把剑获得「融骸斩击」，使它下一击更致命，如果敌人将会受到长时间的火焰灼烧，融骸斩击还会熄灭他们身上的火焰，让他们的行动更加迟缓。$(br2)——浴身于战火，铸炼于战砧。");
 
         // 草薙
         add("pasterdream.seniors_dream.entry.kusanagi", "『天丛云』草薙");
-        add("pasterdream.seniors_dream.entry.kusanagi.page0", "这把名为「草薙」的剑如同钻石所制造而成的剑一般锋利，同时，这把剑也会让它所伤害的生物染上痛苦的剧毒。而当有两百个生命成为这把剑的刀下亡魂时，它便会展现出它作为神器的完全威能，这样一来，草薙不仅更加锋利，而它所伤害的生命会遭受更长时间的剧毒摧残。");
-        add("pasterdream.seniors_dream.entry.kusanagi.page1", "它的持有者也可以主动释放战技，使得这把剑获得「极致锋利」，令这把神剑接下来的一击更为致命。$(br2)——这把剑虽说叫天丛云剑，但是本模组没有八岐大蛇，这把剑也不能用来当作圣遗物召唤英灵，更不能解放宝具给敌对生物来个八岐怒涛。");
+        add("pasterdream.seniors_dream.entry.kusanagi.page0", "这把名为「草薙」的剑如同钻石所制造而成的剑一般锋利，同时，这把剑也会让它所伤害的生物染上痛苦的剧毒。而当有两百个生命成为这把剑的刀下亡魂时，它便会展现出它作为神器的完全威能——草薙不仅更加锋利，而它所伤害的生命会遭受更长时间的剧毒摧残，持有者可以主动释放战技，使其获得「极致锋利」，令这把神剑接下来的一击更为致命。");
+        add("pasterdream.seniors_dream.entry.kusanagi.page1", "——这把剑虽说叫天丛云剑，但是本模组没有八岐大蛇，这把剑也不能用来当作圣遗物召唤英灵，更不能解放宝具给敌对生物来个八岐怒涛。");
 
         // 引潮
         add("pasterdream.seniors_dream.entry.tide_sword", "『北海若』引潮");
-        add("pasterdream.seniors_dream.entry.tide_sword.page0", "某一日，你感觉到深海秘宝中发现的蔚蓝露滴与你合成的引潮剑产生了共鸣，于是，你将蔚蓝露滴进一步打磨，试着镶嵌在引潮剑中。现在，这把剑被冠以了古代的海神之名，不仅更加锋利，它的持有者可以主动释放「涌流剑技」，在水中快速冲刺。");
-        add("pasterdream.seniors_dream.entry.tide_sword.page1", "另外，如果你的敌人在水中和你战斗，那么你释放涌流剑技之后，下一次斩击将会更加致命。$(br2)——九河横流归海若，孤峰俯眺慑天吴。");
+        add("pasterdream.seniors_dream.entry.tide_sword.page0", "某一日，你感觉到深海秘宝中发现的蔚蓝露滴与你合成的引潮剑产生了共鸣，于是，你将蔚蓝露滴进一步打磨，试着镶嵌在引潮剑中。现在，这把剑被冠以了古代的海神之名，不仅更加锋利，持有者还可以主动释放「涌流剑技」，在水中快速冲刺。另外，如果你的敌人在水中和你战斗，那么你释放涌流剑技之后，下一次斩击将会更加致命。");
+        add("pasterdream.seniors_dream.entry.tide_sword.page1", "——九河横流归海若，孤峰俯眺慑天吴。");
 
         // 朔漠
         add("pasterdream.seniors_dream.entry.desert_sword", "『沉荆门』朔漠");
-        add("pasterdream.seniors_dream.entry.desert_sword.page0", "埋葬于荒漠的战士并未安息，现在，该你去完成他的遗志了。满足他的遗愿后，他会帮你释放朔漠大剑的全部力量，现在这把古老的英雄之剑恢复了它的真名——『沉荆门』朔漠，它不仅恢复了以往的锋利，还可以赋予它的持有者「绝地反击」的能力。");
+        add("pasterdream.seniors_dream.entry.desert_sword.page0", "埋葬于荒漠的战士并未安息，现在，该你去完成他的遗志了。满足他的遗愿后，他会帮你释放朔漠大剑的全部力量，这把古老的英雄之剑也恢复了它的真名——『沉荆门』朔漠，它不仅恢复了以往的锋利，还可以赋予它的持有者「绝地反击」的能力。");
         add("pasterdream.seniors_dream.entry.desert_sword.page1", "启动绝地反击后，你会短暂获得更多的生命来忍受攻击，而你受的伤越多，你接下来的反击一刀将会越致命。$(br2)——回首妖氛未扫，问人间、英雄何处？");
 
         // 深海秘宝
         add("pasterdream.seniors_dream.entry.deep_sea_treasure", "深海秘宝");
-        add("pasterdream.seniors_dream.entry.deep_sea_treasure.page0", "当你在各个维度钓鱼时，有时会发现这种精致的小箱子，打开它会有一些小宝藏。除开你的幸运程度会影响开出的宝藏稀有度外，有些秘宝似乎散发着光芒，看样子里面的宝藏也不一般。除了一些常规的物品外，据说还有一把来自深海的武器，还有一些源于梦中的珍藏。");
+        add("pasterdream.seniors_dream.entry.deep_sea_treasure.page0", "当你在各个维度钓鱼时，有时会发现这种精致的小箱子，打开它会有一些小宝藏，而你的幸运程度则会影响开出的宝藏稀有度。另外，有些秘宝似乎散发着光芒，看样子里面的宝藏也不一般。除了一些常规的物品外，据说还有一把来自深海的武器，以及一些源于梦中的珍藏。");
         add("pasterdream.seniors_dream.entry.deep_sea_treasure.page1", "或许，可以试试去梦里钓一钓好运？$(br2)——融梦于海，等等，什么叫开出来了一只美西螈？");
 
         // 热能匕首
         add("pasterdream.seniors_dream.entry.thermal_dagger", "热能匕首");
-        add("pasterdream.seniors_dream.entry.thermal_dagger.page0", "当你打开深海秘宝时，有可能会获得这种奇怪的小匕首，当你主手持有这把匕首时，你的游泳速度会更快，这把匕首的速度和锋利度都略胜铁剑一筹，有趣的是，你拿这把武器去攻击敌人时，会有滋滋冒油的炙烤声。");
+        add("pasterdream.seniors_dream.entry.thermal_dagger.page0", "当你打开深海秘宝时，有可能会获得这种奇怪的小匕首，当主手持有这把匕首时，你的游泳速度会更快。这把匕首的速度和锋利度都略胜铁剑一筹，有趣的是，你拿这把武器去攻击敌人时，会有滋滋冒油的炙烤声。");
         add("pasterdream.seniors_dream.entry.thermal_dagger.page1", "过去曾有天外来客坠落在海洋中，在迷航中寻求回家的道路，这把奇特的匕首想必就是出自于那位天外来客之手。$(br2)——温馨提示：本匕首并不能拿去单挑死神利维坦，离开海洋请自查是否感染卡拉病毒。");
 
         // 福灵果冻
         add("pasterdream.seniors_dream.entry.fortune_jelly", "福灵果冻");
         add("pasterdream.seniors_dream.entry.fortune_jelly.page0", "在探索这个世界的过程中，你应该已经在某些宝箱中找到了这种绿色的果冻。吃下这种QQ弹弹的小东西会让幸运女神多予你一份眷顾。");
-        add("pasterdream.seniors_dream.entry.fortune_jelly.page1", "虽然没能研究明白这种果冻是如何制成的，但是我貌似能利用炼药的方法提取一下其中的好运。");
+        add("pasterdream.seniors_dream.entry.fortune_jelly.page1", "虽然没能研究明白这种果冻是如何制成的，但是貌似能利用炼药的方法提取一下其中的好运。");
+
+        // 研钵
+        add("pasterdream.seniors_dream.entry.mortar", "研钵");
+        add("pasterdream.seniors_dream.entry.mortar.page0", "古代的炼金术士用研钵这种工具来辅助他们炼制药剂，帮助他们追求点石成金的第五元素。当然，无需研究炼金术的你可以用这种工具制作一些存在于梦境中的染料。$(br2)你可以在研钵里存入液体。在液体区域右键存入液体，左键取出液体。你需要把它放在工作台上来制作染梦染料和其他可以用研钵制作的东西。制作完成后，研钵可以回收，但是研钵里存储的液体会被消耗");
+        add("pasterdream.seniors_dream.entry.mortar.page1", "——过去的人们用它来追寻太一之奇迹，而现在行于梦幻的人们用它来提纯梦境的神秘");
 
         // 染梦空岛
         add("pasterdream.seniors_dream.entry.dyedream_sky_island", "染梦空岛");
@@ -1536,8 +1541,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("pasterdream.seniors_dream.entry.insand", "疯狂");
         add("pasterdream.seniors_dream.entry.insand.page0", "当玩家san值<=20%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+200%%；$(br)移动速度-30%%；$(br)攻击速度-0.4，攻击力-2；$(br)技能冷却时间+100%%；$(br)攻击和触及距离-0.2。");
-        add("pasterdream.seniors_dream.entry.insand.page1", "持有此状态时，视野会不受控制地抖动。且每隔一段时间，就会给予玩家短暂的失明状态，并在玩家身上生成恐怖尖喙和暗影之手。");
-        add("pasterdream.seniors_dream.entry.insand.page2", "随着疯狂状态等级的提升，玩家画面抖动强度会逐渐上升，且暗影怪物的刷新数量增加、刷新时间间隔缩短。疯狂状态达到III级时，会每隔几秒就刷新一只恐怖尖喙。");
+        add("pasterdream.seniors_dream.entry.insand.page1", "持有此状态时，视野会不受控制地抖动，随着疯狂状态等级的进一步提升，玩家画面抖动幅度会增大。");
+        add("pasterdream.seniors_dream.entry.insand.page2", "");
 
         add("pasterdream.seniors_dream.entry.cook", "料理");
         add("pasterdream.seniors_dream.entry.cook.page0", "通过食用部分本模组内食物，以及有联动的模组食物，可以获得此buff。每级增加1.2理智光环。");
