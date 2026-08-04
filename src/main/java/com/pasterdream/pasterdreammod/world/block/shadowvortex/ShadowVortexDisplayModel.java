@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.block;
+package com.pasterdream.pasterdreammod.world.block.shadowvortex;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import net.minecraft.resources.ResourceLocation;

@@ -8,12 +8,12 @@ import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumula
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestBlockEntityRenderer;
-import com.pasterdream.pasterdreammod.world.block.LifeCrystalBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlockEntityRenderer;
-import com.pasterdream.pasterdreammod.world.block.ShadowVortexTileRenderer;
+import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexTileRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;

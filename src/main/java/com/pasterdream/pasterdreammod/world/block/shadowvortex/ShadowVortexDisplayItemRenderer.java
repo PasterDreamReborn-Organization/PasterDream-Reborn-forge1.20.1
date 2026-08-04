@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.block;
+package com.pasterdream.pasterdreammod.world.block.shadowvortex;
 
 import software.bernie.geckolib.renderer.GeoItemRenderer;
 

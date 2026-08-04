@@ -16,13 +16,13 @@ import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamc
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableAddonBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlockEntity;
-import com.pasterdream.pasterdreammod.world.block.LifeCrystalBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.NippyEdelweissBlockEntity;
-import com.pasterdream.pasterdreammod.world.block.ShadowVortexTileEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexTileEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceAddonBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlockEntity;
