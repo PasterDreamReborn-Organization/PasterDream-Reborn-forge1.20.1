@@ -5,9 +5,14 @@ import com.pasterdream.pasterdreammod.helper.multiblockproperties._2x4x2Part;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition.CalculatePartPosition;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.SingleFloorVoxelShapeCalculator;
 import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.blockentity.HorizontalDirectionalBlockBenchBaseEntityBlock;
+import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -19,8 +24,10 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -253,6 +260,30 @@ public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockB
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
     {
         builder.add(FACING, PART);
+    }
+
+    @Override
+    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPosition, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult)
+    {
+        if (!level.isClientSide)
+        {
+            _2x4x2Part part = blockState.getValue(PART);
+            BlockPos targetPosition = blockPosition;
+
+            if(part != _2x4x2Part.MAIN)
+            {
+                targetPosition = CalculatePartPosition.getMainPosFromAddon(blockPosition, blockState.getValue(WeaponWorkshopBlastFurnaceBlock.FACING), blockState.getValue(WeaponWorkshopBlastFurnaceBlock.PART));
+            }
+
+            BlockEntity blockEntity = level.getBlockEntity(targetPosition);
+            if (blockEntity instanceof WeaponWorkshopBlastFurnaceBlockEntity weaponWorkshopBlastFurnace)
+            {
+                final BlockPos finalTargetPosition = targetPosition;
+                NetworkHooks.openScreen((ServerPlayer) player, weaponWorkshopBlastFurnace, buf -> buf.writeBlockPos(finalTargetPosition));
+            }
+
+        }
+        return InteractionResult.SUCCESS;
     }
 
     @Override

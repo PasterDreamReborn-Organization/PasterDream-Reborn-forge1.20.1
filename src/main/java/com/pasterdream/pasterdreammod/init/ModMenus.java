@@ -21,6 +21,8 @@ import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamc
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestMenu;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableMenu;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceMenu;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
 import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.StorageBagMenu;
 import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.LargeStorageBagMenu;
@@ -106,6 +108,12 @@ public class ModMenus
     {
         BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
         return new DreamAccumulatorMenu(windowId, inv, (DreamAccumulatorBlockEntity) blockEntity);
+    }));
+
+    public static final RegistryObject<MenuType<WeaponWorkshopBlastFurnaceMenu>> WEAPON_WORKSHOP_BLAST_FURNACE = MENUS.register("weapon_woekshop_blast_furnace", () -> IForgeMenuType.create((windowId, inv, data) ->
+    {
+        BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+        return new WeaponWorkshopBlastFurnaceMenu(windowId, inv, (WeaponWorkshopBlastFurnaceBlockEntity) blockEntity);
     }));
 
     public static void register(IEventBus eventBus)

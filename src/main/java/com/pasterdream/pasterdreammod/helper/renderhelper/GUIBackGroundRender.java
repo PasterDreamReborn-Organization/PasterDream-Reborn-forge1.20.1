@@ -19,10 +19,10 @@ public class GUIBackGroundRender
     public static ResourceLocation BLUEPRINT_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/blueprint.png");
     public static ResourceLocation DREAM_ACCUMULATOR_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_accumulator.png");
     public static ResourceLocation RESEARCH_TABLE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/research_table.png");
-    public static ResourceLocation WEAPON_WORKSHOP_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/weapon_workshop.png");
-    public static ResourceLocation WORKSHOP_ANVIL_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/workshop_anvil.png");
-    public static ResourceLocation WORKSHOP_BLAST_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/workshop_blast.png");
-    public static ResourceLocation WORKSHOP_BLAST_LAVA_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/workshop/workshop_blast_lava_amount_bar.png");
+    public static ResourceLocation WEAPON_WORKSHOP_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop.png");
+    public static ResourceLocation WEAPON_WORKSHOP_ANVIL_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_anvil.png");
+    public static ResourceLocation WEAPON_WORKSHOP_BLAST_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_blast_furnace.png");
+    public static ResourceLocation WEAPON_WORKSHOP_BLAST_LAVA_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_blast_furnace_lava_amount_bar.png");
 
     public static ResourceLocation DREAM_CAULDRON_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron.png");
     public static ResourceLocation DREAM_CAULDRON_MELT_DREAM_LIQUID_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_melt_dream_liquid_amount_bar.png");
@@ -157,19 +157,19 @@ public class GUIBackGroundRender
         guiGraphics.blit(WEAPON_WORKSHOP_GUI, x, y, 0, 0, 174, 86, 174, 86);
     }
 
-    public static void rendWorkshopAnvilGUI(GuiGraphics guiGraphics, int x, int y)
+    public static void rendWeaponWorkshopAnvilGUI(GuiGraphics guiGraphics, int x, int y)
     {
-        guiGraphics.blit(WORKSHOP_ANVIL_GUI, x, y, 0, 0, 154, 74, 154, 74);
+        guiGraphics.blit(WEAPON_WORKSHOP_ANVIL_GUI, x, y, 0, 0, 154, 74, 154, 74);
     }
 
-    public static void rendWorkshopBlastGUI(GuiGraphics guiGraphics, int x, int y)
+    public static void rendWeaponWorkshopBlastFurnaceGUI(GuiGraphics guiGraphics, int x, int y)
     {
-        guiGraphics.blit(WORKSHOP_BLAST_GUI, x, y, 0, 0, 128, 105, 128, 105);
+        guiGraphics.blit(WEAPON_WORKSHOP_BLAST_GUI, x, y, 0, 0, 128, 105, 128, 105);
     }
 
-    public static void rendWorkshopLavaAmountBar(GuiGraphics guiGraphics, int x, int y, double percent)
+    public static void rendWeaponWorkshopBlastFurnaceLavaAmountBar(GuiGraphics guiGraphics, int x, int y, double percent)
     {
-        guiGraphics.blit(WORKSHOP_BLAST_LAVA_AMOUNT_BAR, x, y + (int)(24 * (1 - percent)), 0, (int)(24 * (1 - percent)), 7, (int)(24 * percent), 7, 24);
+        guiGraphics.blit(WEAPON_WORKSHOP_BLAST_LAVA_AMOUNT_BAR, x, y + (int)(0.5 + (24 * (1 - percent))), 0, (int)(0.5 + (24 * (1 - percent))), 7, (int)(0.49999999 + (24 * percent)), 7, 24);
     }
 
     public static void rendDreamCauldronGUI(GuiGraphics guiGraphics, int x, int y)
