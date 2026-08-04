@@ -9,7 +9,9 @@ import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
+import com.pasterdream.pasterdreammod.world.entity.ghost.SquealWaveProjectileEntity;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,13 +24,18 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.CrossbowItem;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
+import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PacketDistributor;
@@ -342,5 +349,106 @@ public class CurioPassiveHandler {
                 -1, newLevel - 1, false, false, true));
         // 进食后清除枯竭标记，使 buff 可以正常恢复
         player.getPersistentData().remove("pasterdream.calais_depleted");
+    }
+
+    /**
+     * 鬼魂之面：幽魂射弹无视无敌帧（仅对佩戴鬼魂之面的玩家发射的怨魂音波生效）
+     */
+    @SubscribeEvent
+    public static void onGhostFaceProjectileAttack(LivingAttackEvent event) {
+        // 只处理怨魂音波射弹
+        if (!(event.getSource().getDirectEntity() instanceof SquealWaveProjectileEntity projectile)) return;
+        // 检查射弹主人是否为佩戴鬼魂之面的玩家
+        if (!(projectile.getOwner() instanceof Player player)) return;
+        boolean hasGhostFace = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.GHOST_FACE.get()).isPresent())
+                .orElse(false);
+        if (!hasGhostFace) return;
+        // 清除无敌帧，使幽魂射弹伤害无视无敌
+        event.getEntity().invulnerableTime = 0;
+    }
+
+    /**
+     * 鬼魂之面：使用远程武器时，额外发射幽魂射弹（怨魂同款），20% 再发射一发
+     * 延迟 2 tick 发射，避免幽魂射弹先于箭矢命中导致箭矢被无敌帧弹开
+     */
+    @SubscribeEvent
+    public static void onArrowLoose(ArrowLooseEvent event) {
+        Player player = event.getEntity();
+        if (player.level().isClientSide) return;
+
+        boolean hasGhostFace = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.GHOST_FACE.get()).isPresent())
+                .orElse(false);
+        if (!hasGhostFace) return;
+
+        // 弩的 charge 固定为 1，需特殊处理；弓按蓄力比例计算
+        float velocity;
+        if (event.getBow().getItem() instanceof CrossbowItem) {
+            velocity = 3.0F; // 弩始终全速发射
+        } else {
+            velocity = (event.getCharge() / 20.0F) * 3.0F;
+        }
+        float power = velocity / 2.0F;
+        int shots = 1 + (player.getRandom().nextFloat() < 0.2F ? 1 : 0);
+
+        // 力量附魔加成：沿用原版公式 level * 0.5 + 0.5
+        double damage = 3.0;
+        int powerLevel = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.POWER_ARROWS, event.getBow());
+        if (powerLevel > 0) {
+            damage += powerLevel * 0.5 + 0.5;
+        }
+
+        // 延迟发射，让箭矢先飞出去
+        CompoundTag pd = player.getPersistentData();
+        pd.putInt("pasterdream_ghost_face_delay", 2);
+        pd.putInt("pasterdream_ghost_face_shots", shots);
+        pd.putFloat("pasterdream_ghost_face_power", power);
+        pd.putDouble("pasterdream_ghost_face_damage", damage);
+    }
+
+    /**
+     * 鬼魂之面：延迟发射幽魂射弹的 tick 处理
+     */
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END) return;
+        Player player = event.player;
+        if (player.level().isClientSide) return;
+
+        CompoundTag pd = player.getPersistentData();
+        int delay = pd.getInt("pasterdream_ghost_face_delay");
+        if (delay <= 0) return;
+
+        delay--;
+        if (delay > 0) {
+            pd.putInt("pasterdream_ghost_face_delay", delay);
+            return;
+        }
+
+        // 再次确认玩家仍佩戴鬼魂之面
+        boolean hasGhostFace = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.GHOST_FACE.get()).isPresent())
+                .orElse(false);
+        if (!hasGhostFace) {
+            pd.remove("pasterdream_ghost_face_delay");
+            pd.remove("pasterdream_ghost_face_shots");
+            pd.remove("pasterdream_ghost_face_power");
+            pd.remove("pasterdream_ghost_face_damage");
+            return;
+        }
+
+        int shots = pd.getInt("pasterdream_ghost_face_shots");
+        float power = pd.getFloat("pasterdream_ghost_face_power");
+        double damage = pd.contains("pasterdream_ghost_face_damage") ? pd.getDouble("pasterdream_ghost_face_damage") : 3.0;
+        for (int i = 0; i < shots; i++) {
+            SquealWaveProjectileEntity.shoot(player.level(), player, player.getRandom(), power, damage, 0);
+        }
+
+        // 清理
+        pd.remove("pasterdream_ghost_face_delay");
+        pd.remove("pasterdream_ghost_face_shots");
+        pd.remove("pasterdream_ghost_face_power");
+        pd.remove("pasterdream_ghost_face_damage");
     }
 }

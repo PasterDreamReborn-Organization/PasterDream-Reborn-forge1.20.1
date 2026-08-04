@@ -1030,6 +1030,10 @@ public class ModItems {
     public static final RegistryObject<Item> CALAIS_SPICE_BOTTLE = ITEMS.register("calais_spice_bottle",
             CalaisSpiceBottleItem::new);
 
+    // ===== 鬼魂之面（头饰） =====
+    public static final RegistryObject<Item> GHOST_FACE = ITEMS.register("ghost_face",
+            GhostFaceItem::new);
+
     // ===== 陶罐 =====
     public static final RegistryObject<Item> CLAY_POT = ITEMS.register("clay_pot",
             () -> new BlockItem(ModBlocks.CLAY_POT.get(), new Item.Properties()));
