@@ -172,38 +172,6 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (!this.level().isClientSide() && this.isAlive() && getVariant().hasRoar && roarCooldown <= 0
-                && ShadowDifficultyHelper.getDifficultyContext(this) > 0
-                && canUseSkill()) {
-            boolean shouldRoar = true;
-            if (getVariant().roarOnlyNonImmune) {
-                shouldRoar = !source.is(DamageTypes.IN_FIRE) && !source.is(DamageTypes.CACTUS)
-                        && !source.is(DamageTypes.WITHER) && !source.is(DamageTypes.WITHER_SKULL);
-            }
-            if (shouldRoar) {
-                this.playSound(ModSounds.TERRORBEAK_ROAR.get(), variant == Variant.CRAZY ? 0.7f : 0.6f, 1);
-                Vec3 look = this.getLookAngle();
-                Vec3 center = this.position().add(look.x, 0, look.z);
-                AABB area = AABB.ofSize(center, getVariant().roarRange, getVariant().roarRange, getVariant().roarRange);
-                List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, area,
-                        e -> e != this && !(e instanceof TerrorbeakEntity)
-                                && !e.getType().is(ModEntityTypeTags.SHADOW_MOB));
-                for (LivingEntity target : entities) {
-                    if (target instanceof Player player
-                            && !ShadowDifficultyHelper.isSpecialSkillEnabled(player)) {
-                        continue;
-                    }
-                    target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 30, 1));
-                    target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 30, 0));
-                    target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 1));
-                }
-                for (ServerPlayer sp : this.level().getEntitiesOfClass(ServerPlayer.class, area, e -> true)) {
-                    if (!ShadowDifficultyHelper.isSpecialSkillEnabled(sp)) continue;
-                    sp.getCapability(ModCapabilities.SAN).ifPresent(cap -> cap.addSanValue(getVariant().roarSanPenalty));
-                }
-                roarCooldown = 200;
-            }
-        }
         if (source.is(DamageTypes.IN_FIRE))
             return false;
         if (source.is(DamageTypes.CACTUS))
@@ -270,6 +238,38 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
         if (!this.level().isClientSide() && this.level().canSeeSky(this.blockPosition()) && this.level().isDay()) {
             this.kill();
         }
+        if (!this.level().isClientSide() && this.isAlive() && getVariant().hasRoar && roarCooldown <= 0
+                && ShadowDifficultyHelper.getDifficultyContext(this) > 0
+                && canUseSkill()) {
+            LivingEntity target = this.getTarget();
+            if (target != null && this.distanceToSqr(target) <= 16) {
+                performRoar();
+            }
+        }
+    }
+
+    private void performRoar() {
+        this.playSound(ModSounds.TERRORBEAK_ROAR.get(), variant == Variant.CRAZY ? 0.7f : 0.6f, 1);
+        Vec3 look = this.getLookAngle();
+        Vec3 center = this.position().add(look.x, 0, look.z);
+        AABB area = AABB.ofSize(center, getVariant().roarRange, getVariant().roarRange, getVariant().roarRange);
+        List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, area,
+                e -> e != this && !(e instanceof TerrorbeakEntity)
+                        && !e.getType().is(ModEntityTypeTags.SHADOW_MOB));
+        for (LivingEntity target : entities) {
+            if (target instanceof Player player
+                    && !ShadowDifficultyHelper.isSpecialSkillEnabled(player)) {
+                continue;
+            }
+            target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 30, 1));
+            target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 30, 0));
+            target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 1));
+        }
+        for (ServerPlayer sp : this.level().getEntitiesOfClass(ServerPlayer.class, area, e -> true)) {
+            if (!ShadowDifficultyHelper.isSpecialSkillEnabled(sp)) continue;
+            sp.getCapability(ModCapabilities.SAN).ifPresent(cap -> cap.addSanValue(getVariant().roarSanPenalty));
+        }
+        roarCooldown = 200;
     }
 
     @Override

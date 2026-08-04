@@ -232,8 +232,8 @@ public class ShadowGolemEntity extends Monster implements GeoEntity, IShadowMob 
 
         // Normal ticking: increment counter, check for trigger
         if (timeCounter >= 200) {
-            if (!world.getEntitiesOfClass(Player.class,
-                    AABB.ofSize(new Vec3(x, y, z), 10, 10, 10), e -> true).isEmpty()) {
+            LivingEntity target = this.getTarget();
+            if (target != null && this.distanceToSqr(target) <= 25) {
                 this.setAnimation("storage");
                 skillTimer = 44;
                 timeCounter = 0;

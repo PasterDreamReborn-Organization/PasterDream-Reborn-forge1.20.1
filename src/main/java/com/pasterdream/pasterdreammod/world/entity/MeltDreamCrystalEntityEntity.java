@@ -179,16 +179,7 @@ public class MeltDreamCrystalEntityEntity extends PathfinderMob implements GeoEn
         Level world = this.level();
 
         // MeltdreamCrystalBlockPr0Procedure logic inlined
-        if (!world.isClientSide()) {
-            // Play sound
-            world.playSound(null, BlockPos.containing(this.getX(), this.getY(), this.getZ()),
-                    ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse("block.amethyst_block.break")),
-                    SoundSource.NEUTRAL, 0.8f, 1.0f);
-        } else {
-            world.playLocalSound(this.getX(), this.getY(), this.getZ(),
-                    ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse("block.amethyst_block.break")),
-                    SoundSource.NEUTRAL, 0.8f, 1.0f, false);
-        }
+        this.playSound(ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse("block.amethyst_block.break")), 0.8f, 1.0f);
         // Spawn particles
         if (world instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(ModParticleTypes.MELTDREAM_CRYSTAL_PARTICLE.get(),

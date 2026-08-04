@@ -245,9 +245,7 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
             sl.sendParticles(ParticleTypes.SMOKE,
                     getX(), getY(), getZ(), isExplosion ? 32 : 12, scale * 0.7, 0.5, scale * 0.7, 0.02);
         }
-        level().playSound(null, blockPosition(),
-                isExplosion ? SoundEvents.GENERIC_EXPLODE : SoundEvents.GENERIC_EXPLODE,
-                SoundSource.NEUTRAL, isExplosion ? 0.8f : 0.4f, isExplosion ? 0.6f : 0.8f);
+        this.playSound(SoundEvents.GENERIC_EXPLODE, isExplosion ? 0.8f : 0.4f, isExplosion ? 0.6f : 0.8f);
 
         Vec3 center = position();
         List<Entity> targets = level().getEntitiesOfClass(Entity.class,

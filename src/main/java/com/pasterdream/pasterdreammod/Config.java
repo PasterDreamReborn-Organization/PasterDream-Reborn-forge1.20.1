@@ -207,6 +207,23 @@ public class Config
                     + "\n每个掉落物以 (倍率-1) 的概率额外复制一份")
             .define("shadowLootMultipliers", List.of(1.0, 1.0, 1.5, 2.0));
 
+    // === BOSS 限伤系统 ===
+    private static final ForgeConfigSpec.BooleanValue BOSS_SHADOW_DIFFICULTY_AFFECTS_DAMAGE_CAP = BUILDER
+            .comment("暗影难度是否影响 BOSS 限伤值（方案B：难度越高 damageCap 越低），默认 false")
+            .define("bossShadowDifficultyAffectsDamageCap", false);
+
+    private static final ForgeConfigSpec.DoubleValue BOSS_DAMAGE_CAP = BUILDER
+            .comment("BOSS 单次受击伤害上限（同时也是 DPS 桶容量），默认 25")
+            .defineInRange("bossDamageCap", 25.0, 1.0, 1_000_000.0);
+
+    private static final ForgeConfigSpec.DoubleValue BOSS_DPS_CAP = BUILDER
+            .comment("BOSS DPS 桶每秒恢复量，默认 100")
+            .defineInRange("bossDpsCap", 100.0, 1.0, 1_000_000.0);
+
+    private static final ForgeConfigSpec.DoubleValue BOSS_RANGE_CAP = BUILDER
+            .comment("BOSS 限伤距离衰减起始距离（格），超过此距离伤害线性衰减，默认 12")
+            .defineInRange("bossRangeCap", 12.0, 1.0, 256.0);
+
     // === 低理智刷怪（四区间制） ===
     // 区间边界沿用上方 SAN 阈值，此处仅配置各区间的刷怪概率与实体权重
     // 概率为 4 个值，按暗影难度排列 [极简单, 简单, 普通, 困难]
@@ -420,6 +437,12 @@ public class Config
     public static double shadowHandSanDrain;
     public static List<? extends Double> shadowLootMultipliers;
 
+    // BOSS 限伤系统
+    public static boolean bossShadowDifficultyAffectsDamageCap;
+    public static double bossDamageCap;
+    public static double bossDpsCap;
+    public static double bossRangeCap;
+
     // === 低理智刷怪 ===
     public static List<? extends Double> lowSanSpawnHighProbs;
     public static List<? extends String> lowSanSpawnHighEntities;
@@ -569,6 +592,10 @@ public class Config
         shadowGolemSkillDamage = SHADOW_GOLEM_SKILL_DAMAGE.get();
         shadowHandSanDrain = SHADOW_HAND_SAN_DRAIN.get();
         shadowLootMultipliers = SHADOW_LOOT_MULTIPLIERS.get();
+        bossShadowDifficultyAffectsDamageCap = BOSS_SHADOW_DIFFICULTY_AFFECTS_DAMAGE_CAP.get();
+        bossDamageCap = BOSS_DAMAGE_CAP.get();
+        bossDpsCap = BOSS_DPS_CAP.get();
+        bossRangeCap = BOSS_RANGE_CAP.get();
         lowSanSpawnHighProbs = LOW_SAN_SPAWN_HIGH_PROBS.get();
         lowSanSpawnHighEntities = LOW_SAN_SPAWN_HIGH_ENTITIES.get();
         lowSanSpawnMediumProbs = LOW_SAN_SPAWN_MEDIUM_PROBS.get();

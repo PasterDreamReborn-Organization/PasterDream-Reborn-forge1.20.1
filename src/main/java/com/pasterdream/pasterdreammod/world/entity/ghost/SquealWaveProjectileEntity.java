@@ -83,9 +83,7 @@ public class SquealWaveProjectileEntity extends AbstractArrow implements ItemSup
         arrow.setBaseDamage(damage);
         arrow.setKnockback(knockback);
         world.addFreshEntity(arrow);
-        world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                ModSounds.SQUEAL_WAVE.get(), SoundSource.PLAYERS,
-                1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
+        entity.playSound(ModSounds.SQUEAL_WAVE.get(), 1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
     }
 
     public static void shoot(LivingEntity entity, LivingEntity target) {
@@ -99,8 +97,6 @@ public class SquealWaveProjectileEntity extends AbstractArrow implements ItemSup
         arrow.setKnockback(0);
         arrow.setCritArrow(false);
         entity.level().addFreshEntity(arrow);
-        entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                ModSounds.SQUEAL_WAVE.get(), SoundSource.PLAYERS,
-                1, 1f / (RandomSource.create().nextFloat() * 0.5f + 1));
+        entity.playSound(ModSounds.SQUEAL_WAVE.get(), 1, 1f / (RandomSource.create().nextFloat() * 0.5f + 1));
     }
 }

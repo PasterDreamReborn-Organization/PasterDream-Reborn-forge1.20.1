@@ -77,8 +77,8 @@ public class ShadowSwordItem extends SwordItem {
             }
             player.getPersistentData().putBoolean(NIGHTMARE_SLASH_TAG, true);
             SkillCooldownHelper.applySharedCooldown(player, SKILL_COOLDOWN_TICKS);
-            level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()),
-                    SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 0.7f, 1.2f);
+            player.playSound(SoundEvents.ENCHANTMENT_TABLE_USE, 0.7f, 1.2f);
+            player.invulnerableTime = 10;
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }
@@ -186,8 +186,7 @@ public class ShadowSwordItem extends SwordItem {
             event.getEntity().invulnerableTime = 0;
             event.getEntity().hurt(level.damageSources().magic(), magicDamage);
 
-            level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()),
-                    ModSounds.SHADOW_SWORD.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+            player.playSound(ModSounds.SHADOW_SWORD.get(), 1.0f, 1.0f);
 
             int sweepingLevel = sword.getEnchantmentLevel(Enchantments.SWEEPING_EDGE);
             if (sweepingLevel > 0) {
