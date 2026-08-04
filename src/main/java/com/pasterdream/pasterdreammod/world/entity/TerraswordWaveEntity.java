@@ -228,8 +228,7 @@ public class TerraswordWaveEntity extends PathfinderMob {
 
             if (lifeTicks >= MAX_LIFE_TICKS) {
                 if (!hitEntities.isEmpty()) {
-                    level.playSound(null, BlockPos.containing(this.getX(), this.getY(), this.getZ()),
-                            SoundEvents.DRAGON_FIREBALL_EXPLODE, SoundSource.NEUTRAL, 0.7f, 1.0f);
+                    this.playSound(SoundEvents.DRAGON_FIREBALL_EXPLODE, 0.7f, 1.0f);
                 }
                 this.discard();
             }

@@ -206,8 +206,7 @@ public class FoxFireEntity extends PathfinderMob implements GeoEntity {
         }
 
         if (lifeTicks >= Config.FoxFireLifetimeSeconds * 20) {
-            level.playSound(null, BlockPos.containing(this.getX(), this.getY(), this.getZ()),
-                    SoundEvents.FIRE_EXTINGUISH, SoundSource.NEUTRAL, 0.5f, 1.0f);
+            this.playSound(SoundEvents.FIRE_EXTINGUISH, 0.5f, 1.0f);
             this.discard();
         }
     }

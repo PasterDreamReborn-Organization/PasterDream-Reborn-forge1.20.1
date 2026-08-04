@@ -124,7 +124,9 @@ public class BlackBeetleMotherEntity extends Monster implements GeoEntity, IShad
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        triggerSkill();
+        if (!(source.getEntity() instanceof Player player && player.isCreative())) {
+            triggerSkill();
+        }
         if (source.is(DamageTypes.FALL))
             return false;
         return super.hurt(source, amount);
@@ -147,8 +149,7 @@ public class BlackBeetleMotherEntity extends Monster implements GeoEntity, IShad
         this.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 80, 4, false, false));
         this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 1, false, false));
 
-        this.level().playSound(null, BlockPos.containing(this.getX(), this.getY(), this.getZ()),
-                ModSounds.BEETLE_SKILL.get(), SoundSource.MASTER, 2, 1);
+        this.playSound(ModSounds.BEETLE_SKILL.get(), 2, 1);
     }
 
     private void executeSkillPhase() {
@@ -171,7 +172,7 @@ public class BlackBeetleMotherEntity extends Monster implements GeoEntity, IShad
             List<Entity> entities = this.level().getEntitiesOfClass(Entity.class,
                     new AABB(center, center).inflate(12), e -> true);
             Player nearestPlayer = this.level().getEntitiesOfClass(Player.class,
-                            new AABB(center, center).inflate(32), e -> true).stream()
+                            new AABB(center, center).inflate(32), e -> !e.isCreative()).stream()
                     .min(Comparator.comparingDouble(e -> e.distanceToSqr(center)))
                     .orElse(null);
 

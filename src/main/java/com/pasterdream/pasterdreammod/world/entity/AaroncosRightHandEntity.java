@@ -28,6 +28,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -52,9 +53,10 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
 import java.util.Comparator;
+import java.util.EnumSet;
 import java.util.List;
 
-public class AaroncosRightHandEntity extends Monster implements GeoEntity {
+public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShadowMob {
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(AaroncosRightHandEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(AaroncosRightHandEntity.class, EntityDataSerializers.STRING);
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
@@ -72,6 +74,10 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity {
     private int skillLock = 0;
     private int skillTick = 0;
     private SkillType activeSkill = SkillType.NONE;
+
+    // 可调参数
+    private static final double CHASE_SPEED = 3.0;               // 追敌速度
+    private static final double MAGICBALL_TRIGGER_DIST = 256;    // 魔法球触发距离（平方，16格）
 
     // Cooldowns & counters
     private int magicballCount = 0;
@@ -129,8 +135,41 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity {
                 return this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth();
             }
         });
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, false, false));
-        this.goalSelector.addGoal(3, new RandomStrollGoal(this, 0.8, 20) {
+        this.goalSelector.addGoal(2, new Goal() {
+            {
+                this.setFlags(EnumSet.of(Goal.Flag.MOVE));
+            }
+            public boolean canUse() {
+                return AaroncosRightHandEntity.this.getTarget() != null && !AaroncosRightHandEntity.this.getMoveControl().hasWanted();
+            }
+            @Override
+            public boolean canContinueToUse() {
+                return AaroncosRightHandEntity.this.getMoveControl().hasWanted() && AaroncosRightHandEntity.this.getTarget() != null && AaroncosRightHandEntity.this.getTarget().isAlive();
+            }
+            @Override
+            public void start() {
+                LivingEntity livingentity = AaroncosRightHandEntity.this.getTarget();
+                Vec3 vec3d = livingentity.getEyePosition(1);
+                AaroncosRightHandEntity.this.moveControl.setWantedPosition(vec3d.x, vec3d.y, vec3d.z, CHASE_SPEED);
+            }
+            @Override
+            public void tick() {
+                LivingEntity livingentity = AaroncosRightHandEntity.this.getTarget();
+                if (AaroncosRightHandEntity.this.getBoundingBox().intersects(livingentity.getBoundingBox())) {
+                    AaroncosRightHandEntity.this.doHurtTarget(livingentity);
+                } else {
+                    double d0 = AaroncosRightHandEntity.this.distanceToSqr(livingentity);
+                    if (d0 < 16) {
+                        Vec3 vec3d = livingentity.getEyePosition(1);
+                        AaroncosRightHandEntity.this.moveControl.setWantedPosition(vec3d.x, vec3d.y, vec3d.z, CHASE_SPEED);
+                    }
+                }
+            }
+        });
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, false, false,
+                target -> !target.getType().is(SHADOW_MOB) && !target.getType().is(SPECIAL_ENTITY)
+                        && !(target instanceof Player player && player.isCreative())));
+        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.8, 20) {
             @Override
             protected Vec3 getPosition() {
                 return new Vec3(
@@ -158,9 +197,9 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity {
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (!level().isClientSide() && !hasEffect(ModEffects.SHADOW_SILENCE_BUFF.get())) {
-            // Tunetotem skill trigger (hurt-triggered)
-            if (skillLock == 0 && switchState == 1 && tunetotemCd == 0 && getHealth() > 1) {
+        if (!level().isClientSide() && canUseSkill()) {
+            // Tunetotem skill trigger (hurt-triggered, requires target)
+            if (skillLock == 0 && switchState == 1 && tunetotemCd == 0 && getHealth() > 1 && getTarget() != null) {
                 startTunetotemSkill();
             }
             // Bossbar update & bloodlock check on hurt
@@ -210,11 +249,11 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity {
                 if (activeSkill != SkillType.NONE) {
                     skillTick++;
                     runActiveSkill();
-                } else if (skillLock == 0 && !hasEffect(ModEffects.SHADOW_SILENCE_BUFF.get())) {
+                } else if (skillLock == 0 && canUseSkill() && getTarget() != null) {
                     // Try to start skills
                     if (magicballCount >= 3 && vortexCd == 0) {
                         startVortexSkill();
-                    } else if (magicballCd == 0 && magicballCount < 3) {
+                    } else if (magicballCd == 0 && magicballCount < 3 && distanceToSqr(getTarget()) <= MAGICBALL_TRIGGER_DIST) {
                         startMagicballSkill();
                     }
                 }
@@ -290,7 +329,8 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity {
         List<Entity> entities = level().getEntitiesOfClass(Entity.class,
             new AABB(center, center).inflate(7.5), e -> true);
         for (Entity target : entities) {
-            if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)) {
+            if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
+                    && !(target instanceof Player player && player.isCreative())) {
                 if (target instanceof LivingEntity le) {
                     le.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 60, 1, false, false));
                 }
@@ -351,18 +391,20 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity {
                 sl.sendParticles(ModParticleTypes.SHADOW_STONE_PARTICLE.get(), getX(), getY(), getZ(), 128, 2, 1, 2, 0.1);
                 sl.sendParticles(ParticleTypes.SMOKE, getX(), getY(), getZ(), 64, 2, 1, 2, 0.5);
             }
-            // Hit all players within 64 blocks
             Vec3 center = new Vec3(getX(), getY(), getZ());
             List<Entity> entities = level().getEntitiesOfClass(Entity.class,
                 new AABB(center, center).inflate(32), e -> true);
             for (Entity target : entities) {
-                if (target instanceof Player player) {
-                    player.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 10, 1, false, false));
-                    player.hurt(new DamageSource(level().registryAccess()
-                        .registryOrThrow(Registries.DAMAGE_TYPE)
-                        .getHolderOrThrow(DamageTypes.GENERIC)), 4);
-                    player.setDeltaMovement(new Vec3(0, 0.2, 0));
-                    level().setBlock(BlockPos.containing(player.getX(), player.getY(), player.getZ()),
+                if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
+                    && !(target instanceof Player player && player.isCreative())) {
+                    if (target instanceof LivingEntity le) {
+                        le.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 10, 1, false, false));
+                        le.hurt(new DamageSource(level().registryAccess()
+                            .registryOrThrow(Registries.DAMAGE_TYPE)
+                            .getHolderOrThrow(DamageTypes.GENERIC)), skillDamage(0.22f));
+                        le.setDeltaMovement(new Vec3(0, 0.2, 0));
+                    }
+                    level().setBlock(BlockPos.containing(target.getX(), target.getY(), target.getZ()),
                         ModBlocks.SHADOW_VORTEX.get().defaultBlockState(), 3);
                     playSoundAt(ModSounds.SHADOW_VORTEX.get(), 0.8f, 1);
                 }
@@ -407,6 +449,10 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity {
         activeSkill = SkillType.NONE;
         skillTick = 0;
         skillLock = 0;
+    }
+
+    private float skillDamage(float ratio) {
+        return (float) (getAttributeValue(Attributes.ATTACK_DAMAGE) * ratio);
     }
 
     // ============ Bloodlock ============
@@ -475,13 +521,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity {
     }
 
     private void playSoundAt(net.minecraft.sounds.SoundEvent sound, float volume, float pitch) {
-        if (!level().isClientSide()) {
-            level().playSound(null, BlockPos.containing(getX(), getY(), getZ()),
-                sound, SoundSource.MASTER, volume, pitch);
-        } else {
-            level().playLocalSound(getX(), getY(), getZ(),
-                sound, SoundSource.MASTER, volume, pitch, false);
-        }
+        this.playSound(sound, volume, pitch);
     }
 
     private void safeExplode(double cx, double cy, double cz, double radius, float damage, int particleCount) {
@@ -494,7 +534,8 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity {
         List<Entity> entities = level().getEntitiesOfClass(Entity.class,
             new AABB(center, center).inflate(radius), e -> true);
         for (Entity target : entities) {
-            if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)) {
+            if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
+                    && !(target instanceof Player player && player.isCreative())) {
                 target.hurt(new DamageSource(level().registryAccess()
                     .registryOrThrow(Registries.DAMAGE_TYPE)
                     .getHolderOrThrow(DamageTypes.EXPLOSION)), damage);
@@ -573,13 +614,13 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
-            .add(Attributes.MOVEMENT_SPEED, 0.4)
+            .add(Attributes.MOVEMENT_SPEED, 0.6)
             .add(Attributes.MAX_HEALTH, 500)
             .add(Attributes.ARMOR, 4)
             .add(Attributes.ATTACK_DAMAGE, 18)
             .add(Attributes.FOLLOW_RANGE, 32)
             .add(Attributes.KNOCKBACK_RESISTANCE, 1)
-            .add(Attributes.FLYING_SPEED, 0.4);
+            .add(Attributes.FLYING_SPEED, 1.0);
     }
 
     // ============ Animation ============

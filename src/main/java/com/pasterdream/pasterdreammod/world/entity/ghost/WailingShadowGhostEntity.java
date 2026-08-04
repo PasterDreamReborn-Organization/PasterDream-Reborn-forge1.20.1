@@ -56,6 +56,7 @@ public class WailingShadowGhostEntity extends ShadowGhostEntity {
     public boolean hurt(DamageSource source, float amount) {
         boolean result = super.hurt(source, amount);
         if (!this.level().isClientSide() && !summonGate && summonTimer <= 0
+                && this.getTarget() != null
                 && ShadowDifficultyHelper.isSpecialSkillEnabled(
                         ShadowDifficultyHelper.getDifficultyContext(this))
                 && canUseSkill()) {

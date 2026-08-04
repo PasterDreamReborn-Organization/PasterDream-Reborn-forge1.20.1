@@ -128,7 +128,7 @@ public class GoldenFoxEntity extends PathfinderMob implements GeoEntity {
         if (world instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(net.minecraft.core.particles.ParticleTypes.CLOUD, x, y, z, 12, 0.6, 0.6, 0.6, 0.1);
         }
-        world.playSound(null, BlockPos.containing(x, y, z), SoundEvents.FOX_AMBIENT, SoundSource.MASTER, 1f, 1f);
+        this.playSound(SoundEvents.FOX_AMBIENT, 1f, 1f);
 
         // Place golden_fox_sculpture facing player
         world.setBlock(BlockPos.containing(x, y, z),

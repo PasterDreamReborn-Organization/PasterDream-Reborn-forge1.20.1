@@ -50,5 +50,9 @@ public class ModMobSpawnEvents {
         if (speed != null) {
             speed.setBaseValue(speed.getBaseValue() * speedMult);
         }
+        var flyingSpeed = entity.getAttribute(Attributes.FLYING_SPEED);
+        if (flyingSpeed != null) {
+            flyingSpeed.setBaseValue(flyingSpeed.getBaseValue() * speedMult);
+        }
     }
 }

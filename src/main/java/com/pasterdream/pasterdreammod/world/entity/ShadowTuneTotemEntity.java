@@ -152,10 +152,10 @@ public class ShadowTuneTotemEntity extends Monster implements GeoEntity {
                                 le.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 200, 0));
                                 le.hurt(new DamageSource(level().registryAccess()
                                         .registryOrThrow(Registries.DAMAGE_TYPE)
-                                        .getHolderOrThrow(DamageTypes.EXPLOSION)), 20);
+                                        .getHolderOrThrow(DamageTypes.EXPLOSION)), skillDamage(1.0f));
                             }
                             sw.sendParticles(ParticleTypes.EXPLOSION, target.getX(), target.getY() + 1, target.getZ(), 8, 1, 1, 1, 0.5);
-                            level().playSound(null, target.blockPosition(), net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, net.minecraft.sounds.SoundSource.MASTER, 1, 1);
+                            this.playSound(net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, 1, 1);
                         }
                     }
                     sw.sendParticles(ModParticleTypes.SHADOW_STONE_PARTICLE.get(), getX(), getY(), getZ(), 128, 1, 4, 1, 0.1);
@@ -203,6 +203,10 @@ public class ShadowTuneTotemEntity extends Monster implements GeoEntity {
         }
     }
 
+    private float skillDamage(float ratio) {
+        return (float) (getAttributeValue(Attributes.ATTACK_DAMAGE) * ratio);
+    }
+
     public void setAnimation(String animation) {
         this.animationprocedure = animation;
         this.entityData.set(ANIMATION, animation);
@@ -221,7 +225,7 @@ public class ShadowTuneTotemEntity extends Monster implements GeoEntity {
                 .add(Attributes.MOVEMENT_SPEED, 0)
                 .add(Attributes.MAX_HEALTH, 40)
                 .add(Attributes.ARMOR, 5)
-                .add(Attributes.ATTACK_DAMAGE, 0)
+                .add(Attributes.ATTACK_DAMAGE, 20)
                 .add(Attributes.FOLLOW_RANGE, 16)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 10);
     }

@@ -161,7 +161,7 @@ public class ShadowMagicballEntity extends PathfinderMob implements GeoEntity {
             if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)) {
                 target.hurt(new DamageSource(level().registryAccess()
                         .registryOrThrow(Registries.DAMAGE_TYPE)
-                        .getHolderOrThrow(DamageTypes.MAGIC)), 4);
+                        .getHolderOrThrow(DamageTypes.MAGIC)), skillDamage(1.33f));
                 explode();
                 return;
             }
@@ -181,11 +181,11 @@ public class ShadowMagicballEntity extends PathfinderMob implements GeoEntity {
                 if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)) {
                     target.hurt(new DamageSource(level().registryAccess()
                             .registryOrThrow(Registries.DAMAGE_TYPE)
-                            .getHolderOrThrow(DamageTypes.MAGIC)), 10);
+                            .getHolderOrThrow(DamageTypes.MAGIC)), skillDamage(3.33f));
                 }
             }
             sw.sendParticles(ParticleTypes.EXPLOSION, getX(), getY() + 1, getZ(), 8, 1, 1, 1, 0.5);
-            level().playSound(null, blockPosition(), net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, net.minecraft.sounds.SoundSource.MASTER, 1, 1);
+            this.playSound(net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, 1, 1);
         } else if (explodeTick == 20) {
             if (isAlive()) discard();
             return;
@@ -271,6 +271,10 @@ public class ShadowMagicballEntity extends PathfinderMob implements GeoEntity {
             return PlayState.STOP;
         }
         return PlayState.CONTINUE;
+    }
+
+    private float skillDamage(float ratio) {
+        return (float) (getAttributeValue(Attributes.ATTACK_DAMAGE) * ratio);
     }
 
     @Override
