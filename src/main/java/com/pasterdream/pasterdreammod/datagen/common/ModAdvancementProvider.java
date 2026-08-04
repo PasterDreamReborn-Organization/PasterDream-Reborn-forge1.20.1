@@ -701,7 +701,7 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             true, true, true
                     )
                     .addCriterion("get_terra_sword", InventoryChangeTrigger.TriggerInstance.hasItems(
-                            ModItems.BOBOJI_CURIO.get()))
+                            ModItems.TERRA_BLADE.get()))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "treasure/get_terra_sword"), existingFileHelper);
 
