@@ -300,6 +300,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SHADOW_FISSURE_3.get());
         dropSelf(ModBlocks.SHADOW_FISSURE_4.get());
         dropSelf(ModBlocks.SHADOW_FISSURE_5.get());
+        dropSelf(ModBlocks.SHADOW_VORTEX.get());
         add(ModBlocks.SHADOW_NYLIUM.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(ModBlocks.SHADOW_STONE.get())));
         dropSelf(ModBlocks.SHADOW_LIGHT.get());
         dropSelf(ModBlocks.SHADOW_SHROOMLIGHT.get());

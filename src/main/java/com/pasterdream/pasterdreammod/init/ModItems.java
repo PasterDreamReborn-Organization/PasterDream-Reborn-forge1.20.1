@@ -8,12 +8,13 @@ import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorItem;
+import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestItem;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestItem;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableItem;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersItem;
-import com.pasterdream.pasterdreammod.world.block.LifeCrystalItem;
+import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalItem;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombItem;
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureItem;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombItem;
@@ -1212,6 +1213,8 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.SHADOW_FISSURE_4.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_FISSURE_5 = ITEMS.register("shadow_fissure_5",
             () -> new BlockItem(ModBlocks.SHADOW_FISSURE_5.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_VORTEX = ITEMS.register("shadow_vortex",
+            () -> new ShadowVortexDisplayItem(ModBlocks.SHADOW_VORTEX.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_NYLIUM = ITEMS.register("shadow_nylium",
             () -> new BlockItem(ModBlocks.SHADOW_NYLIUM.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_LIGHT = ITEMS.register("shadow_light",
@@ -1631,6 +1634,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.BLACK_BEETLE, -2698583, -11316914, new Item.Properties()));
     public static final RegistryObject<Item> BLACK_BEETLE_MOTHER_SPAWN_EGG = ITEMS.register("black_beetle_mother_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.BLACK_BEETLE_MOTHER, -2436181, -9876718, new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_MAGICBALL_SPAWN_EGG = ITEMS.register("shadow_magicball_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.SHADOW_MAGICBALL, -16777216, -15658735, new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_TUNE_TOTEM_SPAWN_EGG = ITEMS.register("shadow_tune_totem_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.SHADOW_TUNE_TOTEM, -15658735, -4473925, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

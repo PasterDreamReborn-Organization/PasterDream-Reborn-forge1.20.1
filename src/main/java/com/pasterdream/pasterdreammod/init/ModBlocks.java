@@ -4,6 +4,8 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.world.behavior.ModTreeGrowers;
 import com.pasterdream.pasterdreammod.world.block.*;
+import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexBlock;
+import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorBlock;
 import com.pasterdream.pasterdreammod.world.block.shadow.*;
 import com.pasterdream.pasterdreammod.world.block.DyedreamFarmlandBlock;
@@ -30,7 +32,7 @@ import com.pasterdream.pasterdreammod.world.block.portal.DyedreamCrackBlock;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlock;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlock;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
-import com.pasterdream.pasterdreammod.world.block.LifeCrystalBlock;
+
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureBlock;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamtrain.DreamTrainStructureBlock;
@@ -214,6 +216,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> SHADOW_FISSURE_3 = BLOCKS.register("shadow_fissure_3", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).noOcclusion()));
     public static final RegistryObject<Block> SHADOW_FISSURE_4 = BLOCKS.register("shadow_fissure_4", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
     public static final RegistryObject<Block> SHADOW_FISSURE_5 = BLOCKS.register("shadow_fissure_5", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).noOcclusion()));
+    // 暗影漩涡 (亚伦柯斯之触技能)
+    public static final RegistryObject<Block> SHADOW_VORTEX = BLOCKS.register("shadow_vortex", ShadowVortexBlock::new);
 
     // ===== 阴影菌岩 / 影灯 / 阴影菌光体 =====
     public static final RegistryObject<Block> SHADOW_NYLIUM = BLOCKS.register("shadow_nylium", () -> new ShadowNyliumBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).sound(SoundType.NYLIUM).strength(0.4f).requiresCorrectToolForDrops()));

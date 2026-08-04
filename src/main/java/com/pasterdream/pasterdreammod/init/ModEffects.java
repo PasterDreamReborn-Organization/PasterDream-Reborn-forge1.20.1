@@ -76,6 +76,10 @@ public class ModEffects {
             EFFECTS.register("shadow_silence_buff", ShadowSilenceBuffEffect::new);
     public static final RegistryObject<MobEffect> CALAIS_SPICE_BOTTLE_BUFF =
             EFFECTS.register("calais_spice_bottle_buff", CalaisSpiceBottleBuff::new);
+    public static final RegistryObject<MobEffect> RESTRAINMOVE_BLOCK_BUFF =
+            EFFECTS.register("restrainmove_block_buff", RestrainmoveBlockBuffEffect::new);
+    public static final RegistryObject<MobEffect> OPPRESSION_BUFF =
+            EFFECTS.register("oppression_buff", OppressionBuffEffect::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

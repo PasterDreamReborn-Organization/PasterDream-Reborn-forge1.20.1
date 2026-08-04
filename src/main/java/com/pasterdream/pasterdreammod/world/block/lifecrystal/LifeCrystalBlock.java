@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.block;
+package com.pasterdream.pasterdreammod.world.block.lifecrystal;
 
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;

@@ -110,5 +110,11 @@
   },
   "shadow_sword": {
     "sounds": [{"name": "pasterdream:shadow_sword", "stream": false}]
+  },
+  "shadow_vortex": {
+    "sounds": [{"name": "pasterdream:shadow_vortex", "stream": false}]
+  },
+  "shadow_vortex_book": {
+    "sounds": [{"name": "pasterdream:shadow_vortex_book", "stream": false}]
   }
 }

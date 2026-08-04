@@ -1108,6 +1108,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.war_flag_buff", "Battle Intention");
         add("effect.pasterdream.bind_buff", "Bind");
         add("effect.pasterdream.shadow_silence_buff", "Shadow Silence");
+        add("effect.pasterdream.restrainmove_block_buff", "Movement Restraint");
+        add("effect.pasterdream.oppression_buff", "Oppression");
+        // TODO: shadow_spyon_buff ("Shadow Spyon") — to be ported later
+        add("item.pasterdream.shadow_magicball_spawn_egg", "Shadow Magicball Spawn Egg");
+        add("item.pasterdream.shadow_tune_totem_spawn_egg", "Shadow Tune Totem Spawn Egg");
+        add("entity.pasterdream.shadow_magicball", "Shadow Magicball");
+        add("entity.pasterdream.shadow_tune_totem", "Shadow Tune Totem");
+        add("block.pasterdream.shadow_vortex", "Shadow Vortex");
 
         //卡莱的调料瓶
         add(ModItems.CALAIS_SPICE_BOTTLE.get(), "Calais Spice Bottle");

@@ -33,7 +33,9 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.WAILING_SHADOW_GHOST.get())
                 .add(ModEntities.FRIENDLY_SHADOW_GHOST.get())
                 .add(ModEntities.BLACK_BEETLE.get())
-                .add(ModEntities.BLACK_BEETLE_MOTHER.get());
+                .add(ModEntities.BLACK_BEETLE_MOTHER.get())
+                .add(ModEntities.SHADOW_MAGICBALL.get())
+                .add(ModEntities.SHADOW_TUNE_TOTEM.get());
 
         tag(ModEntityTypeTags.SPECIAL_ENTITY)
                 .add(EntityType.ITEM)
@@ -43,6 +45,7 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get())
                 .add(ModEntities.TERRASWORD_WAVE.get())
                 .add(ModEntities.SHAKING_CRYSTAL.get())
-                .add(ModEntities.FOX_FIRE.get());
+                .add(ModEntities.FOX_FIRE.get())
+                .add(ModEntities.SHADOW_TUNE_TOTEM.get());
     }
 }
