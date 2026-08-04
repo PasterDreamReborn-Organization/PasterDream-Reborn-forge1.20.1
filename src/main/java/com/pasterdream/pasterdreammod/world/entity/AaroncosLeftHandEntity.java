@@ -95,6 +95,7 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity {
         setNoAi(false);
         setPersistenceRequired();
         this.moveControl = new FlyingMoveControl(this, 10, true);
+        this.bossInfo.setVisible(false);
     }
 
     @Override
@@ -553,6 +554,7 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity {
         for (Player player : players) {
             player.getPersistentData().putString("aaroncos_left_hand_name", getDisplayName().getString());
             player.getPersistentData().putDouble("aaroncos_left_hand_hp", getHealth());
+            player.getPersistentData().putDouble("aaroncos_left_hand_max_hp", getMaxHealth());
             player.getPersistentData().putBoolean("aaroncos_left_hand_life", isAlive());
         }
     }

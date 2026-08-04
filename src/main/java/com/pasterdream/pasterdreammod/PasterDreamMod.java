@@ -196,6 +196,7 @@ public class PasterDreamMod
         event.registerAboveAll("melt_dream_energy", MeltDreamEnergyTank.MELT_DREAM_ENERGY_TANK);
         event.registerAboveAll("san", SanTank.SAN_TANK);
         event.registerBelowAll("lose_mind", LoseMind.GUI_OVERLAY);
+        event.registerAboveAll("aaroncos_hand_boss_bar", AaroncosHandBossBar.OVERLAY);
     }
 
     private void AddEntityRenderersEvent(EntityRenderersEvent.RegisterRenderers event)
