@@ -1503,7 +1503,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 染梦空岛
         add("pasterdream.seniors_dream.entry.dyedream_sky_island", "染梦空岛");
-        add("pasterdream.seniors_dream.entry.dyedream_sky_island.page0", "初来之时，你会在主世界发现这种粉红色的空岛，它的存在似乎有那么一些不合理，就像是……梦一般。登上这座岛，就能看到一道奇怪的裂隙，可是第一次接触却并没有什么反应，直到再一次从梦中醒来，会有一份笔记突然出现在口袋。根据笔记的指引，回到空岛重新调查裂隙，就会……$(br2)——如果说这座空岛就是梦境力量的映射，那当穿过裂隙，我究竟身处的是「现实」还是「梦境」？");
+        add("pasterdream.seniors_dream.entry.dyedream_sky_island.page0", "初来之时，你会在主世界发现这种粉红色的空岛，它的存在似乎有那么一些不合理，就像是……梦一般。登上这座岛，就能看到一道奇怪的裂隙。第一次接触没有直接反应，但会让你做一个奇怪的梦。醒来后，你发现有一份笔记神秘地出现在你的口袋里，你或许应当在阅读完这份神秘的笔记后，重新去触碰那道裂隙……$(br2)——如果说这座空岛就是梦境力量的映射，那当穿过裂隙，我究竟身处的是「现实」还是「梦境」？");
         add("pasterdream.seniors_dream.entry.dyedream_sky_island.page1", "");
 
         // 失落剑冢
@@ -1513,7 +1513,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 渔夫小屋
         add("pasterdream.seniors_dream.entry.fisherman_hut", "渔夫小屋");
-        add("pasterdream.seniors_dream.entry.fisherman_hut.page0", "在主世界的沙滩群系，你有时会发现这种渔夫小屋，这是离开村庄，独自在海边谋生的渔夫村民的家。你可以在屋子里的宝箱找到渔夫村民在海中打捞出来的宝藏。$(br2)当然，有时候里面也会有深海秘宝，或许渔夫也不知道那能打开，所以只是珍藏着，真是买椟还珠。");
+        add("pasterdream.seniors_dream.entry.fisherman_hut.page0", "在主世界的沙滩群系，你有时会发现这种渔夫小屋，这是离开村庄，独自在海边谋生的渔夫村民的家。你可以在屋子里的宝箱找到渔夫村民在海中打捞出来的宝藏。$(br2)当然，有时候里面也会有深海秘宝，或许渔夫不知道怎么打开，所以只是珍藏着，真是买椟还珠。");
         add("pasterdream.seniors_dream.entry.fisherman_hut.page1", "——我相信他们一定有着其他理由才会独自来到海边生活，或许，这片深海里还有更深的秘密。");
 
         // 沙漠遗迹
@@ -1570,16 +1570,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 染梦世间-方块与物品
         add("pasterdream.seniors_dream.entry.melt_dream_crystal_chest", "融梦水晶箱");
-        add("pasterdream.seniors_dream.entry.melt_dream_crystal_chest.page0", "在你探索这个梦境的各个结构时，经常会发现这种精致的小箱子，你只需要和它互动，箱子就会自行开启。你也会注意到，打开前箱子会震动，而且震动的次数越多，开出来的战利品越好，或许你应该想办法让自己更幸运再来开一开箱子。$(br2)据说梦中有一种特殊的工具，可以凝聚来自你身上的染梦力量，为打开的融梦水晶箱重新填满宝藏……");
-        add("pasterdream.seniors_dream.entry.melt_dream_crystal_chest.page1", "——幸运的是，融梦水晶箱不会变成宝箱怪，也不会有传送陷阱，放心开吧。");
+        add("pasterdream.seniors_dream.entry.melt_dream_crystal_chest.page0", "在你探索这个梦境的各个结构时，经常会发现这种精致的小箱子，你只需要和它互动，箱子就会自行开启。你也许会注意到，箱子震动的次数越多，开出来的战利品越好，或许你应该想办法让自己更幸运，然后来开一开箱子。$(br2)据说梦中有一种特殊的工具，可以凝聚来自你身上的染梦力量，为打开的融梦水晶箱重新填满宝藏……");
+        add("pasterdream.seniors_dream.entry.melt_dream_crystal_chest.page1", "——融梦水晶箱不会变成宝箱怪，也不会有传送陷阱，放心开吧。");
 
         add("pasterdream.seniors_dream.entry.melt_dream_crystal_fragment", "融梦水晶碎片");
         add("pasterdream.seniors_dream.entry.melt_dream_crystal_fragment.page0", "凝聚了巨大梦境力量的水晶散落于梦境各地，比如染梦世界树，逐梦列车中。当然，某些箱子里偶尔也能发现这种碎片。$(br2)这种碎片不仅可以镶嵌在染梦合金的工具上，将后者强化为融梦工具，而且可以放置下来，变成一个水晶簇状的小实体。或许，你需要用它来触及梦境中无比深沉的黑暗……");
         add("pasterdream.seniors_dream.entry.melt_dream_crystal_fragment.page1", "——蕴含着巨大能量的水晶碎片，似乎可以用它来更好地利用梦境的力量，或者……");
 
         add("pasterdream.seniors_dream.entry.qym_doll", "娇小琴雨梦玩偶");
-        add("pasterdream.seniors_dream.entry.qym_doll.page0", "有时你打开融梦水晶箱时，会发现这么一种软乎乎的玩偶，它参照着那位最早的寻梦少女的形象而设计出来，极其可爱的外观让你能在这个玩偶周围感到轻松，可以有效缓解你的精神压力。$(br2)当然，你也可以和玩偶互动(rua)，每一次互动之后，你的精神压力都会减少一点。");
-        add("pasterdream.seniors_dream.entry.qym_doll.page1", "——这是什么，这是琴雨梦，可爱捏，rua一下。");
+        add("pasterdream.seniors_dream.entry.qym_doll.page0", "有时你打开融梦水晶箱时，会发现这么一种软乎乎的玩偶，它参照着那位最早的寻梦少女形象而设计出来，极其可爱的外观让你能在这个玩偶周围感到轻松，从而有效缓解你的精神压力。$(br2)当然，你也可以和玩偶互动(rua)，每一次互动之后，你的精神压力都会减少一点。");
+        add("pasterdream.seniors_dream.entry.qym_doll.page1", "——这是什么？可爱捏，rua一下。");
 
         add("pasterdream.seniors_dream.entry.galaxy_jelly", "星河果冻");
         add("pasterdream.seniors_dream.entry.galaxy_jelly.page0", "这种奇怪的小果冻会在被你食用之后让你“嗖”地一下飞起来，当然，你不用担心会摔死，它会给予你缓降效果，能保证你安全落地，总而言之，这是一个探索梦境，翻山越岭的家庭必备好帮手。$(br2)注意：严禁连续食用，否则有摔死的风险。");
@@ -1598,7 +1598,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.qym_armor_set.page1", "而你穿上全部套装后，还会在梦境中自行闪避所有针对你的攻击，不过，如果你以凡人之躯行于大地的话，是没有办法获得这位前辈寻梦者的随身物品的，你或许需要足以创造万物的神明之力……$(br2)——最初的寻梦少女沉眠于长虹中，静待后来的入梦之人探寻未知。");
 
         add("pasterdream.seniors_dream.entry.pale_boneneedle", "苍白骨针");
-        add("pasterdream.seniors_dream.entry.pale_boneneedle.page0", "你在雪山上发现的苍白雪莲具有强烈的香气，这种香气具有明显的提神效果，已经成为寻梦者，曾经在梦中迷失的你想到一个妙计，将苍白雪莲的花冠和骨质针具绑在一起，剧烈的疼痛和香气的刺激想必能让你迅速清醒，离开梦境。$(br2)而如果把来自末地的珍珠和古城的回响融入到苍白骨针中，也许会有奇效……");
+        add("pasterdream.seniors_dream.entry.pale_boneneedle.page0", "你在雪山上发现了一种具有强烈香气的苍白雪莲，这种香气具有明显的提神效果。已经成为寻梦者，曾经在梦中迷失的你想到一个妙计，将苍白雪莲的花冠和骨质针具绑在一起，剧烈的疼痛和香气的刺激想必能让你迅速清醒，离开梦境。$(br2)而如果把来自末地的珍珠和古城的回响融入到苍白骨针中，也许会有奇效……");
         add("pasterdream.seniors_dream.entry.pale_boneneedle.page1", "——无论梦幻是洁净的染梦还是深邃的阴影，梦醒之时，我们将会重逢。");
 
         add("pasterdream.seniors_dream.entry.dyedream_perfume", "染梦香水");
