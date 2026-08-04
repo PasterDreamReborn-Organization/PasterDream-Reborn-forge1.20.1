@@ -731,6 +731,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BLACK_BEETLE_MOTHER_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_MAGICBALL_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_TUNE_TOTEM_SPAWN_EGG.get());
+                        output.accept(ModItems.AARONCOS_LEFT_HAND_SPAWN_EGG.get());
+                        output.accept(ModItems.AARONCOS_RIGHT_HAND_SPAWN_EGG.get());
                     }).build());
 
     // ===== 拓展 =====

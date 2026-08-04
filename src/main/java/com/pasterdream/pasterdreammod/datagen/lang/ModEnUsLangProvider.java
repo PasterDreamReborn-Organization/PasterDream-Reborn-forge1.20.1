@@ -1113,6 +1113,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // TODO: shadow_spyon_buff ("Shadow Spyon") — to be ported later
         add("item.pasterdream.shadow_magicball_spawn_egg", "Shadow Magicball Spawn Egg");
         add("item.pasterdream.shadow_tune_totem_spawn_egg", "Shadow Tune Totem Spawn Egg");
+        add("item.pasterdream.aaroncos_left_hand_spawn_egg", "Aaroncos's Left Hand Spawn Egg");
+        add("item.pasterdream.aaroncos_right_hand_spawn_egg", "Aaroncos's Right Hand Spawn Egg");
+        add("entity.pasterdream.aaroncos_left_hand", "Aaroncos's Left Hand");
+        add("entity.pasterdream.aaroncos_right_hand", "Aaroncos's Right Hand");
         add("entity.pasterdream.shadow_magicball", "Shadow Magicball");
         add("entity.pasterdream.shadow_tune_totem", "Shadow Tune Totem");
         add("block.pasterdream.shadow_vortex", "Shadow Vortex");

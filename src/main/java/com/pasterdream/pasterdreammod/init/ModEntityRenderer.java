@@ -31,6 +31,8 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.SHAKING_CRYSTAL.get(), ShakingCrystalRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_MAGICBALL.get(), ShadowMagicballRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_TUNE_TOTEM.get(), ShadowTuneTotemRenderer::new);
+        event.registerEntityRenderer(ModEntities.AARONCOS_LEFT_HAND.get(), AaroncosLeftHandRenderer::new);
+        event.registerEntityRenderer(ModEntities.AARONCOS_RIGHT_HAND.get(), AaroncosRightHandRenderer::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {

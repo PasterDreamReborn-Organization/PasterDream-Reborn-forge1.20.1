@@ -62,6 +62,12 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> BEETLE_SKILL = SOUNDS.register("beetle_skill", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "beetle_skill")));
     public static final RegistryObject<SoundEvent> WHITE_SWORD_RAIN = SOUNDS.register("white_sword_rain", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "white_sword_rain")));
     public static final RegistryObject<SoundEvent> SHADOW_SWORD = SOUNDS.register("shadow_sword", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_sword")));
+    public static final RegistryObject<SoundEvent> SHADOW_VORTEX = SOUNDS.register("shadow_vortex", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_vortex")));
+    public static final RegistryObject<SoundEvent> SHADOW_VORTEX_BOOK = SOUNDS.register("shadow_vortex_book", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_vortex_book")));
+    public static final RegistryObject<SoundEvent> AARONCOS_SPAWN = SOUNDS.register("aaroncos_spawn", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_spawn")));
+    public static final RegistryObject<SoundEvent> AARONCOS_MUSIC = SOUNDS.register("aaroncos_music", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_music")));
+    public static final RegistryObject<SoundEvent> STONE_BREAK = SOUNDS.register("stone_break", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stone_break")));
+    public static final RegistryObject<SoundEvent> STONE_BREAK_0 = SOUNDS.register("stone_break_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stone_break_0")));
 
     public static void register(IEventBus eventBus) {
         SOUNDS.register(eventBus);

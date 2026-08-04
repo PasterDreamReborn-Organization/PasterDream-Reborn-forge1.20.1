@@ -174,7 +174,7 @@ public class ShadowTuneTotemEntity extends Monster implements GeoEntity {
                 new AABB(center, center).inflate(32), e -> true);
         for (Entity target : entities) {
             String key = EntityType.getKey(target.getType()).toString();
-            if (key.equals("pasterdream:aaroncos_lefthand_0") || key.equals("pasterdream:aaroncos_righthand_0")) {
+            if (key.equals("pasterdream:aaroncos_left_hand") || key.equals("pasterdream:aaroncos_right_hand")) {
                 if (target instanceof LivingEntity le) {
                     le.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 20, 0, false, false));
                 }

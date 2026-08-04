@@ -15,6 +15,8 @@ import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowMagicballEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowTuneTotemEntity;
+import com.pasterdream.pasterdreammod.world.entity.AaroncosLeftHandEntity;
+import com.pasterdream.pasterdreammod.world.entity.AaroncosRightHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.ghost.ShadowGhostEntity;
 import com.pasterdream.pasterdreammod.world.entity.ghost.WailingShadowGhostEntity;
 import com.pasterdream.pasterdreammod.world.entity.ghost.FriendlyShadowGhostEntity;
@@ -166,6 +168,24 @@ public class ModEntities {
                     .fireImmune()
                     .sized(2f, 8f));
 
+    public static final RegistryObject<EntityType<AaroncosLeftHandEntity>> AARONCOS_LEFT_HAND = register("aaroncos_left_hand",
+            EntityType.Builder.<AaroncosLeftHandEntity>of(AaroncosLeftHandEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(AaroncosLeftHandEntity::new)
+                    .fireImmune()
+                    .sized(3.5f, 3.5f));
+
+    public static final RegistryObject<EntityType<AaroncosRightHandEntity>> AARONCOS_RIGHT_HAND = register("aaroncos_right_hand",
+            EntityType.Builder.<AaroncosRightHandEntity>of(AaroncosRightHandEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(AaroncosRightHandEntity::new)
+                    .fireImmune()
+                    .sized(3.5f, 3.5f));
+
     public static final RegistryObject<EntityType<ShadowGhostEntity>> SHADOW_GHOST = register("shadow_ghost",
             EntityType.Builder.<ShadowGhostEntity>of(ShadowGhostEntity::new, MobCategory.MONSTER)
                     .setShouldReceiveVelocityUpdates(true)
@@ -294,5 +314,7 @@ public class ModEntities {
         event.put(SHAKING_CRYSTAL.get(), ShakingCrystalEntity.createAttributes().build());
         event.put(SHADOW_MAGICBALL.get(), ShadowMagicballEntity.createAttributes().build());
         event.put(SHADOW_TUNE_TOTEM.get(), ShadowTuneTotemEntity.createAttributes().build());
+        event.put(AARONCOS_LEFT_HAND.get(), AaroncosLeftHandEntity.createAttributes().build());
+        event.put(AARONCOS_RIGHT_HAND.get(), AaroncosRightHandEntity.createAttributes().build());
     }
 }

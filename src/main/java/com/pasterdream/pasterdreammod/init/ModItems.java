@@ -1638,6 +1638,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.SHADOW_MAGICBALL, -16777216, -15658735, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_TUNE_TOTEM_SPAWN_EGG = ITEMS.register("shadow_tune_totem_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.SHADOW_TUNE_TOTEM, -15658735, -4473925, new Item.Properties()));
+    public static final RegistryObject<Item> AARONCOS_LEFT_HAND_SPAWN_EGG = ITEMS.register("aaroncos_left_hand_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.AARONCOS_LEFT_HAND, -15987700, -11246213, new Item.Properties()));
+    public static final RegistryObject<Item> AARONCOS_RIGHT_HAND_SPAWN_EGG = ITEMS.register("aaroncos_right_hand_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.AARONCOS_RIGHT_HAND, -15593198, -11189920, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

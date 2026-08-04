@@ -1276,6 +1276,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // TODO: shadow_spyon_buff ("暗影窥视") 待后续搬运
         add("item.pasterdream.shadow_magicball_spawn_egg", "暗影魔法球刷怪蛋");
         add("item.pasterdream.shadow_tune_totem_spawn_egg", "暗影符文塔刷怪蛋");
+        add("item.pasterdream.aaroncos_left_hand_spawn_egg", "亚伦柯斯之触-左手刷怪蛋");
+        add("item.pasterdream.aaroncos_right_hand_spawn_egg", "亚伦柯斯之触-右手刷怪蛋");
+        add("entity.pasterdream.aaroncos_left_hand", "亚伦柯斯之触-左手");
+        add("entity.pasterdream.aaroncos_right_hand", "亚伦柯斯之触-右手");
         add("entity.pasterdream.shadow_magicball", "暗影魔法球");
         add("entity.pasterdream.shadow_tune_totem", "暗影符文塔");
         add("block.pasterdream.shadow_vortex", "暗影漩涡");
