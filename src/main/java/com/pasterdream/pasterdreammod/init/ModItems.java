@@ -50,6 +50,7 @@ import com.pasterdream.pasterdreammod.world.item.whiteswordtool.WhiteSwordItem;
 import com.pasterdream.pasterdreammod.world.item.shadowswordtool.ShadowSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
+import com.pasterdream.pasterdreammod.world.item.iceshadowhammertool.IceShadowHammerItem;
 import com.pasterdream.pasterdreammod.world.item.TerraBladeItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.MurakumoKusanagiItem;
@@ -362,6 +363,10 @@ public class ModItems {
             () -> new DyedreamHammerItem(ModToolTiers.DYEDREAM, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> SHARP_MELT_DREAM_SWORD = ITEMS.register("sharp_melt_dream_sword",
             () -> new SharpMeltDreamSwordItem(ModToolTiers.MELT_DREAM, new Item.Properties().rarity(Rarity.RARE)));
+
+    // 冰影战锤
+    public static final RegistryObject<Item> ICE_SHADOW_HAMMER = ITEMS.register("ice_shadow_hammer",
+            () -> new IceShadowHammerItem(ModToolTiers.ICE_SHADOW_HAMMER, new Item.Properties()));
 
     // ===== 独立武器 =====
     public static final RegistryObject<Item> THERMAL_DAGGER = ITEMS.register("thermal_dagger",
@@ -957,6 +962,8 @@ public class ModItems {
             LightButterflyCurioItem::new);
     public static final RegistryObject<Item> BRIGHT_BUTTERFLY_CURIO = ITEMS.register("bright_butterfly_curio",
             BrightButterflyCurioItem::new);
+    public static final RegistryObject<Item> ICE_SHADOW_CURIO = ITEMS.register("ice_shadow_curio",
+            IceShadowCurioItem::new);
     public static final RegistryObject<Item> BOBOJI_CURIO = ITEMS.register("boboji_curio",
             BobojiCurioItem::new);
     public static final RegistryObject<Item> QYM_BUTTERFLY_STAR_HAIRPIN = ITEMS.register("qym_butterfly_star_hairpin",

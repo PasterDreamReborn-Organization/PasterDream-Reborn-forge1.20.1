@@ -465,6 +465,8 @@
 | `white_crystal`                | `white_crystal`                             | 不改                                                               | 客制化类 `WhiteCrystalItem`，制作白厄剑的核心材料                                                                       |
 | `white_sword`                  | `white_sword`                               | 不改                                                               | 客制化类 `WhiteSwordItem`，右键战技「白厄剑雨」：选取准星10格内实体/方块为落点，消耗 0.1 融梦能量释放多波剑雨，命中造成近战伤害+束缚+暗影沉寐              |
 | `shadow_sword`                 | `shadow_sword`                              | 不改                                                               | 客制化类 `ShadowSwordItem`，SAN越低攻速/伤害越高（最高+50%/+75%），挥剑触发技能冷却，SAN耗尽时反噬生命，品质 LEGENDARY                     |
+| `iceshadow_hammer`             | `ice_shadow_hammer`                         | 重命名，`iceshadow` → `ice_shadow`，加下划线                               | 客制化类 `IceShadowHammerItem`，右键地面「依诺的撼地」：消耗 0.1 融梦能量，召唤撼地水晶，混乱+冻结+3 波 AOE（ATK×1.0/1.0/1.5），品质 EPIC           |
+| `iceshadow_curio`              | `ice_shadow_curio`                          | 重命名，`iceshadow` → `ice_shadow`，加下划线                               | 客制化类 `IceShadowCurioItem`，装备后冰影战锤技能额外释放 2 个撼地水晶，品质 MASTER           |
 | `white_sword_rain`             | `white_sword_rain`                          | 不改                                                               | 客制化类 `WhiteSwordRainItem`，弹射物视觉载体                                                                         |
 | `boboji_curio`                 | `boboji_curio`                              | 不改                                                               | 客制化类 `BobojiCurioItem`，实现 `ICurioItem`，+5%速度、+0.1瞬身术距离、-0.2冷却、-0.4消耗，禁止重复装备                              |
 | `counter_ring`                 | `counter_ring`                              | 不改                                                               | 客制化类 `CounterRingItem`，实现 `ICurioItem`，成功闪避时获得反击 buff（力量 I + 战技伤害 +50%，2s）                        |
@@ -546,6 +548,7 @@
 | `black_beetle` | `black_beetle` | 不改 | 客制化类 `BlackBeetleEntity`（`world/entity/beetle/`），可驯服 TamableAnimal，食物为白厄花 |
 | `black_beetle_mother` | `black_beetle_mother` | 不改 | 客制化类 `BlackBeetleMotherEntity`（`world/entity/beetle/`），Boss，受击触发技能：召唤小甲虫 + buff 周围甲虫 |
 | `white_sword_rain_projectile` | `white_sword_rain_projectile` | 不改 | 弹射物 `WhiteSwordRainProjectileEntity`，穿透方块，25tick 寿命，命中造成近战伤害+束缚+暗影沉寐 |
+| `shaking_crystal` | `shaking_crystal` | 不改 | GeckoLib 实体 `ShakingCrystalEntity`，特效载体，1s 自毁，生成粒子 + 施加混乱效果 |
 
 ---
 

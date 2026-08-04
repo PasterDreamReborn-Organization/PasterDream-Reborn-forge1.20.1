@@ -19,6 +19,7 @@ import com.pasterdream.pasterdreammod.world.entity.ghost.FriendlyShadowGhostEnti
 import com.pasterdream.pasterdreammod.world.entity.ghost.SquealWaveProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.beetle.BlackBeetleEntity;
 import com.pasterdream.pasterdreammod.world.entity.beetle.BlackBeetleMotherEntity;
+import com.pasterdream.pasterdreammod.world.entity.shakingcrystal.ShakingCrystalEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -213,6 +214,15 @@ public class ModEntities {
                     .setCustomClientFactory(BlackBeetleMotherEntity::new)
                     .sized(2f, 1f));
 
+    public static final RegistryObject<EntityType<ShakingCrystalEntity>> SHAKING_CRYSTAL = register("shaking_crystal",
+            EntityType.Builder.<ShakingCrystalEntity>of(ShakingCrystalEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(ShakingCrystalEntity::new)
+                    .fireImmune()
+                    .sized(0.6f, 0.8f));
+
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder) {
         return REGISTRY.register(name, () -> builder.build(name));
     }
@@ -237,6 +247,7 @@ public class ModEntities {
         event.enqueueWork(FriendlyShadowGhostEntity::init);
         event.enqueueWork(BlackBeetleEntity::init);
         event.enqueueWork(BlackBeetleMotherEntity::init);
+        event.enqueueWork(ShakingCrystalEntity::init);
     }
 
     @SubscribeEvent
@@ -258,5 +269,6 @@ public class ModEntities {
         event.put(FRIENDLY_SHADOW_GHOST.get(), FriendlyShadowGhostEntity.createAttributes().build());
         event.put(BLACK_BEETLE.get(), BlackBeetleEntity.createAttributes().build());
         event.put(BLACK_BEETLE_MOTHER.get(), BlackBeetleMotherEntity.createAttributes().build());
+        event.put(SHAKING_CRYSTAL.get(), ShakingCrystalEntity.createAttributes().build());
     }
 }

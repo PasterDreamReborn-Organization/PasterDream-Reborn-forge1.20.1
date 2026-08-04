@@ -28,6 +28,7 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.BLACK_BEETLE.get(), BlackBeetleRenderer::new);
         event.registerEntityRenderer(ModEntities.BLACK_BEETLE_MOTHER.get(), BlackBeetleMotherRenderer::new);
         event.registerEntityRenderer(ModEntities.WHITE_SWORD_RAIN_PROJECTILE.get(), EmptyEntityRenderer::new);
+        event.registerEntityRenderer(ModEntities.SHAKING_CRYSTAL.get(), ShakingCrystalRenderer::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {

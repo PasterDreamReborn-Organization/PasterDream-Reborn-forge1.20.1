@@ -196,7 +196,11 @@
     "shadowcandle": "shadow_candle",
     "dream_accumulator": "dream_accumulator",
     "pebble_0": "pebble",
-    "weapon_table": "weapon_workshop_core"
+    "weapon_table": "weapon_workshop_core",
+    "workshop_anvil": "weapon_workshop_anvil",
+    "workshop_blast": "weapon_workshop_blast_furnace",
+    "workshop_cauldeon": "weapon_workshop_cooler_pot",
+    "workshop_grind": "weapon_workshop_grind_stone"
   },
   "items": {
     "amber_candy": "amber_candy",
@@ -437,6 +441,9 @@
     "bright_butterfly_curio": "bright_butterfly_curio",
     "white_crystal": "white_crystal",
     "white_sword": "white_sword",
+    "shadow_sword": "shadow_sword",
+    "iceshadow_hammer": "ice_shadow_hammer",
+    "iceshadow_curio": "ice_shadow_curio",
     "white_sword_rain": "white_sword_rain",
     "boboji_curio": "boboji_curio",
     "counter_ring": "counter_ring",
@@ -447,7 +454,7 @@
     "allkinds_ring": "allkinds_ring",
     "cradle_in_ones_arms": "kaichu_omamori",
     "white_flower_body": "brooch_of_white_orchid",
-    "degenerate_bodys": "seal_of_the_fallen",
+    "degenerate_bodys": "seal_of_the_corrupted",
     "sweetdream_disc": "sweet_dream_music_disc",
     "snowfalldream_disc": "snowfall_dream_music_disc",
     "time_hourglass": "sand_of_time",
@@ -487,7 +494,8 @@
     "projectile_squeal_wave_projectile": "squeal_wave_projectile",
     "black_beetle": "black_beetle",
     "black_beetle_mother": "black_beetle_mother",
-    "white_sword_rain_projectile": "white_sword_rain_projectile"
+    "white_sword_rain_projectile": "white_sword_rain_projectile",
+    "shaking_crystal": "shaking_crystal"
   },
   "dimensions": {
     "dyedream_world": "dyedream_world",

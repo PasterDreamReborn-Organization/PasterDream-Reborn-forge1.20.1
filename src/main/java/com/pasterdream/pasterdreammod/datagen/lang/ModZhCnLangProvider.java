@@ -201,6 +201,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.KUSANAGI.get(), "草薙");
         add(ModItems.MURAKUMO_KUSANAGI.get(), "『天丛云』草薙");
         add(ModItems.SWORD_EMBRYO.get(), "失落之剑");
+        add(ModItems.ICE_SHADOW_HAMMER.get(), "冰影战锤");
         add(ModItems.THERMAL_DAGGER.get(), "热能匕首");
         add(ModItems.DESERT_SWORD.get(), "朔漠大剑");
         add(ModItems.CHENJINGMEN_DESERT_SWORD.get(), "『沉荆门』朔漠");
@@ -1010,6 +1011,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.bright_butterfly_curio.effect.gamma", "§7▪ §9获得夜视效果");
         add("tooltip.pasterdream.bright_butterfly_curio.effect.brightness", "§7▪ §9大幅提升画面亮度");
         add("tooltip.pasterdream.bright_butterfly_curio.effect.darkness_immune", "§7▪ §9免疫黑暗和失明效果");
+        add(ModItems.ICE_SHADOW_CURIO.get(), "冰影水晶");
+        add("tooltip.pasterdream.ice_shadow_curio.0", "§7▪ §9冰影战锤的战技将额外释放2个撼地水晶");
+        add("tooltip.pasterdream.ice_shadow_curio.1", "§7▪ §9释放的撼地水晶间隔受释放距离影响");
         add(ModItems.BOBOJI_CURIO.get(), "啵啵鸡的华丽飞羽");
         add("tooltip.pasterdream.boboji_curio.stat.speed", "§7▪ §9+5% 速度");
         add("tooltip.pasterdream.boboji_curio.stat.range", "§7▪ §9+0.1 瞬身术距离");
@@ -1151,6 +1155,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.terra_blade.skill_off", "§7剑气状态：关闭");
         add("tooltip.pasterdream.terra_blade.no_energy", "融梦能量不足，剑气状态已关闭");
         add("entity.pasterdream.terrasword_wave", "泰拉剑气");
+        add("entity.pasterdream.shaking_crystal", "撼地水晶");
 
         // 白厄剑
         add(ModItems.WHITE_SWORD.get(), "白厄剑");
@@ -1179,6 +1184,17 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.shadow_sword.desc3", "§7▪ §4当没有精神值可供消耗时 挥砍会反噬自身生命");
         add("tooltip.pasterdream.shadow_sword.flavor", "§7§o——梦魇渐渐变得尖锐，铸成了这把利剑");
         add("message.pasterdream.shadow_sword.san_disabled", "§c影刃拒绝了你");
+
+        // Ice Shadow Hammer
+        add("tooltip.pasterdream.ice_shadow_hammer.skill_name", "战技：§3依诺的撼地");
+        add("tooltip.pasterdream.ice_shadow_hammer.0", "§7▪ §9使用后起跳并在目标地点召唤§3撼地水晶");
+        add("tooltip.pasterdream.ice_shadow_hammer.1", "§7▪ §9水晶持续§c3秒§9，对周围敌人施加§d混乱§9与§b冻结§9效果");
+        add("tooltip.pasterdream.ice_shadow_hammer.2", "§7▪ §9造成三段伤害：§c攻击力×0.4§9、§c攻击力×0.6§9、§c攻击力×1.0§9(爆炸)");
+        add("tooltip.pasterdream.ice_shadow_hammer.3", "§7▪ §9爆炸后为释放者施加§e伤害吸收I");
+        add("tooltip.pasterdream.ice_shadow_hammer.4", "§7右键地面以释放技能");
+        add("tooltip.pasterdream.ice_shadow_hammer.5", "§7▪ §9冷却时间：§c4秒");
+        add("tooltip.pasterdream.ice_shadow_hammer.cost", "§7▪ §4融梦能量消耗：§c0.5");
+        add("message.pasterdream.ice_shadow_hammer.no_energy", "§c融梦能量不足");
 
         // 堕落者之印
         add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "堕落者之印");

@@ -228,7 +228,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.CHENJINGMEN_DESERT_SWORD.get())
                 .add(ModItems.TERRA_BLADE.get())
                 .add(ModItems.WHITE_SWORD.get())
-                .add(ModItems.SHADOW_SWORD.get());
+                .add(ModItems.SHADOW_SWORD.get())
+                .add(ModItems.ICE_SHADOW_HAMMER.get());
 
         // 占星者的祈愿钓竿标签 —— 手持此类钓竿时深海秘宝必出 super 变体
         tag(TagKey.create(Registries.ITEM,
