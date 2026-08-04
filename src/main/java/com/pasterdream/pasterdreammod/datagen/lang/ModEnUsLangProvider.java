@@ -1015,7 +1015,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_SWORD.get(), "Shadow Sword");
         add("tooltip.pasterdream.shadow_sword.skill_name", "Skill: §5Nightmare Slash");
         add("tooltip.pasterdream.shadow_sword.skill_desc1", "§7▪ §9Right-click consumes §c5 SAN §9(or §c5 HP §9if insufficient, non-lethal)");
-        add("tooltip.pasterdream.shadow_sword.skill_desc2", "§7▪ §9Next attack becomes §dMagic Damage§9, dealing §cATK×(2-SAN%)§9");
+        add("tooltip.pasterdream.shadow_sword.skill_desc2", "§7▪ §9Next attack becomes §dMagic Damage§9, dealing §cATK×(2.5-SAN%)§9");
         add("tooltip.pasterdream.shadow_sword.skill_desc3", "§7▪ §9Cooldown: §c2.0s");
         add("tooltip.pasterdream.shadow_sword.passive_name", "Passive: §5Shadow");
         add("tooltip.pasterdream.shadow_sword.desc1", "§7▪ §9The lower the wielder's sanity, the higher the damage");
