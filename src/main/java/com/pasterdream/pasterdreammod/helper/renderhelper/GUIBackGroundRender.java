@@ -87,10 +87,10 @@ public class GUIBackGroundRender
     public static ResourceLocation EMPTY_NOTES = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/empty_notes.png");
     public static ResourceLocation DREAM_NOTES_BOOK = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book.png");
 
-    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_LEFT_BACKGROUND = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_left_background");
-    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_LEFT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_left");
-    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_RIGHT_BACKGROUND = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_right_background");
-    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_RIGHT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_right");
+    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_LEFT_BACKGROUND = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_left_background.png");
+    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_LEFT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_left.png");
+    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_RIGHT_BACKGROUND = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_right_background.png");
+    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_RIGHT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_right.png");
 
     public static void rendPasterDreamInventoryGUI(GuiGraphics guiGraphics, int x, int y)
     {
