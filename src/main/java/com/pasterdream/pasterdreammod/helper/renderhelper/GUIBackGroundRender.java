@@ -87,6 +87,11 @@ public class GUIBackGroundRender
     public static ResourceLocation EMPTY_NOTES = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/empty_notes.png");
     public static ResourceLocation DREAM_NOTES_BOOK = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book.png");
 
+    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_LEFT_BACKGROUND = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_left_background");
+    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_LEFT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_left");
+    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_RIGHT_BACKGROUND = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_right_background");
+    public static ResourceLocation AARONCOS_HAND_BOSS_BAR_RIGHT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_right");
+
     public static void rendPasterDreamInventoryGUI(GuiGraphics guiGraphics, int x, int y)
     {
         guiGraphics.blit(PASTERDREAM_INVENTORY_GUI, x, y, 0, 0, 170, 84, 170, 84);
@@ -309,5 +314,25 @@ public class GUIBackGroundRender
     public static void rendDreamNotesBookGUI(GuiGraphics guiGraphics, int x, int y)
     {
         guiGraphics.blit(DREAM_NOTES_BOOK, x, y, 0, 0, 140, 180, 140, 180);
+    }
+
+    public static void rendAaroncosHandBossBarLeftBackground(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(AARONCOS_HAND_BOSS_BAR_LEFT_BACKGROUND, x, y, 0, 0, 116, 21, 116, 21);
+    }
+
+    public static void rendAaroncosHandBossBarLeft(GuiGraphics guiGraphics, int x, int y, double percent)
+    {
+        guiGraphics.blit(AARONCOS_HAND_BOSS_BAR_LEFT, x, y, 0, 0, (int)(106 * percent), 5, 106, 5);
+    }
+
+    public static void rendAaroncosHandBossBarRightBackground(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(AARONCOS_HAND_BOSS_BAR_RIGHT_BACKGROUND, x, y, 0, 0, 116, 21, 116, 21);
+    }
+
+    public static void rendAaroncosHandBossBarRight(GuiGraphics guiGraphics, int x, int y, double percent)
+    {
+        guiGraphics.blit(AARONCOS_HAND_BOSS_BAR_RIGHT, x, y, 0, 0, (int)(106 * percent), 5, 106, 5);
     }
 }
