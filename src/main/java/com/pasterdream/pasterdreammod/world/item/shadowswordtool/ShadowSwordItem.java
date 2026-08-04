@@ -19,6 +19,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -178,7 +179,7 @@ public class ShadowSwordItem extends SwordItem {
             float critMultiplier = effectiveAttack > 0 ? event.getAmount() / effectiveAttack : 1.0f;
             if (critMultiplier < 1.3f) critMultiplier = 1.0f;
             else critMultiplier = 1.5f;
-            float magicDamage = effectiveAttack * (float) (2.0 - sanRatio) * critMultiplier;
+            float magicDamage = effectiveAttack * (float) (2.5 - sanRatio) * critMultiplier;
 
             Level level = player.level();
             event.setCanceled(true);
@@ -194,7 +195,8 @@ public class ShadowSwordItem extends SwordItem {
                 float sweepDamage = magicDamage * sweepRatio;
                 AABB area = event.getEntity().getBoundingBox().inflate(1.5, 0.5, 1.5);
                 List<LivingEntity> nearby = level.getEntitiesOfClass(LivingEntity.class, area,
-                        e -> e != player && e != event.getEntity() && e.isAlive());
+                        e -> e != player && e != event.getEntity() && e.isAlive()
+                                && !(e instanceof TamableAnimal ta && ta.isOwnedBy(player)));
                 for (LivingEntity target : nearby) {
                     target.invulnerableTime = 0;
                     target.hurt(level.damageSources().magic(), sweepDamage);
