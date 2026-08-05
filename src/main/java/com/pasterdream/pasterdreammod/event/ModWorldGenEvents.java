@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.event;
 
-import com.mojang.logging.LogUtils;
 import com.pasterdream.pasterdreammod.world.dimension.DyedreamDimension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
@@ -27,8 +26,6 @@ import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class ModWorldGenEvents {
-
-    private static final org.slf4j.Logger LOGGER = LogUtils.getLogger();
 
     private static final int WORLDTREE_X = 2002;
     private static final int WORLDTREE_Z = 1128;
@@ -61,10 +58,7 @@ public class ModWorldGenEvents {
         if (serverLevel.dimension().equals(Level.NETHER)) {
             ShadowWorldDoorPlacedData data = ShadowWorldDoorPlacedData.get(serverLevel);
             if (!data.isPlaced()) {
-                LOGGER.info("ShadowWorldDoor: Nether loaded, scheduling placement");
                 shadowDoorNeedsPlacement = true;
-            } else {
-                LOGGER.info("ShadowWorldDoor: already placed at {}, {}", data.getPosX(), data.getPosZ());
             }
         }
     }
@@ -93,7 +87,6 @@ public class ModWorldGenEvents {
                 ShadowWorldDoorPlacedData data = ShadowWorldDoorPlacedData.get(nether);
                 if (!data.isPlaced()) {
                     shadowDoorNeedsPlacement = false;
-                    LOGGER.info("ShadowWorldDoor: starting placement...");
                     placeShadowWorldDoor(nether, data);
                 } else {
                     shadowDoorNeedsPlacement = false;
@@ -180,11 +173,7 @@ public class ModWorldGenEvents {
     private static void placeShadowWorldDoor(ServerLevel serverLevel, ShadowWorldDoorPlacedData data) {
         StructureTemplate template = serverLevel.getStructureManager()
                 .get(SHADOW_WORLD_DOOR).orElse(null);
-        if (template == null) {
-            LOGGER.error("ShadowWorldDoor: template not found!");
-            return;
-        }
-        LOGGER.info("ShadowWorldDoor: template loaded, size={}", template.getSize());
+        if (template == null) return;
 
         RandomSource random = serverLevel.getRandom();
         int x = random.nextIntBetweenInclusive(-SHADOW_DOOR_RANGE, SHADOW_DOOR_RANGE);
@@ -195,12 +184,9 @@ public class ModWorldGenEvents {
         serverLevel.getChunkSource().getChunk(chunkX, chunkZ, true);
 
         BlockPos origin = new BlockPos(x - 22, SHADOW_DOOR_Y, z - 21);
-        LOGGER.info("ShadowWorldDoor: placing at x={}, y={}, z={} (origin={})",
-                x, SHADOW_DOOR_Y, z, origin);
         StructurePlaceSettings settings = new StructurePlaceSettings();
         template.placeInWorld(serverLevel, origin, origin, settings, random, 3);
 
-        LOGGER.info("ShadowWorldDoor: placement done, marking placed");
         data.setPlaced(x, z);
     }
 

@@ -404,7 +404,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fluid_can_not_brush_nocollission_block")))
                 .add(ModBlocks.DYEDREAM_CRACK.get())
                 .add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get())
-                .add(ModBlocks.BIG_BUBBLE.get());
+                .add(ModBlocks.BIG_BUBBLE.get())
+                .add(ModBlocks.SHADOW_VORTEX.get());
       
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.LIFE_CRYSTAL.get())
