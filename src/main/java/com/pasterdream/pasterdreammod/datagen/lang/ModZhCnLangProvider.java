@@ -6,7 +6,6 @@ import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
-import net.minecraftforge.fml.common.Mod;
 
 public class ModZhCnLangProvider extends LanguageProvider {
     public ModZhCnLangProvider(PackOutput output) {
@@ -405,7 +404,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), "打开的融梦水晶箱");
         add(ModBlocks.DREAM_ACCUMULATOR.get(), "蓄梦池");
         add(ModItems.SORBENT.get(), "吸附剂");
-        add(ModBlocks.WEAPON_WORKSHOP_CORE.get(), "精铸工坊核心");
+        add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "精铸工坊工作台");
         add(ModBlocks.WEAPON_WORKSHOP_ANVIL.get(), "精铸工坊铁砧");
         add(ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get(), "精铸工坊冷却盆");
         add(ModBlocks.WEAPON_WORKSHOP_HAMMER.get(), "精铸工坊锤子");

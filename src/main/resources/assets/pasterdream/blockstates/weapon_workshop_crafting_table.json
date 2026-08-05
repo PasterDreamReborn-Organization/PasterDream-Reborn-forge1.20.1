@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "facing=north":
+    {
+      "model": "pasterdream:block/weapon_workshop_crafting_table"
+    },
+    "facing=east":
+    {
+      "model": "pasterdream:block/weapon_workshop_crafting_table",
+      "y": 90
+    },
+    "facing=south":
+    {
+      "model": "pasterdream:block/weapon_workshop_crafting_table",
+      "y": 180
+    },
+    "facing=west":
+    {
+      "model": "pasterdream:block/weapon_workshop_crafting_table",
+      "y": 270
+    }
+  }
+}

@@ -1,7 +1,6 @@
-package com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace;
+package com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
-import com.pasterdream.pasterdreammod.helper.fluidhandler.IFluidHandlerProvider;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,33 +18,18 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
-public class WeaponWorkshopBlastFurnaceBlockEntity extends BlockEntity implements MenuProvider, IFluidHandlerProvider
+public class WeaponWorkshopCraftingTableBlockEntity extends BlockEntity implements MenuProvider
 {
-    private static final int FLUID_CAPACITY = 4000;
-
-    public WeaponWorkshopBlastFurnaceBlockEntity(BlockPos pos, BlockState state)
+    public WeaponWorkshopCraftingTableBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.WEAPON_WORKSHOP_BLAST_FURNACE.get(), pos, state);
+        super(ModBlockEntities.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), pos, state);
     }
 
-    private final FluidTank[] fluidTanks =
-    {
-        new FluidTank(FLUID_CAPACITY)
-        {
-            protected void onContentsChanged()
-            {
-                setChangedAndSync();
-            }
-        }
-    };
-
-    private final ItemStackHandler itemHandler = new ItemStackHandler(3)
+    private final ItemStackHandler itemHandler = new ItemStackHandler(7)
     {
         @Override
         protected void onContentsChanged(int slotIndex)
@@ -56,21 +40,15 @@ public class WeaponWorkshopBlastFurnaceBlockEntity extends BlockEntity implement
         @Override
         public boolean isItemValid(int slotIndex, ItemStack stack)
         {
-            return slotIndex < 2;
+            return slotIndex < 6;
         }
     };
 
     private final LazyOptional<IItemHandler> itemHandlerCap = LazyOptional.of(() -> itemHandler);
-    private final LazyOptional<IFluidHandler> fluidTankCap = LazyOptional.of(() -> fluidTanks[0]);
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side)
     {
-        if (cap == ForgeCapabilities.FLUID_HANDLER)
-        {
-            return fluidTankCap.cast();
-        }
-
         if (cap == ForgeCapabilities.ITEM_HANDLER)
         {
             return itemHandlerCap.cast();
@@ -83,7 +61,6 @@ public class WeaponWorkshopBlastFurnaceBlockEntity extends BlockEntity implement
     public void invalidateCaps()
     {
         super.invalidateCaps();
-        fluidTankCap.invalidate();
         itemHandlerCap.invalidate();
     }
 
@@ -114,7 +91,6 @@ public class WeaponWorkshopBlastFurnaceBlockEntity extends BlockEntity implement
     protected void saveAdditional(CompoundTag tag)
     {
         super.saveAdditional(tag);
-        tag.put("FluidTank", fluidTanks[0].writeToNBT(new CompoundTag()));
         tag.put("Inventory", itemHandler.serializeNBT());
     }
 
@@ -122,7 +98,6 @@ public class WeaponWorkshopBlastFurnaceBlockEntity extends BlockEntity implement
     public void load(CompoundTag tag)
     {
         super.load(tag);
-        fluidTanks[0].readFromNBT(tag.getCompound("FluidTank"));
         itemHandler.deserializeNBT(tag.getCompound("Inventory"));
     }
 
@@ -136,14 +111,14 @@ public class WeaponWorkshopBlastFurnaceBlockEntity extends BlockEntity implement
     @Override
     public Component getDisplayName()
     {
-        return Component.translatable("block." + PasterDreamMod.MOD_ID + ".weapon_workshop_blast_furnace");
+        return Component.translatable("block." + PasterDreamMod.MOD_ID + ".weapon_workshop_crafting_table");
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player)
     {
-        return new WeaponWorkshopBlastFurnaceMenu(id, inventory, this);
+        return new WeaponWorkshopCraftingTableMenu(id, inventory, this);
     }
 
     @Override
@@ -159,21 +134,5 @@ public class WeaponWorkshopBlastFurnaceBlockEntity extends BlockEntity implement
     public ItemStackHandler getItemHandler()
     {
         return itemHandler;
-    }
-
-    @Override
-    public IFluidHandler getFluidHandler(int tankIndex)
-    {
-        return fluidTanks[tankIndex];
-    }
-
-    public FluidTank getFluidTank(int tankIndex)
-    {
-        return fluidTanks[tankIndex];
-    }
-
-    public FluidTank[] getFluidTanks()
-    {
-        return fluidTanks;
     }
 }

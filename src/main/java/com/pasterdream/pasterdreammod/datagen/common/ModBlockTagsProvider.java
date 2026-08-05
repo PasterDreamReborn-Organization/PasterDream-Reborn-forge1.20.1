@@ -6,7 +6,6 @@ import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.util.BuildingBlockFamily;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -135,7 +134,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_LIGHT.get())
                 .add(ModBlocks.SHADOW_CANDLE.get())
                 .add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get())
-                .add(ModBlocks.WEAPON_WORKSHOP_CORE.get())
+                .add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get())
                 .add(ModBlocks.WEAPON_WORKSHOP_ANVIL.get())
                 .add(ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get())
                 .add(ModBlocks.WEAPON_WORKSHOP_HAMMER.get())

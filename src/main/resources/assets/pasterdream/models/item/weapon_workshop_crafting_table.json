@@ -1,5 +1,5 @@
 {
-  "parent": "pasterdream:block/weapon_workshop_core",
+  "parent": "pasterdream:block/weapon_workshop_crafting_table",
   "display": {
     "thirdperson_righthand": {
       "rotation": [
