@@ -1494,7 +1494,7 @@ public class ModItems {
     public static final RegistryObject<Item> TWILIGHT_LANTERN = ITEMS.register("twilight_lantern", () -> new TwilightLanternDisplayItem(ModBlocks.TWILIGHT_LANTERN.get(), new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> SHADOW_BED = ITEMS.register("shadow_bed", () -> new BlockItem(ModBlocks.SHADOW_BED.get(), new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> SORBENT = ITEMS.register("sorbent", () -> new Item(new Item.Properties().durability(54000)));
-    public static final RegistryObject<Item> WEAPON_WORKSHOP_CORE = ITEMS.register("weapon_workshop_core", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_CORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WEAPON_WORKSHOP_CRAFTING_TABLE = ITEMS.register("weapon_workshop_crafting_table", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), new Item.Properties()));
     public static final RegistryObject<Item> WEAPON_WORKSHOP_ANVIL = ITEMS.register("weapon_workshop_anvil", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_ANVIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> WEAPON_WORKSHOP_COOLER_POT = ITEMS.register("weapon_workshop_cooler_pot", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get(), new Item.Properties()));
     public static final RegistryObject<Item> WEAPON_WORKSHOP_HAMMER = ITEMS.register("weapon_workshop_hammer", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_HAMMER.get(), new Item.Properties()));

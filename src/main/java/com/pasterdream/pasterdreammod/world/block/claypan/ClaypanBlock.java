@@ -76,9 +76,9 @@ public class ClaypanBlock extends BaseEntityBlock
         if (!state.is(newState.getBlock()))
         {
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof DyedreamDeskBlockEntity dyedreamDesk)
+            if (blockEntity instanceof ClaypanBlockEntity claypan)
             {
-                dropItemStack(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, dyedreamDesk.getItemHandler().getStackInSlot(0));
+                dropItemStack(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, claypan.getItemHandler().getStackInSlot(0));
                 level.updateNeighbourForOutputSignal(pos, this);
             }
             super.onRemove(state, level, pos, newState, movedByPiston);
