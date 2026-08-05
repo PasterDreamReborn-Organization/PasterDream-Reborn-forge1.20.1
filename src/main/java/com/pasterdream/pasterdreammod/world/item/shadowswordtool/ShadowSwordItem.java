@@ -77,7 +77,8 @@ public class ShadowSwordItem extends SwordItem {
             }
             player.getPersistentData().putBoolean(NIGHTMARE_SLASH_TAG, true);
             SkillCooldownHelper.applySharedCooldown(player, SKILL_COOLDOWN_TICKS);
-            player.playSound(SoundEvents.ENCHANTMENT_TABLE_USE, 0.7f, 1.2f);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 0.7f, 1.2f);
             player.invulnerableTime = 10;
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
@@ -164,8 +165,13 @@ public class ShadowSwordItem extends SwordItem {
         public static void onLivingHurt(LivingHurtEvent event) {
             if (!(event.getSource().getEntity() instanceof Player player)) return;
             if (!(player.getMainHandItem().getItem() instanceof ShadowSwordItem)) return;
-            if (!player.getPersistentData().getBoolean(NIGHTMARE_SLASH_TAG)) return;
             if (player.getPersistentData().getBoolean(APPLYING_TAG)) return;
+
+            Level level = player.level();
+            level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    ModSounds.SHADOW_SWORD.get(), SoundSource.MASTER, 1.0f, 1.0f);
+
+            if (!player.getPersistentData().getBoolean(NIGHTMARE_SLASH_TAG)) return;
 
             player.getPersistentData().remove(NIGHTMARE_SLASH_TAG);
             player.getPersistentData().putBoolean(APPLYING_TAG, true);
@@ -181,12 +187,9 @@ public class ShadowSwordItem extends SwordItem {
             else critMultiplier = 1.5f;
             float magicDamage = effectiveAttack * (float) (2.5 - sanRatio) * critMultiplier;
 
-            Level level = player.level();
             event.setCanceled(true);
             event.getEntity().invulnerableTime = 0;
             event.getEntity().hurt(level.damageSources().magic(), magicDamage);
-
-            player.playSound(ModSounds.SHADOW_SWORD.get(), 1.0f, 1.0f);
 
             int sweepingLevel = sword.getEnchantmentLevel(Enchantments.SWEEPING_EDGE);
             if (sweepingLevel > 0) {

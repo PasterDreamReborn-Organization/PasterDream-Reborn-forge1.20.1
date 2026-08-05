@@ -216,6 +216,10 @@ public class Config
             .comment("BOSS 单次受击伤害上限（同时也是 DPS 桶容量），默认 40")
             .defineInRange("bossDamageCap", 40.0, 1.0, 1_000_000.0);
 
+    private static final ForgeConfigSpec.DoubleValue BOSS_DPS_CAP = BUILDER
+            .comment("BOSS DPS 桶每秒恢复量，默认 200")
+            .defineInRange("bossDpsCap", 200.0, 1.0, 1_000_000.0);
+
     private static final ForgeConfigSpec.DoubleValue BOSS_RANGE_CAP = BUILDER
             .comment("BOSS 限伤距离衰减起始距离（格），超过此距离伤害线性衰减，默认 12")
             .defineInRange("bossRangeCap", 12.0, 1.0, 256.0);
@@ -436,6 +440,7 @@ public class Config
     // BOSS 限伤系统
     public static boolean bossShadowDifficultyAffectsDamageCap;
     public static double bossDamageCap;
+    public static double bossDpsCap;
     public static double bossRangeCap;
 
     // === 低理智刷怪 ===
@@ -589,6 +594,7 @@ public class Config
         shadowLootMultipliers = SHADOW_LOOT_MULTIPLIERS.get();
         bossShadowDifficultyAffectsDamageCap = BOSS_SHADOW_DIFFICULTY_AFFECTS_DAMAGE_CAP.get();
         bossDamageCap = BOSS_DAMAGE_CAP.get();
+        bossDpsCap = BOSS_DPS_CAP.get();
         bossRangeCap = BOSS_RANGE_CAP.get();
         lowSanSpawnHighProbs = LOW_SAN_SPAWN_HIGH_PROBS.get();
         lowSanSpawnHighEntities = LOW_SAN_SPAWN_HIGH_ENTITIES.get();

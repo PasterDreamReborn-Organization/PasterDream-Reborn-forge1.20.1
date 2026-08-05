@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.helper.BossDamageLimiter;
+import com.pasterdream.pasterdreammod.helper.ShadowDifficultyHelper;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
@@ -25,6 +26,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -105,13 +107,13 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
 
     public AaroncosLeftHandEntity(EntityType<AaroncosLeftHandEntity> type, Level world) {
         super(type, world);
-        xpReward = 100;
+        xpReward = 250;
         setNoAi(false);
         setPersistenceRequired();
         this.moveControl = new FlyingMoveControl(this, 10, true);
         this.bossInfo.setVisible(false);
         this.damageLimiter = new BossDamageLimiter(
-                (float) Config.bossDamageCap, Config.bossRangeCap);
+                (float) Config.bossDamageCap, (float) Config.bossDpsCap, Config.bossRangeCap);
     }
 
     @Override
@@ -210,7 +212,6 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (switchState == 0) return false; // 生成动画期间免疫
         if (!level().isClientSide() && canUseSkill()) {
             // Sword skill trigger (hurt-triggered, requires target)
             if (skillLock == 0 && switchState == 1 && swordCd == 0 && getHealth() > 1 && getTarget() != null
@@ -224,9 +225,12 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
         if (source.is(DamageTypes.IN_FIRE))
             return false;
 
+        float prevBucket = damageLimiter.getDamageBucket();
         amount = damageLimiter.limit(this, source, amount);
         if (amount < 0) return false;
-        return super.hurt(source, amount);
+        boolean result = super.hurt(source, amount);
+        if (!result) damageLimiter.rollback(prevBucket);
+        return result;
     }
 
     @Override
@@ -266,6 +270,7 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
     @Override
     public void baseTick() {
         super.baseTick();
+        damageLimiter.tick();
         updateSisterSynergy();
 
         if (!level().isClientSide()) {
@@ -306,10 +311,10 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
 
     private void runSpawnSequence() {
         if (spawnTick == 0) {
-            this.invulnerableTime = 20;
             setAnimation("spawn");
             addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 4, false, false));
             addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 4, false, false));
+            addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 4, false, false));
             setDeltaMovement(new Vec3(0, -2, 0));
             setHealth(1);
             playSoundAt(ModSounds.AARONCOS_SPAWN.get(), 1, 1);
@@ -326,7 +331,7 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
         if (spawnTick == 75) {
             setDeltaMovement(new Vec3(0, -0.4, 0));
         }
-        if (spawnTick == 100) {
+        if (spawnTick == 80) {
             switchState = 1;
             setHealth(getMaxHealth());
         }
@@ -723,6 +728,19 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
 
     public String getSyncedAnimation() {
         return this.entityData.get(ANIMATION);
+    }
+
+    @Override
+    public boolean isInvulnerableTo(DamageSource source) {
+        return switchState == 0
+                && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)
+                || super.isInvulnerableTo(source);
+    }
+
+    @Override
+    public int getExperienceReward() {
+        return (int) (xpReward * ShadowDifficultyHelper.getLootMultiplier(
+                ShadowDifficultyHelper.getDifficultyContext(this)));
     }
 
     public static void init() {
