@@ -18,6 +18,7 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
@@ -155,10 +156,11 @@ public class ShadowMagicballEntity extends PathfinderMob implements GeoEntity {
 
         // Collision check
         Vec3 center = new Vec3(getX(), getY(), getZ());
-        List<Entity> entities = level().getEntitiesOfClass(Entity.class,
+        List<LivingEntity> entities = level().getEntitiesOfClass(LivingEntity.class,
                 new AABB(center, center).inflate(1.5), e -> true);
-        for (Entity target : entities) {
-            if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)) {
+        for (LivingEntity target : entities) {
+            if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
+                    && !(target instanceof Player player && player.isCreative())) {
                 target.hurt(new DamageSource(level().registryAccess()
                         .registryOrThrow(Registries.DAMAGE_TYPE)
                         .getHolderOrThrow(DamageTypes.MAGIC)), skillDamage(1.33f));
@@ -175,10 +177,11 @@ public class ShadowMagicballEntity extends PathfinderMob implements GeoEntity {
             sw.sendParticles(ParticleTypes.SMOKE, getX(), getY(), getZ(), 64, 3, 1, 3, 0.3);
         } else if (explodeTick == 15) {
             Vec3 center = new Vec3(getX(), getY(), getZ());
-            List<Entity> entities = level().getEntitiesOfClass(Entity.class,
+            List<LivingEntity> entities = level().getEntitiesOfClass(LivingEntity.class,
                     new AABB(center, center).inflate(3.5), e -> true);
-            for (Entity target : entities) {
-                if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)) {
+            for (LivingEntity target : entities) {
+                if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
+                        && !(target instanceof Player player && player.isCreative())) {
                     target.hurt(new DamageSource(level().registryAccess()
                             .registryOrThrow(Registries.DAMAGE_TYPE)
                             .getHolderOrThrow(DamageTypes.MAGIC)), skillDamage(3.33f));

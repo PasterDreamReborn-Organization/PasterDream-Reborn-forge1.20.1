@@ -27,6 +27,7 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
@@ -88,6 +89,9 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
     private int tunetotemCd = 0;
     private boolean bloodLock = false;
     private final BossDamageLimiter damageLimiter;
+    private boolean sisterNearby = true;
+    private int sisterScanTick = 0;
+    private static final java.util.UUID SYNERGY_SPEED_ID = java.util.UUID.fromString("d9f4b3c2-5e6f-7081-9b0a-1d2e3f4a5b6c");
 
     private enum SkillType { NONE, MAGICBALL, VORTEX, TUNETOTEM }
 
@@ -202,6 +206,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
+        if (switchState == 0) return false; // 生成动画期间免疫
         if (!level().isClientSide() && canUseSkill()) {
             // Tunetotem skill trigger (hurt-triggered, requires target)
             if (skillLock == 0 && switchState == 1 && tunetotemCd == 0 && getHealth() > 1 && getTarget() != null) {
@@ -246,6 +251,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
     public void baseTick() {
         super.baseTick();
         damageLimiter.tick();
+        updateSisterSynergy();
 
         if (!level().isClientSide()) {
             // Spawn sequence
@@ -283,7 +289,6 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
             setAnimation("spawn");
             addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 4, false, false));
             addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 4, false, false));
-            addEffect(new MobEffectInstance(MobEffects.HEAL, 100, 1, false, false));
             setDeltaMovement(new Vec3(0, -2, 0));
             setHealth(1);
             playSoundAt(ModSounds.AARONCOS_SPAWN.get(), 1, 1);
@@ -302,6 +307,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
         }
         if (spawnTick == 100) {
             switchState = 1;
+            setHealth(getMaxHealth());
         }
         spawnTick++;
     }
@@ -339,14 +345,12 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
 
         // 15-block confusion to non-friendly targets
         Vec3 center = new Vec3(getX(), getY(), getZ());
-        List<Entity> entities = level().getEntitiesOfClass(Entity.class,
+        List<LivingEntity> entities = level().getEntitiesOfClass(LivingEntity.class,
             new AABB(center, center).inflate(7.5), e -> true);
-        for (Entity target : entities) {
+        for (LivingEntity target : entities) {
             if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
                     && !(target instanceof Player player && player.isCreative())) {
-                if (target instanceof LivingEntity le) {
-                    le.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 60, 1, false, false));
-                }
+                target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 60, 1, false, false));
             }
         }
     }
@@ -405,21 +409,22 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
                 sl.sendParticles(ParticleTypes.SMOKE, getX(), getY(), getZ(), 64, 2, 1, 2, 0.5);
             }
             Vec3 center = new Vec3(getX(), getY(), getZ());
-            List<Entity> entities = level().getEntitiesOfClass(Entity.class,
+            List<LivingEntity> entities = level().getEntitiesOfClass(LivingEntity.class,
                 new AABB(center, center).inflate(32), e -> true);
-            for (Entity target : entities) {
+            int vortexCount = 0;
+            for (LivingEntity target : entities) {
+                if (vortexCount >= 4) break;
                 if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
-                    && !(target instanceof Player player && player.isCreative())) {
-                    if (target instanceof LivingEntity le) {
-                        le.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 10, 1, false, false));
-                        le.hurt(new DamageSource(level().registryAccess()
-                            .registryOrThrow(Registries.DAMAGE_TYPE)
-                            .getHolderOrThrow(DamageTypes.GENERIC)), skillDamage(0.22f));
-                        le.setDeltaMovement(new Vec3(0, 0.2, 0));
-                    }
+                    && (!(target instanceof Player) || target == getTarget())) {
+                    target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 10, 1, false, false));
+                    target.hurt(new DamageSource(level().registryAccess()
+                        .registryOrThrow(Registries.DAMAGE_TYPE)
+                        .getHolderOrThrow(DamageTypes.GENERIC)), skillDamage(0.22f));
+                    target.setDeltaMovement(new Vec3(0, 0.2, 0));
                     level().setBlock(BlockPos.containing(target.getX(), target.getY(), target.getZ()),
                         ModBlocks.SHADOW_VORTEX.get().defaultBlockState(), 3);
                     playSoundAt(ModSounds.SHADOW_VORTEX.get(), 0.8f, 1);
+                    vortexCount++;
                 }
             }
             // Place vortex at own position too
@@ -466,6 +471,30 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
 
     private float skillDamage(float ratio) {
         return (float) (getAttributeValue(Attributes.ATTACK_DAMAGE) * ratio);
+    }
+
+    // ============ Sister Synergy ============
+
+    private void updateSisterSynergy() {
+        if (sisterScanTick > 0) {
+            sisterScanTick--;
+            return;
+        }
+        sisterScanTick = 20;
+        boolean found = !level().getEntitiesOfClass(AaroncosLeftHandEntity.class,
+                this.getBoundingBox().inflate(64), e -> e.isAlive()).isEmpty();
+        if (found != sisterNearby) {
+            sisterNearby = found;
+            var attr = getAttribute(Attributes.ATTACK_SPEED);
+            if (attr != null) {
+                if (found) {
+                    attr.removeModifier(SYNERGY_SPEED_ID);
+                } else {
+                    attr.addPermanentModifier(new AttributeModifier(SYNERGY_SPEED_ID,
+                            "Sister synergy speed", 0.5, AttributeModifier.Operation.MULTIPLY_BASE));
+                }
+            }
+        }
     }
 
     // ============ Bloodlock ============
@@ -544,9 +573,9 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
             sl.sendParticles(ParticleTypes.EXPLOSION, cx, cy, cz, particleCount / 4, radius / 3, radius / 3, radius / 3, 0.3);
         }
         Vec3 center = new Vec3(cx, cy, cz);
-        List<Entity> entities = level().getEntitiesOfClass(Entity.class,
+        List<LivingEntity> entities = level().getEntitiesOfClass(LivingEntity.class,
             new AABB(center, center).inflate(radius), e -> true);
-        for (Entity target : entities) {
+        for (LivingEntity target : entities) {
             if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
                     && !(target instanceof Player player && player.isCreative())) {
                 target.hurt(new DamageSource(level().registryAccess()
@@ -631,7 +660,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
             .add(Attributes.MAX_HEALTH, 500)
             .add(Attributes.ARMOR, 4)
             .add(Attributes.ATTACK_DAMAGE, 18)
-            .add(Attributes.FOLLOW_RANGE, 32)
+            .add(Attributes.FOLLOW_RANGE, 64)
             .add(Attributes.KNOCKBACK_RESISTANCE, 1)
             .add(Attributes.FLYING_SPEED, 1.0);
     }

@@ -213,12 +213,12 @@ public class Config
             .define("bossShadowDifficultyAffectsDamageCap", false);
 
     private static final ForgeConfigSpec.DoubleValue BOSS_DAMAGE_CAP = BUILDER
-            .comment("BOSS 单次受击伤害上限（同时也是 DPS 桶容量），默认 25")
-            .defineInRange("bossDamageCap", 25.0, 1.0, 1_000_000.0);
+            .comment("BOSS 单次受击伤害上限（同时也是 DPS 桶容量），默认 40")
+            .defineInRange("bossDamageCap", 40.0, 1.0, 1_000_000.0);
 
     private static final ForgeConfigSpec.DoubleValue BOSS_DPS_CAP = BUILDER
-            .comment("BOSS DPS 桶每秒恢复量，默认 100")
-            .defineInRange("bossDpsCap", 100.0, 1.0, 1_000_000.0);
+            .comment("BOSS DPS 桶每秒恢复量，默认 200")
+            .defineInRange("bossDpsCap", 200.0, 1.0, 1_000_000.0);
 
     private static final ForgeConfigSpec.DoubleValue BOSS_RANGE_CAP = BUILDER
             .comment("BOSS 限伤距离衰减起始距离（格），超过此距离伤害线性衰减，默认 12")
