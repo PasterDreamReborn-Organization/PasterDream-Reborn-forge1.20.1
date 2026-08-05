@@ -1772,7 +1772,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.guard_buff.description", "使用守护预言卡获得，拥有该buff时，超过一定生命百分比的部分伤害将会受到减伤（可在配置里修改）");
         add("effect.pasterdream.holy_grail_buff.description", "使用圣杯预言卡获得，拥有该buff时，效果持续期间+15最大生命值，并免疫一部分负面状态，获得自然生命恢复且血量越低，回血速度越快。");
         add("effect.pasterdream.rapid_reaction_buff.description", "使用疾行预言卡获得，拥有该buff时，增加上坡高度，降低瞬身术冷却并免疫摔落伤害。");
-
+        add("effect.pasterdream.flare_up_buff.description", "使用执剑预言卡获得，拥有该buff时，增加攻击力和攻击速度，增加战技伤害倍率并降低技能冷却时间。");
+        add("effect.pasterdream.conflict_mark.description", "使用纷争预言卡标记其它实体后该实体获得，拥有该buff时，将会成为其它实体攻击目标。");
+        add("effect.pasterdream.war_flag_buff.description", "装备战争旗帜后击杀敌人后获得，期间增加攻击力，并每击杀一个敌人增加1级。");
+        add("effect.pasterdream.confusion_buff.description", "施加给玩家后，玩家的视角将会抖动，施加给其它生物后，会使该生物失去行动能力。");
+        add("effect.pasterdream.calais_spice_bottle_buff.description", "装备卡莱调料瓶后获得，每次击中敌人后减少1层等级并获得随机效果，食用符合要求食物会恢复层数。");
+        add("effect.pasterdream.shadow_silence_buff.description", "暗影生物获得该buff后，会失去释放技能的能力。");
+        add("effect.pasterdream.bind_buff.description", "被白厄剑的剑雨攻击后获得，获得该buff后，会无法移动。");
+        add("effect.pasterdream.restrainmove_block_buff.description", "效果持续期间移除跳跃提升并强制禁用飞行。");
 
         // 染梦裂隙消息
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5身体从这个奇怪的洞穴中穿过，但并没有什么反应。");

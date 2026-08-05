@@ -1363,6 +1363,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.dream_harp_of_wanderer_buff.description", "Obtained after using the Dream Harp of Wanderer, the Dream Harp of Wanderer can be acquired from the Dyedream Train.");
         add("effect.pasterdream.cecilia_blessing_buff.description", "Obtained after takes a fatal hit when equips Blessing of Cecilia, making you immune to damage while the effect lasts.");
         add("effect.pasterdream.guard_buff.description", "Obtained by using the Guardian Prophecy Card, while you have this buff, damage above a certain percentage of your health will be reduced (can be changed in the Config).");
+        add("effect.pasterdream.flare_up_buff.description", "Obtained using the Wielding-Sword Prophecy card. While you have this buff, it increases attack power and attack speed, boosts skill damage multiplier, and reduces skill cooldowns.");
+        add("effect.pasterdream.conflict_mark.description", "After marking another entity with the Conflict Prophecy card, that entity gains the buff. While it has this buff, it will become the target of attacks from other entities.");
+        add("effect.pasterdream.war_flag_buff.description", "After equipping the war flag, you gain it by killing enemies, which increases your attack power, and leveling up by 1 for each enemy you kill.");
+        add("effect.pasterdream.confusion_buff.description", "When applied to a player, their view will shake; when applied to other creatures, it will make them unable to move.");
+        add("effect.pasterdream.calais_spice_bottle_buff.description", "After equipping the Calais Spice Bottle, you gain it. Each time you hit an enemy, it loses 1 level and grants a random effect. Eating the required food will restore the levels.");
+        add("effect.pasterdream.shadow_silence_buff.description", "After getting this buff, shadow creatures will lose the ability to use their skills.");
+        add("effect.pasterdream.bind_buff.description", "Obtained after being hit by the White Sword's sword rain. After getting this buff, you won't be able to move.");
+        add("effect.pasterdream.restrainmove_block_buff.description", "Remove jump boosts and force-disable flying while the effect lasts.");
 
         // Desert Hero Tomb - Quest Dialogue
         // Dyedream Crack Messages
