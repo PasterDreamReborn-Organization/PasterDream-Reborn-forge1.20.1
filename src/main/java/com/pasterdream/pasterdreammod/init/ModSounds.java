@@ -68,6 +68,8 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> AARONCOS_MUSIC = SOUNDS.register("aaroncos_music", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_music")));
     public static final RegistryObject<SoundEvent> STONE_BREAK = SOUNDS.register("stone_break", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stone_break")));
     public static final RegistryObject<SoundEvent> STONE_BREAK_0 = SOUNDS.register("stone_break_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stone_break_0")));
+    public static final RegistryObject<SoundEvent> SHADOW0 = SOUNDS.register("shadow0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow0")));
+    public static final RegistryObject<SoundEvent> SHADOW_MUSIC_0 = SOUNDS.register("shadow_music_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_music_0")));
 
     public static void register(IEventBus eventBus) {
         SOUNDS.register(eventBus);

@@ -93,13 +93,18 @@ public class TwilightLanternBlock extends BaseEntityBlock {
     @Override
     public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
         super.tick(blockstate, world, pos, random);
-        // TODO: TwilightLanternTickHandler.execute(world, pos);
-        world.scheduleTick(pos, this, 20);
+        BlockEntity be = world.getBlockEntity(pos);
+        if (be instanceof TwilightLanternBlockEntity lantern) {
+            TwilightLanternTickHandler.execute(world, pos, lantern);
+            // Fast tick (1 tick) during event, slow tick (20 ticks) when idle
+            int delay = lantern.isEventSwitch() ? 1 : 20;
+            world.scheduleTick(pos, this, delay);
+        }
     }
 
     @Override
     public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-        // TODO: TwilightLanternInteractionHandler.execute(world, pos, entity);
+        TwilightLanternInteractionHandler.execute(world, pos, entity);
         return InteractionResult.SUCCESS;
     }
 }

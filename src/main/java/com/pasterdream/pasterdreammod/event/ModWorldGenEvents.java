@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.event;
 
 import com.pasterdream.pasterdreammod.world.dimension.DyedreamDimension;
+import com.pasterdream.pasterdreammod.world.dimension.LampShadowWorldDimension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.core.Direction;
@@ -36,6 +37,10 @@ public class ModWorldGenEvents {
     private static final int SHADOW_DOOR_Y = 128;
     private static final int SHADOW_DOOR_RANGE = 2000;
 
+    // 灯影之下出生点结构
+    private static final ResourceLocation SHADOW_WORLD_SPAWN =
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "shadow_world_spawn");
+
     private static final ResourceLocation WORLDTREE_TOP =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_worldtree_top");
     private static final ResourceLocation WORLDTREE_BOTTOM =
@@ -43,6 +48,7 @@ public class ModWorldGenEvents {
 
     private static volatile boolean worldtreeNeedsPlacement = false;
     private static volatile boolean shadowDoorNeedsPlacement = false;
+    private static volatile boolean lampShadowSpawnNeedsPlacement = false;
 
     @SubscribeEvent
     public static void onLevelLoad(LevelEvent.Load event) {
@@ -59,6 +65,13 @@ public class ModWorldGenEvents {
             ShadowWorldDoorPlacedData data = ShadowWorldDoorPlacedData.get(serverLevel);
             if (!data.isPlaced()) {
                 shadowDoorNeedsPlacement = true;
+            }
+        }
+
+        if (serverLevel.dimension().equals(LampShadowWorldDimension.LAMP_SHADOW_WORLD)) {
+            LampShadowSpawnPlacedData data = LampShadowSpawnPlacedData.get(serverLevel);
+            if (!data.isPlaced()) {
+                lampShadowSpawnNeedsPlacement = true;
             }
         }
     }
@@ -90,6 +103,19 @@ public class ModWorldGenEvents {
                     placeShadowWorldDoor(nether, data);
                 } else {
                     shadowDoorNeedsPlacement = false;
+                }
+            }
+        }
+
+        if (lampShadowSpawnNeedsPlacement) {
+            ServerLevel lampShadow = event.getServer().getLevel(LampShadowWorldDimension.LAMP_SHADOW_WORLD);
+            if (lampShadow != null) {
+                LampShadowSpawnPlacedData data = LampShadowSpawnPlacedData.get(lampShadow);
+                if (!data.isPlaced()) {
+                    lampShadowSpawnNeedsPlacement = false;
+                    placeShadowWorldSpawn(lampShadow, data);
+                } else {
+                    lampShadowSpawnNeedsPlacement = false;
                 }
             }
         }
@@ -190,6 +216,30 @@ public class ModWorldGenEvents {
         data.setPlaced(x, z);
     }
 
+    private static void placeShadowWorldSpawn(ServerLevel serverLevel, LampShadowSpawnPlacedData data) {
+        StructureTemplate template = serverLevel.getStructureManager()
+                .get(SHADOW_WORLD_SPAWN).orElse(null);
+        if (template == null) return;
+
+        // Match the teleport logic in LampShadowWorldTeleporter:
+        // if block at (0, 100, 0) is air → place at y=100, teleport to y=104
+        // else → place at y=150, teleport to y=154
+        boolean low = serverLevel.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, -9, -9) <= 100;
+        int y = low ? 100 : 150;
+
+        BlockPos origin = new BlockPos(-11, y, -9);
+        StructurePlaceSettings settings = new StructurePlaceSettings();
+        RandomSource random = serverLevel.getRandom();
+
+        // Ensure chunk is loaded
+        int chunkX = origin.getX() >> 4;
+        int chunkZ = origin.getZ() >> 4;
+        serverLevel.getChunkSource().getChunk(chunkX, chunkZ, true);
+
+        template.placeInWorld(serverLevel, origin, origin, settings, random, 3);
+        data.setPlaced();
+    }
+
     public static class WorldtreePlacedData extends SavedData {
         private static final String DATA_NAME = "pasterdream_worldtree_placed";
         private boolean placed = false;
@@ -268,6 +318,39 @@ public class ModWorldGenEvents {
             this.placed = true;
             this.posX = x;
             this.posZ = z;
+            setDirty();
+        }
+    }
+
+    public static class LampShadowSpawnPlacedData extends SavedData {
+        private static final String DATA_NAME = "pasterdream_lamp_shadow_spawn";
+        private boolean placed = false;
+
+        public LampShadowSpawnPlacedData() {}
+
+        public static LampShadowSpawnPlacedData load(CompoundTag tag) {
+            LampShadowSpawnPlacedData data = new LampShadowSpawnPlacedData();
+            data.placed = tag.getBoolean("placed");
+            return data;
+        }
+
+        @Override
+        public CompoundTag save(CompoundTag tag) {
+            tag.putBoolean("placed", this.placed);
+            return tag;
+        }
+
+        public static LampShadowSpawnPlacedData get(ServerLevel level) {
+            return level.getDataStorage().computeIfAbsent(
+                    LampShadowSpawnPlacedData::load, LampShadowSpawnPlacedData::new, DATA_NAME);
+        }
+
+        public boolean isPlaced() {
+            return this.placed;
+        }
+
+        public void setPlaced() {
+            this.placed = true;
             setDirty();
         }
     }

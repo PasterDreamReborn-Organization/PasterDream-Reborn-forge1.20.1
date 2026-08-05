@@ -46,7 +46,14 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -59,7 +66,12 @@ public class PasterDreamMod
 {
     public static final String MOD_ID = "pasterdream";
 
+    private static final Collection<AbstractMap.SimpleEntry<Runnable, Integer>> WORK_QUEUE = new ConcurrentLinkedQueue<>();
     private static final UUID SWIFT_STRIKE_ATTACK_SPEED_UUID = UUID.fromString("bdf05f70-b53d-4828-8e37-9a502bde0ec1");
+
+    public static void queueServerWork(int tick, Runnable action) {
+        WORK_QUEUE.add(new AbstractMap.SimpleEntry<>(action, tick));
+    }
 
     public PasterDreamMod(FMLJavaModLoadingContext context)
     {
@@ -329,6 +341,20 @@ public class PasterDreamMod
         if (event.getEntity().hasEffect(ModEffects.RAPID_REACTION_BUFF.get())) {
             event.setDistance(0);
             event.setDamageMultiplier(0);
+        }
+    }
+
+    @SubscribeEvent
+    public void onServerTick(TickEvent.ServerTickEvent event) {
+        if (event.phase == TickEvent.Phase.END) {
+            List<AbstractMap.SimpleEntry<Runnable, Integer>> actions = new ArrayList<>();
+            WORK_QUEUE.forEach(work -> {
+                work.setValue(work.getValue() - 1);
+                if (work.getValue() == 0)
+                    actions.add(work);
+            });
+            actions.forEach(e -> e.getKey().run());
+            WORK_QUEUE.removeAll(actions);
         }
     }
 }

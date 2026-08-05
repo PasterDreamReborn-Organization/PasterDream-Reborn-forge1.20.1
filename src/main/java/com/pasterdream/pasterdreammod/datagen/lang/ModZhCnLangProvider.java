@@ -1341,6 +1341,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.description", "发现失落剑冢，深藏于丛林深处的剑冢");
         add("advancements.pasterdream.story.get_the_lost_sword.title", "遗忘之剑");
         add("advancements.pasterdream.story.get_the_lost_sword.description", "获得失落之剑，它与丛林的力量似乎共鸣……");
+        add("advancements.pasterdream.story.lamp_shadow_root.title", "侵染教堂");
+        add("advancements.pasterdream.story.lamp_shadow_root.description", "阅读寻梦者笔记\"侵染教堂\"");
+        add("advancements.pasterdream.story.bastion_guard.title", "据点守卫");
+        add("advancements.pasterdream.story.bastion_guard.description", "完成暮影之笼的据点守卫事件");
+        add("advancements.pasterdream.story.enter_lamp_shadow_world.title", "灯影之下");
+        add("advancements.pasterdream.story.enter_lamp_shadow_world.description", "深入世界中最黑暗的一面");
         add("advancements.pasterdream.story.dig_up_a_tomb.title", "邻家有女初长成，力拔山兮气盖世");
         add("advancements.pasterdream.story.dig_up_a_tomb.description", "你……你把什么东西挖下来了？？？");
         add("advancements.pasterdream.new_standard_sword_drawing.title", "新概念拔剑");
@@ -1787,6 +1793,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.story.pure_and_flawless.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");
         add("message.pasterdream.story.dream_fertilizer.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");
         add("message.pasterdream.dream_accumulator.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");
+        add("message.pasterdream.story_guide.not_entered_lamp_shadow", "你尚未踏足灯影之下");
+        add("message.pasterdream.story_guide.all_done", "灯影之下的所有笔记都已解析完毕");
+        add("message.pasterdream.story_guide.need_infested_church", "你需要先自行找到有关灯影之下的笔记");
 
         add("message.pasterdream.dream_train.train_pass", "一辆逐梦列车呼啸而过...");
         add("message.pasterdream.dream_train.location_info", "列车向我们暴露了一个位置信息... §aX：%s §aZ：%s");
@@ -1906,5 +1915,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.shadownote_ruin_0", "阴影笔记废墟");
         add("structure.pasterdream.shadownote_ruin_1", "阴影笔记废墟");
         add("structure.pasterdream.shadownote_ruin_2", "阴影笔记废墟");
+        add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "你尚未知晓如何激活影灯");
+        add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "需要用融梦水晶碎片点燃影灯");
+        add("message.pasterdream.twilight_lantern.event_start", "诡异的灯笼突然剧烈抖动，黑色的阴影从灯芯里流出。");
+        add("message.pasterdream.twilight_lantern.event_mid", "阴影化为实物，四周传来空洞的回响。");
+        add("message.pasterdream.twilight_lantern.event_end", "阴影不再从四周向外涌出，暮影之笼也逐渐归为平静。");
+        add("message.pasterdream.twilight_lantern.event_end_2", "\"躺上去吧，在寂静的夜晚，在这亭笼之下\"");
+        add("message.pasterdream.twilight_lantern.event_ready", "可以与暮影之笼发生共鸣");
+        add("message.pasterdream.twilight_lantern.data_reset", "方块数据已重置");
     }
 }

@@ -128,5 +128,11 @@
   },
   "stone_break_0": {
     "sounds": [{"name": "pasterdream:stone_break_0", "stream": false}]
+  },
+  "shadow0": {
+    "sounds": [{"name": "pasterdream:shadow0", "stream": false}]
+  },
+  "shadow_music_0": {
+    "sounds": [{"name": "pasterdream:shadow_music_0", "stream": true}]
   }
 }
