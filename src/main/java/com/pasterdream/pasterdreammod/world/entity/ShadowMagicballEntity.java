@@ -160,7 +160,7 @@ public class ShadowMagicballEntity extends PathfinderMob implements GeoEntity {
                 new AABB(center, center).inflate(1.5), e -> true);
         for (LivingEntity target : entities) {
             if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
-                    && !(target instanceof Player player && player.isCreative())) {
+                    && !(target instanceof Player player && (player.isCreative() || player.isSpectator()))) {
                 target.hurt(new DamageSource(level().registryAccess()
                         .registryOrThrow(Registries.DAMAGE_TYPE)
                         .getHolderOrThrow(DamageTypes.MAGIC)), skillDamage(1.33f));
@@ -181,7 +181,7 @@ public class ShadowMagicballEntity extends PathfinderMob implements GeoEntity {
                     new AABB(center, center).inflate(3.5), e -> true);
             for (LivingEntity target : entities) {
                 if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
-                        && !(target instanceof Player player && player.isCreative())) {
+                        && !(target instanceof Player player && (player.isCreative() || player.isSpectator()))) {
                     target.hurt(new DamageSource(level().registryAccess()
                             .registryOrThrow(Registries.DAMAGE_TYPE)
                             .getHolderOrThrow(DamageTypes.MAGIC)), skillDamage(3.33f));

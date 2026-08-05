@@ -148,7 +148,7 @@ public class ShadowTuneTotemEntity extends Monster implements GeoEntity {
                             new AABB(center, center).inflate(49.5), e -> true);
                     for (LivingEntity target : entities) {
                         if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
-                                && !(target instanceof Player player && player.isCreative())) {
+                                && !(target instanceof Player player && (player.isCreative() || player.isSpectator()))) {
                             target.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 200, 0));
                             target.hurt(new DamageSource(level().registryAccess()
                                     .registryOrThrow(Registries.DAMAGE_TYPE)
