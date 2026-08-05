@@ -1,0 +1,9 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "pasterdream:shadow_silence_buff",
+  "providers": [
+    {
+      "item": "pasterdream:white_sword"
+    }
+  ]
+}

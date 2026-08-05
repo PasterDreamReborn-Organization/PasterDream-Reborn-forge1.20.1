@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.prophecycard;
 
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.ModEffects;
+import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -451,8 +452,16 @@ public class ProphecyCardItem extends Item {
             LivingEntity target = null;
             double closestDist = reach;
             for (LivingEntity entity : candidates) {
-                // 黑名单检查
+                // 黑名单检查（配置文件）
                 if (Config.isConflictMarkBlacklisted(entity.getType())) {
+                    continue;
+                }
+                // 硬编码禁止
+                if (entity.getType() == ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get()
+                        || entity.getType() == ModEntities.SHAKING_CRYSTAL.get()
+                        || entity.getType() == ModEntities.TERRASWORD_WAVE.get()
+                        || entity.getType() == ModEntities.FOX_FIRE.get()
+                        || entity.getType() == ModEntities.SHADOW_MAGICBALL.get()) {
                     continue;
                 }
                 Optional<Vec3> clip = entity.getBoundingBox().inflate(0.3).clip(eyePos, endPos);
