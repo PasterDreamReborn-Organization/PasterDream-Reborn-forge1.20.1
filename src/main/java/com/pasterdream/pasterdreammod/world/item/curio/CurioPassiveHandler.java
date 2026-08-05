@@ -9,10 +9,11 @@ import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
-import com.pasterdream.pasterdreammod.world.entity.ghost.SquealWaveProjectileEntity;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -24,7 +25,14 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.CrossbowItem;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -352,25 +360,94 @@ public class CurioPassiveHandler {
     }
 
     /**
-     * 鬼魂之面：幽魂射弹无视无敌帧（仅对佩戴鬼魂之面的玩家发射的怨魂音波生效）
+     * 鬼魂之面：投射物无视无敌帧（对所有佩戴鬼魂之面玩家发射的投射物生效，含其它模组枪械等）
      */
     @SubscribeEvent
     public static void onGhostFaceProjectileAttack(LivingAttackEvent event) {
-        // 只处理怨魂音波射弹
-        if (!(event.getSource().getDirectEntity() instanceof SquealWaveProjectileEntity projectile)) return;
-        // 检查射弹主人是否为佩戴鬼魂之面的玩家
+        if (!(event.getSource().getDirectEntity() instanceof Projectile projectile)) return;
         if (!(projectile.getOwner() instanceof Player player)) return;
         boolean hasGhostFace = CuriosApi.getCuriosInventory(player)
                 .map(h -> h.findFirstCurio(ModItems.GHOST_FACE.get()).isPresent())
                 .orElse(false);
         if (!hasGhostFace) return;
-        // 清除无敌帧，使幽魂射弹伤害无视无敌
         event.getEntity().invulnerableTime = 0;
     }
 
     /**
-     * 鬼魂之面：使用远程武器时，额外发射幽魂射弹（怨魂同款），20% 再发射一发
-     * 延迟 2 tick 发射，避免幽魂射弹先于箭矢命中导致箭矢被无敌帧弹开
+     * 鬼魂之面：侦测任意投射物生成，对其它模组（枪械等）的弹射物也生效
+     * 弓/弩由 ArrowLooseEvent 单独处理以获得精确附魔数据
+     */
+    @SubscribeEvent
+    public static void onProjectileJoin(EntityJoinLevelEvent event) {
+        if (event.getLevel().isClientSide()) return;
+        if (!(event.getEntity() instanceof Projectile projectile)) return;
+        if (!(projectile.getOwner() instanceof Player player)) return;
+        // 防止递归：跳过鬼魂之面自身生成的箭矢
+        if (projectile.getPersistentData().getBoolean("pasterdream_ghost_face_spawned")) return;
+
+        boolean hasGhostFace = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.GHOST_FACE.get()).isPresent())
+                .orElse(false);
+        if (!hasGhostFace) return;
+
+        // 硬编码黑名单：末影珍珠等物品本身即是消耗品，不应被复制
+        if (projectile instanceof net.minecraft.world.entity.projectile.ThrownEnderpearl) return;
+        // 配置文件黑名单
+        if (Config.isGhostFaceProjectileBlacklisted(projectile.getType())) return;
+
+        CompoundTag pd = player.getPersistentData();
+        // 如果 ArrowLooseEvent 已设置数据（弓/弩），用实际箭矢类型覆盖默认的 Arrow 类型
+        if (pd.contains("pasterdream_ghost_face_delay")) {
+            if (!(projectile instanceof ThrownTrident)) {
+                pd.putInt("pasterdream_ghost_face_type", 2);
+                pd.putString("pasterdream_ghost_face_clone",
+                        BuiltInRegistries.ENTITY_TYPE.getKey(projectile.getType()).toString());
+                if (projectile instanceof AbstractArrow arrowProj) {
+                    pd.putDouble("pasterdream_ghost_face_damage", arrowProj.getBaseDamage());
+                }
+            }
+            return;
+        }
+
+        // 非弓/弩投射物：读取当前速度与伤害
+        Vec3 motion = projectile.getDeltaMovement();
+        float velocity = (float) motion.length();
+        if (velocity < 0.1F) return;
+
+        int extra = 1 + (player.getRandom().nextFloat() < 0.2F ? 1 : 0);
+
+        // 读取原始投射物伤害（AbstractArrow 系）
+        double baseDamage = 2.0;
+        if (projectile instanceof AbstractArrow arrowProj) {
+            baseDamage = arrowProj.getBaseDamage();
+        }
+
+        // 记录投射物类型：1=三叉戟(特殊构造), 2=克隆原始类型
+        int projectileType;
+        String cloneTypeId = "";
+        if (projectile instanceof ThrownTrident) {
+            projectileType = 1;
+        } else {
+            projectileType = 2;
+            cloneTypeId = BuiltInRegistries.ENTITY_TYPE.getKey(projectile.getType()).toString();
+        }
+
+        pd.putInt("pasterdream_ghost_face_delay", 1);
+        pd.putInt("pasterdream_ghost_face_extra", extra);
+        pd.putFloat("pasterdream_ghost_face_velocity", velocity);
+        pd.putDouble("pasterdream_ghost_face_damage", baseDamage);
+        pd.putInt("pasterdream_ghost_face_punch", 0);
+        pd.putBoolean("pasterdream_ghost_face_flame", false);
+        pd.putBoolean("pasterdream_ghost_face_crit", false);
+        pd.putInt("pasterdream_ghost_face_type", projectileType);
+        if (projectileType == 2) {
+            pd.putString("pasterdream_ghost_face_clone", cloneTypeId);
+        }
+    }
+
+    /**
+     * 鬼魂之面：弓/弩 — 投射物 +1，20% 再 +1
+     * 保持 ArrowLooseEvent 以获得精确的蓄力速度和附魔数据
      */
     @SubscribeEvent
     public static void onArrowLoose(ArrowLooseEvent event) {
@@ -382,33 +459,50 @@ public class CurioPassiveHandler {
                 .orElse(false);
         if (!hasGhostFace) return;
 
-        // 弩的 charge 固定为 1，需特殊处理；弓按蓄力比例计算
-        float velocity;
-        if (event.getBow().getItem() instanceof CrossbowItem) {
-            velocity = 3.0F; // 弩始终全速发射
-        } else {
-            velocity = (event.getCharge() / 20.0F) * 3.0F;
-        }
-        float power = velocity / 2.0F;
-        int shots = 1 + (player.getRandom().nextFloat() < 0.2F ? 1 : 0);
+        ItemStack bow = event.getBow();
 
-        // 力量附魔加成：沿用原版公式 level * 0.5 + 0.5
-        double damage = 3.0;
-        int powerLevel = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.POWER_ARROWS, event.getBow());
+        // 计算速度：弩固定全速，弓按蓄力比例（原版公式）
+        float f;
+        if (bow.getItem() instanceof CrossbowItem) {
+            f = 1.0F;
+        } else {
+            f = event.getCharge() / 20.0F;
+            f = (f * f + f * 2.0F) / 3.0F;
+            if (f > 1.0F) f = 1.0F;
+        }
+        float velocity = f * 3.0F;
+
+        // 力量附魔加成（原版公式）
+        double damage = 2.0;
+        int powerLevel = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.POWER_ARROWS, bow);
         if (powerLevel > 0) {
             damage += powerLevel * 0.5 + 0.5;
         }
 
-        // 延迟发射，让箭矢先飞出去
+        // 冲击附魔
+        int punch = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.PUNCH_ARROWS, bow);
+        // 火矢附魔
+        boolean flame = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.FLAMING_ARROWS, bow) > 0;
+        // 是否为满蓄力暴击
+        boolean crit = f >= 1.0F;
+
+        // 额外投射物数量
+        int extra = 1 + (player.getRandom().nextFloat() < 0.2F ? 1 : 0);
+
         CompoundTag pd = player.getPersistentData();
-        pd.putInt("pasterdream_ghost_face_delay", 2);
-        pd.putInt("pasterdream_ghost_face_shots", shots);
-        pd.putFloat("pasterdream_ghost_face_power", power);
+        pd.putInt("pasterdream_ghost_face_delay", 1);
+        pd.putInt("pasterdream_ghost_face_extra", extra);
+        pd.putFloat("pasterdream_ghost_face_velocity", velocity);
         pd.putDouble("pasterdream_ghost_face_damage", damage);
+        pd.putInt("pasterdream_ghost_face_punch", punch);
+        pd.putBoolean("pasterdream_ghost_face_flame", flame);
+        pd.putBoolean("pasterdream_ghost_face_crit", crit);
+        pd.putInt("pasterdream_ghost_face_type", 0); // 箭矢类型
     }
 
     /**
-     * 鬼魂之面：延迟发射幽魂射弹的 tick 处理
+     * 鬼魂之面：延迟生成额外投射物（tick 处理）
+     * 根据原始投射物类型生成对应实体：箭矢 / 三叉戟
      */
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -431,24 +525,88 @@ public class CurioPassiveHandler {
                 .map(h -> h.findFirstCurio(ModItems.GHOST_FACE.get()).isPresent())
                 .orElse(false);
         if (!hasGhostFace) {
-            pd.remove("pasterdream_ghost_face_delay");
-            pd.remove("pasterdream_ghost_face_shots");
-            pd.remove("pasterdream_ghost_face_power");
-            pd.remove("pasterdream_ghost_face_damage");
+            clearGhostFaceData(pd);
             return;
         }
 
-        int shots = pd.getInt("pasterdream_ghost_face_shots");
-        float power = pd.getFloat("pasterdream_ghost_face_power");
-        double damage = pd.contains("pasterdream_ghost_face_damage") ? pd.getDouble("pasterdream_ghost_face_damage") : 3.0;
-        for (int i = 0; i < shots; i++) {
-            SquealWaveProjectileEntity.shoot(player.level(), player, player.getRandom(), power, damage, 0);
+        int extra = pd.getInt("pasterdream_ghost_face_extra");
+        float velocity = pd.getFloat("pasterdream_ghost_face_velocity");
+        double damage = pd.contains("pasterdream_ghost_face_damage") ? pd.getDouble("pasterdream_ghost_face_damage") : 2.0;
+        int punch = pd.getInt("pasterdream_ghost_face_punch");
+        boolean flame = pd.getBoolean("pasterdream_ghost_face_flame");
+        boolean crit = pd.getBoolean("pasterdream_ghost_face_crit");
+        int projectileType = pd.getInt("pasterdream_ghost_face_type"); // 0=箭矢, 1=三叉戟, 2=克隆
+
+        for (int i = 0; i < extra; i++) {
+            switch (projectileType) {
+                case 1 -> {
+                    // 额外三叉戟（特殊构造）
+                    ThrownTrident trident = new ThrownTrident(player.level(), player, new ItemStack(Items.TRIDENT));
+                    trident.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, 1.0F);
+                    trident.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+                    trident.getPersistentData().putBoolean("pasterdream_ghost_face_spawned", true);
+                    player.level().addFreshEntity(trident);
+                }
+                case 2 -> {
+                    // 克隆原始投射物类型（特殊箭/其它模组弹射物）
+                    spawnClonedProjectile(player, pd, velocity, damage, punch, flame, crit && i == 0);
+                }
+                default -> {
+                    // 额外箭矢（弓/弩，附魔加成）
+                    Arrow arrow = new Arrow(player.level(), player);
+                    arrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, 1.0F);
+                    arrow.setBaseDamage(damage);
+                    arrow.setCritArrow(crit && i == 0);
+                    if (punch > 0) arrow.setKnockback(punch);
+                    if (flame) arrow.setSecondsOnFire(100);
+                    arrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+                    arrow.getPersistentData().putBoolean("pasterdream_ghost_face_spawned", true);
+                    player.level().addFreshEntity(arrow);
+                }
+            }
         }
 
-        // 清理
+        clearGhostFaceData(pd);
+    }
+
+    /**
+     * 通过 EntityType.create() 克隆原始投射物（用于其它模组弹射物）
+     */
+    private static void spawnClonedProjectile(Player player, CompoundTag pd, float velocity,
+                                               double damage, int punch, boolean flame, boolean crit) {
+        String typeIdStr = pd.getString("pasterdream_ghost_face_clone");
+        if (typeIdStr.isEmpty()) return;
+        ResourceLocation typeId = ResourceLocation.tryParse(typeIdStr);
+        if (typeId == null) return;
+        var entityType = BuiltInRegistries.ENTITY_TYPE.get(typeId);
+        if (entityType == null) return;
+
+        Entity copy = entityType.create(player.level());
+        if (!(copy instanceof Projectile copyProj)) return;
+
+        copyProj.setOwner(player);
+        copy.moveTo(player.getX(), player.getEyeY() - 0.1, player.getZ(), player.getYRot(), player.getXRot());
+        copyProj.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, 1.0F);
+        if (copy instanceof AbstractArrow copyArrow) {
+            copyArrow.setBaseDamage(damage);
+            copyArrow.setCritArrow(crit);
+            if (punch > 0) copyArrow.setKnockback(punch);
+            if (flame) copyArrow.setSecondsOnFire(100);
+            copyArrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+        }
+        copy.getPersistentData().putBoolean("pasterdream_ghost_face_spawned", true);
+        player.level().addFreshEntity(copy);
+    }
+
+    private static void clearGhostFaceData(CompoundTag pd) {
         pd.remove("pasterdream_ghost_face_delay");
-        pd.remove("pasterdream_ghost_face_shots");
-        pd.remove("pasterdream_ghost_face_power");
+        pd.remove("pasterdream_ghost_face_extra");
+        pd.remove("pasterdream_ghost_face_velocity");
         pd.remove("pasterdream_ghost_face_damage");
+        pd.remove("pasterdream_ghost_face_punch");
+        pd.remove("pasterdream_ghost_face_flame");
+        pd.remove("pasterdream_ghost_face_crit");
+        pd.remove("pasterdream_ghost_face_type");
+        pd.remove("pasterdream_ghost_face_clone");
     }
 }
