@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.event;
 
 import com.pasterdream.pasterdreammod.world.dimension.DyedreamDimension;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraft.core.Direction;
 import net.minecraft.core.FrontAndTop;
 import net.minecraft.core.Vec3i;
@@ -28,41 +29,70 @@ public class ModWorldGenEvents {
 
     private static final int WORLDTREE_X = 2002;
     private static final int WORLDTREE_Z = 1128;
+
+    // 暮影之笼结构（下界基岩层上方）
+    private static final ResourceLocation SHADOW_WORLD_DOOR =
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "shadow_world_door");
+    private static final int SHADOW_DOOR_Y = 128;
+    private static final int SHADOW_DOOR_RANGE = 2000;
+
     private static final ResourceLocation WORLDTREE_TOP =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_worldtree_top");
     private static final ResourceLocation WORLDTREE_BOTTOM =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_worldtree_bottom");
 
     private static volatile boolean worldtreeNeedsPlacement = false;
+    private static volatile boolean shadowDoorNeedsPlacement = false;
 
     @SubscribeEvent
     public static void onLevelLoad(LevelEvent.Load event) {
         if (!(event.getLevel() instanceof ServerLevel serverLevel)) return;
-        if (!serverLevel.dimension().equals(DyedreamDimension.DYEDREAM_WORLD)) return;
 
-        WorldtreePlacedData data = WorldtreePlacedData.get(serverLevel);
-        if (!data.isPlaced()) {
-            worldtreeNeedsPlacement = true;
+        if (serverLevel.dimension().equals(DyedreamDimension.DYEDREAM_WORLD)) {
+            WorldtreePlacedData data = WorldtreePlacedData.get(serverLevel);
+            if (!data.isPlaced()) {
+                worldtreeNeedsPlacement = true;
+            }
+        }
+
+        if (serverLevel.dimension().equals(Level.NETHER)) {
+            ShadowWorldDoorPlacedData data = ShadowWorldDoorPlacedData.get(serverLevel);
+            if (!data.isPlaced()) {
+                shadowDoorNeedsPlacement = true;
+            }
         }
     }
 
     @SubscribeEvent
     public static void onServerTick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
-        if (!worldtreeNeedsPlacement) return;
 
-        ServerLevel dyedream = event.getServer().getLevel(DyedreamDimension.DYEDREAM_WORLD);
-        if (dyedream == null) return;
-
-        WorldtreePlacedData data = WorldtreePlacedData.get(dyedream);
-        if (data.isPlaced()) {
-            worldtreeNeedsPlacement = false;
-            return;
+        if (worldtreeNeedsPlacement) {
+            ServerLevel dyedream = event.getServer().getLevel(DyedreamDimension.DYEDREAM_WORLD);
+            if (dyedream != null) {
+                WorldtreePlacedData data = WorldtreePlacedData.get(dyedream);
+                if (!data.isPlaced()) {
+                    worldtreeNeedsPlacement = false;
+                    placeWorldtree(dyedream);
+                    data.setPlaced();
+                } else {
+                    worldtreeNeedsPlacement = false;
+                }
+            }
         }
 
-        worldtreeNeedsPlacement = false;
-        placeWorldtree(dyedream);
-        data.setPlaced();
+        if (shadowDoorNeedsPlacement) {
+            ServerLevel nether = event.getServer().getLevel(Level.NETHER);
+            if (nether != null) {
+                ShadowWorldDoorPlacedData data = ShadowWorldDoorPlacedData.get(nether);
+                if (!data.isPlaced()) {
+                    shadowDoorNeedsPlacement = false;
+                    placeShadowWorldDoor(nether, data);
+                } else {
+                    shadowDoorNeedsPlacement = false;
+                }
+            }
+        }
     }
 
     private static void placeWorldtree(ServerLevel serverLevel) {
@@ -140,6 +170,26 @@ public class ModWorldGenEvents {
         return null;
     }
 
+    private static void placeShadowWorldDoor(ServerLevel serverLevel, ShadowWorldDoorPlacedData data) {
+        StructureTemplate template = serverLevel.getStructureManager()
+                .get(SHADOW_WORLD_DOOR).orElse(null);
+        if (template == null) return;
+
+        RandomSource random = serverLevel.getRandom();
+        int x = random.nextIntBetweenInclusive(-SHADOW_DOOR_RANGE, SHADOW_DOOR_RANGE);
+        int z = random.nextIntBetweenInclusive(-SHADOW_DOOR_RANGE, SHADOW_DOOR_RANGE);
+
+        int chunkX = x >> 4;
+        int chunkZ = z >> 4;
+        serverLevel.getChunkSource().getChunk(chunkX, chunkZ, true);
+
+        BlockPos origin = new BlockPos(x - 22, SHADOW_DOOR_Y, z - 21);
+        StructurePlaceSettings settings = new StructurePlaceSettings();
+        template.placeInWorld(serverLevel, origin, origin, settings, random, 3);
+
+        data.setPlaced(x, z);
+    }
+
     public static class WorldtreePlacedData extends SavedData {
         private static final String DATA_NAME = "pasterdream_worldtree_placed";
         private boolean placed = false;
@@ -169,6 +219,55 @@ public class ModWorldGenEvents {
 
         public void setPlaced() {
             this.placed = true;
+            setDirty();
+        }
+    }
+
+    public static class ShadowWorldDoorPlacedData extends SavedData {
+        private static final String DATA_NAME = "pasterdream_shadow_world_door";
+        private boolean placed = false;
+        private int posX;
+        private int posZ;
+
+        public ShadowWorldDoorPlacedData() {}
+
+        public static ShadowWorldDoorPlacedData load(CompoundTag tag) {
+            ShadowWorldDoorPlacedData data = new ShadowWorldDoorPlacedData();
+            data.placed = tag.getBoolean("placed");
+            data.posX = tag.getInt("posX");
+            data.posZ = tag.getInt("posZ");
+            return data;
+        }
+
+        @Override
+        public CompoundTag save(CompoundTag tag) {
+            tag.putBoolean("placed", this.placed);
+            tag.putInt("posX", this.posX);
+            tag.putInt("posZ", this.posZ);
+            return tag;
+        }
+
+        public static ShadowWorldDoorPlacedData get(ServerLevel level) {
+            return level.getDataStorage().computeIfAbsent(
+                    ShadowWorldDoorPlacedData::load, ShadowWorldDoorPlacedData::new, DATA_NAME);
+        }
+
+        public boolean isPlaced() {
+            return this.placed;
+        }
+
+        public int getPosX() {
+            return posX;
+        }
+
+        public int getPosZ() {
+            return posZ;
+        }
+
+        public void setPlaced(int x, int z) {
+            this.placed = true;
+            this.posX = x;
+            this.posZ = z;
             setDirty();
         }
     }

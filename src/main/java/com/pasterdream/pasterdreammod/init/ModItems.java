@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorItem;
+import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestItem;
@@ -1490,6 +1491,8 @@ public class ModItems {
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_CHEST = ITEMS.register("melt_dream_crystal_chest", () -> new MeltDreamCrystalChestItem(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), new Item.Properties()));
     public static final RegistryObject<Item> OPENED_MELT_DREAM_CRYSTAL_CHEST = ITEMS.register("opened_melt_dream_crystal_chest", () -> new OpenedMeltDreamCrystalChestItem(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), new Item.Properties()));
     public static final RegistryObject<Item> DREAM_ACCUMULATOR = ITEMS.register("dream_accumulator", () -> new DreamAccumulatorItem(ModBlocks.DREAM_ACCUMULATOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> TWILIGHT_LANTERN = ITEMS.register("twilight_lantern", () -> new TwilightLanternDisplayItem(ModBlocks.TWILIGHT_LANTERN.get(), new Item.Properties().rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> SHADOW_BED = ITEMS.register("shadow_bed", () -> new BlockItem(ModBlocks.SHADOW_BED.get(), new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> SORBENT = ITEMS.register("sorbent", () -> new Item(new Item.Properties().durability(54000)));
     public static final RegistryObject<Item> WEAPON_WORKSHOP_CORE = ITEMS.register("weapon_workshop_core", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_CORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> WEAPON_WORKSHOP_ANVIL = ITEMS.register("weapon_workshop_anvil", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_ANVIL.get(), new Item.Properties()));

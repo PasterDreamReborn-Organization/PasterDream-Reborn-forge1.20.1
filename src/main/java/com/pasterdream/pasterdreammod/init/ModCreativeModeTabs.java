@@ -576,6 +576,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WEAPON_WORKSHOP_HAMMER.get());
                         output.accept(ModItems.WEAPON_WORKSHOP_GRIND_STONE.get());
                         output.accept(ModItems.WEAPON_WORKSHOP_BLAST_FURNACE.get());
+                        output.accept(ModItems.TWILIGHT_LANTERN.get());
+                        output.accept(ModItems.SHADOW_BED.get());
                     })
                     .build());
 

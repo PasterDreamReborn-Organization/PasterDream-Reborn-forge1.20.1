@@ -1,0 +1,6 @@
+{
+  "parent": "pasterdream:displaysettings/twilight_lantern.item.geo",
+  "textures": {
+    "particle": "pasterdream:block/shadow_stone"
+  }
+}

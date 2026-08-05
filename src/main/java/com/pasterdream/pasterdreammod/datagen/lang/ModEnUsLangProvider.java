@@ -332,6 +332,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.SHADOW_LIGHT.get(), "Shadow Light");
         add(ModBlocks.SHADOW_SHROOMLIGHT.get(), "Shadow Shroomlight");
         add(ModBlocks.SHADOW_CANDLE.get(), "Shadow Candle");
+        add(ModBlocks.TWILIGHT_LANTERN.get(), "Twilight Lantern");
+        add(ModBlocks.SHADOW_BED.get(), "Shadow Bed");
         add(ModBlocks.SHADOW_WART_BLOCK.get(), "Shadow Wart Block");
         add(ModBlocks.SHADOW_STEM.get(), "Shadow Stem");
         add(ModBlocks.SHADOW_HYPHAE.get(), "Shadow Hyphae");

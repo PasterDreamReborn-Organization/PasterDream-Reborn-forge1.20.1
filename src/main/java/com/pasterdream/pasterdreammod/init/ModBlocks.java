@@ -8,6 +8,8 @@ import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexBlock
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorBlock;
 import com.pasterdream.pasterdreammod.world.block.shadow.*;
+import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlock;
 import com.pasterdream.pasterdreammod.world.block.DyedreamFarmlandBlock;
 import com.pasterdream.pasterdreammod.world.block.DyedreamGrassBlock;
 import com.pasterdream.pasterdreammod.world.block.PinkMushroom;
@@ -646,6 +648,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> CLAY_POT = BLOCKS.register("clay_pot", ClayPotBlock::new);
     // ===== 小石子 =====
     public static final RegistryObject<Block> PEBBLE = BLOCKS.register("pebble", PebbleBlock::new);
+    //暮影之笼 / 暮影长床
+    public static final RegistryObject<Block> TWILIGHT_LANTERN = BLOCKS.register("twilight_lantern", TwilightLanternBlock::new);
+    public static final RegistryObject<Block> SHADOW_BED = BLOCKS.register("shadow_bed", ShadowBedBlock::new);
     //荒漠英雄之墓
     public static final RegistryObject<Block> DESERT_HERO_TOMB = BLOCKS.register("desert_hero_tomb", DesertHeroTombBlock::new);
     //逐梦列车结构
