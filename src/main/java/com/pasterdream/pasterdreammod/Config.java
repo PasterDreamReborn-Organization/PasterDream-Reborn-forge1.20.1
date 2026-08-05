@@ -341,6 +341,15 @@ public class Config
             .comment("卡莱调料瓶回避增益持续时间（tick），默认 20（1 秒）")
             .defineInRange("calaisSpiceBottleEvasionDuration", 20, 0, 200);
 
+    // === 鬼魂之面 ===
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> GHOST_FACE_PROJECTILE_BLACKLIST = BUILDER
+            .comment("鬼魂之面不生效的投射物实体类型 ID 列表（格式：modid:entity_id），"
+                    + "\n例：supplementaries:slingshot_projectile 为 Supplementary 模组的弹弓弹射物"
+                    + "\n支持模组投射物，默认屏蔽弹弓弹射物以避免与弹弓自身机制冲突")
+            .defineListAllowEmpty("ghostFaceProjectileBlacklist",
+                    List.of("supplementaries:slingshot_projectile"),
+                    obj -> obj instanceof String);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     // === 时之沙 ===
@@ -410,6 +419,10 @@ public class Config
     public static List<? extends String> conflictMarkBlacklist;
     private static Set<EntityType<?>> cachedConflictMarkBlacklistTypes = Set.of();
 
+    //鬼魂之面
+    public static List<? extends String> ghostFaceProjectileBlacklist;
+    private static Set<ResourceLocation> cachedGhostFaceBlacklistTypes = Set.of();
+
     /** 卡莱调料瓶随机增益缓存（解析后的 MobEffect 列表） */
     private static List<MobEffect> cachedCalaisSpiceBottleBuffs = List.of();
 
@@ -475,6 +488,27 @@ public class Config
      */
     public static boolean isConflictMarkBlacklisted(EntityType<?> type) {
         return cachedConflictMarkBlacklistTypes.contains(type);
+    }
+
+    /**
+     * 查询指定实体类型是否在鬼魂之面投射物黑名单中。
+     */
+    public static boolean isGhostFaceProjectileBlacklisted(EntityType<?> type) {
+        ResourceLocation key = ForgeRegistries.ENTITY_TYPES.getKey(type);
+        return key != null && cachedGhostFaceBlacklistTypes.contains(key);
+    }
+
+    private static void rebuildGhostFaceBlacklistCache() {
+        Set<ResourceLocation> set = new HashSet<>();
+        for (String idStr : ghostFaceProjectileBlacklist) {
+            ResourceLocation rl = ResourceLocation.tryParse(idStr);
+            if (rl == null) {
+                LOGGER.warn("ghostFaceProjectileBlacklist: invalid resource location '{}', skipping", idStr);
+                continue;
+            }
+            set.add(rl);
+        }
+        cachedGhostFaceBlacklistTypes = Set.copyOf(set);
     }
 
     private static void rebuildSinInstakillCache() {
@@ -621,6 +655,9 @@ public class Config
         calaisSpiceBottleDebuffDuration = CALAIS_SPICE_BOTTLE_DEBUFF_DURATION.get();
         calaisSpiceBottleDebuffAmplifier = CALAIS_SPICE_BOTTLE_DEBUFF_AMPLIFIER.get();
         calaisSpiceBottleEvasionDuration = CALAIS_SPICE_BOTTLE_EVASION_DURATION.get();
+
+        ghostFaceProjectileBlacklist = GHOST_FACE_PROJECTILE_BLACKLIST.get();
+        rebuildGhostFaceBlacklistCache();
 
         rebuildSinInstakillCache();
         rebuildConflictMarkBlacklistCache();
