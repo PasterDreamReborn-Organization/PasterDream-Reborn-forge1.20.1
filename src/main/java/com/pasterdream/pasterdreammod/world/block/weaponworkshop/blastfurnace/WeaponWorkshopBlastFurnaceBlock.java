@@ -5,7 +5,6 @@ import com.pasterdream.pasterdreammod.helper.multiblockproperties._2x4x2Part;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition.CalculatePartPosition;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.SingleFloorVoxelShapeCalculator;
 import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.blockentity.HorizontalDirectionalBlockBenchBaseEntityBlock;
-import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -31,6 +30,8 @@ import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+
+import static net.minecraft.world.Containers.dropItemStack;
 
 public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockBenchBaseEntityBlock
 {
@@ -309,6 +310,16 @@ public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockB
                     {
                         level.setBlock(addonPos, Blocks.AIR.defaultBlockState(), 3);
                     }
+                }
+
+                BlockEntity blockEntity = level.getBlockEntity(blockPosition);
+                if(blockEntity instanceof WeaponWorkshopBlastFurnaceBlockEntity weaponWorkshopBlastFurnace)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        dropItemStack(level, blockPosition.getX() + 0.5, blockPosition.getY() + 0.5, blockPosition.getZ() + 0.5, weaponWorkshopBlastFurnace.getItemHandler().getStackInSlot(i));
+                    }
+                    level.updateNeighbourForOutputSignal(blockPosition, this);
                 }
             }
                 else

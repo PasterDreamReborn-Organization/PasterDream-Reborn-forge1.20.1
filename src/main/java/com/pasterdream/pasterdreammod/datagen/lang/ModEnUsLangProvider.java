@@ -392,7 +392,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), "Opened Melt Dream Crystal Chest");
         add(ModBlocks.DREAM_ACCUMULATOR.get(), "Dream Accumulator");
         add(ModItems.SORBENT.get(), "Sorbent");
-        add(ModBlocks.WEAPON_WORKSHOP_CORE.get(), "Weapon Workshop Core");
+        add(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), "Weapon Workshop Crafting Table");
         add(ModBlocks.WEAPON_WORKSHOP_ANVIL.get(), "Weapon Workshop Anvil");
         add(ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get(), "Weapon Workshop Cooler Pot");
         add(ModBlocks.WEAPON_WORKSHOP_HAMMER.get(), "Weapon Workshop Hammer");

@@ -19,7 +19,7 @@ public class GUIBackGroundRender
     public static ResourceLocation BLUEPRINT_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/blueprint.png");
     public static ResourceLocation DREAM_ACCUMULATOR_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_accumulator.png");
     public static ResourceLocation RESEARCH_TABLE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/research_table.png");
-    public static ResourceLocation WEAPON_WORKSHOP_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop.png");
+    public static ResourceLocation WEAPON_WORKSHOP_CRAFTING_TABLE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_crafting_table.png");
     public static ResourceLocation WEAPON_WORKSHOP_ANVIL_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_anvil.png");
     public static ResourceLocation WEAPON_WORKSHOP_BLAST_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_blast_furnace.png");
     public static ResourceLocation WEAPON_WORKSHOP_BLAST_LAVA_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_blast_furnace_lava_amount_bar.png");
@@ -152,9 +152,9 @@ public class GUIBackGroundRender
         guiGraphics.blit(RESEARCH_TABLE_GUI, x, y, 0, 0, 197, 115, 197, 115);
     }
 
-    public static void rendWeaponWorkshopGUI(GuiGraphics guiGraphics, int x, int y)
+    public static void rendWeaponWorkshopCraftingTableGUI(GuiGraphics guiGraphics, int x, int y)
     {
-        guiGraphics.blit(WEAPON_WORKSHOP_GUI, x, y, 0, 0, 174, 86, 174, 86);
+        guiGraphics.blit(WEAPON_WORKSHOP_CRAFTING_TABLE_GUI, x, y, 0, 0, 174, 86, 174, 86);
     }
 
     public static void rendWeaponWorkshopAnvilGUI(GuiGraphics guiGraphics, int x, int y)
