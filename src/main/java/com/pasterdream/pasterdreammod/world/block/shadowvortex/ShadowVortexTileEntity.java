@@ -74,29 +74,28 @@ public class ShadowVortexTileEntity extends BlockEntity implements GeoBlockEntit
         sw.sendParticles(ParticleTypes.SMOKE, cx, cy, cz, 64, 3, 0.5, 3, 0.1);
 
         Vec3 center = new Vec3(cx, cy, cz);
-        List<Entity> entities = level.getEntitiesOfClass(Entity.class,
+        List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class,
                 new AABB(center, center).inflate(4.5), e -> true);
 
         if (friendly) {
-            for (Entity target : entities) {
+            for (LivingEntity target : entities) {
                 if (target.getType().is(SPECIAL_ENTITY) || target instanceof Player)
                     continue;
                 target.hurt(new DamageSource(level.registryAccess()
                         .registryOrThrow(Registries.DAMAGE_TYPE)
                         .getHolderOrThrow(DamageTypes.MAGIC)), 4);
-                if (target instanceof LivingEntity le) {
-                    le.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 0, false, false));
-                }
+                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 0, false, false));
             }
         } else {
-            for (Entity target : entities) {
+            for (LivingEntity target : entities) {
                 if (target.getType().is(SPECIAL_ENTITY) || target.getType().is(SHADOW_MOB))
                     continue;
-                if (target instanceof LivingEntity le) {
-                    le.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 20, 0));
-                    le.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 20, 1));
-                    le.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 0));
-                }
+                if (target instanceof Player player
+                        && (player.isCreative() || player.isSpectator()))
+                    continue;
+                target.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 20, 0));
+                target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 20, 1));
+                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 0));
                 target.hurt(new DamageSource(level.registryAccess()
                         .registryOrThrow(Registries.DAMAGE_TYPE)
                         .getHolderOrThrow(DamageTypes.MAGIC)), 3);

@@ -107,7 +107,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
         this.moveControl = new FlyingMoveControl(this, 10, true);
         this.bossInfo.setVisible(false);
         this.damageLimiter = new BossDamageLimiter(
-                (float) Config.bossDamageCap, (float) Config.bossDpsCap, Config.bossRangeCap);
+                (float) Config.bossDamageCap, Config.bossRangeCap);
     }
 
     @Override
@@ -177,7 +177,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
         });
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, false, false,
                 target -> !target.getType().is(SHADOW_MOB) && !target.getType().is(SPECIAL_ENTITY)
-                        && !(target instanceof Player player && player.isCreative())));
+                        && !(target instanceof Player player && (player.isCreative() || player.isSpectator()))));
         this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.8, 20) {
             @Override
             protected Vec3 getPosition() {
@@ -219,12 +219,9 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
         if (source.is(DamageTypes.IN_FIRE))
             return false;
 
-        float prevBucket = damageLimiter.getDamageBucket();
         amount = damageLimiter.limit(this, source, amount);
         if (amount < 0) return false;
-        boolean result = super.hurt(source, amount);
-        if (!result) damageLimiter.rollback(prevBucket);
-        return result;
+        return super.hurt(source, amount);
     }
 
     @Override
@@ -250,7 +247,6 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
     @Override
     public void baseTick() {
         super.baseTick();
-        damageLimiter.tick();
         updateSisterSynergy();
 
         if (!level().isClientSide()) {
@@ -349,7 +345,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
             new AABB(center, center).inflate(7.5), e -> true);
         for (LivingEntity target : entities) {
             if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
-                    && !(target instanceof Player player && player.isCreative())) {
+                    && !(target instanceof Player player && (player.isCreative() || player.isSpectator()))) {
                 target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 60, 1, false, false));
             }
         }
@@ -415,7 +411,8 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
             for (LivingEntity target : entities) {
                 if (vortexCount >= 4) break;
                 if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
-                    && (!(target instanceof Player) || target == getTarget())) {
+                    && (!(target instanceof Player player)
+                        || (target == getTarget() && !player.isCreative() && !player.isSpectator()))) {
                     target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 10, 1, false, false));
                     target.hurt(new DamageSource(level().registryAccess()
                         .registryOrThrow(Registries.DAMAGE_TYPE)
@@ -525,12 +522,11 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
             List<Entity> entities = level().getEntitiesOfClass(Entity.class,
                 new AABB(center, center).inflate(40), e -> true);
             for (Entity target : entities) {
-                if (target instanceof Player) {
-                    if (target instanceof LivingEntity le) {
-                        le.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
-                        le.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 60, 1));
-                        le.addEffect(new MobEffectInstance(ModEffects.RESTRAINMOVE_BLOCK_BUFF.get(), 60, 0));
-                    }
+                if (target instanceof Player player
+                        && !player.isCreative() && !player.isSpectator()) {
+                    player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
+                    player.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 60, 1));
+                    player.addEffect(new MobEffectInstance(ModEffects.RESTRAINMOVE_BLOCK_BUFF.get(), 60, 0));
                 }
             }
             playSoundAt(ModSounds.AARONCOS_SPAWN.get(), 1, 1);
@@ -577,7 +573,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
             new AABB(center, center).inflate(radius), e -> true);
         for (LivingEntity target : entities) {
             if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
-                    && !(target instanceof Player player && player.isCreative())) {
+                    && !(target instanceof Player player && (player.isCreative() || player.isSpectator()))) {
                 target.hurt(new DamageSource(level().registryAccess()
                     .registryOrThrow(Registries.DAMAGE_TYPE)
                     .getHolderOrThrow(DamageTypes.EXPLOSION)), damage);
