@@ -101,7 +101,8 @@ public class WhiteSwordItem extends SwordItem {
     }
 
     private void executeSkill(Level level, Player player) {
-        player.playSound(ModSounds.WHITE_SWORD_RAIN.get(), 0.7f, 1.0f);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                ModSounds.WHITE_SWORD_RAIN.get(), SoundSource.PLAYERS, 0.7f, 1.0f);
         player.invulnerableTime = 10;
         player.swing(InteractionHand.MAIN_HAND, true);
         SkillCooldownHelper.applySharedCooldown(player, COOLDOWN_TICKS);
@@ -127,10 +128,12 @@ public class WhiteSwordItem extends SwordItem {
         double py = player.getY();
         double pz = player.getZ();
         server.tell(new TickTask(baseTick + 27, () -> {
-            player.playSound(net.minecraft.sounds.SoundEvents.AMETHYST_CLUSTER_PLACE, 2, 1);
+            level.playSound(null, px, py, pz,
+                    net.minecraft.sounds.SoundEvents.AMETHYST_CLUSTER_PLACE, SoundSource.PLAYERS, 2, 1);
         }));
         server.tell(new TickTask(baseTick + 30, () -> {
-            player.playSound(net.minecraft.sounds.SoundEvents.AMETHYST_CLUSTER_PLACE, 2, 1);
+            level.playSound(null, px, py, pz,
+                    net.minecraft.sounds.SoundEvents.AMETHYST_CLUSTER_PLACE, SoundSource.PLAYERS, 2, 1);
         }));
     }
 
@@ -178,7 +181,8 @@ public class WhiteSwordItem extends SwordItem {
             serverLevel.addFreshEntity(projectile);
         }
 
-        player.playSound(ModSounds.WHITE_SWORD_RAIN.get(), 0.3f, 1.5f);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                ModSounds.WHITE_SWORD_RAIN.get(), SoundSource.PLAYERS, 0.3f, 1.5f);
     }
 
     private void scheduleWave(MinecraftServer server, Level level, Player player,
@@ -188,7 +192,8 @@ public class WhiteSwordItem extends SwordItem {
             spawnProjectiles(level, player, target, 3.5, outerCount);
             spawnProjectiles(level, player, target, 2.5, innerCount);
             if (playSound) {
-                player.playSound(net.minecraft.sounds.SoundEvents.AMETHYST_CLUSTER_PLACE, 2, 1);
+                level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    net.minecraft.sounds.SoundEvents.AMETHYST_CLUSTER_PLACE, SoundSource.PLAYERS, 2, 1);
             }
         }));
     }
