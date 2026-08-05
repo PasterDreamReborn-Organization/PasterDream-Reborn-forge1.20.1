@@ -1175,6 +1175,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.adventure.forgotten_sword_tomb.description", "Discovered the lost sword tomb, a sword tomb hidden deep in the jungle.");
         add("advancements.pasterdream.story.get_the_lost_sword.title", "Sword of Oblivion");
         add("advancements.pasterdream.story.get_the_lost_sword.description", "Got the Sword Embryo, it seems to resonate with the power of the jungle…");
+        add("advancements.pasterdream.story.lamp_shadow_root.title", "Infested Church");
+        add("advancements.pasterdream.story.lamp_shadow_root.description", "Read the Dream Seeker's Notes \"Infested Church\"");
+        add("advancements.pasterdream.story.bastion_guard.title", "Bastion Guard");
+        add("advancements.pasterdream.story.bastion_guard.description", "Complete the Twilight Lantern bastion guard event");
+        add("advancements.pasterdream.story.enter_lamp_shadow_world.title", "Lamp Shadow World");
+        add("advancements.pasterdream.story.enter_lamp_shadow_world.description", "Delve into the darkest side of the world");
         add("advancements.pasterdream.story.dig_up_a_tomb.title", "Sweet Sixteen, with the Strength of a Titan");
         add("advancements.pasterdream.story.dig_up_a_tomb.description", "You... what exactly did you dig up???");
         add("advancements.pasterdream.new_standard_sword_drawing.title", "New Standard Sword Drawing");
@@ -1386,6 +1392,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.story.pure_and_flawless.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
         add("message.pasterdream.story.dream_fertilizer.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
         add("message.pasterdream.dream_accumulator.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
+        add("message.pasterdream.story_guide.not_entered_lamp_shadow", "You have not yet set foot in the Lamp Shadow World");
+        add("message.pasterdream.story_guide.all_done", "All Lamp Shadow World notes have been resolved");
+        add("message.pasterdream.story_guide.need_infested_church", "You must first discover the Lamp Shadow World notes on your own");
 
         add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past...");
         add("message.pasterdream.dream_train.location_info", "The train revealed a location... §aX：%s §aZ：%s");
@@ -1496,5 +1505,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.shadownote_ruin_0", "Shadow Note Ruin");
         add("structure.pasterdream.shadownote_ruin_1", "Shadow Note Ruin");
         add("structure.pasterdream.shadownote_ruin_2", "Shadow Note Ruin");
+        add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "You do not yet know how to activate the shadow lantern");
+        add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "You need to light the shadow lantern with a Melt Dream Crystal Fragment");
+        add("message.pasterdream.twilight_lantern.event_start", "The eerie lantern suddenly shakes violently, black shadows flow out from the wick.");
+        add("message.pasterdream.twilight_lantern.event_mid", "The shadows materialize into physical form, hollow echoes resound from all around.");
+        add("message.pasterdream.twilight_lantern.event_end", "Shadows no longer surge outward, the Twilight Lantern gradually returns to calm.");
+        add("message.pasterdream.twilight_lantern.event_end_2", "\"Lie down, in the silent night, beneath this pavilion lantern\"");
+        add("message.pasterdream.twilight_lantern.event_ready", "You can now resonate with the Twilight Lantern");
+        add("message.pasterdream.twilight_lantern.data_reset", "Block data reset");
     }
 }

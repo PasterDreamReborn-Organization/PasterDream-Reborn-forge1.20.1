@@ -23,6 +23,7 @@ public class TwilightLanternBlockEntity extends BlockEntity implements GeoBlockE
     private boolean eventSwitch;
     private boolean key;
     private double number;
+    private int eventTick;
 
     public TwilightLanternBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.TWILIGHT_LANTERN.get(), pos, state);
@@ -97,12 +98,22 @@ public class TwilightLanternBlockEntity extends BlockEntity implements GeoBlockE
         setChanged();
     }
 
+    public int getEventTick() {
+        return eventTick;
+    }
+
+    public void setEventTick(int eventTick) {
+        this.eventTick = eventTick;
+        setChanged();
+    }
+
     @Override
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         tag.putBoolean("switch", eventSwitch);
         tag.putBoolean("key", key);
         tag.putDouble("number", number);
+        tag.putInt("eventTick", eventTick);
     }
 
     @Override
@@ -111,6 +122,7 @@ public class TwilightLanternBlockEntity extends BlockEntity implements GeoBlockE
         eventSwitch = tag.getBoolean("switch");
         key = tag.getBoolean("key");
         number = tag.getDouble("number");
+        eventTick = tag.getInt("eventTick");
     }
 
     @Override
@@ -119,6 +131,7 @@ public class TwilightLanternBlockEntity extends BlockEntity implements GeoBlockE
         tag.putBoolean("switch", eventSwitch);
         tag.putBoolean("key", key);
         tag.putDouble("number", number);
+        tag.putInt("eventTick", eventTick);
         return tag;
     }
 

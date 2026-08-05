@@ -120,7 +120,7 @@ public class ShadowBedBlock extends Block implements SimpleWaterloggedBlock, Ent
 
     @Override
     public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-        // TODO: ShadowBedInteractionHandler.execute(world, pos, entity);
+        com.pasterdream.pasterdreammod.world.block.twilightlantern.TrueShadowBedInteractionHandler.execute(world, pos, entity);
         return InteractionResult.SUCCESS;
     }
 }

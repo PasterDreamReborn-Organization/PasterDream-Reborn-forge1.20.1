@@ -50,7 +50,7 @@ public class PlayerEvents {
     private static final ResourceLocation DREAM_FERTILIZER_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dream_fertilizer");
     private static final ResourceLocation LOOK_AT_PINK_SHEEP_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/look_at_pink_sheep");
 
-    /** 进度 ID → 笔记 content 键列表 的映射 */
+    /** 进度 ID → 染梦笔记 content 键列表 */
     private static final java.util.Map<ResourceLocation, java.util.List<String>> ADVANCEMENT_NOTE_CONTENT = java.util.Map.of(
             PURE_AND_FLAWLESS_ADV, java.util.List.of("whiteCorolla", "paleBoneNeedle"),
             DREAM_FERTILIZER_ADV, java.util.List.of("dreamFertilizer")

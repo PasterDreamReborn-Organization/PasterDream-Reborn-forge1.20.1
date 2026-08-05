@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.item;
 import com.pasterdream.pasterdreammod.helper.itemwithnbt.dreamnoteswithnbt.DreamNotesWithNBT;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -16,25 +17,30 @@ import net.minecraft.world.level.Level;
 
 public class StoryProgressItem extends Item {
 
-    private static final ResourceLocation[] STORY_ADVANCEMENTS = {
+    /** 入场检测：玩家是否进入过灯影之下 */
+    private static final ResourceLocation ENTER_LAMP_SHADOW_WORLD =
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/enter_lamp_shadow_world");
+
+    /** 剧情线终点 */
+    private static final ResourceLocation SCARE_ADV =
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/scare");
+
+    /**
+     * 前置进度 → 下一本笔记 content 键，按剧情顺序排列。
+     * infestedChurch（侵染教堂）需玩家自行探索获取，不在此列。
+     */
+    private static final ResourceLocation[] PREREQUISITE_ADVANCEMENTS = {
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/lamp_shadow_root"),
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/deposition_shadow"),
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_travelogue"),
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_dungeon"),
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/scare")
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_dungeon")
     };
 
-    private static final String[] STORY_CONTENTS = {
+    private static final String[] NEXT_NOTE_CONTENTS = {
             "depositionShadow",
             "shadowTravelogue",
             "shadowDungeon",
             "scare"
-    };
-
-    private static final String[] CRITERION_KEYS = {
-            "read_deposition_shadow_note",
-            "read_shadow_travelogue_note",
-            "read_shadow_dungeon_note",
-            "read_scare_note"
     };
 
     public StoryProgressItem(Properties properties) {
@@ -53,21 +59,28 @@ public class StoryProgressItem extends Item {
             return InteractionResultHolder.fail(stack);
         }
 
-        for (int i = 0; i < STORY_ADVANCEMENTS.length; i++) {
-            Advancement adv = serverPlayer.getServer().getAdvancements()
-                    .getAdvancement(STORY_ADVANCEMENTS[i]);
-            if (adv == null) continue;
+        // 1. 检查是否进入过灯影之下
+        if (!isAdvancementDone(serverPlayer, ENTER_LAMP_SHADOW_WORLD)) {
+            serverPlayer.displayClientMessage(
+                    Component.translatable("message.pasterdream.story_guide.not_entered_lamp_shadow"), true);
+            return InteractionResultHolder.fail(stack);
+        }
 
-            if (!serverPlayer.getAdvancements().getOrStartProgress(adv).isDone()) {
-                serverPlayer.getAdvancements().award(adv, CRITERION_KEYS[i]);
+        // 2. 全部完成？
+        if (isAdvancementDone(serverPlayer, SCARE_ADV)) {
+            serverPlayer.displayClientMessage(
+                    Component.translatable("message.pasterdream.story_guide.all_done"), true);
+            return InteractionResultHolder.fail(stack);
+        }
 
-                ItemStack notes = DreamNotesWithNBT.dreamNotesWithNBT(
-                        ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(),
-                        "content",
-                        STORY_CONTENTS[i]);
+        // 3. 从后往前找最高已完成的前置进度，发放下一本笔记
+        for (int i = PREREQUISITE_ADVANCEMENTS.length - 1; i >= 0; i--) {
+            if (isAdvancementDone(serverPlayer, PREREQUISITE_ADVANCEMENTS[i])) {
+                ItemStack note = DreamNotesWithNBT.dreamNotesWithNBT(
+                        ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", NEXT_NOTE_CONTENTS[i]);
 
-                if (!player.getInventory().add(notes)) {
-                    player.drop(notes, false);
+                if (!player.getInventory().add(note)) {
+                    player.drop(note, false);
                 }
 
                 level.playSound(null, player.blockPosition(),
@@ -78,6 +91,14 @@ public class StoryProgressItem extends Item {
             }
         }
 
-        return InteractionResultHolder.pass(stack);
+        // 4. 已入场但 lamp_shadow_root 未完成 → 还需自行寻找侵染教堂
+        serverPlayer.displayClientMessage(
+                Component.translatable("message.pasterdream.story_guide.need_infested_church"), true);
+        return InteractionResultHolder.fail(stack);
+    }
+
+    private static boolean isAdvancementDone(ServerPlayer player, ResourceLocation id) {
+        Advancement adv = player.server.getAdvancements().getAdvancement(id);
+        return adv != null && player.getAdvancements().getOrStartProgress(adv).isDone();
     }
 }

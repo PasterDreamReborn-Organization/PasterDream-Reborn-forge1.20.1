@@ -7,9 +7,12 @@ import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -43,6 +46,9 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
         private static final Advancement FISHING = new Advancement(
                 ResourceLocation.fromNamespaceAndPath("minecraft", "husbandry/fishy_business"),
                 null, null, AdvancementRewards.EMPTY, Map.of(), new String[0][0], false);
+
+        private static final ResourceKey<Level> LAMP_SHADOW_WORLD =
+                ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_world"));
 
         @Override
         public void generate(HolderLookup.@NotNull Provider registries,
@@ -329,9 +335,61 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/human_falls_out_of_dream"), existingFileHelper);
 
+            // ========== 灯影世界剧情线 ==========
+
+            // 进度：侵染教堂 — 需要阅读"侵染教堂"笔记后解锁（笔记由玩家自行探索获取）
+            Advancement lampShadowRoot = Advancement.Builder.advancement()
+                    .parent(root)
+                    .display(
+                            ModBlocks.TWILIGHT_LANTERN.get(),
+                            Component.translatable("advancements.pasterdream.story.lamp_shadow_root.title"),
+                            Component.translatable("advancements.pasterdream.story.lamp_shadow_root.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("read_infested_church_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("infestedChurch"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/lamp_shadow_root"), existingFileHelper);
+
+            // 据点守卫 — 完成暮影之笼事件后授予
+            Advancement bastionGuard = Advancement.Builder.advancement()
+                    .parent(lampShadowRoot)
+                    .display(
+                            ModBlocks.TWILIGHT_LANTERN.get(),
+                            Component.translatable("advancements.pasterdream.story.bastion_guard.title"),
+                            Component.translatable("advancements.pasterdream.story.bastion_guard.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, false
+                    )
+                    .addCriterion("complete_bastion_guard",
+                            new ImpossibleTrigger.TriggerInstance())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/bastion_guard"), existingFileHelper);
+
+            // ========== 灯影之下 Tab 页根进度（独立 tab，CHALLENGE）==========
+            // 原作 achievement_shadow_start，首次进入 lamp_shadow_world 时触发
+            Advancement enterLampShadowWorld = Advancement.Builder.advancement()
+                    .display(
+                            ModBlocks.TWILIGHT_LANTERN.get(),
+                            Component.translatable("advancements.pasterdream.story.enter_lamp_shadow_world.title"),
+                            Component.translatable("advancements.pasterdream.story.enter_lamp_shadow_world.description"),
+                            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                    "textures/screens/yin_ying_.png"),
+                            FrameType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("enter_lamp_shadow_world",
+                            ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(LAMP_SHADOW_WORLD))
+                    .rewards(AdvancementRewards.Builder.experience(100))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/enter_lamp_shadow_world"), existingFileHelper);
+
             // ========== 灯影世界剧情线（纯逻辑进度，不在进度界面显示）==========
             Advancement depositionShadow = Advancement.Builder.advancement()
-                    .parent(root)
+                    .parent(enterLampShadowWorld)
                     .addCriterion("read_deposition_shadow_note",
                             ReadDreamNoteTrigger.TriggerInstance.forContent("depositionShadow"))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
