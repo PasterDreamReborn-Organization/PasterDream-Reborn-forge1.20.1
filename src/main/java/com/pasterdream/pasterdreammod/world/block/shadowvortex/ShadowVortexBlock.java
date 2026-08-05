@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -65,6 +66,11 @@ public class ShadowVortexBlock extends BaseEntityBlock {
     public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean moving) {
         super.onPlace(state, world, pos, oldState, moving);
         world.scheduleTick(pos, this, 20);
+    }
+
+    @Override
+    public boolean canEntityDestroy(BlockState state, BlockGetter level, BlockPos pos, Entity entity) {
+        return false;
     }
 
     @Override

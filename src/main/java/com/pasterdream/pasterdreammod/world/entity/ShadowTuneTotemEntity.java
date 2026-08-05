@@ -144,20 +144,19 @@ public class ShadowTuneTotemEntity extends Monster implements GeoEntity {
                 if (isAlive()) {
                     ServerLevel sw = (ServerLevel) level();
                     Vec3 center = new Vec3(getX(), getY(), getZ());
-                    List<Entity> entities = level().getEntitiesOfClass(Entity.class,
+                    List<LivingEntity> entities = level().getEntitiesOfClass(LivingEntity.class,
                             new AABB(center, center).inflate(49.5), e -> true);
-                    for (Entity target : entities) {
-                        if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)) {
-                            if (target instanceof LivingEntity le) {
-                                le.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 200, 0));
-                                le.hurt(new DamageSource(level().registryAccess()
-                                        .registryOrThrow(Registries.DAMAGE_TYPE)
-                                        .getHolderOrThrow(DamageTypes.EXPLOSION)), skillDamage(1.0f));
-                            }
+                    for (LivingEntity target : entities) {
+                        if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
+                                && !(target instanceof Player player && player.isCreative())) {
+                            target.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 200, 0));
+                            target.hurt(new DamageSource(level().registryAccess()
+                                    .registryOrThrow(Registries.DAMAGE_TYPE)
+                                    .getHolderOrThrow(DamageTypes.EXPLOSION)), skillDamage(1.0f));
                             sw.sendParticles(ParticleTypes.EXPLOSION, target.getX(), target.getY() + 1, target.getZ(), 8, 1, 1, 1, 0.5);
-                            this.playSound(net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, 1, 1);
                         }
                     }
+                    this.playSound(net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, 1, 1);
                     sw.sendParticles(ModParticleTypes.SHADOW_STONE_PARTICLE.get(), getX(), getY(), getZ(), 128, 1, 4, 1, 0.1);
                     sw.sendParticles(ParticleTypes.SMOKE, getX(), getY(), getZ(), 128, 1, 4, 1, 0.1);
                 }
