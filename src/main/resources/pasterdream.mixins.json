@@ -20,7 +20,8 @@
     "ServerboundSetStructureBlockPacketMixin",
     "StructureBlockEntityMixin",
     "StructureTemplateMixin",
-    "StructureTemplateManagerMixin"
+    "StructureTemplateManagerMixin",
+    "LocateCommandMixin"
   ],
   "client": [
     "FogRendererMixin",
