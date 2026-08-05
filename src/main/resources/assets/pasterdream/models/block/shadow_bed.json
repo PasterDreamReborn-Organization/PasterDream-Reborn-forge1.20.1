@@ -1,0 +1,9 @@
+{
+  "parent": "pasterdream:custom/shadow_bed",
+  "textures": {
+    "all": "pasterdream:block/shadow_bed",
+    "particle": "pasterdream:block/shadow_bed",
+    "0": "pasterdream:block/shadow_bed"
+  },
+  "render_type": "cutout"
+}

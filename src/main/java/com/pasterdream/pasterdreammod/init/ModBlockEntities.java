@@ -23,6 +23,8 @@ import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombB
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.NippyEdelweissBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexTileEntity;
+import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceAddonBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlockEntity;
@@ -65,6 +67,8 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<WeaponWorkshopGrindStoneBlockEntity>> WEAPON_WORKSHOP_GRIND_STONE = BLOCK_ENTITIES.register("weapon_workshop_grind_stone", () -> BlockEntityType.Builder.of(WeaponWorkshopGrindStoneBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get()).build(null));
     public static final RegistryObject<BlockEntityType<WeaponWorkshopBlastFurnaceBlockEntity>> WEAPON_WORKSHOP_BLAST_FURNACE = BLOCK_ENTITIES.register("weapon_workshop_blast_furnace", () -> BlockEntityType.Builder.of(WeaponWorkshopBlastFurnaceBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get()).build(null));
     public static final RegistryObject<BlockEntityType<WeaponWorkshopBlastFurnaceAddonBlockEntity>> WEAPON_WORKSHOP_BLAST_FURNACE_ADDON = BLOCK_ENTITIES.register("weapon_workshop_blast_furnace_addon", () -> BlockEntityType.Builder.of(WeaponWorkshopBlastFurnaceAddonBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<TwilightLanternBlockEntity>> TWILIGHT_LANTERN = BLOCK_ENTITIES.register("twilight_lantern", () -> BlockEntityType.Builder.of(TwilightLanternBlockEntity::new, ModBlocks.TWILIGHT_LANTERN.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ShadowBedBlockEntity>> SHADOW_BED = BLOCK_ENTITIES.register("shadow_bed", () -> BlockEntityType.Builder.of(ShadowBedBlockEntity::new, ModBlocks.SHADOW_BED.get()).build(null));
 
     public static void register(IEventBus eventBus)
     {
