@@ -1199,7 +1199,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 堕落者之印
         add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "堕落者之印");
-        add("tooltip.pasterdream.seal_of_the_corrupted.effect1", "§7▪ §9精神值归零时不会触发负面效果");
+        add("tooltip.pasterdream.seal_of_the_corrupted.effect1", "§7▪ §9不会受到低精神值带来的负面效果");
         add("tooltip.pasterdream.seal_of_the_corrupted.effect2", "§7▪ §9暗影生物对你保持中立");
         add("tooltip.pasterdream.seal_of_the_corrupted.effect3", "§7▪ §9因低精神值诞生的暗影生物为你而战");
         add("tooltip.pasterdream.seal_of_the_corrupted.flavor", "§7§o——我将成为你的阴影 一并体会你的痛苦");

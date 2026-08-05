@@ -1037,7 +1037,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         // Seal of the Fallen
         add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "Seal of the Corrupted");
-        add("tooltip.pasterdream.seal_of_the_corrupted.effect1", "§7▪ §9Immune to negative sanity effects (Lethargy, Trance, Insanity)");
+        add("tooltip.pasterdream.seal_of_the_corrupted.effect1", "§7▪ §9Immune to negative effects from low sanity");
         add("tooltip.pasterdream.seal_of_the_corrupted.effect2", "§7▪ §9Shadow mobs become neutral to you");
         add("tooltip.pasterdream.seal_of_the_corrupted.effect3", "§7▪ §9Shadow mobs spawned by low sanity fight for you");
         add("tooltip.pasterdream.seal_of_the_corrupted.flavor", "§7§o——I will become your shadow and share your suffering");
