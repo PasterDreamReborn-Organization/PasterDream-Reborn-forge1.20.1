@@ -69,7 +69,9 @@ public class PlayerEvents {
             if (dreamTeleportTicks > 0) {
                 dreamTeleportTicks--;
                 if (dreamTeleportTicks <= 0) {
+                    // 只有玩家真正在床上入睡时才传送；白天点床未入睡或中途起床则取消传送
                     if (player instanceof ServerPlayer serverPlayer
+                            && player.isSleeping()
                             && !player.level().dimension().equals(DYEDREAM_WORLD)) {
                         // 重置床的 OCCUPIED 状态
                         CompoundTag data = player.getPersistentData();
@@ -185,6 +187,8 @@ public class PlayerEvents {
     public static void onPlayerSleepInBed(PlayerSleepInBedEvent event) {
         Player player = event.getEntity();
         if (player.level().isClientSide()) return;
+        // 该事件在昼夜判定前触发，白天右键床（睡眠失败）时直接跳过，不发放休憩效果/不触发传送
+        if (player.level().isDay()) return;
 
         // 躺下给予3分钟休憩效果
         player.addEffect(new MobEffectInstance(ModEffects.REST_BUFF.get(),
