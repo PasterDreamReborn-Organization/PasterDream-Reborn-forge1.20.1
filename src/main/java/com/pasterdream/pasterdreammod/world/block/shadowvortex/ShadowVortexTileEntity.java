@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.shadowvortex;
 
+import com.pasterdream.pasterdreammod.helper.ShadowDifficultyHelper;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
@@ -77,13 +78,14 @@ public class ShadowVortexTileEntity extends BlockEntity implements GeoBlockEntit
         List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class,
                 new AABB(center, center).inflate(4.5), e -> true);
 
+        float attackMult = (float) ShadowDifficultyHelper.getAttackMultiplier(level);
         if (friendly) {
             for (LivingEntity target : entities) {
                 if (target.getType().is(SPECIAL_ENTITY) || target instanceof Player)
                     continue;
                 target.hurt(new DamageSource(level.registryAccess()
                         .registryOrThrow(Registries.DAMAGE_TYPE)
-                        .getHolderOrThrow(DamageTypes.MAGIC)), 4);
+                        .getHolderOrThrow(DamageTypes.MAGIC)), 4 * attackMult);
                 target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 0, false, false));
             }
         } else {
@@ -98,7 +100,7 @@ public class ShadowVortexTileEntity extends BlockEntity implements GeoBlockEntit
                 target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 0));
                 target.hurt(new DamageSource(level.registryAccess()
                         .registryOrThrow(Registries.DAMAGE_TYPE)
-                        .getHolderOrThrow(DamageTypes.MAGIC)), 3);
+                        .getHolderOrThrow(DamageTypes.MAGIC)), 3 * attackMult);
             }
         }
     }

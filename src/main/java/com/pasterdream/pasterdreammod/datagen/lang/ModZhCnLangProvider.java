@@ -103,6 +103,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.GALAXY_JELLY.get(), "星河果冻");
         add("tooltip.pasterdreammod.galaxy_jelly", "§9食用后，将玩家抛到空中并获得7秒缓降");
         add("tooltip.pasterdreammod.galaxy_jelly.flavor", "§7§O --将星河捧入手中");
+        add(ModItems.MILKY_WAY_JELLY.get(), "银河果冻");
+        add("tooltip.pasterdreammod.milky_way_jelly", "§9食用后，将玩家传送至维度建筑限高顶部并获得30秒缓降");
+        add("tooltip.pasterdreammod.milky_way_jelly.flavor", "§7§O --银河无际，星海无涯");
         add(ModItems.FORTUNE_JELLY.get(), "福灵果冻");
         add("tooltip.pasterdreammod.fortune_jelly", "§9食用后，获得幸运I（1:00）");
         add("item.minecraft.potion.effect.luck", "幸运药水");
@@ -1284,6 +1287,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("entity.pasterdream.aaroncos_right_hand", "亚伦柯斯之触-右手");
         add("entity.pasterdream.shadow_magicball", "暗影魔法球");
         add("entity.pasterdream.shadow_tune_totem", "暗影符文塔");
+        add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在蓄能");
+        add("message.pasterdream.shadow_tune_totem.about_to_explode", "暗影符文塔即将发生爆破");
         add("block.pasterdream.shadow_vortex", "暗影漩涡");
 
         //卡莱的调料瓶

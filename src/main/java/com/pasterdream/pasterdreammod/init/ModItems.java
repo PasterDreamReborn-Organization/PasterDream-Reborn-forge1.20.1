@@ -791,6 +791,34 @@ public class ModItems {
                 }
             });
 
+    public static final RegistryObject<Item> MILKY_WAY_JELLY = ITEMS.register("milky_way_jelly",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(8).alwaysEat().saturationMod(0.5f).build()).useDuration(25)
+            ){
+                @Override
+                protected void onFoodSpecial(Player player, Level level) {
+                    if (player instanceof ServerPlayer sp) {
+                        sp.teleportTo(sp.serverLevel(), sp.getX(), level.getMaxBuildHeight(), sp.getZ(), sp.getYRot(), sp.getXRot());
+                    } else {
+                        player.setPos(player.getX(), level.getMaxBuildHeight(), player.getZ());
+                    }
+                    player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 600, 0));
+                    player.getCooldowns().addCooldown(this, 400);
+                    level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                            SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 3.0F, 1.0F);
+                }
+                @Override
+                public boolean isFoil(ItemStack stack) {
+                    return true;
+                }
+                @Override
+                public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, level, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.milky_way_jelly"));
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.milky_way_jelly.flavor"));
+                }
+            });
+
     public static final RegistryObject<Item> FORTUNE_JELLY = ITEMS.register("fortune_jelly",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
                     .food(new FoodProperties.Builder().nutrition(6).alwaysEat().saturationMod(0.415f).build()).useDuration(25)

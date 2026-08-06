@@ -289,9 +289,8 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
             setAnimation("spawn");
             addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 4, false, false));
             addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 4, false, false));
-            addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 4, false, false));
             setDeltaMovement(new Vec3(0, -2, 0));
-            setHealth(1);
+            setHealth(getMaxHealth());
             playSoundAt(ModSounds.AARONCOS_SPAWN.get(), 1, 1);
             if (level() instanceof ServerLevel sl)
                 sl.sendParticles(ModParticleTypes.SHADOW_STONE_PARTICLE.get(), getX(), getY(), getZ(), 64, 1, 1, 1, 0.2);

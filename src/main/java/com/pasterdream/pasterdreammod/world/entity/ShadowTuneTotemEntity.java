@@ -132,10 +132,10 @@ public class ShadowTuneTotemEntity extends Monster implements GeoEntity {
 
             // Spawn sequence
             if (lifeTicks == 1) {
-                sendMessageToNearbyPlayers("暗影符文塔正在蓄能");
+                sendMessageToNearbyPlayers(Component.translatable("message.pasterdream.shadow_tune_totem.charging"));
             }
             if (lifeTicks == 300) {
-                sendMessageToNearbyPlayers("暗影符文塔即将发生爆破");
+                sendMessageToNearbyPlayers(Component.translatable("message.pasterdream.shadow_tune_totem.about_to_explode"));
             }
             if (lifeTicks == 400) {
                 setAnimation("skill");
@@ -156,9 +156,22 @@ public class ShadowTuneTotemEntity extends Monster implements GeoEntity {
                             sw.sendParticles(ParticleTypes.EXPLOSION, target.getX(), target.getY() + 1, target.getZ(), 8, 1, 1, 1, 0.5);
                         }
                     }
-                    this.playSound(net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, 1, 1);
-                    sw.sendParticles(ModParticleTypes.SHADOW_STONE_PARTICLE.get(), getX(), getY(), getZ(), 128, 1, 4, 1, 0.1);
+                    sw.playSound(null, getX(), getY(), getZ(), net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, this.getSoundSource(), 4.0f, 1.0f);
+                    // 中心大爆炸特效
+                    sw.sendParticles(ParticleTypes.EXPLOSION_EMITTER, getX(), getY() + 0.5, getZ(), 4, 1.5, 1.5, 1.5, 0);
+                    // 大范围冲击波粒子环
+                    for (int r = 0; r < 360; r += 15) {
+                        double rad = Math.toRadians(r);
+                        for (double dist = 2; dist <= 16; dist += 2) {
+                            sw.sendParticles(ParticleTypes.EXPLOSION,
+                                    getX() + Math.cos(rad) * dist, getY() + 0.5, getZ() + Math.sin(rad) * dist,
+                                    1, 0, 0, 0, 0);
+                        }
+                    }
+                    sw.sendParticles(ModParticleTypes.SHADOW_STONE_PARTICLE.get(), getX(), getY(), getZ(), 256, 2, 6, 2, 0.2);
                     sw.sendParticles(ParticleTypes.SMOKE, getX(), getY(), getZ(), 128, 1, 4, 1, 0.1);
+                    sw.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, getX(), getY(), getZ(), 64, 2, 6, 2, 0.05);
+                    sw.sendParticles(ParticleTypes.FLASH, getX(), getY() + 0.5, getZ(), 16, 1, 1, 1, 0);
                 }
             }
             if (lifeTicks == 497) {
@@ -185,12 +198,12 @@ public class ShadowTuneTotemEntity extends Monster implements GeoEntity {
         }
     }
 
-    private void sendMessageToNearbyPlayers(String msg) {
+    private void sendMessageToNearbyPlayers(Component msg) {
         Vec3 center = new Vec3(getX(), getY(), getZ());
         List<Player> players = level().getEntitiesOfClass(Player.class,
                 new AABB(center, center).inflate(32), e -> true);
         for (Player player : players) {
-            player.displayClientMessage(Component.literal(msg), true);
+            player.displayClientMessage(msg, true);
         }
     }
 
