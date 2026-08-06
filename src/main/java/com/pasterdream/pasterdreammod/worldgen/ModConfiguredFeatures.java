@@ -74,10 +74,14 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_ICE_STONE_BLOBS =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_ice_stone_blobs"));
-    // 方解石尖锥 — 原作 stone_pillar_0 / stone_pillar_1 结构的 Feature 替代
+    // 方解石尖锥 — 原作 stone_pillar_0 / stone_pillar_1 结构, 使用自定义 CalciteSpikeFeature
     public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_SPIKE =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_spike"));
+    // 方解石尖锥（海洋变体）— 原作 stone_pillar_0/1 NBT 结构放置，浮于海面
+    public static final ResourceKey<ConfiguredFeature<?, ?>> STONE_PILLAR_OCEAN =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stone_pillar_ocean"));
     // 方解石团块 — 原作 ground_feature_dyedream_15
     public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_BOULDER =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -457,6 +461,10 @@ public class ModConfiguredFeatures {
         context.register(CALCITE_SPIKE, new ConfiguredFeature<>(ModFeatures.CALCITE_SPIKE.get(),
                 NoneFeatureConfiguration.INSTANCE));
 
+        // 方解石尖锥（海洋变体）— 使用 StonePillarFeature 放置 NBT 结构，浮于海面
+        context.register(STONE_PILLAR_OCEAN, new ConfiguredFeature<>(ModFeatures.STONE_PILLAR.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
 
 
         // 雪块底水池 — 原作 ground_feature_dyedream_1
@@ -516,19 +524,9 @@ public class ModConfiguredFeatures {
                         64,
                         0.5f
                 )));
-        // 方解石团块 — 原作 ground_feature_dyedream_15
-        context.register(CALCITE_BOULDER, new ConfiguredFeature<>(Feature.ORE,
-                new OreConfiguration(
-                        List.of(
-                                OreConfiguration.target(new BlockMatchTest(ModBlocks.DYEDREAM_GRASS_BLOCK.get()), Blocks.CALCITE.defaultBlockState()),
-                                OreConfiguration.target(new BlockMatchTest(ModBlocks.DYEDREAM_DIRT.get()), Blocks.CALCITE.defaultBlockState()),
-                                OreConfiguration.target(new BlockMatchTest(ModBlocks.DYEDREAM_SAND.get()), Blocks.CALCITE.defaultBlockState()),
-                                OreConfiguration.target(new BlockMatchTest(Blocks.AIR), Blocks.CALCITE.defaultBlockState()),
-                                OreConfiguration.target(new BlockMatchTest(Blocks.CAVE_AIR), Blocks.CALCITE.defaultBlockState())
-                        ),
-                        24,
-                        0.0f
-                )));
+        // 方解石团块 — 原作 ground_feature_dyedream_15，使用原版 forest_rock 模板
+        context.register(CALCITE_BOULDER, new ConfiguredFeature<>(Feature.FOREST_ROCK,
+                new BlockStateConfiguration(Blocks.CALCITE.defaultBlockState())));
 
         // 茎草 — 原作 grass_3（分散生成）
         // 三个参数是：尝试生成次数，水平扩散半径，垂直扩散半径

@@ -77,8 +77,14 @@ public class ModBiomeModifierProvider implements DataProvider
             addPatch(entries, "dyedream_lily_pad_biome_modifier", ModPlacedFeatures.DYEDREAM_LILY_PAD_PATCH, featureLookup, dyedreamWorldTag);
             addPatch(entries, "dyedream_lotus_biome_modifier", ModPlacedFeatures.DYEDREAM_LOTUS_PATCH, featureLookup, dyedreamWorldTag);
 
-            // 方解石尖锥 — 表面结构 step
-            addFeature(entries, "calcite_spike", ModPlacedFeatures.CALCITE_SPIKE, featureLookup, dyedreamWorldTag, GenerationStep.Decoration.SURFACE_STRUCTURES);
+            TagKey<Biome> dyedreamWorldLandTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_world_land_biome"));
+
+            // 方解石尖锥（陆地）— 表面结构 step，自定义 Feature 生成
+            addFeature(entries, "calcite_spike", ModPlacedFeatures.CALCITE_SPIKE, featureLookup, dyedreamWorldLandTag, GenerationStep.Decoration.SURFACE_STRUCTURES);
+
+            // 方解石尖锥（海洋变体）— 表面结构 step，NBT 结构放置，浮于海面
+            TagKey<Biome> dyedreamWorldOceanTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_world_ocean_biome"));
+            addFeature(entries, "stone_pillar_ocean", ModPlacedFeatures.STONE_PILLAR_OCEAN, featureLookup, dyedreamWorldOceanTag, GenerationStep.Decoration.SURFACE_STRUCTURES);
 
             // ===== 阴影群系标签 =====
             TagKey<Biome> shadowNyliumWastesSpawnTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_nylium_wastes_spawn_biome"));
