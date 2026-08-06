@@ -41,6 +41,7 @@ public class ModStructureConfig
         // structureSetWeight为真实生成权重
         // 浮空结构
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_church_0",    "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 29, 8, 35795416,    9, "dyedream_structures"));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:invaded_church",      "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 8, 72946153,    8, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_church_2",    "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 35, 8, 64595175,    7, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_church_4",    "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 28, 8, 13271459,    9, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_church_6",    "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 36, 8, 34549862,    7, "dyedream_structures"));

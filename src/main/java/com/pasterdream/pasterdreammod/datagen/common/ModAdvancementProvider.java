@@ -349,7 +349,7 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             true, true, false
                     )
                     .addCriterion("read_infested_church_note",
-                            ReadDreamNoteTrigger.TriggerInstance.forContent("infestedChurch"))
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("invaded_church"))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/lamp_shadow_root"), existingFileHelper);
 
