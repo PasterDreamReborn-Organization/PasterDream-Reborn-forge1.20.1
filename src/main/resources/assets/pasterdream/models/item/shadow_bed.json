@@ -1,10 +1,29 @@
 {
   "parent": "pasterdream:block/shadow_bed",
-  "display": {
-    "thirdperson": {
+  "display":
+  {
+    "thirdperson":
+    {
       "rotation": [ 10, -45, 170 ],
       "translation": [ 0, 1.5, -2.75 ],
       "scale": [ 0.375, 0.375, 0.375 ]
+    },
+    "gui": {
+      "rotation": [
+        -150,
+        15,
+        -180
+      ],
+      "translation": [
+        -1.25,
+        -0.75,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
     }
   }
 }
