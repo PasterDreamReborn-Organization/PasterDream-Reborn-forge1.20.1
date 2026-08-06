@@ -65,11 +65,16 @@ public class LootGeneratorItem extends Item
                     {
                         containerTag.put("Items", new ListTag());
                     }
-                        else
+                    else
+                        if(containerTag.contains("Inventory") && containerTag.getCompound("Inventory").contains("Items"))
                         {
-                            player.displayClientMessage(Component.translatable("message.pasterdream.loot_generator.not_container"), true);
-                            return InteractionResult.FAIL;
+                            containerTag.getCompound("Inventory").put("Items", new ListTag());
                         }
+                            else
+                            {
+                                player.displayClientMessage(Component.translatable("message.pasterdream.loot_generator.not_container"), true);
+                                return InteractionResult.FAIL;
+                            }
 
                     if(containerTag.contains("LootTableSeed"))
                     {
