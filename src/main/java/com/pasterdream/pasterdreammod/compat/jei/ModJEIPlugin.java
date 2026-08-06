@@ -38,7 +38,6 @@ import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
-import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.ingredients.subtypes.IIngredientSubtypeInterpreter;
 import mezz.jei.api.registration.*;
@@ -167,7 +166,7 @@ public class ModJEIPlugin implements IModPlugin
         registration.registerSubtypeInterpreter(
                 ModItems.LOOT_GENERATOR.get(),
                 (stack, context) -> {
-                    ResourceLocation table = LootGeneratorItem.getLootTable(stack);
+                    ResourceLocation table = LootGeneratorItem.getToolLootTable(stack);
                     return table != null ? table.toString() : IIngredientSubtypeInterpreter.NONE;
                 });
 
