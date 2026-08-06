@@ -1,19 +1,27 @@
 {
   "variants": {
-    "facing=north": {
+    "facing=north,part=main":
+    {
       "model": "pasterdream:block/shadow_bed"
     },
-    "facing=east": {
+    "facing=east,part=main":
+    {
       "model": "pasterdream:block/shadow_bed",
       "y": 90
     },
-    "facing=south": {
+    "facing=south,part=main":
+    {
       "model": "pasterdream:block/shadow_bed",
       "y": 180
     },
-    "facing=west": {
+    "facing=west,part=main":
+    {
       "model": "pasterdream:block/shadow_bed",
       "y": 270
+    },
+    "part=addon":
+    {
+      "model": "pasterdream:block/shadow_bed_multipart"
     }
   }
 }
