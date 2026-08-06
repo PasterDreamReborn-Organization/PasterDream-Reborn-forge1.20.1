@@ -2,7 +2,6 @@ package com.pasterdream.pasterdreammod.world.block.twilightlantern;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
-import com.pasterdream.pasterdreammod.init.ModBlocks;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -18,26 +17,22 @@ public class TrueShadowBedInteractionHandler {
 
     public static void execute(Level world, BlockPos pos, Player entity) {
         if (entity == null) return;
+        if (world.isClientSide()) return;
 
         // Swing main hand
         entity.swing(InteractionHand.MAIN_HAND, true);
 
-        // Check: is there a twilight_lantern directly above the bed (y+2)?
-        BlockPos lanternPos = pos.above(2);
-        if (!world.getBlockState(lanternPos).is(ModBlocks.TWILIGHT_LANTERN.get())) {
-            return;
-        }
-
-        // Check: player has completed the bastion guard event
-        if (entity instanceof ServerPlayer sp && !hasBastionGuard(sp)) {
+        // 只检查玩家是否完成了据点守卫事件，不要求上方有暮影之笼
+        if (!(entity instanceof ServerPlayer sp) || !hasBastionGuard(sp)) {
             return;
         }
 
         // Drain 10 San and teleport to lamp_shadow_world
-        if (entity instanceof ServerPlayer player) {
-            SanHelper.addPlayerSanAndSync(player, -10);
-        }
-        LampShadowWorldTeleporter.execute(world, entity);
+        SanHelper.addPlayerSanAndSync(sp, -10);
+
+        // Defer teleport by 1 tick to avoid modifying the level during block interaction
+        ServerPlayer player = sp;
+        sp.server.execute(() -> LampShadowWorldTeleporter.execute(player.level(), player));
     }
 
     private static boolean hasBastionGuard(ServerPlayer player) {
