@@ -100,6 +100,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.GALAXY_JELLY.get(), "Galaxy Jelly");
         add("tooltip.pasterdreammod.galaxy_jelly", "§9After consumption, throw the player into the air and gains a 7-second slow falling.");
         add("tooltip.pasterdreammod.galaxy_jelly.flavor", "§7§O --Holding the galaxy in my hands.");
+        add(ModItems.MILKY_WAY_JELLY.get(), "Milky Way Jelly");
+        add("tooltip.pasterdreammod.milky_way_jelly", "§9After consumption, teleports the player to the dimension's build height and grants 30 seconds of slow falling.");
+        add("tooltip.pasterdreammod.milky_way_jelly.flavor", "§7§O --The Milky Way knows no bounds, an ocean of stars without end.");
         add(ModItems.FORTUNE_JELLY.get(), "Fortune Jelly");
         add("tooltip.pasterdreammod.fortune_jelly", "§9After eating, gain Luck I (1:00)");
         add("item.minecraft.potion.effect.luck", "Potion of Luck");
