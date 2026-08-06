@@ -1287,6 +1287,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("entity.pasterdream.aaroncos_right_hand", "亚伦柯斯之触-右手");
         add("entity.pasterdream.shadow_magicball", "暗影魔法球");
         add("entity.pasterdream.shadow_tune_totem", "暗影符文塔");
+        add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在蓄能");
+        add("message.pasterdream.shadow_tune_totem.about_to_explode", "暗影符文塔即将发生爆破");
         add("block.pasterdream.shadow_vortex", "暗影漩涡");
 
         //卡莱的调料瓶

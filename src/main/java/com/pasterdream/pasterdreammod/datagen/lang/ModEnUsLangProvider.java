@@ -1124,6 +1124,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("entity.pasterdream.aaroncos_right_hand", "Aaroncos's Right Hand");
         add("entity.pasterdream.shadow_magicball", "Shadow Magicball");
         add("entity.pasterdream.shadow_tune_totem", "Shadow Tune Totem");
+        add("message.pasterdream.shadow_tune_totem.charging", "The Shadow Tune Totem is charging energy");
+        add("message.pasterdream.shadow_tune_totem.about_to_explode", "The Shadow Tune Totem is about to explode");
         add("block.pasterdream.shadow_vortex", "Shadow Vortex");
 
         //卡莱的调料瓶
