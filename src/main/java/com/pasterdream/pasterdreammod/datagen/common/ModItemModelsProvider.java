@@ -103,6 +103,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.MELT_DREAM_COTTON_CANDY.get());
         basicItem(ModItems.BUBBLE_GUM.get());
         basicItem(ModItems.GALAXY_JELLY.get());
+        withExistingParent(ModItems.MILKY_WAY_JELLY.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/galaxy_jelly"));
         basicItem(ModItems.FORTUNE_JELLY.get());
         basicItem(ModItems.LIGHT_ORGAN.get());
         basicItem(ModItems.JELLYFISH_MUD.get());

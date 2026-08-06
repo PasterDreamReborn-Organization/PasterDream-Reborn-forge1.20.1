@@ -6,7 +6,6 @@ import com.pasterdream.pasterdreammod.helper.itemwithnbt.dreamnoteswithnbt.Dream
 import com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT;
 import com.pasterdream.pasterdreammod.world.item.DeepTreasureItem;
-import com.pasterdream.pasterdreammod.world.item.SandofTimeItem;
 import com.pasterdream.pasterdreammod.world.item.blueprints.AddBluePrintContentListTag;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
@@ -80,6 +79,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CANDY_CANE.get());
                         output.accept(ModItems.BUBBLE_GUM.get());
                         output.accept(ModItems.GALAXY_JELLY.get());
+                        output.accept(ModItems.MILKY_WAY_JELLY.get());
                         output.accept(ModItems.FORTUNE_JELLY.get());
                         output.accept(ModItems.MELT_DREAM_COTTON_CANDY.get());
                         output.accept(ModItems.YINHUL_COTTON_CANDY.get());
@@ -561,7 +561,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FEATHER_PEN.get());
                         output.accept(ModBlocks.RESEARCH_TABLE.get());
                         output.accept(ModBlocks.LOST_SWORD_TOMB.get());
-                        output.accept(SandofTimeItem.createReady(ModItems.SAND_OF_TIME.get()));
+                        output.accept(ModItems.SAND_OF_TIME.get());
                         output.accept(ModItems.LIFE_CRYSTAL.get());
                         output.accept(ModItems.GOLDEN_FOX_SCULPTURE.get());
                         output.accept(ModItems.DESERT_HERO_TOMB.get());
@@ -646,6 +646,8 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT(">被阴影浸染的字迹潦草的笔记<"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("关于黑暗之手的随笔"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("与黑色双手的决战和败北"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("invaded_church"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("twilight_lantern"));
 
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("破风的骑士"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("清晨的新风"));

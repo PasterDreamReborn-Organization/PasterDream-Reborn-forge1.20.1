@@ -154,6 +154,11 @@ public class ModPlacedFeatures {
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_spike"));
 
+    // ===== 方解石尖锥（海洋变体）— NBT 放置，浮于海面 =====
+    public static final ResourceKey<PlacedFeature> STONE_PILLAR_OCEAN =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "stone_pillar_ocean"));
+
     // ===== 方解石笋 =====
     public static final ResourceKey<PlacedFeature> CALCITE_STALICRIPE =
             ResourceKey.create(Registries.PLACED_FEATURE,
@@ -363,19 +368,25 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.VANILLA_PACKED_ICE_BLOBS),
                 List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)))));
-        // 方解石团块 — WORLD_SURFACE_WG + SurfaceWaterDepth 避免水上生成
+        // 方解石团块 — 原作 ground_feature_dyedream_15，forest_rock + MOTION_BLOCKING
         context.register(CALCITE_BOULDER, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.CALCITE_BOULDER),
-                List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(),
-                        // 避免水上生成(水深不超过0)
-                        SurfaceWaterDepthFilter.forMaxDepth(0),
-                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+                List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING))));
 
         // 方解石尖锥 — 原作 stone_pillar_0/1 结构，平均每 8 区块一个
         context.register(CALCITE_SPIKE, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.CALCITE_SPIKE),
                 List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
                         SurfaceWaterDepthFilter.forMaxDepth(0),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
+        // 方解石尖锥（海洋变体）— 原作 stone_pillar_0/1 NBT 结构，浮于海面
+        // 原作 spacing=5/8 双变体，生成非常密集；WORLD_SURFACE_WG 在海面上给出水面高度，
+        // 不加 SurfaceWaterDepthFilter，让尖锥在水中从海床/水面下 5 格开始生成并露出海面
+        context.register(STONE_PILLAR_OCEAN, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.STONE_PILLAR_OCEAN),
+                List.of(RarityFilter.onAverageOnceEvery(24), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
         // === 染梦维度花草 ===
