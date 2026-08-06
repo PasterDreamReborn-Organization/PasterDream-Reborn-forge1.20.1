@@ -76,7 +76,6 @@ import com.pasterdream.pasterdreammod.world.item.ThermalDaggerItem;
 import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
 import com.pasterdream.pasterdreammod.world.item.PebbleItem;
-import com.pasterdream.pasterdreammod.world.item.WhiteCrystalItem;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -201,7 +200,7 @@ public class ModItems {
     public static final RegistryObject<Item> DYEDREAM_COROLLA = ITEMS.register("dyedream_corolla", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WHITE_COROLLA = ITEMS.register("white_corolla", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WHITE_CRYSTAL = ITEMS.register("white_crystal",
-            WhiteCrystalItem::new);
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> LIGHT_BALL = ITEMS.register("light_ball",
             () -> new BlockItem(ModBlocks.LIGHT_BALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
@@ -788,6 +787,34 @@ public class ModItems {
                     super.appendHoverText(stack, level, tooltip, flag);
                     tooltip.add(Component.translatable("tooltip.pasterdreammod.galaxy_jelly"));
                     tooltip.add(Component.translatable("tooltip.pasterdreammod.galaxy_jelly.flavor"));
+                }
+            });
+
+    public static final RegistryObject<Item> MILKY_WAY_JELLY = ITEMS.register("milky_way_jelly",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(8).alwaysEat().saturationMod(0.5f).build()).useDuration(25)
+            ){
+                @Override
+                protected void onFoodSpecial(Player player, Level level) {
+                    if (player instanceof ServerPlayer sp) {
+                        sp.teleportTo(sp.serverLevel(), sp.getX(), level.getMaxBuildHeight(), sp.getZ(), sp.getYRot(), sp.getXRot());
+                    } else {
+                        player.setPos(player.getX(), level.getMaxBuildHeight(), player.getZ());
+                    }
+                    player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 600, 0));
+                    player.getCooldowns().addCooldown(this, 400);
+                    level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                            SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 3.0F, 1.0F);
+                }
+                @Override
+                public boolean isFoil(ItemStack stack) {
+                    return true;
+                }
+                @Override
+                public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, level, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.milky_way_jelly"));
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.milky_way_jelly.flavor"));
                 }
             });
 

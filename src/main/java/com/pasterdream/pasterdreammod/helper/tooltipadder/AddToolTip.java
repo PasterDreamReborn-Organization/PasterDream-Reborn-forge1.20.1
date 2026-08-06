@@ -66,6 +66,9 @@ public class AddToolTip
         if(stack.is(ModItems.RICE_CAKE.get())){
             tooltip.add(Component.translatable("item.pasterdream.rice_cake.describe"));
         }
+        if(stack.is(ModItems.WHITE_CRYSTAL.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdream.white_crystal"));
+        }
         if(stack.is(ModItems.SHADOW_DUNGEON_KEY.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.shadow_dungeon_key"));
         }

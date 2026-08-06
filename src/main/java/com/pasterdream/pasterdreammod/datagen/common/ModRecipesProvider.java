@@ -2077,6 +2077,17 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.MISTY_DREAMING_LOTUS.get()), has(ModItems.MISTY_DREAMING_LOTUS.get()))
                 .save(pWriter);
 
+        // 银河果冻合成配方
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MILKY_WAY_JELLY.get(), 1)
+                .pattern("cfc")
+                .pattern("fgf")
+                .pattern("cfc")
+                .define('c', ModItems.CLOUD.get())
+                .define('f', Items.FEATHER)
+                .define('g', ModItems.GALAXY_JELLY.get())
+                .unlockedBy(getHasName(ModItems.GALAXY_JELLY.get()), has(ModItems.GALAXY_JELLY.get()))
+                .save(pWriter);
+
     }
 
     // ===== 其他杂项类合成配方 =====
