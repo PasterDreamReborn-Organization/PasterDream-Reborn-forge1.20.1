@@ -61,7 +61,7 @@ public class LootGeneratorItem extends Item
                 if(blockEntity != null)
                 {
                     CompoundTag containerTag = blockEntity.serializeNBT();
-                    if(containerTag.contains("Items"))
+                    if(containerTag.contains("Items") || containerTag.contains("LootTable") || containerTag.contains("LootTableSeed"))
                     {
                         containerTag.put("Items", new ListTag());
                     }

@@ -40,11 +40,9 @@ public class ModStructureConfig
         // 权重 = round(258 / 原spacing)，在统一集 spacing=18 下近似还原原稀有度
         // structureSetWeight为真实生成权重
         // 浮空结构
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_church_0",    "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 29, 8, 35795416,    9, "dyedream_structures"));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_church_1",    "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 29, 8, 35795416,    16, "dyedream_structures"));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_church_2",    "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 35, 8, 64595175,    16, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:invaded_church",      "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 8, 72946153,    8, "dyedream_structures"));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_church_2",    "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 35, 8, 64595175,    7, "dyedream_structures"));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_church_4",    "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 28, 8, 13271459,    9, "dyedream_structures"));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_church_6",    "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 36, 8, 34549862,    7, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_crystal_ball", "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 24, 12, 62594864,  11, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_wishing_tree",         "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 48, 24, 15873492, 5, "dyedream_structures"));
         // 地表结构
