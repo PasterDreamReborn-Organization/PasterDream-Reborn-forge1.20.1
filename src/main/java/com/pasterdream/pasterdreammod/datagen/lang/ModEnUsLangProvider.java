@@ -729,6 +729,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.>被阴影浸染的字迹潦草的笔记<", ">Shadow Dyed Sloppy Handwriting Notes<");
         add("book.pasterdream.title.关于黑暗之手的随笔", "Regarding Shadow Hands Essay");
         add("book.pasterdream.title.与黑色双手的决战和败北", "Decisive Battle With Shadow Hands And Fail");
+        add("book.pasterdream.title.invaded_church", "Infested Church");
+        add("book.pasterdream.title.twilight_lantern", "Twilight Cage");
         add("book.pasterdream.title.破风的骑士", "Wind Break Knight");
         add("book.pasterdream.title.清晨的新风", "Morning New Wind");
 
@@ -1510,6 +1512,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.shadownote_ruin_0", "Shadow Note Ruin");
         add("structure.pasterdream.shadownote_ruin_1", "Shadow Note Ruin");
         add("structure.pasterdream.shadownote_ruin_2", "Shadow Note Ruin");
+        add("structure.pasterdream.invaded_church", "Infested Church");
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "You do not yet know how to activate the shadow lantern");
         add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "You need to light the shadow lantern with a Melt Dream Crystal Fragment");
         add("message.pasterdream.twilight_lantern.event_start", "The eerie lantern suddenly shakes violently, black shadows flow out from the wick.");

@@ -76,7 +76,6 @@ import com.pasterdream.pasterdreammod.world.item.ThermalDaggerItem;
 import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
 import com.pasterdream.pasterdreammod.world.item.PebbleItem;
-import com.pasterdream.pasterdreammod.world.item.WhiteCrystalItem;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -201,7 +200,7 @@ public class ModItems {
     public static final RegistryObject<Item> DYEDREAM_COROLLA = ITEMS.register("dyedream_corolla", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WHITE_COROLLA = ITEMS.register("white_corolla", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WHITE_CRYSTAL = ITEMS.register("white_crystal",
-            WhiteCrystalItem::new);
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> LIGHT_BALL = ITEMS.register("light_ball",
             () -> new BlockItem(ModBlocks.LIGHT_BALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
