@@ -3,8 +3,11 @@ package com.pasterdream.pasterdreammod.world.item.lootgenerator;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.IItemContainerInventory;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.ItemContainerBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -24,43 +27,19 @@ import java.util.Random;
 
 public class LootGeneratorItem extends Item
 {
-
-    public static final String TAG_LOOT_TABLE = "LootTable";
-
     public LootGeneratorItem()
     {
         super(new Properties().stacksTo(1).rarity(Rarity.EPIC));
     }
 
-
-    public static void setLootTable(ItemStack stack, ResourceLocation lootTable)
-    {
-        if (stack.getItem() instanceof LootGeneratorItem)
-        {
-            stack.getOrCreateTag().putString(TAG_LOOT_TABLE, lootTable.toString());
-        }
-    }
-
     @Nullable
-    public static ResourceLocation getLootTable(ItemStack stack)
+    public static ResourceLocation getToolLootTable(ItemStack stack)
     {
-        if (stack.hasTag() && stack.getTag().contains(TAG_LOOT_TABLE))
+        if (stack.hasTag() && stack.getTag().contains("LootTable"))
         {
-            return ResourceLocation.tryParse(stack.getTag().getString(TAG_LOOT_TABLE));
+            return ResourceLocation.tryParse(stack.getTag().getString("LootTable"));
         }
         return null;
-    }
-
-    public static void clearLootTable(ItemStack stack)
-    {
-        if (stack.hasTag())
-        {
-            stack.getTag().remove(TAG_LOOT_TABLE);
-            if (stack.getTag().isEmpty())
-            {
-                stack.setTag(null);
-            }
-        }
     }
 
     @Override
@@ -68,113 +47,53 @@ public class LootGeneratorItem extends Item
     {
         Level level = context.getLevel();
         Player player = context.getPlayer();
-        BlockPos pos = context.getClickedPos();
-        ItemStack stack = context.getItemInHand();
+        BlockPos blockPosition = context.getClickedPos();
+        ItemStack itemStack = context.getItemInHand();
 
-        if (player != null && player.isShiftKeyDown())
+        BlockEntity blockEntity = level.getBlockEntity(blockPosition);
+
+        if (!level.isClientSide && player instanceof ServerPlayer)
         {
-            player.swing(context.getHand(), true);
-
-            ResourceLocation lootTableRL = getLootTable(stack);
-            if (lootTableRL == null)
+            CompoundTag toolTag = itemStack.getTag();
+            if(toolTag != null && toolTag.contains("LootTable"))
             {
-                if (!level.isClientSide)
+                String lootTable = toolTag.getString("LootTable");
+                if(blockEntity != null)
                 {
-                    player.displayClientMessage(
-                            Component.translatable("message.pasterdream.loot_generator.no_loot_table"), true);
+                    CompoundTag containerTag = blockEntity.serializeNBT();
+                    if(containerTag.contains("Items"))
+                    {
+                        containerTag.put("Items", new ListTag());
+                    }
+                        else
+                        {
+                            player.displayClientMessage(Component.translatable("message.pasterdream.loot_generator.not_container"), true);
+                            return InteractionResult.FAIL;
+                        }
+
+                    if(containerTag.contains("LootTableSeed"))
+                    {
+                        containerTag.remove("LootTableSeed");
+                    }
+                    containerTag.putString("LootTable", lootTable);
+                    blockEntity.load(containerTag);
+                    blockEntity.setChanged();
+                    player.displayClientMessage(Component.translatable("message.pasterdream.loot_generator.loot_table_set", lootTable), true);
+                    return InteractionResult.SUCCESS;
                 }
-                return InteractionResult.FAIL;
+                    else
+                    {
+                        player.displayClientMessage(Component.translatable("message.pasterdream.loot_generator.not_container"), true);
+                        return InteractionResult.FAIL;
+                    }
             }
-
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity == null)
-            {
-                if (!level.isClientSide)
+                else
                 {
-                    player.displayClientMessage(
-                            Component.translatable("message.pasterdream.loot_generator.not_container"), true);
-                }
-                return InteractionResult.FAIL;
-            }
-
-            IItemHandler itemHandler = getItemHandler(blockEntity, context.getClickedFace());
-            if (itemHandler == null)
-            {
-                if (!level.isClientSide)
-                {
-                    player.displayClientMessage(
-                            Component.translatable("message.pasterdream.loot_generator.not_container"), true);
-                }
-                return InteractionResult.FAIL;
-            }
-
-            if (!level.isClientSide)
-            {
-                // 检查战利品表是否存在
-                if (level.getServer().getLootData().getLootTable(lootTableRL) == LootTable.EMPTY)
-                {
-                    player.displayClientMessage(
-                            Component.translatable("message.pasterdream.loot_generator.loot_table_not_found",
-                                    lootTableRL.toString()), false);
+                    player.displayClientMessage(Component.translatable("message.pasterdream.loot_generator.no_loot_table"), true);
                     return InteractionResult.FAIL;
                 }
-
-                // 清空容器 + 写入 LootTable NBT
-                clearContainer(itemHandler);
-                long randomSeed = new Random().nextLong();
-                setContainerLootTable(blockEntity, lootTableRL, randomSeed);
-
-                player.displayClientMessage(
-                        Component.translatable("message.pasterdream.loot_generator.loot_table_set",
-                                lootTableRL.toString()), true);
-            }
-
-            return InteractionResult.sidedSuccess(level.isClientSide);
         }
-
         return super.useOn(context);
-    }
-
-    /**
-     * 尝试从方块实体获取 IItemHandler
-     */
-    @Nullable
-    private static IItemHandler getItemHandler(BlockEntity blockEntity, net.minecraft.core.Direction side)
-    {
-        if (blockEntity instanceof IItemContainerInventory containerInventory)
-        {
-            return containerInventory.getItemHandler();
-        }
-        return blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, side).orElse(null);
-    }
-
-    /**
-     * 清空容器所有槽位的物品
-     */
-    private static void clearContainer(IItemHandler itemHandler)
-    {
-        for (int slot = 0; slot < itemHandler.getSlots(); slot++)
-        {
-            ItemStack stackInSlot = itemHandler.getStackInSlot(slot);
-            if (!stackInSlot.isEmpty())
-            {
-                itemHandler.extractItem(slot, stackInSlot.getCount(), false);
-            }
-        }
-    }
-    /**
-     * 为容器写入 LootTable NBT 标签（原版结构箱子风格），容器下次打开时自动生成战利品
-     */
-    private static void setContainerLootTable(BlockEntity blockEntity, ResourceLocation lootTable, long seed)
-    {
-        if (blockEntity instanceof ItemContainerBlockEntity modContainer)
-        {
-            modContainer.setLootTable(lootTable, seed);
-        }
-        else if (blockEntity instanceof RandomizableContainerBlockEntity vanillaContainer)
-        {
-            vanillaContainer.setLootTable(lootTable, seed);
-        }
     }
 
     @Override
@@ -183,7 +102,7 @@ public class LootGeneratorItem extends Item
         super.appendHoverText(stack, level, tooltip, flag);
         tooltip.add(Component.translatable("tooltip.pasterdream.loot_generator.usage.shift"));
 
-        ResourceLocation lootTable = getLootTable(stack);
+        ResourceLocation lootTable = getToolLootTable(stack);
         if (lootTable != null)
         {
             tooltip.add(Component.translatable("tooltip.pasterdream.当前设置战利品表：")
@@ -196,5 +115,4 @@ public class LootGeneratorItem extends Item
                     .append(Component.translatable("tooltip.pasterdream.loot_table.not_set")));
         }
     }
-
 }
