@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.helper.renderhelper;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 
 public class GUIBackGroundRender
@@ -86,6 +87,11 @@ public class GUIBackGroundRender
 
     public static ResourceLocation EMPTY_NOTES = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/empty_notes.png");
     public static ResourceLocation DREAM_NOTES_BOOK = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book.png");
+
+    public static ModelResourceLocation DREAM_NOTES_BOOK_OVERWORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book_overworld", "inventory");
+    public static ModelResourceLocation DREAM_NOTES_BOOK_DYEDREAM_WORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book_dyedream_world", "inventory");
+    public static ModelResourceLocation DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book_lamp_shadow_world", "inventory");
+    public static ModelResourceLocation DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book_wind_journey_world", "inventory");
 
     public static ResourceLocation AARONCOS_HAND_BOSS_BAR_LEFT_BACKGROUND = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_left_background.png");
     public static ResourceLocation AARONCOS_HAND_BOSS_BAR_LEFT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_left.png");
