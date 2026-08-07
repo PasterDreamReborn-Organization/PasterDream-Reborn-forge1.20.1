@@ -719,6 +719,10 @@ public class ModCreativeModeTabs {
                         output.accept(MeltDreamCrystalChestLootTableNBT.onlyNormal(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
                         output.accept(MeltDreamCrystalChestLootTableNBT.onlyRare(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
                         output.accept(MeltDreamCrystalChestLootTableNBT.onlyLegend(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
+                        output.accept(ModItems.DREAM_SPAWNER.get());
+                        output.accept(ModItems.FADED_DREAM_SPAWNER.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_PORTAL.get());
+                        output.accept(ModItems.BROKEN_SHADOW_DUNGEON_PORTAL.get());
                         output.accept(ModItems.SHADOW_VORTEX.get());
                         output.accept(ModItems.PINK_CHICKEN_SPAWN_EGG.get());
                         output.accept(ModItems.PINK_SLIME_SPAWN_EGG.get());

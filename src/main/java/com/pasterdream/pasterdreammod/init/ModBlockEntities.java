@@ -22,6 +22,9 @@ import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSc
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.NippyEdelweissBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.dreamspawner.DreamSpawnerBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalTileEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalTileEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexTileEntity;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlockEntity;
@@ -62,6 +65,9 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<FoxSculptureBlockEntity>> FOX_SCULPTURE = BLOCK_ENTITIES.register("fox_sculpture", () -> BlockEntityType.Builder.of(FoxSculptureBlockEntity::new, ModBlocks.FOX_SCULPTURE.get()).build(null));
     public static final RegistryObject<BlockEntityType<NippyEdelweissBlockEntity>> NIPPY_EDELWEISS = BLOCK_ENTITIES.register("nippy_edelweiss", () -> BlockEntityType.Builder.of(NippyEdelweissBlockEntity::new, ModBlocks.NIPPY_EDELWEISS.get()).build(null));
     public static final RegistryObject<BlockEntityType<DreamAccumulatorBlockEntity>> DREAM_ACCUMULATOR = BLOCK_ENTITIES.register("dream_accumulator", () -> BlockEntityType.Builder.of(DreamAccumulatorBlockEntity::new, ModBlocks.DREAM_ACCUMULATOR.get()).build(null));
+    public static final RegistryObject<BlockEntityType<DreamSpawnerBlockEntity>> DREAM_SPAWNER = BLOCK_ENTITIES.register("dream_spawner", () -> BlockEntityType.Builder.of(DreamSpawnerBlockEntity::new, ModBlocks.DREAM_SPAWNER.get()).build(null));
+    public static final RegistryObject<BlockEntityType<BrokenShadowDungeonPortalTileEntity>> BROKEN_SHADOW_DUNGEON_PORTAL = BLOCK_ENTITIES.register("broken_shadow_dungeon_portal", () -> BlockEntityType.Builder.of(BrokenShadowDungeonPortalTileEntity::new, ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ShadowDungeonPortalTileEntity>> SHADOW_DUNGEON_PORTAL = BLOCK_ENTITIES.register("shadow_dungeon_portal", () -> BlockEntityType.Builder.of(ShadowDungeonPortalTileEntity::new, ModBlocks.SHADOW_DUNGEON_PORTAL.get()).build(null));
     public static final RegistryObject<BlockEntityType<ShadowVortexTileEntity>> SHADOW_VORTEX = BLOCK_ENTITIES.register("shadow_vortex", () -> BlockEntityType.Builder.of(ShadowVortexTileEntity::new, ModBlocks.SHADOW_VORTEX.get()).build(null));
     public static final RegistryObject<BlockEntityType<WeaponWorkshopCraftingTableBlockEntity>> WEAPON_WORKSHOP_CRAFTING_TABLE = BLOCK_ENTITIES.register("weapon_workshop_crafting_table", () -> BlockEntityType.Builder.of(WeaponWorkshopCraftingTableBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get()).build(null));
     public static final RegistryObject<BlockEntityType<WeaponWorkshopAnvilBlockEntity>> WEAPON_WORKSHOP_ANVIL = BLOCK_ENTITIES.register("weapon_workshop_anvil", () -> BlockEntityType.Builder.of(WeaponWorkshopAnvilBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_ANVIL.get()).build(null));

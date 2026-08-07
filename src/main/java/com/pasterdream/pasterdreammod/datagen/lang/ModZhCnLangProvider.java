@@ -338,6 +338,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.SHADOW_DUNGEON_BRICK_STAIRS.get(), "暗影地牢石砖楼梯");
         add(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get(), "暗影地牢石砖台阶");
         add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get(), "碎裂暗影地牢石砖");
+        add(ModBlocks.DREAM_SPAWNER.get(), "构梦刷怪笼");
+        add(ModBlocks.FADED_DREAM_SPAWNER.get(), "失色构梦刷怪笼");
+        add(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), "暗影地牢传送门核心");
+        add(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get(), "破损暗影地牢传送门核心");
         add(ModBlocks.SHADOW_ARENA_BLOCK.get(), "灯影竞技场方块");
         add(ModBlocks.SHADOW_FISSURE_0.get(), "阴影裂隙");
         add(ModBlocks.SHADOW_FISSURE_1.get(), "阴影裂隙");
@@ -1294,6 +1298,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在蓄能");
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "暗影符文塔即将发生爆破");
         add("block.pasterdream.shadow_vortex", "暗影漩涡");
+
+        // 破损传送门消息
+        add("message.pasterdream.broken_portal.too_low", "地牢的结构被破坏，传送门没有反应");
+        add("message.pasterdream.broken_portal.creative_repaired", "创造模式：核心无条件修复");
+        add("message.pasterdream.broken_portal.need_materials", "双手持§e黑金属§f和§e影灯§f以修复核心");
+        add("message.pasterdream.broken_portal.repaired", "核心已修复");
+        add("message.pasterdream.broken_portal.lack_knowledge", "你还不知道如何修复这个核心");
 
         //卡莱的调料瓶
         add(ModItems.CALAIS_SPICE_BOTTLE.get(), "卡莱的调料瓶");

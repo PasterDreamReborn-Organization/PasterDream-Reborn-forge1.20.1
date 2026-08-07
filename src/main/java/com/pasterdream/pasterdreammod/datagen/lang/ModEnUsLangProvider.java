@@ -324,6 +324,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.SHADOW_DUNGEON_BRICK_STAIRS.get(), "Shadow Dungeon Brick Stairs");
         add(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get(), "Shadow Dungeon Brick Slab");
         add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get(), "Shattered Shadow Dungeon Bricks");
+        add(ModBlocks.DREAM_SPAWNER.get(), "Dream Spawner");
+        add(ModBlocks.FADED_DREAM_SPAWNER.get(), "Faded Dream Spawner");
+        add(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), "Shadow Dungeon Portal Core");
+        add(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get(), "Broken Shadow Dungeon Portal Core");
         add(ModBlocks.SHADOW_ARENA_BLOCK.get(), "Shadow Arena Block");
         add(ModBlocks.SHADOW_FISSURE_0.get(), "Shadow Fissure");
         add(ModBlocks.SHADOW_FISSURE_1.get(), "Shadow Fissure");
@@ -1129,6 +1133,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_tune_totem.charging", "The Shadow Tune Totem is charging energy");
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "The Shadow Tune Totem is about to explode");
         add("block.pasterdream.shadow_vortex", "Shadow Vortex");
+
+        // Broken Portal Messages
+        add("message.pasterdream.broken_portal.too_low", "The structure is damaged, the portal has no response");
+        add("message.pasterdream.broken_portal.creative_repaired", "Creative mode: Core repaired unconditionally");
+        add("message.pasterdream.broken_portal.need_materials", "Hold §eBlack Metal Ingot §fand §eShadow Light §fin both hands to repair the core");
+        add("message.pasterdream.broken_portal.repaired", "Core repaired");
+        add("message.pasterdream.broken_portal.lack_knowledge", "You don't yet understand how to repair this core");
 
         //卡莱的调料瓶
         add(ModItems.CALAIS_SPICE_BOTTLE.get(), "Calais Spice Bottle");
