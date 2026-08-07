@@ -1486,6 +1486,24 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.prophecy_card.unknown.description.2", "§9Please send what you did during game to GitHub or mcmod so we can pinpoint the issue, instead of just sending this error screenshot.");
         add("message.pasterdream.prophecy_card.invalid", "§cProphecy Card data corrupted (%s), right-click disabled!");
 
+        add(ModItems.POTION_BOTTLE.get(), "Potion Bottle");
+        add("item.pasterdream.potion_bottle.berserk", "Potion Bottle of Berserk");
+        add("item.pasterdream.potion_bottle.frozen", "Potion Bottle of Frozen");
+        add("item.pasterdream.potion_bottle.highly_toxic", "Potion Bottle of Highly Toxic");
+        add("item.pasterdream.potion_bottle.lightning", "Potion Bottle of Lightning");
+        add("item.pasterdream.potion_bottle.rejuvenation", "Potion Bottle of Rejuvenation");
+        add("effect.pasterdream.highly_toxic_buff", "Highly Toxic");
+        add("tooltip.pasterdream.potion_bottle.highly_toxic.description","§9After Smashing, release a highly toxic cloud, inflicting Highly Toxic, Slowness, and Weakness buff on all creatures in a 6x6 area.");
+        add("tooltip.pasterdream.potion_bottle.lightning.description.1","§9After Smashing, release a dark cloud at the landing spot, and after a short time, randomly strikes lightning 4 times within a 5x5 area.");
+        add("tooltip.pasterdream.potion_bottle.lightning.description.2","§7§O --Bottled Lightning");
+        add("tooltip.pasterdream.potion_bottle.rejuvenation.description","§9After Smashing, it releases a 5x5 area of healing mist for 20 seconds, restoring 5% of max health to players or peaceful creatures within the mist.");
+        add("tooltip.pasterdream.potion_bottle.frozen.description.1","§9After smashing, it releases a 7*7 freezing mist at the landing spot, and any entities inside will be unable to move and lose their combat ability.");
+        add("tooltip.pasterdream.potion_bottle.frozen.description.2","§7§O --Snowgrave");
+        add("tooltip.pasterdream.potion_bottle.berserk.description.1","§9After smashing, release an 8*8 frenzy mist at the landing spot.");
+        add("tooltip.pasterdream.potion_bottle.berserk.description.2","§9Players in it +20% attack damage, +10% movement speed, +50% attack speed, -30% skill cooldown, -30% blink cooldown, and +30% skill damage.");
+        add("effect.pasterdream.berserk_buff", "Frenzy");
+        add("effect.pasterdream.frozen_buff", "Flash Freeze");
+
         // Structure translations
         add("structure.pasterdream.oak_fisherman_hut", "Oak Fisherman Hut");
         add("structure.pasterdream.spruce_fisherman_hut", "Spruce Fisherman Hut");

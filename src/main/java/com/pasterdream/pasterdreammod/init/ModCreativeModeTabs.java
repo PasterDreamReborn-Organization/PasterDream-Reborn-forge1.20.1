@@ -11,6 +11,7 @@ import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotes.NBTBookRegisterToCreativeModTab;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWithNBTToCreativeModeTab;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -180,17 +181,15 @@ public class ModCreativeModeTabs {
                         // 音乐唱片
                         output.accept(ModItems.SWEET_DREAM_MUSIC_DISC.get());
                         output.accept(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get());
-                        // 预言卡
+                        // 预言卡（动态遍历所有已注册类型，含 KJS / 拓展模组注册的）
                         output.accept(ModItems.EMPTY_PROPHECY_CARD.get());
-                        output.accept(ProphecyCardItem.createCard(ModItems.PROPHECY_CARD.get(), ProphecyCardItem.TYPE_BALANCE));
-                        output.accept(ProphecyCardItem.createCard(ModItems.PROPHECY_CARD.get(), ProphecyCardItem.TYPE_CHAOS));
-                        output.accept(ProphecyCardItem.createCard(ModItems.PROPHECY_CARD.get(), ProphecyCardItem.TYPE_CONFLICT));
-                        output.accept(ProphecyCardItem.createCard(ModItems.PROPHECY_CARD.get(), ProphecyCardItem.TYPE_GRAVEYARD));
-                        output.accept(ProphecyCardItem.createCard(ModItems.PROPHECY_CARD.get(), ProphecyCardItem.TYPE_GUARD));
-                        output.accept(ProphecyCardItem.createCard(ModItems.PROPHECY_CARD.get(), ProphecyCardItem.TYPE_HOLY_GRAIL));
-                        output.accept(ProphecyCardItem.createCard(ModItems.PROPHECY_CARD.get(), ProphecyCardItem.TYPE_SIN));
-                        output.accept(ProphecyCardItem.createCard(ModItems.PROPHECY_CARD.get(), ProphecyCardItem.TYPE_SPRINT));
-                        output.accept(ProphecyCardItem.createCard(ModItems.PROPHECY_CARD.get(), ProphecyCardItem.TYPE_WIELDING_SWORD));
+                        for (String type : ProphecyCardItem.getRegisteredTypes()) {
+                            output.accept(ProphecyCardItem.createCard(ModItems.PROPHECY_CARD.get(), type));
+                        }
+                        // 药剂瓶（动态遍历所有已注册类型，含 KJS / 拓展模组注册的）
+                        for (String type : PotionBottleItem.getRegisteredTypes()) {
+                            output.accept(PotionBottleItem.createWithType(ModItems.POTION_BOTTLE.get(), type));
+                        }
                     })
                     .build());
 

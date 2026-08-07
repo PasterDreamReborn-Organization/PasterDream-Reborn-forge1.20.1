@@ -10,6 +10,8 @@ import com.pasterdream.pasterdreammod.world.entity.TerraswordWaveEntity;
 import com.pasterdream.pasterdreammod.world.entity.WhiteSwordRainProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowGolemEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
+import com.pasterdream.pasterdreammod.world.entity.ThrownPotionBottle;
+import com.pasterdream.pasterdreammod.world.entity.RejuvenationBottleEntity;
 import com.pasterdream.pasterdreammod.world.entity.PebbleProjectile;
 import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
@@ -90,6 +92,22 @@ public class ModEntities {
                     .setUpdateInterval(3)
                     .setCustomClientFactory(ThrownPinkEgg::new)
                     .sized(0.25f, 0.25f));
+
+    public static final RegistryObject<EntityType<ThrownPotionBottle>> THROWN_POTION_BOTTLE = register("thrown_potion_bottle",
+            EntityType.Builder.<ThrownPotionBottle>of(ThrownPotionBottle::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(ThrownPotionBottle::new)
+                    .sized(0.25f, 0.25f));
+
+    public static final RegistryObject<EntityType<RejuvenationBottleEntity>> REJUVENATION_BOTTLE_ENTITY = register("rejuvenation_bottle_entity",
+            EntityType.Builder.<RejuvenationBottleEntity>of(RejuvenationBottleEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(false)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(RejuvenationBottleEntity::new)
+                    .sized(0.5f, 0.5f));
 
     public static final RegistryObject<EntityType<PebbleProjectile>> PEBBLE_PROJECTILE = register("pebble_projectile",
             EntityType.Builder.<PebbleProjectile>of(PebbleProjectile::new, MobCategory.MISC)

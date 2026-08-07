@@ -28,5 +28,12 @@ public class ModParticles {
         event.registerSpriteSet(ModParticleTypes.SQUEAL_WAVE_PARTICLE.get(), SquealWaveParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.WHITE_SWORD_SPARK_PARTICLE.get(), WhiteSwordSparkParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.SHADOW_STONE_PARTICLE.get(), ShadowStoneParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.POISON_GAS_PARTICLE.get(), PoisonGasParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.POISON_GAS_PARTICLE_1.get(), PoisonGasParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.REJUVENATION_PARTICLE.get(), RejuvenationParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.YELLOW_SMOKE_PARTICLE.get(), YellowSmokeParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.BERSERK_PARTICLE.get(), FurySpellParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.SNOWFLAKE_0_PARTICLE.get(), SnowflakeParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.SNOWFLAKE_1_PARTICLE.get(), SnowflakeParticle.Provider::new);
     }
 }

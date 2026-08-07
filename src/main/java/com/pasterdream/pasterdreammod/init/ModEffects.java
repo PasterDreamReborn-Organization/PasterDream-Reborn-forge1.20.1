@@ -80,6 +80,12 @@ public class ModEffects {
             EFFECTS.register("restrainmove_block_buff", RestrainmoveBlockBuffEffect::new);
     public static final RegistryObject<MobEffect> OPPRESSION_BUFF =
             EFFECTS.register("oppression_buff", OppressionBuffEffect::new);
+    public static final RegistryObject<MobEffect> HIGHLY_TOXIC_BUFF =
+            EFFECTS.register("highly_toxic_buff", HighlyToxicEffect::new);
+    public static final RegistryObject<MobEffect> BERSERK_BUFF =
+            EFFECTS.register("berserk_buff",BerserkBuffEffect::new);
+    public static final RegistryObject<MobEffect> FROZEN_BUFF =
+            EFFECTS.register("frozen_buff", FrozenBuffEffect::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);
