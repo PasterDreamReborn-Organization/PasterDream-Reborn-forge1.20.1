@@ -1308,6 +1308,10 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.KEY_SHADOW_BOOKSHELF.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_DUNGEON_KEY = ITEMS.register("shadow_dungeon_key",
             () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> SHADOW_DUNGEON_GATE = ITEMS.register("shadow_dungeon_gate",
+            () -> new BlockItem(ModBlocks.SHADOW_DUNGEON_GATE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_DUNGEON_BARRIER = ITEMS.register("shadow_dungeon_barrier",
+            () -> new BlockItem(ModBlocks.SHADOW_DUNGEON_BARRIER.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_CRYSTAL_LANTERN = ITEMS.register("dyedream_crystal_lantern",
             () -> new BlockItem(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_LANTERN = ITEMS.register("dyedream_lantern",
