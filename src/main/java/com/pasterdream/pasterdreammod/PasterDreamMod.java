@@ -14,6 +14,7 @@ import com.pasterdream.pasterdreammod.init.*;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.entity.RejuvenationBottleEntity;
+import com.pasterdream.pasterdreammod.world.entity.ThrownPotionBottle;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.AngelWingItem;
@@ -34,6 +35,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
@@ -155,6 +157,19 @@ public class PasterDreamMod
         ModDreamNotesBookContentRelation.registerDreamNotesBookContentRelation();
         ModCropRelation.registerCropRelation();
         ProphecyCardItem.registerAllCardEffects();
+
+        // 药剂瓶发射器行为
+        net.minecraft.world.level.block.DispenserBlock.registerBehavior(
+                ModItems.POTION_BOTTLE.get(),
+                new net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior() {
+                    @Override
+                    protected net.minecraft.world.entity.projectile.Projectile getProjectile(
+                            Level level, net.minecraft.core.Position pos, ItemStack stack) {
+                        ThrownPotionBottle bottle = new ThrownPotionBottle(level, pos.x(), pos.y(), pos.z());
+                        bottle.setItem(stack.copy());
+                        return bottle;
+                    }
+                });
 
         // 药剂瓶砸碎效果绑定
         registerLightningBottleEffect();

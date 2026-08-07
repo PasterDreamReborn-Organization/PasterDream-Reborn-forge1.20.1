@@ -65,7 +65,7 @@ public class PotionBottleItem extends Item {
          * @param thrower 投掷者（Player 或其它模组实体）
          * @param hitPos  命中坐标
          */
-        void onBottleBreak(ItemStack stack, Level level, LivingEntity thrower, Vec3 hitPos);
+        void onBottleBreak(ItemStack stack, Level level, @Nullable LivingEntity thrower, Vec3 hitPos);
 
         /**
          * 返回延迟触发的动作映射：key=tick（从命中瞬间起算），value=该tick要执行的动作。
@@ -231,6 +231,7 @@ public class PotionBottleItem extends Item {
         if (!player.getAbilities().instabuild) {
             stack.shrink(1);
         }
+        player.getCooldowns().addCooldown(this, 140); // 7秒冷却
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }
 

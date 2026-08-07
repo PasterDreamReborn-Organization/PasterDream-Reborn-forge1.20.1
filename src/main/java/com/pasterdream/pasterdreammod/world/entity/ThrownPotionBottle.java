@@ -85,8 +85,9 @@ public class ThrownPotionBottle extends ThrowableItemProjectile {
 
             if (!type.isEmpty()) {
                 PotionBottleItem.PotionBottleEffect effect = PotionBottleItem.getEffect(type);
-                if (effect != null && this.getOwner() instanceof LivingEntity thrower) {
-                    // 立即效果
+                if (effect != null) {
+                    LivingEntity thrower = this.getOwner() instanceof LivingEntity le ? le : null;
+                    // 立即效果（发射器投掷时 thrower 为 null）
                     effect.onBottleBreak(stack, this.level(), thrower, hitPos);
                     // 获取延迟动作
                     Map<Integer, Runnable> delayed = effect.getDelayedActions();
