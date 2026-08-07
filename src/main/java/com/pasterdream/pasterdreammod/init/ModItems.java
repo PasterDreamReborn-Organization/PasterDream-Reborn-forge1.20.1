@@ -9,6 +9,9 @@ import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorItem;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalDisplayItem;
+import net.minecraft.world.item.BlockItem;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestItem;
@@ -1245,6 +1248,14 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.SHADOW_FISSURE_4.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_FISSURE_5 = ITEMS.register("shadow_fissure_5",
             () -> new BlockItem(ModBlocks.SHADOW_FISSURE_5.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DREAM_SPAWNER = ITEMS.register("dream_spawner",
+            () -> new BlockItem(ModBlocks.DREAM_SPAWNER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> FADED_DREAM_SPAWNER = ITEMS.register("faded_dream_spawner",
+            () -> new BlockItem(ModBlocks.FADED_DREAM_SPAWNER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BROKEN_SHADOW_DUNGEON_PORTAL = ITEMS.register("broken_shadow_dungeon_portal",
+            () -> new BrokenShadowDungeonPortalDisplayItem(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_DUNGEON_PORTAL = ITEMS.register("shadow_dungeon_portal",
+            () -> new ShadowDungeonPortalDisplayItem(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_VORTEX = ITEMS.register("shadow_vortex",
             () -> new ShadowVortexDisplayItem(ModBlocks.SHADOW_VORTEX.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_NYLIUM = ITEMS.register("shadow_nylium",

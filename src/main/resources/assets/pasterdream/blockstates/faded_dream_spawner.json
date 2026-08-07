@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "pasterdream:block/faded_dream_spawner" },
+    "facing=east":  { "model": "pasterdream:block/faded_dream_spawner", "y": 90 },
+    "facing=south": { "model": "pasterdream:block/faded_dream_spawner", "y": 180 },
+    "facing=west":  { "model": "pasterdream:block/faded_dream_spawner", "y": 270 }
+  }
+}

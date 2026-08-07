@@ -286,6 +286,10 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SHADOW_DUNGEON_BRICK_STAIRS.get());
         add(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get(), block -> createSlabItemTable(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get()));
         add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
+        dropSelf(ModBlocks.SHADOW_DUNGEON_PORTAL.get());
+        dropSelf(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get());
+        dropNone(ModBlocks.DREAM_SPAWNER.get());
+        dropNone(ModBlocks.FADED_DREAM_SPAWNER.get());
         // ===== 灯影竞技场 / 裂隙方块 =====
         dropSelf(ModBlocks.SHADOW_ARENA_BLOCK.get());
         dropSelf(ModBlocks.SHADOW_FISSURE_0.get());
