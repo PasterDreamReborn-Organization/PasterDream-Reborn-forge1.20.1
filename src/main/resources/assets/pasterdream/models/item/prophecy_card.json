@@ -4,14 +4,14 @@
     "layer0": "pasterdream:item/empty_prophecy_card"
   },
   "overrides": [
-    { "predicate": { "pasterdream:type": 0.1 }, "model": "pasterdream:item/prophecy_card_balance" },
-    { "predicate": { "pasterdream:type": 0.2 }, "model": "pasterdream:item/prophecy_card_chaos" },
-    { "predicate": { "pasterdream:type": 0.3 }, "model": "pasterdream:item/prophecy_card_conflict" },
-    { "predicate": { "pasterdream:type": 0.4 }, "model": "pasterdream:item/prophecy_card_graveyard" },
-    { "predicate": { "pasterdream:type": 0.5 }, "model": "pasterdream:item/prophecy_card_guard" },
-    { "predicate": { "pasterdream:type": 0.6 }, "model": "pasterdream:item/prophecy_card_holy_grail" },
-    { "predicate": { "pasterdream:type": 0.7 }, "model": "pasterdream:item/prophecy_card_sin" },
-    { "predicate": { "pasterdream:type": 0.8 }, "model": "pasterdream:item/prophecy_card_sprint" },
-    { "predicate": { "pasterdream:type": 0.9 }, "model": "pasterdream:item/prophecy_card_wielding_sword" }
+    { "predicate": { "pasterdream:type": 0.125 }, "model": "pasterdream:item/prophecy_card_wielding_sword" },
+    { "predicate": { "pasterdream:type": 0.302 }, "model": "pasterdream:item/prophecy_card_holy_grail" },
+    { "predicate": { "pasterdream:type": 0.330 }, "model": "pasterdream:item/prophecy_card_conflict" },
+    { "predicate": { "pasterdream:type": 0.361 }, "model": "pasterdream:item/prophecy_card_guard" },
+    { "predicate": { "pasterdream:type": 0.403 }, "model": "pasterdream:item/prophecy_card_graveyard" },
+    { "predicate": { "pasterdream:type": 0.416 }, "model": "pasterdream:item/prophecy_card_chaos" },
+    { "predicate": { "pasterdream:type": 0.580 }, "model": "pasterdream:item/prophecy_card_sin" },
+    { "predicate": { "pasterdream:type": 0.692 }, "model": "pasterdream:item/prophecy_card_balance" },
+    { "predicate": { "pasterdream:type": 0.974 }, "model": "pasterdream:item/prophecy_card_sprint" }
   ]
 }

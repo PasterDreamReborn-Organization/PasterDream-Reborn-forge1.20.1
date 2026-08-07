@@ -137,5 +137,11 @@
   },
   "shadow_door": {
     "sounds": [{"name": "pasterdream:shadow_door", "stream": false}]
+  },
+  "lightning_charge": {
+    "sounds": [{"name": "pasterdream:lightning_charge", "stream": false}]
+  },
+  "frozen_shock": {
+    "sounds": [{"name": "pasterdream:frozen_shock", "stream": false}]
   }
 }
