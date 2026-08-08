@@ -907,7 +907,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.melt_dream_coin.value", "§7▪ §6价值面额 : ");
 
         add("tooltip.pasterdream.pliers.1", "§7▪ §9可以收获作物和植物");
-        add("tooltip.pasterdream.pliers.2", "§7▪ §9潜行+右键可收集plier_plants标签中的方块");
+        add("tooltip.pasterdream.pliers.2", "§7▪ §9潜行右键可直接采集帕斯特的植物");
 
         // 笔记残页
         add(ModItems.BROKEN_NOTE.get(), "笔记残页");

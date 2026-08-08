@@ -442,8 +442,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.REED.get())
                 .add(ModBlocks.OATS.get())
                 .add(ModBlocks.RYE.get())
-                .add(ModBlocks.POLISHED_CALCITE_STALICRIPE.get())
-                .add(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get())
                 .add(ModBlocks.JUNGLE_SPORANGIUM.get())
                 .add(ModBlocks.PINK_MUSHROOM.get())
                 .add(ModBlocks.TALL_PINK_MUSHROOM.get())
