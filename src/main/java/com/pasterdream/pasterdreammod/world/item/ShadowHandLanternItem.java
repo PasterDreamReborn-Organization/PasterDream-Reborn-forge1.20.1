@@ -114,6 +114,7 @@ public class ShadowHandLanternItem extends Item implements GeoItem {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
+        list.add(Component.translatable("tooltip.pasterdream.shadow_hand_lantern.description.1"));
         list.add(Component.translatable("tooltip.pasterdream.shadow_hand_lantern.description.2"));
         list.add(Component.translatable("tooltip.pasterdream.shadow_hand_lantern.description.3"));
         list.add(Component.translatable("tooltip.pasterdream.shadow_hand_lantern.description.4"));

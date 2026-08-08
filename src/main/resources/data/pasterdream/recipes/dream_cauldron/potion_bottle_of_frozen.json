@@ -1,0 +1,37 @@
+{
+  "type": "pasterdream:dream_cauldron",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:melt_dream_liquid",
+      "amount": 100
+    },
+    {
+      "fluid": "pasterdream:guiding_drug",
+      "amount": 125
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "minecraft:blue_orchid",
+      "count": 1
+    },
+    {
+      "item": "minecraft:snowball",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:ice_bud",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:potion_bottle",
+      "count": 1,
+      "nbt": "{PotionType:\"frozen\"}"
+    }
+  ]
+}
