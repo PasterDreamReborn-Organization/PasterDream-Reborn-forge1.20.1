@@ -750,7 +750,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.melt_dream_coin.value", "§7▪ §6Face Value : ");
 
         add("tooltip.pasterdream.pliers.1", "§7▪ §9Can harvest crops and plants");
-        add("tooltip.pasterdream.pliers.2", "§7▪ §9Sneak + right-click to collect blocks in plier_plants tag");
+        add("tooltip.pasterdream.pliers.2", "§7▪ §9Sneak + right-click to directly harvest Pasterdream plants");
 
         // Broken Note
         add(ModItems.BROKEN_NOTE.get(), "Broken Note");
