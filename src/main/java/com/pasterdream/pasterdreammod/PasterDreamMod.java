@@ -64,7 +64,9 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraft.world.entity.Mob;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -119,6 +121,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(ModRaidRewardsProvider::onLootTableLoad);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onFoxFireVulnerableHurt);
+        MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onVulnerabilityHurt);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerTick);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerSleepInBed);
@@ -177,6 +180,7 @@ public class PasterDreamMod
         registerRejuvenationBottleEffect();
         registerBerserkBottleEffect();
         registerFrozenBottleEffect();
+        registerInfernoBottleEffect();
     }
 
     //在这里输入客户端注册内容
@@ -416,6 +420,61 @@ public class PasterDreamMod
                 });
     }
 
+    // ===== 狱火药剂瓶 =====
+
+    private static void registerInfernoBottleEffect() {
+        PotionBottleItem.registerEffect(PotionBottleItem.TYPE_INFERNO,
+                (stack, level, thrower, hitPos) -> {
+                    if (!(level instanceof ServerLevel sl)) return;
+
+                    // t=0: 狱火爆发音效 + 粒子
+                    sl.playSound(null, hitPos.x, hitPos.y, hitPos.z,
+                            ModSounds.INFERNO_IMPACT.get(), SoundSource.NEUTRAL,
+                            1.0F, 1.0F);
+                    // 下层火焰粒子
+                    sl.sendParticles(ParticleTypes.FLAME,
+                            hitPos.x, hitPos.y + 0.5, hitPos.z, 80, 3.0, 0.5, 3.0, 0.03);
+                    // 上层狱火粒子
+                    sl.sendParticles(ModParticleTypes.INFERNO_PARTICLE.get(),
+                            hitPos.x, hitPos.y + 1.5, hitPos.z, 60, 3.0, 1.0, 3.0, 0.02);
+
+                    // 5 轮伤害波
+                    final LivingEntity t = thrower;
+                    for (int dt : new int[]{10, 30, 50, 70, 90}) {
+                        queueServerWork(dt, () -> {
+                            sl.sendParticles(ModParticleTypes.INFERNO_PARTICLE.get(),
+                                    hitPos.x, hitPos.y + 1.5, hitPos.z, 32, 3.0, 1.0, 3.0, 0.02);
+                            sl.sendParticles(ParticleTypes.FLAME,
+                                    hitPos.x, hitPos.y + 0.5, hitPos.z, 24, 3.0, 0.5, 3.0, 0.03);
+                            sl.sendParticles(ParticleTypes.LAVA,
+                                    hitPos.x, hitPos.y + 1.0, hitPos.z, 16, 2.0, 0.5, 2.0, 0.02);
+                            applyInfernoPulse(sl, hitPos, t);
+                        });
+                    }
+                });
+    }
+
+    /** 脉冲：对 6x6 范围敌人（投掷者除外）造成魔法伤害+点燃+易伤叠加（最高3级） */
+    private static void applyInfernoPulse(ServerLevel sl, Vec3 pos, LivingEntity thrower) {
+        double r = 3.0;
+        sl.getEntitiesOfClass(LivingEntity.class,
+                new net.minecraft.world.phys.AABB(
+                        pos.x - r, pos.y - r, pos.z - r,
+                        pos.x + r, pos.y + r, pos.z + r),
+                e -> e != thrower)
+                .forEach(e -> {
+                    e.hurt(e.damageSources().magic(), 3.0f);
+                    e.setSecondsOnFire(4);
+                    // 易伤叠加，每波+1级，最高3级
+                    var vuln = ModEffects.VULNERABILITY_BUFF.get();
+                    int currentLv = e.hasEffect(vuln)
+                            ? e.getEffect(vuln).getAmplifier() + 1 : 0;
+                    int newLv = Math.min(currentLv, 2); // amplifier 2 = 等级3
+                    e.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                            vuln, 200, newLv, false, true));
+                });
+    }
+
     /** 5 格半径内所有实体（投掷者除外）施加冰冻 */
     private static void applyFrozenDebuff(ServerLevel sl, Vec3 pos, LivingEntity thrower) {
         double r = 5.0;
@@ -511,6 +570,15 @@ public class PasterDreamMod
                             || tiered.getTier() == ModToolTiers.MELT_DREAM)) {
                 event.setAmount(event.getAmount() * 1.5f);
             }
+        }
+    }
+
+    // 易伤 debuff：每级 +10% 所受伤害
+    public static void onVulnerabilityHurt(LivingHurtEvent event) {
+        var effect = ModEffects.VULNERABILITY_BUFF.get();
+        if (event.getEntity().hasEffect(effect)) {
+            int amplifier = event.getEntity().getEffect(effect).getAmplifier();
+            event.setAmount(event.getAmount() * (1.0f + 0.1f * (amplifier + 1)));
         }
     }
 
@@ -620,6 +688,16 @@ public class PasterDreamMod
             });
             actions.forEach(e -> e.getKey().run());
             WORK_QUEUE.removeAll(actions);
+        }
+    }
+
+    @SubscribeEvent
+    public void onFrozenEffectExpired(MobEffectEvent.Expired event) {
+        if (event.getEffectInstance() != null
+                && event.getEffectInstance().getEffect() == ModEffects.FROZEN_BUFF.get()
+                && event.getEntity() instanceof Mob mob
+                && !event.getEntity().level().isClientSide) {
+            mob.setNoAi(false);
         }
     }
 }
