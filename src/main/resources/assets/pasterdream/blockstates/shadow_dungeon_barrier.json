@@ -1,8 +1,52 @@
 {
   "variants": {
-    "facing=north": { "model": "pasterdream:block/shadow_dungeon_barrier" },
-    "facing=east":  { "model": "pasterdream:block/shadow_dungeon_barrier", "y": 90 },
-    "facing=south": { "model": "pasterdream:block/shadow_dungeon_barrier", "y": 180 },
-    "facing=west":  { "model": "pasterdream:block/shadow_dungeon_barrier", "y": 270 }
+    "facing=north,part=main":
+    {
+      "model": "pasterdream:block/shadow_dungeon_barrier"
+    },
+    "facing=east,part=main":
+    {
+      "model": "pasterdream:block/shadow_dungeon_barrier", "y": 90
+    },
+    "facing=south,part=main":
+    {
+      "model": "pasterdream:block/shadow_dungeon_barrier", "y": 180
+    },
+    "facing=west,part=main":
+    {
+      "model": "pasterdream:block/shadow_dungeon_barrier", "y": 270
+    },
+    "part=addon_0_0":
+    {
+      "model": "pasterdream:block/shadow_dungeon_barrier_multipart"
+    },
+    "part=addon_0_1":
+    {
+      "model": "pasterdream:block/shadow_dungeon_barrier_multipart"
+    },
+    "part=addon_0_2":
+    {
+      "model": "pasterdream:block/shadow_dungeon_barrier_multipart"
+    },
+    "part=addon_1_0":
+    {
+      "model": "pasterdream:block/shadow_dungeon_barrier_multipart"
+    },
+    "part=addon_1_2":
+    {
+      "model": "pasterdream:block/shadow_dungeon_barrier_multipart"
+    },
+    "part=addon_2_0":
+    {
+      "model": "pasterdream:block/shadow_dungeon_barrier_multipart"
+    },
+    "part=addon_2_1":
+    {
+      "model": "pasterdream:block/shadow_dungeon_barrier_multipart"
+    },
+    "part=addon_2_2":
+    {
+      "model": "pasterdream:block/shadow_dungeon_barrier_multipart"
+    }
   }
 }

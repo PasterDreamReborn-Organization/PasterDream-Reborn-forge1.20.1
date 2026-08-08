@@ -123,7 +123,7 @@ public class ResearchTableBlock extends HorizontalDirectionalBlockBenchBaseEntit
             BlockState otherState = level.getBlockState(otherPos);
             if (otherState.getBlock() == this)
             {
-                level.removeBlock(otherPos, false);
+                level.destroyBlock(otherPos, false);
             }
 
             super.onRemove(blockState, level, blockPosition, newState, movedByPiston);

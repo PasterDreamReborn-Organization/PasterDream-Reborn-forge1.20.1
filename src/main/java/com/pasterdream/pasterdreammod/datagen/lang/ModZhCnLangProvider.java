@@ -585,6 +585,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.loot_generator.loot_table_not_found", "§c战利品表 %s 不存在");
         add("message.pasterdream.loot_generator.loot_table_set", "§a已清空容器并写入战利品表：%s，下次打开容器时生成战利品");
 
+        add("message.pasterdream.需要在本层寻找暗影地牢钥匙以打开大门", "需要在本层寻找暗影地牢钥匙以打开大门");
+
         add("option.pasterdream.Q: 模拟无工具破坏", "Q: 模拟无工具破坏");
         add("option.pasterdream.W: 模拟下界合金镐破坏", "W: 模拟下界合金镐破坏");
         add("option.pasterdream.E: 模拟下界合金镐时运III破坏", "E: 模拟下界合金镐时运III破坏");

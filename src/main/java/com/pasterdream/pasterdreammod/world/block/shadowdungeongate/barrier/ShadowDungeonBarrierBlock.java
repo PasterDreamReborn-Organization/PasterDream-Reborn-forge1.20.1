@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.helper.multiblockproperties.MultiBlockProp
 import com.pasterdream.pasterdreammod.helper.multiblockproperties._3x3Part;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition._3x3_VerticalCalculatePartPosition;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.VoxelShapeCalculator;
+import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.block.HorizontalDirectionalGenericBlock;
 import net.minecraft.core.BlockPos;
@@ -63,11 +64,22 @@ public class ShadowDungeonBarrierBlock extends HorizontalDirectionalGenericBlock
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
+    public InteractionResult use(BlockState state, Level level, BlockPos blockPosition, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult)
     {
-        world.playSound(null, pos, ModSounds.SHADOW_DOOR.get(), SoundSource.BLOCKS, 1, 1);
-
-        return InteractionResult.SUCCESS;
+        if(player.getItemInHand(interactionHand).getItem() == ModItems.SHADOW_DUNGEON_KEY.get())
+        {
+            if (!player.isCreative())
+            {
+                player.getMainHandItem().shrink(1);
+            }
+            level.playSound(null, blockPosition, ModSounds.SHADOW_DOOR.get(), SoundSource.BLOCKS, 1, 1);
+            level.destroyBlock(blockPosition, false, player);
+            return InteractionResult.SUCCESS;
+        }
+            else
+            {
+                return InteractionResult.FAIL;
+            }
     }
 
     @Override
@@ -91,7 +103,7 @@ public class ShadowDungeonBarrierBlock extends HorizontalDirectionalGenericBlock
                     BlockState addonState = level.getBlockState(addonPos);
                     if (addonState.getBlock() instanceof ShadowDungeonBarrierBlock)
                     {
-                        level.setBlock(addonPos, Blocks.AIR.defaultBlockState(), 3);
+                        level.destroyBlock(addonPos, false);
                     }
                 }
             }
@@ -101,7 +113,7 @@ public class ShadowDungeonBarrierBlock extends HorizontalDirectionalGenericBlock
                     BlockState mainState = level.getBlockState(mainPos);
                     if (mainState.getBlock() instanceof ShadowDungeonBarrierBlock)
                     {
-                        level.removeBlock(mainPos, true);
+                        level.destroyBlock(mainPos, false);
                     }
                 }
         }
