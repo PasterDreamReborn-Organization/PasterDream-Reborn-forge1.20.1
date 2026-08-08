@@ -46,37 +46,19 @@ public class ShadowDungeonPortalBlock extends BaseEntityBlock {
     }
 
     @Override
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
-        return true;
-    }
-
-    @Override
-    public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
-        return 0;
-    }
-
-    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(ANIMATION);
     }
 
     @Override
     public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean moving) {
-        super.onPlace(state, world, pos, oldState, moving);
         world.scheduleTick(pos, this, 20);
     }
 
     @Override
     public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-        super.tick(state, world, pos, random);
         // TODO: CD 冷却计时逻辑
         world.scheduleTick(pos, this, 20);
     }
 
-    @Override
-    public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
-        super.triggerEvent(state, world, pos, eventID, eventParam);
-        BlockEntity be = world.getBlockEntity(pos);
-        return be != null && be.triggerEvent(eventID, eventParam);
-    }
 }
