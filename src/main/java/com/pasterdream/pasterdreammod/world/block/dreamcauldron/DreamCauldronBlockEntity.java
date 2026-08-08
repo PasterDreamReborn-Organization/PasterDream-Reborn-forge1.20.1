@@ -32,6 +32,7 @@ import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.PacketDistributor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -92,7 +93,54 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
         }
     };
 
+    private final IItemHandler externalHandler = new IItemHandler()
+    {
+        @Override
+        public int getSlots()
+        {
+            return itemHandler.getSlots();
+        }
+
+        @Override
+        public @NotNull ItemStack getStackInSlot(int slotIndex)
+        {
+            return itemHandler.getStackInSlot(slotIndex);
+        }
+
+        @Override
+        public @NotNull ItemStack insertItem(int slotIndex, @NotNull ItemStack itemStack, boolean isSimulate)
+        {
+            return itemHandler.insertItem(slotIndex, itemStack, isSimulate);
+        }
+
+        @Override
+        public @NotNull ItemStack extractItem(int slotIndex, int amount, boolean isSimulate)
+        {
+            if(slotIndex == 3)
+            {
+                return itemHandler.extractItem(slotIndex, amount, isSimulate);
+            }
+                else
+                {
+                    return ItemStack.EMPTY;
+                }
+        }
+
+        @Override
+        public int getSlotLimit(int slotIndex)
+        {
+            return itemHandler.getSlotLimit(slotIndex);
+        }
+
+        @Override
+        public boolean isItemValid(int slotIndex, @NotNull ItemStack itemStack)
+        {
+            return itemHandler.isItemValid(slotIndex, itemStack);
+        }
+    };
+
     private final LazyOptional<IItemHandler> itemHandlerCap = LazyOptional.of(() -> itemHandler);
+    private final LazyOptional<IItemHandler> externalHandlerCap = LazyOptional.of(() -> externalHandler);
     private final LazyOptional<IFluidHandler> fluidTank0Cap = LazyOptional.of(() -> fluidTanks[0]);
     private final LazyOptional<IFluidHandler> fluidTank1Cap = LazyOptional.of(() -> fluidTanks[1]);
 
@@ -113,7 +161,14 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
 
         if (cap == ForgeCapabilities.ITEM_HANDLER)
         {
-            return itemHandlerCap.cast();
+            if (side == null)
+            {
+                return itemHandlerCap.cast();
+            }
+                else
+                {
+                    return externalHandlerCap.cast();
+                }
         }
         return super.getCapability(cap, side);
     }

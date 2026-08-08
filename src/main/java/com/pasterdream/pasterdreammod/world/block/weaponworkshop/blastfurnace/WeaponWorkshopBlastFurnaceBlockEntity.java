@@ -23,6 +23,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class WeaponWorkshopBlastFurnaceBlockEntity extends BlockEntity implements MenuProvider, IFluidHandlerProvider
@@ -56,11 +57,58 @@ public class WeaponWorkshopBlastFurnaceBlockEntity extends BlockEntity implement
         @Override
         public boolean isItemValid(int slotIndex, ItemStack stack)
         {
-            return slotIndex < 2;
+            return slotIndex != 2;
+        }
+    };
+
+    private final IItemHandler externalHandler = new IItemHandler()
+    {
+        @Override
+        public int getSlots()
+        {
+            return itemHandler.getSlots();
+        }
+
+        @Override
+        public @NotNull ItemStack getStackInSlot(int slotIndex)
+        {
+            return itemHandler.getStackInSlot(slotIndex);
+        }
+
+        @Override
+        public @NotNull ItemStack insertItem(int slotIndex, @NotNull ItemStack itemStack, boolean isSimulate)
+        {
+            return itemHandler.insertItem(slotIndex, itemStack, isSimulate);
+        }
+
+        @Override
+        public @NotNull ItemStack extractItem(int slotIndex, int amount, boolean isSimulate)
+        {
+            if(slotIndex == 2)
+            {
+                return itemHandler.extractItem(slotIndex, amount, isSimulate);
+            }
+                else
+                {
+                    return ItemStack.EMPTY;
+                }
+        }
+
+        @Override
+        public int getSlotLimit(int slotIndex)
+        {
+            return itemHandler.getSlotLimit(slotIndex);
+        }
+
+        @Override
+        public boolean isItemValid(int slotIndex, @NotNull ItemStack itemStack)
+        {
+            return itemHandler.isItemValid(slotIndex, itemStack);
         }
     };
 
     private final LazyOptional<IItemHandler> itemHandlerCap = LazyOptional.of(() -> itemHandler);
+    private final LazyOptional<IItemHandler> externalHandlerCap = LazyOptional.of(() -> externalHandler);
     private final LazyOptional<IFluidHandler> fluidTankCap = LazyOptional.of(() -> fluidTanks[0]);
 
     @Override
@@ -73,7 +121,14 @@ public class WeaponWorkshopBlastFurnaceBlockEntity extends BlockEntity implement
 
         if (cap == ForgeCapabilities.ITEM_HANDLER)
         {
-            return itemHandlerCap.cast();
+            if (side == null)
+            {
+                return itemHandlerCap.cast();
+            }
+                else
+                {
+                    return externalHandlerCap.cast();
+                }
         }
 
         return super.getCapability(cap, side);
