@@ -9,7 +9,7 @@ public class ModDreamNotesBookContentRelation
     private static final int CONTENT_START_X = 20;
     private static final int CONTENT_START_Y = 20;
     private static final int CONTENT_FINAL_X = 120;
-    private static final int CONTENT_FINAL_Y = 160;
+    private static final int CONTENT_FINAL_Y = 170;
 
     public static void registerDreamNotesBookContentRelation()
     {
@@ -48,8 +48,8 @@ public class ModDreamNotesBookContentRelation
         DreamNotesBookRegistry.register(">被阴影浸染的字迹潦草的笔记<", Component.translatable("book.pasterdream.title.>被阴影浸染的字迹潦草的笔记<"), "作者名字模糊不清", Component.translatable("book.pasterdream.content.>被阴影浸染的字迹潦草的笔记<"), GUIBackGroundRender.DREAM_NOTES_BOOK, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD);
         DreamNotesBookRegistry.register("关于黑暗之手的随笔", Component.translatable("book.pasterdream.title.关于黑暗之手的随笔"), "极星", Component.translatable("book.pasterdream.content.关于黑暗之手的随笔"), GUIBackGroundRender.DREAM_NOTES_BOOK, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD);
         DreamNotesBookRegistry.register("与黑色双手的决战和败北", Component.translatable("book.pasterdream.title.与黑色双手的决战和败北"), "千夜", Component.translatable("book.pasterdream.content.与黑色双手的决战和败北"), GUIBackGroundRender.DREAM_NOTES_BOOK, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD);
-        DreamNotesBookRegistry.register("invaded_church", Component.translatable("book.pasterdream.title.invaded_church"), "卡莱", Component.translatable("book.pasterdream.content.invaded_church"), GUIBackGroundRender.DREAM_NOTES_BOOK, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD);
-        DreamNotesBookRegistry.register("twilight_lantern", Component.translatable("book.pasterdream.title.twilight_lantern"), "卡莱", Component.translatable("book.pasterdream.content.twilight_lantern"), GUIBackGroundRender.DREAM_NOTES_BOOK, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD);
+        DreamNotesBookRegistry.register("侵染教堂", Component.translatable("book.pasterdream.title.侵染教堂"), "卡莱", Component.translatable("book.pasterdream.content.侵染教堂"), GUIBackGroundRender.DREAM_NOTES_BOOK, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD);
+        DreamNotesBookRegistry.register("暮影之笼", Component.translatable("book.pasterdream.title.暮影之笼"), "卡莱", Component.translatable("book.pasterdream.content.暮影之笼"), GUIBackGroundRender.DREAM_NOTES_BOOK, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD);
 
         DreamNotesBookRegistry.register("破风的骑士", Component.translatable("book.pasterdream.title.破风的骑士"), "琴雨梦", Component.translatable("book.pasterdream.content.破风的骑士"), GUIBackGroundRender.DREAM_NOTES_BOOK, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD);
         DreamNotesBookRegistry.register("清晨的新风", Component.translatable("book.pasterdream.title.清晨的新风"), "琴雨梦", Component.translatable("book.pasterdream.content.清晨的新风"), GUIBackGroundRender.DREAM_NOTES_BOOK, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD);
