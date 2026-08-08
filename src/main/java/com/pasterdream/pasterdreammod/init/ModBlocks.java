@@ -4,6 +4,10 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.world.behavior.ModTreeGrowers;
 import com.pasterdream.pasterdreammod.world.block.*;
+import com.pasterdream.pasterdreammod.world.block.dreamspawner.DreamSpawnerBlock;
+import com.pasterdream.pasterdreammod.world.block.dreamspawner.FadedDreamSpawnerBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexBlock;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorBlock;
@@ -210,6 +214,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> SHADOW_DUNGEON_BRICK_STAIRS = BLOCKS.register("shadow_dungeon_brick_stairs", () -> new StairBlock(SHADOW_DUNGEON_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(-1.0F, 3600000.0F).dynamicShape()));
     public static final RegistryObject<Block> SHADOW_DUNGEON_BRICK_SLAB = BLOCKS.register("shadow_dungeon_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(-1.0F, 3600000.0F).dynamicShape()));
     public static final RegistryObject<Block> SHATTERED_SHADOW_DUNGEON_BRICKS = BLOCKS.register("shattered_shadow_dungeon_bricks", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(10.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SHADOW_DUNGEON_GATE = BLOCKS.register("shadow_dungeon_gate", ShadowDungeonGateBlock::new);
+    public static final RegistryObject<Block> SHADOW_DUNGEON_GATE_SHELL = BLOCKS.register("shadow_dungeon_gate_shell", ShadowDungeonGateShellBlock::new);
+    public static final RegistryObject<Block> SHADOW_DUNGEON_BARRIER = BLOCKS.register("shadow_dungeon_barrier", ShadowDungeonBarrierBlock::new);
+    public static final RegistryObject<Block> SHADOW_DUNGEON_BARRIER_SHELL = BLOCKS.register("shadow_dungeon_barrier_shell", ShadowDungeonBarrierShellBlock::new);
     // ===== 灯影竞技场 / 裂隙方块 =====
     public static final RegistryObject<Block> SHADOW_ARENA_BLOCK = BLOCKS.register("shadow_arena_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(-1.0F, 3600000.0F)));
     public static final RegistryObject<Block> SHADOW_FISSURE_0 = BLOCKS.register("shadow_fissure_0", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
@@ -219,6 +227,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> SHADOW_FISSURE_4 = BLOCKS.register("shadow_fissure_4", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));
     public static final RegistryObject<Block> SHADOW_FISSURE_5 = BLOCKS.register("shadow_fissure_5", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).noOcclusion()));
     // 暗影漩涡 (亚伦柯斯之触技能)
+    public static final RegistryObject<Block> BROKEN_SHADOW_DUNGEON_PORTAL = BLOCKS.register("broken_shadow_dungeon_portal", BrokenShadowDungeonPortalBlock::new);
+    public static final RegistryObject<Block> DREAM_SPAWNER = BLOCKS.register("dream_spawner", DreamSpawnerBlock::new);
+    public static final RegistryObject<Block> FADED_DREAM_SPAWNER = BLOCKS.register("faded_dream_spawner", FadedDreamSpawnerBlock::new);
+    public static final RegistryObject<Block> SHADOW_DUNGEON_PORTAL = BLOCKS.register("shadow_dungeon_portal", ShadowDungeonPortalBlock::new);
     public static final RegistryObject<Block> SHADOW_VORTEX = BLOCKS.register("shadow_vortex", ShadowVortexBlock::new);
 
     // ===== 阴影菌岩 / 影灯 / 阴影菌光体 =====

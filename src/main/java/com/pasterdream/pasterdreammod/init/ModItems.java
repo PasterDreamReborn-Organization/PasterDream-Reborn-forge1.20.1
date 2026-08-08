@@ -9,6 +9,9 @@ import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorItem;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalDisplayItem;
+import net.minecraft.world.item.BlockItem;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestItem;
@@ -1245,6 +1248,14 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.SHADOW_FISSURE_4.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_FISSURE_5 = ITEMS.register("shadow_fissure_5",
             () -> new BlockItem(ModBlocks.SHADOW_FISSURE_5.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DREAM_SPAWNER = ITEMS.register("dream_spawner",
+            () -> new BlockItem(ModBlocks.DREAM_SPAWNER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> FADED_DREAM_SPAWNER = ITEMS.register("faded_dream_spawner",
+            () -> new BlockItem(ModBlocks.FADED_DREAM_SPAWNER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BROKEN_SHADOW_DUNGEON_PORTAL = ITEMS.register("broken_shadow_dungeon_portal",
+            () -> new BrokenShadowDungeonPortalDisplayItem(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_DUNGEON_PORTAL = ITEMS.register("shadow_dungeon_portal",
+            () -> new ShadowDungeonPortalDisplayItem(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_VORTEX = ITEMS.register("shadow_vortex",
             () -> new ShadowVortexDisplayItem(ModBlocks.SHADOW_VORTEX.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_NYLIUM = ITEMS.register("shadow_nylium",
@@ -1297,6 +1308,10 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.KEY_SHADOW_BOOKSHELF.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_DUNGEON_KEY = ITEMS.register("shadow_dungeon_key",
             () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> SHADOW_DUNGEON_GATE = ITEMS.register("shadow_dungeon_gate",
+            () -> new BlockItem(ModBlocks.SHADOW_DUNGEON_GATE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_DUNGEON_BARRIER = ITEMS.register("shadow_dungeon_barrier",
+            () -> new BlockItem(ModBlocks.SHADOW_DUNGEON_BARRIER.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_CRYSTAL_LANTERN = ITEMS.register("dyedream_crystal_lantern",
             () -> new BlockItem(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_LANTERN = ITEMS.register("dyedream_lantern",
@@ -1638,6 +1653,10 @@ public class ModItems {
                     tooltipComponents.add(Component.translatable("tooltip.pasterdream.black_beetle_vocalcord"));
                 }
             });
+
+    // 药剂瓶 —— 单一物品实例，通过 NBT 区分类型，模型通过 ItemProperties + overrides 切换纹理
+    public static final RegistryObject<Item> POTION_BOTTLE = ITEMS.register("potion_bottle",
+            () -> new PotionBottleItem(""));
 
     // 刷怪蛋
     public static final RegistryObject<Item> PINK_CHICKEN_SPAWN_EGG = ITEMS.register("pink_chicken_spawn_egg",

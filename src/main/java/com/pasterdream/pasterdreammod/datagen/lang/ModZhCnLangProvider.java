@@ -338,6 +338,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.SHADOW_DUNGEON_BRICK_STAIRS.get(), "暗影地牢石砖楼梯");
         add(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get(), "暗影地牢石砖台阶");
         add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get(), "碎裂暗影地牢石砖");
+        add(ModBlocks.SHADOW_DUNGEON_GATE.get(), "暗影地牢门扉");
+        add(ModBlocks.SHADOW_DUNGEON_BARRIER.get(), "暗影地牢屏障");
+        add(ModBlocks.DREAM_SPAWNER.get(), "构梦刷怪笼");
+        add(ModBlocks.FADED_DREAM_SPAWNER.get(), "失色构梦刷怪笼");
+        add(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), "暗影地牢传送门核心");
+        add(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get(), "破损暗影地牢传送门核心");
         add(ModBlocks.SHADOW_ARENA_BLOCK.get(), "灯影竞技场方块");
         add(ModBlocks.SHADOW_FISSURE_0.get(), "阴影裂隙");
         add(ModBlocks.SHADOW_FISSURE_1.get(), "阴影裂隙");
@@ -1295,6 +1301,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "暗影符文塔即将发生爆破");
         add("block.pasterdream.shadow_vortex", "暗影漩涡");
 
+        // 破损传送门消息
+        add("message.pasterdream.broken_portal.too_low", "地牢的结构被破坏，传送门没有反应");
+        add("message.pasterdream.broken_portal.creative_repaired", "创造模式：核心无条件修复");
+        add("message.pasterdream.broken_portal.need_materials", "双手持§e黑金属§f和§e影灯§f以修复核心");
+        add("message.pasterdream.broken_portal.repaired", "核心已修复");
+        add("message.pasterdream.broken_portal.lack_knowledge", "你还不知道如何修复这个核心");
+
         //卡莱的调料瓶
         add(ModItems.CALAIS_SPICE_BOTTLE.get(), "卡莱的调料瓶");
         add("tooltip.pasterdream.calais_spice_bottle.effect1", "§7▪ §9食用速度+40%");
@@ -1862,10 +1875,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.prophecy_card.unknown", "§c种类：错误！（%s）");
 
 
-
-
-
-
         add("tooltip.pasterdream.prophecy_card.balance.description", "§9使用卡牌时，当前自身拥有的部分药水效果的等级翻倍，但持续时间缩短至一半。");
         add("tooltip.pasterdream.prophecy_card.conflict.description.1", "§9使用卡牌时，将光标对应的实体标记，被标记的实体将会被成为其它实体的攻击对象，持续120秒");
         add("tooltip.pasterdream.prophecy_card.conflict.description.2", "§7§O --至少你用完这张卡不用担心被一位白衣少女捅成玻璃碴子");
@@ -1887,9 +1896,26 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("tooltip.pasterdream.prophecy_card.unknown.description.1", "§9你是怎么获得这张卡的？");
         add("tooltip.pasterdream.prophecy_card.unknown.description.2", "§9请把你做了什么发送到github或者mcmod方便我们定位问题，而不是只发送这张错误的截图");
-
-
         add("message.pasterdream.prophecy_card.invalid", "§c预言卡数据异常（%s），右键无效！");
+
+        // 药剂瓶
+        add(ModItems.POTION_BOTTLE.get(), "药剂瓶");
+        add("item.pasterdream.potion_bottle.berserk", "狂暴药剂瓶");
+        add("item.pasterdream.potion_bottle.frozen", "冰冻药剂瓶");
+        add("item.pasterdream.potion_bottle.highly_toxic", "剧毒药剂瓶");
+        add("item.pasterdream.potion_bottle.lightning", "雷电药剂瓶");
+        add("item.pasterdream.potion_bottle.rejuvenation", "回春药剂瓶");
+        add("effect.pasterdream.highly_toxic_buff", "剧毒");
+        add("tooltip.pasterdream.potion_bottle.highly_toxic.description","§9砸碎后释放剧毒云，对6*6区域范围内的生物施加剧毒、缓慢和虚弱");
+        add("tooltip.pasterdream.potion_bottle.lightning.description.1","§9砸碎后在落地地点释放乌云，并在短时间后对5*5区域范围内生成4次随机落雷");
+        add("tooltip.pasterdream.potion_bottle.lightning.description.2","§7§O --瓶装闪电");
+        add("tooltip.pasterdream.potion_bottle.rejuvenation.description","§9砸碎后释放5*5区域的治疗雾气，持续20秒，为在雾气内的玩家或和平生物恢复最大生命值的5%的血量");
+        add("tooltip.pasterdream.potion_bottle.frozen.description.1","§9砸碎后在落地地点释放7*7的冷冻雾气，在其中的实体将无法移动并失去战斗能力");
+        add("tooltip.pasterdream.potion_bottle.frozen.description.2","§7§O --谁将召唤那位施雪的女孩？");
+        add("tooltip.pasterdream.potion_bottle.berserk.description.1","§9砸碎后在落地地点释放8*8的狂暴雾气");
+        add("tooltip.pasterdream.potion_bottle.berserk.description.2","§9在其中的玩家攻击力+20%，移动速度+10%，攻击速度+50%，战技冷却-30%，瞬身术冷却-30%，战技伤害+30%");
+        add("effect.pasterdream.berserk_buff", "狂暴");
+        add("effect.pasterdream.frozen_buff", "急冻");
 
         // 结构翻译键
         add("structure.pasterdream.oak_fisherman_hut", "橡木渔夫小屋");

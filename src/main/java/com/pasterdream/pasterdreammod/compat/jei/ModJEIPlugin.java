@@ -35,6 +35,7 @@ import com.pasterdream.pasterdreammod.world.item.lootgenerator.LootGeneratorItem
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarScreen;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
@@ -177,6 +178,10 @@ public class ModJEIPlugin implements IModPlugin
         registration.registerSubtypeInterpreter(
                 ModItems.EMPTY_PROPHECY_CARD.get(),
                 (stack, context) -> IIngredientSubtypeInterpreter.NONE);
+
+        registration.registerSubtypeInterpreter(
+                ModItems.POTION_BOTTLE.get(),
+                (stack, context) -> PotionBottleItem.getPotionType(stack));
     }
 
     //将流体添加至JEI物品列表
