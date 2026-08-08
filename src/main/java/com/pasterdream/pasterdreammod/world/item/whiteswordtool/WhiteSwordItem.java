@@ -39,6 +39,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -291,6 +292,13 @@ public class WhiteSwordItem extends SwordItem {
                 if (player.getRandom().nextDouble() < PASSIVE_CHANCE) {
                     triggerHomingRain(player.level(), player, event.getEntity());
                 }
+            }
+        }
+
+        @SubscribeEvent
+        public static void onLivingKnockBack(LivingKnockBackEvent event) {
+            if (event.getEntity().getPersistentData().getBoolean("pasterdream:rain_damage")) {
+                event.setStrength(0);
             }
         }
     }

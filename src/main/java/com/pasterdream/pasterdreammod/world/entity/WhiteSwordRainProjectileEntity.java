@@ -209,8 +209,8 @@ public class WhiteSwordRainProjectileEntity extends Entity {
             target.setSecondsOnFire(fireAspect * 4);
         }
 
-        // Bind 2s
-        target.addEffect(new MobEffectInstance(ModEffects.BIND_BUFF.get(), 40, 0));
+        // Bind 6s
+        target.addEffect(new MobEffectInstance(ModEffects.BIND_BUFF.get(), 120, 0));
 
         // Melee damage
         if (owner instanceof Player player) {
