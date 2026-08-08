@@ -9,6 +9,8 @@ import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
+import com.pasterdream.pasterdreammod.world.entity.ThrownPotionBottle;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -390,8 +392,9 @@ public class CurioPassiveHandler {
                 .orElse(false);
         if (!hasGhostFace) return;
 
-        // 硬编码黑名单：末影珍珠等物品本身即是消耗品，不应被复制
+        // 硬编码黑名单：末影珍珠不应被复制
         if (projectile instanceof net.minecraft.world.entity.projectile.ThrownEnderpearl) return;
+        if (projectile instanceof net.minecraft.world.entity.projectile.ThrownPotion) return;
         // 配置文件黑名单
         if (Config.isGhostFaceProjectileBlacklisted(projectile.getType())) return;
 
@@ -404,6 +407,10 @@ public class CurioPassiveHandler {
                         BuiltInRegistries.ENTITY_TYPE.getKey(projectile.getType()).toString());
                 if (projectile instanceof AbstractArrow arrowProj) {
                     pd.putDouble("pasterdream_ghost_face_damage", arrowProj.getBaseDamage());
+                }
+                if (projectile instanceof ThrownPotionBottle potionBottle) {
+                    pd.putString("pasterdream_ghost_face_potion_type",
+                            PotionBottleItem.getPotionType(potionBottle.getItem()));
                 }
             }
             return;
@@ -442,6 +449,10 @@ public class CurioPassiveHandler {
         pd.putInt("pasterdream_ghost_face_type", projectileType);
         if (projectileType == 2) {
             pd.putString("pasterdream_ghost_face_clone", cloneTypeId);
+        }
+        if (projectile instanceof ThrownPotionBottle potionBottle) {
+            pd.putString("pasterdream_ghost_face_potion_type",
+                    PotionBottleItem.getPotionType(potionBottle.getItem()));
         }
     }
 
@@ -594,6 +605,14 @@ public class CurioPassiveHandler {
             if (flame) copyArrow.setSecondsOnFire(100);
             copyArrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
         }
+        if (copy instanceof ThrownPotionBottle potionClone) {
+            String potionType = pd.getString("pasterdream_ghost_face_potion_type");
+            if (!potionType.isEmpty()) {
+                ItemStack stack = potionClone.getItem().copy();
+                PotionBottleItem.setPotionType(stack, potionType);
+                potionClone.setItem(stack);
+            }
+        }
         copy.getPersistentData().putBoolean("pasterdream_ghost_face_spawned", true);
         player.level().addFreshEntity(copy);
     }
@@ -608,5 +627,6 @@ public class CurioPassiveHandler {
         pd.remove("pasterdream_ghost_face_crit");
         pd.remove("pasterdream_ghost_face_type");
         pd.remove("pasterdream_ghost_face_clone");
+        pd.remove("pasterdream_ghost_face_potion_type");
     }
 }

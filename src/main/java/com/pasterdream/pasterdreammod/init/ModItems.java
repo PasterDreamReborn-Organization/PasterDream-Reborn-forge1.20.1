@@ -1535,6 +1535,7 @@ public class ModItems {
     public static final RegistryObject<Item> OPENED_MELT_DREAM_CRYSTAL_CHEST = ITEMS.register("opened_melt_dream_crystal_chest", () -> new OpenedMeltDreamCrystalChestItem(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), new Item.Properties()));
     public static final RegistryObject<Item> DREAM_ACCUMULATOR = ITEMS.register("dream_accumulator", () -> new DreamAccumulatorItem(ModBlocks.DREAM_ACCUMULATOR.get(), new Item.Properties()));
     public static final RegistryObject<Item> TWILIGHT_LANTERN = ITEMS.register("twilight_lantern", () -> new TwilightLanternDisplayItem(ModBlocks.TWILIGHT_LANTERN.get(), new Item.Properties().rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> SHADOW_HAND_LANTERN = ITEMS.register("shadow_hand_lantern", ShadowHandLanternItem::new);
     public static final RegistryObject<Item> SHADOW_BED = ITEMS.register("shadow_bed", () -> new BlockItem(ModBlocks.SHADOW_BED.get(), new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> SORBENT = ITEMS.register("sorbent", () -> new Item(new Item.Properties().durability(54000)));
     public static final RegistryObject<Item> WEAPON_WORKSHOP_CRAFTING_TABLE = ITEMS.register("weapon_workshop_crafting_table", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), new Item.Properties()));

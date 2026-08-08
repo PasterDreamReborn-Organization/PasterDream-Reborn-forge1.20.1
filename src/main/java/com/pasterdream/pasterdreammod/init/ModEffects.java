@@ -86,6 +86,8 @@ public class ModEffects {
             EFFECTS.register("berserk_buff",BerserkBuffEffect::new);
     public static final RegistryObject<MobEffect> FROZEN_BUFF =
             EFFECTS.register("frozen_buff", FrozenBuffEffect::new);
+    public static final RegistryObject<MobEffect> VULNERABILITY_BUFF =
+            EFFECTS.register("vulnerability_buff", VulnerabilityBuffEffect::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

@@ -143,5 +143,11 @@
   },
   "frozen_shock": {
     "sounds": [{"name": "pasterdream:frozen_shock", "stream": false}]
+  },
+  "inferno_impact": {
+    "sounds": [{"name": "pasterdream:inferno_impact", "stream": false}]
+  },
+  "shadow_hand_lantern": {
+    "sounds": [{"name": "pasterdream:shadow_hand_lantern", "stream": false}]
   }
 }
