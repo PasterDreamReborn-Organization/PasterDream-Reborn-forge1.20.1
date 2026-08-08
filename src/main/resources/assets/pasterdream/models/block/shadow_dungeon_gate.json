@@ -1,9 +1,9 @@
 {
   "parent": "pasterdream:custom/shadow_dungeon_gate",
   "textures": {
-    "all": "pasterdream:block/shadow_dungeon_door",
-    "particle": "pasterdream:block/shadow_dungeon_door",
-    "0": "pasterdream:block/shadow_dungeon_door"
+    "all": "pasterdream:block/shadow_dungeon_gate",
+    "particle": "pasterdream:block/shadow_dungeon_gate",
+    "0": "pasterdream:block/shadow_dungeon_gate"
   },
   "render_type": "cutout"
 }

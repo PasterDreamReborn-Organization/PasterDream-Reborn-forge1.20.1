@@ -1,23 +1,8 @@
 {
   "variants": {
-    "facing=north,part=main":
+    "part=main":
     {
       "model": "pasterdream:block/shadow_dungeon_gate"
-    },
-    "facing=east,part=main":
-    {
-      "model": "pasterdream:block/shadow_dungeon_gate",
-      "y": 90
-    },
-    "facing=south,part=main":
-    {
-      "model": "pasterdream:block/shadow_dungeon_gate",
-      "y": 180
-    },
-    "facing=west,part=main":
-    {
-      "model": "pasterdream:block/shadow_dungeon_gate",
-      "y": 270
     },
     "part=addon_0_0":
     {

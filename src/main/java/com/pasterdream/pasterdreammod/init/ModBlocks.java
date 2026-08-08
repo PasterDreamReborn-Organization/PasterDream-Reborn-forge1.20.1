@@ -8,7 +8,6 @@ import com.pasterdream.pasterdreammod.world.block.dreamspawner.DreamSpawnerBlock
 import com.pasterdream.pasterdreammod.world.block.dreamspawner.FadedDreamSpawnerBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.barrier.ShadowDungeonBarrierBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowDungeonGateBlock;
-import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowDungeonGateShellBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexBlock;
@@ -218,7 +217,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> SHADOW_DUNGEON_BRICK_SLAB = BLOCKS.register("shadow_dungeon_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(-1.0F, 3600000.0F).dynamicShape()));
     public static final RegistryObject<Block> SHATTERED_SHADOW_DUNGEON_BRICKS = BLOCKS.register("shattered_shadow_dungeon_bricks", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(10.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> SHADOW_DUNGEON_GATE = BLOCKS.register("shadow_dungeon_gate", ShadowDungeonGateBlock::new);
-    public static final RegistryObject<Block> SHADOW_DUNGEON_GATE_SHELL = BLOCKS.register("shadow_dungeon_gate_shell", ShadowDungeonGateShellBlock::new);
     public static final RegistryObject<Block> SHADOW_DUNGEON_BARRIER = BLOCKS.register("shadow_dungeon_barrier", ShadowDungeonBarrierBlock::new);
     // ===== 灯影竞技场 / 裂隙方块 =====
     public static final RegistryObject<Block> SHADOW_ARENA_BLOCK = BLOCKS.register("shadow_arena_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(-1.0F, 3600000.0F)));

@@ -568,6 +568,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.loot_generator.not_container", "§cTarget block is not a container");
         add("message.pasterdream.loot_generator.loot_table_not_found", "§cLoot table %s does not exist");
         add("message.pasterdream.loot_generator.loot_table_set", "§aContainer cleared and loot table set: %s, will generate when opened");
+
+        add("message.pasterdream.需要在本层寻找暗影地牢钥匙以打开大门", "Need to find Shadow Dungeon Key in this floor to open the gate");
+
         add("option.pasterdream.Q: 模拟无工具破坏", "Q: Simulate Break Without Tool");
         add("option.pasterdream.W: 模拟下界合金镐破坏", "W: Simulate Break With Netherite Pickaxe");
         add("option.pasterdream.E: 模拟下界合金镐时运III破坏", "E: Simulate Break With Fortune III Netherite Pickaxe");
