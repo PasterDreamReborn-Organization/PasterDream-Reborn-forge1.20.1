@@ -1,7 +1,7 @@
 package com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace;
 
 import com.pasterdream.pasterdreammod.helper.multiblockproperties._2x4x2Part;
-import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition.CalculatePartPosition;
+import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition._2x4x2_CalculatePartPosition;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -29,7 +29,7 @@ public class WeaponWorkshopBlastFurnaceItem extends BlockItem
                 continue;
             }
 
-            BlockPos addonPos = CalculatePartPosition.getPartPos(mainPosition, blockState.getValue(WeaponWorkshopBlastFurnaceBlock.FACING), eachPart);
+            BlockPos addonPos = _2x4x2_CalculatePartPosition.getPartPos(mainPosition, blockState.getValue(WeaponWorkshopBlastFurnaceBlock.FACING), eachPart);
             if (!level.getBlockState(addonPos).canBeReplaced())
             {
                 return false;

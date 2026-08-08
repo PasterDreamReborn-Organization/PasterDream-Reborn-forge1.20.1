@@ -289,7 +289,6 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SHADOW_DUNGEON_GATE.get());
         dropSelf(ModBlocks.SHADOW_DUNGEON_BARRIER.get());
         dropNone(ModBlocks.SHADOW_DUNGEON_GATE_SHELL.get());
-        dropNone(ModBlocks.SHADOW_DUNGEON_BARRIER_SHELL.get());
         dropSelf(ModBlocks.SHADOW_DUNGEON_PORTAL.get());
         dropSelf(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get());
         dropNone(ModBlocks.DREAM_SPAWNER.get());

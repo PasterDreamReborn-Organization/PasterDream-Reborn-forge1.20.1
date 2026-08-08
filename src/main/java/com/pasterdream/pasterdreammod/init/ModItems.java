@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorItem;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.barrier.ShadowDungeonBarrierItem;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalDisplayItem;
@@ -1311,7 +1312,7 @@ public class ModItems {
     public static final RegistryObject<Item> SHADOW_DUNGEON_GATE = ITEMS.register("shadow_dungeon_gate",
             () -> new BlockItem(ModBlocks.SHADOW_DUNGEON_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_DUNGEON_BARRIER = ITEMS.register("shadow_dungeon_barrier",
-            () -> new BlockItem(ModBlocks.SHADOW_DUNGEON_BARRIER.get(), new Item.Properties()));
+            () -> new ShadowDungeonBarrierItem(ModBlocks.SHADOW_DUNGEON_BARRIER.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_CRYSTAL_LANTERN = ITEMS.register("dyedream_crystal_lantern",
             () -> new BlockItem(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_LANTERN = ITEMS.register("dyedream_lantern",
