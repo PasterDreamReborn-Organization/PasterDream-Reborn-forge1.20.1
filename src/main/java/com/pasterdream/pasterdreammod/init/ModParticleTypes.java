@@ -47,6 +47,20 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("squeal_wave_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> WHITE_SWORD_SPARK_PARTICLE =
             PARTICLE_TYPES.register("white_sword_spark_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> POISON_GAS_PARTICLE =
+            PARTICLE_TYPES.register("poison_gas_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> POISON_GAS_PARTICLE_1 =
+            PARTICLE_TYPES.register("poison_gas_particle_1", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> REJUVENATION_PARTICLE =
+            PARTICLE_TYPES.register("rejuvenation_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> YELLOW_SMOKE_PARTICLE =
+            PARTICLE_TYPES.register("yellow_smoke_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> BERSERK_PARTICLE =
+            PARTICLE_TYPES.register("berserk_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> SNOWFLAKE_0_PARTICLE =
+            PARTICLE_TYPES.register("snowflake_0_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> SNOWFLAKE_1_PARTICLE =
+            PARTICLE_TYPES.register("snowflake_1_particle", () -> new SimpleParticleType(false));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

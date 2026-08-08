@@ -746,7 +746,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("book.pasterdream.title.破风的骑士", "破风的骑士");
         add("book.pasterdream.title.清晨的新风", "清晨的新风");
 
-        add("book.pasterdream.content.使用说明", "    本文为此类型笔记书的相关使用说明。\n    笔记书旨在于修复原版使用MC原版written_book的相关问题，原版帕斯特之梦的书直接硬编码内容进去而没有使用翻译键，这导致没有办法使用中文以外的语种，written_book本身支持翻译键，但是还有两个问题，首先是其中的内容按页分开，这个已经按照MC原版的字分好了，在安装现代化UI等模组修改字体的时候，就会因为字体的问题（大小略微有些不同），显示到外面或者最后一行显示完后还空几个字的空间才到这一页结束，而且还需要手动处理每一页的内容，维护相当的不方便，而且再怎么说，文字换页这种东西也不应该是手动处理的，其次是中英文文字内容表达密度不一样的问题，比如相同的内容用中文写5页就写完了，但是用英文可能要写7页，这样相关的翻译就很难处理了，而且中文的最后几页会完全空白，所以此笔记书应运而生，可支持翻译键和自动文字换页，维护难度将大幅下降。\n    以下内容为代码层面上的使用方法，如果您是附属模组或整合包制作者，以下内容可能会帮助到您，添加新的内容时，需要准备好以下内容：\n    书名\n    作者名称\n    文本内容\n    书的材质及其尺寸（如果和本模组使用相同的可不用准备这个）\n    在FMLCommonSetupEvent中调用DreamNotesBookRegistry.register(String contentName, Component title, String author, Component content, ResourceLocation GUI, int GUI_X, int GUI_Y, int contentStartX, int contentStartY, int contentFinalX, int contentFinalY)，其中：\n    contentName表示此内容的名称，随后添加创造模式物品栏的时候会用到，需要注意的是这个不能与其他笔记书的contentName相同，否则游戏启动会报错，contentName支持中文，例如您的附属模组ModId为pasterdreamaddon，那么contentName可以写成\"PasterDreamAddon:笔记内容名称\"以和其他可能重名的区别开（甚至前面的PasterDreamAddon也可以写成中文名，例如写成\"帕斯特之梦附属模组:笔记内容名称\"）。\n    title是此笔记书的标题，为了可以翻译，请使用Component.translatable()，当然如果是纯数字/纯符号等确实不需要翻译的可以使用Component.literal()，这里面推荐填写\"book.pasterdreamaddon.title.书名\"，随后在Datagen中编写相关的翻译代码，例如add(\"book.pasterdreamaddon.title.书名\", \"标题名\");\n    author是作者名称，正常填写String类型进去就可以了，例如\"琴雨梦\"等。\n    content是书的内容，和title类似，在Component.translatable()中填写翻译键即可，推荐写成\"book.pasterdreamaddon.content.书名\"，然后在Datagen中填写add(\"book.pasterdreamaddon.title.书名\", \"书的内容\");\n    GUI是书打开后GUI的纹理文件，是一个ResourceLocation，如果需要自定义的请自备这个文件，注意文件名不要带大写字母，如果使用本模组的，那么这里填写GUIBackGroundRender.DREAM_NOTES_BOOK。\n    GUI_X和GUI_Y是这个GUI的宽度和高度，如果自备文件请根据实际值填写即可，如果使用本模组的，那么这两个值分别填写140和180。\n    contentStartX和contentStartY是在这个GUI中显示文字的起始坐标，纹理中边框部分有装饰等不适合显示文字的地方，确认显示范围后，填写对应的这两个值即可，如果使用本模组的，那么这两个值分别是20，20。\n    contentFinalX和contentFinalY是在这个GUI中文字显示的终止位置，同理，如果使用自己的GUI则根据显示范围填写这两个值，如果使用本模组的，那么这两个值分别是120和160。\n    推荐添加至创造模式物品栏，方便调试也方便玩家阅览内容，在添加创造模式物品栏的代码中（例如ModCreativeModeTabs）添加output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT(\"PasterDreamAddon:笔记内容名称\"));\n    总结一下，在FMLCommonSetupEvent中调用DreamNotesBookRegistry.register(\"内容名称\", Component.translatable(\"标题翻译键\"), \"作者名称\", Component.translatable(\"内容翻译键\"), GUI纹理路径, GUI宽度, GUI高度, 文字显示起始X坐标, 文字显示起始Y坐标, 文字显示终止X坐标, 文字显示终止Y坐标);，在Datagen中编写标题和内容的翻译，在创造模式物品栏中添加即可，祝您开发顺利。");
+        add("book.pasterdream.content.使用说明", "    本文为此类型笔记书的相关使用说明。\n    笔记书旨在于修复原版使用MC原版written_book的相关问题，原版帕斯特之梦的书直接硬编码内容进去而没有使用翻译键，这导致没有办法使用中文以外的语种，written_book本身支持翻译键，但是还有两个问题，首先是其中的内容按页分开，这个已经按照MC原版的字分好了，在安装现代化UI等模组修改字体的时候，就会因为字体的问题（大小略微有些不同），显示到外面或者最后一行显示完后还空几个字的空间才到这一页结束，而且还需要手动处理每一页的内容，维护相当的不方便，而且再怎么说，文字换页这种东西也不应该是手动处理的，其次是中英文文字内容表达密度不一样的问题，比如相同的内容用中文写5页就写完了，但是用英文可能要写7页，这样相关的翻译就很难处理了，而且中文的最后几页会完全空白，所以此笔记书应运而生，可支持翻译键和自动文字换页，维护难度将大幅下降。\n    以下内容为代码层面上的使用方法，如果您是附属模组或整合包制作者，以下内容可能会帮助到您，添加新的内容时，需要准备好以下内容：\n    书名\n    作者名称\n    文本内容\n    书的材质及其尺寸（如果和本模组使用相同的可不用准备这个）\n    在FMLCommonSetupEvent中调用DreamNotesBookRegistry.register(String contentName, Component title, String author, Component content, ResourceLocation GUI, int GUI_X, int GUI_Y, int contentStartX, int contentStartY, int contentFinalX, int contentFinalY, ModelResourceLocation itemTexture)，其中：\n    contentName表示此内容的名称，随后添加创造模式物品栏的时候会用到，需要注意的是这个不能与其他笔记书的contentName相同，否则游戏启动会报错，contentName支持中文，例如您的附属模组ModId为pasterdreamaddon，那么contentName可以写成\"PasterDreamAddon:笔记内容名称\"以和其他可能重名的区别开（甚至前面的PasterDreamAddon也可以写成中文名，例如写成\"帕斯特之梦附属模组:笔记内容名称\"）。\n    title是此笔记书的标题，为了可以翻译，请使用Component.translatable()，当然如果是纯数字/纯符号等确实不需要翻译的可以使用Component.literal()，这里面推荐填写\"book.pasterdreamaddon.title.书名\"，随后在Datagen中编写相关的翻译代码，例如add(\"book.pasterdreamaddon.title.书名\", \"标题名\");\n    author是作者名称，正常填写String类型进去就可以了，例如\"琴雨梦\"等。\n    content是书的内容，和title类似，在Component.translatable()中填写翻译键即可，推荐写成\"book.pasterdreamaddon.content.书名\"，然后在Datagen中填写add(\"book.pasterdreamaddon.title.书名\", \"书的内容\");\n    GUI是书打开后GUI的纹理文件，是一个ResourceLocation，如果需要自定义的请自备这个文件，注意文件名不要带大写字母，如果使用本模组的，那么这里填写GUIBackGroundRender.DREAM_NOTES_BOOK。\n    GUI_X和GUI_Y是这个GUI的宽度和高度，如果自备文件请根据实际值填写即可，如果使用本模组的，那么这两个值分别是140和180。\n    contentStartX和contentStartY是在这个GUI中显示文字的起始坐标，纹理中边框部分有装饰等不适合显示文字的地方，确认显示范围后，填写对应的这两个值即可，如果使用本模组的，那么这两个值分别是20和20。\n    contentFinalX和contentFinalY是在这个GUI中文字显示的终止位置，同理，如果使用自己的GUI则根据显示范围填写这两个值，如果使用本模组的，那么这两个值分别是120和160。\n    itemTexture是这个物品的图标，是一个ModelResourceLocation，可以使用本模组的或自定义，如果使用本模组的，可以通过GUIBackGroundRender.DREAM_NOTES_BOOK_DYEDREAM_WORLD来调用（还有其他几个材质的，分别是DREAM_NOTES_BOOK_OVERWORLD，DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD和DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD），如果需要自定义，那么应自备物品图标png文件，并放入textures\\item中，同时在models\\item中填写模型文件，假设这个名为\"pasterdream_addon_dream_notes_book_texture\"，和一般的物品类似，新建pasterdream_addon_dream_notes_book_texture.json并填写以下内容即可：\n{\n  \"parent\": \"item/generated\",\n  \"textures\":\n  {\n    \"layer0\": \"pasterdreamaddon:item/pasterdream_addon_dream_notes_book_texture\"\n  }\n}\n     在registerDreamNotesBookContentRelation中绑定时，最后一项填写new ModelResourceLocation(PasterDreamMod.MOD_ID, \"dream_notes_book_wind_journey_world\", \"inventory\")或者将其声明为ModelResourceLocation变量并调用即可。\n    推荐添加至创造模式物品栏，方便调试也方便玩家阅览内容，在添加创造模式物品栏的代码中（例如ModCreativeModeTabs）添加output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT(\"PasterDreamAddon:笔记内容名称\"));\n    总结一下，在FMLCommonSetupEvent中调用DreamNotesBookRegistry.register(\"内容名称\", Component.translatable(\"标题翻译键\"), \"作者名称\", Component.translatable(\"内容翻译键\"), GUI纹理路径, GUI宽度, GUI高度, 文字显示起始X坐标, 文字显示起始Y坐标, 文字显示终止X坐标, 文字显示终止Y坐标，物品模型);，在Datagen中编写标题和内容的翻译，在创造模式物品栏中添加即可，祝您开发顺利。");
         add("book.pasterdream.content.花园解密:迷梦冶梦莲", "西北的风吹过叮铃作响\n\n东北的云彩遮住了暖阳\n\n西南的光芒婉流明夕阳\n\n东南的亭亭小伞生其旁\n\n四周的矮草依花微风岸\n\n得以迷醉那冶梦的花莲");
         add("book.pasterdream.content.花园解密:凛冽雪绒花", "北方的大树抵挡了刺骨寒风\n\n南方的花朵染上了梦的颜色\n\n西方的灯笼代替了落日暖阳\n\n东方的草从见证了时间流淌\n\n这座花园的园丁们\n\n是由雪组成的小人\n\n和会飞的蓝色精灵");
         add("book.pasterdream.content.花园解密:九尾狐", "朝霞如梦似幻，熠熠生辉\n\n漂浮着的水晶花盆，高大的莲花燃烧着灵魂色的火焰\n\n浮空岛屿之上的水池中央\n\n一座九尾狐狸的雕像\n\n满足她的味蕾\n\n即可完成你许下的小小愿望\n\n发出金色光芒的甜蜜浆果\n\n许愿清单：\n\n给金色的苹果注入魔力\n\n让桶里充满融梦的涌泉\n\n用一堆梦境的硬币换取宝箱\n\n给她能映射梦的水晶或金色的铃兰花\n\n将正在睡觉的金色狐狸的梦\n\n变为现实...\n\n她会给予你一样特殊的纪念品");
@@ -1875,10 +1875,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.prophecy_card.unknown", "§c种类：错误！（%s）");
 
 
-
-
-
-
         add("tooltip.pasterdream.prophecy_card.balance.description", "§9使用卡牌时，当前自身拥有的部分药水效果的等级翻倍，但持续时间缩短至一半。");
         add("tooltip.pasterdream.prophecy_card.conflict.description.1", "§9使用卡牌时，将光标对应的实体标记，被标记的实体将会被成为其它实体的攻击对象，持续120秒");
         add("tooltip.pasterdream.prophecy_card.conflict.description.2", "§7§O --至少你用完这张卡不用担心被一位白衣少女捅成玻璃碴子");
@@ -1900,9 +1896,26 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("tooltip.pasterdream.prophecy_card.unknown.description.1", "§9你是怎么获得这张卡的？");
         add("tooltip.pasterdream.prophecy_card.unknown.description.2", "§9请把你做了什么发送到github或者mcmod方便我们定位问题，而不是只发送这张错误的截图");
-
-
         add("message.pasterdream.prophecy_card.invalid", "§c预言卡数据异常（%s），右键无效！");
+
+        // 药剂瓶
+        add(ModItems.POTION_BOTTLE.get(), "药剂瓶");
+        add("item.pasterdream.potion_bottle.berserk", "狂暴药剂瓶");
+        add("item.pasterdream.potion_bottle.frozen", "冰冻药剂瓶");
+        add("item.pasterdream.potion_bottle.highly_toxic", "剧毒药剂瓶");
+        add("item.pasterdream.potion_bottle.lightning", "雷电药剂瓶");
+        add("item.pasterdream.potion_bottle.rejuvenation", "回春药剂瓶");
+        add("effect.pasterdream.highly_toxic_buff", "剧毒");
+        add("tooltip.pasterdream.potion_bottle.highly_toxic.description","§9砸碎后释放剧毒云，对6*6区域范围内的生物施加剧毒、缓慢和虚弱");
+        add("tooltip.pasterdream.potion_bottle.lightning.description.1","§9砸碎后在落地地点释放乌云，并在短时间后对5*5区域范围内生成4次随机落雷");
+        add("tooltip.pasterdream.potion_bottle.lightning.description.2","§7§O --瓶装闪电");
+        add("tooltip.pasterdream.potion_bottle.rejuvenation.description","§9砸碎后释放5*5区域的治疗雾气，持续20秒，为在雾气内的玩家或和平生物恢复最大生命值的5%的血量");
+        add("tooltip.pasterdream.potion_bottle.frozen.description.1","§9砸碎后在落地地点释放7*7的冷冻雾气，在其中的实体将无法移动并失去战斗能力");
+        add("tooltip.pasterdream.potion_bottle.frozen.description.2","§7§O --谁将召唤那位施雪的女孩？");
+        add("tooltip.pasterdream.potion_bottle.berserk.description.1","§9砸碎后在落地地点释放8*8的狂暴雾气");
+        add("tooltip.pasterdream.potion_bottle.berserk.description.2","§9在其中的玩家攻击力+20%，移动速度+10%，攻击速度+50%，战技冷却-30%，瞬身术冷却-30%，战技伤害+30%");
+        add("effect.pasterdream.berserk_buff", "狂暴");
+        add("effect.pasterdream.frozen_buff", "急冻");
 
         // 结构翻译键
         add("structure.pasterdream.oak_fisherman_hut", "橡木渔夫小屋");

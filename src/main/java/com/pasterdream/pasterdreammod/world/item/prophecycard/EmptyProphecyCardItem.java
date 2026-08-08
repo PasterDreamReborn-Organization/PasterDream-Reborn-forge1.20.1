@@ -28,7 +28,7 @@ public class EmptyProphecyCardItem extends Item {
         ItemStack stack = player.getItemInHand(hand);
 
         // 获取所有已注册种类（内置 + 其他模组注册的）
-        List<String> types = new ArrayList<>(ProphecyCardItem.TYPE_PREDICATES.keySet());
+        List<String> types = new ArrayList<>(ProphecyCardItem.getRegisteredTypes());
         if (types.isEmpty()) {
             return InteractionResultHolder.fail(stack);
         }

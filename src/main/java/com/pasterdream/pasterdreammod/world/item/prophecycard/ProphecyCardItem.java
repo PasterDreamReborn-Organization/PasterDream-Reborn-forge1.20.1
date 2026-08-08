@@ -46,9 +46,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 public class ProphecyCardItem extends Item {
 
@@ -68,25 +70,19 @@ public class ProphecyCardItem extends Item {
     public static final String TYPE_SPRINT = "sprint";
     public static final String TYPE_WIELDING_SWORD = "wielding_sword";
 
-    /**
-     * 已注册的种类 → predicate 浮点值（开放给外部模组/魔改注册新种类）。
-     * 内置种类: 0.100 ~ 0.900（9 个，间隔 0.1）
-     * 外部注册: 0.901 ~ 0.999（每 0.001 一步，约 99 个槽位）
-     * 哈希兜底: 0.001 ~ 0.099（未注册字符串自动 fallback）
-     */
-    public static final Map<String, Float> TYPE_PREDICATES = new LinkedHashMap<>();
-    private static float nextPredicate = 0.901f;
+    /** 已注册的种类集合（供外部模组/魔改注册新种类） */
+    private static final Set<String> REGISTERED_TYPES = new LinkedHashSet<>();
 
     static {
-        TYPE_PREDICATES.put(TYPE_BALANCE, 0.1f);
-        TYPE_PREDICATES.put(TYPE_CHAOS, 0.2f);
-        TYPE_PREDICATES.put(TYPE_CONFLICT, 0.3f);
-        TYPE_PREDICATES.put(TYPE_GRAVEYARD, 0.4f);
-        TYPE_PREDICATES.put(TYPE_GUARD, 0.5f);
-        TYPE_PREDICATES.put(TYPE_HOLY_GRAIL, 0.6f);
-        TYPE_PREDICATES.put(TYPE_SIN, 0.7f);
-        TYPE_PREDICATES.put(TYPE_SPRINT, 0.8f);
-        TYPE_PREDICATES.put(TYPE_WIELDING_SWORD, 0.9f);
+        REGISTERED_TYPES.add(TYPE_BALANCE);
+        REGISTERED_TYPES.add(TYPE_CHAOS);
+        REGISTERED_TYPES.add(TYPE_CONFLICT);
+        REGISTERED_TYPES.add(TYPE_GRAVEYARD);
+        REGISTERED_TYPES.add(TYPE_GUARD);
+        REGISTERED_TYPES.add(TYPE_HOLY_GRAIL);
+        REGISTERED_TYPES.add(TYPE_SIN);
+        REGISTERED_TYPES.add(TYPE_SPRINT);
+        REGISTERED_TYPES.add(TYPE_WIELDING_SWORD);
     }
 
     /**
@@ -127,41 +123,31 @@ public class ProphecyCardItem extends Item {
     // ===== 开放式 API：供外部模组/魔改注册新种类 =====
 
     /**
-     * 注册一个新的预言卡种类，自动分配 predicate 值。
+     * 注册一个新的预言卡种类。
      * 其他模组在 FMLCommonSetupEvent 或 mod 构造器中调用即可。
      *
      * @param typeName 种类名称（建议全小写+下划线，如 "my_card_type"）
-     * @return 分配的 predicate 浮点值，用于编写模型 JSON 的 overrides
-     * @throws IllegalStateException 如果 predicate 槽位已满（超过 0.99）
+     * @return true 为新注册，false 为已存在
      */
-    public static float registerCardType(String typeName) {
-        if (TYPE_PREDICATES.containsKey(typeName)) {
+    public static boolean registerCardType(String typeName) {
+        if (REGISTERED_TYPES.contains(typeName)) {
             LOGGER.debug("ProphecyCard type '{}' already registered, skipping.", typeName);
-            return TYPE_PREDICATES.get(typeName);
+            return false;
         }
-        if (nextPredicate > 0.999f) {
-            throw new IllegalStateException(
-                "ProphecyCard predicate slots exhausted (>999)! Cannot register type '" + typeName + "'");
-        }
-        float value = nextPredicate;
-        TYPE_PREDICATES.put(typeName, value);
-        nextPredicate += 0.001f;
-        LOGGER.info("Registered ProphecyCard type '{}' with predicate value {}", typeName, value);
-        return value;
+        REGISTERED_TYPES.add(typeName);
+        LOGGER.info("Registered ProphecyCard type '{}' (total: {})", typeName, REGISTERED_TYPES.size());
+        return true;
     }
 
     /**
-     * 根据种类名获取 predicate 值（含 fallback 哈希兜底）。
-     * 内置种类返回固定值，外部注册种类返回分配的 slot 值，
-     * 未注册的字符串通过 hashCode 计算确定性 fallback 值（供纯资源包添加纹理）。
+     * 根据种类名字符串直接计算 predicate 值。
+     * 使用 Java {@link String#hashCode()} 映射到 [0.1, 0.999]，
+     * 资源包作者可计算相应字符串的此值来编写模型 JSON overrides。
      */
     public static float getPredicateForType(String typeName) {
         if (typeName.isEmpty()) return 0.0f;
-        Float registered = TYPE_PREDICATES.get(typeName);
-        if (registered != null) return registered;
-        // 哈希兜底：任何未注册字符串映射到 0.001~0.099（避开内置和 API 注册区）
-        // 资源包作者可计算此值来编写模型 JSON overrides
-        return 0.001f + Math.abs(typeName.hashCode() % 99) / 1000.0f;
+        // & 0x7FFFFFFF 清除符号位避免 Math.abs(Integer.MIN_VALUE) 的边界问题
+        return 0.1f + ((typeName.hashCode() & 0x7FFFFFFF) % 900) / 1000.0f;
     }
 
     // ===== NBT 读写 =====
@@ -210,11 +196,16 @@ public class ProphecyCardItem extends Item {
 
     // ===== 根据 NBT 显示不同名字 =====
 
+    /** 获取所有已注册的类型的不可变视图 */
+    public static Set<String> getRegisteredTypes() {
+        return java.util.Collections.unmodifiableSet(REGISTERED_TYPES);
+    }
+
     /**
      * 判断类型字符串是否为已识别的有效类型（内置或 API 注册）
      */
     public static boolean isKnownType(String type) {
-        return !type.isEmpty() && TYPE_PREDICATES.containsKey(type);
+        return !type.isEmpty() && REGISTERED_TYPES.contains(type);
     }
 
     @Override
@@ -321,10 +312,9 @@ public class ProphecyCardItem extends Item {
      */
     public static void logRegisteredTypes() {
         LOGGER.info("=== Registered ProphecyCard Types ===");
-        for (var entry : TYPE_PREDICATES.entrySet()) {
-            LOGGER.info("  {} -> predicate={}", entry.getKey(), entry.getValue());
+        for (String type : REGISTERED_TYPES) {
+            LOGGER.info("  {} -> predicate={}", type, getPredicateForType(type));
         }
-        LOGGER.info("Next available slot: {}", nextPredicate);
     }
 
     // ===== 内置卡牌效果注册 =====
@@ -334,8 +324,7 @@ public class ProphecyCardItem extends Item {
      * 在 {@code FMLCommonSetupEvent} 中调用。
      */
     public static void registerAllCardEffects() {
-        for (var entry : TYPE_PREDICATES.entrySet()) {
-            String type = entry.getKey();
+        for (String type : REGISTERED_TYPES) {
             ProphecyCardItem.registerCardEffect(type, switch (type) {
                 case TYPE_BALANCE  -> balanceEffect();
                 case TYPE_CHAOS    -> chaosEffect();

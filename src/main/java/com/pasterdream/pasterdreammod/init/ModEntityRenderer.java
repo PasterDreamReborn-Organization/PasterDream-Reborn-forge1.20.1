@@ -24,6 +24,8 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.FRIENDLY_SHADOW_GHOST.get(), ShadowGhostRenderer::new);
         event.registerEntityRenderer(ModEntities.SQUEAL_WAVE_PROJECTILE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.THROWN_PINK_EGG.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.THROWN_POTION_BOTTLE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.REJUVENATION_BOTTLE_ENTITY.get(), EmptyEntityRenderer::new);
         event.registerEntityRenderer(ModEntities.PEBBLE_PROJECTILE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.BLACK_BEETLE.get(), BlackBeetleRenderer::new);
         event.registerEntityRenderer(ModEntities.BLACK_BEETLE_MOTHER.get(), BlackBeetleMotherRenderer::new);
