@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.block;
+package com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate;
 
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;

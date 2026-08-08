@@ -4,7 +4,7 @@ import com.pasterdream.pasterdreammod.helper.multiblockproperties._2x4x2Part;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 
-public class CalculatePartPosition
+public class _2x4x2_CalculatePartPosition
 {
     public static BlockPos getMainPosFromAddon(BlockPos addonPos, Direction facing, _2x4x2Part part)
     {

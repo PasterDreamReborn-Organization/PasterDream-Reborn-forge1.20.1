@@ -1,6 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace;
 
-import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition.CalculatePartPosition;
+import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition._2x4x2_CalculatePartPosition;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,7 +20,7 @@ public class WeaponWorkshopBlastFurnaceAddonBlockEntity extends BlockEntity
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side)
     {
-        BlockPos mainPosition = CalculatePartPosition.getMainPosFromAddon(getBlockPos(), getBlockState().getValue(WeaponWorkshopBlastFurnaceBlock.FACING), getBlockState().getValue(WeaponWorkshopBlastFurnaceBlock.PART));
+        BlockPos mainPosition = _2x4x2_CalculatePartPosition.getMainPosFromAddon(getBlockPos(), getBlockState().getValue(WeaponWorkshopBlastFurnaceBlock.FACING), getBlockState().getValue(WeaponWorkshopBlastFurnaceBlock.PART));
         BlockEntity main = level.getBlockEntity(mainPosition);
 
         if (main != null)

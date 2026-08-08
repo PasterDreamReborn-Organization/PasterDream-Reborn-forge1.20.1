@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.block;
+package com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;

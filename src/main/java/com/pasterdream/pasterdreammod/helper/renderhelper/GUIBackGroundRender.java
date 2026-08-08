@@ -88,6 +88,7 @@ public class GUIBackGroundRender
     public static ResourceLocation EMPTY_NOTES = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/empty_notes.png");
     public static ResourceLocation DREAM_NOTES_BOOK = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book.png");
 
+    public static ModelResourceLocation USE_GUIDE = new ModelResourceLocation(PasterDreamMod.MOD_ID, "use_guide", "inventory");
     public static ModelResourceLocation DREAM_NOTES_BOOK_OVERWORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book_overworld", "inventory");
     public static ModelResourceLocation DREAM_NOTES_BOOK_DYEDREAM_WORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book_dyedream_world", "inventory");
     public static ModelResourceLocation DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book_lamp_shadow_world", "inventory");
