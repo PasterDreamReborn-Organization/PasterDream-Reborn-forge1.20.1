@@ -1,9 +1,11 @@
 package com.pasterdream.pasterdreammod.world.item.dreamnotesbook;
 
+import com.pasterdream.pasterdreammod.PasterDreamMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -29,7 +31,7 @@ public class DreamNotesBookOverrides extends ItemOverrides
             }
                 else
                 {
-                    throw new RuntimeException("寻梦者笔记" + info.title() + "的itemTexture为null");
+                    return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(PasterDreamMod.MOD_ID, "gun_mu", "inventory"));
                 }
         }
         return original;
