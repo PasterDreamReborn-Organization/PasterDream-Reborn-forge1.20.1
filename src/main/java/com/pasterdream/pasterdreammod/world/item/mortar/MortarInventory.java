@@ -1,6 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item.mortar;
 
-import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidContainer;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.IFluidContainer;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -8,7 +8,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class MortarInventory implements Container, FluidContainer
+public class MortarInventory implements Container, IFluidContainer
 {
     private final MortarDataHandler dataHandler;
     private final FluidTank[] fluidTanks;

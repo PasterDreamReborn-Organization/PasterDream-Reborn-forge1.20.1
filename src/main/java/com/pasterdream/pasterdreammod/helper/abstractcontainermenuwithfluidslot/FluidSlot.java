@@ -6,11 +6,11 @@ import net.minecraftforge.fluids.FluidStack;
 public class FluidSlot
 {
     public final int fluidSlotIndex;
-    private final FluidContainer container;
+    private final IFluidContainer container;
     public final int x;
     public final int y;
 
-    public FluidSlot(FluidContainer container, int fluidSlotIndex, int x, int y)
+    public FluidSlot(IFluidContainer container, int fluidSlotIndex, int x, int y)
     {
         this.container = container;
         this.fluidSlotIndex = fluidSlotIndex;

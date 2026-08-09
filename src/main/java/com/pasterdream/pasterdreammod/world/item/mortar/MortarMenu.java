@@ -1,7 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.mortar;
 
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
-import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidContainer;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.IFluidContainer;
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidSlot;
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
@@ -155,7 +155,7 @@ public class MortarMenu extends AbstractContainerMenuWithFluidSlot
     }
 
     @Override
-    public FluidContainer getFluidContainer()
+    public IFluidContainer getFluidContainer()
     {
         return mortarInventory;
     }

@@ -10,7 +10,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -65,15 +64,18 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
         }
     };
 
-    private final FluidTank fluidTank = new FluidTank(FLUID_CAPACITY)
+    private final FluidTank[] fluidTanks =
     {
-        @Override
-        protected void onContentsChanged()
+        new FluidTank(FLUID_CAPACITY)
         {
-            setChanged();
-            if (level != null && !level.isClientSide)
+            @Override
+            protected void onContentsChanged()
             {
-                level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+                setChanged();
+                if (level != null && !level.isClientSide)
+                {
+                    level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+                }
             }
         }
     };
@@ -97,7 +99,7 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
     private FluidStack recipeRequiredFluid;
     private ItemStack currentRecipeOutput = ItemStack.EMPTY;
     private LazyOptional<IItemHandler> itemHandlerCap = LazyOptional.of(() -> itemHandler);
-    private LazyOptional<IFluidHandler> fluidHandlerCap = LazyOptional.of(() -> fluidTank);
+    private LazyOptional<IFluidHandler> fluidHandlerCap = LazyOptional.of(() -> fluidTanks[0]);
 
     public void tick()
     {
@@ -115,7 +117,7 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
                 {
                     ClaypanRecipe claypanRecipe = recipe.get();
                     recipeRequiredFluid = claypanRecipe.getInputFluidIngredients().get(0).getFluidStack();
-                    if (fluidTank.getFluidAmount() >= recipeRequiredFluid.getAmount())
+                    if (fluidTanks[0].getFluidAmount() >= recipeRequiredFluid.getAmount())
                     {
                         currentRecipeOutput = claypanRecipe.getOutputItemIngredients().get(0).getItemStack();
                         maxProgress = claypanRecipe.getProcessingTime();
@@ -128,7 +130,7 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
 
         if (maxProgress > 0)
         {
-            if (recipeRequiredFluid == null || fluidTank.getFluidAmount() < recipeRequiredFluid.getAmount() || fluidTank.getFluid().getFluid() != recipeRequiredFluid.getFluid())
+            if (recipeRequiredFluid == null || fluidTanks[0].getFluidAmount() < recipeRequiredFluid.getAmount() || fluidTanks[0].getFluid().getFluid() != recipeRequiredFluid.getFluid())
             {
                 resetProgress();
                 return;
@@ -138,7 +140,7 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
             setChanged();
             if (progress >= maxProgress)
             {
-                fluidTank.drain(recipeRequiredFluid.getAmount(), IFluidHandler.FluidAction.EXECUTE);
+                fluidTanks[0].drain(recipeRequiredFluid.getAmount(), IFluidHandler.FluidAction.EXECUTE);
                 itemHandler.setStackInSlot(0, currentRecipeOutput.copy());
                 resetProgress();
             }
@@ -152,13 +154,13 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
             return Optional.empty();
         }
 
-        FluidStack fluid = fluidTank.getFluid();
+        FluidStack fluid = fluidTanks[0].getFluid();
         if (fluid.isEmpty())
         {
             return Optional.empty();
         }
 
-        return level.getRecipeManager().getAllRecipesFor(ModRecipes.CLAYPAN.get()).stream().filter(recipe -> recipe.getInputFluidIngredients().get(0).getFluid() == fluid.getFluid()).filter(recipe -> fluidTank.getFluidAmount() >= recipe.getInputFluidIngredients().get(0).getAmount()).findFirst();
+        return level.getRecipeManager().getAllRecipesFor(ModRecipes.CLAYPAN.get()).stream().filter(recipe -> recipe.getInputFluidIngredients().get(0).getFluid() == fluid.getFluid()).filter(recipe -> fluidTanks[0].getFluidAmount() >= recipe.getInputFluidIngredients().get(0).getAmount()).findFirst();
     }
 
     private void resetProgress()
@@ -175,7 +177,7 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
     {
         super.load(tag);
         itemHandler.deserializeNBT(tag.getCompound("Inventory"));
-        fluidTank.readFromNBT(tag.getCompound("FluidTank"));
+        fluidTanks[0].readFromNBT(tag.getCompound("FluidTank"));
         progress = tag.getInt("Progress");
         maxProgress = tag.getInt("MaxProgress");
         if (tag.contains("RecipeRequiredFluid"))
@@ -189,7 +191,7 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
     {
         super.saveAdditional(tag);
         tag.put("Inventory", itemHandler.serializeNBT());
-        tag.put("FluidTank", fluidTank.writeToNBT(new CompoundTag()));
+        tag.put("FluidTank", fluidTanks[0].writeToNBT(new CompoundTag()));
         tag.putInt("Progress", progress);
         tag.putInt("MaxProgress", maxProgress);
         if (recipeRequiredFluid != null)
@@ -252,7 +254,7 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
     @Override
     public IFluidHandler getFluidHandler(int tankIndex)
     {
-        return fluidTank;
+        return fluidTanks[tankIndex];
     }
 
     public IItemHandler getItemHandler()
@@ -270,8 +272,13 @@ public class ClaypanBlockEntity extends BlockEntity implements MenuProvider, IFl
         return maxProgress;
     }
 
-    public FluidTank getFluidTank()
+    public FluidTank getFluidTank(int tankIndex)
     {
-        return fluidTank;
+        return fluidTanks[tankIndex];
+    }
+
+    public FluidTank[] getFluidTanks()
+    {
+        return fluidTanks;
     }
 }

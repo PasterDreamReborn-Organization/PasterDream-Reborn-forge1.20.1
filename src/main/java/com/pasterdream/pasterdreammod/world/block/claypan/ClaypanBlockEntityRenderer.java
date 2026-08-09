@@ -22,8 +22,9 @@ public class ClaypanBlockEntityRenderer implements BlockEntityRenderer<ClaypanBl
     }
 
     @Override
-    public void render(ClaypanBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
-        FluidStack fluidStack = blockEntity.getFluidTank().getFluid();
+    public void render(ClaypanBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay)
+    {
+        FluidStack fluidStack = blockEntity.getFluidTanks()[0].getFluid();
         if (fluidStack.isEmpty())
         {
             return;
