@@ -2206,6 +2206,16 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.PALE_BONENEEDLE.get()), has(ModItems.PALE_BONENEEDLE.get()))
                 .save(pWriter);
 
+        // 苍白骨针护符 = 线 + 苍白骨针
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PALE_BONE_NEEDLE_TALISMAN.get(), 1)
+                .pattern(" a ")
+                .pattern("a a")
+                .pattern(" b ")
+                .define('a', Items.STRING)
+                .define('b', ModItems.PALE_BONENEEDLE.get())
+                .unlockedBy(getHasName(ModItems.PALE_BONENEEDLE.get()), has(ModItems.PALE_BONENEEDLE.get()))
+                .save(pWriter);
+
         // 甜蜜的梦音乐唱片 = dyedream_dye + dyedream_alloy_nugget + soul_essence
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SWEET_DREAM_MUSIC_DISC.get(), 1)
                 .pattern("aba")

@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.item.curio;
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
@@ -12,9 +13,12 @@ import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPotionBottle;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,6 +37,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -137,9 +142,55 @@ public class CurioPassiveHandler {
             }
         }
 
-        // 塞西莉娅的加护：拦截致命伤害
+        // 塞西莉娅的加护 / 苍白骨针护符：拦截致命伤害
         if (!(event.getEntity() instanceof Player player)) return;
-        if (player.getHealth() + player.getAbsorptionAmount() - event.getAmount() > 0.0F) return; // 非致命伤害
+        // 致死判定（event.getAmount() 已计算抗性，此处加上伤害吸收）
+        if (player.getHealth() + player.getAbsorptionAmount() - event.getAmount() > 0.0F) return;
+
+        // 苍白骨针护符：梦境维度中拦截致命伤害
+        if (isDreamDimension(player.level())) {
+            boolean hasTalisman = CuriosApi.getCuriosInventory(player)
+                    .map(h -> h.findFirstCurio(ModItems.PALE_BONE_NEEDLE_TALISMAN.get()).isPresent())
+                    .orElse(false);
+            if (hasTalisman) {
+                event.setCanceled(true);
+                player.setHealth(1.0F);
+
+                // 销毁护符
+                CuriosApi.getCuriosInventory(player).ifPresent(handler ->
+                        handler.findFirstCurio(ModItems.PALE_BONE_NEEDLE_TALISMAN.get()).ifPresent(slotResult ->
+                                handler.setEquippedCurio(slotResult.slotContext().identifier(),
+                                        slotResult.slotContext().index(), ItemStack.EMPTY)));
+
+                // 饰品激活动画 + 骨针音效
+                ModNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),
+                        new CurioActivationPacket(ModItems.PALE_BONE_NEEDLE_TALISMAN.get()));
+                player.level().playSound(null, player.blockPosition(), ModSounds.DREAM0.get(),
+                        SoundSource.NEUTRAL, 1.0F, 1.0F);
+
+                // 粒子
+                if (player.level() instanceof ServerLevel sl) {
+                    sl.sendParticles(ModParticleTypes.DUST_0_PARTICLE.get(),
+                            player.getX(), player.getY(), player.getZ(), 64, 1, 1, 1, 0.2);
+                    sl.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(),
+                            player.getX(), player.getY(), player.getZ(), 64, 1, 1, 1, 0.2);
+                }
+
+                // 施加效果：1.5秒塞西莉娅的加护 + 瞬间治疗
+                player.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING_BUFF.get(), 30, 0, false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, 0, false, false));
+
+                // 触发骨针使用进度
+                if (player instanceof ServerPlayer sp) {
+                    boolean wasFalling = player.fallDistance > 10;
+                    ModCriteriaTriggers.USE_BONE_NEEDLE.trigger(sp, wasFalling);
+                }
+
+                // 记录传送延迟（1秒 = 20 tick）
+                player.getPersistentData().putInt("pasterdream_talisman_teleport_delay", 20);
+                return;
+            }
+        }
 
         boolean hasCharm = CuriosApi.getCuriosInventory(player)
                 .map(h -> h.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).isPresent())
@@ -159,7 +210,7 @@ public class CurioPassiveHandler {
 
         // 饰品激活动画（发包至客户端） + 音效
         ModNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),
-                new CurioActivationPacket());
+                new CurioActivationPacket(ModItems.BLESSING_OF_CECILIA.get()));
         player.level().playSound(null, player.blockPosition(), SoundEvents.TOTEM_USE,
                 SoundSource.NEUTRAL, 1.0F, 1.0F);
 
@@ -522,62 +573,72 @@ public class CurioPassiveHandler {
         if (player.level().isClientSide) return;
 
         CompoundTag pd = player.getPersistentData();
-        int delay = pd.getInt("pasterdream_ghost_face_delay");
-        if (delay <= 0) return;
 
-        delay--;
-        if (delay > 0) {
-            pd.putInt("pasterdream_ghost_face_delay", delay);
-            return;
-        }
+        // 鬼魂之面：延迟生成额外投射物
+        int gfDelay = pd.getInt("pasterdream_ghost_face_delay");
+        if (gfDelay > 0) {
+            gfDelay--;
+            if (gfDelay > 0) {
+                pd.putInt("pasterdream_ghost_face_delay", gfDelay);
+            } else {
+                // 再次确认玩家仍佩戴鬼魂之面
+                boolean hasGhostFace = CuriosApi.getCuriosInventory(player)
+                        .map(h -> h.findFirstCurio(ModItems.GHOST_FACE.get()).isPresent())
+                        .orElse(false);
+                if (!hasGhostFace) {
+                    clearGhostFaceData(pd);
+                } else {
+                    int extra = pd.getInt("pasterdream_ghost_face_extra");
+                    float velocity = pd.getFloat("pasterdream_ghost_face_velocity");
+                    double damage = pd.contains("pasterdream_ghost_face_damage") ? pd.getDouble("pasterdream_ghost_face_damage") : 2.0;
+                    int punch = pd.getInt("pasterdream_ghost_face_punch");
+                    boolean flame = pd.getBoolean("pasterdream_ghost_face_flame");
+                    boolean crit = pd.getBoolean("pasterdream_ghost_face_crit");
+                    int projectileType = pd.getInt("pasterdream_ghost_face_type");
 
-        // 再次确认玩家仍佩戴鬼魂之面
-        boolean hasGhostFace = CuriosApi.getCuriosInventory(player)
-                .map(h -> h.findFirstCurio(ModItems.GHOST_FACE.get()).isPresent())
-                .orElse(false);
-        if (!hasGhostFace) {
-            clearGhostFaceData(pd);
-            return;
-        }
-
-        int extra = pd.getInt("pasterdream_ghost_face_extra");
-        float velocity = pd.getFloat("pasterdream_ghost_face_velocity");
-        double damage = pd.contains("pasterdream_ghost_face_damage") ? pd.getDouble("pasterdream_ghost_face_damage") : 2.0;
-        int punch = pd.getInt("pasterdream_ghost_face_punch");
-        boolean flame = pd.getBoolean("pasterdream_ghost_face_flame");
-        boolean crit = pd.getBoolean("pasterdream_ghost_face_crit");
-        int projectileType = pd.getInt("pasterdream_ghost_face_type"); // 0=箭矢, 1=三叉戟, 2=克隆
-
-        for (int i = 0; i < extra; i++) {
-            switch (projectileType) {
-                case 1 -> {
-                    // 额外三叉戟（特殊构造）
-                    ThrownTrident trident = new ThrownTrident(player.level(), player, new ItemStack(Items.TRIDENT));
-                    trident.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, 1.0F);
-                    trident.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-                    trident.getPersistentData().putBoolean("pasterdream_ghost_face_spawned", true);
-                    player.level().addFreshEntity(trident);
-                }
-                case 2 -> {
-                    // 克隆原始投射物类型（特殊箭/其它模组弹射物）
-                    spawnClonedProjectile(player, pd, velocity, damage, punch, flame, crit && i == 0);
-                }
-                default -> {
-                    // 额外箭矢（弓/弩，附魔加成）
-                    Arrow arrow = new Arrow(player.level(), player);
-                    arrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, 1.0F);
-                    arrow.setBaseDamage(damage);
-                    arrow.setCritArrow(crit && i == 0);
-                    if (punch > 0) arrow.setKnockback(punch);
-                    if (flame) arrow.setSecondsOnFire(100);
-                    arrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-                    arrow.getPersistentData().putBoolean("pasterdream_ghost_face_spawned", true);
-                    player.level().addFreshEntity(arrow);
+                    for (int i = 0; i < extra; i++) {
+                        switch (projectileType) {
+                            case 1 -> {
+                                ThrownTrident trident = new ThrownTrident(player.level(), player, new ItemStack(Items.TRIDENT));
+                                trident.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, 1.0F);
+                                trident.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+                                trident.getPersistentData().putBoolean("pasterdream_ghost_face_spawned", true);
+                                player.level().addFreshEntity(trident);
+                            }
+                            case 2 -> {
+                                spawnClonedProjectile(player, pd, velocity, damage, punch, flame, crit && i == 0);
+                            }
+                            default -> {
+                                Arrow arrow = new Arrow(player.level(), player);
+                                arrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, 1.0F);
+                                arrow.setBaseDamage(damage);
+                                arrow.setCritArrow(crit && i == 0);
+                                if (punch > 0) arrow.setKnockback(punch);
+                                if (flame) arrow.setSecondsOnFire(100);
+                                arrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+                                arrow.getPersistentData().putBoolean("pasterdream_ghost_face_spawned", true);
+                                player.level().addFreshEntity(arrow);
+                            }
+                        }
+                    }
+                    clearGhostFaceData(pd);
                 }
             }
         }
 
-        clearGhostFaceData(pd);
+        // 苍白骨针护符：延迟传送
+        int talismanDelay = pd.getInt("pasterdream_talisman_teleport_delay");
+        if (talismanDelay > 0) {
+            talismanDelay--;
+            if (talismanDelay > 0) {
+                pd.putInt("pasterdream_talisman_teleport_delay", talismanDelay);
+            } else {
+                pd.remove("pasterdream_talisman_teleport_delay");
+                if (player instanceof ServerPlayer sp) {
+                    teleportToSpawn(sp);
+                }
+            }
+        }
     }
 
     /**
@@ -628,5 +689,36 @@ public class CurioPassiveHandler {
         pd.remove("pasterdream_ghost_face_type");
         pd.remove("pasterdream_ghost_face_clone");
         pd.remove("pasterdream_ghost_face_potion_type");
+    }
+
+    private static final ResourceKey<Level> DYEDREAM_WORLD =
+            ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_world"));
+    private static final ResourceKey<Level> LAMP_SHADOW_WORLD =
+            ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath("pasterdream", "lamp_shadow_world"));
+
+    private static boolean isDreamDimension(Level level) {
+        ResourceKey<Level> dim = level.dimension();
+        return dim == DYEDREAM_WORLD || dim == LAMP_SHADOW_WORLD;
+    }
+
+    private static void teleportToSpawn(ServerPlayer sp) {
+        ServerLevel overworld = sp.server.getLevel(Level.OVERWORLD);
+        if (overworld != null && sp.level().dimension() != Level.OVERWORLD) {
+            sp.teleportTo(overworld, sp.getX(), sp.getY(), sp.getZ(), sp.getYRot(), sp.getXRot());
+        }
+        ServerLevel targetLevel = (ServerLevel) sp.level();
+        double spawnX, spawnY, spawnZ;
+        if (sp.getRespawnDimension().equals(sp.level().dimension()) && sp.getRespawnPosition() != null) {
+            BlockPos respawn = sp.getRespawnPosition();
+            spawnX = respawn.getX() + 0.5;
+            spawnY = respawn.getY();
+            spawnZ = respawn.getZ() + 0.5;
+        } else {
+            spawnX = targetLevel.getLevelData().getXSpawn();
+            spawnY = targetLevel.getLevelData().getYSpawn();
+            spawnZ = targetLevel.getLevelData().getZSpawn();
+        }
+        sp.teleportTo(spawnX, spawnY, spawnZ);
+        sp.fallDistance = 0;
     }
 }
