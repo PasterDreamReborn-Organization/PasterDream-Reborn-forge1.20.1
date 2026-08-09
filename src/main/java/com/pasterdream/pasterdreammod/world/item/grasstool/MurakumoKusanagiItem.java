@@ -22,7 +22,10 @@ import java.util.List;
 
 public class MurakumoKusanagiItem extends SwordItem {
 
-    private static final int COOLDOWN_TICKS = 80;
+    private static final int COOLDOWN_TICKS = 80; // 技能冷却时间(tick)
+    private static final float SKILL_BASE_DAMAGE = 7.0f; // 技能基础伤害
+    private static final float SHARPNESS_DAMAGE_DIVISOR = 2.0f; // 锋利伤害除数
+    private static final int POISON_DURATION = 100; // 中毒持续时间(tick)
     private final float baseAttackDamage;
 
     public MurakumoKusanagiItem(Tier tier, int damage, float speed, Properties properties) {
@@ -36,7 +39,7 @@ public class MurakumoKusanagiItem extends SwordItem {
             stack.getOrCreateTag().putBoolean("skill", false);
             if (attacker instanceof Player player) {
                 int sharpnessLevel = stack.getEnchantmentLevel(Enchantments.SHARPNESS);
-                float extraDamage = (7.0f + sharpnessLevel * this.baseAttackDamage / 2.0f)
+                float extraDamage = (SKILL_BASE_DAMAGE + sharpnessLevel * this.baseAttackDamage / SHARPNESS_DAMAGE_DIVISOR)
                         * SkillCooldownHelper.getSkillDamageMultiplier(player);
                 target.invulnerableTime = 0;
                 target.hurt(player.damageSources().playerAttack(player), extraDamage);
@@ -49,7 +52,7 @@ public class MurakumoKusanagiItem extends SwordItem {
             }
         } else {
             if (!target.level().isClientSide()) {
-                target.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 0));
+                target.addEffect(new MobEffectInstance(MobEffects.POISON, POISON_DURATION, 0));
             }
         }
         return super.hurtEnemy(stack, target, attacker);

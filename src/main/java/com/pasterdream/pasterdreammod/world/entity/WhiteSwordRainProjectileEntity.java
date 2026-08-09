@@ -40,8 +40,15 @@ public class WhiteSwordRainProjectileEntity extends Entity {
 
     private static final TagKey<EntityType<?>> SHADOW_MOB = TagKey.create(Registries.ENTITY_TYPE,
             ResourceLocation.fromNamespaceAndPath("pasterdream", "shadow_mob"));
-    private static final int MAX_LIFE = 30;
-    private static final double HOMING_SPEED = 1.5;
+    private static final int MAX_LIFE = 30; // 弹射物最大存活时间(tick)
+    private static final double HOMING_SPEED = 1.5; // 追踪目标时的速度
+    private static final double SHARPNESS_DAMAGE_MULTIPLIER = 0.5; // 锋利附魔每级伤害加成
+    private static final double SMITE_DAMAGE_MULTIPLIER = 2.5; // 亡灵杀手每级伤害加成
+    private static final double BANE_DAMAGE_MULTIPLIER = 2.5; // 节肢杀手每级伤害加成
+    private static final double HITBOX_BASE = 0.3; // 基础碰撞箱扩展
+    private static final double HITBOX_SWEEPING_BONUS = 0.3; // 横扫之刃每级碰撞箱加成
+    private static final float SHADOW_DAMAGE_BONUS = 0.5f; // 对影魔额外伤害倍率
+    private static final float BROOCH_DAMAGE_BONUS = 0.5f; // 白兰花胸针额外伤害倍率
 
     @Nullable
     private UUID ownerUUID;
@@ -165,7 +172,7 @@ public class WhiteSwordRainProjectileEntity extends Entity {
         int sweepingEdge = projectileData.getInt("paster_sweeping_edge");
         int knockback = projectileData.getInt("paster_knockback");
 
-        double hitboxSize = 0.3 + sweepingEdge * 0.3;
+        double hitboxSize = HITBOX_BASE + sweepingEdge * HITBOX_SWEEPING_BONUS;
         AABB aabb = this.getBoundingBox().inflate(hitboxSize);
         LivingEntity owner = resolveOwner();
         List<LivingEntity> targets = this.level().getEntitiesOfClass(LivingEntity.class, aabb,
@@ -186,21 +193,21 @@ public class WhiteSwordRainProjectileEntity extends Entity {
         }
 
         // Enchantment bonuses
-        this.damage += projectileData.getInt("paster_sharpness") * 0.5f;
+        this.damage += projectileData.getInt("paster_sharpness") * SHARPNESS_DAMAGE_MULTIPLIER;
         if (projectileData.getInt("paster_smite") > 0 && target.getMobType() == MobType.UNDEAD) {
-            this.damage += projectileData.getInt("paster_smite") * 2.5f;
+            this.damage += projectileData.getInt("paster_smite") * SMITE_DAMAGE_MULTIPLIER;
         }
         if (projectileData.getInt("paster_bane") > 0 && target.getMobType() == MobType.ARTHROPOD) {
-            this.damage += projectileData.getInt("paster_bane") * 2.5f;
+            this.damage += projectileData.getInt("paster_bane") * BANE_DAMAGE_MULTIPLIER;
         }
 
         // Shadow/Brooch damage multiplier
         float rainMultiplier = 1.0f;
         if (target.getType().is(SHADOW_MOB)) {
-            rainMultiplier += 0.5f;
+            rainMultiplier += SHADOW_DAMAGE_BONUS;
         }
         if (hasBrooch) {
-            rainMultiplier += 0.5f;
+            rainMultiplier += BROOCH_DAMAGE_BONUS;
         }
         this.damage *= rainMultiplier;
 

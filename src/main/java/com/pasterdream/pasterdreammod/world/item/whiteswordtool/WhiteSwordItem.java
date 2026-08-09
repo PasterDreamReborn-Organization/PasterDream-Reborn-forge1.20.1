@@ -46,13 +46,16 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 public class WhiteSwordItem extends SwordItem {
 
-    private static final double ENERGY_COST = 1.5;
-    private static final int COOLDOWN_TICKS = 40;
-    private static final double PASSIVE_CHANCE = 0.5;
-    private static final int PASSIVE_PROJECTILE_COUNT = 6;
-    private static final double PASSIVE_SPREAD = 2.5;
-    private static final double ACTIVE_PROJECTILE_SPEED = 1.5;
-    private static final double PASSIVE_PROJECTILE_SPEED = 1.5;
+    private static final double ENERGY_COST = 1.5; // 主动技能消耗的融梦能量
+    private static final int COOLDOWN_TICKS = 40; // 主动技能冷却时间(tick)
+    private static final double PASSIVE_CHANCE = 0.5; // 被动触发概率
+    private static final int PASSIVE_PROJECTILE_COUNT = 6; // 被动触发弹射物数量
+    private static final double PASSIVE_SPREAD = 2.5; // 被动弹射物生成散布范围
+    private static final double ACTIVE_PROJECTILE_SPEED = 1.5; // 主动技能弹射物速度
+    private static final double PASSIVE_PROJECTILE_SPEED = 1.5; // 被动触发弹射物速度
+    private static final double ACTIVE_DAMAGE_RATIO = 0.15; // 主动技能伤害系数(基于攻击力)
+    private static final double PASSIVE_DAMAGE_RATIO = 0.1; // 被动触发伤害系数(基于攻击力)
+    private static final double SWEEPING_EDGE_SPREAD_BONUS = 0.5; // 横扫之刃每级增加散布范围
 
     public WhiteSwordItem(Tier tier, int damage, float speed) {
         super(tier, damage, speed, new Properties().fireResistant().rarity(ModRarities.LEGENDARY));
@@ -149,14 +152,14 @@ public class WhiteSwordItem extends SwordItem {
         ItemStack weapon = player.getMainHandItem();
         RandomSource random = player.getRandom();
 
-        float damage = (float) (0.1 * player.getAttributeValue(Attributes.ATTACK_DAMAGE));
+        float damage = (float) (PASSIVE_DAMAGE_RATIO * player.getAttributeValue(Attributes.ATTACK_DAMAGE));
         int sharpness = weapon.getEnchantmentLevel(Enchantments.SHARPNESS);
         int smite = weapon.getEnchantmentLevel(Enchantments.SMITE);
         int bane = weapon.getEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS);
         int fireAspect = weapon.getEnchantmentLevel(Enchantments.FIRE_ASPECT);
         int sweepingEdge = weapon.getEnchantmentLevel(Enchantments.SWEEPING_EDGE);
         int looting = weapon.getEnchantmentLevel(Enchantments.MOB_LOOTING);
-        double effectiveSpread = PASSIVE_SPREAD + sweepingEdge * 0.5;
+        double effectiveSpread = PASSIVE_SPREAD + sweepingEdge * SWEEPING_EDGE_SPREAD_BONUS;
 
         for (int i = 0; i < PASSIVE_PROJECTILE_COUNT; i++) {
             WhiteSwordRainProjectileEntity projectile = new WhiteSwordRainProjectileEntity(
@@ -209,7 +212,7 @@ public class WhiteSwordItem extends SwordItem {
         Vec3 look = player.getViewVector(1f);
         Vec3 right = new Vec3(-look.z, 0, look.x).normalize();
 
-        float damage = (float) (0.15 * player.getAttributeValue(Attributes.ATTACK_DAMAGE));
+        float damage = (float) (ACTIVE_DAMAGE_RATIO * player.getAttributeValue(Attributes.ATTACK_DAMAGE));
         ItemStack weapon = player.getMainHandItem();
         int sharpness = weapon.getEnchantmentLevel(Enchantments.SHARPNESS);
         int smite = weapon.getEnchantmentLevel(Enchantments.SMITE);
@@ -217,7 +220,7 @@ public class WhiteSwordItem extends SwordItem {
         int fireAspect = weapon.getEnchantmentLevel(Enchantments.FIRE_ASPECT);
         int sweepingEdge = weapon.getEnchantmentLevel(Enchantments.SWEEPING_EDGE);
         int looting = weapon.getEnchantmentLevel(Enchantments.MOB_LOOTING);
-        double effectiveSpread = spread + sweepingEdge * 0.5;
+        double effectiveSpread = spread + sweepingEdge * SWEEPING_EDGE_SPREAD_BONUS;
 
         for (int i = 0; i < count; i++) {
             WhiteSwordRainProjectileEntity projectile = new WhiteSwordRainProjectileEntity(

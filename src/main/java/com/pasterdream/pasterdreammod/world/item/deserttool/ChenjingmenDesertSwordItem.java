@@ -22,7 +22,11 @@ import java.util.List;
 
 public class ChenjingmenDesertSwordItem extends SwordItem {
 
-    private static final int COOLDOWN_TICKS = 200;
+    private static final int COOLDOWN_TICKS = 200; // 技能冷却时间(tick)
+    private static final double SHARPNESS_DAMAGE_BONUS = 0.5; // 锋利附魔每级伤害加成
+    private static final double SKILL_BASE_DAMAGE = 5.0; // 技能基础伤害
+    private static final double LOST_HP_RATIO_MULTIPLIER = 2.0; // 已损生命比例系数
+    private static final double LOST_HP_RATIO_OFFSET = 1.0; // 已损生命比例偏移
 
     public ChenjingmenDesertSwordItem(Tier tier, int damage, float speed, Properties properties) {
         super(tier, damage, speed, properties);
@@ -43,9 +47,9 @@ public class ChenjingmenDesertSwordItem extends SwordItem {
             stack.getOrCreateTag().putBoolean("skill", false);
             if (attacker instanceof Player player) {
                 double pasterAtk = player.getAttributeValue(Attributes.ATTACK_DAMAGE)
-                        + stack.getEnchantmentLevel(Enchantments.SHARPNESS) * 0.5;
+                        + stack.getEnchantmentLevel(Enchantments.SHARPNESS) * SHARPNESS_DAMAGE_BONUS;
                 double lostHpRatio = (player.getMaxHealth() - player.getHealth()) / player.getMaxHealth();
-                float bonusDamage = (float) (5 + (lostHpRatio * 2 + 1) * pasterAtk)
+                float bonusDamage = (float) (SKILL_BASE_DAMAGE + (lostHpRatio * LOST_HP_RATIO_MULTIPLIER + LOST_HP_RATIO_OFFSET) * pasterAtk)
                         * SkillCooldownHelper.getSkillDamageMultiplier(player);
                 target.invulnerableTime = 0;
                 target.hurt(player.damageSources().playerAttack(player), bonusDamage);

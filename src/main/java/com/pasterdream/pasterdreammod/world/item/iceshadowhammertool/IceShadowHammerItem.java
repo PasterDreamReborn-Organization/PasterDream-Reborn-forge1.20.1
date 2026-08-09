@@ -30,8 +30,16 @@ import java.util.List;
 
 public class IceShadowHammerItem extends SwordItem {
 
-    private static final double ENERGY_COST = 0.5;
-    private static final int COOLDOWN_TICKS = 80; // 4 seconds
+    private static final double ENERGY_COST = 0.5; // 技能能量消耗
+    private static final int COOLDOWN_TICKS = 80; // 技能冷却时间(tick)
+    private static final double MAIN_CRYSTAL_Y_OFFSET = 1.0; // 主水晶Y偏移
+    private static final double CRYSTAL_LATERAL_OFFSET = 2.0; // 侧面水晶偏移距离
+    private static final double CRYSTAL_FRONT_OFFSET_1 = 2.0; // 前方水晶偏移距离(近)
+    private static final double CRYSTAL_FRONT_OFFSET_2 = 4.0; // 前方水晶偏移距离(远)
+    private static final int CRYSTAL_DELAY_1 = 10; // 水晶延迟生成时间(tick,近)
+    private static final int CRYSTAL_DELAY_2 = 20; // 水晶延迟生成时间(tick,远)
+    private static final double PLAYER_KNOCKBACK_Y = 0.4; // 玩家使用后Y方向击退
+    private static final int SURFACE_SEARCH_RANGE = 5; // 地表搜索范围
     public IceShadowHammerItem(Tier tier, Properties properties) {
         super(tier, 3, -3.3f, properties.fireResistant().rarity(ModRarities.EPIC));
     }
@@ -73,7 +81,7 @@ public class IceShadowHammerItem extends SwordItem {
         double facingZ = Mth.cos(yaw);
 
         // Main crystal at clicked position
-        spawnCrystal(level, player, attackDamage, hammer, x, y + 1, z);
+        spawnCrystal(level, player, attackDamage, hammer, x, y + MAIN_CRYSTAL_Y_OFFSET, z);
 
         // Extra crystals from curio
         boolean hasCurio = CuriosApi.getCuriosInventory(player)
@@ -83,18 +91,18 @@ public class IceShadowHammerItem extends SwordItem {
         if (hasCurio) {
             if (player.isShiftKeyDown()) {
                 // SHIFT: left and right of main crystal, 10 tick delay
-                double sideX = facingZ * 2;
-                double sideZ = -facingX * 2;
-                spawnCrystal(level, player, attackDamage, hammer, x + sideX, y, z + sideZ, 10);
-                spawnCrystal(level, player, attackDamage, hammer, x - sideX, y, z - sideZ, 10);
+                double sideX = facingZ * CRYSTAL_LATERAL_OFFSET;
+                double sideZ = -facingX * CRYSTAL_LATERAL_OFFSET;
+                spawnCrystal(level, player, attackDamage, hammer, x + sideX, y, z + sideZ, CRYSTAL_DELAY_1);
+                spawnCrystal(level, player, attackDamage, hammer, x - sideX, y, z - sideZ, CRYSTAL_DELAY_1);
             } else {
                 // Normal: line along facing direction, 10 tick and 20 tick delays
-                spawnCrystal(level, player, attackDamage, hammer, x + facingX * 2, y, z + facingZ * 2, 10);
-                spawnCrystal(level, player, attackDamage, hammer, x + facingX * 4, y, z + facingZ * 4, 20);
+                spawnCrystal(level, player, attackDamage, hammer, x + facingX * CRYSTAL_FRONT_OFFSET_1, y, z + facingZ * CRYSTAL_FRONT_OFFSET_1, CRYSTAL_DELAY_1);
+                spawnCrystal(level, player, attackDamage, hammer, x + facingX * CRYSTAL_FRONT_OFFSET_2, y, z + facingZ * CRYSTAL_FRONT_OFFSET_2, CRYSTAL_DELAY_2);
             }
         }
 
-        player.setDeltaMovement(new Vec3(0, 0.4, 0));
+        player.setDeltaMovement(new Vec3(0, PLAYER_KNOCKBACK_Y, 0));
 
         level.playSound(null, BlockPos.containing(x, y, z),
                 SoundEvents.GENERIC_EXPLODE, SoundSource.NEUTRAL, 0.7f, 0.5f);
@@ -122,13 +130,13 @@ public class IceShadowHammerItem extends SwordItem {
     }
 
     private static int findSurfaceY(Level level, int x, int y, int z) {
-        for (int dy = 0; dy <= 5; dy++) {
+        for (int dy = 0; dy <= SURFACE_SEARCH_RANGE; dy++) {
             BlockPos pos = new BlockPos(x, y - dy, z);
             if (isSolidSurface(level, pos) && level.getBlockState(pos.above()).isAir()) {
                 return y - dy;
             }
         }
-        for (int dy = 1; dy <= 5; dy++) {
+        for (int dy = 1; dy <= SURFACE_SEARCH_RANGE; dy++) {
             BlockPos pos = new BlockPos(x, y + dy, z);
             if (isSolidSurface(level, pos) && level.getBlockState(pos.above()).isAir()) {
                 return y + dy;
