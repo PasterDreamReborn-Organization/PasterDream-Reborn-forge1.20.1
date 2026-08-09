@@ -20,7 +20,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.HugeFungusConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
+import com.pasterdream.pasterdreammod.worldgen.feature.foliageplacers.DreamFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.LakeFeature;
@@ -398,7 +398,7 @@ public class ModConfiguredFeatures {
                         BlockStateProvider.simple(ModBlocks.DYEDREAM_LOG.get()),
                         new ForkingTrunkPlacer(7, 2, 2),
                         BlockStateProvider.simple(ModBlocks.DYEDREAM_LEAVES.get()),
-                        new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
+                        new DreamFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 0.16666667F, 0.33333334F),
                         new TwoLayersFeatureSize(1, 0, 2))
                         .ignoreVines()
                         .build()));
