@@ -572,6 +572,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.loot_generator.not_container", "§cTarget block is not a container");
         add("message.pasterdream.loot_generator.loot_table_not_found", "§cLoot table %s does not exist");
         add("message.pasterdream.loot_generator.loot_table_set", "§aContainer cleared and loot table set: %s, will generate when opened");
+
+        add("message.pasterdream.需要在本层寻找暗影地牢钥匙以打开大门", "Need to find Shadow Dungeon Key in this floor to open the gate");
+
         add("option.pasterdream.Q: 模拟无工具破坏", "Q: Simulate Break Without Tool");
         add("option.pasterdream.W: 模拟下界合金镐破坏", "W: Simulate Break With Netherite Pickaxe");
         add("option.pasterdream.E: 模拟下界合金镐时运III破坏", "E: Simulate Break With Fortune III Netherite Pickaxe");
@@ -1147,7 +1150,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.broken_portal.repaired", "Core repaired");
         add("message.pasterdream.broken_portal.lack_knowledge", "You don't yet understand how to repair this core");
 
-        //卡莱的调料瓶
+        // Calais Spice Bottle
         add(ModItems.CALAIS_SPICE_BOTTLE.get(), "Calais Spice Bottle");
         add("tooltip.pasterdream.calais_spice_bottle.effect1", "§7▪ §9+40% eating speed");
         add("tooltip.pasterdream.calais_spice_bottle.effect2", "§7▪ §9Gain Calais Spice X buff when equipped. Each attack consumes a stack, and after chopping until it disappears, you need to eat to restore it. Eating accumulates stacks (1 stack per 3 hunger, up to level X).");
@@ -1505,8 +1508,20 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.potion_bottle.frozen.description.2","§7§O --Snowgrave");
         add("tooltip.pasterdream.potion_bottle.berserk.description.1","§9After smashing, release an 8*8 frenzy mist at the landing spot.");
         add("tooltip.pasterdream.potion_bottle.berserk.description.2","§9Players in it +20% attack damage, +10% movement speed, +50% attack speed, -30% skill cooldown, -30% blink cooldown, and +30% skill damage.");
+        add("tooltip.pasterdream.potion_bottle.inferno.description.1","§9After smashing, create a blazing fire in a 6x6 area, dealing magic damage over time to all enemies within the range and igniting them.");
+        add("tooltip.pasterdream.potion_bottle.inferno.description.2","§9Enemies hit will get a vulnerability debuff, up to 3 stacks.");
         add("effect.pasterdream.berserk_buff", "Frenzy");
         add("effect.pasterdream.frozen_buff", "Flash Freeze");
+        add("effect.pasterdream.vulnerability_buff", "Vulnerability");
+
+
+        // Shadow Hand Lantern
+        add(ModItems.SHADOW_HAND_LANTERN.get(), "Shadow Hand Lantern");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.1", "§7▪ §9When holding a lantern: 1.2 Sanity aura/min");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.2", "§7Use with right-click");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.3", "§7▪ §9Shadow creatures within a 15-square diameter take 20% increased damage for 15 seconds.");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.4", "§7▪ §9Cooldown: 8 seconds");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.5", "§7▪ §4San cost: 1");
 
         // Structure translations
         add("structure.pasterdream.oak_fisherman_hut", "Oak Fisherman Hut");

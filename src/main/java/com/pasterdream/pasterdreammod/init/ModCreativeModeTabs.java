@@ -580,6 +580,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WEAPON_WORKSHOP_GRIND_STONE.get());
                         output.accept(ModItems.WEAPON_WORKSHOP_BLAST_FURNACE.get());
                         output.accept(ModItems.TWILIGHT_LANTERN.get());
+                        output.accept(ModItems.SHADOW_HAND_LANTERN.get());
                         output.accept(ModItems.SHADOW_BED.get());
                         output.accept(ModItems.SHADOW_DUNGEON_PORTAL.get());
                         output.accept(ModItems.BROKEN_SHADOW_DUNGEON_PORTAL.get());

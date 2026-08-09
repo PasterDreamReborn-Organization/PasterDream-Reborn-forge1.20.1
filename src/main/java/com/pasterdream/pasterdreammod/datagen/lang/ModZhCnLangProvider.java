@@ -589,6 +589,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.loot_generator.loot_table_not_found", "§c战利品表 %s 不存在");
         add("message.pasterdream.loot_generator.loot_table_set", "§a已清空容器并写入战利品表：%s，下次打开容器时生成战利品");
 
+        add("message.pasterdream.需要在本层寻找暗影地牢钥匙以打开大门", "需要在本层寻找暗影地牢钥匙以打开大门");
+
         add("option.pasterdream.Q: 模拟无工具破坏", "Q: 模拟无工具破坏");
         add("option.pasterdream.W: 模拟下界合金镐破坏", "W: 模拟下界合金镐破坏");
         add("option.pasterdream.E: 模拟下界合金镐时运III破坏", "E: 模拟下界合金镐时运III破坏");
@@ -1909,6 +1911,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.potion_bottle.highly_toxic", "剧毒药剂瓶");
         add("item.pasterdream.potion_bottle.lightning", "雷电药剂瓶");
         add("item.pasterdream.potion_bottle.rejuvenation", "回春药剂瓶");
+        add("item.pasterdream.potion_bottle.inferno", "狱火药剂瓶");
         add("effect.pasterdream.highly_toxic_buff", "剧毒");
         add("tooltip.pasterdream.potion_bottle.highly_toxic.description","§9砸碎后释放剧毒云，对6*6区域范围内的生物施加剧毒、缓慢和虚弱");
         add("tooltip.pasterdream.potion_bottle.lightning.description.1","§9砸碎后在落地地点释放乌云，并在短时间后对5*5区域范围内生成4次随机落雷");
@@ -1918,8 +1921,19 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.potion_bottle.frozen.description.2","§7§O --谁将召唤那位施雪的女孩？");
         add("tooltip.pasterdream.potion_bottle.berserk.description.1","§9砸碎后在落地地点释放8*8的狂暴雾气");
         add("tooltip.pasterdream.potion_bottle.berserk.description.2","§9在其中的玩家攻击力+20%，移动速度+10%，攻击速度+50%，战技冷却-30%，瞬身术冷却-30%，战技伤害+30%");
+        add("tooltip.pasterdream.potion_bottle.inferno.description.1","§9在6x6范围制造烈火，对范围内所有敌人周期造成魔法伤害并点燃敌人");
+        add("tooltip.pasterdream.potion_bottle.inferno.description.2","§9波及的敌人会被赋予易伤buff，最高3级");
         add("effect.pasterdream.berserk_buff", "狂暴");
         add("effect.pasterdream.frozen_buff", "急冻");
+        add("effect.pasterdream.vulnerability_buff", "易伤");
+
+        // 暗影提灯
+        add(ModItems.SHADOW_HAND_LANTERN.get(), "暗影提灯");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.1", "§7▪ §9手持提灯时理智光环+1.2san/分钟");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.2", "§7右键使用");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.3", "§7▪ §9直径15格范围内的暗影生物受到20%的易伤效果持续15秒");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.4", "§7▪ §9冷却时间：8秒");
+        add("tooltip.pasterdream.shadow_hand_lantern.description.5", "§7▪ §4精神值消耗：1");
 
         // 结构翻译键
         add("structure.pasterdream.oak_fisherman_hut", "橡木渔夫小屋");

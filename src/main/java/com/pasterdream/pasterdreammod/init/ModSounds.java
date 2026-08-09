@@ -73,6 +73,8 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> SHADOW_DOOR = SOUNDS.register("shadow_door", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_door")));
     public static final RegistryObject<SoundEvent> LIGHTNING_CHARGE = SOUNDS.register("lightning_charge", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lightning_charge")));
     public static final RegistryObject<SoundEvent> FROZEN_SHOCK = SOUNDS.register("frozen_shock", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "frozen_shock")));
+    public static final RegistryObject<SoundEvent> INFERNO_IMPACT = SOUNDS.register("inferno_impact", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "inferno_impact")));
+    public static final RegistryObject<SoundEvent> SHADOW_HAND_LANTERN = SOUNDS.register("shadow_hand_lantern", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_hand_lantern")));
 
     public static void register(IEventBus eventBus) {
         SOUNDS.register(eventBus);

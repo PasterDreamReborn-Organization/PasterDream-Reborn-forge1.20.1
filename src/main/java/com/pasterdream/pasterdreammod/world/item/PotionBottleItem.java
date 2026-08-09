@@ -42,6 +42,7 @@ public class PotionBottleItem extends Item {
     public static final String TYPE_HIGHLY_TOXIC = "highly_toxic";
     public static final String TYPE_LIGHTNING = "lightning";
     public static final String TYPE_REJUVENATION = "rejuvenation";
+    public static final String TYPE_INFERNO = "inferno";
 
     // === 效果绑定（commonSetup 中注册） ===
 
@@ -108,6 +109,7 @@ public class PotionBottleItem extends Item {
         REGISTERED_TYPES.add(TYPE_HIGHLY_TOXIC);
         REGISTERED_TYPES.add(TYPE_LIGHTNING);
         REGISTERED_TYPES.add(TYPE_REJUVENATION);
+        REGISTERED_TYPES.add(TYPE_INFERNO);
     }
 
     private final String potionType;
@@ -257,6 +259,10 @@ public class PotionBottleItem extends Item {
             }
             case TYPE_REJUVENATION->
                 tooltip.add(Component.translatable("tooltip.pasterdream.potion_bottle.rejuvenation.description"));
+            case TYPE_INFERNO->{
+                tooltip.add(Component.translatable("tooltip.pasterdream.potion_bottle.inferno.description.1"));
+                tooltip.add(Component.translatable("tooltip.pasterdream.potion_bottle.inferno.description.2"));
+            }
         }
     }
 

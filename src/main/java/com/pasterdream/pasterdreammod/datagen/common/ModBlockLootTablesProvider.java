@@ -293,8 +293,6 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
         dropSelf(ModBlocks.SHADOW_DUNGEON_GATE.get());
         dropSelf(ModBlocks.SHADOW_DUNGEON_BARRIER.get());
-        dropNone(ModBlocks.SHADOW_DUNGEON_GATE_SHELL.get());
-        dropNone(ModBlocks.SHADOW_DUNGEON_BARRIER_SHELL.get());
         dropSelf(ModBlocks.SHADOW_DUNGEON_PORTAL.get());
         dropSelf(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get());
         dropNone(ModBlocks.DREAM_SPAWNER.get());

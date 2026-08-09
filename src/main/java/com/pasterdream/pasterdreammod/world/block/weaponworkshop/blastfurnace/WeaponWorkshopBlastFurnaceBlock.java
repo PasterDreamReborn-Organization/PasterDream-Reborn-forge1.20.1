@@ -2,7 +2,7 @@ package com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace;
 
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.MultiBlockProperties;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties._2x4x2Part;
-import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition.CalculatePartPosition;
+import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition._2x4x2_CalculatePartPosition;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.SingleFloorVoxelShapeCalculator;
 import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.blockentity.HorizontalDirectionalBlockBenchBaseEntityBlock;
 import net.minecraft.core.BlockPos;
@@ -40,6 +40,7 @@ public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockB
     public WeaponWorkshopBlastFurnaceBlock(Properties properties)
     {
         super(properties);
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(PART, _2x4x2Part.MAIN));
     }
 
     @Nullable
@@ -273,7 +274,7 @@ public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockB
 
             if(part != _2x4x2Part.MAIN)
             {
-                targetPosition = CalculatePartPosition.getMainPosFromAddon(blockPosition, blockState.getValue(WeaponWorkshopBlastFurnaceBlock.FACING), blockState.getValue(WeaponWorkshopBlastFurnaceBlock.PART));
+                targetPosition = _2x4x2_CalculatePartPosition.getMainPosFromAddon(blockPosition, blockState.getValue(WeaponWorkshopBlastFurnaceBlock.FACING), blockState.getValue(WeaponWorkshopBlastFurnaceBlock.PART));
             }
 
             BlockEntity blockEntity = level.getBlockEntity(targetPosition);
@@ -304,11 +305,11 @@ public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockB
                         continue;
                     }
 
-                    BlockPos addonPos = CalculatePartPosition.getPartPos(blockPosition, facing, eachPart);
+                    BlockPos addonPos = _2x4x2_CalculatePartPosition.getPartPos(blockPosition, facing, eachPart);
                     BlockState addonState = level.getBlockState(addonPos);
                     if (addonState.getBlock() instanceof WeaponWorkshopBlastFurnaceBlock)
                     {
-                        level.setBlock(addonPos, Blocks.AIR.defaultBlockState(), 3);
+                        level.destroyBlock(addonPos, false);
                     }
                 }
 
@@ -324,11 +325,11 @@ public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockB
             }
                 else
                 {
-                    BlockPos mainPos = CalculatePartPosition.getMainPosFromAddon(blockPosition, facing, part);
+                    BlockPos mainPos = _2x4x2_CalculatePartPosition.getMainPosFromAddon(blockPosition, facing, part);
                     BlockState mainState = level.getBlockState(mainPos);
                     if (mainState.getBlock() instanceof WeaponWorkshopBlastFurnaceBlock)
                     {
-                        level.removeBlock(mainPos, true);
+                        level.destroyBlock(mainPos, false);
                     }
                 }
         }
@@ -348,7 +349,7 @@ public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockB
                 {
                     continue;
                 }
-                BlockPos partPos = CalculatePartPosition.getPartPos(BlockPosition, facing, part);
+                BlockPos partPos = _2x4x2_CalculatePartPosition.getPartPos(BlockPosition, facing, part);
                 level.setBlock(partPos, this.defaultBlockState().setValue(PART, part).setValue(FACING, facing), 3);
                 level.updateNeighborsAt(partPos, this);
             }

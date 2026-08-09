@@ -41,8 +41,7 @@ public class ShadowBedBlock extends HorizontalDirectionalBlockBenchBaseEntityBlo
     @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter world, BlockPos pos, CollisionContext context)
     {
-        List<VoxelShape> MainListVoxelShape = VoxelShapeCalculator.calculateAllDirectionVoxelShapeFromEastVoxelShape(0 / 16.0, 0, -3 / 16.0, 19 / 16.0, 11 / 16.0, 19 / 16.0);
-        List<VoxelShape> AddonListVoxelShape = VoxelShapeCalculator.calculateAllDirectionVoxelShapeFromEastVoxelShape(-3 / 16.0, 0, -3 / 16.0, 16 / 16.0, 11 / 16.0, 19 / 16.0);
+        List<VoxelShape> ListVoxelShape = VoxelShapeCalculator.calculateAllDirectionVoxelShapeFromEastVoxelShape(0 / 16.0, 0, -3 / 16.0, 19 / 16.0, 11 / 16.0, 19 / 16.0);
 
         Direction facing = blockState.getValue(FACING);
         switch (blockState.getValue(PART))
@@ -51,10 +50,10 @@ public class ShadowBedBlock extends HorizontalDirectionalBlockBenchBaseEntityBlo
             {
                 return switch (facing)
                 {
-                    case EAST  -> MainListVoxelShape.get(0);
-                    case SOUTH -> MainListVoxelShape.get(1);
-                    case WEST  -> MainListVoxelShape.get(2);
-                    case NORTH -> MainListVoxelShape.get(3);
+                    case EAST  -> ListVoxelShape.get(0);
+                    case SOUTH -> ListVoxelShape.get(1);
+                    case WEST  -> ListVoxelShape.get(2);
+                    case NORTH -> ListVoxelShape.get(3);
                     default -> box(0, 0, 0, 16, 16, 16);
                 };
             }
@@ -62,10 +61,10 @@ public class ShadowBedBlock extends HorizontalDirectionalBlockBenchBaseEntityBlo
             {
                 return switch (facing)
                 {
-                    case EAST  -> AddonListVoxelShape.get(0);
-                    case SOUTH -> AddonListVoxelShape.get(1);
-                    case WEST  -> AddonListVoxelShape.get(2);
-                    case NORTH -> AddonListVoxelShape.get(3);
+                    case EAST  -> ListVoxelShape.get(2);
+                    case SOUTH -> ListVoxelShape.get(3);
+                    case WEST  -> ListVoxelShape.get(0);
+                    case NORTH -> ListVoxelShape.get(1);
                     default -> box(0, 0, 0, 16, 16, 16);
                 };
             }
@@ -123,7 +122,7 @@ public class ShadowBedBlock extends HorizontalDirectionalBlockBenchBaseEntityBlo
             BlockState otherState = level.getBlockState(otherPos);
             if (otherState.getBlock() == this)
             {
-                level.removeBlock(otherPos, false);
+                level.destroyBlock(otherPos, false);
             }
 
             super.onRemove(blockState, level, blockPosition, newState, movedByPiston);
