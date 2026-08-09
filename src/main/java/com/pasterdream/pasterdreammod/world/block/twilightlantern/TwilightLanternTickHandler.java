@@ -62,7 +62,7 @@ public class TwilightLanternTickHandler {
 
         // Tick 55: second message + shadow_music_0
         if (tick == 55) {
-            playSound(world, pos, ModSounds.SHADOW_MUSIC_0.get(), SoundSource.MUSIC);
+            playSound(world, pos, ModSounds.SHADOW_MUSIC_0.get(), SoundSource.RECORDS);
             broadcastMessage(world, pos, Component.translatable("message.pasterdream.twilight_lantern.event_mid"));
         }
 
