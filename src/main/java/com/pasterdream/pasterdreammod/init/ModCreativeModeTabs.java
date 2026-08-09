@@ -431,6 +431,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_STONE_TILES_WALL.get());
                         output.accept(ModItems.CRACKED_SHADOW_STONE_BRICK.get());
                         output.accept(ModItems.CHISELED_SHADOW_STONE_BRICK.get());
+                        output.accept(ModItems.SHADOW_STONE_CAGE_RUNE.get());
+                        output.accept(ModItems.SHADOW_STONE_HOLY_GRAIL_RUNE.get());
+                        output.accept(ModItems.SHADOW_STONE_OBLATION_RUNE.get());
+                        output.accept(ModItems.SHADOW_STONE_TRIPOD_CAULDRON_RUNE.get());
                         output.accept(ModItems.SHADOW_DUNGEON_STONE.get());
                         output.accept(ModItems.CHISELED_SHADOW_DUNGEON_BRICKS.get());
                         output.accept(ModItems.SHADOW_DUNGEON_BRICKS.get());

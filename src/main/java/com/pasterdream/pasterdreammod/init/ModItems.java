@@ -1218,6 +1218,14 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get(), new Item.Properties()));
     public static final RegistryObject<Item> CHISELED_SHADOW_STONE_BRICK = ITEMS.register("chiseled_shadow_stone_brick",
             () -> new BlockItem(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_STONE_CAGE_RUNE = ITEMS.register("shadow_stone_cage_rune",
+            () -> new BlockItem(ModBlocks.SHADOW_STONE_CAGE_RUNE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_STONE_HOLY_GRAIL_RUNE = ITEMS.register("shadow_stone_holy_grail_rune",
+            () -> new BlockItem(ModBlocks.SHADOW_STONE_HOLY_GRAIL_RUNE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_STONE_OBLATION_RUNE = ITEMS.register("shadow_stone_oblation_rune",
+            () -> new BlockItem(ModBlocks.SHADOW_STONE_OBLATION_RUNE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_STONE_TRIPOD_CAULDRON_RUNE = ITEMS.register("shadow_stone_tripod_cauldron_rune",
+            () -> new BlockItem(ModBlocks.SHADOW_STONE_TRIPOD_CAULDRON_RUNE.get(), new Item.Properties()));
     // ===== 暗影地牢方块系列 =====
     public static final RegistryObject<Item> SHADOW_DUNGEON_STONE = ITEMS.register("shadow_dungeon_stone",
             () -> new BlockItem(ModBlocks.SHADOW_DUNGEON_STONE.get(), new Item.Properties()));
