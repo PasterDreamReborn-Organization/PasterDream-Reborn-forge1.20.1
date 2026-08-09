@@ -1565,6 +1565,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.shadownote_ruin_1", "Shadow Note Ruin");
         add("structure.pasterdream.shadownote_ruin_2", "Shadow Note Ruin");
         add("structure.pasterdream.invaded_church", "Infested Church");
+        add("structure.pasterdream.twilight_lantern", "Twilight Lantern");
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "You do not yet know how to activate the shadow lantern");
         add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "You need to light the shadow lantern with a Melt Dream Crystal Fragment");
         add("message.pasterdream.twilight_lantern.event_start", "The eerie lantern suddenly shakes violently, black shadows flow out from the wick.");

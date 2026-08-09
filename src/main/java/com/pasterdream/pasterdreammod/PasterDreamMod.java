@@ -140,6 +140,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onRapidReactionFall);
         MinecraftForge.EVENT_BUS.addListener(ModWorldGenEvents::onLevelLoad);
         MinecraftForge.EVENT_BUS.addListener(ModWorldGenEvents::onServerTick);
+        MinecraftForge.EVENT_BUS.addListener(ModWorldGenEvents::onCheckSpawn);
         MinecraftForge.EVENT_BUS.addListener(ModMobSpawnEvents::onEntityJoinLevel);
         modEventBus.addListener(this::AddOverlays);
         modEventBus.addListener(this::AddEntityRenderersEvent);

@@ -22,16 +22,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(net.minecraft.server.commands.LocateCommand.class)
 public class LocateCommandMixin {
 
-    private static final ResourceKey<Structure> SHADOW_DOOR_KEY =
+    private static final ResourceKey<Structure> TWILIGHT_LANTERN_KEY =
             ResourceKey.create(Registries.STRUCTURE,
-                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_world_door"));
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "twilight_lantern"));
 
     @Inject(method = "locateStructure", at = @At("HEAD"), cancellable = true)
     private static void onLocateStructure(CommandSourceStack source,
                                           ResourceOrTagKeyArgument.Result<Structure> structure,
                                           CallbackInfoReturnable<Integer> cir) {
         boolean isOurStructure = structure.unwrap()
-                .map(key -> key.equals(SHADOW_DOOR_KEY), tag -> false);
+                .map(key -> key.equals(TWILIGHT_LANTERN_KEY), tag -> false);
         if (!isOurStructure) return;
 
         ServerLevel nether = source.getServer().getLevel(Level.NETHER);
@@ -41,8 +41,8 @@ public class LocateCommandMixin {
             return;
         }
 
-        ModWorldGenEvents.ShadowWorldDoorPlacedData data =
-                ModWorldGenEvents.ShadowWorldDoorPlacedData.get(nether);
+        ModWorldGenEvents.TwilightLanternPlacedData data =
+                ModWorldGenEvents.TwilightLanternPlacedData.get(nether);
         if (!data.isPlaced()) {
             source.sendFailure(Component.translatable("commands.locate.structure.not_found"));
             cir.setReturnValue(0);
@@ -64,7 +64,7 @@ public class LocateCommandMixin {
                                 Component.translatable("chat.coordinates.tooltip"))));
 
         source.sendSuccess(() -> Component.translatable(
-                "commands.locate.structure.success", "pasterdream:shadow_world_door", coords, dist), false);
+                "commands.locate.structure.success", Component.translatable("structure.pasterdream.twilight_lantern"), coords, dist), false);
         cir.setReturnValue(dist);
     }
 }
