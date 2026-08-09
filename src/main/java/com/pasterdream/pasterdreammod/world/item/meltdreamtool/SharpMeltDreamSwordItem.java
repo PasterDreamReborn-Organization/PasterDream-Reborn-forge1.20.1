@@ -26,6 +26,13 @@ public class SharpMeltDreamSwordItem extends SwordItem {
 
     private static final String TAG_COOLDOWN = "SharpCooldown";
     private static final String TAG_CHARGED = "SharpCharged";
+    private static final int COOLDOWN_WITHOUT_BUFF = 100; // 无染梦守护时冷却(tick)
+    private static final int COOLDOWN_WITH_BUFF = 60; // 有染梦守护时冷却(tick)
+    private static final float BASE_SKILL_ATTACK = 4.0f; // 技能基础攻击力
+    private static final float SKILL_DAMAGE_OFFSET = 2.0f; // 技能附加伤害
+    private static final float SKILL_DAMAGE_MULTIPLIER = 1.5f; // 技能攻击力倍率
+    private static final double KNOCKBACK_Y = 0.8; // 击飞Y速度
+    private static final float HIT_SOUND_VOLUME = 1.5f; // 命中音效音量
 
     public SharpMeltDreamSwordItem(Tier tier, Properties properties) {
         super(tier, 4, -2.4f, properties.fireResistant());
@@ -44,7 +51,7 @@ public class SharpMeltDreamSwordItem extends SwordItem {
             long now = level.getGameTime();
             long lastUse = stack.getOrCreateTag().getLong(TAG_COOLDOWN);
             // 染梦守护 buff 缩短冷却：3 秒 vs 5 秒
-            int cooldownTicks = player.hasEffect(ModEffects.DYEDREAM_ARMOR_BUFF.get()) ? 60 : 100;
+            int cooldownTicks = player.hasEffect(ModEffects.DYEDREAM_ARMOR_BUFF.get()) ? COOLDOWN_WITH_BUFF : COOLDOWN_WITHOUT_BUFF;
             if (now - lastUse >= cooldownTicks) {
                 stack.getOrCreateTag().putLong(TAG_COOLDOWN, now);
                 stack.getOrCreateTag().putBoolean(TAG_CHARGED, true);
@@ -67,16 +74,16 @@ public class SharpMeltDreamSwordItem extends SwordItem {
         if (stack.getOrCreateTag().getBoolean(TAG_CHARGED)) {
             stack.getOrCreateTag().putBoolean(TAG_CHARGED, false);
             if (attacker instanceof Player player) {
-                float baseAttack = 4.0f + this.getTier().getAttackDamageBonus();
-                float extraDamage = (2.0f + baseAttack * 1.5f)
+                float baseAttack = BASE_SKILL_ATTACK + this.getTier().getAttackDamageBonus();
+                float extraDamage = (SKILL_DAMAGE_OFFSET + baseAttack * SKILL_DAMAGE_MULTIPLIER)
                         * SkillCooldownHelper.getSkillDamageMultiplier(player);
                 target.invulnerableTime = 0;
                 target.hurt(player.damageSources().playerAttack(player), extraDamage);
             }
-            target.setDeltaMovement(target.getDeltaMovement().add(0, 0.8, 0));
+            target.setDeltaMovement(target.getDeltaMovement().add(0, KNOCKBACK_Y, 0));
             target.hurtMarked = true;
             target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
-                    ModSounds.SKILL1.get(), target.getSoundSource(), 1.5f, 1.0f);
+                    ModSounds.SKILL1.get(), target.getSoundSource(), HIT_SOUND_VOLUME, 1.0f);
             // 脚下粒子爆发：40 个，位置 (x, y+0.3, z)，速度 (0.05, 0.3, 0.05)，速度随机偏移 0.4
             if (target.level() instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(ModParticleTypes.SHARP_SWORD_SLASH.get(),

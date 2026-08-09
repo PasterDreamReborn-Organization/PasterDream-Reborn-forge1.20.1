@@ -25,7 +25,13 @@ import java.util.List;
 
 public class BeihaiRuoTideSwordItem extends SwordItem {
 
-    private static final int COOLDOWN_TICKS = 50;
+    private static final int COOLDOWN_TICKS = 50; // 技能冷却时间(tick)
+    private static final double SHARPNESS_DAMAGE_BONUS = 0.5; // 锋利附魔每级伤害加成
+    private static final double WATER_BONUS_BASE = 3.0; // 水中伤害基础加成
+    private static final double WATER_BONUS_MULTIPLIER = 1.2; // 水中伤害攻击力倍率
+    private static final double DASH_SPEED = 2.0; // 水中冲刺速度
+    private static final int RESISTANCE_DURATION = 18; // 水中冲刺抗性持续时间(tick)
+    private static final int RESISTANCE_AMPLIFIER = 3; // 水中冲刺抗性等级
 
     public BeihaiRuoTideSwordItem(Tier tier, int damage, float speed, Properties properties) {
         super(tier, damage, speed, properties);
@@ -45,9 +51,9 @@ public class BeihaiRuoTideSwordItem extends SwordItem {
             stack.getOrCreateTag().putBoolean("skill", false);
             if (attacker instanceof Player player) {
                 double pasterAtk = player.getAttributeValue(Attributes.ATTACK_DAMAGE)
-                        + stack.getEnchantmentLevel(Enchantments.SHARPNESS) * 0.5;
+                        + stack.getEnchantmentLevel(Enchantments.SHARPNESS) * SHARPNESS_DAMAGE_BONUS;
                 float bonusDamage = target.isInWaterOrBubble()
-                        ? (float) (3 + 1.2 * pasterAtk)
+                        ? (float) (WATER_BONUS_BASE + WATER_BONUS_MULTIPLIER * pasterAtk)
                         : (float) pasterAtk;
                 bonusDamage *= SkillCooldownHelper.getSkillDamageMultiplier(player);
                 target.invulnerableTime = 0;
@@ -74,10 +80,10 @@ public class BeihaiRuoTideSwordItem extends SwordItem {
 
         if (player.isInWaterOrBubble()) {
             if (!level.isClientSide()) {
-                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 18, 3, false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, RESISTANCE_DURATION, RESISTANCE_AMPLIFIER, false, false));
             }
             Vec3 look = player.getLookAngle();
-            player.setDeltaMovement(look.x * 2, look.y * 2, look.z * 2);
+            player.setDeltaMovement(look.x * DASH_SPEED, look.y * DASH_SPEED, look.z * DASH_SPEED);
             player.getCooldowns().addCooldown(this, COOLDOWN_TICKS);
             SkillCooldownHelper.applySharedCooldown(player, COOLDOWN_TICKS);
         }

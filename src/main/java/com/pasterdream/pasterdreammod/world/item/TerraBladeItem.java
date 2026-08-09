@@ -40,8 +40,15 @@ import java.util.List;
 
 public class TerraBladeItem extends SwordItem {
 
-    private static final double ENERGY_COST = 0.5;
-    private static final double ENERGY_COST_WITH_CHARM = 0.4;
+    private static final double ENERGY_COST = 0.5; // 技能能量消耗
+    private static final double ENERGY_COST_WITH_CHARM = 0.4; // 装备泰拉浮岛饰品时的能量消耗
+    private static final int SKILL_COOLDOWN_TICKS = 5; // 技能冷却时间(tick)
+    private static final double WAVE_SPEED = 2.0; // 剑气波速度
+    private static final double SHARPNESS_DAMAGE_BONUS = 0.5; // 锋利附魔每级伤害加成
+    private static final double CHARM_DAMAGE_MULTIPLIER = 1.3; // 泰拉浮岛饰品伤害倍率
+    private static final double WAVE_SPAWN_Y_OFFSET = 1.5; // 剑气波生成Y偏移
+    private static final float SOUND_VOLUME = 0.8f; // 技能音效音量
+    private static final float SOUND_PITCH = 1.0f; // 技能音效音高
 
     public TerraBladeItem(Tier tier, int damage, float speed) {
         super(tier, damage, speed, new Properties().fireResistant().rarity(ModRarities.LEGENDARY));
@@ -98,7 +105,7 @@ public class TerraBladeItem extends SwordItem {
                 MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -cost);
             }
             executeSkillWave(level, player, stack, hasCharm);
-            player.getCooldowns().addCooldown(stack.getItem(), 5);
+            player.getCooldowns().addCooldown(stack.getItem(), SKILL_COOLDOWN_TICKS);
         } else {
             tag.putBoolean("skill_active", false);
             player.displayClientMessage(Component.translatable("tooltip.pasterdream.terra_blade.no_energy"), true);
@@ -108,7 +115,7 @@ public class TerraBladeItem extends SwordItem {
     private static void executeSkillWave(Level level, Player player, ItemStack stack, boolean hasCharm) {
         Vec3 look = player.getLookAngle();
         double x = player.getX() + look.x;
-        double y = player.getY() + 1.5;
+        double y = player.getY() + WAVE_SPAWN_Y_OFFSET;
         double z = player.getZ() + look.z;
 
         TerraswordWaveEntity wave = ModEntities.TERRASWORD_WAVE.get().spawn(
@@ -119,12 +126,12 @@ public class TerraBladeItem extends SwordItem {
             wave.setOwner(player);
             wave.setYRot(player.getYRot());
             wave.setXRot(player.getXRot());
-            wave.setDeltaMovement(look.x * 2, look.y * 2, look.z * 2);
+            wave.setDeltaMovement(look.x * WAVE_SPEED, look.y * WAVE_SPEED, look.z * WAVE_SPEED);
 
             double atk = player.getAttributeValue(Attributes.ATTACK_DAMAGE)
-                    + stack.getEnchantmentLevel(Enchantments.SHARPNESS) * 0.5;
+                    + stack.getEnchantmentLevel(Enchantments.SHARPNESS) * SHARPNESS_DAMAGE_BONUS;
             if (hasCharm) {
-                atk *= 1.3;
+                atk *= CHARM_DAMAGE_MULTIPLIER;
             }
             atk *= SkillCooldownHelper.getSkillDamageMultiplier(player);
 
@@ -139,7 +146,7 @@ public class TerraBladeItem extends SwordItem {
             waveData.putBoolean("ignore_iframe", hasCharm);
 
             level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()),
-                    ModSounds.SWORD_WAVE.get(), SoundSource.PLAYERS, 0.8f, 1.0f);
+                    ModSounds.SWORD_WAVE.get(), SoundSource.PLAYERS, SOUND_VOLUME, SOUND_PITCH);
         }
     }
 

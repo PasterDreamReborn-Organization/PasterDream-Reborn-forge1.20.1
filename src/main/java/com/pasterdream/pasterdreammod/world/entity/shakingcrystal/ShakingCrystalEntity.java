@@ -45,11 +45,18 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
 
     private static final EntityDataAccessor<String> TEXTURE =
             SynchedEntityData.defineId(ShakingCrystalEntity.class, EntityDataSerializers.STRING);
-    private static final int LIFETIME_TICKS = 60; // 3 seconds
-    private static final int WAVE1_TICK = 1;    // immediately on spawn
-    private static final int WAVE2_TICK = 30;   // 1.5s
-    private static final double DAMAGE_RADIUS = 5.0;
-    private static final double CONFUSION_RADIUS = 4.5;
+    private static final int LIFETIME_TICKS = 60; // 最大存活时间(tick)
+    private static final int WAVE1_TICK = 1; // 第一波伤害触发tick(立即)
+    private static final int WAVE2_TICK = 30; // 第二波伤害触发tick(1.5s后)
+    private static final double DAMAGE_RADIUS = 5.0; // 伤害半径
+    private static final double CONFUSION_RADIUS = 4.5; // 混乱效果半径
+    private static final double WAVE1_DAMAGE_RATIO = 0.4; // 第一波伤害比例
+    private static final double WAVE2_DAMAGE_RATIO = 0.6; // 第二波伤害比例
+    private static final double EXPLOSION_DAMAGE_RATIO = 1.0; // 爆炸伤害比例
+    private static final float SMITE_BANE_MULTIPLIER = 2.5f; // 亡灵杀手/节肢杀手每级伤害加成
+    private static final int FIRE_ASPECT_TICK_MULTIPLIER = 4; // 火焰附加tick倍数
+    private static final int ABSORPTION_DURATION = 200; // 爆炸后吸收buff持续时间(tick)
+    private static final int PARTICLE_INTERVAL = 10; // 常驻粒子间隔(tick)
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private int lifeTicks = 0;
@@ -193,7 +200,7 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
                 sl.sendParticles(ParticleTypes.SMOKE, getX(), getY(), getZ(), 64, 1, 0.5, 1, 0.01);
             }
             // Persistent particles every few ticks
-            if (lifeTicks % 10 == 0 && lifeTicks > 0) {
+            if (lifeTicks % PARTICLE_INTERVAL == 0 && lifeTicks > 0) {
                 sl.sendParticles(ModParticleTypes.SHADOW_STONE_PARTICLE.get(),
                         getX(), getY() + 1, getZ(), 8, 0.5, 0.5, 0.5, 0.01);
             }
@@ -206,11 +213,11 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
 
         // Damage wave 1 at 0.5s
         if (lifeTicks == WAVE1_TICK) {
-            pulseDamage(owner, attackDamage * 0.4f, false);
+            pulseDamage(owner, attackDamage * (float) WAVE1_DAMAGE_RATIO, false);
         }
         // Damage wave 2 at 1.5s
         if (lifeTicks == WAVE2_TICK) {
-            pulseDamage(owner, attackDamage * 0.6f, false);
+            pulseDamage(owner, attackDamage * (float) WAVE2_DAMAGE_RATIO, false);
         }
 
         // Lifetime expired — explode (wave 3)
@@ -259,11 +266,11 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
             if (entity instanceof LivingEntity living) {
                 MobType mobType = living.getMobType();
                 if (smite > 0 && mobType == MobType.UNDEAD)
-                    finalDamage += smite * 2.5f;
+                    finalDamage += smite * SMITE_BANE_MULTIPLIER;
                 if (baneOfArthropods > 0 && mobType == MobType.ARTHROPOD)
-                    finalDamage += baneOfArthropods * 2.5f;
+                    finalDamage += baneOfArthropods * SMITE_BANE_MULTIPLIER;
                 if (fireAspect > 0)
-                    living.setSecondsOnFire(fireAspect * 4);
+                    living.setSecondsOnFire(fireAspect * FIRE_ASPECT_TICK_MULTIPLIER);
             }
 
             entity.invulnerableTime = 0;
@@ -276,10 +283,10 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
             sl.sendParticles(ParticleTypes.EXPLOSION_EMITTER, getX(), getY(), getZ(), 1, 0, 0, 0, 0);
         }
         // Damage + visual + sound handled by pulseDamage(isExplosion=true)
-        pulseDamage(owner, attackDamage * 1.0f, true);
+        pulseDamage(owner, attackDamage * (float) EXPLOSION_DAMAGE_RATIO, true);
 
         if (owner != null && owner.isAlive()) {
-            owner.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 0)); // ~10s
+            owner.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, ABSORPTION_DURATION, 0));
         }
     }
 

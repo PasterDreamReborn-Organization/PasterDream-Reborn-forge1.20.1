@@ -35,7 +35,16 @@ import java.util.UUID;
 public class TerraswordWaveEntity extends PathfinderMob {
 
     private int lifeTicks = 0;
-    private static final int MAX_LIFE_TICKS = 25;
+    private static final int MAX_LIFE_TICKS = 25; // 最大存活时间(tick)
+    private static final double COLLISION_RADIUS_BASE = 2.5; // 基础碰撞半径
+    private static final double COLLISION_RADIUS_SWEEPING_BONUS = 0.5; // 横扫之刃每级碰撞半径加成
+    private static final double BASE_DAMAGE_OFFSET = 2.0; // 基础伤害偏移
+    private static final float SMITE_BANE_MULTIPLIER = 2.5f; // 亡灵杀手/节肢杀手每级伤害加成
+    private static final float PENETRATION_DECAY = 0.25f; // 每次穿透伤害衰减系数
+    private static final int MAX_PENETRATION = 4; // 最大穿透次数
+    private static final int FIRE_ASPECT_TICK_MULTIPLIER = 4; // 火焰附加tick倍数
+    private static final float KNOCKBACK_MULTIPLIER = 0.6f; // 击退力度系数
+    private static final double KNOCKBACK_Y = 0.2; // 击退Y速度
     private final Set<UUID> hitEntities = new HashSet<>();
     private final Set<UUID> reflectedProjectiles = new HashSet<>();
     private int penetrationCount = 0;
@@ -150,7 +159,7 @@ public class TerraswordWaveEntity extends PathfinderMob {
             int fireAspect = data.getInt("fire_aspect");
             int knockback = data.getInt("knockback");
 
-            double radius = 2.5 / 2d + sweepingEdge * 0.5;
+            double radius = COLLISION_RADIUS_BASE / 2d + sweepingEdge * COLLISION_RADIUS_SWEEPING_BONUS;
             Vec3 center = new Vec3(this.getX(), this.getY(), this.getZ());
             List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class,
                     new AABB(center, center).inflate(radius), e -> true)
@@ -160,17 +169,17 @@ public class TerraswordWaveEntity extends PathfinderMob {
                 if (target != owner && !(target instanceof TerraswordWaveEntity)
                         && !hitEntities.contains(target.getUUID())) {
                     hitEntities.add(target.getUUID());
-                    float damage = (float) (2 + pasterAtk);
+                    float damage = (float) (BASE_DAMAGE_OFFSET + pasterAtk);
                     if (smite > 0 && target.getMobType() == MobType.UNDEAD) {
-                        damage += smite * 2.5f;
+                        damage += smite * SMITE_BANE_MULTIPLIER;
                     }
                     if (bane > 0 && target.getMobType() == MobType.ARTHROPOD) {
-                        damage += bane * 2.5f;
+                        damage += bane * SMITE_BANE_MULTIPLIER;
                     }
                     if (data.getBoolean("ignore_iframe")) {
                         target.invulnerableTime = 0;
                     }
-                    float decayMultiplier = 1.0f - penetrationCount * 0.25f;
+                    float decayMultiplier = 1.0f - penetrationCount * PENETRATION_DECAY;
                     float finalDamage = damage * decayMultiplier;
                     if (owner != null) {
                         target.hurt(this.damageSources().playerAttack(owner), finalDamage);
@@ -179,18 +188,18 @@ public class TerraswordWaveEntity extends PathfinderMob {
                     }
                     penetrationCount++;
                     if (fireAspect > 0) {
-                        target.setSecondsOnFire(fireAspect * 4);
+                        target.setSecondsOnFire(fireAspect * FIRE_ASPECT_TICK_MULTIPLIER);
                     }
                     if (knockback > 0) {
-                        Vec3 kb = target.position().subtract(center).normalize().scale(knockback * 0.6);
-                        target.push(kb.x, 0.2, kb.z);
+                        Vec3 kb = target.position().subtract(center).normalize().scale(knockback * KNOCKBACK_MULTIPLIER);
+                        target.push(kb.x, KNOCKBACK_Y, kb.z);
                     }
                     if (level instanceof ServerLevel serverLevel) {
                         serverLevel.sendParticles(ParticleTypes.SWEEP_ATTACK,
                                 target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
                                 3, 0.3, 0.3, 0.3, 0.1);
                     }
-                    if (penetrationCount >= 4) {
+                    if (penetrationCount >= MAX_PENETRATION) {
                         if (level instanceof ServerLevel sl) {
                             sl.sendParticles(ParticleTypes.EXPLOSION,
                                     this.getX(), this.getY(), this.getZ(),

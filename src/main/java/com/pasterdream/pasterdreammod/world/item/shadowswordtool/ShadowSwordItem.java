@@ -43,9 +43,18 @@ public class ShadowSwordItem extends SwordItem {
 
     private static final UUID SAN_MODIFIER_UUID = UUID.fromString("a1b2c3d4-e5f6-7890-abcd-ef1234567890");
     private static final String NIGHTMARE_SLASH_TAG = "pasterdream:nightmare_slash";
-    private static final double SKILL_SAN_COST = 5.0;
-    private static final float SKILL_HP_COST = 5.0F;
-    private static final int SKILL_COOLDOWN_TICKS = 40;
+    private static final double SKILL_SAN_COST = 5.0; // 技能SAN消耗
+    private static final float SKILL_HP_COST = 5.0F; // 技能血量消耗(无SAN时)
+    private static final int SKILL_COOLDOWN_TICKS = 40; // 技能冷却时间(tick)
+    private static final float SKILL_MIN_HP = 1.0F; // 技能扣血后最低血量
+    private static final double SAN_VARIABILITY_MODIFIER = -3.6; // SAN波动属性修正
+    private static final double SAN_ATTACK_SPEED_FACTOR = 0.5; // SAN-攻速转换系数
+    private static final double SAN_ATTACK_DAMAGE_FACTOR = 0.75; // SAN-攻击力转换系数
+    private static final float CRIT_DETECTION_THRESHOLD = 1.3f; // 暴击判定阈值
+    private static final float CRIT_DAMAGE_MULTIPLIER = 1.5f; // 暴击伤害倍率
+    private static final double MAGIC_DAMAGE_BASE = 2.5; // 噩梦斩基础魔法伤害系数
+    private static final double SWEEP_AABB_XZ = 1.5; // 横扫范围(XZ)
+    private static final double SWEEP_AABB_Y = 0.5; // 横扫范围(Y)
 
     public ShadowSwordItem(Tier tier, int damage, float speed) {
         super(tier, damage, speed, new Properties().fireResistant().rarity(ModRarities.LEGENDARY));
@@ -67,11 +76,11 @@ public class ShadowSwordItem extends SwordItem {
                     if (currentSan >= SKILL_SAN_COST) {
                         SanHelper.addPlayerSanAndSync(sp, -SKILL_SAN_COST);
                     } else {
-                        float newHealth = Math.max(1.0F, player.getHealth() - SKILL_HP_COST);
+                        float newHealth = Math.max(SKILL_MIN_HP, player.getHealth() - SKILL_HP_COST);
                         player.setHealth(newHealth);
                     }
                 } else {
-                    float newHealth = Math.max(1.0F, player.getHealth() - SKILL_HP_COST);
+                    float newHealth = Math.max(SKILL_MIN_HP, player.getHealth() - SKILL_HP_COST);
                     player.setHealth(newHealth);
                 }
             }
@@ -91,15 +100,15 @@ public class ShadowSwordItem extends SwordItem {
         if (slot == EquipmentSlot.MAINHAND) {
             builder.put(ModAttributes.SAN_VARIABILITY.get(),
                     new AttributeModifier(SAN_MODIFIER_UUID, "pasterdream.shadowsword.san_variability",
-                            -3.6, AttributeModifier.Operation.ADDITION));
+                            SAN_VARIABILITY_MODIFIER, AttributeModifier.Operation.ADDITION));
             if (stack.getOrCreateTag().contains("sanRatio")) {
                 double sanRatio = stack.getOrCreateTag().getDouble("sanRatio");
                 builder.put(Attributes.ATTACK_SPEED,
                         new AttributeModifier(SAN_MODIFIER_UUID, "pasterdream.shadowsword.attack_speed",
-                                0.5 * (1.0 - sanRatio), AttributeModifier.Operation.MULTIPLY_BASE));
+                                SAN_ATTACK_SPEED_FACTOR * (1.0 - sanRatio), AttributeModifier.Operation.MULTIPLY_BASE));
                 builder.put(Attributes.ATTACK_DAMAGE,
                         new AttributeModifier(SAN_MODIFIER_UUID, "pasterdream.shadowsword.attack_damage",
-                                0.75 * (1.0 - sanRatio), AttributeModifier.Operation.MULTIPLY_BASE));
+                                SAN_ATTACK_DAMAGE_FACTOR * (1.0 - sanRatio), AttributeModifier.Operation.MULTIPLY_BASE));
             }
         }
         return builder.build();
@@ -183,9 +192,9 @@ public class ShadowSwordItem extends SwordItem {
             float enchantBonus = EnchantmentHelper.getDamageBonus(sword, event.getEntity().getMobType());
             float effectiveAttack = baseDamage + enchantBonus;
             float critMultiplier = effectiveAttack > 0 ? event.getAmount() / effectiveAttack : 1.0f;
-            if (critMultiplier < 1.3f) critMultiplier = 1.0f;
-            else critMultiplier = 1.5f;
-            float magicDamage = effectiveAttack * (float) (2.5 - sanRatio) * critMultiplier;
+            if (critMultiplier < CRIT_DETECTION_THRESHOLD) critMultiplier = 1.0f;
+            else critMultiplier = CRIT_DAMAGE_MULTIPLIER;
+            float magicDamage = effectiveAttack * (float) (MAGIC_DAMAGE_BASE - sanRatio) * critMultiplier;
 
             event.setCanceled(true);
             event.getEntity().invulnerableTime = 0;
@@ -195,7 +204,7 @@ public class ShadowSwordItem extends SwordItem {
             if (sweepingLevel > 0) {
                 float sweepRatio = 1.0F - 1.0F / (float) (sweepingLevel + 1);
                 float sweepDamage = magicDamage * sweepRatio;
-                AABB area = event.getEntity().getBoundingBox().inflate(1.5, 0.5, 1.5);
+                AABB area = event.getEntity().getBoundingBox().inflate(SWEEP_AABB_XZ, SWEEP_AABB_Y, SWEEP_AABB_XZ);
                 List<LivingEntity> nearby = level.getEntitiesOfClass(LivingEntity.class, area,
                         e -> e != player && e != event.getEntity() && e.isAlive()
                                 && !(e instanceof TamableAnimal ta && ta.isOwnedBy(player)));
