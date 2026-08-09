@@ -309,7 +309,7 @@ public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockB
                     BlockState addonState = level.getBlockState(addonPos);
                     if (addonState.getBlock() instanceof WeaponWorkshopBlastFurnaceBlock)
                     {
-                        level.setBlock(addonPos, Blocks.AIR.defaultBlockState(), 3);
+                        level.destroyBlock(addonPos, false);
                     }
                 }
 
@@ -329,7 +329,7 @@ public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockB
                     BlockState mainState = level.getBlockState(mainPos);
                     if (mainState.getBlock() instanceof WeaponWorkshopBlastFurnaceBlock)
                     {
-                        level.removeBlock(mainPos, true);
+                        level.destroyBlock(mainPos, false);
                     }
                 }
         }
