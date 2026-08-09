@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -31,11 +32,32 @@ public class DyedreamHammerItem extends PickaxeItem {
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
         if (!level.isClientSide && state.getDestroySpeed(level, pos) != 0.0F) {
+            BlockHitResult hitResult = (BlockHitResult) entity.pick(20.0, 1.0F, false);
+            Direction hitDir = hitResult.getDirection();
+            Direction.Axis axis = hitDir.getAxis();
+            int stepX = -hitDir.getStepX();
+            int stepY = -hitDir.getStepY();
+            int stepZ = -hitDir.getStepZ();
+
             Set<BlockPos> broken = new HashSet<>();
-            for (int y = -1; y <= 1; y++)
-                for (int x = -1; x <= 1; x++)
-                    for (int z = -1; z <= 1; z++) {
-                        BlockPos target = pos.offset(x, y, z);
+            for (int depth = 0; depth < 3; depth++) {
+                for (int a = -1; a <= 1; a++) {
+                    for (int b = -1; b <= 1; b++) {
+                        int dx, dy, dz;
+                        if (axis == Direction.Axis.Y) {
+                            dx = a;
+                            dy = depth * stepY;
+                            dz = b;
+                        } else if (axis == Direction.Axis.X) {
+                            dx = depth * stepX;
+                            dy = a;
+                            dz = b;
+                        } else {
+                            dx = a;
+                            dy = b;
+                            dz = depth * stepZ;
+                        }
+                        BlockPos target = pos.offset(dx, dy, dz);
                         if (target.equals(pos)) continue;
                         BlockState targetState = level.getBlockState(target);
                         if (targetState.is(state.getBlock()) && stack.isCorrectToolForDrops(targetState)) {
@@ -43,13 +65,14 @@ public class DyedreamHammerItem extends PickaxeItem {
                             List<ItemStack> drops = Block.getDrops(targetState, (ServerLevel) level, target,
                                     level.getBlockEntity(target), entity, stack);
                             for (ItemStack drop : drops) {
-                                Block.popResourceFromFace(level, target,
-                                        ((BlockHitResult) entity.pick(20.0, 1.0F, false)).getDirection(), drop);
+                                Block.popResourceFromFace(level, target, hitDir, drop);
                             }
                             level.setBlockAndUpdate(target, Blocks.AIR.defaultBlockState());
                             broken.add(target);
                         }
                     }
+                }
+            }
             stack.hurtAndBreak(broken.size() + 1, entity, e -> e.broadcastBreakEvent(EquipmentSlot.MAINHAND));
         }
         return true;
