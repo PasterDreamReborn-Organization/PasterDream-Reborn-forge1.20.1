@@ -284,6 +284,7 @@ public class ModCreativeModeTabs {
                         // 机械光翼
                         output.accept(ModItems.MACHINE_LIGHT_WING.get());
                         // 饰品
+                        output.accept(ModItems.PALE_BONE_NEEDLE_TALISMAN.get());
                         output.accept(ModItems.GOLD_CHARM.get());
                         output.accept(ModItems.ENDEYE_CHARM.get());
                         output.accept(ModItems.SEA_CHARM.get());

@@ -838,6 +838,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.FADED_BLESSING_OF_CECILIA.get(), "Faded Blessing of Cecilia");
         add("tooltip.pasterdream.faded_blessing_of_cecilia.effect0", "§7▪ §9Passive: Resistance I");
         add("tooltip.pasterdream.faded_blessing_of_cecilia.hint", "§7Perhaps we should submerge it in Melt Dream Spring");
+        add(ModItems.PALE_BONE_NEEDLE_TALISMAN.get(), "Pale Bone Needle Talisman");
+        add("tooltip.pasterdream.pale_bone_needle_talisman", "§7Negates a fatal blow in dream dimensions and teleports you to your respawn point");
         add(ModItems.FOURLEAF_CLOVER_CURIO.get(), "Fourleaf Clover");
         add("tooltip.pasterdream.fourleaf_clover_curio.flavor", "§7§oWhich leaf represents luck?");
         add(ModItems.SNOW_VOW_HEAD.get(), "Snow Vow");

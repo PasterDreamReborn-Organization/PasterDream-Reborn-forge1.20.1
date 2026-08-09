@@ -991,6 +991,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.FADED_BLESSING_OF_CECILIA.get(), "失色塞西莉娅的加护");
         add("tooltip.pasterdream.faded_blessing_of_cecilia.effect0", "§7▪ §9常驻：抗性提升I");
         add("tooltip.pasterdream.faded_blessing_of_cecilia.hint", "§7或许我们应该亲手将它浸泡于融梦涌泉");
+        add(ModItems.PALE_BONE_NEEDLE_TALISMAN.get(), "苍白骨针护符");
+        add("tooltip.pasterdream.pale_bone_needle_talisman", "§7在梦境维度死亡时，抵消这次死亡并传送回重生点");
 
         add(ModItems.SNOW_VOW_HEAD.get(), "雪下的誓言");
         add("tooltip.pasterdream.snow_vow_head.effect.area", "§7▪ §9使附近直径7格内的玩家获得效果");

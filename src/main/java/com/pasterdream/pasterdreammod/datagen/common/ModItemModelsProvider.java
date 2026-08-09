@@ -290,6 +290,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.WAR_FLAG.get());
         basicItem(ModItems.CALAIS_SPICE_BOTTLE.get());
         basicItem(ModItems.GHOST_FACE.get());
+        withExistingParent(ModItems.PALE_BONE_NEEDLE_TALISMAN.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/pale_boneneedle"));
 
         basicItem(ModItems.DEBUG_SWORD.get());
         basicItem(ModItems.LOOT_GENERATOR.get());
