@@ -41,6 +41,7 @@ public class WhiteSwordRainProjectileEntity extends Entity {
     private static final TagKey<EntityType<?>> SHADOW_MOB = TagKey.create(Registries.ENTITY_TYPE,
             ResourceLocation.fromNamespaceAndPath("pasterdream", "shadow_mob"));
     private static final int MAX_LIFE = 30;
+    private static final double HOMING_SPEED = 1.5;
 
     @Nullable
     private UUID ownerUUID;
@@ -134,7 +135,7 @@ public class WhiteSwordRainProjectileEntity extends Entity {
             LivingEntity target = resolveTarget();
             if (target != null) {
                 Vec3 toTarget = target.getEyePosition().subtract(this.position()).normalize();
-                this.setDeltaMovement(toTarget.scale(0.7));
+                this.setDeltaMovement(toTarget.scale(HOMING_SPEED));
             }
         }
 

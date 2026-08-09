@@ -51,6 +51,8 @@ public class WhiteSwordItem extends SwordItem {
     private static final double PASSIVE_CHANCE = 0.5;
     private static final int PASSIVE_PROJECTILE_COUNT = 6;
     private static final double PASSIVE_SPREAD = 2.5;
+    private static final double ACTIVE_PROJECTILE_SPEED = 1.5;
+    private static final double PASSIVE_PROJECTILE_SPEED = 1.5;
 
     public WhiteSwordItem(Tier tier, int damage, float speed) {
         super(tier, damage, speed, new Properties().fireResistant().rarity(ModRarities.LEGENDARY));
@@ -168,9 +170,9 @@ public class WhiteSwordItem extends SwordItem {
                     player.getZ() - look.z * (2.0 + random.nextDouble())
                             + right.z * Mth.nextDouble(random, -effectiveSpread, effectiveSpread));
             projectile.setDeltaMovement(
-                    look.x * 1.2 + Mth.nextDouble(random, -0.15, 0.15),
-                    look.y * 1.2 + Mth.nextDouble(random, -0.1, 0.1),
-                    look.z * 1.2 + Mth.nextDouble(random, -0.15, 0.15));
+                    look.x * PASSIVE_PROJECTILE_SPEED + Mth.nextDouble(random, -0.15, 0.15),
+                    look.y * PASSIVE_PROJECTILE_SPEED + Mth.nextDouble(random, -0.1, 0.1),
+                    look.z * PASSIVE_PROJECTILE_SPEED + Mth.nextDouble(random, -0.15, 0.15));
             projectile.setDamage(damage);
             projectile.getPersistentData().putInt("paster_sharpness", sharpness);
             projectile.getPersistentData().putInt("paster_smite", smite);
@@ -231,9 +233,9 @@ public class WhiteSwordItem extends SwordItem {
                     player.getZ() - look.z * (2.0 + random.nextDouble())
                             + right.z * Mth.nextDouble(random, -effectiveSpread, effectiveSpread));
             projectile.setDeltaMovement(
-                    look.x * 1.5 + Mth.nextDouble(random, -0.2, 0.2),
-                    look.y * 1.5 + Mth.nextDouble(random, -0.1, 0.1),
-                    look.z * 1.5 + Mth.nextDouble(random, -0.2, 0.2));
+                    look.x * ACTIVE_PROJECTILE_SPEED + Mth.nextDouble(random, -0.2, 0.2),
+                    look.y * ACTIVE_PROJECTILE_SPEED + Mth.nextDouble(random, -0.1, 0.1),
+                    look.z * ACTIVE_PROJECTILE_SPEED + Mth.nextDouble(random, -0.2, 0.2));
             projectile.setDamage(damage);
             projectile.getPersistentData().putInt("paster_sharpness", sharpness);
             projectile.getPersistentData().putInt("paster_smite", smite);
