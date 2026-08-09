@@ -30,7 +30,7 @@ public abstract class AbstractContainerMenuWithFluidSlot extends AbstractContain
         super(type, id);
     }
 
-    protected abstract FluidContainer getFluidContainer();
+    protected abstract IFluidContainer getFluidContainer();
 
     @Override
     public abstract boolean stillValid(Player player);

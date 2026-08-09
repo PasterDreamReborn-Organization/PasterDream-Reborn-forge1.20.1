@@ -24,6 +24,7 @@ public class GUIBackGroundRender
     public static ResourceLocation WEAPON_WORKSHOP_ANVIL_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_anvil.png");
     public static ResourceLocation WEAPON_WORKSHOP_BLAST_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_blast_furnace.png");
     public static ResourceLocation WEAPON_WORKSHOP_BLAST_LAVA_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_blast_furnace_lava_amount_bar.png");
+    public static ResourceLocation WEAPON_WORKSHOP_COOLER_POT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_cooler_pot.png");
 
     public static ResourceLocation DREAM_CAULDRON_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron.png");
     public static ResourceLocation DREAM_CAULDRON_MELT_DREAM_LIQUID_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_melt_dream_liquid_amount_bar.png");
@@ -92,6 +93,7 @@ public class GUIBackGroundRender
     public static ModelResourceLocation DREAM_NOTES_BOOK_OVERWORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book_overworld", "inventory");
     public static ModelResourceLocation DREAM_NOTES_BOOK_DYEDREAM_WORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book_dyedream_world", "inventory");
     public static ModelResourceLocation DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book_lamp_shadow_world", "inventory");
+    public static ModelResourceLocation SHADOW_DYED_DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "shadow_dyed_dream_notes_book_lamp_shadow_world", "inventory");
     public static ModelResourceLocation DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book_wind_journey_world", "inventory");
 
     public static ResourceLocation AARONCOS_HAND_BOSS_BAR_LEFT_BACKGROUND = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/aaroncos_hand_boss_bar/aaroncos_hand_boss_bar_left_background.png");
@@ -177,6 +179,11 @@ public class GUIBackGroundRender
     public static void rendWeaponWorkshopBlastFurnaceLavaAmountBar(GuiGraphics guiGraphics, int x, int y, double percent)
     {
         guiGraphics.blit(WEAPON_WORKSHOP_BLAST_LAVA_AMOUNT_BAR, x, y + (int)(0.5 + (24 * (1 - percent))), 0, (int)(0.5 + (24 * (1 - percent))), 7, (int)(0.49999999 + (24 * percent)), 7, 24);
+    }
+
+    public static void rendWeaponWorkshopCoolerPotGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(WEAPON_WORKSHOP_COOLER_POT, x, y, 0, 0, 82, 46, 82, 46);
     }
 
     public static void rendDreamCauldronGUI(GuiGraphics guiGraphics, int x, int y)

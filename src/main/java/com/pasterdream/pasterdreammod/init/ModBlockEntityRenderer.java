@@ -17,6 +17,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShad
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternTileRenderer;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -28,6 +29,7 @@ public class ModBlockEntityRenderer
         event.enqueueWork(() ->
         {
             BlockEntityRenderers.register(ModBlockEntities.CLAYPAN.get(), ClaypanBlockEntityRenderer::new);
+            BlockEntityRenderers.register(ModBlockEntities.WEAPON_WORKSHOP_COOLER_POT.get(), WeaponWorkshopCoolerPotBlockEntityRenderer::new);
         });
     }
 

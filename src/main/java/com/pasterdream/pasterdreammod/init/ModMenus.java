@@ -23,6 +23,8 @@ import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlo
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableMenu;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceMenu;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotMenu;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableMenu;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
@@ -122,6 +124,12 @@ public class ModMenus
     {
         BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
         return new WeaponWorkshopBlastFurnaceMenu(windowId, inv, (WeaponWorkshopBlastFurnaceBlockEntity) blockEntity);
+    }));
+
+    public static final RegistryObject<MenuType<WeaponWorkshopCoolerPotMenu>> WEAPON_WORKSHOP_COOLER_POT = MENUS.register("weapon_workshop_cooler_pot", () -> IForgeMenuType.create((windowId, inv, data) ->
+    {
+        BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+        return new WeaponWorkshopCoolerPotMenu(windowId, inv, (WeaponWorkshopCoolerPotBlockEntity) blockEntity);
     }));
 
     public static void register(IEventBus eventBus)

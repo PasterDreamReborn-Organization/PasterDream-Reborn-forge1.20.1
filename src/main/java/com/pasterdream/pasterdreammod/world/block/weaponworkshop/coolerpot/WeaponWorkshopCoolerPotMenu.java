@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.block.claypan;
+package com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot;
 
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidContainer;
@@ -7,33 +7,25 @@ import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.
 import com.pasterdream.pasterdreammod.init.ModMenus;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ClaypanMenu extends AbstractContainerMenuWithFluidSlot
+public class WeaponWorkshopCoolerPotMenu extends AbstractContainerMenuWithFluidSlot
 {
-    private final ClaypanBlockEntity blockEntity;
-    private final ContainerData data;
+    private final WeaponWorkshopCoolerPotBlockEntity blockEntity;
     private final IFluidContainer fluidContainer;
 
-    public ClaypanMenu(int id, Inventory inventory, ClaypanBlockEntity blockEntity)
+    public WeaponWorkshopCoolerPotMenu(int id, Inventory inventory, WeaponWorkshopCoolerPotBlockEntity blockEntity)
     {
-        super(ModMenus.CLAYPAN.get(), id);
+        super(ModMenus.WEAPON_WORKSHOP_COOLER_POT.get(), id);
         this.blockEntity = blockEntity;
         this.fluidContainer = new FluidContainer.GenericFluidContainer(blockEntity.getFluidTanks());
 
-        data = new SimpleContainerData(2);
-        data.set(0, blockEntity.getProgress());
-        data.set(1, blockEntity.getMaxProgress());
-        addDataSlots(data);
+        addFluidSlot(new FluidSlot(fluidContainer, 0, 76, 23));
 
-        addFluidSlot(new FluidSlot(fluidContainer, 0, 49, 5));
-        addSlot(new SlotItemHandler(blockEntity.getItemHandler(), 0, 104, 6)
+        addSlot(new SlotItemHandler(blockEntity.getItemHandler(), 0, 50, 6));
+        addSlot(new SlotItemHandler(blockEntity.getItemHandler(), 1, 104, 6)
         {
             @Override
             public boolean mayPlace(ItemStack stack)
@@ -42,30 +34,34 @@ public class ClaypanMenu extends AbstractContainerMenuWithFluidSlot
             }
         });
 
-        //玩家物品栏
         for (int i = 0; i < 9; i++)
         {
-            addSlot(new Slot(inventory, i, 5 + i * 18, 100));
+            addSlot(new Slot(inventory, i, 5 + i * 18, 118));
         }
 
         for (int i = 0; i < 27; i++)
         {
-            addSlot(new Slot(inventory, i + 9, 5 + (i % 9) * 18, 42 + (i / 9) * 18));
+            addSlot(new Slot(inventory, i + 9, 5 + (i % 9) * 18, 60 + (i / 9) * 18));
         }
 
         reBuildLastFluids();
     }
 
-    @Override
-    public IFluidContainer getFluidContainer()
+    public WeaponWorkshopCoolerPotBlockEntity getBlockEntity()
     {
-        return fluidContainer;
+        return blockEntity;
     }
 
     @Override
     public boolean stillValid(Player player)
     {
         return player.level().getBlockEntity(blockEntity.getBlockPos()) == blockEntity && player.distanceToSqr(blockEntity.getBlockPos().getX() + 0.5, blockEntity.getBlockPos().getY() + 0.5, blockEntity.getBlockPos().getZ() + 0.5) <= 64;
+    }
+
+    @Override
+    public IFluidContainer getFluidContainer()
+    {
+        return fluidContainer;
     }
 
     @Override
@@ -79,54 +75,39 @@ public class ClaypanMenu extends AbstractContainerMenuWithFluidSlot
 
         ItemStack stack = slot.getItem();
         ItemStack copy = stack.copy();
-        if (index == 1)
+
+        //移出到背包
+        if (index >= 1 && index <= 2)
         {
-            if (!this.moveItemStackTo(stack, 2, 38, true))
+            if (!this.moveItemStackTo(stack, 3, 39, false))
             {
                 return ItemStack.EMPTY;
             }
         }
+        else    //背包移入输入槽
+            if (index >= 3 && index <= 38)
+            {
+                if (!this.moveItemStackTo(stack, 1, 2, false))
+                {
+                    return ItemStack.EMPTY;
+                }
+            }
 
         if (stack.isEmpty())
         {
             slot.set(ItemStack.EMPTY);
         }
-        else
-        {
-            slot.setChanged();
-        }
+            else
+            {
+                slot.setChanged();
+            }
 
         if (stack.getCount() == copy.getCount())
         {
             return ItemStack.EMPTY;
         }
+
         slot.onTake(player, stack);
         return copy;
-    }
-
-    @Override
-    public void broadcastChanges()
-    {
-        super.broadcastChanges();
-        if (!blockEntity.getLevel().isClientSide)
-        {
-            this.data.set(0, blockEntity.getProgress());
-            this.data.set(1, blockEntity.getMaxProgress());
-        }
-    }
-
-    public int getProgress()
-    {
-        return data.get(0);
-    }
-
-    public int getMaxProgress()
-    {
-        return data.get(1);
-    }
-
-    public ClaypanBlockEntity getBlockEntity()
-    {
-        return blockEntity;
     }
 }
