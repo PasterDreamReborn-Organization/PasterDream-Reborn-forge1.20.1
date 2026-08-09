@@ -24,7 +24,8 @@ public class GUIBackGroundRender
     public static ResourceLocation WEAPON_WORKSHOP_ANVIL_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_anvil.png");
     public static ResourceLocation WEAPON_WORKSHOP_BLAST_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_blast_furnace.png");
     public static ResourceLocation WEAPON_WORKSHOP_BLAST_LAVA_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_blast_furnace_lava_amount_bar.png");
-    public static ResourceLocation WEAPON_WORKSHOP_COOLER_POT = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_cooler_pot.png");
+    public static ResourceLocation WEAPON_WORKSHOP_COOLER_POT_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_cooler_pot.png");
+    public static ResourceLocation WEAPON_WORKSHOP_GRIND_STONE_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/weapon_workshop/weapon_workshop_grind_stone.png");
 
     public static ResourceLocation DREAM_CAULDRON_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron.png");
     public static ResourceLocation DREAM_CAULDRON_MELT_DREAM_LIQUID_AMOUNT_BAR = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_cauldron/dream_cauldron_melt_dream_liquid_amount_bar.png");
@@ -183,7 +184,12 @@ public class GUIBackGroundRender
 
     public static void rendWeaponWorkshopCoolerPotGUI(GuiGraphics guiGraphics, int x, int y)
     {
-        guiGraphics.blit(WEAPON_WORKSHOP_COOLER_POT, x, y, 0, 0, 82, 46, 82, 46);
+        guiGraphics.blit(WEAPON_WORKSHOP_COOLER_POT_GUI, x, y, 0, 0, 82, 46, 82, 46);
+    }
+
+    public static void rendWeaponWorkshopGrindStoneGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(WEAPON_WORKSHOP_GRIND_STONE_GUI, x, y, 0, 0, 82, 46, 82, 46);
     }
 
     public static void rendDreamCauldronGUI(GuiGraphics guiGraphics, int x, int y)
