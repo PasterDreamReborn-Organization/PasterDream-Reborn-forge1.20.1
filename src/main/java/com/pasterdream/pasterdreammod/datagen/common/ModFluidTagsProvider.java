@@ -24,9 +24,9 @@ public class ModFluidTagsProvider extends FluidTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-        tag(FluidTags.WATER)
+        /*tag(FluidTags.WATER)
                 .add(ModFluids.SHADOW_LIQUID.get())
-                .add(ModFluids.FLOWING_SHADOW_LIQUID.get());
+                .add(ModFluids.FLOWING_SHADOW_LIQUID.get()); */
 
         tag(TagKey.create(BuiltInRegistries.FLUID.key(), ResourceLocation.fromNamespaceAndPath("forge", "tea")))
                 .add(ModFluids.DYEDREAM_FLOWER_TEA.get())

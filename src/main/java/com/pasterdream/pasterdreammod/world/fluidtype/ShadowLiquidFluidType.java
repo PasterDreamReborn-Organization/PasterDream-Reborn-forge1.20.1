@@ -12,7 +12,7 @@ public class ShadowLiquidFluidType extends PasterDreamBaseFluidType
 
     public ShadowLiquidFluidType()
     {
-        super(Properties.create().fallDistanceModifier(0.0F).canExtinguish(true).canSwim(true).supportsBoating(true).canHydrate(true).motionScale(0.007).temperature(100).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "block/shadow_liquid_still"), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,  "block/shadow_liquid_flowing"), 0xFFFFFFFF);
+        super(Properties.create().fallDistanceModifier(0.0F).canExtinguish(true).canSwim(true).supportsBoating(true).canHydrate(false).motionScale(0.007).temperature(100).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "block/shadow_liquid_still"), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,  "block/shadow_liquid_flowing"), 0xFFFFFFFF);
     }
 
     @Override
