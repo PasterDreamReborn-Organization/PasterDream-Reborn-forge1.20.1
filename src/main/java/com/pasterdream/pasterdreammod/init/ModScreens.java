@@ -11,6 +11,7 @@ import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronScr
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestScreen;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableScreen;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceScreen;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotScreen;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableScreen;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarScreen;
 import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.StorageBagScreen;
@@ -39,6 +40,7 @@ public class ModScreens
             MenuScreens.register(ModMenus.DREAM_ACCUMULATOR.get(), DreamAccumulatorScreen::new);
             MenuScreens.register(ModMenus.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), WeaponWorkshopCraftingTableScreen::new);
             MenuScreens.register(ModMenus.WEAPON_WORKSHOP_BLAST_FURNACE.get(), WeaponWorkshopBlastFurnaceScreen::new);
+            MenuScreens.register(ModMenus.WEAPON_WORKSHOP_COOLER_POT.get(), WeaponWorkshopCoolerPotScreen::new);
         });
     }
 }

@@ -2,9 +2,9 @@ package com.pasterdream.pasterdreammod.world.block.dreamcauldron;
 
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidContainer;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.IFluidContainer;
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidSlot;
 import com.pasterdream.pasterdreammod.init.ModMenus;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
@@ -17,13 +17,13 @@ import net.minecraftforge.items.SlotItemHandler;
 public class DreamCauldronMenu extends AbstractContainerMenuWithFluidSlot
 {
     private final DreamCauldronBlockEntity blockEntity;
-    private final FluidContainer fluidContainer;
+    private final IFluidContainer fluidContainer;
 
     public DreamCauldronMenu(int id, Inventory inventory, DreamCauldronBlockEntity blockEntity)
     {
         super(ModMenus.DREAM_CAULDRON.get(), id);
         this.blockEntity = blockEntity;
-        fluidContainer = new DreamCauldronFluidContainer(blockEntity.getFluidTanks());
+        fluidContainer = new FluidContainer.GenericFluidContainer(blockEntity.getFluidTanks());
         IItemHandler handler = blockEntity.getItemHandler();
 
         addFluidSlot(new FluidSlot(fluidContainer, 0, 162, 18));
@@ -69,7 +69,7 @@ public class DreamCauldronMenu extends AbstractContainerMenuWithFluidSlot
     }
 
     @Override
-    public FluidContainer getFluidContainer()
+    public IFluidContainer getFluidContainer()
     {
         return fluidContainer;
     }
@@ -119,63 +119,5 @@ public class DreamCauldronMenu extends AbstractContainerMenuWithFluidSlot
 
         slot.onTake(player, stack);
         return copy;
-    }
-
-    private static class DreamCauldronFluidContainer implements FluidContainer
-    {
-        private final FluidTank[] tanks;
-
-        public DreamCauldronFluidContainer(FluidTank[] tanks)
-        {
-            this.tanks = tanks;
-        }
-
-        @Override
-        public int getFluidContainerSize()
-        {
-            return tanks.length;
-        }
-
-        @Override
-        public FluidStack getFluid(int index)
-        {
-            return tanks[index].getFluid();
-        }
-
-        @Override
-        public void setFluid(int index, FluidStack stack)
-        {
-            tanks[index].setFluid(stack);
-        }
-
-        @Override
-        public int getMaxFluidCapacity(int index)
-        {
-            return tanks[index].getCapacity();
-        }
-
-        @Override
-        public void setChanged()
-        {
-
-        }
-
-        @Override
-        public boolean stillValid(Player player)
-        {
-            return true;
-        }
-
-        @Override
-        public boolean canPlaceFluid(int index, FluidStack stack)
-        {
-            return true;
-        }
-
-        @Override
-        public boolean canTakeFluid(int index, Player player)
-        {
-            return true;
-        }
     }
 }
