@@ -329,6 +329,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.SHADOW_STONE_TILES_WALL.get(), "阴影石瓦墙");
         add(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get(), "裂阴影石砖");
         add(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get(), "錾制阴影石砖");
+        add(ModBlocks.SHADOW_STONE_CAGE_RUNE.get(), "阴影石圣所符文");
+        add(ModBlocks.SHADOW_STONE_HOLY_GRAIL_RUNE.get(), "阴影石灵皿符文");
+        add(ModBlocks.SHADOW_STONE_OBLATION_RUNE.get(), "阴影石牲礼符文");
+        add(ModBlocks.SHADOW_STONE_TRIPOD_CAULDRON_RUNE.get(), "阴影石镬器符文");
         // ===== 暗影地牢方块系列 =====
         add(ModBlocks.SHADOW_DUNGEON_STONE.get(), "暗影地牢石");
         add(ModBlocks.CHISELED_SHADOW_DUNGEON_BRICKS.get(), "雕纹暗影地牢石砖");

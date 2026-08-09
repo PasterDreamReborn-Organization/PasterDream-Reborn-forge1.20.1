@@ -277,6 +277,11 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         buildingFamily(new BuildingBlockFamily(ModBlocks.SHADOW_STONE_TILES, ModBlocks.SHADOW_STONE_TILES_STAIRS, ModBlocks.SHADOW_STONE_TILES_SLAB, ModBlocks.SHADOW_STONE_TILES_WALL));
         dropSelf(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get());
         dropSelf(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get());
+        // ===== 阴影石符文系列 =====
+        dropSelf(ModBlocks.SHADOW_STONE_CAGE_RUNE.get());
+        dropSelf(ModBlocks.SHADOW_STONE_HOLY_GRAIL_RUNE.get());
+        dropSelf(ModBlocks.SHADOW_STONE_OBLATION_RUNE.get());
+        dropSelf(ModBlocks.SHADOW_STONE_TRIPOD_CAULDRON_RUNE.get());
         // ===== 暗影地牢方块系列 =====
         dropSelf(ModBlocks.SHADOW_DUNGEON_STONE.get());
         dropSelf(ModBlocks.CHISELED_SHADOW_DUNGEON_BRICKS.get());

@@ -682,6 +682,11 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
     }
 
     @Override
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
     public void startSeenByPlayer(ServerPlayer player) {
         super.startSeenByPlayer(player);
         this.bossInfo.addPlayer(player);

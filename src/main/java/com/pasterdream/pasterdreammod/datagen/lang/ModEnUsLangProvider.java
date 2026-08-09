@@ -315,6 +315,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.SHADOW_STONE_TILES_WALL.get(), "Shadow Stone Tiles Wall");
         add(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get(), "Cracked Shadow Stone Brick");
         add(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get(), "Chiseled Shadow Stone Brick");
+        add(ModBlocks.SHADOW_STONE_CAGE_RUNE.get(), "Shadow Stone Cage Rune");
+        add(ModBlocks.SHADOW_STONE_HOLY_GRAIL_RUNE.get(), "Shadow Stone Holy Grail Rune");
+        add(ModBlocks.SHADOW_STONE_OBLATION_RUNE.get(), "Shadow Stone Oblation Rune");
+        add(ModBlocks.SHADOW_STONE_TRIPOD_CAULDRON_RUNE.get(), "Shadow Stone Tripod Cauldron Rune");
         // ===== Shadow Dungeon Blocks =====
         add(ModBlocks.SHADOW_DUNGEON_STONE.get(), "Shadow Dungeon Stone");
         add(ModBlocks.CHISELED_SHADOW_DUNGEON_BRICKS.get(), "Chiseled Shadow Dungeon Bricks");

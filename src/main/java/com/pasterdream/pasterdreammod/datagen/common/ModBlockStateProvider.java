@@ -254,6 +254,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         // ===== 裂阴影石砖 / 錾制阴影石砖 =====
         simpleBlockWithItem(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get(), cubeAll(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get()));
         simpleBlockWithItem(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get(), cubeAll(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get()));
+        // ===== 阴影石符文系列 =====
+        var shadowStoneTopBottom = blockTexture(ModBlocks.SHADOW_STONE.get());
+        var cageRuneModel = models().cubeBottomTop(ModBlocks.SHADOW_STONE_CAGE_RUNE.getId().getPath(), modLoc("block/shadow_stone_cage_rune"), shadowStoneTopBottom, shadowStoneTopBottom);
+        simpleBlockWithItem(ModBlocks.SHADOW_STONE_CAGE_RUNE.get(), cageRuneModel);
+        var holyGrailRuneModel = models().cubeBottomTop(ModBlocks.SHADOW_STONE_HOLY_GRAIL_RUNE.getId().getPath(), modLoc("block/shadow_stone_holy_grail_rune"), shadowStoneTopBottom, shadowStoneTopBottom);
+        simpleBlockWithItem(ModBlocks.SHADOW_STONE_HOLY_GRAIL_RUNE.get(), holyGrailRuneModel);
+        var oblationRuneModel = models().cubeBottomTop(ModBlocks.SHADOW_STONE_OBLATION_RUNE.getId().getPath(), modLoc("block/shadow_stone_oblation_rune"), shadowStoneTopBottom, shadowStoneTopBottom);
+        simpleBlockWithItem(ModBlocks.SHADOW_STONE_OBLATION_RUNE.get(), oblationRuneModel);
+        var tripodCauldronRuneModel = models().cubeBottomTop(ModBlocks.SHADOW_STONE_TRIPOD_CAULDRON_RUNE.getId().getPath(), modLoc("block/shadow_stone_tripod_cauldron_rune"), shadowStoneTopBottom, shadowStoneTopBottom);
+        simpleBlockWithItem(ModBlocks.SHADOW_STONE_TRIPOD_CAULDRON_RUNE.get(), tripodCauldronRuneModel);
         // ===== 暗影地牢方块系列 =====
         simpleBlockWithItem(ModBlocks.SHADOW_DUNGEON_STONE.get(), cubeAll(ModBlocks.SHADOW_DUNGEON_STONE.get()));
         var chiseledDungeonSide = modLoc("block/chiseled_shadow_dungeon_bricks_side");
