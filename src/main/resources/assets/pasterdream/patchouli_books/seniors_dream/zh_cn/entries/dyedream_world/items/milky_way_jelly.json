@@ -1,0 +1,17 @@
+{
+  "sortnum": 10,
+  "name": "pasterdream.seniors_dream.entry.milky_way_jelly",
+  "icon": "pasterdream:milky_way_jelly",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:milky_way_jelly",
+      "text": "pasterdream.seniors_dream.entry.milky_way_jelly.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.milky_way_jelly.page1"
+    }
+  ]
+}
