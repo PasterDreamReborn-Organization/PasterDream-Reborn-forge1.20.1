@@ -1,0 +1,6 @@
+{
+  "parent": "pasterdream:displaysettings/shadow_hand_trap.item",
+  "textures": {
+    "particle": "pasterdream:block/shadow"
+  }
+}
