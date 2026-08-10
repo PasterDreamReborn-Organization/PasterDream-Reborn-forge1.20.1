@@ -1578,5 +1578,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.twilight_lantern.event_end_2", "\"Lie down, in the silent night, beneath this pavilion lantern\"");
         add("message.pasterdream.twilight_lantern.event_ready", "You can now resonate with the Twilight Lantern");
         add("message.pasterdream.twilight_lantern.data_reset", "Block data reset");
+        add("message.pasterdream.twilight_lantern_location", "The end of the note records coordinates in the upper Nether: X: %s Z: %s");
     }
 }

@@ -1992,5 +1992,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.twilight_lantern.event_end_2", "\"躺上去吧，在寂静的夜晚，在这亭笼之下\"");
         add("message.pasterdream.twilight_lantern.event_ready", "可以与暮影之笼发生共鸣");
         add("message.pasterdream.twilight_lantern.data_reset", "方块数据已重置");
+        add("message.pasterdream.twilight_lantern_location", "笔记末尾记载着炼狱上层的坐标：§aX：%s §aZ：%s");
     }
 }
