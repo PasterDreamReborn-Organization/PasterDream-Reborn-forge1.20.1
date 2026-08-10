@@ -1,0 +1,17 @@
+{
+  "sortnum": 9,
+  "name": "pasterdream.seniors_dream.entry.terra_blade",
+  "icon": "pasterdream:terra_blade",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:terra_blade",
+      "text": "pasterdream.seniors_dream.entry.terra_blade.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.terra_blade.page1"
+    }
+  ]
+}
