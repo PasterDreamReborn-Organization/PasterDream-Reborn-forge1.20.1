@@ -15,6 +15,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShad
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalDisplayItem;
 import net.minecraft.world.item.BlockItem;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapItem;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestItem;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestItem;
@@ -1270,6 +1271,8 @@ public class ModItems {
             () -> new ShadowDungeonPortalDisplayItem(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_VORTEX = ITEMS.register("shadow_vortex",
             () -> new ShadowVortexDisplayItem(ModBlocks.SHADOW_VORTEX.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_HAND_TRAP = ITEMS.register("shadow_hand_trap",
+            () -> new ShadowHandTrapItem(ModBlocks.SHADOW_HAND_TRAP.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_NYLIUM = ITEMS.register("shadow_nylium",
             () -> new BlockItem(ModBlocks.SHADOW_NYLIUM.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_LIGHT = ITEMS.register("shadow_light",

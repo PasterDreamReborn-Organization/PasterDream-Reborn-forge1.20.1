@@ -1145,6 +1145,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_tune_totem.charging", "The Shadow Tune Totem is charging energy");
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "The Shadow Tune Totem is about to explode");
         add("block.pasterdream.shadow_vortex", "Shadow Vortex");
+        add("block.pasterdream.shadow_hand_trap", "Shadow Hand Trap");
+        add("tooltip.pasterdream.shadow_hand_trap", "§7--Why would you dig this up?");
 
         // Broken Portal Messages
         add("message.pasterdream.broken_portal.too_low", "The structure is damaged, the portal has no response");

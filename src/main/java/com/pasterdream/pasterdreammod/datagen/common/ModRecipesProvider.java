@@ -2536,6 +2536,12 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         saveGoldenFoxTrade(pWriter, Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
                 new ItemStack(ModItems.KAICHU_OMAMORI.get()), "golden_fox_trade_crystal_fragment");
 
+        // ===== 你把暗影之手扔熔炉有什么意义吗？ =====
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.SHADOW_HAND_TRAP.get()),
+                        RecipeCategory.MISC, ModItems.SHADOW.get(), 0.35F, 200)
+                .unlockedBy(getHasName(ModBlocks.SHADOW_HAND_TRAP.get()), has(ModBlocks.SHADOW_HAND_TRAP.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_from_shadow_hand_trap");
+
     }
 
     // ===== 容器配平校验 =====

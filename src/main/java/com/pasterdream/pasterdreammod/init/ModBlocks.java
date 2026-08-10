@@ -11,6 +11,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowD
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapBlock;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorBlock;
 import com.pasterdream.pasterdreammod.world.block.shadow.*;
@@ -237,6 +238,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> SHADOW_DUNGEON_PORTAL = BLOCKS.register("shadow_dungeon_portal", ShadowDungeonPortalBlock::new);
     // 暗影漩涡 (亚伦柯斯之触技能)
     public static final RegistryObject<Block> SHADOW_VORTEX = BLOCKS.register("shadow_vortex", ShadowVortexBlock::new);
+    // 暗影之手陷阱
+    public static final RegistryObject<Block> SHADOW_HAND_TRAP = BLOCKS.register("shadow_hand_trap", ShadowHandTrapBlock::new);
 
     // ===== 阴影菌岩 / 影灯 / 阴影菌光体 =====
     public static final RegistryObject<Block> SHADOW_NYLIUM = BLOCKS.register("shadow_nylium", () -> new ShadowNyliumBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).sound(SoundType.NYLIUM).strength(0.4f).requiresCorrectToolForDrops()));
