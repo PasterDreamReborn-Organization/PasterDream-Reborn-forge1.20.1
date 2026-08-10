@@ -1,19 +1,21 @@
 package com.pasterdream.pasterdreammod.world.item.dreamnotesbook;
 
+import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
+import com.pasterdream.pasterdreammod.event.ModWorldGenEvents.TwilightLanternPlacedData;
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 import java.util.function.Consumer;
@@ -48,7 +50,23 @@ public class DreamNotesBookItem extends Item
             level.playSound(null, player.blockPosition(), SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1.0f, 1.0f);
             if (compoundTag != null && compoundTag.contains("content") && player instanceof ServerPlayer serverPlayer)
             {
-                ModCriteriaTriggers.READ_DREAM_NOTE.trigger(serverPlayer, compoundTag.getString("content"));
+                String content = compoundTag.getString("content");
+                ModCriteriaTriggers.READ_DREAM_NOTE.trigger(serverPlayer, content);
+
+                if ("侵染教堂-黑面".equals(content))
+                {
+                    ServerLevel nether = serverPlayer.server.getLevel(Level.NETHER);
+                    if (nether != null)
+                    {
+                        TwilightLanternPlacedData data = TwilightLanternPlacedData.get(nether);
+                        if (data.isPlaced())
+                        {
+                            serverPlayer.sendSystemMessage(Component.translatable(
+                                    "message.pasterdream.twilight_lantern_location",
+                                    data.getPosX(), data.getPosZ()));
+                        }
+                    }
+                }
             }
         }
         return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide);
