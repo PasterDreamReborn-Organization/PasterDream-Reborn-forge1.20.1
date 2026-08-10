@@ -732,7 +732,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.染梦实验室", "Dream Laboratory");
         add("book.pasterdream.title.来往于梦", "Interacting With Dream");
         add("book.pasterdream.title.染梦世界树", "Dyedream World Tree");
-        add("book.pasterdream.title.代达罗斯之翼与浮空岛", "Wings Of 代达罗斯 And Floating Island");
+        add("book.pasterdream.title.代达罗斯之翼与浮空岛", "Wings Of DaiDaLuoSi And Floating Island");
+        add("book.pasterdream.title.星河果冻和浮空岛", "Galaxy Jelly and Floating Island");
         add("book.pasterdream.title.探求秘辛", "Desert Cottage");
         add("book.pasterdream.title.研究笔记:黑金属", "Research Notes: Black Metal");
         add("book.pasterdream.title.灯影游记 其二", "Lamp Shadow Travelogue 2");
