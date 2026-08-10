@@ -224,7 +224,7 @@ public class GUIBackGroundRender
 
     public static void rendShadowBlastFurnaceShadowLiquidAmountBar(GuiGraphics guiGraphics, int x, int y, double percent)
     {
-        guiGraphics.blit(SHADOW_BLAST_FURNACE_SHADOW_LIQUID_AMOUNT_BAR, x, y + (int)(35 * (1 - percent)), 0, (int)(35 * (1 - percent)), 10, (int)(35 * percent), 10, 35);
+        guiGraphics.blit(SHADOW_BLAST_FURNACE_SHADOW_LIQUID_AMOUNT_BAR, x, y + (int)(0.5 + (35 * (1 - percent))), 0, (int)(0.5 + (35 * (1 - percent))), 10, (int)(0.49999999 + (35 * percent)), 10, 35);
     }
 
     public static void rendMeltDreamEnergyBar(GuiGraphics guiGraphics, int x, int y)
