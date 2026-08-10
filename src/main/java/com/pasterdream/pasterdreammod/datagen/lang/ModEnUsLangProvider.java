@@ -411,6 +411,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.WEAPON_WORKSHOP_HAMMER.get(), "Weapon Workshop Hammer");
         add(ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get(), "Weapon Workshop Grind Stone");
         add(ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get(), "Weapon Workshop Blast Furnace");
+        add(ModBlocks.SHADOW_BLAST_FURNACE.get(), "Shadow Blast Furnace");
 
         add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "Dyedream Corolla");
         add(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), "Mature Dyedream Corolla");

@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.world.behavior.ModTreeGrowers;
 import com.pasterdream.pasterdreammod.world.block.*;
 import com.pasterdream.pasterdreammod.world.block.dreamspawner.DreamSpawnerBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamspawner.FadedDreamSpawnerBlock;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.barrier.ShadowDungeonBarrierBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowDungeonGateBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalBlock;
@@ -651,6 +652,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> WEAPON_WORKSHOP_HAMMER = BLOCKS.register("weapon_workshop_hammer", () -> new WeaponWorkshopHammerBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)));
     public static final RegistryObject<Block> WEAPON_WORKSHOP_GRIND_STONE = BLOCKS.register("weapon_workshop_grind_stone", () -> new WeaponWorkshopGrindStoneBlock(BlockBehaviour.Properties.copy(Blocks.GRINDSTONE).noOcclusion()));
     public static final RegistryObject<Block> WEAPON_WORKSHOP_BLAST_FURNACE = BLOCKS.register("weapon_workshop_blast_furnace", () -> new WeaponWorkshopBlastFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).noOcclusion()));
+    public static final RegistryObject<Block> SHADOW_BLAST_FURNACE = BLOCKS.register("shadow_blast_furnace", () -> new ShadowBlastFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.DEEPSLATE).strength(10f).requiresCorrectToolForDrops().noOcclusion()));
 
     //失落剑冢
     public static final RegistryObject<Block> LOST_SWORD_TOMB = BLOCKS.register("lost_sword_tomb", LostSwordTombBlock::new);

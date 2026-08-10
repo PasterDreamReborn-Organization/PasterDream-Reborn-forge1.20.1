@@ -544,26 +544,26 @@ public class ModCreativeModeTabs {
     public static final RegistryObject<CreativeModeTab> PASTERDREAM_EQUIPMENT_TAB = CREATIVE_MODE_TABS.register("pasterdream_equipment_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_equipment_tab"))
-                    .icon(() -> new ItemStack(ModBlocks.QYM_DOLL.get()))
+                    .icon(() -> new ItemStack(ModItems.QYM_DOLL.get()))
                     .displayItems((parameters, output) ->
                     {
-                        output.accept(ModBlocks.QYM_DOLL.get());
-                        output.accept(ModBlocks.UUZ_DOLL.get());
-                        output.accept(ModBlocks.DYEDREAM_CRACK.get());
-                        output.accept(ModBlocks.CLAYPAN.get());
-                        output.accept(ModBlocks.CLAY_POT.get());
-                        output.accept(ModBlocks.DREAM_CAULDRON.get());
+                        output.accept(ModItems.QYM_DOLL.get());
+                        output.accept(ModItems.UUZ_DOLL.get());
+                        output.accept(ModItems.DYEDREAM_CRACK.get());
+                        output.accept(ModItems.CLAYPAN.get());
+                        output.accept(ModItems.CLAY_POT.get());
+                        output.accept(ModItems.DREAM_CAULDRON.get());
                         output.accept(ModItems.MORTAR.get());
                         output.accept(ModItems.PLIERS.get());
-                        output.accept(ModBlocks.DYEDREAM_DESK.get());
-                        output.accept(ModBlocks.SHADOW_DESK.get());
-                        output.accept(ModBlocks.PICNIC_BASKET.get());
-                        output.accept(ModBlocks.SHADOW_CHEST.get());
-                        output.accept(ModBlocks.WIND_MOOR_CRATE.get());
-                        output.accept(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get());
+                        output.accept(ModItems.DYEDREAM_DESK.get());
+                        output.accept(ModItems.SHADOW_DESK.get());
+                        output.accept(ModItems.PICNIC_BASKET.get());
+                        output.accept(ModItems.SHADOW_CHEST.get());
+                        output.accept(ModItems.WIND_MOOR_CRATE.get());
+                        output.accept(ModItems.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get());
                         output.accept(ModItems.FEATHER_PEN.get());
-                        output.accept(ModBlocks.RESEARCH_TABLE.get());
-                        output.accept(ModBlocks.LOST_SWORD_TOMB.get());
+                        output.accept(ModItems.RESEARCH_TABLE.get());
+                        output.accept(ModItems.LOST_SWORD_TOMB.get());
                         output.accept(ModItems.SAND_OF_TIME.get());
                         output.accept(ModItems.LIFE_CRYSTAL.get());
                         output.accept(ModItems.GOLDEN_FOX_SCULPTURE.get());
@@ -586,6 +586,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BROKEN_SHADOW_DUNGEON_PORTAL.get());
                         output.accept(ModItems.SHADOW_DUNGEON_GATE.get());
                         output.accept(ModItems.SHADOW_DUNGEON_BARRIER.get());
+                        output.accept(ModItems.SHADOW_BLAST_FURNACE.get());
                     })
                     .build());
 
