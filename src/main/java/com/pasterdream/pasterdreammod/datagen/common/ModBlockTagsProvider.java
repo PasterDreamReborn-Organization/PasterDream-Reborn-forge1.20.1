@@ -52,7 +52,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.PINK_MUSHROOM_PORES.get())
                 .add(ModBlocks.PINK_SHROOMLIGHT.get())
                 .add(ModBlocks.SHADOW_SHROOMLIGHT.get())
-                .add(ModBlocks.SHADOW_WART_BLOCK.get());
+                .add(ModBlocks.SHADOW_WART_BLOCK.get())
+                .add(ModBlocks.SHADOW_HAND_TRAP.get());
 
         // 可以用斧子来挖掘
         tag(BlockTags.MINEABLE_WITH_AXE)

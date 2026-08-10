@@ -1308,6 +1308,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在蓄能");
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "暗影符文塔即将发生爆破");
         add("block.pasterdream.shadow_vortex", "暗影漩涡");
+        add("block.pasterdream.shadow_hand_trap", "暗影之手陷阱");
+        add("tooltip.pasterdream.shadow_hand_trap", "§7--你挖下来这个做什么？");
 
         // 破损传送门消息
         add("message.pasterdream.broken_portal.too_low", "地牢的结构被破坏，传送门没有反应");

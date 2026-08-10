@@ -21,6 +21,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
@@ -306,6 +307,19 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SHADOW_FISSURE_4.get());
         dropSelf(ModBlocks.SHADOW_FISSURE_5.get());
         dropSelf(ModBlocks.SHADOW_VORTEX.get());
+        // 暗影之手陷阱：精准采集掉落自身，否则 100% 阴影 + 10% 噩梦燃料
+        add(ModBlocks.SHADOW_HAND_TRAP.get(), block -> LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(ModBlocks.SHADOW_HAND_TRAP.get())
+                                .when(HAS_SILK_TOUCH))
+                        .add(LootItem.lootTableItem(ModItems.SHADOW.get())
+                                .when(HAS_NO_SILK_TOUCH)))
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
+                                .when(LootItemRandomChanceCondition.randomChance(0.1F))
+                                .when(HAS_NO_SILK_TOUCH))));
         add(ModBlocks.SHADOW_NYLIUM.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(ModBlocks.SHADOW_STONE.get())));
         dropSelf(ModBlocks.SHADOW_LIGHT.get());
         dropSelf(ModBlocks.SHADOW_SHROOMLIGHT.get());

@@ -16,6 +16,7 @@ import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlock
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexTileRenderer;
+import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -50,6 +51,7 @@ public class ModBlockEntityRenderer
         event.registerBlockEntityRenderer(ModBlockEntities.BROKEN_SHADOW_DUNGEON_PORTAL.get(), BrokenShadowDungeonPortalTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_DUNGEON_PORTAL.get(), ShadowDungeonPortalTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_VORTEX.get(), ShadowVortexTileRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_HAND_TRAP.get(), ShadowHandTrapTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.TWILIGHT_LANTERN.get(), TwilightLanternTileRenderer::new);
     }
 }
