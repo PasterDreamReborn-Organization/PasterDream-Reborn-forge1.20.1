@@ -27,7 +27,7 @@ public class StoryProgressItem extends Item {
 
     /**
      * 前置进度 → 下一本笔记 content 键，按剧情顺序排列。
-     * infestedChurch（侵染教堂）需玩家自行探索获取，不在此列。
+     * infestedChurch（侵染教堂-黑面）需玩家自行探索获取，不在此列。
      */
     private static final ResourceLocation[] PREREQUISITE_ADVANCEMENTS = {
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/lamp_shadow_root"),
@@ -91,7 +91,7 @@ public class StoryProgressItem extends Item {
             }
         }
 
-        // 4. 已入场但 lamp_shadow_root 未完成 → 还需自行寻找侵染教堂
+        // 4. 已入场但 lamp_shadow_root 未完成 → 还需自行寻找侵染教堂-黑面
         serverPlayer.displayClientMessage(
                 Component.translatable("message.pasterdream.story_guide.need_infested_church"), true);
         return InteractionResultHolder.fail(stack);

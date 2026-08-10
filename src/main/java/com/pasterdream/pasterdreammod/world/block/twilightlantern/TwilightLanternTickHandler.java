@@ -82,7 +82,7 @@ public class TwilightLanternTickHandler {
                 lantern.setKey(true);
                 broadcastMessage(world, pos, Component.translatable("message.pasterdream.twilight_lantern.event_end"));
 
-                // Grant bastion_guard to all nearby players who have read 侵染教堂
+                // Grant bastion_guard to all nearby players who have read 侵染教堂-黑面
                 for (Player player : world.players()) {
                     if (player.distanceToSqr(x, y, z) > 46 * 46) continue;
                     if (!(player instanceof ServerPlayer sp)) continue;

@@ -742,7 +742,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.>被阴影浸染的字迹潦草的笔记<", ">Shadow Dyed Sloppy Handwriting Notes<");
         add("book.pasterdream.title.关于黑暗之手的随笔", "Regarding Shadow Hands Essay");
         add("book.pasterdream.title.与黑色双手的决战和败北", "Decisive Battle With Shadow Hands And Fail");
-        add("book.pasterdream.title.侵染教堂", "Infested Church");
+        add("book.pasterdream.title.侵染教堂-黑面", "Infested Church - Black Face");
+        add("book.pasterdream.title.侵染教堂-亮面", "Infested Church - Bright Face");
         add("book.pasterdream.title.暮影之笼", "Twilight Cage");
         add("book.pasterdream.title.破风的骑士", "Wind Break Knight");
         add("book.pasterdream.title.清晨的新风", "Morning New Wind");
@@ -1205,7 +1206,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.get_the_lost_sword.title", "Sword of Oblivion");
         add("advancements.pasterdream.story.get_the_lost_sword.description", "Got the Sword Embryo, it seems to resonate with the power of the jungle…");
         add("advancements.pasterdream.story.lamp_shadow_root.title", "Infested Church");
-        add("advancements.pasterdream.story.lamp_shadow_root.description", "Read the Dream Seeker's Notes \"Infested Church\"");
+        add("advancements.pasterdream.story.lamp_shadow_root.description", "Read the Dream Seeker's Notes \"Infested Church - Black Face\"");
         add("advancements.pasterdream.story.bastion_guard.title", "Bastion Guard");
         add("advancements.pasterdream.story.bastion_guard.description", "Complete the Twilight Lantern bastion guard event");
         add("advancements.pasterdream.story.enter_lamp_shadow_world.title", "Lamp Shadow World");

@@ -54,7 +54,7 @@ public class TwilightLanternInteractionHandler {
         }
 
         // Main event trigger logic (overworld / nether)
-        // Check if player has read the "侵染教堂" note (lamp_shadow_root advancement)
+        // Check if player has read the "侵染教堂-黑面" note (lamp_shadow_root advancement)
         if (!hasReadInfestedChurch(entity)) {
             entity.displayClientMessage(Component.translatable("message.pasterdream.twilight_lantern.activate_fail_no_knowledge"), true);
             return;
