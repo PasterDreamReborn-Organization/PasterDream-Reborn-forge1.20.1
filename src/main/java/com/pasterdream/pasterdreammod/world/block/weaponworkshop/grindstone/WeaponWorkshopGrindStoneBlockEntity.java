@@ -103,10 +103,10 @@ public class WeaponWorkshopGrindStoneBlockEntity extends BlockEntity implements 
             {
                 return itemHandlerCap.cast();
             }
-            else
-            {
-                return externalHandlerCap.cast();
-            }
+                else
+                {
+                    return externalHandlerCap.cast();
+                }
         }
 
         return super.getCapability(cap, side);
