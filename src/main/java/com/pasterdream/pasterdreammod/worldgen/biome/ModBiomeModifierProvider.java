@@ -111,13 +111,14 @@ public class ModBiomeModifierProvider implements DataProvider
             addSpawns(entries, "black_beetle_biome_modifier", ModEntities.BLACK_BEETLE, shadowForestSpawnTag, 20, 2, 4);
             addSpawns(entries, "friendly_shadow_ghost_biome_modifier", ModEntities.FRIENDLY_SHADOW_GHOST, shadowForestSpawnTag, 10, 1, 3);
 
-            // biome_shadow_1（阴影古迹）: 幽灵系三变体
-            addSpawns(entries, "shadow_ghost_biome_modifier", ModEntities.SHADOW_GHOST, shadowGhostSpawnTag, 15, 4, 5);
-            addSpawns(entries, "shadow_squeal_ghost_biome_modifier", ModEntities.SHADOW_SQUEAL_GHOST, shadowGhostSpawnTag, 15, 3, 4);
-            addSpawns(entries, "wailing_shadow_ghost_biome_modifier", ModEntities.WAILING_SHADOW_GHOST, shadowGhostSpawnTag, 6, 1, 1);
+            // biome_shadow_1（阴影古迹）: 幽灵系三变体（降低密度：总权重 12，单次最多 4 只）
+            addSpawns(entries, "shadow_ghost_biome_modifier", ModEntities.SHADOW_GHOST, shadowGhostSpawnTag, 6, 1, 2);
+            addSpawns(entries, "shadow_squeal_ghost_biome_modifier", ModEntities.SHADOW_SQUEAL_GHOST, shadowGhostSpawnTag, 4, 1, 1);
+            addSpawns(entries, "wailing_shadow_ghost_biome_modifier", ModEntities.WAILING_SHADOW_GHOST, shadowGhostSpawnTag, 2, 1, 1);
 
-            // biome_shadow_2（阴影古迹）: shadow_golem(4,1-1)
+            // biome_shadow_2（阴影古迹）: shadow_golem(4,1-1) + shadow_hand(10,1-2)，后者稀释精英怪比例
             addSpawns(entries, "shadow_golem_biome_modifier", ModEntities.SHADOW_GOLEM, shadowRuinsSpawnTag, 4, 1, 1);
+            addSpawns(entries, "shadow_hand_ruins_biome_modifier", ModEntities.SHADOW_HAND, shadowRuinsSpawnTag, 10, 1, 2);
 
             return saveAll(cache, entries);
         });

@@ -109,7 +109,7 @@ public class BlackBeetleMotherEntity extends Monster implements GeoEntity, IShad
 
     @Override
     public MobType getMobType() {
-        return MobType.UNDEFINED;
+        return MobType.ARTHROPOD;
     }
 
     @Override
