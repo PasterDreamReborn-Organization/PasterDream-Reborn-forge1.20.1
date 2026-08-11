@@ -228,7 +228,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_BUD_WALL.get())
                 .add(ModBlocks.RUST_BLACK_METAL_BLOCK.get())
                 .add(ModBlocks.RUST_BLACK_METAL_WALL.get())
-                .add(ModBlocks.RUST_BLACK_METAL_BARS.get());
+                .add(ModBlocks.RUST_BLACK_METAL_BARS.get())
+                .add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
         // 需要钻石工具挖掘
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
@@ -411,7 +412,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.LIFE_CRYSTAL.get())
                 .add(ModBlocks.GOLDEN_FOX_SCULPTURE.get())
                 .add(ModBlocks.FOX_SCULPTURE.get())
-                .add(ModBlocks.SHADOW_BRAZIER.get());
+                .add(ModBlocks.SHADOW_BRAZIER.get())
+                .add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
 
         // ===== 盆栽植物 =====
         var flowerPots = tag(BlockTags.FLOWER_POTS);

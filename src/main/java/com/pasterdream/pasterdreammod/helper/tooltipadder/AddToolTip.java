@@ -72,5 +72,9 @@ public class AddToolTip
         if(stack.is(ModItems.SHADOW_DUNGEON_KEY.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.shadow_dungeon_key"));
         }
+        if(stack.is(ModItems.SHADOW_BLAST_FURNACE_CORE.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdream.shadow_blast_furnace_core.1"));
+            tooltip.add(Component.translatable("tooltip.pasterdream.shadow_blast_furnace_core.2"));
+        }
     }
 }

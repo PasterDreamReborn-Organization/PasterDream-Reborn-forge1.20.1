@@ -1563,6 +1563,7 @@ public class ModItems {
     public static final RegistryObject<Item> WEAPON_WORKSHOP_GRIND_STONE = ITEMS.register("weapon_workshop_grind_stone", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get(), new Item.Properties()));
     public static final RegistryObject<Item> WEAPON_WORKSHOP_BLAST_FURNACE = ITEMS.register("weapon_workshop_blast_furnace", () -> new WeaponWorkshopBlastFurnaceItem(ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_BLAST_FURNACE = ITEMS.register("shadow_blast_furnace", () -> new ShadowBlastFurnaceItem(ModBlocks.SHADOW_BLAST_FURNACE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_BLAST_FURNACE_CORE = ITEMS.register("shadow_blast_furnace_core", () -> new BlockItem(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> DREAM_NOTES_DYEDREAM_WORLD = ITEMS.register("dream_notes_dyedream_world", () -> new DreamNotesItem(new Item.Properties()));
     public static final RegistryObject<Item> DREAM_NOTES_LAMP_SHADOW_WORLD = ITEMS.register("dream_notes_lamp_shadow_world", () -> new DreamNotesItem(new Item.Properties()));
