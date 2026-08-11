@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.worldgen.feature.PinkHugeMushroomFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.ShadowChainPillarFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.ShadowHandFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.ShadowRuinWallFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.ShadowTombFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.StonePillarFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
@@ -43,6 +44,10 @@ public class ModFeatures {
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> STONE_PILLAR =
             FEATURES.register("stone_pillar",
                     () -> new StonePillarFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> SHADOW_TOMB =
+            FEATURES.register("shadow_tomb",
+                    () -> new ShadowTombFeature(NoneFeatureConfiguration.CODEC));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
