@@ -21,6 +21,10 @@ import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamc
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestMenu;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableMenu;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceMenu;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilMenu;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceMenu;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlockEntity;
@@ -138,6 +142,18 @@ public class ModMenus
     {
         BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
         return new WeaponWorkshopGrindStoneMenu(windowId, inv, (WeaponWorkshopGrindStoneBlockEntity) blockEntity);
+    }));
+
+    public static final RegistryObject<MenuType<WeaponWorkshopAnvilMenu>> WEAPON_WORKSHOP_ANVIL = MENUS.register("weapon_workshop_anvil", () -> IForgeMenuType.create((windowId, inv, data) ->
+    {
+        BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+        return new WeaponWorkshopAnvilMenu(windowId, inv, (WeaponWorkshopAnvilBlockEntity) blockEntity);
+    }));
+
+    public static final RegistryObject<MenuType<ShadowBlastFurnaceMenu>> SHADOW_BLAST_FURNACE = MENUS.register("shadow_blast_furnace", () -> IForgeMenuType.create((windowId, inv, data) ->
+    {
+        BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+        return new ShadowBlastFurnaceMenu(windowId, inv, (ShadowBlastFurnaceBlockEntity) blockEntity);
     }));
 
     public static void register(IEventBus eventBus)

@@ -12,9 +12,9 @@ public class MultipartVoxelShapeCalculator
         int startBlockX = (int)startX;
         int startBlockY = (int)startY;
         int startBlockZ = (int)startZ;
-        int finalBlockX = (int)finalX + finalX % 1 == 0 ? 0 : 1;
-        int finalBlockY = (int)finalY + finalY % 1 == 0 ? 0 : 1;
-        int finalBlockZ = (int)finalZ + finalZ % 1 == 0 ? 0 : 1;
+        int finalBlockX = (int)finalX + (finalX % 1 == 0 ? -1 : 0);
+        int finalBlockY = (int)finalY + (finalY % 1 == 0 ? -1 : 0);
+        int finalBlockZ = (int)finalZ + (finalZ % 1 == 0 ? -1 : 0);
 
         List<List<List<List<VoxelShape>>>> ListListListListVoxelShape = new ArrayList<>();
         for(int x = startBlockX; x <= finalBlockX; x++)

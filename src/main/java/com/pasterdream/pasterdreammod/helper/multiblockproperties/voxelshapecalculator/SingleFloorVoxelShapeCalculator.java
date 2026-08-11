@@ -12,8 +12,8 @@ public class SingleFloorVoxelShapeCalculator
     {
         int startBlockX = (int)startX;
         int startBlockZ = (int)startZ;
-        int finalBlockX = (int)finalX + finalX % 1 == 0 ? 0 : 1;
-        int finalBlockZ = (int)finalZ + finalZ % 1 == 0 ? 0 : 1;
+        int finalBlockX = (int)finalX + (finalX % 1 == 0 ? -1 : 0);
+        int finalBlockZ = (int)finalZ + (finalZ % 1 == 0 ? -1 : 0);
 
         List<List<List<VoxelShape>>> ListListListVoxelShape = new ArrayList<>();
         for(int x = startBlockX; x <= finalBlockX; x++)
