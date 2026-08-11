@@ -1148,7 +1148,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "The Shadow Tune Totem is about to explode");
         add("block.pasterdream.shadow_vortex", "Shadow Vortex");
         add("block.pasterdream.shadow_hand_trap", "Shadow Hand Trap");
+        add("block.pasterdream.shadow_brazier", "Shadow Brazier");
         add("tooltip.pasterdream.shadow_hand_trap", "§7--Why would you dig this up?");
+        add("message.pasterdream.shadow_brazier.need_candle", "You need a Shadow Candle to light the brazier");
+        add("message.pasterdream.shadow_brazier.lit", "The brazier ignites, but brings no light...");
+        add("message.pasterdream.shadow_brazier.shadow_spread", "Shadow spreads from all around");
+        add("message.pasterdream.shadow_brazier.extinguished", "The brazier burns out and shatters on the ground");
+        add("message.pasterdream.shadow_brazier.key_dropped", "A key drops from the crevice of the brazier");
 
         // Broken Portal Messages
         add("message.pasterdream.broken_portal.too_low", "The structure is damaged, the portal has no response");

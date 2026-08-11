@@ -29,6 +29,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShad
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalTileEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexTileEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlockEntity;
@@ -73,6 +74,7 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<ShadowDungeonPortalTileEntity>> SHADOW_DUNGEON_PORTAL = BLOCK_ENTITIES.register("shadow_dungeon_portal", () -> BlockEntityType.Builder.of(ShadowDungeonPortalTileEntity::new, ModBlocks.SHADOW_DUNGEON_PORTAL.get()).build(null));
     public static final RegistryObject<BlockEntityType<ShadowVortexTileEntity>> SHADOW_VORTEX = BLOCK_ENTITIES.register("shadow_vortex", () -> BlockEntityType.Builder.of(ShadowVortexTileEntity::new, ModBlocks.SHADOW_VORTEX.get()).build(null));
     public static final RegistryObject<BlockEntityType<ShadowHandTrapBlockEntity>> SHADOW_HAND_TRAP = BLOCK_ENTITIES.register("shadow_hand_trap", () -> BlockEntityType.Builder.of(ShadowHandTrapBlockEntity::new, ModBlocks.SHADOW_HAND_TRAP.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ShadowBrazierBlockEntity>> SHADOW_BRAZIER = BLOCK_ENTITIES.register("shadow_brazier", () -> BlockEntityType.Builder.of(ShadowBrazierBlockEntity::new, ModBlocks.SHADOW_BRAZIER.get()).build(null));
     public static final RegistryObject<BlockEntityType<WeaponWorkshopCraftingTableBlockEntity>> WEAPON_WORKSHOP_CRAFTING_TABLE = BLOCK_ENTITIES.register("weapon_workshop_crafting_table", () -> BlockEntityType.Builder.of(WeaponWorkshopCraftingTableBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get()).build(null));
     public static final RegistryObject<BlockEntityType<WeaponWorkshopAnvilBlockEntity>> WEAPON_WORKSHOP_ANVIL = BLOCK_ENTITIES.register("weapon_workshop_anvil", () -> BlockEntityType.Builder.of(WeaponWorkshopAnvilBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_ANVIL.get()).build(null));
     public static final RegistryObject<BlockEntityType<WeaponWorkshopCoolerPotBlockEntity>> WEAPON_WORKSHOP_COOLER_POT = BLOCK_ENTITIES.register("weapon_workshop_cooler_pot", () -> BlockEntityType.Builder.of(WeaponWorkshopCoolerPotBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get()).build(null));
