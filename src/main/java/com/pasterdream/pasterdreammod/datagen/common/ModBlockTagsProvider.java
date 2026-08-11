@@ -410,7 +410,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.LIFE_CRYSTAL.get())
                 .add(ModBlocks.GOLDEN_FOX_SCULPTURE.get())
-                .add(ModBlocks.FOX_SCULPTURE.get());
+                .add(ModBlocks.FOX_SCULPTURE.get())
+                .add(ModBlocks.SHADOW_BRAZIER.get());
 
         // ===== 盆栽植物 =====
         var flowerPots = tag(BlockTags.FLOWER_POTS);

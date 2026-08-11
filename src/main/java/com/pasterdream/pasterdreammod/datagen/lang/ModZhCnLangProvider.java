@@ -1313,7 +1313,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "暗影符文塔即将发生爆破");
         add("block.pasterdream.shadow_vortex", "暗影漩涡");
         add("block.pasterdream.shadow_hand_trap", "暗影之手陷阱");
+        add("block.pasterdream.shadow_brazier", "暗影火盆");
         add("tooltip.pasterdream.shadow_hand_trap", "§7--你挖下来这个做什么？");
+        add("message.pasterdream.shadow_brazier.need_candle", "需要用阴影蜡烛点燃火盆");
+        add("message.pasterdream.shadow_brazier.lit", "火盆被点燃，但带来的并不是光明...");
+        add("message.pasterdream.shadow_brazier.shadow_spread", "阴影从四周蔓延开来");
+        add("message.pasterdream.shadow_brazier.extinguished", "火盆燃尽熄灭，坠落在地上破碎");
+        add("message.pasterdream.shadow_brazier.key_dropped", "在火盆的夹层里掉落出一把钥匙");
 
         // 破损传送门消息
         add("message.pasterdream.broken_portal.too_low", "地牢的结构被破坏，传送门没有反应");

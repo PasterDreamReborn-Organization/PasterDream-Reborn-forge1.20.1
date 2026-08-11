@@ -307,6 +307,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SHADOW_FISSURE_4.get());
         dropSelf(ModBlocks.SHADOW_FISSURE_5.get());
         dropSelf(ModBlocks.SHADOW_VORTEX.get());
+        dropSelf(ModBlocks.SHADOW_BRAZIER.get());
         // 暗影之手陷阱：精准采集掉落自身，否则 100% 阴影 + 10% 噩梦燃料
         add(ModBlocks.SHADOW_HAND_TRAP.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool()
