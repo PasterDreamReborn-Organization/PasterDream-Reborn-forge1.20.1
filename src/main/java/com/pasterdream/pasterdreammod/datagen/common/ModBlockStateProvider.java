@@ -517,6 +517,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 simpleBlock(potted.get(), pottedModel);
             }
         }
+
+        // 暗影高炉核心
+        shadowBlastFurnaceCore();
     }
 
     private void simpleBuildingFamily(BuildingBlockFamily family) {
@@ -527,6 +530,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
         slabBlock((SlabBlock) family.slab().get(), tex, tex);
         blockItem(family.slab());
         wallBlock((WallBlock) family.wall().get(), tex);
+    }
+
+    private void shadowBlastFurnaceCore() {
+        var sideTex = modLoc("block/shadow_blast_furnace_core_side");
+        var topTex = modLoc("block/shadow_blast_furnace_core_top");
+        var model = models().cubeBottomTop("shadow_blast_furnace_core", sideTex, topTex, topTex);
+        simpleBlockWithItem(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get(), model);
     }
 
     private void generateTwoStageCrop(Block block, String baseName)

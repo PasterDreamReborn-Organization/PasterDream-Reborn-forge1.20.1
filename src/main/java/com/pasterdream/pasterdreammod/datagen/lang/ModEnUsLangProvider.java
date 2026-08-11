@@ -1149,7 +1149,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("block.pasterdream.shadow_vortex", "Shadow Vortex");
         add("block.pasterdream.shadow_hand_trap", "Shadow Hand Trap");
         add("block.pasterdream.shadow_brazier", "Shadow Brazier");
+        add("block.pasterdream.shadow_blast_furnace_core", "Shadow Blast Furnace Core");
         add("tooltip.pasterdream.shadow_hand_trap", "§7--Why would you dig this up?");
+        add("tooltip.pasterdream.shadow_blast_furnace_core.1", "When the multi-block structure is complete");
+        add("tooltip.pasterdream.shadow_blast_furnace_core.2", "Right-click this core with the corresponding blueprint to build");
         add("message.pasterdream.shadow_brazier.need_candle", "You need a Shadow Candle to light the brazier");
         add("message.pasterdream.shadow_brazier.lit", "The brazier ignites, but brings no light...");
         add("message.pasterdream.shadow_brazier.shadow_spread", "Shadow spreads from all around");

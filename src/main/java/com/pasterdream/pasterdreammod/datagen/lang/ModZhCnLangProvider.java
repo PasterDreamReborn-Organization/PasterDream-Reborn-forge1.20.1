@@ -1315,7 +1315,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("block.pasterdream.shadow_vortex", "暗影漩涡");
         add("block.pasterdream.shadow_hand_trap", "暗影之手陷阱");
         add("block.pasterdream.shadow_brazier", "暗影火盆");
+        add("block.pasterdream.shadow_blast_furnace_core", "暗影高炉核心");
         add("tooltip.pasterdream.shadow_hand_trap", "§7--你挖下来这个做什么？");
+        add("tooltip.pasterdream.shadow_blast_furnace_core.1", "在完成多方块结构时");
+        add("tooltip.pasterdream.shadow_blast_furnace_core.2", "使用对应蓝图右键此核心以进行搭建");
         add("message.pasterdream.shadow_brazier.need_candle", "需要用阴影蜡烛点燃火盆");
         add("message.pasterdream.shadow_brazier.lit", "火盆被点燃，但带来的并不是光明...");
         add("message.pasterdream.shadow_brazier.shadow_spread", "阴影从四周蔓延开来");
