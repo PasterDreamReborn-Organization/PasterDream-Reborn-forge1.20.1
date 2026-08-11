@@ -42,6 +42,10 @@ public class ModEntities {
     public static final DeferredRegister<EntityType<?>> REGISTRY =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, PasterDreamMod.MOD_ID);
 
+    /** 怨魂系实体独立生成类别，上限 30 只，避免占满原版怪物配额 (70) */
+    public static final MobCategory SHADOW_GHOST_CATEGORY =
+            MobCategory.create("pasterdream_shadow_ghost", "shadow_ghost", 30, false, false, 128);
+
     public static final RegistryObject<EntityType<TerraswordWaveEntity>> TERRASWORD_WAVE = register("terrasword_wave",
             EntityType.Builder.<TerraswordWaveEntity>of(TerraswordWaveEntity::new, MobCategory.MISC)
                     .setShouldReceiveVelocityUpdates(true)
@@ -205,7 +209,7 @@ public class ModEntities {
                     .sized(3.5f, 3.5f));
 
     public static final RegistryObject<EntityType<ShadowGhostEntity>> SHADOW_GHOST = register("shadow_ghost",
-            EntityType.Builder.<ShadowGhostEntity>of(ShadowGhostEntity::new, MobCategory.MONSTER)
+            EntityType.Builder.<ShadowGhostEntity>of(ShadowGhostEntity::new, SHADOW_GHOST_CATEGORY)
                     .setShouldReceiveVelocityUpdates(true)
                     .setTrackingRange(64)
                     .setUpdateInterval(3)
@@ -214,7 +218,7 @@ public class ModEntities {
                     .sized(0.7f, 1.2f));
 
     public static final RegistryObject<EntityType<ShadowGhostEntity>> SHADOW_SQUEAL_GHOST = register("shadow_squeal_ghost",
-            EntityType.Builder.<ShadowGhostEntity>of(ShadowGhostEntity::new, MobCategory.MONSTER)
+            EntityType.Builder.<ShadowGhostEntity>of(ShadowGhostEntity::new, SHADOW_GHOST_CATEGORY)
                     .setShouldReceiveVelocityUpdates(true)
                     .setTrackingRange(64)
                     .setUpdateInterval(3)
@@ -223,7 +227,7 @@ public class ModEntities {
                     .sized(0.7f, 1.2f));
 
     public static final RegistryObject<EntityType<WailingShadowGhostEntity>> WAILING_SHADOW_GHOST = register("wailing_shadow_ghost",
-            EntityType.Builder.<WailingShadowGhostEntity>of(WailingShadowGhostEntity::new, MobCategory.MONSTER)
+            EntityType.Builder.<WailingShadowGhostEntity>of(WailingShadowGhostEntity::new, SHADOW_GHOST_CATEGORY)
                     .setShouldReceiveVelocityUpdates(true)
                     .setTrackingRange(64)
                     .setUpdateInterval(3)

@@ -122,7 +122,7 @@ public class BlackBeetleEntity extends TamableAnimal implements GeoEntity, IShad
 
     @Override
     public MobType getMobType() {
-        return MobType.UNDEFINED;
+        return MobType.ARTHROPOD;
     }
 
     @Override
