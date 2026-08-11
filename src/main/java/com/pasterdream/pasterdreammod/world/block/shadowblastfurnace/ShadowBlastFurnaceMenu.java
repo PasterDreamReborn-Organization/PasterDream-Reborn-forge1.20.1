@@ -7,6 +7,8 @@ import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.
 import com.pasterdream.pasterdreammod.init.ModMenus;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
@@ -15,6 +17,7 @@ import net.minecraftforge.items.SlotItemHandler;
 public class ShadowBlastFurnaceMenu extends AbstractContainerMenuWithFluidSlot
 {
     private final ShadowBlastFurnaceBlockEntity blockEntity;
+    private final ContainerData data;
     private final IFluidContainer fluidContainer;
 
     public ShadowBlastFurnaceMenu(int id, Inventory inventory, ShadowBlastFurnaceBlockEntity blockEntity)
@@ -23,6 +26,11 @@ public class ShadowBlastFurnaceMenu extends AbstractContainerMenuWithFluidSlot
         this.blockEntity = blockEntity;
         fluidContainer = new FluidContainer.GenericFluidContainer(blockEntity.getFluidTanks());
         IItemHandler handler = blockEntity.getItemHandler();
+
+        data = new SimpleContainerData(2);
+        data.set(0, blockEntity.getProgress());
+        data.set(1, blockEntity.getMaxProgress());
+        addDataSlots(data);
 
         addFluidSlot(new FluidSlot(fluidContainer, 0, 130, 4));
 
@@ -36,7 +44,7 @@ public class ShadowBlastFurnaceMenu extends AbstractContainerMenuWithFluidSlot
                 return false;
             }
         });
-        addSlot(new SlotItemHandler(handler, 2, 95, 86)
+        addSlot(new SlotItemHandler(handler, 3, 95, 86)
         {
             @Override
             public boolean mayPlace(ItemStack stack)
@@ -47,12 +55,12 @@ public class ShadowBlastFurnaceMenu extends AbstractContainerMenuWithFluidSlot
 
         for (int i = 0; i < 9; i++)
         {
-            addSlot(new Slot(inventory, i, 5 + i * 18, 173));
+            addSlot(new Slot(inventory, i, 5 + i * 18, 175));
         }
 
         for (int i = 0; i < 27; i++)
         {
-            addSlot(new Slot(inventory, i + 9, 5 + (i % 9) * 18, 115 + (i / 9) * 18));
+            addSlot(new Slot(inventory, i + 9, 5 + (i % 9) * 18, 117 + (i / 9) * 18));
         }
 
         reBuildLastFluids();
@@ -121,5 +129,26 @@ public class ShadowBlastFurnaceMenu extends AbstractContainerMenuWithFluidSlot
 
         slot.onTake(player, stack);
         return copy;
+    }
+
+    @Override
+    public void broadcastChanges()
+    {
+        super.broadcastChanges();
+        if (!blockEntity.getLevel().isClientSide)
+        {
+            this.data.set(0, blockEntity.getProgress());
+            this.data.set(1, blockEntity.getMaxProgress());
+        }
+    }
+
+    public int getProgress()
+    {
+        return data.get(0);
+    }
+
+    public int getMaxProgress()
+    {
+        return data.get(1);
     }
 }

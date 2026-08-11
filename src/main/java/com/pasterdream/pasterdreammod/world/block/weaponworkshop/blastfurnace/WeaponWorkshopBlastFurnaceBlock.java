@@ -298,6 +298,17 @@ public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockB
 
             if (part == _2x4x2Part.MAIN)
             {
+                BlockEntity blockEntity = level.getBlockEntity(blockPosition);
+                if(blockEntity instanceof WeaponWorkshopBlastFurnaceBlockEntity weaponWorkshopBlastFurnace)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        dropItemStack(level, blockPosition.getX() + 0.5, blockPosition.getY() + 0.5, blockPosition.getZ() + 0.5, weaponWorkshopBlastFurnace.getItemHandler().getStackInSlot(i));
+                    }
+                    level.removeBlockEntity(blockPosition);
+                    level.updateNeighbourForOutputSignal(blockPosition, this);
+                }
+
                 for (_2x4x2Part eachPart : _2x4x2Part.values())
                 {
                     if (eachPart == _2x4x2Part.MAIN)
@@ -310,28 +321,10 @@ public class WeaponWorkshopBlastFurnaceBlock extends HorizontalDirectionalBlockB
                     if (addonState.getBlock() instanceof WeaponWorkshopBlastFurnaceBlock)
                     {
                         level.destroyBlock(addonPos, false);
+                        level.removeBlockEntity(addonPos);
                     }
-                }
-
-                BlockEntity blockEntity = level.getBlockEntity(blockPosition);
-                if(blockEntity instanceof WeaponWorkshopBlastFurnaceBlockEntity weaponWorkshopBlastFurnace)
-                {
-                    for (int i = 0; i < 3; i++)
-                    {
-                        dropItemStack(level, blockPosition.getX() + 0.5, blockPosition.getY() + 0.5, blockPosition.getZ() + 0.5, weaponWorkshopBlastFurnace.getItemHandler().getStackInSlot(i));
-                    }
-                    level.updateNeighbourForOutputSignal(blockPosition, this);
                 }
             }
-                else
-                {
-                    BlockPos mainPos = _2x4x2_CalculatePartPosition.getMainPosFromAddon(blockPosition, facing, part);
-                    BlockState mainState = level.getBlockState(mainPos);
-                    if (mainState.getBlock() instanceof WeaponWorkshopBlastFurnaceBlock)
-                    {
-                        level.destroyBlock(mainPos, false);
-                    }
-                }
         }
     }
 

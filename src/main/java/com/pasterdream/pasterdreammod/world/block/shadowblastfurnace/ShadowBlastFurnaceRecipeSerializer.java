@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.block.claypan;
+package com.pasterdream.pasterdreammod.world.block.shadowblastfurnace;
 
 import com.google.gson.JsonObject;
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
@@ -10,25 +10,33 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClaypanRecipeSerializer extends GenericPasterDreamRecipeSerializer<ClaypanRecipe>
+public class ShadowBlastFurnaceRecipeSerializer extends GenericPasterDreamRecipeSerializer<ShadowBlastFurnaceRecipe>
 {
     @Override
-    public ClaypanRecipe fromJson(ResourceLocation recipeId, JsonObject json)
+    public ShadowBlastFurnaceRecipe fromJson(ResourceLocation recipeId, JsonObject json)
     {
         List<FluidIngredient> fluidInputs = parseFluidIngredients(json, "fluidInputs");
+        List<ItemIngredient> itemInputs = parseItemIngredients(json, "itemInputs");
         List<ItemIngredient> itemOutputs = parseItemIngredients(json, "itemOutputs");
         int processingTime = parseProcessingTime(json);
-        return new ClaypanRecipe(recipeId, fluidInputs, itemOutputs, processingTime);
+        return new ShadowBlastFurnaceRecipe(recipeId, fluidInputs, itemInputs, itemOutputs, processingTime);
     }
 
     @Override
-    public ClaypanRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer)
+    public ShadowBlastFurnaceRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer)
     {
         int inputFluidCount = buffer.readVarInt();
         List<FluidIngredient> fluidInputs = new ArrayList<>();
         for (int i = 0; i < inputFluidCount; i++)
         {
             fluidInputs.add(FluidIngredient.fromNetwork(buffer));
+        }
+
+        int inputItemCount = buffer.readVarInt();
+        List<ItemIngredient> itemInputs = new ArrayList<>();
+        for (int i = 0; i < inputItemCount; i++)
+        {
+            itemInputs.add(ItemIngredient.fromNetwork(buffer));
         }
 
         int outputItemCount = buffer.readVarInt();
@@ -38,16 +46,22 @@ public class ClaypanRecipeSerializer extends GenericPasterDreamRecipeSerializer<
             itemOutputs.add(ItemIngredient.fromNetwork(buffer));
         }
         int processingTime = buffer.readVarInt();
-        return new ClaypanRecipe(recipeId, fluidInputs, itemOutputs, processingTime);
+        return new ShadowBlastFurnaceRecipe(recipeId, fluidInputs, itemInputs, itemOutputs, processingTime);
     }
 
     @Override
-    public void toNetwork(FriendlyByteBuf buffer, ClaypanRecipe recipe)
+    public void toNetwork(FriendlyByteBuf buffer, ShadowBlastFurnaceRecipe recipe)
     {
         buffer.writeVarInt(recipe.getInputFluidIngredients().size());
         for (FluidIngredient fluidIngredient : recipe.getInputFluidIngredients())
         {
             fluidIngredient.toNetwork(buffer);
+        }
+
+        buffer.writeVarInt(recipe.getInputItemIngredients().size());
+        for (ItemIngredient ingredient : recipe.getInputItemIngredients())
+        {
+            ingredient.toNetwork(buffer);
         }
 
         buffer.writeVarInt(recipe.getOutputItemIngredients().size());

@@ -1,0 +1,26 @@
+{
+  "type": "pasterdream:shadow_blast_furnace",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:shadow_liquid",
+      "amount": 3000
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:rust_black_metal_grain"
+    },
+    {
+      "item": "pasterdream:nightmare_fuel"
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "minecraft:black_metal_grain"
+    }
+  ],
+  "processingTime": 900
+}

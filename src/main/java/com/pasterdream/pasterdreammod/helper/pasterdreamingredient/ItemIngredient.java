@@ -188,6 +188,10 @@ public class ItemIngredient
 
     public ItemStack getItemStack()
     {
+        if(item == null)
+        {
+            return ItemStack.EMPTY;
+        }
         ItemStack itemStack = new ItemStack(item, count);
         itemStack.setTag(nbt);
         return itemStack;

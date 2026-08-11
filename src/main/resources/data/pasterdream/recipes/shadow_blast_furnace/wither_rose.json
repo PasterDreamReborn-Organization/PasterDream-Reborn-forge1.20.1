@@ -1,0 +1,26 @@
+{
+  "type": "pasterdream:shadow_blast_furnace",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:shadow_liquid",
+      "amount": 1000
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "minecraft:rose_bush"
+    },
+    {
+      "item": "pasterdream:nightmare_fuel"
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "minecraft:wither_rose"
+    }
+  ],
+  "processingTime": 300
+}
