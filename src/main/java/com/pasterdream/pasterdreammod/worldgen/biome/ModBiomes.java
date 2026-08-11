@@ -386,9 +386,10 @@ public class ModBiomes {
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_FUNGUS_TREE);
     }
 
-    /** 阴影古迹特有植被（影茎蕨、白厄花）+ 残垣断壁 */
+    /** 阴影古迹特有植被（影茎蕨、白厄花）+ 残垣断壁 + 古墓 */
     private static void addShadowRuinsVegetation(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.SHADOW_RUIN_WALL)
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.SHADOW_TOMB)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SHADOW_STEM_FERN_PATCH)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WHITE_ORCHID_FLOWER_PATCH);
     }
