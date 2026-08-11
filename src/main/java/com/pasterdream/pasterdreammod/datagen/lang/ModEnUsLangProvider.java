@@ -1114,6 +1114,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // Enchantments
         add("enchantment.pasterdream.swift_strike", "Swift Strike");
         add("enchantment.pasterdream.shelter", "Shelter");
+        add("enchantment.pasterdream.swift_strike.desc", "Increases attack speed.");
+        add("enchantment.pasterdream.shelter.desc", "Reduce the damage taken.");
 
         // Counter Ring
         add(ModItems.COUNTER_RING.get(), "Counter Ring");
