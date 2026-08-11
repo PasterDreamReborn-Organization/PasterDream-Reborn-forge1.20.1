@@ -36,6 +36,7 @@ import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarScreen;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
@@ -180,7 +181,7 @@ public class ModJEIPlugin implements IModPlugin
                 (stack, context) -> IIngredientSubtypeInterpreter.NONE);
 
         registration.registerSubtypeInterpreter(
-                ModItems.POTION_BOTTLE.get(),
+                PotionBottleRegistry.POTION_BOTTLE.get(),
                 (stack, context) -> PotionBottleItem.getPotionType(stack));
     }
 
