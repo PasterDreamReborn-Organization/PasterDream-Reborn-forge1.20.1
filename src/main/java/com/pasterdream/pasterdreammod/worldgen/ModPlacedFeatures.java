@@ -233,6 +233,11 @@ public class ModPlacedFeatures {
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_hand"));
 
+    // 阴影古墓 — NBT 结构地物（shadow_tomb_0/1 随机变体，下陷2格）
+    public static final ResourceKey<PlacedFeature> SHADOW_TOMB =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_tomb"));
+
     //原版维度花草
     public static final ResourceKey<PlacedFeature> GOLDENROD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "goldenrod_patch"));
     public static final ResourceKey<PlacedFeature> FERRARIA_CRISPA_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ferraria_crispa_patch"));
@@ -585,6 +590,14 @@ public class ModPlacedFeatures {
         context.register(SHADOW_HAND, new PlacedFeature(
                 cf.getOrThrow(ModConfiguredFeatures.SHADOW_HAND),
                 List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
+                        SurfaceWaterDepthFilter.forMaxDepth(0),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        ON_SHADOW_GROUND)));
+
+        // 阴影古墓 — shadow_tomb_0/1 随机变体，下陷2格，仅阴影古迹
+        context.register(SHADOW_TOMB, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.SHADOW_TOMB),
+                List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(),
                         SurfaceWaterDepthFilter.forMaxDepth(0),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         ON_SHADOW_GROUND)));

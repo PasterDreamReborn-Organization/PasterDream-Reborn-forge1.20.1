@@ -260,6 +260,11 @@ public class ModConfiguredFeatures {
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_hand"));
 
+    // 阴影古墓 — NBT 结构物 Feature（shadow_tomb_0/1 随机变体）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_TOMB =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_tomb"));
+
 
     // ===== 原版维度花草 =====
     public static final ResourceKey<ConfiguredFeature<?, ?>> GOLDENROD_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "goldenrod_patch"));
@@ -640,6 +645,10 @@ public class ModConfiguredFeatures {
 
         // 暗影之手 — NBT 结构地物
         context.register(SHADOW_HAND, new ConfiguredFeature<>(ModFeatures.SHADOW_HAND.get(),
+                NoneFeatureConfiguration.INSTANCE));
+
+        // 阴影古墓 — NBT 结构地物（shadow_tomb_0/1 随机变体，下陷2格）
+        context.register(SHADOW_TOMB, new ConfiguredFeature<>(ModFeatures.SHADOW_TOMB.get(),
                 NoneFeatureConfiguration.INSTANCE));
 
 
