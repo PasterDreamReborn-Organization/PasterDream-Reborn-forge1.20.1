@@ -952,7 +952,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(Items.COBWEB)
-                                        .setWeight(70)
+                                        .setWeight(10)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(2.0F, 5.0F))))
                                 .add(LootItem.lootTableItem(ModItems.SHADOW_CANDLE.get())
@@ -971,6 +971,10 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
                         )
                         // 稀有物品混入，固定1抽取，无幸运修正
                         .withPool(LootPool.lootPool()
@@ -981,7 +985,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
                                 .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get())
-                                        .setWeight(5)
+                                        .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CALAIS_SPICE_BOTTLE.get())

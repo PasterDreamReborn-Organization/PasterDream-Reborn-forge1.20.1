@@ -341,6 +341,11 @@ public class Config
             .comment("卡莱调料瓶回避增益持续时间（tick），默认 20（1 秒）")
             .defineInRange("calaisSpiceBottleEvasionDuration", 20, 0, 200);
 
+    // === 村民交易 ===
+    private static final ForgeConfigSpec.DoubleValue TOOLSMITH_BLUEPRINT_TRADE_CHANCE = BUILDER
+            .comment("工具匠专家（5级）出售精铸工坊蓝图的概率，默认 1.0（100%）")
+            .defineInRange("toolsmithBlueprintTradeChance", 1.0, 0.0, 1.0);
+
     // === 鬼魂之面 ===
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> GHOST_FACE_PROJECTILE_BLACKLIST = BUILDER
             .comment("鬼魂之面不生效的投射物实体类型 ID 列表（格式：modid:entity_id），"
@@ -418,6 +423,9 @@ public class Config
     public static Double conflictCardReach;
     public static List<? extends String> conflictMarkBlacklist;
     private static Set<EntityType<?>> cachedConflictMarkBlacklistTypes = Set.of();
+
+    // === 村民交易 ===
+    public static double toolsmithBlueprintTradeChance;
 
     //鬼魂之面
     public static List<? extends String> ghostFaceProjectileBlacklist;
@@ -658,6 +666,8 @@ public class Config
 
         ghostFaceProjectileBlacklist = GHOST_FACE_PROJECTILE_BLACKLIST.get();
         rebuildGhostFaceBlacklistCache();
+
+        toolsmithBlueprintTradeChance = TOOLSMITH_BLUEPRINT_TRADE_CHANCE.get();
 
         rebuildSinInstakillCache();
         rebuildConflictMarkBlacklistCache();
