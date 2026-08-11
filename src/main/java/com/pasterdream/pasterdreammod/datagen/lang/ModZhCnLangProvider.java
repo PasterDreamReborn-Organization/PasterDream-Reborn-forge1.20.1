@@ -1280,6 +1280,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 附魔
         add("enchantment.pasterdream.swift_strike", "疾风连击");
         add("enchantment.pasterdream.shelter", "庇护");
+        add("enchantment.pasterdream.swift_strike.desc", "增加攻击速度。");
+        add("enchantment.pasterdream.shelter.desc", "降低所受伤害。");
 
         // 反击戒指
         add(ModItems.COUNTER_RING.get(), "反击戒指");
