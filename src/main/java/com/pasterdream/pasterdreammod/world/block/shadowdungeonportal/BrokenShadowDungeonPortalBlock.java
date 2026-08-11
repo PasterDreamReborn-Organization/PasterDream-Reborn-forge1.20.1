@@ -11,6 +11,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -56,6 +57,11 @@ public class BrokenShadowDungeonPortalBlock extends BaseEntityBlock {
     }
 
     @Override
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        level.setBlock(pos, ModBlocks.SHADOW_DUNGEON_PORTAL.get().defaultBlockState(), 3);
+    }
+
+    @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return box(3, 3, 3, 13, 13, 13);
     }
@@ -81,10 +87,8 @@ public class BrokenShadowDungeonPortalBlock extends BaseEntityBlock {
             if (world instanceof ServerLevel sl)
                 sl.sendParticles(ParticleTypes.END_ROD, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 24, 1, 1, 1, 0.3);
             player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.creative_repaired"), false);
-            PasterDreamMod.queueServerWork(20, () -> {
-                world.setBlock(pos, ModBlocks.SHADOW_DUNGEON_PORTAL.get().defaultBlockState(), 3);
-                player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.repaired"), true);
-            });
+            player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.repaired"), true);
+            world.scheduleTick(pos, this, 20);
             return InteractionResult.SUCCESS;
         }
 
@@ -106,10 +110,8 @@ public class BrokenShadowDungeonPortalBlock extends BaseEntityBlock {
                 sl.sendParticles(ParticleTypes.END_ROD, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 24, 1, 1, 1, 0.3);
             clearItem(player, ModItems.BLACK_METAL_INGOT.get());
             clearItem(player, ModBlocks.SHADOW_LIGHT.get().asItem());
-            PasterDreamMod.queueServerWork(20, () -> {
-                world.setBlock(pos, ModBlocks.SHADOW_DUNGEON_PORTAL.get().defaultBlockState(), 3);
-                player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.repaired"), true);
-            });
+            player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.repaired"), true);
+            world.scheduleTick(pos, this, 20);
         } else {
             player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.need_materials"), true);
         }
