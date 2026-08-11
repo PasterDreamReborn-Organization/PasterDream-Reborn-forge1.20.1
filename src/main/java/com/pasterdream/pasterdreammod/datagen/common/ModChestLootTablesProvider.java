@@ -881,6 +881,127 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
         );
 
         consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/shadow_relic_chest_loot_common"),//原loots_relic_3
+                LootTable.lootTable()
+                        // 阴影建筑方块，固定2抽取，幸运影响系数0.15
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.15F))
+                                .setRolls(ConstantValue.exactly(2.0F))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 8.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_STONE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 8.0F))))
+                                .add(LootItem.lootTableItem(ModItems.DARK_CLOUD.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 8.0F))))
+                                .add(LootItem.lootTableItem(ModItems.THICK_SHADOW.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 8.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_STEM.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 8.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_PLANKS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 8.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(1))
+                        )
+                        // 阴影植物，固定1抽取，无幸运修正
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_SHORT_ROOTS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_ROOTS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_STEM_FERN.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_SPROUTS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_FERN.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WHITE_ORCHID_FLOWER.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_FUNGUS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                        )
+                        // 材料&杂物，固定1抽取，幸运影响系数0.15
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.15F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(Items.COBWEB)
+                                        .setWeight(70)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(2.0F, 5.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_CANDLE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.RUST_BLACK_METAL_GRAIN.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_LIQUID_BUCKET.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                        )
+                        // 稀有物品混入，固定1抽取，无幸运修正
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get())
+                                        .setWeight(5)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CALAIS_SPICE_BOTTLE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.EMPTY_PROPHECY_CARD.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GHOST_FACE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(40))
+                        )
+        );
+
+        consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/desert_fortress_chest"),//原loots_relic_4
                 LootTable.lootTable()
                         // 沙漠建材，固定1抽取，无幸运修正
