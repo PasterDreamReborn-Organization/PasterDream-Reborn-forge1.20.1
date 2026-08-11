@@ -1676,9 +1676,7 @@ public class ModItems {
                 }
             });
 
-    // 药剂瓶 —— 单一物品实例，通过 NBT 区分类型，模型通过 ItemProperties + overrides 切换纹理
-    public static final RegistryObject<Item> POTION_BOTTLE = ITEMS.register("potion_bottle",
-            () -> new PotionBottleItem(""));
+    // 药剂瓶物品注册已移至 PotionBottleRegistry（world/item 包）
 
     // 刷怪蛋
     public static final RegistryObject<Item> PINK_CHICKEN_SPAWN_EGG = ITEMS.register("pink_chicken_spawn_egg",
