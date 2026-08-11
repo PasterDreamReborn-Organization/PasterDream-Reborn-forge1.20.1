@@ -162,7 +162,7 @@ public class ShadowHandTrapBlock extends BaseEntityBlock {
     public boolean onDestroyedByPlayer(BlockState state, Level world, BlockPos pos, Player player, boolean willHarvest, net.minecraft.world.level.material.FluidState fluid) {
         boolean retval = super.onDestroyedByPlayer(state, world, pos, player, willHarvest, fluid);
         // 精准采集挖掘不生成暗影之手
-        if (!world.isClientSide() && world instanceof ServerLevel serverLevel
+        if (!player.isCreative()&&!world.isClientSide() && world instanceof ServerLevel serverLevel
                 && player.getMainHandItem().getEnchantmentLevel(Enchantments.SILK_TOUCH) == 0) {
             var shadowHand = ModEntities.SHADOW_HAND.get().spawn(serverLevel,
                     BlockPos.containing(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5),

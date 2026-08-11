@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.datagen.lang;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -1509,7 +1510,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.prophecy_card.unknown.description.2", "§9Please send what you did during game to GitHub or mcmod so we can pinpoint the issue, instead of just sending this error screenshot.");
         add("message.pasterdream.prophecy_card.invalid", "§cProphecy Card data corrupted (%s), right-click disabled!");
 
-        add(ModItems.POTION_BOTTLE.get(), "Potion Bottle");
+        add(PotionBottleRegistry.POTION_BOTTLE.get(), "Potion Bottle");
         add("item.pasterdream.potion_bottle.berserk", "Potion Bottle of Berserk");
         add("item.pasterdream.potion_bottle.frozen", "Potion Bottle of Frozen");
         add("item.pasterdream.potion_bottle.highly_toxic", "Potion Bottle of Highly Toxic");

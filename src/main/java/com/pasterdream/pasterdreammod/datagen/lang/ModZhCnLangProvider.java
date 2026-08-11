@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.datagen.lang;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -1946,7 +1947,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.prophecy_card.invalid", "§c预言卡数据异常（%s），右键无效！");
 
         // 药剂瓶
-        add(ModItems.POTION_BOTTLE.get(), "药剂瓶");
+        add(PotionBottleRegistry.POTION_BOTTLE.get(), "药剂瓶");
         add("item.pasterdream.potion_bottle.berserk", "狂暴药剂瓶");
         add("item.pasterdream.potion_bottle.frozen", "冰冻药剂瓶");
         add("item.pasterdream.potion_bottle.highly_toxic", "剧毒药剂瓶");

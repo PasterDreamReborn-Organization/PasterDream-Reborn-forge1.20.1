@@ -12,6 +12,7 @@ import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotes.NBTBookRegisterToCreativeModTab;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWithNBTToCreativeModeTab;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -188,7 +189,7 @@ public class ModCreativeModeTabs {
                         }
                         // 药剂瓶（动态遍历所有已注册类型，含 KJS / 拓展模组注册的）
                         for (String type : PotionBottleItem.getRegisteredTypes()) {
-                            output.accept(PotionBottleItem.createWithType(ModItems.POTION_BOTTLE.get(), type));
+                            output.accept(PotionBottleItem.createWithType(PotionBottleRegistry.POTION_BOTTLE.get(), type));
                         }
                     })
                     .build());
@@ -589,6 +590,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_DUNGEON_BARRIER.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE_CORE.get());
+                        output.accept(ModItems.SHADOW_HAND_TRAP.get());
                     })
                     .build());
 
@@ -736,7 +738,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DREAM_SPAWNER.get());
                         output.accept(ModItems.FADED_DREAM_SPAWNER.get());
                         output.accept(ModItems.SHADOW_VORTEX.get());
-                        output.accept(ModItems.SHADOW_HAND_TRAP.get());
                         output.accept(ModItems.SHADOW_BRAZIER.get());
                         output.accept(ModItems.PINK_CHICKEN_SPAWN_EGG.get());
                         output.accept(ModItems.PINK_SLIME_SPAWN_EGG.get());
