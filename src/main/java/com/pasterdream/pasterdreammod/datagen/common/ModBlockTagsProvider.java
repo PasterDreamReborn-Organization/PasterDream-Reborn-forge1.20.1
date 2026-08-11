@@ -139,7 +139,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.WEAPON_WORKSHOP_ANVIL.get())
                 .add(ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get())
                 .add(ModBlocks.WEAPON_WORKSHOP_HAMMER.get())
-                .add(ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get());
+                .add(ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get())
+                .add(ModBlocks.SHADOW_BLAST_FURNACE.get());
 
         //整个树的结构（包含原木，木头，树叶，菌柄，菌核，菌疣）
         tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)

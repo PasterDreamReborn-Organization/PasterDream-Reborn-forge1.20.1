@@ -234,7 +234,7 @@ public class MortarMenu extends AbstractContainerMenuWithFluidSlot
         MachineInventoryWithFluidSlotMaxStackSize machineData = new MachineInventoryWithFluidSlotMaxStackSize(inputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), inputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), outputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), outputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), 1000);
         MachineInventory result = RecipeProcesser.recipeProcessor(recipeInventory, machineData);
 
-        if (result.inputItemStacks() == inputItems && result.inputFluidStacks() == inputFluids)
+        if (result == null)
         {
             return;
         }

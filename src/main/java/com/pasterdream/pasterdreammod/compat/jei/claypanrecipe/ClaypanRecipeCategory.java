@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.compat.jei.claypanrecipe;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -30,7 +31,7 @@ public class ClaypanRecipeCategory implements IRecipeCategory<ClaypanJEIRecipe>
 
     public ClaypanRecipeCategory(IGuiHelper helper)
     {
-        background = helper.drawableBuilder(TEXTURE, 0, 0, 82, 28).setTextureSize(82, 28).build();
+        background = helper.drawableBuilder(GUIBackGroundRender.CLAYPAN_GUI, 0, 0, 82, 28).setTextureSize(82, 28).build();
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.CLAYPAN.get()));
     }
 

@@ -2,11 +2,15 @@ package com.pasterdream.pasterdreammod.world.block.shadowblastfurnace;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.IFluidHandlerProvider;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
-import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceMenu;
+import com.pasterdream.pasterdreammod.init.ModRecipes;
+import com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -20,6 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
@@ -27,9 +32,16 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ShadowBlastFurnaceBlockEntity extends BlockEntity implements MenuProvider, IFluidHandlerProvider
 {
     private static final int FLUID_CAPACITY = 9000;
+    private int progress = 0;
+    private int maxProgress = 0;
+    private List<ItemStack> currentRecipeOutput = new ArrayList<>();
 
     public ShadowBlastFurnaceBlockEntity(BlockPos pos, BlockState state)
     {
@@ -143,6 +155,100 @@ public class ShadowBlastFurnaceBlockEntity extends BlockEntity implements MenuPr
         itemHandlerCap.invalidate();
     }
 
+    public void tick()
+    {
+        if (level == null || level.isClientSide)
+        {
+            return;
+        }
+
+        if (maxProgress == 0)
+        {
+            matchRecipe();
+        }
+
+        if (maxProgress > 0)
+        {
+            progress++;
+            setChanged();
+
+            if (progress >= maxProgress)
+            {
+                generateProduct();
+            }
+        }
+    }
+
+    public void matchRecipe()
+    {
+        if (level == null || level.isClientSide)
+        {
+            return;
+        }
+
+        List<ShadowBlastFurnaceRecipe> recipes = level.getRecipeManager().getAllRecipesFor(ModRecipes.SHADOW_BLAST_FURNACE.get());
+
+        List<ItemStack> inputItems = new ArrayList<>(2);
+        inputItems.add(itemHandler.getStackInSlot(0).copy());
+        inputItems.add(itemHandler.getStackInSlot(1).copy());
+
+        List<ItemStack> outputItems = new ArrayList<>(2);
+        outputItems.add(itemHandler.getStackInSlot(2).copy());
+        outputItems.add(itemHandler.getStackInSlot(3).copy());
+
+        List<FluidStack> inputFluids = new ArrayList<>(1);
+        inputFluids.add(fluidTanks[0].getFluid().copy());
+
+        //配方匹配
+        MatchedRecipeResult<ShadowBlastFurnaceRecipe> matched = RecipeMatcher.match(inputItems, inputFluids, recipes);
+        if (matched == null)
+        {
+            return;
+        }
+
+        ShadowBlastFurnaceRecipe recipe = matched.recipe();
+        MachineInventory matchedRecipeInputsAndOutputs = matched.matchedRecipeInputsAndOutputs();
+
+        List<ItemStack> requiredItems = matchedRecipeInputsAndOutputs.inputItemStacks();
+        List<FluidStack> requiredFluids = matchedRecipeInputsAndOutputs.inputFluidStacks();
+        List<ItemStack> outputItemsRecipe = matchedRecipeInputsAndOutputs.outputItemStacks();
+
+        MachineInventory recipeInventory = new MachineInventory(requiredItems, requiredFluids, outputItemsRecipe, new ArrayList<>());
+        MachineInventoryWithFluidSlotMaxStackSize machineData = new MachineInventoryWithFluidSlotMaxStackSize(inputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), inputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), outputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), new ArrayList<>(), 9000);
+        MachineInventory result = RecipeProcesser.recipeProcessor(recipeInventory, machineData);
+
+        if (result == null)
+        {
+            return;
+        }
+
+        //获取结果
+        List<ItemStack> currentRecipeInput = result.inputItemStacks();
+        currentRecipeOutput = result.outputItemStacks();
+
+        itemHandler.setStackInSlot(0, currentRecipeInput.get(0));
+        itemHandler.setStackInSlot(1, currentRecipeInput.get(1));
+
+        List<FluidStack> newInputFluids = result.inputFluidStacks();
+
+        fluidTanks[0].setFluid(newInputFluids.get(0));
+
+        maxProgress = recipe.getProcessingTime();
+        //同步
+        setChangedAndSync();
+    }
+
+    private void generateProduct()
+    {
+        itemHandler.setStackInSlot(2, currentRecipeOutput.get(0));
+        itemHandler.setStackInSlot(3, currentRecipeOutput.get(1));
+
+        progress = 0;
+        maxProgress = 0;
+        //同步
+        setChangedAndSync();
+    }
+
     private void setChangedAndSync()
     {
         setChanged();
@@ -172,6 +278,17 @@ public class ShadowBlastFurnaceBlockEntity extends BlockEntity implements MenuPr
         super.saveAdditional(tag);
         tag.put("FluidTank", fluidTanks[0].writeToNBT(new CompoundTag()));
         tag.put("Inventory", itemHandler.serializeNBT());
+        ListTag outputList = new ListTag();
+        for (ItemStack itemStack : currentRecipeOutput)
+        {
+            if (!itemStack.isEmpty())
+            {
+                outputList.add(itemStack.save(new CompoundTag()));
+            }
+        }
+        tag.put("CurrentOutputs", outputList);
+        tag.putInt("Progress", progress);
+        tag.putInt("MaxProgress", maxProgress);
     }
 
     @Override
@@ -180,6 +297,18 @@ public class ShadowBlastFurnaceBlockEntity extends BlockEntity implements MenuPr
         super.load(tag);
         fluidTanks[0].readFromNBT(tag.getCompound("FluidTank"));
         itemHandler.deserializeNBT(tag.getCompound("Inventory"));
+        currentRecipeOutput = new ArrayList<>();
+        ListTag outputList = tag.getList("CurrentOutputs", 10);
+        for (int i = 0; i < outputList.size(); i++)
+        {
+            ItemStack itemStack = ItemStack.of(outputList.getCompound(i));
+            if (!itemStack.isEmpty())
+            {
+                currentRecipeOutput.add(itemStack);
+            }
+        }
+        progress = tag.getInt("Progress");
+        maxProgress = tag.getInt("MaxProgress");
     }
 
     @Override
@@ -231,5 +360,15 @@ public class ShadowBlastFurnaceBlockEntity extends BlockEntity implements MenuPr
     public FluidTank[] getFluidTanks()
     {
         return fluidTanks;
+    }
+
+    public int getProgress()
+    {
+        return progress;
+    }
+
+    public int getMaxProgress()
+    {
+        return maxProgress;
     }
 }

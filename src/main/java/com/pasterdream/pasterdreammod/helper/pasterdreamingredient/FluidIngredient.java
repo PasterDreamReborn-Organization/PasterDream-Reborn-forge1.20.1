@@ -190,6 +190,10 @@ public class FluidIngredient
 
     public FluidStack getFluidStack()
     {
+        if(fluid == null)
+        {
+            return FluidStack.EMPTY;
+        }
         return new FluidStack(fluid, amount, nbt);
     }
 

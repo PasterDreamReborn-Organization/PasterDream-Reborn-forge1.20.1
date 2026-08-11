@@ -417,6 +417,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.WEAPON_WORKSHOP_HAMMER.get());
         dropSelf(ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get());
         dropSelf(ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get());
+        dropSelf(ModBlocks.SHADOW_BLAST_FURNACE.get());
 
         dropSelf(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get());
         dropSelf(ModBlocks.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get());

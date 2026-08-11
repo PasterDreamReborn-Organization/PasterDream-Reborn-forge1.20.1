@@ -219,7 +219,7 @@ public class GUIBackGroundRender
 
     public static void rendShadowBlastFurnaceProcessBar(GuiGraphics guiGraphics, int x, int y, double percent)
     {
-        guiGraphics.blit(SHADOW_BLAST_FURNACE_PROCESS_BAR, x, y + (int)(34 * (1 - percent)), 0, (int)(34 * (1 - percent)), 38, (int)(34 * percent), 38, 34);
+        guiGraphics.blit(SHADOW_BLAST_FURNACE_PROCESS_BAR, x, y, 0, 0, 38, (int)(34 * percent), 38, 34);
     }
 
     public static void rendShadowBlastFurnaceShadowLiquidAmountBar(GuiGraphics guiGraphics, int x, int y, double percent)

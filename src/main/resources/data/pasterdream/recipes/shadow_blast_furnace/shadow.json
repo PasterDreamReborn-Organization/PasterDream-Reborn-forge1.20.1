@@ -1,0 +1,23 @@
+{
+  "type": "pasterdream:shadow_blast_furnace",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:shadow_liquid",
+      "amount": 25
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:cloud"
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:shadow"
+    }
+  ],
+  "processingTime": 20
+}
