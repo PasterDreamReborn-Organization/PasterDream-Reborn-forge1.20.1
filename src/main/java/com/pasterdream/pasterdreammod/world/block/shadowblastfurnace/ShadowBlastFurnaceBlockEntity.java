@@ -1,7 +1,9 @@
-package com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil;
+package com.pasterdream.pasterdreammod.world.block.shadowblastfurnace;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.fluidhandler.IFluidHandlerProvider;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
+import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -18,19 +20,34 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class WeaponWorkshopAnvilBlockEntity extends BlockEntity implements MenuProvider
+public class ShadowBlastFurnaceBlockEntity extends BlockEntity implements MenuProvider, IFluidHandlerProvider
 {
-    public WeaponWorkshopAnvilBlockEntity(BlockPos pos, BlockState state)
+    private static final int FLUID_CAPACITY = 9000;
+
+    public ShadowBlastFurnaceBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.WEAPON_WORKSHOP_ANVIL.get(), pos, state);
+        super(ModBlockEntities.SHADOW_BLAST_FURNACE.get(), pos, state);
     }
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2)
+    private final FluidTank[] fluidTanks =
+    {
+        new FluidTank(FLUID_CAPACITY)
+        {
+            protected void onContentsChanged()
+            {
+                setChangedAndSync();
+            }
+        }
+    };
+
+    private final ItemStackHandler itemHandler = new ItemStackHandler(4)
     {
         @Override
         protected void onContentsChanged(int slotIndex)
@@ -41,7 +58,7 @@ public class WeaponWorkshopAnvilBlockEntity extends BlockEntity implements MenuP
         @Override
         public boolean isItemValid(int slotIndex, ItemStack stack)
         {
-            return slotIndex == 0;
+            return slotIndex < 2;
         }
     };
 
@@ -68,7 +85,7 @@ public class WeaponWorkshopAnvilBlockEntity extends BlockEntity implements MenuP
         @Override
         public @NotNull ItemStack extractItem(int slotIndex, int amount, boolean isSimulate)
         {
-            if(slotIndex == 1)
+            if(slotIndex == 2 || slotIndex == 3)
             {
                 return itemHandler.extractItem(slotIndex, amount, isSimulate);
             }
@@ -93,10 +110,16 @@ public class WeaponWorkshopAnvilBlockEntity extends BlockEntity implements MenuP
 
     private final LazyOptional<IItemHandler> itemHandlerCap = LazyOptional.of(() -> itemHandler);
     private final LazyOptional<IItemHandler> externalHandlerCap = LazyOptional.of(() -> externalHandler);
+    private final LazyOptional<IFluidHandler> fluidTankCap = LazyOptional.of(() -> fluidTanks[0]);
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side)
     {
+        if (cap == ForgeCapabilities.FLUID_HANDLER)
+        {
+            return fluidTankCap.cast();
+        }
+
         if (cap == ForgeCapabilities.ITEM_HANDLER)
         {
             if (side == null)
@@ -116,6 +139,7 @@ public class WeaponWorkshopAnvilBlockEntity extends BlockEntity implements MenuP
     public void invalidateCaps()
     {
         super.invalidateCaps();
+        fluidTankCap.invalidate();
         itemHandlerCap.invalidate();
     }
 
@@ -146,6 +170,7 @@ public class WeaponWorkshopAnvilBlockEntity extends BlockEntity implements MenuP
     protected void saveAdditional(CompoundTag tag)
     {
         super.saveAdditional(tag);
+        tag.put("FluidTank", fluidTanks[0].writeToNBT(new CompoundTag()));
         tag.put("Inventory", itemHandler.serializeNBT());
     }
 
@@ -153,6 +178,7 @@ public class WeaponWorkshopAnvilBlockEntity extends BlockEntity implements MenuP
     public void load(CompoundTag tag)
     {
         super.load(tag);
+        fluidTanks[0].readFromNBT(tag.getCompound("FluidTank"));
         itemHandler.deserializeNBT(tag.getCompound("Inventory"));
     }
 
@@ -166,14 +192,14 @@ public class WeaponWorkshopAnvilBlockEntity extends BlockEntity implements MenuP
     @Override
     public Component getDisplayName()
     {
-        return Component.translatable("block." + PasterDreamMod.MOD_ID + ".weapon_workshop_anvil");
+        return Component.translatable("block." + PasterDreamMod.MOD_ID + ".shadow_blast_furnace");
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player)
     {
-        return new WeaponWorkshopAnvilMenu(id, inventory, this);
+        return new ShadowBlastFurnaceMenu(id, inventory, this);
     }
 
     @Override
@@ -189,5 +215,21 @@ public class WeaponWorkshopAnvilBlockEntity extends BlockEntity implements MenuP
     public ItemStackHandler getItemHandler()
     {
         return itemHandler;
+    }
+
+    @Override
+    public IFluidHandler getFluidHandler(int tankIndex)
+    {
+        return fluidTanks[tankIndex];
+    }
+
+    public FluidTank getFluidTank(int tankIndex)
+    {
+        return fluidTanks[tankIndex];
+    }
+
+    public FluidTank[] getFluidTanks()
+    {
+        return fluidTanks;
     }
 }

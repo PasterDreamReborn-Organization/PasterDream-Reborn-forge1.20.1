@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorItem;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.barrier.ShadowDungeonBarrierItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowDungeonGateItem;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternDisplayItem;
@@ -16,6 +17,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDung
 import net.minecraft.world.item.BlockItem;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapItem;
+import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestItem;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestItem;
@@ -1273,6 +1275,8 @@ public class ModItems {
             () -> new ShadowVortexDisplayItem(ModBlocks.SHADOW_VORTEX.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_HAND_TRAP = ITEMS.register("shadow_hand_trap",
             () -> new ShadowHandTrapItem(ModBlocks.SHADOW_HAND_TRAP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_BRAZIER = ITEMS.register("shadow_brazier",
+            () -> new ShadowBrazierDisplayItem(ModBlocks.SHADOW_BRAZIER.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_NYLIUM = ITEMS.register("shadow_nylium",
             () -> new BlockItem(ModBlocks.SHADOW_NYLIUM.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_LIGHT = ITEMS.register("shadow_light",
@@ -1558,6 +1562,7 @@ public class ModItems {
     public static final RegistryObject<Item> WEAPON_WORKSHOP_HAMMER = ITEMS.register("weapon_workshop_hammer", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_HAMMER.get(), new Item.Properties()));
     public static final RegistryObject<Item> WEAPON_WORKSHOP_GRIND_STONE = ITEMS.register("weapon_workshop_grind_stone", () -> new BlockItem(ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get(), new Item.Properties()));
     public static final RegistryObject<Item> WEAPON_WORKSHOP_BLAST_FURNACE = ITEMS.register("weapon_workshop_blast_furnace", () -> new WeaponWorkshopBlastFurnaceItem(ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_BLAST_FURNACE = ITEMS.register("shadow_blast_furnace", () -> new ShadowBlastFurnaceItem(ModBlocks.SHADOW_BLAST_FURNACE.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> DREAM_NOTES_DYEDREAM_WORLD = ITEMS.register("dream_notes_dyedream_world", () -> new DreamNotesItem(new Item.Properties()));
     public static final RegistryObject<Item> DREAM_NOTES_LAMP_SHADOW_WORLD = ITEMS.register("dream_notes_lamp_shadow_world", () -> new DreamNotesItem(new Item.Properties()));

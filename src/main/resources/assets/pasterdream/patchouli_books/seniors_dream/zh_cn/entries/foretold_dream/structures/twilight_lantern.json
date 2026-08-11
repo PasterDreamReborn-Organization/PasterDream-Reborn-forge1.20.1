@@ -1,0 +1,26 @@
+{
+  "sortnum": 4,
+  "name": "pasterdream.seniors_dream.entry.twilight_lantern",
+  "icon": "pasterdream:twilight_lantern",
+  "category": "pasterdream:foretold_dream/structures",
+  "advancement": "pasterdream:story/lamp_shadow_root",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.twilight_lantern.page0"
+    },
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/foretold_dream/structures/twilight_lantern.png"],
+      "text": "pasterdream.seniors_dream.entry.twilight_lantern.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.twilight_lantern.page2"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.twilight_lantern.page3"
+    }
+  ]
+}

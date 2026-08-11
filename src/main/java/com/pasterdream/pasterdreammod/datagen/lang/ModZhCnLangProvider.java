@@ -425,6 +425,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.WEAPON_WORKSHOP_HAMMER.get(), "精铸工坊锤子");
         add(ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get(), "精铸工坊砂轮");
         add(ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get(), "精铸工坊锻炉");
+        add(ModBlocks.SHADOW_BLAST_FURNACE.get(), "暗影高炉");
 
         add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "梦染茶花植株");
         add(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), "成熟的梦染茶花植株");
@@ -1313,7 +1314,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "暗影符文塔即将发生爆破");
         add("block.pasterdream.shadow_vortex", "暗影漩涡");
         add("block.pasterdream.shadow_hand_trap", "暗影之手陷阱");
+        add("block.pasterdream.shadow_brazier", "暗影火盆");
         add("tooltip.pasterdream.shadow_hand_trap", "§7--你挖下来这个做什么？");
+        add("message.pasterdream.shadow_brazier.need_candle", "需要用阴影蜡烛点燃火盆");
+        add("message.pasterdream.shadow_brazier.lit", "火盆被点燃，但带来的并不是光明...");
+        add("message.pasterdream.shadow_brazier.shadow_spread", "阴影从四周蔓延开来");
+        add("message.pasterdream.shadow_brazier.extinguished", "火盆燃尽熄灭，坠落在地上破碎");
+        add("message.pasterdream.shadow_brazier.key_dropped", "在火盆的夹层里掉落出一把钥匙");
 
         // 破损传送门消息
         add("message.pasterdream.broken_portal.too_low", "地牢的结构被破坏，传送门没有反应");
@@ -1585,6 +1592,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.desert_ruins.page2", "传说中，那里埋葬着一位未完成遗志的战士，被深埋于地下，等待着能有一位迷途的旅行者前来，来完成他的遗愿，继承他的衣钵……");
         add("pasterdream.seniors_dream.entry.desert_ruins.page3", "");
 
+        // 暮影之笼
+        add("pasterdream.seniors_dream.entry.twilight_lantern", "暮影之笼");
+        add("pasterdream.seniors_dream.entry.twilight_lantern.page0", "卡莱在前往灯影之下后，使用暗影的力量离开，虽然她违背了与暗影的约定，独自将前往黑暗梦境的后手封存在了下界的最顶端，并用染梦床将其镇压。但笼子终究无法完全封锁住暗影的力量。现如今暗影已经溢出，而你也在了解到足够多的隐秘后，决定前往永暗的梦境中一探究竟。");
+        add("pasterdream.seniors_dream.entry.twilight_lantern.page1", "");
+        add("pasterdream.seniors_dream.entry.twilight_lantern.page2", "既然你意已决，那么就去用融梦水晶碎片点燃笼子吧，这时笼子会更溢出更多暗影力量，而当你见证这场暗影怪物的狂欢之后，于暮影长床上入眠，便可进入那流淌黑暗的梦。");
+        add("pasterdream.seniors_dream.entry.twilight_lantern.page3", "这将是一场无比艰险的恶战，所以，千万要做好见证最为阴暗的梦境的准备。");
+
         // 此梦先觉-新增buff效果
         add("pasterdream.seniors_dream.category.foretold_dream_buffs", "新增buff效果");
         add("pasterdream.seniors_dream.category.foretold_dream_buffs.desc", "模组中新增的buff效果。");
@@ -1667,6 +1681,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.dyedream_perfume.page0", "在染梦的梦境中，地上的植物吸引了你的注意力，那香气让你有了一种新思路：或许可以把它们收集起来，用它们制作香水……$(br2)当你饮用这独特的饮料后，一定时间内幻翼不会来打扰你，并且梦境的力量让你就像睡了一觉一样，接下来几天都不会有幻翼像苍蝇一样飞在你头顶了……");
         add("pasterdream.seniors_dream.entry.dyedream_perfume.page1", "——Q：为什么要喝香水？A：你都在做梦了就不要考虑这些小事了~");
 
+        // 大地之刃
+        add("pasterdream.seniors_dream.entry.terra_blade", "大地之刃");
+        add("pasterdream.seniors_dream.entry.terra_blade.page0", "当你在现实与炼狱中获得了八把古代遗存之物所制造的剑后，你或许有一种其他办法来让它们发挥更大的作用……$(br2)这八把剑与梦境中的涌泉合而为一的神剑——大地之刃，具有极致的伤害和不菲的力量，你可以在融梦能量充足时开启剑气状态，每一次斩击都会释放出无比致命的剑气来杀死远处的敌人，当然，记得随时关注你的融梦能量……");
+        add("pasterdream.seniors_dream.entry.terra_blade.page1", "——此身剑所天成，数剑合一，铸为英雄之刃。");
+
+        // 银河果冻
+        add("pasterdream.seniors_dream.entry.milky_way_jelly", "银河果冻");
+        add("pasterdream.seniors_dream.entry.milky_way_jelly.page0", "或许终有一天，你需要以凡人之躯跨越某些常规办法下无法逾越的天险，登顶世界的顶层，而原本从染梦世界中获得的星河果冻性能显然不太好，这时，你将目光放到了染梦世界的云朵和现实的羽毛上……");
+        add("pasterdream.seniors_dream.entry.milky_way_jelly.page1", "当你食用了这块全新的果冻后，会有一股力量将你送到世界的顶层，并赋予你缓降效果，让你慢慢落地，这样一来，某些难以跨越的屏障想必也无法阻挡你了。$(br2)——当大地不再是人类的阻碍，星海便是我们的目标");
+
         // 染梦教堂
         add("pasterdream.seniors_dream.entry.dyedream_church", "染梦教堂");
         add("pasterdream.seniors_dream.entry.dyedream_church.page1", "当你在染梦世界探索时，有可能会发现这种漂浮在天空中的神秘教堂，你可以在这个教堂内发现一个融梦水晶箱，讲经台上还有来自寻梦者前辈们的随记，或许你应该仔细检查一下教堂内部的边边角角，说不定能有意外之喜……");
@@ -1727,6 +1751,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.floating_temple", "浮空神庙");
         add("pasterdream.seniors_dream.entry.floating_temple.page1", "在染梦世界的天空中，会有这样的建筑被云朵衬托着，浮在天上。这座古典时代的神庙让所有进入这座建筑被它的神圣肃穆所打动。你会在神庙里发现一个融梦水晶箱，以及一份前辈们的书卷……");
         add("pasterdream.seniors_dream.entry.floating_temple.page2", "——当神庙飘浮于染梦的苍穹，万神也将流连于迷梦之中");
+
+        // 侵染教堂
+        add("pasterdream.seniors_dream.entry.infected_church", "侵染教堂");
+        add("pasterdream.seniors_dream.entry.infected_church.page1", "");
+        add("pasterdream.seniors_dream.entry.infected_church.page2", "在染梦世界中探索时，偶尔会在天空中发现这种一半被来自另一个梦境的阴影与黑暗侵蚀染黑的教堂。在这座暗影侵染的教堂中可能发现融梦水晶箱，如果在这座教堂的角落里仔细寻找，也许能够发现遗落的宝箱。");
+        add("pasterdream.seniors_dream.entry.infected_church.page3", "除此之外，在这里存在着寻梦者前辈留下的笔记。根据笔记的指引前往下界，想办法穿越基岩层，或许能够找到黑暗的来源……$(br2)——为暗影所侵蚀的教堂，在其背后隐藏着不祥与疯狂。");
 
         // 剧情
         add("pasterdream.seniors_dream.category.story", "剧情");
@@ -1992,5 +2022,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.twilight_lantern.event_end_2", "\"躺上去吧，在寂静的夜晚，在这亭笼之下\"");
         add("message.pasterdream.twilight_lantern.event_ready", "可以与暮影之笼发生共鸣");
         add("message.pasterdream.twilight_lantern.data_reset", "方块数据已重置");
+        add("message.pasterdream.twilight_lantern_location", "笔记末尾记载着炼狱上层的坐标：§aX：%s §aZ：%s");
     }
 }

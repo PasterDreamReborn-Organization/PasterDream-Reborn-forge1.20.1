@@ -15,6 +15,8 @@ import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDrea
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableAddonBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceAddonBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlockEntity;
@@ -27,6 +29,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShad
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalTileEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexTileEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlockEntity;
@@ -71,6 +74,7 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<ShadowDungeonPortalTileEntity>> SHADOW_DUNGEON_PORTAL = BLOCK_ENTITIES.register("shadow_dungeon_portal", () -> BlockEntityType.Builder.of(ShadowDungeonPortalTileEntity::new, ModBlocks.SHADOW_DUNGEON_PORTAL.get()).build(null));
     public static final RegistryObject<BlockEntityType<ShadowVortexTileEntity>> SHADOW_VORTEX = BLOCK_ENTITIES.register("shadow_vortex", () -> BlockEntityType.Builder.of(ShadowVortexTileEntity::new, ModBlocks.SHADOW_VORTEX.get()).build(null));
     public static final RegistryObject<BlockEntityType<ShadowHandTrapBlockEntity>> SHADOW_HAND_TRAP = BLOCK_ENTITIES.register("shadow_hand_trap", () -> BlockEntityType.Builder.of(ShadowHandTrapBlockEntity::new, ModBlocks.SHADOW_HAND_TRAP.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ShadowBrazierBlockEntity>> SHADOW_BRAZIER = BLOCK_ENTITIES.register("shadow_brazier", () -> BlockEntityType.Builder.of(ShadowBrazierBlockEntity::new, ModBlocks.SHADOW_BRAZIER.get()).build(null));
     public static final RegistryObject<BlockEntityType<WeaponWorkshopCraftingTableBlockEntity>> WEAPON_WORKSHOP_CRAFTING_TABLE = BLOCK_ENTITIES.register("weapon_workshop_crafting_table", () -> BlockEntityType.Builder.of(WeaponWorkshopCraftingTableBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_CRAFTING_TABLE.get()).build(null));
     public static final RegistryObject<BlockEntityType<WeaponWorkshopAnvilBlockEntity>> WEAPON_WORKSHOP_ANVIL = BLOCK_ENTITIES.register("weapon_workshop_anvil", () -> BlockEntityType.Builder.of(WeaponWorkshopAnvilBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_ANVIL.get()).build(null));
     public static final RegistryObject<BlockEntityType<WeaponWorkshopCoolerPotBlockEntity>> WEAPON_WORKSHOP_COOLER_POT = BLOCK_ENTITIES.register("weapon_workshop_cooler_pot", () -> BlockEntityType.Builder.of(WeaponWorkshopCoolerPotBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_COOLER_POT.get()).build(null));
@@ -79,6 +83,8 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<WeaponWorkshopBlastFurnaceAddonBlockEntity>> WEAPON_WORKSHOP_BLAST_FURNACE_ADDON = BLOCK_ENTITIES.register("weapon_workshop_blast_furnace_addon", () -> BlockEntityType.Builder.of(WeaponWorkshopBlastFurnaceAddonBlockEntity::new, ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get()).build(null));
     public static final RegistryObject<BlockEntityType<TwilightLanternBlockEntity>> TWILIGHT_LANTERN = BLOCK_ENTITIES.register("twilight_lantern", () -> BlockEntityType.Builder.of(TwilightLanternBlockEntity::new, ModBlocks.TWILIGHT_LANTERN.get()).build(null));
     public static final RegistryObject<BlockEntityType<ShadowBedBlockEntity>> SHADOW_BED = BLOCK_ENTITIES.register("shadow_bed", () -> BlockEntityType.Builder.of(ShadowBedBlockEntity::new, ModBlocks.SHADOW_BED.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ShadowBlastFurnaceBlockEntity>> SHADOW_BLAST_FURNACE = BLOCK_ENTITIES.register("shadow_blast_furnace", () -> BlockEntityType.Builder.of(ShadowBlastFurnaceBlockEntity::new, ModBlocks.SHADOW_BLAST_FURNACE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ShadowBlastFurnaceAddonBlockEntity>> SHADOW_BLAST_FURNACE_ADDON = BLOCK_ENTITIES.register("shadow_blast_furnace_addon", () -> BlockEntityType.Builder.of(ShadowBlastFurnaceAddonBlockEntity::new, ModBlocks.SHADOW_BLAST_FURNACE.get()).build(null));
 
     public static void register(IEventBus eventBus)
     {

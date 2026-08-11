@@ -411,6 +411,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.WEAPON_WORKSHOP_HAMMER.get(), "Weapon Workshop Hammer");
         add(ModBlocks.WEAPON_WORKSHOP_GRIND_STONE.get(), "Weapon Workshop Grind Stone");
         add(ModBlocks.WEAPON_WORKSHOP_BLAST_FURNACE.get(), "Weapon Workshop Blast Furnace");
+        add(ModBlocks.SHADOW_BLAST_FURNACE.get(), "Shadow Blast Furnace");
 
         add(ModBlocks.DYEDREAM_COROLLA_CROP.get(), "Dyedream Corolla");
         add(ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), "Mature Dyedream Corolla");
@@ -1147,7 +1148,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_tune_totem.about_to_explode", "The Shadow Tune Totem is about to explode");
         add("block.pasterdream.shadow_vortex", "Shadow Vortex");
         add("block.pasterdream.shadow_hand_trap", "Shadow Hand Trap");
+        add("block.pasterdream.shadow_brazier", "Shadow Brazier");
         add("tooltip.pasterdream.shadow_hand_trap", "§7--Why would you dig this up?");
+        add("message.pasterdream.shadow_brazier.need_candle", "You need a Shadow Candle to light the brazier");
+        add("message.pasterdream.shadow_brazier.lit", "The brazier ignites, but brings no light...");
+        add("message.pasterdream.shadow_brazier.shadow_spread", "Shadow spreads from all around");
+        add("message.pasterdream.shadow_brazier.extinguished", "The brazier burns out and shatters on the ground");
+        add("message.pasterdream.shadow_brazier.key_dropped", "A key drops from the crevice of the brazier");
 
         // Broken Portal Messages
         add("message.pasterdream.broken_portal.too_low", "The structure is damaged, the portal has no response");
@@ -1578,5 +1585,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.twilight_lantern.event_end_2", "\"Lie down, in the silent night, beneath this pavilion lantern\"");
         add("message.pasterdream.twilight_lantern.event_ready", "You can now resonate with the Twilight Lantern");
         add("message.pasterdream.twilight_lantern.data_reset", "Block data reset");
+        add("message.pasterdream.twilight_lantern_location", "The end of the note records coordinates in the upper Nether: X: %s Z: %s");
     }
 }
