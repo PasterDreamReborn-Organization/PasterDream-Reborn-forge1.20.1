@@ -1,0 +1,26 @@
+{
+  "sortnum": 3,
+  "name": "pasterdream.seniors_dream.entry.shadow_sword",
+  "icon": "pasterdream:shadow_sword",
+  "category": "pasterdream:lamp_shadow_world/items",
+  "advancement": "pasterdream:story/enter_lamp_shadow_world",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:shadow_sword",
+      "text": "pasterdream.seniors_dream.entry.shadow_sword.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_sword.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_sword.page2"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_sword.page3"
+    }
+  ]
+}

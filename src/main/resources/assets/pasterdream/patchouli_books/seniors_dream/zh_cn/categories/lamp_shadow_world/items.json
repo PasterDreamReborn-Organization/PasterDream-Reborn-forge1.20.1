@@ -1,0 +1,7 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.category.lamp_shadow_world_items",
+  "description": "pasterdream.seniors_dream.category.lamp_shadow_world_items.desc",
+  "icon": "pasterdream:empty_prophecy_card",
+  "parent": "pasterdream:lamp_shadow_world"
+}

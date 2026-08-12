@@ -1,0 +1,22 @@
+{
+  "sortnum": 1,
+  "name": "pasterdream.seniors_dream.entry.white_sword",
+  "icon": "pasterdream:white_sword",
+  "category": "pasterdream:lamp_shadow_world/items",
+  "advancement": "pasterdream:story/enter_lamp_shadow_world",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:white_sword",
+      "text": "pasterdream.seniors_dream.entry.white_sword.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.white_sword.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.white_sword.page2"
+    }
+  ]
+}

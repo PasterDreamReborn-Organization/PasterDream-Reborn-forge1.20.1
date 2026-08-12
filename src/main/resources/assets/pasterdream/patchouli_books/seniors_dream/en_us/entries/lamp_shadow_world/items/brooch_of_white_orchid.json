@@ -1,0 +1,18 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.entry.brooch_of_white_orchid",
+  "icon": "pasterdream:brooch_of_white_orchid",
+  "category": "pasterdream:lamp_shadow_world/items",
+  "advancement": "pasterdream:story/enter_lamp_shadow_world",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:brooch_of_white_orchid",
+      "text": "pasterdream.seniors_dream.entry.brooch_of_white_orchid.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.brooch_of_white_orchid.page1"
+    }
+  ]
+}
