@@ -27,13 +27,8 @@ public class ClayPotBlock extends HorizontalDirectionalBlock implements SimpleWa
 
     private static final VoxelShape SHAPE = box(5, 0, 5, 11, 11, 11);
 
-    public ClayPotBlock() {
-        super(BlockBehaviour.Properties.of()
-                .mapColor(MapColor.COLOR_BROWN)
-                .sound(SoundType.BONE_BLOCK)
-                .strength(0.5f, 0.1f)
-                .noOcclusion()
-                .isRedstoneConductor((bs, br, bp) -> false));
+    public ClayPotBlock(BlockBehaviour.Properties properties) {
+        super(properties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(WATERLOGGED, false));

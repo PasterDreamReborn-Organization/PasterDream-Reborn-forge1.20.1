@@ -11,6 +11,7 @@ import com.pasterdream.pasterdreammod.event.ModVillagerTrades;
 import com.pasterdream.pasterdreammod.datagen.common.ModRaidRewardsProvider;
 import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
 import com.pasterdream.pasterdreammod.event.PlayerEvents;
+import com.pasterdream.pasterdreammod.event.RecipeUnlockHandler;
 import com.pasterdream.pasterdreammod.init.*;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
@@ -135,6 +136,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(ModWorldGenEvents::onLevelLoad);
         MinecraftForge.EVENT_BUS.addListener(ModWorldGenEvents::onServerTick);
         MinecraftForge.EVENT_BUS.addListener(ModWorldGenEvents::onCheckSpawn);
+        MinecraftForge.EVENT_BUS.addListener(RecipeUnlockHandler::onBlockBreak);
         MinecraftForge.EVENT_BUS.addListener(ModMobSpawnEvents::onEntityJoinLevel);
         modEventBus.addListener(this::AddOverlays);
         modEventBus.addListener(this::AddEntityRenderersEvent);

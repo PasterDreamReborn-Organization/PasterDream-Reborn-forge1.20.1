@@ -672,7 +672,22 @@ public class ModBlocks {
     public static final RegistryObject<Block> GOLDEN_FOX_SCULPTURE = BLOCKS.register("golden_fox_sculpture", GoldenFoxSculptureBlock::new);
     public static final RegistryObject<Block> FOX_SCULPTURE = BLOCKS.register("fox_sculpture", FoxSculptureBlock::new);
     // ===== 陶罐 =====
-    public static final RegistryObject<Block> CLAY_POT = BLOCKS.register("clay_pot", ClayPotBlock::new);
+    public static final RegistryObject<Block> CLAY_POT = BLOCKS.register("clay_pot",
+            () -> new ClayPotBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BROWN)
+                    .sound(SoundType.BONE_BLOCK)
+                    .strength(0.5f, 0.1f)
+                    .noOcclusion()
+                    .isRedstoneConductor((bs, br, bp) -> false)));
+    // ===== 阴影陶罐 =====
+    public static final RegistryObject<Block> SHADOW_CLAY_POT = BLOCKS.register("shadow_clay_pot",
+            () -> new ClayPotBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BLACK)
+                    .sound(SoundType.BONE_BLOCK)
+                    .strength(0.5f, 0.1f)
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion()
+                    .isRedstoneConductor((bs, br, bp) -> false)));
     // ===== 小石子 =====
     public static final RegistryObject<Block> PEBBLE = BLOCKS.register("pebble", PebbleBlock::new);
     //暮影之笼 / 暮影长床

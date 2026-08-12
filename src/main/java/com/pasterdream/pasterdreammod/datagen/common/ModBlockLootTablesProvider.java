@@ -395,6 +395,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                         .add(LootItem.lootTableItem(ModItems.RUST_BLACK_METAL_GRAIN.get()).setWeight(1))
                         .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get()).setWeight(2))
                         .when(HAS_SILK_TOUCH.invert())));
+        // 阴影陶罐：掉落自身
+        dropSelf(ModBlocks.SHADOW_CLAY_POT.get());
         dropSelf(ModBlocks.DREAM_CAULDRON.get());
         dropSelf(ModBlocks.DYEDREAM_DESK.get());
         dropSelf(ModBlocks.SHADOW_DESK.get());

@@ -1705,6 +1705,11 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_stone_tiles_from_stonecutting");
 
+        // 阴影石瓦 → 阴影陶罐 (切石机，打碎陶罐时解锁)
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.SHADOW_STONE_TILES.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_CLAY_POT.get())
+                .unlockedBy(getHasName(ModBlocks.SHADOW_STONE_TILES.get()), has(ModBlocks.SHADOW_STONE_TILES.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_clay_pot_from_stonecutting");
+
         // ===== 裂阴影石砖 / 錾制阴影石砖配方 =====
         // 2× 阴影石砖台阶 → 1× 錾制阴影石砖 (工作台)
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_SHADOW_STONE_BRICK.get(), 1)
