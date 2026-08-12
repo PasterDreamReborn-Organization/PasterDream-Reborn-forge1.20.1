@@ -60,7 +60,7 @@ public class ModNoiseSettings {
                 overworld.useLegacyRandomSource()
         ));
 
-        // 灯影之下维度噪声设置（基于主世界噪声，禁用含水层/熔岩湖/矿脉/洞穴噪声）
+        // 灯影之下维度噪声设置（基于主世界噪声，禁用含水层/熔岩湖/矿脉）
         NoiseGeneratorSettings lampShadowOverworld = NoiseGeneratorSettings.overworld(context, false, false);
         NoiseRouter lampShadowOriginalRouter = lampShadowOverworld.noiseRouter();
 
@@ -78,8 +78,8 @@ public class ModNoiseSettings {
                 lampShadowOriginalRouter.erosion(),
                 lampShadowOriginalRouter.depth(),
                 lampShadowOriginalRouter.ridges(),
-                lampShadowSmoothTerrain,                            //初始密度（平滑，与最终密度一致）
-                lampShadowSmoothTerrain,                            //最终密度（插值平滑，无洞穴噪声）
+                lampShadowSmoothTerrain,                            //初始密度（平滑，用于群系放置）
+                lampShadowOriginalRouter.finalDensity(),            //最终密度（原版，含jaggedness+洞穴：补充地表起伏确保陆地高于海平面）
                 DensityFunctions.constant(1.0D),           //矿脉开关→1（禁用）
                 DensityFunctions.constant(1.0D),           //矿脉脊状→1（禁用）
                 DensityFunctions.constant(1.0D)            //矿脉间隙→1（禁用）
@@ -92,7 +92,7 @@ public class ModNoiseSettings {
                 lampShadowRouter,                                   //修改后的噪声路由
                 makeLampShadowSurfaceRules(),                       //灯影之下地表规则
                 lampShadowOverworld.spawnTarget(),
-                63,//lampShadowOverworld.seaLevel(),       //海平面
+                63,  //海平面
                 false,                                              //启用怪物生成
                 false,                                              //禁用含水层
                 false,                                              //禁用矿脉

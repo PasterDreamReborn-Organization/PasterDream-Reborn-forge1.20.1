@@ -78,9 +78,10 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:big_bubbles_2", "pasterdream:can_ecosystem_bubble_spawn_biome", "surface_structures", "none", "very_biased_to_bottom", 12, 24, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 8, 4, 6125192, 4, "dyedream_bubbles", false));
 
         // === 灯影之下阴影古迹结构（共享结构集 pasterdream:shadow_structures） ===
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadownote_ruin_0", "pasterdream:can_shadownote_ruin_spawn_biome", "surface_structures", "beard_thin", -3, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 22, 8, 38472910, 2, "shadow_structures"));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadownote_ruin_1", "pasterdream:can_shadownote_ruin_spawn_biome", "surface_structures", "beard_thin", -3, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 22, 8, 59184736, 2, "shadow_structures"));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadownote_ruin_2", "pasterdream:can_shadownote_ruin_spawn_biome", "surface_structures", "beard_thin", -3, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 22, 8, 72639482, 2, "shadow_structures"));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadownote_ruin_0", "pasterdream:can_shadownote_ruin_spawn_biome", "surface_structures", "none", -2, "OCEAN_FLOOR_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 22, 8, 38472910, 2, "shadow_structures"));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadownote_ruin_1", "pasterdream:can_shadownote_ruin_spawn_biome", "surface_structures", "none", -2, "OCEAN_FLOOR_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 22, 8, 59184736, 2, "shadow_structures"));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadownote_ruin_2", "pasterdream:can_shadownote_ruin_spawn_biome", "surface_structures", "none", -2, "OCEAN_FLOOR_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 22, 8, 72639482, 2, "shadow_structures"));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadow_shelter", "pasterdream:can_shadownote_ruin_spawn_biome", "surface_structures", "none", -6, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 45, 23, 1429029018, 2, "shadow_structures"));
 
         return STRUCTURES;
     }
