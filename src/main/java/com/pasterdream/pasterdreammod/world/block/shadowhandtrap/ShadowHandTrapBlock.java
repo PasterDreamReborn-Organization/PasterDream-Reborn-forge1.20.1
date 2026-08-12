@@ -38,12 +38,12 @@ import org.jetbrains.annotations.Nullable;
 public class ShadowHandTrapBlock extends BaseEntityBlock {
     public static final IntegerProperty ANIMATION = IntegerProperty.create("animation", 0, 1);
 
-    private static final VoxelShape SHAPE = box(1, 0, 1, 15, 8, 15);
+    private static final VoxelShape SHAPE = box(0, 0, 0, 16, 1, 16);
 
     public ShadowHandTrapBlock() {
         super(BlockBehaviour.Properties.of()
                 .mapColor(MapColor.COLOR_BLACK)
-                .sound(SoundType.STONE)
+                .sound(SoundType.GRAVEL)
                 .strength(1.5f, 6.0f)
                 .noCollission()
                 .noOcclusion()
@@ -133,7 +133,7 @@ public class ShadowHandTrapBlock extends BaseEntityBlock {
         }
 
         // 播放音效
-        world.playSound(null, pos, ModSounds.SHADOW0.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
+        world.playSound(null, pos, ModSounds.SHADOW_TRAP_0.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
 
         // 5 点魔法伤害
         player.hurt(new DamageSource(world.registryAccess()
