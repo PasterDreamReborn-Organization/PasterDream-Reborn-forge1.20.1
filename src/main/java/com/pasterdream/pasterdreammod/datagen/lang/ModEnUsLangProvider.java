@@ -803,6 +803,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.dream_harp_of_wanderer.line5", "§7▪ §4Melt Dream Energy Cost: 3");
         add("tooltip.pasterdream.storage_bag.tooltip", "§7A regular bag with 9 storage slots");
         add("tooltip.pasterdream.large_storage_bag.tooltip1", "§7Use Ender powers to expand the bag's storage, giving it 25 slots");
+        add("tooltip.pasterdream.large_storage_bag.tooltip2", "§7Shift right-click can capture some kinds of creature, and shift right-click again to release it (this feature: %s)");
+        add("tooltip.pasterdream.large_storage_bag.catch_enabled", "§aActive");
+        add("tooltip.pasterdream.large_storage_bag.catch_disabled", "§cInactive");
+        add("tooltip.pasterdream.large_storage_bag.tooltip3", "§7Contains creature: %s");
 
 
         // Custom Rarity
