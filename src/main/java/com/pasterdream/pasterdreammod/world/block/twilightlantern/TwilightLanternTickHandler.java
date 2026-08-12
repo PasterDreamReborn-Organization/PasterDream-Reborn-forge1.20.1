@@ -20,6 +20,7 @@ public class TwilightLanternTickHandler {
 
     private static final int EVENT_END_TICK = 2600;
     private static final int POST_MESSAGE_TICK = 2660;
+    private static final int READY_MESSAGE_TICK = 2680;
 
     private static final ResourceLocation LAMP_SHADOW_ROOT_ADV =
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/lamp_shadow_root");
@@ -57,18 +58,24 @@ public class TwilightLanternTickHandler {
 
         // Tick 30: elite wave 1 (SHADOW_GOLEM + TERRORBEAK)
         if (tick == 30) {
-            spawnElite(world, x, y, z, z + 13);
+            spawnElite(world, x, y, z, z + 9);
         }
 
-        // Tick 55: second message + shadow_music_0
+        // Tick 55: second message + shadow_music_0 + shadow golem roar
         if (tick == 55) {
             playSound(world, pos, ModSounds.SHADOW_MUSIC_0.get(), SoundSource.RECORDS);
+            playSound(world, pos, ModSounds.ROAR0.get(), SoundSource.HOSTILE);
             broadcastMessage(world, pos, Component.translatable("message.pasterdream.twilight_lantern.event_mid"));
+        }
+
+        // Tick 90: eerie voice
+        if (tick == 90) {
+            broadcastMessage(world, pos, Component.translatable("message.pasterdream.twilight_lantern.event_voice"));
         }
 
         // Tick 80: elite wave 2
         if (tick == 80) {
-            spawnElite(world, x, y, z, z - 13);
+            spawnElite(world, x, y, z, z - 9);
         }
 
         // ---- Event end phase ----
@@ -92,18 +99,33 @@ public class TwilightLanternTickHandler {
             }
         }
 
-        // Tick 2660: post-event messages (60 ticks after event end)
+        // Tick 2615: dark purple message 1
+        if (tick == 2615) {
+            broadcastMessage(world, pos, Component.translatable("message.pasterdream.twilight_lantern.event_end_3"));
+        }
+
+        // Tick 2630: dark purple message 2
+        if (tick == 2630) {
+            broadcastMessage(world, pos, Component.translatable("message.pasterdream.twilight_lantern.event_end_4"));
+        }
+
+        // Tick 2645: dark purple message 3
+        if (tick == 2645) {
+            broadcastMessage(world, pos, Component.translatable("message.pasterdream.twilight_lantern.event_end_5"));
+        }
+
+        // Tick 2660: post-event message
         if (tick == POST_MESSAGE_TICK) {
             broadcastMessage(world, pos, Component.translatable("message.pasterdream.twilight_lantern.event_end_2"));
-            for (Player player : world.players()) {
-                if (player.distanceToSqr(x, y, z) < 54 * 54) {
-                    player.displayClientMessage(Component.translatable("message.pasterdream.twilight_lantern.event_ready"), true);
-                }
-            }
+        }
+
+        // Tick 2680: ready message
+        if (tick == READY_MESSAGE_TICK) {
+            broadcastMessage(world, pos, Component.translatable("message.pasterdream.twilight_lantern.event_ready"));
         }
 
         // Cleanup after all post-event work is done
-        if (tick >= POST_MESSAGE_TICK) {
+        if (tick >= READY_MESSAGE_TICK) {
             lantern.setEventSwitch(false);
             lantern.setEventTick(0);
             lantern.setNumber(0);
