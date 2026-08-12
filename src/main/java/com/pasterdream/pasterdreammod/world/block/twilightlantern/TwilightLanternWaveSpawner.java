@@ -26,10 +26,10 @@ public class TwilightLanternWaveSpawner {
         spawn(ModEntities.SHADOW_SQUEAL_GHOST.get(), level, x - 8, y + 1, z - 8);
 
         // 4x WITHER_SKELETON (vanilla)
-        spawn(EntityType.WITHER_SKELETON, level, x + 9, y - 1, z + 1);
-        spawn(EntityType.WITHER_SKELETON, level, x - 9, y - 1, z + 1);
-        spawn(EntityType.WITHER_SKELETON, level, x, y - 1, z + 9);
-        spawn(EntityType.WITHER_SKELETON, level, x, y - 1, z - 9);
+        spawn(EntityType.WITHER_SKELETON, level, x + 7, y - 1, z + 1);
+        spawn(EntityType.WITHER_SKELETON, level, x - 7, y - 1, z + 1);
+        spawn(EntityType.WITHER_SKELETON, level, x, y - 1, z + 7);
+        spawn(EntityType.WITHER_SKELETON, level, x, y - 1, z - 7);
     }
 
     private static void spawn(EntityType<?> type, ServerLevel level, double x, double y, double z) {

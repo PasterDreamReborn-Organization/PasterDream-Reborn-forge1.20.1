@@ -2029,11 +2029,15 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.twilight_lantern", "暮影之笼");
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "你尚未知晓如何激活影灯");
         add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "需要用融梦水晶碎片点燃影灯");
-        add("message.pasterdream.twilight_lantern.event_start", "诡异的灯笼突然剧烈抖动，黑色的阴影从灯芯里流出。");
-        add("message.pasterdream.twilight_lantern.event_mid", "阴影化为实物，四周传来空洞的回响。");
-        add("message.pasterdream.twilight_lantern.event_end", "阴影不再从四周向外涌出，暮影之笼也逐渐归为平静。");
-        add("message.pasterdream.twilight_lantern.event_end_2", "\"躺上去吧，在寂静的夜晚，在这亭笼之下\"");
-        add("message.pasterdream.twilight_lantern.event_ready", "可以与暮影之笼发生共鸣");
+        add("message.pasterdream.twilight_lantern.event_start", "§8诡异的灯笼突然剧烈抖动，黑色的阴影从灯芯里流出");
+        add("message.pasterdream.twilight_lantern.event_mid", "§8阴影化为实物，四周传来空洞的回响，随后便是足以撕裂耳膜的嘶吼");
+        add("message.pasterdream.twilight_lantern.event_voice", "§8你似乎从听到了怪异的声音");
+        add("message.pasterdream.twilight_lantern.event_end", "§8阴影不再从四周向外涌出，暮影之笼也逐渐归为平静，上空逐渐出现一道裂缝");
+        add("message.pasterdream.twilight_lantern.event_end_3", "§5不要抗拒，顺从内心，一同永生");
+        add("message.pasterdream.twilight_lantern.event_end_4", "§5顺从！顺从！！顺从！！！");
+        add("message.pasterdream.twilight_lantern.event_end_5", "§5来吧，来吧~ 来吧！……与我们拥抱，与我们共眠，与我们融为一体，这里是你唯一的归属");
+        add("message.pasterdream.twilight_lantern.event_end_2", "§8声音逐渐清晰，不断重复的语言让你似乎有一些烦躁");
+        add("message.pasterdream.twilight_lantern.event_ready", "§5可以与暮影之笼发生共鸣，与暗影长床互动");
         add("message.pasterdream.twilight_lantern.data_reset", "方块数据已重置");
         add("message.pasterdream.twilight_lantern_location", "笔记末尾记载着炼狱上层的坐标：§aX：%s §aZ：%s");
     }
