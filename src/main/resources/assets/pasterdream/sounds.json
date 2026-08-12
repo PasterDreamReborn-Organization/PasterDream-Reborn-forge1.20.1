@@ -106,7 +106,7 @@
     "sounds": [{"name": "pasterdream:beetle_skill", "stream": false}]
   },
   "white_sword_rain": {
-    "sounds": [{"name": "pasterdream:white_sword_rain", "stream": false}]
+    "sounds": [{"name": "pasterdream:white_sword_rain", "stream": false, "volume": 0.4}]
   },
   "shadow_sword": {
     "sounds": [{"name": "pasterdream:shadow_sword", "stream": true}]
@@ -149,5 +149,8 @@
   },
   "shadow_hand_lantern": {
     "sounds": [{"name": "pasterdream:shadow_hand_lantern", "stream": false}]
+  },
+  "shadow_trap_0": {
+    "sounds": [{"name": "pasterdream:shadow_trap_0", "stream": false}]
   }
 }

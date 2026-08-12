@@ -1588,6 +1588,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.shadownote_ruin_2", "Shadow Note Ruin");
         add("structure.pasterdream.shadow_shelter", "Shadow Shelter");
         add("structure.pasterdream.shadow_nest", "Shadow Nest");
+        add("structure.pasterdream.shadow_fungus_house", "Shadow Fungus House");
         add("structure.pasterdream.invaded_church", "Infested Church");
         add("structure.pasterdream.twilight_lantern", "Twilight Lantern");
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "You do not yet know how to activate the shadow lantern");
