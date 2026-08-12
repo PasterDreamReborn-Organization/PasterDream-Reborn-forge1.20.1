@@ -8,6 +8,8 @@ import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamD
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
 import net.minecraft.ChatFormatting;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -185,7 +187,19 @@ public class PasterDreamDrinkItem extends Item
                     }
                     else
                     {
-                        entity.spawnAtLocation(containerStack);
+                        var handler = entity.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve();
+                        if (handler.isPresent())
+                        {
+                            ItemStack remainder = ItemHandlerHelper.insertItemStacked(handler.get(), containerStack, false);
+                            if (!remainder.isEmpty())
+                            {
+                                entity.spawnAtLocation(remainder);
+                            }
+                        }
+                        else
+                        {
+                            entity.spawnAtLocation(containerStack);
+                        }
                     }
                 }
                 return stack;
