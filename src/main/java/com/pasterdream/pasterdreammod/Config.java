@@ -245,6 +245,10 @@ public class Config
             .comment("精神值条预设2的低SAN警告阈值（ratio = 当前SAN / 最大SAN），低于该值时数字变红、bar抖动，默认 0.2（20%）")
             .defineInRange("sanBarPreset2LowThreshold", 0.2, 0.0, 1.0);
 
+    private static final ForgeConfigSpec.BooleanValue SAN_BAR_PRESET2_SNEAK_SHOW_IN_CREATIVE = BUILDER
+            .comment("精神值条预设2：创造模式下是否仅在下蹲时显示，默认 false（始终显示）")
+            .define("sanBarPreset2SneakShowInCreative", false);
+
     // === 暗影生物独立难度 ===
     private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> SHADOW_HEALTH_MULTIPLIERS = BUILDER
             .comment("暗影生物血量倍率，按难度等级排列 [极简单, 简单, 普通, 困难]，默认 [0.5, 1.0, 1.5, 2.0]")
@@ -488,6 +492,7 @@ public class Config
     public static int sanBarPreset1DecimalPlaces;
     public static double sanBarPreset2Scale;
     public static double sanBarPreset2LowThreshold;
+    public static boolean sanBarPreset2SneakShowInCreative;
 
     // === 低 San 效果开关（可通过 /pasterdreamdebug lowsan 指令运行时切换） ===
     public static boolean lowSanOverlay = true;
@@ -773,6 +778,7 @@ public class Config
         sanBarPreset1DecimalPlaces = SAN_BAR_PRESET1_DECIMAL_PLACES.get();
         sanBarPreset2Scale = SAN_BAR_PRESET2_SCALE.get();
         sanBarPreset2LowThreshold = SAN_BAR_PRESET2_LOW_THRESHOLD.get();
+        sanBarPreset2SneakShowInCreative = SAN_BAR_PRESET2_SNEAK_SHOW_IN_CREATIVE.get();
         shadowHealthMultipliers = SHADOW_HEALTH_MULTIPLIERS.get();
         shadowAttackMultipliers = SHADOW_ATTACK_MULTIPLIERS.get();
         shadowSpeedMultipliers = SHADOW_SPEED_MULTIPLIERS.get();

@@ -17,6 +17,7 @@ public class SanTank
     {
         var player = Minecraft.getInstance().player;
         if (player == null || Minecraft.getInstance().options.hideGui) return;
+        if (player.isSpectator()) return;
 
         player.getCapability(ModCapabilities.SAN).ifPresent(capability ->
         {
@@ -74,11 +75,15 @@ public class SanTank
     /** 预设2：紧凑模式，居中于血量与饥饿值之间，缩小比例，仅显示整数。低SAN时数字变红、bar抖动 */
     private static void renderPreset2(GuiGraphics guiGraphics, int width, int height, double sanValue, double maxSanValue)
     {
+        var player = Minecraft.getInstance().player;
+        if (player == null) return;
+        if (Config.sanBarPreset2SneakShowInCreative && player.isCreative() && !player.isShiftKeyDown()) return;
+
         RenderSystem.enableBlend();
         float scale = (float) Config.sanBarPreset2Scale;
         int scaledWidth = (int) (BAR_WIDTH * scale);
         int barX = width / 2 - scaledWidth / 2;
-        int barY = height - 48;
+        int barY = height - 48 - (player.isCreative() ? 14 : 0);
         double ratio = sanValue / maxSanValue;
         boolean lowSan = ratio < Config.sanBarPreset2LowThreshold;
 
