@@ -2023,6 +2023,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.shadownote_ruin_0", "阴影笔记废墟");
         add("structure.pasterdream.shadownote_ruin_1", "阴影笔记废墟");
         add("structure.pasterdream.shadownote_ruin_2", "阴影笔记废墟");
+        add("structure.pasterdream.shadow_shelter", "阴影庇护所");
         add("structure.pasterdream.invaded_church", "侵染教堂");
         add("structure.pasterdream.twilight_lantern", "暮影之笼");
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "你尚未知晓如何激活影灯");
