@@ -212,6 +212,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
         woodRecipes(pWriter);
+        shadowBookshelfRecipes(pWriter);
         dyeConversionRecipes(pWriter);
         blackStickRecipes(pWriter);
         materialRecipes(pWriter);
@@ -327,6 +328,53 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(Items.GLASS_PANE)
                 .requires(ModItems.SHADOW_PLANKS.get())
                 .unlockedBy(getHasName(ModItems.SHADOW_PLANKS.get()), has(ModItems.SHADOW_PLANKS.get()))
+                .save(pWriter);
+    }
+
+    // ===== 阴影书架配方 =====
+
+    private void shadowBookshelfRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 阴影书架：上下各 3 个阴影木板，中间 3 本书
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_BOOKSHELF.get())
+                .pattern("aaa")
+                .pattern("bbb")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_PLANKS.get())
+                .define('b', Items.BOOK)
+                .unlockedBy(getHasName(ModItems.SHADOW_PLANKS.get()), has(ModItems.SHADOW_PLANKS.get()))
+                .save(pWriter);
+
+        // 破旧阴影书架：左右两本书换成纸
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.WORN_SHADOW_BOOKSHELF.get())
+                .pattern("aaa")
+                .pattern("cbc")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_PLANKS.get())
+                .define('b', Items.BOOK)
+                .define('c', Items.PAPER)
+                .unlockedBy(getHasName(ModItems.SHADOW_PLANKS.get()), has(ModItems.SHADOW_PLANKS.get()))
+                .save(pWriter);
+
+        // 蛛网阴影书架：左右两本书换成蜘蛛网
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.COBWEB_SHADOW_BOOKSHELF.get())
+                .pattern("aaa")
+                .pattern("cbc")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_PLANKS.get())
+                .define('b', Items.BOOK)
+                .define('c', Items.COBWEB)
+                .unlockedBy(getHasName(ModItems.SHADOW_PLANKS.get()), has(ModItems.SHADOW_PLANKS.get()))
+                .save(pWriter);
+
+        // 钥匙阴影书架：中间的书换成暗影地牢钥匙
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.KEY_SHADOW_BOOKSHELF.get())
+                .pattern("aaa")
+                .pattern("bcb")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_PLANKS.get())
+                .define('b', Items.BOOK)
+                .define('c', ModItems.SHADOW_DUNGEON_KEY.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_DUNGEON_KEY.get()), has(ModItems.SHADOW_DUNGEON_KEY.get()))
                 .save(pWriter);
     }
 
