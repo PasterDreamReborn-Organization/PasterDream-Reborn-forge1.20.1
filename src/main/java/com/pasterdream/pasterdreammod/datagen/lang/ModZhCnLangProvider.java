@@ -1769,6 +1769,31 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.infected_church.page2", "在染梦世界中探索时，偶尔会在天空中发现这种一半被来自另一个梦境的阴影与黑暗侵蚀染黑的教堂。在这座暗影侵染的教堂中可能发现融梦水晶箱，如果在这座教堂的角落里仔细寻找，也许能够发现遗落的宝箱。");
         add("pasterdream.seniors_dream.entry.infected_church.page3", "除此之外，在这里存在着寻梦者前辈留下的笔记。根据笔记的指引前往下界，想办法穿越基岩层，或许能够找到黑暗的来源……$(br2)——为暗影所侵蚀的教堂，在其背后隐藏着不祥与疯狂。");
 
+        // 灯影之下
+        add("pasterdream.seniors_dream.category.lamp_shadow_world", "灯影之下");
+        add("pasterdream.seniors_dream.category.lamp_shadow_world.desc", "这里是永远流淌着暗影和疯狂的深沉噩梦，当寻梦者们来到这里时，他们或者会慢慢堕入疯狂，或者是会被怪物撕碎……这里和染梦之境一样，也有前人来探索过这里，并留下了一些笔记。但更多的笔记最后成为了碎片，散落在这个梦境世界的各个角落。或许应该将它们收集起来放在研究台中解析，来进一步了解有关这场噩梦的隐秘。");
+        add("pasterdream.seniors_dream.category.lamp_shadow_world_items", "方块与物品");
+        add("pasterdream.seniors_dream.category.lamp_shadow_world_items.desc", "灯影之下的一些方块与物品。");
+
+        add("pasterdream.seniors_dream.entry.brooch_of_white_orchid", "白厄花胸针");
+        add("pasterdream.seniors_dream.entry.brooch_of_white_orchid.page0", "当你在至暗的梦境中选择了光明，击败了盘踞于深邃阴影中的大手后，你能获得这么一枚奇妙的胸针。它所蕴藏的光明力量可以让你在容易致人疯狂的环境中保持清醒。如果你戴着它拿起一把光明之剑，似乎可以让那把剑更加致命……");
+        add("pasterdream.seniors_dream.entry.brooch_of_white_orchid.page1", "——行于黑暗，侍奉光明。");
+
+        add("pasterdream.seniors_dream.entry.white_sword", "白厄剑");
+        add("pasterdream.seniors_dream.entry.white_sword.page0", "当你宣誓效忠于光明时，会有一块散发着光芒的水晶出现在你的口袋，利用它可以锻造出蕴含着光明力量的白厄剑。这把剑有着不菲的伤害，另外，它的光明特性让它可以特攻暗影生物，并对它们施加\"沉默\"效果。");
+        add("pasterdream.seniors_dream.entry.white_sword.page1", "除此之外，你拿着这把剑时可以使用战技，释放\"白厄剑雨\"，它不仅能为敌人带来极致的毁伤，还能短暂束缚住受害者。如果你离敌人足够近并且目视敌人的话，白厄剑雨还能追踪敌人，平常的斩击也有可能释放出追踪剑雨……");
+        add("pasterdream.seniors_dream.entry.white_sword.page2", "——我不仇视浸染在黑暗中的可怜虫，只是必须尽早代行光明的正义来将其抹杀，尽早才行。");
+
+        add("pasterdream.seniors_dream.entry.seal_of_the_corrupted", "堕落者之印");
+        add("pasterdream.seniors_dream.entry.seal_of_the_corrupted.page0", "当你在无尽的黑暗中选择投身于暗影，并弑杀了潜藏在阴影中的大手后，这枚印迹便归你所有。戴上它后，你的疯狂将不会带来负面影响，阴影中的怪物将会视你为同类从而对你保持中立。当你完全陷入疯狂后，产生的黑暗怪物也不会攻击你，相反，它们将会把仇恨宣泄到你的敌人身上。");
+        add("pasterdream.seniors_dream.entry.seal_of_the_corrupted.page1", "——众物终将陷入深邃的疯狂，而我必须化身为阴影的使者。");
+
+        add("pasterdream.seniors_dream.entry.shadow_sword", "影刃");
+        add("pasterdream.seniors_dream.entry.shadow_sword.page0", "在决定堕落于黑暗之中后，你会获得一柄残破的剑柄，利用它可以锻造出至深至暗的影刃。这把剑会不断侵蚀你的理智。当你在疯狂的泥潭里陷得越深，它就越致命，而等到你最后的一丝理性也被蚕食，你就需要用你的生命值来哺育它了……");
+        add("pasterdream.seniors_dream.entry.shadow_sword.page1", "你拿着这把剑时可以献祭理智来让这把剑的下一击变成\"夜魔斩击\"，这样，它的下一击会更加致命，它的伤害取决于你的理性。");
+        add("pasterdream.seniors_dream.entry.shadow_sword.page2", "这把剑并不会效忠通过神的力量来让自己永不疯狂的(用指令关掉san值系统)背叛暗影之人，这一点还请注意。");
+        add("pasterdream.seniors_dream.entry.shadow_sword.page3", "——所谓理智只是凡人的谎言，我将用疯狂来为众生带来平等的终夜。");
+
         // 剧情
         add("pasterdream.seniors_dream.category.story", "剧情");
         add("pasterdream.seniors_dream.category.story.desc", "本篇为模组剧情整合。");

@@ -1,0 +1,18 @@
+{
+  "sortnum": 2,
+  "name": "pasterdream.seniors_dream.entry.seal_of_the_corrupted",
+  "icon": "pasterdream:seal_of_the_corrupted",
+  "category": "pasterdream:lamp_shadow_world/items",
+  "advancement": "pasterdream:story/enter_lamp_shadow_world",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:seal_of_the_corrupted",
+      "text": "pasterdream.seniors_dream.entry.seal_of_the_corrupted.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.seal_of_the_corrupted.page1"
+    }
+  ]
+}
