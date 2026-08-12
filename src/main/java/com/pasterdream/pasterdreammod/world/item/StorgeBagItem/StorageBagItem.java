@@ -31,16 +31,12 @@ public class StorageBagItem extends Item {
     }
 
     /**
-     * 从物品 NBT 读取库存，返回长度为 SLOT_COUNT 的 ListTag
+     * 从物品 NBT 读取库存，每个条目包含 SlotIndex 标识槽位，空槽位不存储
      */
     public static ListTag getInventoryTag(ItemStack stack) {
         CompoundTag tag = stack.getOrCreateTag();
         if (!tag.contains(TAG_INVENTORY)) {
-            ListTag items = new ListTag();
-            for (int i = 0; i < SLOT_COUNT; i++) {
-                items.add(new CompoundTag());
-            }
-            tag.put(TAG_INVENTORY, items);
+            tag.put(TAG_INVENTORY, new ListTag());
         }
         return tag.getList(TAG_INVENTORY, 10); // 10 = CompoundTag
     }

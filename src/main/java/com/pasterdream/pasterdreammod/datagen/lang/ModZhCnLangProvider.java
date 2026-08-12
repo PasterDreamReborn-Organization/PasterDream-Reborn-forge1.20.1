@@ -959,6 +959,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.dream_harp_of_wanderer.line5", "§7▪ §4融梦能量消耗：3");
         add("tooltip.pasterdream.storage_bag.tooltip", "§7一个普普通通的袋子，拥有9格储物栏");
         add("tooltip.pasterdream.large_storage_bag.tooltip1", "§7使用末影力量以拓展袋子的储量，拥有25格储物栏");
+        add("tooltip.pasterdream.large_storage_bag.tooltip2", "§7shift+右键以捕获部分生物，再次shift+右键以取出（该功能：%s）");
+        add("tooltip.pasterdream.large_storage_bag.catch_enabled", "§a启用");
+        add("tooltip.pasterdream.large_storage_bag.catch_disabled", "§c禁用");
+        add("tooltip.pasterdream.large_storage_bag.tooltip3", "§7内含生物：%s");
 
         // 自定义稀有度
         add("rarity.pasterdream.common", "普通");

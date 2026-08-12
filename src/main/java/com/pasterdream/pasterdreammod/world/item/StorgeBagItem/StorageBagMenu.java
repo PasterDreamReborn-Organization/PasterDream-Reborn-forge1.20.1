@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.StorgeBagItem;
 
 import com.pasterdream.pasterdreammod.init.ModMenus;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.InteractionHand;
@@ -116,8 +117,14 @@ public class StorageBagMenu extends AbstractContainerMenu {
     private static ItemStackHandler createInventory(ItemStack stack) {
         ItemStackHandler handler = new ItemStackHandler(StorageBagItem.SLOT_COUNT);
         ListTag items = StorageBagItem.getInventoryTag(stack);
-        for (int i = 0; i < StorageBagItem.SLOT_COUNT && i < items.size(); i++) {
-            handler.setStackInSlot(i, ItemStack.of(items.getCompound(i)));
+        for (int i = 0; i < items.size(); i++) {
+            CompoundTag tag = items.getCompound(i);
+            if (tag.contains("SlotIndex")) {
+                int slotIndex = tag.getInt("SlotIndex");
+                if (slotIndex >= 0 && slotIndex < StorageBagItem.SLOT_COUNT) {
+                    handler.setStackInSlot(slotIndex, ItemStack.of(tag));
+                }
+            }
         }
         return handler;
     }
@@ -125,7 +132,12 @@ public class StorageBagMenu extends AbstractContainerMenu {
     private void save() {
         ListTag items = new ListTag();
         for (int i = 0; i < bagInventory.getSlots(); i++) {
-            items.add(bagInventory.getStackInSlot(i).save(new net.minecraft.nbt.CompoundTag()));
+            ItemStack stack = bagInventory.getStackInSlot(i);
+            if (!stack.isEmpty()) {
+                CompoundTag tag = stack.save(new CompoundTag());
+                tag.putInt("SlotIndex", i);
+                items.add(tag);
+            }
         }
         StorageBagItem.saveInventoryTag(bagStack, items);
     }

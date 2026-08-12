@@ -293,6 +293,23 @@ public class Config
             .comment("BOSS 限伤距离衰减起始距离（格），超过此距离伤害线性衰减，默认 12")
             .defineInRange("bossRangeCap", 12.0, 1.0, 256.0);
 
+    // === 大便携储物袋抓取生物 ===
+    private static final ForgeConfigSpec.BooleanValue CREATURE_CAPTURE_ENABLED = BUILDER
+            .comment("是否启用大便携储物袋（LargeStorageBag）抓取生物的功能，默认 true")
+            .define("creatureCaptureEnabled", true);
+
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> CREATURE_CAPTURE_ENTITIES = BUILDER
+            .comment("大便携储物袋可抓取的实体 ID 列表（格式：modid:entity_id），"
+                    + "\n例：minecraft:chicken 为鸡，pasterdream:pink_chicken 为粉红鸡"
+                    + "\n仅 Shift+右键时可抓取，无法抓取 Boss 生物（凋零、末影龙）")
+            .defineListAllowEmpty("creatureCaptureEntities",
+                    List.of("pasterdream:pink_chicken", "pasterdream:pink_slime",
+                            "minecraft:chicken", "minecraft:slime", "minecraft:silverfish",
+                            "minecraft:vex", "minecraft:endermite", "minecraft:frog",
+                            "minecraft:tadpole", "minecraft:tropical_fish", "minecraft:pufferfish",
+                            "minecraft:salmon", "minecraft:cod", "minecraft:wolf", "minecraft:parrot"),
+                    obj -> obj instanceof String);
+
     // === 低理智刷怪（四区间制） ===
     // 区间边界沿用上方 SAN 阈值，此处仅配置各区间的刷怪概率与实体权重
     // 概率为 4 个值，按暗影难度排列 [极简单, 简单, 普通, 困难]
@@ -550,6 +567,15 @@ public class Config
     public static double bossDpsCap;
     public static double bossRangeCap;
 
+    // === 大便携储物袋抓取生物 ===
+    public static boolean creatureCaptureEnabled;
+    public static List<? extends String> creatureCaptureEntities;
+    private static Set<EntityType<?>> cachedCaptureEntityTypes = Set.of();
+
+    public static boolean isCapturableEntity(EntityType<?> type) {
+        return cachedCaptureEntityTypes.contains(type);
+    }
+
     // === 低理智刷怪 ===
     public static List<? extends Double> lowSanSpawnHighProbs;
     public static List<? extends String> lowSanSpawnHighEntities;
@@ -641,6 +667,25 @@ public class Config
         }
         cachedConflictMarkBlacklistTypes = Set.copyOf(set);
         LOGGER.info("conflict_mark_blacklist: loaded {} entity types", cachedConflictMarkBlacklistTypes.size());
+    }
+
+    private static void rebuildCaptureEntityCache() {
+        Set<EntityType<?>> set = new HashSet<>();
+        for (String idStr : creatureCaptureEntities) {
+            ResourceLocation rl = ResourceLocation.tryParse(idStr);
+            if (rl == null) {
+                LOGGER.warn("creatureCaptureEntities: invalid resource location '{}', skipping", idStr);
+                continue;
+            }
+            EntityType<?> et = ForgeRegistries.ENTITY_TYPES.getValue(rl);
+            if (et == null) {
+                LOGGER.warn("creatureCaptureEntities: unknown entity type '{}', skipping", idStr);
+                continue;
+            }
+            set.add(et);
+        }
+        cachedCaptureEntityTypes = Set.copyOf(set);
+        LOGGER.info("creatureCaptureEntities: loaded {} entity types", cachedCaptureEntityTypes.size());
     }
 
     private static void rebuildCalaisSpiceBottleCache() {
@@ -739,6 +784,9 @@ public class Config
         bossDamageCap = BOSS_DAMAGE_CAP.get();
         bossDpsCap = BOSS_DPS_CAP.get();
         bossRangeCap = BOSS_RANGE_CAP.get();
+        creatureCaptureEnabled = CREATURE_CAPTURE_ENABLED.get();
+        creatureCaptureEntities = CREATURE_CAPTURE_ENTITIES.get();
+
         lowSanSpawnHighProbs = LOW_SAN_SPAWN_HIGH_PROBS.get();
         lowSanSpawnHighEntities = LOW_SAN_SPAWN_HIGH_ENTITIES.get();
         lowSanSpawnMediumProbs = LOW_SAN_SPAWN_MEDIUM_PROBS.get();
@@ -772,6 +820,7 @@ public class Config
 
         rebuildSinInstakillCache();
         rebuildConflictMarkBlacklistCache();
+        rebuildCaptureEntityCache();
         rebuildCalaisSpiceBottleCache();
         rebuildCalaisSpiceBottleDebuffCache();
     }
