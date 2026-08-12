@@ -347,6 +347,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_BUTTON.get())
                 .add(ModBlocks.SHADOW_BUTTON.get());
 
+        // ===== 阴影书架（forge:bookshelves 兼容标签） =====
+        tag(Tags.Blocks.BOOKSHELVES)
+                .add(ModBlocks.SHADOW_BOOKSHELF.get());
+
         // ===== 模组玻璃板 =====
 
         tag(ModBlockTags.MOD_GLASS_PANE)

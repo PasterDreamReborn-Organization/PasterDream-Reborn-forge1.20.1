@@ -334,32 +334,25 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.STRIPPED_SHADOW_HYPHAE.get());
 
         // ===== 阴影书架系列 =====
-        add(ModBlocks.SHADOW_BOOKSHELF.get(), block -> LootTable.lootTable()
+        // 阴影书架：精准采集掉落自身，否则掉落 3 本书
+        add(ModBlocks.SHADOW_BOOKSHELF.get(), block -> createSilkTouchDispatchTable(block,
+                LootItem.lootTableItem(Items.BOOK).apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))));
+        // 破旧阴影书架：精准采集掉落自身，否则掉落 1 本书
+        add(ModBlocks.WORN_SHADOW_BOOKSHELF.get(), block -> createSilkTouchDispatchTable(block,
+                LootItem.lootTableItem(Items.BOOK)));
+        // 蛛网阴影书架：精准采集掉落自身，否则掉落 1 本书
+        add(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get(), block -> createSilkTouchDispatchTable(block,
+                LootItem.lootTableItem(Items.BOOK)));
+        // 钥匙阴影书架：精准采集掉落自身，否则掉落 2 本书 + 暗影地牢钥匙
+        add(ModBlocks.KEY_SHADOW_BOOKSHELF.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(ModBlocks.SHADOW_BOOKSHELF.get()).when(HAS_SILK_TOUCH)))
+                        .add(LootItem.lootTableItem(ModBlocks.KEY_SHADOW_BOOKSHELF.get()).when(HAS_SILK_TOUCH)))
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(Items.BOOK).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
-                        .add(LootItem.lootTableItem(Items.PAPER).setWeight(8).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
-                        .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get()).setWeight(1))
+                        .add(LootItem.lootTableItem(Items.BOOK).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2))))
+                        .when(HAS_SILK_TOUCH.invert()))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ModItems.SHADOW_DUNGEON_KEY.get()))
                         .when(HAS_SILK_TOUCH.invert())));
-        add(ModBlocks.WORN_SHADOW_BOOKSHELF.get(), block -> LootTable.lootTable()
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(ModBlocks.WORN_SHADOW_BOOKSHELF.get()).when(HAS_SILK_TOUCH)))
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(Items.BOOK).setWeight(10))
-                        .add(LootItem.lootTableItem(Items.PAPER).setWeight(20))
-                        .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get()).setWeight(1))
-                        .when(HAS_SILK_TOUCH.invert())));
-        add(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get(), block -> LootTable.lootTable()
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get()).when(HAS_SILK_TOUCH)))
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(Items.BOOK).setWeight(5))
-                        .add(LootItem.lootTableItem(Items.PAPER).setWeight(10))
-                        .add(LootItem.lootTableItem(Items.STRING).setWeight(10))
-                        .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get()).setWeight(2))
-                        .when(HAS_SILK_TOUCH.invert())));
-        add(ModBlocks.KEY_SHADOW_BOOKSHELF.get(), block -> LootTable.lootTable());
 
         generateCropLoot(ModBlocks.DYEDREAM_COROLLA_CROP.get(), ModItems.DYEDREAM_COROLLA.get(), 1, ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
         generateCropLoot(ModBlocks.WHITE_COROLLA_CROP.get(), ModItems.WHITE_COROLLA.get(), 1, ModItems.WHITE_COROLLA_CROP_AGE_1.get(), ModItems.WHITE_COROLLA_CROP_AGE_0.get());
