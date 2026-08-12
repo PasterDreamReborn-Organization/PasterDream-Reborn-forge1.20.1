@@ -176,6 +176,75 @@ public class Config
             .comment("疯狂 III 触发阈值（ratio < 该值时升级为 Lv3），默认 0.01（1%）")
             .defineInRange("sanInsandLv3Threshold", 0.01, 0.0, 1.0);
 
+    // === 融梦能量条 HUD 位置（预设1：左下角） ===
+    private static final ForgeConfigSpec.IntValue MELT_DREAM_ENERGY_BAR_X = BUILDER
+            .comment("融梦能量条距屏幕左侧的距离（像素），预设1：9")
+            .defineInRange("meltDreamEnergyBarX", 9, 0, 3840);
+
+    private static final ForgeConfigSpec.IntValue MELT_DREAM_ENERGY_BAR_Y_FROM_BOTTOM = BUILDER
+            .comment("融梦能量条距屏幕底部的距离（像素），预设1：17")
+            .defineInRange("meltDreamEnergyBarYFromBottom", 17, 0, 2160);
+
+    // === 融梦能量条显示配置 ===
+    private static final ForgeConfigSpec.IntValue MELT_DREAM_ENERGY_BAR_DECIMAL_PLACES = BUILDER
+            .comment("融梦能量条数值小数位数（0~4），默认 1")
+            .defineInRange("meltDreamEnergyBarDecimalPlaces", 1, 0, 4);
+
+    private static final ForgeConfigSpec.BooleanValue MELT_DREAM_ENERGY_BAR_TEXT_CENTERED = BUILDER
+            .comment("融梦能量条数值是否居中在bar正中央，默认 false（在bar上方）")
+            .define("meltDreamEnergyBarTextCentered", false);
+
+    private static final ForgeConfigSpec.BooleanValue MELT_DREAM_ENERGY_BAR_ALWAYS_SHOW = BUILDER
+            .comment("融梦能量条是否常态显示，默认 true。设为 false 时以下两项生效")
+            .define("meltDreamEnergyBarAlwaysShow", true);
+
+    private static final ForgeConfigSpec.BooleanValue MELT_DREAM_ENERGY_BAR_SHOW_ON_CHANGE = BUILDER
+            .comment("融梦能量条：数值变化时显示（仅 alwaysShow=false 时生效），默认 true")
+            .define("meltDreamEnergyBarShowOnChange", true);
+
+    private static final ForgeConfigSpec.BooleanValue MELT_DREAM_ENERGY_BAR_SHOW_ON_SNEAK = BUILDER
+            .comment("融梦能量条：蹲下时显示（仅 alwaysShow=false 时生效），默认 true")
+            .define("meltDreamEnergyBarShowOnSneak", true);
+
+    // === 精神值条 HUD 位置（预设1：右下角） ===
+    private static final ForgeConfigSpec.IntValue SAN_BAR_X_FROM_RIGHT = BUILDER
+            .comment("精神值条距屏幕右侧的距离（像素），预设1：34")
+            .defineInRange("sanBarXFromRight", 34, 0, 3840);
+
+    private static final ForgeConfigSpec.IntValue SAN_BAR_Y_FROM_BOTTOM = BUILDER
+            .comment("精神值条距屏幕底部的距离（像素），预设1：30")
+            .defineInRange("sanBarYFromBottom", 30, 0, 2160);
+
+    // === 精神值条预设 ===
+    private static final ForgeConfigSpec.IntValue SAN_BAR_PRESET = BUILDER
+            .comment("""
+                    精神值条显示预设：\
+
+                    1=默认（右下角，显示小数），\
+
+                    2=紧凑（居中于血量与饥饿值之间，缩小，仅显示整数）""")
+            .defineInRange("sanBarPreset", 1, 1, 2);
+
+    private static final ForgeConfigSpec.BooleanValue SAN_BAR_PRESET1_SNEAK_PRECISE = BUILDER
+            .comment("精神值条预设1：是否仅在下蹲时显示数值，默认 false（始终显示）")
+            .define("sanBarPreset1SneakPrecise", false);
+
+    private static final ForgeConfigSpec.BooleanValue SAN_BAR_PRESET1_SNEAK_SHOW_BAR = BUILDER
+            .comment("精神值条预设1：是否仅在下蹲时显示SAN条，默认 false（始终显示）")
+            .define("sanBarPreset1SneakShowBar", false);
+
+    private static final ForgeConfigSpec.IntValue SAN_BAR_PRESET1_DECIMAL_PLACES = BUILDER
+            .comment("精神值条预设1：数值小数位数（0~4），默认 4")
+            .defineInRange("sanBarPreset1DecimalPlaces", 4, 0, 4);
+
+    private static final ForgeConfigSpec.DoubleValue SAN_BAR_PRESET2_SCALE = BUILDER
+            .comment("精神值条预设2的缩放比例，默认 0.5（28×26 缩小为 14×13）")
+            .defineInRange("sanBarPreset2Scale", 0.5, 0.1, 1.5);
+
+    private static final ForgeConfigSpec.DoubleValue SAN_BAR_PRESET2_LOW_THRESHOLD = BUILDER
+            .comment("精神值条预设2的低SAN警告阈值（ratio = 当前SAN / 最大SAN），低于该值时数字变红、bar抖动，默认 0.2（20%）")
+            .defineInRange("sanBarPreset2LowThreshold", 0.2, 0.0, 1.0);
+
     // === 暗影生物独立难度 ===
     private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> SHADOW_HEALTH_MULTIPLIERS = BUILDER
             .comment("暗影生物血量倍率，按难度等级排列 [极简单, 简单, 普通, 困难]，默认 [0.5, 1.0, 1.5, 2.0]")
@@ -385,6 +454,23 @@ public class Config
     public static double sanTranceLowerThreshold;
     public static double sanInsandLv2Threshold;
     public static double sanInsandLv3Threshold;
+
+    // === 融梦能量条 & 精神值条 HUD 位置 ===
+    public static int meltDreamEnergyBarX;
+    public static int meltDreamEnergyBarYFromBottom;
+    public static int meltDreamEnergyBarDecimalPlaces;
+    public static boolean meltDreamEnergyBarTextCentered;
+    public static boolean meltDreamEnergyBarAlwaysShow;
+    public static boolean meltDreamEnergyBarShowOnChange;
+    public static boolean meltDreamEnergyBarShowOnSneak;
+    public static int sanBarXFromRight;
+    public static int sanBarYFromBottom;
+    public static int sanBarPreset;
+    public static boolean sanBarPreset1SneakPrecise;
+    public static boolean sanBarPreset1SneakShowBar;
+    public static int sanBarPreset1DecimalPlaces;
+    public static double sanBarPreset2Scale;
+    public static double sanBarPreset2LowThreshold;
 
     // === 低 San 效果开关（可通过 /pasterdreamdebug lowsan 指令运行时切换） ===
     public static boolean lowSanOverlay = true;
@@ -627,6 +713,21 @@ public class Config
         sanTranceLowerThreshold = SAN_TRANCE_LOWER_THRESHOLD.get();
         sanInsandLv2Threshold = SAN_INSAND_LV2_THRESHOLD.get();
         sanInsandLv3Threshold = SAN_INSAND_LV3_THRESHOLD.get();
+        meltDreamEnergyBarX = MELT_DREAM_ENERGY_BAR_X.get();
+        meltDreamEnergyBarYFromBottom = MELT_DREAM_ENERGY_BAR_Y_FROM_BOTTOM.get();
+        meltDreamEnergyBarDecimalPlaces = MELT_DREAM_ENERGY_BAR_DECIMAL_PLACES.get();
+        meltDreamEnergyBarTextCentered = MELT_DREAM_ENERGY_BAR_TEXT_CENTERED.get();
+        meltDreamEnergyBarAlwaysShow = MELT_DREAM_ENERGY_BAR_ALWAYS_SHOW.get();
+        meltDreamEnergyBarShowOnChange = MELT_DREAM_ENERGY_BAR_SHOW_ON_CHANGE.get();
+        meltDreamEnergyBarShowOnSneak = MELT_DREAM_ENERGY_BAR_SHOW_ON_SNEAK.get();
+        sanBarXFromRight = SAN_BAR_X_FROM_RIGHT.get();
+        sanBarYFromBottom = SAN_BAR_Y_FROM_BOTTOM.get();
+        sanBarPreset = SAN_BAR_PRESET.get();
+        sanBarPreset1SneakPrecise = SAN_BAR_PRESET1_SNEAK_PRECISE.get();
+        sanBarPreset1SneakShowBar = SAN_BAR_PRESET1_SNEAK_SHOW_BAR.get();
+        sanBarPreset1DecimalPlaces = SAN_BAR_PRESET1_DECIMAL_PLACES.get();
+        sanBarPreset2Scale = SAN_BAR_PRESET2_SCALE.get();
+        sanBarPreset2LowThreshold = SAN_BAR_PRESET2_LOW_THRESHOLD.get();
         shadowHealthMultipliers = SHADOW_HEALTH_MULTIPLIERS.get();
         shadowAttackMultipliers = SHADOW_ATTACK_MULTIPLIERS.get();
         shadowSpeedMultipliers = SHADOW_SPEED_MULTIPLIERS.get();
