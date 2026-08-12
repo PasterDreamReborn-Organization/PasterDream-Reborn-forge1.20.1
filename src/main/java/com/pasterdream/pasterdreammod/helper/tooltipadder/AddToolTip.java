@@ -59,6 +59,9 @@ public class AddToolTip
         if(stack.is(ModItems.GLASS_JAR_OF_DREAM_JUICE.get())){
             tooltip.add(Component.translatable("tooltip.pasterdreammod.glass_jar_of_dream_juice"));
         }
+        if(stack.is(ModItems.GLASS_CUP_OF_HONEY_JUICE.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdreammod.glass_cup_of_honey_juice"));
+        }
         if(stack.is(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get())){
             tooltip.add(Component.translatable("item.pasterdream.legendary_dragon_horn_ice_cream.describe.0"));
             tooltip.add(Component.translatable("item.pasterdream.legendary_dragon_horn_ice_cream.describe.1"));

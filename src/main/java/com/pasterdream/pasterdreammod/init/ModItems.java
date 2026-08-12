@@ -106,6 +106,7 @@ import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
@@ -502,12 +503,12 @@ public class ModItems {
     public static final RegistryObject<Item> GLASS_JAR_OF_DREAM_JUICE = ITEMS.register("glass_jar_of_dream_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(8).food(new FoodProperties.Builder().alwaysEat().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get()))
     {
         @Override
-        protected void onDrinkSpecial(Player player, Level level)
+        protected void onDrinkSpecial(LivingEntity entity, Level level)
         {
             //设置玩家标记，用于床交互时传送至染梦世界
-            player.getPersistentData().putBoolean("pasterdream:dream_juice_drank", true);
+            entity.getPersistentData().putBoolean("pasterdream:dream_juice_drank", true);
             if (!level.isClientSide()) {
-                player.addEffect(new MobEffectInstance(ModEffects.DREAM_WISH_BUFF.get(), 1800, 0));
+                entity.addEffect(new MobEffectInstance(ModEffects.DREAM_WISH_BUFF.get(), 1800, 0));
             }
         }
     });
@@ -529,12 +530,12 @@ public class ModItems {
                 }
 
                 @Override
-                protected void onDrinkSpecial(Player player, Level level) {
-                    if (player instanceof ServerPlayer serverPlayer) {
+                protected void onDrinkSpecial(LivingEntity entity, Level level) {
+                    if (entity instanceof ServerPlayer serverPlayer) {
                         serverPlayer.getStats().setValue(serverPlayer, Stats.CUSTOM.get(Stats.TIME_SINCE_REST), 0);
-                        AABB range = player.getBoundingBox().inflate(64.0D);
+                        AABB range = entity.getBoundingBox().inflate(64.0D);
                         for (Phantom phantom : level.getEntitiesOfClass(Phantom.class, range)) {
-                            if (phantom.getTarget() == player) {
+                            if (phantom.getTarget() == entity) {
                                 phantom.setTarget(null);
                             }
                         }
@@ -556,7 +557,18 @@ public class ModItems {
         }
     });
     public static final RegistryObject<Item> GLASS_CUP_OF_DYEDREAM_JUICE = ITEMS.register("glass_cup_of_dyedream_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(1).saturationMod(0.5f).alwaysEat().build()).meltDreamEnergyAdd(0.2)));
-    public static final RegistryObject<Item> GLASS_CUP_OF_HONEY_JUICE = ITEMS.register("glass_cup_of_honey_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(6).saturationMod(0.5f).alwaysEat().build())));
+    public static final RegistryObject<Item> GLASS_CUP_OF_HONEY_JUICE = ITEMS.register("glass_cup_of_honey_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(6).saturationMod(0.5f).alwaysEat().build())) {
+        @Override
+        protected void onDrinkSpecial(LivingEntity entity, Level level) {
+            if (!level.isClientSide) {
+                entity.getActiveEffects().stream()
+                        .map(MobEffectInstance::getEffect)
+                        .filter(effect -> !effect.isBeneficial())
+                        .toList()
+                        .forEach(entity::removeEffect);
+            }
+        }
+    });
     public static final RegistryObject<Item> GLASS_CUP_OF_WATERMELON_JUICE = ITEMS.register("glass_cup_of_watermelon_juice", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.5f).alwaysEat().build())));
 
     // ===== 食材系列 =====
@@ -671,10 +683,10 @@ public class ModItems {
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1).meltDreamEnergyAdd(0.2)
                     .food(new FoodProperties.Builder().nutrition(1).saturationMod(0.5f).alwaysEat().build())){
                 @Override
-                protected void onFoodSpecial(Player player, Level level) {
-                    if (player.isOnFire()) {
-                        int remainingTicks = player.getRemainingFireTicks();
-                        player.setRemainingFireTicks(Math.max(0, remainingTicks - 100));
+                protected void onFoodSpecial(LivingEntity entity, Level level) {
+                    if (entity.isOnFire()) {
+                        int remainingTicks = entity.getRemainingFireTicks();
+                        entity.setRemainingFireTicks(Math.max(0, remainingTicks - 100));
                     }
                 }
             });//减少燃烧时间
@@ -761,32 +773,36 @@ public class ModItems {
                     .food(new FoodProperties.Builder().nutrition(6).alwaysEat().saturationMod(0.415f).build()).useDuration(25)
             ){
                 @Override
-                protected void onFoodSpecial(Player player, Level level) {
+                protected void onFoodSpecial(LivingEntity entity, Level level) {
                     // 检测饰品栏或盔甲栏是否有 galaxy_jelly_boost 标签的物品
-                    boolean hasBoost = player.getItemBySlot(EquipmentSlot.CHEST).is(ModItemTags.GALAXY_JELLY_BOOST)
-                            || CuriosApi.getCuriosInventory(player)
+                    boolean hasBoost = entity.getItemBySlot(EquipmentSlot.CHEST).is(ModItemTags.GALAXY_JELLY_BOOST)
+                            || CuriosApi.getCuriosInventory(entity)
                                     .map(inv -> inv.findFirstCurio(
                                             stack -> stack.is(ModItemTags.GALAXY_JELLY_BOOST)).isPresent())
                                     .orElse(false);
 
                     if (hasBoost) {
-                        player.setDeltaMovement(player.getDeltaMovement().x, 2, player.getDeltaMovement().z);
-                        player.hurtMarked = true;
-                        player.getCooldowns().addCooldown(this, 80);
-                        level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        entity.setDeltaMovement(entity.getDeltaMovement().x, 2, entity.getDeltaMovement().z);
+                        entity.hurtMarked = true;
+                        if (entity instanceof Player player) {
+                            player.getCooldowns().addCooldown(this, 80);
+                        }
+                        level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
                                 SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 3.0F, 1.0F);
                     } else {
                         // 常规效果
-                        player.setDeltaMovement(player.getDeltaMovement().x, 3, player.getDeltaMovement().z);
-                        player.hurtMarked = true;
-                        player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 140, 0));
-                        player.getCooldowns().addCooldown(this, 40);
-                        level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        entity.setDeltaMovement(entity.getDeltaMovement().x, 3, entity.getDeltaMovement().z);
+                        entity.hurtMarked = true;
+                        entity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 140, 0));
+                        if (entity instanceof Player player) {
+                            player.getCooldowns().addCooldown(this, 40);
+                        }
+                        level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
                                 SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 3.0F, 1.0F);
                     }
 
                     // 进度触发器：在建筑高度上限吃下星河果冻
-                    if (player instanceof ServerPlayer sp) {
+                    if (entity instanceof ServerPlayer sp) {
                         ModCriteriaTriggers.EAT_GALAXY_JELLY_AT_HEIGHT.trigger(sp, sp.getY());
                     }
                 }
@@ -803,15 +819,17 @@ public class ModItems {
                     .food(new FoodProperties.Builder().nutrition(8).alwaysEat().saturationMod(0.5f).build()).useDuration(25)
             ){
                 @Override
-                protected void onFoodSpecial(Player player, Level level) {
-                    if (player instanceof ServerPlayer sp) {
+                protected void onFoodSpecial(LivingEntity entity, Level level) {
+                    if (entity instanceof ServerPlayer sp) {
                         sp.teleportTo(sp.serverLevel(), sp.getX(), level.getMaxBuildHeight(), sp.getZ(), sp.getYRot(), sp.getXRot());
                     } else {
-                        player.setPos(player.getX(), level.getMaxBuildHeight(), player.getZ());
+                        entity.setPos(entity.getX(), level.getMaxBuildHeight(), entity.getZ());
                     }
-                    player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 600, 0));
-                    player.getCooldowns().addCooldown(this, 400);
-                    level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    entity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 600, 0));
+                    if (entity instanceof Player player) {
+                        player.getCooldowns().addCooldown(this, 400);
+                    }
+                    level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
                             SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 3.0F, 1.0F);
                 }
                 @Override
@@ -831,9 +849,9 @@ public class ModItems {
                     .food(new FoodProperties.Builder().nutrition(6).alwaysEat().saturationMod(0.415f).build()).useDuration(25)
             ){
                 @Override
-                protected void onFoodSpecial(Player player, Level level) {
+                protected void onFoodSpecial(LivingEntity entity, Level level) {
 
-                    player.addEffect(new MobEffectInstance(MobEffects.LUCK, 1200, 0));
+                    entity.addEffect(new MobEffectInstance(MobEffects.LUCK, 1200, 0));
                 }
                 @Override
                 public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
@@ -861,9 +879,9 @@ public class ModItems {
                     .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.375f).alwaysEat().build()))
             {
                 @Override
-                protected void onFoodSpecial(Player player, Level level)
+                protected void onFoodSpecial(LivingEntity entity, Level level)
                 {
-                    if (!level.isClientSide&&!player.isCreative())
+                    if (!level.isClientSide && entity instanceof Player player && !player.isCreative())
                     {
                             ItemStack containerStack = new ItemStack(Items.BOWL);
                             if (!player.getInventory().add(containerStack))
@@ -882,16 +900,16 @@ public class ModItems {
                     .food(new FoodProperties.Builder().nutrition(10).saturationMod(1.2f).alwaysEat().build())
                     .rarity(Rarity.EPIC)) {
                 @Override
-                protected void onFoodSpecial(Player player, Level level) {
-                    if (!level.isClientSide && !player.isCreative()) {
-                        ItemStack containerStack = new ItemStack(Items.BOWL);
-                        if (!player.getInventory().add(containerStack)) {
-                            player.drop(containerStack, false);
-                        }
-                    }
-
+                protected void onFoodSpecial(LivingEntity entity, Level level) {
                     if (!level.isClientSide) {
-                        var luckAttr = player.getAttribute(Attributes.LUCK);
+                        if (entity instanceof Player player && !player.isCreative()) {
+                            ItemStack containerStack = new ItemStack(Items.BOWL);
+                            if (!player.getInventory().add(containerStack)) {
+                                player.drop(containerStack, false);
+                            }
+                        }
+
+                        var luckAttr = entity.getAttribute(Attributes.LUCK);
                         if (luckAttr != null) {
                             AttributeModifier existingModifier = luckAttr.getModifier(LEGENDARY_DRAGON_HORN_ICE_CREAM_LUCK_UUID);
                             if (existingModifier == null) {
@@ -899,12 +917,16 @@ public class ModItems {
                                         "legendary_dragon_horn_ice_cream", 10, AttributeModifier.Operation.ADDITION));
                                 if (level instanceof ServerLevel serverLevel) {
                                     serverLevel.sendParticles(ParticleTypes.SNOWFLAKE,
-                                            player.getX(), player.getY() + 3, player.getZ(),
+                                            entity.getX(), entity.getY() + 3, entity.getZ(),
                                             128, 2, 0.5, 2, 1);
                                 }
-                                player.displayClientMessage(Component.translatable("item.pasterdream.legendary_dragon_horn_ice_cream.client.success"), false);
+                                if (entity instanceof Player player) {
+                                    player.displayClientMessage(Component.translatable("item.pasterdream.legendary_dragon_horn_ice_cream.client.success"), false);
+                                }
                             } else {
-                                player.displayClientMessage(Component.translatable("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail"), false);
+                                if (entity instanceof Player player) {
+                                    player.displayClientMessage(Component.translatable("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail"), false);
+                                }
                             }
                         }
                     }
@@ -923,19 +945,23 @@ public class ModItems {
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).rarity(Rarity.UNCOMMON)
                     .food(new FoodProperties.Builder().alwaysEat().build())) {
                 @Override
-                protected void onDrinkSpecial(Player player, Level level) {
+                protected void onDrinkSpecial(LivingEntity entity, Level level) {
                     if (!level.isClientSide) {
-                        var AtkspdAttr = player.getAttribute(Attributes.ATTACK_SPEED);
+                        var AtkspdAttr = entity.getAttribute(Attributes.ATTACK_SPEED);
                         if (AtkspdAttr != null) {
                             AttributeModifier existingModifier = AtkspdAttr.getModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_ATTACK_SPEED_UUID);
                             if (existingModifier == null) {
                                 AtkspdAttr.addPermanentModifier(new AttributeModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_ATTACK_SPEED_UUID,
                                         "elixir_bottle_of_rage_elixir", 0.1, AttributeModifier.Operation.ADDITION));
-                                level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                                level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
                                         ModSounds.DREAM0.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                                player.displayClientMessage(Component.translatable("item.pasterdream.elixir_bottle_of_rage_elixir.client.success"), false);
+                                if (entity instanceof Player player) {
+                                    player.displayClientMessage(Component.translatable("item.pasterdream.elixir_bottle_of_rage_elixir.client.success"), false);
+                                }
                             } else {
-                                player.displayClientMessage(Component.translatable("item.pasterdream.elixir_bottle_of_rage_elixir.client.fail"), false);
+                                if (entity instanceof Player player) {
+                                    player.displayClientMessage(Component.translatable("item.pasterdream.elixir_bottle_of_rage_elixir.client.fail"), false);
+                                }
                             }
                         }
                     }

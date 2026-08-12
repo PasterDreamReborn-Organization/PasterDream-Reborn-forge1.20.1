@@ -141,14 +141,17 @@ public class PasterDreamDrinkItem extends Item
             }
         }
 
-        if (!level.isClientSide && entity instanceof Player player)
+        if (!level.isClientSide)
         {
-            player.awardStat(Stats.ITEM_USED.get(this));
-            if (player instanceof ServerPlayer serverPlayer)
+            if (entity instanceof Player player)
             {
-                CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
+                player.awardStat(Stats.ITEM_USED.get(this));
+                if (player instanceof ServerPlayer serverPlayer)
+                {
+                    CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
+                }
             }
-            onDrinkSpecial(player, level);
+            onDrinkSpecial(entity, level);
         }
 
         if (entity instanceof Player player && player.isCreative())
@@ -170,22 +173,26 @@ public class PasterDreamDrinkItem extends Item
         }
             else
             {
-                if (!level.isClientSide && entity instanceof Player player)
+                if (!level.isClientSide && emptyContainer != null)
                 {
-                    if (emptyContainer != null)
+                    ItemStack containerStack = new ItemStack(emptyContainer);
+                    if (entity instanceof Player player)
                     {
-                        ItemStack containerStack = new ItemStack(emptyContainer);
                         if (!player.getInventory().add(containerStack))
                         {
                             player.drop(containerStack, false);
                         }
+                    }
+                    else
+                    {
+                        entity.spawnAtLocation(containerStack);
                     }
                 }
                 return stack;
             }
     }
 
-    protected void onDrinkSpecial(Player player, Level level)
+    protected void onDrinkSpecial(LivingEntity entity, Level level)
     {
         //默认无操作
     }
