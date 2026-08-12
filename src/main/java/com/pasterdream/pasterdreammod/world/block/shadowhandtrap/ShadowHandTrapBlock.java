@@ -115,6 +115,7 @@ public class ShadowHandTrapBlock extends BaseEntityBlock {
         super.entityInside(state, world, pos, entity);
         if (world.isClientSide()) return;
         if (!(entity instanceof Player player)) return;
+        if (player.isCreative()) return;
 
         BlockEntity be = world.getBlockEntity(pos);
         if (be == null) return;
