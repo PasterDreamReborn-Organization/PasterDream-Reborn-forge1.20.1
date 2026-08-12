@@ -2267,6 +2267,21 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('b', Items.LECTERN)
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
                 .save(pWriter, "dyedream_desk_from_lectern");
+        // 研究台
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RESEARCH_TABLE.get(), 1)
+                .pattern("abc")
+                .pattern("ddd")
+                .pattern("e f")
+                .define('a', Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "bookshelves"))))
+                .define('b', ItemTags.WOOL_CARPETS)
+                .define('c', ModItems.PERGAMYN.get())
+                .define('d', ItemTags.LOGS)
+                .define('e', Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "chests"))))
+                .define('f', Items.CARTOGRAPHY_TABLE)
+                .unlockedBy(getHasName(ModItems.DREAM_NOTES_BOOK.get()), has(ModItems.DREAM_NOTES_BOOK.get()))
+                .save(pWriter);
 
         // 旧梦归引宝典 = 书 + 染梦果（使用帕秋莉 shapeless_book_recipe）
         pWriter.accept(new FinishedRecipe() {
