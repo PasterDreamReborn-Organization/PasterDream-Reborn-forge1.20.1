@@ -1101,6 +1101,9 @@ public class ModItems {
     // ===== 陶罐 =====
     public static final RegistryObject<Item> CLAY_POT = ITEMS.register("clay_pot",
             () -> new BlockItem(ModBlocks.CLAY_POT.get(), new Item.Properties()));
+    // ===== 阴影陶罐 =====
+    public static final RegistryObject<Item> SHADOW_CLAY_POT = ITEMS.register("shadow_clay_pot",
+            () -> new BlockItem(ModBlocks.SHADOW_CLAY_POT.get(), new Item.Properties()));
     // ===== 小石子 =====
     public static final RegistryObject<Item> PEBBLE = ITEMS.register("pebble",
             () -> new PebbleItem(ModBlocks.PEBBLE.get(), new Item.Properties()));

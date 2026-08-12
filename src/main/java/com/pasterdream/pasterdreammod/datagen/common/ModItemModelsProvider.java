@@ -446,6 +446,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
         // 陶罐
         withExistingParent(ModItems.CLAY_POT.getId().getPath(), modLoc("block/clay_pot"));
+        // 阴影陶罐（复用陶罐模型）
+        withExistingParent(ModItems.SHADOW_CLAY_POT.getId().getPath(), modLoc("block/clay_pot"));
         basicItem(ModItems.PEBBLE.get());
 
         // 刷怪蛋

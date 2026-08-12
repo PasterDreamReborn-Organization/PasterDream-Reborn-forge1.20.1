@@ -100,6 +100,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get())
                 .add(ModBlocks.CLAYPAN.get())
                 .add(ModBlocks.CLAY_POT.get())
+                .add(ModBlocks.SHADOW_CLAY_POT.get())
                 .add(ModBlocks.PEBBLE.get())
                 .add(ModBlocks.DREAM_CAULDRON.get())
                 .add(ModBlocks.LOST_SWORD_TOMB.get())

@@ -402,6 +402,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_CRACK.get(), "染梦裂隙");
         add(ModBlocks.CLAYPAN.get(), "陶盆");
         add(ModBlocks.CLAY_POT.get(), "陶罐");
+        add(ModBlocks.SHADOW_CLAY_POT.get(), "阴影陶罐");
         add(ModBlocks.DREAM_CAULDRON.get(), "法术工厂");
         add(ModBlocks.DYEDREAM_DESK.get(), "染梦书桌");
         add(ModBlocks.SHADOW_DESK.get(), "阴影书桌");
@@ -631,7 +632,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.hellfire_sword.2", "§7▪ §9攻击时将使目标引燃4秒");
         add("tooltip.pasterdreammod.hellfire_sword.3", "§7▪ §9若目标已燃烧 则叠加2秒（可重复）");
         add("tooltip.pasterdreammod.hellfire_tool.1", "镶嵌：§7无");
-        add("tooltip.pasterdreammod.hellfire_tool.2", "§7▪ §9右键消耗饱食度获得急迫效果");
+        add("tooltip.pasterdreammod.hellfire_tool.2", "§7▪ §9右键消耗饱食度获得急迫II效果");
         add("tooltip.pasterdreammod.hellfire_tool.3", "§7▪ §9冷却时间：8秒");
         add("tooltip.pasterdreammod.inferno_sword.1", "镶嵌：§b下界之星");
         add("tooltip.pasterdreammod.inferno_sword.2", "战技：§6融骸斩击");
@@ -1771,7 +1772,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 灯影之下
         add("pasterdream.seniors_dream.category.lamp_shadow_world", "灯影之下");
-        add("pasterdream.seniors_dream.category.lamp_shadow_world.desc", "这里是永远流淌着暗影和疯狂的深沉噩梦，当寻梦者们来到这里时，他们或者会慢慢堕入疯狂，或者是会被怪物撕碎……这里和染梦之境一样，也有前人来探索过这里，并留下了一些笔记。但更多的笔记最后成为了碎片，散落在这个梦境世界的各个角落。或许应该将它们收集起来放在研究台中解析，来进一步了解有关这场噩梦的隐秘。");
+        add("pasterdream.seniors_dream.category.lamp_shadow_world.desc", "阳光越是强烈的地方阴影就越是深邃。这里是另外一个世界，堕落，疯癫，同化，皆是寻梦者的归属。但废墟中的残留的文字似乎隐藏更多的未知。当你站在那片黑暗之前，你会如何抉择？");
         add("pasterdream.seniors_dream.category.lamp_shadow_world_items", "方块与物品");
         add("pasterdream.seniors_dream.category.lamp_shadow_world_items.desc", "灯影之下的一些方块与物品。");
 

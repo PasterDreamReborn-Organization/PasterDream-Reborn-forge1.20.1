@@ -60,6 +60,8 @@ public class ClientSetRenderLayer
 
         // ===== 陶罐 =====
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CLAY_POT.get(), RenderType.cutout());
+        // ===== 阴影陶罐 =====
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_CLAY_POT.get(), RenderType.cutout());
 
         // ===== 小石子 =====
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.PEBBLE.get(), RenderType.cutout());

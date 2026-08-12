@@ -479,6 +479,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         // 陶罐
         var clayPotModel = models().getExistingFile(modLoc("block/clay_pot"));
         horizontalBlock(ModBlocks.CLAY_POT.get(), clayPotModel);
+        // 阴影陶罐（复用陶罐模型）
+        horizontalBlock(ModBlocks.SHADOW_CLAY_POT.get(), clayPotModel);
 
         // 小石子
         var pebbleModel = models().getExistingFile(modLoc("block/pebble"));
