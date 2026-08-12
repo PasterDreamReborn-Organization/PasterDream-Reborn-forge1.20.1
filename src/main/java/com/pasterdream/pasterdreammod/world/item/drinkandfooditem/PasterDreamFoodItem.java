@@ -137,9 +137,9 @@ public class PasterDreamFoodItem extends Item
             }
         }
 
-        if (!level.isClientSide && entity instanceof Player player)
+        if (!level.isClientSide)
         {
-            onFoodSpecial(player, level);
+            onFoodSpecial(entity, level);
         }
 
         if (entity instanceof Player player && player.isCreative())
@@ -155,7 +155,7 @@ public class PasterDreamFoodItem extends Item
         return stack;
     }
 
-    protected void onFoodSpecial(Player player, Level level)
+    protected void onFoodSpecial(LivingEntity entity, Level level)
     {
         //默认无操作
     }
