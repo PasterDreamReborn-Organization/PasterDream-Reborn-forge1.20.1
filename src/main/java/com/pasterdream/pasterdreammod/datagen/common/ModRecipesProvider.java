@@ -1754,6 +1754,17 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
                 .save(pWriter);
 
+        // 灵药瓶合成配方
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ELIXIR_BOTTLE.get(), 1)
+                .pattern(" a ")
+                .pattern("bcb")
+                .pattern(" b ")
+                .define('a',Items.GOLD_NUGGET)
+                .define('b', ModItems.DYEDREAM_ALLOY_NUGGET.get())
+                .define('c', ModItems.GLASS_JAR.get())
+                .unlockedBy(getHasName(ModItems.GLASS_JAR.get()), has(ModItems.GLASS_JAR.get()))
+                .save(pWriter);
+
         // 重做酵母合成配方（产物罐子数多于输入空罐子数，自动配平）
         saveContainerBalancedShapeless(
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_YEAST.get(), 4)
@@ -2261,6 +2272,21 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('b', Items.LECTERN)
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
                 .save(pWriter, "dyedream_desk_from_lectern");
+        // 研究台
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RESEARCH_TABLE.get(), 1)
+                .pattern("abc")
+                .pattern("ddd")
+                .pattern("e f")
+                .define('a', Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "bookshelves"))))
+                .define('b', ItemTags.WOOL_CARPETS)
+                .define('c', ModItems.PERGAMYN.get())
+                .define('d', ItemTags.LOGS)
+                .define('e', Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "chests"))))
+                .define('f', Items.CARTOGRAPHY_TABLE)
+                .unlockedBy(getHasName(ModItems.DREAM_NOTES_BOOK.get()), has(ModItems.DREAM_NOTES_BOOK.get()))
+                .save(pWriter);
 
         // 旧梦归引宝典 = 书 + 染梦果（使用帕秋莉 shapeless_book_recipe）
         pWriter.accept(new FinishedRecipe() {
