@@ -212,15 +212,17 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
 
         DreamCauldronRecipe recipe = matched.recipe();
 
-        List<ItemStack> requiredItems = recipe.getInputItemIngredients().stream().map(ItemIngredient::getItemStack).map(ItemStack::copy).collect(Collectors.toList());
-        List<FluidStack> requiredFluids = recipe.getInputFluidIngredients().stream().map(FluidIngredient::getFluidStack).map(FluidStack::copy).collect(Collectors.toList());
-        List<ItemStack> outputItemsRecipe = recipe.getOutputItemIngredients().stream().map(ItemIngredient::getItemStack).map(ItemStack::copy).collect(Collectors.toList());
+        MachineInventory matchedRecipeInputsAndOutputs = matched.matchedRecipeInputsAndOutputs();
+
+        List<ItemStack> requiredItems = matchedRecipeInputsAndOutputs.inputItemStacks();
+        List<FluidStack> requiredFluids = matchedRecipeInputsAndOutputs.inputFluidStacks();
+        List<ItemStack> outputItemsRecipe = matchedRecipeInputsAndOutputs.outputItemStacks();
 
         MachineInventory recipeInventory = new MachineInventory(requiredItems, requiredFluids, outputItemsRecipe, new ArrayList<>());
-        MachineInventoryWithFluidSlotMaxStackSize machineData = new MachineInventoryWithFluidSlotMaxStackSize(inputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), inputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), outputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), new ArrayList<>(), 1000);
+        MachineInventoryWithFluidSlotMaxStackSize machineData = new MachineInventoryWithFluidSlotMaxStackSize(inputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), inputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), outputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), new ArrayList<>(), 2000);
         MachineInventory result = RecipeProcesser.recipeProcessor(recipeInventory, machineData);
 
-        if (result.inputItemStacks() == inputItems && result.inputFluidStacks() == inputFluids)
+        if (result == null)
         {
             return;
         }

@@ -48,7 +48,7 @@ public class RecipeProcesser
 
             if(matchedItemCount > 0)
             {   //物品原材料不足
-                return backUp;
+                return null;
             }
         }
 
@@ -90,7 +90,7 @@ public class RecipeProcesser
 
             if(matchedFluidAmount > 0)
             {   //流体原材料不足
-                return backUp;
+                return null;
             }
         }
 
@@ -142,7 +142,7 @@ public class RecipeProcesser
 
             if (!matchedOutputItemStack.isEmpty())
             {   //物品输出空间不足
-                return backUp;
+                return null;
             }
         }
 
@@ -194,7 +194,7 @@ public class RecipeProcesser
 
             if (!matchedOutputFluidStack.isEmpty())
             {   //流体输出空间不足
-                return backUp;
+                return null;
             }
         }
 

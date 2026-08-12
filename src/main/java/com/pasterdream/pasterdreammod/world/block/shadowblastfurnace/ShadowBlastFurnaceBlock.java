@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.helper.multiblockproperties.MultiBlockProp
 import com.pasterdream.pasterdreammod.helper.multiblockproperties._3x3x3Part;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition._3x3x3_CalculatePartPosition;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.SingleFloorVoxelShapeCalculator;
+import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.blockentity.HorizontalDirectionalBlockBenchBaseEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -373,7 +375,14 @@ public class ShadowBlastFurnaceBlock extends HorizontalDirectionalBlockBenchBase
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type)
     {
-        return null;
+        if(blockState.getValue(PART) == _3x3x3Part.MAIN)
+        {
+            return createTickerHelper(type, ModBlockEntities.SHADOW_BLAST_FURNACE.get(), (lvl, blockPosition, state, blockEntity) -> blockEntity.tick());
+        }
+            else
+            {
+                return null;
+            }
     }
 
     @Override
@@ -401,7 +410,6 @@ public class ShadowBlastFurnaceBlock extends HorizontalDirectionalBlockBenchBase
                 final BlockPos finalTargetPosition = targetPosition;
                 NetworkHooks.openScreen((ServerPlayer) player, shadowBlastFurnace, buf -> buf.writeBlockPos(finalTargetPosition));
             }
-
         }
         return InteractionResult.SUCCESS;
     }
@@ -416,6 +424,17 @@ public class ShadowBlastFurnaceBlock extends HorizontalDirectionalBlockBenchBase
 
             if (part == _3x3x3Part.MAIN)
             {
+                BlockEntity blockEntity = level.getBlockEntity(blockPosition);
+                if(blockEntity instanceof ShadowBlastFurnaceBlockEntity shadowBlastFurnace)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        dropItemStack(level, blockPosition.getX() + 0.5, blockPosition.getY() + 0.5, blockPosition.getZ() + 0.5, shadowBlastFurnace.getItemHandler().getStackInSlot(i));
+                    }
+                    level.removeBlockEntity(blockPosition);
+                    level.updateNeighbourForOutputSignal(blockPosition, this);
+                }
+
                 for (_3x3x3Part eachPart : _3x3x3Part.values())
                 {
                     if (eachPart == _3x3x3Part.MAIN)
@@ -428,28 +447,10 @@ public class ShadowBlastFurnaceBlock extends HorizontalDirectionalBlockBenchBase
                     if (addonState.getBlock() instanceof ShadowBlastFurnaceBlock)
                     {
                         level.destroyBlock(addonPos, false);
+                        level.removeBlockEntity(addonPos);
                     }
-                }
-
-                BlockEntity blockEntity = level.getBlockEntity(blockPosition);
-                if(blockEntity instanceof ShadowBlastFurnaceBlockEntity shadowBlastFurnace)
-                {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        dropItemStack(level, blockPosition.getX() + 0.5, blockPosition.getY() + 0.5, blockPosition.getZ() + 0.5, shadowBlastFurnace.getItemHandler().getStackInSlot(i));
-                    }
-                    level.updateNeighbourForOutputSignal(blockPosition, this);
                 }
             }
-                else
-                {
-                    BlockPos mainPos = _3x3x3_CalculatePartPosition.getMainPosFromAddon(blockPosition, facing, part);
-                    BlockState mainState = level.getBlockState(mainPos);
-                    if (mainState.getBlock() instanceof ShadowBlastFurnaceBlock)
-                    {
-                        level.destroyBlock(mainPos, false);
-                    }
-                }
         }
     }
 

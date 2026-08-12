@@ -12,7 +12,7 @@ public class ShadowBlastFurnaceScreen extends AbstractContainerScreenWithFluidSl
     {
         super(menu, inventory, title);
         this.imageWidth = 170;
-        this.imageHeight = 194;
+        this.imageHeight = 196;
     }
 
     @Override
@@ -25,8 +25,19 @@ public class ShadowBlastFurnaceScreen extends AbstractContainerScreenWithFluidSl
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY)
     {
         GUIBackGroundRender.rendShadowBlastFurnaceGUI(guiGraphics, leftPos + 22, topPos);
-        GUIBackGroundRender.rendPasterDreamInventoryGUI(guiGraphics, leftPos, topPos + 110);
+        GUIBackGroundRender.rendPasterDreamInventoryGUI(guiGraphics, leftPos, topPos + 112);
         GUIBackGroundRender.rendShadowBlastFurnaceShadowLiquidAmountBar(guiGraphics, leftPos + 97, topPos + 27, menu.getBlockEntity().getFluidTank(0).getFluid().getAmount() / 9000.0);
+
+        int progress = menu.getProgress();
+        int maxProgress = menu.getMaxProgress();
+        if (maxProgress != 0)
+        {
+            GUIBackGroundRender.rendShadowBlastFurnaceProcessBar(guiGraphics, leftPos + 66, topPos + 52, (double)progress / maxProgress);
+        }
+
+        int lastTick = maxProgress - progress;
+        guiGraphics.drawCenteredString(minecraft.getInstance().font, String.format("%02d", (lastTick / 72000)) + "h" + String.format("%02d", ((lastTick % 72000) / 1200)) + "m" + String.format("%02d", ((lastTick % 1200) / 20)) + "s" + String.format("%02d", (lastTick % 20)) + "tick", leftPos + (imageWidth / 2), topPos + 104, 0xFFFFFFFF);
+
         super.renderBg(guiGraphics, partialTick, mouseX, mouseY);
     }
 
