@@ -1286,6 +1286,53 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('a', ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get())
                 .unlockedBy(getHasName(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get()), has(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get()))
                 .save(pWriter);
+
+        // 白沙 → 澄澈玻璃（熔炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.WHITE_SAND.get()),
+                        RecipeCategory.BUILDING_BLOCKS, ModBlocks.CLARITY_GLASS.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModBlocks.WHITE_SAND.get()), has(ModBlocks.WHITE_SAND.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":clarity_glass_from_smelting");
+
+        // 澄澈玻璃 → 16× 澄澈玻璃板
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CLARITY_GLASS_PANE.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModBlocks.CLARITY_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.CLARITY_GLASS.get()), has(ModBlocks.CLARITY_GLASS.get()))
+                .save(pWriter);
+
+        // 4× 澄澈玻璃 → 4× 雕纹澄澈玻璃
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CARVE_CLARITY_GLASS.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModBlocks.CLARITY_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.CLARITY_GLASS.get()), has(ModBlocks.CLARITY_GLASS.get()))
+                .save(pWriter);
+
+        // 雕纹澄澈玻璃 → 16× 雕纹澄澈玻璃板
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CARVE_CLARITY_GLASS_PANE.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModBlocks.CARVE_CLARITY_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.CARVE_CLARITY_GLASS.get()), has(ModBlocks.CARVE_CLARITY_GLASS.get()))
+                .save(pWriter);
+
+        // 3× 澄澈玻璃 + 磨制方解石 → 4× 镶框澄澈玻璃
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FRAME_CLARITY_GLASS.get(), 4)
+                .requires(ModBlocks.CLARITY_GLASS.get())
+                .requires(ModBlocks.CLARITY_GLASS.get())
+                .requires(ModBlocks.CLARITY_GLASS.get())
+                .requires(ModBlocks.POLISHED_CALCITE.get())
+                .unlockedBy(getHasName(ModBlocks.CLARITY_GLASS.get()), has(ModBlocks.CLARITY_GLASS.get()))
+                .save(pWriter);
+
+        // 镶框澄澈玻璃 → 16× 镶框澄澈玻璃板
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FRAME_CLARITY_GLASS_PANE.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModBlocks.FRAME_CLARITY_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.FRAME_CLARITY_GLASS.get()), has(ModBlocks.FRAME_CLARITY_GLASS.get()))
+                .save(pWriter);
     }
 
 

@@ -246,6 +246,18 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
         add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get(),
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
+        add(ModBlocks.CLARITY_GLASS.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
+        add(ModBlocks.CLARITY_GLASS_PANE.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
+        add(ModBlocks.CARVE_CLARITY_GLASS.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
+        add(ModBlocks.CARVE_CLARITY_GLASS_PANE.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
+        add(ModBlocks.FRAME_CLARITY_GLASS.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
+        add(ModBlocks.FRAME_CLARITY_GLASS_PANE.get(),
+                block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
 
         add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(),
                 block -> createSilkTouchDispatchTable(block,

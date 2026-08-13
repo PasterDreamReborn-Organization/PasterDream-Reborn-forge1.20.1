@@ -218,6 +218,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var goldCarveTex = modLoc("block/gold_carve_dyedream_glass");
         paneBlock((IronBarsBlock) ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get(), goldCarveTex, goldCarveTex);
 
+        // ===== 澄澈玻璃系列 =====
+
+        simpleBlockWithItem(ModBlocks.CLARITY_GLASS.get(), cubeAll(ModBlocks.CLARITY_GLASS.get()));
+        var clarityTex = modLoc("block/clarity_glass");
+        paneBlock((IronBarsBlock) ModBlocks.CLARITY_GLASS_PANE.get(), clarityTex, clarityTex);
+
+        simpleBlockWithItem(ModBlocks.CARVE_CLARITY_GLASS.get(), cubeAll(ModBlocks.CARVE_CLARITY_GLASS.get()));
+        var carveClarityTex = modLoc("block/carve_clarity_glass");
+        paneBlock((IronBarsBlock) ModBlocks.CARVE_CLARITY_GLASS_PANE.get(), carveClarityTex, carveClarityTex);
+
+        simpleBlockWithItem(ModBlocks.FRAME_CLARITY_GLASS.get(), cubeAll(ModBlocks.FRAME_CLARITY_GLASS.get()));
+        var frameClarityTex = modLoc("block/frame_clarity_glass");
+        paneBlock((IronBarsBlock) ModBlocks.FRAME_CLARITY_GLASS_PANE.get(), frameClarityTex, frameClarityTex);
+
         // ===== 染梦晶芽系列 =====
 
         var buddingModel = models().cubeAll(ModBlocks.DYEDREAM_BUDDING_BLOCK.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_BUDDING_BLOCK.get()));

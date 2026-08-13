@@ -57,6 +57,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "glass_panes")))
                 .addTag(ModItemTags.MOD_GLASS_PANE);
 
+        // 玻璃 - copy 方块标签到物品标签，再添加到 forge:glass
+        copy(ModBlockTags.MOD_GLASS, ModItemTags.MOD_GLASS);
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "glass")))
+                .addTag(ModItemTags.MOD_GLASS);
+
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "mushrooms")))
                 .add(ModBlocks.PINK_MUSHROOM.get().asItem())
                 .add(ModBlocks.TALL_PINK_MUSHROOM.get().asItem());

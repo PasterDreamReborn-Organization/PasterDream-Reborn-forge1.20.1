@@ -367,6 +367,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.GOLD_CARVE_DYEDREAM_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/gold_carve_dyedream_glass"));
 
+        withExistingParent(ModItems.CLARITY_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/clarity_glass"));
+        withExistingParent(ModItems.CARVE_CLARITY_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/carve_clarity_glass"));
+        withExistingParent(ModItems.FRAME_CLARITY_GLASS_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/frame_clarity_glass"));
+
         withExistingParent(ModItems.SMALL_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/small_dyedream_bud"));
         withExistingParent(ModItems.MEDIUM_DYEDREAM_BUD.getId().getPath(), mcLoc("item/generated"))

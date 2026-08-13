@@ -489,7 +489,7 @@ public class ModCreativeModeTabs {
                     })
                     .build());
 
-    // ===== 风之旅世界 =====
+    // ===== 风之旅途 =====
     // 来源: 旧 wind_journey_world 维度建筑方块
     public static final RegistryObject<CreativeModeTab> WIND_JOURNEY_WORLD_TAB = CREATIVE_MODE_TABS.register("wind_journey_world",
             () -> CreativeModeTab.builder()
@@ -498,16 +498,6 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.CYAN_MOSS_STONE.get());
                         output.accept(ModItems.CYAN_STONE.get());
-                        output.accept(ModItems.CYAN_STONE_BRICKS.get());
-                        output.accept(ModItems.CYAN_STONE_BRICK_STAIRS.get());
-                        output.accept(ModItems.CYAN_STONE_BRICK_SLAB.get());
-                        output.accept(ModItems.CYAN_STONE_BRICK_WALL.get());
-                        output.accept(ModItems.CYAN_STONE_PRESSURE_PLATE.get());
-                        output.accept(ModItems.CYAN_STONE_BUTTON.get());
-                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICKS.get());
-                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_STAIRS.get());
-                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_SLAB.get());
-                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_WALL.get());
                         output.accept(ModItems.WHITE_SAND.get());
                         output.accept(ModItems.THICK_CLOUD.get());
                         output.accept(ModItems.WIND_MOOR_LOG.get());
@@ -526,6 +516,22 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WIND_MOOR_TRAPDOOR.get());
                         output.accept(ModItems.WIND_MOOR_PRESSURE_PLATE.get());
                         output.accept(ModItems.WIND_MOOR_BUTTON.get());
+                        output.accept(ModItems.CYAN_STONE_BRICKS.get());
+                        output.accept(ModItems.CYAN_STONE_BRICK_STAIRS.get());
+                        output.accept(ModItems.CYAN_STONE_BRICK_SLAB.get());
+                        output.accept(ModItems.CYAN_STONE_BRICK_WALL.get());
+                        output.accept(ModItems.CYAN_STONE_PRESSURE_PLATE.get());
+                        output.accept(ModItems.CYAN_STONE_BUTTON.get());
+                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICKS.get());
+                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_STAIRS.get());
+                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_SLAB.get());
+                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_WALL.get());
+                        output.accept(ModItems.CLARITY_GLASS.get());
+                        output.accept(ModItems.CLARITY_GLASS_PANE.get());
+                        output.accept(ModItems.CARVE_CLARITY_GLASS.get());
+                        output.accept(ModItems.CARVE_CLARITY_GLASS_PANE.get());
+                        output.accept(ModItems.FRAME_CLARITY_GLASS.get());
+                        output.accept(ModItems.FRAME_CLARITY_GLASS_PANE.get());
                     })
                     .build());
 

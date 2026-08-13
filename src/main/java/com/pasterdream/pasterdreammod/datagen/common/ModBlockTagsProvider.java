@@ -415,10 +415,24 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(ModBlockTags.MOD_GLASS_PANE)
                 .add(ModBlocks.DYEDREAM_GLASS_PANE.get())
                 .add(ModBlocks.CARVE_DYEDREAM_GLASS_PANE.get())
-                .add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get());
+                .add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get())
+                .add(ModBlocks.CLARITY_GLASS_PANE.get())
+                .add(ModBlocks.CARVE_CLARITY_GLASS_PANE.get())
+                .add(ModBlocks.FRAME_CLARITY_GLASS_PANE.get());
 
         tag(ModBlockTags.FORGE_GLASS_PANE)
                 .addTag(ModBlockTags.MOD_GLASS_PANE);
+
+        tag(ModBlockTags.MOD_GLASS)
+                .add(ModBlocks.DYEDREAM_GLASS.get())
+                .add(ModBlocks.CARVE_DYEDREAM_GLASS.get())
+                .add(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get())
+                .add(ModBlocks.CLARITY_GLASS.get())
+                .add(ModBlocks.CARVE_CLARITY_GLASS.get())
+                .add(ModBlocks.FRAME_CLARITY_GLASS.get());
+
+        tag(ModBlockTags.FORGE_GLASS)
+                .addTag(ModBlockTags.MOD_GLASS);
 
 
         // 可攀爬方块（藤蔓、梯子等）
