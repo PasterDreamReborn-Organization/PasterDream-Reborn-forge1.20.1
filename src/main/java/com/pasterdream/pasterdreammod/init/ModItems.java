@@ -1599,6 +1599,17 @@ public class ModItems {
     public static final RegistryObject<Item> STRIPPED_WIND_MOOR_WOOD = ITEMS.register("stripped_wind_moor_wood", () -> new BlockItem(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get(), new Item.Properties()));
     public static final RegistryObject<Item> WIND_MOOR_LEAVES_0 = ITEMS.register("wind_moor_leaves_0", () -> new BlockItem(ModBlocks.WIND_MOOR_LEAVES_0.get(), new Item.Properties()));
     public static final RegistryObject<Item> WIND_MOOR_LEAVES_1 = ITEMS.register("wind_moor_leaves_1", () -> new BlockItem(ModBlocks.WIND_MOOR_LEAVES_1.get(), new Item.Properties()));
+    // ===== 风泊木板建材系列 =====
+    public static final RegistryObject<Item> WIND_MOOR_PLANKS = ITEMS.register("wind_moor_planks", () -> new BlockItem(ModBlocks.WIND_MOOR_PLANKS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_MOOR_STAIRS = ITEMS.register("wind_moor_stairs", () -> new BlockItem(ModBlocks.WIND_MOOR_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_MOOR_SLAB = ITEMS.register("wind_moor_slab", () -> new BlockItem(ModBlocks.WIND_MOOR_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_MOOR_FENCE = ITEMS.register("wind_moor_fence", () -> new BlockItem(ModBlocks.WIND_MOOR_FENCE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_MOOR_FENCE_GATE = ITEMS.register("wind_moor_fence_gate", () -> new BlockItem(ModBlocks.WIND_MOOR_FENCE_GATE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_MOOR_PANE = ITEMS.register("wind_moor_pane", () -> new BlockItem(ModBlocks.WIND_MOOR_PANE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_MOOR_DOOR = ITEMS.register("wind_moor_door", () -> new BlockItem(ModBlocks.WIND_MOOR_DOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_MOOR_TRAPDOOR = ITEMS.register("wind_moor_trapdoor", () -> new BlockItem(ModBlocks.WIND_MOOR_TRAPDOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_MOOR_PRESSURE_PLATE = ITEMS.register("wind_moor_pressure_plate", () -> new BlockItem(ModBlocks.WIND_MOOR_PRESSURE_PLATE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_MOOR_BUTTON = ITEMS.register("wind_moor_button", () -> new BlockItem(ModBlocks.WIND_MOOR_BUTTON.get(), new Item.Properties()));
     public static final RegistryObject<Item> THE_ENDLESS_BOOK_OF_DREAM_SEEKERS = ITEMS.register("the_endless_book_of_dream_seekers", () -> new TheEndlessBookOfDreamSeekersItem(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), new Item.Properties()));
     public static final RegistryObject<Item> FEATHER_PEN = ITEMS.register("feather_pen", () -> new Item(new Item.Properties().durability(8)));
     public static final RegistryObject<Item> RESEARCH_TABLE = ITEMS.register("research_table", () -> new ResearchTableItem(ModBlocks.RESEARCH_TABLE.get(), new Item.Properties()));

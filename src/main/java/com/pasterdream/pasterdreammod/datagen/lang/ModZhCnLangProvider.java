@@ -425,6 +425,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get(), "去皮风泊木");
         add(ModBlocks.WIND_MOOR_LEAVES_0.get(), "风泊树叶");
         add(ModBlocks.WIND_MOOR_LEAVES_1.get(), "风泊树叶");
+        add(ModBlocks.WIND_MOOR_PLANKS.get(), "风泊木板");
+        add(ModBlocks.WIND_MOOR_STAIRS.get(), "风泊木楼梯");
+        add(ModBlocks.WIND_MOOR_SLAB.get(), "风泊木台阶");
+        add(ModBlocks.WIND_MOOR_FENCE.get(), "风泊木栅栏");
+        add(ModBlocks.WIND_MOOR_FENCE_GATE.get(), "风泊木栅栏门");
+        add(ModBlocks.WIND_MOOR_PANE.get(), "风泊木窗格");
+        add(ModBlocks.WIND_MOOR_DOOR.get(), "风泊木门");
+        add(ModBlocks.WIND_MOOR_TRAPDOOR.get(), "风泊木活板门");
+        add(ModBlocks.WIND_MOOR_PRESSURE_PLATE.get(), "风泊木压力板");
+        add(ModBlocks.WIND_MOOR_BUTTON.get(), "风泊木按钮");
         add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), "寻梦者的永恒书卷");
         add(ModBlocks.RESEARCH_TABLE.get(), "研究台");
         add(ModBlocks.LOST_SWORD_TOMB.get(), "失落剑冢");

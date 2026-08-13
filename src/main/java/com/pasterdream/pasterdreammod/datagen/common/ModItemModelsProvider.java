@@ -340,6 +340,12 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.SHADOW_PANE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/shadow_trapdoor"));
 
+        fenceItem(ModBlocks.WIND_MOOR_FENCE, ModBlocks.WIND_MOOR_PLANKS);
+        buttonItem(ModBlocks.WIND_MOOR_BUTTON, ModBlocks.WIND_MOOR_PLANKS);
+        basicItem(ModItems.WIND_MOOR_DOOR.get());
+        withExistingParent(ModItems.WIND_MOOR_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_moor_trapdoor"));
+
         wallItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL, ModBlocks.DYEDREAM_QUARTZ_BLOCK);
 
         wallItem(ModBlocks.DYEDREAM_BUD_WALL, ModBlocks.DYEDREAM_BUD_BLOCK);
