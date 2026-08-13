@@ -302,6 +302,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         var shadowStoneBrickFamily = new BuildingBlockFamily(ModBlocks.SHADOW_STONE_BRICK, ModBlocks.SHADOW_STONE_BRICK_STAIRS, ModBlocks.SHADOW_STONE_BRICK_SLAB, ModBlocks.SHADOW_STONE_BRICK_WALL);
         var narrowShadowStoneBrickFamily = new BuildingBlockFamily(ModBlocks.NARROW_SHADOW_STONE_BRICK, ModBlocks.NARROW_SHADOW_STONE_BRICK_STAIRS, ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB, ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL);
         var shadowStoneTilesFamily = new BuildingBlockFamily(ModBlocks.SHADOW_STONE_TILES, ModBlocks.SHADOW_STONE_TILES_STAIRS, ModBlocks.SHADOW_STONE_TILES_SLAB, ModBlocks.SHADOW_STONE_TILES_WALL);
+        var cyanStoneBrickFamily = new BuildingBlockFamily(ModBlocks.CYAN_STONE_BRICKS, ModBlocks.CYAN_STONE_BRICK_STAIRS, ModBlocks.CYAN_STONE_BRICK_SLAB, ModBlocks.CYAN_STONE_BRICK_WALL);
+        var mossyCyanStoneBrickFamily = new BuildingBlockFamily(ModBlocks.MOSSY_CYAN_STONE_BRICKS, ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS, ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB, ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL);
 
         addBuildingFamilyToTags(budFamily);
         addBuildingFamilyToTags(polishedCalciteFamily);
@@ -309,6 +311,17 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         addBuildingFamilyToTags(shadowStoneBrickFamily);
         addBuildingFamilyToTags(narrowShadowStoneBrickFamily);
         addBuildingFamilyToTags(shadowStoneTilesFamily);
+        addBuildingFamilyToTags(cyanStoneBrickFamily);
+        addBuildingFamilyToTags(mossyCyanStoneBrickFamily);
+
+        // ===== 苍青岩压力板/按钮 =====
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get())
+                .add(ModBlocks.CYAN_STONE_BUTTON.get());
+        tag(BlockTags.STONE_PRESSURE_PLATES)
+                .add(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get());
+        tag(BlockTags.STONE_BUTTONS)
+                .add(ModBlocks.CYAN_STONE_BUTTON.get());
 
         // ===== 木板建材系列 =====
 

@@ -407,6 +407,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.ICE_BUD.get(), "冰凌晶芽");
         add(ModBlocks.CYAN_STONE.get(), "苍青岩");
         add(ModBlocks.CYAN_MOSS_STONE.get(), "苍青苔岩");
+        add(ModBlocks.CYAN_STONE_BRICKS.get(), "苍青岩砖");
+        add(ModBlocks.CYAN_STONE_BRICK_STAIRS.get(), "苍青岩砖楼梯");
+        add(ModBlocks.CYAN_STONE_BRICK_SLAB.get(), "苍青岩砖台阶");
+        add(ModBlocks.CYAN_STONE_BRICK_WALL.get(), "苍青岩砖墙");
+        add(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get(), "苍青岩压力板");
+        add(ModBlocks.CYAN_STONE_BUTTON.get(), "苍青岩按钮");
+        add(ModBlocks.MOSSY_CYAN_STONE_BRICKS.get(), "苔苍青岩砖");
+        add(ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS.get(), "苔苍青岩砖楼梯");
+        add(ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB.get(), "苔苍青岩砖台阶");
+        add(ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL.get(), "苔苍青岩砖墙");
         add(ModBlocks.QYM_DOLL.get(), "娇小琴雨梦玩偶");
         add(ModBlocks.UUZ_DOLL.get(), "娇小幼幼紫玩偶");
         add(ModBlocks.DYEDREAM_CRACK.get(), "染梦裂隙");

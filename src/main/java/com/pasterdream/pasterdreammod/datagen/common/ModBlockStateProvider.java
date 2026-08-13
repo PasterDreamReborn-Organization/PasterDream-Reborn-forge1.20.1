@@ -406,6 +406,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 modLoc("block/cyan_moss_stone_top"));
         simpleBlockWithItem(ModBlocks.CYAN_MOSS_STONE.get(), cyanMossStoneModel);
 
+        simpleBuildingFamily(new BuildingBlockFamily(ModBlocks.CYAN_STONE_BRICKS, ModBlocks.CYAN_STONE_BRICK_STAIRS, ModBlocks.CYAN_STONE_BRICK_SLAB, ModBlocks.CYAN_STONE_BRICK_WALL));
+        simpleBuildingFamily(new BuildingBlockFamily(ModBlocks.MOSSY_CYAN_STONE_BRICKS, ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS, ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB, ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL));
+
+        pressurePlateBlock((PressurePlateBlock) ModBlocks.CYAN_STONE_PRESSURE_PLATE.get(), blockTexture(ModBlocks.CYAN_STONE.get()));
+        blockItem(ModBlocks.CYAN_STONE_PRESSURE_PLATE);
+
+        buttonBlock((ButtonBlock) ModBlocks.CYAN_STONE_BUTTON.get(), blockTexture(ModBlocks.CYAN_STONE.get()));
+
         // ===== 植物系列 =====
         var goldenrod = models().cross(ModBlocks.GOLDENROD.getId().getPath(), blockTexture(ModBlocks.GOLDENROD.get())).renderType("cutout");
         simpleBlock(ModBlocks.GOLDENROD.get(), goldenrod);
