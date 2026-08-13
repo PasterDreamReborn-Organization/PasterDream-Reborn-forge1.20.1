@@ -405,6 +405,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.PICNIC_BASKET.get(), "Picnic Basket");
         add(ModBlocks.SHADOW_CHEST.get(), "Shadow Chest");
         add(ModBlocks.WIND_MOOR_CRATE.get(), "Wind Moor Crate");
+        add(ModBlocks.WIND_MOOR_LOG.get(), "Wind Moor Log");
+        add(ModBlocks.WIND_MOOR_WOOD.get(), "Wind Moor Wood");
+        add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get(), "Stripped Wind Moor Log");
+        add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get(), "Stripped Wind Moor Wood");
         add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), "The Endless Book Of Dream Seekers");
         add(ModBlocks.RESEARCH_TABLE.get(), "Research Table");
         add(ModBlocks.LOST_SWORD_TOMB.get(), "Lost Sword Tomb");

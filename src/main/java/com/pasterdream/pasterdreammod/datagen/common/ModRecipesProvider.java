@@ -265,6 +265,22 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.DYEDREAM_LOG.get()), has(ModItems.DYEDREAM_LOG.get()))
                 .save(pWriter);
 
+        // 风泊原木 → 风泊木
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.WIND_MOOR_WOOD.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.WIND_MOOR_LOG.get())
+                .unlockedBy(getHasName(ModItems.WIND_MOOR_LOG.get()), has(ModItems.WIND_MOOR_LOG.get()))
+                .save(pWriter);
+
+        // 去皮风泊原木 → 去皮风泊木
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.STRIPPED_WIND_MOOR_WOOD.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.STRIPPED_WIND_MOOR_LOG.get())
+                .unlockedBy(getHasName(ModItems.STRIPPED_WIND_MOOR_LOG.get()), has(ModItems.STRIPPED_WIND_MOOR_LOG.get()))
+                .save(pWriter);
+
         // 染梦原木 → 染梦木板 + 全套建材配方
         RecipeHelpers.plankFamilyRecipes(pWriter,
                 ModItems.DYEDREAM_LOG.get(),

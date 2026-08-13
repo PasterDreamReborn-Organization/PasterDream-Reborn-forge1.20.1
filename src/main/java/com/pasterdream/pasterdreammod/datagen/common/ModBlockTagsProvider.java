@@ -73,7 +73,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_STEM.get())
                 .add(ModBlocks.SHADOW_HYPHAE.get())
                 .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
-                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get());
+                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get())
+                .add(ModBlocks.WIND_MOOR_LOG.get())
+                .add(ModBlocks.WIND_MOOR_WOOD.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
 
         // 可以用镐来挖掘
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
@@ -155,12 +159,20 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_STEM.get())
                 .add(ModBlocks.SHADOW_HYPHAE.get())
                 .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
-                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get());
+                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get())
+                .add(ModBlocks.WIND_MOOR_LOG.get())
+                .add(ModBlocks.WIND_MOOR_WOOD.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
 
         //可以燃烧的木头（可制成木炭，可作为燃料）
         tag(BlockTags.LOGS_THAT_BURN)
                 .add(ModBlocks.DYEDREAM_LOG.get())
-                .add(ModBlocks.DYEDREAM_WOOD.get());
+                .add(ModBlocks.DYEDREAM_WOOD.get())
+                .add(ModBlocks.WIND_MOOR_LOG.get())
+                .add(ModBlocks.WIND_MOOR_WOOD.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
 
         tag(BlockTags.LOGS)
                 .add(ModBlocks.DYEDREAM_LOG.get())
@@ -168,13 +180,19 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_STEM.get())
                 .add(ModBlocks.SHADOW_HYPHAE.get())
                 .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
-                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get());
+                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get())
+                .add(ModBlocks.WIND_MOOR_LOG.get())
+                .add(ModBlocks.WIND_MOOR_WOOD.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
 
         tag(ModBlockTags.STRIPPED_LOGS)
-                .add(ModBlocks.DYEDREAM_LOG.get());
+                .add(ModBlocks.DYEDREAM_LOG.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get());
 
         tag(ModBlockTags.STRIPPED_WOOD)
-                .add(ModBlocks.DYEDREAM_WOOD.get());
+                .add(ModBlocks.DYEDREAM_WOOD.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
 
 
         tag(BlockTags.LEAVES)
