@@ -88,7 +88,11 @@ public class GUIBackGroundRender
     public static final ResourceLocation MINECRAFT_GUI_RIGHT_BOTTOM = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/minecraft_original_gui/right_bottom.png");
 
     public static ResourceLocation EMPTY_NOTES = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/empty_notes.png");
-    public static ResourceLocation DREAM_NOTES_BOOK = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book.png");
+    public static ResourceLocation DREAM_NOTES_BOOK_DYEDREAM_WORLD_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book_dyedream_world.png");
+    public static ResourceLocation DREAM_NOTES_BOOK_OVERWORLD_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book_overworld.png");
+    public static ResourceLocation DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book_lamp_shadow_world.png");
+    public static ResourceLocation SHADOW_DYED_DREAM_NOTES_BOOK_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/shadow_dyed_dream_notes_book.png");
+    public static ResourceLocation DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes_book/dream_notes_book_wind_journey_world.png");
 
     public static ModelResourceLocation USE_GUIDE = new ModelResourceLocation(PasterDreamMod.MOD_ID, "use_guide", "inventory");
     public static ModelResourceLocation DREAM_NOTES_BOOK_OVERWORLD = new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book_overworld", "inventory");
@@ -333,7 +337,7 @@ public class GUIBackGroundRender
 
     public static void rendDreamNotesBookGUI(GuiGraphics guiGraphics, int x, int y)
     {
-        guiGraphics.blit(DREAM_NOTES_BOOK, x, y, 0, 0, 140, 180, 140, 180);
+        guiGraphics.blit(DREAM_NOTES_BOOK_DYEDREAM_WORLD_GUI, x, y, 0, 0, 140, 180, 140, 180);
     }
 
     public static void rendAaroncosHandBossBarLeftBackground(GuiGraphics guiGraphics, int x, int y)
