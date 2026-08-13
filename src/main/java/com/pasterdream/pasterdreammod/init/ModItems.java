@@ -215,6 +215,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WIND_RUNNER_CRYSTAL = ITEMS.register("wind_runner_crystal",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_INGOT = ITEMS.register("congeal_wind_iron_ingot",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LIGHT_BALL = ITEMS.register("light_ball",
             () -> new BlockItem(ModBlocks.LIGHT_BALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
@@ -1159,6 +1161,18 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.CONGEAL_WIND_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> WIND_RUNNER_CRYSTAL_ORE = ITEMS.register("wind_runner_crystal_ore",
             () -> new BlockItem(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_BLOCK = ITEMS.register("congeal_wind_block",
+            () -> new BlockItem(ModBlocks.CONGEAL_WIND_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_RUNNER_CRYSTAL_BLOCK = ITEMS.register("wind_runner_crystal_block",
+            () -> new BlockItem(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_BLOCK = ITEMS.register("congeal_wind_iron_block",
+            () -> new BlockItem(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> EJECTION_PRESSURE_PLATE = ITEMS.register("ejection_pressure_plate",
+            () -> new BlockItem(ModBlocks.EJECTION_PRESSURE_PLATE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> EJECTION_PRESSURE_BLOCK = ITEMS.register("ejection_pressure_block",
+            () -> new BlockItem(ModBlocks.EJECTION_PRESSURE_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_BARS = ITEMS.register("congeal_wind_iron_bars",
+            () -> new BlockItem(ModBlocks.CONGEAL_WIND_IRON_BARS.get(), new Item.Properties()));
     public static final RegistryObject<Item> SOUL_ORE = ITEMS.register("soul_ore",
             () -> new BlockItem(ModBlocks.SOUL_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> RAW_TITANIUM_BLOCK = ITEMS.register("raw_titanium_block",

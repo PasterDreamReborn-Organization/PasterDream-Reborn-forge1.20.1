@@ -1728,6 +1728,44 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         RecipeCategory.MISC, ModItems.WIND_RUNNER_CRYSTAL.get(), 1.0F, 100)
                 .unlockedBy(getHasName(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()), has(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":wind_runner_crystal_from_blasting");
+        // 凝结之风块 ↔ 凝结之风
+        RecipeHelpers.storageCompress(pWriter, ModItems.CONGEAL_WIND.get(), ModItems.CONGEAL_WIND_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.CONGEAL_WIND_BLOCK.get(), ModItems.CONGEAL_WIND.get(), PasterDreamMod.MOD_ID);
+        // 风行者水晶块 ↔ 风行者水晶
+        RecipeHelpers.storageCompress(pWriter, ModItems.WIND_RUNNER_CRYSTAL.get(), ModItems.WIND_RUNNER_CRYSTAL_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.WIND_RUNNER_CRYSTAL_BLOCK.get(), ModItems.WIND_RUNNER_CRYSTAL.get(), PasterDreamMod.MOD_ID);
+        // 凝风铁锭：铁锭 + 风植萃取液 + 凝结之风×2
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CONGEAL_WIND_IRON_INGOT.get(), 1)
+                .requires(Items.IRON_INGOT)
+                .requires(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get())
+                .requires(ModItems.CONGEAL_WIND.get())
+                .requires(ModItems.CONGEAL_WIND.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND.get()), has(ModItems.CONGEAL_WIND.get()))
+                .save(pWriter);
+        // 凝风铁块 ↔ 凝风铁锭
+        RecipeHelpers.storageCompress(pWriter, ModItems.CONGEAL_WIND_IRON_INGOT.get(), ModItems.CONGEAL_WIND_IRON_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.CONGEAL_WIND_IRON_BLOCK.get(), ModItems.CONGEAL_WIND_IRON_INGOT.get(), PasterDreamMod.MOD_ID);
+        // 凝风铁栏杆：6×凝风铁锭 → 16
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CONGEAL_WIND_IRON_BARS.get(), 16)
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        // 弹射方块：凝风铁锭×2 + 黏液球×2
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EJECTION_PRESSURE_BLOCK.get(), 1)
+                .pattern("aa")
+                .pattern("bb")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .define('b', Items.SLIME_BALL)
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        // 弹射压力板：凝风铁锭×2
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EJECTION_PRESSURE_PLATE.get(), 1)
+                .pattern("aa")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
 
         // 灵魂精华：1×恶魂之泪 + 8×灵魂粉尘
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SOUL_ESSENCE.get(), 1)

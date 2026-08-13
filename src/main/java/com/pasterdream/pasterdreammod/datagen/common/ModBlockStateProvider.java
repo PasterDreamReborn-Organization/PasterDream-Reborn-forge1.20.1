@@ -54,6 +54,19 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.MOLTEN_GOLD_ORE.get(), cubeAll(ModBlocks.MOLTEN_GOLD_ORE.get()));
         simpleBlockWithItem(ModBlocks.CONGEAL_WIND_ORE.get(), cubeAll(ModBlocks.CONGEAL_WIND_ORE.get()));
         simpleBlockWithItem(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(), cubeAll(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get()));
+        simpleBlockWithItem(ModBlocks.CONGEAL_WIND_BLOCK.get(), cubeAll(ModBlocks.CONGEAL_WIND_BLOCK.get()));
+        simpleBlockWithItem(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get(), cubeAll(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get()));
+        simpleBlockWithItem(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get(), cubeAll(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get()));
+        var ejectionPressureBlockModel = models().cubeBottomTop(
+                ModBlocks.EJECTION_PRESSURE_BLOCK.getId().getPath(),
+                modLoc("block/ejection_pressure_block"),
+                modLoc("block/ejection_pressure_block_top"),
+                modLoc("block/ejection_pressure_block_top"));
+        simpleBlockWithItem(ModBlocks.EJECTION_PRESSURE_BLOCK.get(), ejectionPressureBlockModel);
+        pressurePlateBlock((PressurePlateBlock) ModBlocks.EJECTION_PRESSURE_PLATE.get(), blockTexture(ModBlocks.EJECTION_PRESSURE_PLATE.get()));
+        blockItem(ModBlocks.EJECTION_PRESSURE_PLATE);
+        var congealWindIronBarsTex = modLoc("block/congeal_wind_iron_bars");
+        paneBlock((IronBarsBlock) ModBlocks.CONGEAL_WIND_IRON_BARS.get(), congealWindIronBarsTex, congealWindIronBarsTex);
         simpleBlockWithItem(ModBlocks.SOUL_ORE.get(), cubeAll(ModBlocks.SOUL_ORE.get()));
         simpleBlockWithItem(ModBlocks.RAW_TITANIUM_BLOCK.get(), cubeAll(ModBlocks.RAW_TITANIUM_BLOCK.get()));
         simpleBlockWithItem(ModBlocks.SALT_BLOCK.get(), cubeAll(ModBlocks.SALT_BLOCK.get()));

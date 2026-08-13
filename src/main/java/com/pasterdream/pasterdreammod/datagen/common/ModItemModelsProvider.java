@@ -123,6 +123,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.WHITE_CRYSTAL.get());
         basicItem(ModItems.CONGEAL_WIND.get());
         basicItem(ModItems.WIND_RUNNER_CRYSTAL.get());
+        basicItem(ModItems.CONGEAL_WIND_IRON_INGOT.get());
         basicItem(ModItems.LIGHT_BALL.get());
         basicItem(ModItems.COTTON.get());
         basicItem(ModItems.SCULK_HEART.get());
@@ -471,6 +472,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
         withExistingParent(ModItems.RUST_BLACK_METAL_BARS.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/rust_black_metal_bars"));
+
+        withExistingParent(ModItems.CONGEAL_WIND_IRON_BARS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/congeal_wind_iron_bars"));
 
         basicItem(ModItems.NIGHTMARE_FUEL.get());
 

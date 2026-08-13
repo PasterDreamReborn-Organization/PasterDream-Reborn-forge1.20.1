@@ -96,6 +96,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get())
                 .add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get())
                 .add(ModBlocks.CONGEAL_WIND_ORE.get())
+                .add(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get())
+                .add(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get())
+                .add(ModBlocks.EJECTION_PRESSURE_PLATE.get())
+                .add(ModBlocks.EJECTION_PRESSURE_BLOCK.get())
+                .add(ModBlocks.CONGEAL_WIND_IRON_BARS.get())
+                .add(ModBlocks.CONGEAL_WIND_BLOCK.get())
                 .add(ModBlocks.DYEDREAM_ICE.get())
                 .add(ModBlocks.DYEDREAM_PACKED_ICE.get())
                 .add(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get())
@@ -261,7 +267,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.RUST_BLACK_METAL_BLOCK.get())
                 .add(ModBlocks.RUST_BLACK_METAL_WALL.get())
                 .add(ModBlocks.RUST_BLACK_METAL_BARS.get())
-                .add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
+                .add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get())
+                .add(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get())
+                .add(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get())
+                .add(ModBlocks.EJECTION_PRESSURE_PLATE.get())
+                .add(ModBlocks.EJECTION_PRESSURE_BLOCK.get())
+                .add(ModBlocks.CONGEAL_WIND_IRON_BARS.get());
         // 需要钻石工具挖掘
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
@@ -277,6 +288,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
                 .add(ModBlocks.TITANIUM_BLOCK.get())
                 .add(ModBlocks.MOLTEN_GOLD_BLOCK.get())
+                .add(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get())
                 .add(ModBlocks.BLACK_METAL_BLOCK.get());
 
         tag(Tags.Blocks.ORES)
@@ -324,7 +336,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get())
                 .add(ModBlocks.CYAN_STONE_BUTTON.get());
         tag(BlockTags.STONE_PRESSURE_PLATES)
-                .add(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get());
+                .add(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get())
+                .add(ModBlocks.EJECTION_PRESSURE_PLATE.get());
         tag(BlockTags.STONE_BUTTONS)
                 .add(ModBlocks.CYAN_STONE_BUTTON.get());
 
