@@ -1203,6 +1203,21 @@ public class ModItems {
     public static final RegistryObject<Item> GOLD_CARVE_DYEDREAM_GLASS_PANE = ITEMS.register("gold_carve_dyedream_glass_pane",
             () -> new BlockItem(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get(), new Item.Properties()));
 
+    // ===== 澄澈玻璃系列 =====
+
+    public static final RegistryObject<Item> CLARITY_GLASS = ITEMS.register("clarity_glass",
+            () -> new BlockItem(ModBlocks.CLARITY_GLASS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CLARITY_GLASS_PANE = ITEMS.register("clarity_glass_pane",
+            () -> new BlockItem(ModBlocks.CLARITY_GLASS_PANE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CARVE_CLARITY_GLASS = ITEMS.register("carve_clarity_glass",
+            () -> new BlockItem(ModBlocks.CARVE_CLARITY_GLASS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CARVE_CLARITY_GLASS_PANE = ITEMS.register("carve_clarity_glass_pane",
+            () -> new BlockItem(ModBlocks.CARVE_CLARITY_GLASS_PANE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> FRAME_CLARITY_GLASS = ITEMS.register("frame_clarity_glass",
+            () -> new BlockItem(ModBlocks.FRAME_CLARITY_GLASS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> FRAME_CLARITY_GLASS_PANE = ITEMS.register("frame_clarity_glass_pane",
+            () -> new BlockItem(ModBlocks.FRAME_CLARITY_GLASS_PANE.get(), new Item.Properties()));
+
     public static final RegistryObject<Item> DYEDREAM_BUDDING_BLOCK = ITEMS.register("dyedream_budding_block",
             () -> new BlockItem(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> SMALL_DYEDREAM_BUD = ITEMS.register("small_dyedream_bud",

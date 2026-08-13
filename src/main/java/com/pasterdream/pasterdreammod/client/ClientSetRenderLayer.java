@@ -23,6 +23,12 @@ public class ClientSetRenderLayer
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CARVE_DYEDREAM_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.GOLD_CARVE_DYEDREAM_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CLARITY_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CLARITY_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CARVE_CLARITY_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CARVE_CLARITY_GLASS_PANE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.FRAME_CLARITY_GLASS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.FRAME_CLARITY_GLASS_PANE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINK_SLIME_BLOCK.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_ICE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_PACKED_ICE.get(), RenderType.translucent());

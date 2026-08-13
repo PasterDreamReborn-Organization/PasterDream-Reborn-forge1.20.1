@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 public class ModItemTags {
 
     public static final TagKey<Item> MOD_GLASS_PANE = bind("glass_panes");
+    public static final TagKey<Item> MOD_GLASS = bind("glass");
     public static final TagKey<Item> STRIPPED_LOGS = createForgeTag("stripped_logs");
     public static final TagKey<Item> STRIPPED_WOOD = createForgeTag("stripped_wood");
     /** 可放入堆肥桶的物品标签，通过 TagsUpdatedEvent 自动注册到 ComposterBlock */
