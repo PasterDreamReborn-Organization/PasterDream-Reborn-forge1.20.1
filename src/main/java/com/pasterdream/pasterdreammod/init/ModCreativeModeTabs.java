@@ -658,7 +658,7 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("黑暗之地"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("阴影小木屋"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("阴影地下工作室"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT(">被阴影浸染的字迹潦草的笔记<"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("-被阴影浸染的字迹潦草的笔记-"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("关于黑暗之手的随笔"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("与黑色双手的决战和败北"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("侵染教堂-黑面"));
