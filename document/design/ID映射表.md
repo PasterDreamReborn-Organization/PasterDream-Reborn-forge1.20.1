@@ -294,6 +294,16 @@
 | `workshop_grind`                    | `weapon_workshop_grind_stone`       | 重命名                                           | 客制化类 `WeaponWorkshopGrindStoneBlock`                                                                                    |
 | `cyan_stone`                        | `cyan_stone`                        | 不改                                            | 无需客制化类，直接用 `Block`                                                                                               |
 | `cyan_moss_stone`                   | `cyan_moss_stone`                   | 不改                                            | 客制化类 `CyanMossStoneBlock`，蔓延至相邻苍青岩、被遮挡时退化回苍青岩                                                                 |
+| `cyan_stone_bricks`                 | `cyan_stone_bricks`                 | 不改                                            | 无需客制化类，直接用 `Block`                                                                                               |
+| `cyan_stone_brick_stairs`           | `cyan_stone_brick_stairs`           | 不改                                            | 无需客制化类，直接用 `StairBlock`                                                                                          |
+| `cyan_stone_brick_slab`             | `cyan_stone_brick_slab`             | 不改                                            | 无需客制化类，直接用 `SlabBlock`                                                                                           |
+| `cyan_stone_brick_wall`             | `cyan_stone_brick_wall`             | 不改                                            | 无需客制化类，直接用 `WallBlock`                                                                                           |
+| `cyan_stone_pressure_plate`         | `cyan_stone_pressure_plate`         | 不改                                            | 无需客制化类，直接用 `PressurePlateBlock`                                                                                   |
+| `cyan_stone_button`                 | `cyan_stone_button`                 | 不改                                            | 无需客制化类，直接用 `ButtonBlock`                                                                                         |
+| `mossy_cyan_stone_bricks`           | `mossy_cyan_stone_bricks`           | 不改                                            | 无需客制化类，直接用 `Block`                                                                                               |
+| `mossy_cyan_stone_brick_stairs`     | `mossy_cyan_stone_brick_stairs`     | 不改                                            | 无需客制化类，直接用 `StairBlock`                                                                                          |
+| `mossy_cyan_stone_brick_slab`       | `mossy_cyan_stone_brick_slab`       | 不改                                            | 无需客制化类，直接用 `SlabBlock`                                                                                           |
+| `mossy_cyan_stone_brick_wall`       | `mossy_cyan_stone_brick_wall`       | 不改                                            | 无需客制化类，直接用 `WallBlock`                                                                                           |
 
 
 ---

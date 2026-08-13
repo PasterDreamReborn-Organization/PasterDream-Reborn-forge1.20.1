@@ -343,6 +343,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         fenceItem(ModBlocks.WIND_MOOR_FENCE, ModBlocks.WIND_MOOR_PLANKS);
         buttonItem(ModBlocks.WIND_MOOR_BUTTON, ModBlocks.WIND_MOOR_PLANKS);
         basicItem(ModItems.WIND_MOOR_DOOR.get());
+        buttonItem(ModBlocks.CYAN_STONE_BUTTON, ModBlocks.CYAN_STONE);
         withExistingParent(ModItems.WIND_MOOR_PANE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/wind_moor_trapdoor"));
 
@@ -354,6 +355,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         wallItem(ModBlocks.SHADOW_STONE_BRICK_WALL, ModBlocks.SHADOW_STONE_BRICK);
         wallItem(ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL, ModBlocks.NARROW_SHADOW_STONE_BRICK);
         wallItem(ModBlocks.SHADOW_STONE_TILES_WALL, ModBlocks.SHADOW_STONE_TILES);
+        wallItem(ModBlocks.CYAN_STONE_BRICK_WALL, ModBlocks.CYAN_STONE_BRICKS);
+        wallItem(ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL, ModBlocks.MOSSY_CYAN_STONE_BRICKS);
 
         wallItem(ModBlocks.RUST_BLACK_METAL_WALL, ModBlocks.RUST_BLACK_METAL_BLOCK);
 

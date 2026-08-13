@@ -244,6 +244,8 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         miscOreRecipes(pWriter);
         calciteRecipes(pWriter);
         shadowStoneRecipes(pWriter);
+        cyanStoneRecipes(pWriter);
+        mossyCyanStoneRecipes(pWriter);
         foodRecipes(pWriter);
         othersRecipes(pWriter);
         thickCloudRecipes(pWriter);
@@ -1821,6 +1823,66 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         SingleItemRecipeBuilder.stonecutting(shadowStonesTag, RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_SHADOW_STONE_BRICK.get())
                 .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_shadow_stone_brick_from_stonecutting");
+    }
+
+    // ===== 苍青岩砖系列配方 =====
+
+    private void cyanStoneRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 2×2 苍青岩 → 4× 苍青岩砖
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CYAN_STONE_BRICKS.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter);
+
+        // 苍青岩砖 → 楼梯/台阶/墙 + 切石机
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.CYAN_STONE_BRICKS.get(), ModItems.CYAN_STONE_BRICK_STAIRS.get(),
+                ModItems.CYAN_STONE_BRICK_SLAB.get(), ModItems.CYAN_STONE_BRICK_WALL.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 苍青岩 → 苍青岩砖 (切石机)
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.CYAN_STONE.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.CYAN_STONE_BRICKS.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":cyan_stone_bricks_from_stonecutting");
+
+        // 苍青岩 → 苍青岩压力板
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModItems.CYAN_STONE_PRESSURE_PLATE.get(), 1)
+                .pattern("aa")
+                .define('a', ModItems.CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter);
+
+        // 苍青岩 → 苍青岩按钮
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModItems.CYAN_STONE_BUTTON.get(), 1)
+                .requires(ModItems.CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter);
+    }
+
+    // ===== 苔苍青岩砖系列配方 =====
+
+    private void mossyCyanStoneRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 苍青岩砖 + 藤蔓 → 苔苍青岩砖
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.MOSSY_CYAN_STONE_BRICKS.get(), 1)
+                .requires(ModItems.CYAN_STONE_BRICKS.get())
+                .requires(Items.VINE)
+                .unlockedBy(getHasName(ModItems.CYAN_STONE_BRICKS.get()), has(ModItems.CYAN_STONE_BRICKS.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":mossy_cyan_stone_bricks_from_vine");
+
+        // 苍青岩砖 + 苔藓块 → 苔苍青岩砖
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.MOSSY_CYAN_STONE_BRICKS.get(), 1)
+                .requires(ModItems.CYAN_STONE_BRICKS.get())
+                .requires(Items.MOSS_BLOCK)
+                .unlockedBy(getHasName(ModItems.CYAN_STONE_BRICKS.get()), has(ModItems.CYAN_STONE_BRICKS.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":mossy_cyan_stone_bricks_from_moss_block");
+
+        // 苔苍青岩砖 → 楼梯/台阶/墙 + 切石机
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.MOSSY_CYAN_STONE_BRICKS.get(), ModItems.MOSSY_CYAN_STONE_BRICK_STAIRS.get(),
+                ModItems.MOSSY_CYAN_STONE_BRICK_SLAB.get(), ModItems.MOSSY_CYAN_STONE_BRICK_WALL.get(),
+                PasterDreamMod.MOD_ID);
     }
 
     // ===== 食物相关合成配方 =====

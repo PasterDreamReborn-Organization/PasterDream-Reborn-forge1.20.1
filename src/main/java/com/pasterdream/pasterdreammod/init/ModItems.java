@@ -1456,6 +1456,26 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.CYAN_STONE.get(), new Item.Properties()));
     public static final RegistryObject<Item> CYAN_MOSS_STONE = ITEMS.register("cyan_moss_stone",
             () -> new BlockItem(ModBlocks.CYAN_MOSS_STONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CYAN_STONE_BRICKS = ITEMS.register("cyan_stone_bricks",
+            () -> new BlockItem(ModBlocks.CYAN_STONE_BRICKS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CYAN_STONE_BRICK_STAIRS = ITEMS.register("cyan_stone_brick_stairs",
+            () -> new BlockItem(ModBlocks.CYAN_STONE_BRICK_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CYAN_STONE_BRICK_SLAB = ITEMS.register("cyan_stone_brick_slab",
+            () -> new BlockItem(ModBlocks.CYAN_STONE_BRICK_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CYAN_STONE_BRICK_WALL = ITEMS.register("cyan_stone_brick_wall",
+            () -> new BlockItem(ModBlocks.CYAN_STONE_BRICK_WALL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CYAN_STONE_PRESSURE_PLATE = ITEMS.register("cyan_stone_pressure_plate",
+            () -> new BlockItem(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CYAN_STONE_BUTTON = ITEMS.register("cyan_stone_button",
+            () -> new BlockItem(ModBlocks.CYAN_STONE_BUTTON.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MOSSY_CYAN_STONE_BRICKS = ITEMS.register("mossy_cyan_stone_bricks",
+            () -> new BlockItem(ModBlocks.MOSSY_CYAN_STONE_BRICKS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MOSSY_CYAN_STONE_BRICK_STAIRS = ITEMS.register("mossy_cyan_stone_brick_stairs",
+            () -> new BlockItem(ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MOSSY_CYAN_STONE_BRICK_SLAB = ITEMS.register("mossy_cyan_stone_brick_slab",
+            () -> new BlockItem(ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MOSSY_CYAN_STONE_BRICK_WALL = ITEMS.register("mossy_cyan_stone_brick_wall",
+            () -> new BlockItem(ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL.get(), new Item.Properties()));
 
     // =====植物系列（花） =====
     public static final RegistryObject<Item> GOLDENROD = ITEMS.register("goldenrod",
