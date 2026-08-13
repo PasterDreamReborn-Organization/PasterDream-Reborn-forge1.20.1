@@ -246,6 +246,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         shadowStoneRecipes(pWriter);
         foodRecipes(pWriter);
         othersRecipes(pWriter);
+        thickCloudRecipes(pWriter);
         curioRecipes(pWriter);
 
 
@@ -1321,6 +1322,13 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     private void pinkSlimeRecipes(Consumer<FinishedRecipe> pWriter) {
         RecipeHelpers.storageCompress(pWriter, ModItems.PINK_SLIMEBALL.get(), ModItems.PINK_SLIME_BLOCK.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(pWriter, ModItems.PINK_SLIME_BLOCK.get(), ModItems.PINK_SLIMEBALL.get(), PasterDreamMod.MOD_ID);
+    }
+
+    // ===== 厚重云朵配方 =====
+
+    private void thickCloudRecipes(Consumer<FinishedRecipe> pWriter) {
+        RecipeHelpers.storageCompress(pWriter, ModItems.CLOUD.get(), ModItems.THICK_CLOUD.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.THICK_CLOUD.get(), ModItems.CLOUD.get(), PasterDreamMod.MOD_ID);
     }
 
     // ===== 陶盆配方 =====

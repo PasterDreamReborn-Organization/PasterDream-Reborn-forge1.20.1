@@ -498,6 +498,8 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.CYAN_MOSS_STONE.get());
                         output.accept(ModItems.CYAN_STONE.get());
+                        output.accept(ModItems.WHITE_SAND.get());
+                        output.accept(ModItems.THICK_CLOUD.get());
                     })
                     .build());
 
