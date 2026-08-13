@@ -631,6 +631,55 @@ public class ModBlocks {
                     return box(4, 0, 4, 12, 5, 12).move(offset.x, offset.y, offset.z);
                 }
             });
+
+    //风之植物系列
+    public static final RegistryObject<Block> HAIRY_MOSS = BLOCKS.register("hairy_moss", () -> new BushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+    ));
+
+    public static final RegistryObject<Block> WIND_CLEAVING_GRASS = BLOCKS.register("wind_cleaving_grass", () -> new BushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+    ));
+
+    public static final RegistryObject<Block> WIND_FEATHER_GRASS = BLOCKS.register("wind_feather_grass", () -> new DoublePlantBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+    ));
+
+    public static final RegistryObject<Block> WIND_ISLAND_REED = BLOCKS.register("wind_island_reed", () -> new WindIslandReedBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+    ));
     //作物方块
     public static final RegistryObject<Block> DYEDREAM_COROLLA_CROP = BLOCKS.register("dyedream_corolla_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).noCollission().randomTicks().instabreak()));
     public static final RegistryObject<Block> WHITE_COROLLA_CROP = BLOCKS.register("white_corolla_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).noCollission().randomTicks().instabreak()));

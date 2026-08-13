@@ -439,6 +439,21 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.DYEDREAM_VINE.get(), Dyedream_vine);
         var Jungle_sporangium = models().cross(ModBlocks.JUNGLE_SPORANGIUM.getId().getPath(), blockTexture(ModBlocks.JUNGLE_SPORANGIUM.get())).renderType("cutout");
         simpleBlock(ModBlocks.JUNGLE_SPORANGIUM.get(),Jungle_sporangium);
+        // 风之植物系列
+        var hairy_moss = models().cross(ModBlocks.HAIRY_MOSS.getId().getPath(), blockTexture(ModBlocks.HAIRY_MOSS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.HAIRY_MOSS.get(), hairy_moss);
+        var wind_cleaving_grass = models().cross(ModBlocks.WIND_CLEAVING_GRASS.getId().getPath(), blockTexture(ModBlocks.WIND_CLEAVING_GRASS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.WIND_CLEAVING_GRASS.get(), wind_cleaving_grass);
+        var wind_feather_grass_Upper = models().cross(ModBlocks.WIND_FEATHER_GRASS.getId().getPath() + "_top", modLoc("block/wind_feather_grass_top")).renderType("cutout");
+        var wind_feather_grass_Lower = models().cross(ModBlocks.WIND_FEATHER_GRASS.getId().getPath() + "_bottom", modLoc("block/wind_feather_grass_bottom")).renderType("cutout");
+        getVariantBuilder(ModBlocks.WIND_FEATHER_GRASS.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(wind_feather_grass_Lower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(wind_feather_grass_Upper));
+        var wind_island_reed_Upper = models().cross(ModBlocks.WIND_ISLAND_REED.getId().getPath() + "_top", modLoc("block/wind_island_reed_top")).renderType("cutout");
+        var wind_island_reed_Lower = models().cross(ModBlocks.WIND_ISLAND_REED.getId().getPath() + "_bottom", modLoc("block/wind_island_reed_bottom")).renderType("cutout");
+        getVariantBuilder(ModBlocks.WIND_ISLAND_REED.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(wind_island_reed_Lower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(wind_island_reed_Upper));
         // fourleaf_clover uses manual custom model
         simpleBlock(ModBlocks.FOURLEAF_CLOVER.get(), models().getExistingFile(modLoc("block/fourleaf_clover")));
         var light_ball = models().cross(ModBlocks.LIGHT_BALL.getId().getPath(), blockTexture(ModBlocks.LIGHT_BALL.get())).renderType("cutout");

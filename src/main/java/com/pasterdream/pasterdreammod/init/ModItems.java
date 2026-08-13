@@ -1542,6 +1542,19 @@ public class ModItems {
     public static final RegistryObject<Item> FOURLEAF_CLOVER = ITEMS.register("fourleaf_clover",
             () -> new BlockItem(ModBlocks.FOURLEAF_CLOVER.get(), new Item.Properties()));
 
+    // ===== 风之植物系列 =====
+    public static final RegistryObject<Item> HAIRY_MOSS = ITEMS.register("hairy_moss",
+            () -> new BlockItem(ModBlocks.HAIRY_MOSS.get(), new Item.Properties()));//g13
+
+    public static final RegistryObject<Item> WIND_CLEAVING_GRASS = ITEMS.register("wind_cleaving_grass",
+            () -> new BlockItem(ModBlocks.WIND_CLEAVING_GRASS.get(), new Item.Properties()));//g14
+
+    public static final RegistryObject<Item> WIND_FEATHER_GRASS = ITEMS.register("wind_feather_grass",
+            () -> new BlockItem(ModBlocks.WIND_FEATHER_GRASS.get(), new Item.Properties()));//g15
+
+    public static final RegistryObject<Item> WIND_ISLAND_REED = ITEMS.register("wind_island_reed",
+            () -> new BlockItem(ModBlocks.WIND_ISLAND_REED.get(), new Item.Properties()));//f18
+
     // ===== 阴影植物系列 =====
     public static final RegistryObject<Item> SHADOW_SHORT_ROOTS = ITEMS.register("shadow_short_roots",
             () -> new BlockItem(ModBlocks.SHADOW_SHORT_ROOTS.get(), new Item.Properties()));
