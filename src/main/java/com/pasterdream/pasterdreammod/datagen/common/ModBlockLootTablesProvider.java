@@ -340,6 +340,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.WIND_MOOR_WOOD.get());
         dropSelf(ModBlocks.STRIPPED_WIND_MOOR_LOG.get());
         dropSelf(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
+        add(ModBlocks.WIND_MOOR_LEAVES_0.get(), LootHelpers::creategrassesDrops);
+        add(ModBlocks.WIND_MOOR_LEAVES_1.get(), LootHelpers::creategrassesDrops);
 
         // ===== 阴影书架系列 =====
         // 阴影书架：精准采集掉落自身，否则掉落 3 本书

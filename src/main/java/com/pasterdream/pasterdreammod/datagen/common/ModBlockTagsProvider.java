@@ -50,6 +50,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.DYEDREAM_LEAVES.get())
                 .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get())
+                .add(ModBlocks.WIND_MOOR_LEAVES_0.get())
+                .add(ModBlocks.WIND_MOOR_LEAVES_1.get())
                 .add(ModBlocks.PINK_MUSHROOM_BLOCK.get())
                 .add(ModBlocks.PINK_MUSHROOM_STEM.get())
                 .add(ModBlocks.PINK_MUSHROOM_PORES.get())
@@ -197,7 +199,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.LEAVES)
                 .add(ModBlocks.DYEDREAM_LEAVES.get())
-                .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get());
+                .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get())
+                .add(ModBlocks.WIND_MOOR_LEAVES_0.get())
+                .add(ModBlocks.WIND_MOOR_LEAVES_1.get());
 
         tag(BlockTags.SAPLINGS)
                 .add(ModBlocks.DYEDREAM_SAPLING.get());

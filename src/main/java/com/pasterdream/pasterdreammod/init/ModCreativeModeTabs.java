@@ -504,6 +504,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WIND_MOOR_WOOD.get());
                         output.accept(ModItems.STRIPPED_WIND_MOOR_LOG.get());
                         output.accept(ModItems.STRIPPED_WIND_MOOR_WOOD.get());
+                        output.accept(ModItems.WIND_MOOR_LEAVES_0.get());
+                        output.accept(ModItems.WIND_MOOR_LEAVES_1.get());
                     })
                     .build());
 
