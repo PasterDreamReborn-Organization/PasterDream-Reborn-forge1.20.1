@@ -591,6 +591,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.not_have_loot_table", "§cNot Have Loot Table");
         add("tooltip.pasterdream.按住Shift+右键点击打开的融梦水晶箱可复位（写入此物品NBT中包含的战利品列表）", "§7Press Shift And Right Mouse Button Click Opened Melt Dream Crystal Chest Can Reset(Write LootTable From NBT Which In This Item)");
         add("tooltip.pasterdream.reset_cost_melt_dream_energy", "Reset Cost %f Melt Dream Energy");
+        add("tooltip.pasterdream.右键打开GUI以查看蓝图结构", "Right Mouse Click To Open GUI And View The Blue Print Structure.");
 
         add("message.pasterdream.融梦水晶箱重置工具只能重置打开的融梦水晶箱", "Melt Dream Crystal Chest Reset Tool Only Can Reset Opened Melt Dream Crystal Chest");
         add("message.pasterdream.融梦水晶箱战利品品质应为1，2或3，但是此时为", "Melt Dream Crystal Chest Loot Table Level Should Be 1 or 2 or 3, But Now Is%d");
@@ -698,8 +699,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("tooltip.pasterdream.notHaveWingsBirdHaveSpreadWingsDreamToo", "§aNot Have Wings Bird Have Spread Wings Dream Too");
 
-        add("tooltip.pasterdream.wraponWorkshop", "§bWeapon Work Shop");
-
         add("biome.pasterdream.dyedream_plains","Dyedream Plains");
         add("biome.pasterdream.dyedream_mushroom_mountains","Dyedream Mushroom Mountains");
         add("biome.pasterdream.dyedream_snowy_plains","Dyedream Snowy Plains");
@@ -714,6 +713,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("recipe.pasterdream.research", "Research");
 
         add("book.pasterdream.title.使用说明", "Use Guide");
+
         add("book.pasterdream.title.花园解密:迷梦冶梦莲", "Garden Decode: Misty Dreaming Lotus");
         add("book.pasterdream.title.花园解密:凛冽雪绒花", "Garden Decode: Piercing Edel Weiss");
         add("book.pasterdream.title.花园解密:九尾狐", "Garden Decode: Golden Fox");
@@ -737,7 +737,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.染梦世界树", "Dyedream World Tree");
         add("book.pasterdream.title.代达罗斯之翼与浮空岛", "Wings Of DaiDaLuoSi And Floating Island");
         add("book.pasterdream.title.星河果冻和浮空岛", "Galaxy Jelly and Floating Island");
+
         add("book.pasterdream.title.探求秘辛", "Desert Cottage");
+
         add("book.pasterdream.title.研究笔记:黑金属", "Research Notes: Black Metal");
         add("book.pasterdream.title.灯影游记 其二", "Lamp Shadow Travelogue 2");
         add("book.pasterdream.title.黑暗之地", "Shadow Place");
@@ -749,8 +751,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.侵染教堂-黑面", "Infested Church - Black Face");
         add("book.pasterdream.title.侵染教堂-亮面", "Infested Church - Bright Face");
         add("book.pasterdream.title.暮影之笼", "Twilight Cage");
+
         add("book.pasterdream.title.破风的骑士", "Wind Break Knight");
         add("book.pasterdream.title.清晨的新风", "Morning New Wind");
+
+        add("book.pasterdream.title.精铸工坊", "Weapon Workshop");
+        add("book.pasterdream.title.暗影高炉", "Shadow Blast Furnace");
 
         // Dew Tooltip
         add("tooltip.pasterdream.drink_effect", "§7When consumed:");
