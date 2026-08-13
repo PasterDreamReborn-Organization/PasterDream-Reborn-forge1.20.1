@@ -199,6 +199,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MURAKUMO_KUSANAGI.get(), "Murakumo Kusanagi");
         add(ModItems.SWORD_EMBRYO.get(), "Sword Embryo");
         add(ModItems.ICE_SHADOW_HAMMER.get(), "Ice Shadow Hammer");
+        add(ModItems.SHADOW_EROSION_DAGGER.get(), "Shadow Erosion Dagger");
+        add(ModItems.SHADOW_EROSION_PICKAXE.get(), "Shadow Erosion Pickaxe");
+        add(ModItems.SHADOW_EROSION_AXE.get(), "Shadow Erosion Axe");
+        add(ModItems.SHADOW_EROSION_SHOVEL.get(), "Shadow Erosion Shovel");
+        add(ModItems.SHADOW_EROSION_HOE.get(), "Shadow Erosion Hoe");
         add(ModItems.THERMAL_DAGGER.get(), "Thermal Dagger");
         add(ModItems.DESERT_SWORD.get(), "Desert Greatsword");
         add(ModItems.CHENJINGMEN_DESERT_SWORD.get(), "Chenjingmen Desert");
@@ -681,6 +686,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.chenjingmen_desert_sword.7", "§7▪ §9Move Speed -15% and Resistance +20% while held");
         add("tooltip.pasterdreammod.san_value", "SAN: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
+        add("tooltip.pasterdreammod.shadow_erosion_tool.1","§7▪ §9The digging speed will increase as the brightness decreases.");
+        add("tooltip.pasterdreammod.shadow_erosion_tool.2","§7▪ §9Provides a mining speed boost for shadow-type, deepslate-type, and sculk-type blocks");
 
         add("tooltip.pasterdream.developerNameList", "§dDeveloper Name List");
         add("tooltip.pasterdream.dyedreamCreak", "§dDyedream Creak");

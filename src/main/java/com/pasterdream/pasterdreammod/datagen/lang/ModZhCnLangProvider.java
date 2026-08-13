@@ -207,6 +207,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.MURAKUMO_KUSANAGI.get(), "『天丛云』草薙");
         add(ModItems.SWORD_EMBRYO.get(), "失落之剑");
         add(ModItems.ICE_SHADOW_HAMMER.get(), "冰影战锤");
+        add(ModItems.SHADOW_EROSION_DAGGER.get(), "影蚀匕首");
+        add(ModItems.SHADOW_EROSION_PICKAXE.get(), "影蚀镐");
+        add(ModItems.SHADOW_EROSION_AXE.get(), "影蚀斧");
+        add(ModItems.SHADOW_EROSION_SHOVEL.get(), "影蚀锹");
+        add(ModItems.SHADOW_EROSION_HOE.get(), "影蚀锄");
         add(ModItems.THERMAL_DAGGER.get(), "热能匕首");
         add(ModItems.DESERT_SWORD.get(), "朔漠大剑");
         add(ModItems.CHENJINGMEN_DESERT_SWORD.get(), "『沉荆门』朔漠");
@@ -686,6 +691,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.chenjingmen_desert_sword.7", "§7▪ §9手持武器时移速-15% 抗性+20%");
         add("tooltip.pasterdreammod.san_value", "SAN值: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "融梦能量: ");
+        add("tooltip.pasterdreammod.shadow_erosion_tool.1","§7▪ §9挖掘速率会随着亮度降低而提升");
+        add("tooltip.pasterdreammod.shadow_erosion_tool.2","§7▪ §9对于暗影类，深板岩类和幽匿类方块，提供挖掘速率提升");
 
         add("tooltip.pasterdream.developerNameList", "§d开发者名单");
         add("tooltip.pasterdream.dyedreamCreak", "§d染梦裂隙");
