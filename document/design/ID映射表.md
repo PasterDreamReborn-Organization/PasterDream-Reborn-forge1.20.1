@@ -271,6 +271,8 @@
 | `workshop_blast`                    | `weapon_workshop_blast_furnace`     | 重命名                                           | 客制化类 `WeaponWorkshopBlastFurnaceBlock`                                                                           |
 | `workshop_cauldeon`                 | `weapon_workshop_cooler_pot`        | 重命名                                           | 客制化类 `WeaponWorkshopCoolerPotBlock`                                                                              |
 | `workshop_grind`                    | `weapon_workshop_grind_stone`       | 重命名                                           | 客制化类 `WeaponWorkshopGrindStoneBlock`                                                                             |
+| `cyan_stone`                        | `cyan_stone`                        | 不改                                            | 无需客制化类，直接用 `Block`                                                                                               |
+| `cyan_moss_stone`                   | `cyan_moss_stone`                   | 不改                                            | 客制化类 `CyanMossStoneBlock`，蔓延至相邻苍青岩、被遮挡时退化回苍青岩                                                                 |
 
 
 ---

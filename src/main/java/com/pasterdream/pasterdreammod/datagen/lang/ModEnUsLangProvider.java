@@ -389,6 +389,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.CALCITE_TILES_WALL.get(), "Calcite Tiles Wall");
         add(ModBlocks.ICE_STONE.get(), "Icestone");
         add(ModBlocks.ICE_BUD.get(), "Ice Bud");
+        add(ModBlocks.CYAN_STONE.get(), "Cyan Stone");
+        add(ModBlocks.CYAN_MOSS_STONE.get(), "Cyan Moss Stone");
         add(ModBlocks.QYM_DOLL.get(), "琴雨梦Doll");
         add(ModBlocks.UUZ_DOLL.get(), "幼幼紫Doll");
         add(ModBlocks.DYEDREAM_CRACK.get(), "Dyedream Crack");
@@ -543,6 +545,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_dream_debug_tab", "Paster Dream | Debug");
         add("itemGroup.pasterdream.pasterdream_expansion_tab", "Paster Dream | Expansion");
         add("itemGroup.pasterdream.pasterdream_memento_tab", "Paster Dream | Mementos");
+        add("itemGroup.pasterdream.wind_journey_world", "Wind Journey World");
 
         add("item.pasterdream.duke_coin_curio", "Duke Coin Curio");
         add("tooltip.pasterdream.duke_coin_curio.effect.luck", "§7▪ §9+7 Luck");

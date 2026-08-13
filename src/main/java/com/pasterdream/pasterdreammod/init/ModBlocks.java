@@ -335,6 +335,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> CALCITE_TILES_SLAB = BLOCKS.register("calcite_tiles_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.POLISHED_DEEPSLATE).strength(0.75f).requiresCorrectToolForDrops().noOcclusion().dynamicShape()));
     public static final RegistryObject<Block> CALCITE_TILES_WALL = BLOCKS.register("calcite_tiles_wall", () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.POLISHED_DEEPSLATE).strength(0.75f).requiresCorrectToolForDrops().noOcclusion().dynamicShape().forceSolidOn()));
 
+    // ===== 风之旅世界·苍青岩系列 =====
+    public static final RegistryObject<Block> CYAN_STONE = BLOCKS.register("cyan_stone", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(1.5f, 1f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> CYAN_MOSS_STONE = BLOCKS.register("cyan_moss_stone", () -> new CyanMossStoneBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(1.5f, 1f).requiresCorrectToolForDrops()));
+
     //植物系列（花）
     public static final RegistryObject<Block> GOLDENROD = BLOCKS.register("goldenrod",
             () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SLOWDOWN, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW)

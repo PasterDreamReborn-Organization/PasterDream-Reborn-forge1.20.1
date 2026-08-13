@@ -489,6 +489,18 @@ public class ModCreativeModeTabs {
                     })
                     .build());
 
+    // ===== 风之旅世界 =====
+    // 来源: 旧 wind_journey_world 维度建筑方块
+    public static final RegistryObject<CreativeModeTab> WIND_JOURNEY_WORLD_TAB = CREATIVE_MODE_TABS.register("wind_journey_world",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.wind_journey_world"))
+                    .icon(() -> new ItemStack(ModBlocks.CYAN_MOSS_STONE.get()))
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.CYAN_MOSS_STONE.get());
+                        output.accept(ModItems.CYAN_STONE.get());
+                    })
+                    .build());
+
     // ===== 植物 =====
     // 来源: 旧 paster_tab_2, 按原顺序
     public static final RegistryObject<CreativeModeTab> PASTERDREAM_PLANTS_TAB = CREATIVE_MODE_TABS.register("pasterdream_plants_tab",
