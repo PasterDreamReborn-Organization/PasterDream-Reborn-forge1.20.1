@@ -121,6 +121,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DYEDREAM_COROLLA.get());
         basicItem(ModItems.WHITE_COROLLA.get());
         basicItem(ModItems.WHITE_CRYSTAL.get());
+        basicItem(ModItems.CONGEAL_WIND.get());
+        basicItem(ModItems.WIND_RUNNER_CRYSTAL.get());
         basicItem(ModItems.LIGHT_BALL.get());
         basicItem(ModItems.COTTON.get());
         basicItem(ModItems.SCULK_HEART.get());

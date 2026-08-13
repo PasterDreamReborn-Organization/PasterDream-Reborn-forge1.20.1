@@ -139,6 +139,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_COROLLA.get(), "Dyedream Corolla");
         add(ModItems.WHITE_COROLLA.get(), "White Corolla");
         add(ModItems.WHITE_CRYSTAL.get(), "White Crystal");
+        add(ModItems.CONGEAL_WIND.get(), "Congeal Wind");
+        add(ModItems.WIND_RUNNER_CRYSTAL.get(), "Windrunner Crystal");
         add("tooltip.pasterdream.white_crystal", "§7Core material for crafting the White Calamity Sword");
         add(ModItems.LIGHT_BALL.get(), "Light Ball");
         add(ModItems.COTTON.get(), "Cotton");
@@ -252,6 +254,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), "Deepslate Titanium Ore");
         add(ModBlocks.MOLTEN_GOLD_ORE.get(), "Molten Gold Ore");
         add(ModBlocks.SOUL_ORE.get(), "Soul Ore");
+        add(ModBlocks.CONGEAL_WIND_ORE.get(), "Congeal Wind Ore");
+        add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(), "Windrunner Crystal Ore");
         add(ModBlocks.RAW_TITANIUM_BLOCK.get(), "Raw Titanium Block");
         add(ModBlocks.SALT_BLOCK.get(), "Salt Block");
         add(ModBlocks.TITANIUM_BLOCK.get(), "Titanium Block");

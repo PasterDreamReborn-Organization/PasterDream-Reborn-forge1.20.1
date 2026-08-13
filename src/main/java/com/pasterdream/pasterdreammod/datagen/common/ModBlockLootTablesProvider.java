@@ -77,6 +77,16 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                         applyExplosionDecay(block, LootItem.lootTableItem(ModItems.RAW_MOLTEN_GOLD.get())
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F)))
                                 .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+        add(ModBlocks.CONGEAL_WIND_ORE.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(ModItems.CONGEAL_WIND.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+        add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(),
+                block -> createSilkTouchDispatchTable(block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(ModItems.WIND_RUNNER_CRYSTAL.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
         add(ModBlocks.SOUL_ORE.get(),
                 block -> createSilkTouchDispatchTable(block,
                         applyExplosionDecay(block, LootItem.lootTableItem(ModItems.SOUL_DUST.get())

@@ -1708,6 +1708,27 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         RecipeCategory.MISC, ModItems.SOUL_DUST.get(), 1.0F, 100)
                 .unlockedBy(getHasName(ModItems.SOUL_ORE.get()), has(ModItems.SOUL_ORE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":soul_dust_from_blasting");
+
+        // ===== 风系列 =====
+        // 凝结之风云矿 → 凝结之风（熔炉 + 高炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CONGEAL_WIND_ORE.get()),
+                        RecipeCategory.MISC, ModItems.CONGEAL_WIND.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_ORE.get()), has(ModItems.CONGEAL_WIND_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":congeal_wind_from_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CONGEAL_WIND_ORE.get()),
+                        RecipeCategory.MISC, ModItems.CONGEAL_WIND.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_ORE.get()), has(ModItems.CONGEAL_WIND_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":congeal_wind_from_blasting");
+        // 风行者水晶矿石 → 风行者水晶（熔炉 + 高炉）
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()),
+                        RecipeCategory.MISC, ModItems.WIND_RUNNER_CRYSTAL.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()), has(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":wind_runner_crystal_from_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()),
+                        RecipeCategory.MISC, ModItems.WIND_RUNNER_CRYSTAL.get(), 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()), has(ModItems.WIND_RUNNER_CRYSTAL_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":wind_runner_crystal_from_blasting");
+
         // 灵魂精华：1×恶魂之泪 + 8×灵魂粉尘
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SOUL_ESSENCE.get(), 1)
                 .pattern("aaa")

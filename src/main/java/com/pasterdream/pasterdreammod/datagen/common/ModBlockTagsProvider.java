@@ -41,6 +41,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get())
                 .add(ModBlocks.DYEDREAM_FARMLAND.get())
                 .add(ModBlocks.SOUL_ORE.get())
+                .add(ModBlocks.CONGEAL_WIND_ORE.get())
                 .add(ModBlocks.SALT_BLOCK.get())
                 .add(ModBlocks.DYEDREAM_SAND.get())
                 .add(ModBlocks.WHITE_SAND.get());
@@ -93,6 +94,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.TITANIUM_ORE.get())
                 .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get())
+                .add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get())
+                .add(ModBlocks.CONGEAL_WIND_ORE.get())
                 .add(ModBlocks.DYEDREAM_ICE.get())
                 .add(ModBlocks.DYEDREAM_PACKED_ICE.get())
                 .add(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get())
@@ -282,7 +285,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.AMBER_CANDY_ORE.get())
                 .add(ModBlocks.TITANIUM_ORE.get())
                 .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
-                .add(ModBlocks.MOLTEN_GOLD_ORE.get());
+                .add(ModBlocks.MOLTEN_GOLD_ORE.get())
+                .add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get())
+                .add(ModBlocks.CONGEAL_WIND_ORE.get());
 
 
         tag(BlockTags.STAIRS)

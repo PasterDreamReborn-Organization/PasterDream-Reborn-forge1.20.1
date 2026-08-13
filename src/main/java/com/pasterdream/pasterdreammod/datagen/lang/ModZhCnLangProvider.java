@@ -150,6 +150,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_COROLLA.get(), "梦染花冠");
         add(ModItems.WHITE_COROLLA.get(), "苍白花冠");
         add(ModItems.WHITE_CRYSTAL.get(), "白厄水晶");
+        add(ModItems.CONGEAL_WIND.get(), "凝结之风");
+        add(ModItems.WIND_RUNNER_CRYSTAL.get(), "风行者水晶");
         add("tooltip.pasterdream.white_crystal", "§7制作白厄剑的核心材料");
         add(ModItems.LIGHT_BALL.get(), "流明光球");
         add(ModItems.COTTON.get(), "棉花");
@@ -266,6 +268,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), "深层钛矿石");
         add(ModBlocks.MOLTEN_GOLD_ORE.get(), "炙焰金矿石");
         add(ModBlocks.SOUL_ORE.get(), "灵魂矿土");
+        add(ModBlocks.CONGEAL_WIND_ORE.get(), "凝结之风云矿");
+        add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(), "风行者水晶矿石");
         add(ModBlocks.RAW_TITANIUM_BLOCK.get(), "粗钛金块");
         add(ModBlocks.SALT_BLOCK.get(), "盐块");
         add(ModBlocks.TITANIUM_BLOCK.get(), "钛金块");
