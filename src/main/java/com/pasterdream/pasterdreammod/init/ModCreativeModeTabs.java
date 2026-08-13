@@ -124,6 +124,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MOLTEN_GOLD_INGOT.get());
                         output.accept(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_INGOT.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_INGOT.get());
                         output.accept(ModItems.TITANIUM_NUGGET.get());
                         output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
@@ -536,6 +537,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FRAME_CLARITY_GLASS_PANE.get());
                         output.accept(ModItems.CONGEAL_WIND_ORE.get());
                         output.accept(ModItems.WIND_RUNNER_CRYSTAL_ORE.get());
+                        output.accept(ModItems.CONGEAL_WIND_BLOCK.get());
+                        output.accept(ModItems.WIND_RUNNER_CRYSTAL_BLOCK.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_BLOCK.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_BARS.get());
+                        output.accept(ModItems.EJECTION_PRESSURE_PLATE.get());
+                        output.accept(ModItems.EJECTION_PRESSURE_BLOCK.get());
                     })
                     .build());
 
