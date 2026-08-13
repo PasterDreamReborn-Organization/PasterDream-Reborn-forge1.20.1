@@ -6,6 +6,7 @@
   "mixins": [
     "BlockStateBaseMixin",
     "CampfireBlockEntityMixin",
+    "CombatTrackerMixin",
     "EatBlockGoalMixin",
     "FishingHookMixin",
     "FlowerPotBlockMixin",

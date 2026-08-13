@@ -22,6 +22,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.life_crystal.already_used", "You have already absorbed a Life Crystal!");
         add("message.pasterdream.life_crystal.already_absorbing", "You are already absorbing another Life Crystal!");
         add("message.pasterdream.life_crystal.absorbed", "The Life Crystal shatters and flows into you §aMax Health +2");
+        add("death.pasterdream.lamp_shadow_world", "%s melted into the whispers of the shadows");
         add(ModItems.DYEDREAM_QUARTZ.get(), "Dye Dream Quartz");
         add(ModItems.DYEDREAM_DUST.get(), "Dye Dream Dust");
         add(ModItems.DYEDREAM_DUST_PIECE.get(), "Dye Dream Dust Piece");
