@@ -462,7 +462,98 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_FERN.get())
                 .add(ModBlocks.SHADOW_FUNGUS.get());
 
-
+        // ===== 影蚀工具挖掘加速的暗影类方块 =====
+        tag(ModBlockTags.SHADOW_EROSION_TOOL_CAN_BOOST)
+                // 基础阴影方块
+                .add(ModBlocks.SHADOW.get())
+                .add(ModBlocks.THICK_SHADOW.get())
+                // 阴影石系列
+                .add(ModBlocks.SHADOW_STONE.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK_STAIRS.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK_SLAB.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK_WALL.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_STAIRS.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL.get())
+                .add(ModBlocks.SHADOW_STONE_TILES.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_STAIRS.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_SLAB.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_WALL.get())
+                .add(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get())
+                // 碎裂暗影地牢石砖（唯一可挖掘的地牢石砖）
+                .add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get())
+                // 阴影自然方块
+                .add(ModBlocks.SHADOW_NYLIUM.get())
+                .add(ModBlocks.SHADOW_WART_BLOCK.get())
+                .add(ModBlocks.SHADOW_STEM.get())
+                .add(ModBlocks.SHADOW_HYPHAE.get())
+                .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
+                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get())
+                .add(ModBlocks.SHADOW_SHROOMLIGHT.get())
+                .add(ModBlocks.SHADOW_LIGHT.get())
+                .add(ModBlocks.SHADOW_CANDLE.get())
+                // 阴影木板系列
+                .add(ModBlocks.SHADOW_PLANKS.get())
+                .add(ModBlocks.SHADOW_STAIRS.get())
+                .add(ModBlocks.SHADOW_SLAB.get())
+                .add(ModBlocks.SHADOW_FENCE.get())
+                .add(ModBlocks.SHADOW_FENCE_GATE.get())
+                .add(ModBlocks.SHADOW_PANE.get())
+                .add(ModBlocks.SHADOW_DOOR.get())
+                .add(ModBlocks.SHADOW_TRAPDOOR.get())
+                .add(ModBlocks.SHADOW_PRESSURE_PLATE.get())
+                .add(ModBlocks.SHADOW_BUTTON.get())
+                // 阴影书架
+                .add(ModBlocks.SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.WORN_SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.KEY_SHADOW_BOOKSHELF.get())
+                // 黑金属
+                .add(ModBlocks.BLACK_METAL_BLOCK.get())
+                .add(ModBlocks.RUST_BLACK_METAL_BLOCK.get())
+                .add(ModBlocks.RUST_BLACK_METAL_WALL.get())
+                .add(ModBlocks.RUST_BLACK_METAL_BARS.get())
+                // 深板岩
+                .add(Blocks.DEEPSLATE)
+                .add(Blocks.COBBLED_DEEPSLATE)
+                .add(Blocks.COBBLED_DEEPSLATE_STAIRS)
+                .add(Blocks.COBBLED_DEEPSLATE_SLAB)
+                .add(Blocks.COBBLED_DEEPSLATE_WALL)
+                .add(Blocks.POLISHED_DEEPSLATE)
+                .add(Blocks.POLISHED_DEEPSLATE_STAIRS)
+                .add(Blocks.POLISHED_DEEPSLATE_SLAB)
+                .add(Blocks.POLISHED_DEEPSLATE_WALL)
+                .add(Blocks.DEEPSLATE_BRICKS)
+                .add(Blocks.DEEPSLATE_BRICK_STAIRS)
+                .add(Blocks.DEEPSLATE_BRICK_SLAB)
+                .add(Blocks.DEEPSLATE_BRICK_WALL)
+                .add(Blocks.DEEPSLATE_TILES)
+                .add(Blocks.DEEPSLATE_TILE_STAIRS)
+                .add(Blocks.DEEPSLATE_TILE_SLAB)
+                .add(Blocks.DEEPSLATE_TILE_WALL)
+                .add(Blocks.CHISELED_DEEPSLATE)
+                .add(Blocks.CRACKED_DEEPSLATE_BRICKS)
+                .add(Blocks.CRACKED_DEEPSLATE_TILES)
+                // 深板岩矿石
+                .addTag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE)
+                // 阴影功能方块
+                .add(ModBlocks.SHADOW_DESK.get())
+                .add(ModBlocks.SHADOW_CHEST.get())
+                .add(ModBlocks.CLAY_POT.get())
+                .add(ModBlocks.SHADOW_CLAY_POT.get())
+                .add(ModBlocks.SHADOW_HAND_TRAP.get())
+                // 幽匿系列
+                .add(Blocks.SCULK)
+                .add(Blocks.SCULK_SENSOR)
+                .add(Blocks.CALIBRATED_SCULK_SENSOR)
+                .add(Blocks.SCULK_SHRIEKER)
+                .add(Blocks.SCULK_CATALYST)
+                .add(Blocks.SCULK_VEIN)
+                // 暗影高炉核心
+                .add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
 
     }
 

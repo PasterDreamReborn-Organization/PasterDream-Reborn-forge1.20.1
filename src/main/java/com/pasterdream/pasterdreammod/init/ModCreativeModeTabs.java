@@ -264,6 +264,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.HELLFIRE_SWORD.get());
                         output.accept(ModItems.HELLFIRE_PICKAXE.get());
                         output.accept(ModItems.INFERNO_SWORD.get());
+                        // 影蚀工具
+                        output.accept(ModItems.SHADOW_EROSION_DAGGER.get());
+                        output.accept(ModItems.SHADOW_EROSION_PICKAXE.get());
+                        output.accept(ModItems.SHADOW_EROSION_AXE.get());
+                        output.accept(ModItems.SHADOW_EROSION_SHOVEL.get());
+                        output.accept(ModItems.SHADOW_EROSION_HOE.get());
                         // 独立武器
                         output.accept(ModItems.TIDE_SWORD.get());
                         output.accept(ModItems.BEIHAI_RUO_TIDE_SWORD.get());
