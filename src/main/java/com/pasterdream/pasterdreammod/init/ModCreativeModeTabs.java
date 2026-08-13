@@ -6,7 +6,7 @@ import com.pasterdream.pasterdreammod.helper.itemwithnbt.dreamnoteswithnbt.Dream
 import com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT;
 import com.pasterdream.pasterdreammod.world.item.DeepTreasureItem;
-import com.pasterdream.pasterdreammod.world.item.blueprints.AddBluePrintContentListTag;
+import com.pasterdream.pasterdreammod.world.item.blueprints.BluePrintWithNBTToCreativeModeTab;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotes.NBTBookRegisterToCreativeModTab;
@@ -566,6 +566,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FOURLEAF_CLOVER.get());
                         output.accept(ModItems.BLAZE_FLOWER.get());
                         output.accept(ModItems.CRIMSON_THORNS.get());
+                        output.accept(ModItems.HAIRY_MOSS.get());
+                        output.accept(ModItems.WIND_CLEAVING_GRASS.get());
+                        output.accept(ModItems.WIND_FEATHER_GRASS.get());
+                        output.accept(ModItems.WIND_ISLAND_REED.get());
                         output.accept(ModItems.SHADOW_SHORT_ROOTS.get());
                         output.accept(ModItems.SHADOW_ROOTS.get());
                         output.accept(ModItems.SHADOW_STEM_FERN.get());
@@ -659,7 +663,8 @@ public class ModCreativeModeTabs {
 
                         output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "content", "notHaveWingsBirdHaveSpreadWingsDreamToo"));
 
-                        output.accept(BluePrintWithNBT.bluePrintWithNBT(ModItems.BLUE_PRINT.get(), "content", "wraponWorkshop", AddBluePrintContentListTag.weaponWorkshop()));
+                        output.accept(BluePrintWithNBTToCreativeModeTab.buildNBT("精铸工坊"));
+                        output.accept(BluePrintWithNBTToCreativeModeTab.buildNBT("暗影高炉"));
 
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("使用说明"));
 

@@ -210,6 +210,17 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
 
         dropOther(ModBlocks.FOURLEAF_CLOVER.get(), ModItems.FOURLEAF_CLOVER_CURIO.get());
 
+        // ===== 风之植物系列 =====
+        add(ModBlocks.HAIRY_MOSS.get(),
+                block -> LootHelpers.creategrassesDrops(ModBlocks.HAIRY_MOSS.get()));
+        add(ModBlocks.WIND_CLEAVING_GRASS.get(),
+                block -> LootHelpers.creategrassesDrops(ModBlocks.WIND_CLEAVING_GRASS.get()));
+        add(ModBlocks.WIND_FEATHER_GRASS.get(),
+                block -> LootHelpers.createhighgrassesDropsNeedScissor(ModBlocks.WIND_FEATHER_GRASS.get()));
+        // 风岛芦苇：精准采集/剪刀掉落自身，否则掉落芦苇杆（与芦苇战利品逻辑一致）
+        add(ModBlocks.WIND_ISLAND_REED.get(),
+                block -> LootHelpers.createShearsOrSilkTouchSelfElseItem(ModBlocks.WIND_ISLAND_REED.get(), ModItems.REED_ROD.get(), 1.0F, 3.0F));
+
         // ===== 阴影植物系列 =====
         dropSelf(ModBlocks.SHADOW_SHORT_ROOTS.get());
         dropSelf(ModBlocks.SHADOW_ROOTS.get());

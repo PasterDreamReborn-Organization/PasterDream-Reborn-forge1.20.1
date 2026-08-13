@@ -24,15 +24,18 @@ public class BluePrintScreen extends Screen
     private List<ReadOnlySlot> readOnlySlots = new ArrayList<>();
     private UpArrowButton upArrowButton;
     private DownArrowButton downArrowButton;
-    private ListTag allListTag;
-    private int allFloors;
-    private int currentFloor = 0;
-    private List<ItemStack> singleFloorItemStacks = new ArrayList<>();
+    private CompoundTag NBT;
 
-    public BluePrintScreen(ListTag listTag)
+    private int sizeX = 0;
+    private int sizeY = 0;
+    private int sizeZ = 0;
+    private int currentY = 0;
+    List<List<List<ItemStack>>> ListListListItemStack;
+
+    public BluePrintScreen(CompoundTag NBT)
     {
         super(Component.empty());
-        allListTag = listTag;
+        this.NBT = NBT;
     }
 
     @Override
@@ -45,15 +48,23 @@ public class BluePrintScreen extends Screen
         addRenderableWidget(upArrowButton);
         addRenderableWidget(downArrowButton);
 
-        allFloors = allListTag.size();
-        extractItemStacks();
+        ListListListItemStack = BluePrintNBTSerializer.serialize(NBT);
 
-        for(int i = 0; i < 5; i++)
+        if(ListListListItemStack == null)
         {
-            for(int j = 0; j < 5; j++)
+            return;
+        }
+
+        sizeY = ListListListItemStack.size();
+        sizeX = ListListListItemStack.get(0).size();
+        sizeZ = ListListListItemStack.get(0).get(0).size();
+
+        for(int z = 0; z < sizeZ; z++)
+        {
+            for(int x = 0; x < sizeX; x++)
             {
-                int index = 5 * i + j;
-                ReadOnlySlot readOnlySlot = new ReadOnlySlot(width / 2 - 44 + j * 18, height / 2 - 44 + i * 18, singleFloorItemStacks.get(index));
+                int index = sizeX * z + x;
+                ReadOnlySlot readOnlySlot = new ReadOnlySlot(width / 2 - 44 + x * 18, height / 2 - 44 + z * 18, ListListListItemStack.get(currentY).get(x).get(z));
                 readOnlySlots.add(readOnlySlot);
                 addRenderableWidget(readOnlySlots.get(index));
             }
@@ -69,52 +80,28 @@ public class BluePrintScreen extends Screen
         renderBackground(guiGraphics);
         GUIBackGroundRender.rendBlueprintGUI(guiGraphics, width / 2 - 46, height / 2 - 46);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
-        guiGraphics.drawCenteredString(Minecraft.getInstance().font, (currentFloor + 1) + "/" + allFloors, width / 2 + 68, height / 2 - 5, 0xFFFFFFFF);
-    }
-
-    private void extractItemStacks()
-    {
-        CompoundTag SingleFloorCompoundItems = allListTag.getCompound(currentFloor);
-        ListTag singleFloorListItems = SingleFloorCompoundItems.getList("itemStacks", Tag.TAG_COMPOUND);
-        singleFloorItemStacks = new ArrayList<>();
-        for(int i = 0; i < 25; i++)
-        {
-            CompoundTag singleItemStack = singleFloorListItems.getCompound(i);
-            if(singleItemStack.contains("id"))
-            {
-                Item item = ForgeRegistries.ITEMS.getValue(ResourceLocation.parse(singleItemStack.getString("id")));
-                CompoundTag nbt = null;
-                if(singleItemStack.contains("tag"))
-                {
-                    nbt = singleItemStack.getCompound("tag");
-                }
-
-                singleFloorItemStacks.add(new ItemStack(item, 1, nbt));
-            }
-                else
-                {
-                    singleFloorItemStacks.add(ItemStack.EMPTY);
-                }
-        }
+        guiGraphics.drawCenteredString(Minecraft.getInstance().font, (currentY + 1) + "/" + sizeY, width / 2 + 68, height / 2 - 5, 0xFFFFFFFF);
     }
 
     private void refreshFloorSlotPosition()
     {
-        for(int i = 0; i < 5; i++)
+        for(int z = 0; z < sizeZ; z++)
         {
-            for(int j = 0; j < 5; j++)
+            for(int x = 0; x < sizeX; x++)
             {
-                readOnlySlots.get(5 * i + j).setPosition(width / 2 - 44 + j * 18, height / 2 - 44 + i * 18);
+                readOnlySlots.get(sizeX * z + x).setPosition(width / 2 - 44 + x * 18, height / 2 - 44 + z * 18);
             }
         }
     }
 
     private void refreshFloorItem()
     {
-        extractItemStacks();
-        for(int i = 0; i < 25; i++)
+        for(int z = 0; z < sizeZ; z++)
         {
-            readOnlySlots.get(i).setItemStack(singleFloorItemStacks.get(i));
+            for (int x = 0; x < sizeX; x++)
+            {
+                readOnlySlots.get(z * sizeX + x).setItemStack(ListListListItemStack.get(currentY).get(x).get(z));
+            }
         }
     }
 
@@ -135,26 +122,26 @@ public class BluePrintScreen extends Screen
 
     private void prevPage()
     {
-        if (currentFloor > 0)
+        if (currentY > 0)
         {
-            currentFloor--;
+            currentY--;
         }
             else
             {
-                currentFloor = allFloors - 1;
+                currentY = sizeY - 1;
             }
         refreshFloorItem();
     }
 
     private void nextPage()
     {
-        if (currentFloor < allFloors - 1)
+        if (currentY < sizeY - 1)
         {
-            currentFloor++;
+            currentY++;
         }
             else
             {
-                currentFloor = 0;
+                currentY = 0;
             }
         refreshFloorItem();
     }
