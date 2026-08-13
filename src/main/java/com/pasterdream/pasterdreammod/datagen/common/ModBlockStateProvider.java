@@ -333,6 +333,38 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.WIND_MOOR_LEAVES_0.get(), cubeAll(ModBlocks.WIND_MOOR_LEAVES_0.get()));
         simpleBlockWithItem(ModBlocks.WIND_MOOR_LEAVES_1.get(), cubeAll(ModBlocks.WIND_MOOR_LEAVES_1.get()));
 
+        // ===== 风泊木板建材系列 =====
+        simpleBlockWithItem(ModBlocks.WIND_MOOR_PLANKS.get(), cubeAll(ModBlocks.WIND_MOOR_PLANKS.get()));
+
+        stairsBlock((StairBlock) ModBlocks.WIND_MOOR_STAIRS.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
+        blockItem(ModBlocks.WIND_MOOR_STAIRS);
+
+        slabBlock((SlabBlock) ModBlocks.WIND_MOOR_SLAB.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
+        blockItem(ModBlocks.WIND_MOOR_SLAB);
+
+        fenceBlock((FenceBlock) ModBlocks.WIND_MOOR_FENCE.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
+
+        fenceGateBlock((FenceGateBlock) ModBlocks.WIND_MOOR_FENCE_GATE.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
+        blockItem(ModBlocks.WIND_MOOR_FENCE_GATE);
+
+        paneBlock((IronBarsBlock) ModBlocks.WIND_MOOR_PANE.get(), modLoc("block/wind_moor_trapdoor"), modLoc("block/wind_moor_trapdoor"));
+
+        doorBlockWithRenderType((DoorBlock) ModBlocks.WIND_MOOR_DOOR.get(),
+                modLoc("block/wind_moor_door_bottom"),
+                modLoc("block/wind_moor_door_top"),
+                "cutout");
+
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.WIND_MOOR_TRAPDOOR.get(),
+                modLoc("block/wind_moor_trapdoor"),
+                true,
+                "cutout");
+        blockItem(ModBlocks.WIND_MOOR_TRAPDOOR, "_bottom");
+
+        pressurePlateBlock((PressurePlateBlock) ModBlocks.WIND_MOOR_PRESSURE_PLATE.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
+        blockItem(ModBlocks.WIND_MOOR_PRESSURE_PLATE);
+
+        buttonBlock((ButtonBlock) ModBlocks.WIND_MOOR_BUTTON.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
+
         // ===== 巨型泡泡 =====
         var bubbleModel = models().cubeAll(ModBlocks.BIG_BUBBLE.getId().getPath(), modLoc("block/big_bubble")).renderType("translucent");
         simpleBlockWithItem(ModBlocks.BIG_BUBBLE.get(), bubbleModel);

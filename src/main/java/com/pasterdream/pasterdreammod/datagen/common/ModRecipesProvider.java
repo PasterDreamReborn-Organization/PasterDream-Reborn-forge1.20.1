@@ -281,6 +281,27 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.STRIPPED_WIND_MOOR_LOG.get()), has(ModItems.STRIPPED_WIND_MOOR_LOG.get()))
                 .save(pWriter);
 
+        // 风泊原木 → 风泊木板 + 全套建材配方
+        RecipeHelpers.plankFamilyRecipes(pWriter,
+                ModItems.WIND_MOOR_LOG.get(),
+                ModItems.WIND_MOOR_PLANKS.get(),
+                ModItems.WIND_MOOR_STAIRS.get(),
+                ModItems.WIND_MOOR_SLAB.get(),
+                ModItems.WIND_MOOR_FENCE.get(),
+                ModItems.WIND_MOOR_FENCE_GATE.get(),
+                ModItems.WIND_MOOR_DOOR.get(),
+                ModItems.WIND_MOOR_TRAPDOOR.get(),
+                ModItems.WIND_MOOR_PRESSURE_PLATE.get(),
+                ModItems.WIND_MOOR_BUTTON.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 风泊木窗格 - 玻璃板 + 风泊木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.WIND_MOOR_PANE.get(), 1)
+                .requires(Items.GLASS_PANE)
+                .requires(ModItems.WIND_MOOR_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.WIND_MOOR_PLANKS.get()), has(ModItems.WIND_MOOR_PLANKS.get()))
+                .save(pWriter);
+
         // 染梦原木 → 染梦木板 + 全套建材配方
         RecipeHelpers.plankFamilyRecipes(pWriter,
                 ModItems.DYEDREAM_LOG.get(),

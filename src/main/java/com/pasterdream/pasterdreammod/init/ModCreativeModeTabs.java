@@ -506,6 +506,16 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.STRIPPED_WIND_MOOR_WOOD.get());
                         output.accept(ModItems.WIND_MOOR_LEAVES_0.get());
                         output.accept(ModItems.WIND_MOOR_LEAVES_1.get());
+                        output.accept(ModItems.WIND_MOOR_PLANKS.get());
+                        output.accept(ModItems.WIND_MOOR_STAIRS.get());
+                        output.accept(ModItems.WIND_MOOR_SLAB.get());
+                        output.accept(ModItems.WIND_MOOR_FENCE.get());
+                        output.accept(ModItems.WIND_MOOR_FENCE_GATE.get());
+                        output.accept(ModItems.WIND_MOOR_PANE.get());
+                        output.accept(ModItems.WIND_MOOR_DOOR.get());
+                        output.accept(ModItems.WIND_MOOR_TRAPDOOR.get());
+                        output.accept(ModItems.WIND_MOOR_PRESSURE_PLATE.get());
+                        output.accept(ModItems.WIND_MOOR_BUTTON.get());
                     })
                     .build());
 

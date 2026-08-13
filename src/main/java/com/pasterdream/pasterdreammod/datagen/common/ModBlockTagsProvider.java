@@ -333,6 +333,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_TRAPDOOR.get())
                 .add(ModBlocks.SHADOW_PRESSURE_PLATE.get())
                 .add(ModBlocks.SHADOW_BUTTON.get())
+                .add(ModBlocks.WIND_MOOR_PLANKS.get())
+                .add(ModBlocks.WIND_MOOR_STAIRS.get())
+                .add(ModBlocks.WIND_MOOR_SLAB.get())
+                .add(ModBlocks.WIND_MOOR_FENCE.get())
+                .add(ModBlocks.WIND_MOOR_FENCE_GATE.get())
+                .add(ModBlocks.WIND_MOOR_PANE.get())
+                .add(ModBlocks.WIND_MOOR_DOOR.get())
+                .add(ModBlocks.WIND_MOOR_TRAPDOOR.get())
+                .add(ModBlocks.WIND_MOOR_PRESSURE_PLATE.get())
+                .add(ModBlocks.WIND_MOOR_BUTTON.get())
                 .add(ModBlocks.SHADOW_BOOKSHELF.get())
                 .add(ModBlocks.WORN_SHADOW_BOOKSHELF.get())
                 .add(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get())
@@ -340,39 +350,48 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.DYEDREAM_PLANKS.get())
-                .add(ModBlocks.SHADOW_PLANKS.get());
+                .add(ModBlocks.SHADOW_PLANKS.get())
+                .add(ModBlocks.WIND_MOOR_PLANKS.get());
 
         tag(BlockTags.WOODEN_STAIRS)
                 .add(ModBlocks.DYEDREAM_STAIRS.get())
-                .add(ModBlocks.SHADOW_STAIRS.get());
+                .add(ModBlocks.SHADOW_STAIRS.get())
+                .add(ModBlocks.WIND_MOOR_STAIRS.get());
 
         tag(BlockTags.WOODEN_SLABS)
                 .add(ModBlocks.DYEDREAM_SLAB.get())
-                .add(ModBlocks.SHADOW_SLAB.get());
+                .add(ModBlocks.SHADOW_SLAB.get())
+                .add(ModBlocks.WIND_MOOR_SLAB.get());
 
         tag(BlockTags.WOODEN_FENCES)
                 .add(ModBlocks.DYEDREAM_FENCE.get())
-                .add(ModBlocks.SHADOW_FENCE.get());
+                .add(ModBlocks.SHADOW_FENCE.get())
+                .add(ModBlocks.WIND_MOOR_FENCE.get());
 
         tag(BlockTags.FENCE_GATES)
                 .add(ModBlocks.DYEDREAM_FENCE_GATE.get())
-                .add(ModBlocks.SHADOW_FENCE_GATE.get());
+                .add(ModBlocks.SHADOW_FENCE_GATE.get())
+                .add(ModBlocks.WIND_MOOR_FENCE_GATE.get());
 
         tag(BlockTags.WOODEN_DOORS)
                 .add(ModBlocks.DYEDREAM_DOOR.get())
-                .add(ModBlocks.SHADOW_DOOR.get());
+                .add(ModBlocks.SHADOW_DOOR.get())
+                .add(ModBlocks.WIND_MOOR_DOOR.get());
 
         tag(BlockTags.WOODEN_TRAPDOORS)
                 .add(ModBlocks.DYEDREAM_TRAPDOOR.get())
-                .add(ModBlocks.SHADOW_TRAPDOOR.get());
+                .add(ModBlocks.SHADOW_TRAPDOOR.get())
+                .add(ModBlocks.WIND_MOOR_TRAPDOOR.get());
 
         tag(BlockTags.WOODEN_PRESSURE_PLATES)
                 .add(ModBlocks.DYEDREAM_PRESSURE_PLATE.get())
-                .add(ModBlocks.SHADOW_PRESSURE_PLATE.get());
+                .add(ModBlocks.SHADOW_PRESSURE_PLATE.get())
+                .add(ModBlocks.WIND_MOOR_PRESSURE_PLATE.get());
 
         tag(BlockTags.WOODEN_BUTTONS)
                 .add(ModBlocks.DYEDREAM_BUTTON.get())
-                .add(ModBlocks.SHADOW_BUTTON.get());
+                .add(ModBlocks.SHADOW_BUTTON.get())
+                .add(ModBlocks.WIND_MOOR_BUTTON.get());
 
         // ===== 阴影书架（forge:bookshelves 兼容标签） =====
         tag(Tags.Blocks.BOOKSHELVES)

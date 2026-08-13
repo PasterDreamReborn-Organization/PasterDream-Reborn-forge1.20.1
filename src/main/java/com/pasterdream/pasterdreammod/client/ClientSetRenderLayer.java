@@ -13,6 +13,7 @@ public class ClientSetRenderLayer
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_LANTERN.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_PANE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_PANE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WIND_MOOR_PANE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUST_BLACK_METAL_BARS.get(), RenderType.cutout());
 
         // ===== translucent 渲染（半透明玻璃） =====
