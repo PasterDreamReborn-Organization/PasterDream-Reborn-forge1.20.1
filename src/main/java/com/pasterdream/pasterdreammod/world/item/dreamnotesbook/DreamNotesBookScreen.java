@@ -34,6 +34,8 @@ public class DreamNotesBookScreen extends Screen
     private int GUIStartX;
     private int GUIStartY;
 
+    private int color;
+
     private List<List<String>> pageContent = new ArrayList<>();
 
     private int totalPage = 0;
@@ -73,6 +75,7 @@ public class DreamNotesBookScreen extends Screen
             contentStartY = dreamNotesBookInfo.contentStartY();
             contentFinalX = dreamNotesBookInfo.contentFinalX();
             contentFinalY = dreamNotesBookInfo.contentFinalY();
+            color = dreamNotesBookInfo.color();
 
             pageContent = warpListTextToPage(wrapTextToLine(content.getString(), contentFinalX - contentStartX), contentFinalY - contentStartY);
             totalPage = pageContent.size() + 1;
@@ -82,13 +85,14 @@ public class DreamNotesBookScreen extends Screen
                 title = null;
                 author = null;
                 content = null;
-                GUI = GUIBackGroundRender.DREAM_NOTES_BOOK;
+                GUI = GUIBackGroundRender.DREAM_NOTES_BOOK_DYEDREAM_WORLD_GUI;
                 GUI_X = 140;
                 GUI_Y = 180;
                 contentStartX = 10;
                 contentStartY = 10;
                 contentFinalX = 130;
                 contentFinalY = 170;
+                color = 0xFFFFFFFF;
 
                 totalPage = 1;
             }
@@ -156,6 +160,21 @@ public class DreamNotesBookScreen extends Screen
         return pages;
     }
 
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double delta)
+    {
+        if (delta > 0)
+        {
+            prevPage();
+        }
+        else
+            if (delta < 0)
+            {
+                nextPage();
+            }
+        return true;
+    }
+
     private void nextPage()
     {
         if(currentPage < totalPage - 1)
@@ -204,8 +223,8 @@ public class DreamNotesBookScreen extends Screen
 
         if(currentPage == 0)
         {
-            drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 4 * font.lineHeight, title.getString(), 0xFF000000);
-            drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 6 * font.lineHeight, author, 0xFF000000);
+            drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 4 * font.lineHeight, title.getString(), color);
+            drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 6 * font.lineHeight, author, color);
         }
             else
             {
@@ -214,7 +233,7 @@ public class DreamNotesBookScreen extends Screen
 
                 for(int i = 0; i < totalLines; i++)
                 {
-                    guiGraphics.drawString(font, stringInPage.get(i), GUIStartX + contentStartX, GUIStartY + contentStartY + i * font.lineHeight, 0xFF000000, false);
+                    guiGraphics.drawString(font, stringInPage.get(i), GUIStartX + contentStartX, GUIStartY + contentStartY + i * font.lineHeight, color, false);
                 }
             }
     }
