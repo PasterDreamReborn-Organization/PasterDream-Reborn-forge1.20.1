@@ -752,7 +752,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.黑暗之地", "Shadow Place");
         add("book.pasterdream.title.阴影小木屋", "Shadow Fungus House");
         add("book.pasterdream.title.阴影地下工作室", "Shadow Underground Workroom");
-        add("book.pasterdream.title.>被阴影浸染的字迹潦草的笔记<", ">Shadow Dyed Sloppy Handwriting Notes<");
+        add("book.pasterdream.title.-被阴影浸染的字迹潦草的笔记-", "-Shadow Dyed Sloppy Handwriting Notes-");
         add("book.pasterdream.title.关于黑暗之手的随笔", "Regarding Shadow Hands Essay");
         add("book.pasterdream.title.与黑色双手的决战和败北", "Decisive Battle With Shadow Hands And Fail");
         add("book.pasterdream.title.侵染教堂-黑面", "Infested Church - Black Face");
