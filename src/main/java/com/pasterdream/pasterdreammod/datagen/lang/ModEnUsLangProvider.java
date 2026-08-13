@@ -471,6 +471,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_VINE.get(), "Dyedream Vine");
         add(ModBlocks.JUNGLE_SPORANGIUM.get(), "Jungle Sporangium");
         add(ModBlocks.FOURLEAF_CLOVER.get(),"fourleaf clover");
+        add(ModBlocks.HAIRY_MOSS.get(), "Hairy Moss");
+        add(ModBlocks.WIND_CLEAVING_GRASS.get(), "Wind Cleaving Grass");
+        add(ModBlocks.WIND_FEATHER_GRASS.get(), "Wind Feather Grass");
+        add(ModBlocks.WIND_ISLAND_REED.get(), "Wind Island Reed");
 
         add(ModBlocks.SHADOW_SHORT_ROOTS.get(), "Shadow Short Roots");
         add(ModBlocks.SHADOW_ROOTS.get(), "Shadow Roots");

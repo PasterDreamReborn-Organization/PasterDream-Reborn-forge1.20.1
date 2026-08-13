@@ -426,6 +426,16 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.FOURLEAF_CLOVER.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/fourleaf_clover"));
 
+        // 风之植物系列
+        withExistingParent(ModItems.HAIRY_MOSS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/hairy_moss"));
+        withExistingParent(ModItems.WIND_CLEAVING_GRASS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_cleaving_grass"));
+        withExistingParent(ModItems.WIND_FEATHER_GRASS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_feather_grass_top"));
+        withExistingParent(ModItems.WIND_ISLAND_REED.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_island_reed_top"));
+
         // 阴影植物系列
         withExistingParent(ModItems.SHADOW_SHORT_ROOTS.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/shadow_short_roots"));

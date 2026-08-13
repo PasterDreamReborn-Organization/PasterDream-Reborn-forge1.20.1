@@ -556,6 +556,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FOURLEAF_CLOVER.get());
                         output.accept(ModItems.BLAZE_FLOWER.get());
                         output.accept(ModItems.CRIMSON_THORNS.get());
+                        output.accept(ModItems.HAIRY_MOSS.get());
+                        output.accept(ModItems.WIND_CLEAVING_GRASS.get());
+                        output.accept(ModItems.WIND_FEATHER_GRASS.get());
+                        output.accept(ModItems.WIND_ISLAND_REED.get());
                         output.accept(ModItems.SHADOW_SHORT_ROOTS.get());
                         output.accept(ModItems.SHADOW_ROOTS.get());
                         output.accept(ModItems.SHADOW_STEM_FERN.get());

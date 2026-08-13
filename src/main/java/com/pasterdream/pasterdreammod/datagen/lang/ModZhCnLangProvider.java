@@ -485,6 +485,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.REED.get(), "芦苇");
         add(ModBlocks.JUNGLE_SPORANGIUM.get(), "丛林孢子囊");
         add(ModBlocks.FOURLEAF_CLOVER.get(),"四叶草");
+        add(ModBlocks.HAIRY_MOSS.get(), "茸毛苔");
+        add(ModBlocks.WIND_CLEAVING_GRASS.get(), "斩风草");
+        add(ModBlocks.WIND_FEATHER_GRASS.get(), "风羽草");
+        add(ModBlocks.WIND_ISLAND_REED.get(), "风岛芦苇");
 
         add(ModBlocks.SHADOW_SHORT_ROOTS.get(), "阴影矮菌索");
         add(ModBlocks.SHADOW_ROOTS.get(), "阴影菌索");
