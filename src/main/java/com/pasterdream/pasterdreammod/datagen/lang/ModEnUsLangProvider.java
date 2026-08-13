@@ -305,6 +305,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_PACKED_ICE.get(), "Dye Dream Packed Ice");
         add(ModBlocks.CLOUD.get(), "Cloud");
         add(ModBlocks.DARK_CLOUD.get(), "Dark Cloud");
+        add(ModBlocks.WHITE_SAND.get(), "White Sand");
+        add(ModBlocks.THICK_CLOUD.get(), "Thick Cloud");
         add(ModBlocks.SHADOW.get(), "Shadow");
         add(ModBlocks.THICK_SHADOW.get(), "Thick Shadow");
         add(ModBlocks.SHADOW_STONE.get(), "Shadow Stone");

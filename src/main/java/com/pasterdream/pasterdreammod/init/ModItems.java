@@ -1231,6 +1231,10 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.CLOUD.get(), new Item.Properties()));
     public static final RegistryObject<Item> DARK_CLOUD = ITEMS.register("dark_cloud",
             () -> new BlockItem(ModBlocks.DARK_CLOUD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WHITE_SAND = ITEMS.register("white_sand",
+            () -> new BlockItem(ModBlocks.WHITE_SAND.get(), new Item.Properties()));
+    public static final RegistryObject<Item> THICK_CLOUD = ITEMS.register("thick_cloud",
+            () -> new BlockItem(ModBlocks.THICK_CLOUD.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW = ITEMS.register("shadow",
             () -> new BlockItem(ModBlocks.SHADOW.get(), new Item.Properties()));
     public static final RegistryObject<Item> THICK_SHADOW = ITEMS.register("thick_shadow",

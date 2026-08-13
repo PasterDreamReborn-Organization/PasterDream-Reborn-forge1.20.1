@@ -319,6 +319,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_PACKED_ICE.get(), "染梦浮冰");
         add(ModBlocks.CLOUD.get(), "云朵");
         add(ModBlocks.DARK_CLOUD.get(), "乌云");
+        add(ModBlocks.WHITE_SAND.get(), "白沙");
+        add(ModBlocks.THICK_CLOUD.get(), "厚重云朵");
         add(ModBlocks.SHADOW.get(), "阴影");
         add(ModBlocks.THICK_SHADOW.get(), "厚重阴影");
         add(ModBlocks.SHADOW_STONE.get(), "阴影石");

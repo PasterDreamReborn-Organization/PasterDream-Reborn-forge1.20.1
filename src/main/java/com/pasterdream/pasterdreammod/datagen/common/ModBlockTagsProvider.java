@@ -41,7 +41,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get())
                 .add(ModBlocks.DYEDREAM_FARMLAND.get())
                 .add(ModBlocks.SOUL_ORE.get())
-                .add(ModBlocks.SALT_BLOCK.get());
+                .add(ModBlocks.SALT_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_SAND.get())
+                .add(ModBlocks.WHITE_SAND.get());
+
 
         // 可以用锄头来挖掘
         tag(BlockTags.MINEABLE_WITH_HOE)
