@@ -500,6 +500,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CYAN_STONE.get());
                         output.accept(ModItems.WHITE_SAND.get());
                         output.accept(ModItems.THICK_CLOUD.get());
+                        output.accept(ModItems.WIND_MOOR_LOG.get());
+                        output.accept(ModItems.WIND_MOOR_WOOD.get());
+                        output.accept(ModItems.STRIPPED_WIND_MOOR_LOG.get());
+                        output.accept(ModItems.STRIPPED_WIND_MOOR_WOOD.get());
                     })
                     .build());
 

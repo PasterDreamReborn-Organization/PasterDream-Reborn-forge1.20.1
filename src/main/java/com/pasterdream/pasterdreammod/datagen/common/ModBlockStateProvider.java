@@ -318,6 +318,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
         axisBlock((RotatedPillarBlock) ModBlocks.STRIPPED_SHADOW_HYPHAE.get(), strippedShadowStemTex, strippedShadowStemTex);
         blockItem(ModBlocks.STRIPPED_SHADOW_HYPHAE);
 
+        // ===== 风泊木系列 =====
+        logBlock((RotatedPillarBlock) ModBlocks.WIND_MOOR_LOG.get());
+        blockItem(ModBlocks.WIND_MOOR_LOG);
+        var windMoorLogTex = blockTexture(ModBlocks.WIND_MOOR_LOG.get());
+        axisBlock((RotatedPillarBlock) ModBlocks.WIND_MOOR_WOOD.get(), windMoorLogTex, windMoorLogTex);
+        blockItem(ModBlocks.WIND_MOOR_WOOD);
+        logBlock((RotatedPillarBlock) ModBlocks.STRIPPED_WIND_MOOR_LOG.get());
+        blockItem(ModBlocks.STRIPPED_WIND_MOOR_LOG);
+        var strippedWindMoorLogTex = blockTexture(ModBlocks.STRIPPED_WIND_MOOR_LOG.get());
+        axisBlock((RotatedPillarBlock) ModBlocks.STRIPPED_WIND_MOOR_WOOD.get(), strippedWindMoorLogTex, strippedWindMoorLogTex);
+        blockItem(ModBlocks.STRIPPED_WIND_MOOR_WOOD);
+
         // ===== 巨型泡泡 =====
         var bubbleModel = models().cubeAll(ModBlocks.BIG_BUBBLE.getId().getPath(), modLoc("block/big_bubble")).renderType("translucent");
         simpleBlockWithItem(ModBlocks.BIG_BUBBLE.get(), bubbleModel);
