@@ -347,6 +347,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBuildingFamily(new BuildingBlockFamily(ModBlocks.POLISHED_CALCITE, ModBlocks.POLISHED_CALCITE_STAIRS, ModBlocks.POLISHED_CALCITE_SLAB, ModBlocks.POLISHED_CALCITE_WALL));
         simpleBuildingFamily(new BuildingBlockFamily(ModBlocks.CALCITE_TILES, ModBlocks.CALCITE_TILES_STAIRS, ModBlocks.CALCITE_TILES_SLAB, ModBlocks.CALCITE_TILES_WALL));
 
+        // ===== 风之旅世界·苍青岩系列 =====
+        simpleBlockWithItem(ModBlocks.CYAN_STONE.get(), cubeAll(ModBlocks.CYAN_STONE.get()));
+        var cyanMossStoneModel = models().cubeBottomTop(
+                ModBlocks.CYAN_MOSS_STONE.getId().getPath(),
+                blockTexture(ModBlocks.CYAN_MOSS_STONE.get()),
+                blockTexture(ModBlocks.CYAN_STONE.get()),
+                modLoc("block/cyan_moss_stone_top"));
+        simpleBlockWithItem(ModBlocks.CYAN_MOSS_STONE.get(), cyanMossStoneModel);
+
         // ===== 植物系列 =====
         var goldenrod = models().cross(ModBlocks.GOLDENROD.getId().getPath(), blockTexture(ModBlocks.GOLDENROD.get())).renderType("cutout");
         simpleBlock(ModBlocks.GOLDENROD.get(), goldenrod);

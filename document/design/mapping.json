@@ -214,7 +214,9 @@
     "shadow_trap_0": "shadow_hand_trap",
     "shadow_brazier": "shadow_brazier",
     "shadow_blast_furnace": "shadow_blast_furnace",
-    "shadow_blast_furnace_core": "shadow_blast_furnace_core"
+    "shadow_blast_furnace_core": "shadow_blast_furnace_core",
+    "cyan_stone": "cyan_stone",
+    "cyan_moss_stone": "cyan_moss_stone"
   },
   "items": {
     "amber_candy": "amber_candy",

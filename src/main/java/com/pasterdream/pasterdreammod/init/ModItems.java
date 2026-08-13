@@ -1447,6 +1447,12 @@ public class ModItems {
     public static final RegistryObject<Item> CALCITE_TILES_WALL = ITEMS.register("calcite_tiles_wall",
             () -> new BlockItem(ModBlocks.CALCITE_TILES_WALL.get(), new Item.Properties()));
 
+    // ===== 风之旅世界·苍青岩系列 =====
+    public static final RegistryObject<Item> CYAN_STONE = ITEMS.register("cyan_stone",
+            () -> new BlockItem(ModBlocks.CYAN_STONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CYAN_MOSS_STONE = ITEMS.register("cyan_moss_stone",
+            () -> new BlockItem(ModBlocks.CYAN_MOSS_STONE.get(), new Item.Properties()));
+
     // =====植物系列（花） =====
     public static final RegistryObject<Item> GOLDENROD = ITEMS.register("goldenrod",
             () -> new BlockItem(ModBlocks.GOLDENROD.get(), new Item.Properties()));

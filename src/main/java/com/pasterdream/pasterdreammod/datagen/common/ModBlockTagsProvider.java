@@ -90,6 +90,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_LANTERN.get())
                 .add(ModBlocks.ICE_STONE.get())
                 .add(ModBlocks.ICE_BUD.get())
+                .add(ModBlocks.CYAN_STONE.get())
+                .add(ModBlocks.CYAN_MOSS_STONE.get())
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get())
                 .add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get())
                 .add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get())
