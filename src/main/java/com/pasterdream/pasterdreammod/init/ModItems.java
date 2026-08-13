@@ -58,6 +58,7 @@ import com.pasterdream.pasterdreammod.world.item.tidetool.BeihaiRuoTideSwordItem
 import com.pasterdream.pasterdreammod.world.item.tidetool.TideSwordItem;
 import com.pasterdream.pasterdreammod.world.item.whiteswordtool.WhiteSwordItem;
 import com.pasterdream.pasterdreammod.world.item.shadowswordtool.ShadowSwordItem;
+import com.pasterdream.pasterdreammod.world.item.shadowerosiontool.*;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.iceshadowhammertool.IceShadowHammerItem;
@@ -377,6 +378,18 @@ public class ModItems {
     // 冰影战锤
     public static final RegistryObject<Item> ICE_SHADOW_HAMMER = ITEMS.register("ice_shadow_hammer",
             () -> new IceShadowHammerItem(ModToolTiers.ICE_SHADOW_HAMMER, new Item.Properties()));
+
+    // ===== 影蚀系列 =====
+    public static final RegistryObject<Item> SHADOW_EROSION_DAGGER = ITEMS.register("shadow_erosion_dagger",
+            () -> new ShadowErosionDaggerItem(ModToolTiers.SHADOW_EROSION_DAGGER, 3, -2.0f, new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_EROSION_PICKAXE = ITEMS.register("shadow_erosion_pickaxe",
+            () -> new ShadowErosionPickaxeItem(ModToolTiers.SHADOW_EROSION_PICKAXE, 1, -2.8f, new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_EROSION_AXE = ITEMS.register("shadow_erosion_axe",
+            () -> new ShadowErosionAxeItem(ModToolTiers.SHADOW_EROSION_AXE, 1, -3.0f, new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_EROSION_SHOVEL = ITEMS.register("shadow_erosion_shovel",
+            () -> new ShadowErosionShovelItem(ModToolTiers.SHADOW_EROSION_SHOVEL, 1, -3.0f, new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_EROSION_HOE = ITEMS.register("shadow_erosion_hoe",
+            () -> new ShadowErosionHoeItem(ModToolTiers.SHADOW_EROSION_HOE, 0, 0.0f, new Item.Properties()));
 
     // ===== 独立武器 =====
     public static final RegistryObject<Item> THERMAL_DAGGER = ITEMS.register("thermal_dagger",

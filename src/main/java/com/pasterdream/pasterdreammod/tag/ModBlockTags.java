@@ -18,6 +18,7 @@ public class ModBlockTags {
     public static final TagKey<Block> CRIMSON_THORNS_CAN_PLACE_ON = create("crimson_thorns_can_place_on");
     public static final TagKey<Block> BLAZE_FLOWER_CAN_PLACE_ON = create("blaze_flower_can_place_on");
     public static final TagKey<Block> SHADOW_PLANTS_CAN_PLACE_ON = create("shadow_plants_can_place_on");
+    public static final TagKey<Block> SHADOW_EROSION_TOOL_CAN_BOOST = create("shadow_erosion_tool_can_boost");
     private static TagKey<Block> create(String pName) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, pName));
     }
