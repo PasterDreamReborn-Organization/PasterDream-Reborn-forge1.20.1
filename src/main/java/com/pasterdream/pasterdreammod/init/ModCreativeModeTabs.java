@@ -143,6 +143,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_COROLLA.get());
                         output.accept(ModItems.WHITE_COROLLA.get());
                         output.accept(ModItems.WHITE_CRYSTAL.get());
+                        output.accept(ModItems.CONGEAL_WIND.get());
+                        output.accept(ModItems.WIND_RUNNER_CRYSTAL.get());
                         output.accept(ModItems.BLUE_HEART_OF_THE_SEA.get());
                         output.accept(ModItems.ELDER_GUARDIAN_SCALE.get());
                         output.accept(ModItems.CHARGED_AMETHYST.get());
@@ -532,6 +534,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CARVE_CLARITY_GLASS_PANE.get());
                         output.accept(ModItems.FRAME_CLARITY_GLASS.get());
                         output.accept(ModItems.FRAME_CLARITY_GLASS_PANE.get());
+                        output.accept(ModItems.CONGEAL_WIND_ORE.get());
+                        output.accept(ModItems.WIND_RUNNER_CRYSTAL_ORE.get());
                     })
                     .build());
 

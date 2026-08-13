@@ -211,6 +211,10 @@ public class ModItems {
     public static final RegistryObject<Item> WHITE_COROLLA = ITEMS.register("white_corolla", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WHITE_CRYSTAL = ITEMS.register("white_crystal",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> CONGEAL_WIND = ITEMS.register("congeal_wind",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> WIND_RUNNER_CRYSTAL = ITEMS.register("wind_runner_crystal",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LIGHT_BALL = ITEMS.register("light_ball",
             () -> new BlockItem(ModBlocks.LIGHT_BALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
@@ -1151,6 +1155,10 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> MOLTEN_GOLD_ORE = ITEMS.register("molten_gold_ore",
             () -> new BlockItem(ModBlocks.MOLTEN_GOLD_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_ORE = ITEMS.register("congeal_wind_ore",
+            () -> new BlockItem(ModBlocks.CONGEAL_WIND_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_RUNNER_CRYSTAL_ORE = ITEMS.register("wind_runner_crystal_ore",
+            () -> new BlockItem(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SOUL_ORE = ITEMS.register("soul_ore",
             () -> new BlockItem(ModBlocks.SOUL_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> RAW_TITANIUM_BLOCK = ITEMS.register("raw_titanium_block",
