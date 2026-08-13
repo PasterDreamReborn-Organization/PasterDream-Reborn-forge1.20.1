@@ -178,6 +178,8 @@ public class ModBlocks {
     // ===== 云朵 =====
     public static final RegistryObject<Block> CLOUD = BLOCKS.register("cloud", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).ignitedByLava().sound(SoundType.WOOL).strength(0.2f, 0f).noOcclusion().isRedstoneConductor((blockState, level, blockPos) -> false).isSuffocating((blockState, level, blockPos) -> false).isViewBlocking((blockState, level, blockPos) -> false)));
     public static final RegistryObject<Block> DARK_CLOUD = BLOCKS.register("dark_cloud", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).ignitedByLava().sound(SoundType.WOOL).strength(0.2f, 0f).noOcclusion().isRedstoneConductor((blockState, level, blockPos) -> false).isSuffocating((blockState, level, blockPos) -> false).isViewBlocking((blockState, level, blockPos) -> false)));
+    public static final RegistryObject<Block> WHITE_SAND = BLOCKS.register("white_sand", () -> new FallingBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.SNARE).sound(SoundType.SAND).strength(0.5f)));
+    public static final RegistryObject<Block> THICK_CLOUD = BLOCKS.register("thick_cloud", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).ignitedByLava().sound(SoundType.WOOL).strength(0.3f, 0.5f).noOcclusion().isRedstoneConductor((blockState, level, blockPos) -> false).isSuffocating((blockState, level, blockPos) -> false).isViewBlocking((blockState, level, blockPos) -> false)));
 
     // ===== 巨型泡泡 =====
     public static final RegistryObject<Block> BIG_BUBBLE = BLOCKS.register("big_bubble", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).sound(new SoundType(1.0f, 1.0f,
@@ -334,6 +336,20 @@ public class ModBlocks {
     public static final RegistryObject<Block> CALCITE_TILES_STAIRS = BLOCKS.register("calcite_tiles_stairs", () -> new StairBlock(CALCITE_TILES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.POLISHED_DEEPSLATE).strength(0.75f).requiresCorrectToolForDrops().noOcclusion().dynamicShape()));
     public static final RegistryObject<Block> CALCITE_TILES_SLAB = BLOCKS.register("calcite_tiles_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.POLISHED_DEEPSLATE).strength(0.75f).requiresCorrectToolForDrops().noOcclusion().dynamicShape()));
     public static final RegistryObject<Block> CALCITE_TILES_WALL = BLOCKS.register("calcite_tiles_wall", () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.POLISHED_DEEPSLATE).strength(0.75f).requiresCorrectToolForDrops().noOcclusion().dynamicShape().forceSolidOn()));
+
+    // ===== 风之旅世界·苍青岩系列 =====
+    public static final RegistryObject<Block> CYAN_STONE = BLOCKS.register("cyan_stone", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(1.5f, 1f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> CYAN_MOSS_STONE = BLOCKS.register("cyan_moss_stone", () -> new CyanMossStoneBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(1.5f, 1f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> CYAN_STONE_BRICKS = BLOCKS.register("cyan_stone_bricks", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(2f, 1.5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> CYAN_STONE_BRICK_STAIRS = BLOCKS.register("cyan_stone_brick_stairs", () -> new StairBlock(CYAN_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(2f, 1.5f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final RegistryObject<Block> CYAN_STONE_BRICK_SLAB = BLOCKS.register("cyan_stone_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(2f, 1.5f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final RegistryObject<Block> CYAN_STONE_BRICK_WALL = BLOCKS.register("cyan_stone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(2f, 1.5f).requiresCorrectToolForDrops().dynamicShape().forceSolidOn()));
+    public static final RegistryObject<Block> CYAN_STONE_PRESSURE_PLATE = BLOCKS.register("cyan_stone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(1f, 0f).requiresCorrectToolForDrops().noCollission().dynamicShape().forceSolidOn(), BlockSetType.STONE));
+    public static final RegistryObject<Block> CYAN_STONE_BUTTON = BLOCKS.register("cyan_stone_button", () -> new ButtonBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(1f, 0f).requiresCorrectToolForDrops().noCollission().dynamicShape(), BlockSetType.STONE, 20, false));
+    public static final RegistryObject<Block> MOSSY_CYAN_STONE_BRICKS = BLOCKS.register("mossy_cyan_stone_bricks", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(2f, 1.5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> MOSSY_CYAN_STONE_BRICK_STAIRS = BLOCKS.register("mossy_cyan_stone_brick_stairs", () -> new StairBlock(MOSSY_CYAN_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(2f, 1.5f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final RegistryObject<Block> MOSSY_CYAN_STONE_BRICK_SLAB = BLOCKS.register("mossy_cyan_stone_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(2f, 1.5f).requiresCorrectToolForDrops().dynamicShape()));
+    public static final RegistryObject<Block> MOSSY_CYAN_STONE_BRICK_WALL = BLOCKS.register("mossy_cyan_stone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(2f, 1.5f).requiresCorrectToolForDrops().dynamicShape().forceSolidOn()));
 
     //植物系列（花）
     public static final RegistryObject<Block> GOLDENROD = BLOCKS.register("goldenrod",
@@ -625,6 +641,55 @@ public class ModBlocks {
                     return box(4, 0, 4, 12, 5, 12).move(offset.x, offset.y, offset.z);
                 }
             });
+
+    //风之植物系列
+    public static final RegistryObject<Block> HAIRY_MOSS = BLOCKS.register("hairy_moss", () -> new BushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+    ));
+
+    public static final RegistryObject<Block> WIND_CLEAVING_GRASS = BLOCKS.register("wind_cleaving_grass", () -> new BushBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+    ));
+
+    public static final RegistryObject<Block> WIND_FEATHER_GRASS = BLOCKS.register("wind_feather_grass", () -> new DoublePlantBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+    ));
+
+    public static final RegistryObject<Block> WIND_ISLAND_REED = BLOCKS.register("wind_island_reed", () -> new WindIslandReedBlock(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .instabreak()
+                    .noCollission()
+                    .noOcclusion()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .replaceable()
+    ));
     //作物方块
     public static final RegistryObject<Block> DYEDREAM_COROLLA_CROP = BLOCKS.register("dyedream_corolla_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).noCollission().randomTicks().instabreak()));
     public static final RegistryObject<Block> WHITE_COROLLA_CROP = BLOCKS.register("white_corolla_crop", () -> new PasterDreamCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).noCollission().randomTicks().instabreak()));
@@ -647,6 +712,37 @@ public class ModBlocks {
     public static final RegistryObject<Block> PICNIC_BASKET = BLOCKS.register("picnic_basket", () -> new PicnicBasketBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).ignitedByLava().sound(SoundType.SCAFFOLDING).strength(0.4F).noOcclusion()));
     public static final RegistryObject<Block> SHADOW_CHEST = BLOCKS.register("shadow_chest", () -> new ShadowChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.DEEPSLATE_TILES).strength(1F, 0.5F).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> WIND_MOOR_CRATE = BLOCKS.register("wind_moor_crate", () -> new WindMoorCrateBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1F).noOcclusion()));
+    // ===== 风泊木系列 =====
+    public static final RegistryObject<Block> STRIPPED_WIND_MOOR_LOG = BLOCKS.register("stripped_wind_moor_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f)));
+    public static final RegistryObject<Block> STRIPPED_WIND_MOOR_WOOD = BLOCKS.register("stripped_wind_moor_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f)));
+    public static final RegistryObject<Block> WIND_MOOR_LOG = BLOCKS.register("wind_moor_log", () -> new StrippableRotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f), () -> STRIPPED_WIND_MOOR_LOG.get()));
+    public static final RegistryObject<Block> WIND_MOOR_WOOD = BLOCKS.register("wind_moor_wood", () -> new StrippableRotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f), () -> STRIPPED_WIND_MOOR_WOOD.get()));
+    // ===== 风泊木板建材系列 =====
+    public static final RegistryObject<Block> WIND_MOOR_PLANKS = BLOCKS.register("wind_moor_planks", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f)));
+    public static final RegistryObject<Block> WIND_MOOR_STAIRS = BLOCKS.register("wind_moor_stairs", () -> new StairBlock(WIND_MOOR_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).dynamicShape()));
+    public static final RegistryObject<Block> WIND_MOOR_SLAB = BLOCKS.register("wind_moor_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).dynamicShape()));
+    public static final RegistryObject<Block> WIND_MOOR_FENCE = BLOCKS.register("wind_moor_fence", () -> new FenceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).dynamicShape().forceSolidOn()));
+    public static final RegistryObject<Block> WIND_MOOR_FENCE_GATE = BLOCKS.register("wind_moor_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).dynamicShape().forceSolidOn(), WoodType.OAK));
+    public static final RegistryObject<Block> WIND_MOOR_PANE = BLOCKS.register("wind_moor_pane", () -> new IronBarsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> WIND_MOOR_DOOR = BLOCKS.register("wind_moor_door", () -> new DoorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).noOcclusion().dynamicShape(), BlockSetType.OAK));
+    public static final RegistryObject<Block> WIND_MOOR_TRAPDOOR = BLOCKS.register("wind_moor_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).noOcclusion().dynamicShape(), BlockSetType.OAK));
+    public static final RegistryObject<Block> WIND_MOOR_PRESSURE_PLATE = BLOCKS.register("wind_moor_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).noCollission().dynamicShape().forceSolidOn(), BlockSetType.OAK));
+    public static final RegistryObject<Block> WIND_MOOR_BUTTON = BLOCKS.register("wind_moor_button", () -> new ButtonBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).noCollission().dynamicShape(), BlockSetType.OAK, 30, true));
+    // ===== 风泊树叶（不走随机刻） =====
+    public static final RegistryObject<Block> WIND_MOOR_LEAVES_0 = BLOCKS.register("wind_moor_leaves_0", () -> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).sound(SoundType.GRASS).strength(0.2F, 0.2F).noOcclusion().ignitedByLava().isRedstoneConductor((blockState, level, blockPos) -> false).isSuffocating((blockState, level, blockPos) -> false).isViewBlocking((blockState, level, blockPos) -> false))
+    {
+        @Override
+        public boolean isRandomlyTicking(BlockState state) {
+            return false;
+        }
+    });
+    public static final RegistryObject<Block> WIND_MOOR_LEAVES_1 = BLOCKS.register("wind_moor_leaves_1", () -> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).sound(SoundType.GRASS).strength(0.2F, 0.2F).noOcclusion().ignitedByLava().isRedstoneConductor((blockState, level, blockPos) -> false).isSuffocating((blockState, level, blockPos) -> false).isViewBlocking((blockState, level, blockPos) -> false))
+    {
+        @Override
+        public boolean isRandomlyTicking(BlockState state) {
+            return false;
+        }
+    });
     public static final RegistryObject<Block> THE_ENDLESS_BOOK_OF_DREAM_SEEKERS = BLOCKS.register("the_endless_book_of_dream_seekers", () -> new TheEndlessBookOfDreamSeekersBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(-1F, 2147483647F).noOcclusion().noCollission().lightLevel(state -> 15)));
     public static final RegistryObject<Block> RESEARCH_TABLE = BLOCKS.register("research_table", () -> new ResearchTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).sound(SoundType.WOOD).strength(1F, 0.2F).noOcclusion()));
     public static final RegistryObject<Block> MELT_DREAM_CRYSTAL_CHEST = BLOCKS.register("melt_dream_crystal_chest", () -> new MeltDreamCrystalChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).sound(SoundType.STONE).strength(-1F, 2147483647F).noOcclusion().lightLevel(state -> 12)));
@@ -672,7 +768,22 @@ public class ModBlocks {
     public static final RegistryObject<Block> GOLDEN_FOX_SCULPTURE = BLOCKS.register("golden_fox_sculpture", GoldenFoxSculptureBlock::new);
     public static final RegistryObject<Block> FOX_SCULPTURE = BLOCKS.register("fox_sculpture", FoxSculptureBlock::new);
     // ===== 陶罐 =====
-    public static final RegistryObject<Block> CLAY_POT = BLOCKS.register("clay_pot", ClayPotBlock::new);
+    public static final RegistryObject<Block> CLAY_POT = BLOCKS.register("clay_pot",
+            () -> new ClayPotBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BROWN)
+                    .sound(SoundType.BONE_BLOCK)
+                    .strength(0.5f, 0.1f)
+                    .noOcclusion()
+                    .isRedstoneConductor((bs, br, bp) -> false)));
+    // ===== 阴影陶罐 =====
+    public static final RegistryObject<Block> SHADOW_CLAY_POT = BLOCKS.register("shadow_clay_pot",
+            () -> new ClayPotBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BLACK)
+                    .sound(SoundType.BONE_BLOCK)
+                    .strength(0.5f, 0.1f)
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion()
+                    .isRedstoneConductor((bs, br, bp) -> false)));
     // ===== 小石子 =====
     public static final RegistryObject<Block> PEBBLE = BLOCKS.register("pebble", PebbleBlock::new);
     //暮影之笼 / 暮影长床

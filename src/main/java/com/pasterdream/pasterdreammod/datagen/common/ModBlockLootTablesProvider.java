@@ -210,6 +210,17 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
 
         dropOther(ModBlocks.FOURLEAF_CLOVER.get(), ModItems.FOURLEAF_CLOVER_CURIO.get());
 
+        // ===== 风之植物系列 =====
+        add(ModBlocks.HAIRY_MOSS.get(),
+                block -> LootHelpers.creategrassesDrops(ModBlocks.HAIRY_MOSS.get()));
+        add(ModBlocks.WIND_CLEAVING_GRASS.get(),
+                block -> LootHelpers.creategrassesDrops(ModBlocks.WIND_CLEAVING_GRASS.get()));
+        add(ModBlocks.WIND_FEATHER_GRASS.get(),
+                block -> LootHelpers.createhighgrassesDropsNeedScissor(ModBlocks.WIND_FEATHER_GRASS.get()));
+        // 风岛芦苇：精准采集/剪刀掉落自身，否则掉落芦苇杆（与芦苇战利品逻辑一致）
+        add(ModBlocks.WIND_ISLAND_REED.get(),
+                block -> LootHelpers.createShearsOrSilkTouchSelfElseItem(ModBlocks.WIND_ISLAND_REED.get(), ModItems.REED_ROD.get(), 1.0F, 3.0F));
+
         // ===== 阴影植物系列 =====
         dropSelf(ModBlocks.SHADOW_SHORT_ROOTS.get());
         dropSelf(ModBlocks.SHADOW_ROOTS.get());
@@ -257,6 +268,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
 
         dropSelf(ModBlocks.CLOUD.get());
         dropSelf(ModBlocks.DARK_CLOUD.get());
+        dropSelf(ModBlocks.WHITE_SAND.get());
+        dropSelf(ModBlocks.THICK_CLOUD.get());
         dropSelf(ModBlocks.SHADOW.get());
         dropSelf(ModBlocks.THICK_SHADOW.get());
         dropSelf(ModBlocks.SHADOW_STONE.get());
@@ -272,6 +285,12 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
 
         buildingFamily(new BuildingBlockFamily(ModBlocks.POLISHED_CALCITE, ModBlocks.POLISHED_CALCITE_STAIRS, ModBlocks.POLISHED_CALCITE_SLAB, ModBlocks.POLISHED_CALCITE_WALL));
         buildingFamily(new BuildingBlockFamily(ModBlocks.CALCITE_TILES, ModBlocks.CALCITE_TILES_STAIRS, ModBlocks.CALCITE_TILES_SLAB, ModBlocks.CALCITE_TILES_WALL));
+        dropSelf(ModBlocks.CYAN_STONE.get());
+        add(ModBlocks.CYAN_MOSS_STONE.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(ModBlocks.CYAN_STONE.get())));
+        buildingFamily(new BuildingBlockFamily(ModBlocks.CYAN_STONE_BRICKS, ModBlocks.CYAN_STONE_BRICK_STAIRS, ModBlocks.CYAN_STONE_BRICK_SLAB, ModBlocks.CYAN_STONE_BRICK_WALL));
+        buildingFamily(new BuildingBlockFamily(ModBlocks.MOSSY_CYAN_STONE_BRICKS, ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS, ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB, ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL));
+        dropSelf(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.CYAN_STONE_BUTTON.get());
         buildingFamily(new BuildingBlockFamily(ModBlocks.DYEDREAM_BUD_BLOCK, ModBlocks.DYEDREAM_BUD_STAIRS, ModBlocks.DYEDREAM_BUD_SLAB, ModBlocks.DYEDREAM_BUD_WALL));
         buildingFamily(new BuildingBlockFamily(ModBlocks.SHADOW_STONE_BRICK, ModBlocks.SHADOW_STONE_BRICK_STAIRS, ModBlocks.SHADOW_STONE_BRICK_SLAB, ModBlocks.SHADOW_STONE_BRICK_WALL));
         buildingFamily(new BuildingBlockFamily(ModBlocks.NARROW_SHADOW_STONE_BRICK, ModBlocks.NARROW_SHADOW_STONE_BRICK_STAIRS, ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB, ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL));
@@ -332,34 +351,43 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SHADOW_HYPHAE.get());
         dropSelf(ModBlocks.STRIPPED_SHADOW_STEM.get());
         dropSelf(ModBlocks.STRIPPED_SHADOW_HYPHAE.get());
+        dropSelf(ModBlocks.WIND_MOOR_LOG.get());
+        dropSelf(ModBlocks.WIND_MOOR_WOOD.get());
+        dropSelf(ModBlocks.STRIPPED_WIND_MOOR_LOG.get());
+        dropSelf(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
+        add(ModBlocks.WIND_MOOR_LEAVES_0.get(), LootHelpers::creategrassesDrops);
+        add(ModBlocks.WIND_MOOR_LEAVES_1.get(), LootHelpers::creategrassesDrops);
+        dropSelf(ModBlocks.WIND_MOOR_PLANKS.get());
+        dropSelf(ModBlocks.WIND_MOOR_STAIRS.get());
+        add(ModBlocks.WIND_MOOR_SLAB.get(), block -> createSlabItemTable(ModBlocks.WIND_MOOR_SLAB.get()));
+        dropSelf(ModBlocks.WIND_MOOR_FENCE.get());
+        dropSelf(ModBlocks.WIND_MOOR_FENCE_GATE.get());
+        dropSelf(ModBlocks.WIND_MOOR_PANE.get());
+        add(ModBlocks.WIND_MOOR_DOOR.get(), createDoorTable(ModBlocks.WIND_MOOR_DOOR.get()));
+        dropSelf(ModBlocks.WIND_MOOR_TRAPDOOR.get());
+        dropSelf(ModBlocks.WIND_MOOR_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.WIND_MOOR_BUTTON.get());
 
         // ===== 阴影书架系列 =====
-        add(ModBlocks.SHADOW_BOOKSHELF.get(), block -> LootTable.lootTable()
+        // 阴影书架：精准采集掉落自身，否则掉落 3 本书
+        add(ModBlocks.SHADOW_BOOKSHELF.get(), block -> createSilkTouchDispatchTable(block,
+                LootItem.lootTableItem(Items.BOOK).apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))));
+        // 破旧阴影书架：精准采集掉落自身，否则掉落 1 本书
+        add(ModBlocks.WORN_SHADOW_BOOKSHELF.get(), block -> createSilkTouchDispatchTable(block,
+                LootItem.lootTableItem(Items.BOOK)));
+        // 蛛网阴影书架：精准采集掉落自身，否则掉落 1 本书
+        add(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get(), block -> createSilkTouchDispatchTable(block,
+                LootItem.lootTableItem(Items.BOOK)));
+        // 钥匙阴影书架：精准采集掉落自身，否则掉落 2 本书 + 暗影地牢钥匙
+        add(ModBlocks.KEY_SHADOW_BOOKSHELF.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(ModBlocks.SHADOW_BOOKSHELF.get()).when(HAS_SILK_TOUCH)))
+                        .add(LootItem.lootTableItem(ModBlocks.KEY_SHADOW_BOOKSHELF.get()).when(HAS_SILK_TOUCH)))
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(Items.BOOK).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
-                        .add(LootItem.lootTableItem(Items.PAPER).setWeight(8).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
-                        .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get()).setWeight(1))
+                        .add(LootItem.lootTableItem(Items.BOOK).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2))))
+                        .when(HAS_SILK_TOUCH.invert()))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ModItems.SHADOW_DUNGEON_KEY.get()))
                         .when(HAS_SILK_TOUCH.invert())));
-        add(ModBlocks.WORN_SHADOW_BOOKSHELF.get(), block -> LootTable.lootTable()
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(ModBlocks.WORN_SHADOW_BOOKSHELF.get()).when(HAS_SILK_TOUCH)))
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(Items.BOOK).setWeight(10))
-                        .add(LootItem.lootTableItem(Items.PAPER).setWeight(20))
-                        .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get()).setWeight(1))
-                        .when(HAS_SILK_TOUCH.invert())));
-        add(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get(), block -> LootTable.lootTable()
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get()).when(HAS_SILK_TOUCH)))
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(Items.BOOK).setWeight(5))
-                        .add(LootItem.lootTableItem(Items.PAPER).setWeight(10))
-                        .add(LootItem.lootTableItem(Items.STRING).setWeight(10))
-                        .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get()).setWeight(2))
-                        .when(HAS_SILK_TOUCH.invert())));
-        add(ModBlocks.KEY_SHADOW_BOOKSHELF.get(), block -> LootTable.lootTable());
 
         generateCropLoot(ModBlocks.DYEDREAM_COROLLA_CROP.get(), ModItems.DYEDREAM_COROLLA.get(), 1, ModItems.DYEDREAM_COROLLA_CROP_AGE_1.get(), ModItems.DYEDREAM_COROLLA_CROP_AGE_0.get());
         generateCropLoot(ModBlocks.WHITE_COROLLA_CROP.get(), ModItems.WHITE_COROLLA.get(), 1, ModItems.WHITE_COROLLA_CROP_AGE_1.get(), ModItems.WHITE_COROLLA_CROP_AGE_0.get());
@@ -395,6 +423,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                         .add(LootItem.lootTableItem(ModItems.RUST_BLACK_METAL_GRAIN.get()).setWeight(1))
                         .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get()).setWeight(2))
                         .when(HAS_SILK_TOUCH.invert())));
+        // 阴影陶罐：掉落自身
+        dropSelf(ModBlocks.SHADOW_CLAY_POT.get());
         dropSelf(ModBlocks.DREAM_CAULDRON.get());
         dropSelf(ModBlocks.DYEDREAM_DESK.get());
         dropSelf(ModBlocks.SHADOW_DESK.get());

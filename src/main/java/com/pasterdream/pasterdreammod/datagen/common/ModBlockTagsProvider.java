@@ -41,12 +41,17 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get())
                 .add(ModBlocks.DYEDREAM_FARMLAND.get())
                 .add(ModBlocks.SOUL_ORE.get())
-                .add(ModBlocks.SALT_BLOCK.get());
+                .add(ModBlocks.SALT_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_SAND.get())
+                .add(ModBlocks.WHITE_SAND.get());
+
 
         // 可以用锄头来挖掘
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.DYEDREAM_LEAVES.get())
                 .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get())
+                .add(ModBlocks.WIND_MOOR_LEAVES_0.get())
+                .add(ModBlocks.WIND_MOOR_LEAVES_1.get())
                 .add(ModBlocks.PINK_MUSHROOM_BLOCK.get())
                 .add(ModBlocks.PINK_MUSHROOM_STEM.get())
                 .add(ModBlocks.PINK_MUSHROOM_PORES.get())
@@ -70,7 +75,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_STEM.get())
                 .add(ModBlocks.SHADOW_HYPHAE.get())
                 .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
-                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get());
+                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get())
+                .add(ModBlocks.WIND_MOOR_LOG.get())
+                .add(ModBlocks.WIND_MOOR_WOOD.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
 
         // 可以用镐来挖掘
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
@@ -90,6 +99,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_LANTERN.get())
                 .add(ModBlocks.ICE_STONE.get())
                 .add(ModBlocks.ICE_BUD.get())
+                .add(ModBlocks.CYAN_STONE.get())
+                .add(ModBlocks.CYAN_MOSS_STONE.get())
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get())
                 .add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get())
                 .add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get())
@@ -100,6 +111,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get())
                 .add(ModBlocks.CLAYPAN.get())
                 .add(ModBlocks.CLAY_POT.get())
+                .add(ModBlocks.SHADOW_CLAY_POT.get())
                 .add(ModBlocks.PEBBLE.get())
                 .add(ModBlocks.DREAM_CAULDRON.get())
                 .add(ModBlocks.LOST_SWORD_TOMB.get())
@@ -149,12 +161,20 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_STEM.get())
                 .add(ModBlocks.SHADOW_HYPHAE.get())
                 .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
-                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get());
+                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get())
+                .add(ModBlocks.WIND_MOOR_LOG.get())
+                .add(ModBlocks.WIND_MOOR_WOOD.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
 
         //可以燃烧的木头（可制成木炭，可作为燃料）
         tag(BlockTags.LOGS_THAT_BURN)
                 .add(ModBlocks.DYEDREAM_LOG.get())
-                .add(ModBlocks.DYEDREAM_WOOD.get());
+                .add(ModBlocks.DYEDREAM_WOOD.get())
+                .add(ModBlocks.WIND_MOOR_LOG.get())
+                .add(ModBlocks.WIND_MOOR_WOOD.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
 
         tag(BlockTags.LOGS)
                 .add(ModBlocks.DYEDREAM_LOG.get())
@@ -162,18 +182,26 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_STEM.get())
                 .add(ModBlocks.SHADOW_HYPHAE.get())
                 .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
-                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get());
+                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get())
+                .add(ModBlocks.WIND_MOOR_LOG.get())
+                .add(ModBlocks.WIND_MOOR_WOOD.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
 
         tag(ModBlockTags.STRIPPED_LOGS)
-                .add(ModBlocks.DYEDREAM_LOG.get());
+                .add(ModBlocks.DYEDREAM_LOG.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get());
 
         tag(ModBlockTags.STRIPPED_WOOD)
-                .add(ModBlocks.DYEDREAM_WOOD.get());
+                .add(ModBlocks.DYEDREAM_WOOD.get())
+                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
 
 
         tag(BlockTags.LEAVES)
                 .add(ModBlocks.DYEDREAM_LEAVES.get())
-                .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get());
+                .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get())
+                .add(ModBlocks.WIND_MOOR_LEAVES_0.get())
+                .add(ModBlocks.WIND_MOOR_LEAVES_1.get());
 
         tag(BlockTags.SAPLINGS)
                 .add(ModBlocks.DYEDREAM_SAPLING.get());
@@ -274,6 +302,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         var shadowStoneBrickFamily = new BuildingBlockFamily(ModBlocks.SHADOW_STONE_BRICK, ModBlocks.SHADOW_STONE_BRICK_STAIRS, ModBlocks.SHADOW_STONE_BRICK_SLAB, ModBlocks.SHADOW_STONE_BRICK_WALL);
         var narrowShadowStoneBrickFamily = new BuildingBlockFamily(ModBlocks.NARROW_SHADOW_STONE_BRICK, ModBlocks.NARROW_SHADOW_STONE_BRICK_STAIRS, ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB, ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL);
         var shadowStoneTilesFamily = new BuildingBlockFamily(ModBlocks.SHADOW_STONE_TILES, ModBlocks.SHADOW_STONE_TILES_STAIRS, ModBlocks.SHADOW_STONE_TILES_SLAB, ModBlocks.SHADOW_STONE_TILES_WALL);
+        var cyanStoneBrickFamily = new BuildingBlockFamily(ModBlocks.CYAN_STONE_BRICKS, ModBlocks.CYAN_STONE_BRICK_STAIRS, ModBlocks.CYAN_STONE_BRICK_SLAB, ModBlocks.CYAN_STONE_BRICK_WALL);
+        var mossyCyanStoneBrickFamily = new BuildingBlockFamily(ModBlocks.MOSSY_CYAN_STONE_BRICKS, ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS, ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB, ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL);
 
         addBuildingFamilyToTags(budFamily);
         addBuildingFamilyToTags(polishedCalciteFamily);
@@ -281,6 +311,17 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         addBuildingFamilyToTags(shadowStoneBrickFamily);
         addBuildingFamilyToTags(narrowShadowStoneBrickFamily);
         addBuildingFamilyToTags(shadowStoneTilesFamily);
+        addBuildingFamilyToTags(cyanStoneBrickFamily);
+        addBuildingFamilyToTags(mossyCyanStoneBrickFamily);
+
+        // ===== 苍青岩压力板/按钮 =====
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get())
+                .add(ModBlocks.CYAN_STONE_BUTTON.get());
+        tag(BlockTags.STONE_PRESSURE_PLATES)
+                .add(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get());
+        tag(BlockTags.STONE_BUTTONS)
+                .add(ModBlocks.CYAN_STONE_BUTTON.get());
 
         // ===== 木板建材系列 =====
 
@@ -305,6 +346,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_TRAPDOOR.get())
                 .add(ModBlocks.SHADOW_PRESSURE_PLATE.get())
                 .add(ModBlocks.SHADOW_BUTTON.get())
+                .add(ModBlocks.WIND_MOOR_PLANKS.get())
+                .add(ModBlocks.WIND_MOOR_STAIRS.get())
+                .add(ModBlocks.WIND_MOOR_SLAB.get())
+                .add(ModBlocks.WIND_MOOR_FENCE.get())
+                .add(ModBlocks.WIND_MOOR_FENCE_GATE.get())
+                .add(ModBlocks.WIND_MOOR_PANE.get())
+                .add(ModBlocks.WIND_MOOR_DOOR.get())
+                .add(ModBlocks.WIND_MOOR_TRAPDOOR.get())
+                .add(ModBlocks.WIND_MOOR_PRESSURE_PLATE.get())
+                .add(ModBlocks.WIND_MOOR_BUTTON.get())
                 .add(ModBlocks.SHADOW_BOOKSHELF.get())
                 .add(ModBlocks.WORN_SHADOW_BOOKSHELF.get())
                 .add(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get())
@@ -312,39 +363,52 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.DYEDREAM_PLANKS.get())
-                .add(ModBlocks.SHADOW_PLANKS.get());
+                .add(ModBlocks.SHADOW_PLANKS.get())
+                .add(ModBlocks.WIND_MOOR_PLANKS.get());
 
         tag(BlockTags.WOODEN_STAIRS)
                 .add(ModBlocks.DYEDREAM_STAIRS.get())
-                .add(ModBlocks.SHADOW_STAIRS.get());
+                .add(ModBlocks.SHADOW_STAIRS.get())
+                .add(ModBlocks.WIND_MOOR_STAIRS.get());
 
         tag(BlockTags.WOODEN_SLABS)
                 .add(ModBlocks.DYEDREAM_SLAB.get())
-                .add(ModBlocks.SHADOW_SLAB.get());
+                .add(ModBlocks.SHADOW_SLAB.get())
+                .add(ModBlocks.WIND_MOOR_SLAB.get());
 
         tag(BlockTags.WOODEN_FENCES)
                 .add(ModBlocks.DYEDREAM_FENCE.get())
-                .add(ModBlocks.SHADOW_FENCE.get());
+                .add(ModBlocks.SHADOW_FENCE.get())
+                .add(ModBlocks.WIND_MOOR_FENCE.get());
 
         tag(BlockTags.FENCE_GATES)
                 .add(ModBlocks.DYEDREAM_FENCE_GATE.get())
-                .add(ModBlocks.SHADOW_FENCE_GATE.get());
+                .add(ModBlocks.SHADOW_FENCE_GATE.get())
+                .add(ModBlocks.WIND_MOOR_FENCE_GATE.get());
 
         tag(BlockTags.WOODEN_DOORS)
                 .add(ModBlocks.DYEDREAM_DOOR.get())
-                .add(ModBlocks.SHADOW_DOOR.get());
+                .add(ModBlocks.SHADOW_DOOR.get())
+                .add(ModBlocks.WIND_MOOR_DOOR.get());
 
         tag(BlockTags.WOODEN_TRAPDOORS)
                 .add(ModBlocks.DYEDREAM_TRAPDOOR.get())
-                .add(ModBlocks.SHADOW_TRAPDOOR.get());
+                .add(ModBlocks.SHADOW_TRAPDOOR.get())
+                .add(ModBlocks.WIND_MOOR_TRAPDOOR.get());
 
         tag(BlockTags.WOODEN_PRESSURE_PLATES)
                 .add(ModBlocks.DYEDREAM_PRESSURE_PLATE.get())
-                .add(ModBlocks.SHADOW_PRESSURE_PLATE.get());
+                .add(ModBlocks.SHADOW_PRESSURE_PLATE.get())
+                .add(ModBlocks.WIND_MOOR_PRESSURE_PLATE.get());
 
         tag(BlockTags.WOODEN_BUTTONS)
                 .add(ModBlocks.DYEDREAM_BUTTON.get())
-                .add(ModBlocks.SHADOW_BUTTON.get());
+                .add(ModBlocks.SHADOW_BUTTON.get())
+                .add(ModBlocks.WIND_MOOR_BUTTON.get());
+
+        // ===== 阴影书架（forge:bookshelves 兼容标签） =====
+        tag(Tags.Blocks.BOOKSHELVES)
+                .add(ModBlocks.SHADOW_BOOKSHELF.get());
 
         // ===== 模组玻璃板 =====
 
@@ -457,7 +521,98 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_FERN.get())
                 .add(ModBlocks.SHADOW_FUNGUS.get());
 
-
+        // ===== 影蚀工具挖掘加速的暗影类方块 =====
+        tag(ModBlockTags.SHADOW_EROSION_TOOL_CAN_BOOST)
+                // 基础阴影方块
+                .add(ModBlocks.SHADOW.get())
+                .add(ModBlocks.THICK_SHADOW.get())
+                // 阴影石系列
+                .add(ModBlocks.SHADOW_STONE.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK_STAIRS.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK_SLAB.get())
+                .add(ModBlocks.SHADOW_STONE_BRICK_WALL.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_STAIRS.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB.get())
+                .add(ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL.get())
+                .add(ModBlocks.SHADOW_STONE_TILES.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_STAIRS.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_SLAB.get())
+                .add(ModBlocks.SHADOW_STONE_TILES_WALL.get())
+                .add(ModBlocks.CRACKED_SHADOW_STONE_BRICK.get())
+                .add(ModBlocks.CHISELED_SHADOW_STONE_BRICK.get())
+                // 碎裂暗影地牢石砖（唯一可挖掘的地牢石砖）
+                .add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get())
+                // 阴影自然方块
+                .add(ModBlocks.SHADOW_NYLIUM.get())
+                .add(ModBlocks.SHADOW_WART_BLOCK.get())
+                .add(ModBlocks.SHADOW_STEM.get())
+                .add(ModBlocks.SHADOW_HYPHAE.get())
+                .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
+                .add(ModBlocks.STRIPPED_SHADOW_HYPHAE.get())
+                .add(ModBlocks.SHADOW_SHROOMLIGHT.get())
+                .add(ModBlocks.SHADOW_LIGHT.get())
+                .add(ModBlocks.SHADOW_CANDLE.get())
+                // 阴影木板系列
+                .add(ModBlocks.SHADOW_PLANKS.get())
+                .add(ModBlocks.SHADOW_STAIRS.get())
+                .add(ModBlocks.SHADOW_SLAB.get())
+                .add(ModBlocks.SHADOW_FENCE.get())
+                .add(ModBlocks.SHADOW_FENCE_GATE.get())
+                .add(ModBlocks.SHADOW_PANE.get())
+                .add(ModBlocks.SHADOW_DOOR.get())
+                .add(ModBlocks.SHADOW_TRAPDOOR.get())
+                .add(ModBlocks.SHADOW_PRESSURE_PLATE.get())
+                .add(ModBlocks.SHADOW_BUTTON.get())
+                // 阴影书架
+                .add(ModBlocks.SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.WORN_SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.COBWEB_SHADOW_BOOKSHELF.get())
+                .add(ModBlocks.KEY_SHADOW_BOOKSHELF.get())
+                // 黑金属
+                .add(ModBlocks.BLACK_METAL_BLOCK.get())
+                .add(ModBlocks.RUST_BLACK_METAL_BLOCK.get())
+                .add(ModBlocks.RUST_BLACK_METAL_WALL.get())
+                .add(ModBlocks.RUST_BLACK_METAL_BARS.get())
+                // 深板岩
+                .add(Blocks.DEEPSLATE)
+                .add(Blocks.COBBLED_DEEPSLATE)
+                .add(Blocks.COBBLED_DEEPSLATE_STAIRS)
+                .add(Blocks.COBBLED_DEEPSLATE_SLAB)
+                .add(Blocks.COBBLED_DEEPSLATE_WALL)
+                .add(Blocks.POLISHED_DEEPSLATE)
+                .add(Blocks.POLISHED_DEEPSLATE_STAIRS)
+                .add(Blocks.POLISHED_DEEPSLATE_SLAB)
+                .add(Blocks.POLISHED_DEEPSLATE_WALL)
+                .add(Blocks.DEEPSLATE_BRICKS)
+                .add(Blocks.DEEPSLATE_BRICK_STAIRS)
+                .add(Blocks.DEEPSLATE_BRICK_SLAB)
+                .add(Blocks.DEEPSLATE_BRICK_WALL)
+                .add(Blocks.DEEPSLATE_TILES)
+                .add(Blocks.DEEPSLATE_TILE_STAIRS)
+                .add(Blocks.DEEPSLATE_TILE_SLAB)
+                .add(Blocks.DEEPSLATE_TILE_WALL)
+                .add(Blocks.CHISELED_DEEPSLATE)
+                .add(Blocks.CRACKED_DEEPSLATE_BRICKS)
+                .add(Blocks.CRACKED_DEEPSLATE_TILES)
+                // 深板岩矿石
+                .addTag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE)
+                // 阴影功能方块
+                .add(ModBlocks.SHADOW_DESK.get())
+                .add(ModBlocks.SHADOW_CHEST.get())
+                .add(ModBlocks.CLAY_POT.get())
+                .add(ModBlocks.SHADOW_CLAY_POT.get())
+                .add(ModBlocks.SHADOW_HAND_TRAP.get())
+                // 幽匿系列
+                .add(Blocks.SCULK)
+                .add(Blocks.SCULK_SENSOR)
+                .add(Blocks.CALIBRATED_SCULK_SENSOR)
+                .add(Blocks.SCULK_SHRIEKER)
+                .add(Blocks.SCULK_CATALYST)
+                .add(Blocks.SCULK_VEIN)
+                // 暗影高炉核心
+                .add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
 
     }
 

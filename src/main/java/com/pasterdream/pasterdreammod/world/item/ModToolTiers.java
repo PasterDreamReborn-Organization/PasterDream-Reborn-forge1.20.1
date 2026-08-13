@@ -22,8 +22,17 @@ public enum ModToolTiers implements Tier {
     TITANIUM(1721, 9.0F, 3.5F, 4, 17,
             () -> Ingredient.of(ModItems.TITANIUM_INGOT.get())),
 
-    // SHADOW_EROSION(1725, 13.0F, 4.0F, 4, 16,
-    //         () -> Ingredient.of(ModItems.BLACK_METAL_INGOT.get())),
+    // 影蚀 (Shadow Erosion) - 黑金属工具
+    SHADOW_EROSION_DAGGER(1725, 13.0F, 3.0F, 4, 16,
+            () -> Ingredient.of(ModItems.BLACK_METAL_INGOT.get())),
+    SHADOW_EROSION_PICKAXE(1725, 13.0F, 4.0F, 4, 16,
+            () -> Ingredient.of(ModItems.BLACK_METAL_INGOT.get())),
+    SHADOW_EROSION_AXE(1725, 13.0F, 9.0F, 4, 16,
+            () -> Ingredient.of(ModItems.BLACK_METAL_INGOT.get())),
+    SHADOW_EROSION_SHOVEL(1725, 13.0F, 5.0F, 4, 16,
+            () -> Ingredient.of(ModItems.BLACK_METAL_INGOT.get())),
+    SHADOW_EROSION_HOE(1725, 13.0F, 1.5F, 4, 16,
+            () -> Ingredient.of(ModItems.BLACK_METAL_INGOT.get())),
 
     // 染梦合金
     DYEDREAM(1314, 11.0F, 4.0F, 4, 22,

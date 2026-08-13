@@ -264,6 +264,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.HELLFIRE_SWORD.get());
                         output.accept(ModItems.HELLFIRE_PICKAXE.get());
                         output.accept(ModItems.INFERNO_SWORD.get());
+                        // 影蚀工具
+                        output.accept(ModItems.SHADOW_EROSION_DAGGER.get());
+                        output.accept(ModItems.SHADOW_EROSION_PICKAXE.get());
+                        output.accept(ModItems.SHADOW_EROSION_AXE.get());
+                        output.accept(ModItems.SHADOW_EROSION_SHOVEL.get());
+                        output.accept(ModItems.SHADOW_EROSION_HOE.get());
                         // 独立武器
                         output.accept(ModItems.TIDE_SWORD.get());
                         output.accept(ModItems.BEIHAI_RUO_TIDE_SWORD.get());
@@ -472,6 +478,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WORN_SHADOW_BOOKSHELF.get());
                         output.accept(ModItems.COBWEB_SHADOW_BOOKSHELF.get());
                         output.accept(ModItems.KEY_SHADOW_BOOKSHELF.get());
+                        output.accept(ModItems.SHADOW_CLAY_POT.get());
                         output.accept(ModItems.SHADOW_ARENA_BLOCK.get());
                         output.accept(ModItems.SHADOW_FISSURE_0.get());
                         output.accept(ModItems.SHADOW_FISSURE_1.get());
@@ -479,6 +486,46 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_FISSURE_3.get());
                         output.accept(ModItems.SHADOW_FISSURE_4.get());
                         output.accept(ModItems.SHADOW_FISSURE_5.get());
+                    })
+                    .build());
+
+    // ===== 风之旅世界 =====
+    // 来源: 旧 wind_journey_world 维度建筑方块
+    public static final RegistryObject<CreativeModeTab> WIND_JOURNEY_WORLD_TAB = CREATIVE_MODE_TABS.register("wind_journey_world",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.wind_journey_world"))
+                    .icon(() -> new ItemStack(ModBlocks.CYAN_MOSS_STONE.get()))
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.CYAN_MOSS_STONE.get());
+                        output.accept(ModItems.CYAN_STONE.get());
+                        output.accept(ModItems.CYAN_STONE_BRICKS.get());
+                        output.accept(ModItems.CYAN_STONE_BRICK_STAIRS.get());
+                        output.accept(ModItems.CYAN_STONE_BRICK_SLAB.get());
+                        output.accept(ModItems.CYAN_STONE_BRICK_WALL.get());
+                        output.accept(ModItems.CYAN_STONE_PRESSURE_PLATE.get());
+                        output.accept(ModItems.CYAN_STONE_BUTTON.get());
+                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICKS.get());
+                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_STAIRS.get());
+                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_SLAB.get());
+                        output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_WALL.get());
+                        output.accept(ModItems.WHITE_SAND.get());
+                        output.accept(ModItems.THICK_CLOUD.get());
+                        output.accept(ModItems.WIND_MOOR_LOG.get());
+                        output.accept(ModItems.WIND_MOOR_WOOD.get());
+                        output.accept(ModItems.STRIPPED_WIND_MOOR_LOG.get());
+                        output.accept(ModItems.STRIPPED_WIND_MOOR_WOOD.get());
+                        output.accept(ModItems.WIND_MOOR_LEAVES_0.get());
+                        output.accept(ModItems.WIND_MOOR_LEAVES_1.get());
+                        output.accept(ModItems.WIND_MOOR_PLANKS.get());
+                        output.accept(ModItems.WIND_MOOR_STAIRS.get());
+                        output.accept(ModItems.WIND_MOOR_SLAB.get());
+                        output.accept(ModItems.WIND_MOOR_FENCE.get());
+                        output.accept(ModItems.WIND_MOOR_FENCE_GATE.get());
+                        output.accept(ModItems.WIND_MOOR_PANE.get());
+                        output.accept(ModItems.WIND_MOOR_DOOR.get());
+                        output.accept(ModItems.WIND_MOOR_TRAPDOOR.get());
+                        output.accept(ModItems.WIND_MOOR_PRESSURE_PLATE.get());
+                        output.accept(ModItems.WIND_MOOR_BUTTON.get());
                     })
                     .build());
 
@@ -529,6 +576,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FOURLEAF_CLOVER.get());
                         output.accept(ModItems.BLAZE_FLOWER.get());
                         output.accept(ModItems.CRIMSON_THORNS.get());
+                        output.accept(ModItems.HAIRY_MOSS.get());
+                        output.accept(ModItems.WIND_CLEAVING_GRASS.get());
+                        output.accept(ModItems.WIND_FEATHER_GRASS.get());
+                        output.accept(ModItems.WIND_ISLAND_REED.get());
                         output.accept(ModItems.SHADOW_SHORT_ROOTS.get());
                         output.accept(ModItems.SHADOW_ROOTS.get());
                         output.accept(ModItems.SHADOW_STEM_FERN.get());
@@ -658,7 +709,7 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("黑暗之地"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("阴影小木屋"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("阴影地下工作室"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT(">被阴影浸染的字迹潦草的笔记<"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("-被阴影浸染的字迹潦草的笔记-"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("关于黑暗之手的随笔"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("与黑色双手的决战和败北"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("侵染教堂-黑面"));

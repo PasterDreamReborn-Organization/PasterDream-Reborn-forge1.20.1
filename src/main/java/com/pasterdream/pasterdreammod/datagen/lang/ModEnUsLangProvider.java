@@ -22,6 +22,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.life_crystal.already_used", "You have already absorbed a Life Crystal!");
         add("message.pasterdream.life_crystal.already_absorbing", "You are already absorbing another Life Crystal!");
         add("message.pasterdream.life_crystal.absorbed", "The Life Crystal shatters and flows into you §aMax Health +2");
+        add("death.pasterdream.lamp_shadow_world", "%s melted into the whispers of the shadows");
         add(ModItems.DYEDREAM_QUARTZ.get(), "Dye Dream Quartz");
         add(ModItems.DYEDREAM_DUST.get(), "Dye Dream Dust");
         add(ModItems.DYEDREAM_DUST_PIECE.get(), "Dye Dream Dust Piece");
@@ -198,6 +199,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MURAKUMO_KUSANAGI.get(), "Murakumo Kusanagi");
         add(ModItems.SWORD_EMBRYO.get(), "Sword Embryo");
         add(ModItems.ICE_SHADOW_HAMMER.get(), "Ice Shadow Hammer");
+        add(ModItems.SHADOW_EROSION_DAGGER.get(), "Shadow Erosion Dagger");
+        add(ModItems.SHADOW_EROSION_PICKAXE.get(), "Shadow Erosion Pickaxe");
+        add(ModItems.SHADOW_EROSION_AXE.get(), "Shadow Erosion Axe");
+        add(ModItems.SHADOW_EROSION_SHOVEL.get(), "Shadow Erosion Shovel");
+        add(ModItems.SHADOW_EROSION_HOE.get(), "Shadow Erosion Hoe");
         add(ModItems.THERMAL_DAGGER.get(), "Thermal Dagger");
         add(ModItems.DESERT_SWORD.get(), "Desert Greatsword");
         add(ModItems.CHENJINGMEN_DESERT_SWORD.get(), "Chenjingmen Desert");
@@ -299,6 +305,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_PACKED_ICE.get(), "Dye Dream Packed Ice");
         add(ModBlocks.CLOUD.get(), "Cloud");
         add(ModBlocks.DARK_CLOUD.get(), "Dark Cloud");
+        add(ModBlocks.WHITE_SAND.get(), "White Sand");
+        add(ModBlocks.THICK_CLOUD.get(), "Thick Cloud");
         add(ModBlocks.SHADOW.get(), "Shadow");
         add(ModBlocks.THICK_SHADOW.get(), "Thick Shadow");
         add(ModBlocks.SHADOW_STONE.get(), "Shadow Stone");
@@ -383,17 +391,46 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.CALCITE_TILES_WALL.get(), "Calcite Tiles Wall");
         add(ModBlocks.ICE_STONE.get(), "Icestone");
         add(ModBlocks.ICE_BUD.get(), "Ice Bud");
+        add(ModBlocks.CYAN_STONE.get(), "Cyan Stone");
+        add(ModBlocks.CYAN_MOSS_STONE.get(), "Cyan Moss Stone");
+        add(ModBlocks.CYAN_STONE_BRICKS.get(), "Cyan Stone Bricks");
+        add(ModBlocks.CYAN_STONE_BRICK_STAIRS.get(), "Cyan Stone Brick Stairs");
+        add(ModBlocks.CYAN_STONE_BRICK_SLAB.get(), "Cyan Stone Brick Slab");
+        add(ModBlocks.CYAN_STONE_BRICK_WALL.get(), "Cyan Stone Brick Wall");
+        add(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get(), "Cyan Stone Pressure Plate");
+        add(ModBlocks.CYAN_STONE_BUTTON.get(), "Cyan Stone Button");
+        add(ModBlocks.MOSSY_CYAN_STONE_BRICKS.get(), "Mossy Cyan Stone Bricks");
+        add(ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS.get(), "Mossy Cyan Stone Brick Stairs");
+        add(ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB.get(), "Mossy Cyan Stone Brick Slab");
+        add(ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL.get(), "Mossy Cyan Stone Brick Wall");
         add(ModBlocks.QYM_DOLL.get(), "琴雨梦Doll");
         add(ModBlocks.UUZ_DOLL.get(), "幼幼紫Doll");
         add(ModBlocks.DYEDREAM_CRACK.get(), "Dyedream Crack");
         add(ModBlocks.CLAYPAN.get(), "Claypan");
         add(ModBlocks.CLAY_POT.get(), "Clay Pot");
+        add(ModBlocks.SHADOW_CLAY_POT.get(), "Shadow Clay Pot");
         add(ModBlocks.DREAM_CAULDRON.get(), "Dream Cauldron");
         add(ModBlocks.DYEDREAM_DESK.get(), "Dyedream Desk");
         add(ModBlocks.SHADOW_DESK.get(), "Shadow Desk");
         add(ModBlocks.PICNIC_BASKET.get(), "Picnic Basket");
         add(ModBlocks.SHADOW_CHEST.get(), "Shadow Chest");
         add(ModBlocks.WIND_MOOR_CRATE.get(), "Wind Moor Crate");
+        add(ModBlocks.WIND_MOOR_LOG.get(), "Wind Moor Log");
+        add(ModBlocks.WIND_MOOR_WOOD.get(), "Wind Moor Wood");
+        add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get(), "Stripped Wind Moor Log");
+        add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get(), "Stripped Wind Moor Wood");
+        add(ModBlocks.WIND_MOOR_LEAVES_0.get(), "Wind Moor Leaves");
+        add(ModBlocks.WIND_MOOR_LEAVES_1.get(), "Wind Moor Leaves");
+        add(ModBlocks.WIND_MOOR_PLANKS.get(), "Wind Moor Planks");
+        add(ModBlocks.WIND_MOOR_STAIRS.get(), "Wind Moor Stairs");
+        add(ModBlocks.WIND_MOOR_SLAB.get(), "Wind Moor Slab");
+        add(ModBlocks.WIND_MOOR_FENCE.get(), "Wind Moor Fence");
+        add(ModBlocks.WIND_MOOR_FENCE_GATE.get(), "Wind Moor Fence Gate");
+        add(ModBlocks.WIND_MOOR_PANE.get(), "Wind Moor Pane");
+        add(ModBlocks.WIND_MOOR_DOOR.get(), "Wind Moor Door");
+        add(ModBlocks.WIND_MOOR_TRAPDOOR.get(), "Wind Moor Trapdoor");
+        add(ModBlocks.WIND_MOOR_PRESSURE_PLATE.get(), "Wind Moor Pressure Plate");
+        add(ModBlocks.WIND_MOOR_BUTTON.get(), "Wind Moor Button");
         add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), "The Endless Book Of Dream Seekers");
         add(ModBlocks.RESEARCH_TABLE.get(), "Research Table");
         add(ModBlocks.LOST_SWORD_TOMB.get(), "Lost Sword Tomb");
@@ -454,6 +491,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_VINE.get(), "Dyedream Vine");
         add(ModBlocks.JUNGLE_SPORANGIUM.get(), "Jungle Sporangium");
         add(ModBlocks.FOURLEAF_CLOVER.get(),"fourleaf clover");
+        add(ModBlocks.HAIRY_MOSS.get(), "Hairy Moss");
+        add(ModBlocks.WIND_CLEAVING_GRASS.get(), "Wind Cleaving Grass");
+        add(ModBlocks.WIND_FEATHER_GRASS.get(), "Wind Feather Grass");
+        add(ModBlocks.WIND_ISLAND_REED.get(), "Wind Island Reed");
 
         add(ModBlocks.SHADOW_SHORT_ROOTS.get(), "Shadow Short Roots");
         add(ModBlocks.SHADOW_ROOTS.get(), "Shadow Roots");
@@ -536,6 +577,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_dream_debug_tab", "Paster Dream | Debug");
         add("itemGroup.pasterdream.pasterdream_expansion_tab", "Paster Dream | Expansion");
         add("itemGroup.pasterdream.pasterdream_memento_tab", "Paster Dream | Mementos");
+        add("itemGroup.pasterdream.wind_journey_world", "Wind Journey World");
 
         add("item.pasterdream.duke_coin_curio", "Duke Coin Curio");
         add("tooltip.pasterdream.duke_coin_curio.effect.luck", "§7▪ §9+7 Luck");
@@ -680,6 +722,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.chenjingmen_desert_sword.7", "§7▪ §9Move Speed -15% and Resistance +20% while held");
         add("tooltip.pasterdreammod.san_value", "SAN: ");
         add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
+        add("tooltip.pasterdreammod.shadow_erosion_tool.1","§7▪ §9The digging speed will increase as the brightness decreases.");
+        add("tooltip.pasterdreammod.shadow_erosion_tool.2","§7▪ §9Provides a mining speed boost for shadow-type, deepslate-type, and sculk-type blocks");
 
         add("tooltip.pasterdream.developerNameList", "§dDeveloper Name List");
         add("tooltip.pasterdream.dyedreamCreak", "§dDyedream Creak");
@@ -745,7 +789,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.黑暗之地", "Shadow Place");
         add("book.pasterdream.title.阴影小木屋", "Shadow Fungus House");
         add("book.pasterdream.title.阴影地下工作室", "Shadow Underground Workroom");
-        add("book.pasterdream.title.>被阴影浸染的字迹潦草的笔记<", ">Shadow Dyed Sloppy Handwriting Notes<");
+        add("book.pasterdream.title.-被阴影浸染的字迹潦草的笔记-", "-Shadow Dyed Sloppy Handwriting Notes-");
         add("book.pasterdream.title.关于黑暗之手的随笔", "Regarding Shadow Hands Essay");
         add("book.pasterdream.title.与黑色双手的决战和败北", "Decisive Battle With Shadow Hands And Fail");
         add("book.pasterdream.title.侵染教堂-黑面", "Infested Church - Black Face");

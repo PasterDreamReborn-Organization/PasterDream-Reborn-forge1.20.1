@@ -240,6 +240,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.CLOUD.get(), cloudModel);
         var darkCloudModel = models().cubeAll(ModBlocks.DARK_CLOUD.getId().getPath(), blockTexture(ModBlocks.DARK_CLOUD.get())).renderType("translucent");
         simpleBlockWithItem(ModBlocks.DARK_CLOUD.get(), darkCloudModel);
+        simpleBlockWithItem(ModBlocks.WHITE_SAND.get(), cubeAll(ModBlocks.WHITE_SAND.get()));
+        var thickCloudModel = models().cubeAll(ModBlocks.THICK_CLOUD.getId().getPath(), blockTexture(ModBlocks.THICK_CLOUD.get())).renderType("translucent");
+        simpleBlockWithItem(ModBlocks.THICK_CLOUD.get(), thickCloudModel);
         var shadowModel = models().cubeAll(ModBlocks.SHADOW.getId().getPath(), blockTexture(ModBlocks.SHADOW.get())).renderType("translucent");
         simpleBlockWithItem(ModBlocks.SHADOW.get(), shadowModel);
         var thickShadowModel = models().cubeAll(ModBlocks.THICK_SHADOW.getId().getPath(), blockTexture(ModBlocks.THICK_SHADOW.get())).renderType("translucent");
@@ -315,6 +318,53 @@ public class ModBlockStateProvider extends BlockStateProvider {
         axisBlock((RotatedPillarBlock) ModBlocks.STRIPPED_SHADOW_HYPHAE.get(), strippedShadowStemTex, strippedShadowStemTex);
         blockItem(ModBlocks.STRIPPED_SHADOW_HYPHAE);
 
+        // ===== 风泊木系列 =====
+        logBlock((RotatedPillarBlock) ModBlocks.WIND_MOOR_LOG.get());
+        blockItem(ModBlocks.WIND_MOOR_LOG);
+        var windMoorLogTex = blockTexture(ModBlocks.WIND_MOOR_LOG.get());
+        axisBlock((RotatedPillarBlock) ModBlocks.WIND_MOOR_WOOD.get(), windMoorLogTex, windMoorLogTex);
+        blockItem(ModBlocks.WIND_MOOR_WOOD);
+        logBlock((RotatedPillarBlock) ModBlocks.STRIPPED_WIND_MOOR_LOG.get());
+        blockItem(ModBlocks.STRIPPED_WIND_MOOR_LOG);
+        var strippedWindMoorLogTex = blockTexture(ModBlocks.STRIPPED_WIND_MOOR_LOG.get());
+        axisBlock((RotatedPillarBlock) ModBlocks.STRIPPED_WIND_MOOR_WOOD.get(), strippedWindMoorLogTex, strippedWindMoorLogTex);
+        blockItem(ModBlocks.STRIPPED_WIND_MOOR_WOOD);
+
+        simpleBlockWithItem(ModBlocks.WIND_MOOR_LEAVES_0.get(), cubeAll(ModBlocks.WIND_MOOR_LEAVES_0.get()));
+        simpleBlockWithItem(ModBlocks.WIND_MOOR_LEAVES_1.get(), cubeAll(ModBlocks.WIND_MOOR_LEAVES_1.get()));
+
+        // ===== 风泊木板建材系列 =====
+        simpleBlockWithItem(ModBlocks.WIND_MOOR_PLANKS.get(), cubeAll(ModBlocks.WIND_MOOR_PLANKS.get()));
+
+        stairsBlock((StairBlock) ModBlocks.WIND_MOOR_STAIRS.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
+        blockItem(ModBlocks.WIND_MOOR_STAIRS);
+
+        slabBlock((SlabBlock) ModBlocks.WIND_MOOR_SLAB.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
+        blockItem(ModBlocks.WIND_MOOR_SLAB);
+
+        fenceBlock((FenceBlock) ModBlocks.WIND_MOOR_FENCE.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
+
+        fenceGateBlock((FenceGateBlock) ModBlocks.WIND_MOOR_FENCE_GATE.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
+        blockItem(ModBlocks.WIND_MOOR_FENCE_GATE);
+
+        paneBlock((IronBarsBlock) ModBlocks.WIND_MOOR_PANE.get(), modLoc("block/wind_moor_trapdoor"), modLoc("block/wind_moor_trapdoor"));
+
+        doorBlockWithRenderType((DoorBlock) ModBlocks.WIND_MOOR_DOOR.get(),
+                modLoc("block/wind_moor_door_bottom"),
+                modLoc("block/wind_moor_door_top"),
+                "cutout");
+
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.WIND_MOOR_TRAPDOOR.get(),
+                modLoc("block/wind_moor_trapdoor"),
+                true,
+                "cutout");
+        blockItem(ModBlocks.WIND_MOOR_TRAPDOOR, "_bottom");
+
+        pressurePlateBlock((PressurePlateBlock) ModBlocks.WIND_MOOR_PRESSURE_PLATE.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
+        blockItem(ModBlocks.WIND_MOOR_PRESSURE_PLATE);
+
+        buttonBlock((ButtonBlock) ModBlocks.WIND_MOOR_BUTTON.get(), blockTexture(ModBlocks.WIND_MOOR_PLANKS.get()));
+
         // ===== 巨型泡泡 =====
         var bubbleModel = models().cubeAll(ModBlocks.BIG_BUBBLE.getId().getPath(), modLoc("block/big_bubble")).renderType("translucent");
         simpleBlockWithItem(ModBlocks.BIG_BUBBLE.get(), bubbleModel);
@@ -346,6 +396,23 @@ public class ModBlockStateProvider extends BlockStateProvider {
         // ===== 方解石系列 =====
         simpleBuildingFamily(new BuildingBlockFamily(ModBlocks.POLISHED_CALCITE, ModBlocks.POLISHED_CALCITE_STAIRS, ModBlocks.POLISHED_CALCITE_SLAB, ModBlocks.POLISHED_CALCITE_WALL));
         simpleBuildingFamily(new BuildingBlockFamily(ModBlocks.CALCITE_TILES, ModBlocks.CALCITE_TILES_STAIRS, ModBlocks.CALCITE_TILES_SLAB, ModBlocks.CALCITE_TILES_WALL));
+
+        // ===== 风之旅世界·苍青岩系列 =====
+        simpleBlockWithItem(ModBlocks.CYAN_STONE.get(), cubeAll(ModBlocks.CYAN_STONE.get()));
+        var cyanMossStoneModel = models().cubeBottomTop(
+                ModBlocks.CYAN_MOSS_STONE.getId().getPath(),
+                blockTexture(ModBlocks.CYAN_MOSS_STONE.get()),
+                blockTexture(ModBlocks.CYAN_STONE.get()),
+                modLoc("block/cyan_moss_stone_top"));
+        simpleBlockWithItem(ModBlocks.CYAN_MOSS_STONE.get(), cyanMossStoneModel);
+
+        simpleBuildingFamily(new BuildingBlockFamily(ModBlocks.CYAN_STONE_BRICKS, ModBlocks.CYAN_STONE_BRICK_STAIRS, ModBlocks.CYAN_STONE_BRICK_SLAB, ModBlocks.CYAN_STONE_BRICK_WALL));
+        simpleBuildingFamily(new BuildingBlockFamily(ModBlocks.MOSSY_CYAN_STONE_BRICKS, ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS, ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB, ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL));
+
+        pressurePlateBlock((PressurePlateBlock) ModBlocks.CYAN_STONE_PRESSURE_PLATE.get(), blockTexture(ModBlocks.CYAN_STONE.get()));
+        blockItem(ModBlocks.CYAN_STONE_PRESSURE_PLATE);
+
+        buttonBlock((ButtonBlock) ModBlocks.CYAN_STONE_BUTTON.get(), blockTexture(ModBlocks.CYAN_STONE.get()));
 
         // ===== 植物系列 =====
         var goldenrod = models().cross(ModBlocks.GOLDENROD.getId().getPath(), blockTexture(ModBlocks.GOLDENROD.get())).renderType("cutout");
@@ -412,6 +479,21 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.DYEDREAM_VINE.get(), Dyedream_vine);
         var Jungle_sporangium = models().cross(ModBlocks.JUNGLE_SPORANGIUM.getId().getPath(), blockTexture(ModBlocks.JUNGLE_SPORANGIUM.get())).renderType("cutout");
         simpleBlock(ModBlocks.JUNGLE_SPORANGIUM.get(),Jungle_sporangium);
+        // 风之植物系列
+        var hairy_moss = models().cross(ModBlocks.HAIRY_MOSS.getId().getPath(), blockTexture(ModBlocks.HAIRY_MOSS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.HAIRY_MOSS.get(), hairy_moss);
+        var wind_cleaving_grass = models().cross(ModBlocks.WIND_CLEAVING_GRASS.getId().getPath(), blockTexture(ModBlocks.WIND_CLEAVING_GRASS.get())).renderType("cutout");
+        simpleBlock(ModBlocks.WIND_CLEAVING_GRASS.get(), wind_cleaving_grass);
+        var wind_feather_grass_Upper = models().cross(ModBlocks.WIND_FEATHER_GRASS.getId().getPath() + "_top", modLoc("block/wind_feather_grass_top")).renderType("cutout");
+        var wind_feather_grass_Lower = models().cross(ModBlocks.WIND_FEATHER_GRASS.getId().getPath() + "_bottom", modLoc("block/wind_feather_grass_bottom")).renderType("cutout");
+        getVariantBuilder(ModBlocks.WIND_FEATHER_GRASS.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(wind_feather_grass_Lower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(wind_feather_grass_Upper));
+        var wind_island_reed_Upper = models().cross(ModBlocks.WIND_ISLAND_REED.getId().getPath() + "_top", modLoc("block/wind_island_reed_top")).renderType("cutout");
+        var wind_island_reed_Lower = models().cross(ModBlocks.WIND_ISLAND_REED.getId().getPath() + "_bottom", modLoc("block/wind_island_reed_bottom")).renderType("cutout");
+        getVariantBuilder(ModBlocks.WIND_ISLAND_REED.get())
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).addModels(new ConfiguredModel(wind_island_reed_Lower))
+                .partialState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).addModels(new ConfiguredModel(wind_island_reed_Upper));
         // fourleaf_clover uses manual custom model
         simpleBlock(ModBlocks.FOURLEAF_CLOVER.get(), models().getExistingFile(modLoc("block/fourleaf_clover")));
         var light_ball = models().cross(ModBlocks.LIGHT_BALL.getId().getPath(), blockTexture(ModBlocks.LIGHT_BALL.get())).renderType("cutout");
@@ -479,6 +561,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         // 陶罐
         var clayPotModel = models().getExistingFile(modLoc("block/clay_pot"));
         horizontalBlock(ModBlocks.CLAY_POT.get(), clayPotModel);
+        // 阴影陶罐（复用陶罐模型）
+        horizontalBlock(ModBlocks.SHADOW_CLAY_POT.get(), clayPotModel);
 
         // 小石子
         var pebbleModel = models().getExistingFile(modLoc("block/pebble"));

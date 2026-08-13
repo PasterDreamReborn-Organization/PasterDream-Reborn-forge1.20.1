@@ -13,6 +13,7 @@ public class ClientSetRenderLayer
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_LANTERN.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_PANE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_PANE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WIND_MOOR_PANE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUST_BLACK_METAL_BARS.get(), RenderType.cutout());
 
         // ===== translucent 渲染（半透明玻璃） =====
@@ -28,6 +29,7 @@ public class ClientSetRenderLayer
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.BIG_BUBBLE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CLOUD.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DARK_CLOUD.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.THICK_CLOUD.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.THICK_SHADOW.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_FISSURE_1.get(), RenderType.translucent());
@@ -60,6 +62,8 @@ public class ClientSetRenderLayer
 
         // ===== 陶罐 =====
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CLAY_POT.get(), RenderType.cutout());
+        // ===== 阴影陶罐 =====
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_CLAY_POT.get(), RenderType.cutout());
 
         // ===== 小石子 =====
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.PEBBLE.get(), RenderType.cutout());

@@ -22,6 +22,7 @@ import com.pasterdream.pasterdreammod.network.san.IsSanEnableSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.MaxSanSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
+import com.pasterdream.pasterdreammod.network.shadowerosion.ShadowErosionMiningSpeedSyncPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkRegistry;
@@ -65,6 +66,8 @@ public class ModNetwork
 
         CHANNEL.registerMessage(id++, CurioActivationPacket.class, CurioActivationPacket::encode, CurioActivationPacket::decode, CurioActivationPacket::handle);
         CHANNEL.registerMessage(id++, KaichuOmamoriActivationPacket.class, KaichuOmamoriActivationPacket::encode, KaichuOmamoriActivationPacket::decode, KaichuOmamoriActivationPacket::handle);
+
+        CHANNEL.registerMessage(id++, ShadowErosionMiningSpeedSyncPacket.class, ShadowErosionMiningSpeedSyncPacket::encode, ShadowErosionMiningSpeedSyncPacket::decode, ShadowErosionMiningSpeedSyncPacket::handle);
     }
 
     public static void sendMeltDreamEnergySyncPacketToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)
@@ -88,6 +91,11 @@ public class ModNetwork
     }
 
     public static void sendIsSanEnableSyncPacketToPlayer(IsSanEnableSyncPacket packet, ServerPlayer player)
+    {
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
+    }
+
+    public static void sendShadowErosionMiningSpeedSyncPacketToPlayer(ShadowErosionMiningSpeedSyncPacket packet, ServerPlayer player)
     {
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
     }

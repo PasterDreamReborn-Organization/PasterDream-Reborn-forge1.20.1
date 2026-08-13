@@ -212,6 +212,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
         woodRecipes(pWriter);
+        shadowBookshelfRecipes(pWriter);
         dyeConversionRecipes(pWriter);
         blackStickRecipes(pWriter);
         materialRecipes(pWriter);
@@ -243,8 +244,11 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         miscOreRecipes(pWriter);
         calciteRecipes(pWriter);
         shadowStoneRecipes(pWriter);
+        cyanStoneRecipes(pWriter);
+        mossyCyanStoneRecipes(pWriter);
         foodRecipes(pWriter);
         othersRecipes(pWriter);
+        thickCloudRecipes(pWriter);
         curioRecipes(pWriter);
 
 
@@ -261,6 +265,43 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .pattern("aa")
                 .define('a', ModItems.DYEDREAM_LOG.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_LOG.get()), has(ModItems.DYEDREAM_LOG.get()))
+                .save(pWriter);
+
+        // 风泊原木 → 风泊木
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.WIND_MOOR_WOOD.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.WIND_MOOR_LOG.get())
+                .unlockedBy(getHasName(ModItems.WIND_MOOR_LOG.get()), has(ModItems.WIND_MOOR_LOG.get()))
+                .save(pWriter);
+
+        // 去皮风泊原木 → 去皮风泊木
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.STRIPPED_WIND_MOOR_WOOD.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.STRIPPED_WIND_MOOR_LOG.get())
+                .unlockedBy(getHasName(ModItems.STRIPPED_WIND_MOOR_LOG.get()), has(ModItems.STRIPPED_WIND_MOOR_LOG.get()))
+                .save(pWriter);
+
+        // 风泊原木 → 风泊木板 + 全套建材配方
+        RecipeHelpers.plankFamilyRecipes(pWriter,
+                ModItems.WIND_MOOR_LOG.get(),
+                ModItems.WIND_MOOR_PLANKS.get(),
+                ModItems.WIND_MOOR_STAIRS.get(),
+                ModItems.WIND_MOOR_SLAB.get(),
+                ModItems.WIND_MOOR_FENCE.get(),
+                ModItems.WIND_MOOR_FENCE_GATE.get(),
+                ModItems.WIND_MOOR_DOOR.get(),
+                ModItems.WIND_MOOR_TRAPDOOR.get(),
+                ModItems.WIND_MOOR_PRESSURE_PLATE.get(),
+                ModItems.WIND_MOOR_BUTTON.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 风泊木窗格 - 玻璃板 + 风泊木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.WIND_MOOR_PANE.get(), 1)
+                .requires(Items.GLASS_PANE)
+                .requires(ModItems.WIND_MOOR_PLANKS.get())
+                .unlockedBy(getHasName(ModItems.WIND_MOOR_PLANKS.get()), has(ModItems.WIND_MOOR_PLANKS.get()))
                 .save(pWriter);
 
         // 染梦原木 → 染梦木板 + 全套建材配方
@@ -327,6 +368,53 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(Items.GLASS_PANE)
                 .requires(ModItems.SHADOW_PLANKS.get())
                 .unlockedBy(getHasName(ModItems.SHADOW_PLANKS.get()), has(ModItems.SHADOW_PLANKS.get()))
+                .save(pWriter);
+    }
+
+    // ===== 阴影书架配方 =====
+
+    private void shadowBookshelfRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 阴影书架：上下各 3 个阴影木板，中间 3 本书
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_BOOKSHELF.get())
+                .pattern("aaa")
+                .pattern("bbb")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_PLANKS.get())
+                .define('b', Items.BOOK)
+                .unlockedBy(getHasName(ModItems.SHADOW_PLANKS.get()), has(ModItems.SHADOW_PLANKS.get()))
+                .save(pWriter);
+
+        // 破旧阴影书架：左右两本书换成纸
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.WORN_SHADOW_BOOKSHELF.get())
+                .pattern("aaa")
+                .pattern("cbc")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_PLANKS.get())
+                .define('b', Items.BOOK)
+                .define('c', Items.PAPER)
+                .unlockedBy(getHasName(ModItems.SHADOW_PLANKS.get()), has(ModItems.SHADOW_PLANKS.get()))
+                .save(pWriter);
+
+        // 蛛网阴影书架：左右两本书换成蜘蛛网
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.COBWEB_SHADOW_BOOKSHELF.get())
+                .pattern("aaa")
+                .pattern("cbc")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_PLANKS.get())
+                .define('b', Items.BOOK)
+                .define('c', Items.COBWEB)
+                .unlockedBy(getHasName(ModItems.SHADOW_PLANKS.get()), has(ModItems.SHADOW_PLANKS.get()))
+                .save(pWriter);
+
+        // 钥匙阴影书架：中间的书换成暗影地牢钥匙
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.KEY_SHADOW_BOOKSHELF.get())
+                .pattern("aaa")
+                .pattern("bcb")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_PLANKS.get())
+                .define('b', Items.BOOK)
+                .define('c', ModItems.SHADOW_DUNGEON_KEY.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_DUNGEON_KEY.get()), has(ModItems.SHADOW_DUNGEON_KEY.get()))
                 .save(pWriter);
     }
 
@@ -1275,6 +1363,13 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         RecipeHelpers.storageDecompress(pWriter, ModItems.PINK_SLIME_BLOCK.get(), ModItems.PINK_SLIMEBALL.get(), PasterDreamMod.MOD_ID);
     }
 
+    // ===== 厚重云朵配方 =====
+
+    private void thickCloudRecipes(Consumer<FinishedRecipe> pWriter) {
+        RecipeHelpers.storageCompress(pWriter, ModItems.CLOUD.get(), ModItems.THICK_CLOUD.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.THICK_CLOUD.get(), ModItems.CLOUD.get(), PasterDreamMod.MOD_ID);
+    }
+
     // ===== 陶盆配方 =====
 
     private void claypanRecipe(Consumer<FinishedRecipe> pWriter) {
@@ -1705,6 +1800,11 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_stone_tiles_from_stonecutting");
 
+        // 阴影石瓦 → 阴影陶罐 (切石机，打碎陶罐时解锁)
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.SHADOW_STONE_TILES.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_CLAY_POT.get())
+                .unlockedBy(getHasName(ModBlocks.SHADOW_STONE_TILES.get()), has(ModBlocks.SHADOW_STONE_TILES.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_clay_pot_from_stonecutting");
+
         // ===== 裂阴影石砖 / 錾制阴影石砖配方 =====
         // 2× 阴影石砖台阶 → 1× 錾制阴影石砖 (工作台)
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_SHADOW_STONE_BRICK.get(), 1)
@@ -1723,6 +1823,66 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         SingleItemRecipeBuilder.stonecutting(shadowStonesTag, RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_SHADOW_STONE_BRICK.get())
                 .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_shadow_stone_brick_from_stonecutting");
+    }
+
+    // ===== 苍青岩砖系列配方 =====
+
+    private void cyanStoneRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 2×2 苍青岩 → 4× 苍青岩砖
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CYAN_STONE_BRICKS.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter);
+
+        // 苍青岩砖 → 楼梯/台阶/墙 + 切石机
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.CYAN_STONE_BRICKS.get(), ModItems.CYAN_STONE_BRICK_STAIRS.get(),
+                ModItems.CYAN_STONE_BRICK_SLAB.get(), ModItems.CYAN_STONE_BRICK_WALL.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 苍青岩 → 苍青岩砖 (切石机)
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.CYAN_STONE.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.CYAN_STONE_BRICKS.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":cyan_stone_bricks_from_stonecutting");
+
+        // 苍青岩 → 苍青岩压力板
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModItems.CYAN_STONE_PRESSURE_PLATE.get(), 1)
+                .pattern("aa")
+                .define('a', ModItems.CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter);
+
+        // 苍青岩 → 苍青岩按钮
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModItems.CYAN_STONE_BUTTON.get(), 1)
+                .requires(ModItems.CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter);
+    }
+
+    // ===== 苔苍青岩砖系列配方 =====
+
+    private void mossyCyanStoneRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 苍青岩砖 + 藤蔓 → 苔苍青岩砖
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.MOSSY_CYAN_STONE_BRICKS.get(), 1)
+                .requires(ModItems.CYAN_STONE_BRICKS.get())
+                .requires(Items.VINE)
+                .unlockedBy(getHasName(ModItems.CYAN_STONE_BRICKS.get()), has(ModItems.CYAN_STONE_BRICKS.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":mossy_cyan_stone_bricks_from_vine");
+
+        // 苍青岩砖 + 苔藓块 → 苔苍青岩砖
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.MOSSY_CYAN_STONE_BRICKS.get(), 1)
+                .requires(ModItems.CYAN_STONE_BRICKS.get())
+                .requires(Items.MOSS_BLOCK)
+                .unlockedBy(getHasName(ModItems.CYAN_STONE_BRICKS.get()), has(ModItems.CYAN_STONE_BRICKS.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":mossy_cyan_stone_bricks_from_moss_block");
+
+        // 苔苍青岩砖 → 楼梯/台阶/墙 + 切石机
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.MOSSY_CYAN_STONE_BRICKS.get(), ModItems.MOSSY_CYAN_STONE_BRICK_STAIRS.get(),
+                ModItems.MOSSY_CYAN_STONE_BRICK_SLAB.get(), ModItems.MOSSY_CYAN_STONE_BRICK_WALL.get(),
+                PasterDreamMod.MOD_ID);
     }
 
     // ===== 食物相关合成配方 =====
@@ -1747,6 +1907,17 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('a', Ingredient.of(ItemTags.create(
                         ResourceLocation.fromNamespaceAndPath("forge", "glass_panes"))))
                 .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
+                .save(pWriter);
+
+        // 灵药瓶合成配方
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ELIXIR_BOTTLE.get(), 1)
+                .pattern(" a ")
+                .pattern("bcb")
+                .pattern(" b ")
+                .define('a',Items.GOLD_NUGGET)
+                .define('b', ModItems.DYEDREAM_ALLOY_NUGGET.get())
+                .define('c', ModItems.GLASS_JAR.get())
+                .unlockedBy(getHasName(ModItems.GLASS_JAR.get()), has(ModItems.GLASS_JAR.get()))
                 .save(pWriter);
 
         // 重做酵母合成配方（产物罐子数多于输入空罐子数，自动配平）
@@ -2256,6 +2427,21 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('b', Items.LECTERN)
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
                 .save(pWriter, "dyedream_desk_from_lectern");
+        // 研究台
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RESEARCH_TABLE.get(), 1)
+                .pattern("abc")
+                .pattern("ddd")
+                .pattern("e f")
+                .define('a', Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "bookshelves"))))
+                .define('b', ItemTags.WOOL_CARPETS)
+                .define('c', ModItems.PERGAMYN.get())
+                .define('d', ItemTags.LOGS)
+                .define('e', Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "chests"))))
+                .define('f', Items.CARTOGRAPHY_TABLE)
+                .unlockedBy(getHasName(ModItems.DREAM_NOTES_BOOK.get()), has(ModItems.DREAM_NOTES_BOOK.get()))
+                .save(pWriter);
 
         // 旧梦归引宝典 = 书 + 染梦果（使用帕秋莉 shapeless_book_recipe）
         pWriter.accept(new FinishedRecipe() {

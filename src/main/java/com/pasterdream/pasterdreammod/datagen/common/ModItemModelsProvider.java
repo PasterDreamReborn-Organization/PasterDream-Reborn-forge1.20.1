@@ -188,6 +188,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.MURAKUMO_KUSANAGI);
         handheldItem(ModItems.SWORD_EMBRYO);
         handheldItem(ModItems.ICE_SHADOW_HAMMER);
+        handheldItem(ModItems.SHADOW_EROSION_DAGGER);
+        handheldItem(ModItems.SHADOW_EROSION_PICKAXE);
+        handheldItem(ModItems.SHADOW_EROSION_AXE);
+        handheldItem(ModItems.SHADOW_EROSION_SHOVEL);
+        handheldItem(ModItems.SHADOW_EROSION_HOE);
         handheldItem(ModItems.THERMAL_DAGGER);
         handheldItem(ModItems.DESERT_SWORD);
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD);
@@ -335,6 +340,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.SHADOW_PANE.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/shadow_trapdoor"));
 
+        fenceItem(ModBlocks.WIND_MOOR_FENCE, ModBlocks.WIND_MOOR_PLANKS);
+        buttonItem(ModBlocks.WIND_MOOR_BUTTON, ModBlocks.WIND_MOOR_PLANKS);
+        basicItem(ModItems.WIND_MOOR_DOOR.get());
+        buttonItem(ModBlocks.CYAN_STONE_BUTTON, ModBlocks.CYAN_STONE);
+        withExistingParent(ModItems.WIND_MOOR_PANE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_moor_trapdoor"));
+
         wallItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL, ModBlocks.DYEDREAM_QUARTZ_BLOCK);
 
         wallItem(ModBlocks.DYEDREAM_BUD_WALL, ModBlocks.DYEDREAM_BUD_BLOCK);
@@ -343,6 +355,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         wallItem(ModBlocks.SHADOW_STONE_BRICK_WALL, ModBlocks.SHADOW_STONE_BRICK);
         wallItem(ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL, ModBlocks.NARROW_SHADOW_STONE_BRICK);
         wallItem(ModBlocks.SHADOW_STONE_TILES_WALL, ModBlocks.SHADOW_STONE_TILES);
+        wallItem(ModBlocks.CYAN_STONE_BRICK_WALL, ModBlocks.CYAN_STONE_BRICKS);
+        wallItem(ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL, ModBlocks.MOSSY_CYAN_STONE_BRICKS);
 
         wallItem(ModBlocks.RUST_BLACK_METAL_WALL, ModBlocks.RUST_BLACK_METAL_BLOCK);
 
@@ -421,6 +435,16 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.FOURLEAF_CLOVER.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/fourleaf_clover"));
 
+        // 风之植物系列
+        withExistingParent(ModItems.HAIRY_MOSS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/hairy_moss"));
+        withExistingParent(ModItems.WIND_CLEAVING_GRASS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_cleaving_grass"));
+        withExistingParent(ModItems.WIND_FEATHER_GRASS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_feather_grass_top"));
+        withExistingParent(ModItems.WIND_ISLAND_REED.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_island_reed_top"));
+
         // 阴影植物系列
         withExistingParent(ModItems.SHADOW_SHORT_ROOTS.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/shadow_short_roots"));
@@ -446,6 +470,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
         // 陶罐
         withExistingParent(ModItems.CLAY_POT.getId().getPath(), modLoc("block/clay_pot"));
+        // 阴影陶罐（复用陶罐模型）
+        withExistingParent(ModItems.SHADOW_CLAY_POT.getId().getPath(), modLoc("block/clay_pot"));
         basicItem(ModItems.PEBBLE.get());
 
         // 刷怪蛋

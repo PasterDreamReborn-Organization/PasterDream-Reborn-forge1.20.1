@@ -44,6 +44,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
         copy(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
         copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
+        copy(BlockTags.STONE_BUTTONS, ItemTags.STONE_BUTTONS);
         copy(BlockTags.FLOWERS, ItemTags.FLOWERS);
         copy(BlockTags.SMALL_FLOWERS, ItemTags.SMALL_FLOWERS);
 
@@ -59,6 +60,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "mushrooms")))
                 .add(ModBlocks.PINK_MUSHROOM.get().asItem())
                 .add(ModBlocks.TALL_PINK_MUSHROOM.get().asItem());
+
+        // 阴影书架兼容标签
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "bookshelves")))
+                .add(ModItems.SHADOW_BOOKSHELF.get())
+                .add(ModItems.WORN_SHADOW_BOOKSHELF.get())
+                .add(ModItems.COBWEB_SHADOW_BOOKSHELF.get())
+                .add(ModItems.KEY_SHADOW_BOOKSHELF.get());
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "shadow_stones")))
                 .add(ModItems.SHADOW_STONE.get())
