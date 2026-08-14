@@ -47,7 +47,7 @@ import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlo
 
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureBlock;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlock;
-import com.pasterdream.pasterdreammod.world.block.dreamtrain.DreamTrainStructureBlock;
+import com.pasterdream.pasterdreammod.world.block.dreamtrain.DreamTrainBroadcastBlock;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlock;
 import com.pasterdream.pasterdreammod.world.block.ClayPotBlock;
 import com.pasterdream.pasterdreammod.world.block.PebbleBlock;
@@ -811,8 +811,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> SHADOW_BED = BLOCKS.register("shadow_bed", ShadowBedBlock::new);
     //荒漠英雄之墓
     public static final RegistryObject<Block> DESERT_HERO_TOMB = BLOCKS.register("desert_hero_tomb", DesertHeroTombBlock::new);
-    //逐梦列车结构
-    public static final RegistryObject<Block> DREAM_TRAIN_STRUCTURE = BLOCKS.register("dream_train_structure", DreamTrainStructureBlock::new);
+    //逐梦列车广播方块（嵌入列车结构内，检测玩家靠近后广播并自毁）
+    public static final RegistryObject<Block> DREAM_TRAIN_STRUCTURE = BLOCKS.register("dream_train_structure", DreamTrainBroadcastBlock::new);
 
     //破碎粒子提供方块
     public static final RegistryObject<Block> MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0 = BLOCKS.register("model_break_particle_provider_block_0", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0,2147483647)));

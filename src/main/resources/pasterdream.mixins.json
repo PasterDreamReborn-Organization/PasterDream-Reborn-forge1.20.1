@@ -21,8 +21,6 @@
     "WorldGenRegionMixin",
     "ServerboundSetStructureBlockPacketMixin",
     "StructureBlockEntityMixin",
-    "StructureTemplateMixin",
-    "StructureTemplateManagerMixin",
     "LocateCommandMixin"
   ],
   "client": [
