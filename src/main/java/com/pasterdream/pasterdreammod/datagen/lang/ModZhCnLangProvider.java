@@ -435,6 +435,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS.get(), "苔苍青岩砖楼梯");
         add(ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB.get(), "苔苍青岩砖台阶");
         add(ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL.get(), "苔苍青岩砖墙");
+        add(ModBlocks.CHISELED_CYAN_STONE_BRICKS.get(), "雕文苍青岩砖");
+        add(ModBlocks.CYAN_STONE_PILLAR.get(), "苍青岩柱");
         add(ModBlocks.QYM_DOLL.get(), "娇小琴雨梦玩偶");
         add(ModBlocks.UUZ_DOLL.get(), "娇小幼幼紫玩偶");
         add(ModBlocks.DYEDREAM_CRACK.get(), "染梦裂隙");

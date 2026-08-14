@@ -421,6 +421,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS.get(), "Mossy Cyan Stone Brick Stairs");
         add(ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB.get(), "Mossy Cyan Stone Brick Slab");
         add(ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL.get(), "Mossy Cyan Stone Brick Wall");
+        add(ModBlocks.CHISELED_CYAN_STONE_BRICKS.get(), "Chiseled Cyan Stone Bricks");
+        add(ModBlocks.CYAN_STONE_PILLAR.get(), "Cyan Stone Pillar");
         add(ModBlocks.QYM_DOLL.get(), "琴雨梦Doll");
         add(ModBlocks.UUZ_DOLL.get(), "幼幼紫Doll");
         add(ModBlocks.DYEDREAM_CRACK.get(), "Dyedream Crack");
