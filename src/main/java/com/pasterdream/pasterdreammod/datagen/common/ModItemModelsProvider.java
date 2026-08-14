@@ -488,6 +488,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.SHADOW_CLAY_POT.getId().getPath(), modLoc("block/clay_pot"));
         basicItem(ModItems.PEBBLE.get());
 
+        // 破风幕帐
+        withExistingParent(ModItems.BREAK_WIND_CURTAIN.getId().getPath(), modLoc("block/break_wind_curtain"));
+
         // 刷怪蛋
         spawnEggItem(ModItems.PINK_CHICKEN_SPAWN_EGG);
         spawnEggItem(ModItems.PINK_SLIME_SPAWN_EGG);

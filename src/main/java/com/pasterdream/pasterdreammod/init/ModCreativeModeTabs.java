@@ -538,6 +538,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CARVE_CLARITY_GLASS_PANE.get());
                         output.accept(ModItems.FRAME_CLARITY_GLASS.get());
                         output.accept(ModItems.FRAME_CLARITY_GLASS_PANE.get());
+                        output.accept(ModItems.BREAK_WIND_CURTAIN.get());
                         output.accept(ModItems.CONGEAL_WIND_ORE.get());
                         output.accept(ModItems.WIND_RUNNER_CRYSTAL_ORE.get());
                         output.accept(ModItems.CONGEAL_WIND_BLOCK.get());

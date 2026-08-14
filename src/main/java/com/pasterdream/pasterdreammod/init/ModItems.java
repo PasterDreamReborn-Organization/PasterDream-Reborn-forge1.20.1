@@ -1129,6 +1129,8 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.EJECTION_PRESSURE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> CONGEAL_WIND_IRON_BARS = ITEMS.register("congeal_wind_iron_bars",
             () -> new BlockItem(ModBlocks.CONGEAL_WIND_IRON_BARS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BREAK_WIND_CURTAIN = ITEMS.register("break_wind_curtain",
+            () -> new BlockItem(ModBlocks.BREAK_WIND_CURTAIN.get(), new Item.Properties()));
     public static final RegistryObject<Item> SOUL_ORE = ITEMS.register("soul_ore",
             () -> new BlockItem(ModBlocks.SOUL_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> RAW_TITANIUM_BLOCK = ITEMS.register("raw_titanium_block",
