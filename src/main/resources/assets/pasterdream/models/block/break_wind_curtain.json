@@ -1,0 +1,9 @@
+{
+  "parent": "pasterdream:custom/break_wind_curtain",
+  "textures": {
+    "all": "pasterdream:block/break_wind_curtain",
+    "particle": "pasterdream:block/break_wind_curtain",
+    "0": "pasterdream:block/break_wind_curtain"
+  },
+  "render_type": "translucent"
+}

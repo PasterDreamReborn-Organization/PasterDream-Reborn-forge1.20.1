@@ -49,6 +49,9 @@ public class ClientSetRenderLayer
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_BUD_SLAB.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_BUD_WALL.get(), RenderType.translucent());
 
+        // ===== 破风幕帐 =====
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BREAK_WIND_CURTAIN.get(), RenderType.translucent());
+
         // ===== 染梦睡莲 / 染梦莲花 =====
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_LILY_PAD.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_LOTUS.get(), RenderType.cutout());

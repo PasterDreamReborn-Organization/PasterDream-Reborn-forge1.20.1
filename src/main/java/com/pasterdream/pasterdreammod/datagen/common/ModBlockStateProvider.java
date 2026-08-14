@@ -610,6 +610,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var pebbleModel = models().getExistingFile(modLoc("block/pebble"));
         horizontalBlock(ModBlocks.PEBBLE.get(), pebbleModel);
 
+        // 破风幕帐
+        var breakWindCurtainModel = models().getExistingFile(modLoc("block/break_wind_curtain"));
+        horizontalBlock(ModBlocks.BREAK_WIND_CURTAIN.get(), breakWindCurtainModel);
+
         //流体方块
         simpleBlock(ModBlocks.MELTDREAM_LIQUID.get(), models().cubeAll(ModBlocks.MELTDREAM_LIQUID.getId().getPath(), modLoc("block/melt_dream_liquid_flowing")));
         simpleBlock(ModBlocks.SHADOW_LIQUID.get(), models().cubeAll(ModBlocks.SHADOW_LIQUID.getId().getPath(), modLoc("block/shadow_liquid_flowing")));

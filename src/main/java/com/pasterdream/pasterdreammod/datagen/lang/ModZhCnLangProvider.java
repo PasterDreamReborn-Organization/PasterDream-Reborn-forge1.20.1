@@ -325,6 +325,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.CARVE_CLARITY_GLASS_PANE.get(), "雕纹澄澈玻璃板");
         add(ModBlocks.FRAME_CLARITY_GLASS.get(), "镶框澄澈玻璃");
         add(ModBlocks.FRAME_CLARITY_GLASS_PANE.get(), "镶框澄澈玻璃板");
+        add(ModBlocks.BREAK_WIND_CURTAIN.get(), "破风幕帐");
         add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), "染梦母岩");
         add(ModBlocks.SMALL_DYEDREAM_BUD.get(), "小型染梦晶芽");
         add(ModBlocks.MEDIUM_DYEDREAM_BUD.get(), "中型染梦晶芽");

@@ -438,6 +438,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.CLAYPAN.get());
         // 小石子
         dropSelf(ModBlocks.PEBBLE.get());
+        // 破风幕帐：无掉落（旧版 getDrops 返回空气）
+        dropNone(ModBlocks.BREAK_WIND_CURTAIN.get());
         // 陶罐：精准采集掉落自身，否则从战利品池随机抽取
         add(ModBlocks.CLAY_POT.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
