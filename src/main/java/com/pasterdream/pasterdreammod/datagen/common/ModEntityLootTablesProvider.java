@@ -56,6 +56,15 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
         );
 
         consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/wind_knight"),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get())
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
+        );
+
+        consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/shadow_golem"),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()

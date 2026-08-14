@@ -26,6 +26,7 @@ import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.T
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalItem;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombItem;
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureItem;
+import com.pasterdream.pasterdreammod.world.block.windknightaltar.WindKnightAltarItem;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombItem;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureItem;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceItem;
@@ -217,6 +218,10 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CONGEAL_WIND_IRON_INGOT = ITEMS.register("congeal_wind_iron_ingot",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PULSE_WIND_RUNNER_CRYSTAL = ITEMS.register("pulse_wind_runner_crystal",
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> WIND_KNIGHT_ALTAR = ITEMS.register("wind_knight_altar",
+            () -> new WindKnightAltarItem(ModBlocks.WIND_KNIGHT_ALTAR.get(), new Item.Properties()));
     public static final RegistryObject<Item> LIGHT_BALL = ITEMS.register("light_ball",
             () -> new BlockItem(ModBlocks.LIGHT_BALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
@@ -1825,6 +1830,12 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.PINK_SLIME, 0xe4a8d9, 0xd46daf, new Item.Properties()));
     public static final RegistryObject<Item> GOLDEN_FOX_SPAWN_EGG = ITEMS.register("golden_fox_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.GOLDEN_FOX, 0xe8c13a, 0x8b6914, new Item.Properties()));
+    public static final RegistryObject<Item> WIND_KNIGHT_SPAWN_EGG = ITEMS.register("wind_knight_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.WIND_KNIGHT, -1907228, -9642058, new Item.Properties()));
+    public static final RegistryObject<Item> THUNDERCLOUD_SPAWN_EGG = ITEMS.register("thundercloud_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.THUNDERCLOUD, -8155750, -14399334, new Item.Properties()));
+    public static final RegistryObject<Item> HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG = ITEMS.register("highvoltage_thundercloud_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.HIGHVOLTAGE_THUNDERCLOUD, -8155750, -14339416, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_GOLEM_SPAWN_EGG = ITEMS.register("shadow_golem_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.SHADOW_GOLEM, 0x191926, 0xA7A5B1, new Item.Properties()));
     public static final RegistryObject<Item> TERRORBEAK_SPAWN_EGG = ITEMS.register("terrorbeak_spawn_egg",

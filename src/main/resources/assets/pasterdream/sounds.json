@@ -152,5 +152,11 @@
   },
   "shadow_trap_0": {
     "sounds": [{"name": "pasterdream:shadow_trap_0", "stream": false}]
+  },
+  "wind_knight_skill_0": {
+    "sounds": [{"name": "pasterdream:wind_knight_skill_0", "stream": false}]
+  },
+  "thundercloud_attack": {
+    "sounds": [{"name": "pasterdream:thundercloud_attack", "stream": false}]
   }
 }

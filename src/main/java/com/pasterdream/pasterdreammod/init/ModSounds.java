@@ -76,6 +76,8 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> INFERNO_IMPACT = SOUNDS.register("inferno_impact", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "inferno_impact")));
     public static final RegistryObject<SoundEvent> SHADOW_HAND_LANTERN = SOUNDS.register("shadow_hand_lantern", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_hand_lantern")));
     public static final RegistryObject<SoundEvent> SHADOW_TRAP_0 = SOUNDS.register("shadow_trap_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_trap_0")));
+    public static final RegistryObject<SoundEvent> WIND_KNIGHT_SKILL_0 = SOUNDS.register("wind_knight_skill_0", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_knight_skill_0")));
+    public static final RegistryObject<SoundEvent> THUNDERCLOUD_ATTACK = SOUNDS.register("thundercloud_attack", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "thundercloud_attack")));
 
     public static void register(IEventBus eventBus) {
         SOUNDS.register(eventBus);

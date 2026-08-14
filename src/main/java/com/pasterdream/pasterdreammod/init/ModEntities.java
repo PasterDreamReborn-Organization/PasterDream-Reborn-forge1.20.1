@@ -26,6 +26,10 @@ import com.pasterdream.pasterdreammod.world.entity.ghost.SquealWaveProjectileEnt
 import com.pasterdream.pasterdreammod.world.entity.beetle.BlackBeetleEntity;
 import com.pasterdream.pasterdreammod.world.entity.beetle.BlackBeetleMotherEntity;
 import com.pasterdream.pasterdreammod.world.entity.shakingcrystal.ShakingCrystalEntity;
+import com.pasterdream.pasterdreammod.world.entity.WindKnightEntity;
+import com.pasterdream.pasterdreammod.world.entity.ThundercloudEntity;
+import com.pasterdream.pasterdreammod.world.entity.LightningProjectileEntity;
+import com.pasterdream.pasterdreammod.world.entity.HighvoltageThundercloudEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -285,6 +289,40 @@ public class ModEntities {
                     .fireImmune()
                     .sized(0.6f, 0.8f));
 
+    public static final RegistryObject<EntityType<WindKnightEntity>> WIND_KNIGHT = register("wind_knight",
+            EntityType.Builder.<WindKnightEntity>of(WindKnightEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(WindKnightEntity::new)
+                    .fireImmune()
+                    .sized(1f, 2f));
+
+    public static final RegistryObject<EntityType<ThundercloudEntity>> THUNDERCLOUD = register("thundercloud",
+            EntityType.Builder.<ThundercloudEntity>of(ThundercloudEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(ThundercloudEntity::new)
+                    .sized(1f, 0.8f));
+
+    public static final RegistryObject<EntityType<HighvoltageThundercloudEntity>> HIGHVOLTAGE_THUNDERCLOUD = register("highvoltage_thundercloud",
+            EntityType.Builder.<HighvoltageThundercloudEntity>of(HighvoltageThundercloudEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(HighvoltageThundercloudEntity::new)
+                    .fireImmune()
+                    .sized(1.4f, 1.1f));
+
+    public static final RegistryObject<EntityType<LightningProjectileEntity>> LIGHTNING_PROJECTILE = register("lightning_projectile",
+            EntityType.Builder.<LightningProjectileEntity>of(LightningProjectileEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(LightningProjectileEntity::new)
+                    .sized(0.5f, 0.5f));
+
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder) {
         return REGISTRY.register(name, () -> builder.build(name));
     }
@@ -310,6 +348,9 @@ public class ModEntities {
         event.enqueueWork(BlackBeetleEntity::init);
         event.enqueueWork(BlackBeetleMotherEntity::init);
         event.enqueueWork(ShakingCrystalEntity::init);
+        event.enqueueWork(WindKnightEntity::init);
+        event.enqueueWork(ThundercloudEntity::init);
+        event.enqueueWork(HighvoltageThundercloudEntity::init);
         event.enqueueWork(ShadowMagicballEntity::init);
         event.enqueueWork(ShadowTuneTotemEntity::init);
     }
@@ -334,6 +375,9 @@ public class ModEntities {
         event.put(BLACK_BEETLE.get(), BlackBeetleEntity.createAttributes().build());
         event.put(BLACK_BEETLE_MOTHER.get(), BlackBeetleMotherEntity.createAttributes().build());
         event.put(SHAKING_CRYSTAL.get(), ShakingCrystalEntity.createAttributes().build());
+        event.put(WIND_KNIGHT.get(), WindKnightEntity.createAttributes().build());
+        event.put(THUNDERCLOUD.get(), ThundercloudEntity.createAttributes().build());
+        event.put(HIGHVOLTAGE_THUNDERCLOUD.get(), HighvoltageThundercloudEntity.createAttributes().build());
         event.put(SHADOW_MAGICBALL.get(), ShadowMagicballEntity.createAttributes().build());
         event.put(SHADOW_TUNE_TOTEM.get(), ShadowTuneTotemEntity.createAttributes().build());
         event.put(AARONCOS_LEFT_HAND.get(), AaroncosLeftHandEntity.createAttributes().build());

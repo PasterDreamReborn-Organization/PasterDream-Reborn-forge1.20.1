@@ -318,6 +318,11 @@
 | `mossy_cyan_stone_brick_stairs`     | `mossy_cyan_stone_brick_stairs`     | 不改                                            | 无需客制化类，直接用 `StairBlock`                                                                                          |
 | `mossy_cyan_stone_brick_slab`       | `mossy_cyan_stone_brick_slab`       | 不改                                            | 无需客制化类，直接用 `SlabBlock`                                                                                           |
 | `mossy_cyan_stone_brick_wall`       | `mossy_cyan_stone_brick_wall`       | 不改                                            | 无需客制化类，直接用 `WallBlock`                                                                                           |
+| `wind_knight_spawnblock_0`          | `wind_knight_altar`                 | 重命名，破风骑士祭坛（stage=0）                        | 客制化类 GeckoLib 动画方块实体（`world/block/windknightaltar/`），阶段用方块状态 `stage` 记录                                    |
+| `wind_knight_spawnblock_1`          | `wind_knight_altar`                 | 合并为 stage=1（组装躯干）                             | 同上                                                                                                              |
+| `wind_knight_spawnblock_2`          | `wind_knight_altar`                 | 合并为 stage=2（组装手臂）                             | 同上                                                                                                              |
+| `wind_knight_spawnblock_3`          | `wind_knight_altar`                 | 合并为 stage=3（组装头颅）                             | 同上                                                                                                              |
+| `wind_knight_spawnblock_4`          | `wind_knight_altar`                 | 合并为 stage=4（完整形态）                             | 同上                                                                                                              |
 
 
 ---
@@ -606,6 +611,8 @@
 | `machine_wing_chestplate`      | `machine_light_wing`                        | 重命名，去 `_chestplate` + 加 `light`（光）                               | 客制化类 `MachineLightWingItem`（GeckoLib 动画盔甲），每20tick消耗0.02融梦能量启用飞行                                         |
 | `angel_wing_chestplate`        | `angel_wing`                                | 去 `_chestplate`                                                  | 客制化类 `AngelWingItem`（GeckoLib 动画盔甲），无条件飞行 + 免疫摔落伤害                                                       |
 | `forsakens_wing_chestplate`    | `forsakens_wing`                            | 去 `_chestplate`                                                  | 客制化类 `ForsakensWingItem`（GeckoLib 动画盔甲），无条件飞行 + 免疫摔落/缓慢/凋零                                               |
+| `pulse_windrunner_crystal`     | `pulse_wind_runner_crystal`                 | 重命名，补下划线                                                       | 无需客制化类，直接用 `Item`（破风骑士掉落）                                                                                   |
+| `lightning_spell`              | `potion_bottle`                             | 重做，合并进药剂瓶 NBT 系统（type=`lightning`）                            | 已有 `PotionBottleItem` 的 TYPE_LIGHTNING                                                                             |
 
 ---
 
@@ -658,6 +665,10 @@
 | `black_beetle_mother`               | `black_beetle_mother`         | 不改                                               | 客制化类 `BlackBeetleMotherEntity`（`world/entity/beetle/`），Boss，受击触发技能：召唤小甲虫 + buff 周围甲虫 |
 | `white_sword_rain_projectile`       | `white_sword_rain_projectile` | 不改                                               | 弹射物 `WhiteSwordRainProjectileEntity`，穿透方块，25tick 寿命，命中造成近战伤害+束缚+暗影沉寐                 |
 | `shaking_crystal`                   | `shaking_crystal`             | 不改                                               | GeckoLib 实体 `ShakingCrystalEntity`，特效载体，1s 自毁，生成粒子 + 施加混乱效果                          |
+| `wind_knight`                       | `wind_knight`                 | 不改                                               | 客制化类 `WindKnightEntity`（Boss，GeckoLib，祭坛召唤）                                                  |
+| `thundercloud`                      | `thundercloud`                | 不改                                               | 客制化类 `ThundercloudEntity`（飞行雷云，祭坛召唤的随从）                                                   |
+| `highvoltage_thundercloud`          | `highvoltage_thundercloud`    | 不改                                               | 客制化类 `HighvoltageThundercloudEntity`（高压雷云，更强变体）                                             |
+| `projectile_lightning_projectile`   | `lightning_projectile`        | 重命名，去 `projectile_` 前缀                           | 弹射物 `LightningProjectileEntity`（雷云攻击）                                                          |
 
 ---
 

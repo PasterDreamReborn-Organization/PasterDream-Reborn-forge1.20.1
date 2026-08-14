@@ -38,6 +38,7 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.We
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.windknightaltar.WindKnightAltarBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -85,6 +86,7 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<ShadowBedBlockEntity>> SHADOW_BED = BLOCK_ENTITIES.register("shadow_bed", () -> BlockEntityType.Builder.of(ShadowBedBlockEntity::new, ModBlocks.SHADOW_BED.get()).build(null));
     public static final RegistryObject<BlockEntityType<ShadowBlastFurnaceBlockEntity>> SHADOW_BLAST_FURNACE = BLOCK_ENTITIES.register("shadow_blast_furnace", () -> BlockEntityType.Builder.of(ShadowBlastFurnaceBlockEntity::new, ModBlocks.SHADOW_BLAST_FURNACE.get()).build(null));
     public static final RegistryObject<BlockEntityType<ShadowBlastFurnaceAddonBlockEntity>> SHADOW_BLAST_FURNACE_ADDON = BLOCK_ENTITIES.register("shadow_blast_furnace_addon", () -> BlockEntityType.Builder.of(ShadowBlastFurnaceAddonBlockEntity::new, ModBlocks.SHADOW_BLAST_FURNACE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<WindKnightAltarBlockEntity>> WIND_KNIGHT_ALTAR = BLOCK_ENTITIES.register("wind_knight_altar", () -> BlockEntityType.Builder.of(WindKnightAltarBlockEntity::new, ModBlocks.WIND_KNIGHT_ALTAR.get()).build(null));
 
     public static void register(IEventBus eventBus)
     {

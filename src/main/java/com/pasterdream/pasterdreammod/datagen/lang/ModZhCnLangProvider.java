@@ -152,6 +152,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.WHITE_CRYSTAL.get(), "白厄水晶");
         add(ModItems.CONGEAL_WIND.get(), "凝结之风");
         add(ModItems.WIND_RUNNER_CRYSTAL.get(), "风行者水晶");
+        add(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(), "脉冲风行者水晶");
         add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "凝风铁锭");
         add("tooltip.pasterdream.white_crystal", "§7制作白厄剑的核心材料");
         add(ModItems.LIGHT_BALL.get(), "流明光球");
@@ -466,6 +467,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.RESEARCH_TABLE.get(), "研究台");
         add(ModBlocks.LOST_SWORD_TOMB.get(), "失落剑冢");
         add(ModBlocks.GOLDEN_FOX_SCULPTURE.get(), "金狐狸雕像");
+        add(ModBlocks.WIND_KNIGHT_ALTAR.get(), "破风骑士祭坛");
+        add("block.pasterdream.wind_knight_altar.need_crystal", "需要嵌入 [风行者水晶]");
+        add("block.pasterdream.wind_knight_altar.need_torso", "需要 [凝风铁锭] 组装躯干");
+        add("block.pasterdream.wind_knight_altar.need_arms", "需要 [凝风铁锭] 组装手臂");
+        add("block.pasterdream.wind_knight_altar.need_head", "需要 [凝风铁锭] 组装头颅");
+        add("block.pasterdream.wind_knight_altar.throw_lightning", "将雷电药剂瓶投掷到祭坛附近以唤醒傀儡");
         add("block.pasterdream.golden_fox_sculpture.no_reaction", "雕像没有反应...");
         add("block.pasterdream.golden_fox_sculpture.cooldown", "雕像还在沉睡... 还需等待 %s 秒");
         add(ModBlocks.FOX_SCULPTURE.get(), "狐狸雕像");
@@ -1894,6 +1901,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.PINK_SLIME_SPAWN_EGG.get(), "粉红史莱姆刷怪蛋");
         add(ModEntities.GOLDEN_FOX.get(), "金狐狸");
         add(ModItems.GOLDEN_FOX_SPAWN_EGG.get(), "金狐狸刷怪蛋");
+        add(ModEntities.WIND_KNIGHT.get(), "破风骑士");
+        add(ModItems.WIND_KNIGHT_SPAWN_EGG.get(), "破风骑士刷怪蛋");
+        add(ModEntities.THUNDERCLOUD.get(), "雷云");
+        add(ModItems.THUNDERCLOUD_SPAWN_EGG.get(), "雷云刷怪蛋");
+        add(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), "高压雷云");
+        add(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get(), "高压雷云刷怪蛋");
+        add(ModEntities.LIGHTNING_PROJECTILE.get(), "雷云");
         add(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), "融梦水晶");
         add(ModEntities.FOX_FIRE.get(), "狐火");
         add(ModEntities.SHADOW_GOLEM.get(), "阴影傀儡");
