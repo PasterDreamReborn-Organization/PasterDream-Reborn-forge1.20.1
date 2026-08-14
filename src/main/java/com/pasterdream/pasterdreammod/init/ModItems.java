@@ -219,7 +219,7 @@ public class ModItems {
     public static final RegistryObject<Item> CONGEAL_WIND_IRON_INGOT = ITEMS.register("congeal_wind_iron_ingot",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PULSE_WIND_RUNNER_CRYSTAL = ITEMS.register("pulse_wind_runner_crystal",
-            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new PulseWindRunnerCrystalItem());
     public static final RegistryObject<Item> WIND_KNIGHT_ALTAR = ITEMS.register("wind_knight_altar",
             () -> new WindKnightAltarItem(ModBlocks.WIND_KNIGHT_ALTAR.get(), new Item.Properties()));
     public static final RegistryObject<Item> LIGHT_BALL = ITEMS.register("light_ball",
