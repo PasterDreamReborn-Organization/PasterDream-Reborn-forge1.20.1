@@ -3,6 +3,9 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.network.*;
 import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
+import com.pasterdream.pasterdreammod.network.blueprint.BlueprintPlacePacket;
+import com.pasterdream.pasterdreammod.network.blueprint.StartBlueprintPlacementPacket;
+import com.pasterdream.pasterdreammod.network.blueprint.UpdateBlueprintPlacingPacket;
 import com.pasterdream.pasterdreammod.network.debugsword.DebugBlockActionPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSlotInteractPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSoundPacket;
@@ -48,6 +51,9 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, ResearchTableResearchPacket.class, ResearchTableResearchPacket::encode, ResearchTableResearchPacket::decode, ResearchTableResearchPacket::handle);
 
         CHANNEL.registerMessage(id++, DebugBlockActionPacket.class, DebugBlockActionPacket::encode, DebugBlockActionPacket::decode, DebugBlockActionPacket::handle);
+        CHANNEL.registerMessage(id++, StartBlueprintPlacementPacket.class, StartBlueprintPlacementPacket::encode, StartBlueprintPlacementPacket::decode, StartBlueprintPlacementPacket::handle);
+        CHANNEL.registerMessage(id++, BlueprintPlacePacket.class, BlueprintPlacePacket::encode, BlueprintPlacePacket::decode, BlueprintPlacePacket::handle);
+        CHANNEL.registerMessage(id++, UpdateBlueprintPlacingPacket.class, UpdateBlueprintPlacingPacket::encode, UpdateBlueprintPlacingPacket::decode, UpdateBlueprintPlacingPacket::handle);
 
         CHANNEL.registerMessage(id++, MeltDreamEnergySyncPacket.class, MeltDreamEnergySyncPacket::encode, MeltDreamEnergySyncPacket::decode, MeltDreamEnergySyncPacket::handle);
         CHANNEL.registerMessage(id++, IsNotNeedSyncPacket.class, IsNotNeedSyncPacket::encode, IsNotNeedSyncPacket::decode, IsNotNeedSyncPacket::handle);

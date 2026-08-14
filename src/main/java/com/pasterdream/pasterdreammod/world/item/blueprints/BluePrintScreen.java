@@ -4,17 +4,15 @@ import com.pasterdream.pasterdreammod.component.ReadOnlySlot;
 import com.pasterdream.pasterdreammod.component.arrowbutton.DownArrowButton;
 import com.pasterdream.pasterdreammod.component.arrowbutton.UpArrowButton;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.init.ModNetwork;
+import com.pasterdream.pasterdreammod.network.blueprint.StartBlueprintPlacementPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +22,8 @@ public class BluePrintScreen extends Screen
     private List<ReadOnlySlot> readOnlySlots = new ArrayList<>();
     private UpArrowButton upArrowButton;
     private DownArrowButton downArrowButton;
-    private CompoundTag NBT;
+    private CompoundTag materialNBT;
+    private CompoundTag resultNBT;
 
     private int sizeX = 0;
     private int sizeY = 0;
@@ -32,10 +31,11 @@ public class BluePrintScreen extends Screen
     private int currentY = 0;
     List<List<List<ItemStack>>> ListListListItemStack;
 
-    public BluePrintScreen(CompoundTag NBT)
+    public BluePrintScreen(CompoundTag materialNBT, CompoundTag resultNBT)
     {
         super(Component.empty());
-        this.NBT = NBT;
+        this.materialNBT = materialNBT;
+        this.resultNBT = resultNBT;
     }
 
     @Override
@@ -48,7 +48,14 @@ public class BluePrintScreen extends Screen
         addRenderableWidget(upArrowButton);
         addRenderableWidget(downArrowButton);
 
-        ListListListItemStack = BluePrintNBTSerializer.serialize(NBT);
+        Button BluePrintButton = Button.builder(Component.translatable("button.pasterdream.blue_print_button"), button ->
+        {
+            ModNetwork.CHANNEL.sendToServer(new StartBlueprintPlacementPacket(materialNBT, resultNBT));
+            Minecraft.getInstance().setScreen(null);
+        }).pos(width / 2 - 88, height / 2 - 8).size(32, 16).build();
+        addRenderableWidget(BluePrintButton);
+
+        ListListListItemStack = BluePrintNBTSerializer.serialize(materialNBT);
 
         if(ListListListItemStack == null)
         {

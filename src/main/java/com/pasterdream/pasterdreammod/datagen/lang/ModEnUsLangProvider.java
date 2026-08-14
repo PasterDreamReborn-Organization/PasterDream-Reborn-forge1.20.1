@@ -667,6 +667,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.融梦水晶箱战利品品质应为1，2或3，但是此时为", "Melt Dream Crystal Chest Loot Table Level Should Be 1 or 2 or 3, But Now Is%d");
         add("message.pasterdream.融梦能量不足", "Melt Dream Energy Not Enough");
 
+        add("message.pasterdream.已放置蓝图", "Blue Print Placed");
+        add("message.pasterdream.蓝图放置失败", "Blue Print Place Failed");
+        add("message.pasterdream.材料不足", "Material Not Enough");
+        add("button.pasterdream.blue_print_button", "Place");
+
         add("effect.pasterdream.sculk_armor_buff", "Sculk Echo");
         add("effect.pasterdream.dyedream_armor_buff", "Dyedream Protection");
         add("effect.pasterdream.titanium_armor_buff", "Titanium Protection");
