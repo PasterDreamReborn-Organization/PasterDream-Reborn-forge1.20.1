@@ -25,7 +25,7 @@ public class ModStructureSetProvider implements DataProvider
     private static final Map<String, int[]> GROUP_CONFIG = Map.of(
         "dyedream_structures", new int[]{14, 6},
         "dyedream_bubbles",    new int[]{4, 2},
-        "shadow_structures",   new int[]{16, 6}
+        "shadow_structures",   new int[]{12, 6}
     );
 
     public ModStructureSetProvider(PackOutput output, List<StructureGenerationConfig> configs)
