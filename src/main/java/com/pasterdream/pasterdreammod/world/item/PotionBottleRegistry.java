@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.block.windknightaltar.WindKnightAltarProcedure;
 import com.pasterdream.pasterdreammod.world.entity.RejuvenationBottleEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPotionBottle;
 import net.minecraft.core.particles.ParticleTypes;
@@ -101,6 +102,8 @@ public class PotionBottleRegistry {
                     for (int delay : new int[]{55, 65, 75, 85}) {
                         PasterDreamMod.queueServerWork(delay, () -> spawnLightningBolt(serverLevel, hitPos));
                     }
+                    // t=86: 检测附近祭坛并召唤
+                    PasterDreamMod.queueServerWork(86, () -> WindKnightAltarProcedure.trySummon(serverLevel, hitPos));
                 });
     }
 

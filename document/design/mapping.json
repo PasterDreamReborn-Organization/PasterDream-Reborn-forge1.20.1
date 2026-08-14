@@ -261,7 +261,12 @@
     "mossy_cyan_stone_bricks": "mossy_cyan_stone_bricks",
     "mossy_cyan_stone_brick_stairs": "mossy_cyan_stone_brick_stairs",
     "mossy_cyan_stone_brick_slab": "mossy_cyan_stone_brick_slab",
-    "mossy_cyan_stone_brick_wall": "mossy_cyan_stone_brick_wall"
+    "mossy_cyan_stone_brick_wall": "mossy_cyan_stone_brick_wall",
+    "wind_knight_spawnblock_0": "wind_knight_altar",
+    "wind_knight_spawnblock_1": "wind_knight_altar",
+    "wind_knight_spawnblock_2": "wind_knight_altar",
+    "wind_knight_spawnblock_3": "wind_knight_altar",
+    "wind_knight_spawnblock_4": "wind_knight_altar"
   },
   "items": {
     "amber_candy": "amber_candy",
@@ -543,7 +548,9 @@
     "shadow_dungeon_key": "shadow_dungeon_key",
     "machine_wing_chestplate": "machine_light_wing",
     "angel_wing_chestplate": "angel_wing",
-    "forsakens_wing_chestplate": "forsakens_wing"
+    "forsakens_wing_chestplate": "forsakens_wing",
+    "pulse_windrunner_crystal": "pulse_wind_runner_crystal",
+    "lightning_spell": "potion_bottle"
   },
   "entities": {
     "pink_chicken": "pink_chicken",
@@ -565,7 +572,11 @@
     "black_beetle": "black_beetle",
     "black_beetle_mother": "black_beetle_mother",
     "white_sword_rain_projectile": "white_sword_rain_projectile",
-    "shaking_crystal": "shaking_crystal"
+    "shaking_crystal": "shaking_crystal",
+    "wind_knight": "wind_knight",
+    "thundercloud": "thundercloud",
+    "highvoltage_thundercloud": "highvoltage_thundercloud",
+    "projectile_lightning_projectile": "lightning_projectile"
   },
   "dimensions": {
     "dyedream_world": "dyedream_world",

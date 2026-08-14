@@ -17,6 +17,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierBlo
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorBlock;
 import com.pasterdream.pasterdreammod.world.block.shadow.*;
+import com.pasterdream.pasterdreammod.world.block.windknightaltar.WindKnightAltarBlock;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowbed.ShadowBedBlock;
 import com.pasterdream.pasterdreammod.world.block.DyedreamFarmlandBlock;
@@ -902,6 +903,8 @@ public class ModBlocks {
         POTTED_CROP_ITEMS.put(potted, new CropPottedItems(seedlingItem, matureItem));
         return potted;
     }
+
+    public static final RegistryObject<Block> WIND_KNIGHT_ALTAR = BLOCKS.register("wind_knight_altar", () -> new WindKnightAltarBlock());
 
     /** Maps crop Block → its PottedCropBlock. Used by FlowerPotBlockMixin. */
     public static final Map<Block, PottedCropBlock> CROP_TO_POTTED = new java.util.HashMap<>();

@@ -93,6 +93,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.EJECTION_PRESSURE_PLATE.get());
         dropSelf(ModBlocks.EJECTION_PRESSURE_BLOCK.get());
         dropSelf(ModBlocks.CONGEAL_WIND_IRON_BARS.get());
+        dropSelf(ModBlocks.WIND_KNIGHT_ALTAR.get());
         add(ModBlocks.SOUL_ORE.get(),
                 block -> createSilkTouchDispatchTable(block,
                         applyExplosionDecay(block, LootItem.lootTableItem(ModItems.SOUL_DUST.get())

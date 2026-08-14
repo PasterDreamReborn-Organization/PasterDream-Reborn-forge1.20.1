@@ -20,6 +20,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapT
 import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierBlockRenderer;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.windknightaltar.WindKnightAltarBlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -55,5 +56,6 @@ public class ModBlockEntityRenderer
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_HAND_TRAP.get(), ShadowHandTrapTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_BRAZIER.get(), ShadowBrazierBlockRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.TWILIGHT_LANTERN.get(), TwilightLanternTileRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.WIND_KNIGHT_ALTAR.get(), WindKnightAltarBlockEntityRenderer::new);
     }
 }

@@ -146,6 +146,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WHITE_CRYSTAL.get());
                         output.accept(ModItems.CONGEAL_WIND.get());
                         output.accept(ModItems.WIND_RUNNER_CRYSTAL.get());
+                        output.accept(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get());
                         output.accept(ModItems.BLUE_HEART_OF_THE_SEA.get());
                         output.accept(ModItems.ELDER_GUARDIAN_SCALE.get());
                         output.accept(ModItems.CHARGED_AMETHYST.get());
@@ -637,6 +638,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SAND_OF_TIME.get());
                         output.accept(ModItems.LIFE_CRYSTAL.get());
                         output.accept(ModItems.GOLDEN_FOX_SCULPTURE.get());
+                        output.accept(ModItems.WIND_KNIGHT_ALTAR.get());
                         output.accept(ModItems.DESERT_HERO_TOMB.get());
                         output.accept(ModItems.MELT_DREAM_CRYSTAL_CHEST.get());
                         output.accept(ModItems.OPENED_MELT_DREAM_CRYSTAL_CHEST.get());
@@ -811,6 +813,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PINK_CHICKEN_SPAWN_EGG.get());
                         output.accept(ModItems.PINK_SLIME_SPAWN_EGG.get());
                         output.accept(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
+                        output.accept(ModItems.WIND_KNIGHT_SPAWN_EGG.get());
+                        output.accept(ModItems.THUNDERCLOUD_SPAWN_EGG.get());
+                        output.accept(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_GOLEM_SPAWN_EGG.get());
                         output.accept(ModItems.TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get());

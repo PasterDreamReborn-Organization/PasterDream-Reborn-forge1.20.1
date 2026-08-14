@@ -35,6 +35,10 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.SHADOW_TUNE_TOTEM.get(), ShadowTuneTotemRenderer::new);
         event.registerEntityRenderer(ModEntities.AARONCOS_LEFT_HAND.get(), AaroncosLeftHandRenderer::new);
         event.registerEntityRenderer(ModEntities.AARONCOS_RIGHT_HAND.get(), AaroncosRightHandRenderer::new);
+        event.registerEntityRenderer(ModEntities.WIND_KNIGHT.get(), WindKnightRenderer::new);
+        event.registerEntityRenderer(ModEntities.THUNDERCLOUD.get(), ThundercloudRenderer::new);
+        event.registerEntityRenderer(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), HighvoltageThundercloudRenderer::new);
+        event.registerEntityRenderer(ModEntities.LIGHTNING_PROJECTILE.get(), EmptyEntityRenderer::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {

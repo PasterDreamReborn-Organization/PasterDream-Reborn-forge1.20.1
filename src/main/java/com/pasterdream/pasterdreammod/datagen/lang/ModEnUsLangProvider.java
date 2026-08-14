@@ -141,6 +141,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.WHITE_CRYSTAL.get(), "White Crystal");
         add(ModItems.CONGEAL_WIND.get(), "Congeal Wind");
         add(ModItems.WIND_RUNNER_CRYSTAL.get(), "Windrunner Crystal");
+        add(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(), "Pulse Windrunner Crystal");
         add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "Congeal Wind Iron Ingot");
         add("tooltip.pasterdream.white_crystal", "§7Core material for crafting the White Calamity Sword");
         add(ModItems.LIGHT_BALL.get(), "Light Ball");
@@ -452,6 +453,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.RESEARCH_TABLE.get(), "Research Table");
         add(ModBlocks.LOST_SWORD_TOMB.get(), "Lost Sword Tomb");
         add(ModBlocks.GOLDEN_FOX_SCULPTURE.get(), "Golden Fox Sculpture");
+        add(ModBlocks.WIND_KNIGHT_ALTAR.get(), "Wind Knight Altar");
+        add("block.pasterdream.wind_knight_altar.need_crystal", "Embed a [Windrunner Crystal]");
+        add("block.pasterdream.wind_knight_altar.need_torso", "Need [Congeal Wind Iron Ingot] to assemble the torso");
+        add("block.pasterdream.wind_knight_altar.need_arms", "Need [Congeal Wind Iron Ingot] to assemble the arms");
+        add("block.pasterdream.wind_knight_altar.need_head", "Need [Congeal Wind Iron Ingot] to assemble the head");
+        add("block.pasterdream.wind_knight_altar.throw_lightning", "Throw a lightning potion bottle near the altar to awaken it");
         add("block.pasterdream.golden_fox_sculpture.no_reaction", "The sculpture does not respond...");
         add("block.pasterdream.golden_fox_sculpture.cooldown", "The sculpture is still slumbering... %s seconds remaining");
         add(ModBlocks.FOX_SCULPTURE.get(), "Fox Sculpture");
@@ -1437,6 +1444,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.PINK_SLIME_SPAWN_EGG.get(), "Pink Slime Spawn Egg");
         add(ModEntities.GOLDEN_FOX.get(), "Golden Fox");
         add(ModItems.GOLDEN_FOX_SPAWN_EGG.get(), "Golden Fox Spawn Egg");
+        add(ModEntities.WIND_KNIGHT.get(), "Wind Knight");
+        add(ModItems.WIND_KNIGHT_SPAWN_EGG.get(), "Wind Knight Spawn Egg");
+        add(ModEntities.THUNDERCLOUD.get(), "Thundercloud");
+        add(ModItems.THUNDERCLOUD_SPAWN_EGG.get(), "Thundercloud Spawn Egg");
+        add(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), "Highvoltage Thundercloud");
+        add(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get(), "Highvoltage Thundercloud Spawn Egg");
+        add(ModEntities.LIGHTNING_PROJECTILE.get(), "Thundercloud");
         add(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), "Melt Dream Crystal Entity");
         add(ModEntities.FOX_FIRE.get(), "Fox Fire");
         add(ModEntities.SHADOW_GOLEM.get(), "Shadow Golem");
