@@ -437,6 +437,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBuildingFamily(new BuildingBlockFamily(ModBlocks.CYAN_STONE_BRICKS, ModBlocks.CYAN_STONE_BRICK_STAIRS, ModBlocks.CYAN_STONE_BRICK_SLAB, ModBlocks.CYAN_STONE_BRICK_WALL));
         simpleBuildingFamily(new BuildingBlockFamily(ModBlocks.MOSSY_CYAN_STONE_BRICKS, ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS, ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB, ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL));
+        simpleBlockWithItem(ModBlocks.CHISELED_CYAN_STONE_BRICKS.get(), cubeAll(ModBlocks.CHISELED_CYAN_STONE_BRICKS.get()));
+        logBlock((RotatedPillarBlock) ModBlocks.CYAN_STONE_PILLAR.get());
+        blockItem(ModBlocks.CYAN_STONE_PILLAR);
 
         pressurePlateBlock((PressurePlateBlock) ModBlocks.CYAN_STONE_PRESSURE_PLATE.get(), blockTexture(ModBlocks.CYAN_STONE.get()));
         blockItem(ModBlocks.CYAN_STONE_PRESSURE_PLATE);

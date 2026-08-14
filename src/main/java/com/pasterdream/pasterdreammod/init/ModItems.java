@@ -1483,6 +1483,10 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> MOSSY_CYAN_STONE_BRICK_WALL = ITEMS.register("mossy_cyan_stone_brick_wall",
             () -> new BlockItem(ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHISELED_CYAN_STONE_BRICKS = ITEMS.register("chiseled_cyan_stone_bricks",
+            () -> new BlockItem(ModBlocks.CHISELED_CYAN_STONE_BRICKS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CYAN_STONE_PILLAR = ITEMS.register("cyan_stone_pillar",
+            () -> new BlockItem(ModBlocks.CYAN_STONE_PILLAR.get(), new Item.Properties()));
 
     // =====植物系列（花） =====
     public static final RegistryObject<Item> GOLDENROD = ITEMS.register("goldenrod",

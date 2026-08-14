@@ -1953,6 +1953,32 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":cyan_stone_bricks_from_stonecutting");
 
+        // 2× 苍青岩 → 2× 苍青岩柱
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CYAN_STONE_PILLAR.get(), 2)
+                .pattern("a")
+                .pattern("a")
+                .define('a', ModItems.CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter);
+
+        // 苍青岩 → 苍青岩柱 (切石机)
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.CYAN_STONE.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.CYAN_STONE_PILLAR.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":cyan_stone_pillar_from_stonecutting");
+
+        // 2× 苍青岩砖台阶 → 雕文苍青岩砖
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_CYAN_STONE_BRICKS.get(), 1)
+                .pattern("a")
+                .pattern("a")
+                .define('a', ModItems.CYAN_STONE_BRICK_SLAB.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE_BRICK_SLAB.get()), has(ModItems.CYAN_STONE_BRICK_SLAB.get()))
+                .save(pWriter);
+
+        // 苍青岩 → 雕文苍青岩砖 (切石机)
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.CYAN_STONE.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_CYAN_STONE_BRICKS.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_cyan_stone_bricks_from_stonecutting");
+
         // 苍青岩 → 苍青岩压力板
         ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModItems.CYAN_STONE_PRESSURE_PLATE.get(), 1)
                 .pattern("aa")
