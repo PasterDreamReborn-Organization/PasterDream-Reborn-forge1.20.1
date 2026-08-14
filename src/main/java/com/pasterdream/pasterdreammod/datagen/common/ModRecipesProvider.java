@@ -1333,6 +1333,16 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('a', ModBlocks.FRAME_CLARITY_GLASS.get())
                 .unlockedBy(getHasName(ModBlocks.FRAME_CLARITY_GLASS.get()), has(ModBlocks.FRAME_CLARITY_GLASS.get()))
                 .save(pWriter);
+
+        // 破风幕帐：四角+中间 5× 凝结之风，四边 4× 澄澈玻璃板 → 8× 破风幕帐
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.BREAK_WIND_CURTAIN.get(), 8)
+                .pattern("aba")
+                .pattern("bab")
+                .pattern("aba")
+                .define('a', ModItems.CONGEAL_WIND.get())
+                .define('b', ModItems.CLARITY_GLASS_PANE.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND.get()), has(ModItems.CONGEAL_WIND.get()))
+                .save(pWriter);
     }
 
 
