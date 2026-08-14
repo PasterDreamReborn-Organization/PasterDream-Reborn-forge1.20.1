@@ -8,7 +8,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -29,11 +28,12 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class BreakWindCurtainBlock extends Block implements SimpleWaterloggedBlock {
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final DirectionProperty FACING = BlockStateProperties.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     private static final VoxelShape SHAPE_NORTH_SOUTH = box(0, 0, 7, 16, 16, 9);
     private static final VoxelShape SHAPE_EAST_WEST = box(7, 0, 0, 9, 16, 16);
+    private static final VoxelShape SHAPE_UP_DOWN = box(0, 7, 0, 16, 9, 16);
 
     public BreakWindCurtainBlock() {
         super(BlockBehaviour.Properties.of()
@@ -76,6 +76,7 @@ public class BreakWindCurtainBlock extends Block implements SimpleWaterloggedBlo
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(FACING)) {
             case EAST, WEST -> SHAPE_EAST_WEST;
+            case UP, DOWN -> SHAPE_UP_DOWN;
             default -> SHAPE_NORTH_SOUTH;
         };
     }
@@ -89,7 +90,7 @@ public class BreakWindCurtainBlock extends Block implements SimpleWaterloggedBlo
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
         return this.defaultBlockState()
-                .setValue(FACING, context.getHorizontalDirection().getOpposite())
+                .setValue(FACING, context.getNearestLookingDirection().getOpposite())
                 .setValue(WATERLOGGED, waterlogged);
     }
 

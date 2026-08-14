@@ -610,9 +610,22 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var pebbleModel = models().getExistingFile(modLoc("block/pebble"));
         horizontalBlock(ModBlocks.PEBBLE.get(), pebbleModel);
 
-        // 破风幕帐
+        // 破风幕帐（6 朝向：水平四面 + 上下两面）
         var breakWindCurtainModel = models().getExistingFile(modLoc("block/break_wind_curtain"));
-        horizontalBlock(ModBlocks.BREAK_WIND_CURTAIN.get(), breakWindCurtainModel);
+        getVariantBuilder(ModBlocks.BREAK_WIND_CURTAIN.get()).forAllStates(state -> {
+            Direction dir = state.getValue(BlockStateProperties.FACING);
+            int rotationX = switch (dir) {
+                case UP -> 270;
+                case DOWN -> 90;
+                default -> 0;
+            };
+            int rotationY = dir.getAxis().isVertical() ? 0 : (int) dir.toYRot();
+            return ConfiguredModel.builder()
+                    .modelFile(breakWindCurtainModel)
+                    .rotationX(rotationX)
+                    .rotationY(rotationY)
+                    .build();
+        });
 
         //流体方块
         simpleBlock(ModBlocks.MELTDREAM_LIQUID.get(), models().cubeAll(ModBlocks.MELTDREAM_LIQUID.getId().getPath(), modLoc("block/melt_dream_liquid_flowing")));
