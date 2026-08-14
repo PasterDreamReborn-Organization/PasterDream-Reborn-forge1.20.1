@@ -15,6 +15,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -136,5 +137,19 @@ public class DreamHarpOfWandererItem extends Item {
         list.add(Component.translatable("tooltip.pasterdream.dream_harp_of_wanderer.line3"));
         list.add(Component.translatable("tooltip.pasterdream.dream_harp_of_wanderer.line4"));
         list.add(Component.translatable("tooltip.pasterdream.dream_harp_of_wanderer.line5"));
+    }
+
+    @Override
+    public boolean hasCustomEntity(ItemStack stack) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public Entity createEntity(Level level, Entity location, ItemStack stack) {
+        var entity = new IndestructibleItemEntity(level, location.getX(), location.getY(), location.getZ(), stack);
+        entity.setDefaultPickUpDelay();
+        entity.setDeltaMovement(location.getDeltaMovement());
+        return entity;
     }
 }

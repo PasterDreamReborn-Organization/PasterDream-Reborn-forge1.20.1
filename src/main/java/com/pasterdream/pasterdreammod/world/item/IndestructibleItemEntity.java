@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.world.item;
 
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -13,8 +12,11 @@ public class IndestructibleItemEntity extends ItemEntity {
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (source.is(DamageTypeTags.IS_EXPLOSION)) return false;
-        if (source == level().damageSources().cactus()) return false;
-        return super.hurt(source, amount);
+        return false;
+    }
+
+    @Override
+    protected void onBelowWorld() {
+        // 免疫虚空伤害
     }
 }

@@ -83,7 +83,6 @@ import com.pasterdream.pasterdreammod.world.item.DeepTreasureItem;
 import com.pasterdream.pasterdreammod.world.item.DreamHarpOfWandererItem;
 import com.pasterdream.pasterdreammod.world.item.StarWishRodItem;
 import com.pasterdream.pasterdreammod.world.item.ThermalDaggerItem;
-import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
 import com.pasterdream.pasterdreammod.world.item.PebbleItem;
 
@@ -99,7 +98,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
@@ -107,6 +105,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -467,55 +466,7 @@ public class ModItems {
             () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
 
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.register("melt_dream_crystal_fragment",
-            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)) {
-                @Override
-                public boolean isFoil(@NotNull ItemStack stack) {
-                    return true;
-                }
-
-                @Override
-                public @NotNull InteractionResult useOn(@NotNull UseOnContext context) {
-                    Level level = context.getLevel();
-                    var player = context.getPlayer();
-                    if (player == null) return InteractionResult.PASS;
-
-                    // 仅潜行时触发
-                    if (!player.isShiftKeyDown()) return InteractionResult.PASS;
-
-                    BlockPos placePos = context.getClickedPos().above();
-                    double x = placePos.getX() + 0.5;
-                    double y = placePos.getY();
-                    double z = placePos.getZ() + 0.5;
-
-                    if (!level.getBlockState(placePos).is(Blocks.AIR)) {
-                        return InteractionResult.FAIL;
-                    }
-
-                    if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
-                        context.getItemInHand().shrink(1);
-                        var entity = new MeltDreamCrystalEntityEntity(
-                                ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), level);
-                        entity.setPos(x, y, z);
-                        entity.setYRot(level.getRandom().nextFloat() * 360F);
-                        level.addFreshEntity(entity);
-                    }
-
-                    if (!level.isClientSide()) {
-                        level.playSound(null, context.getClickedPos(),
-                                ForgeRegistries.SOUND_EVENTS.getValue(
-                                        ResourceLocation.parse("block.amethyst_block.place")),
-                                SoundSource.NEUTRAL, 0.8f, 1.0f);
-                    } else {
-                        level.playLocalSound(context.getClickedPos().getX(),
-                                context.getClickedPos().getY(), context.getClickedPos().getZ(),
-                                ForgeRegistries.SOUND_EVENTS.getValue(
-                                        ResourceLocation.parse("block.amethyst_block.place")),
-                                SoundSource.NEUTRAL, 0.8f, 1.0f, false);
-                    }
-
-                    return InteractionResult.sidedSuccess(level.isClientSide());
-                }
-            });
+            MeltDreamCrystalFragmentItem::new);
 
     // ===== 玻璃罐系列 =====
     public static final RegistryObject<Item> GLASS_JAR = ITEMS.register("glass_jar", () -> new Item(new Item.Properties()));
@@ -1414,7 +1365,21 @@ public class ModItems {
     public static final RegistryObject<Item> KEY_SHADOW_BOOKSHELF = ITEMS.register("key_shadow_bookshelf",
             () -> new BlockItem(ModBlocks.KEY_SHADOW_BOOKSHELF.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_DUNGEON_KEY = ITEMS.register("shadow_dungeon_key",
-            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)) {
+                @Override
+                public boolean hasCustomEntity(ItemStack stack) {
+                    return true;
+                }
+
+                @Nullable
+                @Override
+                public Entity createEntity(Level level, Entity location, ItemStack stack) {
+                    var entity = new IndestructibleItemEntity(level, location.getX(), location.getY(), location.getZ(), stack);
+                    entity.setDefaultPickUpDelay();
+                    entity.setDeltaMovement(location.getDeltaMovement());
+                    return entity;
+                }
+            });
     public static final RegistryObject<Item> SHADOW_DUNGEON_GATE = ITEMS.register("shadow_dungeon_gate",
             () -> new ShadowDungeonGateItem(ModBlocks.SHADOW_DUNGEON_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_DUNGEON_BARRIER = ITEMS.register("shadow_dungeon_barrier",
