@@ -26,6 +26,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -207,6 +208,15 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
     }
 
     @Override
+    public boolean addEffect(MobEffectInstance effectInstance, @Nullable Entity entity) {
+        if (Config.aaroncosTouchImmuneToNegativeEffects
+                && effectInstance.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
+            return false;
+        }
+        return super.addEffect(effectInstance, entity);
+    }
+
+    @Override
     public boolean hurt(DamageSource source, float amount) {
         if (!level().isClientSide() && canUseSkill()) {
             // Tunetotem skill trigger (hurt-triggered, requires target)
@@ -287,7 +297,6 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
     private void runSpawnSequence() {
         if (spawnTick == 0) {
             setAnimation("spawn");
-            addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 4, false, false));
             addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 4, false, false));
             setDeltaMovement(new Vec3(0, -2, 0));
             setHealth(getMaxHealth());
@@ -330,7 +339,6 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
         magicballCount = 0;
         setAnimation("skill_vortex");
         setDeltaMovement(new Vec3(0, -5, 0));
-        addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 4, false, false));
     }
 
     private void startTunetotemSkill() {
@@ -440,7 +448,6 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
 
     private void runTunetotemSkill() {
         if (skillTick == 10) {
-            addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 120, 4, false, false));
             if (level() instanceof ServerLevel sl)
                 sl.sendParticles(ModParticleTypes.SHADOW_STONE_PARTICLE.get(), getX(), getY(), getZ(), 32, 1, 0, 1, 0.5);
         }

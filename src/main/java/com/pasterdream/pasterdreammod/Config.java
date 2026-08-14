@@ -246,8 +246,8 @@ public class Config
             .defineInRange("sanBarPreset2LowThreshold", 0.2, 0.0, 1.0);
 
     private static final ForgeConfigSpec.BooleanValue SAN_BAR_PRESET2_SNEAK_SHOW_IN_CREATIVE = BUILDER
-            .comment("精神值条预设2：创造模式下是否仅在下蹲时显示，默认 false（始终显示）")
-            .define("sanBarPreset2SneakShowInCreative", false);
+            .comment("精神值条预设2：创造模式下是否仅在下蹲时显示，默认 true")
+            .define("sanBarPreset2SneakShowInCreative", true);
 
     // === 暗影生物独立难度 ===
     private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> SHADOW_HEALTH_MULTIPLIERS = BUILDER
@@ -296,6 +296,11 @@ public class Config
     private static final ForgeConfigSpec.DoubleValue BOSS_RANGE_CAP = BUILDER
             .comment("BOSS 限伤距离衰减起始距离（格），超过此距离伤害线性衰减，默认 12")
             .defineInRange("bossRangeCap", 12.0, 1.0, 256.0);
+
+    // === 亚伦柯斯之触 ===
+    private static final ForgeConfigSpec.BooleanValue AARONCOS_TOUCH_IMMUNE_TO_NEGATIVE_EFFECTS = BUILDER
+            .comment("亚伦柯斯之触（左右手）是否免疫负面状态效果（有害类效果，如中毒、虚弱、缓慢等），默认 true")
+            .define("aaroncosTouchImmuneToNegativeEffects", true);
 
     // === 大便携储物袋抓取生物 ===
     private static final ForgeConfigSpec.BooleanValue CREATURE_CAPTURE_ENABLED = BUILDER
@@ -571,6 +576,7 @@ public class Config
     public static double bossDamageCap;
     public static double bossDpsCap;
     public static double bossRangeCap;
+    public static boolean aaroncosTouchImmuneToNegativeEffects;
 
     // === 大便携储物袋抓取生物 ===
     public static boolean creatureCaptureEnabled;
@@ -790,6 +796,7 @@ public class Config
         bossDamageCap = BOSS_DAMAGE_CAP.get();
         bossDpsCap = BOSS_DPS_CAP.get();
         bossRangeCap = BOSS_RANGE_CAP.get();
+        aaroncosTouchImmuneToNegativeEffects = AARONCOS_TOUCH_IMMUNE_TO_NEGATIVE_EFFECTS.get();
         creatureCaptureEnabled = CREATURE_CAPTURE_ENABLED.get();
         creatureCaptureEntities = CREATURE_CAPTURE_ENTITIES.get();
 

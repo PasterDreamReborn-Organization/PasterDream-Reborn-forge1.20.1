@@ -27,6 +27,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -211,6 +212,15 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
     }
 
     @Override
+    public boolean addEffect(MobEffectInstance effectInstance, @Nullable Entity entity) {
+        if (Config.aaroncosTouchImmuneToNegativeEffects
+                && effectInstance.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
+            return false;
+        }
+        return super.addEffect(effectInstance, entity);
+    }
+
+    @Override
     public boolean hurt(DamageSource source, float amount) {
         if (!level().isClientSide() && canUseSkill()) {
             // Sword skill trigger (hurt-triggered, requires target)
@@ -312,7 +322,6 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
     private void runSpawnSequence() {
         if (spawnTick == 0) {
             setAnimation("spawn");
-            addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 4, false, false));
             addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 4, false, false));
             setDeltaMovement(new Vec3(0, -2, 0));
             setHealth(getMaxHealth());
@@ -478,7 +487,6 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
 
     private void runSwordSkill() {
         if (skillTick == 15) {
-            addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 120, 4, false, false));
             if (level() instanceof ServerLevel sl)
                 sl.sendParticles(ModParticleTypes.SHADOW_STONE_PARTICLE.get(), getX(), getY(), getZ(), 128, 1, 2, 1, 0.5);
         }
