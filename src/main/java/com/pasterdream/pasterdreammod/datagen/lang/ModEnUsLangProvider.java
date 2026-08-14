@@ -451,6 +451,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.WIND_MOOR_TRAPDOOR.get(), "Wind Moor Trapdoor");
         add(ModBlocks.WIND_MOOR_PRESSURE_PLATE.get(), "Wind Moor Pressure Plate");
         add(ModBlocks.WIND_MOOR_BUTTON.get(), "Wind Moor Button");
+        add(ModBlocks.FIG_VINE.get(), "Fig Vine");
         add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), "The Endless Book Of Dream Seekers");
         add(ModBlocks.RESEARCH_TABLE.get(), "Research Table");
         add(ModBlocks.LOST_SWORD_TOMB.get(), "Lost Sword Tomb");

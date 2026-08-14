@@ -388,6 +388,12 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
         add(ModBlocks.WIND_MOOR_LEAVES_0.get(), LootHelpers::creategrassesDrops);
         add(ModBlocks.WIND_MOOR_LEAVES_1.get(), LootHelpers::creategrassesDrops);
+        // 无花果藤：破坏掉落无花果（1-2 个，受时运影响）
+        add(ModBlocks.FIG_VINE.get(), block -> LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(ModItems.FIG.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
         dropSelf(ModBlocks.WIND_MOOR_PLANKS.get());
         dropSelf(ModBlocks.WIND_MOOR_STAIRS.get());
         add(ModBlocks.WIND_MOOR_SLAB.get(), block -> createSlabItemTable(ModBlocks.WIND_MOOR_SLAB.get()));

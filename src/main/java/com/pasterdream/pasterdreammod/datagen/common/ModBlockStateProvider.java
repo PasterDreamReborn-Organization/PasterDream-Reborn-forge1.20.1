@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.util.BuildingBlockFamily;
+import com.pasterdream.pasterdreammod.world.block.FigVineBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.*;
@@ -361,6 +362,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.WIND_MOOR_LEAVES_0.get(), cubeAll(ModBlocks.WIND_MOOR_LEAVES_0.get()));
         simpleBlockWithItem(ModBlocks.WIND_MOOR_LEAVES_1.get(), cubeAll(ModBlocks.WIND_MOOR_LEAVES_1.get()));
+
+        // 无花果藤（底部 head → fig_vine 材质，上方 body → 风泊树叶材质）
+        var figVineHead = models().cross(ModBlocks.FIG_VINE.getId().getPath(), modLoc("block/fig_vine")).renderType("cutout");
+        var figVineBody = models().cross(ModBlocks.FIG_VINE.getId().getPath() + "_body", modLoc("block/wind_moor_leaves_0")).renderType("cutout");
+        getVariantBuilder(ModBlocks.FIG_VINE.get())
+                .partialState().with(FigVineBlock.HEAD, true).with(FigVineBlock.TRIMMED, false).addModels(new ConfiguredModel(figVineHead))
+                .partialState().with(FigVineBlock.HEAD, false).with(FigVineBlock.TRIMMED, false).addModels(new ConfiguredModel(figVineBody))
+                .partialState().with(FigVineBlock.HEAD, true).with(FigVineBlock.TRIMMED, true).addModels(new ConfiguredModel(figVineHead))
+                .partialState().with(FigVineBlock.HEAD, false).with(FigVineBlock.TRIMMED, true).addModels(new ConfiguredModel(figVineBody));
 
         // ===== 风泊木板建材系列 =====
         simpleBlockWithItem(ModBlocks.WIND_MOOR_PLANKS.get(), cubeAll(ModBlocks.WIND_MOOR_PLANKS.get()));
