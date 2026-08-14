@@ -596,7 +596,7 @@ public class ModItems {
                     .nutrition(3).saturationMod(0.5f).build())));
 
     public static final RegistryObject<Item> FIG = ITEMS.register("fig",
-            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+            () -> new ItemNameBlockItem(ModBlocks.FIG_VINE.get(), new Item.Properties()
                     .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.165f).build())));
 
 

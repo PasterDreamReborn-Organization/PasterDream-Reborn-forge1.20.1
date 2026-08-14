@@ -465,6 +465,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.WIND_MOOR_TRAPDOOR.get(), "风泊木活板门");
         add(ModBlocks.WIND_MOOR_PRESSURE_PLATE.get(), "风泊木压力板");
         add(ModBlocks.WIND_MOOR_BUTTON.get(), "风泊木按钮");
+        add(ModBlocks.FIG_VINE.get(), "无花果藤");
         add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), "寻梦者的永恒书卷");
         add(ModBlocks.RESEARCH_TABLE.get(), "研究台");
         add(ModBlocks.LOST_SWORD_TOMB.get(), "失落剑冢");
