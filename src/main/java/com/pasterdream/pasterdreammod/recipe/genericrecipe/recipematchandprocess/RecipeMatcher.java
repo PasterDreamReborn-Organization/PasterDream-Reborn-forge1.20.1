@@ -18,6 +18,34 @@ public class RecipeMatcher
     @Nullable
     public static <T extends IProcessingRecipe> MatchedRecipeResult<T> match(List<ItemStack> inputItems, List<FluidStack> inputFluids, Collection<T> recipes)
     {
+        boolean isEmpty = true;
+        for(ItemStack itemStack : inputItems)
+        {
+            if(itemStack != ItemStack.EMPTY)
+            {
+                isEmpty = false;
+                break;
+            }
+        }
+
+        if(isEmpty)
+        {
+            for(FluidStack fluidStack : inputFluids)
+            {
+                if(fluidStack != FluidStack.EMPTY)
+                {
+                    isEmpty = false;
+                    break;
+                }
+            }
+        }
+
+        if(isEmpty)
+        {
+            return null;
+        }
+
+
         Set<Item> inputItemTypes = inputItems.stream().filter(itemStack -> !itemStack.isEmpty()).map(ItemStack::getItem).collect(Collectors.toSet());
         Set<Fluid> inputFluidTypes = inputFluids.stream().filter(fluidStack -> !fluidStack.isEmpty()).map(FluidStack::getFluid).collect(Collectors.toSet());
 
