@@ -84,6 +84,7 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadow_shelter", "pasterdream:can_shadownote_ruin_spawn_biome", "surface_structures", "none", -6, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 45, 23, 1429029018, 2, "shadow_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadow_nest", "pasterdream:shadow_forest_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 35, 15, 1811985292, 7, "shadow_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadow_fungus_house", "pasterdream:shadow_forest_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 42, 25, 486700517, 6, "shadow_structures"));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:shadow_foundry", "pasterdream:shadow_ruins_spawn_biome", "surface_structures", "beard_thin", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 58, 32, 768368124, 2, "shadow_structures"));
 
         return STRUCTURES;
     }
