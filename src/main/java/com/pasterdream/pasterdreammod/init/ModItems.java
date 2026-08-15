@@ -917,30 +917,41 @@ public class ModItems {
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).meltDreamEnergyAdd(25).rarity(Rarity.UNCOMMON)
                     .food(new FoodProperties.Builder().nutrition(4).saturationMod(2).alwaysEat().build())));
 
-    private static final UUID ELIXIR_BOTTLE_OF_RAGE_ELIXIR_ATTACK_SPEED_UUID = UUID.fromString("78e1cdd9-d201-4e2b-8adb-0af735d2c806");
+    private static final UUID ELIXIR_BOTTLE_OF_RAGE_ELIXIR_SKILL_CD_UUID = UUID.fromString("78e1cdd9-d201-4e2b-8adb-0af735d2c806");
+    private static final UUID ELIXIR_BOTTLE_OF_RAGE_ELIXIR_ATTACK_DAMAGE_UUID = UUID.fromString("78e1cdd9-d201-4e2b-8adb-0af735d2c807");
     public static final RegistryObject<Item> ELIXIR_BOTTLE_OF_RAGE_ELIXIR = ITEMS.register("elixir_bottle_of_rage_elixir",
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).rarity(Rarity.UNCOMMON)
                     .food(new FoodProperties.Builder().alwaysEat().build())) {
                 @Override
                 protected void onDrinkSpecial(LivingEntity entity, Level level) {
-                    if (!level.isClientSide) {
-                        var AtkspdAttr = entity.getAttribute(Attributes.ATTACK_SPEED);
-                        if (AtkspdAttr != null) {
-                            AttributeModifier existingModifier = AtkspdAttr.getModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_ATTACK_SPEED_UUID);
-                            if (existingModifier == null) {
-                                AtkspdAttr.addPermanentModifier(new AttributeModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_ATTACK_SPEED_UUID,
-                                        "elixir_bottle_of_rage_elixir", 0.1, AttributeModifier.Operation.ADDITION));
-                                level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                                        ModSounds.DREAM0.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                                if (entity instanceof Player player) {
-                                    player.displayClientMessage(Component.translatable("item.pasterdream.elixir_bottle_of_rage_elixir.client.success"), false);
-                                }
-                            } else {
-                                if (entity instanceof Player player) {
-                                    player.displayClientMessage(Component.translatable("item.pasterdream.elixir_bottle_of_rage_elixir.client.fail"), false);
-                                }
-                            }
+                    if (level.isClientSide) {
+                        return;
+                    }
+
+                    boolean applied = false;
+
+                    var skillCdAttr = entity.getAttribute(ModAttributes.SKILL_COOLDOWN_RATE.get());
+                    if (skillCdAttr != null && skillCdAttr.getModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_SKILL_CD_UUID) == null) {
+                        skillCdAttr.addPermanentModifier(new AttributeModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_SKILL_CD_UUID,
+                                "elixir_bottle_of_rage_elixir_skill_cd", -0.15, AttributeModifier.Operation.MULTIPLY_TOTAL));
+                        applied = true;
+                    }
+
+                    var attackDamageAttr = entity.getAttribute(Attributes.ATTACK_DAMAGE);
+                    if (attackDamageAttr != null && attackDamageAttr.getModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_ATTACK_DAMAGE_UUID) == null) {
+                        attackDamageAttr.addPermanentModifier(new AttributeModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_ATTACK_DAMAGE_UUID,
+                                "elixir_bottle_of_rage_elixir_attack_damage", 0.2, AttributeModifier.Operation.MULTIPLY_TOTAL));
+                        applied = true;
+                    }
+
+                    if (applied) {
+                        level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                                ModSounds.DREAM0.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                        if (entity instanceof Player player) {
+                            player.displayClientMessage(Component.translatable("item.pasterdream.elixir_bottle_of_rage_elixir.client.success"), false);
                         }
+                    } else if (entity instanceof Player player) {
+                        player.displayClientMessage(Component.translatable("item.pasterdream.elixir_bottle_of_rage_elixir.client.fail"), false);
                     }
                 }
                 @Override
