@@ -66,6 +66,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.DYEDREAM_LOG.get())
                 .add(ModBlocks.DYEDREAM_WOOD.get())
+                .add(ModBlocks.BIRDS_NEST.get())
                 .add(ModBlocks.PINK_MUSHROOM_BLOCK.get())
                 .add(ModBlocks.PINK_MUSHROOM_STEM.get())
                 .add(ModBlocks.PINK_MUSHROOM_PORES.get())

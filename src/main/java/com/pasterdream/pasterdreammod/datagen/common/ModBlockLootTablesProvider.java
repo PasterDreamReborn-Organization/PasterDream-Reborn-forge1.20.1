@@ -487,6 +487,14 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.ECOLOGY_GLASS_JAR.get());
         dropSelf(ModBlocks.FIREFLY_GLASS_JAR.get());
         dropSelf(ModBlocks.FIREFLY_NEST.get());
+        // 鸟巢：精准采集掉落自身，否则掉落 2 次树枝/鸡蛋
+        add(ModBlocks.BIRDS_NEST.get(), block -> LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(2))
+                        .add(LootItem.lootTableItem(Items.STICK).setWeight(1).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
+                        .add(LootItem.lootTableItem(Items.EGG).setWeight(1).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
+                        .when(HAS_SILK_TOUCH.invert()))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ModBlocks.BIRDS_NEST.get()).when(HAS_SILK_TOUCH))));
         dropSelf(ModBlocks.DESERT_HERO_TOMB.get());
         dropSelf(ModBlocks.DREAM_ACCUMULATOR.get());
         dropNone(ModBlocks.DREAM_TRAIN_STRUCTURE.get());

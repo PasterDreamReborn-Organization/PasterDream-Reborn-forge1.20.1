@@ -52,6 +52,7 @@ import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlock
 import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarBlock;
 import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarBlock;
 import com.pasterdream.pasterdreammod.world.block.fireflynest.FireflyNestBlock;
+import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestBlock;
 import com.pasterdream.pasterdreammod.world.block.ClayPotBlock;
 import com.pasterdream.pasterdreammod.world.block.PebbleBlock;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlock;
@@ -676,7 +677,13 @@ public class ModBlocks {
                     .offsetType(BlockBehaviour.OffsetType.XZ)
                     .pushReaction(PushReaction.DESTROY)
                     .replaceable()
-    ));
+    ) {
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            Vec3 offset = state.getOffset(world, pos);
+            return box(5, 0, 5, 11, 10, 11).move(offset.x, offset.y, offset.z);
+        }
+    });
 
     public static final RegistryObject<Block> WIND_CLEAVING_GRASS = BLOCKS.register("wind_cleaving_grass", () -> new BushBlock(
             BlockBehaviour.Properties.of()
@@ -688,7 +695,13 @@ public class ModBlocks {
                     .offsetType(BlockBehaviour.OffsetType.XZ)
                     .pushReaction(PushReaction.DESTROY)
                     .replaceable()
-    ));
+    ) {
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            Vec3 offset = state.getOffset(world, pos);
+            return box(5, 0, 5, 11, 10, 11).move(offset.x, offset.y, offset.z);
+        }
+    });
 
     public static final RegistryObject<Block> WIND_FEATHER_GRASS = BLOCKS.register("wind_feather_grass", () -> new DoublePlantBlock(
             BlockBehaviour.Properties.of()
@@ -700,7 +713,13 @@ public class ModBlocks {
                     .offsetType(BlockBehaviour.OffsetType.XZ)
                     .pushReaction(PushReaction.DESTROY)
                     .replaceable()
-    ));
+    ) {
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            Vec3 offset = state.getOffset(world, pos);
+            return box(3, 0, 3, 13, 16, 13).move(offset.x, offset.y, offset.z);
+        }
+    });
 
     public static final RegistryObject<Block> WIND_ISLAND_REED = BLOCKS.register("wind_island_reed", () -> new WindIslandReedBlock(
             BlockBehaviour.Properties.of()
@@ -796,6 +815,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> ECOLOGY_GLASS_JAR = BLOCKS.register("ecology_glass_jar", EcologyGlassJarBlock::new);
     public static final RegistryObject<Block> FIREFLY_GLASS_JAR = BLOCKS.register("firefly_glass_jar", FireflyGlassJarBlock::new);
     public static final RegistryObject<Block> FIREFLY_NEST = BLOCKS.register("firefly_nest", FireflyNestBlock::new);
+    public static final RegistryObject<Block> BIRDS_NEST = BLOCKS.register("birds_nest", BirdsNestBlock::new);
     // ===== 陶罐 =====
     public static final RegistryObject<Block> CLAY_POT = BLOCKS.register("clay_pot",
             () -> new ClayPotBlock(BlockBehaviour.Properties.of()

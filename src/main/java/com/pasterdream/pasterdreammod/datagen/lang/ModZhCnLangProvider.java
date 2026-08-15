@@ -485,6 +485,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.ECOLOGY_GLASS_JAR.get(), "生态玻璃罐");
         add(ModBlocks.FIREFLY_GLASS_JAR.get(), "萤火虫玻璃罐");
         add(ModBlocks.FIREFLY_NEST.get(), "萤火虫巢");
+        add(ModBlocks.BIRDS_NEST.get(), "鸟巢");
         add(ModBlocks.DESERT_HERO_TOMB.get(), "荒漠英雄之墓");
         add(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), "融梦水晶箱");
         add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), "打开的融梦水晶箱");
