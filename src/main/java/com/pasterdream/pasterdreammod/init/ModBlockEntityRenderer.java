@@ -10,6 +10,7 @@ import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDrea
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlockEntityRenderer;
@@ -45,6 +46,7 @@ public class ModBlockEntityRenderer
         event.registerBlockEntityRenderer(ModBlockEntities.DREAM_CAULDRON.get(), DreamCauldronBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_CHEST.get(), ShadowChestBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get(), TheEndlessBookOfDreamSeekersBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.BIRDS_NEST.get(), BirdsNestBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.LIFE_CRYSTAL.get(), LifeCrystalBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.GOLDEN_FOX_SCULPTURE.get(), GoldenFoxSculptureBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.DESERT_HERO_TOMB.get(), DesertHeroTombBlockEntityRenderer::new);

@@ -332,6 +332,7 @@
 | `ecology_glass_jar`                 | `ecology_glass_jar`                 | 不改                                             | 客制化类 `EcologyGlassJarBlock`，GeckoLib 动画方块实体（`world/block/ecologyglassjar/`），含水 + 水平朝向，每 100 tick 喷萤火虫粒子    |
 | `firefly_glass_jar`                 | `firefly_glass_jar`                 | 不改；合并 `light_firefly_glass_jar`，用方块状态 `LIT` 区分发光/熄灭 | 客制化类 `FireflyGlassJarBlock`，GeckoLib 动画方块实体（`world/block/fireflyglassjar/`），含水 + 水平朝向 + `LIT`，右键切换发光态 |
 | `firefly_nest`                      | `firefly_nest`                      | 不改                                             | 客制化类 `FireflyNestBlock`（`world/block/fireflynest/`），含水 + 随机刻，白天蓄能夜间生成萤火虫 + 喷粒子 |
+| `birds_nest`                        | `birds_nest`                        | 不改                                             | 客制化类 `BirdsNestBlock`（`world/block/birdsnest/`），GeckoLib 动画方块实体 + 含水 + 随机刻，10% 概率在无鹦鹉时生成鹦鹉 |
 
 
 ---

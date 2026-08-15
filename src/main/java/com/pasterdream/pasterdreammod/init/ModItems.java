@@ -23,6 +23,7 @@ import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDrea
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestItem;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableItem;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersItem;
+import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestItem;
 import com.pasterdream.pasterdreammod.world.block.lifecrystal.LifeCrystalItem;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombItem;
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureItem;
@@ -1683,6 +1684,7 @@ public class ModItems {
     public static final RegistryObject<Item> ECOLOGY_GLASS_JAR = ITEMS.register("ecology_glass_jar", () -> new EcologyGlassJarItem(ModBlocks.ECOLOGY_GLASS_JAR.get(), new Item.Properties()));
     public static final RegistryObject<Item> FIREFLY_GLASS_JAR = ITEMS.register("firefly_glass_jar", () -> new FireflyGlassJarItem(ModBlocks.FIREFLY_GLASS_JAR.get(), new Item.Properties()));
     public static final RegistryObject<Item> FIREFLY_NEST = ITEMS.register("firefly_nest", () -> new BlockItem(ModBlocks.FIREFLY_NEST.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BIRDS_NEST = ITEMS.register("birds_nest", () -> new BirdsNestItem(ModBlocks.BIRDS_NEST.get(), new Item.Properties()));
     public static final RegistryObject<Item> DESERT_HERO_TOMB = ITEMS.register("desert_hero_tomb", () -> new DesertHeroTombItem(ModBlocks.DESERT_HERO_TOMB.get(), new Item.Properties()));
     public static final RegistryObject<Item> DREAM_TRAIN_STRUCTURE = ITEMS.register("dream_train_structure", () -> new BlockItem(ModBlocks.DREAM_TRAIN_STRUCTURE.get(), new Item.Properties()));
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_CHEST = ITEMS.register("melt_dream_crystal_chest", () -> new MeltDreamCrystalChestItem(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), new Item.Properties()));

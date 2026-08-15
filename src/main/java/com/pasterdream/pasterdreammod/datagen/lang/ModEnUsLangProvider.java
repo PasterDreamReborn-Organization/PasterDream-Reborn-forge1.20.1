@@ -471,6 +471,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.ECOLOGY_GLASS_JAR.get(), "Ecology Glass Jar");
         add(ModBlocks.FIREFLY_GLASS_JAR.get(), "Firefly Glass Jar");
         add(ModBlocks.FIREFLY_NEST.get(), "Firefly Nest");
+        add(ModBlocks.BIRDS_NEST.get(), "Birds Nest");
         add(ModBlocks.DESERT_HERO_TOMB.get(), "Desert Hero Tomb");
         add(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), "Melt Dream Crystal Chest");
         add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), "Opened Melt Dream Crystal Chest");
