@@ -253,6 +253,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var buddingModel = models().cubeAll(ModBlocks.DYEDREAM_BUDDING_BLOCK.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_BUDDING_BLOCK.get()));
         simpleBlockWithItem(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), buddingModel);
 
+        var budBlockModel = models().cubeAll(ModBlocks.DYEDREAM_BUD_BLOCK.getId().getPath(), blockTexture(ModBlocks.DYEDREAM_BUD_BLOCK.get()));
+        simpleBlockWithItem(ModBlocks.DYEDREAM_BUD_BLOCK.get(), budBlockModel);
+
         var smallBud = models().cross(ModBlocks.SMALL_DYEDREAM_BUD.getId().getPath(), blockTexture(ModBlocks.SMALL_DYEDREAM_BUD.get())).renderType("cutout");
         directionalBlock(ModBlocks.SMALL_DYEDREAM_BUD.get(), smallBud);
 
@@ -263,7 +266,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         directionalBlock(ModBlocks.LARGE_DYEDREAM_BUD.get(), largeBud);
 
         // ===== 染梦水晶建材系列 =====
-        simpleBuildingFamily(new BuildingBlockFamily(ModBlocks.DYEDREAM_BUD_BLOCK, ModBlocks.DYEDREAM_BUD_STAIRS, ModBlocks.DYEDREAM_BUD_SLAB, ModBlocks.DYEDREAM_BUD_WALL));
+        simpleBuildingFamily(new BuildingBlockFamily(ModBlocks.DYEDREAM_BUD_BRICKS, ModBlocks.DYEDREAM_BUD_STAIRS, ModBlocks.DYEDREAM_BUD_SLAB, ModBlocks.DYEDREAM_BUD_WALL));
 
         // ===== 云朵 =====
         var cloudModel = models().cubeAll(ModBlocks.CLOUD.getId().getPath(), blockTexture(ModBlocks.CLOUD.get())).renderType("translucent");

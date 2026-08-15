@@ -1227,6 +1227,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> DYEDREAM_BUD_BLOCK = ITEMS.register("dyedream_bud_block",
             () -> new BlockItem(ModBlocks.DYEDREAM_BUD_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_BUD_BRICKS = ITEMS.register("dyedream_bud_bricks",
+            () -> new BlockItem(ModBlocks.DYEDREAM_BUD_BRICKS.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_BUD_STAIRS = ITEMS.register("dyedream_bud_stairs",
             () -> new BlockItem(ModBlocks.DYEDREAM_BUD_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_BUD_SLAB = ITEMS.register("dyedream_bud_slab",

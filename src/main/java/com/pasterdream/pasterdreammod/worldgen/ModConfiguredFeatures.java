@@ -19,6 +19,10 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.levelgen.GeodeBlockSettings;
+import net.minecraft.world.level.levelgen.GeodeCrackSettings;
+import net.minecraft.world.level.levelgen.GeodeLayerSettings;
 import net.minecraft.world.level.levelgen.feature.HugeFungusConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import com.pasterdream.pasterdreammod.worldgen.feature.foliageplacers.DreamFoliagePlacer;
@@ -126,6 +130,9 @@ public class ModConfiguredFeatures {
             ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "large_dyedream_bud_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_BUD_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ice_bud_patch"));
+    // ===== 染梦晶洞 =====
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_GEODE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_geode"));
 
     // 茎草
     public static final ResourceKey<ConfiguredFeature<?, ?>> STEM_GRASS_PATCH =
@@ -883,6 +890,38 @@ public class ModConfiguredFeatures {
         context.register(ICE_BUD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(25, 5, 5,
                         simpleBudInAir(BlockStateProvider.simple(ModBlocks.ICE_BUD.get()), ICE_BUD_GROUND))));
+
+        // ===== 染梦晶洞 =====
+        // 结构与原版紫水晶洞一致：外层平滑玄武岩、中层方解石、内层染梦水晶块（含染梦母岩）
+        context.register(DYEDREAM_GEODE, new ConfiguredFeature<>(Feature.GEODE,
+                new GeodeConfiguration(
+                        new GeodeBlockSettings(
+                                BlockStateProvider.simple(Blocks.AIR),
+                                BlockStateProvider.simple(ModBlocks.DYEDREAM_BUD_BLOCK.get()),
+                                BlockStateProvider.simple(ModBlocks.DYEDREAM_BUDDING_BLOCK.get()),
+                                BlockStateProvider.simple(Blocks.CALCITE),
+                                BlockStateProvider.simple(Blocks.SMOOTH_BASALT),
+                                List.of(
+                                        ModBlocks.SMALL_DYEDREAM_BUD.get().defaultBlockState(),
+                                        ModBlocks.MEDIUM_DYEDREAM_BUD.get().defaultBlockState(),
+                                        ModBlocks.LARGE_DYEDREAM_BUD.get().defaultBlockState()
+                                ),
+                                BlockTags.FEATURES_CANNOT_REPLACE,
+                                BlockTags.GEODE_INVALID_BLOCKS
+                        ),
+                        new GeodeLayerSettings(1.7, 2.2, 3.2, 4.2),
+                        new GeodeCrackSettings(0.95, 2.0, 2),
+                        0.35,
+                        0.083,
+                        true,
+                        UniformInt.of(4, 6),
+                        UniformInt.of(3, 4),
+                        UniformInt.of(1, 2),
+                        -16,
+                        16,
+                        0.05,
+                        1
+                )));
 
         // ===== 风之旅途 =====
         // 凝风矿 — 原作 congeal_wind_ore: size=11, 替换 thick_cloud

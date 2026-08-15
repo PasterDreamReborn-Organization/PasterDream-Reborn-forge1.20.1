@@ -188,7 +188,7 @@ public class ModBiomes {
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.ICE_BUD_PATCH);
     }
 
-    /** 统一收尾：添加共享的矿石、晶芽、植被 */
+    /** 统一收尾：添加共享的矿石、晶芽、晶洞、植被 */
     private static void finishGeneration(BiomeGenerationSettings.Builder builder) {
         finishGeneration(builder, true);
     }
@@ -197,6 +197,12 @@ public class ModBiomes {
         addCommonVegetation(builder, includeSeaPickle);
         addCommonOres(builder);
         addCommonBuds(builder);
+        addCommonGeode(builder);
+    }
+
+    /** 所有群系共享的染梦晶洞（洞穴地物，LOCAL_MODIFICATIONS） */
+    private static void addCommonGeode(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.DYEDREAM_GEODE);
     }
 
     // ==================== 各群系构建方法 ====================

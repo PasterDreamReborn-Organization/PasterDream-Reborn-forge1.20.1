@@ -127,6 +127,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> MEDIUM_DYEDREAM_BUD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "medium_dyedream_bud_patch"));
     public static final ResourceKey<PlacedFeature> LARGE_DYEDREAM_BUD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "large_dyedream_bud_patch"));
     public static final ResourceKey<PlacedFeature> ICE_BUD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ice_bud_patch"));
+    public static final ResourceKey<PlacedFeature> DYEDREAM_GEODE = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_geode"));
 
     // ===== 染梦维度矿石 =====
     public static final ResourceKey<PlacedFeature> TITANIUM_ORE =
@@ -782,6 +783,14 @@ public class ModPlacedFeatures {
         context.register(LARGE_DYEDREAM_BUD_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.LARGE_DYEDREAM_BUD_PATCH), List.of(CountPlacement.of(6), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(320)))));
         // 冰晶芽 — SP+FO,
         context.register(ICE_BUD_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.ICE_BUD_PATCH), List.of(CountPlacement.of(6), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(320)))));
+
+        // ===== 染梦晶洞 =====
+        // 与原版紫水晶洞相同：平均每 24 区块 1 个，y=底部+6~30
+        context.register(DYEDREAM_GEODE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_GEODE),
+                List.of(RarityFilter.onAverageOnceEvery(24), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(6), VerticalAnchor.absolute(30)),
+                        BiomeFilter.biome())));
 
         // ===== 风之旅途 =====
         // 凝风矿 — 原作 count=13, y=15~80
