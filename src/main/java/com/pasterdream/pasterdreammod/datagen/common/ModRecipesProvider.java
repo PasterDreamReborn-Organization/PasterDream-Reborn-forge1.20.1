@@ -2426,6 +2426,18 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     // ===== 其他杂项类合成配方 =====
     private void othersRecipes(Consumer<FinishedRecipe> pWriter) {
 
+        // 风植萃取液合成配方
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), 2)
+                .requires(ModItems.MORTAR.get())
+                .requires(ModItems.GLASS_JAR.get(),2)
+                .requires(ModItems.WIND_ISLAND_REED.get())
+                .requires(ModItems.WIND_CLEAVING_GRASS.get())
+                .requires(ModItems.WIND_FEATHER_GRASS.get())
+                .requires(ModItems.HAIRY_MOSS.get())
+                .unlockedBy(getHasName(ModItems.MORTAR.get()),
+                        has(ModItems.MORTAR.get()))
+                .save(pWriter);
+
         // 厚重阴影 (4 shadow → 1 thick_shadow)
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.THICK_SHADOW.get(), 1)
                 .pattern("aa")
