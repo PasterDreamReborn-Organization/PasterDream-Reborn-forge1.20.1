@@ -1133,6 +1133,8 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.CONGEAL_WIND_IRON_BARS.get(), new Item.Properties()));
     public static final RegistryObject<Item> BREAK_WIND_CURTAIN = ITEMS.register("break_wind_curtain",
             () -> new BlockItem(ModBlocks.BREAK_WIND_CURTAIN.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHRISTMAS_LIGHTS = ITEMS.register("christmas_lights",
+            () -> new BlockItem(ModBlocks.CHRISTMAS_LIGHTS.get(), new Item.Properties()));
     public static final RegistryObject<Item> SOUL_ORE = ITEMS.register("soul_ore",
             () -> new BlockItem(ModBlocks.SOUL_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> RAW_TITANIUM_BLOCK = ITEMS.register("raw_titanium_block",

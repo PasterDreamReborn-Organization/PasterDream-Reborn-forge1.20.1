@@ -1343,6 +1343,19 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('b', ModItems.CLARITY_GLASS_PANE.get())
                 .unlockedBy(getHasName(ModItems.CONGEAL_WIND.get()), has(ModItems.CONGEAL_WIND.get()))
                 .save(pWriter);
+
+        // 圣诞彩灯：染色玻璃 + 云杉树叶 → 5× 圣诞彩灯
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHRISTMAS_LIGHTS.get(), 5)
+                .pattern("abc")
+                .pattern("def")
+                .define('a', Items.RED_STAINED_GLASS)
+                .define('b', Items.SPRUCE_LEAVES)
+                .define('c', Items.MAGENTA_STAINED_GLASS)
+                .define('d', Items.LIGHT_BLUE_STAINED_GLASS)
+                .define('e', Items.LIME_STAINED_GLASS)
+                .define('f', Items.YELLOW_STAINED_GLASS)
+                .unlockedBy(getHasName(Items.SPRUCE_LEAVES), has(Items.SPRUCE_LEAVES))
+                .save(pWriter);
     }
 
 
