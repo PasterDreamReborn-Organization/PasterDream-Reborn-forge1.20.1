@@ -49,6 +49,9 @@ import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSc
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlock;
 import com.pasterdream.pasterdreammod.world.block.dreamtrain.DreamTrainBroadcastBlock;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlock;
+import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarBlock;
+import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarBlock;
+import com.pasterdream.pasterdreammod.world.block.fireflynest.FireflyNestBlock;
 import com.pasterdream.pasterdreammod.world.block.ClayPotBlock;
 import com.pasterdream.pasterdreammod.world.block.PebbleBlock;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.anvil.WeaponWorkshopAnvilBlock;
@@ -787,6 +790,11 @@ public class ModBlocks {
     //狐狸雕像
     public static final RegistryObject<Block> GOLDEN_FOX_SCULPTURE = BLOCKS.register("golden_fox_sculpture", GoldenFoxSculptureBlock::new);
     public static final RegistryObject<Block> FOX_SCULPTURE = BLOCKS.register("fox_sculpture", FoxSculptureBlock::new);
+
+    //玻璃罐
+    public static final RegistryObject<Block> ECOLOGY_GLASS_JAR = BLOCKS.register("ecology_glass_jar", EcologyGlassJarBlock::new);
+    public static final RegistryObject<Block> FIREFLY_GLASS_JAR = BLOCKS.register("firefly_glass_jar", FireflyGlassJarBlock::new);
+    public static final RegistryObject<Block> FIREFLY_NEST = BLOCKS.register("firefly_nest", FireflyNestBlock::new);
     // ===== 陶罐 =====
     public static final RegistryObject<Block> CLAY_POT = BLOCKS.register("clay_pot",
             () -> new ClayPotBlock(BlockBehaviour.Properties.of()

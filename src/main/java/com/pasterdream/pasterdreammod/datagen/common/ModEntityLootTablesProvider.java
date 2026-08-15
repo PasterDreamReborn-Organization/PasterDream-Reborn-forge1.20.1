@@ -184,6 +184,19 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
         );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/firefly"),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(Items.GLOWSTONE_DUST)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
+                                .add(LootItem.lootTableItem(ModItems.LIGHT_ORGAN.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
+        );
     }
 
     private LootTable.Builder ghostLoot() {

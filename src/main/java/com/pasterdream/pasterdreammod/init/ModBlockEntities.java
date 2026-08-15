@@ -24,6 +24,9 @@ import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlo
 import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSculptureBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.fireflynest.FireflyNestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.NippyEdelweissBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.dreamspawner.DreamSpawnerBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalTileEntity;
@@ -69,6 +72,9 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<MeltDreamCrystalChestBlockEntity>> MELT_DREAM_CRYSTAL_CHEST = BLOCK_ENTITIES.register("melt_dream_crystal_chest", () -> BlockEntityType.Builder.of(MeltDreamCrystalChestBlockEntity::new, ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get()).build(null));
     public static final RegistryObject<BlockEntityType<OpenedMeltDreamCrystalChestBlockEntity>> OPENED_MELT_DREAM_CRYSTAL_CHEST = BLOCK_ENTITIES.register("opened_melt_dream_crystal_chest", () -> BlockEntityType.Builder.of(OpenedMeltDreamCrystalChestBlockEntity::new, ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get()).build(null));
     public static final RegistryObject<BlockEntityType<FoxSculptureBlockEntity>> FOX_SCULPTURE = BLOCK_ENTITIES.register("fox_sculpture", () -> BlockEntityType.Builder.of(FoxSculptureBlockEntity::new, ModBlocks.FOX_SCULPTURE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<EcologyGlassJarBlockEntity>> ECOLOGY_GLASS_JAR = BLOCK_ENTITIES.register("ecology_glass_jar", () -> BlockEntityType.Builder.of(EcologyGlassJarBlockEntity::new, ModBlocks.ECOLOGY_GLASS_JAR.get()).build(null));
+    public static final RegistryObject<BlockEntityType<FireflyGlassJarBlockEntity>> FIREFLY_GLASS_JAR = BLOCK_ENTITIES.register("firefly_glass_jar", () -> BlockEntityType.Builder.of(FireflyGlassJarBlockEntity::new, ModBlocks.FIREFLY_GLASS_JAR.get()).build(null));
+    public static final RegistryObject<BlockEntityType<FireflyNestBlockEntity>> FIREFLY_NEST = BLOCK_ENTITIES.register("firefly_nest", () -> BlockEntityType.Builder.of(FireflyNestBlockEntity::new, ModBlocks.FIREFLY_NEST.get()).build(null));
     public static final RegistryObject<BlockEntityType<NippyEdelweissBlockEntity>> NIPPY_EDELWEISS = BLOCK_ENTITIES.register("nippy_edelweiss", () -> BlockEntityType.Builder.of(NippyEdelweissBlockEntity::new, ModBlocks.NIPPY_EDELWEISS.get()).build(null));
     public static final RegistryObject<BlockEntityType<DreamAccumulatorBlockEntity>> DREAM_ACCUMULATOR = BLOCK_ENTITIES.register("dream_accumulator", () -> BlockEntityType.Builder.of(DreamAccumulatorBlockEntity::new, ModBlocks.DREAM_ACCUMULATOR.get()).build(null));
     public static final RegistryObject<BlockEntityType<DreamSpawnerBlockEntity>> DREAM_SPAWNER = BLOCK_ENTITIES.register("dream_spawner", () -> BlockEntityType.Builder.of(DreamSpawnerBlockEntity::new, ModBlocks.DREAM_SPAWNER.get()).build(null));

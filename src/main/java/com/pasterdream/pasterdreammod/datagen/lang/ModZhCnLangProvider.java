@@ -480,6 +480,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("block.pasterdream.golden_fox_sculpture.no_reaction", "雕像没有反应...");
         add("block.pasterdream.golden_fox_sculpture.cooldown", "雕像还在沉睡... 还需等待 %s 秒");
         add(ModBlocks.FOX_SCULPTURE.get(), "狐狸雕像");
+        add(ModBlocks.ECOLOGY_GLASS_JAR.get(), "生态玻璃罐");
+        add(ModBlocks.FIREFLY_GLASS_JAR.get(), "萤火虫玻璃罐");
+        add(ModBlocks.FIREFLY_NEST.get(), "萤火虫巢");
         add(ModBlocks.DESERT_HERO_TOMB.get(), "荒漠英雄之墓");
         add(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), "融梦水晶箱");
         add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), "打开的融梦水晶箱");
@@ -1910,6 +1913,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.PINK_SLIME_SPAWN_EGG.get(), "粉红史莱姆刷怪蛋");
         add(ModEntities.GOLDEN_FOX.get(), "金狐狸");
         add(ModItems.GOLDEN_FOX_SPAWN_EGG.get(), "金狐狸刷怪蛋");
+        add(ModEntities.FIREFLY.get(), "萤火虫");
+        add(ModItems.FIREFLY_SPAWN_EGG.get(), "萤火虫刷怪蛋");
         add(ModEntities.WIND_KNIGHT.get(), "破风骑士");
         add(ModItems.WIND_KNIGHT_SPAWN_EGG.get(), "破风骑士刷怪蛋");
         add(ModEntities.THUNDERCLOUD.get(), "雷云");

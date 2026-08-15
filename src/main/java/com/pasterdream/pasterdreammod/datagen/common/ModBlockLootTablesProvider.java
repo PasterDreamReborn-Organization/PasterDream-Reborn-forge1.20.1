@@ -480,6 +480,9 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SHADOW_BED.get());
         dropSelf(ModBlocks.GOLDEN_FOX_SCULPTURE.get());
         dropSelf(ModBlocks.FOX_SCULPTURE.get());
+        dropSelf(ModBlocks.ECOLOGY_GLASS_JAR.get());
+        dropSelf(ModBlocks.FIREFLY_GLASS_JAR.get());
+        dropSelf(ModBlocks.FIREFLY_NEST.get());
         dropSelf(ModBlocks.DESERT_HERO_TOMB.get());
         dropSelf(ModBlocks.DREAM_ACCUMULATOR.get());
         dropNone(ModBlocks.DREAM_TRAIN_STRUCTURE.get());

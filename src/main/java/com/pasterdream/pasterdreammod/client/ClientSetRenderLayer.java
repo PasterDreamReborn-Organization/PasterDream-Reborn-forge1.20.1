@@ -86,5 +86,8 @@ public class ClientSetRenderLayer
         for (var potted : ModBlocks.POTTED_PLANTS.values()) {
             ItemBlockRenderTypes.setRenderLayer(potted.get(), RenderType.cutout());
         }
+
+        // ===== 萤火虫巢 =====
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIREFLY_NEST.get(), RenderType.cutoutMipped());
     }
 }

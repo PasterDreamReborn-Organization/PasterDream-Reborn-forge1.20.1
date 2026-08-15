@@ -271,7 +271,10 @@
     "wind_knight_spawnblock_1": "wind_knight_altar",
     "wind_knight_spawnblock_2": "wind_knight_altar",
     "wind_knight_spawnblock_3": "wind_knight_altar",
-    "wind_knight_spawnblock_4": "wind_knight_altar"
+    "wind_knight_spawnblock_4": "wind_knight_altar",
+    "ecology_glass_jar": "ecology_glass_jar",
+    "firefly_glass_jar": "firefly_glass_jar",
+    "firefly_nest": "firefly_nest"
   },
   "items": {
     "amber_candy": "amber_candy",
@@ -581,7 +584,8 @@
     "wind_knight": "wind_knight",
     "thundercloud": "thundercloud",
     "highvoltage_thundercloud": "highvoltage_thundercloud",
-    "projectile_lightning_projectile": "lightning_projectile"
+    "projectile_lightning_projectile": "lightning_projectile",
+    "firefly": "firefly"
   },
   "dimensions": {
     "dyedream_world": "dyedream_world",

@@ -37,5 +37,8 @@ public class ModParticles {
         event.registerSpriteSet(ModParticleTypes.SNOWFLAKE_1_PARTICLE.get(), SnowflakeParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.INFERNO_PARTICLE.get(), InfernoParticle.Provider::new);
         event.registerSpriteSet(ModParticleTypes.LIGHTNING_PARTICLE.get(), LightningParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.FIREFLY_GLASS_JAR_PARTICLE.get(), FireflyGlassJarParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.LIGHT_FIREFLY_GLASS_JAR_PARTICLE.get(), LightFireflyGlassJarParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.FIREFLY_PARTICLE.get(), FireflyParticle.Provider::new);
     }
 }
