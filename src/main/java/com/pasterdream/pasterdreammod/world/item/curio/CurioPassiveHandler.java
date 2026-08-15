@@ -443,9 +443,10 @@ public class CurioPassiveHandler {
                 .orElse(false);
         if (!hasGhostFace) return;
 
-        // 硬编码黑名单：末影珍珠不应被复制
+        // 硬编码黑名单：末影珍珠、喷溅药水、钓鱼浮标不应被复制
         if (projectile instanceof net.minecraft.world.entity.projectile.ThrownEnderpearl) return;
         if (projectile instanceof net.minecraft.world.entity.projectile.ThrownPotion) return;
+        if (projectile instanceof net.minecraft.world.entity.projectile.FishingHook) return;
         // 配置文件黑名单
         if (Config.isGhostFaceProjectileBlacklisted(projectile.getType())) return;
 
