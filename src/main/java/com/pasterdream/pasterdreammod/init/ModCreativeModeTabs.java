@@ -391,7 +391,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.LARGE_DYEDREAM_BUD.get());
                         output.accept(ModItems.MEDIUM_DYEDREAM_BUD.get());
                         output.accept(ModItems.SMALL_DYEDREAM_BUD.get());
+                        output.accept(ModItems.DYEDREAM_BUDDING_BLOCK.get());
                         output.accept(ModItems.DYEDREAM_BUD_BLOCK.get());
+                        output.accept(ModItems.DYEDREAM_BUD_BRICKS.get());
                         output.accept(ModItems.DYEDREAM_BUD_STAIRS.get());
                         output.accept(ModItems.DYEDREAM_BUD_SLAB.get());
                         output.accept(ModItems.DYEDREAM_BUD_WALL.get());

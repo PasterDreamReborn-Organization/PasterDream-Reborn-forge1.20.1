@@ -90,6 +90,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get())
                 .add(ModBlocks.AMBER_CANDY_ORE.get())
                 .add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
                 .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
                 .add(ModBlocks.MEDIUM_DYEDREAM_BUD.get())
                 .add(ModBlocks.LARGE_DYEDREAM_BUD.get())
@@ -261,13 +262,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         // 需要铁工具挖掘
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get())
                 .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
                 .add(ModBlocks.MEDIUM_DYEDREAM_BUD.get())
                 .add(ModBlocks.LARGE_DYEDREAM_BUD.get())
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get())
                 .add(ModBlocks.MOLTEN_GOLD_BLOCK.get())
-                .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .add(ModBlocks.DYEDREAM_BUD_BRICKS.get())
                 .add(ModBlocks.DYEDREAM_BUD_STAIRS.get())
                 .add(ModBlocks.DYEDREAM_BUD_SLAB.get())
                 .add(ModBlocks.DYEDREAM_BUD_WALL.get())
@@ -320,7 +322,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.RUST_BLACK_METAL_WALL.get());
 
         // 建材系列批量添加
-        var budFamily = new BuildingBlockFamily(ModBlocks.DYEDREAM_BUD_BLOCK, ModBlocks.DYEDREAM_BUD_STAIRS, ModBlocks.DYEDREAM_BUD_SLAB, ModBlocks.DYEDREAM_BUD_WALL);
+        var budFamily = new BuildingBlockFamily(ModBlocks.DYEDREAM_BUD_BRICKS, ModBlocks.DYEDREAM_BUD_STAIRS, ModBlocks.DYEDREAM_BUD_SLAB, ModBlocks.DYEDREAM_BUD_WALL);
         var polishedCalciteFamily = new BuildingBlockFamily(ModBlocks.POLISHED_CALCITE, ModBlocks.POLISHED_CALCITE_STAIRS, ModBlocks.POLISHED_CALCITE_SLAB, ModBlocks.POLISHED_CALCITE_WALL);
         var calciteTilesFamily = new BuildingBlockFamily(ModBlocks.CALCITE_TILES, ModBlocks.CALCITE_TILES_STAIRS, ModBlocks.CALCITE_TILES_SLAB, ModBlocks.CALCITE_TILES_WALL);
         var shadowStoneBrickFamily = new BuildingBlockFamily(ModBlocks.SHADOW_STONE_BRICK, ModBlocks.SHADOW_STONE_BRICK_STAIRS, ModBlocks.SHADOW_STONE_BRICK_SLAB, ModBlocks.SHADOW_STONE_BRICK_WALL);

@@ -1386,8 +1386,16 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     // ===== 染梦水晶建材配方 =====
 
     private void budBuildingRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 4× 染梦晶芽粒 → 染梦水晶块
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_BLOCK.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.DYEDREAM_BUD_NUGGET.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_BUD_NUGGET.get()), has(ModItems.DYEDREAM_BUD_NUGGET.get()))
+                .save(pWriter);
+
         // 染梦玻璃 + 晶芽粒 → 4× 染梦水晶砖
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_BLOCK.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_BRICKS.get(), 4)
                 .pattern("ab")
                 .pattern("ba")
                 .define('a', ModBlocks.DYEDREAM_GLASS.get())
@@ -1396,7 +1404,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter);
 
         RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
-                ModBlocks.DYEDREAM_BUD_BLOCK.get(), ModBlocks.DYEDREAM_BUD_STAIRS.get(),
+                ModBlocks.DYEDREAM_BUD_BRICKS.get(), ModBlocks.DYEDREAM_BUD_STAIRS.get(),
                 ModBlocks.DYEDREAM_BUD_SLAB.get(), ModBlocks.DYEDREAM_BUD_WALL.get(),
                 PasterDreamMod.MOD_ID);
     }

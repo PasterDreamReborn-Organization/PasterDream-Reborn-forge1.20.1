@@ -353,7 +353,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
         wallItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL, ModBlocks.DYEDREAM_QUARTZ_BLOCK);
 
-        wallItem(ModBlocks.DYEDREAM_BUD_WALL, ModBlocks.DYEDREAM_BUD_BLOCK);
+        wallItem(ModBlocks.DYEDREAM_BUD_WALL, ModBlocks.DYEDREAM_BUD_BRICKS);
         wallItem(ModBlocks.POLISHED_CALCITE_WALL, ModBlocks.POLISHED_CALCITE);
         wallItem(ModBlocks.CALCITE_TILES_WALL, ModBlocks.CALCITE_TILES);
         wallItem(ModBlocks.SHADOW_STONE_BRICK_WALL, ModBlocks.SHADOW_STONE_BRICK);
