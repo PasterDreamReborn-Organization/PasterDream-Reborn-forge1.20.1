@@ -30,6 +30,7 @@ import com.pasterdream.pasterdreammod.world.entity.WindKnightEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThundercloudEntity;
 import com.pasterdream.pasterdreammod.world.entity.LightningProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.HighvoltageThundercloudEntity;
+import com.pasterdream.pasterdreammod.world.entity.FireflyEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -132,6 +133,14 @@ public class ModEntities {
                     .setUpdateInterval(3)
                     .setCustomClientFactory(GoldenFoxEntity::new)
                     .sized(0.6f, 0.6f));
+
+    public static final RegistryObject<EntityType<FireflyEntity>> FIREFLY = register("firefly",
+            EntityType.Builder.<FireflyEntity>of(FireflyEntity::new, MobCategory.CREATURE)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(FireflyEntity::new)
+                    .sized(0.5f, 0.5f));
 
     public static final RegistryObject<EntityType<ShadowGolemEntity>> SHADOW_GOLEM = register("shadow_golem",
             EntityType.Builder.<ShadowGolemEntity>of(ShadowGolemEntity::new, MobCategory.MONSTER)
@@ -339,6 +348,7 @@ public class ModEntities {
         event.enqueueWork(PinkChickenEntity::init);
         event.enqueueWork(PinkSlimeEntity::init);
         event.enqueueWork(GoldenFoxEntity::init);
+        event.enqueueWork(FireflyEntity::init);
         event.enqueueWork(ShadowGolemEntity::init);
         event.enqueueWork(TerrorbeakEntity::init);
         event.enqueueWork(ShadowHandEntity::init);
@@ -363,6 +373,7 @@ public class ModEntities {
         event.put(PINK_CHICKEN.get(), PinkChickenEntity.createAttributes().build());
         event.put(PINK_SLIME.get(), PinkSlimeEntity.createAttributes().build());
         event.put(GOLDEN_FOX.get(), GoldenFoxEntity.createAttributes().build());
+        event.put(FIREFLY.get(), FireflyEntity.createAttributes().build());
         event.put(SHADOW_GOLEM.get(), ShadowGolemEntity.createAttributes().build());
         event.put(TERRORBEAK.get(), TerrorbeakEntity.createTerrorbeakAttributes().build());
         event.put(CRAZY_TERRORBEAK.get(), TerrorbeakEntity.createCrazyTerrorbeakAttributes().build());

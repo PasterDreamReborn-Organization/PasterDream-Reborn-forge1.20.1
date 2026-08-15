@@ -466,6 +466,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("block.pasterdream.golden_fox_sculpture.no_reaction", "The sculpture does not respond...");
         add("block.pasterdream.golden_fox_sculpture.cooldown", "The sculpture is still slumbering... %s seconds remaining");
         add(ModBlocks.FOX_SCULPTURE.get(), "Fox Sculpture");
+        add(ModBlocks.ECOLOGY_GLASS_JAR.get(), "Ecology Glass Jar");
+        add(ModBlocks.FIREFLY_GLASS_JAR.get(), "Firefly Glass Jar");
+        add(ModBlocks.FIREFLY_NEST.get(), "Firefly Nest");
         add(ModBlocks.DESERT_HERO_TOMB.get(), "Desert Hero Tomb");
         add(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), "Melt Dream Crystal Chest");
         add(ModBlocks.OPENED_MELT_DREAM_CRYSTAL_CHEST.get(), "Opened Melt Dream Crystal Chest");
@@ -1453,6 +1456,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.PINK_SLIME_SPAWN_EGG.get(), "Pink Slime Spawn Egg");
         add(ModEntities.GOLDEN_FOX.get(), "Golden Fox");
         add(ModItems.GOLDEN_FOX_SPAWN_EGG.get(), "Golden Fox Spawn Egg");
+        add(ModEntities.FIREFLY.get(), "Firefly");
+        add(ModItems.FIREFLY_SPAWN_EGG.get(), "Firefly Spawn Egg");
         add(ModEntities.WIND_KNIGHT.get(), "Wind Knight");
         add(ModItems.WIND_KNIGHT_SPAWN_EGG.get(), "Wind Knight Spawn Egg");
         add(ModEntities.THUNDERCLOUD.get(), "Thundercloud");

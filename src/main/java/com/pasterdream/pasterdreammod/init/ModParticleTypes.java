@@ -65,6 +65,12 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("inferno_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> LIGHTNING_PARTICLE =
             PARTICLE_TYPES.register("lightning_particle", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> FIREFLY_GLASS_JAR_PARTICLE =
+            PARTICLE_TYPES.register("firefly_glass_jar_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> LIGHT_FIREFLY_GLASS_JAR_PARTICLE =
+            PARTICLE_TYPES.register("light_firefly_glass_jar_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> FIREFLY_PARTICLE =
+            PARTICLE_TYPES.register("firefly_particle", () -> new SimpleParticleType(false));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

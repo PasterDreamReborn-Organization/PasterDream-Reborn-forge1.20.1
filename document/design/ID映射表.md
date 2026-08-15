@@ -328,6 +328,9 @@
 | `wind_knight_spawnblock_2`          | `wind_knight_altar`                 | 合并为 stage=2（组装手臂）                             | 同上                                                                                                              |
 | `wind_knight_spawnblock_3`          | `wind_knight_altar`                 | 合并为 stage=3（组装头颅）                             | 同上                                                                                                              |
 | `wind_knight_spawnblock_4`          | `wind_knight_altar`                 | 合并为 stage=4（完整形态）                             | 同上                                                                                                              |
+| `ecology_glass_jar`                 | `ecology_glass_jar`                 | 不改                                             | 客制化类 `EcologyGlassJarBlock`，GeckoLib 动画方块实体（`world/block/ecologyglassjar/`），含水 + 水平朝向，每 100 tick 喷萤火虫粒子    |
+| `firefly_glass_jar`                 | `firefly_glass_jar`                 | 不改；合并 `light_firefly_glass_jar`，用方块状态 `LIT` 区分发光/熄灭 | 客制化类 `FireflyGlassJarBlock`，GeckoLib 动画方块实体（`world/block/fireflyglassjar/`），含水 + 水平朝向 + `LIT`，右键切换发光态 |
+| `firefly_nest`                      | `firefly_nest`                      | 不改                                             | 客制化类 `FireflyNestBlock`（`world/block/fireflynest/`），含水 + 随机刻，白天蓄能夜间生成萤火虫 + 喷粒子 |
 
 
 ---
@@ -674,6 +677,7 @@
 | `thundercloud`                      | `thundercloud`                | 不改                                               | 客制化类 `ThundercloudEntity`（飞行雷云，祭坛召唤的随从）                                                   |
 | `highvoltage_thundercloud`          | `highvoltage_thundercloud`    | 不改                                               | 客制化类 `HighvoltageThundercloudEntity`（高压雷云，更强变体）                                             |
 | `projectile_lightning_projectile`   | `lightning_projectile`        | 重命名，去 `projectile_` 前缀                           | 弹射物 `LightningProjectileEntity`（雷云攻击）                                                          |
+| `firefly`                           | `firefly`                     | 不改                                               | 客制化类 `FireflyEntity`（GeckoLib 飞行实体），右键用生态玻璃罐捕捉 → 获得发光萤火虫玻璃罐                                     |
 
 ---
 

@@ -29,6 +29,8 @@ import com.pasterdream.pasterdreammod.world.block.goldenfoxsculpture.GoldenFoxSc
 import com.pasterdream.pasterdreammod.world.block.windknightaltar.WindKnightAltarItem;
 import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombItem;
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureItem;
+import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarItem;
+import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarItem;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceItem;
 import com.pasterdream.pasterdreammod.world.item.*;
 import com.pasterdream.pasterdreammod.world.item.FireproofBlockItem;
@@ -1663,6 +1665,9 @@ public class ModItems {
     public static final RegistryObject<Item> LIFE_CRYSTAL = ITEMS.register("life_crystal", () -> new LifeCrystalItem(ModBlocks.LIFE_CRYSTAL.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> GOLDEN_FOX_SCULPTURE = ITEMS.register("golden_fox_sculpture", () -> new GoldenFoxSculptureItem(ModBlocks.GOLDEN_FOX_SCULPTURE.get(), new Item.Properties()));
     public static final RegistryObject<Item> FOX_SCULPTURE = ITEMS.register("fox_sculpture", () -> new FoxSculptureItem(ModBlocks.FOX_SCULPTURE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ECOLOGY_GLASS_JAR = ITEMS.register("ecology_glass_jar", () -> new EcologyGlassJarItem(ModBlocks.ECOLOGY_GLASS_JAR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> FIREFLY_GLASS_JAR = ITEMS.register("firefly_glass_jar", () -> new FireflyGlassJarItem(ModBlocks.FIREFLY_GLASS_JAR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> FIREFLY_NEST = ITEMS.register("firefly_nest", () -> new BlockItem(ModBlocks.FIREFLY_NEST.get(), new Item.Properties()));
     public static final RegistryObject<Item> DESERT_HERO_TOMB = ITEMS.register("desert_hero_tomb", () -> new DesertHeroTombItem(ModBlocks.DESERT_HERO_TOMB.get(), new Item.Properties()));
     public static final RegistryObject<Item> DREAM_TRAIN_STRUCTURE = ITEMS.register("dream_train_structure", () -> new BlockItem(ModBlocks.DREAM_TRAIN_STRUCTURE.get(), new Item.Properties()));
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_CHEST = ITEMS.register("melt_dream_crystal_chest", () -> new MeltDreamCrystalChestItem(ModBlocks.MELT_DREAM_CRYSTAL_CHEST.get(), new Item.Properties()));
@@ -1801,6 +1806,8 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.PINK_SLIME, 0xe4a8d9, 0xd46daf, new Item.Properties()));
     public static final RegistryObject<Item> GOLDEN_FOX_SPAWN_EGG = ITEMS.register("golden_fox_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.GOLDEN_FOX, 0xe8c13a, 0x8b6914, new Item.Properties()));
+    public static final RegistryObject<Item> FIREFLY_SPAWN_EGG = ITEMS.register("firefly_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.FIREFLY, -12570340, -5382814, new Item.Properties()));
     public static final RegistryObject<Item> WIND_KNIGHT_SPAWN_EGG = ITEMS.register("wind_knight_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.WIND_KNIGHT, -1907228, -9642058, new Item.Properties()));
     public static final RegistryObject<Item> THUNDERCLOUD_SPAWN_EGG = ITEMS.register("thundercloud_spawn_egg",

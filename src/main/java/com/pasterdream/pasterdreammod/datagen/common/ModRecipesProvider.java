@@ -2041,6 +2041,13 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
                 .save(pWriter);
 
+        // 生态玻璃罐合成（玻璃罐 + 灵魂尘埃）
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ECOLOGY_GLASS_JAR.get(), 1)
+                .requires(ModItems.GLASS_JAR.get())
+                .requires(ModItems.SOUL_DUST.get())
+                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
+                .save(pWriter);
+
         // 玻璃杯合成配方（支持所有玻璃板tag）
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GLASS_CUP.get(), 4)
                 .pattern("a a")

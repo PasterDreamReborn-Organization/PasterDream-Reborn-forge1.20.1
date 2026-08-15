@@ -495,6 +495,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.PINK_CHICKEN_SPAWN_EGG);
         spawnEggItem(ModItems.PINK_SLIME_SPAWN_EGG);
         spawnEggItem(ModItems.GOLDEN_FOX_SPAWN_EGG);
+        spawnEggItem(ModItems.FIREFLY_SPAWN_EGG);
         spawnEggItem(ModItems.WIND_KNIGHT_SPAWN_EGG);
         spawnEggItem(ModItems.THUNDERCLOUD_SPAWN_EGG);
         spawnEggItem(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG);
