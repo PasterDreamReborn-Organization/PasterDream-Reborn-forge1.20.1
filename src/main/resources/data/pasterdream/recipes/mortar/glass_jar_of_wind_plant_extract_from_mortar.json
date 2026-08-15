@@ -1,0 +1,29 @@
+{
+  "type": "pasterdream:mortar",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:wind_cleaving_grass",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:wind_island_reed",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:wind_feather_grass",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:hairy_moss",
+      "count": 1
+    }
+  ],
+  "fluidOutputs":
+  [
+    {
+      "fluid": "pasterdream:wind_plant_extract",
+      "amount": 250
+    }
+  ]
+}
