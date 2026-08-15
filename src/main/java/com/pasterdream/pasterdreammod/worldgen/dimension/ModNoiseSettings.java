@@ -10,6 +10,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.*;
 
+import java.util.List;
+
 public class ModNoiseSettings {
 
     public static final ResourceKey<NoiseGeneratorSettings> DYEDREAM_WORLD =
@@ -19,6 +21,10 @@ public class ModNoiseSettings {
     public static final ResourceKey<NoiseGeneratorSettings> LAMP_SHADOW_WORLD =
             ResourceKey.create(Registries.NOISE_SETTINGS,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_world"));
+
+    public static final ResourceKey<NoiseGeneratorSettings> WIND_JOURNEY_WORLD =
+            ResourceKey.create(Registries.NOISE_SETTINGS,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world"));
 
     public static void bootstrap(BootstapContext<NoiseGeneratorSettings> context) {
         // 复用主世界的完整噪声路由器（洞穴、含水层、矿脉、地形起伏等）
@@ -97,6 +103,22 @@ public class ModNoiseSettings {
                 false,                                              //禁用含水层
                 false,                                              //禁用矿脉
                 lampShadowOverworld.useLegacyRandomSource()
+        ));
+
+        // 风之旅途维度噪声设置（复用原版末地浮空岛噪声路由，仅替换默认方块/流体/地表规则）
+        NoiseGeneratorSettings end = NoiseGeneratorSettings.end(context);
+        context.register(WIND_JOURNEY_WORLD, new NoiseGeneratorSettings(
+                end.noiseSettings(),                                    // min_y=0, height=128, 岛屿噪声覆盖
+                ModBlocks.THICK_CLOUD.get().defaultBlockState(),        // 默认方块：厚云
+                Blocks.WATER.defaultBlockState(),                       // 默认流体：水
+                end.noiseRouter(),                                      // 末地浮空岛噪声路由
+                makeWindJourneySurfaceRules(),                          // 风之旅途地表规则
+                List.of(),                                              // 无生成目标
+                0,                                                      // 海平面 0
+                false,                                                  // 启用怪物生成
+                false,                                                  // 禁用含水层
+                false,                                                  // 禁用矿脉
+                true                                                    // 使用旧随机源
         ));
 
     }
@@ -197,6 +219,33 @@ public class ModNoiseSettings {
                                         )
                                 )
                         )
+                )
+        );
+    }
+
+    private static SurfaceRules.RuleSource makeWindJourneySurfaceRules() {
+        return SurfaceRules.sequence(
+                // 风泊群岛（biome_0）：水底 cyan_moss_stone，岛屿主体 cyan_stone
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(ModBiomes.WIND_MOOR_ARCHIPELAGO),
+                        SurfaceRules.sequence(
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.waterBlockCheck(-1, 0),
+                                                SurfaceRules.state(ModBlocks.CYAN_MOSS_STONE.get().defaultBlockState())
+                                        )
+                                ),
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.UNDER_FLOOR,
+                                        SurfaceRules.state(ModBlocks.CYAN_STONE.get().defaultBlockState())
+                                )
+                        )
+                ),
+                // 迷梦云层（biome_1）：白沙
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(ModBiomes.MISTY_DREAM_CLOUD_LAYER),
+                        SurfaceRules.state(ModBlocks.WHITE_SAND.get().defaultBlockState())
                 )
         );
     }

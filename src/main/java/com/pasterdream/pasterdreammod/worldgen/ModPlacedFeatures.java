@@ -264,6 +264,32 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> MOLTEN_GOLD_ORE_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "molten_gold_ore_patch"));
     public static final ResourceKey<PlacedFeature> SOUL_ORE_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "soul_ore_patch"));
 
+    // ===== 风之旅途 =====
+    public static final ResourceKey<PlacedFeature> CONGEAL_WIND_ORE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "congeal_wind_ore"));
+    public static final ResourceKey<PlacedFeature> WIND_RUNNER_CRYSTAL_ORE =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_runner_crystal_ore"));
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_CLOUD_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_cloud_patch"));
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_CLOUD_PATCH_LOW =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_cloud_patch_low"));
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_WATER_POOL =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_water_pool"));
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_PEBBLE_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_pebble_patch"));
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_FIREFLY_NEST =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_firefly_nest"));
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_CYAN_MOSS_STONE_BLOB =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_cyan_moss_stone_blob"));
+
 
     /** HeightmapPlacement 在 Forge 1.20.1 中构造函数为 private，通过反射创建 */
     private static PlacementModifier onHeightmap(Heightmap.Types type) {
@@ -741,5 +767,50 @@ public class ModPlacedFeatures {
         context.register(LARGE_DYEDREAM_BUD_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.LARGE_DYEDREAM_BUD_PATCH), List.of(CountPlacement.of(6), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(320)))));
         // 冰晶芽 — SP+FO,
         context.register(ICE_BUD_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.ICE_BUD_PATCH), List.of(CountPlacement.of(6), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(320)))));
+
+        // ===== 风之旅途 =====
+        // 凝风矿 — 原作 count=13, y=15~80
+        context.register(CONGEAL_WIND_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CONGEAL_WIND_ORE),
+                List.of(CountPlacement.of(13), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(15), VerticalAnchor.absolute(80)),
+                        BiomeFilter.biome())));
+        // 破风骑士水晶矿 — 原作 count=7, trapezoid y=40~80
+        context.register(WIND_RUNNER_CRYSTAL_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_RUNNER_CRYSTAL_ORE),
+                List.of(CountPlacement.of(7), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(40), VerticalAnchor.absolute(80)),
+                        BiomeFilter.biome())));
+        // 云团（高位）— 原作 rarity=4, y=100~220
+        context.register(WIND_JOURNEY_CLOUD_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_CLOUD_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(100), VerticalAnchor.absolute(220)))));
+        // 云团（低位）— 原作 rarity=4, y=40~65
+        context.register(WIND_JOURNEY_CLOUD_PATCH_LOW, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_CLOUD_PATCH_LOW),
+                List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(40), VerticalAnchor.absolute(65)))));
+        // 水池 — 原作 rarity=1（每区块 1 个）, WORLD_SURFACE_WG
+        context.register(WIND_JOURNEY_WATER_POOL, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_WATER_POOL),
+                List.of(InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+        // 小石子 — 原作 in_square + OCEAN_FLOOR + count=4
+        context.register(WIND_JOURNEY_PEBBLE_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_PEBBLE_PATCH),
+                List.of(CountPlacement.of(4), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
+        // 萤火虫巢 — 原作 in_square + OCEAN_FLOOR + count=2
+        context.register(WIND_JOURNEY_FIREFLY_NEST, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_FIREFLY_NEST),
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR))));
+        // 苍青苔石团块 — 原作 count=7, rarity=5, 全高度, biome
+        context.register(WIND_JOURNEY_CYAN_MOSS_STONE_BLOB, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_CYAN_MOSS_STONE_BLOB),
+                List.of(CountPlacement.of(7), RarityFilter.onAverageOnceEvery(5), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.belowTop(0)),
+                        BiomeFilter.biome())));
     }
 }

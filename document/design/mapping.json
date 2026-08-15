@@ -602,8 +602,8 @@
     "biome_shadow_0": "shadow_nylium_wastes",
     "biome_shadow_1": "shadow_forest",
     "biome_shadow_2": "shadow_ruins",
-    "wind_journey_biome_0": "待搬运",
-    "wind_journey_biome_1": "待搬运",
+    "wind_journey_biome_0": "wind_moor_archipelago",
+    "wind_journey_biome_1": "misty_dream_cloud_layer",
     "aaroncos_arena_biome": "待搬运"
   },
   "effects": {

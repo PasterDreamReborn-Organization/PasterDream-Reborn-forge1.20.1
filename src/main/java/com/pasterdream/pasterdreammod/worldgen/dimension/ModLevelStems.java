@@ -35,6 +35,10 @@ public class ModLevelStems {
             ResourceKey.create(Registries.LEVEL_STEM,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_world"));
 
+    public static final ResourceKey<LevelStem> WIND_JOURNEY_WORLD =
+            ResourceKey.create(Registries.LEVEL_STEM,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world"));
+
     @SuppressWarnings("unchecked")
     private static MultiNoiseBiomeSource createMultiNoiseSource(
             Climate.ParameterList<Holder<Biome>> params) {
@@ -210,5 +214,45 @@ public class ModLevelStems {
         ChunkGenerator lampShadowChunkGenerator = new NoiseBasedChunkGenerator(lampShadowBiomeSource, lampShadowNoise);
 
         context.register(LAMP_SHADOW_WORLD, new LevelStem(lampShadowDimType, lampShadowChunkGenerator));
+
+        // ===== 风之旅途维度 =====
+        Holder<Biome> windMoorArchipelago = biomes.getOrThrow(ModBiomes.WIND_MOOR_ARCHIPELAGO);
+        Holder<Biome> mistyDreamCloudLayer = biomes.getOrThrow(ModBiomes.MISTY_DREAM_CLOUD_LAYER);
+        Holder<DimensionType> windJourneyDimType = dimensionTypes.getOrThrow(ModDimensionTypes.WIND_JOURNEY_WORLD);
+        Holder<NoiseGeneratorSettings> windJourneyNoise = noiseSettings.getOrThrow(ModNoiseSettings.WIND_JOURNEY_WORLD);
+
+        // 双群系（原作 multi_noise 参数）：
+        //  风泊群岛 T[0,1] H[0,1] C[-0.3,1] E[0,1]
+        //  迷梦云层 T[-1,0] H[-1,0] C[-1,-0.3] E[-1,0]
+        Climate.ParameterList<Holder<Biome>> windJourneyBiomeParams = new Climate.ParameterList<>(List.<Pair<Climate.ParameterPoint, Holder<Biome>>>of(
+                Pair.of(
+                        new Climate.ParameterPoint(
+                                Climate.Parameter.span(0F, 1F),
+                                Climate.Parameter.span(0F, 1F),
+                                Climate.Parameter.span(-0.3F, 1F),
+                                Climate.Parameter.span(0F, 1F),
+                                Climate.Parameter.point(0.0F),
+                                Climate.Parameter.span(-1F, 1F),
+                                0L
+                        ),
+                        windMoorArchipelago
+                ),
+                Pair.of(
+                        new Climate.ParameterPoint(
+                                Climate.Parameter.span(-1F, 0F),
+                                Climate.Parameter.span(-1F, 0F),
+                                Climate.Parameter.span(-1F, -0.3F),
+                                Climate.Parameter.span(-1F, 0F),
+                                Climate.Parameter.point(0.0F),
+                                Climate.Parameter.span(-1F, 1F),
+                                0L
+                        ),
+                        mistyDreamCloudLayer
+                )
+        ));
+        MultiNoiseBiomeSource windJourneyBiomeSource = createMultiNoiseSource(windJourneyBiomeParams);
+        ChunkGenerator windJourneyChunkGenerator = new NoiseBasedChunkGenerator(windJourneyBiomeSource, windJourneyNoise);
+
+        context.register(WIND_JOURNEY_WORLD, new LevelStem(windJourneyDimType, windJourneyChunkGenerator));
     }
 }

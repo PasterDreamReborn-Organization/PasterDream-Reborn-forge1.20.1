@@ -158,5 +158,11 @@
   },
   "thundercloud_attack": {
     "sounds": [{"name": "pasterdream:thundercloud_attack", "stream": false}]
+  },
+  "breeze_wind": {
+    "sounds": [{"name": "pasterdream:breeze_wind", "stream": false}]
+  },
+  "wind_journey": {
+    "sounds": [{"name": "pasterdream:wind_journey", "stream": true}]
   }
 }

@@ -21,6 +21,10 @@ public class ModDimensionTypes {
             ResourceKey.create(Registries.DIMENSION_TYPE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_world"));
 
+    public static final ResourceKey<DimensionType> WIND_JOURNEY_WORLD =
+            ResourceKey.create(Registries.DIMENSION_TYPE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world"));
+
     public static void bootstrap(BootstapContext<DimensionType> context) {
         context.register(DYEDREAM_WORLD, new DimensionType(
                 OptionalLong.empty(),       // 无固定时间，使用日夜循环
@@ -60,6 +64,29 @@ public class ModDimensionTypes {
                 BlockTags.INFINIBURN_OVERWORLD,
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_world"),
                 0.15f,                      // 环境光照
+                new DimensionType.MonsterSettings(
+                        true,               // 猪灵安全
+                        false,              // 禁止袭击
+                        UniformInt.of(0, 7), // 怪物生成光照判定（0~7）
+                        0                   // 怪物生成方块光照上限
+                )
+        ));
+
+        context.register(WIND_JOURNEY_WORLD, new DimensionType(
+                OptionalLong.empty(),       // 无固定时间，使用日夜循环
+                true,                       // 有天空光照
+                false,                      // 无基岩天花板
+                false,                      // 非地狱干燥环境
+                false,                      // 非自然维度（无天气循环，浮空岛）
+                1.0,                        // 坐标缩放倍率
+                true,                       // 允许睡觉
+                false,                      // 不允许重生锚
+                0,                          // 最低建筑高度
+                256,                        // 总高度
+                256,                        // 逻辑高度
+                BlockTags.INFINIBURN_OVERWORLD,
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world"),
+                0.0f,                       // 环境光照
                 new DimensionType.MonsterSettings(
                         true,               // 猪灵安全
                         false,              // 禁止袭击
