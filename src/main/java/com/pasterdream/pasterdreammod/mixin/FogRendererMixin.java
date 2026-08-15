@@ -34,4 +34,24 @@ public class FogRendererMixin
             ci.cancel();
         }
     }
+
+    @Inject(method = "setupColor", at = @At("HEAD"), cancellable = true)
+    private static void pasterdream$forceCyanClearColor(Camera camera, float partialTick, ClientLevel level, int renderDistance, float darkenWorldAmount, CallbackInfo ci)
+    {
+        if (level != null && level.dimension().location().equals(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world")))
+        {
+            RenderSystem.clearColor(0.5333333333F, 0.9568627451F, 0.9215686275F, 1.0F);
+            ci.cancel();
+        }
+    }
+
+    @Inject(method = "levelFogColor", at = @At("HEAD"), cancellable = true)
+    private static void pasterdream$forceCyanFogColor(CallbackInfo ci)
+    {
+        if (Minecraft.getInstance().level != null && Minecraft.getInstance().level.dimension().location().equals(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world")))
+        {
+            RenderSystem.setShaderFogColor(0.5333333333F, 0.9568627451F, 0.9215686275F, 1.0F);
+            ci.cancel();
+        }
+    }
 }

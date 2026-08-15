@@ -698,7 +698,7 @@
 |------------------------|------------------------|--------|-------------------------------------------------------------|
 | `dyedream_world`       | `dyedream_world`       | 不改，已实现 | `DimensionType` + `NoiseSettings` + `LevelStem` 已完成 datagen |
 | `lamp_shadow_world`    | `lamp_shadow_world`    | 不改，待搬运 | -                                                           |
-| `wind_journey_world`   | `wind_journey_world`   | 不改，待搬运 | -                                                           |
+| `wind_journey_world`   | `wind_journey_world`   | 不改，已实现 | `DimensionType` + `NoiseSettings` + `LevelStem` 已完成 datagen |
 | `aaroncos_arena_world` | `aaroncos_arena_world` | 不改，待搬运 | -                                                           |
 
 ---
@@ -714,8 +714,8 @@
 | `biome_shadow_0`       | `shadow_nylium_wastes`        | 重命名     | 菌索荒原                          |
 | `biome_shadow_1`       | `shadow_forest`               | 重命名     | 阴影森林                          |
 | `biome_shadow_2`       | `shadow_ruins`                | 重命名     | 阴影古迹                          |
-| `wind_journey_biome_0` | 待搬运                           | -       | 风泊群岛                          |
-| `wind_journey_biome_1` | 待搬运                           | -       | 迷梦云层                          |
+| `wind_journey_biome_0` | `wind_moor_archipelago`         | 重命名，已实现 | 风泊群岛，`ModBiomes` 中完成 datagen |
+| `wind_journey_biome_1` | `misty_dream_cloud_layer`       | 重命名，已实现 | 迷梦云层，`ModBiomes` 中完成 datagen |
 | `aaroncos_arena_biome` | 待搬运                           | -       | 亚伦柯斯竞技场                       |
 
 

@@ -789,6 +789,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("biome.pasterdream.shadow_forest","Shadow Forest");
         add("biome.pasterdream.shadow_ruins","Shadow Ruins");
         add("biome.pasterdream.shadow_ocean","Shadow Ocean");
+        add("biome.pasterdream.wind_moor_archipelago","Wind Moor Archipelago");
+        add("biome.pasterdream.misty_dream_cloud_layer","Misty Dream Cloud Layer");
 
         add("recipe.pasterdream.copy", "Copy");
         add("recipe.pasterdream.research", "Research");
