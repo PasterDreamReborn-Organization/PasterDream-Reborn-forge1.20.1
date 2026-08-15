@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.client.model.FireballProjectileModel;
 import com.pasterdream.pasterdreammod.client.model.Modelslime;
 import com.pasterdream.pasterdreammod.client.renderer.*;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -40,9 +41,13 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.THUNDERCLOUD.get(), ThundercloudRenderer::new);
         event.registerEntityRenderer(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), HighvoltageThundercloudRenderer::new);
         event.registerEntityRenderer(ModEntities.LIGHTNING_PROJECTILE.get(), EmptyEntityRenderer::new);
+        event.registerEntityRenderer(ModEntities.BONE_WING.get(), BoneWingRenderer::new);
+        event.registerEntityRenderer(ModEntities.ASH_BONE_WING.get(), AshBoneWingRenderer::new);
+        event.registerEntityRenderer(ModEntities.BONE_WING_FIRE_BALL_PROJECTILE.get(), BoneWingFireBallProjectileRenderer::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(Modelslime.LAYER_LOCATION, Modelslime::createBodyLayer);
+        event.registerLayerDefinition(FireballProjectileModel.LAYER_LOCATION, FireballProjectileModel::createBodyLayer);
     }
 }

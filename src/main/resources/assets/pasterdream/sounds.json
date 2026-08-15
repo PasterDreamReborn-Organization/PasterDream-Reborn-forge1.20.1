@@ -164,5 +164,8 @@
   },
   "wind_journey": {
     "sounds": [{"name": "pasterdream:wind_journey", "stream": true}]
+  },
+  "bone_wing_fire_ball": {
+    "sounds": [{"name": "pasterdream:bone_wing_fire_ball", "stream": false}]
   }
 }

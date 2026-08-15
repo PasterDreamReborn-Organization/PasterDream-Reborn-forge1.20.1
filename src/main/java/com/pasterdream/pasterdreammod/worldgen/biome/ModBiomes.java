@@ -529,8 +529,12 @@ public class ModBiomes {
                 .temperatureAdjustment(Biome.TemperatureModifier.NONE)
                 .specialEffects(effects.build())
                 .mobSpawnSettings(new MobSpawnSettings.Builder()
-                        // 原作 monster: 萤火虫 weight10(3~4)、雷云 weight5(1~2)、高压雷云 weight1(1~1)
-                        // 骨翼/灰骨翼/水母/小石灵 待搬运
+                        // 原作 monster: 骨翼 weight6(1~2)、灰骨翼 weight1(1~1)、萤火虫 weight10(3~4)、雷云 weight5(1~2)、高压雷云 weight1(1~1)
+                        // 水母/小石灵 待搬运
+                        .addSpawn(MobCategory.MONSTER,
+                                new MobSpawnSettings.SpawnerData(ModEntities.BONE_WING.get(), 6, 1, 2))
+                        .addSpawn(MobCategory.MONSTER,
+                                new MobSpawnSettings.SpawnerData(ModEntities.ASH_BONE_WING.get(), 1, 1, 1))
                         .addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(ModEntities.FIREFLY.get(), 10, 3, 4))
                         .addSpawn(MobCategory.MONSTER,

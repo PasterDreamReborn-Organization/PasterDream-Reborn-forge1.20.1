@@ -1924,6 +1924,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.THUNDERCLOUD_SPAWN_EGG.get(), "雷云刷怪蛋");
         add(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), "高压雷云");
         add(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get(), "高压雷云刷怪蛋");
+        add(ModEntities.BONE_WING.get(), "骨翼");
+        add(ModItems.BONE_WING_SPAWN_EGG.get(), "骨翼刷怪蛋");
+        add(ModEntities.ASH_BONE_WING.get(), "余烬骨翼");
+        add(ModItems.ASH_BONE_WING_SPAWN_EGG.get(), "余烬骨翼刷怪蛋");
         add(ModEntities.LIGHTNING_PROJECTILE.get(), "雷云");
         add(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), "融梦水晶");
         add(ModEntities.FOX_FIRE.get(), "狐火");

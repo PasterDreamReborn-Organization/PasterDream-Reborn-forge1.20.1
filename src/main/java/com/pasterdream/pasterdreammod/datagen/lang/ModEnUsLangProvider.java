@@ -1467,6 +1467,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.THUNDERCLOUD_SPAWN_EGG.get(), "Thundercloud Spawn Egg");
         add(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), "Highvoltage Thundercloud");
         add(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get(), "Highvoltage Thundercloud Spawn Egg");
+        add(ModEntities.BONE_WING.get(), "Bone Wing");
+        add(ModItems.BONE_WING_SPAWN_EGG.get(), "Bone Wing Spawn Egg");
+        add(ModEntities.ASH_BONE_WING.get(), "Ash Bone Wing");
+        add(ModItems.ASH_BONE_WING_SPAWN_EGG.get(), "Ash Bone Wing Spawn Egg");
         add(ModEntities.LIGHTNING_PROJECTILE.get(), "Thundercloud");
         add(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), "Melt Dream Crystal Entity");
         add(ModEntities.FOX_FIRE.get(), "Fox Fire");
