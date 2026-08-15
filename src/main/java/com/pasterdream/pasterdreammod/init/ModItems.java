@@ -1775,6 +1775,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> EMPTY_VESSEL = ITEMS.register("empty_vessel",
             EmptyVesselItem::new);
+    public static final RegistryObject<Item> REBIRTH_DREAM_CRYSTAL = ITEMS.register("rebirth_dream_crystal",
+            RebirthDreamCrystalItem::new);
     public static final RegistryObject<Item> QYM_CAT_EARS = ITEMS.register("qym_cat_ears",
             () -> new QymCatEarsItem(ModArmorMaterials.QYM, ArmorItem.Type.HELMET,
                     new Item.Properties().fireResistant().rarity(ModRarities.MIRACLE)));

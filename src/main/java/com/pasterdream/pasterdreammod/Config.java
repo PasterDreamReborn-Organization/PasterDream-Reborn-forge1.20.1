@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -450,6 +451,16 @@ public class Config
                     List.of("supplementaries:slingshot_projectile"),
                     obj -> obj instanceof String);
 
+    // === 重生之梦水晶 ===
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> REBIRTH_DREAM_CRYSTAL_LOOT = BUILDER
+            .comment("重生之梦水晶 shift+右键 释放遗物中的灵魂时可随机获得的物品 ID 列表（格式：modid:item_id），"
+                    + "\n例：pasterdream:melt_dream_crystal_fragment 为融梦水晶碎片")
+            .defineListAllowEmpty("rebirthDreamCrystalLoot",
+                    List.of("pasterdream:melt_dream_crystal_fragment",
+                            "pasterdream:life_crystal",
+                            "pasterdream:white_crystal"),
+                    obj -> obj instanceof String);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     // === 时之沙 ===
@@ -556,6 +567,16 @@ public class Config
 
     public static List<MobEffect> getCalaisSpiceBottleDebuffs() {
         return cachedCalaisSpiceBottleDebuffs;
+    }
+
+    // === 重生之梦水晶 ===
+    public static List<? extends String> rebirthDreamCrystalLoot;
+
+    /** 重生之梦水晶随机掉落缓存（解析后的 Item 列表） */
+    private static List<Item> cachedRebirthDreamCrystalLoot = List.of();
+
+    public static List<Item> getRebirthDreamCrystalLoot() {
+        return cachedRebirthDreamCrystalLoot;
     }
 
     //守护
@@ -737,6 +758,25 @@ public class Config
         LOGGER.info("calaisSpiceBottleDebuffs: loaded {} effects", cachedCalaisSpiceBottleDebuffs.size());
     }
 
+    private static void rebuildRebirthDreamCrystalLootCache() {
+        List<Item> list = new ArrayList<>();
+        for (String idStr : rebirthDreamCrystalLoot) {
+            ResourceLocation rl = ResourceLocation.tryParse(idStr);
+            if (rl == null) {
+                LOGGER.warn("rebirthDreamCrystalLoot: invalid resource location '{}', skipping", idStr);
+                continue;
+            }
+            Item item = ForgeRegistries.ITEMS.getValue(rl);
+            if (item == null) {
+                LOGGER.warn("rebirthDreamCrystalLoot: unknown item '{}', skipping", idStr);
+                continue;
+            }
+            list.add(item);
+        }
+        cachedRebirthDreamCrystalLoot = List.copyOf(list);
+        LOGGER.info("rebirthDreamCrystalLoot: loaded {} items", cachedRebirthDreamCrystalLoot.size());
+    }
+
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
@@ -828,6 +868,9 @@ public class Config
 
         ghostFaceProjectileBlacklist = GHOST_FACE_PROJECTILE_BLACKLIST.get();
         rebuildGhostFaceBlacklistCache();
+
+        rebirthDreamCrystalLoot = REBIRTH_DREAM_CRYSTAL_LOOT.get();
+        rebuildRebirthDreamCrystalLootCache();
 
         toolsmithBlueprintTradeChance = TOOLSMITH_BLUEPRINT_TRADE_CHANCE.get();
 
