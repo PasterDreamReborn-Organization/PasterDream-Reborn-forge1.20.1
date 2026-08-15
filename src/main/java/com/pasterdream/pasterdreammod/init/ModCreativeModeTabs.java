@@ -800,6 +800,9 @@ public class ModCreativeModeTabs {
                         output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_dyedream_world_normal"));
                         output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_dyedream_world_rare"));
                         output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_dyedream_world_legend"));
+                        output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/wind_journey_chest"));
+                        output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/wind_journey_chest_rare"));
+                        output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/christmas_tree_chest"));
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get());
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_1.get());
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_2.get());
