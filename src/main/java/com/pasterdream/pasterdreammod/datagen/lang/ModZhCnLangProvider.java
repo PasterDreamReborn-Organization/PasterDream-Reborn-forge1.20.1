@@ -1358,6 +1358,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.empty_vessel.3", "§7GQ2529的专属遗物");
         add("tooltip.pasterdream.empty_vessel.4", "§6PasterDream开发者");
 
+        // 重生之梦水晶
+        add(ModItems.REBIRTH_DREAM_CRYSTAL.get(), "重生之梦水晶");
+        add("tooltip.pasterdream.rebirth_dream_crystal.1", "§7\"旧梦已醒，我们重新入梦。\"");
+        add("tooltip.pasterdream.rebirth_dream_crystal.2", "§7\"欢迎回来，寻梦者。\"");
+        add("tooltip.pasterdream.rebirth_dream_crystal.3", "§7▪ §9+12 理智光环");
+        add("tooltip.pasterdream.rebirth_dream_crystal.4", "§7▪ §9每10秒获得12秒回避");
+        add("tooltip.pasterdream.rebirth_dream_crystal.5", "§7ShiLiuYinYu的专属遗物。");
+        add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7shift右键释放遗物中的灵魂。");
+        add("tooltip.pasterdream.rebirth_dream_crystal.7", "§6PasterDream: Reborn开发者");
+
         // 琴雨梦装备
         add(ModItems.QYM_CAT_EARS.get(), "琴雨梦的猫耳发卡");
         add("tooltip.pasterdream.qym_cat_ears.san", "§7▪ §9精神值始终为精神值上限");

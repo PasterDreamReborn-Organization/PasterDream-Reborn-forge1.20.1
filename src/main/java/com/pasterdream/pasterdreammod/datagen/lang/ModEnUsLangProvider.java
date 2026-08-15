@@ -1189,6 +1189,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.empty_vessel.3", "§7Exclusive memento of GQ2529");
         add("tooltip.pasterdream.empty_vessel.4", "§6PasterDream Developer");
 
+        // Rebirth Dream Crystal
+        add(ModItems.REBIRTH_DREAM_CRYSTAL.get(), "Rebirth Dream Crystal");
+        add("tooltip.pasterdream.rebirth_dream_crystal.1", "§7\"The old dream has woken, let us dream anew.\"");
+        add("tooltip.pasterdream.rebirth_dream_crystal.2", "§7\"Welcome back, Dreamseeker.\"");
+        add("tooltip.pasterdream.rebirth_dream_crystal.3", "§7▪ §9+12 Sanity Aura");
+        add("tooltip.pasterdream.rebirth_dream_crystal.4", "§7▪ §9Gains 12s Evasion every 10s");
+        add("tooltip.pasterdream.rebirth_dream_crystal.5", "§7Exclusive memento of ShiLiuYinYu.");
+        add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7Shift right-click to release the soul within.");
+        add("tooltip.pasterdream.rebirth_dream_crystal.7", "§6PasterDream: Reborn Developer");
+
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");
         add("tooltip.pasterdream.qym_cat_ears.san", "§7▪ §9SAN always at maximum");
