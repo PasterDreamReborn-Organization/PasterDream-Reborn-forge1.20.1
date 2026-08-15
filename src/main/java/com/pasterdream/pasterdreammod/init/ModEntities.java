@@ -34,6 +34,8 @@ import com.pasterdream.pasterdreammod.world.entity.FireflyEntity;
 import com.pasterdream.pasterdreammod.world.entity.BoneWingEntity;
 import com.pasterdream.pasterdreammod.world.entity.AshBoneWingEntity;
 import com.pasterdream.pasterdreammod.world.entity.BoneWingFireBallProjectileEntity;
+import com.pasterdream.pasterdreammod.world.entity.JellyfishEntity;
+import com.pasterdream.pasterdreammod.world.entity.SmallStoneSpiritEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -168,6 +170,22 @@ public class ModEntities {
                     .setTrackingRange(64)
                     .setUpdateInterval(1)
                     .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<JellyfishEntity>> JELLYFISH = register("jellyfish",
+            EntityType.Builder.<JellyfishEntity>of(JellyfishEntity::new, MobCategory.CREATURE)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(JellyfishEntity::new)
+                    .sized(0.7f, 1.4f));
+
+    public static final RegistryObject<EntityType<SmallStoneSpiritEntity>> SMALL_STONE_SPIRIT = register("small_stone_spirit",
+            EntityType.Builder.<SmallStoneSpiritEntity>of(SmallStoneSpiritEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(SmallStoneSpiritEntity::new)
+                    .sized(0.7f, 1f));
 
     public static final RegistryObject<EntityType<ShadowGolemEntity>> SHADOW_GOLEM = register("shadow_golem",
             EntityType.Builder.<ShadowGolemEntity>of(ShadowGolemEntity::new, MobCategory.MONSTER)
@@ -378,6 +396,8 @@ public class ModEntities {
         event.enqueueWork(FireflyEntity::init);
         event.enqueueWork(BoneWingEntity::init);
         event.enqueueWork(AshBoneWingEntity::init);
+        event.enqueueWork(JellyfishEntity::init);
+        event.enqueueWork(SmallStoneSpiritEntity::init);
         event.enqueueWork(ShadowGolemEntity::init);
         event.enqueueWork(TerrorbeakEntity::init);
         event.enqueueWork(ShadowHandEntity::init);
@@ -405,6 +425,8 @@ public class ModEntities {
         event.put(FIREFLY.get(), FireflyEntity.createAttributes().build());
         event.put(BONE_WING.get(), BoneWingEntity.createAttributes().build());
         event.put(ASH_BONE_WING.get(), AshBoneWingEntity.createAttributes().build());
+        event.put(JELLYFISH.get(), JellyfishEntity.createAttributes().build());
+        event.put(SMALL_STONE_SPIRIT.get(), SmallStoneSpiritEntity.createAttributes().build());
         event.put(SHADOW_GOLEM.get(), ShadowGolemEntity.createAttributes().build());
         event.put(TERRORBEAK.get(), TerrorbeakEntity.createTerrorbeakAttributes().build());
         event.put(CRAZY_TERRORBEAK.get(), TerrorbeakEntity.createCrazyTerrorbeakAttributes().build());

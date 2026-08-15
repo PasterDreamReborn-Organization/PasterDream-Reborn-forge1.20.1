@@ -815,6 +815,8 @@ public class ModBlocks {
                     .isRedstoneConductor((bs, br, bp) -> false)));
     // ===== 小石子 =====
     public static final RegistryObject<Block> PEBBLE = BLOCKS.register("pebble", PebbleBlock::new);
+    // ===== 小石堆（小石精死亡遗留，破坏后孵化小石精） =====
+    public static final RegistryObject<Block> SMALL_STONE_SPIRIT_BLOCK = BLOCKS.register("small_stone_spirit_block", SmallStoneSpiritBlock::new);
     //暮影之笼 / 暮影长床
     public static final RegistryObject<Block> TWILIGHT_LANTERN = BLOCKS.register("twilight_lantern", TwilightLanternBlock::new);
     public static final RegistryObject<Block> SHADOW_BED = BLOCKS.register("shadow_bed", ShadowBedBlock::new);

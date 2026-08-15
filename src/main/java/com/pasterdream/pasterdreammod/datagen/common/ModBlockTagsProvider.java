@@ -112,6 +112,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CYAN_MOSS_STONE.get())
                 .add(ModBlocks.CHISELED_CYAN_STONE_BRICKS.get())
                 .add(ModBlocks.CYAN_STONE_PILLAR.get())
+                .add(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get())
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK.get())
                 .add(ModBlocks.SMOOTH_DYEDREAM_QUARTZ_BLOCK.get())
                 .add(ModBlocks.BRICKS_DYEDREAM_QUARTZ_BLOCK.get())

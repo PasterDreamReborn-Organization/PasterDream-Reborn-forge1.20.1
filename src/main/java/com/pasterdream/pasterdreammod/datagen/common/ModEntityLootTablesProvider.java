@@ -210,6 +210,32 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
         );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/jellyfish"),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.JELLYFISH_MUD.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1)))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_JAR_OF_WATER.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1))))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))))
+        );
+
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/small_stone_spirit"),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.CYAN_STONE.get())
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
+        );
     }
 
     private LootTable.Builder ghostLoot() {

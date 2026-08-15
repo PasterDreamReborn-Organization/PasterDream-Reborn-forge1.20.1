@@ -16,6 +16,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add(ModBlocks.PEBBLE.get(), "Pebble");
+        add(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), "Small Stone Spirit Block");
         add("tooltip.pasterdream.pebble.throw", "§7Right-click to throw");
         add("tooltip.pasterdream.pebble.place", "§7Sneak + Right-click to place");
         add(ModItems.LIFE_CRYSTAL.get(), "Life Crystal");
@@ -1471,6 +1472,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.BONE_WING_SPAWN_EGG.get(), "Bone Wing Spawn Egg");
         add(ModEntities.ASH_BONE_WING.get(), "Ash Bone Wing");
         add(ModItems.ASH_BONE_WING_SPAWN_EGG.get(), "Ash Bone Wing Spawn Egg");
+        add(ModEntities.JELLYFISH.get(), "Jellyfish");
+        add(ModItems.JELLYFISH_SPAWN_EGG.get(), "Jellyfish Spawn Egg");
+        add(ModEntities.SMALL_STONE_SPIRIT.get(), "Small Stone Spirit");
+        add(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get(), "Small Stone Spirit Spawn Egg");
         add(ModEntities.LIGHTNING_PROJECTILE.get(), "Thundercloud");
         add(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), "Melt Dream Crystal Entity");
         add(ModEntities.FOX_FIRE.get(), "Fox Fire");
