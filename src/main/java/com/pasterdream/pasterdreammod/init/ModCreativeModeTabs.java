@@ -667,6 +667,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ECOLOGY_GLASS_JAR.get());
                         output.accept(ModItems.FIREFLY_GLASS_JAR.get());
                         output.accept(ModItems.FIREFLY_NEST.get());
+                        output.accept(ModItems.CHRISTMAS_LIGHTS.get());
                     })
                     .build());
 

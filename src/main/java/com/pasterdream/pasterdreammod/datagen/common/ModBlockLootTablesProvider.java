@@ -440,6 +440,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.PEBBLE.get());
         // 破风幕帐：掉落自身
         dropSelf(ModBlocks.BREAK_WIND_CURTAIN.get());
+        // 圣诞彩灯：掉落自身
+        dropSelf(ModBlocks.CHRISTMAS_LIGHTS.get());
         // 陶罐：精准采集掉落自身，否则从战利品池随机抽取
         add(ModBlocks.CLAY_POT.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))

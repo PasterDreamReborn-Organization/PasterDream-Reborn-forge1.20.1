@@ -312,6 +312,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.FRAME_CLARITY_GLASS.get(), "Framed Clarity Glass");
         add(ModBlocks.FRAME_CLARITY_GLASS_PANE.get(), "Framed Clarity Glass Pane");
         add(ModBlocks.BREAK_WIND_CURTAIN.get(), "Break Wind Curtain");
+        add(ModBlocks.CHRISTMAS_LIGHTS.get(), "Christmas Lights");
         add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), "Budding Dye Dream");
         add(ModBlocks.SMALL_DYEDREAM_BUD.get(), "Small Dye Dream Bud");
         add(ModBlocks.MEDIUM_DYEDREAM_BUD.get(), "Medium Dye Dream Bud");

@@ -627,6 +627,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     .build();
         });
 
+        // 圣诞彩灯（水平朝向贴墙薄片 + 动画纹理）
+        var christmasLightsModel = models().getExistingFile(modLoc("block/christmas_lights"));
+        horizontalBlock(ModBlocks.CHRISTMAS_LIGHTS.get(), christmasLightsModel);
+
         //流体方块
         simpleBlock(ModBlocks.MELTDREAM_LIQUID.get(), models().cubeAll(ModBlocks.MELTDREAM_LIQUID.getId().getPath(), modLoc("block/melt_dream_liquid_flowing")));
         simpleBlock(ModBlocks.SHADOW_LIQUID.get(), models().cubeAll(ModBlocks.SHADOW_LIQUID.getId().getPath(), modLoc("block/shadow_liquid_flowing")));

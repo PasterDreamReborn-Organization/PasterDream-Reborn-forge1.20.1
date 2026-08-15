@@ -52,6 +52,9 @@ public class ClientSetRenderLayer
         // ===== 破风幕帐 =====
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.BREAK_WIND_CURTAIN.get(), RenderType.translucent());
 
+        // ===== 圣诞彩灯 =====
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CHRISTMAS_LIGHTS.get(), RenderType.cutout());
+
         // ===== 染梦睡莲 / 染梦莲花 =====
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_LILY_PAD.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_LOTUS.get(), RenderType.cutout());
