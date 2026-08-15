@@ -31,6 +31,9 @@ import com.pasterdream.pasterdreammod.world.entity.ThundercloudEntity;
 import com.pasterdream.pasterdreammod.world.entity.LightningProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.HighvoltageThundercloudEntity;
 import com.pasterdream.pasterdreammod.world.entity.FireflyEntity;
+import com.pasterdream.pasterdreammod.world.entity.BoneWingEntity;
+import com.pasterdream.pasterdreammod.world.entity.AshBoneWingEntity;
+import com.pasterdream.pasterdreammod.world.entity.BoneWingFireBallProjectileEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -140,6 +143,30 @@ public class ModEntities {
                     .setTrackingRange(64)
                     .setUpdateInterval(3)
                     .setCustomClientFactory(FireflyEntity::new)
+                    .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<BoneWingEntity>> BONE_WING = register("bone_wing",
+            EntityType.Builder.<BoneWingEntity>of(BoneWingEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(BoneWingEntity::new)
+                    .sized(1.7f, 0.8f));
+
+    public static final RegistryObject<EntityType<AshBoneWingEntity>> ASH_BONE_WING = register("ash_bone_wing",
+            EntityType.Builder.<AshBoneWingEntity>of(AshBoneWingEntity::new, MobCategory.MONSTER)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(AshBoneWingEntity::new)
+                    .sized(1.7f, 0.8f));
+
+    public static final RegistryObject<EntityType<BoneWingFireBallProjectileEntity>> BONE_WING_FIRE_BALL_PROJECTILE = register("projectile_bone_wing_fire_ball_projectile",
+            EntityType.Builder.<BoneWingFireBallProjectileEntity>of(BoneWingFireBallProjectileEntity::new, MobCategory.MISC)
+                    .setCustomClientFactory(BoneWingFireBallProjectileEntity::new)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
                     .sized(0.5f, 0.5f));
 
     public static final RegistryObject<EntityType<ShadowGolemEntity>> SHADOW_GOLEM = register("shadow_golem",
@@ -349,6 +376,8 @@ public class ModEntities {
         event.enqueueWork(PinkSlimeEntity::init);
         event.enqueueWork(GoldenFoxEntity::init);
         event.enqueueWork(FireflyEntity::init);
+        event.enqueueWork(BoneWingEntity::init);
+        event.enqueueWork(AshBoneWingEntity::init);
         event.enqueueWork(ShadowGolemEntity::init);
         event.enqueueWork(TerrorbeakEntity::init);
         event.enqueueWork(ShadowHandEntity::init);
@@ -374,6 +403,8 @@ public class ModEntities {
         event.put(PINK_SLIME.get(), PinkSlimeEntity.createAttributes().build());
         event.put(GOLDEN_FOX.get(), GoldenFoxEntity.createAttributes().build());
         event.put(FIREFLY.get(), FireflyEntity.createAttributes().build());
+        event.put(BONE_WING.get(), BoneWingEntity.createAttributes().build());
+        event.put(ASH_BONE_WING.get(), AshBoneWingEntity.createAttributes().build());
         event.put(SHADOW_GOLEM.get(), ShadowGolemEntity.createAttributes().build());
         event.put(TERRORBEAK.get(), TerrorbeakEntity.createTerrorbeakAttributes().build());
         event.put(CRAZY_TERRORBEAK.get(), TerrorbeakEntity.createCrazyTerrorbeakAttributes().build());

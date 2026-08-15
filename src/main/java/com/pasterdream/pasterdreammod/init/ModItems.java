@@ -1857,6 +1857,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.AARONCOS_LEFT_HAND, -15987700, -11246213, new Item.Properties()));
     public static final RegistryObject<Item> AARONCOS_RIGHT_HAND_SPAWN_EGG = ITEMS.register("aaroncos_right_hand_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.AARONCOS_RIGHT_HAND, -15593198, -11189920, new Item.Properties()));
+    public static final RegistryObject<Item> BONE_WING_SPAWN_EGG = ITEMS.register("bone_wing_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.BONE_WING, -1186636, -5296106, new Item.Properties()));
+    public static final RegistryObject<Item> ASH_BONE_WING_SPAWN_EGG = ITEMS.register("ash_bone_wing_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.ASH_BONE_WING, -10527144, -5419498, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

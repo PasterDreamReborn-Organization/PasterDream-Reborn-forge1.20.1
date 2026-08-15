@@ -80,6 +80,7 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> THUNDERCLOUD_ATTACK = SOUNDS.register("thundercloud_attack", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "thundercloud_attack")));
     public static final RegistryObject<SoundEvent> BREEZE_WIND = SOUNDS.register("breeze_wind", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "breeze_wind")));
     public static final RegistryObject<SoundEvent> WIND_JOURNEY = SOUNDS.register("wind_journey", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey")));
+    public static final RegistryObject<SoundEvent> BONE_WING_FIRE_BALL = SOUNDS.register("bone_wing_fire_ball", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "bone_wing_fire_ball")));
 
     public static void register(IEventBus eventBus) {
         SOUNDS.register(eventBus);

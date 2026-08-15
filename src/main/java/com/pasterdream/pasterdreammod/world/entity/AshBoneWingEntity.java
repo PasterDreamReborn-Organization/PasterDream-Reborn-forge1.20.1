@@ -1,25 +1,20 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.init.ModEntities;
-import com.pasterdream.pasterdreammod.init.ModSounds;
-import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
-import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.Pose;
@@ -27,15 +22,18 @@ import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
+import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
@@ -49,21 +47,23 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import java.util.Comparator;
-
-public class HighvoltageThundercloudEntity extends Monster implements GeoEntity {
-    public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(HighvoltageThundercloudEntity.class, EntityDataSerializers.STRING);
-    public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(HighvoltageThundercloudEntity.class, EntityDataSerializers.STRING);
+public class AshBoneWingEntity extends Monster implements RangedAttackMob, GeoEntity {
+    public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(AshBoneWingEntity.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(AshBoneWingEntity.class, EntityDataSerializers.STRING);
+    public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(AshBoneWingEntity.class, EntityDataSerializers.STRING);
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private boolean swinging;
+    private long lastSwing;
+    private int shootAnimTimer;
     public String animationprocedure = "empty";
 
-    public HighvoltageThundercloudEntity(PlayMessages.SpawnEntity packet, Level world) {
-        this(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), world);
+    public AshBoneWingEntity(PlayMessages.SpawnEntity packet, Level world) {
+        this(ModEntities.ASH_BONE_WING.get(), world);
     }
 
-    public HighvoltageThundercloudEntity(EntityType<HighvoltageThundercloudEntity> type, Level world) {
+    public AshBoneWingEntity(EntityType<AshBoneWingEntity> type, Level world) {
         super(type, world);
-        xpReward = 22;
+        xpReward = 12;
         setNoAi(false);
         this.moveControl = new FlyingMoveControl(this, 10, true);
     }
@@ -71,8 +71,9 @@ public class HighvoltageThundercloudEntity extends Monster implements GeoEntity 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
+        this.entityData.define(SHOOT, false);
         this.entityData.define(ANIMATION, "undefined");
-        this.entityData.define(TEXTURE, "highvoltage_thundercloud");
+        this.entityData.define(TEXTURE, "ash_bone_wing");
     }
 
     public void setTexture(String texture) {
@@ -84,67 +85,66 @@ public class HighvoltageThundercloudEntity extends Monster implements GeoEntity 
     }
 
     @Override
+    protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn) {
+        return 0.7F;
+    }
+
+    @Override
     public @NotNull Packet<ClientGamePacketListener> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
     @Override
-    protected @NotNull PathNavigation createNavigation(Level world) {
+    protected @NotNull PathNavigation createNavigation(@NotNull Level world) {
         return new FlyingPathNavigation(this, world);
     }
 
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(1, new RandomStrollGoal(this, 0.4, 20) {
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, false, false));
+        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25, 35, 12f) {
             @Override
-            protected Vec3 getPosition() {
-                return new Vec3(HighvoltageThundercloudEntity.this.getX() + ((HighvoltageThundercloudEntity.this.getRandom().nextFloat() * 2 - 1) * 16),
-                        HighvoltageThundercloudEntity.this.getY() + ((HighvoltageThundercloudEntity.this.getRandom().nextFloat() * 2 - 1) * 16),
-                        HighvoltageThundercloudEntity.this.getZ() + ((HighvoltageThundercloudEntity.this.getRandom().nextFloat() * 2 - 1) * 16));
+            public boolean canContinueToUse() {
+                return this.canUse();
             }
         });
+        this.goalSelector.addGoal(2, new RandomStrollGoal(this, 0.8, 20) {
+            @Override
+            protected Vec3 getPosition() {
+                var random = AshBoneWingEntity.this.getRandom();
+                double x = AshBoneWingEntity.this.getX() + ((random.nextFloat() * 2 - 1) * 16);
+                double y = AshBoneWingEntity.this.getY() + ((random.nextFloat() * 2 - 1) * 16);
+                double z = AshBoneWingEntity.this.getZ() + ((random.nextFloat() * 2 - 1) * 16);
+                return new Vec3(x, y, z);
+            }
+        });
+        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
     }
 
     @Override
     public @NotNull MobType getMobType() {
-        return MobType.UNDEFINED;
+        return MobType.UNDEAD;
+    }
+
+    @Override
+    public SoundEvent getAmbientSound() {
+        return SoundEvents.WITHER_SKELETON_AMBIENT;
     }
 
     @Override
     public SoundEvent getHurtSound(DamageSource ds) {
-        return SoundEvents.GENERIC_HURT;
+        return SoundEvents.WITHER_SKELETON_HURT;
     }
 
     @Override
     public SoundEvent getDeathSound() {
-        return SoundEvents.CANDLE_EXTINGUISH;
+        return SoundEvents.WITHER_SKELETON_DEATH;
     }
 
     @Override
-    public boolean causeFallDamage(float l, float d, DamageSource source) {
+    public boolean causeFallDamage(float fallDistance, float multiplier, DamageSource source) {
         return false;
-    }
-
-    @Override
-    public boolean hurt(DamageSource source, float amount) {
-        if (!level().isClientSide() && random.nextDouble() <= 0.5) {
-            attackWithLightning();
-        }
-        if (source.is(DamageTypes.IN_FIRE) || source.is(DamageTypes.LIGHTNING_BOLT))
-            return false;
-        return super.hurt(source, amount);
-    }
-
-    @Override
-    public void die(DamageSource source) {
-        super.die(source);
-        if (!level().isClientSide()) {
-            var effect = PotionBottleItem.getEffect(PotionBottleItem.TYPE_LIGHTNING);
-            if (effect != null) {
-                effect.onBottleBreak(ItemStack.EMPTY, level(), null, new Vec3(getX(), getY() - 4, getZ()));
-            }
-        }
     }
 
     @Override
@@ -163,17 +163,24 @@ public class HighvoltageThundercloudEntity extends Monster implements GeoEntity 
     @Override
     public void baseTick() {
         super.baseTick();
-        attackTick();
+        BoneWingAmbientBehaviour.run(this);
         this.refreshDimensions();
     }
 
     @Override
     public @NotNull EntityDimensions getDimensions(@NotNull Pose pose) {
-        return super.getDimensions(pose).scale(2.7f);
+        return super.getDimensions(pose).scale(1.5f);
     }
 
     @Override
-    protected void checkFallDamage(double y, boolean onGroundIn, net.minecraft.world.level.block.state.BlockState state, net.minecraft.core.BlockPos pos) {
+    public void performRangedAttack(LivingEntity target, float flval) {
+        this.entityData.set(SHOOT, true);
+        this.shootAnimTimer = 5;
+        BoneWingFireBallProjectileEntity.shoot(this, target);
+    }
+
+    @Override
+    protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) {
     }
 
     @Override
@@ -185,44 +192,16 @@ public class HighvoltageThundercloudEntity extends Monster implements GeoEntity 
     public void aiStep() {
         super.aiStep();
         this.setNoGravity(true);
-    }
-
-    private void attackTick() {
-        if (random.nextDouble() > 0.025)
-            return;
-        attackWithLightning();
-        if (level() instanceof ServerLevel sl) {
-            sl.sendParticles(ParticleTypes.ELECTRIC_SPARK, getX(), getY(), getZ(), 1, 0.6, 0.3, 0.6, 0.004);
-            sl.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, getX(), getY(), getZ(), 1, 0.6, 0.3, 0.6, 0.004);
+        if (this.shootAnimTimer > 0) {
+            this.shootAnimTimer--;
+            if (this.shootAnimTimer == 0) {
+                this.entityData.set(SHOOT, false);
+            }
         }
-        clearFire();
-    }
-
-    private void attackWithLightning() {
-        if (!(level() instanceof ServerLevel sl))
-            return;
-        if (level().getEntitiesOfClass(Player.class, AABB.ofSize(new Vec3(getX(), getY() - 10, getZ()), 24, 24, 24), p -> !p.isCreative() && !p.isSpectator()).isEmpty())
-            return;
-        Player player = level().getEntitiesOfClass(Player.class, AABB.ofSize(new Vec3(getX(), getY() - 5, getZ()), 24, 24, 24), p -> !p.isCreative() && !p.isSpectator()).stream()
-                .min(Comparator.comparingDouble(it -> it.distanceToSqr(getX(), getY() - 5, getZ()))).orElse(null);
-        if (player == null)
-            return;
-        for (int i = 0; i < 6; i++) {
-            LightningProjectileEntity proj = new LightningProjectileEntity(ModEntities.LIGHTNING_PROJECTILE.get(), level());
-            proj.setBaseDamage(10);
-            proj.setKnockback(0);
-            proj.setSilent(true);
-            proj.setPierceLevel((byte) 1);
-            proj.setPos(0.1 * Mth.nextDouble(random, -6, 6) + player.getX(), player.getY() + 5, 0.1 * Mth.nextDouble(random, -6, 6) + player.getZ());
-            proj.shoot(0, -1, 0, 1, 0);
-            level().addFreshEntity(proj);
-        }
-        level().playSound(null, player.getOnPos(), ModSounds.THUNDERCLOUD_ATTACK.get(), SoundSource.MASTER, 0.6f, 1f);
-        sl.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, player.getX(), player.getY(), player.getZ(), 16, 0.4, 0.2, 0.4, 0.004);
     }
 
     public static void init() {
-        SpawnPlacements.register(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(),
+        SpawnPlacements.register(ModEntities.ASH_BONE_WING.get(),
                 SpawnPlacements.Type.NO_RESTRICTIONS,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, world, reason, pos, random) ->
@@ -233,23 +212,46 @@ public class HighvoltageThundercloudEntity extends Monster implements GeoEntity 
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MOVEMENT_SPEED, 0.15)
-                .add(Attributes.MAX_HEALTH, 50)
-                .add(Attributes.ARMOR, 0)
+                .add(Attributes.MOVEMENT_SPEED, 0.4)
+                .add(Attributes.MAX_HEALTH, 32)
+                .add(Attributes.ARMOR, 3)
                 .add(Attributes.ATTACK_DAMAGE, 3)
-                .add(Attributes.FOLLOW_RANGE, 16)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 0.8)
-                .add(Attributes.FLYING_SPEED, 0.15);
+                .add(Attributes.FOLLOW_RANGE, 20)
+                .add(Attributes.FLYING_SPEED, 0.4);
     }
 
-    private PlayState movementPredicate(AnimationState event) {
+    private PlayState movementPredicate(AnimationState<AshBoneWingEntity> event) {
         if (this.animationprocedure.equals("empty")) {
+            if ((event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) && this.onGround()) {
+                return event.setAndContinue(RawAnimation.begin().thenLoop("fly"));
+            }
+            if (this.isSprinting()) {
+                return event.setAndContinue(RawAnimation.begin().thenLoop("fly"));
+            }
+            if (!this.onGround()) {
+                return event.setAndContinue(RawAnimation.begin().thenLoop("fly"));
+            }
             return event.setAndContinue(RawAnimation.begin().thenLoop("idle"));
         }
         return PlayState.STOP;
     }
 
-    private PlayState procedurePredicate(AnimationState event) {
+    private PlayState attackingPredicate(AnimationState<AshBoneWingEntity> event) {
+        if (getAttackAnim(event.getPartialTick()) > 0f && !this.swinging) {
+            this.swinging = true;
+            this.lastSwing = level().getGameTime();
+        }
+        if (this.swinging && this.lastSwing + 7L <= level().getGameTime()) {
+            this.swinging = false;
+        }
+        if ((this.swinging || this.entityData.get(SHOOT)) && event.getController().getAnimationState() == AnimationController.State.STOPPED) {
+            event.getController().forceAnimationReset();
+            return event.setAndContinue(RawAnimation.begin().thenPlay("attack"));
+        }
+        return PlayState.CONTINUE;
+    }
+
+    private PlayState procedurePredicate(AnimationState<AshBoneWingEntity> event) {
         if (!animationprocedure.equals("empty") && event.getController().getAnimationState() == AnimationController.State.STOPPED) {
             event.getController().setAnimation(RawAnimation.begin().thenPlay(this.animationprocedure));
             if (event.getController().getAnimationState() == AnimationController.State.STOPPED) {
@@ -265,14 +267,19 @@ public class HighvoltageThundercloudEntity extends Monster implements GeoEntity 
     @Override
     protected void tickDeath() {
         ++this.deathTime;
-        if (this.deathTime == 10) {
-            this.remove(HighvoltageThundercloudEntity.RemovalReason.KILLED);
+        if (this.deathTime == 20) {
+            this.remove(AshBoneWingEntity.RemovalReason.KILLED);
             this.dropExperience();
         }
     }
 
     public String getSyncedAnimation() {
         return this.entityData.get(ANIMATION);
+    }
+
+    public void setAnimation(String animation) {
+        this.animationprocedure = animation;
+        this.entityData.set(ANIMATION, animation);
     }
 
     @Override
@@ -283,14 +290,10 @@ public class HighvoltageThundercloudEntity extends Monster implements GeoEntity 
         }
     }
 
-    public void setAnimation(String animation) {
-        this.animationprocedure = animation;
-        this.entityData.set(ANIMATION, animation);
-    }
-
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar data) {
         data.add(new AnimationController<>(this, "movement", 4, this::movementPredicate));
+        data.add(new AnimationController<>(this, "attacking", 4, this::attackingPredicate));
         data.add(new AnimationController<>(this, "procedure", 4, this::procedurePredicate));
     }
 
