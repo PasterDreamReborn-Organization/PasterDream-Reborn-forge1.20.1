@@ -438,6 +438,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.CLAYPAN.get());
         // 小石子
         dropSelf(ModBlocks.PEBBLE.get());
+        // 小石堆：精准采集掉落自身，否则不掉落
+        add(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), block -> createSilkTouchOnlyTable(block));
         // 破风幕帐：掉落自身
         dropSelf(ModBlocks.BREAK_WIND_CURTAIN.get());
         // 圣诞彩灯：掉落自身

@@ -44,6 +44,8 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.BONE_WING.get(), BoneWingRenderer::new);
         event.registerEntityRenderer(ModEntities.ASH_BONE_WING.get(), AshBoneWingRenderer::new);
         event.registerEntityRenderer(ModEntities.BONE_WING_FIRE_BALL_PROJECTILE.get(), BoneWingFireBallProjectileRenderer::new);
+        event.registerEntityRenderer(ModEntities.JELLYFISH.get(), JellyfishRenderer::new);
+        event.registerEntityRenderer(ModEntities.SMALL_STONE_SPIRIT.get(), SmallStoneSpiritRenderer::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {

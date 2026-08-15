@@ -668,6 +668,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FIREFLY_GLASS_JAR.get());
                         output.accept(ModItems.FIREFLY_NEST.get());
                         output.accept(ModItems.CHRISTMAS_LIGHTS.get());
+                        output.accept(ModItems.SMALL_STONE_SPIRIT_BLOCK.get());
                     })
                     .build());
 
@@ -826,6 +827,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.HIGHVOLTAGE_THUNDERCLOUD_SPAWN_EGG.get());
                         output.accept(ModItems.BONE_WING_SPAWN_EGG.get());
                         output.accept(ModItems.ASH_BONE_WING_SPAWN_EGG.get());
+                        output.accept(ModItems.JELLYFISH_SPAWN_EGG.get());
+                        output.accept(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get());
                         output.accept(ModItems.SHADOW_GOLEM_SPAWN_EGG.get());
                         output.accept(ModItems.TERRORBEAK_SPAWN_EGG.get());
                         output.accept(ModItems.CRAZY_TERRORBEAK_SPAWN_EGG.get());

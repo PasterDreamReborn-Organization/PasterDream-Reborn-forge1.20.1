@@ -16,6 +16,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add(ModBlocks.PEBBLE.get(), "小石子");
+        add(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), "小石堆");
         add("tooltip.pasterdream.pebble.throw", "§7右键投掷");
         add("tooltip.pasterdream.pebble.place", "§7潜行+右键放置");
         add(ModItems.LIFE_CRYSTAL.get(), "生命水晶");
@@ -1928,6 +1929,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.BONE_WING_SPAWN_EGG.get(), "骨翼刷怪蛋");
         add(ModEntities.ASH_BONE_WING.get(), "余烬骨翼");
         add(ModItems.ASH_BONE_WING_SPAWN_EGG.get(), "余烬骨翼刷怪蛋");
+        add(ModEntities.JELLYFISH.get(), "水母");
+        add(ModItems.JELLYFISH_SPAWN_EGG.get(), "水母刷怪蛋");
+        add(ModEntities.SMALL_STONE_SPIRIT.get(), "小石精");
+        add(ModItems.SMALL_STONE_SPIRIT_SPAWN_EGG.get(), "小石精刷怪蛋");
         add(ModEntities.LIGHTNING_PROJECTILE.get(), "雷云");
         add(ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), "融梦水晶");
         add(ModEntities.FOX_FIRE.get(), "狐火");

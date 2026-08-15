@@ -610,6 +610,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var pebbleModel = models().getExistingFile(modLoc("block/pebble"));
         horizontalBlock(ModBlocks.PEBBLE.get(), pebbleModel);
 
+        // 小石堆
+        var smallStoneSpiritBlockModel = models().getExistingFile(modLoc("block/small_stone_spirit_block"));
+        horizontalBlock(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), smallStoneSpiritBlockModel);
+
         // 破风幕帐（6 朝向：水平四面 + 上下两面）
         var breakWindCurtainModel = models().getExistingFile(modLoc("block/break_wind_curtain"));
         getVariantBuilder(ModBlocks.BREAK_WIND_CURTAIN.get()).forAllStates(state -> {

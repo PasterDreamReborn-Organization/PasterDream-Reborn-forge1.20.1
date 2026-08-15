@@ -1095,6 +1095,8 @@ public class ModItems {
     // ===== 小石子 =====
     public static final RegistryObject<Item> PEBBLE = ITEMS.register("pebble",
             () -> new PebbleItem(ModBlocks.PEBBLE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SMALL_STONE_SPIRIT_BLOCK = ITEMS.register("small_stone_spirit_block",
+            () -> new BlockItem(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), new Item.Properties()));
 
     // ===== 方块物品 =====
 
@@ -1861,6 +1863,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.BONE_WING, -1186636, -5296106, new Item.Properties()));
     public static final RegistryObject<Item> ASH_BONE_WING_SPAWN_EGG = ITEMS.register("ash_bone_wing_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.ASH_BONE_WING, -10527144, -5419498, new Item.Properties()));
+    public static final RegistryObject<Item> JELLYFISH_SPAWN_EGG = ITEMS.register("jellyfish_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.JELLYFISH, -4134166, -8542261, new Item.Properties()));
+    public static final RegistryObject<Item> SMALL_STONE_SPIRIT_SPAWN_EGG = ITEMS.register("small_stone_spirit_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.SMALL_STONE_SPIRIT, -3937560, -9340294, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
