@@ -27,7 +27,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
         tag(BlockTags.DIRT)
                 .add(ModBlocks.DYEDREAM_DIRT.get())
-                .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get());
+                .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get())
+                .add(ModBlocks.CYAN_MOSS_STONE.get());
 
         tag(BlockTags.ANIMALS_SPAWNABLE_ON)
                 .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get());

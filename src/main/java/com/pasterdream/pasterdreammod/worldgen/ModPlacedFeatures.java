@@ -289,6 +289,21 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> WIND_JOURNEY_CYAN_MOSS_STONE_BLOB =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_cyan_moss_stone_blob"));
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_SMALL_STONE_SPIRIT =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_small_stone_spirit"));
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_HAIRY_MOSS_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_hairy_moss_patch"));
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_CLEAVING_GRASS_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_cleaving_grass_patch"));
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_FEATHER_GRASS_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_feather_grass_patch"));
+    public static final ResourceKey<PlacedFeature> WIND_JOURNEY_REED_PATCH =
+            ResourceKey.create(Registries.PLACED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_reed_patch"));
 
 
     /** HeightmapPlacement 在 Forge 1.20.1 中构造函数为 private，通过反射创建 */
@@ -811,6 +826,36 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_CYAN_MOSS_STONE_BLOB),
                 List.of(CountPlacement.of(7), RarityFilter.onAverageOnceEvery(5), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.belowTop(0)),
+                        BiomeFilter.biome())));
+        // 小石堆 — 原作 in_square + OCEAN_FLOOR + count=2
+        context.register(WIND_JOURNEY_SMALL_STONE_SPIRIT, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_SMALL_STONE_SPIRIT),
+                List.of(InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                        CountPlacement.of(2))));
+        // 茸毛苔 — 原作 grass_13: count=3 + MOTION_BLOCKING
+        context.register(WIND_JOURNEY_HAIRY_MOSS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_HAIRY_MOSS_PATCH),
+                List.of(CountPlacement.of(3), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        BiomeFilter.biome())));
+        // 斩风草 — 原作 grass_14: count=2 + MOTION_BLOCKING
+        context.register(WIND_JOURNEY_CLEAVING_GRASS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_CLEAVING_GRASS_PATCH),
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        BiomeFilter.biome())));
+        // 风羽草 — 原作 grass_15: count=2 + MOTION_BLOCKING
+        context.register(WIND_JOURNEY_FEATHER_GRASS_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_FEATHER_GRASS_PATCH),
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                        BiomeFilter.biome())));
+        // 风岛芦苇 — 原作 flower_18: count=6 + rarity=32 + WORLD_SURFACE_WG
+        context.register(WIND_JOURNEY_REED_PATCH, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.WIND_JOURNEY_REED_PATCH),
+                List.of(CountPlacement.of(6), RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(),
+                        onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         BiomeFilter.biome())));
     }
 }

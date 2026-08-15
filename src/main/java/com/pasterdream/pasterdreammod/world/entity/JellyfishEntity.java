@@ -100,7 +100,7 @@ public class JellyfishEntity extends Animal implements GeoEntity {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0));
-        this.goalSelector.addGoal(2, new TemptGoal(this, 1.0, Ingredient.of(Items.KELP), false));
+        this.goalSelector.addGoal(2, new TemptGoal(this, 1.25, Ingredient.of(Items.KELP), false));
         this.goalSelector.addGoal(3, new FollowParentGoal(this, 0.8));
         this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.8, 20) {
             @Override
@@ -215,12 +215,12 @@ public class JellyfishEntity extends Animal implements GeoEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MOVEMENT_SPEED, 0.2)
+                .add(Attributes.MOVEMENT_SPEED, 0.35)
                 .add(Attributes.MAX_HEALTH, 10)
                 .add(Attributes.ARMOR, 0)
                 .add(Attributes.ATTACK_DAMAGE, 3)
                 .add(Attributes.FOLLOW_RANGE, 16)
-                .add(Attributes.FLYING_SPEED, 0.2);
+                .add(Attributes.FLYING_SPEED, 0.35);
     }
 
     private PlayState movementPredicate(AnimationState<JellyfishEntity> event) {
