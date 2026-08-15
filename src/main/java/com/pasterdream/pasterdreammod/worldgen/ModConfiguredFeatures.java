@@ -300,6 +300,26 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_CYAN_MOSS_STONE_BLOB =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_cyan_moss_stone_blob"));
+    // 风之旅途小石堆 — 原作 ground_feature_wind_journey_6
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_SMALL_STONE_SPIRIT =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_small_stone_spirit"));
+    // 风之旅途茸毛苔 — 原作 grass_13
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_HAIRY_MOSS_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_hairy_moss_patch"));
+    // 风之旅途斩风草 — 原作 grass_14
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_CLEAVING_GRASS_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_cleaving_grass_patch"));
+    // 风之旅途风羽草 — 原作 grass_15
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_FEATHER_GRASS_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_feather_grass_patch"));
+    // 风之旅途风岛芦苇 — 原作 flower_18
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_JOURNEY_REED_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_reed_patch"));
 
 
     // ===== 原版维度花草 =====
@@ -898,5 +918,26 @@ public class ModConfiguredFeatures {
                         Blocks.MUD.defaultBlockState(),
                         ModBlocks.CYAN_MOSS_STONE.get().defaultBlockState(),
                         UniformInt.of(1, 1))));
+        // 小石堆 — 原作 ground_feature_wind_journey_6: tries=2, xz=5, y=2，仅空气上方/固体下方
+        context.register(WIND_JOURNEY_SMALL_STONE_SPIRIT, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(2, 5, 2,
+                        simpleBlockOnSolidGround(BlockStateProvider.simple(
+                                ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get().defaultBlockState())))));
+        // 茸毛苔 — 原作 grass_13: tries=48（xz/y 走默认 7/3），仅替换空气
+        context.register(WIND_JOURNEY_HAIRY_MOSS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(48, 7, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.HAIRY_MOSS.get().defaultBlockState())))));
+        // 斩风草 — 原作 grass_14: tries=48
+        context.register(WIND_JOURNEY_CLEAVING_GRASS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(48, 7, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.WIND_CLEAVING_GRASS.get().defaultBlockState())))));
+        // 风羽草 — 原作 grass_15: tries=48
+        context.register(WIND_JOURNEY_FEATHER_GRASS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(48, 7, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.WIND_FEATHER_GRASS.get().defaultBlockState())))));
+        // 风岛芦苇 — 原作 flower_18: tries=64
+        context.register(WIND_JOURNEY_REED_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(64, 7, 3,
+                        simpleBlockInAir(BlockStateProvider.simple(ModBlocks.WIND_ISLAND_REED.get().defaultBlockState())))));
     }
 }

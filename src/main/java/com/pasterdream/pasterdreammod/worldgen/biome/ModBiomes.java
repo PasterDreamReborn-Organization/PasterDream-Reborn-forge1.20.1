@@ -93,6 +93,8 @@ public class ModBiomes {
 
     private static final ResourceKey<PlacedFeature> FREEZE_TOP_LAYER =
             ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath("minecraft", "freeze_top_layer"));
+    private static final ResourceKey<PlacedFeature> BAMBOO_LIGHT =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath("minecraft", "bamboo_light"));
 
     public static void bootstrap(BootstapContext<Biome> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -520,7 +522,13 @@ public class ModBiomes {
                 .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.WIND_JOURNEY_WATER_POOL)
                 .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.WIND_JOURNEY_PEBBLE_PATCH)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WIND_JOURNEY_FIREFLY_NEST)
-                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.WIND_JOURNEY_CYAN_MOSS_STONE_BLOB);
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.WIND_JOURNEY_CYAN_MOSS_STONE_BLOB)
+                .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, ModPlacedFeatures.WIND_JOURNEY_SMALL_STONE_SPIRIT)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BAMBOO_LIGHT)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WIND_JOURNEY_HAIRY_MOSS_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WIND_JOURNEY_CLEAVING_GRASS_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WIND_JOURNEY_FEATHER_GRASS_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WIND_JOURNEY_REED_PATCH);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
@@ -530,7 +538,6 @@ public class ModBiomes {
                 .specialEffects(effects.build())
                 .mobSpawnSettings(new MobSpawnSettings.Builder()
                         // 原作 monster: 骨翼 weight6(1~2)、灰骨翼 weight1(1~1)、萤火虫 weight10(3~4)、雷云 weight5(1~2)、高压雷云 weight1(1~1)
-                        // 水母/小石灵 待搬运
                         .addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(ModEntities.BONE_WING.get(), 6, 1, 2))
                         .addSpawn(MobCategory.MONSTER,
@@ -541,6 +548,11 @@ public class ModBiomes {
                                 new MobSpawnSettings.SpawnerData(ModEntities.THUNDERCLOUD.get(), 5, 1, 2))
                         .addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), 1, 1, 1))
+                        // 原作 creature: 水母 weight10(1~2)；小石精原作 creature weight12(1~2)，但实体为 Monster（暗处生成），按 monster 接入否则永不在群系生成
+                        .addSpawn(MobCategory.CREATURE,
+                                new MobSpawnSettings.SpawnerData(ModEntities.JELLYFISH.get(), 10, 1, 2))
+                        .addSpawn(MobCategory.MONSTER,
+                                new MobSpawnSettings.SpawnerData(ModEntities.SMALL_STONE_SPIRIT.get(), 12, 1, 2))
                         .build())
                 .generationSettings(gen.build())
                 .build();
