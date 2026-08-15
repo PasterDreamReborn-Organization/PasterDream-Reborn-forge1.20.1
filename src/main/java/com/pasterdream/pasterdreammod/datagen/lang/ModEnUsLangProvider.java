@@ -123,7 +123,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get(), "Elixir Bottle of Melt Dream");
         add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "Elixir Bottle of Rage Elixir");
         add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.1", "§7Effects after drinking:");
-        add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.2", "§7▪ §9+0.1Base attack speed (until death)");
+        add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.2", "§7▪ §9-15% Skill cooldown, +20% Attack damage (until death)");
         add("item.pasterdream.elixir_bottle_of_rage_elixir.client.success", "§5You feel a surge of power coursing through your body...");
         add("item.pasterdream.elixir_bottle_of_rage_elixir.client.fail", "§7You have already drunk this potion.");
         add(ModItems.BUBBLE_TEA.get(), "Bubble Tea");
