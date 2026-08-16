@@ -1383,6 +1383,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.10", "§6PasterDream: Reborn 文案");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.cooldown", "§c灵魂石的力量仍在冷却中");
 
+        add(ModItems.MAGNIFYING_GLASS_OF_SHERRY.get(), "大侦探的放大镜");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.1", "§7\"我的超级智慧告诉我该使用我的超级力量了！\"");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.2", "§7其实旭当时也不知道做什么遗物，不过他当时很喜欢橘雪莉，所以就这样了。");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.3", "§7▪ §9挖掘速度 +50%");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.4", "§7▪ §9近战伤害 +100%");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.5", "§7▪ §9未使用武器时，伤害 +200%");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§f▪ §4融梦能量恒定为 0");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.7", "§7bei_xu的专属遗物。");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.8", "§6PasterDream: Reborn 文案");
+
         // 琴雨梦装备
         add(ModItems.QYM_CAT_EARS.get(), "琴雨梦的猫耳发卡");
         add("tooltip.pasterdream.qym_cat_ears.san", "§7▪ §9精神值始终为精神值上限");

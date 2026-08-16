@@ -1000,6 +1000,8 @@ public class ModItems {
             SeaCharmItem::new);
     public static final RegistryObject<Item> CARAPAX_CHARM = ITEMS.register("carapax_charm",
             CarapaxCharmItem::new);
+    public static final RegistryObject<Item> MAGNIFYING_GLASS_OF_SHERRY = ITEMS.register("magnifying_glass_of_sherry",
+            MagnifyingGlassOfSherryItem::new);
     public static final RegistryObject<Item> DUKE_COIN_CURIO = ITEMS.register("duke_coin_curio",
             DukeCoinCurioItem::new);
     public static final RegistryObject<Item> WORLDTREE_SEEDPOD = ITEMS.register("worldtree_seedpod",
