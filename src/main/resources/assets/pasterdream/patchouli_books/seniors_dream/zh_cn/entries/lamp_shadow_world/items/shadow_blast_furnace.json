@@ -1,0 +1,17 @@
+{
+  "sortnum": 4,
+  "name": "pasterdream.seniors_dream.entry.shadow_blast_furnace",
+  "icon": "pasterdream:shadow_blast_furnace",
+  "category": "pasterdream:lamp_shadow_world/items",
+  "advancement": "pasterdream:story/enter_lamp_shadow_world",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_blast_furnace.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_blast_furnace.page1"
+    }
+  ]
+}

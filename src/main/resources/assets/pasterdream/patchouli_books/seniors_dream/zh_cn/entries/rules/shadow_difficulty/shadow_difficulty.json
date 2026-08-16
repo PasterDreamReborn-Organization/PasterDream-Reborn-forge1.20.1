@@ -1,0 +1,16 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.entry.shadow_difficulty",
+  "icon": "pasterdream:nightmare_fuel",
+  "category": "pasterdream:rules/shadow_difficulty",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_difficulty.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_difficulty.page1"
+    }
+  ]
+}

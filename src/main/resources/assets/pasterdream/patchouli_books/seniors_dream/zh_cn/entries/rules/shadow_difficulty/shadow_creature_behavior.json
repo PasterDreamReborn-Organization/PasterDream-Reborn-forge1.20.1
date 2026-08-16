@@ -1,0 +1,12 @@
+{
+  "sortnum": 1,
+  "name": "pasterdream.seniors_dream.entry.shadow_creature_behavior",
+  "icon": "pasterdream:seal_of_the_corrupted",
+  "category": "pasterdream:rules/shadow_difficulty",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_creature_behavior.page0"
+    }
+  ]
+}

@@ -1085,6 +1085,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.CHAOS_BUFF_ICON.get(), "混乱图标");
         add(ModItems.DREAM_WISH_BUFF_ICON.get(), "美梦祈愿图标");
         add(ModItems.COOK_BUFF_ICON.get(), "料理图标");
+        add(ModItems.SHADOW_SILENCE_BUFF_ICON.get(), "暗影沉默图标");
+        add(ModItems.BIND_BUFF_ICON.get(), "束缚图标");
         add(ModItems.BLESSING_OF_CECILIA.get(), "塞西莉娅的加护");
         add("tooltip.pasterdream.blessing_of_cecilia.effect0", "§7▪ §9常驻：强制20%减伤");
         add("tooltip.pasterdream.blessing_of_cecilia.effect1", "§7 受到致命伤害时：");
@@ -1587,6 +1589,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 分类
         add("pasterdream.seniors_dream.category.rules", "机制介绍");
         add("pasterdream.seniors_dream.category.rules.desc", "本篇介绍模组中的核心机制。");
+        add("pasterdream.seniors_dream.category.rules_shadow_difficulty", "暗影难度系统");
+        add("pasterdream.seniors_dream.category.rules_shadow_difficulty.desc", "随着你在疯狂的泥潭中越陷越深，阴影中的存在也开始注意到你。它们并非幻觉——当你的精神防线足够薄弱时，暗影生物便会在你周围的黑暗中显形。你的理智越是不堪一击，它们出现得就越频繁，种类也越是可怖。$(br2)--暗影侵袭");
 
         // 融梦能量
         add("pasterdream.seniors_dream.entry.meltdream", "融梦能量");
@@ -1614,6 +1618,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.fishing", "钓鱼");
         add("pasterdream.seniors_dream.entry.fishing.page0", "在闲暇时光，我们也许会坐在水边，拿着钓竿，接受海洋的恩赐。现在在海洋附近钓鱼有可能钓出来自海洋深处的宝藏——深海秘宝，哪怕在梦境的辽阔海洋中，你也能甩出浮标，获得宝藏。你的幸运值越高，就越有可能获得深海秘宝，有的时候，你可能会获得闪耀着奇特光芒的深海秘宝……");
         add("pasterdream.seniors_dream.entry.fishing.page1", "也许，在梦境中钓出来的深海秘宝能获得一些较为独特的宝藏，比如色彩缤纷的水晶碎片，以及闪烁着光芒的一桶泉水……");
+
+        // 暗影难度系统
+        add("pasterdream.seniors_dream.entry.shadow_difficulty", "暗影难度");
+        add("pasterdream.seniors_dream.entry.shadow_difficulty.page0", "暗影的难度等级由玩家和世界两部分组成。如果存在的效果与玩家的交互有关，则优先按照玩家难度决定，否则按照世界难度决定。");
+        add("pasterdream.seniors_dream.entry.shadow_difficulty.page1", "暗影难度主要有四个等级：$(br)极简单：暗影侵袭几乎不会出现，即使出现也极其微弱。$(br)简单：san<20%%时出现暗影侵袭。$(br)普通：san<60%%时开始出现暗影侵袭，怪物掉落物更加丰富。$(br)困难：san<82.5%%时就会出现暗影侵袭，其生命和攻击力翻倍，战利品也会翻倍。");
+
+        add("pasterdream.seniors_dream.entry.shadow_creature_behavior", "暗影生物特殊行为详解");
+        add("pasterdream.seniors_dream.entry.shadow_creature_behavior.page0", "当暗影难度不低于“简单”这一等级时，部分暗影生物会有特殊技能：$(br)暗影傀儡将会使用冲击波，造成更高伤害。$(br)暗影之手的攻击会夺取玩家的理智。$(br)恐怖尖喙会发出吼叫，降低玩家的理智值（包括玩家现实中的理智）。$(br)悲泣尖啸鬼魂会召唤普通怨魂。");
 
         // 此梦先觉
         add("pasterdream.seniors_dream.category.foretold_dream", "此梦先觉");
@@ -1683,6 +1695,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.mortar.page0", "古代的炼金术士用研钵这种工具来辅助他们炼制药剂，帮助他们追求点石成金的第五元素。当然，无需研究炼金术的你可以用这种工具制作一些存在于梦境中的染料。$(br2)你可以在研钵里存入液体。在液体区域右键存入液体，左键取出液体。你需要把它放在工作台上来制作染梦染料和其他可以用研钵制作的东西。制作完成后，研钵可以回收，但是研钵里存储的液体会被消耗");
         add("pasterdream.seniors_dream.entry.mortar.page1", "——过去的人们用它来追寻太一之奇迹，而现在行于梦幻的人们用它来提纯梦境的神秘");
 
+        // 精铸工坊
+        add("pasterdream.seniors_dream.entry.weapon_workshop", "精铸工坊");
+        add("pasterdream.seniors_dream.entry.weapon_workshop.page0", "随着工具的升级，你的工作台慢慢开始难以胜任工具制作的任务。于是，你将目光转向村庄中铁匠铺的设备，不过你似乎无法将其复现……$(br2)或许，你需要稍稍破费一下，和村庄的工具匠多交易几次，等到他成为了大师后，应该就会愿意卖给你精铸工坊的搭建蓝图了吧。$(br2)另外，通过这种工坊，似乎还可以利用你找到的强化石。");
+        add("pasterdream.seniors_dream.entry.weapon_workshop.page1", "——早在中世纪就存在这种设备和技术，虽然古老，但是它们足够我用来打造更强大的工具了。");
+
         // 染梦空岛
         add("pasterdream.seniors_dream.entry.dyedream_sky_island", "染梦空岛");
         add("pasterdream.seniors_dream.entry.dyedream_sky_island.page0", "初来之时，你会在主世界发现这种粉红色的空岛，它的存在似乎有那么一些不合理，就像是……梦一般。登上这座岛，就能看到一道奇怪的裂隙。第一次接触没有直接反应，但会让你做一个奇怪的梦。醒来后，你发现有一份笔记神秘地出现在你的口袋里，你或许应当在阅读完这份神秘的笔记后，重新去触碰那道裂隙……$(br2)——如果说这座空岛就是梦境力量的映射，那当穿过裂隙，我究竟身处的是「现实」还是「梦境」？");
@@ -1720,7 +1737,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.rest.page0", "休憩是一种可以为玩家逐渐恢复san值的buff效果，每级增加1.2理智光环。$(br2)通过在原版的床上躺下、身处娇小琴雨梦玩偶或者营火附近，玩家都可以获得该buff。");
 
         add("pasterdream.seniors_dream.entry.cheer_up", "振奋");
-        add("pasterdream.seniors_dream.entry.cheer_up.page0", "当玩家san值>=90%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间-10%%；$(br)移动速度+5%%；$(br)攻击速度+0.05；$(br)技能冷却时间-10%%。");
+        add("pasterdream.seniors_dream.entry.cheer_up.page0", "当玩家san值>=90%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间-10%%；$(br)移动速度+0.05；$(br)攻击速度+0.05；$(br)技能冷却时间-10%%。");
 
         add("pasterdream.seniors_dream.entry.lethargy", "不振");
         add("pasterdream.seniors_dream.entry.lethargy.page0", "当玩家san值<=60%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+50%%；$(br)移动速度-10%%；$(br)攻击速度-0.1；$(br)技能冷却时间+20%%。");
@@ -1729,9 +1746,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.trance.page0", "当玩家san值<=40%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+100%%；$(br)移动速度-20%%；$(br)攻击速度-0.2，攻击力-1；$(br)技能冷却时间+50%%。");
 
         add("pasterdream.seniors_dream.entry.insand", "疯狂");
-        add("pasterdream.seniors_dream.entry.insand.page0", "当玩家san值<=20%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+200%%；$(br)移动速度-30%%；$(br)攻击速度-0.4，攻击力-2；$(br)技能冷却时间+100%%；$(br)攻击和触及距离-0.2。");
+        add("pasterdream.seniors_dream.entry.insand.page0", "当玩家san值<=20%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+200%%；$(br)移动速度-30%%；$(br)攻击速度-0.4，攻击力-2；$(br)攻击和触及距离-0.2。");
         add("pasterdream.seniors_dream.entry.insand.page1", "持有此状态时，视野会不受控制地抖动，随着疯狂状态等级的进一步提升，玩家画面抖动幅度会增大。");
-        add("pasterdream.seniors_dream.entry.insand.page2", "");
+        add("pasterdream.seniors_dream.entry.insand.page2", "当暗影难度处于“简单”及以上等级的时候，疯狂III效果会使玩家持续失去生命值。");
 
         add("pasterdream.seniors_dream.entry.cook", "料理");
         add("pasterdream.seniors_dream.entry.cook.page0", "通过食用部分本模组内食物，以及有联动的模组食物，可以获得此buff。每级增加1.2理智光环。");
@@ -1748,6 +1765,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("pasterdream.seniors_dream.entry.dream_wish", "美梦祈愿");
         add("pasterdream.seniors_dream.entry.dream_wish.page0", "当玩家饮用梦境果汁后获得的buff效果。具体效果为：$(br)持有此buff睡觉时会进入染梦世界");
+
+        add("pasterdream.seniors_dream.entry.shadow_silence", "暗影沉默");
+        add("pasterdream.seniors_dream.entry.shadow_silence.page0", "一般情况是玩家赋予怪物的负面效果，可以让暗影生物的特殊技能暂时失效。在特殊情况下，某些最强大的暗影生物似乎也能被沉默？");
+
+        add("pasterdream.seniors_dream.entry.bind", "束缚");
+        add("pasterdream.seniors_dream.entry.bind.page0", "一般情况是玩家赋予怪物的负面效果。拥有此效果时，对应生物暂时无法移动。");
 
         // 染梦世间
         add("pasterdream.seniors_dream.category.dyedream_world", "染梦世间");
@@ -1895,6 +1918,30 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.shadow_sword.page1", "你拿着这把剑时可以献祭理智来让这把剑的下一击变成\"夜魔斩击\"，这样，它的下一击会更加致命，它的伤害取决于你的理性。");
         add("pasterdream.seniors_dream.entry.shadow_sword.page2", "这把剑并不会效忠通过神的力量来让自己永不疯狂的(用指令关掉san值系统)背叛暗影之人，这一点还请注意。");
         add("pasterdream.seniors_dream.entry.shadow_sword.page3", "——所谓理智只是凡人的谎言，我将用疯狂来为众生带来平等的终夜。");
+
+        // 暗影高炉
+        add("pasterdream.seniors_dream.entry.shadow_blast_furnace", "暗影高炉");
+        add("pasterdream.seniors_dream.entry.shadow_blast_furnace.page0", "在阴影的梦境中，你找到了琴雨梦和夜岚的实验遗存，在遗迹里留有这项装置的残骸和一份蓝图，对照着蓝图，似乎可以复现这台机器。$(br2)这台机器以梦境中的熔融阴影和噩梦为燃料，可以转化一些物品，使它们浸染上阴影。除此之外，它似乎还可以用来修复锈蚀金属……");
+        add("pasterdream.seniors_dream.entry.shadow_blast_furnace.page1", "——熔炼黑暗的机器，要令万物都染上黑暗。");
+
+        // 笔记残页
+        add("pasterdream.seniors_dream.entry.broken_note", "笔记残页");
+        add("pasterdream.seniors_dream.entry.broken_note.page0", "造访这片梦境的外来者不在少数，但是他们的笔记遗存更多的被撕碎，散落在梦境的各个角落。为了拼凑和解读这些笔记，我们需要一个专门的设施。$(br2)通过还原这些笔记，你能知晓更多隐秘，或许能知晓某些设施的修复办法。");
+        add("pasterdream.seniors_dream.entry.broken_note.page1", "——知识就是力量，在如此危险的梦境中更是如此。");
+
+        // 黑金属
+        add("pasterdream.seniors_dream.entry.black_metal_ingot", "黑金属");
+        add("pasterdream.seniors_dream.entry.black_metal_ingot.page0", "琴雨梦和夜岚对于有关灯影之下中随处可见的锈蚀金属的重新利用早就有所研究，你在阅读完她留下的笔记后，有了一种复现这项技术的想法……$(br2)依据她笔记中记载的“以阴影填补孔隙”的想法，借助暗影高炉，你成功制作出了黑金属粒。这种金属可以用于锻造影蚀工具。只是一点金属粒明显不够，你必须想办法得到可以用于锻造的金属锭……");
+        add("pasterdream.seniors_dream.entry.black_metal_ingot.page1", "——流淌着阴影的金属，是寻梦者驾驭黑暗力量的一小步。");
+
+        // 卡莱的调味瓶
+        add("pasterdream.seniors_dream.entry.calais_spice_bottle", "卡莱的调味瓶");
+        add("pasterdream.seniors_dream.entry.calais_spice_bottle.page0", "在灯影之下，你能找到这样一个前辈留下的调料瓶。当你佩戴它时，你吃东西的速度会变得更快，并且，它会给予你“卡莱料理”的效果，之后每次攻击都会消耗一层“卡莱料理”并随机给予一个效果。如果“卡莱料理”的效果消失了，就需要通过吃饭回复饱食度来获得“卡莱料理”了。");
+
+        // 光明飞蝶
+        add("pasterdream.seniors_dream.entry.bright_butterfly_curio", "光明飞蝶");
+        add("pasterdream.seniors_dream.entry.bright_butterfly_curio.page0", "在过去，第一位进入灯影的寻梦者借助光明飞蝶掌控暗影的力量，最终成功离开了灯影之下。在掌控了光明的力量后，你或许可以尝试用白厄水晶改造一下夜明蝶……$(br2)利用白厄水晶复现了光明飞蝶，并将其佩戴后，你的眼中常驻光明，眼前的黑暗消散殆尽。任何尝试夺走你眼前光明的手段都将失效。");
+        add("pasterdream.seniors_dream.entry.bright_butterfly_curio.page1", "——眼中所见皆为光明之时，黑暗自然无处遁形。");
 
         // 剧情
         add("pasterdream.seniors_dream.category.story", "剧情");

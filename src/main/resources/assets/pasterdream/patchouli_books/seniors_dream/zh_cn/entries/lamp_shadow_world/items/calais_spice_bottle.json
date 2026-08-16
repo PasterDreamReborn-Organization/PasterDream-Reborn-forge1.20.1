@@ -1,0 +1,14 @@
+{
+  "sortnum": 7,
+  "name": "pasterdream.seniors_dream.entry.calais_spice_bottle",
+  "icon": "pasterdream:calais_spice_bottle",
+  "category": "pasterdream:lamp_shadow_world/items",
+  "advancement": "pasterdream:story/enter_lamp_shadow_world",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:calais_spice_bottle",
+      "text": "pasterdream.seniors_dream.entry.calais_spice_bottle.page0"
+    }
+  ]
+}
