@@ -30,7 +30,9 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -109,6 +111,7 @@ public class PasterDreamMod
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
+        modEventBus.addListener(this::registerItemColors);
         MinecraftForge.EVENT_BUS.addListener(this::AddItemTooltip);
         MinecraftForge.EVENT_BUS.addListener(this::AddCommand);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
@@ -214,6 +217,15 @@ public class PasterDreamMod
                 PotionBottleRegistry.POTION_BOTTLE.get(),
                 ResourceLocation.fromNamespaceAndPath(MOD_ID, "type"),
                 (stack, level, entity, seed) -> PotionBottleItem.getPredicateValue(stack)
+        );
+    }
+
+    private void registerItemColors(RegisterColorHandlersEvent.Item event)
+    {
+        // 灵药瓶（装药水）：按药水颜色对液体层(layer1)染色，瓶身(layer0)不染色
+        event.register(
+                (stack, tintIndex) -> tintIndex == 1 ? PotionUtils.getColor(stack) : -1,
+                ModItems.ELIXIR_BOTTLE_OF_POTION.get()
         );
     }
 

@@ -1,0 +1,32 @@
+{
+  "type": "pasterdream:mortar",
+  "fluidInputs":
+  [
+    {
+      "fluid": "minecraft:water",
+      "amount": 250
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "minecraft:nether_wart",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:linht_flower",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:soul_dust",
+      "count": 1
+    }
+  ],
+  "fluidOutputs":
+  [
+    {
+      "fluid": "pasterdream:guiding_drug",
+      "amount": 250
+    }
+  ]
+}
