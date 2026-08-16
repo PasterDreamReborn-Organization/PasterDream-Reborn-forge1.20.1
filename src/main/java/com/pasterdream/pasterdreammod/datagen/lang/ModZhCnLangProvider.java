@@ -1257,7 +1257,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("command.pasterdream.lowsan.sound.get", "%s: %s");
         add("item.pasterdream.star_wish_rod", "占星者的祈愿");
         add("tooltip.pasterdream.star_wish_rod.desc", "§7▪ §9手持钓鱼时深海秘宝额外必出超级变体");
-        add("tooltip.pasterdream.star_wish_rod", "§7§O --鱼儿如满天繁星");
+        add("tooltip.pasterdream.star_wish_rod", "§7§O --鱼儿如浩空繁星");
         add("command.pasterdream.lowsan.enabled", "启用");
         add("command.pasterdream.lowsan.disabled", "禁用");
         add("gamerule.category.pasterdream", "帕斯特之梦");
@@ -2295,5 +2295,35 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.twilight_lantern.event_ready", "§5可以与暮影之笼发生共鸣，与暗影长床互动");
         add("message.pasterdream.twilight_lantern.data_reset", "方块数据已重置");
         add("message.pasterdream.twilight_lantern_location", "笔记末尾记载着炼狱上层的坐标：§aX：%s §aZ：%s");
+        // ===== 风之旅途：风向机制 =====
+        add(ModItems.WIND_VANE.get(), "风向标");
+        add(ModItems.WIND_KNIGHT_FLAG.get(), "风骑士旗帜");
+        add(ModItems.PAPER_PLANE.get(), "纸飞机");
+        add("effect.pasterdream.tailwind_buff", "顺风");
+        add("effect.pasterdream.deadwind_buff", "逆风");
+        add("effect.pasterdream.windproof_buff", "防风");
+        add("effect.pasterdream.misty_dream_buff", "迷梦");
+        add("effect.pasterdream.cloud_mist_buff", "云雾");
+        add("tooltip.pasterdream.wind_vane.desc", "§7检测当前的风向与玩家的角度");
+        add("message.pasterdream.wind_vane.angle", "角度：%s 方向：%s");
+        add("tooltip.pasterdream.wind_knight_flag.effect1", "§7▪ §9可以将逆风视为顺风");
+        add("tooltip.pasterdream.paper_plane.effect1", "§7▪ §9增大风向对自身的影响");
+        add("tooltip.pasterdream.paper_plane.description", "§7§o-- 我们所逝去的童年时光");
+        add("message.pasterdream.wind_vane.direction.0", "当前风向：§a北风");
+        add("message.pasterdream.wind_vane.direction.1", "当前风向：§a东北风");
+        add("message.pasterdream.wind_vane.direction.2", "当前风向：§a东风");
+        add("message.pasterdream.wind_vane.direction.3", "当前风向：§a东南风");
+        add("message.pasterdream.wind_vane.direction.4", "当前风向：§a南风");
+        add("message.pasterdream.wind_vane.direction.5", "当前风向：§a西南风");
+        add("message.pasterdream.wind_vane.direction.6", "当前风向：§a西风");
+        add("message.pasterdream.wind_vane.direction.7", "当前风向：§a西北风");
+        add("message.pasterdream.wind_direction.announce.0", "§7§o朝阳升起... 呼啸的风正吹往 §a北方");
+        add("message.pasterdream.wind_direction.announce.1", "§7§o朝阳升起... 呼啸的风正吹往 §a东北方");
+        add("message.pasterdream.wind_direction.announce.2", "§7§o朝阳升起... 呼啸的风正吹往 §a东方");
+        add("message.pasterdream.wind_direction.announce.3", "§7§o朝阳升起... 呼啸的风正吹往 §a东南方");
+        add("message.pasterdream.wind_direction.announce.4", "§7§o朝阳升起... 呼啸的风正吹往 §a南方");
+        add("message.pasterdream.wind_direction.announce.5", "§7§o朝阳升起... 呼啸的风正吹往 §a西南方");
+        add("message.pasterdream.wind_direction.announce.6", "§7§o朝阳升起... 呼啸的风正吹往 §a西方");
+        add("message.pasterdream.wind_direction.announce.7", "§7§o朝阳升起... 呼啸的风正吹往 §a西北方");
     }
 }

@@ -224,6 +224,8 @@ public class ModItems {
             () -> new PulseWindRunnerCrystalItem());
     public static final RegistryObject<Item> WIND_KNIGHT_ALTAR = ITEMS.register("wind_knight_altar",
             () -> new WindKnightAltarItem(ModBlocks.WIND_KNIGHT_ALTAR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_VANE = ITEMS.register("wind_vane",
+            WindVaneItem::new);
     public static final RegistryObject<Item> LIGHT_BALL = ITEMS.register("light_ball",
             () -> new BlockItem(ModBlocks.LIGHT_BALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
@@ -843,18 +845,20 @@ public class ModItems {
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.GLOWING, 100, 0), 1.0f)
                             .nutrition(1).build())));
 
-    //TODO:防风buff施工中
     public static final RegistryObject<Item> JELLYFISH_MUD = ITEMS.register("jellyfish_mud",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(-3)
-                    .food(new FoodProperties.Builder().nutrition(1).build())));
+                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.WINDPROOF_BUFF.get(), 1200, 0), 1.0f).build())));
 
     public static final RegistryObject<Item> JELLYFISH_JELLO = ITEMS.register("jellyfish_jello",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.5f).build())));
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.5f).alwaysEat()
+                            .effect(() -> new MobEffectInstance(ModEffects.WINDPROOF_BUFF.get(), 12000, 0), 1.0f).build())));
 
     public static final RegistryObject<Item> QUEER_SOUP = ITEMS.register("queer_soup",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().meltDreamEnergyAdd(1)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.375f).alwaysEat().build()))
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.375f).alwaysEat()
+                            .effect(() -> new MobEffectInstance(ModEffects.MISTY_DREAM_BUFF.get(), 6000, 0), 1.0f).build()))
             {
                 @Override
                 protected void onFoodSpecial(LivingEntity entity, Level level)
@@ -1086,6 +1090,12 @@ public class ModItems {
     // ===== 饰品（通用） =====
     public static final RegistryObject<Item> WAR_FLAG = ITEMS.register("war_flag",
             WarFlagItem::new);
+
+    public static final RegistryObject<Item> WIND_KNIGHT_FLAG = ITEMS.register("wind_knight_flag",
+            WindKnightFlagItem::new);
+
+    public static final RegistryObject<Item> PAPER_PLANE = ITEMS.register("paper_plane",
+            PaperPlaneItem::new);
 
     public static final RegistryObject<Item> CALAIS_SPICE_BOTTLE = ITEMS.register("calais_spice_bottle",
             CalaisSpiceBottleItem::new);

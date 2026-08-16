@@ -431,6 +431,9 @@
 | `congeal_wind`                 | `congeal_wind`                              | 不改                                                               | 无需客制化类，直接用 `Item`                                                                                        |
 | `windrunner_crystal`           | `wind_runner_crystal`                       | 重命名，补下划线                                                         | 无需客制化类，直接用 `Item`                                                                                        |
 | `wind_iron_ingot`              | `congeal_wind_iron_ingot`                   | 重命名，前面加 `congeal_`                                                 | 无需客制化类，直接用 `Item`                                                                                        |
+| `wind_vane`                    | `wind_vane`                                 | 不改                                                               | 客制化类 `WindVaneItem`，右键检测风向与玩家角度                                                                          |
+| `wind_knight_flag`             | `wind_knight_flag`                          | 不改                                                               | 客制化类 `WindKnightFlagItem`（饰品），佩戴后逆风视为顺风                                                                |
+| `paper_plane`                  | `paper_plane`                               | 不改                                                               | 客制化类 `PaperPlaneItem`（饰品），佩戴后增大风向影响                                                                   |
 | `meltdream_crystal_0`          | `melt_dream_crystal_fragment`               | 重命名，添加下划线和`fragment`，去除`_0`                                      | 无需客制化类，直接用 `Item`                                                                                        |
 | `dream_aurorian_steel`         | `melt_dream_aurorian_steel`                 | 重命名，前面加入 `melt_`                                                 | 无需客制化类，直接用 `Item`                                                                                        |
 | `dream_coin_0`                 | `melt_dream_coin`                           | 重命名，`dream_coin_0` → `melt_dream_coin`（融梦星币）                     | 客制化类 `MeltDreamCoinItem`，右键合成为堆 + 丢弃音效 + ToolTip                                                         |
@@ -642,12 +645,16 @@
 | `goldenrod_tea_buff`          | `goldenrod_tea_buff`          | 不改        | `GoldenrodTeaBuffEffect`，每 tick 移除饥饿与反胃                        |
 | `dyedream_perfume_buff`       | `dyedream_perfume_buff`       | 不改，效果逻辑已改 | `DyedreamPerfumeBuffEffect`，配合 `PhantomTargetMixin`            |
 | `teleportation_buff`          | 待搬运                           | -         | -                                                              |
-| `fondillusion_buff`           | 待搬运                           | -         | -                                                              |
+| `fondillusion_buff`           | `misty_dream_buff`            | 重命名      | `MistyDreamBuffEffect`，迷梦标记，主世界高空显示进入进度                        |
 | `rest_buff`                   | `rest_buff`                   | 不改        | `RestBuffEffect`，+0.9 理智光环                                     |
 | `dream_harp_of_wanderer_buff` | `dream_harp_of_wanderer_buff` | 不改        | `DreamharpOfWandererBuffEffect`，+4最大生命、+2.4SAN光环、+1%速度、治疗      |
 | -                             | `counter_attack_buff`         | 新增        | `CounterAttackBuffEffect`，战技伤害倍率 +50%，配合反击戒指触发                 |
 | `bind_buff`                   | `bind_buff`                   | 不改        | `BindBuffEffect`，移速降至 0，由白厄剑雨命中施加，持续 2s                        |
 | `shadow_silence_buff`         | `shadow_silence_buff`         | 不改        | `ShadowSilenceBuffEffect`，标记效果，由白厄剑雨命中 shadow_mob 实体时施加，持续 10s |
+| `cloudmist_buff`              | `cloud_mist_buff`             | 重命名      | `CloudMistBuffEffect`，云霞标记，风之旅途显示退出进度                           |
+| `tailwind_buff`               | `tailwind_buff`               | 不改        | `TailwindBuffEffect`，顺风，移速/闪烁距离提升，与逆风互斥                        |
+| `deadwind_buff`               | `deadwind_buff`               | 不改        | `DeadwindBuffEffect`，逆风，移速/闪烁距离降低，与顺风互斥                        |
+| `windproof_buff`              | `windproof_buff`              | 不改        | `WindproofBuffEffect`，防风标记，免疫顺风/逆风                            |
 
 ---
 
