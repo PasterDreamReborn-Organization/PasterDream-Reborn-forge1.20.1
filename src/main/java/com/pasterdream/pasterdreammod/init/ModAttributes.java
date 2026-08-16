@@ -34,6 +34,9 @@ public class ModAttributes {
     public static final RegistryObject<Attribute> SKILL_DAMAGE_RATE =
             ATTRIBUTES.register("skill_damage_rate", () -> new RangedAttribute(
                     "attribute.pasterdream.skill_damage_rate", 1.0, 0.0, 100.0).setSyncable(true));
+    public static final RegistryObject<Attribute> MAGIC_DAMAGE_RATE =
+            ATTRIBUTES.register("magic_damage_rate", () -> new RangedAttribute(
+                    "attribute.pasterdream.magic_damage_rate", 1.0, 0.0, 100.0).setSyncable(true));
 
     public static final RegistryObject<Attribute> SAN_VARIABILITY =
             ATTRIBUTES.register("san_variability", () -> new RangedAttribute(
@@ -50,6 +53,7 @@ public class ModAttributes {
         event.add(EntityType.PLAYER, BLINK_RANGE.get());
         event.add(EntityType.PLAYER, SKILL_COOLDOWN_RATE.get());
         event.add(EntityType.PLAYER, SKILL_DAMAGE_RATE.get());
+        event.add(EntityType.PLAYER, MAGIC_DAMAGE_RATE.get());
         event.add(EntityType.PLAYER, SAN_VARIABILITY.get());
     }
 }

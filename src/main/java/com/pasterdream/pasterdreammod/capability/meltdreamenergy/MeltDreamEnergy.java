@@ -4,6 +4,7 @@ public class MeltDreamEnergy implements IMeltDreamEnergy
 {
     private double meltDreamEnergy = 0.0;
     private boolean isNeedConsume = true;
+    private boolean isConsumeDoubled = false;
     private double maxMeltDreamEnergy = 100.0;
 
     @Override
@@ -25,6 +26,10 @@ public class MeltDreamEnergy implements IMeltDreamEnergy
         {
             if(isNeedConsume)
             {
+                if(isConsumeDoubled)
+                {
+                    delta *= 2;
+                }
                 setMeltDreamEnergy(meltDreamEnergy + delta);
             }
         }
@@ -55,6 +60,18 @@ public class MeltDreamEnergy implements IMeltDreamEnergy
     }
 
     @Override
+    public void setIsConsumeDoubled(boolean isConsumeDoubled)
+    {
+        this.isConsumeDoubled = isConsumeDoubled;
+    }
+
+    @Override
+    public boolean isConsumeDoubled()
+    {
+        return isConsumeDoubled;
+    }
+
+    @Override
     public double getMaxMeltDreamEnergy()
     {
         return maxMeltDreamEnergy;
@@ -77,6 +94,7 @@ public class MeltDreamEnergy implements IMeltDreamEnergy
     {
         this.meltDreamEnergy = other.getMeltDreamEnergy();
         this.isNeedConsume = other.getIsOrNotNeedConsumeDreamEnergy();
+        this.isConsumeDoubled = other.isConsumeDoubled();
         this.maxMeltDreamEnergy = other.getMaxMeltDreamEnergy();
     }
 }

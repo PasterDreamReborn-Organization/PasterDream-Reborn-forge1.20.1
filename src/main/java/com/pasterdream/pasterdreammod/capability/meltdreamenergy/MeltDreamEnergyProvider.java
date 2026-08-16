@@ -24,6 +24,7 @@ public class MeltDreamEnergyProvider implements ICapabilitySerializable<Compound
         CompoundTag tag = new CompoundTag();
         tag.putDouble("melt_dream_energy_count", instance.getMeltDreamEnergy());
         tag.putBoolean("is_not_need", instance.getIsOrNotNeedConsumeDreamEnergy());
+        tag.putBoolean("is_consume_doubled", instance.isConsumeDoubled());
         tag.putDouble("max_melt_dream_energy", instance.getMaxMeltDreamEnergy());
         return tag;
     }
@@ -33,6 +34,7 @@ public class MeltDreamEnergyProvider implements ICapabilitySerializable<Compound
     {
         instance.setMeltDreamEnergy(tag.getDouble("melt_dream_energy_count"));
         instance.setIsOrNotNeedConsumeDreamEnergy(tag.getBoolean("is_not_need"));
+        instance.setIsConsumeDoubled(tag.getBoolean("is_consume_doubled"));
         instance.setMaxMeltDreamEnergy(tag.getDouble("max_melt_dream_energy"));
     }
 }

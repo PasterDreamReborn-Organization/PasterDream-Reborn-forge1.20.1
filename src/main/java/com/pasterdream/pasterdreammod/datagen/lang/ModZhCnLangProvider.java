@@ -1370,6 +1370,19 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7shift右键释放遗物中的灵魂。");
         add("tooltip.pasterdream.rebirth_dream_crystal.7", "§6PasterDream: Reborn开发者");
 
+        add(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get(), "魔法使的灵魂石");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.1", "§7\"我将我遗留的魔法赠予你，让它替我与你同行，见证你所见的梦幻\"");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.2", "§7一位大魔法使为了保护自己残破的灵魂而制作的实验品，当她的灵魂重归完整后，这份物质化的灵魂也失去了意义。");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.3", "§7▪ §9每秒恢复 1.5 融梦能量");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.4", "§7▪ §9战技伤害 +40%");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.5", "§7▪ §9魔法伤害 +50%");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.6", "§f▪ §4融梦能量消耗翻倍");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.7", "§f▪ §4融梦能量低于 30 时，受到的伤害翻倍");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.8", "§7绫苒的专属遗物。");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.9", "§7shift右键恢复全部融梦能量，2 分钟内不消耗融梦能量（冷却 3 分钟）");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.10", "§6PasterDream: Reborn 文案");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.cooldown", "§c灵魂石的力量仍在冷却中");
+
         // 琴雨梦装备
         add(ModItems.QYM_CAT_EARS.get(), "琴雨梦的猫耳发卡");
         add("tooltip.pasterdream.qym_cat_ears.san", "§7▪ §9精神值始终为精神值上限");

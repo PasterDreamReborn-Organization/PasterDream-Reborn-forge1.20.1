@@ -55,6 +55,14 @@ public class MeltDreamEnergyHelper
         return isNeed.get();
     }
 
+    public static void setPlayerMeltDreamEnergyConsumeDoubled(ServerPlayer player, boolean isConsumeDoubled)
+    {
+        player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(capability ->
+        {
+            capability.setIsConsumeDoubled(isConsumeDoubled);
+        });
+    }
+
     public static void setPlayerMaxMeltDreamEnergyAndSync(ServerPlayer player, double meltDreamEnergyValue)
     {
         player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(capability ->

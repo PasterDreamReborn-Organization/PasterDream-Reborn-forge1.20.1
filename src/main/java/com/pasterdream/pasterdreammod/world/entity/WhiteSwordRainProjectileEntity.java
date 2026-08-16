@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
@@ -222,8 +223,9 @@ public class WhiteSwordRainProjectileEntity extends Entity {
 
         // Melee damage
         if (owner instanceof Player player) {
+            float finalDamage = this.damage * SkillCooldownHelper.getSkillDamageMultiplier(player);
             target.getPersistentData().putBoolean("pasterdream:rain_damage", true);
-            target.hurt(this.damageSources().indirectMagic(this, player), this.damage);
+            target.hurt(this.damageSources().indirectMagic(this, player), finalDamage);
             target.getPersistentData().remove("pasterdream:rain_damage");
             target.invulnerableTime = hasBrooch ? 0 : 9;
 

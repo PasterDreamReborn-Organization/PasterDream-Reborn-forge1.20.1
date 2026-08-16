@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.helper.MagicDamageHelper;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
@@ -136,7 +137,7 @@ public class CurioPassiveHandler {
             if (gameTime - lastProc >= 20) {
                 player.getPersistentData().putLong("pasterdream.qym_magic_last", gameTime);
                 LivingEntity target = event.getEntity();
-                float magicDamage = target.getHealth() * 0.05F;
+                float magicDamage = target.getHealth() * 0.05F * MagicDamageHelper.getMagicDamageMultiplier(player);
                 target.invulnerableTime = 0;
                 target.hurt(target.level().damageSources().magic(), magicDamage);
             }

@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.item.shadowswordtool;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
+import com.pasterdream.pasterdreammod.helper.MagicDamageHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
@@ -210,7 +211,9 @@ public class ShadowSwordItem extends SwordItem {
             float critMultiplier = effectiveAttack > 0 ? event.getAmount() / effectiveAttack : 1.0f;
             if (critMultiplier < CRIT_DETECTION_THRESHOLD) critMultiplier = 1.0f;
             else critMultiplier = CRIT_DAMAGE_MULTIPLIER;
-            float magicDamage = effectiveAttack * (float) (MAGIC_DAMAGE_BASE - sanRatio) * critMultiplier;
+            float magicDamage = effectiveAttack * (float) (MAGIC_DAMAGE_BASE - sanRatio) * critMultiplier
+                    * SkillCooldownHelper.getSkillDamageMultiplier(player)
+                    * MagicDamageHelper.getMagicDamageMultiplier(player);
 
             event.setCanceled(true);
             event.getEntity().invulnerableTime = 0;
