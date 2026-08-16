@@ -914,6 +914,9 @@ public class ModItems {
     public static final RegistryObject<Item> ELIXIR_BOTTLE = ITEMS.register("elixir_bottle",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> ELIXIR_BOTTLE_OF_POTION = ITEMS.register("elixir_bottle_of_potion",
+            ElixirBottleOfPotionItem::new);
+
     public static final RegistryObject<Item> ELIXIR_BOTTLE_OF_MELT_DREAM = ITEMS.register("elixir_bottle_of_melt_dream",
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).meltDreamEnergyAdd(25).rarity(Rarity.UNCOMMON)
                     .food(new FoodProperties.Builder().nutrition(4).saturationMod(2).alwaysEat().build())));

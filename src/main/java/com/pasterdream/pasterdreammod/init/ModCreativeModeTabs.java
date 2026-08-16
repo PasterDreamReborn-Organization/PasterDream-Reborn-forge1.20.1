@@ -14,10 +14,14 @@ import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWi
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -88,6 +92,15 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.JELLYFISH_MUD.get());
                         output.accept(ModItems.JELLYFISH_JELLO.get());
                         output.accept(ModItems.ELIXIR_BOTTLE.get());
+                        // 自动注册所有已注册药水（原版 + 本模组 + 其它模组）到灵药瓶；
+                        // 喷溅/滞留是物品(Items.SPLASH_POTION/LINGERING_POTION)而非 Potion，这里天然不包含；
+                        // 跳过「空」药水（无效果的纯空白灵药瓶）
+                        for (Potion potion : BuiltInRegistries.POTION) {
+                            if (potion == Potions.EMPTY) {
+                                continue;
+                            }
+                            output.accept(PotionUtils.setPotion(new ItemStack(ModItems.ELIXIR_BOTTLE_OF_POTION.get()), potion));
+                        }
                         output.accept(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get());
                         output.accept(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get());
                         output.accept(ModItems.PINEAPPLE_LOVE_SEA.get());

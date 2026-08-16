@@ -2069,6 +2069,16 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
                 .save(pWriter);
 
+        // 药引瓶合成
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(), 2)
+                .requires(ModItems.MORTAR.get())
+                .requires(ModItems.GLASS_JAR_OF_WATER.get(),2)
+                .requires(Items.NETHER_WART)
+                .requires(ModItems.LINHT_FLOWER.get())
+                .requires(ModItems.SOUL_DUST.get())
+                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
+                .save(pWriter);
+
         // 玻璃杯合成配方（支持所有玻璃板tag）
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GLASS_CUP.get(), 4)
                 .pattern("a a")
