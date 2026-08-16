@@ -1718,7 +1718,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.wind_infested_stone_0", "Wind-infested Stone");
         add("structure.pasterdream.wind_infested_stone_1", "Wind-infested Stone");
         add("structure.pasterdream.wind_pond", "Wind Pond");
-        add("structure.pasterdream.picnic_basket", "Picnic Basket");
         add("structure.pasterdream.big_bubbles_6", "Big Bubble");
         add("structure.pasterdream.big_bubbles_7", "Big Bubble");
         add("structure.pasterdream.bocchi_0", "Bocchi");

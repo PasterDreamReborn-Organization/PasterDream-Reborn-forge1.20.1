@@ -2180,7 +2180,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.wind_infested_stone_0", "风侵石");
         add("structure.pasterdream.wind_infested_stone_1", "风侵石");
         add("structure.pasterdream.wind_pond", "风池");
-        add("structure.pasterdream.picnic_basket", "野餐篮");
         add("structure.pasterdream.big_bubbles_6", "大气泡");
         add("structure.pasterdream.big_bubbles_7", "大气泡");
         add("structure.pasterdream.bocchi_0", "波奇");

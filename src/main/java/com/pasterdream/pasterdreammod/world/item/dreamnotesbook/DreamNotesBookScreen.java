@@ -55,8 +55,8 @@ public class DreamNotesBookScreen extends Screen
         GUIStartX = width / 2 - GUI_X / 2;
         GUIStartY = height / 2 - GUI_Y / 2;
 
-        leftArrowButton = new LeftArrowButton(width / 2 - 50, GUIStartY - 20, button -> prevPage());
-        rightArrowButton = new RightArrowButton(width / 2 + 28, GUIStartY - 20, button -> nextPage());
+        leftArrowButton = new LeftArrowButton(width / 2 - 50, height - 20, button -> prevPage());
+        rightArrowButton = new RightArrowButton(width / 2 + 28, height - 20, button -> nextPage());
         addRenderableWidget(leftArrowButton);
         addRenderableWidget(rightArrowButton);
     }
@@ -205,12 +205,12 @@ public class DreamNotesBookScreen extends Screen
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick)
     {
         renderBackground(guiGraphics);
-        super.render(guiGraphics, mouseX, mouseY, partialTick);
 
         guiGraphics.blit(GUI, GUIStartX, GUIStartY, 0, 0, GUI_X, GUI_Y, GUI_X, GUI_Y);
-        drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY - 12, (currentPage + 1) + " / " + totalPage, 0xFFFFFFFF);
-
         rendPageContent(guiGraphics);
+
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        drawCenteredStringWithOutShadow(guiGraphics, width / 2, height - 12, (currentPage + 1) + " / " + totalPage, 0xFFFFFFFF);
     }
 
     private void rendPageContent(GuiGraphics guiGraphics)
