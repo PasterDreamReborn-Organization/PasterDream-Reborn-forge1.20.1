@@ -7,15 +7,15 @@ version="${mod_version}"
 displayName="${mod_name}"
 authors="${mod_authors}"
 credits="原作 / Original: 异星之尘 (Aerolite_Dust)"
-description='''帕斯特之梦: 重生 — 1.20.1 社区重制版，经原作者授权。
-Community remake of PasterDream for 1.20.1, authorized by the original author.
+description='''帕斯特之梦: 重生 — PD社区重制版，经原作者授权。
+Community remake of PasterDream, authorized by the original author.
 
 §n致谢 / Acknowledgments:§r
 §l原作:§r 异星之尘 (Aerolite_Dust)
 §l策划:§r 拭柳喑雨 (ShiLiuYinYu)
 §l程序:§r 2884omgpy, ShiLiuYinYu, Garam
-§l美术:§r 煮饭婆 (GQ2529), Garam
-§l文案:§r 绘星tsuki(Yumihoshi), -北旭-(bei_xu), 爱摸鱼的绫苒(Akizuki Ayane)
+§l美术:§r 煮饭婆 (GQ2529), Garam, 小吴 (Vulmoon_XwX)
+§l文案:§r 绘星tsuki (Yumihoshi), -北旭- (bei_xu), 爱摸鱼的绫苒 (Akizuki Ayane), 月琴语
 §l特别感谢:§r 福米花_flow
 '''
 logoFile="logo.png"

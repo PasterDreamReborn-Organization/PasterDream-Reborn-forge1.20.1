@@ -69,8 +69,8 @@
 - **原作**: 异星之尘 (Aerolite_Dust) — 感谢授权和支持
 - **策划**: 拭柳喑雨 (ShiLiuYinYu)
 - **程序**: 2884omgpy, ShiLiuYinYu, Garam
-- **美术**: 煮饭婆 (GQ2529), Garam
-- **文案**: 绘星tsuki(Yumihoshi), -北旭-(bei_xu), 爱摸鱼的绫苒(Akizuki Ayane)
+- **美术**: 煮饭婆 (GQ2529), Garam, 小吴 (Vulmoon_XwX)
+- **文案**: 绘星tsuki (Yumihoshi), -北旭- (bei_xu), 爱摸鱼的绫苒 (Akizuki Ayane), 月琴语
 - **特别感谢**: 福米花_flow
 
 <a href="https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1/graphs/contributors">

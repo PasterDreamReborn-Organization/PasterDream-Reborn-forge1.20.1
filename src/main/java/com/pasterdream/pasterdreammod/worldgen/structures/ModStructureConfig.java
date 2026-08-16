@@ -99,7 +99,6 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:wind_infested_stone_0", "pasterdream:wind_moor_archipelago", "vegetal_decoration", "none", "very_biased_to_bottom", 59, 63, "", 64, 1, false, "rigid", "minecraft:empty", 1, 2, 1, 114139522, 1, null, false));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:wind_infested_stone_1", "pasterdream:wind_moor_archipelago", "vegetal_decoration", "none", "very_biased_to_bottom", 59, 63, "", 64, 1, false, "rigid", "minecraft:empty", 1, 2, 1, 113947148, 1, null, false));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:wind_pond", "pasterdream:wind_moor_archipelago", "top_layer_modification", "none", "very_biased_to_bottom", 59, 63, "", 64, 1, false, "rigid", "minecraft:empty", 1, 3, 2, 737290576, 1, null, false));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:picnic_basket", "pasterdream:wind_moor_archipelago", "surface_structures", "none", "absolute", 1, 1, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 20, 10, 1295591192, 1, null, false));
 
         // --- 迷梦云层（biome_1） ---
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:big_bubbles_6", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 42, 64, "", 64, 1, false, "rigid", "minecraft:empty", 1, 4, 2, 5355694, 1, null, false));
