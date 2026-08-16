@@ -1,0 +1,17 @@
+{
+  "sortnum": 8,
+  "name": "pasterdream.seniors_dream.entry.bright_butterfly_curio",
+  "icon": "pasterdream:bright_butterfly_curio",
+  "category": "pasterdream:lamp_shadow_world/items",
+  "advancement": "pasterdream:story/enter_lamp_shadow_world",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.bright_butterfly_curio.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.bright_butterfly_curio.page1"
+    }
+  ]
+}

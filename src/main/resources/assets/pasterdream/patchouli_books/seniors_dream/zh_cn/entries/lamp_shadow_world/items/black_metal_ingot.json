@@ -1,0 +1,17 @@
+{
+  "sortnum": 6,
+  "name": "pasterdream.seniors_dream.entry.black_metal_ingot",
+  "icon": "pasterdream:black_metal_ingot",
+  "category": "pasterdream:lamp_shadow_world/items",
+  "advancement": "pasterdream:story/enter_lamp_shadow_world",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.black_metal_ingot.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.black_metal_ingot.page1"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "sortnum": 12,
+  "name": "pasterdream.seniors_dream.entry.weapon_workshop",
+  "icon": "pasterdream:weapon_workshop_crafting_table",
+  "category": "pasterdream:foretold_dream/items",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.weapon_workshop.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.weapon_workshop.page1"
+    }
+  ]
+}

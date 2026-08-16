@@ -1,0 +1,7 @@
+{
+  "sortnum": 4,
+  "name": "pasterdream.seniors_dream.category.rules_shadow_difficulty",
+  "description": "pasterdream.seniors_dream.category.rules_shadow_difficulty.desc",
+  "icon": "pasterdream:shadow_desk",
+  "parent": "pasterdream:rules"
+}

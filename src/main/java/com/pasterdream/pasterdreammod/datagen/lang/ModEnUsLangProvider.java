@@ -930,6 +930,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.CHAOS_BUFF_ICON.get(), "Chaos Icon");
         add(ModItems.DREAM_WISH_BUFF_ICON.get(), "Dream Wish Icon");
         add(ModItems.COOK_BUFF_ICON.get(), "Cuisine Icon");
+        add(ModItems.SHADOW_SILENCE_BUFF_ICON.get(), "Shadow Silence Icon");
+        add(ModItems.BIND_BUFF_ICON.get(), "Bind Icon");
         add(ModItems.BLESSING_OF_CECILIA.get(), "Blessing of Cecilia");
         add("tooltip.pasterdream.blessing_of_cecilia.effect0", "§7▪ §9Passive: Forced 20% DMG Reduction");
         add("tooltip.pasterdream.blessing_of_cecilia.effect1", "§7 Upon receiving fatal damage:");

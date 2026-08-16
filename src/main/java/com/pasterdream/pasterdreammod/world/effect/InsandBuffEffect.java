@@ -37,8 +37,8 @@ public class InsandBuffEffect extends MobEffect {
         if (!(entity instanceof ServerPlayer player) || !player.isAlive()) return;
         if (player.isCreative() || player.isSpectator()) return;
         if (player.getHealth() <= 1) return;
+        if (amplifier < 2) return;
         if (ShadowDifficultyHelper.getDifficulty(player) <= 0) return;
-        // TODO: 检测 DegenerateBodys 饰品，未装备时持续扣血
         player.hurt(new DamageSource(player.serverLevel().registryAccess()
                 .registryOrThrow(Registries.DAMAGE_TYPE)
                 .getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD)), 1);
@@ -46,7 +46,6 @@ public class InsandBuffEffect extends MobEffect {
 
     @Override
     public boolean isDurationEffectTick(int duration, int amplifier) {
-        int interval = amplifier == 0 ? 20 : 10;
-        return duration % interval == 0;
+        return duration % 10 == 0;
     }
 }
