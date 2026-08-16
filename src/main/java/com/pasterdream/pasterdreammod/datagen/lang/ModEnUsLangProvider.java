@@ -1787,5 +1787,35 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.twilight_lantern.event_ready", "§5You can now resonate with the Twilight Lantern, interact with the True Shadow Bed");
         add("message.pasterdream.twilight_lantern.data_reset", "Block data reset");
         add("message.pasterdream.twilight_lantern_location", "The end of the note records coordinates in the upper Nether: X: %s Z: %s");
+        // ===== Wind Journey: wind direction mechanic =====
+        add(ModItems.WIND_VANE.get(), "Wind Vane");
+        add(ModItems.WIND_KNIGHT_FLAG.get(), "Wind Knight Flag");
+        add(ModItems.PAPER_PLANE.get(), "Paper Plane");
+        add("effect.pasterdream.tailwind_buff", "Tailwind");
+        add("effect.pasterdream.deadwind_buff", "Deadwind");
+        add("effect.pasterdream.windproof_buff", "Windproof");
+        add("effect.pasterdream.misty_dream_buff", "Misty Dream");
+        add("effect.pasterdream.cloud_mist_buff", "Cloud Mist");
+        add("tooltip.pasterdream.wind_vane.desc", "§7Detects the current wind direction and the player's angle");
+        add("message.pasterdream.wind_vane.angle", "Angle: %s Direction: %s");
+        add("tooltip.pasterdream.wind_knight_flag.effect1", "§7▪ §9Treats deadwind as tailwind");
+        add("tooltip.pasterdream.paper_plane.effect1", "§7▪ §9Amplifies the wind's effect on yourself");
+        add("tooltip.pasterdream.paper_plane.description", "§7§o-- The childhood we left behind");
+        add("message.pasterdream.wind_vane.direction.0", "Current wind: §aNorth Wind");
+        add("message.pasterdream.wind_vane.direction.1", "Current wind: §aNortheast Wind");
+        add("message.pasterdream.wind_vane.direction.2", "Current wind: §aEast Wind");
+        add("message.pasterdream.wind_vane.direction.3", "Current wind: §aSoutheast Wind");
+        add("message.pasterdream.wind_vane.direction.4", "Current wind: §aSouth Wind");
+        add("message.pasterdream.wind_vane.direction.5", "Current wind: §aSouthwest Wind");
+        add("message.pasterdream.wind_vane.direction.6", "Current wind: §aWest Wind");
+        add("message.pasterdream.wind_vane.direction.7", "Current wind: §aNorthwest Wind");
+        add("message.pasterdream.wind_direction.announce.0", "§7§oThe sun rises... The howling wind blows toward §aNorth");
+        add("message.pasterdream.wind_direction.announce.1", "§7§oThe sun rises... The howling wind blows toward §aNortheast");
+        add("message.pasterdream.wind_direction.announce.2", "§7§oThe sun rises... The howling wind blows toward §aEast");
+        add("message.pasterdream.wind_direction.announce.3", "§7§oThe sun rises... The howling wind blows toward §aSoutheast");
+        add("message.pasterdream.wind_direction.announce.4", "§7§oThe sun rises... The howling wind blows toward §aSouth");
+        add("message.pasterdream.wind_direction.announce.5", "§7§oThe sun rises... The howling wind blows toward §aSouthwest");
+        add("message.pasterdream.wind_direction.announce.6", "§7§oThe sun rises... The howling wind blows toward §aWest");
+        add("message.pasterdream.wind_direction.announce.7", "§7§oThe sun rises... The howling wind blows toward §aNorthwest");
     }
 }

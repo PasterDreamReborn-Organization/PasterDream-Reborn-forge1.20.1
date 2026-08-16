@@ -250,6 +250,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         othersRecipes(pWriter);
         thickCloudRecipes(pWriter);
         curioRecipes(pWriter);
+        windVaneRecipe(pWriter);
 
 
         // 校验所有涉及容器的配方是否能配平
@@ -2993,5 +2994,17 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 return null;
             }
         });
+    }
+
+    private void windVaneRecipe(Consumer<FinishedRecipe> pWriter) {
+        // 风向标 = 凝风铁锭 ×4 + 凝风铁栅栏 ×2
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WIND_VANE.get(), 1)
+                .pattern(" a ")
+                .pattern("aba")
+                .pattern(" b ")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .define('b', ModItems.CONGEAL_WIND_IRON_BARS.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
     }
 }

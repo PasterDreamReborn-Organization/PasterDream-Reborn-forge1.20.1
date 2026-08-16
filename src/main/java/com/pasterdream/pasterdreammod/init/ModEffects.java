@@ -88,6 +88,16 @@ public class ModEffects {
             EFFECTS.register("frozen_buff", FrozenBuffEffect::new);
     public static final RegistryObject<MobEffect> VULNERABILITY_BUFF =
             EFFECTS.register("vulnerability_buff", VulnerabilityBuffEffect::new);
+    public static final RegistryObject<MobEffect> TAILWIND_BUFF =
+            EFFECTS.register("tailwind_buff", TailwindBuffEffect::new);
+    public static final RegistryObject<MobEffect> DEADWIND_BUFF =
+            EFFECTS.register("deadwind_buff", DeadwindBuffEffect::new);
+    public static final RegistryObject<MobEffect> WINDPROOF_BUFF =
+            EFFECTS.register("windproof_buff", WindproofBuffEffect::new);
+    public static final RegistryObject<MobEffect> MISTY_DREAM_BUFF =
+            EFFECTS.register("misty_dream_buff", MistyDreamBuffEffect::new);
+    public static final RegistryObject<MobEffect> CLOUD_MIST_BUFF =
+            EFFECTS.register("cloud_mist_buff", CloudMistBuffEffect::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

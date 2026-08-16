@@ -245,6 +245,7 @@ public class PasterDreamMod
         event.registerAboveAll("san", SanTank.SAN_TANK);
         event.registerBelowAll("lose_mind", LoseMind.GUI_OVERLAY);
         event.registerAboveAll("aaroncos_hand_boss_bar", AaroncosHandBossBar.OVERLAY);
+        event.registerAboveAll("cloud_mist_hud", CloudMistHud.GUI_OVERLAY);
     }
 
     private void AddEntityRenderersEvent(EntityRenderersEvent.RegisterRenderers event)

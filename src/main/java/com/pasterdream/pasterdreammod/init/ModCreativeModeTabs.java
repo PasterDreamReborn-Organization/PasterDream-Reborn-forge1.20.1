@@ -343,6 +343,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.STORAGE_BAG.get());
                         output.accept(ModItems.LARGE_STORAGE_BAG.get());
                         output.accept(ModItems.WAR_FLAG.get());
+                        output.accept(ModItems.WIND_KNIGHT_FLAG.get());
+                        output.accept(ModItems.PAPER_PLANE.get());
+                        output.accept(ModItems.WIND_VANE.get());
                         output.accept(ModItems.CALAIS_SPICE_BOTTLE.get());
                         output.accept(ModItems.GHOST_FACE.get());
                     })

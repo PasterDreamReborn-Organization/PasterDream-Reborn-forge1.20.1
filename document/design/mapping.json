@@ -369,6 +369,9 @@
     "congeal_wind": "congeal_wind",
     "windrunner_crystal": "wind_runner_crystal",
     "wind_iron_ingot": "congeal_wind_iron_ingot",
+    "wind_vane": "wind_vane",
+    "wind_knight_flag": "wind_knight_flag",
+    "paper_plane": "paper_plane",
     "meltdream_crystal_0": "melt_dream_crystal_fragment",
     "dream_aurorian_steel": "melt_dream_aurorian_steel",
     "dream_coin_0": "melt_dream_coin",
@@ -620,11 +623,15 @@
     "goldenrod_tea_buff": "goldenrod_tea_buff",
     "dyedream_perfume_buff": "dyedream_perfume_buff",
     "teleportation_buff": "待搬运",
-    "fondillusion_buff": "待搬运",
+    "fondillusion_buff": "misty_dream_buff",
     "rest_buff": "rest_buff",
     "dream_harp_of_wanderer_buff": "dream_harp_of_wanderer_buff",
     "bind_buff": "bind_buff",
-    "shadow_silence_buff": "shadow_silence_buff"
+    "shadow_silence_buff": "shadow_silence_buff",
+    "cloudmist_buff": "cloud_mist_buff",
+    "tailwind_buff": "tailwind_buff",
+    "deadwind_buff": "deadwind_buff",
+    "windproof_buff": "windproof_buff"
   },
   "enchantments": {
     "enchantment_atkspd": "swift_strike",
