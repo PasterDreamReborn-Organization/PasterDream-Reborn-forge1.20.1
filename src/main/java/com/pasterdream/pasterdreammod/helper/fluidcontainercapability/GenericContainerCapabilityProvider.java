@@ -9,13 +9,20 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.Supplier;
+
 public class GenericContainerCapabilityProvider implements ICapabilityProvider
 {
     private final LazyOptional<IFluidHandler> holder;
 
     public GenericContainerCapabilityProvider(ItemStack itemStack)
     {
-        this.holder = LazyOptional.of(() -> new GenericContainerFluidHandler(itemStack));
+        this(() -> new GenericContainerFluidHandler(itemStack));
+    }
+
+    public GenericContainerCapabilityProvider(Supplier<IFluidHandler> factory)
+    {
+        this.holder = LazyOptional.of(() -> factory.get());
     }
 
     @Override

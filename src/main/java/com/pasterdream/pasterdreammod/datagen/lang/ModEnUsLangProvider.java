@@ -121,6 +121,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§eThe taste feels familiar, as if it came from Snow Tears Cold... wait, what?");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail", "§7You have already tasted this ice cream flavor");
         add(ModItems.ELIXIR_BOTTLE.get(), "Elixir Bottle");
+        add(ModItems.ELIXIR_BOTTLE_OF_POTION.get(), "Elixir Bottle of Potion");
+        add("tooltip.pasterdreammod.elixir_bottle_of_potion.uses", "§7Remaining uses: %s");
         add(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get(), "Elixir Bottle of Melt Dream");
         add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "Elixir Bottle of Rage Elixir");
         add("tooltip.pasterdreammod.elixir_bottle_of_rage_elixir.1", "§7Effects after drinking:");
@@ -595,6 +597,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("fluid.pasterdream.guiding_drug","Guiding Drug(fluid)");
         add("fluid.pasterdream.honey_juice","Honey Juice(fluid)");
         add("fluid.pasterdream.rage_elixir","Rage Elixir(fluid)");
+        add("fluid.pasterdream.potion","Potion(fluid)");
+        add("fluid.pasterdream.potion.with_effect","Potion (%s)");
         add("fluid.pasterdream.uncooked_dyedream_flower_tea","Uncooked Dyedream Flower Tea(fluid)");
         add("fluid.pasterdream.watermelon_juice","Watermelon Juice(fluid)");
         add("fluid.pasterdream.wind_plant_extract","Wind Plant Extract(fluid)");

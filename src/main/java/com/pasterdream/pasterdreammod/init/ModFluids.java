@@ -32,6 +32,7 @@ public class ModFluids
     public static final RegistryObject<FluidType> WIND_PLANT_EXTRACT_TYPE = FLUID_TYPES.register("wind_plant_extract", () -> WindPlantExtractFluidType.TYPE);
     public static final RegistryObject<FluidType> YEAST_TYPE = FLUID_TYPES.register("yeast", () -> YeastFluidType.TYPE);
     public static final RegistryObject<FluidType> INK_TYPE = FLUID_TYPES.register("ink", () -> InkFluidType.TYPE);
+    public static final RegistryObject<FluidType> POTION_TYPE = FLUID_TYPES.register("potion", () -> PotionFluidType.TYPE);
 
     public static final RegistryObject<Fluid> FLOWING_MELT_DREAM_LIQUID = FLUIDS.register("flowing_melt_dream_liquid", MeltDreamLiquidFluid.Flowing::new);
     public static final RegistryObject<Fluid> MELT_DREAM_LIQUID = FLUIDS.register("melt_dream_liquid", MeltDreamLiquidFluid.Source::new);
@@ -52,6 +53,7 @@ public class ModFluids
     public static final RegistryObject<Fluid> WIND_PLANT_EXTRACT = FLUIDS.register("wind_plant_extract", WindPlantExtractFluid::new);
     public static final RegistryObject<Fluid> YEAST = FLUIDS.register("yeast", YeastFluid::new);
     public static final RegistryObject<Fluid> INK = FLUIDS.register("ink", InkFluid::new);
+    public static final RegistryObject<Fluid> POTION = FLUIDS.register("potion", PotionFluid::new);
 
     public static void register(IEventBus eventBus)
     {

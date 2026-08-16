@@ -113,6 +113,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get());
         basicItem(ModItems.PINEAPPLE_LOVE_SEA.get());
         basicItem(ModItems.ELIXIR_BOTTLE.get());
+        withExistingParent(ModItems.ELIXIR_BOTTLE_OF_POTION.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/elixir_bottle"))
+                .texture("layer1", modLoc("item/elixir_bottle_overlay"));
         basicItem(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get());
         basicItem(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get());
         basicItem(ModItems.SOUL_DUST.get());

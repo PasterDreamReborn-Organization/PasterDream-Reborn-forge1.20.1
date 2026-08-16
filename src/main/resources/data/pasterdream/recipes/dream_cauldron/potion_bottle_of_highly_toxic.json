@@ -31,7 +31,7 @@
     {
       "item": "pasterdream:potion_bottle",
       "count": 1,
-      "nbt": "{PotionType:\"high_toxic\"}"
+      "nbt": "{PotionType:\"highly_toxic\"}"
     }
   ]
 }
