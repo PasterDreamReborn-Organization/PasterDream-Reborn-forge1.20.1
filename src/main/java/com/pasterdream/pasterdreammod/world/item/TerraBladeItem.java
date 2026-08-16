@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.network.skill.TerraBladeSwingPacket;
 import com.pasterdream.pasterdreammod.world.entity.TerraswordWaveEntity;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -60,6 +61,7 @@ public class TerraBladeItem extends SwordItem {
             return InteractionResultHolder.fail(player.getItemInHand(hand));
         }
         ItemStack stack = player.getItemInHand(hand);
+        if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
         if (player.isShiftKeyDown()) {
             if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
                 CompoundTag tag = stack.getOrCreateTag();
@@ -87,6 +89,10 @@ public class TerraBladeItem extends SwordItem {
         CompoundTag tag = stack.getOrCreateTag();
         if (!tag.getBoolean("skill_active")) return;
         if (!(player instanceof ServerPlayer serverPlayer)) return;
+        if (SkillLockHelper.isSkillLocked(player)) {
+            tag.putBoolean("skill_active", false);
+            return;
+        }
 
         Level level = player.level();
 

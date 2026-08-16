@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -69,6 +70,7 @@ public class ShadowSwordItem extends SwordItem {
             return InteractionResultHolder.fail(player.getItemInHand(hand));
         }
         ItemStack stack = player.getItemInHand(hand);
+        if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
         if (!level.isClientSide() && player instanceof ServerPlayer sp) {
             if (player.getCooldowns().isOnCooldown(stack.getItem())) {
                 return InteractionResultHolder.fail(stack);

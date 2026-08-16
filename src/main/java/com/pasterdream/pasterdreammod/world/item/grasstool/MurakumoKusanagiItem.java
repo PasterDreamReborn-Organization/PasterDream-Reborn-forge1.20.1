@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.grasstool;
 
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.network.chat.Component;
@@ -64,6 +65,7 @@ public class MurakumoKusanagiItem extends SwordItem {
             return InteractionResultHolder.fail(player.getItemInHand(hand));
         }
         ItemStack stack = player.getItemInHand(hand);
+        if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
         if (!level.isClientSide && !stack.getOrCreateTag().getBoolean("skill")) {
             stack.getOrCreateTag().putBoolean("skill", true);
             SkillCooldownHelper.applySharedCooldown(player, COOLDOWN_TICKS);

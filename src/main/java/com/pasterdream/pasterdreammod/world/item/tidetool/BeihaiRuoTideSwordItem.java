@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.tidetool;
 
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.core.particles.ParticleTypes;
@@ -77,6 +78,7 @@ public class BeihaiRuoTideSwordItem extends SwordItem {
             return InteractionResultHolder.fail(player.getItemInHand(hand));
         }
         ItemStack stack = player.getItemInHand(hand);
+        if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
 
         if (player.isInWaterOrBubble()) {
             if (!level.isClientSide()) {

@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.hellfiretool;
 
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.core.particles.ParticleTypes;
@@ -50,6 +51,7 @@ public class InfernoSwordItem extends SwordItem {
             return InteractionResultHolder.fail(player.getItemInHand(hand));
         }
         ItemStack stack = player.getItemInHand(hand);
+        if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
         if (!level.isClientSide && !stack.getOrCreateTag().getBoolean(TAG_SKILL)) {
             stack.getOrCreateTag().putBoolean(TAG_SKILL, true);
             SkillCooldownHelper.applySharedCooldown(player, SKILL_COOLDOWN_TICKS);

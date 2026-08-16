@@ -1389,7 +1389,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.magnifying_glass_of_sherry.3", "§7▪ §9挖掘速度 +50%");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.4", "§7▪ §9近战伤害 +100%");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.5", "§7▪ §9未使用武器时，伤害 +200%");
-        add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§f▪ §4融梦能量恒定为 0");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§f▪ §4无法释放武器战技");
+        add("message.pasterdream.skill_locked", "§c战技被锁，无法释放");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.7", "§7bei_xu的专属遗物。");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.8", "§6PasterDream: Reborn 文案");
 
