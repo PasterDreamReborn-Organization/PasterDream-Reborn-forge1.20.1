@@ -1256,7 +1256,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("command.pasterdream.lowsan.sound.get", "%s: %s");
         add("item.pasterdream.star_wish_rod", "占星者的祈愿");
         add("tooltip.pasterdream.star_wish_rod.desc", "§7▪ §9手持钓鱼时深海秘宝额外必出超级变体");
-        add("tooltip.pasterdream.star_wish_rod", "§7§O --鱼儿如满天繁星");
+        add("tooltip.pasterdream.star_wish_rod", "§7§O --鱼儿如浩空繁星");
         add("command.pasterdream.lowsan.enabled", "启用");
         add("command.pasterdream.lowsan.disabled", "禁用");
         add("gamerule.category.pasterdream", "帕斯特之梦");
