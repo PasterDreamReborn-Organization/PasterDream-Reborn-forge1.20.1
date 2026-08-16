@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item.curio;
 
+import com.pasterdream.pasterdreammod.capability.san.ISanModifier;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import net.minecraft.network.chat.Component;
@@ -14,10 +15,15 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class BroochOfWhiteOrchidItem extends Item implements ICurioItem {
+public class BroochOfWhiteOrchidItem extends Item implements ICurioItem, ISanModifier {
 
     public BroochOfWhiteOrchidItem() {
         super(new Item.Properties().stacksTo(1).rarity(ModRarities.EPIC));
+    }
+
+    @Override
+    public double modifyEnvRate(double envRate) {
+        return Math.max(envRate, 0.0);
     }
 
     @Override

@@ -1219,7 +1219,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.magnifying_glass_of_sherry.2", "§7Actually, Xu didn't know what relic to make at the time, but he really liked Tachibana Sherry, so this is what happened.");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.3", "§7▪ §9+50% Mining Speed");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.4", "§7▪ §9+100% Melee Damage");
-        add("tooltip.pasterdream.magnifying_glass_of_sherry.5", "§7▪ §9+200% Damage when not using a weapon");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.5", "§7▪ §9+200% Damage when bare-handed");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§f▪ §4Weapon skills cannot be released");
         add("message.pasterdream.skill_locked", "§cSkill locked");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.7", "§7Exclusive memento of bei_xu.");

@@ -9,12 +9,15 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class SanBiomeRateManager extends SimpleJsonResourceReloadListener
 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(SanBiomeRateManager.class);
     private static final Gson GSON = new GsonBuilder().create();
     private static final Map<ResourceLocation, Double> BIOME_RATES = new HashMap<>();
 
@@ -52,7 +55,7 @@ public class SanBiomeRateManager extends SimpleJsonResourceReloadListener
             }
             catch (Exception e)
             {
-                System.out.println("群系san值文件加载错误，文件名：" + fileId + "，" + e);
+                LOGGER.warn("群系san值文件加载错误，文件名：{}", fileId, e);
             }
         }
     }

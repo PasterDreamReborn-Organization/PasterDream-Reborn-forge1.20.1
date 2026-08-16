@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.curio;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.pasterdream.pasterdreammod.capability.san.ISanModifier;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import net.minecraft.network.chat.Component;
@@ -22,7 +23,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public class SealOfTheCorruptedItem extends Item implements ICurioItem {
+public class SealOfTheCorruptedItem extends Item implements ICurioItem, ISanModifier {
 
     private static final UUID ENTITY_REACH_UUID = UUID.fromString("b84e7f10-74e3-43f5-95f9-968877248549");
     private static final UUID BLOCK_REACH_UUID = UUID.fromString("f55792ba-17c1-43bb-86ac-ff805d06ce3c");
@@ -30,6 +31,11 @@ public class SealOfTheCorruptedItem extends Item implements ICurioItem {
 
     public SealOfTheCorruptedItem() {
         super(new Properties().stacksTo(1).rarity(ModRarities.EPIC));
+    }
+
+    @Override
+    public boolean immuneToNegativeEffects() {
+        return true;
     }
 
     @Override
