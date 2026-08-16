@@ -50,10 +50,10 @@ public class BlueprintPlacementManager
         Direction facing = player.getDirection();
         Rotation rotation = switch (facing)
         {
-            case EAST -> Rotation.NONE;
-            case SOUTH  -> Rotation.CLOCKWISE_90;
-            case WEST -> Rotation.CLOCKWISE_180;
-            case NORTH  -> Rotation.COUNTERCLOCKWISE_90;
+            case EAST  -> Rotation.NONE;
+            case SOUTH -> Rotation.CLOCKWISE_90;
+            case WEST  -> Rotation.CLOCKWISE_180;
+            case NORTH -> Rotation.COUNTERCLOCKWISE_90;
             default    -> Rotation.NONE;
         };
 

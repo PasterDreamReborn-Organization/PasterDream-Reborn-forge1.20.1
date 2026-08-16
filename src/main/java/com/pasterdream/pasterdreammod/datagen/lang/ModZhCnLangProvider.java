@@ -675,6 +675,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.loot_generator.loot_table_set", "§a已清空容器并写入战利品表：%s，下次打开容器时生成战利品");
 
         add("message.pasterdream.已放置蓝图", "已放置蓝图");
+        add("message.pasterdream.取消放置蓝图", "取消放置蓝图");
         add("message.pasterdream.蓝图放置失败", "蓝图放置失败");
         add("message.pasterdream.材料不足", "材料不足");
         add("button.pasterdream.blue_print_button", "放置");
