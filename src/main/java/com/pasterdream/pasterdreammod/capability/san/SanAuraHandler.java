@@ -6,98 +6,101 @@ import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateManager;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
-import com.pasterdream.pasterdreammod.init.ModItems;
-import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
+import com.pasterdream.pasterdreammod.world.item.StrawberryHeartItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import top.theillusivec4.curios.api.CuriosApi;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.List;
 
 /**
  * 理智光环处理器：每 tick 评估环境修正与属性叠加，驱动 San 值变化。
  * <p>
  * 数据流：装备/效果 → SAN_VARIABILITY 属性 → 每 tick 转化率 → San Capability
  * → 根据 San 百分比施加对应的阈值效果。
+ * 物品对 SAN 的交互通过 {@link ISanModifier} 声明，本类不再硬编码具体物品检测。
  */
 @Mod.EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
 public class SanAuraHandler {
 
     /** 将"每分钟变化量"转为"每 tick 变化量"的除数 */
     private static final double TICKS_PER_MINUTE = 1200.0;
+    /** 光照中性等级：低于此值 San 下降，高于此值 San 回升 */
+    private static final int LIGHT_NEUTRAL_LEVEL = 7;
+    /** 每偏离中性光照 1 级对应的每 tick SAN 变化率 */
+    private static final double LIGHT_RATE_PER_LEVEL = 0.0001;
+    /** 阈值效果的持续时间（tick） */
+    private static final int THRESHOLD_EFFECT_DURATION = 20;
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player)) {
-            return;
-        }
+        if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player)) return;
         if (!SanHelper.getIsSanEnabled(player)) return;
         if (player.isSpectator()) return;
 
         Level level = player.level();
         BlockPos pos = player.blockPosition();
 
-        // 1. 读取属性叠加后的总变化率（每分钟变化量）
-        double sanVariability = player.getAttributeValue(ModAttributes.SAN_VARIABILITY.get());
-        double attributeRate = sanVariability / TICKS_PER_MINUTE;
+        // 装备中的 SAN 修正器（护甲 + 饰品）
+        List<ISanModifier> modifiers = SanHelper.getEquippedSanModifiers(player);
+        boolean freezeSan = modifiers.stream().anyMatch(ISanModifier::freezesSan);
+        boolean immuneNegative = modifiers.stream().anyMatch(ISanModifier::immuneToNegativeEffects);
 
-        // 2. 群系修正（来自 data/pasterdream/san_biome_rates/）
-        ResourceLocation biomeId = level.getBiome(pos).unwrapKey()
-                .map(ResourceKey::location).orElse(null);
+        // 1. 属性变化率（每分钟变化量 → 每 tick）
+        double attributeRate = player.getAttributeValue(ModAttributes.SAN_VARIABILITY.get()) / TICKS_PER_MINUTE;
+
+        // 2. 群系修正
+        ResourceLocation biomeId = level.getBiome(pos).unwrapKey().map(ResourceKey::location).orElse(null);
         double biomeRate = biomeId != null ? SanBiomeRateManager.getRate(biomeId) : 0.0;
 
-        // 猫耳饰品保持 SAN 始终为上限，跳过环境 SAN 变化，避免时序冲突
-        boolean hasCatEars = player.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof QymCatEarsItem;
-        boolean hasWhiteOrchidBrooch = CuriosApi.getCuriosInventory(player)
-                .map(h -> h.findFirstCurio(ModItems.BROOCH_OF_WHITE_ORCHID.get()).isPresent())
-                .orElse(false);
-        boolean hasSealOfCorrupted = CuriosApi.getCuriosInventory(player)
-                .map(h -> h.findFirstCurio(ModItems.SEAL_OF_THE_CORRUPTED.get()).isPresent())
-                .orElse(false);
-        // 白厄花胸针：拦截负向群系修正
-        if (hasWhiteOrchidBrooch && biomeRate < 0) {
-            biomeRate = 0;
-        }
+        // 3. 光照修正
+        double lightRate = (level.getMaxLocalRawBrightness(pos) - LIGHT_NEUTRAL_LEVEL) * LIGHT_RATE_PER_LEVEL;
 
-        // 3. 光照修正：亮度 < 7 时 San 下降，亮度 > 7 时 San 回升
-        int light = level.getMaxLocalRawBrightness(pos);
-        double lightRate = (light - 7) * 0.0001;
-
+        // 4. 环境变化率（群系 + 光照）+ 物品修正
         double envRate = biomeRate + lightRate;
-        // 白厄花胸针：拦截负向环境 SAN 变化（群系+光照），attributeRate 不受影响
-        if (hasWhiteOrchidBrooch && envRate < 0) {
-            envRate = 0;
+        for (ISanModifier modifier : modifiers) {
+            envRate = modifier.modifyEnvRate(envRate);
         }
 
         double totalRate = attributeRate + envRate;
-        if (totalRate != 0 && !hasCatEars) {
+        if (totalRate != 0 && !freezeSan) {
             SanHelper.addPlayerSanAndSync(player, totalRate);
         }
 
-        // 4. San 阈值效果
+        // 5. SAN 阈值效果
+        applyThresholdEffects(player, immuneNegative);
+    }
+
+    private static void applyThresholdEffects(ServerPlayer player, boolean immuneNegative) {
         player.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
             double ratio = cap.getSanValue() / cap.getMaxSanValue();
+
             if (ratio >= Config.sanCheerUpThreshold) {
-                player.addEffect(new MobEffectInstance(ModEffects.CHEER_UP_BUFF.get(), 20, 0, false, false));
-            } else if (hasSealOfCorrupted) {
-                // 堕落者之印：免疫不振/恍惚/疯狂负面效果，不施加任何负面效果
-            } else if (ratio < Config.sanLethargyUpperThreshold && ratio >= Config.sanLethargyLowerThreshold) {
-                if (!player.getPersistentData().getBoolean("pasterdream:strawberry_san_aura")) {
-                    player.addEffect(new MobEffectInstance(ModEffects.LETHARGY_BUFF.get(), 20, 0, false, false));
+                player.addEffect(new MobEffectInstance(ModEffects.CHEER_UP_BUFF.get(),
+                        THRESHOLD_EFFECT_DURATION, 0, false, false));
+                return;
+            }
+            if (immuneNegative) return;
+
+            if (ratio < Config.sanLethargyUpperThreshold && ratio >= Config.sanLethargyLowerThreshold) {
+                if (!player.getPersistentData().getBoolean(StrawberryHeartItem.SAN_AURA_TAG)) {
+                    player.addEffect(new MobEffectInstance(ModEffects.LETHARGY_BUFF.get(),
+                            THRESHOLD_EFFECT_DURATION, 0, false, false));
                 }
             } else if (ratio < Config.sanLethargyLowerThreshold && ratio >= Config.sanTranceLowerThreshold) {
-                player.addEffect(new MobEffectInstance(ModEffects.TRANCE_BUFF.get(), 20, 0, false, false));
+                player.addEffect(new MobEffectInstance(ModEffects.TRANCE_BUFF.get(),
+                        THRESHOLD_EFFECT_DURATION, 0, false, false));
             } else if (ratio < Config.sanTranceLowerThreshold) {
-                int lv = ratio < Config.sanInsandLv3Threshold ? 2 : ratio < Config.sanInsandLv2Threshold ? 1 : 0;
-                player.addEffect(new MobEffectInstance(ModEffects.INSAND_BUFF.get(), 20, lv, false, false));
+                int level = ratio < Config.sanInsandLv3Threshold ? 2 : ratio < Config.sanInsandLv2Threshold ? 1 : 0;
+                player.addEffect(new MobEffectInstance(ModEffects.INSAND_BUFF.get(),
+                        THRESHOLD_EFFECT_DURATION, level, false, false));
             }
         });
     }

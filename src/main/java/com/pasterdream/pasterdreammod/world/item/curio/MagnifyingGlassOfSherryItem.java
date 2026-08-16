@@ -1,10 +1,8 @@
 package com.pasterdream.pasterdreammod.world.item.curio;
 
-import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -25,15 +23,6 @@ public class MagnifyingGlassOfSherryItem extends Item implements ICurioItem {
     @Override
     public boolean isFoil(ItemStack stack) {
         return true;
-    }
-
-    @Override
-    public void curioTick(SlotContext slotContext, ItemStack stack) {
-        if (!(slotContext.entity() instanceof ServerPlayer player)) return;
-        if (player.tickCount % 20 != 0) return;
-        if (MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(player) != 0.0) {
-            MeltDreamEnergyHelper.setPlayerMeltDreamEnergyAndSync(player, 0.0);
-        }
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item.armoritem.qym;
 
+import com.pasterdream.pasterdreammod.capability.san.ISanModifier;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
@@ -30,10 +31,15 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
-public class QymCatEarsItem extends ArmorItem {
+public class QymCatEarsItem extends ArmorItem implements ISanModifier {
 
     public QymCatEarsItem(ArmorMaterial material, Type type, Properties properties) {
         super(material, type, properties.fireResistant());
+    }
+
+    @Override
+    public boolean freezesSan() {
+        return true;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.iceshadowhammertool;
 
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.entity.shakingcrystal.ShakingCrystalEntity;
@@ -52,6 +53,7 @@ public class IceShadowHammerItem extends SwordItem {
         if (player == null || context.getHand() == net.minecraft.world.InteractionHand.OFF_HAND)
             return InteractionResult.FAIL;
         if (level.isClientSide()) return InteractionResult.SUCCESS;
+        if (SkillLockHelper.isSkillLocked(player)) return InteractionResult.FAIL;
 
         ServerPlayer sp = (ServerPlayer) player;
         ServerLevel serverLevel = (ServerLevel) level;

@@ -31,7 +31,7 @@ public class StrawberryHeartItem extends Item {
     private static final double SAN_AURA_RATE = 27.0; // SAN_VARIABILITY 加成 = 3.6 SAN / 8s → 27/min
     private static final double SAN_INSTANT = 2.0;
     private static final UUID SAN_AURA_UUID = UUID.fromString("a1b2c3d4-e5f6-7890-abcd-ef5678901234");
-    private static final String SAN_AURA_TAG = "pasterdream:strawberry_san_aura";
+    public static final String SAN_AURA_TAG = "pasterdream:strawberry_san_aura";
 
     public StrawberryHeartItem() {
         super(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC));

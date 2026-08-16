@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.meltdreamtool;
 
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
@@ -47,6 +48,7 @@ public class SharpMeltDreamSwordItem extends SwordItem {
             return InteractionResultHolder.fail(player.getItemInHand(hand));
         }
         ItemStack stack = player.getItemInHand(hand);
+        if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
         if (!level.isClientSide) {
             long now = level.getGameTime();
             long lastUse = stack.getOrCreateTag().getLong(TAG_COOLDOWN);

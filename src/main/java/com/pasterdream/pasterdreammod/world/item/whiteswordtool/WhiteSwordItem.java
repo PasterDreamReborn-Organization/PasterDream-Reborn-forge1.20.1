@@ -34,6 +34,7 @@ import java.util.Optional;
 
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -69,6 +70,7 @@ public class WhiteSwordItem extends SwordItem {
             return InteractionResultHolder.fail(player.getItemInHand(hand));
         }
         ItemStack stack = player.getItemInHand(hand);
+        if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
         if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
             // TODO: Check for advancement achievement_talent_light once advancement system is ported
             if (player.isCreative() || checkEnergy(serverPlayer)) {
@@ -147,6 +149,7 @@ public class WhiteSwordItem extends SwordItem {
 
     /** Passive: 50% chance on melee attack to release homing arrow rain toward the target. */
     public static void triggerHomingRain(Level level, Player player, LivingEntity target) {
+        if (SkillLockHelper.isSkillLocked(player)) return;
         if (!(level instanceof ServerLevel serverLevel)) return;
 
         Vec3 look = player.getViewVector(1f);

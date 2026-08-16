@@ -5,7 +5,12 @@ import com.pasterdream.pasterdreammod.network.san.IsSanEnableSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.MaxSanSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import top.theillusivec4.curios.api.CuriosApi;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class SanHelper
@@ -83,5 +88,24 @@ public class SanHelper
             maxSanValue.set(capability.getMaxSanValue());
         });
         return maxSanValue.get();
+    }
+
+    /**
+     * 收集玩家已装备的 SAN 修正器（护甲槽 + Curios 饰品中实现 {@link ISanModifier} 的物品）。
+     */
+    public static List<ISanModifier> getEquippedSanModifiers(Player player)
+    {
+        List<ISanModifier> modifiers = new ArrayList<>();
+        for (ItemStack stack : player.getArmorSlots())
+        {
+            if (stack.getItem() instanceof ISanModifier modifier)
+            {
+                modifiers.add(modifier);
+            }
+        }
+        CuriosApi.getCuriosInventory(player).ifPresent(handler ->
+                handler.findCurios(stack -> stack.getItem() instanceof ISanModifier)
+                        .forEach(slotResult -> modifiers.add((ISanModifier) slotResult.stack().getItem())));
+        return modifiers;
     }
 }

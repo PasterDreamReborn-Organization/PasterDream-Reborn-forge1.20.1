@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.capability.san;
 
+import net.minecraft.util.Mth;
+
 public class San implements ISan
 {
     private double sanValue = 100.0;
@@ -21,32 +23,8 @@ public class San implements ISan
     @Override
     public void addSanValue(double delta)
     {
-        if(isEnabled)
-        {
-            if(delta < 0)
-            {
-                if(sanValue + delta >= 0)
-                {
-                    setSanValue(sanValue + delta);
-                }
-                    else
-                    {
-                        setSanValue(0);
-                    }
-            }
-            else
-                if(delta > 0)
-                {
-                    if(sanValue + delta <= maxSanValue)
-                    {
-                        setSanValue(sanValue + delta);
-                    }
-                        else
-                        {
-                            setSanValue(maxSanValue);
-                        }
-                }
-        }
+        if(!isEnabled) return;
+        setSanValue(Mth.clamp(sanValue + delta, 0.0, maxSanValue));
     }
 
     @Override
@@ -76,7 +54,7 @@ public class San implements ISan
     @Override
     public void addMaxSanValue(double delta)
     {
-        setSanValue(delta + maxSanValue);
+        setMaxSanValue(delta + maxSanValue);
     }
 
     @Override
