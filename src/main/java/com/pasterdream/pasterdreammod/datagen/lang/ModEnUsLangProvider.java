@@ -1214,6 +1214,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.10", "§6PasterDream: Reborn Copywriter");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.cooldown", "§cThe soul gem's power is still cooling down");
 
+        add(ModItems.MAGNIFYING_GLASS_OF_SHERRY.get(), "Detective's Magnifying Glass");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.1", "§7\"My super intelligence tells me it's time to use my super strength!\"");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.2", "§7Actually, Xu didn't know what relic to make at the time, but he really liked Tachibana Sherry, so this is what happened.");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.3", "§7▪ §9+50% Mining Speed");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.4", "§7▪ §9+100% Melee Damage");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.5", "§7▪ §9+200% Damage when not using a weapon");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§f▪ §4Melt Dream Energy is always 0");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.7", "§7Exclusive memento of bei_xu.");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.8", "§6PasterDream: Reborn Copywriter");
+
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");
         add("tooltip.pasterdream.qym_cat_ears.san", "§7▪ §9SAN always at maximum");
