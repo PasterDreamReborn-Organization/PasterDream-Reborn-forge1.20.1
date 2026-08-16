@@ -675,6 +675,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.融梦能量不足", "Melt Dream Energy Not Enough");
 
         add("message.pasterdream.已放置蓝图", "Blue Print Placed");
+        add("message.pasterdream.取消放置蓝图", "Blue Print Place Cancel");
         add("message.pasterdream.蓝图放置失败", "Blue Print Place Failed");
         add("message.pasterdream.材料不足", "Material Not Enough");
         add("button.pasterdream.blue_print_button", "Place");

@@ -56,6 +56,7 @@ public class BluePrintItem extends Item
                     ModNetwork.CHANNEL.sendToServer(new UpdateBlueprintPlacingPacket(false));
                     player.displayClientMessage(Component.translatable("message.pasterdream.取消放置蓝图"), true);
                 }
+            ClientBluePrintPlacement.cancel();
         }
             else
             {
