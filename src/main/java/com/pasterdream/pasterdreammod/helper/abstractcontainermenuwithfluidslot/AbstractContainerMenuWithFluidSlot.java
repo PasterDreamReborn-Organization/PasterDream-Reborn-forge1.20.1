@@ -1,19 +1,24 @@
 package com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot;
 
 import com.pasterdream.pasterdreammod.init.ModNetwork;
+import com.pasterdream.pasterdreammod.network.fluidslot.FluidSoundPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSyncPacket;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.fluids.FluidActionResult;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.network.PacketDistributor;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -204,6 +209,23 @@ public abstract class AbstractContainerMenuWithFluidSlot extends AbstractContain
 
             slot.setFluid(handler.getFluidInTank(0));
 
+            if (button == 0)
+            {
+                FluidStack soundFluid = current;
+                if (!soundFluid.isEmpty())
+                {
+                    ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) player), new FluidSoundPacket(ForgeRegistries.FLUIDS.getKey(soundFluid.getFluid()), true));
+                }
+            }
+                else
+                {
+                    FluidStack soundFluid = slot.getFluid();
+                    if (!soundFluid.isEmpty())
+                    {
+                        ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) player), new FluidSoundPacket(ForgeRegistries.FLUIDS.getKey(soundFluid.getFluid()), true));
+                    }
+                }
+
             FluidStack[] allFluids = getFluidSlots().stream().map(FluidSlot::getFluid).toArray(FluidStack[]::new);
             ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) player), new FluidSyncPacket(this.containerId, allFluids));
         }
@@ -248,7 +270,7 @@ public abstract class AbstractContainerMenuWithFluidSlot extends AbstractContain
         @Override
         public int fill(FluidStack resource, FluidAction action)
         {
-            if (resource.isEmpty())
+            if (resource.isEmpty() || (!fluid.isEmpty() && (!resource.getFluid().equals(fluid.getFluid()) || (fluid.getTag() != null && !resource.getTag().equals(fluid.getTag())))))
             {
                 return 0;
             }
