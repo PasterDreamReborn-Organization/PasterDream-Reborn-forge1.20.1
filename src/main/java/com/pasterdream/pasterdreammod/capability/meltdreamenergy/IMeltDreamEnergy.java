@@ -9,6 +9,9 @@ public interface IMeltDreamEnergy
     void setIsOrNotNeedConsumeDreamEnergy(boolean isNotNeed);
     boolean getIsOrNotNeedConsumeDreamEnergy();
 
+    void setIsConsumeDoubled(boolean isConsumeDoubled);
+    boolean isConsumeDoubled();
+
     double getMaxMeltDreamEnergy();
     void setMaxMeltDreamEnergy(double maxMeltDreamEnergy);
     void addMaxMeltDreamEnergy(double delta);

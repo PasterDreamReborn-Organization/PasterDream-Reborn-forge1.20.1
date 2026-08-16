@@ -1075,6 +1075,8 @@ public class ModItems {
             BroochOfWhiteOrchidItem::new);
     public static final RegistryObject<Item> SEAL_OF_THE_CORRUPTED = ITEMS.register("seal_of_the_corrupted",
             SealOfTheCorruptedItem::new);
+    public static final RegistryObject<Item> SOUL_GEM_OF_AKIZUKI_AYANE = ITEMS.register("soul_gem_of_akizuki_ayane",
+            SoulGemOfAkizukiAyaneItem::new);
 
     // ===== 饰品（通用） =====
     public static final RegistryObject<Item> WAR_FLAG = ITEMS.register("war_flag",

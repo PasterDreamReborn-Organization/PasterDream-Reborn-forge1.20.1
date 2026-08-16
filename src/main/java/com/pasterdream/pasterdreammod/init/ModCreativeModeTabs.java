@@ -885,6 +885,7 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.MEMORY_GEM.get());
                         output.accept(ModItems.REBIRTH_DREAM_CRYSTAL.get());
+                        output.accept(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get());
                         output.accept(ModItems.EMPTY_VESSEL.get());
                     })
                     .build());

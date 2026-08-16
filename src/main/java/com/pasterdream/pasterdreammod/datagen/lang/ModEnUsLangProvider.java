@@ -1201,6 +1201,19 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7Shift right-click to release the soul within.");
         add("tooltip.pasterdream.rebirth_dream_crystal.7", "§6PasterDream: Reborn Developer");
 
+        add(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get(), "Soul Gem of Akizuki Ayane");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.1", "§7\"I bestow upon you my legacy magic, to walk beside you and witness the dreams you see\"");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.2", "§7An experimental creation by a great mage to protect her shattered soul. Once her soul was restored, this materialized soul lost its meaning.");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.3", "§7▪ §9Restores 1.5 Melt Dream Energy per second");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.4", "§7▪ §9+40% Skill Damage");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.5", "§7▪ §9+50% Magic Damage");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.6", "§f▪ §4Melt Dream Energy consumption doubled");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.7", "§f▪ §4Damage taken is doubled when Melt Dream Energy is below 30");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.8", "§7Exclusive memento of Ayane.");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.9", "§7Shift right-click to fully restore Melt Dream Energy and disable its consumption for 2 minutes (3 min cooldown)");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.10", "§6PasterDream: Reborn Copywriter");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.cooldown", "§cThe soul gem's power is still cooling down");
+
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");
         add("tooltip.pasterdream.qym_cat_ears.san", "§7▪ §9SAN always at maximum");

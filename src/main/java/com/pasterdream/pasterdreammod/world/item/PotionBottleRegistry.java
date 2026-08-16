@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.MagicDamageHelper;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
@@ -302,7 +303,11 @@ public class PotionBottleRegistry {
                         pos.x + r, pos.y + r, pos.z + r),
                 e -> e != thrower)
                 .forEach(e -> {
-                    e.hurt(e.damageSources().magic(), 3.0f);
+                    float magic = 3.0f;
+                    if (thrower instanceof Player pl) {
+                        magic *= MagicDamageHelper.getMagicDamageMultiplier(pl);
+                    }
+                    e.hurt(e.damageSources().magic(), magic);
                     e.setSecondsOnFire(4);
                     // 易伤叠加，每波+1级，最高3级
                     var vuln = ModEffects.VULNERABILITY_BUFF.get();
