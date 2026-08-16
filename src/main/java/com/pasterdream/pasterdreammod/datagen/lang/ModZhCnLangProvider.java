@@ -1371,7 +1371,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.rebirth_dream_crystal.3", "§7▪ §9+12 理智光环");
         add("tooltip.pasterdream.rebirth_dream_crystal.4", "§7▪ §9每10秒获得12秒回避");
         add("tooltip.pasterdream.rebirth_dream_crystal.5", "§7ShiLiuYinYu的专属遗物。");
-        add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7shift右键释放遗物中的灵魂。");
+        add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7shift右键销毁自身并释放遗物中的灵魂。");
         add("tooltip.pasterdream.rebirth_dream_crystal.7", "§6PasterDream: Reborn开发者");
 
         add(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get(), "魔法使的灵魂石");
@@ -1389,7 +1389,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add(ModItems.MAGNIFYING_GLASS_OF_SHERRY.get(), "大侦探的放大镜");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.1", "§7\"我的超级智慧告诉我该使用我的超级力量了！\"");
-        add("tooltip.pasterdream.magnifying_glass_of_sherry.2", "§7其实旭当时也不知道做什么遗物，不过他当时很喜欢橘雪莉，所以就这样了。");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.2", "§7其实北旭当时也不知道做什么遗物，不过他当时很喜欢橘雪莉，所以就这样了。");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.3", "§7▪ §9挖掘速度 +50%");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.4", "§7▪ §9近战伤害 +100%");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.5", "§7▪ §9空手时伤害 +200%");

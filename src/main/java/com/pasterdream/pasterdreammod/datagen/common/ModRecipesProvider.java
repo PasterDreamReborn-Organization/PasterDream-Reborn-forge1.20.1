@@ -2069,15 +2069,16 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
                 .save(pWriter);
 
-        // 药引瓶合成
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(), 2)
-                .requires(ModItems.MORTAR.get())
-                .requires(ModItems.GLASS_JAR_OF_WATER.get(),2)
-                .requires(Items.NETHER_WART)
-                .requires(ModItems.LINHT_FLOWER.get())
-                .requires(ModItems.SOUL_DUST.get())
-                .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
-                .save(pWriter);
+        // 药引瓶合成（研钵作为工具不消耗）
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(), 2)
+                        .requires(ModItems.MORTAR.get())
+                        .requires(ModItems.GLASS_JAR_OF_WATER.get(), 2)
+                        .requires(Items.NETHER_WART)
+                        .requires(ModItems.LINHT_FLOWER.get())
+                        .requires(ModItems.SOUL_DUST.get())
+                        .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get())),
+                pWriter, "glass_jar_of_guiding_drug");
 
         // 玻璃杯合成配方（支持所有玻璃板tag）
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GLASS_CUP.get(), 4)
@@ -2444,17 +2445,18 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     // ===== 其他杂项类合成配方 =====
     private void othersRecipes(Consumer<FinishedRecipe> pWriter) {
 
-        // 风植萃取液合成配方
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), 2)
-                .requires(ModItems.MORTAR.get())
-                .requires(ModItems.GLASS_JAR.get(),2)
-                .requires(ModItems.WIND_ISLAND_REED.get())
-                .requires(ModItems.WIND_CLEAVING_GRASS.get())
-                .requires(ModItems.WIND_FEATHER_GRASS.get())
-                .requires(ModItems.HAIRY_MOSS.get())
-                .unlockedBy(getHasName(ModItems.MORTAR.get()),
-                        has(ModItems.MORTAR.get()))
-                .save(pWriter);
+        // 风植萃取液合成配方（研钵作为工具不消耗）
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(), 2)
+                        .requires(ModItems.MORTAR.get())
+                        .requires(ModItems.GLASS_JAR.get(), 2)
+                        .requires(ModItems.WIND_ISLAND_REED.get())
+                        .requires(ModItems.WIND_CLEAVING_GRASS.get())
+                        .requires(ModItems.WIND_FEATHER_GRASS.get())
+                        .requires(ModItems.HAIRY_MOSS.get())
+                        .unlockedBy(getHasName(ModItems.MORTAR.get()),
+                                has(ModItems.MORTAR.get())),
+                pWriter, "glass_jar_of_wind_plant_extract");
 
         // 厚重阴影 (4 shadow → 1 thick_shadow)
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.THICK_SHADOW.get(), 1)

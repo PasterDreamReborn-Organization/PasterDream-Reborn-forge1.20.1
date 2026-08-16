@@ -1202,7 +1202,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.rebirth_dream_crystal.3", "§7▪ §9+12 Sanity Aura");
         add("tooltip.pasterdream.rebirth_dream_crystal.4", "§7▪ §9Gains 12s Evasion every 10s");
         add("tooltip.pasterdream.rebirth_dream_crystal.5", "§7Exclusive memento of ShiLiuYinYu.");
-        add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7Shift right-click to release the soul within.");
+        add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7Shift right-click to destroy itself and release the soul within.");
         add("tooltip.pasterdream.rebirth_dream_crystal.7", "§6PasterDream: Reborn Developer");
 
         add(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get(), "Soul Gem of Akizuki Ayane");
@@ -1220,7 +1220,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add(ModItems.MAGNIFYING_GLASS_OF_SHERRY.get(), "Detective's Magnifying Glass");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.1", "§7\"My super intelligence tells me it's time to use my super strength!\"");
-        add("tooltip.pasterdream.magnifying_glass_of_sherry.2", "§7Actually, Xu didn't know what relic to make at the time, but he really liked Tachibana Sherry, so this is what happened.");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.2", "§7Actually, Bei_xu didn't know what relic to make at the time, but he really liked Tachibana Sherry, so this is what happened.");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.3", "§7▪ §9+50% Mining Speed");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.4", "§7▪ §9+100% Melee Damage");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.5", "§7▪ §9+200% Damage when bare-handed");
