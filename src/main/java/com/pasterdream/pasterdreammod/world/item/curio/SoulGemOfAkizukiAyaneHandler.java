@@ -58,6 +58,7 @@ public class SoulGemOfAkizukiAyaneHandler {
         } else {
             pd.remove(NO_CONSUME_TICKS_KEY);
             MeltDreamEnergyHelper.setPlayerMeltDreamEnergyIsNeed(sp, true);
+            SoulGemOfAkizukiAyaneItem.removeActivationBuff(sp);
         }
     }
 }
