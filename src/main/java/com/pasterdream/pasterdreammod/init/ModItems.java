@@ -1027,6 +1027,10 @@ public class ModItems {
             IceShadowCurioItem::new);
     public static final RegistryObject<Item> BOBOJI_CURIO = ITEMS.register("boboji_curio",
             BobojiCurioItem::new);
+    public static final RegistryObject<Item> MOSS_PHANTOM_MEMBRANE = ITEMS.register("moss_phantom_membrane",
+            MossPhantomMembraneItem::new);
+    public static final RegistryObject<Item> LIGHT_MOSS_PHANTOM_MEMBRANE = ITEMS.register("light_moss_phantom_membrane",
+            LightMossPhantomMembraneItem::new);
     public static final RegistryObject<Item> QYM_BUTTERFLY_STAR_HAIRPIN = ITEMS.register("qym_butterfly_star_hairpin",
             QymButterflyStarHairpinItem::new);
     public static final RegistryObject<Item> HIYORI_BUTTERFLY_HAIRPIN = ITEMS.register("hiyori_butterfly_hairpin",

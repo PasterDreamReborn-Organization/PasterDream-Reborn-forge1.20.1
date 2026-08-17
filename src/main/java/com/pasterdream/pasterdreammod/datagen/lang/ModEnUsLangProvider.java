@@ -984,6 +984,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.boboji_curio.effect.flavor", "§7▪ §eAdds sound effects and particle trails to Blink");
         add("tooltip.pasterdream.boboji_curio.lore", "§7§oDedicated to the one who once accompanied me");
         add("tooltip.pasterdream.boboji_curio.dedication", "§7§o-- A yellow-green budgerigar named Boboji");
+        add(ModItems.MOSS_PHANTOM_MEMBRANE.get(), "Moss Phantom Membrane");
+        add("tooltip.pasterdream.moss_phantom_membrane.effect", "§7▪ §9Slowly repairs the equipped Elytra in bright light");
+        add(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get(), "Light Moss Phantom Membrane");
+        add("tooltip.pasterdream.light_moss_phantom_membrane.effect", "§7▪ §9Repairs the equipped Elytra");
+        add("tooltip.pasterdream.light_moss_phantom_membrane.effect.dark", "§7▪ §9Repairs slower in darkness");
 
         add(ModItems.KAICHU_OMAMORI.get(), "Kaichu Omamori");
         add(ModItems.BROOCH_OF_WHITE_ORCHID.get(), "Brooch of White Orchid");

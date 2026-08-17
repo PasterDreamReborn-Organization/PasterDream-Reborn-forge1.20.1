@@ -2842,6 +2842,25 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.LIGHT_BUTTERFLY_CURIO.get()), has(ModItems.LIGHT_BUTTERFLY_CURIO.get()))
                 .save(pWriter);
 
+        // 光合幻翼膜 = 幻翼膜 + 苔藓块 + 丛林孢子 + 酵母
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MOSS_PHANTOM_MEMBRANE.get(), 1)
+                .requires(Items.PHANTOM_MEMBRANE)
+                .requires(Items.MOSS_BLOCK)
+                .requires(ModItems.JUNGLE_SPORE.get())
+                .requires(ModItems.GLASS_JAR_OF_YEAST.get())
+                .unlockedBy(getHasName(ModItems.JUNGLE_SPORE.get()), has(ModItems.JUNGLE_SPORE.get()))
+                .save(pWriter);
+
+        // 萤火光合幻翼膜 = 光合幻翼膜 + 发光器官 + 风植萃取液 + 光球 + 藤蔓
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get(), 1)
+                .requires(ModItems.MOSS_PHANTOM_MEMBRANE.get())
+                .requires(ModItems.LIGHT_ORGAN.get())
+                .requires(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get())
+                .requires(ModItems.LIGHT_BALL.get())
+                .requires(Items.VINE)
+                .unlockedBy(getHasName(ModItems.MOSS_PHANTOM_MEMBRANE.get()), has(ModItems.MOSS_PHANTOM_MEMBRANE.get()))
+                .save(pWriter);
+
         //4个红露滴戒指配方
         CompoundTag lv1Nbt = new CompoundTag();
         lv1Nbt.putInt("lv", 1);
