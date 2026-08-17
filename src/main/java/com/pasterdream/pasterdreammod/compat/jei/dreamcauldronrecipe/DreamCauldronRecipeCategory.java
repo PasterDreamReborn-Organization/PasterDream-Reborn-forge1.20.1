@@ -22,6 +22,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.List;
+
 public class DreamCauldronRecipeCategory implements IRecipeCategory<DreamCauldronJEIRecipe>
 {
     public static final RecipeType<DreamCauldronJEIRecipe> DREAM_CAULDRON_RECIPE_TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_cauldron"), DreamCauldronJEIRecipe.class);
@@ -56,43 +58,51 @@ public class DreamCauldronRecipeCategory implements IRecipeCategory<DreamCauldro
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, DreamCauldronJEIRecipe recipe, IFocusGroup focuses)
     {
+        List<FluidIngredient> fluidIngredients = recipe.getInputFluidIngredients();
+
         IRecipeSlotBuilder fluidSlot0 = builder.addSlot(RecipeIngredientRole.INPUT, 154, 19).setFluidRenderer(1000, false, 16, 16);
-        FluidIngredient fluid0Ingredient = recipe.getInputFluidIngredients().get(0);
-        if (fluid0Ingredient.getFluid() != null)
+        if (fluidIngredients.size() > 0)
         {
-            fluidSlot0.addFluidStack(fluid0Ingredient.getFluid(), fluid0Ingredient.getAmount());
-        }
-        else
-            if (fluid0Ingredient.getTag() != null)
+            FluidIngredient fluid0Ingredient = fluidIngredients.get(0);
+            if (fluid0Ingredient.getFluid() != null)
             {
-                var tag = ForgeRegistries.FLUIDS.tags().getTag(fluid0Ingredient.getTag());
-                if (tag != null)
+                fluidSlot0.addFluidStack(fluid0Ingredient.getFluid(), fluid0Ingredient.getAmount());
+            }
+            else
+                if (fluid0Ingredient.getTag() != null)
                 {
-                    for (Fluid fluid : tag)
+                    var tag = ForgeRegistries.FLUIDS.tags().getTag(fluid0Ingredient.getTag());
+                    if (tag != null)
                     {
-                        fluidSlot0.addFluidStack(fluid, fluid0Ingredient.getAmount());
+                        for (Fluid fluid : tag)
+                        {
+                            fluidSlot0.addFluidStack(fluid, fluid0Ingredient.getAmount());
+                        }
                     }
                 }
-            }
+        }
 
         IRecipeSlotBuilder fluidSlot1 = builder.addSlot(RecipeIngredientRole.INPUT, 1, 46).setFluidRenderer(1000, false, 16, 16);
-        FluidIngredient fluid1Ingredient = recipe.getInputFluidIngredients().get(1);
-        if (fluid1Ingredient.getFluid() != null)
+        if (fluidIngredients.size() > 1)
         {
-            fluidSlot1.addFluidStack(fluid1Ingredient.getFluid(), fluid1Ingredient.getAmount());
-        }
-        else
-            if (fluid1Ingredient.getTag() != null)
+            FluidIngredient fluid1Ingredient = fluidIngredients.get(1);
+            if (fluid1Ingredient.getFluid() != null)
             {
-                var tag = ForgeRegistries.FLUIDS.tags().getTag(fluid1Ingredient.getTag());
-                if (tag != null)
+                fluidSlot1.addFluidStack(fluid1Ingredient.getFluid(), fluid1Ingredient.getAmount());
+            }
+            else
+                if (fluid1Ingredient.getTag() != null)
                 {
-                    for (Fluid fluid : tag)
+                    var tag = ForgeRegistries.FLUIDS.tags().getTag(fluid1Ingredient.getTag());
+                    if (tag != null)
                     {
-                        fluidSlot1.addFluidStack(fluid, fluid1Ingredient.getAmount());
+                        for (Fluid fluid : tag)
+                        {
+                            fluidSlot1.addFluidStack(fluid, fluid1Ingredient.getAmount());
+                        }
                     }
                 }
-            }
+        }
 
         int index = 0;
         for (ItemIngredient inputItemIngredient : recipe.getInputItemIngredients())
