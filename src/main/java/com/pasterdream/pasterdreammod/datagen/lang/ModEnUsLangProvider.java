@@ -1775,6 +1775,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.small_ballon_9", "Small Balloon");
         add("structure.pasterdream.small_ballon_10", "Small Balloon");
         add("structure.pasterdream.christmas_tree", "Christmas Tree");
+        add("structure.pasterdream.fluffy_wind_church", "Fluffy Wind Church");
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "You do not yet know how to activate the shadow lantern");
         add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "You need to light the shadow lantern with a Melt Dream Crystal Fragment");
         add("message.pasterdream.twilight_lantern.event_start", "§8The eerie lantern suddenly shakes violently, black shadows flow out from the wick.");
