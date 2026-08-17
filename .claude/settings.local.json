@@ -1,0 +1,8 @@
+{
+  "skills": [],
+  "mcpServers": {
+    "minecraft-dev": {
+      "command": "minecraft-dev-mcp"
+    }
+  }
+}
