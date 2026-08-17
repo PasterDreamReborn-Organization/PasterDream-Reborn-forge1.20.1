@@ -1373,7 +1373,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.rebirth_dream_crystal.4", "§7▪ §9每10秒获得12秒回避");
         add("tooltip.pasterdream.rebirth_dream_crystal.5", "§7ShiLiuYinYu的专属遗物。");
         add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7shift右键销毁自身并释放遗物中的灵魂。");
-        add("tooltip.pasterdream.rebirth_dream_crystal.7", "§6PasterDream: Reborn开发者");
+        add("tooltip.pasterdream.rebirth_dream_crystal.7", "§6PasterDream: Reborn 开发者");
 
         add(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get(), "魔法使的灵魂石");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.1", "§7\"我将我遗留的魔法赠予你，让它替我与你同行，见证你所见的梦幻\"");
