@@ -2467,6 +2467,20 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.SHADOW.get()), has(ModItems.SHADOW.get()))
                 .save(pWriter);
 
+        //乌云合成配方
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DARK_CLOUD.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.THICK_CLOUD.get())
+                .unlockedBy(getHasName(ModItems.THICK_CLOUD.get()), has(ModItems.THICK_CLOUD.get()))
+                .save(pWriter);
+        //乌云分解
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.THICK_CLOUD.get(),4)
+                .requires(ModItems.DARK_CLOUD.get())
+                .unlockedBy(getHasName(ModItems.DARK_CLOUD.get()), has(ModItems.DARK_CLOUD.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + "thick_cloud_from_dark_cloud");
+
+
         // 阴影菌核 (2×2 shadow_stem → 3 shadow_hyphae)
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_HYPHAE.get(), 3)
                 .pattern("aa")

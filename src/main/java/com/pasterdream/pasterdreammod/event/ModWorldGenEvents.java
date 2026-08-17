@@ -90,6 +90,7 @@ public class ModWorldGenEvents {
                     worldtreeNeedsPlacement = false;
                     placeWorldtree(dyedream);
                     data.setPlaced();
+                    dyedream.getDataStorage().save(); // 立即落盘，防止维度重载导致重复放置
                 } else {
                     worldtreeNeedsPlacement = false;
                 }
@@ -231,6 +232,7 @@ public class ModWorldGenEvents {
         template.placeInWorld(serverLevel, origin, origin, settings, random, 3);
 
         data.setPlaced(x, z, origin, template.getSize());
+        serverLevel.getDataStorage().save(); // 立即落盘，防止维度重载导致重复放置
     }
 
     private static void placeShadowWorldSpawn(ServerLevel serverLevel, LampShadowSpawnPlacedData data) {
@@ -255,6 +257,7 @@ public class ModWorldGenEvents {
 
         template.placeInWorld(serverLevel, origin, origin, settings, random, 3);
         data.setPlaced();
+        serverLevel.getDataStorage().save(); // 立即落盘，防止维度重载导致重复放置
     }
 
     public static class WorldtreePlacedData extends SavedData {

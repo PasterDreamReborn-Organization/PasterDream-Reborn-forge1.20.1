@@ -458,7 +458,10 @@ public class Config
             .defineListAllowEmpty("rebirthDreamCrystalLoot",
                     List.of("pasterdream:melt_dream_crystal_fragment",
                             "pasterdream:life_crystal",
-                            "pasterdream:white_crystal"),
+                            "pasterdream:white_crystal",
+                            "pasterdream:soul_gem_of_akizuki_ayane",
+                            "pasterdream:magnifying_glass_of_sherry",
+                            "pasterdream:empty_vessel"),
                     obj -> obj instanceof String);
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
