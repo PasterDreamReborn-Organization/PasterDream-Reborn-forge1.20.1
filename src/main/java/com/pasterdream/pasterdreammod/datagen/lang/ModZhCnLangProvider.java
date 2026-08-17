@@ -2282,6 +2282,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.small_ballon_9", "小气球");
         add("structure.pasterdream.small_ballon_10", "小气球");
         add("structure.pasterdream.christmas_tree", "圣诞树");
+        add("structure.pasterdream.fluffy_wind_church", "萦风教堂");
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "你尚未知晓如何激活影灯");
         add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "需要用融梦水晶碎片点燃影灯");
         add("message.pasterdream.twilight_lantern.event_start", "§8诡异的灯笼突然剧烈抖动，黑色的阴影从灯芯里流出");
