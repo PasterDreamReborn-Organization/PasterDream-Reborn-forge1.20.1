@@ -1389,7 +1389,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.6", "§f▪ §4融梦能量消耗翻倍");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.7", "§f▪ §4融梦能量低于 30 时，受到的伤害翻倍");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.8", "§7绫苒的专属遗物。");
-        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.9", "§7shift右键恢复全部融梦能量，2 分钟内不消耗融梦能量（冷却 3 分钟）");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.9", "§7主手shift右键恢复全部融梦能量，2 分钟内不消耗融梦能量且战技伤害与魔法伤害 +60%（冷却 4 分半钟）");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.10", "§6PasterDream: Reborn 文案");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.cooldown", "§c灵魂石的力量仍在冷却中");
 
