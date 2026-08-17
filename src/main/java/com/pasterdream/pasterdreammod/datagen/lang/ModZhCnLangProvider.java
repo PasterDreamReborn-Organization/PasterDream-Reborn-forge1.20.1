@@ -1158,6 +1158,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.boboji_curio.effect.flavor", "§7▪ §e瞬身术增加音效和粒子拖尾");
         add("tooltip.pasterdream.boboji_curio.lore", "§7§o谨以此献给曾陪伴我的它");
         add("tooltip.pasterdream.boboji_curio.dedication", "§7§o-- 一只名为啵啵鸡的黄绿色虎皮鹦鹉");
+        add(ModItems.MOSS_PHANTOM_MEMBRANE.get(), "光合幻翼膜");
+        add("tooltip.pasterdream.moss_phantom_membrane.effect", "§7▪ §9在光亮的环境下会为正在装备的鞘翅缓慢恢复耐久");
+        add(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get(), "萤火光合幻翼膜");
+        add("tooltip.pasterdream.light_moss_phantom_membrane.effect", "§7▪ §9为正在装备的鞘翅恢复耐久");
+        add("tooltip.pasterdream.light_moss_phantom_membrane.effect.dark", "§7▪ §9在黑暗的环境下耐久恢复速度减慢");
         add("effect.pasterdream.snow_vow_buff", "雪下的誓言");
         add(ModItems.FOURLEAF_CLOVER_CURIO.get(), "幸运四叶草");
         add("tooltip.pasterdream.fourleaf_clover_curio.flavor", "§7§o哪片叶子代表着幸运？");

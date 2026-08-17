@@ -281,6 +281,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.BRIGHT_BUTTERFLY_CURIO.get());
         basicItem(ModItems.ICE_SHADOW_CURIO.get());
         basicItem(ModItems.BOBOJI_CURIO.get());
+        basicItem(ModItems.MOSS_PHANTOM_MEMBRANE.get());
+        basicItem(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get());
         basicItem(ModItems.EMBRYO_NECKLACE.get());
         basicItem(ModItems.EMBRYO_RING.get());
         basicItem(ModItems.ALLKINDS_RING.get());
