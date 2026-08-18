@@ -153,6 +153,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_COROLLA.get(), "梦染花冠");
         add(ModItems.WHITE_COROLLA.get(), "苍白花冠");
         add(ModItems.WHITE_CRYSTAL.get(), "白厄水晶");
+        add(ModItems.SHADOW_HILT.get(), "凝影剑柄");
+        add(ModItems.TALENT_LIGHT.get(), "信仰光明");
+        add(ModItems.TALENT_SHADOW.get(), "暗影仆从");
+        add("tooltip.pasterdream.shadow_hilt", "§7制作影刃的核心材料");
         add(ModItems.CONGEAL_WIND.get(), "凝结之风");
         add(ModItems.WIND_RUNNER_CRYSTAL.get(), "风行者水晶");
         add(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(), "脉冲风行者水晶");
@@ -1450,7 +1454,57 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.shadow_silence_buff", "暗影沉默");
         add("effect.pasterdream.restrainmove_block_buff", "行动抑制");
         add("effect.pasterdream.oppression_buff", "压抑");
-        // TODO: shadow_spyon_buff ("暗影窥视") 待后续搬运
+        add("effect.pasterdream.shadow_spyon_buff", "暗影窥视");
+        add("message.pasterdream.shadow_intrude.start_1", "§5你感到一丝凉意，眼前被笼罩了一层黑雾");
+        add("message.pasterdream.shadow_intrude.start_2", "§5附近的的影子开始蠕动");
+        add("message.pasterdream.shadow_intrude.end", "§5影子归于平息...");
+        add("message.pasterdream.shadow_intrude.end_1", "§7你对这些暗影生物会来到这里感到疑惑");
+        add("message.pasterdream.shadow_intrude.end_2", "§7或许我们应该再去找一次无名...");
+
+        // 灯与影选择界面
+        add("gui.pasterdream.shadow_select_end.label_choose", "请根据自己的第一直觉做出选择");
+        add("gui.pasterdream.shadow_select_end.label_outcome", "这会使探索在未来走向不同的结局");
+
+        // 无名对话：第一次对话
+        add("dialogue.pasterdream.nameless.first_1", "？？？：嗯……？");
+        add("dialogue.pasterdream.nameless.first_2", "？？？：......你是怎么来到这里的？");
+        add("dialogue.pasterdream.nameless.first_3", "？？？：已经很久没有人来到这里了......");
+        add("dialogue.pasterdream.nameless.first_4", "？？？：虽然我知道你对于我的过去可能有兴趣，但是...经历了太多，我也不想回忆。");
+        add("dialogue.pasterdream.nameless.first_5", "？？？：至于我的名字......时间过去太久，我也失去了曾经的\"自己\"。你就叫我\"无名\"吧。");
+        add("dialogue.pasterdream.nameless.first_6", "无名：这里很危险。每次进入这个暗影地牢，它都会产生一些变化，是更多的威胁还是更多的宝藏...我也不得而知。");
+        add("dialogue.pasterdream.nameless.first_7", "无名：请不要冒着生命危险探索这里，尽快离开吧。");
+        add("dialogue.pasterdream.nameless.first_8", "无名：我为什么还在这里？因为我无法逃离，也不再想尝试逃离这里了。在你还可以回家的时候...尽快回头吧。");
+        add("dialogue.pasterdream.nameless.first_9", "无名：......");
+        add("dialogue.pasterdream.nameless.first_10", "无名：你为什么还在这里......");
+        add("dialogue.pasterdream.nameless.first_11", "无名：一直待在这里只会侵蚀你的精神...我不能让你向下深入了，这种渴求未知的想法只会让阴影更容易控制你的精神...这也是为了你好。");
+        add("dialogue.pasterdream.nameless.first_12", "无名：我不能让你继续留在这里了...请离开吧。");
+
+        // 无名对话：第二次对话
+        add("dialogue.pasterdream.nameless.second_1", "无名：你见到了它们出现在你的世界里？");
+        add("dialogue.pasterdream.nameless.second_2", "无名：为什么它们会出现在灯影之下之外的世界......");
+        add("dialogue.pasterdream.nameless.second_3", "无名：......抱歉，我走神了。问我曾阻止你的原因？");
+        add("dialogue.pasterdream.nameless.second_4", "无名：就我所见而言，没多少人能在面对这些怪物之后还能生龙活虎的，看来你存在一些异于常人的地方。");
+        add("dialogue.pasterdream.nameless.second_5", "无名：我能感受到你那超越常人的精神力......你应该是有自我意识地，主动地来到这片阴影中的吧？这样看来，你确实有使用那股力量的'资质'。");
+        add("dialogue.pasterdream.nameless.second_6", "无名：这样看来，你确实有使用那股力量的'资质'。");
+        add("dialogue.pasterdream.nameless.second_7", "无名：在这层下面，其实是一位已故之人的坟墓。我存在于此地也是为了信守那份承诺，'守护他的坟墓'的承诺。");
+        add("dialogue.pasterdream.nameless.second_8", "无名：如果是你，或许能得到他的认可。");
+        add("dialogue.pasterdream.nameless.second_9", "无名：如果你执意要斗争下去...那么就再次触碰下方的门扉吧，如果你确实得到了承认，门自然会打开。");
+        add("dialogue.pasterdream.nameless.second_10", "无名：去抚摸暮影长床，无需考虑结果，只需做出遵从你内心的第一选择。");
+
+        // 无名对话：选择后半（灯）
+        add("dialogue.pasterdream.nameless.light_1", "无名：看起来，你已经选择了投身于光明，成为这里的一缕光芒。");
+        add("dialogue.pasterdream.nameless.light_2", "无名：现在的你，身为'灯'的你，应该有实力去阻止祂，战胜祂。");
+        add("dialogue.pasterdream.nameless.light_3", "无名：那么请启程去寻找吧，寻找亚伦柯斯的眼睛。");
+        add("dialogue.pasterdream.nameless.light_4", "无名：愿你武运昌隆，在这次战斗后，依旧成为照亮黑夜的灯盏。");
+
+        // 无名对话：选择后半（影）
+        add("dialogue.pasterdream.nameless.shadow_1", "无名：看起来，你已经选择了融身于黑暗，成为这里的一丝阴影。");
+        add("dialogue.pasterdream.nameless.shadow_2", "无名：现在的你，身为'影'的你，似乎有资格去接纳祂，融入祂。");
+        add("dialogue.pasterdream.nameless.shadow_3", "无名：那么请启程去寻找吧，寻找亚伦柯斯的眼睛。");
+        add("dialogue.pasterdream.nameless.shadow_4", "无名：愿你武运昌隆，在这次战斗后，依然能保持你生而为人的清醒。");
+
+        // 无名对话：等待状态
+        add("dialogue.pasterdream.nameless.wait", "无名：......");
         add("item.pasterdream.shadow_magicball_spawn_egg", "暗影魔法球刷怪蛋");
         add("item.pasterdream.shadow_tune_totem_spawn_egg", "暗影符文塔刷怪蛋");
         add("item.pasterdream.aaroncos_left_hand_spawn_egg", "亚伦柯斯之触-左手刷怪蛋");
@@ -1541,6 +1595,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.bastion_guard.description", "完成暮影之笼的据点守卫事件");
         add("advancements.pasterdream.story.enter_lamp_shadow_world.title", "灯影之下");
         add("advancements.pasterdream.story.enter_lamp_shadow_world.description", "深入世界中最黑暗的一面");
+        add("advancements.pasterdream.story.shadow_choice.title", "灯与影");
+        add("advancements.pasterdream.story.shadow_choice.description", "做出灯与影的选择");
+        add("advancements.pasterdream.story.talent_light.title", "信仰光明");
+        add("advancements.pasterdream.story.talent_light.description", "在灯与影的选择中选择光明");
+        add("advancements.pasterdream.story.talent_shadow.title", "暗影仆从");
+        add("advancements.pasterdream.story.talent_shadow.description", "在灯与影的抉择中选择暗影");
+        add("advancements.pasterdream.story.shadow_intrude_complete.title", "暗影入侵");
+        add("advancements.pasterdream.story.shadow_intrude_complete.description", "完成暗影入侵事件");
         add("advancements.pasterdream.story.dig_up_a_tomb.title", "邻家有女初长成，力拔山兮气盖世");
         add("advancements.pasterdream.story.dig_up_a_tomb.description", "你……你把什么东西挖下来了？？？");
         add("advancements.pasterdream.new_standard_sword_drawing.title", "新概念拔剑");
@@ -2013,6 +2075,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.PINK_SLIME_SPAWN_EGG.get(), "粉红史莱姆刷怪蛋");
         add(ModEntities.GOLDEN_FOX.get(), "金狐狸");
         add(ModItems.GOLDEN_FOX_SPAWN_EGG.get(), "金狐狸刷怪蛋");
+        add(ModEntities.NAMELESS.get(), "无名");
+        add(ModItems.NAMELESS_SPAWN_EGG.get(), "无名刷怪蛋");
         add(ModEntities.FIREFLY.get(), "萤火虫");
         add(ModItems.FIREFLY_SPAWN_EGG.get(), "萤火虫刷怪蛋");
         add(ModEntities.WIND_KNIGHT.get(), "破风骑士");

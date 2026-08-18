@@ -26,6 +26,7 @@ import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.MaxSanSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
 import com.pasterdream.pasterdreammod.network.shadowerosion.ShadowErosionMiningSpeedSyncPacket;
+import com.pasterdream.pasterdreammod.network.shadowselect.ShadowSelectEndButtonPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkRegistry;
@@ -74,6 +75,8 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, KaichuOmamoriActivationPacket.class, KaichuOmamoriActivationPacket::encode, KaichuOmamoriActivationPacket::decode, KaichuOmamoriActivationPacket::handle);
 
         CHANNEL.registerMessage(id++, ShadowErosionMiningSpeedSyncPacket.class, ShadowErosionMiningSpeedSyncPacket::encode, ShadowErosionMiningSpeedSyncPacket::decode, ShadowErosionMiningSpeedSyncPacket::handle);
+
+        CHANNEL.registerMessage(id++, ShadowSelectEndButtonPacket.class, ShadowSelectEndButtonPacket::encode, ShadowSelectEndButtonPacket::decode, ShadowSelectEndButtonPacket::handle);
     }
 
     public static void sendMeltDreamEnergySyncPacketToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)

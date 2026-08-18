@@ -416,6 +416,81 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/scare"), existingFileHelper);
 
+            // ========== 无名剧情线（暗影地牢 NPC 对话 + 灯影选择） ==========
+            // 纯逻辑标记，不在进度界面显示
+
+            // 第一次对话完成（程序授予，触发暗影窥视）
+            Advancement shadowNpcFirstDialogue = Advancement.Builder.advancement()
+                    .addCriterion("first_dialogue", new ImpossibleTrigger.TriggerInstance())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_npc_first_dialogue"), existingFileHelper);
+
+            // 暗影入侵事件完成（解锁第二次对话）—— 可见目标进度
+            Advancement shadowIntrudeComplete = Advancement.Builder.advancement()
+                    .parent(enterLampShadowWorld)
+                    .display(
+                            ModItems.NIGHTMARE_FUEL.get(),
+                            Component.translatable("advancements.pasterdream.story.shadow_intrude_complete.title"),
+                            Component.translatable("advancements.pasterdream.story.shadow_intrude_complete.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, false
+                    )
+                    .addCriterion("intrude_complete", new ImpossibleTrigger.TriggerInstance())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_intrude_complete"), existingFileHelper);
+
+            // 第二次对话完成（解锁灯影选择）
+            Advancement shadowNpcSecondDialogue = Advancement.Builder.advancement()
+                    .addCriterion("second_dialogue", new ImpossibleTrigger.TriggerInstance())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_npc_second_dialogue"), existingFileHelper);
+
+            // 灯与影 —— 做出选择（原作 achievement_shadow_d_0，parent 原作 shadow_c_0 暂留占位，挂到灯影之下 Tab 根进度下）
+            Advancement shadowChoice = Advancement.Builder.advancement()
+                    .parent(enterLampShadowWorld)
+                    .display(
+                            ModBlocks.SHADOW_CANDLE.get(),
+                            Component.translatable("advancements.pasterdream.story.shadow_choice.title"),
+                            Component.translatable("advancements.pasterdream.story.shadow_choice.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("make_choice", new ImpossibleTrigger.TriggerInstance())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_choice"), existingFileHelper);
+
+            // 信仰光明 —— 选灯
+            Advancement talentLight = Advancement.Builder.advancement()
+                    .parent(shadowChoice)
+                    .display(
+                            ModItems.TALENT_LIGHT.get(),
+                            Component.translatable("advancements.pasterdream.story.talent_light.title"),
+                            Component.translatable("advancements.pasterdream.story.talent_light.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("choose_light", new ImpossibleTrigger.TriggerInstance())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/talent_light"), existingFileHelper);
+
+            // 暗影仆从 —— 选影
+            Advancement talentShadow = Advancement.Builder.advancement()
+                    .parent(shadowChoice)
+                    .display(
+                            ModItems.TALENT_SHADOW.get(),
+                            Component.translatable("advancements.pasterdream.story.talent_shadow.title"),
+                            Component.translatable("advancements.pasterdream.story.talent_shadow.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("choose_shadow", new ImpossibleTrigger.TriggerInstance())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/talent_shadow"), existingFileHelper);
+
             // ========== 冒险Tab子进度：被遗忘的剑冢 ==========
             Advancement find_tomb = Advancement.Builder.advancement()
                     .parent(ADVENTURE_ROOT)

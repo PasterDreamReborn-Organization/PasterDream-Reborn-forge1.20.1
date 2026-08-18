@@ -124,6 +124,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DYEDREAM_COROLLA.get());
         basicItem(ModItems.WHITE_COROLLA.get());
         basicItem(ModItems.WHITE_CRYSTAL.get());
+        basicItem(ModItems.SHADOW_HILT.get());
+        basicItem(ModItems.TALENT_LIGHT.get());
+        basicItem(ModItems.TALENT_SHADOW.get());
         basicItem(ModItems.CONGEAL_WIND.get());
         basicItem(ModItems.WIND_RUNNER_CRYSTAL.get());
         basicItem(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get());
@@ -513,6 +516,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         spawnEggItem(ModItems.PINK_CHICKEN_SPAWN_EGG);
         spawnEggItem(ModItems.PINK_SLIME_SPAWN_EGG);
         spawnEggItem(ModItems.GOLDEN_FOX_SPAWN_EGG);
+        spawnEggItem(ModItems.NAMELESS_SPAWN_EGG);
         spawnEggItem(ModItems.FIREFLY_SPAWN_EGG);
         spawnEggItem(ModItems.WIND_KNIGHT_SPAWN_EGG);
         spawnEggItem(ModItems.THUNDERCLOUD_SPAWN_EGG);

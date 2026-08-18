@@ -511,6 +511,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_FISSURE_3.get());
                         output.accept(ModItems.SHADOW_FISSURE_4.get());
                         output.accept(ModItems.SHADOW_FISSURE_5.get());
+                        output.accept(ModItems.SHADOW_HILT.get());
                     })
                     .build());
 
@@ -848,6 +849,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PINK_CHICKEN_SPAWN_EGG.get());
                         output.accept(ModItems.PINK_SLIME_SPAWN_EGG.get());
                         output.accept(ModItems.GOLDEN_FOX_SPAWN_EGG.get());
+                        output.accept(ModItems.NAMELESS_SPAWN_EGG.get());
                         output.accept(ModItems.FIREFLY_SPAWN_EGG.get());
                         output.accept(ModItems.WIND_KNIGHT_SPAWN_EGG.get());
                         output.accept(ModItems.THUNDERCLOUD_SPAWN_EGG.get());
