@@ -525,6 +525,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.RYE.get(), "Rye");
         add(ModBlocks.POLISHED_CALCITE_STALICRIPE.get(), "Polished Calcite Stalicripe");
         add(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), "Small Polished Calcite Stalicripe");
+        add(ModBlocks.CALCITE_CONE.get(), "Calcite Cone");
         add(ModBlocks.DYEDREAM_SEAGRASS.get(), "Dyedream Seagrass");
         add(ModBlocks.REED.get(), "Reed");
         add(ModBlocks.DYEDREAM_VINE.get(), "Dyedream Vine");

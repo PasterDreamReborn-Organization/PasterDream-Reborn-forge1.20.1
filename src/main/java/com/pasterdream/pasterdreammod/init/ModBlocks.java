@@ -838,6 +838,8 @@ public class ModBlocks {
                     .isRedstoneConductor((bs, br, bp) -> false)));
     // ===== 小石子 =====
     public static final RegistryObject<Block> PEBBLE = BLOCKS.register("pebble", PebbleBlock::new);
+    // ===== 方解石锥 =====
+    public static final RegistryObject<Block> CALCITE_CONE = BLOCKS.register("calcite_cone", CalciteConeBlock::new);
     // ===== 小石堆（小石精死亡遗留，破坏后孵化小石精） =====
     public static final RegistryObject<Block> SMALL_STONE_SPIRIT_BLOCK = BLOCKS.register("small_stone_spirit_block", SmallStoneSpiritBlock::new);
     //暮影之笼 / 暮影长床
