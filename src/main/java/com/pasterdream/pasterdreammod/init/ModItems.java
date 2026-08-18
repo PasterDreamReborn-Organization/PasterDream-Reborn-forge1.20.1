@@ -214,6 +214,12 @@ public class ModItems {
     public static final RegistryObject<Item> WHITE_COROLLA = ITEMS.register("white_corolla", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WHITE_CRYSTAL = ITEMS.register("white_crystal",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> SHADOW_HILT = ITEMS.register("shadow_hilt",
+            () -> new ShadowHiltItem());
+    public static final RegistryObject<Item> TALENT_LIGHT = ITEMS.register("talent_light",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> TALENT_SHADOW = ITEMS.register("talent_shadow",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
     public static final RegistryObject<Item> CONGEAL_WIND = ITEMS.register("congeal_wind",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WIND_RUNNER_CRYSTAL = ITEMS.register("wind_runner_crystal",
@@ -1859,6 +1865,8 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.PINK_SLIME, 0xe4a8d9, 0xd46daf, new Item.Properties()));
     public static final RegistryObject<Item> GOLDEN_FOX_SPAWN_EGG = ITEMS.register("golden_fox_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.GOLDEN_FOX, 0xe8c13a, 0x8b6914, new Item.Properties()));
+    public static final RegistryObject<Item> NAMELESS_SPAWN_EGG = ITEMS.register("nameless_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.NAMELESS, -15592942, -11776948, new Item.Properties()));
     public static final RegistryObject<Item> FIREFLY_SPAWN_EGG = ITEMS.register("firefly_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.FIREFLY, -12570340, -5382814, new Item.Properties()));
     public static final RegistryObject<Item> WIND_KNIGHT_SPAWN_EGG = ITEMS.register("wind_knight_spawn_egg",

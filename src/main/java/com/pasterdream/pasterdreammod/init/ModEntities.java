@@ -16,6 +16,7 @@ import com.pasterdream.pasterdreammod.world.entity.PebbleProjectile;
 import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowMagicballEntity;
+import com.pasterdream.pasterdreammod.world.entity.NamelessEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowTuneTotemEntity;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosLeftHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosRightHandEntity;
@@ -138,6 +139,15 @@ public class ModEntities {
                     .setUpdateInterval(3)
                     .setCustomClientFactory(GoldenFoxEntity::new)
                     .sized(0.6f, 0.6f));
+
+    public static final RegistryObject<EntityType<NamelessEntity>> NAMELESS = register("nameless",
+            EntityType.Builder.<NamelessEntity>of(NamelessEntity::new, MobCategory.CREATURE)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(NamelessEntity::new)
+                    .fireImmune()
+                    .sized(0.6f, 1.8f));
 
     public static final RegistryObject<EntityType<FireflyEntity>> FIREFLY = register("firefly",
             EntityType.Builder.<FireflyEntity>of(FireflyEntity::new, MobCategory.CREATURE)
@@ -393,6 +403,7 @@ public class ModEntities {
         event.enqueueWork(PinkChickenEntity::init);
         event.enqueueWork(PinkSlimeEntity::init);
         event.enqueueWork(GoldenFoxEntity::init);
+        event.enqueueWork(NamelessEntity::init);
         event.enqueueWork(FireflyEntity::init);
         event.enqueueWork(BoneWingEntity::init);
         event.enqueueWork(AshBoneWingEntity::init);
@@ -422,6 +433,7 @@ public class ModEntities {
         event.put(PINK_CHICKEN.get(), PinkChickenEntity.createAttributes().build());
         event.put(PINK_SLIME.get(), PinkSlimeEntity.createAttributes().build());
         event.put(GOLDEN_FOX.get(), GoldenFoxEntity.createAttributes().build());
+        event.put(NAMELESS.get(), NamelessEntity.createAttributes().build());
         event.put(FIREFLY.get(), FireflyEntity.createAttributes().build());
         event.put(BONE_WING.get(), BoneWingEntity.createAttributes().build());
         event.put(ASH_BONE_WING.get(), AshBoneWingEntity.createAttributes().build());

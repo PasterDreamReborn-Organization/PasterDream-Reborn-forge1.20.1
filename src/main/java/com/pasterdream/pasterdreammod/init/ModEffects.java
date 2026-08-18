@@ -74,6 +74,8 @@ public class ModEffects {
             EFFECTS.register("bind_buff", BindBuffEffect::new);
     public static final RegistryObject<MobEffect> SHADOW_SILENCE_BUFF =
             EFFECTS.register("shadow_silence_buff", ShadowSilenceBuffEffect::new);
+    public static final RegistryObject<MobEffect> SHADOW_SPYON_BUFF =
+            EFFECTS.register("shadow_spyon_buff", ShadowSpyonBuffEffect::new);
     public static final RegistryObject<MobEffect> CALAIS_SPICE_BOTTLE_BUFF =
             EFFECTS.register("calais_spice_bottle_buff", CalaisSpiceBottleBuff::new);
     public static final RegistryObject<MobEffect> RESTRAINMOVE_BLOCK_BUFF =
