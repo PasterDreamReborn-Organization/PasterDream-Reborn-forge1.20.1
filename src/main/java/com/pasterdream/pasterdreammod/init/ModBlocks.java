@@ -251,6 +251,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> SHATTERED_SHADOW_DUNGEON_BRICKS = BLOCKS.register("shattered_shadow_dungeon_bricks", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(10.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> SHADOW_DUNGEON_GATE = BLOCKS.register("shadow_dungeon_gate", ShadowDungeonGateBlock::new);
     public static final RegistryObject<Block> SHADOW_DUNGEON_BARRIER = BLOCKS.register("shadow_dungeon_barrier", ShadowDungeonBarrierBlock::new);
+    public static final RegistryObject<Block> SHADOW_DUNGEON_WALL_KEY = BLOCKS.register("shadow_dungeon_wall_key", ShadowDungeonWallKeyBlock::new);
+    public static final RegistryObject<Block> SHADOW_DUNGEON_FLOOR_KEY = BLOCKS.register("shadow_dungeon_floor_key", ShadowDungeonFloorKeyBlock::new);
     // ===== 灯影竞技场 / 裂隙方块 =====
     public static final RegistryObject<Block> SHADOW_ARENA_BLOCK = BLOCKS.register("shadow_arena_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(-1.0F, 3600000.0F)));
     public static final RegistryObject<Block> SHADOW_FISSURE_0 = BLOCKS.register("shadow_fissure_0", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GLASS).strength(-1.0F, 3600000.0F).lightLevel(s -> 4).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true)));

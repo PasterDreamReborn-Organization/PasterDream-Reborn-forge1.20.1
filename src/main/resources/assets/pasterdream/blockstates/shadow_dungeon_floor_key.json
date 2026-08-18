@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "pasterdream:block/shadow_dungeon_floor_key"
+    },
+    "facing=east": {
+      "model": "pasterdream:block/shadow_dungeon_floor_key",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "pasterdream:block/shadow_dungeon_floor_key",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "pasterdream:block/shadow_dungeon_floor_key",
+      "y": 270
+    }
+  }
+}

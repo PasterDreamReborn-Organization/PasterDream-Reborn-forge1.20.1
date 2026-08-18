@@ -212,6 +212,8 @@
     "shadow_dungeon_door_1": "shadow_dungeon_gate_shell",
     "shadowdungeondoor_2": "shadow_dungeon_barrier",
     "shadowdungeondoor_3": "shadow_dungeon_barrier_shell",
+    "shadow_dungeon_key_0": "shadow_dungeon_wall_key",
+    "shadow_dungeon_key_1": "shadow_dungeon_floor_key",
     "dream_spawner_0": "dream_spawner",
     "dream_spawner_1": "faded_dream_spawner",
     "shadow_light_0": "shadow_light",

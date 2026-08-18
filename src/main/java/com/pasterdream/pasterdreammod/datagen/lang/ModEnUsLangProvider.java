@@ -363,6 +363,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get(), "Shattered Shadow Dungeon Bricks");
         add(ModBlocks.SHADOW_DUNGEON_GATE.get(), "Shadow Dungeon Gate");
         add(ModBlocks.SHADOW_DUNGEON_BARRIER.get(), "Shadow Dungeon Barrier");
+        add(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get(), "Shadow Dungeon Key (Wall)");
+        add(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get(), "Shadow Dungeon Key (Floor)");
         add(ModBlocks.DREAM_SPAWNER.get(), "Dream Spawner");
         add(ModBlocks.FADED_DREAM_SPAWNER.get(), "Faded Dream Spawner");
         add(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), "Shadow Dungeon Portal Core");

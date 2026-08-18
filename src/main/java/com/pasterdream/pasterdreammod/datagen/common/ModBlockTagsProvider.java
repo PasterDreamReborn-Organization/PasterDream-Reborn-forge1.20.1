@@ -151,6 +151,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_DUNGEON_BRICK_STAIRS.get())
                 .add(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get())
                 .add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get())
+                .add(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get())
+                .add(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get())
                 .add(ModBlocks.SHADOW_ARENA_BLOCK.get())
                 .add(ModBlocks.SHADOW_FISSURE_0.get())
                 .add(ModBlocks.SHADOW_FISSURE_1.get())

@@ -377,6 +377,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get(), "碎裂暗影地牢石砖");
         add(ModBlocks.SHADOW_DUNGEON_GATE.get(), "暗影地牢门扉");
         add(ModBlocks.SHADOW_DUNGEON_BARRIER.get(), "暗影地牢屏障");
+        add(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get(), "暗影地牢钥匙（墙上）");
+        add(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get(), "暗影地牢钥匙（地上）");
         add(ModBlocks.DREAM_SPAWNER.get(), "构梦刷怪笼");
         add(ModBlocks.FADED_DREAM_SPAWNER.get(), "失色构梦刷怪笼");
         add(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), "暗影地牢传送门核心");

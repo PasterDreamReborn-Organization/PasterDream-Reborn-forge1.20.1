@@ -1,0 +1,9 @@
+{
+  "parent": "pasterdream:custom/shadow_dungeon_wall_key",
+  "textures": {
+    "all": "pasterdream:block/shadow_dungeon_key",
+    "particle": "pasterdream:block/shadow_dungeon_key",
+    "1": "pasterdream:block/shadow_dungeon_key"
+  },
+  "render_type": "cutout"
+}

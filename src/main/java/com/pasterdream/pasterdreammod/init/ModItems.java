@@ -1427,6 +1427,10 @@ public class ModItems {
             () -> new ShadowDungeonGateItem(ModBlocks.SHADOW_DUNGEON_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_DUNGEON_BARRIER = ITEMS.register("shadow_dungeon_barrier",
             () -> new ShadowDungeonBarrierItem(ModBlocks.SHADOW_DUNGEON_BARRIER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_DUNGEON_WALL_KEY = ITEMS.register("shadow_dungeon_wall_key",
+            () -> new BlockItem(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_DUNGEON_FLOOR_KEY = ITEMS.register("shadow_dungeon_floor_key",
+            () -> new BlockItem(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_CRYSTAL_LANTERN = ITEMS.register("dyedream_crystal_lantern",
             () -> new BlockItem(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_LANTERN = ITEMS.register("dyedream_lantern",
