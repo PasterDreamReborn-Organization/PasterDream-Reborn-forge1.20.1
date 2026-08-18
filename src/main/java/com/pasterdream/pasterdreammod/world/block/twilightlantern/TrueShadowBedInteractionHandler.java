@@ -8,7 +8,6 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.MenuProvider;
@@ -43,7 +42,7 @@ public class TrueShadowBedInteractionHandler {
             if (shouldOpenChoice(sp)) {
                 openChoiceScreen(sp, pos);
             } else {
-                teleportToOverworld(sp);
+                LampShadowWorldTeleporter.teleportToOverworld(sp, pos);
             }
             return;
         }
@@ -80,25 +79,5 @@ public class TrueShadowBedInteractionHandler {
     private static boolean hasBastionGuard(ServerPlayer player) {
         Advancement adv = player.server.getAdvancements().getAdvancement(BASTION_GUARD_ADV);
         return adv != null && player.getAdvancements().getOrStartProgress(adv).isDone();
-    }
-
-    private static void teleportToOverworld(ServerPlayer player) {
-        ServerLevel overworld = player.server.getLevel(Level.OVERWORLD);
-        if (overworld == null) return;
-        player.teleportTo(overworld, player.getX(), player.getY(), player.getZ(), player.getYRot(), player.getXRot());
-
-        double spawnX, spawnY, spawnZ;
-        if (player.getRespawnDimension() == Level.OVERWORLD && player.getRespawnPosition() != null) {
-            BlockPos respawn = player.getRespawnPosition();
-            spawnX = respawn.getX() + 0.5;
-            spawnY = respawn.getY();
-            spawnZ = respawn.getZ() + 0.5;
-        } else {
-            spawnX = overworld.getLevelData().getXSpawn() + 0.5;
-            spawnY = overworld.getLevelData().getYSpawn();
-            spawnZ = overworld.getLevelData().getZSpawn() + 0.5;
-        }
-        player.teleportTo(spawnX, spawnY, spawnZ);
-        player.fallDistance = 0;
     }
 }
