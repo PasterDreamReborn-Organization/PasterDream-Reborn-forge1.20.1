@@ -681,6 +681,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BROKEN_SHADOW_DUNGEON_PORTAL.get());
                         output.accept(ModItems.SHADOW_DUNGEON_GATE.get());
                         output.accept(ModItems.SHADOW_DUNGEON_BARRIER.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_WALL_KEY.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_FLOOR_KEY.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE_CORE.get());
                         output.accept(ModItems.SHADOW_HAND_TRAP.get());
