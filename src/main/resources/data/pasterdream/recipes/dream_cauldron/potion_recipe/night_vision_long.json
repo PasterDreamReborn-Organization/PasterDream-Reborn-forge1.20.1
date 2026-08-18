@@ -1,0 +1,37 @@
+{
+  "type": "pasterdream:dream_cauldron",
+  "fluidInputs":
+  [
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    },
+    {
+      "fluid": "pasterdream:guiding_drug",
+      "amount": 125
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:elixir_bottle",
+      "count": 1
+    },
+    {
+      "item": "minecraft:golden_carrot",
+      "count": 1
+    },
+    {
+      "item": "minecraft:redstone",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:elixir_bottle_of_potion",
+      "count": 1,
+      "nbt": "{Fluid:{FluidName:\"pasterdream:potion\",Amount:1000,Tag:{Potion:\"minecraft:long_night_vision\"}}}"
+    }
+  ]
+}

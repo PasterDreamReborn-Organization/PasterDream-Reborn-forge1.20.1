@@ -43,6 +43,7 @@ import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.fluid.PotionFluidHelper;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
+import com.pasterdream.pasterdreammod.world.item.ElixirBottleOfPotionItem;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
@@ -193,12 +194,17 @@ public class ModJEIPlugin implements IModPlugin
                 PotionBottleRegistry.POTION_BOTTLE.get(),
                 (stack, context) -> PotionBottleItem.getPotionType(stack));
 
-        // 药水灵药瓶：按 NBT 中的 "Potion" 键区分不同药水，让 JEI 每种药水各显示一个条目
+        // 药水灵药瓶：按内置 FluidTank 中药水流体的 "Potion" 键区分不同药水，让 JEI 每种药水各显示一个条目
         registration.registerSubtypeInterpreter(
                 ModItems.ELIXIR_BOTTLE_OF_POTION.get(),
                 (stack, context) -> {
-                    CompoundTag tag = stack.getTag();
-                    return (tag != null && tag.contains("Potion")) ? tag.getString("Potion") : IIngredientSubtypeInterpreter.NONE;
+                    Potion potion = ElixirBottleOfPotionItem.getPotion(stack);
+                    if (potion == Potions.EMPTY)
+                    {
+                        return IIngredientSubtypeInterpreter.NONE;
+                    }
+                    ResourceLocation key = BuiltInRegistries.POTION.getKey(potion);
+                    return key != null ? key.toString() : IIngredientSubtypeInterpreter.NONE;
                 });
 
         // 通用「药水」流体：按 NBT 中的 "Potion" 键区分不同药水流体

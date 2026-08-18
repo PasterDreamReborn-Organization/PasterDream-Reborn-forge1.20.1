@@ -2334,5 +2334,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_direction.announce.5", "§7§o朝阳升起... 呼啸的风正吹往 §a西南方");
         add("message.pasterdream.wind_direction.announce.6", "§7§o朝阳升起... 呼啸的风正吹往 §a西方");
         add("message.pasterdream.wind_direction.announce.7", "§7§o朝阳升起... 呼啸的风正吹往 §a西北方");
+
+        // 药水箭
+
     }
 }
