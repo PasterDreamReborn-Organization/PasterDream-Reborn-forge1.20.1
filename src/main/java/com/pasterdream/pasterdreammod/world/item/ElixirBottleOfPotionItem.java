@@ -1,9 +1,12 @@
 package com.pasterdream.pasterdreammod.world.item;
 
+import com.pasterdream.pasterdreammod.init.ModFluids;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.fluid.PotionFluidHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -15,27 +18,36 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 /**
- * 灵药瓶（装药水）—— 单一物品实例，通过 NBT 承载任意原版药水。
+ * 灵药瓶（装药水）—— 单一物品实例，直接持有通用 {@link FluidTank}，
+ * tank 里装的是带 NBT 的药水 {@link net.minecraftforge.fluids.FluidStack}（见 {@link PotionFluidHelper}）。
  * <p>
- * 液体颜色由 ItemColor（见 {@code PasterDreamMod#registerItemColors}）按
- * {@link PotionUtils#getColor} 对模型 layer1 染色；饮用时施加药水效果并返还空灵药瓶。
+ * 液体颜色由 ItemColor（见 {@code PasterDreamMod#registerItemColors}）按 {@link PotionUtils#getColor} 对模型 layer1 染色；
+ * 饮用时从 tank 抽出 250mB 并施加对应药水效果，抽空后返还空灵药瓶。
  */
 public class ElixirBottleOfPotionItem extends Item {
 
-    // 可饮用次数；用自定义 NBT 计数，不启用原版 durability，避免被附魔「耐久」和「经验修补」
-    private static final int MAX_USES = 4;
-    private static final String TAG_USES = "ElixirUses";
+    // 可饮用次数；用流体量（mB）计数，不启用原版 durability，避免被附魔「耐久」和「经验修补」
+    public static final int MAX_USES = 4;
+    /** 每次可饮用次数对应的药水流体量（mB），供流体容器能力换算使用 */
+    public static final int FLUID_AMOUNT_PER_USE = 250;
+    /** 满瓶容量（mB） */
+    public static final int CAPACITY = MAX_USES * FLUID_AMOUNT_PER_USE;
+    /** 物品 NBT 中承载 FluidTank 的键 */
+    public static final String TAG_FLUID = "Fluid";
     // 耐久条颜色（粉色）
     private static final int BAR_COLOR = 0xFFFF69B4;
 
@@ -44,23 +56,52 @@ public class ElixirBottleOfPotionItem extends Item {
         super(new Item.Properties().stacksTo(1));
     }
 
-    /** 剩余饮用次数；NBT 未写入时视为满次数（新做出来的瓶子天然是满的）。 */
-    private static int getRemainingUses(ItemStack stack) {
+    /** 从物品 NBT 构建流体罐；NBT 未写入时为空罐。 */
+    public static FluidTank getFluidTank(ItemStack stack) {
+        FluidTank tank = new FluidTank(CAPACITY, fluid -> fluid.getFluid() == ModFluids.POTION.get());
         CompoundTag tag = stack.getTag();
-        return (tag != null && tag.contains(TAG_USES)) ? tag.getInt(TAG_USES) : MAX_USES;
+        if (tag != null && tag.contains(TAG_FLUID, Tag.TAG_COMPOUND)) {
+            tank.readFromNBT(tag.getCompound(TAG_FLUID));
+        }
+        return tank;
+    }
+
+    /** 把流体罐写回物品 NBT。 */
+    public static void saveFluidTank(ItemStack stack, FluidTank tank) {
+        stack.getOrCreateTag().put(TAG_FLUID, tank.writeToNBT(new CompoundTag()));
+    }
+
+    /** 从 tank 中的药水流体解析药水；缺失/未知回退为「空」药水。 */
+    public static Potion getPotion(ItemStack stack) {
+        Potion potion = PotionFluidHelper.getPotion(getFluidTank(stack).getFluid());
+        return potion != null ? potion : Potions.EMPTY;
+    }
+
+    /** 剩余饮用次数；按当前流体量换算（每 250mB = 1 次）。 */
+    public static int getRemainingUses(ItemStack stack) {
+        return getFluidTank(stack).getFluidAmount() / FLUID_AMOUNT_PER_USE;
+    }
+
+    /** 构建装满指定药水的满瓶灵药瓶（供创造栏/默认实例使用）。 */
+    public static ItemStack withPotion(Potion potion) {
+        ItemStack stack = new ItemStack(ModItems.ELIXIR_BOTTLE_OF_POTION.get());
+        FluidTank tank = getFluidTank(stack);
+        tank.fill(PotionFluidHelper.createStack(potion, CAPACITY), FluidAction.EXECUTE);
+        saveFluidTank(stack, tank);
+        return stack;
     }
 
     @Override
     public ItemStack getDefaultInstance() {
-        return PotionUtils.setPotion(super.getDefaultInstance(), Potions.WATER);
+        return withPotion(Potions.WATER);
     }
 
     @Override
     public Component getName(ItemStack stack) {
-        Potion potion = PotionUtils.getPotion(stack);
+        Potion potion = getPotion(stack);
         Component typeName = null;
 
-        List<MobEffectInstance> effects = PotionUtils.getMobEffects(stack);
+        List<MobEffectInstance> effects = potion.getEffects();
         if (!effects.isEmpty()) {
             // 有药水效果：用首个效果的显示名（如「夜视」「力量」）
             typeName = effects.get(0).getEffect().getDisplayName();
@@ -97,7 +138,7 @@ public class ElixirBottleOfPotionItem extends Item {
 
     @Override
     public int getBarWidth(ItemStack stack) {
-        return Math.round(13.0F * getRemainingUses(stack) / (float) MAX_USES);
+        return Math.round(13.0F * getFluidTank(stack).getFluidAmount() / (float) CAPACITY);
     }
 
     @Override
@@ -109,10 +150,12 @@ public class ElixirBottleOfPotionItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         return ItemUtils.startUsingInstantly(level, player, hand);
     }
+
     @Override
     public boolean isFoil(ItemStack stack) {
         return true;
     }
+
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         Player player = entity instanceof Player p ? p : null;
@@ -121,7 +164,7 @@ public class ElixirBottleOfPotionItem extends Item {
         }
 
         if (!level.isClientSide) {
-            for (MobEffectInstance effect : PotionUtils.getMobEffects(stack)) {
+            for (MobEffectInstance effect : getPotion(stack).getEffects()) {
                 if (effect.getEffect().isInstantenous()) {
                     effect.getEffect().applyInstantenousEffect(player, player, entity, effect.getAmplifier(), 1.0D);
                 } else {
@@ -131,12 +174,13 @@ public class ElixirBottleOfPotionItem extends Item {
         }
 
         if (player == null || !player.getAbilities().instabuild) {
-            int remaining = getRemainingUses(stack);
-            if (remaining <= 1) {
+            FluidTank tank = getFluidTank(stack);
+            tank.drain(FLUID_AMOUNT_PER_USE, FluidAction.EXECUTE);
+            saveFluidTank(stack, tank);
+            if (tank.getFluidAmount() <= 0) {
                 // 喝完最后一次：返还空灵药瓶
                 return new ItemStack(ModItems.ELIXIR_BOTTLE.get());
             }
-            stack.getOrCreateTag().putInt(TAG_USES, remaining - 1);
         }
         return stack;
     }
@@ -144,6 +188,8 @@ public class ElixirBottleOfPotionItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.elixir_bottle_of_potion.uses", getRemainingUses(stack)));
-        PotionUtils.addPotionTooltip(stack, tooltip, 1.0F);
+        // 复用原版药水效果 tooltip 格式
+        ItemStack potionStack = PotionUtils.setPotion(new ItemStack(Items.POTION), getPotion(stack));
+        PotionUtils.addPotionTooltip(potionStack, tooltip, 1.0F);
     }
 }

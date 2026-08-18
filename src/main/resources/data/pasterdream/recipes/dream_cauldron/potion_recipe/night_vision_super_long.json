@@ -1,0 +1,34 @@
+{
+  "type": "pasterdream:dream_cauldron",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{Potion:\"minecraft:long_night_vision\"}"
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:elixir_bottle",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:light_ball",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:white_orchid_flower",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:elixir_bottle_of_potion",
+      "count": 1,
+      "nbt": "{Fluid:{FluidName:\"pasterdream:potion\",Amount:1000,Tag:{Potion:\"pasterdream:super_long_night_vision\"}}}"
+    }
+  ]
+}

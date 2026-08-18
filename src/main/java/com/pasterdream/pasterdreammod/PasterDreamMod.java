@@ -18,6 +18,7 @@ import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
+import com.pasterdream.pasterdreammod.world.item.ElixirBottleOfPotionItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.AngelWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.ForsakensWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MachineLightWingItem;
@@ -224,7 +225,7 @@ public class PasterDreamMod
     {
         // 灵药瓶（装药水）：按药水颜色对液体层(layer1)染色，瓶身(layer0)不染色
         event.register(
-                (stack, tintIndex) -> tintIndex == 1 ? PotionUtils.getColor(stack) : -1,
+                (stack, tintIndex) -> tintIndex == 1 ? PotionUtils.getColor(ElixirBottleOfPotionItem.getPotion(stack)) : -1,
                 ModItems.ELIXIR_BOTTLE_OF_POTION.get()
         );
     }
