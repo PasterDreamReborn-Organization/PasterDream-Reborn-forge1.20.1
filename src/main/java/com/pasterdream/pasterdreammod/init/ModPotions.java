@@ -20,6 +20,10 @@ public class ModPotions {
     public static final RegistryObject<Potion> STRONG_LUCK = POTIONS.register("strong_luck",
             () -> new Potion("luck", new MobEffectInstance(MobEffects.LUCK, 1800, 1)));
 
+    // 夜视药水（15 分钟 = 18000 tick）
+    public static final RegistryObject<Potion> SUPER_LONG_NIGHT_VISION = POTIONS.register("super_long_night_vision",
+            () -> new Potion(new MobEffectInstance(MobEffects.NIGHT_VISION, 18000, 0)));
+
     public static void register(IEventBus eventBus) {
         POTIONS.register(eventBus);
     }
