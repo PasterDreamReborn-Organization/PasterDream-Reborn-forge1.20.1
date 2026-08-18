@@ -65,17 +65,32 @@ public class FluidIngredient
 
         if (fluid != null)
         {
-            return stack.getFluid() == fluid;
+            if (stack.getFluid() == fluid)
+            {
+                if (nbt != null)
+                {
+                    return nbt.equals(stack.getTag());
+                }
+                    else
+                    {
+                        return true;
+                    }
+            }
         }
 
         if (tag != null)
         {
-            return stack.getFluid().is(tag);
-        }
-
-        if (nbt != null)
-        {
-            return nbt.equals(stack.getTag());
+            if (stack.getFluid().is(tag))
+            {
+                if (nbt != null)
+                {
+                    return nbt.equals(stack.getTag());
+                }
+                    else
+                    {
+                        return true;
+                    }
+            }
         }
 
         return true;
