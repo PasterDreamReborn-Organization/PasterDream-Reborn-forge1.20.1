@@ -3,13 +3,11 @@ package com.pasterdream.pasterdreammod.world.entity;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
 import com.pasterdream.pasterdreammod.init.ModEffects;
-import net.minecraft.core.BlockPos;
+import com.pasterdream.pasterdreammod.world.block.twilightlantern.LampShadowWorldTeleporter;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.level.Level;
 
 public class NamelessDialogueHandler {
 
@@ -52,7 +50,7 @@ public class NamelessDialogueHandler {
 
     private static void finishFirstDialogue(ServerPlayer player) {
         AdvancementHelper.grant(player, FIRST_DIALOGUE, "first_dialogue");
-        teleportToOverworld(player);
+        LampShadowWorldTeleporter.teleportToOverworld(player, player.blockPosition());
         // TODO Phase F: shadow_e_0 门控留占位（击败亚伦柯斯之触后不再施加）
         player.addEffect(new MobEffectInstance(ModEffects.SHADOW_SPYON_BUFF.get(), 32000, 0, false, false));
     }
@@ -65,26 +63,6 @@ public class NamelessDialogueHandler {
         }
         PasterDreamMod.queueServerWork((SECOND_LINES + 1) * LINE_INTERVAL,
                 () -> AdvancementHelper.grant(player, SECOND_DIALOGUE, "second_dialogue"));
-    }
-
-    private static void teleportToOverworld(ServerPlayer player) {
-        ServerLevel overworld = player.server.getLevel(Level.OVERWORLD);
-        if (overworld == null) return;
-        player.teleportTo(overworld, player.getX(), player.getY(), player.getZ(), player.getYRot(), player.getXRot());
-
-        double spawnX, spawnY, spawnZ;
-        if (player.getRespawnDimension() == Level.OVERWORLD && player.getRespawnPosition() != null) {
-            BlockPos respawn = player.getRespawnPosition();
-            spawnX = respawn.getX() + 0.5;
-            spawnY = respawn.getY();
-            spawnZ = respawn.getZ() + 0.5;
-        } else {
-            spawnX = overworld.getLevelData().getXSpawn() + 0.5;
-            spawnY = overworld.getLevelData().getYSpawn();
-            spawnZ = overworld.getLevelData().getZSpawn() + 0.5;
-        }
-        player.teleportTo(spawnX, spawnY, spawnZ);
-        player.fallDistance = 0;
     }
 
     private static void sendLine(ServerPlayer player, String key) {

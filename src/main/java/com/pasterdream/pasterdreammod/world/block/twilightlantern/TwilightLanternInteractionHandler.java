@@ -110,16 +110,7 @@ public class TwilightLanternInteractionHandler {
         }
 
         if (entity instanceof ServerPlayer serverPlayer) {
-            // Teleport back to overworld spawn after 1 second
-            ServerLevel overworld = serverPlayer.server.getLevel(Level.OVERWORLD);
-            if (overworld != null) {
-                BlockPos spawnPos = overworld.getSharedSpawnPos();
-                float spawnAngle = overworld.getSharedSpawnAngle();
-                // Use a simple teleport - the /spawn command equivalent
-                serverPlayer.teleportTo(overworld,
-                        spawnPos.getX() + 0.5, spawnPos.getY(), spawnPos.getZ() + 0.5,
-                        spawnAngle, 0);
-            }
+            LampShadowWorldTeleporter.teleportToOverworld(serverPlayer, pos);
         }
     }
 
