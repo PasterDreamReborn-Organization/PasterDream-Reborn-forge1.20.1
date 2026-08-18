@@ -500,6 +500,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         // 阴影陶罐（复用陶罐模型）
         withExistingParent(ModItems.SHADOW_CLAY_POT.getId().getPath(), modLoc("block/clay_pot"));
         basicItem(ModItems.PEBBLE.get());
+        // 方解石锥
+        withExistingParent(ModItems.CALCITE_CONE.getId().getPath(), modLoc("block/calcite_cone_tip"));
 
         // 破风幕帐
         withExistingParent(ModItems.BREAK_WIND_CURTAIN.getId().getPath(), modLoc("block/break_wind_curtain"));

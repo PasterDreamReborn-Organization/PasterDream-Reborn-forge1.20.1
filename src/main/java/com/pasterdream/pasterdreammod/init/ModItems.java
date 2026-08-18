@@ -1119,6 +1119,9 @@ public class ModItems {
             () -> new PebbleItem(ModBlocks.PEBBLE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SMALL_STONE_SPIRIT_BLOCK = ITEMS.register("small_stone_spirit_block",
             () -> new BlockItem(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), new Item.Properties()));
+    // ===== 方解石锥 =====
+    public static final RegistryObject<Item> CALCITE_CONE = ITEMS.register("calcite_cone",
+            () -> new BlockItem(ModBlocks.CALCITE_CONE.get(), new Item.Properties()));
 
     // ===== 方块物品 =====
 

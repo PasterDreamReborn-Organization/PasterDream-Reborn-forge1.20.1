@@ -540,6 +540,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.RYE.get(), "兰麦");
         add(ModBlocks.POLISHED_CALCITE_STALICRIPE.get(), "方解石笋");
         add(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), "小方解石笋");
+        add(ModBlocks.CALCITE_CONE.get(), "方解石锥");
         add(ModBlocks.DYEDREAM_SEAGRASS.get(), "染梦海草");
         add(ModBlocks.REED.get(), "芦苇");
         add(ModBlocks.JUNGLE_SPORANGIUM.get(), "丛林孢子囊");

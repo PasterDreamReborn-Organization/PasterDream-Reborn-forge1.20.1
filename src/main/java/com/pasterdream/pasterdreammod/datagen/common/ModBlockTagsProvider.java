@@ -342,6 +342,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         addBuildingFamilyToTags(cyanStoneBrickFamily);
         addBuildingFamilyToTags(mossyCyanStoneBrickFamily);
 
+        // 方解石锥
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.CALCITE_CONE.get());
+
         // ===== 苍青岩压力板/按钮 =====
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get())
