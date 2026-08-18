@@ -46,11 +46,11 @@ public class RecipeMatcher
         }
 
 
-        Set<Item> inputItemTypes = inputItems.stream().filter(itemStack -> !itemStack.isEmpty()).map(ItemStack::getItem).collect(Collectors.toSet());
-        Set<Fluid> inputFluidTypes = inputFluids.stream().filter(fluidStack -> !fluidStack.isEmpty()).map(FluidStack::getFluid).collect(Collectors.toSet());
-
         for (T recipe : recipes)
         {
+            List<Item> inputItemTypes = inputItems.stream().filter(itemStack -> !itemStack.isEmpty()).map(ItemStack::getItem).collect(Collectors.toList());
+            List<Fluid> inputFluidTypes = inputFluids.stream().filter(fluidStack -> !fluidStack.isEmpty()).map(FluidStack::getFluid).collect(Collectors.toList());
+
             if (matchesTypes(recipe, inputItemTypes, inputFluidTypes))
             {
                 for(ItemIngredient itemIngredient : recipe.getOutputItems())
@@ -69,7 +69,7 @@ public class RecipeMatcher
         return null;
     }
 
-    private static boolean matchesTypes(IProcessingRecipe recipe, Set<Item> inputItemTypes, Set<Fluid> inputFluidTypes)
+    private static boolean matchesTypes(IProcessingRecipe recipe, List<Item> inputItemTypes, List<Fluid> inputFluidTypes)
     {
         matchedRecipeInputsAndOutputs = new MachineInventory(new ArrayList<>(), new ArrayList<>(),new ArrayList<>(), new ArrayList<>());
         for (ItemIngredient itemIngredient : recipe.getInputItems())
@@ -153,8 +153,8 @@ public class RecipeMatcher
             }
         }
 
-        if (!inputFluidTypes.isEmpty())
-        {   //物品输入槽有配方以外的物品
+        if (!recipe.getInputFluids().isEmpty() && !inputFluidTypes.isEmpty())
+        {   //流体输入槽有配方以外的流体
             return false;
         }
 

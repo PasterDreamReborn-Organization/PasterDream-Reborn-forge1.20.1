@@ -28,10 +28,12 @@ public class SoulGemOfAkizukiAyaneItem extends Item implements ICurioItem {
     private static final double ENERGY_PER_SEC = 1.5;
     private static final double FRAGILE_ENERGY_THRESHOLD = 30.0;
     private static final int NO_CONSUME_TICKS = 2400; // 2 分钟
-    private static final int ACTIVATION_COOLDOWN_TICKS = 3600; // 3 分钟
+    private static final int ACTIVATION_COOLDOWN_TICKS = 5400; // 4 分半钟
 
     private static final UUID SKILL_DAMAGE_UUID = UUID.fromString("c8f0a1b2-3c4d-4e5f-6a7b-8c9d0e1f2a3b");
     private static final UUID MAGIC_DAMAGE_UUID = UUID.fromString("d9e1b2c3-4d5e-6f7a-8b9c-0d1e2f3a4b5c");
+    private static final UUID ACTIVATION_SKILL_DAMAGE_UUID = UUID.fromString("e8f0a1b2-3c4d-4e5f-6a7b-8c9d0e1f2a3b");
+    private static final UUID ACTIVATION_MAGIC_DAMAGE_UUID = UUID.fromString("f9e1b2c3-4d5e-6f7a-8b9c-0d1e2f3a4b5c");
 
     public SoulGemOfAkizukiAyaneItem() {
         super(new Item.Properties().stacksTo(1).rarity(ModRarities.MIRACLE));
@@ -84,6 +86,7 @@ public class SoulGemOfAkizukiAyaneItem extends Item implements ICurioItem {
         }
         if (entity instanceof ServerPlayer sp) {
             MeltDreamEnergyHelper.setPlayerMeltDreamEnergyConsumeDoubled(sp, false);
+            removeActivationBuff(sp);
         }
     }
 
@@ -101,7 +104,7 @@ public class SoulGemOfAkizukiAyaneItem extends Item implements ICurioItem {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        if (!player.isShiftKeyDown()) {
+        if (hand != InteractionHand.MAIN_HAND || !player.isShiftKeyDown()) {
             return InteractionResultHolder.pass(stack);
         }
 
@@ -115,11 +118,36 @@ public class SoulGemOfAkizukiAyaneItem extends Item implements ICurioItem {
             MeltDreamEnergyHelper.setPlayerMeltDreamEnergyAndSync(sp,
                     MeltDreamEnergyHelper.getPlayerMaxMeltDreamEnergy(sp));
             MeltDreamEnergyHelper.setPlayerMeltDreamEnergyIsNeed(sp, false);
+            applyActivationBuff(sp);
             sp.getPersistentData().putInt("pasterdream.soul_gem_no_consume_ticks", NO_CONSUME_TICKS);
             player.getCooldowns().addCooldown(this, ACTIVATION_COOLDOWN_TICKS);
         }
 
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+    }
+
+    public static void applyActivationBuff(ServerPlayer player) {
+        AttributeInstance skillDmg = player.getAttribute(ModAttributes.SKILL_DAMAGE_RATE.get());
+        if (skillDmg != null && skillDmg.getModifier(ACTIVATION_SKILL_DAMAGE_UUID) == null) {
+            skillDmg.addPermanentModifier(new AttributeModifier(ACTIVATION_SKILL_DAMAGE_UUID,
+                    "Soul Gem of Akizuki Ayane activation skill damage", 0.6, AttributeModifier.Operation.MULTIPLY_TOTAL));
+        }
+        AttributeInstance magicDmg = player.getAttribute(ModAttributes.MAGIC_DAMAGE_RATE.get());
+        if (magicDmg != null && magicDmg.getModifier(ACTIVATION_MAGIC_DAMAGE_UUID) == null) {
+            magicDmg.addPermanentModifier(new AttributeModifier(ACTIVATION_MAGIC_DAMAGE_UUID,
+                    "Soul Gem of Akizuki Ayane activation magic damage", 0.6, AttributeModifier.Operation.MULTIPLY_TOTAL));
+        }
+    }
+
+    public static void removeActivationBuff(ServerPlayer player) {
+        AttributeInstance skillDmg = player.getAttribute(ModAttributes.SKILL_DAMAGE_RATE.get());
+        if (skillDmg != null) {
+            skillDmg.removeModifier(ACTIVATION_SKILL_DAMAGE_UUID);
+        }
+        AttributeInstance magicDmg = player.getAttribute(ModAttributes.MAGIC_DAMAGE_RATE.get());
+        if (magicDmg != null) {
+            magicDmg.removeModifier(ACTIVATION_MAGIC_DAMAGE_UUID);
+        }
     }
 
     public static boolean isWearing(Player player) {

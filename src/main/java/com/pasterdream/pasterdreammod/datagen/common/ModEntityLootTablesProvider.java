@@ -236,6 +236,27 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                                 .add(LootItem.lootTableItem(ModItems.CYAN_STONE.get())
                                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
         );
+
+        //雷云
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/thundercloud"),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.DARK_CLOUD.get())
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
+        );
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/highvoltage_thundercloud"),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.DARK_CLOUD.get())
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
+        );
+
     }
 
     private LootTable.Builder ghostLoot() {

@@ -314,6 +314,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
 
         buildingFamily(new BuildingBlockFamily(ModBlocks.POLISHED_CALCITE, ModBlocks.POLISHED_CALCITE_STAIRS, ModBlocks.POLISHED_CALCITE_SLAB, ModBlocks.POLISHED_CALCITE_WALL));
         buildingFamily(new BuildingBlockFamily(ModBlocks.CALCITE_TILES, ModBlocks.CALCITE_TILES_STAIRS, ModBlocks.CALCITE_TILES_SLAB, ModBlocks.CALCITE_TILES_WALL));
+        dropSelf(ModBlocks.CALCITE_CONE.get());
         dropSelf(ModBlocks.CYAN_STONE.get());
         add(ModBlocks.CYAN_MOSS_STONE.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(ModBlocks.CYAN_STONE.get())));
         buildingFamily(new BuildingBlockFamily(ModBlocks.CYAN_STONE_BRICKS, ModBlocks.CYAN_STONE_BRICK_STAIRS, ModBlocks.CYAN_STONE_BRICK_SLAB, ModBlocks.CYAN_STONE_BRICK_WALL));
@@ -345,6 +346,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
         dropSelf(ModBlocks.SHADOW_DUNGEON_GATE.get());
         dropSelf(ModBlocks.SHADOW_DUNGEON_BARRIER.get());
+        dropOther(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get(), ModItems.SHADOW_DUNGEON_KEY.get());
+        dropOther(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get(), ModItems.SHADOW_DUNGEON_KEY.get());
         dropSelf(ModBlocks.SHADOW_DUNGEON_PORTAL.get());
         dropSelf(ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get());
         dropNone(ModBlocks.DREAM_SPAWNER.get());

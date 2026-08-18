@@ -151,6 +151,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_DUNGEON_BRICK_STAIRS.get())
                 .add(ModBlocks.SHADOW_DUNGEON_BRICK_SLAB.get())
                 .add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get())
+                .add(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get())
+                .add(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get())
                 .add(ModBlocks.SHADOW_ARENA_BLOCK.get())
                 .add(ModBlocks.SHADOW_FISSURE_0.get())
                 .add(ModBlocks.SHADOW_FISSURE_1.get())
@@ -339,6 +341,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         addBuildingFamilyToTags(shadowStoneTilesFamily);
         addBuildingFamilyToTags(cyanStoneBrickFamily);
         addBuildingFamilyToTags(mossyCyanStoneBrickFamily);
+
+        // 方解石锥
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.CALCITE_CONE.get());
 
         // ===== 苍青岩压力板/按钮 =====
         tag(BlockTags.MINEABLE_WITH_PICKAXE)

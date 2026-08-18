@@ -305,7 +305,8 @@ public abstract class AbstractContainerMenuWithFluidSlot extends AbstractContain
                 return FluidStack.EMPTY;
             }
             int amount = Math.min(resource.getAmount(), fluid.getAmount());
-            FluidStack drained = new FluidStack(fluid.getFluid(), amount);
+            FluidStack drained = fluid.copy();
+            drained.setAmount(amount);
             if(action.execute())
             {
                 if (amount == fluid.getAmount())
@@ -328,7 +329,8 @@ public abstract class AbstractContainerMenuWithFluidSlot extends AbstractContain
                 return FluidStack.EMPTY;
             }
             int amount = Math.min(maxDrain, fluid.getAmount());
-            FluidStack drained = new FluidStack(fluid.getFluid(), amount);
+            FluidStack drained = fluid.copy();
+            drained.setAmount(amount);
             if(action.execute())
             {
                 if (amount == fluid.getAmount())

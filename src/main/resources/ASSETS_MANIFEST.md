@@ -45,6 +45,16 @@ textures/item/sandwich.png
 textures/item/candy_cane.png
 textures/item/rust_black_metal_grain.png
 textures/item/black_metal_ingot.png
+textures/item/calais_spice_bottle.png
+textures/item/shadow_sword.png
+textures/item/melt_dream_pickaxe.png
+textures/item/melt_dream_axe.png
+textures/item/melt_dream_shovel.png
+textures/item/melt_dream_hoe.png
+textures/block/dyedream_budding_block.png
+textures/block/large_dyedream_bud.png
+textures/block/medium_dyedream_bud.png
+textures/block/small_dyedream_bud.png
 ```
 
 ## 新增 / New
@@ -57,4 +67,14 @@ textures/item/black_metal_ingot.png
 textures/item/seniors_dream_book.png
 textures/item/shadow_deep_sea_treasure.png
 textures/item/galaxy_jelly.png
+textures/item/war_flag.png
+textures/item/rebirth_dream_crystal.png
+textures/item/soul_gem_of_akizuki_ayane.png
+textures/item/magnifying_glass_of_sherry.png
+textures/item/shadow_dyed_dream_notes_book_lamp_shadow_world.png
+textures/item/dream_notes_book_dyedream_world.png
+textures/item/dream_notes_book_lamp_shadow_world.png
+textures/item/dream_notes_book_overworld.png
+textures/item/dream_notes_book_wind_journey_world.png
+textures/block/dyedream_bud_block.png
 ```

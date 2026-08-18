@@ -224,6 +224,8 @@ public class ModItems {
             () -> new PulseWindRunnerCrystalItem());
     public static final RegistryObject<Item> WIND_KNIGHT_ALTAR = ITEMS.register("wind_knight_altar",
             () -> new WindKnightAltarItem(ModBlocks.WIND_KNIGHT_ALTAR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_VANE = ITEMS.register("wind_vane",
+            WindVaneItem::new);
     public static final RegistryObject<Item> LIGHT_BALL = ITEMS.register("light_ball",
             () -> new BlockItem(ModBlocks.LIGHT_BALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> COTTON = ITEMS.register("cotton", () -> new Item(new Item.Properties()));
@@ -843,18 +845,20 @@ public class ModItems {
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.GLOWING, 100, 0), 1.0f)
                             .nutrition(1).build())));
 
-    //TODO:防风buff施工中
     public static final RegistryObject<Item> JELLYFISH_MUD = ITEMS.register("jellyfish_mud",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(-3)
-                    .food(new FoodProperties.Builder().nutrition(1).build())));
+                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.WINDPROOF_BUFF.get(), 1200, 0), 1.0f).build())));
 
     public static final RegistryObject<Item> JELLYFISH_JELLO = ITEMS.register("jellyfish_jello",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.5f).build())));
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.5f).alwaysEat()
+                            .effect(() -> new MobEffectInstance(ModEffects.WINDPROOF_BUFF.get(), 12000, 0), 1.0f).build())));
 
     public static final RegistryObject<Item> QUEER_SOUP = ITEMS.register("queer_soup",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().meltDreamEnergyAdd(1)
-                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.375f).alwaysEat().build()))
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.375f).alwaysEat()
+                            .effect(() -> new MobEffectInstance(ModEffects.MISTY_DREAM_BUFF.get(), 6000, 0), 1.0f).build()))
             {
                 @Override
                 protected void onFoodSpecial(LivingEntity entity, Level level)
@@ -1023,6 +1027,10 @@ public class ModItems {
             IceShadowCurioItem::new);
     public static final RegistryObject<Item> BOBOJI_CURIO = ITEMS.register("boboji_curio",
             BobojiCurioItem::new);
+    public static final RegistryObject<Item> MOSS_PHANTOM_MEMBRANE = ITEMS.register("moss_phantom_membrane",
+            MossPhantomMembraneItem::new);
+    public static final RegistryObject<Item> LIGHT_MOSS_PHANTOM_MEMBRANE = ITEMS.register("light_moss_phantom_membrane",
+            LightMossPhantomMembraneItem::new);
     public static final RegistryObject<Item> QYM_BUTTERFLY_STAR_HAIRPIN = ITEMS.register("qym_butterfly_star_hairpin",
             QymButterflyStarHairpinItem::new);
     public static final RegistryObject<Item> HIYORI_BUTTERFLY_HAIRPIN = ITEMS.register("hiyori_butterfly_hairpin",
@@ -1087,6 +1095,12 @@ public class ModItems {
     public static final RegistryObject<Item> WAR_FLAG = ITEMS.register("war_flag",
             WarFlagItem::new);
 
+    public static final RegistryObject<Item> WIND_KNIGHT_FLAG = ITEMS.register("wind_knight_flag",
+            WindKnightFlagItem::new);
+
+    public static final RegistryObject<Item> PAPER_PLANE = ITEMS.register("paper_plane",
+            PaperPlaneItem::new);
+
     public static final RegistryObject<Item> CALAIS_SPICE_BOTTLE = ITEMS.register("calais_spice_bottle",
             CalaisSpiceBottleItem::new);
 
@@ -1105,6 +1119,9 @@ public class ModItems {
             () -> new PebbleItem(ModBlocks.PEBBLE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SMALL_STONE_SPIRIT_BLOCK = ITEMS.register("small_stone_spirit_block",
             () -> new BlockItem(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), new Item.Properties()));
+    // ===== 方解石锥 =====
+    public static final RegistryObject<Item> CALCITE_CONE = ITEMS.register("calcite_cone",
+            () -> new BlockItem(ModBlocks.CALCITE_CONE.get(), new Item.Properties()));
 
     // ===== 方块物品 =====
 
@@ -1413,6 +1430,10 @@ public class ModItems {
             () -> new ShadowDungeonGateItem(ModBlocks.SHADOW_DUNGEON_GATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_DUNGEON_BARRIER = ITEMS.register("shadow_dungeon_barrier",
             () -> new ShadowDungeonBarrierItem(ModBlocks.SHADOW_DUNGEON_BARRIER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_DUNGEON_WALL_KEY = ITEMS.register("shadow_dungeon_wall_key",
+            () -> new BlockItem(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_DUNGEON_FLOOR_KEY = ITEMS.register("shadow_dungeon_floor_key",
+            () -> new BlockItem(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_CRYSTAL_LANTERN = ITEMS.register("dyedream_crystal_lantern",
             () -> new BlockItem(ModBlocks.DYEDREAM_CRYSTAL_LANTERN.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_LANTERN = ITEMS.register("dyedream_lantern",

@@ -11,6 +11,7 @@ import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotes.NBTBookRegisterToCreativeModTab;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWithNBTToCreativeModeTab;
+import com.pasterdream.pasterdreammod.world.item.ElixirBottleOfPotionItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
@@ -21,7 +22,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -91,18 +91,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.YINHUL_COTTON_CANDY.get());
                         output.accept(ModItems.JELLYFISH_MUD.get());
                         output.accept(ModItems.JELLYFISH_JELLO.get());
-                        output.accept(ModItems.ELIXIR_BOTTLE.get());
-                        // 自动注册所有已注册药水（原版 + 本模组 + 其它模组）到灵药瓶；
-                        // 喷溅/滞留是物品(Items.SPLASH_POTION/LINGERING_POTION)而非 Potion，这里天然不包含；
-                        // 跳过「空」药水（无效果的纯空白灵药瓶）
-                        for (Potion potion : BuiltInRegistries.POTION) {
-                            if (potion == Potions.EMPTY) {
-                                continue;
-                            }
-                            output.accept(PotionUtils.setPotion(new ItemStack(ModItems.ELIXIR_BOTTLE_OF_POTION.get()), potion));
-                        }
-                        output.accept(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get());
-                        output.accept(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get());
                         output.accept(ModItems.PINEAPPLE_LOVE_SEA.get());
                         output.accept(ModItems.RED_DEW.get());
                         output.accept(ModItems.BLUE_DEW.get());
@@ -113,6 +101,18 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ODD_BACON_AND_EGG.get());
                         output.accept(ModItems.JUNGLE_SPORE.get());
                         output.accept(ModItems.BUBBLE_TEA.get());
+                        output.accept(ModItems.ELIXIR_BOTTLE.get());
+                        output.accept(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get());
+                        output.accept(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get());
+                        // 自动注册所有已注册药水（原版 + 本模组 + 其它模组）到灵药瓶；
+                        // 喷溅/滞留是物品(Items.SPLASH_POTION/LINGERING_POTION)而非 Potion，这里天然不包含；
+                        // 跳过「空」药水（无效果的纯空白灵药瓶）
+                        for (Potion potion : BuiltInRegistries.POTION) {
+                            if (potion == Potions.EMPTY) {
+                                continue;
+                            }
+                            output.accept(ElixirBottleOfPotionItem.withPotion(potion));
+                        }
                     })
                     .build());
 
@@ -324,6 +324,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BRIGHT_BUTTERFLY_CURIO.get());
                         output.accept(ModItems.ICE_SHADOW_CURIO.get());
                         output.accept(ModItems.BOBOJI_CURIO.get());
+                        output.accept(ModItems.MOSS_PHANTOM_MEMBRANE.get());
+                        output.accept(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get());
                         output.accept(ModItems.RABBIT_FOOT_NECKLACE.get());
                         output.accept(ModItems.FEATHER_NECKLACE.get());
                         output.accept(ModItems.HEALTH_NECKLACE.get());
@@ -343,6 +345,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.STORAGE_BAG.get());
                         output.accept(ModItems.LARGE_STORAGE_BAG.get());
                         output.accept(ModItems.WAR_FLAG.get());
+                        output.accept(ModItems.WIND_KNIGHT_FLAG.get());
+                        output.accept(ModItems.PAPER_PLANE.get());
+                        output.accept(ModItems.WIND_VANE.get());
                         output.accept(ModItems.CALAIS_SPICE_BOTTLE.get());
                         output.accept(ModItems.GHOST_FACE.get());
                     })
@@ -422,6 +427,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CALCITE_TILES_STAIRS.get());
                         output.accept(ModItems.CALCITE_TILES_SLAB.get());
                         output.accept(ModItems.CALCITE_TILES_WALL.get());
+                        output.accept(ModItems.CALCITE_CONE.get());
                         output.accept(ModItems.TITANIUM_ORE.get());
                         output.accept(ModItems.DEEPSLATE_TITANIUM_ORE.get());
                         output.accept(ModItems.MOLTEN_GOLD_ORE.get());
@@ -676,6 +682,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BROKEN_SHADOW_DUNGEON_PORTAL.get());
                         output.accept(ModItems.SHADOW_DUNGEON_GATE.get());
                         output.accept(ModItems.SHADOW_DUNGEON_BARRIER.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_WALL_KEY.get());
+                        output.accept(ModItems.SHADOW_DUNGEON_FLOOR_KEY.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE_CORE.get());
                         output.accept(ModItems.SHADOW_HAND_TRAP.get());

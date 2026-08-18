@@ -363,6 +363,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.SHATTERED_SHADOW_DUNGEON_BRICKS.get(), "Shattered Shadow Dungeon Bricks");
         add(ModBlocks.SHADOW_DUNGEON_GATE.get(), "Shadow Dungeon Gate");
         add(ModBlocks.SHADOW_DUNGEON_BARRIER.get(), "Shadow Dungeon Barrier");
+        add(ModBlocks.SHADOW_DUNGEON_WALL_KEY.get(), "Shadow Dungeon Key (Wall)");
+        add(ModBlocks.SHADOW_DUNGEON_FLOOR_KEY.get(), "Shadow Dungeon Key (Floor)");
         add(ModBlocks.DREAM_SPAWNER.get(), "Dream Spawner");
         add(ModBlocks.FADED_DREAM_SPAWNER.get(), "Faded Dream Spawner");
         add(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), "Shadow Dungeon Portal Core");
@@ -523,6 +525,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.RYE.get(), "Rye");
         add(ModBlocks.POLISHED_CALCITE_STALICRIPE.get(), "Polished Calcite Stalicripe");
         add(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), "Small Polished Calcite Stalicripe");
+        add(ModBlocks.CALCITE_CONE.get(), "Calcite Cone");
         add(ModBlocks.DYEDREAM_SEAGRASS.get(), "Dyedream Seagrass");
         add(ModBlocks.REED.get(), "Reed");
         add(ModBlocks.DYEDREAM_VINE.get(), "Dyedream Vine");
@@ -984,6 +987,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.boboji_curio.effect.flavor", "§7▪ §eAdds sound effects and particle trails to Blink");
         add("tooltip.pasterdream.boboji_curio.lore", "§7§oDedicated to the one who once accompanied me");
         add("tooltip.pasterdream.boboji_curio.dedication", "§7§o-- A yellow-green budgerigar named Boboji");
+        add(ModItems.MOSS_PHANTOM_MEMBRANE.get(), "Moss Phantom Membrane");
+        add("tooltip.pasterdream.moss_phantom_membrane.effect", "§7▪ §9Slowly repairs the equipped Elytra in bright light");
+        add(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get(), "Light Moss Phantom Membrane");
+        add("tooltip.pasterdream.light_moss_phantom_membrane.effect", "§7▪ §9Repairs the equipped Elytra");
+        add("tooltip.pasterdream.light_moss_phantom_membrane.effect.dark", "§7▪ §9Repairs slower in darkness");
 
         add(ModItems.KAICHU_OMAMORI.get(), "Kaichu Omamori");
         add(ModItems.BROOCH_OF_WHITE_ORCHID.get(), "Brooch of White Orchid");
@@ -1215,7 +1223,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.6", "§f▪ §4Melt Dream Energy consumption doubled");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.7", "§f▪ §4Damage taken is doubled when Melt Dream Energy is below 30");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.8", "§7Exclusive memento of Ayane.");
-        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.9", "§7Shift right-click to fully restore Melt Dream Energy and disable its consumption for 2 minutes (3 min cooldown)");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.9", "§7Shift right-click in main hand to fully restore Melt Dream Energy, disable its consumption and gain +60% Skill Damage and Magic Damage for 2 minutes (4.5 min cooldown)");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.10", "§6PasterDream: Reborn Copywriter");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.cooldown", "§cThe soul gem's power is still cooling down");
 
@@ -1775,6 +1783,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.small_ballon_9", "Small Balloon");
         add("structure.pasterdream.small_ballon_10", "Small Balloon");
         add("structure.pasterdream.christmas_tree", "Christmas Tree");
+        add("structure.pasterdream.fluffy_wind_church", "Fluffy Wind Church");
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "You do not yet know how to activate the shadow lantern");
         add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "You need to light the shadow lantern with a Melt Dream Crystal Fragment");
         add("message.pasterdream.twilight_lantern.event_start", "§8The eerie lantern suddenly shakes violently, black shadows flow out from the wick.");
@@ -1788,5 +1797,35 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.twilight_lantern.event_ready", "§5You can now resonate with the Twilight Lantern, interact with the True Shadow Bed");
         add("message.pasterdream.twilight_lantern.data_reset", "Block data reset");
         add("message.pasterdream.twilight_lantern_location", "The end of the note records coordinates in the upper Nether: X: %s Z: %s");
+        // ===== Wind Journey: wind direction mechanic =====
+        add(ModItems.WIND_VANE.get(), "Wind Vane");
+        add(ModItems.WIND_KNIGHT_FLAG.get(), "Wind Knight Flag");
+        add(ModItems.PAPER_PLANE.get(), "Paper Plane");
+        add("effect.pasterdream.tailwind_buff", "Tailwind");
+        add("effect.pasterdream.deadwind_buff", "Deadwind");
+        add("effect.pasterdream.windproof_buff", "Windproof");
+        add("effect.pasterdream.misty_dream_buff", "Misty Dream");
+        add("effect.pasterdream.cloud_mist_buff", "Cloud Mist");
+        add("tooltip.pasterdream.wind_vane.desc", "§7Detects the current wind direction and the player's angle");
+        add("message.pasterdream.wind_vane.angle", "Angle: %s Direction: %s");
+        add("tooltip.pasterdream.wind_knight_flag.effect1", "§7▪ §9Treats deadwind as tailwind");
+        add("tooltip.pasterdream.paper_plane.effect1", "§7▪ §9Amplifies the wind's effect on yourself");
+        add("tooltip.pasterdream.paper_plane.description", "§7§o-- The childhood we left behind");
+        add("message.pasterdream.wind_vane.direction.0", "Current wind: §aNorth Wind");
+        add("message.pasterdream.wind_vane.direction.1", "Current wind: §aNortheast Wind");
+        add("message.pasterdream.wind_vane.direction.2", "Current wind: §aEast Wind");
+        add("message.pasterdream.wind_vane.direction.3", "Current wind: §aSoutheast Wind");
+        add("message.pasterdream.wind_vane.direction.4", "Current wind: §aSouth Wind");
+        add("message.pasterdream.wind_vane.direction.5", "Current wind: §aSouthwest Wind");
+        add("message.pasterdream.wind_vane.direction.6", "Current wind: §aWest Wind");
+        add("message.pasterdream.wind_vane.direction.7", "Current wind: §aNorthwest Wind");
+        add("message.pasterdream.wind_direction.announce.0", "§7§oThe sun rises... The howling wind blows toward §aNorth");
+        add("message.pasterdream.wind_direction.announce.1", "§7§oThe sun rises... The howling wind blows toward §aNortheast");
+        add("message.pasterdream.wind_direction.announce.2", "§7§oThe sun rises... The howling wind blows toward §aEast");
+        add("message.pasterdream.wind_direction.announce.3", "§7§oThe sun rises... The howling wind blows toward §aSoutheast");
+        add("message.pasterdream.wind_direction.announce.4", "§7§oThe sun rises... The howling wind blows toward §aSouth");
+        add("message.pasterdream.wind_direction.announce.5", "§7§oThe sun rises... The howling wind blows toward §aSouthwest");
+        add("message.pasterdream.wind_direction.announce.6", "§7§oThe sun rises... The howling wind blows toward §aWest");
+        add("message.pasterdream.wind_direction.announce.7", "§7§oThe sun rises... The howling wind blows toward §aNorthwest");
     }
 }

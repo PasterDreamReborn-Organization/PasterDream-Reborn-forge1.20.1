@@ -3,12 +3,14 @@ package com.pasterdream.pasterdreammod.datagen.common;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.util.BuildingBlockFamily;
+import com.pasterdream.pasterdreammod.world.block.CalciteConeBlock;
 import com.pasterdream.pasterdreammod.world.block.FigVineBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DripstoneThickness;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -517,6 +519,26 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.POLISHED_CALCITE_STALICRIPE.get(), stalicripe);
         var small_stalicripe = models().cross(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.getId().getPath(), blockTexture(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get())).renderType("cutout");
         simpleBlock(ModBlocks.SMALL_POLISHED_CALCITE_STALICRIPE.get(), small_stalicripe);
+        // 方解石锥（滴水石锥式厚度缩放：tip/frustum/base/middle）
+        var calciteConeBase = models().getExistingFile(modLoc("block/calcite_cone_base"));
+        var calciteConeMiddle = models().getExistingFile(modLoc("block/calcite_cone_middle"));
+        var calciteConeFrustum = models().getExistingFile(modLoc("block/calcite_cone_frustum"));
+        var calciteConeTip = models().getExistingFile(modLoc("block/calcite_cone_tip"));
+        var calciteConeTipMerge = models().getExistingFile(modLoc("block/calcite_cone_tip_merge"));
+        getVariantBuilder(ModBlocks.CALCITE_CONE.get()).forAllStates(state -> {
+            DripstoneThickness thickness = state.getValue(CalciteConeBlock.THICKNESS);
+            ModelFile model = switch (thickness) {
+                case BASE -> calciteConeBase;
+                case MIDDLE -> calciteConeMiddle;
+                case FRUSTUM -> calciteConeFrustum;
+                case TIP -> calciteConeTip;
+                case TIP_MERGE -> calciteConeTipMerge;
+            };
+            if (thickness == DripstoneThickness.TIP && state.getValue(CalciteConeBlock.TIP_DIRECTION) == Direction.DOWN) {
+                return ConfiguredModel.builder().modelFile(calciteConeTip).rotationX(180).build();
+            }
+            return ConfiguredModel.builder().modelFile(model).build();
+        });
 
         var reed = models().cross(ModBlocks.REED.getId().getPath(), blockTexture(ModBlocks.REED.get())).renderType("cutout");
         simpleBlock(ModBlocks.REED.get(), reed);

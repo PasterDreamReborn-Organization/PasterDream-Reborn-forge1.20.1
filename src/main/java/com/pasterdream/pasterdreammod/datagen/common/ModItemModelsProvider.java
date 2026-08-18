@@ -281,6 +281,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.BRIGHT_BUTTERFLY_CURIO.get());
         basicItem(ModItems.ICE_SHADOW_CURIO.get());
         basicItem(ModItems.BOBOJI_CURIO.get());
+        basicItem(ModItems.MOSS_PHANTOM_MEMBRANE.get());
+        basicItem(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get());
         basicItem(ModItems.EMBRYO_NECKLACE.get());
         basicItem(ModItems.EMBRYO_RING.get());
         basicItem(ModItems.ALLKINDS_RING.get());
@@ -300,10 +302,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.BROOCH_OF_WHITE_ORCHID.get());
         basicItem(ModItems.SEAL_OF_THE_CORRUPTED.get());
         basicItem(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get());
-        basicItem(ModItems.MAGNIFYING_GLASS_OF_SHERRY.get());
+        handheldItem(ModItems.MAGNIFYING_GLASS_OF_SHERRY);
         basicItem(ModItems.BLESSING_OF_CECILIA.get());
         basicItem(ModItems.FADED_BLESSING_OF_CECILIA.get());
         basicItem(ModItems.WAR_FLAG.get());
+        basicItem(ModItems.WIND_KNIGHT_FLAG.get());
+        basicItem(ModItems.PAPER_PLANE.get());
+        basicItem(ModItems.WIND_VANE.get());
         basicItem(ModItems.CALAIS_SPICE_BOTTLE.get());
         basicItem(ModItems.GHOST_FACE.get());
         withExistingParent(ModItems.PALE_BONE_NEEDLE_TALISMAN.getId().getPath(), mcLoc("item/generated"))
@@ -495,6 +500,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         // 阴影陶罐（复用陶罐模型）
         withExistingParent(ModItems.SHADOW_CLAY_POT.getId().getPath(), modLoc("block/clay_pot"));
         basicItem(ModItems.PEBBLE.get());
+        // 方解石锥
+        withExistingParent(ModItems.CALCITE_CONE.getId().getPath(), modLoc("block/calcite_cone_tip"));
 
         // 破风幕帐
         withExistingParent(ModItems.BREAK_WIND_CURTAIN.getId().getPath(), modLoc("block/break_wind_curtain"));
