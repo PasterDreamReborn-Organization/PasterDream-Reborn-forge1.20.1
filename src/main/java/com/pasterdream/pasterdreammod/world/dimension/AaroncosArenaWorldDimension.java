@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.dimension;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.GameModeHelper;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
@@ -59,9 +60,17 @@ public final class AaroncosArenaWorldDimension {
 
     @SubscribeEvent
     public static void onPlayerChangedDimensionEvent(PlayerEvent.PlayerChangedDimensionEvent event) {
-        if (!event.getTo().equals(AARONCOS_ARENA_WORLD))
-            return;
         if (!(event.getEntity() instanceof ServerPlayer sp))
+            return;
+
+        // 离开竞技场维度（含 /tp 等任意逃逸方式）：恢复进入前的游戏模式，防止卡在冒险模式
+        if (event.getFrom().equals(AARONCOS_ARENA_WORLD)
+                && !event.getTo().equals(AARONCOS_ARENA_WORLD)) {
+            GameModeHelper.restorePreDreamGameMode(sp);
+            return;
+        }
+
+        if (!event.getTo().equals(AARONCOS_ARENA_WORLD))
             return;
 
         // 延迟到下一 tick 放置竞技场结构：跨维度传送期间区块尚未就绪，立即 placeInWorld 会静默失败
@@ -87,5 +96,24 @@ public final class AaroncosArenaWorldDimension {
             }
             sp.teleportTo(arena, 0.5, 47, -0.5, sp.getYRot(), sp.getXRot());
         });
+    }
+
+    /** 玩家死亡重生后恢复进入前的游戏模式（防止 kill 等原地重生卡在冒险模式；幂等，无记录则不动作） */
+    @SubscribeEvent
+    public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer sp))
+            return;
+        GameModeHelper.restorePreDreamGameMode(sp);
+    }
+
+    /**
+     * 死亡重生会创建全新实体，persistentData 不会自动继承，但游戏模式会被 restoreFrom 继承（仍是冒险）。
+     * 这里在克隆时把记录转移到新实体并恢复，兜住 kill/被生物击杀等死亡路径。
+     */
+    @SubscribeEvent
+    public static void onPlayerClone(PlayerEvent.Clone event) {
+        if (!event.isWasDeath())
+            return;
+        GameModeHelper.handlePlayerDeathClone(event.getOriginal(), event.getEntity());
     }
 }

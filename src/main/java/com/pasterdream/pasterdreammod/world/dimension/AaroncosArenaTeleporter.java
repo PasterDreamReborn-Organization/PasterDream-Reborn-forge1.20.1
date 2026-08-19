@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.dimension;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
+import com.pasterdream.pasterdreammod.helper.GameModeHelper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -38,7 +39,7 @@ public final class AaroncosArenaTeleporter {
         // 结构内亚伦柯斯之眼位于 (0,44,-1)，传送至其上方几格
         player.teleportTo(destination, 0.5, 47, -0.5, player.getYRot(), player.getXRot());
         player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 120, 0));
-        player.setGameMode(GameType.ADVENTURE);
+        GameModeHelper.saveAndSetAdventure(player);
     }
 
     /** 战斗结束：传回主世界重生点（或世界出生点），改生存模式 */
@@ -56,6 +57,7 @@ public final class AaroncosArenaTeleporter {
             z = overworld.getLevelData().getZSpawn() + 0.5;
         }
         player.teleportTo(overworld, x, y, z, player.getYRot(), player.getXRot());
-        player.setGameMode(GameType.SURVIVAL);
+        if (!GameModeHelper.restorePreDreamGameMode(player))
+            player.setGameMode(GameType.SURVIVAL);
     }
 }

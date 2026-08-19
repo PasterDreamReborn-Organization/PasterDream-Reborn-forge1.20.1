@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.helper.DreamDimensionHelper;
+import com.pasterdream.pasterdreammod.helper.GameModeHelper;
 import com.pasterdream.pasterdreammod.helper.MagicDamageHelper;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
@@ -711,5 +712,7 @@ public class CurioPassiveHandler {
         }
         sp.teleportTo(spawnX, spawnY, spawnZ);
         sp.fallDistance = 0;
+        // 离开梦境维度后恢复进入前的游戏模式（防止卡在冒险模式）
+        GameModeHelper.restorePreDreamGameMode(sp);
     }
 }
