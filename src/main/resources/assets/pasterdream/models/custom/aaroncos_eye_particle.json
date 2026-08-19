@@ -1,0 +1,6 @@
+{
+  "parent": "pasterdream:displaysettings/aaroncos_eye.item",
+  "textures": {
+    "particle": "pasterdream:block/aaroncos_eye"
+  }
+}

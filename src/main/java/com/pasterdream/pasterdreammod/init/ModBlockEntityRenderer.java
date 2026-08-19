@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeTileRenderer;
+import com.pasterdream.pasterdreammod.world.block.aaroncoshandchest.AaroncosHandChestTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollBlockEntityRenderer;
@@ -63,5 +65,7 @@ public class ModBlockEntityRenderer
         event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_BRAZIER.get(), ShadowBrazierBlockRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.TWILIGHT_LANTERN.get(), TwilightLanternTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.WIND_KNIGHT_ALTAR.get(), WindKnightAltarBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.AARONCOS_EYE.get(), AaroncosEyeTileRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.AARONCOS_HAND_CHEST.get(), AaroncosHandChestTileRenderer::new);
     }
 }

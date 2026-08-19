@@ -11,6 +11,8 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.barrier.Shad
 import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowDungeonGateBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalBlock;
+import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeBlock;
+import com.pasterdream.pasterdreammod.world.block.aaroncoshandchest.AaroncosHandChestBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapBlock;
 import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierBlock;
@@ -267,6 +269,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> SHADOW_DUNGEON_PORTAL = BLOCKS.register("shadow_dungeon_portal", ShadowDungeonPortalBlock::new);
     // 暗影漩涡 (亚伦柯斯之触技能)
     public static final RegistryObject<Block> SHADOW_VORTEX = BLOCKS.register("shadow_vortex", ShadowVortexBlock::new);
+    // 亚伦柯斯之眼 (竞技场生成控制器)
+    public static final RegistryObject<Block> AARONCOS_EYE = BLOCKS.register("aaroncos_eye", AaroncosEyeBlock::new);
+    // 亚伦柯斯奖励箱
+    public static final RegistryObject<Block> AARONCOS_HAND_CHEST = BLOCKS.register("aaroncos_hand_chest", AaroncosHandChestBlock::new);
+    // 亚伦柯斯竞技场传送门
+    public static final RegistryObject<Block> AARONCOS_ARENA_PORTALS = BLOCKS.register("aaroncos_arena_portals", AaroncosArenaPortalsBlock::new);
     // 暗影之手陷阱
     public static final RegistryObject<Block> SHADOW_HAND_TRAP = BLOCKS.register("shadow_hand_trap", ShadowHandTrapBlock::new);
     // 暗影火盆

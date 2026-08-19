@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.helper.DreamDimensionHelper;
 import com.pasterdream.pasterdreammod.helper.MagicDamageHelper;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
@@ -15,11 +16,9 @@ import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPotionBottle;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -149,7 +148,7 @@ public class CurioPassiveHandler {
         if (player.getHealth() + player.getAbsorptionAmount() - event.getAmount() > 0.0F) return;
 
         // 苍白骨针护符：梦境维度中拦截致命伤害
-        if (isDreamDimension(player.level())) {
+        if (DreamDimensionHelper.isDreamDimension(player.level())) {
             boolean hasTalisman = CuriosApi.getCuriosInventory(player)
                     .map(h -> h.findFirstCurio(ModItems.PALE_BONE_NEEDLE_TALISMAN.get()).isPresent())
                     .orElse(false);
@@ -691,16 +690,6 @@ public class CurioPassiveHandler {
         pd.remove("pasterdream_ghost_face_type");
         pd.remove("pasterdream_ghost_face_clone");
         pd.remove("pasterdream_ghost_face_potion_type");
-    }
-
-    private static final ResourceKey<Level> DYEDREAM_WORLD =
-            ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_world"));
-    private static final ResourceKey<Level> LAMP_SHADOW_WORLD =
-            ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath("pasterdream", "lamp_shadow_world"));
-
-    private static boolean isDreamDimension(Level level) {
-        ResourceKey<Level> dim = level.dimension();
-        return dim == DYEDREAM_WORLD || dim == LAMP_SHADOW_WORLD;
     }
 
     private static void teleportToSpawn(ServerPlayer sp) {

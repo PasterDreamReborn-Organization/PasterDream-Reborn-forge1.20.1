@@ -26,6 +26,10 @@ public class ModNoiseSettings {
             ResourceKey.create(Registries.NOISE_SETTINGS,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world"));
 
+    public static final ResourceKey<NoiseGeneratorSettings> AARONCOS_ARENA_WORLD =
+            ResourceKey.create(Registries.NOISE_SETTINGS,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_arena_world"));
+
     public static void bootstrap(BootstapContext<NoiseGeneratorSettings> context) {
         // 复用主世界的完整噪声路由器（洞穴、含水层、矿脉、地形起伏等）
         NoiseGeneratorSettings overworld = NoiseGeneratorSettings.overworld(context, false, false);
@@ -116,6 +120,22 @@ public class ModNoiseSettings {
                 List.of(),                                              // 无生成目标
                 0,                                                      // 海平面 0
                 false,                                                  // 启用怪物生成
+                false,                                                  // 禁用含水层
+                false,                                                  // 禁用矿脉
+                true                                                    // 使用旧随机源
+        ));
+
+        // 亚伦柯斯竞技场维度（虚空：复用末地噪声路由，默认方块/流体/地表全为空气，竞技场结构运行时手动放置）
+        NoiseGeneratorSettings arenaEnd = NoiseGeneratorSettings.end(context);
+        context.register(AARONCOS_ARENA_WORLD, new NoiseGeneratorSettings(
+                arenaEnd.noiseSettings(),                               // min_y=0, height=128, 岛屿噪声覆盖
+                Blocks.AIR.defaultBlockState(),                         // 默认方块：空气
+                Blocks.AIR.defaultBlockState(),                         // 默认流体：空气
+                arenaEnd.noiseRouter(),                                 // 末地浮空岛噪声路由
+                makeArenaSurfaceRules(),                                // 全空气地表规则（虚空）
+                List.of(),                                              // 无生成目标
+                0,                                                      // 海平面 0
+                false,                                                  // 启用怪物生成（群系空 spawners，实际不生成）
                 false,                                                  // 禁用含水层
                 false,                                                  // 禁用矿脉
                 true                                                    // 使用旧随机源
@@ -248,5 +268,10 @@ public class ModNoiseSettings {
                         SurfaceRules.state(ModBlocks.WHITE_SAND.get().defaultBlockState())
                 )
         );
+    }
+
+    private static SurfaceRules.RuleSource makeArenaSurfaceRules() {
+        // 竞技场维度地表全为空气（虚空），竞技场主体结构由进入维度时手动 placeInWorld 放置
+        return SurfaceRules.state(Blocks.AIR.defaultBlockState());
     }
 }

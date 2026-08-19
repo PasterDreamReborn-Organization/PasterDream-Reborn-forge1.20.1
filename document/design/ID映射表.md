@@ -2,6 +2,7 @@
 
 > 源模组旧 ID → 重置模组新 ID 对照表  
 > 仅**搬运已有旧 ID** 的方块/物品时登记，新方块或原作废案无需登记
+> 未实际搬运的方块/物品请勿登记
 
 ---
 
@@ -215,6 +216,14 @@
 | `shadow_stone_tiles_wall`           | `shadow_stone_tiles_wall`           | 不改                                            | 无需客制化类，直接用 `WallBlock`                                                                                                  |
 | `cracked_shadow_stone_brick`        | `cracked_shadow_stone_brick`        | 不改                                            | 无需客制化类，直接用 `Block`                                                                                                      |
 | `chiseled_shadow_stone_brick`       | `chiseled_shadow_stone_brick`       | 不改                                            | 无需客制化类，直接用 `Block`                                                                                                      |
+| `shadow_arena_block_0`              | `shadow_arena_block`                | 重命名，去 `_0` 后缀                                | 无需客制化类，直接用 `Block`，竞技场主体建材                                                                                               |
+| `shadow_fissure_0`                  | `shadow_fissure_0`                  | 不改                                            | 无需客制化类，直接用 `Block`，竞技场裂隙装饰（发光）                                                                                          |
+| `shadow_fissure_1`                  | `shadow_fissure_1`                  | 不改                                            | 无需客制化类，直接用 `HalfTransparentBlock`，竞技场裂隙装饰（发光，半透明）                                                                      |
+| `shadow_fissure_2`                  | `shadow_fissure_2`                  | 不改                                            | 无需客制化类，直接用 `Block`，竞技场裂隙装饰（发光）                                                                                          |
+| `shadow_fissure_3`                  | `shadow_fissure_3`                  | 不改                                            | 无需客制化类，直接用 `HalfTransparentBlock`，竞技场裂隙装饰（发光，半透明）                                                                      |
+| `shadow_fissure_4`                  | `shadow_fissure_4`                  | 不改                                            | 无需客制化类，直接用 `Block`，竞技场裂隙装饰（发光）                                                                                          |
+| `shadow_fissure_5`                  | `shadow_fissure_5`                  | 不改                                            | 无需客制化类，直接用 `HalfTransparentBlock`，竞技场裂隙装饰（发光，半透明）                                                                      |
+| `aaroncoshandspawnblock`            | `aaroncos_eye`                      | 重命名，语义化（亚伦柯斯之眼）                            | 客制化类 `AaroncosEyeBlock`，GeckoLib 动画方块实体，竞技场生成控制器                                                                          |
 | `shadow_dungeon_block_0`            | `shadow_dungeon_stone`              | 重命名                                           | 无需客制化类，直接用 `Block`                                                                                                      |
 | `shadow_dungeon_block_1`            | `chiseled_shadow_dungeon_bricks`    | 重命名                                           | 无需客制化类，直接用 `RotatedPillarBlock`，顶底纹理与侧面不同                                                                               |
 | `shadow_dungeon_block_2`            | `shadow_dungeon_bricks`             | 重命名                                           | 无需客制化类，直接用 `Block`                                                                                                      |
@@ -691,6 +700,10 @@
 | `highvoltage_thundercloud`          | `highvoltage_thundercloud`    | 不改                                               | 客制化类 `HighvoltageThundercloudEntity`（高压雷云，更强变体）                                             |
 | `projectile_lightning_projectile`   | `lightning_projectile`        | 重命名，去 `projectile_` 前缀                           | 弹射物 `LightningProjectileEntity`（雷云攻击）                                                          |
 | `firefly`                           | `firefly`                     | 不改                                               | 客制化类 `FireflyEntity`（GeckoLib 飞行实体），右键用生态玻璃罐捕捉 → 获得发光萤火虫玻璃罐                                     |
+| `shadow_magicball`                  | `shadow_magicball`            | 不改                                               | 客制化类 `ShadowMagicballEntity`，右手魔法球技能弹射物                                                              |
+| `shadow_tune_totem`                 | `shadow_tune_totem`           | 不改                                               | 客制化类 `ShadowTuneTotemEntity`，右手调谐图腾技能召唤物                                                            |
+| `aaroncos_lefthand_0`               | `aaroncos_left_hand`          | 重命名，`lefthand` 拆分补下划线 + 去 `_0` 后缀        | 客制化类 `AaroncosLeftHandEntity`，亚伦柯斯之触 - 左手（Boss，GeckoLib）                                            |
+| `aaroncos_righthand_0`              | `aaroncos_right_hand`         | 重命名，`righthand` 拆分补下划线 + 去 `_0` 后缀       | 客制化类 `AaroncosRightHandEntity`，亚伦柯斯之触 - 右手（Boss，GeckoLib）                                           |
 
 ---
 
@@ -711,7 +724,7 @@
 | `dyedream_world`       | `dyedream_world`       | 不改，已实现 | `DimensionType` + `NoiseSettings` + `LevelStem` 已完成 datagen |
 | `lamp_shadow_world`    | `lamp_shadow_world`    | 不改，待搬运 | -                                                           |
 | `wind_journey_world`   | `wind_journey_world`   | 不改，已实现 | `DimensionType` + `NoiseSettings` + `LevelStem` 已完成 datagen |
-| `aaroncos_arena_world` | `aaroncos_arena_world` | 不改，待搬运 | -                                                           |
+| `aaroncos_arena_world` | `aaroncos_arena_world` | 不改，已实现 | `DimensionType` + `NoiseSettings` + `LevelStem` 已完成 datagen |
 
 ---
 
@@ -728,6 +741,6 @@
 | `biome_shadow_2`       | `shadow_ruins`                | 重命名     | 阴影古迹                          |
 | `wind_journey_biome_0` | `wind_moor_archipelago`         | 重命名，已实现 | 风泊群岛，`ModBiomes` 中完成 datagen |
 | `wind_journey_biome_1` | `misty_dream_cloud_layer`       | 重命名，已实现 | 迷梦云层，`ModBiomes` 中完成 datagen |
-| `aaroncos_arena_biome` | 待搬运                           | -       | 亚伦柯斯竞技场                       |
+| `aaroncos_arena_biome` | `aaroncos_arena_biome`          | 不改，已实现 | 亚伦柯斯竞技场，`ModBiomes` 中完成 datagen |
 
 

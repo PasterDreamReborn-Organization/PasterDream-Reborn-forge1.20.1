@@ -361,6 +361,9 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SHADOW_FISSURE_4.get());
         dropSelf(ModBlocks.SHADOW_FISSURE_5.get());
         dropSelf(ModBlocks.SHADOW_VORTEX.get());
+        dropSelf(ModBlocks.AARONCOS_EYE.get());
+        dropSelf(ModBlocks.AARONCOS_HAND_CHEST.get());
+        dropSelf(ModBlocks.AARONCOS_ARENA_PORTALS.get());
         dropSelf(ModBlocks.SHADOW_BRAZIER.get());
         dropSelf(ModBlocks.SHADOW_BLAST_FURNACE.get());
         dropSelf(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());

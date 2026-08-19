@@ -15,6 +15,8 @@ import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanter
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalDisplayItem;
 import net.minecraft.world.item.BlockItem;
+import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.aaroncoshandchest.AaroncosHandChestDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapItem;
 import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierDisplayItem;
@@ -1364,6 +1366,18 @@ public class ModItems {
             () -> new ShadowDungeonPortalDisplayItem(ModBlocks.SHADOW_DUNGEON_PORTAL.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_VORTEX = ITEMS.register("shadow_vortex",
             () -> new ShadowVortexDisplayItem(ModBlocks.SHADOW_VORTEX.get(), new Item.Properties()));
+    public static final RegistryObject<Item> AARONCOS_EYE = ITEMS.register("aaroncos_eye",
+            () -> new AaroncosEyeDisplayItem(ModBlocks.AARONCOS_EYE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> AARONCOS_HAND_CHEST = ITEMS.register("aaroncos_hand_chest",
+            () -> new AaroncosHandChestDisplayItem(ModBlocks.AARONCOS_HAND_CHEST.get(), new Item.Properties()));
+    public static final RegistryObject<Item> AARONCOS_ARENA_PORTALS = ITEMS.register("aaroncos_arena_portals",
+            () -> new BlockItem(ModBlocks.AARONCOS_ARENA_PORTALS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> AARONCOS_ARENA_CREATE = ITEMS.register("aaroncos_arena_create",
+            AaroncosArenaCreateItem::new);
+    public static final RegistryObject<Item> AARONCOS_MUSIC_DISC = ITEMS.register("aaroncos_music_disc",
+            () -> new RecordItem(0, ModSounds.AARONCOS_MUSIC, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 2980));
+    public static final RegistryObject<Item> PURE_HORROR = ITEMS.register("pure_horror",
+            PureHorrorItem::new);
     public static final RegistryObject<Item> SHADOW_HAND_TRAP = ITEMS.register("shadow_hand_trap",
             () -> new ShadowHandTrapItem(ModBlocks.SHADOW_HAND_TRAP.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_BRAZIER = ITEMS.register("shadow_brazier",
