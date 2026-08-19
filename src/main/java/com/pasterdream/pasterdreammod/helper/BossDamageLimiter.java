@@ -23,13 +23,13 @@ public class BossDamageLimiter {
 
     /** 每 tick 衰减 DPS 桶 */
     public void tick() {
-        if (damageBucket > 0) {
+        if (Config.bossDamageCapEnabled && Config.bossDpsCapEnabled && damageBucket > 0) {
             damageBucket = Math.max(0, damageBucket - dpsCap / 20f);
         }
     }
 
     /**
-     * 对传入伤害应用三层限伤。
+     * 对传入伤害应用三层限伤（每一层均受配置开关控制）。
      * @return 修改后的伤害值，-1 表示免疫（距离过远）
      */
     public float limit(LivingEntity self, DamageSource source, float amount) {
@@ -37,13 +37,19 @@ public class BossDamageLimiter {
         if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
             return amount;
 
+        boolean singleHitEnabled = Config.bossDamageCapEnabled;
+        boolean dpsEnabled = singleHitEnabled && Config.bossDpsCapEnabled;
+        boolean rangeEnabled = Config.bossRangeCapEnabled;
+
         float effectiveCap = getEffectiveCap(self);
 
         // 第一层：单发上限
-        amount = Math.min(amount, effectiveCap);
+        if (singleHitEnabled) {
+            amount = Math.min(amount, effectiveCap);
+        }
 
         // 第二层：距离衰减
-        if (source.getEntity() != null) {
+        if (rangeEnabled && source.getEntity() != null) {
             double distSqr = self.distanceToSqr(source.getEntity());
             double limitSqr = rangeCap * rangeCap;
             double maxLimit = rangeCap * 1.5;
@@ -61,17 +67,19 @@ public class BossDamageLimiter {
         }
 
         // 第三层：DPS 桶
-        float projected = damageBucket + amount;
-        if (projected > effectiveCap) {
-            float roomLeft = effectiveCap - damageBucket;
-            if (roomLeft > 0) {
-                amount = roomLeft;
-                damageBucket = effectiveCap;
+        if (dpsEnabled) {
+            float projected = damageBucket + amount;
+            if (projected > effectiveCap) {
+                float roomLeft = effectiveCap - damageBucket;
+                if (roomLeft > 0) {
+                    amount = roomLeft;
+                    damageBucket = effectiveCap;
+                } else {
+                    amount = 0.1f;
+                }
             } else {
-                amount = 0.1f;
+                damageBucket += amount;
             }
-        } else {
-            damageBucket += amount;
         }
 
         return amount;
