@@ -849,6 +849,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.侵染教堂-黑面", "Infested Church - Black Face");
         add("book.pasterdream.title.侵染教堂-亮面", "Infested Church - Bright Face");
         add("book.pasterdream.title.暮影之笼", "Twilight Cage");
+        add("book.pasterdream.title.暗影图书馆", "Shadow Library");
 
         add("book.pasterdream.title.破风的骑士", "Wind Break Knight");
         add("book.pasterdream.title.清晨的新风", "Morning New Wind");
