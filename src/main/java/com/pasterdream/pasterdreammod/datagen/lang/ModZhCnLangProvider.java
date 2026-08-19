@@ -1519,6 +1519,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("block.pasterdream.aaroncos_hand_chest", "亚伦柯斯之触战利品箱");
         add("block.pasterdream.aaroncos_arena_portals", "亚伦柯斯竞技场传送门");
         add("item.pasterdream.aaroncos_arena_create", "亚伦柯斯测试竞技场生成器");
+        add("tooltip.pasterdream.aaroncos_arena_create", "§4创造模式物品");
         add("item.pasterdream.aaroncos_music_disc", "音乐唱片");
         add("item.pasterdream.aaroncos_music_disc.desc", "§dPasterDream§7 - 亚伦柯斯之触");
         add("item.pasterdream.pure_horror", "纯粹恐惧");

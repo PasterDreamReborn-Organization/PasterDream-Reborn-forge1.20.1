@@ -1352,6 +1352,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("block.pasterdream.aaroncos_hand_chest", "Aaroncos Hand Chest");
         add("block.pasterdream.aaroncos_arena_portals", "Aaroncos Arena Portals");
         add("item.pasterdream.aaroncos_arena_create", "Aaroncos Arena Create");
+        add("tooltip.pasterdream.aaroncos_arena_create", "§4Creative Mode Item");
         add("item.pasterdream.aaroncos_music_disc", "Aaroncos Music Disc");
         add("item.pasterdream.aaroncos_music_disc.desc", "§dPasterDream§7 - Aaroncos's Touch");
         add("item.pasterdream.pure_horror", "Pure Horror");

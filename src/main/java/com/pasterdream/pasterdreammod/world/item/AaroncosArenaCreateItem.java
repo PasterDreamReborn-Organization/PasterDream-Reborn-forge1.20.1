@@ -21,7 +21,7 @@ public class AaroncosArenaCreateItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(stack, world, list, flag);
-        list.add(Component.literal("§4创建模式物品"));
+        list.add(Component.translatable("tooltip.pasterdream.aaroncos_arena_create"));
     }
 
     @Override
