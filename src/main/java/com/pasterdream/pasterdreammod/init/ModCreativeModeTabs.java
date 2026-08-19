@@ -773,6 +773,7 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("侵染教堂-黑面"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("侵染教堂-亮面"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("暮影之笼"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("暗影图书馆"));
 
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("破风的骑士"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("清晨的新风"));
