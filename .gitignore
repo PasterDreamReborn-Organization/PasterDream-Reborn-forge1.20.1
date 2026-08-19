@@ -48,3 +48,10 @@ dirt_temp/
 /build/
 /*.spec
 /TouhouLittleMaid/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Open Code
+opencode.json
