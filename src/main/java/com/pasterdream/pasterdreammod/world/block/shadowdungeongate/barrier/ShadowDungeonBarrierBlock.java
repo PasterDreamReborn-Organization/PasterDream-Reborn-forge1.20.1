@@ -3,12 +3,16 @@ package com.pasterdream.pasterdreammod.world.block.shadowdungeongate.barrier;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.MultiBlockProperties;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties._3x3Part;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.calculatemainposition._3x3_VerticalCalculatePartPosition;
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.VoxelShapeCalculator;
-import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.block.HorizontalDirectionalGenericBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -63,22 +67,29 @@ public class ShadowDungeonBarrierBlock extends HorizontalDirectionalGenericBlock
         builder.add(FACING, PART);
     }
 
+    private static final ResourceLocation SECOND_DIALOGUE_ADV =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_npc_second_dialogue");
+
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos blockPosition, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult)
     {
-        if(player.getItemInHand(interactionHand).getItem() == ModItems.SHADOW_DUNGEON_KEY.get())
+        if (!level.isClientSide)
         {
-            if (!player.isCreative())
+            if (player.isCreative() || (player instanceof ServerPlayer sp && AdvancementHelper.isDone(sp, SECOND_DIALOGUE_ADV)))
             {
-                player.getMainHandItem().shrink(1);
+                level.playSound(null, blockPosition, ModSounds.SHADOW_DOOR.get(), SoundSource.BLOCKS, 1, 1);
+                level.destroyBlock(blockPosition, false, player);
+                return InteractionResult.SUCCESS;
             }
-            level.playSound(null, blockPosition, ModSounds.SHADOW_DOOR.get(), SoundSource.BLOCKS, 1, 1);
-            level.destroyBlock(blockPosition, false, player);
-            return InteractionResult.SUCCESS;
+                else
+                {
+                    player.displayClientMessage(Component.translatable("message.pasterdream.大门紧闭不开"), true);
+                    return InteractionResult.FAIL;
+                }
         }
             else
             {
-                return InteractionResult.FAIL;
+                return InteractionResult.SUCCESS;
             }
     }
 
