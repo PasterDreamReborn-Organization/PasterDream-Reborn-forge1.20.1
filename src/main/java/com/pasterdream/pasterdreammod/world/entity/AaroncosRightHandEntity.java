@@ -387,11 +387,12 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
                 sl.sendParticles(ModParticleTypes.SHADOW_STONE_PARTICLE.get(), getX(), getY(), getZ(), 64, 1, 1, 1, 0.2);
                 sl.sendParticles(ParticleTypes.EXPLOSION, getX(), getY(), getZ(), 16, 1, 1, 1, 0.2);
             }
-            // Spawn ShadowMagicball
+            // Spawn ShadowMagicball from eye height, ahead of the hand's hitbox
             if (level() instanceof ServerLevel _level) {
                 Vec3 look = getLookAngle();
+                Vec3 eye = getEyePosition();
                 Entity magicball = ModEntities.SHADOW_MAGICBALL.get().spawn(_level,
-                    BlockPos.containing(getX() + look.x * 1.5, getY() + look.y, getZ() + look.z * 1.5),
+                    BlockPos.containing(eye.x + look.x * 2.5, eye.y + look.y, eye.z + look.z * 2.5),
                     MobSpawnType.MOB_SUMMONED);
                 if (magicball != null) {
                     magicball.setYRot(getYRot());
