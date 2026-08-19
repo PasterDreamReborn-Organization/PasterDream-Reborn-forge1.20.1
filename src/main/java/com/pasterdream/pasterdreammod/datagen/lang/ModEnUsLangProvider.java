@@ -666,6 +666,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("message.pasterdream.需要在本层寻找暗影地牢钥匙以打开大门", "Need to find Shadow Dungeon Key in this floor to open the gate");
 
+        add("message.pasterdream.大门紧闭不开", "The gate is tightly closed");
+
         add("option.pasterdream.Q: 模拟无工具破坏", "Q: Simulate Break Without Tool");
         add("option.pasterdream.W: 模拟下界合金镐破坏", "W: Simulate Break With Netherite Pickaxe");
         add("option.pasterdream.E: 模拟下界合金镐时运III破坏", "E: Simulate Break With Fortune III Netherite Pickaxe");

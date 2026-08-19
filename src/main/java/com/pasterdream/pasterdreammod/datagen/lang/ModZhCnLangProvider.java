@@ -689,6 +689,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("message.pasterdream.需要在本层寻找暗影地牢钥匙以打开大门", "需要在本层寻找暗影地牢钥匙以打开大门");
 
+        add("message.pasterdream.大门紧闭不开", "大门紧闭不开");
+
         add("option.pasterdream.Q: 模拟无工具破坏", "Q: 模拟无工具破坏");
         add("option.pasterdream.W: 模拟下界合金镐破坏", "W: 模拟下界合金镐破坏");
         add("option.pasterdream.E: 模拟下界合金镐时运III破坏", "E: 模拟下界合金镐时运III破坏");
@@ -1468,7 +1470,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("gui.pasterdream.shadow_select_end.label_outcome", "这会使探索在未来走向不同的结局");
 
         // 无名对话：第一次对话
-        add("dialogue.pasterdream.nameless.first_1", "？？？：嗯……？");
+        add("dialogue.pasterdream.nameless.first_1", "？？？：嗯......？");
         add("dialogue.pasterdream.nameless.first_2", "？？？：......你是怎么来到这里的？");
         add("dialogue.pasterdream.nameless.first_3", "？？？：已经很久没有人来到这里了......");
         add("dialogue.pasterdream.nameless.first_4", "？？？：虽然我知道你对于我的过去可能有兴趣，但是...经历了太多，我也不想回忆。");
