@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
+import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
@@ -35,7 +36,10 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.Comparator;
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 public class ShadowMagicballEntity extends PathfinderMob implements GeoEntity {
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(ShadowMagicballEntity.class, EntityDataSerializers.STRING);
@@ -44,6 +48,10 @@ public class ShadowMagicballEntity extends PathfinderMob implements GeoEntity {
     public String animationprocedure = "empty";
     private int lifeTicks = 0;
     private int explodeTick = -1;
+
+    private static final double HOMING_RANGE = 24.0;   // 追踪索敌范围（方块）
+    private static final double HOMING_SPEED = 0.25;    // 追踪飞行速度（方块/tick）
+    private Vec3 travelDirection;                      // 无目标时保持的飞行方向
 
     private static final TagKey<EntityType<?>> SHADOW_MOB = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("pasterdream", "shadow_mob"));
     private static final TagKey<EntityType<?>> SPECIAL_ENTITY = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("pasterdream", "special_entity_tag"));
@@ -154,6 +162,18 @@ public class ShadowMagicballEntity extends PathfinderMob implements GeoEntity {
         sw.sendParticles(ParticleTypes.SMOKE,
                 getX(), getY(), getZ(), 4, 0.2, 0.2, 0.2, 0.1);
 
+        // Homing: steer toward the nearest valid target, otherwise fly straight ahead
+        LivingEntity homingTarget = findHomingTarget();
+        if (homingTarget != null) {
+            Vec3 toTarget = homingTarget.getEyePosition().subtract(getX(), getY(), getZ()).normalize();
+            setDeltaMovement(toTarget.scale(HOMING_SPEED));
+            lookAt(EntityAnchorArgument.Anchor.EYES, homingTarget.getEyePosition());
+        } else {
+            Vec3 dir = getTravelDirection();
+            setDeltaMovement(dir.scale(HOMING_SPEED));
+            lookAt(EntityAnchorArgument.Anchor.EYES, position().add(dir.scale(10)));
+        }
+
         // Collision check
         Vec3 center = new Vec3(getX(), getY(), getZ());
         List<LivingEntity> entities = level().getEntitiesOfClass(LivingEntity.class,
@@ -200,6 +220,51 @@ public class ShadowMagicballEntity extends PathfinderMob implements GeoEntity {
         this.setAnimation("death");
         if (!level().isClientSide())
             explodeTick = 0;
+    }
+
+    @Nullable
+    private LivingEntity findHomingTarget() {
+        Vec3 center = new Vec3(getX(), getY(), getZ());
+        List<LivingEntity> entities = level().getEntitiesOfClass(LivingEntity.class,
+                new AABB(center, center).inflate(HOMING_RANGE), e -> e != this && e.isAlive()
+                        && !e.getType().is(SPECIAL_ENTITY) && !e.getType().is(SHADOW_MOB)
+                        && !(e instanceof Player player && (player.isCreative() || player.isSpectator())));
+        if (entities.isEmpty())
+            return null;
+        return entities.stream().min(Comparator.comparingDouble(e -> e.distanceToSqr(this))).orElse(null);
+    }
+
+    private Vec3 getTravelDirection() {
+        if (travelDirection == null) {
+            travelDirection = getLookAngle();
+            if (travelDirection.lengthSqr() < 1.0E-4)
+                travelDirection = new Vec3(0, 0, 1);
+        }
+        return travelDirection;
+    }
+
+    @Override
+    public void travel(Vec3 input) {
+        this.move(MoverType.SELF, this.getDeltaMovement());
+    }
+
+    @Override
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
+    public boolean isPickable() {
+        return false;
+    }
+
+    @Override
+    public boolean canBeCollidedWith() {
+        return false;
+    }
+
+    @Override
+    protected void pushEntities() {
     }
 
     @Override
