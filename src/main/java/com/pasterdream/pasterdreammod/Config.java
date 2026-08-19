@@ -286,6 +286,20 @@ public class Config
             .comment("暗影难度是否影响 BOSS 限伤值（方案B：难度越高 damageCap 越低），默认 false")
             .define("bossShadowDifficultyAffectsDamageCap", false);
 
+    private static final ForgeConfigSpec.BooleanValue BOSS_DAMAGE_CAP_ENABLED = BUILDER
+            .comment("是否启用 BOSS 单次伤害限制（单次受击伤害上限），默认 true。"
+                    + "\n设为 false 时，单发上限与 DPS 限制均不生效")
+            .define("bossDamageCapEnabled", true);
+
+    private static final ForgeConfigSpec.BooleanValue BOSS_DPS_CAP_ENABLED = BUILDER
+            .comment("是否启用 BOSS DPS 限制（每秒总伤害上限），默认 false。"
+                    + "\n仅在启用单次伤害限制（bossDamageCapEnabled=true）时生效")
+            .define("bossDpsCapEnabled", false);
+
+    private static final ForgeConfigSpec.BooleanValue BOSS_RANGE_CAP_ENABLED = BUILDER
+            .comment("是否启用 BOSS 远距离减伤（超出限伤距离后伤害线性衰减），默认 false")
+            .define("bossRangeCapEnabled", false);
+
     private static final ForgeConfigSpec.DoubleValue BOSS_DAMAGE_CAP = BUILDER
             .comment("BOSS 单次受击伤害上限（同时也是 DPS 桶容量），默认 40")
             .defineInRange("bossDamageCap", 40.0, 1.0, 1_000_000.0);
@@ -597,6 +611,9 @@ public class Config
 
     // BOSS 限伤系统
     public static boolean bossShadowDifficultyAffectsDamageCap;
+    public static boolean bossDamageCapEnabled;
+    public static boolean bossDpsCapEnabled;
+    public static boolean bossRangeCapEnabled;
     public static double bossDamageCap;
     public static double bossDpsCap;
     public static double bossRangeCap;
@@ -836,6 +853,9 @@ public class Config
         shadowHandSanDrain = SHADOW_HAND_SAN_DRAIN.get();
         shadowLootMultipliers = SHADOW_LOOT_MULTIPLIERS.get();
         bossShadowDifficultyAffectsDamageCap = BOSS_SHADOW_DIFFICULTY_AFFECTS_DAMAGE_CAP.get();
+        bossDamageCapEnabled = BOSS_DAMAGE_CAP_ENABLED.get();
+        bossDpsCapEnabled = BOSS_DPS_CAP_ENABLED.get();
+        bossRangeCapEnabled = BOSS_RANGE_CAP_ENABLED.get();
         bossDamageCap = BOSS_DAMAGE_CAP.get();
         bossDpsCap = BOSS_DPS_CAP.get();
         bossRangeCap = BOSS_RANGE_CAP.get();
