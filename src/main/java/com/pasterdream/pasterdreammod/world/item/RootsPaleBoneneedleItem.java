@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item;
 
+import com.pasterdream.pasterdreammod.helper.DreamDimensionHelper;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
@@ -73,7 +74,7 @@ public class RootsPaleBoneneedleItem extends Item {
             player.swing(hand, true);
             player.hurt(player.level().damageSources().generic(), 1.0f);
 
-            if (PaleBoneneedleItem.isDreamDimension(level) && level instanceof ServerLevel serverLevel) {
+            if (DreamDimensionHelper.isDreamDimension(level) && level instanceof ServerLevel serverLevel) {
                 boolean wasFalling = player.fallDistance > 10;
 
                 PaleBoneneedleItem.scheduleDelayed(() -> {

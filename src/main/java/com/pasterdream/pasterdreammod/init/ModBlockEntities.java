@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeTileEntity;
+import com.pasterdream.pasterdreammod.world.block.aaroncoshandchest.AaroncosHandChestTileEntity;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket.PicnicBasketBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.windmoorcrate.WindMoorCrateBlockEntity;
@@ -96,6 +98,8 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<ShadowBlastFurnaceBlockEntity>> SHADOW_BLAST_FURNACE = BLOCK_ENTITIES.register("shadow_blast_furnace", () -> BlockEntityType.Builder.of(ShadowBlastFurnaceBlockEntity::new, ModBlocks.SHADOW_BLAST_FURNACE.get()).build(null));
     public static final RegistryObject<BlockEntityType<ShadowBlastFurnaceAddonBlockEntity>> SHADOW_BLAST_FURNACE_ADDON = BLOCK_ENTITIES.register("shadow_blast_furnace_addon", () -> BlockEntityType.Builder.of(ShadowBlastFurnaceAddonBlockEntity::new, ModBlocks.SHADOW_BLAST_FURNACE.get()).build(null));
     public static final RegistryObject<BlockEntityType<WindKnightAltarBlockEntity>> WIND_KNIGHT_ALTAR = BLOCK_ENTITIES.register("wind_knight_altar", () -> BlockEntityType.Builder.of(WindKnightAltarBlockEntity::new, ModBlocks.WIND_KNIGHT_ALTAR.get()).build(null));
+    public static final RegistryObject<BlockEntityType<AaroncosEyeTileEntity>> AARONCOS_EYE = BLOCK_ENTITIES.register("aaroncos_eye", () -> BlockEntityType.Builder.of(AaroncosEyeTileEntity::new, ModBlocks.AARONCOS_EYE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<AaroncosHandChestTileEntity>> AARONCOS_HAND_CHEST = BLOCK_ENTITIES.register("aaroncos_hand_chest", () -> BlockEntityType.Builder.of(AaroncosHandChestTileEntity::new, ModBlocks.AARONCOS_HAND_CHEST.get()).build(null));
     public static final RegistryObject<BlockEntityType<DreamTrainBroadcastBlockEntity>> DREAM_TRAIN_BROADCAST = BLOCK_ENTITIES.register("dream_train_broadcast", () -> BlockEntityType.Builder.of(DreamTrainBroadcastBlockEntity::new, ModBlocks.DREAM_TRAIN_STRUCTURE.get()).build(null));
 
     public static void register(IEventBus eventBus)

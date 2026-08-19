@@ -1511,6 +1511,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.aaroncos_right_hand_spawn_egg", "亚伦柯斯之触-右手刷怪蛋");
         add("entity.pasterdream.aaroncos_left_hand", "亚伦柯斯之触-左手");
         add("entity.pasterdream.aaroncos_right_hand", "亚伦柯斯之触-右手");
+        add("block.pasterdream.aaroncos_eye", "亚伦柯斯之眼");
+        add("block.pasterdream.aaroncos_hand_chest", "亚伦柯斯之触战利品箱");
+        add("block.pasterdream.aaroncos_arena_portals", "亚伦柯斯竞技场传送门");
+        add("item.pasterdream.aaroncos_arena_create", "亚伦柯斯测试竞技场生成器");
+        add("item.pasterdream.aaroncos_music_disc", "音乐唱片");
+        add("item.pasterdream.aaroncos_music_disc.desc", "§dPasterDream§7 - 亚伦柯斯之触");
+        add("item.pasterdream.pure_horror", "纯粹恐惧");
         add("entity.pasterdream.shadow_magicball", "暗影魔法球");
         add("entity.pasterdream.shadow_tune_totem", "暗影符文塔");
         add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在蓄能");
@@ -1601,6 +1608,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.talent_light.description", "在灯与影的选择中选择光明");
         add("advancements.pasterdream.story.talent_shadow.title", "暗影仆从");
         add("advancements.pasterdream.story.talent_shadow.description", "在灯与影的抉择中选择暗影");
+        add("advancements.pasterdream.story.defeat_aaroncos.title", "吹影镂尘");
+        add("advancements.pasterdream.story.defeat_aaroncos.description", "击败亚伦柯斯之触");
+        add("message.pasterdream.aaroncos_arena.need_progress", "尚未完成前置进度");
         add("advancements.pasterdream.story.shadow_intrude_complete.title", "暗影入侵");
         add("advancements.pasterdream.story.shadow_intrude_complete.description", "完成暗影入侵事件");
         add("advancements.pasterdream.story.dig_up_a_tomb.title", "邻家有女初长成，力拔山兮气盖世");
@@ -2355,6 +2365,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.small_ballon_10", "小气球");
         add("structure.pasterdream.christmas_tree", "圣诞树");
         add("structure.pasterdream.fluffy_wind_church", "萦风教堂");
+        add("structure.pasterdream.aaroncos_arena_portal", "亚伦柯斯竞技场传送门");
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "你尚未知晓如何激活影灯");
         add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "需要用融梦水晶碎片点燃影灯");
         add("message.pasterdream.twilight_lantern.event_start", "§8诡异的灯笼突然剧烈抖动，黑色的阴影从灯芯里流出");

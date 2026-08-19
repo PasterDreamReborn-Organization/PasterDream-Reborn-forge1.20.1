@@ -39,6 +39,10 @@ public class ModLevelStems {
             ResourceKey.create(Registries.LEVEL_STEM,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world"));
 
+    public static final ResourceKey<LevelStem> AARONCOS_ARENA_WORLD =
+            ResourceKey.create(Registries.LEVEL_STEM,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_arena_world"));
+
     @SuppressWarnings("unchecked")
     private static MultiNoiseBiomeSource createMultiNoiseSource(
             Climate.ParameterList<Holder<Biome>> params) {
@@ -254,5 +258,30 @@ public class ModLevelStems {
         ChunkGenerator windJourneyChunkGenerator = new NoiseBasedChunkGenerator(windJourneyBiomeSource, windJourneyNoise);
 
         context.register(WIND_JOURNEY_WORLD, new LevelStem(windJourneyDimType, windJourneyChunkGenerator));
+
+        // ===== 亚伦柯斯竞技场维度 =====
+        Holder<Biome> aaroncosArenaBiome = biomes.getOrThrow(ModBiomes.AARONCOS_ARENA_BIOME);
+        Holder<DimensionType> aaroncosArenaDimType = dimensionTypes.getOrThrow(ModDimensionTypes.AARONCOS_ARENA_WORLD);
+        Holder<NoiseGeneratorSettings> aaroncosArenaNoise = noiseSettings.getOrThrow(ModNoiseSettings.AARONCOS_ARENA_WORLD);
+
+        // 单群系（原作 multi_noise 参数全 0；单群系 R-tree 恒返回唯一群系，虚空维度无覆盖问题）
+        Climate.ParameterList<Holder<Biome>> aaroncosArenaBiomeParams = new Climate.ParameterList<>(List.<Pair<Climate.ParameterPoint, Holder<Biome>>>of(
+                Pair.of(
+                        new Climate.ParameterPoint(
+                                Climate.Parameter.point(0.0F),
+                                Climate.Parameter.point(0.0F),
+                                Climate.Parameter.point(0.0F),
+                                Climate.Parameter.point(0.0F),
+                                Climate.Parameter.point(0.0F),
+                                Climate.Parameter.point(0.0F),
+                                0L
+                        ),
+                        aaroncosArenaBiome
+                )
+        ));
+        MultiNoiseBiomeSource aaroncosArenaBiomeSource = createMultiNoiseSource(aaroncosArenaBiomeParams);
+        ChunkGenerator aaroncosArenaChunkGenerator = new NoiseBasedChunkGenerator(aaroncosArenaBiomeSource, aaroncosArenaNoise);
+
+        context.register(AARONCOS_ARENA_WORLD, new LevelStem(aaroncosArenaDimType, aaroncosArenaChunkGenerator));
     }
 }

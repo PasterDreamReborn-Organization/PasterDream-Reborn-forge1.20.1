@@ -1,13 +1,12 @@
 package com.pasterdream.pasterdreammod.world.item;
 
+import com.pasterdream.pasterdreammod.helper.DreamDimensionHelper;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -35,17 +34,6 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class PaleBoneneedleItem extends Item {
-
-    private static final ResourceKey<Level> DYEDREAM_WORLD =
-            ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath("pasterdream", "dyedream_world"));
-    private static final ResourceKey<Level> LAMP_SHADOW_WORLD =
-            ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath("pasterdream", "lamp_shadow_world"));
-    // TODO: 待风旅维度实装后取消注释
-    // private static final ResourceKey<Level> WIND_JOURNEY_WORLD =
-    //         ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath("pasterdream", "wind_journey_world"));
-    // TODO: 待亚伦柯斯竞技场实装后取消注释
-    // private static final ResourceKey<Level> AARONCOS_ARENA_WORLD =
-    //         ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath("pasterdream", "aaroncos_arena_world"));
 
     /** 传送前延迟（tick），给音效/粒子留出播放时间 */
     static final int TELEPORT_DELAY = 20;
@@ -104,7 +92,7 @@ public class PaleBoneneedleItem extends Item {
         player.swing(hand, true);
         player.hurt(player.level().damageSources().generic(), 1.0f);
 
-        if (isDreamDimension(level) && level instanceof ServerLevel serverLevel) {
+        if (DreamDimensionHelper.isDreamDimension(level) && level instanceof ServerLevel serverLevel) {
             boolean wasFalling = player.fallDistance > 10;
 
             if (player instanceof ServerPlayer sp) {
@@ -130,15 +118,6 @@ public class PaleBoneneedleItem extends Item {
 
         itemstack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
         return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
-    }
-
-    static boolean isDreamDimension(Level level) {
-        ResourceKey<Level> dim = level.dimension();
-        // TODO: 待其余梦维度实装后取消注释对应判断
-        return dim == DYEDREAM_WORLD
-                || dim == LAMP_SHADOW_WORLD;
-        // || dim == WIND_JOURNEY_WORLD
-        // || dim == AARONCOS_ARENA_WORLD;
     }
 
     static void teleportToOverworldAndSpawn(ServerLevel serverLevel, Player player) {
@@ -187,7 +166,7 @@ public class PaleBoneneedleItem extends Item {
             Level level = attacker.level();
             target.hurt(level.damageSources().generic(), 1.0f);
 
-            if (isDreamDimension(level) && level instanceof ServerLevel serverLevel) {
+            if (DreamDimensionHelper.isDreamDimension(level) && level instanceof ServerLevel serverLevel) {
                 boolean wasFalling = target.fallDistance > 10;
 
                 serverLevel.sendParticles(ModParticleTypes.DUST_0_PARTICLE.get(),

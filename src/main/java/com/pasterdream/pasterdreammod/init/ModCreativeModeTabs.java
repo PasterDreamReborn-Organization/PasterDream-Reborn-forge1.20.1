@@ -157,6 +157,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_COROLLA.get());
                         output.accept(ModItems.WHITE_COROLLA.get());
                         output.accept(ModItems.WHITE_CRYSTAL.get());
+                        output.accept(ModItems.SHADOW_HILT.get());
+                        output.accept(ModItems.PURE_HORROR.get());
                         output.accept(ModItems.CONGEAL_WIND.get());
                         output.accept(ModItems.WIND_RUNNER_CRYSTAL.get());
                         output.accept(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get());
@@ -199,6 +201,7 @@ public class ModCreativeModeTabs {
                         // 音乐唱片
                         output.accept(ModItems.SWEET_DREAM_MUSIC_DISC.get());
                         output.accept(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get());
+                        output.accept(ModItems.AARONCOS_MUSIC_DISC.get());
                         // 预言卡（动态遍历所有已注册类型，含 KJS / 拓展模组注册的）
                         output.accept(ModItems.EMPTY_PROPHECY_CARD.get());
                         for (String type : ProphecyCardItem.getRegisteredTypes()) {
@@ -511,7 +514,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_FISSURE_3.get());
                         output.accept(ModItems.SHADOW_FISSURE_4.get());
                         output.accept(ModItems.SHADOW_FISSURE_5.get());
-                        output.accept(ModItems.SHADOW_HILT.get());
                     })
                     .build());
 
@@ -688,6 +690,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_BLAST_FURNACE.get());
                         output.accept(ModItems.SHADOW_BLAST_FURNACE_CORE.get());
                         output.accept(ModItems.SHADOW_HAND_TRAP.get());
+                        output.accept(ModItems.AARONCOS_EYE.get());
+                        output.accept(ModItems.AARONCOS_HAND_CHEST.get());
+                        output.accept(ModItems.AARONCOS_ARENA_PORTALS.get());
+                        output.accept(ModItems.AARONCOS_ARENA_CREATE.get());
                         output.accept(ModItems.ECOLOGY_GLASS_JAR.get());
                         output.accept(ModItems.FIREFLY_GLASS_JAR.get());
                         output.accept(ModItems.FIREFLY_NEST.get());

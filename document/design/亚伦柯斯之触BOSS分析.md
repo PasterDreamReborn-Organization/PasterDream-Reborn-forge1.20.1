@@ -6,7 +6,7 @@
 - **AaroncosLefthand0Entity** — 亚伦柯斯之触 - 左（左手）
 - **AaroncosRighthand0Entity** — 亚伦柯斯之触 - 右（右手）
 
-原代码位于 `NOT_MODIFY/reference/` 下，包路径 `net.pasterdream`。新项目尚未搬运任何 BOSS 相关代码。
+原代码位于 `NOT_MODIFY/reference/` 下，包路径 `net.pasterdream`。新项目已完成 BOSS 双手实体、技能、Boss 条与支撑实体（魔法球/符文塔/暗影之手/恐惧喙/漩涡方块）的搬运，目前仅差竞技场系统未搬运。
 
 ---
 
@@ -196,7 +196,7 @@
 
 ## 七、竞技场系统
 
-### 生成方块 (AaroncoshandspawnblockBlock)
+### 生成方块 (`aaroncos_eye` — 亚伦柯斯之眼，原名 AaroncoshandspawnblockBlock)
 - 不可破坏 (hardness=-1, resistance=3600000)
 - 每 20t tick 一次，执行 `AaroncoshandspawnblockPr1Procedure`
 - 右键交互执行 `AaroncoshandspawnblockPr0Procedure`
@@ -217,7 +217,7 @@
 ### 竞技场维度
 - `aaroncos_arena_world` 维度
 - 包含 `aaroncos_arena.nbt` 结构（1MB 的 NBT 文件）
-- 传送门结构 `aaroncos_arena_portals`
+- 传送门方块 `aaroncos_arena_portals`（亚伦柯斯竞技场传送门）
 
 ---
 
@@ -228,8 +228,8 @@
 |---|---|---|
 | ShadowHandEntity | ✅ 已搬运 | 血锁机制召唤 |
 | TerrorbeakEntity | ✅ 已搬运 | 竞技场波次 |
-| ShadowMagicballEntity | ❌ 未搬运 | 右手魔法球技能 |
-| ShadowTuneTotemEntity | ❌ 未搬运 | 右手图腾技能 |
+| ShadowMagicballEntity | ✅ 已搬运（`shadow_magicball`） | 右手魔法球技能 |
+| ShadowTuneTotemEntity | ✅ 已搬运（`shadow_tune_totem`） | 右手图腾技能 |
 
 ### 需要已搬运的效果
 | 效果 | 状态 | 用途 |
@@ -242,10 +242,10 @@
 ### 需要已搬运的方块/物品
 | 类型 | 名称 | 用途 |
 |---|---|---|
-| 方块 | Aaroncoshandspawnblock | 竞技场生成控制器 |
+| 方块 | `aaroncos_eye`（原名 Aaroncoshandspawnblock） | 亚伦柯斯之眼 — 竞技场生成控制器 |
 | 方块 | AaroncosHandChest | BOSS 奖励箱 |
-| 方块 | SHADOW_VORTEX | 右手漩涡技能 |
-| 方块 | AaroncosArenaPortals | 竞技场传送门 |
+| 方块 | `shadow_vortex`（原名 SHADOW_VORTEX） | 右手漩涡技能 ✅ 已搬运 |
+| 方块 | `aaroncos_arena_portals` | 亚伦柯斯竞技场传送门 |
 | 物品 | AaroncosArenaCreateItem | 创建竞技场 |
 | 物品 | AaroncosDiscItem | BOSS 音乐唱片 |
 | 物品 | 双手生成蛋 | 创造模式生成 |
@@ -284,30 +284,32 @@
 
 ## 十、建议搬运顺序
 
-### 阶段 1: 准备工作
+> **当前进度**：阶段 1~4 已完成（BOSS 双手实体、技能、Boss 条、支撑实体均已搬运），仅剩 **阶段 5（竞技场系统）** 与 **阶段 6（资源整合）** 待搬运。
+
+### 阶段 1: 准备工作 ✅ 已完成
 1. 确认 `ModEffects` 中有 `SHADOW_SILENCE_BUFF`、`CONFUSION_BUFF` 等效果
 2. 确认 `ModParticleTypes` 中有 `SHADOW_STONE_PARTICLE`
 3. 搬运 `ShadowMagicballEntity` 实体
 4. 搬运 `ShadowTuneTotemEntity` 实体
 5. 搬运 `SHADOW_VORTEX` 方块
 
-### 阶段 2: 搬运双手实体
+### 阶段 2: 搬运双手实体 ✅ 已完成
 1. 搬运 `AaroncosLefthand0Entity`（含模型、渲染器、动画）
 2. 搬运 `AaroncosRighthand0Entity`（含模型、渲染器、动画）
 3. 在 `ModEntities` 中注册
 4. 在 `ModEntityRenderer` 中注册渲染器
 
-### 阶段 3: 搬运技能程序
+### 阶段 3: 搬运技能程序 ✅ 已完成
 1. 将 20 个 Procedure 文件重写为新项目的包路径
 2. 注意 `PasterdreamMod.queueServerWork()` 在新项目中可能改名
 3. 注意 TAG、REGISTRIES 等 API 路径的一致性
 4. 将 Scoreboard 状态机逻辑直接整合或保持不变
 
-### 阶段 4: 搬运 Boss UI
+### 阶段 4: 搬运 Boss UI ✅ 已完成
 1. 搬运 `AaroncosLefthandBossBar.java`（客户端 Forge Overlay）
 2. 注册到新项目的 Overlay 系统
 
-### 阶段 5: 搬运竞技场系统
+### 阶段 5: 搬运竞技场系统 ⏳ 待搬运
 1. `AaroncoshandspawnblockBlock` + TileEntity
 2. `AaroncosHandChestBlock` + TileEntity
 3. `AaroncosArenaPortalsBlock`
@@ -315,7 +317,7 @@
 5. 竞技场结构 NBT
 6. `AaroncosArenaCreateItem`
 
-### 阶段 6: 资源整合
+### 阶段 6: 资源整合 ⏳ 待搬运
 1. 动画 .json 文件 → `assets/pasterdream/animations/`
 2. Geo 模型 → `assets/pasterdream/geo/`
 3. 贴图 → `assets/pasterdream/textures/entities/`
@@ -335,6 +337,8 @@
 ---
 
 ## 十二、文件总览
+
+> 双手实体（`AaroncosLeftHandEntity`/`AaroncosRightHandEntity`）、模型/图层/渲染器、Boss 条（`AaroncosHandBossBar`）已搬运完成；下方为原始全量清单，剩余未搬运部分集中在竞技场系统（block/item/world/dimension + procedures）。
 
 ### 需要新建/搬运的 Java 源文件
 ```

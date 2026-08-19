@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1674438385,
+    "separation": 16,
+    "spacing": 31
+  },
+  "structures": [
+    {
+      "structure": "pasterdream:aaroncos_arena_portal",
+      "weight": 1
+    }
+  ]
+}

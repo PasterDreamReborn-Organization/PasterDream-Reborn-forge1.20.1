@@ -491,6 +491,21 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/talent_shadow"), existingFileHelper);
 
+            // 吹影镂尘 —— 击败亚伦柯斯之触（原作 achievement_shadow_e_0）
+            Advancement defeatAaroncos = Advancement.Builder.advancement()
+                    .parent(shadowChoice)
+                    .display(
+                            ModItems.PURE_HORROR.get(),
+                            Component.translatable("advancements.pasterdream.story.defeat_aaroncos.title"),
+                            Component.translatable("advancements.pasterdream.story.defeat_aaroncos.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, false
+                    )
+                    .addCriterion("defeat_aaroncos", new ImpossibleTrigger.TriggerInstance())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/defeat_aaroncos"), existingFileHelper);
+
             // ========== 冒险Tab子进度：被遗忘的剑冢 ==========
             Advancement find_tomb = Advancement.Builder.advancement()
                     .parent(ADVENTURE_ROOT)

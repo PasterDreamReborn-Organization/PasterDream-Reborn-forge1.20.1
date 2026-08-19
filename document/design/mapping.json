@@ -198,6 +198,14 @@
     "shadow_stone_tiles_wall": "shadow_stone_tiles_wall",
     "cracked_shadow_stone_brick": "cracked_shadow_stone_brick",
     "chiseled_shadow_stone_brick": "chiseled_shadow_stone_brick",
+    "shadow_arena_block_0": "shadow_arena_block",
+    "shadow_fissure_0": "shadow_fissure_0",
+    "shadow_fissure_1": "shadow_fissure_1",
+    "shadow_fissure_2": "shadow_fissure_2",
+    "shadow_fissure_3": "shadow_fissure_3",
+    "shadow_fissure_4": "shadow_fissure_4",
+    "shadow_fissure_5": "shadow_fissure_5",
+    "aaroncoshandspawnblock": "aaroncos_eye",
     "shadow_dungeon_block_0": "shadow_dungeon_stone",
     "shadow_dungeon_block_1": "chiseled_shadow_dungeon_bricks",
     "shadow_dungeon_block_2": "shadow_dungeon_bricks",
@@ -278,7 +286,8 @@
     "ecology_glass_jar": "ecology_glass_jar",
     "firefly_glass_jar": "firefly_glass_jar",
     "firefly_nest": "firefly_nest",
-    "birds_nest": "birds_nest"
+    "birds_nest": "birds_nest",
+    "shadow_bed": "shadow_bed"
   },
   "items": {
     "amber_candy": "amber_candy",
@@ -594,7 +603,11 @@
     "thundercloud": "thundercloud",
     "highvoltage_thundercloud": "highvoltage_thundercloud",
     "projectile_lightning_projectile": "lightning_projectile",
-    "firefly": "firefly"
+    "firefly": "firefly",
+    "shadow_magicball": "shadow_magicball",
+    "shadow_tune_totem": "shadow_tune_totem",
+    "aaroncos_lefthand_0": "aaroncos_left_hand",
+    "aaroncos_righthand_0": "aaroncos_right_hand"
   },
   "dimensions": {
     "dyedream_world": "dyedream_world",
@@ -612,7 +625,7 @@
     "biome_shadow_2": "shadow_ruins",
     "wind_journey_biome_0": "wind_moor_archipelago",
     "wind_journey_biome_1": "misty_dream_cloud_layer",
-    "aaroncos_arena_biome": "待搬运"
+    "aaroncos_arena_biome": "aaroncos_arena_biome"
   },
   "effects": {
     "dyedreamup_buff": "dyedream_up_buff",

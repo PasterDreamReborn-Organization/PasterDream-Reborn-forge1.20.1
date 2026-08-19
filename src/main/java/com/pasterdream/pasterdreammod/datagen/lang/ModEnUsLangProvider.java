@@ -1345,6 +1345,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("item.pasterdream.aaroncos_right_hand_spawn_egg", "Aaroncos's Right Hand Spawn Egg");
         add("entity.pasterdream.aaroncos_left_hand", "Aaroncos's Left Hand");
         add("entity.pasterdream.aaroncos_right_hand", "Aaroncos's Right Hand");
+        add("block.pasterdream.aaroncos_eye", "Aaroncos Eye");
+        add("block.pasterdream.aaroncos_hand_chest", "Aaroncos Hand Chest");
+        add("block.pasterdream.aaroncos_arena_portals", "Aaroncos Arena Portals");
+        add("item.pasterdream.aaroncos_arena_create", "Aaroncos Arena Create");
+        add("item.pasterdream.aaroncos_music_disc", "Aaroncos Music Disc");
+        add("item.pasterdream.aaroncos_music_disc.desc", "§dPasterDream§7 - Aaroncos's Touch");
+        add("item.pasterdream.pure_horror", "Pure Horror");
         add("entity.pasterdream.shadow_magicball", "Shadow Magicball");
         add("entity.pasterdream.shadow_tune_totem", "Shadow Tune Totem");
         add("message.pasterdream.shadow_tune_totem.charging", "The Shadow Tune Totem is charging energy");
@@ -1433,6 +1440,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.talent_light.description", "Choose the light in the choice between light and shadow");
         add("advancements.pasterdream.story.talent_shadow.title", "Shadow Servant");
         add("advancements.pasterdream.story.talent_shadow.description", "Choose the shadow in the choice between light and shadow");
+        add("advancements.pasterdream.story.defeat_aaroncos.title", "Shadow and Dust");
+        add("advancements.pasterdream.story.defeat_aaroncos.description", "Defeat Aaroncos's Touch");
+        add("message.pasterdream.aaroncos_arena.need_progress", "You haven't completed the prerequisite progress yet");
         add("advancements.pasterdream.story.shadow_intrude_complete.title", "Shadow Intrusion");
         add("advancements.pasterdream.story.shadow_intrude_complete.description", "Complete the shadow intrusion event");
         add("advancements.pasterdream.story.dig_up_a_tomb.title", "Sweet Sixteen, with the Strength of a Titan");
@@ -1848,6 +1858,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.small_ballon_10", "Small Balloon");
         add("structure.pasterdream.christmas_tree", "Christmas Tree");
         add("structure.pasterdream.fluffy_wind_church", "Fluffy Wind Church");
+        add("structure.pasterdream.aaroncos_arena_portal", "Aaroncos Arena Portal");
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "You do not yet know how to activate the shadow lantern");
         add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "You need to light the shadow lantern with a Melt Dream Crystal Fragment");
         add("message.pasterdream.twilight_lantern.event_start", "§8The eerie lantern suddenly shakes violently, black shadows flow out from the wick.");

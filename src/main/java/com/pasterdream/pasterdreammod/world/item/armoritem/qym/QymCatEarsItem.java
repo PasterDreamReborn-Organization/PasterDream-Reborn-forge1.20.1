@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.armoritem.qym;
 
 import com.pasterdream.pasterdreammod.capability.san.ISanModifier;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
+import com.pasterdream.pasterdreammod.helper.DreamDimensionHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
@@ -9,10 +10,7 @@ import com.pasterdream.pasterdreammod.world.item.ModArmorMaterials;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -71,12 +69,8 @@ public class QymCatEarsItem extends ArmorItem implements ISanModifier {
         if (!level.isClientSide && entity instanceof ServerPlayer sp
                 && sp.getItemBySlot(EquipmentSlot.HEAD) == stack) {
             SanHelper.setPlayerSanAndSync(sp, SanHelper.getPlayerMaxSan(sp));
-            if (hasFullSet(sp)) {
-                ResourceKey<Level> dim = sp.level().dimension();
-                if (dim == ResourceKey.create(Registries.DIMENSION, ResourceLocation.tryParse("pasterdream:dyedream_world"))
-                        || dim == ResourceKey.create(Registries.DIMENSION, ResourceLocation.tryParse("pasterdream:lamp_shadow_world"))) {
-                    sp.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING_BUFF.get(), 20, 0, false, false));
-                }
+            if (hasFullSet(sp) && DreamDimensionHelper.isDreamDimension(sp.level())) {
+                sp.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING_BUFF.get(), 20, 0, false, false));
             }
         }
     }
