@@ -231,6 +231,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_CHESTPLATE.get(), "Dyedream Chestplate");
         add(ModItems.DYEDREAM_LEGGINGS.get(), "Dyedream Leggings");
         add(ModItems.DYEDREAM_BOOTS.get(), "Dyedream Boots");
+        add(ModItems.MELT_DREAM_HELMET.get(), "Melt Dream Crystal Helmet");
+        add(ModItems.MELT_DREAM_CHESTPLATE.get(), "Melt Dream Crystal Chestplate");
+        add(ModItems.MELT_DREAM_LEGGINGS.get(), "Melt Dream Crystal Leggings");
+        add(ModItems.MELT_DREAM_BOOTS.get(), "Melt Dream Crystal Boots");
         add(ModItems.MACHINE_LIGHT_WING.get(), "Machine Light Wing");
         add(ModItems.ANGEL_WING.get(), "Angel Wing");
         add(ModItems.FORSAKENS_WING.get(), "Forsakens Wing");
@@ -740,6 +744,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9Max Health +4");
         add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9Gain 4 Absorption hearts every 30s");
         add("tooltip.pasterdreammod.dyedream_armor.4", "§7▪ §9Enhances wielded Dyedream tools");
+        add("tooltip.pasterdreammod.melt_dream_armor.1", "§7▪ §9Max Health +2");
+        add("tooltip.pasterdreammod.melt_dream_armor.2", "§7▪ §9Melt Dream Energy +0.2/min, Max +5");
+        add("tooltip.pasterdreammod.melt_dream_armor.3", "§7▪ §bMelt-Repair: 0.01E/1 Durability");
+        add("tooltip.pasterdreammod.melt_dream_armor.4", "§7Set Bonus: §dMelt Dream Protection");
+        add("tooltip.pasterdreammod.melt_dream_armor.5", "§7▪ §bMelt-Repair cost reduced by 50%");
+        add("tooltip.pasterdreammod.melt_dream_armor.6", "§7▪ §9Gain Regeneration II");
+        add("tooltip.pasterdreammod.melt_dream_armor.7", "§7▪ §9Gain Dyedream tool enhancement");
+        add("tooltip.pasterdreammod.melt_dream_armor.8", "§7▪ §9San Aura +1.2 when Melt Dream Energy is above 50%, otherwise +0.6");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.1", "Inlaid: §dMelt Dream Crystal Fragment");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.2", "Combat Art: §bSora-giri");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.3", "§7▪ §9Slash and launch enemies upward, deals 2+ATK*1.5 bonus damage");
@@ -1650,6 +1662,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.dyedream_armor_buff.description", "Obtained when wearing the full Dyedream Alloy set, increases maximum health and grants Absorption II every 30 seconds.");
         add("effect.pasterdream.titanium_armor_buff.description", "Obtained when wearing the full Titanium set, grants Absorption I every 30 seconds.");
         add("effect.pasterdream.dyedream_up_buff.description", "Obtained when wearing the full Dyedream Alloy set, deals 50% more damage when holding Dyedream (Dyedream Alloy and Melt Dream Crystal) tools.");
+        add("effect.pasterdream.melt_dream_crystal_armor_buff", "Melt Dream Protection");
+        add("effect.pasterdream.melt_dream_crystal_armor_buff.description", "Obtained when wearing the full Melt Dream Crystal set, reduces Melt-Repair cost by 50%, grants Regeneration II and Dyedream tool enhancement, grants a San Aura of +1.2 when Melt Dream Energy is above 50%, otherwise +0.6.");
         add("effect.pasterdream.dream_wish_buff.description", "Drink the dream fruit juice to get it, and having this effect lets you enter the Dyedream World when you sleep at night.");
         add("effect.pasterdream.dyedream_perfume_buff.description", "Obtained by drinking the Dyedream Perfume, Phantom don't attack you for the duration of its effect.");
         add("effect.pasterdream.counter_attack_buff.description", "Increase skill damage and disappear after the next attack.");

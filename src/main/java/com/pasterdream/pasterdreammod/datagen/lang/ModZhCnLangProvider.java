@@ -239,6 +239,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DYEDREAM_CHESTPLATE.get(), "染梦胸甲");
         add(ModItems.DYEDREAM_LEGGINGS.get(), "染梦护腿");
         add(ModItems.DYEDREAM_BOOTS.get(), "染梦靴子");
+        add(ModItems.MELT_DREAM_HELMET.get(), "融梦水晶头盔");
+        add(ModItems.MELT_DREAM_CHESTPLATE.get(), "融梦水晶胸甲");
+        add(ModItems.MELT_DREAM_LEGGINGS.get(), "融梦水晶护腿");
+        add(ModItems.MELT_DREAM_BOOTS.get(), "融梦水晶靴子");
         add(ModItems.MACHINE_LIGHT_WING.get(), "机械光翼");
         add(ModItems.ANGEL_WING.get(), "天使之翼");
         add(ModItems.FORSAKENS_WING.get(), "遗忘之翼");
@@ -745,6 +749,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9最大生命值+4");
         add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9每 30 秒获得 4 颗吸收之♡");
         add("tooltip.pasterdreammod.dyedream_armor.4", "§7▪ §9增强手持的染梦工具");
+        add("tooltip.pasterdreammod.melt_dream_armor.1", "§7▪ §9最大生命值+2");
+        add("tooltip.pasterdreammod.melt_dream_armor.2", "§7▪ §9融梦能量 +0.2/min，上限+5");
+        add("tooltip.pasterdreammod.melt_dream_armor.3", "§7▪ §b融梦修补：0.01E/1耐久");
+        add("tooltip.pasterdreammod.melt_dream_armor.4", "§7套装效果：§d融梦守护");
+        add("tooltip.pasterdreammod.melt_dream_armor.5", "§7▪ §b融梦修补费用减少50%");
+        add("tooltip.pasterdreammod.melt_dream_armor.6", "§7▪ §9获得生命恢复II");
+        add("tooltip.pasterdreammod.melt_dream_armor.7", "§7▪ §9获得染梦工具增强");
+        add("tooltip.pasterdreammod.melt_dream_armor.8", "§7▪ §9融梦能量>50%时理智光环+1.2，反之+0.6");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.1", "镶嵌：§d融梦水晶碎片");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.2", "战技：§b凌空斩");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.3", "§7▪ §9斩击并将敌人向上击飞 造成2+当前攻击力*1.5点伤害");
@@ -2153,6 +2165,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.dyedream_armor_buff.description", "穿戴全套染梦合金套装时获得，增加最大生命值并每30秒获得伤害吸收II。");
         add("effect.pasterdream.titanium_armor_buff.description", "穿戴全套钛金套装时获得，每30秒获得伤害吸收I。");
         add("effect.pasterdream.dyedream_up_buff.description", "穿戴全套染梦合金套装时获得，持有染梦(染梦合金与融梦水晶)工具时伤害+50%");
+        add("effect.pasterdream.melt_dream_crystal_armor_buff", "融梦守护");
+        add("effect.pasterdream.melt_dream_crystal_armor_buff.description", "穿戴全套融梦水晶套装时获得，融梦修补费用-50%，获得生命恢复II与染梦工具增强，融梦能量>50%时理智光环+1.2，否则+0.6。");
         add("effect.pasterdream.dream_wish_buff.description", "饮用梦境果汁获得，拥有该效果在晚上睡觉以进入染梦世界。");
         add("effect.pasterdream.dyedream_perfume_buff.description", "饮用染梦香水获得，效果持续期间幻翼不会攻击你。");
         add("effect.pasterdream.counter_attack_buff.description", "增加战技伤害，下一次攻击后消失。");
