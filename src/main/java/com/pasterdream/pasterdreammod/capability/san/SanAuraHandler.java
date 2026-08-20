@@ -80,7 +80,7 @@ public class SanAuraHandler {
 
     private static void applyThresholdEffects(ServerPlayer player, boolean immuneNegative) {
         player.getCapability(ModCapabilities.SAN).ifPresent(cap -> {
-            double ratio = cap.getSanValue() / cap.getMaxSanValue();
+            double ratio = cap.getSanValue() / SanHelper.getPlayerMaxSanEffective(player);
 
             if (ratio >= Config.sanCheerUpThreshold) {
                 player.addEffect(new MobEffectInstance(ModEffects.CHEER_UP_BUFF.get(),

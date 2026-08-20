@@ -1106,6 +1106,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("attribute.pasterdream.san_variability", "Sanity Variability");
         add("attribute.pasterdream.skill_cooldown_rate", "Skill Cooldown Rate");
         add("attribute.pasterdream.skill_damage_rate", "Skill Damage Rate");
+        add("attribute.pasterdream.max_san_extra", "Max Sanity Bonus");
+        add("attribute.pasterdream.max_melt_dream_energy_extra", "Max Melt Dream Energy Bonus");
+        add("attribute.pasterdream.melt_dream_variability", "Melt Dream Aura");
         add("subtitles.pasterdream.evasion", "Evasion");
 
         // Low San effect commands
@@ -1287,8 +1290,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MELT_DREAM_ENERGY_RING.get(), "Melt Dream Energy Ring");
         add("tooltip.pasterdream.counter_ring.effect1", "§7▪ §9On successful dodge: gain Counterattack I (0:10)");
         add("tooltip.pasterdream.counter_ring.effect2", "§7▪ §9Next attack: Attack +3, Skill DMG ×+50%, then buff ends");
-        add("tooltip.pasterdream.melt_dream_energy_ring.effect1", "§7▪ §9Melt Dream Energy +0.3/min inside dream");
-        add("tooltip.pasterdream.melt_dream_energy_ring.effect2", "§7▪ §9Melt Dream Energy +0.15/min outside dream");
+        add("tooltip.pasterdream.melt_dream_energy_ring.effect1", "§7▪ §9Melt Dream Energy +0.3/min");
         add("effect.pasterdream.counter_attack_buff", "Counterattack");
         add("effect.pasterdream.memento_buff", "Dream Seeker's Prayer");
 

@@ -116,7 +116,7 @@ public class SoulGemOfAkizukiAyaneItem extends Item implements ICurioItem {
             }
 
             MeltDreamEnergyHelper.setPlayerMeltDreamEnergyAndSync(sp,
-                    MeltDreamEnergyHelper.getPlayerMaxMeltDreamEnergy(sp));
+                    MeltDreamEnergyHelper.getPlayerMaxMeltDreamEnergyEffective(sp));
             MeltDreamEnergyHelper.setPlayerMeltDreamEnergyIsNeed(sp, false);
             applyActivationBuff(sp);
             sp.getPersistentData().putInt("pasterdream.soul_gem_no_consume_ticks", NO_CONSUME_TICKS);

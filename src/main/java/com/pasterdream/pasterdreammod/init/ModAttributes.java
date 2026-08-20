@@ -42,6 +42,19 @@ public class ModAttributes {
             ATTRIBUTES.register("san_variability", () -> new RangedAttribute(
                     "attribute.pasterdream.san_variability", 0.0, -120000.0, 120000.0).setSyncable(true));
 
+    /** 理智值上限的装备加成载体：基础值 0，由护甲等装备以属性修饰器叠加。 */
+    public static final RegistryObject<Attribute> MAX_SAN_EXTRA =
+            ATTRIBUTES.register("max_san_extra", () -> new RangedAttribute(
+                    "attribute.pasterdream.max_san_extra", 0.0, -100000.0, 100000.0).setSyncable(true));
+    /** 融梦能量上限的装备加成载体：基础值 0，由护甲等装备以属性修饰器叠加。 */
+    public static final RegistryObject<Attribute> MAX_MELT_DREAM_ENERGY_EXTRA =
+            ATTRIBUTES.register("max_melt_dream_energy_extra", () -> new RangedAttribute(
+                    "attribute.pasterdream.max_melt_dream_energy_extra", 0.0, -100000.0, 100000.0).setSyncable(true));
+    /** 融梦能量回复率（每分钟变化量）：基础值 0，由护甲/饰品等装备以属性修饰器叠加。 */
+    public static final RegistryObject<Attribute> MELT_DREAM_VARIABILITY =
+            ATTRIBUTES.register("melt_dream_variability", () -> new RangedAttribute(
+                    "attribute.pasterdream.melt_dream_variability", 0.0, -120000.0, 120000.0).setSyncable(true));
+
     public static void register(IEventBus eventBus) {
         ATTRIBUTES.register(eventBus);
     }
@@ -55,5 +68,8 @@ public class ModAttributes {
         event.add(EntityType.PLAYER, SKILL_DAMAGE_RATE.get());
         event.add(EntityType.PLAYER, MAGIC_DAMAGE_RATE.get());
         event.add(EntityType.PLAYER, SAN_VARIABILITY.get());
+        event.add(EntityType.PLAYER, MAX_SAN_EXTRA.get());
+        event.add(EntityType.PLAYER, MAX_MELT_DREAM_ENERGY_EXTRA.get());
+        event.add(EntityType.PLAYER, MELT_DREAM_VARIABILITY.get());
     }
 }

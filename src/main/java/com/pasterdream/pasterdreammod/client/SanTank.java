@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.init.ModAttributes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
@@ -25,6 +26,10 @@ public class SanTank
 
             double sanValue = capability.getSanValue();
             double maxSanValue = capability.getMaxSanValue();
+            var attr = player.getAttribute(ModAttributes.MAX_SAN_EXTRA.get());
+            if (attr != null) {
+                maxSanValue += attr.getValue();
+            }
 
             if (maxSanValue != 0)
             {

@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.init.ModAttributes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
@@ -26,6 +27,10 @@ public class MeltDreamEnergyTank
         {
             double value = capability.getMeltDreamEnergy();
             double max = capability.getMaxMeltDreamEnergy();
+            var attr = player.getAttribute(ModAttributes.MAX_MELT_DREAM_ENERGY_EXTRA.get());
+            if (attr != null) {
+                max += attr.getValue();
+            }
             if (max == 0) return;
 
             if (Math.abs(value - lastValue) > 0.001) {

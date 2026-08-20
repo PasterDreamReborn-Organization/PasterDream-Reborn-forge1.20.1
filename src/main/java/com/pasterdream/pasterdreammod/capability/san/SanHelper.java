@@ -1,10 +1,12 @@
 package com.pasterdream.pasterdreammod.capability.san;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.network.san.IsSanEnableSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.MaxSanSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -88,6 +90,18 @@ public class SanHelper
             maxSanValue.set(capability.getMaxSanValue());
         });
         return maxSanValue.get();
+    }
+
+    /** 有效理智上限 = 能力字段基础上限 + MAX_SAN_EXTRA 属性的装备修饰器加成。 */
+    public static double getPlayerMaxSanEffective(ServerPlayer player)
+    {
+        double base = getPlayerMaxSan(player);
+        AttributeInstance attr = player.getAttribute(ModAttributes.MAX_SAN_EXTRA.get());
+        if (attr != null)
+        {
+            base += attr.getValue();
+        }
+        return base;
     }
 
     /**

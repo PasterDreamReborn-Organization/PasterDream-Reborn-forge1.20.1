@@ -31,7 +31,7 @@ public class QymArmorEvents {
                 MeltDreamEnergyHelper.setPlayerMeltDreamEnergyIsNeed(pl, !isEquipped);
                 if (isEquipped) {
                     MeltDreamEnergyHelper.setPlayerMeltDreamEnergyAndSync(pl,
-                            MeltDreamEnergyHelper.getPlayerMaxMeltDreamEnergy(pl));
+                            MeltDreamEnergyHelper.getPlayerMaxMeltDreamEnergyEffective(pl));
                 }
             }
         }
