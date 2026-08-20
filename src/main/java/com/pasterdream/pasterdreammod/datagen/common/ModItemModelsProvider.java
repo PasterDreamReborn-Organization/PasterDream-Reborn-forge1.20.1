@@ -160,6 +160,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DYEDREAM_CHESTPLATE.get());
         basicItem(ModItems.DYEDREAM_LEGGINGS.get());
         basicItem(ModItems.DYEDREAM_BOOTS.get());
+        basicItem(ModItems.MELT_DREAM_HELMET.get());
+        basicItem(ModItems.MELT_DREAM_CHESTPLATE.get());
+        basicItem(ModItems.MELT_DREAM_LEGGINGS.get());
+        basicItem(ModItems.MELT_DREAM_BOOTS.get());
         basicItem(ModItems.QYM_CAT_EARS.get());
         basicItem(ModItems.QYM_WIND_SHIRT.get());
         basicItem(ModItems.QYM_SWAYING_SKIRT.get());

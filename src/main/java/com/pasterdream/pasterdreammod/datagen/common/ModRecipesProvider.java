@@ -231,6 +231,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         titaniumArmorRecipes(pWriter);
         sculkArmorRecipes(pWriter);
         dyedreamArmorRecipes(pWriter);
+        meltDreamCrystalArmorRecipes(pWriter);
         toolRecipes(pWriter);
         glassRecipes(pWriter);
         lanternRecipes(pWriter);
@@ -1032,6 +1033,47 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         RecipeCategory.COMBAT, ModItems.SCULK_BOOTS.get())
                 .unlocks("has_sculk_upgrade", has(ModItems.SCULK_UPGRADE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":sculk_boots_smithing");
+    }
+
+    // ===== 融梦水晶装备配方 =====
+
+    private void meltDreamCrystalArmorRecipes(Consumer<FinishedRecipe> pWriter) {
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.MELT_DREAM_HELMET.get())
+                        .pattern("lfl")
+                        .pattern("faf")
+                        .pattern("lfl")
+                        .define('l', ModItems.LIFE_CRYSTAL.get())
+                        .define('f', ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())
+                        .define('a', ModItems.DYEDREAM_HELMET.get())
+                        .unlockedBy(getHasName(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()), has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())),
+                pWriter, "melt_dream_helmet");
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.MELT_DREAM_CHESTPLATE.get())
+                        .pattern("lfl")
+                        .pattern("faf")
+                        .pattern("lfl")
+                        .define('l', ModItems.LIFE_CRYSTAL.get())
+                        .define('f', ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())
+                        .define('a', ModItems.DYEDREAM_CHESTPLATE.get())
+                        .unlockedBy(getHasName(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()), has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())),
+                pWriter, "melt_dream_chestplate");
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.MELT_DREAM_LEGGINGS.get())
+                        .pattern("lfl")
+                        .pattern("faf")
+                        .pattern("lfl")
+                        .define('l', ModItems.LIFE_CRYSTAL.get())
+                        .define('f', ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())
+                        .define('a', ModItems.DYEDREAM_LEGGINGS.get())
+                        .unlockedBy(getHasName(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()), has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())),
+                pWriter, "melt_dream_leggings");
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.MELT_DREAM_BOOTS.get())
+                        .pattern("lfl")
+                        .pattern("faf")
+                        .pattern("lfl")
+                        .define('l', ModItems.LIFE_CRYSTAL.get())
+                        .define('f', ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())
+                        .define('a', ModItems.DYEDREAM_BOOTS.get())
+                        .unlockedBy(getHasName(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()), has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())),
+                pWriter, "melt_dream_boots");
     }
 
     // ===== 升级套件配方 =====

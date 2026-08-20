@@ -50,6 +50,7 @@ import com.pasterdream.pasterdreammod.world.item.StoryProgressItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDrinkItem;
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.DyedreamArmorItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.TitaniumArmorItem;
 import com.pasterdream.pasterdreammod.world.item.hellfiretool.*;
 import com.pasterdream.pasterdreammod.world.item.lootgenerator.LootGeneratorItem;
@@ -477,6 +478,16 @@ public class ModItems {
             () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
     public static final RegistryObject<Item> DYEDREAM_BOOTS = ITEMS.register("dyedream_boots",
             () -> new ArmorItem(ModArmorMaterials.DYEDREAM, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+
+    // ===== 融梦水晶装备 =====
+    public static final RegistryObject<Item> MELT_DREAM_HELMET = ITEMS.register("melt_dream_helmet",
+            () -> new MeltDreamCrystalArmorItem(ModArmorMaterials.MELT_DREAM, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> MELT_DREAM_CHESTPLATE = ITEMS.register("melt_dream_chestplate",
+            () -> new MeltDreamCrystalArmorItem(ModArmorMaterials.MELT_DREAM, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> MELT_DREAM_LEGGINGS = ITEMS.register("melt_dream_leggings",
+            () -> new MeltDreamCrystalArmorItem(ModArmorMaterials.MELT_DREAM, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> MELT_DREAM_BOOTS = ITEMS.register("melt_dream_boots",
+            () -> new MeltDreamCrystalArmorItem(ModArmorMaterials.MELT_DREAM, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.RARE)));
 
     public static final RegistryObject<Item> MELT_DREAM_CRYSTAL_FRAGMENT = ITEMS.register("melt_dream_crystal_fragment",
             MeltDreamCrystalFragmentItem::new);

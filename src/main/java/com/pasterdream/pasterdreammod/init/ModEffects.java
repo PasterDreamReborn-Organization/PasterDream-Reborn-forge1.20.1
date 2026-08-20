@@ -24,6 +24,8 @@ public class ModEffects {
             EFFECTS.register("dyedream_armor_buff", DyedreamArmorBuffEffect::new);
     public static final RegistryObject<MobEffect> DYEDREAM_UP_BUFF =
             EFFECTS.register("dyedream_up_buff", DyedreamUpBuffEffect::new);
+    public static final RegistryObject<MobEffect> MELT_DREAM_CRYSTAL_ARMOR_BUFF =
+            EFFECTS.register("melt_dream_crystal_armor_buff", MeltDreamCrystalArmorBuffEffect::new);
     public static final RegistryObject<MobEffect> DYEDREAM_PERFUME_BUFF =
             EFFECTS.register("dyedream_perfume_buff", DyedreamPerfumeBuffEffect::new);
     public static final RegistryObject<MobEffect> GOLDENROD_TEA_BUFF =
