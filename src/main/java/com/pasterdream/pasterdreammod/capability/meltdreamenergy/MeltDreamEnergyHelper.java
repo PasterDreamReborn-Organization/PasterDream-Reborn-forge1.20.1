@@ -1,9 +1,11 @@
 package com.pasterdream.pasterdreammod.capability.meltdreamenergy;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MaxMeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -22,7 +24,16 @@ public class MeltDreamEnergyHelper
     {
         player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(capability ->
         {
-            capability.addMeltDreamEnergy(meltDreamEnergyValue);
+            if (meltDreamEnergyValue > 0)
+            {
+                double effectiveMax = getPlayerMaxMeltDreamEnergyEffective(player);
+                double current = capability.getMeltDreamEnergy();
+                capability.setMeltDreamEnergy(Math.min(current + meltDreamEnergyValue, effectiveMax));
+            }
+            else
+            {
+                capability.addMeltDreamEnergy(meltDreamEnergyValue);
+            }
             MeltDreamEnergySyncPacket.sendToPlayer(player, capability);
         });
     }
@@ -34,7 +45,7 @@ public class MeltDreamEnergyHelper
         {
             meltDreamEnergyValue.set(capability.getMeltDreamEnergy());
         });
-        return meltDreamEnergyValue.get();
+        return meltDreamEnergyValue.get() == null ? 0.0 : meltDreamEnergyValue.get();
     }
 
     public static void setPlayerMeltDreamEnergyIsNeed(ServerPlayer player, boolean isNeed)
@@ -52,7 +63,7 @@ public class MeltDreamEnergyHelper
         {
             isNeed.set(capability.getIsOrNotNeedConsumeDreamEnergy());
         });
-        return isNeed.get();
+        return isNeed.get() != null && isNeed.get();
     }
 
     public static void setPlayerMeltDreamEnergyConsumeDoubled(ServerPlayer player, boolean isConsumeDoubled)
@@ -88,6 +99,18 @@ public class MeltDreamEnergyHelper
         {
             maxMeltDreamEnergyValue.set(capability.getMaxMeltDreamEnergy());
         });
-        return maxMeltDreamEnergyValue.get();
+        return maxMeltDreamEnergyValue.get() == null ? 0.0 : maxMeltDreamEnergyValue.get();
+    }
+
+    /** 有效融梦能量上限 = 能力字段基础上限 + MAX_MELT_DREAM_ENERGY_EXTRA 属性的装备修饰器加成。 */
+    public static double getPlayerMaxMeltDreamEnergyEffective(ServerPlayer player)
+    {
+        double base = getPlayerMaxMeltDreamEnergy(player);
+        AttributeInstance attr = player.getAttribute(ModAttributes.MAX_MELT_DREAM_ENERGY_EXTRA.get());
+        if (attr != null)
+        {
+            base += attr.getValue();
+        }
+        return base;
     }
 }
