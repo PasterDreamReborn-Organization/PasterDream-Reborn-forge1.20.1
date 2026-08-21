@@ -84,6 +84,9 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
     // 可调参数
     private static final double CHASE_SPEED = 3.0;               // 追敌速度
     private static final double MAGICBALL_TRIGGER_DIST = 256;    // 魔法球触发距离（平方，16格）
+    private static final double ROAM_HEIGHT_ABOVE_GROUND = 6.0;  // 闲逛时离地高度（格）
+    private static final double SIBLING_TOO_FAR_DIST = 32.0;     // 与另一只手超过该距离时尝试靠近对方（格）
+    private static final double SIBLING_PERCEPTION_DIST = 64.0;  // 对另一只手的感知距离（格，靠近与属性加成共用）
 
     // Cooldowns & counters
     private int magicballCount = 0;
@@ -181,15 +184,68 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, false, false,
                 target -> !target.getType().is(SHADOW_MOB) && !target.getType().is(SPECIAL_ENTITY)
                         && !(target instanceof Player player && (player.isCreative() || player.isSpectator()))));
+        this.goalSelector.addGoal(3, new SiblingSeekGoal());
         this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.8, 20) {
             @Override
             protected Vec3 getPosition() {
                 return new Vec3(
                     AaroncosRightHandEntity.this.getX() + ((random.nextFloat() * 2 - 1) * 16),
-                    AaroncosRightHandEntity.this.getY() + ((random.nextFloat() * 2 - 1) * 16),
+                    getRoamY(),
                     AaroncosRightHandEntity.this.getZ() + ((random.nextFloat() * 2 - 1) * 16));
             }
         });
+    }
+
+    /** 当两只手距离超过 SIBLING_TOO_FAR_DIST 时，无目标状态下尝试靠近对方 */
+    private class SiblingSeekGoal extends Goal {
+        public SiblingSeekGoal() {
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE));
+        }
+
+        @Override
+        public boolean canUse() {
+            if (getTarget() != null)
+                return false;
+            AaroncosLeftHandEntity sibling = getSibling();
+            return sibling != null && distanceToSqr(sibling) > SIBLING_TOO_FAR_DIST * SIBLING_TOO_FAR_DIST;
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            if (getTarget() != null)
+                return false;
+            AaroncosLeftHandEntity sibling = getSibling();
+            return sibling != null && sibling.isAlive() && distanceToSqr(sibling) > SIBLING_TOO_FAR_DIST * SIBLING_TOO_FAR_DIST;
+        }
+
+        @Override
+        public void start() {
+            moveToSibling();
+        }
+
+        @Override
+        public void tick() {
+            AaroncosLeftHandEntity sibling = getSibling();
+            if (sibling == null || !sibling.isAlive())
+                return;
+            if (!getMoveControl().hasWanted() && distanceToSqr(sibling) > SIBLING_TOO_FAR_DIST * SIBLING_TOO_FAR_DIST) {
+                moveToSibling();
+            }
+        }
+
+        private void moveToSibling() {
+            AaroncosLeftHandEntity sibling = getSibling();
+            if (sibling != null && sibling.isAlive()) {
+                Vec3 target = sibling.position();
+                moveControl.setWantedPosition(target.x, getRoamY(), target.z, CHASE_SPEED);
+            }
+        }
+    }
+
+    private AaroncosLeftHandEntity getSibling() {
+        return level().getEntitiesOfClass(AaroncosLeftHandEntity.class,
+                getBoundingBox().inflate(SIBLING_PERCEPTION_DIST), e -> e.isAlive())
+                .stream().findFirst().orElse(null);
     }
 
     @Override
@@ -491,7 +547,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
         }
         sisterScanTick = 20;
         boolean found = !level().getEntitiesOfClass(AaroncosLeftHandEntity.class,
-                this.getBoundingBox().inflate(64), e -> e.isAlive()).isEmpty();
+                this.getBoundingBox().inflate(SIBLING_PERCEPTION_DIST), e -> e.isAlive()).isEmpty();
         if (found != sisterNearby) {
             sisterNearby = found;
             var attr = getAttribute(Attributes.ATTACK_SPEED);
@@ -571,6 +627,13 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
             new AABB(center, center).inflate(range), e -> true)
             .stream().min(Comparator.comparingDouble(e -> e.distanceToSqr(this)))
             .orElse(null);
+    }
+
+    /** 闲逛时的目标高度：所在 XZ 的地面高度 + 离地距离，避免越漂越高 */
+    private double getRoamY() {
+        int ground = level().getHeight(net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+            blockPosition().getX(), blockPosition().getZ());
+        return ground + ROAM_HEIGHT_ABOVE_GROUND;
     }
 
     private void playSoundAt(net.minecraft.sounds.SoundEvent sound, float volume, float pitch) {

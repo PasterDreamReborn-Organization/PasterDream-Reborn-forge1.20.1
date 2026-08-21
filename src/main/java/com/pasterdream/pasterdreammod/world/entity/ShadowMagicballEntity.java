@@ -50,7 +50,7 @@ public class ShadowMagicballEntity extends PathfinderMob implements GeoEntity {
     private int explodeTick = -1;
 
     private static final double HOMING_RANGE = 24.0;   // 追踪索敌范围（方块）
-    private static final double HOMING_SPEED = 0.25;    // 追踪飞行速度（方块/tick）
+    private static final double HOMING_SPEED = 0.5;    // 追踪飞行速度（方块/tick）
     private Vec3 travelDirection;                      // 无目标时保持的飞行方向
 
     private static final TagKey<EntityType<?>> SHADOW_MOB = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("pasterdream", "shadow_mob"));
