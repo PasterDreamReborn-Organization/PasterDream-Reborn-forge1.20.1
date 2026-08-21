@@ -25,6 +25,7 @@
     "LocateCommandMixin"
   ],
   "client": [
+    "BossHealthOverlayAccessor",
     "FogRendererMixin",
     "IMixinOptionInstance",
     "LevelRendererMixin",

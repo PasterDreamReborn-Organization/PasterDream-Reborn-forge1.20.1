@@ -2,13 +2,20 @@ package com.pasterdream.pasterdreammod.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.mixin.BossHealthOverlayAccessor;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosLeftHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosRightHandEntity;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
 public class AaroncosHandBossBar {
+
+    /**
+     * 绘制在顶部的组合 BOSS 条。通过 Forge overlay 渲染（可靠地在每帧 HUD 绘制），
+     * 并根据当前活跃的原版 BOSS 条数量下移纵坐标，从而排在其它 BOSS 条下方、共用布局。
+     */
     public static final IGuiOverlay OVERLAY = (gui, guiGraphics, partialTick, width, height) -> {
         var player = Minecraft.getInstance().player;
         var level = Minecraft.getInstance().level;
@@ -31,6 +38,11 @@ public class AaroncosHandBossBar {
         if (leftHand == null && rightHand == null)
             return;
 
+        // 接入原版 BOSS 条纵向布局：每个原版 BOSS 条占 19px（10 + 9），从 y=12 开始
+        var bossOverlay = Minecraft.getInstance().gui.getBossOverlay();
+        int bossCount = ((BossHealthOverlayAccessor) bossOverlay).pasterdream$getEvents().size();
+        int yTop = 12 + bossCount * 19;
+
         Minecraft.getInstance().getProfiler().push("aaroncos_hand_boss_bar");
         RenderSystem.enableBlend();
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
@@ -40,17 +52,17 @@ public class AaroncosHandBossBar {
         if (leftHand != null && leftHand.isAlive()) {
             double percent = leftHand.getHealth() / leftHand.getMaxHealth();
             int barX = xBase - 116;
-            GUIBackGroundRender.rendAaroncosHandBossBarLeftBackground(guiGraphics, barX - 4, 12);
-            GUIBackGroundRender.rendAaroncosHandBossBarLeft(guiGraphics, barX + 3, 18, percent);
+            GUIBackGroundRender.rendAaroncosHandBossBarLeftBackground(guiGraphics, barX - 4, yTop);
+            GUIBackGroundRender.rendAaroncosHandBossBarLeft(guiGraphics, barX + 3, yTop + 6, percent);
         }
 
         if (rightHand != null && rightHand.isAlive()) {
             double percent = rightHand.getHealth() / rightHand.getMaxHealth();
-            GUIBackGroundRender.rendAaroncosHandBossBarRightBackground(guiGraphics, xBase + 4, 12);
-            GUIBackGroundRender.rendAaroncosHandBossBarRight(guiGraphics, xBase + 7, 18, percent);
+            GUIBackGroundRender.rendAaroncosHandBossBarRightBackground(guiGraphics, xBase + 4, yTop);
+            GUIBackGroundRender.rendAaroncosHandBossBarRight(guiGraphics, xBase + 7, yTop + 6, percent);
         }
 
-        guiGraphics.drawCenteredString(Minecraft.getInstance().font, "§l亚伦柯斯之触", xBase, 3, -1);
+        guiGraphics.drawCenteredString(Minecraft.getInstance().font, "§l亚伦柯斯之触", xBase, yTop - 9, -1);
 
         RenderSystem.disableBlend();
         Minecraft.getInstance().getProfiler().pop();
