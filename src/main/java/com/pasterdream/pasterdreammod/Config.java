@@ -250,6 +250,22 @@ public class Config
             .comment("精神值条预设2：创造模式下是否仅在下蹲时显示，默认 true")
             .define("sanBarPreset2SneakShowInCreative", true);
 
+    // === 低 San 效果开关 ===
+    private static final ForgeConfigSpec.BooleanValue LOW_SAN_OVERLAY = BUILDER
+            .comment("低SAN值时的全屏画面叠加效果，默认 true。"
+                    + "\n指令 /pasterdreamdebug lowsan overlay 可运行时临时切换，重进存档后按此配置恢复")
+            .define("lowSanOverlay", true);
+
+    private static final ForgeConfigSpec.BooleanValue LOW_SAN_JITTER = BUILDER
+            .comment("低SAN值时的视角抖动，默认 true。"
+                    + "\n指令 /pasterdreamdebug lowsan jitter 可运行时临时切换，重进存档后按此配置恢复")
+            .define("lowSanJitter", true);
+
+    private static final ForgeConfigSpec.BooleanValue LOW_SAN_SOUND = BUILDER
+            .comment("低SAN值时的循环音效，默认 true。"
+                    + "\n指令 /pasterdreamdebug lowsan sound 可运行时临时切换，重进存档后按此配置恢复")
+            .define("lowSanSound", true);
+
     // === 暗影生物独立难度 ===
     private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> SHADOW_HEALTH_MULTIPLIERS = BUILDER
             .comment("暗影生物血量倍率，按难度等级排列 [极简单, 简单, 普通, 困难]，默认 [0.5, 1.0, 1.5, 2.0]")
@@ -527,10 +543,10 @@ public class Config
     public static double sanBarPreset2LowThreshold;
     public static boolean sanBarPreset2SneakShowInCreative;
 
-    // === 低 San 效果开关（可通过 /pasterdreamdebug lowsan 指令运行时切换） ===
-    public static boolean lowSanOverlay = true;
-    public static boolean lowSanJitter = true;
-    public static boolean lowSanSound = true;
+    // === 低 San 效果开关（配置项；/pasterdreamdebug lowsan 指令可运行时临时切换） ===
+    public static boolean lowSanOverlay;
+    public static boolean lowSanJitter;
+    public static boolean lowSanSound;
 
     // === 预言卡配置 ===
 
@@ -845,6 +861,9 @@ public class Config
         sanBarPreset2Scale = SAN_BAR_PRESET2_SCALE.get();
         sanBarPreset2LowThreshold = SAN_BAR_PRESET2_LOW_THRESHOLD.get();
         sanBarPreset2SneakShowInCreative = SAN_BAR_PRESET2_SNEAK_SHOW_IN_CREATIVE.get();
+        lowSanOverlay = LOW_SAN_OVERLAY.get();
+        lowSanJitter = LOW_SAN_JITTER.get();
+        lowSanSound = LOW_SAN_SOUND.get();
         shadowHealthMultipliers = SHADOW_HEALTH_MULTIPLIERS.get();
         shadowAttackMultipliers = SHADOW_ATTACK_MULTIPLIERS.get();
         shadowSpeedMultipliers = SHADOW_SPEED_MULTIPLIERS.get();
