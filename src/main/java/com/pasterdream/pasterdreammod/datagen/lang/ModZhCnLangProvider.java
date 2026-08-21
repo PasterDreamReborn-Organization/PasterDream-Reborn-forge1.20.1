@@ -1109,7 +1109,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.CHEER_UP_BUFF_ICON.get(), "振奋图标");
         add(ModItems.LETHARGY_BUFF_ICON.get(), "不振图标");
         add(ModItems.TRANCE_BUFF_ICON.get(), "恍惚图标");
-        add(ModItems.INSAND_BUFF_ICON.get(), "疯狂图标");
+        add(ModItems.INSANE_BUFF_ICON.get(), "疯狂图标");
         add(ModItems.CHAOS_BUFF_ICON.get(), "混乱图标");
         add(ModItems.DREAM_WISH_BUFF_ICON.get(), "美梦祈愿图标");
         add(ModItems.COOK_BUFF_ICON.get(), "料理图标");
@@ -1252,7 +1252,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.lethargy_buff", "不振");
         add("effect.pasterdream.trance_buff", "恍惚");
         add("effect.pasterdream.confusion_buff", "混乱");
-        add("effect.pasterdream.insand_buff", "疯狂");
+        add("effect.pasterdream.insane_buff", "疯狂");
         add("effect.pasterdream.evasion_buff", "回避");
         add("effect.pasterdream.blink_cooldown", "瞬身术冷却");
         add("effect.pasterdream.dyedream_perfume_buff", "染梦香水");
@@ -1878,10 +1878,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.trance", "恍惚");
         add("pasterdream.seniors_dream.entry.trance.page0", "当玩家san值<=40%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+100%%；$(br)移动速度-20%%；$(br)攻击速度-0.2，攻击力-1；$(br)技能冷却时间+50%%。");
 
-        add("pasterdream.seniors_dream.entry.insand", "疯狂");
-        add("pasterdream.seniors_dream.entry.insand.page0", "当玩家san值<=20%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+200%%；$(br)移动速度-30%%；$(br)攻击速度-0.4，攻击力-2；$(br)攻击和触及距离-0.2。");
-        add("pasterdream.seniors_dream.entry.insand.page1", "持有此状态时，视野会不受控制地抖动，随着疯狂状态等级的进一步提升，玩家画面抖动幅度会增大。");
-        add("pasterdream.seniors_dream.entry.insand.page2", "当暗影难度处于“简单”及以上等级的时候，疯狂III效果会使玩家持续失去生命值。");
+        add("pasterdream.seniors_dream.entry.insane", "疯狂");
+        add("pasterdream.seniors_dream.entry.insane.page0", "当玩家san值<=20%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+200%%；$(br)移动速度-30%%；$(br)攻击速度-0.4，攻击力-2；$(br)攻击和触及距离-0.2。");
+        add("pasterdream.seniors_dream.entry.insane.page1", "持有此状态时，视野会不受控制地抖动，随着疯狂状态等级的进一步提升，玩家画面抖动幅度会增大。");
+        add("pasterdream.seniors_dream.entry.insane.page2", "当暗影难度处于“简单”及以上等级的时候，疯狂III效果会使玩家持续失去生命值。");
 
         add("pasterdream.seniors_dream.entry.cook", "料理");
         add("pasterdream.seniors_dream.entry.cook.page0", "通过食用部分本模组内食物，以及有联动的模组食物，可以获得此buff。每级增加1.2理智光环。");
@@ -2165,7 +2165,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.cheer_up_buff.description", "san高于90%的时候获得，获得一些正面效果。");
         add("effect.pasterdream.lethargy_buff.description", "san在40%和60%之间的时候获得，获得一些负面效果。");
         add("effect.pasterdream.trance_buff.description", "san在20%和40%之间的时候获得，获得更严重的负面效果。");
-        add("effect.pasterdream.insand_buff.description", "san低于20%的时候获得，获得极为严重的负面效果，视线会被特殊的视觉效果覆盖，san在1%~10%时会获得疯狂II，循环播放音效并视角抖动，san低于1%时获得疯狂III，前面所述负面会得到加强。（视觉效果，抖动和音效可以指令或配置关闭）");
+        add("effect.pasterdream.insane_buff.description", "san低于20%的时候获得，获得极为严重的负面效果，视线会被特殊的视觉效果覆盖，san在1%~10%时会获得疯狂II，循环播放音效并视角抖动，san低于1%时获得疯狂III，前面所述负面会得到加强。（视觉效果，抖动和音效可以指令或配置关闭）");
         add("effect.pasterdream.snow_vow_buff.description", "效果期间+3幸运，免疫燃烧和冻结效果，由雪下的誓言饰品在范围内给予。");
         add("effect.pasterdream.goldenrod_tea_buff.description", "效果持续期间免疫饥饿和反胃效果。");
         add("effect.pasterdream.sculk_armor_buff.description", "穿戴全套回响套装时获得，增加最大生命值，身处深层时获得抗性提升，受到黑暗效果时移除黑暗并给予速度和抗性效果。");

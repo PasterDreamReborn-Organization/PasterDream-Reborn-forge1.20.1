@@ -42,8 +42,8 @@ public class ModEffects {
             EFFECTS.register("lethargy_buff", LethargyBuffEffect::new);
     public static final RegistryObject<MobEffect> TRANCE_BUFF =
             EFFECTS.register("trance_buff", TranceBuffEffect::new);
-    public static final RegistryObject<MobEffect> INSAND_BUFF =
-            EFFECTS.register("insand_buff", InsandBuffEffect::new);
+    public static final RegistryObject<MobEffect> INSANE_BUFF =
+            EFFECTS.register("insane_buff", InsaneBuffEffect::new);
     public static final RegistryObject<MobEffect> COOK_BUFF =
             EFFECTS.register("cook_buff", CookBuffEffect::new);
     public static final RegistryObject<MobEffect> DREAM_WISH_BUFF =

@@ -273,7 +273,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.CHEER_UP_BUFF_ICON.get());
         basicItem(ModItems.LETHARGY_BUFF_ICON.get());
         basicItem(ModItems.TRANCE_BUFF_ICON.get());
-        basicItem(ModItems.INSAND_BUFF_ICON.get());
+        basicItem(ModItems.INSANE_BUFF_ICON.get());
         basicItem(ModItems.CHAOS_BUFF_ICON.get());
         basicItem(ModItems.DREAM_WISH_BUFF_ICON.get());
         basicItem(ModItems.COOK_BUFF_ICON.get());

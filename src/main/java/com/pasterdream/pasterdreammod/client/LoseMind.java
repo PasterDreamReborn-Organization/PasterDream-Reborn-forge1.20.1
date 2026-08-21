@@ -44,8 +44,8 @@ public class LoseMind {
         if (MC.player == null || MC.options.hideGui) return;
 
         var player = MC.player;
-        MobEffectInstance insand = player.getEffect(ModEffects.INSAND_BUFF.get());
-        boolean inSoundRange = insand != null && insand.getAmplifier() >= 1; // II级及以上
+        MobEffectInstance insane = player.getEffect(ModEffects.INSANE_BUFF.get());
+        boolean inSoundRange = insane != null && insane.getAmplifier() >= 1; // II级及以上
 
         if (inSoundRange && Config.lowSanSound) {
             if (!wasInSoundRange || player.tickCount - lastSoundTick >= SOUND_INTERVAL) {
@@ -57,8 +57,8 @@ public class LoseMind {
         }
         wasInSoundRange = inSoundRange;
 
-        if (insand != null) {
-            int lv = Mth.clamp(insand.getAmplifier(), 0, MIND_PARAMS.length - 1);
+        if (insane != null) {
+            int lv = Mth.clamp(insane.getAmplifier(), 0, MIND_PARAMS.length - 1);
             if (lv > 0 && Config.lowSanJitter) {
                 applyJitter(player, lv);
             }

@@ -1780,7 +1780,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TRANCE_BUFF_ICON = ITEMS.register("trance_buff_icon",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> INSAND_BUFF_ICON = ITEMS.register("insand_buff_icon",
+    public static final RegistryObject<Item> INSANE_BUFF_ICON = ITEMS.register("insane_buff_icon",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CHAOS_BUFF_ICON = ITEMS.register("chaos_buff_icon",
             () -> new Item(new Item.Properties()));

@@ -953,7 +953,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.CHEER_UP_BUFF_ICON.get(), "Cheer Up Icon");
         add(ModItems.LETHARGY_BUFF_ICON.get(), "Lethargy Icon");
         add(ModItems.TRANCE_BUFF_ICON.get(), "Trance Icon");
-        add(ModItems.INSAND_BUFF_ICON.get(), "Madness Icon");
+        add(ModItems.INSANE_BUFF_ICON.get(), "Madness Icon");
         add(ModItems.CHAOS_BUFF_ICON.get(), "Chaos Icon");
         add(ModItems.DREAM_WISH_BUFF_ICON.get(), "Dream Wish Icon");
         add(ModItems.COOK_BUFF_ICON.get(), "Cuisine Icon");
@@ -1087,7 +1087,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.lethargy_buff", "Lethargy");
         add("effect.pasterdream.trance_buff", "Trance");
         add("effect.pasterdream.confusion_buff", "Confusion");
-        add("effect.pasterdream.insand_buff", "Insanity");
+        add("effect.pasterdream.insane_buff", "Insanity");
         add("effect.pasterdream.evasion_buff", "Evasion");
         add("effect.pasterdream.blink_cooldown", "Blink Cooldown");
         add("effect.pasterdream.dyedream_perfume_buff", "Dyedream Perfume");
@@ -1661,7 +1661,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.cheer_up_buff.description", "Get it when san is above 90% to gain some positive effects.");
         add("effect.pasterdream.lethargy_buff.description", "You gain some negative effects when san is between 40% and 60%.");
         add("effect.pasterdream.trance_buff.description", "You gain worse negative effects when san is between 20% and 40%.");
-        add("effect.pasterdream.insand_buff.description", "When sanity falls below 20%, you get it and experience extremely severe negative effects. Your vision will be covered with special visual effects. When san is between 1% and 10%, you get Insand II, with looping sound effects and camera shakes. When sanity drops below 1%, you get Insand III, and the aforementioned negative effects are intensified. (Visual effects, shaking, and sound effects can be turned off with commands or config)");
+        add("effect.pasterdream.insane_buff.description", "When sanity falls below 20%, you get it and experience extremely severe negative effects. Your vision will be covered with special visual effects. When san is between 1% and 10%, you get Insane II, with looping sound effects and camera shakes. When sanity drops below 1%, you get Insane III, and the aforementioned negative effects are intensified. (Visual effects, shaking, and sound effects can be turned off with commands or config)");
         add("effect.pasterdream.snow_vow_buff.description", "During the effect period, grants 3 Luck, immunity to burn and freeze effects, provided by Snow Vow Head curios within range.");
         add("effect.pasterdream.goldenrod_tea_buff.description", "During the duration of the effect, it provides immunity to hunger and nausea.");
         add("effect.pasterdream.sculk_armor_buff.description", "Obtained when wearing the full Sculk set, increases maximum health, grants resistance buff when in the depths and removes darkness debuff while giving speed and resistance effects when affected by darkness debuff.");
