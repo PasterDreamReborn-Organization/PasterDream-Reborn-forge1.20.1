@@ -1017,6 +1017,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.brooch_of_white_orchid.effect", "§7▪ §9No longer affected by environmental SAN reduction");
         add("tooltip.pasterdream.brooch_of_white_orchid.effect2", "§7▪ §9White Sword Rain +50% damage to all creatures");
         add("tooltip.pasterdream.brooch_of_white_orchid.effect3", "§7▪ §9White Sword Rain ignores invulnerability frames");
+        add("message.pasterdream.brooch_of_white_orchid.rejected", "This ornament rejects you");
         add("tooltip.pasterdream.brooch_of_white_orchid.flavor", "§o§7 -- I fade into formlessness, now enjoy the glory you deserve");
         add("tooltip.pasterdream.kaichu_omamori.effect.foxfire", "§7▪ §9Generates a Foxfire field in a 12×12 area");
         add("tooltip.pasterdream.kaichu_omamori.effect.vulnerable", "§7▪ §9Non-player creatures take 20% more damage and get Slowness V effect");
@@ -1169,6 +1170,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.white_sword.skill_passive_name", "Passive: §6Light Chaser");
         add("tooltip.pasterdream.white_sword.desc8", "§7▪ §9§c50% §9chance on melee attack to fire homing sword rain at the target");
         add("message.pasterdream.white_sword.no_energy", "Not enough Melt Dream Energy");
+        add("message.pasterdream.white_sword.no_talent", "You haven't chosen <Light> to use this sword");
         add("entity.pasterdream.white_sword_rain_projectile", "White Sword Rain");
 
         // Shadow Sword
@@ -1183,6 +1185,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.shadow_sword.desc3", "§7▪ §4Swings consume your own life when sanity is depleted");
         add("tooltip.pasterdream.shadow_sword.flavor", "§7§o——The nightmare sharpened into this blade");
         add("message.pasterdream.shadow_sword.san_disabled", "§cThe Shadow Sword rejects you");
+        add("message.pasterdream.shadow_sword.no_talent", "You haven't chosen <Shadow> to use this sword");
 
         // Ice Shadow Hammer
         add("tooltip.pasterdream.ice_shadow_hammer.skill_name", "Battle Art: §3Eno's Earthshaker");
@@ -1201,6 +1204,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.seal_of_the_corrupted.effect2", "§7▪ §9Shadow mobs become neutral to you");
         add("tooltip.pasterdream.seal_of_the_corrupted.effect3", "§7▪ §9Shadow mobs spawned by low sanity fight for you");
         add("tooltip.pasterdream.seal_of_the_corrupted.flavor", "§7§o——I will become your shadow and share your suffering");
+        add("message.pasterdream.seal_of_the_corrupted.rejected", "This ornament rejects you");
 
         // Terra Floating Island
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "Terra Floating Island");

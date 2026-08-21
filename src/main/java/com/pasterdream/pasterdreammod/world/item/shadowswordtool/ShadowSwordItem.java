@@ -2,7 +2,9 @@ package com.pasterdream.pasterdreammod.world.item.shadowswordtool;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
+import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
 import com.pasterdream.pasterdreammod.helper.MagicDamageHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
@@ -12,6 +14,7 @@ import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -59,6 +62,8 @@ public class ShadowSwordItem extends SwordItem {
     private static final double MAGIC_DAMAGE_BASE = 2.5; // 噩梦斩基础魔法伤害系数
     private static final double SWEEP_AABB_XZ = 1.5; // 横扫范围(XZ)
     private static final double SWEEP_AABB_Y = 0.5; // 横扫范围(Y)
+    private static final ResourceLocation TALENT_SHADOW_ADV =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/talent_shadow");
 
     public ShadowSwordItem(Tier tier, int damage, float speed) {
         super(tier, damage, speed, new Properties().fireResistant().rarity(ModRarities.LEGENDARY));
@@ -72,6 +77,12 @@ public class ShadowSwordItem extends SwordItem {
         ItemStack stack = player.getItemInHand(hand);
         if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
         if (!level.isClientSide() && player instanceof ServerPlayer sp) {
+            if (!player.isCreative() && !AdvancementHelper.isDone(sp, TALENT_SHADOW_ADV)) {
+                player.displayClientMessage(Component.translatable("message.pasterdream.shadow_sword.no_talent"), false);
+                player.hurt(player.level().damageSources().fellOutOfWorld(), player.getHealth() - 1);
+                player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
+                return InteractionResultHolder.fail(stack);
+            }
             if (player.getCooldowns().isOnCooldown(stack.getItem())) {
                 return InteractionResultHolder.fail(stack);
             }
