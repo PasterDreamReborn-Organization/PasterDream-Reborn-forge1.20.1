@@ -2003,6 +2003,18 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         SingleItemRecipeBuilder.stonecutting(shadowStonesTag, RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_SHADOW_STONE_BRICK.get())
                 .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_shadow_stone_brick_from_stonecutting");
+
+        // ===== 暮影长床配方 =====
+        // 噩梦燃料 + 黑床 + 阴影石瓦 + 阴影木板台阶
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_BED.get(), 1)
+                .pattern("aba")
+                .pattern("cdc")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', Items.BLACK_BED)
+                .define('c', ModItems.SHADOW_STONE_TILES.get())
+                .define('d', ModItems.SHADOW_SLAB.get())
+                .unlockedBy(getHasName(ModItems.NIGHTMARE_FUEL.get()), has(ModItems.NIGHTMARE_FUEL.get()))
+                .save(pWriter);
     }
 
     // ===== 苍青岩砖系列配方 =====
