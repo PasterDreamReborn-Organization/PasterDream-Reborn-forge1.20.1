@@ -78,6 +78,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
         super(type, world);
         xpReward = 32;
         setNoAi(false);
+        this.bossInfo.setVisible(false);
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.pasterdream.pasterdreammod.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
-import com.pasterdream.pasterdreammod.mixin.BossHealthOverlayAccessor;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosLeftHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosRightHandEntity;
 import net.minecraft.client.Minecraft;
@@ -38,10 +37,8 @@ public class AaroncosHandBossBar {
         if (leftHand == null && rightHand == null)
             return;
 
-        // 接入原版 BOSS 条纵向布局：每个原版 BOSS 条占 19px（10 + 9），从 y=12 开始
-        var bossOverlay = Minecraft.getInstance().gui.getBossOverlay();
-        int bossCount = ((BossHealthOverlayAccessor) bossOverlay).pasterdream$getEvents().size();
-        int yTop = 12 + bossCount * 19;
+        // 接入共享布局：原版 BOSS 条下方第一个槽位 + 本类型槽位
+        int yTop = ModBossBarLayout.baseY() + ModBossBarLayout.slot(level, ModBossBarLayout.BossBarSlot.AARONCOS_HANDS) * 19;
 
         Minecraft.getInstance().getProfiler().push("aaroncos_hand_boss_bar");
         RenderSystem.enableBlend();
