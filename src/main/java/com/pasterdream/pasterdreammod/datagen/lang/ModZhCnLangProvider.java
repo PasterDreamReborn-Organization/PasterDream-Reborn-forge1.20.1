@@ -702,10 +702,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("option.pasterdream.S: 获取对应的BlockItem并掉落，并将方块设置为空气", "S: 获取对应的BlockItem并掉落，并将方块设置为空气");
         add("option.pasterdream.D: 将方块设置为空气的同时不触发方块更新", "D: 将方块设置为空气的同时不触发方块更新");
 
-        add("effect.pasterdream.sculk_armor_buff", "幽匿回响");
-        add("effect.pasterdream.dyedream_armor_buff", "染梦守护");
-        add("effect.pasterdream.titanium_armor_buff", "钛金守护");
-        add("effect.pasterdream.dyedream_up_buff", "染梦工具增强");
+        add("effect.pasterdream.sculk_armor", "幽匿回响");
+        add("effect.pasterdream.dyedream_armor", "染梦守护");
+        add("effect.pasterdream.titanium_armor", "钛金守护");
+        add("effect.pasterdream.dyedream_up", "染梦工具增强");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9启用飞行能力");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4融梦能量消耗：1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9获得飞行能力且免疫摔落伤害");
@@ -1105,16 +1105,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.CARAPAX_CHARM.get(), "龟壳护身符");
         add(ModItems.WORLDTREE_SEEDPOD.get(), "世界树种荚");
         add(ModItems.GARLAND.get(), "花环");
-        add(ModItems.REST_BUFF_ICON.get(), "休憩图标");
-        add(ModItems.CHEER_UP_BUFF_ICON.get(), "振奋图标");
-        add(ModItems.LETHARGY_BUFF_ICON.get(), "不振图标");
-        add(ModItems.TRANCE_BUFF_ICON.get(), "恍惚图标");
-        add(ModItems.INSANE_BUFF_ICON.get(), "疯狂图标");
-        add(ModItems.CHAOS_BUFF_ICON.get(), "混乱图标");
-        add(ModItems.DREAM_WISH_BUFF_ICON.get(), "美梦祈愿图标");
-        add(ModItems.COOK_BUFF_ICON.get(), "料理图标");
-        add(ModItems.SHADOW_SILENCE_BUFF_ICON.get(), "暗影沉默图标");
-        add(ModItems.BIND_BUFF_ICON.get(), "束缚图标");
+        add(ModItems.REST_ICON.get(), "休憩图标");
+        add(ModItems.CHEER_UP_ICON.get(), "振奋图标");
+        add(ModItems.LETHARGY_ICON.get(), "不振图标");
+        add(ModItems.TRANCE_ICON.get(), "恍惚图标");
+        add(ModItems.INSANE_ICON.get(), "疯狂图标");
+        add(ModItems.CHAOS_ICON.get(), "混乱图标");
+        add(ModItems.DREAM_WISH_ICON.get(), "美梦祈愿图标");
+        add(ModItems.COOK_ICON.get(), "料理图标");
+        add(ModItems.SHADOW_SILENCE_ICON.get(), "暗影沉默图标");
+        add(ModItems.BIND_ICON.get(), "束缚图标");
         add(ModItems.BLESSING_OF_CECILIA.get(), "塞西莉娅的加护");
         add("tooltip.pasterdream.blessing_of_cecilia.effect0", "§7▪ §9常驻：强制20%减伤");
         add("tooltip.pasterdream.blessing_of_cecilia.effect1", "§7 受到致命伤害时：");
@@ -1188,7 +1188,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get(), "萤火光合幻翼膜");
         add("tooltip.pasterdream.light_moss_phantom_membrane.effect", "§7▪ §9为正在装备的鞘翅恢复耐久");
         add("tooltip.pasterdream.light_moss_phantom_membrane.effect.dark", "§7▪ §9在黑暗的环境下耐久恢复速度减慢");
-        add("effect.pasterdream.snow_vow_buff", "雪下的誓言");
+        add("effect.pasterdream.snow_vow", "雪下的誓言");
         add(ModItems.FOURLEAF_CLOVER_CURIO.get(), "幸运四叶草");
         add("tooltip.pasterdream.fourleaf_clover_curio.flavor", "§7§o哪片叶子代表着幸运？");
         add("tooltip.pasterdream.fourleaf_clover_curio.effect.health", "§7▪ §9+1 最大生命值");
@@ -1248,24 +1248,24 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 瞬身术
         add("key.pasterdream.blink", "瞬身术");
         add("key.categories.pasterdream", "帕斯特之梦");
-        add("effect.pasterdream.cheer_up_buff", "振奋");
-        add("effect.pasterdream.lethargy_buff", "不振");
-        add("effect.pasterdream.trance_buff", "恍惚");
-        add("effect.pasterdream.confusion_buff", "混乱");
-        add("effect.pasterdream.insane_buff", "疯狂");
-        add("effect.pasterdream.evasion_buff", "回避");
+        add("effect.pasterdream.cheer_up", "振奋");
+        add("effect.pasterdream.lethargy", "不振");
+        add("effect.pasterdream.trance", "恍惚");
+        add("effect.pasterdream.confusion", "混乱");
+        add("effect.pasterdream.insane", "疯狂");
+        add("effect.pasterdream.evasion", "回避");
         add("effect.pasterdream.blink_cooldown", "瞬身术冷却");
-        add("effect.pasterdream.dyedream_perfume_buff", "染梦香水");
-        add("effect.pasterdream.goldenrod_tea_buff", "秋麒麟茶");
-        add("effect.pasterdream.cook_buff", "料理");
-        add("effect.pasterdream.dream_wish_buff", "美梦祈愿");
-        add("effect.pasterdream.cecilia_blessing_buff", "塞西莉娅的加护");
-        add("effect.pasterdream.rest_buff", "休憩");
-        add("effect.pasterdream.dream_harp_of_wanderer_buff", "漂泊旅者的染梦竖琴");
-        add("effect.pasterdream.guard_buff", "守护");
-        add("effect.pasterdream.rapid_reaction_buff", "高速反射");
-        add("effect.pasterdream.holy_grail_buff", "圣杯");
-        add("effect.pasterdream.flare_up_buff", "怒气爆发");
+        add("effect.pasterdream.dyedream_perfume", "染梦香水");
+        add("effect.pasterdream.goldenrod_tea", "秋麒麟茶");
+        add("effect.pasterdream.cook", "料理");
+        add("effect.pasterdream.dream_wish", "美梦祈愿");
+        add("effect.pasterdream.cecilia_blessing", "塞西莉娅的加护");
+        add("effect.pasterdream.rest", "休憩");
+        add("effect.pasterdream.dream_harp_of_wanderer", "漂泊旅者的染梦竖琴");
+        add("effect.pasterdream.guard", "守护");
+        add("effect.pasterdream.rapid_reaction", "高速反射");
+        add("effect.pasterdream.holy_grail", "圣杯");
+        add("effect.pasterdream.flare_up", "怒气爆发");
         add("effect.pasterdream.conflict_mark", "纷争标记");
         add("attribute.pasterdream.blink_cd", "瞬身术冷却");
         add("attribute.pasterdream.blink_consume", "瞬身术消耗");
@@ -1463,8 +1463,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.counter_ring.effect1", "§7▪ §9成功回避伤害时获得反击I (0:10)");
         add("tooltip.pasterdream.counter_ring.effect2", "§7▪ §9下一次攻击：攻击力+3 战技伤害+50%，命中后效果解除");
         add("tooltip.pasterdream.melt_dream_energy_ring.effect1", "§7▪ §9融梦能量+0.3/min");
-        add("effect.pasterdream.counter_attack_buff", "反击");
-        add("effect.pasterdream.memento_buff", "寻梦者的祈愿");
+        add("effect.pasterdream.counter_attack", "反击");
+        add("effect.pasterdream.memento", "寻梦者的祈愿");
 
         // 战争旗帜
         add(ModItems.WAR_FLAG.get(), "战争旗帜");
@@ -1472,12 +1472,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.war_flag.effect2", "§7▪ §9效果持续期间增加攻击并提升回血速度");
         add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9该效果可以共享给周围玩家");
         add("tooltip.pasterdream.war_flag.description", "§7§O --这面旗帜上流淌的暗影似乎在述说遥远的过往……");
-        add("effect.pasterdream.war_flag_buff", "战意");
-        add("effect.pasterdream.bind_buff", "束缚");
-        add("effect.pasterdream.shadow_silence_buff", "暗影沉默");
-        add("effect.pasterdream.restrainmove_block_buff", "行动抑制");
-        add("effect.pasterdream.oppression_buff", "压抑");
-        add("effect.pasterdream.shadow_spyon_buff", "暗影窥视");
+        add("effect.pasterdream.war_flag", "战意");
+        add("effect.pasterdream.bind", "束缚");
+        add("effect.pasterdream.shadow_silence", "暗影沉默");
+        add("effect.pasterdream.restrainmove_block", "行动抑制");
+        add("effect.pasterdream.oppression", "压抑");
+        add("effect.pasterdream.shadow_spyon", "暗影窥视");
         add("message.pasterdream.shadow_intrude.start_1", "§5你感到一丝凉意，眼前被笼罩了一层黑雾");
         add("message.pasterdream.shadow_intrude.start_2", "§5附近的的影子开始蠕动");
         add("message.pasterdream.shadow_intrude.end", "§5影子归于平息...");
@@ -1571,7 +1571,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.calais_spice_bottle.effect1", "§7▪ §9食用速度+40%");
         add("tooltip.pasterdream.calais_spice_bottle.effect2", "§7▪ §9装备时获得卡莱料理X增益，攻击命中消耗层数，砍至消失后需进食恢复，进食积累层数（每3饥饿度+1，上限Ⅹ级）");
         add("tooltip.pasterdream.calais_spice_bottle.effect3", "§7▪ §9每消耗1层会获得随机效果");
-        add("effect.pasterdream.calais_spice_bottle_buff", "卡莱料理");
+        add("effect.pasterdream.calais_spice_bottle", "卡莱料理");
 
 
         //鬼魂之面
@@ -2160,36 +2160,36 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("entity.pasterdream.golden_fox.vanish", "金色狐狸在完成了你许下的愿望之后消失了...");
 
         //jeed兼容
-        add("effect.pasterdream.rest_buff.description", "触摸琴雨梦玩偶或睡觉后获得，效果持续期间获得理智光环。");
-        add("effect.pasterdream.cook_buff.description", "食用部分食物后获得，效果持续期间获得理智光环。");
-        add("effect.pasterdream.cheer_up_buff.description", "san高于90%的时候获得，获得一些正面效果。");
-        add("effect.pasterdream.lethargy_buff.description", "san在40%和60%之间的时候获得，获得一些负面效果。");
-        add("effect.pasterdream.trance_buff.description", "san在20%和40%之间的时候获得，获得更严重的负面效果。");
-        add("effect.pasterdream.insane_buff.description", "san低于20%的时候获得，获得极为严重的负面效果，视线会被特殊的视觉效果覆盖，san在1%~10%时会获得疯狂II，循环播放音效并视角抖动，san低于1%时获得疯狂III，前面所述负面会得到加强。（视觉效果，抖动和音效可以指令或配置关闭）");
-        add("effect.pasterdream.snow_vow_buff.description", "效果期间+3幸运，免疫燃烧和冻结效果，由雪下的誓言饰品在范围内给予。");
-        add("effect.pasterdream.goldenrod_tea_buff.description", "效果持续期间免疫饥饿和反胃效果。");
-        add("effect.pasterdream.sculk_armor_buff.description", "穿戴全套回响套装时获得，增加最大生命值，身处深层时获得抗性提升，受到黑暗效果时移除黑暗并给予速度和抗性效果。");
-        add("effect.pasterdream.dyedream_armor_buff.description", "穿戴全套染梦合金套装时获得，增加最大生命值并每30秒获得伤害吸收II。");
-        add("effect.pasterdream.titanium_armor_buff.description", "穿戴全套钛金套装时获得，每30秒获得伤害吸收I。");
-        add("effect.pasterdream.dyedream_up_buff.description", "穿戴全套染梦合金套装时获得，持有染梦(染梦合金与融梦水晶)工具时伤害+50%");
-        add("effect.pasterdream.melt_dream_crystal_armor_buff", "融梦守护");
-        add("effect.pasterdream.melt_dream_crystal_armor_buff.description", "穿戴全套融梦水晶套装时获得，融梦修补费用-50%，获得生命恢复II与染梦工具增强，融梦能量>50%时理智光环+1.2，否则+0.6。");
-        add("effect.pasterdream.dream_wish_buff.description", "饮用梦境果汁获得，拥有该效果在晚上睡觉以进入染梦世界。");
-        add("effect.pasterdream.dyedream_perfume_buff.description", "饮用染梦香水获得，效果持续期间幻翼不会攻击你。");
-        add("effect.pasterdream.counter_attack_buff.description", "增加战技伤害，下一次攻击后消失。");
-        add("effect.pasterdream.dream_harp_of_wanderer_buff.description", "使用漂泊旅者的染梦竖琴后获得，漂泊旅者的染梦竖琴可以从染梦列车中得到。");
-        add("effect.pasterdream.cecilia_blessing_buff.description", "戴着塞西莉娅受到致命伤害后获得，效果期间获得伤害免疫。");
-        add("effect.pasterdream.guard_buff.description", "使用守护预言卡获得，拥有该buff时，超过一定生命百分比的部分伤害将会受到减伤（可在配置里修改）");
-        add("effect.pasterdream.holy_grail_buff.description", "使用圣杯预言卡获得，拥有该buff时，效果持续期间+15最大生命值，并免疫一部分负面状态，获得自然生命恢复且血量越低，回血速度越快。");
-        add("effect.pasterdream.rapid_reaction_buff.description", "使用疾行预言卡获得，拥有该buff时，增加上坡高度，降低瞬身术冷却并免疫摔落伤害。");
-        add("effect.pasterdream.flare_up_buff.description", "使用执剑预言卡获得，拥有该buff时，增加攻击力和攻击速度，增加战技伤害倍率并降低技能冷却时间。");
+        add("effect.pasterdream.rest.description", "触摸琴雨梦玩偶或睡觉后获得，效果持续期间获得理智光环。");
+        add("effect.pasterdream.cook.description", "食用部分食物后获得，效果持续期间获得理智光环。");
+        add("effect.pasterdream.cheer_up.description", "san高于90%的时候获得，获得一些正面效果。");
+        add("effect.pasterdream.lethargy.description", "san在40%和60%之间的时候获得，获得一些负面效果。");
+        add("effect.pasterdream.trance.description", "san在20%和40%之间的时候获得，获得更严重的负面效果。");
+        add("effect.pasterdream.insane.description", "san低于20%的时候获得，获得极为严重的负面效果，视线会被特殊的视觉效果覆盖，san在1%~10%时会获得疯狂II，循环播放音效并视角抖动，san低于1%时获得疯狂III，前面所述负面会得到加强。（视觉效果，抖动和音效可以指令或配置关闭）");
+        add("effect.pasterdream.snow_vow.description", "效果期间+3幸运，免疫燃烧和冻结效果，由雪下的誓言饰品在范围内给予。");
+        add("effect.pasterdream.goldenrod_tea.description", "效果持续期间免疫饥饿和反胃效果。");
+        add("effect.pasterdream.sculk_armor.description", "穿戴全套回响套装时获得，增加最大生命值，身处深层时获得抗性提升，受到黑暗效果时移除黑暗并给予速度和抗性效果。");
+        add("effect.pasterdream.dyedream_armor.description", "穿戴全套染梦合金套装时获得，增加最大生命值并每30秒获得伤害吸收II。");
+        add("effect.pasterdream.titanium_armor.description", "穿戴全套钛金套装时获得，每30秒获得伤害吸收I。");
+        add("effect.pasterdream.dyedream_up.description", "穿戴全套染梦合金套装时获得，持有染梦(染梦合金与融梦水晶)工具时伤害+50%");
+        add("effect.pasterdream.melt_dream_crystal_armor", "融梦守护");
+        add("effect.pasterdream.melt_dream_crystal_armor.description", "穿戴全套融梦水晶套装时获得，融梦修补费用-50%，获得生命恢复II与染梦工具增强，融梦能量>50%时理智光环+1.2，否则+0.6。");
+        add("effect.pasterdream.dream_wish.description", "饮用梦境果汁获得，拥有该效果在晚上睡觉以进入染梦世界。");
+        add("effect.pasterdream.dyedream_perfume.description", "饮用染梦香水获得，效果持续期间幻翼不会攻击你。");
+        add("effect.pasterdream.counter_attack.description", "增加战技伤害，下一次攻击后消失。");
+        add("effect.pasterdream.dream_harp_of_wanderer.description", "使用漂泊旅者的染梦竖琴后获得，漂泊旅者的染梦竖琴可以从染梦列车中得到。");
+        add("effect.pasterdream.cecilia_blessing.description", "戴着塞西莉娅受到致命伤害后获得，效果期间获得伤害免疫。");
+        add("effect.pasterdream.guard.description", "使用守护预言卡获得，拥有该buff时，超过一定生命百分比的部分伤害将会受到减伤（可在配置里修改）");
+        add("effect.pasterdream.holy_grail.description", "使用圣杯预言卡获得，拥有该buff时，效果持续期间+15最大生命值，并免疫一部分负面状态，获得自然生命恢复且血量越低，回血速度越快。");
+        add("effect.pasterdream.rapid_reaction.description", "使用疾行预言卡获得，拥有该buff时，增加上坡高度，降低瞬身术冷却并免疫摔落伤害。");
+        add("effect.pasterdream.flare_up.description", "使用执剑预言卡获得，拥有该buff时，增加攻击力和攻击速度，增加战技伤害倍率并降低技能冷却时间。");
         add("effect.pasterdream.conflict_mark.description", "使用纷争预言卡标记其它实体后该实体获得，拥有该buff时，将会成为其它实体攻击目标。");
-        add("effect.pasterdream.war_flag_buff.description", "装备战争旗帜后击杀敌人后获得，期间增加攻击力，并每击杀一个敌人增加1级。");
-        add("effect.pasterdream.confusion_buff.description", "施加给玩家后，玩家的视角将会抖动，施加给其它生物后，会使该生物失去行动能力。");
-        add("effect.pasterdream.calais_spice_bottle_buff.description", "装备卡莱调料瓶后获得，每次击中敌人后减少1层等级并获得随机效果，食用符合要求食物会恢复层数。");
-        add("effect.pasterdream.shadow_silence_buff.description", "暗影生物获得该buff后，会失去释放技能的能力。");
-        add("effect.pasterdream.bind_buff.description", "被白厄剑的剑雨攻击后获得，获得该buff后，会无法移动。");
-        add("effect.pasterdream.restrainmove_block_buff.description", "效果持续期间移除跳跃提升并强制禁用飞行。");
+        add("effect.pasterdream.war_flag.description", "装备战争旗帜后击杀敌人后获得，期间增加攻击力，并每击杀一个敌人增加1级。");
+        add("effect.pasterdream.confusion.description", "施加给玩家后，玩家的视角将会抖动，施加给其它生物后，会使该生物失去行动能力。");
+        add("effect.pasterdream.calais_spice_bottle.description", "装备卡莱调料瓶后获得，每次击中敌人后减少1层等级并获得随机效果，食用符合要求食物会恢复层数。");
+        add("effect.pasterdream.shadow_silence.description", "暗影生物获得该buff后，会失去释放技能的能力。");
+        add("effect.pasterdream.bind.description", "被白厄剑的剑雨攻击后获得，获得该buff后，会无法移动。");
+        add("effect.pasterdream.restrainmove_block.description", "效果持续期间移除跳跃提升并强制禁用飞行。");
 
         // 染梦裂隙消息
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5身体从这个奇怪的洞穴中穿过，但并没有什么反应。");
@@ -2289,7 +2289,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.potion_bottle.lightning", "雷电药剂瓶");
         add("item.pasterdream.potion_bottle.rejuvenation", "回春药剂瓶");
         add("item.pasterdream.potion_bottle.inferno", "狱火药剂瓶");
-        add("effect.pasterdream.highly_toxic_buff", "剧毒");
+        add("effect.pasterdream.highly_toxic", "剧毒");
         add("tooltip.pasterdream.potion_bottle.highly_toxic.description","§9砸碎后释放剧毒云，对6*6区域范围内的生物施加剧毒、缓慢和虚弱");
         add("tooltip.pasterdream.potion_bottle.lightning.description.1","§9砸碎后在落地地点释放乌云，并在短时间后对5*5区域范围内生成4次随机落雷");
         add("tooltip.pasterdream.potion_bottle.lightning.description.2","§7§O --瓶装闪电");
@@ -2300,9 +2300,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.potion_bottle.berserk.description.2","§9在其中的玩家攻击力+20%，移动速度+10%，攻击速度+50%，战技冷却-30%，瞬身术冷却-30%，战技伤害+30%");
         add("tooltip.pasterdream.potion_bottle.inferno.description.1","§9在6x6范围制造烈火，对范围内所有敌人周期造成魔法伤害并点燃敌人");
         add("tooltip.pasterdream.potion_bottle.inferno.description.2","§9波及的敌人会被赋予易伤buff，最高3级");
-        add("effect.pasterdream.berserk_buff", "狂暴");
-        add("effect.pasterdream.frozen_buff", "急冻");
-        add("effect.pasterdream.vulnerability_buff", "易伤");
+        add("effect.pasterdream.berserk", "狂暴");
+        add("effect.pasterdream.frozen", "急冻");
+        add("effect.pasterdream.vulnerability", "易伤");
 
         // 暗影提灯
         add(ModItems.SHADOW_HAND_LANTERN.get(), "暗影提灯");
@@ -2409,11 +2409,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.WIND_VANE.get(), "风向标");
         add(ModItems.WIND_KNIGHT_FLAG.get(), "风骑士旗帜");
         add(ModItems.PAPER_PLANE.get(), "纸飞机");
-        add("effect.pasterdream.tailwind_buff", "顺风");
-        add("effect.pasterdream.deadwind_buff", "逆风");
-        add("effect.pasterdream.windproof_buff", "防风");
-        add("effect.pasterdream.misty_dream_buff", "迷梦");
-        add("effect.pasterdream.cloud_mist_buff", "云雾");
+        add("effect.pasterdream.tailwind", "顺风");
+        add("effect.pasterdream.deadwind", "逆风");
+        add("effect.pasterdream.windproof", "防风");
+        add("effect.pasterdream.misty_dream", "迷梦");
+        add("effect.pasterdream.cloud_mist", "云雾");
         add("tooltip.pasterdream.wind_vane.desc", "§7检测当前的风向与玩家的角度");
         add("message.pasterdream.wind_vane.angle", "角度：%s 方向：%s");
         add("tooltip.pasterdream.wind_knight_flag.effect1", "§7▪ §9可以将逆风视为顺风");

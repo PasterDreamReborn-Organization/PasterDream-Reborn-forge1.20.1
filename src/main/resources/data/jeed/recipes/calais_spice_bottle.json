@@ -1,0 +1,9 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "pasterdream:calais_spice_bottle",
+  "providers": [
+    {
+      "item": "pasterdream:calais_spice_bottle"
+    }
+  ]
+}

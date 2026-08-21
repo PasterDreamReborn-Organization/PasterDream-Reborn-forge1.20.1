@@ -10,7 +10,7 @@ description: 新增/修改玩家技能（以瞬身术 Blink 为参考架构）�
 ```
 ModKeyMappings (按键) → BlinkPacket (网络) → BlinkSkill (逻辑) → EvasionEffectHandler (特效)
                                                                     ↓
-                                            EvasionBuffEffect + BlinkCooldownEffect (效果标记)
+                                            EvasionEffect + BlinkCooldownEffect (效果标记)
 ```
 
 ---

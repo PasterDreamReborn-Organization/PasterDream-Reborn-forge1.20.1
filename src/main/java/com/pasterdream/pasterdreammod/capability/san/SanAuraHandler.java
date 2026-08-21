@@ -83,7 +83,7 @@ public class SanAuraHandler {
             double ratio = cap.getSanValue() / SanHelper.getPlayerMaxSanEffective(player);
 
             if (ratio >= Config.sanCheerUpThreshold) {
-                player.addEffect(new MobEffectInstance(ModEffects.CHEER_UP_BUFF.get(),
+                player.addEffect(new MobEffectInstance(ModEffects.CHEER_UP.get(),
                         THRESHOLD_EFFECT_DURATION, 0, false, false));
                 return;
             }
@@ -91,15 +91,15 @@ public class SanAuraHandler {
 
             if (ratio < Config.sanLethargyUpperThreshold && ratio >= Config.sanLethargyLowerThreshold) {
                 if (!player.getPersistentData().getBoolean(StrawberryHeartItem.SAN_AURA_TAG)) {
-                    player.addEffect(new MobEffectInstance(ModEffects.LETHARGY_BUFF.get(),
+                    player.addEffect(new MobEffectInstance(ModEffects.LETHARGY.get(),
                             THRESHOLD_EFFECT_DURATION, 0, false, false));
                 }
             } else if (ratio < Config.sanLethargyLowerThreshold && ratio >= Config.sanTranceLowerThreshold) {
-                player.addEffect(new MobEffectInstance(ModEffects.TRANCE_BUFF.get(),
+                player.addEffect(new MobEffectInstance(ModEffects.TRANCE.get(),
                         THRESHOLD_EFFECT_DURATION, 0, false, false));
             } else if (ratio < Config.sanTranceLowerThreshold) {
                 int level = ratio < Config.sanInsaneLv3Threshold ? 2 : ratio < Config.sanInsaneLv2Threshold ? 1 : 0;
-                player.addEffect(new MobEffectInstance(ModEffects.INSANE_BUFF.get(),
+                player.addEffect(new MobEffectInstance(ModEffects.INSANE.get(),
                         THRESHOLD_EFFECT_DURATION, level, false, false));
             }
         });

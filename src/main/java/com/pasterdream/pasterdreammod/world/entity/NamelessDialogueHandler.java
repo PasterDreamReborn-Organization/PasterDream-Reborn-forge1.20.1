@@ -52,7 +52,7 @@ public class NamelessDialogueHandler {
         AdvancementHelper.grant(player, FIRST_DIALOGUE, "first_dialogue");
         LampShadowWorldTeleporter.teleportToOverworld(player, player.blockPosition());
         // TODO Phase F: shadow_e_0 门控留占位（击败亚伦柯斯之触后不再施加）
-        player.addEffect(new MobEffectInstance(ModEffects.SHADOW_SPYON_BUFF.get(), 32000, 0, false, false));
+        player.addEffect(new MobEffectInstance(ModEffects.SHADOW_SPYON.get(), 32000, 0, false, false));
     }
 
     private static void playSecondDialogue(ServerPlayer player) {

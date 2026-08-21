@@ -1,7 +1,7 @@
 {
   "sortnum": 6,
   "name": "pasterdream.seniors_dream.entry.chaos",
-  "icon": "pasterdream:chaos_buff_icon",
+  "icon": "pasterdream:chaos_icon",
   "category": "pasterdream:foretold_dream/buffs",
   "pages": [
     {

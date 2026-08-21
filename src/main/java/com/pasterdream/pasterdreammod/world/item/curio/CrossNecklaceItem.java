@@ -24,9 +24,9 @@ public class CrossNecklaceItem extends Item implements ICurioItem {
         LivingEntity entity = slotContext.entity();
         if (entity == null || entity.level().isClientSide()) return;
 
-        var effect = entity.getEffect(ModEffects.EVASION_BUFF.get());
+        var effect = entity.getEffect(ModEffects.EVASION.get());
         if (effect != null && effect.getDuration() <= 6) {
-            entity.addEffect(new MobEffectInstance(ModEffects.EVASION_BUFF.get(), 10, 0,
+            entity.addEffect(new MobEffectInstance(ModEffects.EVASION.get(), 10, 0,
                     false, false));
         }
     }

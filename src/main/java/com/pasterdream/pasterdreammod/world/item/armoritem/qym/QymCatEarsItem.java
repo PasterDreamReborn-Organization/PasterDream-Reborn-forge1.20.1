@@ -70,7 +70,7 @@ public class QymCatEarsItem extends ArmorItem implements ISanModifier {
                 && sp.getItemBySlot(EquipmentSlot.HEAD) == stack) {
             SanHelper.setPlayerSanAndSync(sp, SanHelper.getPlayerMaxSan(sp));
             if (hasFullSet(sp) && DreamDimensionHelper.isDreamDimension(sp.level())) {
-                sp.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING_BUFF.get(), 20, 0, false, false));
+                sp.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING.get(), 20, 0, false, false));
             }
         }
     }

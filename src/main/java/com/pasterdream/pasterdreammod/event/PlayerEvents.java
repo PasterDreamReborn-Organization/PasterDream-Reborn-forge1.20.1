@@ -135,18 +135,18 @@ public class PlayerEvents {
         }
 
         if (!(event.getEntity() instanceof Player player)) return;
-        if (!player.hasEffect(ModEffects.EVASION_BUFF.get())) return;
+        if (!player.hasEffect(ModEffects.EVASION.get())) return;
 
-        var effect = player.getEffect(ModEffects.EVASION_BUFF.get());
+        var effect = player.getEffect(ModEffects.EVASION.get());
         if (effect == null) return;
 
         int amplifier = effect.getAmplifier();
         int duration = effect.getDuration();
-        player.removeEffect(ModEffects.EVASION_BUFF.get());
+        player.removeEffect(ModEffects.EVASION.get());
 
         // multi-level evasion: consume one level, keep remainder
         if (amplifier > 0) {
-            player.addEffect(new MobEffectInstance(ModEffects.EVASION_BUFF.get(),
+            player.addEffect(new MobEffectInstance(ModEffects.EVASION.get(),
                     duration, amplifier - 1, false, false));
         }
 
@@ -158,7 +158,7 @@ public class PlayerEvents {
                 .map(h -> h.findFirstCurio(ModItems.COUNTER_RING.get()).isPresent())
                 .orElse(false)) {
             player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0, false, false));
-            player.addEffect(new MobEffectInstance(ModEffects.COUNTER_ATTACK_BUFF.get(), 200, 0, false, false));
+            player.addEffect(new MobEffectInstance(ModEffects.COUNTER_ATTACK.get(), 200, 0, false, false));
         }
 
         if (player.level() instanceof ServerLevel serverLevel) {
@@ -175,12 +175,12 @@ public class PlayerEvents {
         if (player.getMainHandItem().is(ModItems.WHITE_SWORD.get())
                 && event.getTarget() instanceof LivingEntity target
                 && target.getType().is(ModEntityTypeTags.SHADOW_MOB)) {
-            target.addEffect(new MobEffectInstance(ModEffects.SHADOW_SILENCE_BUFF.get(), 200, 0));
-            target.addEffect(new MobEffectInstance(ModEffects.BIND_BUFF.get(), 40, 0));
+            target.addEffect(new MobEffectInstance(ModEffects.SHADOW_SILENCE.get(), 200, 0));
+            target.addEffect(new MobEffectInstance(ModEffects.BIND.get(), 40, 0));
         }
 
-        if (!player.hasEffect(ModEffects.COUNTER_ATTACK_BUFF.get())) return;
-        player.removeEffect(ModEffects.COUNTER_ATTACK_BUFF.get());
+        if (!player.hasEffect(ModEffects.COUNTER_ATTACK.get())) return;
+        player.removeEffect(ModEffects.COUNTER_ATTACK.get());
         player.removeEffect(MobEffects.DAMAGE_BOOST);
     }
 
@@ -191,7 +191,7 @@ public class PlayerEvents {
         if (player.level().isDay()) return;
 
         // 躺下给予3分钟休憩效果
-        player.addEffect(new MobEffectInstance(ModEffects.REST_BUFF.get(),
+        player.addEffect(new MobEffectInstance(ModEffects.REST.get(),
                 3600, 0, false, false));
 
         // 玩家接触过染梦裂隙但尚未获得染梦裂隙笔记时，睡觉触发笔记发放倒计时
@@ -208,7 +208,7 @@ public class PlayerEvents {
             }
         }
 
-        if (!player.hasEffect(ModEffects.DREAM_WISH_BUFF.get())) return;
+        if (!player.hasEffect(ModEffects.DREAM_WISH.get())) return;
 
         BlockPos pos = event.getPos();
         CompoundTag data = player.getPersistentData();

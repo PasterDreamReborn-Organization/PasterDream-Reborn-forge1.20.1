@@ -1,7 +1,7 @@
 {
   "sortnum": 0,
   "name": "pasterdream.seniors_dream.entry.rest",
-  "icon": "pasterdream:rest_buff_icon",
+  "icon": "pasterdream:rest_icon",
   "category": "pasterdream:foretold_dream/buffs",
   "pages": [
     {

@@ -1,9 +1,0 @@
-{
-  "type": "jeed:effect_provider",
-  "effect": "pasterdream:dream_harp_of_wanderer_buff",
-  "providers": [
-    {
-      "item": "pasterdream:dream_harp_of_wanderer"
-    }
-  ]
-}

@@ -26,7 +26,7 @@ public class UUZDollBlockEntity extends DollBlockEntity
         AABB area = new AABB(pos).inflate(range);
         for (Player player : level.getEntitiesOfClass(Player.class, area))
         {
-            player.addEffect(new MobEffectInstance(ModEffects.REST_BUFF.get(),
+            player.addEffect(new MobEffectInstance(ModEffects.REST.get(),
                     200, 1, false, false));
         }
     }

@@ -507,12 +507,12 @@ public class ModItems {
             //设置玩家标记，用于床交互时传送至染梦世界
             entity.getPersistentData().putBoolean("pasterdream:dream_juice_drank", true);
             if (!level.isClientSide()) {
-                entity.addEffect(new MobEffectInstance(ModEffects.DREAM_WISH_BUFF.get(), 1800, 0));
+                entity.addEffect(new MobEffectInstance(ModEffects.DREAM_WISH.get(), 1800, 0));
             }
         }
     });
     public static final RegistryObject<Item> GLASS_JAR_OF_GOLDENROD_TEA = ITEMS.register("glass_jar_of_goldenrod_tea",
-            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(1).effect(() -> new MobEffectInstance(ModEffects.GOLDENROD_TEA_BUFF.get(), 3600, 0), 1.0f).alwaysEat().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())) {
+            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(1).effect(() -> new MobEffectInstance(ModEffects.GOLDENROD_TEA.get(), 3600, 0), 1.0f).alwaysEat().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())) {
                 @Override
                 public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
                     super.appendHoverText(stack, level, tooltip, flag);
@@ -520,7 +520,7 @@ public class ModItems {
                 }
             });
     public static final RegistryObject<Item> GLASS_JAR_OF_DYEDREAM_PERFUME = ITEMS.register("glass_jar_of_dyedream_perfume",
-            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.DYEDREAM_PERFUME_BUFF.get(), 1200, 0), 1.0f).alwaysEat().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())) {
+            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.DYEDREAM_PERFUME.get(), 1200, 0), 1.0f).alwaysEat().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())) {
                 @Override
                 public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
                     super.appendHoverText(stack, level, tooltip, flag);
@@ -636,41 +636,41 @@ public class ModItems {
     public static final RegistryObject<Item> BERRY_BUN_CAKE = ITEMS.register("berry_bun_cake",
             ()  -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 0), 1.0f)
-                            .effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(7).saturationMod(0.625f).alwaysEat().build())));
 
     public static final RegistryObject<Item> TUBER_BUN_CAKE = ITEMS.register("tuber_bun_cake",
             ()  -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 0), 1.0f)
-                            .effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(7).saturationMod(0.625f).alwaysEat().build())));
 
     public static final RegistryObject<Item> WATERMELON_BUN_CAKE = ITEMS.register("watermelon_bun_cake",
             ()  -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400, 0), 1.0f)
-                            .effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(7).saturationMod(0.625f).alwaysEat().build())));
 
     public static final RegistryObject<Item> PUMPKIN_BUN_CAKE = ITEMS.register("pumpkin_bun_cake",
             ()  -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.JUMP, 1200, 0), 1.0f)
-                            .effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(7).saturationMod(0.625f).alwaysEat().build())));
 
     public static final RegistryObject<Item> GLOW_BERRY_BUN_CAKE = ITEMS.register("glow_berry_bun_cake",
             ()  -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 1200, 0), 1.0f)
-                            .effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                            .effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(7).saturationMod(0.625f).alwaysEat().build())));
 
     public static final RegistryObject<Item> DYEDREAM_FRUIT_BUN_CAKE = ITEMS.register("dyedream_fruit_bun_cake",
             ()  -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1).meltDreamEnergyAdd(0.3)
-                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(7).alwaysEat().saturationMod(0.625f).build())));
 
     public static final RegistryObject<Item> CHOCOLATE_MATCHA_CAKE = ITEMS.register("chocolate_matcha_cake",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(8).saturationMod(1).build())));
 
     // ===== 杂项食物系列 =====（染梦冰棒,泡泡糖，跳跳糖，俩棉花糖和面包片除外，其余给予料理I buff：1分钟/奇怪培根煎蛋2分钟/菠萝爱海5分钟）
@@ -696,12 +696,12 @@ public class ModItems {
 
     public static final RegistryObject<Item> BACON_AND_EGG = ITEMS.register("bacon_and_egg",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(10).saturationMod(1.2f).build())));
 
     public static final RegistryObject<Item> ODD_BACON_AND_EGG = ITEMS.register("odd_bacon_and_egg",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(2)
-                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 2400, 0), 1.0f)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 2400, 0), 1.0f)
                             .nutrition(11).saturationMod(1.365f).build())));
 
     public static final RegistryObject<Item> HEART_CHOCOLATE = ITEMS.register("heart_chocolate",
@@ -722,12 +722,12 @@ public class ModItems {
 
     public static final RegistryObject<Item> SWISS_ROLL = ITEMS.register("swiss_roll",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(6).saturationMod(0.75f).build())));
 
     public static final RegistryObject<Item> SANDWICH = ITEMS.register("sandwich",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(10).saturationMod(0.9f).build())));
 
     public static final RegistryObject<Item> WAFER_BISCUIT = ITEMS.register("wafer_biscuit",
@@ -736,17 +736,17 @@ public class ModItems {
 
     public static final RegistryObject<Item> STUFFED_WAFER_COOKIES = ITEMS.register("stuffed_wafer_cookies",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(7).saturationMod(1).build())));
 
     public static final RegistryObject<Item> GINGERBREAD_MAN = ITEMS.register("gingerbread_man",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(5).saturationMod(0.6f).build())));
 
     public static final RegistryObject<Item> CANDY_CANE = ITEMS.register("candy_cane",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(1)
-                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 1200, 0), 1.0f)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 1200, 0), 1.0f)
                             .nutrition(3).saturationMod(0.5f).build())));
 
     public static final RegistryObject<Item> POPPING_CANDY = ITEMS.register("popping_candy",
@@ -867,17 +867,17 @@ public class ModItems {
     public static final RegistryObject<Item> JELLYFISH_MUD = ITEMS.register("jellyfish_mud",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(-3)
                     .food(new FoodProperties.Builder().nutrition(1).saturationMod(0f)
-                            .effect(() -> new MobEffectInstance(ModEffects.WINDPROOF_BUFF.get(), 1200, 0), 1.0f).build())));
+                            .effect(() -> new MobEffectInstance(ModEffects.WINDPROOF.get(), 1200, 0), 1.0f).build())));
 
     public static final RegistryObject<Item> JELLYFISH_JELLO = ITEMS.register("jellyfish_jello",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
                     .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.5f).alwaysEat()
-                            .effect(() -> new MobEffectInstance(ModEffects.WINDPROOF_BUFF.get(), 12000, 0), 1.0f).build())));
+                            .effect(() -> new MobEffectInstance(ModEffects.WINDPROOF.get(), 12000, 0), 1.0f).build())));
 
     public static final RegistryObject<Item> QUEER_SOUP = ITEMS.register("queer_soup",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().meltDreamEnergyAdd(1)
                     .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.375f).alwaysEat()
-                            .effect(() -> new MobEffectInstance(ModEffects.MISTY_DREAM_BUFF.get(), 6000, 0), 1.0f).build()))
+                            .effect(() -> new MobEffectInstance(ModEffects.MISTY_DREAM.get(), 6000, 0), 1.0f).build()))
             {
                 @Override
                 protected void onFoodSpecial(LivingEntity entity, Level level)
@@ -991,7 +991,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> PINEAPPLE_LOVE_SEA = ITEMS.register("pineapple_love_sea",
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().sanAdd(15).rarity(Rarity.UNCOMMON)
-                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK_BUFF.get(), 6000, 1), 1.0f)
+                    .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 6000, 1), 1.0f)
                             .nutrition(3).saturationMod(0.5f).alwaysEat().build())));
 
     public static final RegistryObject<Item> BUBBLE_TEA = ITEMS.register("bubble_tea", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties()
@@ -1772,25 +1772,25 @@ public class ModItems {
     public static final RegistryObject<Item> DREAM_NOTES_BOOK = ITEMS.register("dream_notes_book", () -> new DreamNotesBookItem(new Item.Properties()));
 
     // 帕秋莉宝典 - buff图标物品
-    public static final RegistryObject<Item> REST_BUFF_ICON = ITEMS.register("rest_buff_icon",
+    public static final RegistryObject<Item> REST_ICON = ITEMS.register("rest_icon",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CHEER_UP_BUFF_ICON = ITEMS.register("cheer_up_buff_icon",
+    public static final RegistryObject<Item> CHEER_UP_ICON = ITEMS.register("cheer_up_icon",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> LETHARGY_BUFF_ICON = ITEMS.register("lethargy_buff_icon",
+    public static final RegistryObject<Item> LETHARGY_ICON = ITEMS.register("lethargy_icon",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> TRANCE_BUFF_ICON = ITEMS.register("trance_buff_icon",
+    public static final RegistryObject<Item> TRANCE_ICON = ITEMS.register("trance_icon",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> INSANE_BUFF_ICON = ITEMS.register("insane_buff_icon",
+    public static final RegistryObject<Item> INSANE_ICON = ITEMS.register("insane_icon",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CHAOS_BUFF_ICON = ITEMS.register("chaos_buff_icon",
+    public static final RegistryObject<Item> CHAOS_ICON = ITEMS.register("chaos_icon",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> DREAM_WISH_BUFF_ICON = ITEMS.register("dream_wish_buff_icon",
+    public static final RegistryObject<Item> DREAM_WISH_ICON = ITEMS.register("dream_wish_icon",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> COOK_BUFF_ICON = ITEMS.register("cook_buff_icon",
+    public static final RegistryObject<Item> COOK_ICON = ITEMS.register("cook_icon",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SHADOW_SILENCE_BUFF_ICON = ITEMS.register("shadow_silence_buff_icon",
+    public static final RegistryObject<Item> SHADOW_SILENCE_ICON = ITEMS.register("shadow_silence_icon",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> BIND_BUFF_ICON = ITEMS.register("bind_buff_icon",
+    public static final RegistryObject<Item> BIND_ICON = ITEMS.register("bind_icon",
             () -> new Item(new Item.Properties()));
 
     // 帕秋莉宝典

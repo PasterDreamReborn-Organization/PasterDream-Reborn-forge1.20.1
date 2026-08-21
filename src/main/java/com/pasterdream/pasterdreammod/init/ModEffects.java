@@ -16,92 +16,92 @@ public class ModEffects {
     public static final DeferredRegister<MobEffect> EFFECTS =
             DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, PasterDreamMod.MOD_ID);
 
-    public static final RegistryObject<MobEffect> TITANIUM_ARMOR_BUFF =
-            EFFECTS.register("titanium_armor_buff", TitaniumArmorBuffEffect::new);
-    public static final RegistryObject<MobEffect> SCULK_ARMOR_BUFF =
-            EFFECTS.register("sculk_armor_buff", SculkArmorBuffEffect::new);
-    public static final RegistryObject<MobEffect> DYEDREAM_ARMOR_BUFF =
-            EFFECTS.register("dyedream_armor_buff", DyedreamArmorBuffEffect::new);
-    public static final RegistryObject<MobEffect> DYEDREAM_UP_BUFF =
-            EFFECTS.register("dyedream_up_buff", DyedreamUpBuffEffect::new);
-    public static final RegistryObject<MobEffect> MELT_DREAM_CRYSTAL_ARMOR_BUFF =
-            EFFECTS.register("melt_dream_crystal_armor_buff", MeltDreamCrystalArmorBuffEffect::new);
-    public static final RegistryObject<MobEffect> DYEDREAM_PERFUME_BUFF =
-            EFFECTS.register("dyedream_perfume_buff", DyedreamPerfumeBuffEffect::new);
-    public static final RegistryObject<MobEffect> GOLDENROD_TEA_BUFF =
-            EFFECTS.register("goldenrod_tea_buff", GoldenrodTeaBuffEffect::new);
-    public static final RegistryObject<MobEffect> EVASION_BUFF =
-            EFFECTS.register("evasion_buff", EvasionBuffEffect::new);
+    public static final RegistryObject<MobEffect> TITANIUM_ARMOR =
+            EFFECTS.register("titanium_armor", TitaniumArmorEffect::new);
+    public static final RegistryObject<MobEffect> SCULK_ARMOR =
+            EFFECTS.register("sculk_armor", SculkArmorEffect::new);
+    public static final RegistryObject<MobEffect> DYEDREAM_ARMOR =
+            EFFECTS.register("dyedream_armor", DyedreamArmorEffect::new);
+    public static final RegistryObject<MobEffect> DYEDREAM_UP =
+            EFFECTS.register("dyedream_up", DyedreamUpEffect::new);
+    public static final RegistryObject<MobEffect> MELT_DREAM_CRYSTAL_ARMOR =
+            EFFECTS.register("melt_dream_crystal_armor", MeltDreamCrystalArmorEffect::new);
+    public static final RegistryObject<MobEffect> DYEDREAM_PERFUME =
+            EFFECTS.register("dyedream_perfume", DyedreamPerfumeEffect::new);
+    public static final RegistryObject<MobEffect> GOLDENROD_TEA =
+            EFFECTS.register("goldenrod_tea", GoldenrodTeaEffect::new);
+    public static final RegistryObject<MobEffect> EVASION =
+            EFFECTS.register("evasion", EvasionEffect::new);
     public static final RegistryObject<MobEffect> BLINK_COOLDOWN =
             EFFECTS.register("blink_cooldown", BlinkCooldownEffect::new);
-    public static final RegistryObject<MobEffect> SNOW_VOW_BUFF =
-            EFFECTS.register("snow_vow_buff", SnowVowBuffEffect::new);
-    public static final RegistryObject<MobEffect> CHEER_UP_BUFF =
-            EFFECTS.register("cheer_up_buff", CheerUpBuffEffect::new);
-    public static final RegistryObject<MobEffect> LETHARGY_BUFF =
-            EFFECTS.register("lethargy_buff", LethargyBuffEffect::new);
-    public static final RegistryObject<MobEffect> TRANCE_BUFF =
-            EFFECTS.register("trance_buff", TranceBuffEffect::new);
-    public static final RegistryObject<MobEffect> INSANE_BUFF =
-            EFFECTS.register("insane_buff", InsaneBuffEffect::new);
-    public static final RegistryObject<MobEffect> COOK_BUFF =
-            EFFECTS.register("cook_buff", CookBuffEffect::new);
-    public static final RegistryObject<MobEffect> DREAM_WISH_BUFF =
-            EFFECTS.register("dream_wish_buff", DreamWishBuffEffect::new);
-    public static final RegistryObject<MobEffect> CECILIA_BLESSING_BUFF =
-            EFFECTS.register("cecilia_blessing_buff", CeciliaBlessingBuff::new);
-    public static final RegistryObject<MobEffect> REST_BUFF =
-            EFFECTS.register("rest_buff", RestBuffEffect::new);
-    public static final RegistryObject<MobEffect> DREAM_HARP_OF_WANDERER_BUFF =
-            EFFECTS.register("dream_harp_of_wanderer_buff", DreamHarpOfWandererBuffEffect::new);
-    public static final RegistryObject<MobEffect> COUNTER_ATTACK_BUFF =
-            EFFECTS.register("counter_attack_buff", CounterAttackBuffEffect::new);
-    public static final RegistryObject<MobEffect> MEMENTO_BUFF =
-            EFFECTS.register("memento_buff", MementoBuffEffect::new);
-    public static final RegistryObject<MobEffect> GUARD_BUFF =
-            EFFECTS.register("guard_buff", GuardBuffEffect::new);
-    public static final RegistryObject<MobEffect> RAPID_REACTION_BUFF =
-            EFFECTS.register("rapid_reaction_buff", RapidReactionEffect::new);
-    public static final RegistryObject<MobEffect> HOLY_GRAIL_BUFF =
-            EFFECTS.register("holy_grail_buff", HolyGrailEffect::new);
-    public static final RegistryObject<MobEffect> CONFUSION_BUFF =
-            EFFECTS.register("confusion_buff", ConfusionBuffEffect::new);
-    public static final RegistryObject<MobEffect> FLARE_UP_BUFF =
-            EFFECTS.register("flare_up_buff", FlareupBuffEffect::new);
+    public static final RegistryObject<MobEffect> SNOW_VOW =
+            EFFECTS.register("snow_vow", SnowVowEffect::new);
+    public static final RegistryObject<MobEffect> CHEER_UP =
+            EFFECTS.register("cheer_up", CheerUpEffect::new);
+    public static final RegistryObject<MobEffect> LETHARGY =
+            EFFECTS.register("lethargy", LethargyEffect::new);
+    public static final RegistryObject<MobEffect> TRANCE =
+            EFFECTS.register("trance", TranceEffect::new);
+    public static final RegistryObject<MobEffect> INSANE =
+            EFFECTS.register("insane", InsaneEffect::new);
+    public static final RegistryObject<MobEffect> COOK =
+            EFFECTS.register("cook", CookEffect::new);
+    public static final RegistryObject<MobEffect> DREAM_WISH =
+            EFFECTS.register("dream_wish", DreamWishEffect::new);
+    public static final RegistryObject<MobEffect> CECILIA_BLESSING =
+            EFFECTS.register("cecilia_blessing", CeciliaBlessingEffect::new);
+    public static final RegistryObject<MobEffect> REST =
+            EFFECTS.register("rest", RestEffect::new);
+    public static final RegistryObject<MobEffect> DREAM_HARP_OF_WANDERER =
+            EFFECTS.register("dream_harp_of_wanderer", DreamHarpOfWandererEffect::new);
+    public static final RegistryObject<MobEffect> COUNTER_ATTACK =
+            EFFECTS.register("counter_attack", CounterAttackEffect::new);
+    public static final RegistryObject<MobEffect> MEMENTO =
+            EFFECTS.register("memento", MementoEffect::new);
+    public static final RegistryObject<MobEffect> GUARD =
+            EFFECTS.register("guard", GuardEffect::new);
+    public static final RegistryObject<MobEffect> RAPID_REACTION =
+            EFFECTS.register("rapid_reaction", RapidReactionEffect::new);
+    public static final RegistryObject<MobEffect> HOLY_GRAIL =
+            EFFECTS.register("holy_grail", HolyGrailEffect::new);
+    public static final RegistryObject<MobEffect> CONFUSION =
+            EFFECTS.register("confusion", ConfusionEffect::new);
+    public static final RegistryObject<MobEffect> FLARE_UP =
+            EFFECTS.register("flare_up", FlareupEffect::new);
     public static final RegistryObject<MobEffect> CONFLICT_MARK =
             EFFECTS.register("conflict_mark", ConflictMarkEffect::new);
-    public static final RegistryObject<MobEffect> WAR_FLAG_BUFF =
-            EFFECTS.register("war_flag_buff", WarFlagBuffEffect::new);
-    public static final RegistryObject<MobEffect> BIND_BUFF =
-            EFFECTS.register("bind_buff", BindBuffEffect::new);
-    public static final RegistryObject<MobEffect> SHADOW_SILENCE_BUFF =
-            EFFECTS.register("shadow_silence_buff", ShadowSilenceBuffEffect::new);
-    public static final RegistryObject<MobEffect> SHADOW_SPYON_BUFF =
-            EFFECTS.register("shadow_spyon_buff", ShadowSpyonBuffEffect::new);
-    public static final RegistryObject<MobEffect> CALAIS_SPICE_BOTTLE_BUFF =
-            EFFECTS.register("calais_spice_bottle_buff", CalaisSpiceBottleBuff::new);
-    public static final RegistryObject<MobEffect> RESTRAINMOVE_BLOCK_BUFF =
-            EFFECTS.register("restrainmove_block_buff", RestrainmoveBlockBuffEffect::new);
-    public static final RegistryObject<MobEffect> OPPRESSION_BUFF =
-            EFFECTS.register("oppression_buff", OppressionBuffEffect::new);
-    public static final RegistryObject<MobEffect> HIGHLY_TOXIC_BUFF =
-            EFFECTS.register("highly_toxic_buff", HighlyToxicEffect::new);
-    public static final RegistryObject<MobEffect> BERSERK_BUFF =
-            EFFECTS.register("berserk_buff",BerserkBuffEffect::new);
-    public static final RegistryObject<MobEffect> FROZEN_BUFF =
-            EFFECTS.register("frozen_buff", FrozenBuffEffect::new);
-    public static final RegistryObject<MobEffect> VULNERABILITY_BUFF =
-            EFFECTS.register("vulnerability_buff", VulnerabilityBuffEffect::new);
-    public static final RegistryObject<MobEffect> TAILWIND_BUFF =
-            EFFECTS.register("tailwind_buff", TailwindBuffEffect::new);
-    public static final RegistryObject<MobEffect> DEADWIND_BUFF =
-            EFFECTS.register("deadwind_buff", DeadwindBuffEffect::new);
-    public static final RegistryObject<MobEffect> WINDPROOF_BUFF =
-            EFFECTS.register("windproof_buff", WindproofBuffEffect::new);
-    public static final RegistryObject<MobEffect> MISTY_DREAM_BUFF =
-            EFFECTS.register("misty_dream_buff", MistyDreamBuffEffect::new);
-    public static final RegistryObject<MobEffect> CLOUD_MIST_BUFF =
-            EFFECTS.register("cloud_mist_buff", CloudMistBuffEffect::new);
+    public static final RegistryObject<MobEffect> WAR_FLAG =
+            EFFECTS.register("war_flag", WarFlagEffect::new);
+    public static final RegistryObject<MobEffect> BIND =
+            EFFECTS.register("bind", BindEffect::new);
+    public static final RegistryObject<MobEffect> SHADOW_SILENCE =
+            EFFECTS.register("shadow_silence", ShadowSilenceEffect::new);
+    public static final RegistryObject<MobEffect> SHADOW_SPYON =
+            EFFECTS.register("shadow_spyon", ShadowSpyonEffect::new);
+    public static final RegistryObject<MobEffect> CALAIS_SPICE_BOTTLE =
+            EFFECTS.register("calais_spice_bottle", CalaisSpiceBottleEffect::new);
+    public static final RegistryObject<MobEffect> RESTRAINMOVE_BLOCK =
+            EFFECTS.register("restrainmove_block", RestrainmoveBlockEffect::new);
+    public static final RegistryObject<MobEffect> OPPRESSION =
+            EFFECTS.register("oppression", OppressionEffect::new);
+    public static final RegistryObject<MobEffect> HIGHLY_TOXIC =
+            EFFECTS.register("highly_toxic", HighlyToxicEffect::new);
+    public static final RegistryObject<MobEffect> BERSERK =
+            EFFECTS.register("berserk",BerserkEffect::new);
+    public static final RegistryObject<MobEffect> FROZEN =
+            EFFECTS.register("frozen", FrozenEffect::new);
+    public static final RegistryObject<MobEffect> VULNERABILITY =
+            EFFECTS.register("vulnerability", VulnerabilityEffect::new);
+    public static final RegistryObject<MobEffect> TAILWIND =
+            EFFECTS.register("tailwind", TailwindEffect::new);
+    public static final RegistryObject<MobEffect> DEADWIND =
+            EFFECTS.register("deadwind", DeadwindEffect::new);
+    public static final RegistryObject<MobEffect> WINDPROOF =
+            EFFECTS.register("windproof", WindproofEffect::new);
+    public static final RegistryObject<MobEffect> MISTY_DREAM =
+            EFFECTS.register("misty_dream", MistyDreamEffect::new);
+    public static final RegistryObject<MobEffect> CLOUD_MIST =
+            EFFECTS.register("cloud_mist", CloudMistEffect::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

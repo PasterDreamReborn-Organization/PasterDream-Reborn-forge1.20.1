@@ -78,7 +78,7 @@ public class CurioPassiveHandler {
     @SubscribeEvent
     public static void onLivingAttack(LivingAttackEvent event) {
         // 塞西莉娅的加护：攻击无法命中
-        if (event.getEntity().hasEffect(ModEffects.CECILIA_BLESSING_BUFF.get())) {
+        if (event.getEntity().hasEffect(ModEffects.CECILIA_BLESSING.get())) {
             event.setCanceled(true);
         }
     }
@@ -86,7 +86,7 @@ public class CurioPassiveHandler {
     @SubscribeEvent
     public static void onLivingKnockBack(LivingKnockBackEvent event) {
         // 塞西莉娅的加护：免疫击退
-        if (event.getEntity().hasEffect(ModEffects.CECILIA_BLESSING_BUFF.get())) {
+        if (event.getEntity().hasEffect(ModEffects.CECILIA_BLESSING.get())) {
             event.setCanceled(true);
         }
     }
@@ -95,7 +95,7 @@ public class CurioPassiveHandler {
     public static void onMobEffectRemove(MobEffectEvent.Remove event) {
         // 佩戴塞西莉娅的加护 / 失色的塞西莉娅的加护时，效果不可被移除
         var instance = event.getEffectInstance();
-        if (instance == null || instance.getEffect() != ModEffects.CECILIA_BLESSING_BUFF.get()) return;
+        if (instance == null || instance.getEffect() != ModEffects.CECILIA_BLESSING.get()) return;
         if (event.getEntity() instanceof Player player
                 && (CuriosApi.getCuriosInventory(player).map(h ->
                     h.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).isPresent()
@@ -109,7 +109,7 @@ public class CurioPassiveHandler {
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
         // 塞西莉娅的加护生效中：取消所有伤害
-        if (event.getEntity().hasEffect(ModEffects.CECILIA_BLESSING_BUFF.get())) {
+        if (event.getEntity().hasEffect(ModEffects.CECILIA_BLESSING.get())) {
             event.setCanceled(true);
             return;
         }
@@ -178,7 +178,7 @@ public class CurioPassiveHandler {
                 }
 
                 // 施加效果：1.5秒塞西莉娅的加护 + 瞬间治疗
-                player.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING_BUFF.get(), 30, 0, false, false));
+                player.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING.get(), 30, 0, false, false));
                 player.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, 0, false, false));
 
                 // 触发骨针使用进度
@@ -226,7 +226,7 @@ public class CurioPassiveHandler {
         }
 
         // 施加效果：无敌（5秒），抗性V、回复X、吸收V、速度II（10秒）
-        player.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING_BUFF.get(), 100, 0, false, false));
+        player.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING.get(), 100, 0, false, false));
         player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 4, false, false));
         player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 9, false, false));
         player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 4, false, false));
@@ -251,7 +251,7 @@ public class CurioPassiveHandler {
         if (!hasWarFlag) return;
 
         // 获取当前已有的战旗 buff 等级，叠加 1 级
-        MobEffectInstance existing = player.getEffect(ModEffects.WAR_FLAG_BUFF.get());
+        MobEffectInstance existing = player.getEffect(ModEffects.WAR_FLAG.get());
         int newAmplifier = (existing != null) ? existing.getAmplifier() + 1 : 0;
 
         // 上限 Ⅲ 级（amplifier=2）
@@ -264,7 +264,7 @@ public class CurioPassiveHandler {
             case 2 -> 300;  // 15秒
             default -> 1200;
         };
-        player.addEffect(new MobEffectInstance(ModEffects.WAR_FLAG_BUFF.get(), duration, newAmplifier,
+        player.addEffect(new MobEffectInstance(ModEffects.WAR_FLAG.get(), duration, newAmplifier,
                 false, false, true));
     }
 
@@ -298,14 +298,14 @@ public class CurioPassiveHandler {
         if (!(event.getSource().getEntity() instanceof Player player)) return;
         if (event.getSource().getEntity() == event.getEntity()) return; // 跳过自伤
 
-        MobEffectInstance buff = player.getEffect(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get());
+        MobEffectInstance buff = player.getEffect(ModEffects.CALAIS_SPICE_BOTTLE.get());
         if (buff == null) return;
 
         int level = buff.getAmplifier() + 1; // 1-10 级
-        player.removeEffect(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get());
+        player.removeEffect(ModEffects.CALAIS_SPICE_BOTTLE.get());
         if (level > 1) {
             // 降级
-            player.addEffect(new MobEffectInstance(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get(),
+            player.addEffect(new MobEffectInstance(ModEffects.CALAIS_SPICE_BOTTLE.get(),
                     -1, level - 2, false, false, true));
         } else {
             // Ⅰ 级被消耗 → 枯竭，必须通过进食才能恢复
@@ -335,7 +335,7 @@ public class CurioPassiveHandler {
             switch (roll) {
                 case 0 -> {
                     // 随机增益（15 秒，可叠加，上限 Ⅲ 级，效果池见 Config）
-                    List<MobEffect> buffPool = Config.getCalaisSpiceBottleBuffs();
+                    List<MobEffect> buffPool = Config.getCalaisSpiceBottleEffects();
                     if (buffPool.isEmpty()) return;
                     MobEffect picked = buffPool.get(player.getRandom().nextInt(buffPool.size()));
                     MobEffectInstance existingBuff = player.getEffect(picked);
@@ -368,7 +368,7 @@ public class CurioPassiveHandler {
                 case 4 -> {
                     player.level().playSound(null, player.blockPosition(), ModSounds.EVASION.get(),
                             SoundSource.PLAYERS, 1.0F, 1.0F);
-                    player.addEffect(new MobEffectInstance(ModEffects.EVASION_BUFF.get(),
+                    player.addEffect(new MobEffectInstance(ModEffects.EVASION.get(),
                             Config.calaisSpiceBottleEvasionDuration, 0,
                             false, false, false));
                 }
@@ -400,14 +400,14 @@ public class CurioPassiveHandler {
         if (nutrition < 3) return; // 不足 3 饥饿度不叠层
 
         int levelsGained = nutrition / 3;
-        MobEffectInstance existing = player.getEffect(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get());
+        MobEffectInstance existing = player.getEffect(ModEffects.CALAIS_SPICE_BOTTLE.get());
         int currentLevel = existing != null ? existing.getAmplifier() + 1 : 0;
         int newLevel = Math.min(currentLevel + levelsGained, 10);
 
         if (existing != null) {
-            player.removeEffect(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get());
+            player.removeEffect(ModEffects.CALAIS_SPICE_BOTTLE.get());
         }
-        player.addEffect(new MobEffectInstance(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get(),
+        player.addEffect(new MobEffectInstance(ModEffects.CALAIS_SPICE_BOTTLE.get(),
                 -1, newLevel - 1, false, false, true));
         // 进食后清除枯竭标记，使 buff 可以正常恢复
         player.getPersistentData().remove("pasterdream.calais_depleted");

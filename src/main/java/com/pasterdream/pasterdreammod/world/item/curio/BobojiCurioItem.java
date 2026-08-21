@@ -83,7 +83,7 @@ public class BobojiCurioItem extends Item implements ICurioItem {
         if (level.isClientSide()) return;
 
         var entity = slotContext.entity();
-        var evasion = entity.getEffect(ModEffects.EVASION_BUFF.get());
+        var evasion = entity.getEffect(ModEffects.EVASION.get());
 
         // Detect fresh blink: only match BlinkSkill's original 6-tick evasion
         if (evasion != null && evasion.getDuration() == 6) {
@@ -114,10 +114,10 @@ public class BobojiCurioItem extends Item implements ICurioItem {
                 AABB.ofSize(center, 15, 15, 15), e -> true);
         if (!nearby.isEmpty()) {
             for (Player p : nearby) {
-                p.addEffect(new MobEffectInstance(ModEffects.EVASION_BUFF.get(), 10, 0, false, false));
+                p.addEffect(new MobEffectInstance(ModEffects.EVASION.get(), 10, 0, false, false));
             }
         } else {
-            entity.addEffect(new MobEffectInstance(ModEffects.EVASION_BUFF.get(), 5, 0, false, false));
+            entity.addEffect(new MobEffectInstance(ModEffects.EVASION.get(), 5, 0, false, false));
         }
     }
 

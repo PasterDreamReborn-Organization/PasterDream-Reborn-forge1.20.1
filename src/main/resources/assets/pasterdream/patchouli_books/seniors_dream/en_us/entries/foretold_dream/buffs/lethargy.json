@@ -1,7 +1,7 @@
 {
   "sortnum": 2,
   "name": "pasterdream.seniors_dream.entry.lethargy",
-  "icon": "pasterdream:lethargy_buff_icon",
+  "icon": "pasterdream:lethargy_icon",
   "category": "pasterdream:foretold_dream/buffs",
   "pages": [
     {

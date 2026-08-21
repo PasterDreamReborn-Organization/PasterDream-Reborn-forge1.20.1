@@ -25,8 +25,8 @@ public class CalaisSpiceBottleItem extends Item implements ICurioItem {
         if (slotContext.entity() == null || slotContext.entity().level().isClientSide()) return;
         // 初次佩戴时清除枯竭标记，给予 Ⅹ 级增益
         slotContext.entity().getPersistentData().putBoolean("pasterdream.calais_depleted", false);
-        if (!slotContext.entity().hasEffect(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get())) {
-            slotContext.entity().addEffect(new MobEffectInstance(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get(),
+        if (!slotContext.entity().hasEffect(ModEffects.CALAIS_SPICE_BOTTLE.get())) {
+            slotContext.entity().addEffect(new MobEffectInstance(ModEffects.CALAIS_SPICE_BOTTLE.get(),
                     -1, 9, false, false, true));
         }
     }
@@ -37,10 +37,10 @@ public class CalaisSpiceBottleItem extends Item implements ICurioItem {
         if (entity == null || entity.level().isClientSide()) return;
 
         // 仅在从未被攻击砍光过的情况下，自动维持 Ⅹ 级（用于处理死亡/牛奶后恢复）
-        if (!entity.hasEffect(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get())) {
+        if (!entity.hasEffect(ModEffects.CALAIS_SPICE_BOTTLE.get())) {
             boolean depleted = entity.getPersistentData().getBoolean("pasterdream.calais_depleted");
             if (!depleted) {
-                entity.addEffect(new MobEffectInstance(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get(),
+                entity.addEffect(new MobEffectInstance(ModEffects.CALAIS_SPICE_BOTTLE.get(),
                         -1, 9, false, false, true));
             }
         }
@@ -49,7 +49,7 @@ public class CalaisSpiceBottleItem extends Item implements ICurioItem {
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         if (slotContext.entity() != null) {
-            slotContext.entity().removeEffect(ModEffects.CALAIS_SPICE_BOTTLE_BUFF.get());
+            slotContext.entity().removeEffect(ModEffects.CALAIS_SPICE_BOTTLE.get());
             slotContext.entity().getPersistentData().remove("pasterdream.calais_depleted");
         }
     }

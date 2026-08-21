@@ -1,0 +1,25 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "pasterdream:confusion",
+  "providers": [
+    {
+      "item": "pasterdream:aaroncos_left_hand_spawn_egg"
+
+    },
+    {
+      "item": "pasterdream:aaroncos_right_hand_spawn_egg"
+    },
+    {
+      "item": "pasterdream:terrorbeak_spawn_egg"
+    },
+    {
+      "item": "pasterdream:weakness_terrorbeak_spawn_egg"
+    },
+    {
+      "item": "pasterdream:crazy_terrorbeak_spawn_egg"
+    },
+    {
+      "item": "pasterdream:ice_shadow_hammer"
+    }
+  ]
+}

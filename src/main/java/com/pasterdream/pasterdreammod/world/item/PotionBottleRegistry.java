@@ -217,7 +217,7 @@ public class PotionBottleRegistry {
                             e -> true)
                             .forEach(e -> e.addEffect(
                                     new MobEffectInstance(
-                                            ModEffects.BERSERK_BUFF.get(), 60, 0)));
+                                            ModEffects.BERSERK.get(), 60, 0)));
                 });
     }
 
@@ -310,7 +310,7 @@ public class PotionBottleRegistry {
                     e.hurt(e.damageSources().magic(), magic);
                     e.setSecondsOnFire(4);
                     // 易伤叠加，每波+1级，最高3级
-                    var vuln = ModEffects.VULNERABILITY_BUFF.get();
+                    var vuln = ModEffects.VULNERABILITY.get();
                     int currentLv = e.hasEffect(vuln)
                             ? e.getEffect(vuln).getAmplifier() + 1 : 0;
                     int newLv = Math.min(currentLv, 2); // amplifier 2 = 等级3
@@ -329,7 +329,7 @@ public class PotionBottleRegistry {
                 e -> e != thrower)
                 .forEach(e -> e.addEffect(
                         new MobEffectInstance(
-                                ModEffects.FROZEN_BUFF.get(), 200, 0)));
+                                ModEffects.FROZEN.get(), 200, 0)));
     }
 
     /** 7 格半径内所有实体（投掷者除外）施加 剧毒IV + 虚弱 + 减速（10秒） */
@@ -342,7 +342,7 @@ public class PotionBottleRegistry {
                 e -> e != thrower)
                 .forEach(e -> {
                     e.addEffect(new MobEffectInstance(
-                            ModEffects.HIGHLY_TOXIC_BUFF.get(), 200, 3)); // 剧毒 IV
+                            ModEffects.HIGHLY_TOXIC.get(), 200, 3)); // 剧毒 IV
                     e.addEffect(new MobEffectInstance(
                             net.minecraft.world.effect.MobEffects.WEAKNESS, 200, 0));
                     e.addEffect(new MobEffectInstance(

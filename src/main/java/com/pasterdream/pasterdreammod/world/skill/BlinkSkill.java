@@ -60,7 +60,7 @@ public class BlinkSkill {
     }
 
     private static void applyEvasionBuff(Player player) {
-        player.addEffect(new MobEffectInstance(ModEffects.EVASION_BUFF.get(), 6, 0,
+        player.addEffect(new MobEffectInstance(ModEffects.EVASION.get(), 6, 0,
                 false, false));
     }
 

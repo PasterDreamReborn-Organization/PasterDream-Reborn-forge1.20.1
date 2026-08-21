@@ -277,7 +277,7 @@ public class PasterDreamMod
     // 染梦工具增强：持有染梦(染梦合金与融梦水晶)工具时伤害 +50%
     public static void onLivingHurt(LivingHurtEvent event) {
         if (event.getSource().getEntity() instanceof Player player
-                && player.hasEffect(ModEffects.DYEDREAM_UP_BUFF.get())) {
+                && player.hasEffect(ModEffects.DYEDREAM_UP.get())) {
             ItemStack weapon = player.getMainHandItem();
             if (weapon.getItem() instanceof TieredItem tiered
                     && (tiered.getTier() == ModToolTiers.DYEDREAM
@@ -289,7 +289,7 @@ public class PasterDreamMod
 
     // 易伤 debuff：每级 +10% 所受伤害
     public static void onVulnerabilityHurt(LivingHurtEvent event) {
-        var effect = ModEffects.VULNERABILITY_BUFF.get();
+        var effect = ModEffects.VULNERABILITY.get();
         if (event.getEntity().hasEffect(effect)) {
             int amplifier = event.getEntity().getEffect(effect).getAmplifier();
             event.setAmount(event.getAmount() * (1.0f + 0.1f * (amplifier + 1)));
@@ -350,7 +350,7 @@ public class PasterDreamMod
     // 守护：若受到超过最大生命值30%的伤害，超出部分减少60%（在护甲减伤之前应用）
     public static void onGuardLivingHurt(LivingHurtEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
-        if (!player.hasEffect(ModEffects.GUARD_BUFF.get())) return;
+        if (!player.hasEffect(ModEffects.GUARD.get())) return;
 
         float maxHealth = player.getMaxHealth();
         float threshold = (float) (maxHealth * Config.healthpercentguardneed);
@@ -385,7 +385,7 @@ public class PasterDreamMod
 
     // 高速反射：免疫摔落伤害
     public static void onRapidReactionFall(LivingFallEvent event) {
-        if (event.getEntity().hasEffect(ModEffects.RAPID_REACTION_BUFF.get())) {
+        if (event.getEntity().hasEffect(ModEffects.RAPID_REACTION.get())) {
             event.setDistance(0);
             event.setDamageMultiplier(0);
         }
@@ -408,7 +408,7 @@ public class PasterDreamMod
     @SubscribeEvent
     public void onFrozenEffectExpired(MobEffectEvent.Expired event) {
         if (event.getEffectInstance() != null
-                && event.getEffectInstance().getEffect() == ModEffects.FROZEN_BUFF.get()
+                && event.getEffectInstance().getEffect() == ModEffects.FROZEN.get()
                 && event.getEntity() instanceof Mob mob
                 && !event.getEntity().level().isClientSide) {
             mob.setNoAi(false);

@@ -1,7 +1,7 @@
 {
   "sortnum": 11,
   "name": "pasterdream.seniors_dream.entry.bind",
-  "icon": "pasterdream:bind_buff_icon",
+  "icon": "pasterdream:bind_icon",
   "category": "pasterdream:foretold_dream/buffs",
   "pages": [
     {

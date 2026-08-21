@@ -1,7 +1,7 @@
 {
   "sortnum": 1,
   "name": "pasterdream.seniors_dream.entry.cheer_up",
-  "icon": "pasterdream:cheer_up_buff_icon",
+  "icon": "pasterdream:cheer_up_icon",
   "category": "pasterdream:foretold_dream/buffs",
   "pages": [
     {

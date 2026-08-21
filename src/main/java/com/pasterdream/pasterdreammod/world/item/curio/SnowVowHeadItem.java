@@ -29,7 +29,7 @@ public class SnowVowHeadItem extends Item implements ICurioItem {
         AABB area = new AABB(slotContext.entity().blockPosition()).inflate(3.5);
         List<Player> players = level.getEntitiesOfClass(Player.class, area);
         for (Player player : players) {
-            player.addEffect(new MobEffectInstance(ModEffects.SNOW_VOW_BUFF.get(), 20, 0, false, false));
+            player.addEffect(new MobEffectInstance(ModEffects.SNOW_VOW.get(), 20, 0, false, false));
         }
     }
 

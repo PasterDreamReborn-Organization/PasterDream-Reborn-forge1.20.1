@@ -96,7 +96,7 @@ public class ShadowVortexTileEntity extends BlockEntity implements GeoBlockEntit
                         && (player.isCreative() || player.isSpectator()))
                     continue;
                 target.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 20, 0));
-                target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 20, 1));
+                target.addEffect(new MobEffectInstance(ModEffects.CONFUSION.get(), 20, 1));
                 target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 0));
                 target.hurt(new DamageSource(level.registryAccess()
                         .registryOrThrow(Registries.DAMAGE_TYPE)

@@ -107,7 +107,7 @@ public class AaroncosEyeTileEntity extends BlockEntity implements GeoBlockEntity
             for (Player p : level.players()) {
                 if (p instanceof ServerPlayer sp)
                     AdvancementHelper.grant(sp, DEFEAT_AARONCOS_ADV, "defeat_aaroncos");
-                p.removeEffect(ModEffects.SHADOW_SPYON_BUFF.get());
+                p.removeEffect(ModEffects.SHADOW_SPYON.get());
             }
         }
     }
