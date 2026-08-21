@@ -15,14 +15,14 @@ public class GoldenrodTeaBuffMixin {
 
     @Inject(method = "isDurationEffectTick", at = @At("HEAD"), cancellable = true, remap = true)
     private void onIsDurationEffectTick(int duration, int amplifier, CallbackInfoReturnable<Boolean> cir) {
-        if ((Object) this == ModEffects.GOLDENROD_TEA_BUFF.get()) {
+        if ((Object) this == ModEffects.GOLDENROD_TEA.get()) {
             cir.setReturnValue(duration % 10 == 0);
         }
     }
 
     @Inject(method = "applyEffectTick", at = @At("HEAD"), remap = true)
     private void onApplyEffectTick(LivingEntity entity, int amplifier, CallbackInfo ci) {
-        if ((Object) this == ModEffects.GOLDENROD_TEA_BUFF.get()) {
+        if ((Object) this == ModEffects.GOLDENROD_TEA.get()) {
             entity.removeEffect(MobEffects.HUNGER);
             entity.removeEffect(MobEffects.CONFUSION);
         }

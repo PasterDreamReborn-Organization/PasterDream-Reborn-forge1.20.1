@@ -44,7 +44,7 @@ public class LoseMind {
         if (MC.player == null || MC.options.hideGui) return;
 
         var player = MC.player;
-        MobEffectInstance insane = player.getEffect(ModEffects.INSANE_BUFF.get());
+        MobEffectInstance insane = player.getEffect(ModEffects.INSANE.get());
         boolean inSoundRange = insane != null && insane.getAmplifier() >= 1; // II级及以上
 
         if (inSoundRange && Config.lowSanSound) {

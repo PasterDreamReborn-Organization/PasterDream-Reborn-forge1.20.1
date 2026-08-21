@@ -113,9 +113,9 @@ public final class MeltDreamCrystalArmorHandler {
 
     /** 全套：融梦守护 + 染梦工具增强（染梦合金与融梦水晶工具伤害+50%）。 */
     private static void applyFullSetBuffs(ServerPlayer player) {
-        player.addEffect(new MobEffectInstance(ModEffects.MELT_DREAM_CRYSTAL_ARMOR_BUFF.get(), 25, 0,
+        player.addEffect(new MobEffectInstance(ModEffects.MELT_DREAM_CRYSTAL_ARMOR.get(), 25, 0,
                 true, false, false));
-        player.addEffect(new MobEffectInstance(ModEffects.DYEDREAM_UP_BUFF.get(), 25, 0,
+        player.addEffect(new MobEffectInstance(ModEffects.DYEDREAM_UP.get(), 25, 0,
                 true, false, false));
     }
 

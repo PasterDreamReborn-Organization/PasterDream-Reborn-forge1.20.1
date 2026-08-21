@@ -20,7 +20,7 @@ public class WardenTargetMixin {
         if (self instanceof Warden warden) {
             LivingEntity target = warden.getTarget();
             if (target instanceof Player player
-                    && player.hasEffect(ModEffects.SCULK_ARMOR_BUFF.get())) {
+                    && player.hasEffect(ModEffects.SCULK_ARMOR.get())) {
                 warden.setTarget(null);
                 warden.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
                 warden.getBrain().eraseMemory(MemoryModuleType.ANGRY_AT);

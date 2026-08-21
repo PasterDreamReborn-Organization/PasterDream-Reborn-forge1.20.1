@@ -169,7 +169,7 @@ public class ShadowHandLanternItem extends Item implements GeoItem {
                 if (entityiterator.getType().is(TagKey.create(net.minecraft.core.registries.Registries.ENTITY_TYPE,
                         ResourceLocation.fromNamespaceAndPath("pasterdream", "shadow_mob")))) {
                     if (entityiterator instanceof LivingEntity living && !living.level().isClientSide())
-                        living.addEffect(new net.minecraft.world.effect.MobEffectInstance(ModEffects.VULNERABILITY_BUFF.get(), 300, 1, false, false));
+                        living.addEffect(new net.minecraft.world.effect.MobEffectInstance(ModEffects.VULNERABILITY.get(), 300, 1, false, false));
                 }
             }
         }

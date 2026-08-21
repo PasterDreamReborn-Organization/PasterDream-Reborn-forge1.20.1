@@ -88,7 +88,7 @@ public class RebirthDreamCrystalItem extends Item implements ICurioItem {
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (!(slotContext.entity() instanceof ServerPlayer player)) return;
         if (player.tickCount % 200 != 0) return;
-        player.addEffect(new MobEffectInstance(ModEffects.EVASION_BUFF.get(), 240, 0, false, false));
+        player.addEffect(new MobEffectInstance(ModEffects.EVASION.get(), 240, 0, false, false));
     }
 
     @Override

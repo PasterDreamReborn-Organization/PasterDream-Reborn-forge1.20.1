@@ -22,7 +22,7 @@ public class TitaniumArmorItem extends ArmorItem {
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         if (!level.isClientSide && slotId == EquipmentSlot.HEAD.getIndex()
                 && entity instanceof Player player && hasFullSet(player)) {
-            player.addEffect(new MobEffectInstance(ModEffects.TITANIUM_ARMOR_BUFF.get(), 25, 0,
+            player.addEffect(new MobEffectInstance(ModEffects.TITANIUM_ARMOR.get(), 25, 0,
                     true, false, false));
         }
     }

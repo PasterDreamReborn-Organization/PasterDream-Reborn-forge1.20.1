@@ -14,7 +14,7 @@ public class HolyGrailBuffMixin {
     @Inject(method = "tick", at = @At("HEAD"))
     private void onTick(CallbackInfo ci) {
         LivingEntity self = (LivingEntity) (Object) this;
-        if (self.hasEffect(ModEffects.HOLY_GRAIL_BUFF.get())) {
+        if (self.hasEffect(ModEffects.HOLY_GRAIL.get())) {
             self.removeEffect(MobEffects.HUNGER);
             self.removeEffect(MobEffects.CONFUSION);
             self.removeEffect(MobEffects.BLINDNESS);

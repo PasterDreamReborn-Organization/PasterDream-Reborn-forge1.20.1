@@ -189,7 +189,7 @@ public class WhiteSwordRainProjectileEntity extends Entity {
 
         // ShadowSilence 10s on shadow_mob entities — apply BEFORE damage to suppress on-hurt skills
         if (target.getType().is(SHADOW_MOB)) {
-            target.addEffect(new MobEffectInstance(ModEffects.SHADOW_SILENCE_BUFF.get(), 200, 0));
+            target.addEffect(new MobEffectInstance(ModEffects.SHADOW_SILENCE.get(), 200, 0));
             target.getPersistentData().putBoolean("pasterdream:white_sword_boosted", true);
         }
 
@@ -219,7 +219,7 @@ public class WhiteSwordRainProjectileEntity extends Entity {
         }
 
         // Bind 6s
-        target.addEffect(new MobEffectInstance(ModEffects.BIND_BUFF.get(), 120, 0));
+        target.addEffect(new MobEffectInstance(ModEffects.BIND.get(), 120, 0));
 
         // Melee damage
         if (owner instanceof Player player) {

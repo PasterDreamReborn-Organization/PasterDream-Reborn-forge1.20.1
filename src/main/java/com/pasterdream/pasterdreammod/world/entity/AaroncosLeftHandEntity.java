@@ -382,7 +382,7 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
         for (LivingEntity target : entities) {
             if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
                     && !(target instanceof Player player && (player.isCreative() || player.isSpectator()))) {
-                target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 60, 1, false, false));
+                target.addEffect(new MobEffectInstance(ModEffects.CONFUSION.get(), 60, 1, false, false));
             }
         }
     }
@@ -476,7 +476,7 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
         for (LivingEntity target : entities) {
             if (!target.getType().is(SPECIAL_ENTITY) && !target.getType().is(SHADOW_MOB)
                     && !(target instanceof Player player && (player.isCreative() || player.isSpectator()))) {
-                target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 10, 1, false, false));
+                target.addEffect(new MobEffectInstance(ModEffects.CONFUSION.get(), 10, 1, false, false));
                 target.setDeltaMovement(new Vec3(0, knockup, 0));
                 target.hurt(new DamageSource(level().registryAccess()
                     .registryOrThrow(Registries.DAMAGE_TYPE)
@@ -524,7 +524,7 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
                     .registryOrThrow(Registries.DAMAGE_TYPE)
                     .getHolderOrThrow(DamageTypes.GENERIC)), skillDamage(0.4f));
                 if (target instanceof Player) {
-                    target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 20, 1, false, false));
+                    target.addEffect(new MobEffectInstance(ModEffects.CONFUSION.get(), 20, 1, false, false));
                 }
             }
         }
@@ -544,7 +544,7 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
         if (getHealth() <= 100) {
             bloodLock = true;
             addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 3, false, false));
-            removeEffect(ModEffects.SHADOW_SILENCE_BUFF.get());
+            removeEffect(ModEffects.SHADOW_SILENCE.get());
 
             // Spawn 4 ShadowHands
             if (level() instanceof ServerLevel _level) {
@@ -572,8 +572,8 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
                 if (target instanceof Player player
                         && !player.isCreative() && !player.isSpectator()) {
                     player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
-                    player.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 60, 1));
-                    player.addEffect(new MobEffectInstance(ModEffects.RESTRAINMOVE_BLOCK_BUFF.get(), 60, 0));
+                    player.addEffect(new MobEffectInstance(ModEffects.CONFUSION.get(), 60, 1));
+                    player.addEffect(new MobEffectInstance(ModEffects.RESTRAINMOVE_BLOCK.get(), 60, 0));
                 }
             }
             playSoundAt(ModSounds.AARONCOS_SPAWN.get(), 1, 1);

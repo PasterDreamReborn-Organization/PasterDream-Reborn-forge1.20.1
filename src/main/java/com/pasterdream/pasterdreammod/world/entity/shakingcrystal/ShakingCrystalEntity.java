@@ -236,7 +236,7 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
             if (entity.getType().is(ModEntityTypeTags.SPECIAL_ENTITY)) continue;
             if (isOwnerOrPet(entity, owner)) continue;
             if (entity instanceof LivingEntity living) {
-                living.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 30, 1));
+                living.addEffect(new MobEffectInstance(ModEffects.CONFUSION.get(), 30, 1));
             }
             entity.setTicksFrozen(entity.getTicksRequiredToFreeze() * 2);
         }

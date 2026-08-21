@@ -53,7 +53,7 @@ public class SharpMeltDreamSwordItem extends SwordItem {
             long now = level.getGameTime();
             long lastUse = stack.getOrCreateTag().getLong(TAG_COOLDOWN);
             // 染梦守护 buff 缩短冷却：3 秒 vs 5 秒
-            int cooldownTicks = player.hasEffect(ModEffects.DYEDREAM_ARMOR_BUFF.get()) ? COOLDOWN_WITH_BUFF : COOLDOWN_WITHOUT_BUFF;
+            int cooldownTicks = player.hasEffect(ModEffects.DYEDREAM_ARMOR.get()) ? COOLDOWN_WITH_BUFF : COOLDOWN_WITHOUT_BUFF;
             if (now - lastUse >= cooldownTicks) {
                 stack.getOrCreateTag().putLong(TAG_COOLDOWN, now);
                 stack.getOrCreateTag().putBoolean(TAG_CHARGED, true);

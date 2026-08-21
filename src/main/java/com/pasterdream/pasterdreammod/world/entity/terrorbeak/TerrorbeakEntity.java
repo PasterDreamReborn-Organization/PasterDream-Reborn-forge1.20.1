@@ -261,7 +261,7 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
                     && !ShadowDifficultyHelper.isSpecialSkillEnabled(player)) {
                 continue;
             }
-            target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 30, 1));
+            target.addEffect(new MobEffectInstance(ModEffects.CONFUSION.get(), 30, 1));
             target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 30, 0));
             target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 1));
         }

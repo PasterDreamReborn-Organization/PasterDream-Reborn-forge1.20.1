@@ -697,10 +697,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.材料不足", "Material Not Enough");
         add("button.pasterdream.blue_print_button", "Place");
 
-        add("effect.pasterdream.sculk_armor_buff", "Sculk Echo");
-        add("effect.pasterdream.dyedream_armor_buff", "Dyedream Protection");
-        add("effect.pasterdream.titanium_armor_buff", "Titanium Protection");
-        add("effect.pasterdream.dyedream_up_buff", "Dyedream Tool Boost");
+        add("effect.pasterdream.sculk_armor", "Sculk Echo");
+        add("effect.pasterdream.dyedream_armor", "Dyedream Protection");
+        add("effect.pasterdream.titanium_armor", "Titanium Protection");
+        add("effect.pasterdream.dyedream_up", "Dyedream Tool Boost");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9Enables flight");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4Melt Dream Energy Cost: 1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
@@ -949,16 +949,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.CARAPAX_CHARM.get(), "Carapax Charm");
         add(ModItems.WORLDTREE_SEEDPOD.get(), "Worldtree Seedpod");
         add(ModItems.GARLAND.get(), "Garland");
-        add(ModItems.REST_BUFF_ICON.get(), "Rest Icon");
-        add(ModItems.CHEER_UP_BUFF_ICON.get(), "Cheer Up Icon");
-        add(ModItems.LETHARGY_BUFF_ICON.get(), "Lethargy Icon");
-        add(ModItems.TRANCE_BUFF_ICON.get(), "Trance Icon");
-        add(ModItems.INSANE_BUFF_ICON.get(), "Madness Icon");
-        add(ModItems.CHAOS_BUFF_ICON.get(), "Chaos Icon");
-        add(ModItems.DREAM_WISH_BUFF_ICON.get(), "Dream Wish Icon");
-        add(ModItems.COOK_BUFF_ICON.get(), "Cuisine Icon");
-        add(ModItems.SHADOW_SILENCE_BUFF_ICON.get(), "Shadow Silence Icon");
-        add(ModItems.BIND_BUFF_ICON.get(), "Bind Icon");
+        add(ModItems.REST_ICON.get(), "Rest Icon");
+        add(ModItems.CHEER_UP_ICON.get(), "Cheer Up Icon");
+        add(ModItems.LETHARGY_ICON.get(), "Lethargy Icon");
+        add(ModItems.TRANCE_ICON.get(), "Trance Icon");
+        add(ModItems.INSANE_ICON.get(), "Madness Icon");
+        add(ModItems.CHAOS_ICON.get(), "Chaos Icon");
+        add(ModItems.DREAM_WISH_ICON.get(), "Dream Wish Icon");
+        add(ModItems.COOK_ICON.get(), "Cuisine Icon");
+        add(ModItems.SHADOW_SILENCE_ICON.get(), "Shadow Silence Icon");
+        add(ModItems.BIND_ICON.get(), "Bind Icon");
         add(ModItems.BLESSING_OF_CECILIA.get(), "Blessing of Cecilia");
         add("tooltip.pasterdream.blessing_of_cecilia.effect0", "§7▪ §9Passive: Forced 20% DMG Reduction");
         add("tooltip.pasterdream.blessing_of_cecilia.effect1", "§7 Upon receiving fatal damage:");
@@ -1032,7 +1032,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.kaichu_omamori.hotkey", "§7▪ §9Press §e%s §9to release Foxfire field");
 
         add("tooltip.pasterdream.snow_vow_head.effect.bonus", "§7▪ §9Luck +3  Immune to burning and freezing");
-        add("effect.pasterdream.snow_vow_buff", "Snow Vow");
+        add("effect.pasterdream.snow_vow", "Snow Vow");
         add("tooltip.pasterdream.fourleaf_clover_curio.effect.health", "§7▪ §9+1 Max Health");
         add("tooltip.pasterdream.fourleaf_clover_curio.effect.luck", "§7▪ §9+6 Luck");
         add("tooltip.pasterdream.worldtree_seedpod.condition", "§7▪ §9In Dyedream World, open sky, Y>160, daytime, standing on Worldtree Leaves");
@@ -1083,23 +1083,23 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // Blink Skill
         add("key.pasterdream.blink", "Blink");
         add("key.categories.pasterdream", "PasterDream");
-        add("effect.pasterdream.cheer_up_buff", "Cheer Up");
-        add("effect.pasterdream.lethargy_buff", "Lethargy");
-        add("effect.pasterdream.trance_buff", "Trance");
-        add("effect.pasterdream.confusion_buff", "Confusion");
-        add("effect.pasterdream.insane_buff", "Insanity");
-        add("effect.pasterdream.evasion_buff", "Evasion");
+        add("effect.pasterdream.cheer_up", "Cheer Up");
+        add("effect.pasterdream.lethargy", "Lethargy");
+        add("effect.pasterdream.trance", "Trance");
+        add("effect.pasterdream.confusion", "Confusion");
+        add("effect.pasterdream.insane", "Insanity");
+        add("effect.pasterdream.evasion", "Evasion");
         add("effect.pasterdream.blink_cooldown", "Blink Cooldown");
-        add("effect.pasterdream.dyedream_perfume_buff", "Dyedream Perfume");
-        add("effect.pasterdream.goldenrod_tea_buff", "Goldenrod Tea");
-        add("effect.pasterdream.cook_buff", "Cook");
-        add("effect.pasterdream.dream_wish_buff", "Dream Wish");
-        add("effect.pasterdream.cecilia_blessing_buff", "Blessing of Cecilia");
-        add("effect.pasterdream.rest_buff", "Rest");
-        add("effect.pasterdream.dream_harp_of_wanderer_buff", "DreamHarp of Wanderer");
-        add("effect.pasterdream.guard_buff", "Guard");
-        add("effect.pasterdream.holy_grail_buff", "Holy Grail");
-        add("effect.pasterdream.flare_up_buff", "Flare up");
+        add("effect.pasterdream.dyedream_perfume", "Dyedream Perfume");
+        add("effect.pasterdream.goldenrod_tea", "Goldenrod Tea");
+        add("effect.pasterdream.cook", "Cook");
+        add("effect.pasterdream.dream_wish", "Dream Wish");
+        add("effect.pasterdream.cecilia_blessing", "Blessing of Cecilia");
+        add("effect.pasterdream.rest", "Rest");
+        add("effect.pasterdream.dream_harp_of_wanderer", "DreamHarp of Wanderer");
+        add("effect.pasterdream.guard", "Guard");
+        add("effect.pasterdream.holy_grail", "Holy Grail");
+        add("effect.pasterdream.flare_up", "Flare up");
         add("effect.pasterdream.conflict_mark", "Conflict Mark");
         add("attribute.pasterdream.blink_cd", "Blink Cooldown");
         add("attribute.pasterdream.blink_consume", "Blink Hunger Cost");
@@ -1295,8 +1295,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.counter_ring.effect1", "§7▪ §9On successful dodge: gain Counterattack I (0:10)");
         add("tooltip.pasterdream.counter_ring.effect2", "§7▪ §9Next attack: Attack +3, Skill DMG ×+50%, then buff ends");
         add("tooltip.pasterdream.melt_dream_energy_ring.effect1", "§7▪ §9Melt Dream Energy +0.3/min");
-        add("effect.pasterdream.counter_attack_buff", "Counterattack");
-        add("effect.pasterdream.memento_buff", "Dream Seeker's Prayer");
+        add("effect.pasterdream.counter_attack", "Counterattack");
+        add("effect.pasterdream.memento", "Dream Seeker's Prayer");
 
         // War Flag
         add(ModItems.WAR_FLAG.get(), "War Flag");
@@ -1304,12 +1304,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.war_flag.effect2", "§7▪ §9Increase attack damage and increase healing speed while the effect lasts.");
         add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9This effect can be shared with nearby players.");
         add("tooltip.pasterdream.war_flag.description", "§7§O --The shadows flowing on this flag seem to be telling stories of a distant past...");
-        add("effect.pasterdream.war_flag_buff", "Battle Intention");
-        add("effect.pasterdream.bind_buff", "Bind");
-        add("effect.pasterdream.shadow_silence_buff", "Shadow Silence");
-        add("effect.pasterdream.restrainmove_block_buff", "Movement Restraint");
-        add("effect.pasterdream.oppression_buff", "Oppression");
-        add("effect.pasterdream.shadow_spyon_buff", "Shadow Gaze");
+        add("effect.pasterdream.war_flag", "Battle Intention");
+        add("effect.pasterdream.bind", "Bind");
+        add("effect.pasterdream.shadow_silence", "Shadow Silence");
+        add("effect.pasterdream.restrainmove_block", "Movement Restraint");
+        add("effect.pasterdream.oppression", "Oppression");
+        add("effect.pasterdream.shadow_spyon", "Shadow Gaze");
         add("message.pasterdream.shadow_intrude.start_1", "§5You feel a chill, your vision veiled by a layer of black fog");
         add("message.pasterdream.shadow_intrude.start_2", "§5The nearby shadows begin to stir");
         add("message.pasterdream.shadow_intrude.end", "§5The shadows fall silent...");
@@ -1403,7 +1403,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.calais_spice_bottle.effect1", "§7▪ §9+40% eating speed");
         add("tooltip.pasterdream.calais_spice_bottle.effect2", "§7▪ §9Gain Calais Spice X buff when equipped. Each attack consumes a stack, and after chopping until it disappears, you need to eat to restore it. Eating accumulates stacks (1 stack per 3 hunger, up to level X).");
         add("tooltip.pasterdream.calais_spice_bottle.effect3", "§7▪ §9Each stack consumed grants a random effect");
-        add("effect.pasterdream.calais_spice_bottle_buff", "Calais Spice");
+        add("effect.pasterdream.calais_spice_bottle", "Calais Spice");
 
         add(ModItems.GHOST_FACE.get(), "Ghost Face");
         add("tooltip.pasterdream.ghost_face.effect.1", "§7▪ §9When using ranged weapons, fire an extra shot, with a 20% chance to fire another one.");
@@ -1656,34 +1656,34 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("entity.pasterdream.golden_fox.vanish", "The golden fox vanished after fulfilling your wish...");
 
         //jeed Compatible
-        add("effect.pasterdream.rest_buff.description", "Touch the QYM doll or get it after sleeping, and you'll get a san aura while the effect lasts.");
-        add("effect.pasterdream.cook_buff.description", "Obtained after eating some kind of food, grants a san aura while the effect lasts.");
-        add("effect.pasterdream.cheer_up_buff.description", "Get it when san is above 90% to gain some positive effects.");
-        add("effect.pasterdream.lethargy_buff.description", "You gain some negative effects when san is between 40% and 60%.");
-        add("effect.pasterdream.trance_buff.description", "You gain worse negative effects when san is between 20% and 40%.");
-        add("effect.pasterdream.insane_buff.description", "When sanity falls below 20%, you get it and experience extremely severe negative effects. Your vision will be covered with special visual effects. When san is between 1% and 10%, you get Insane II, with looping sound effects and camera shakes. When sanity drops below 1%, you get Insane III, and the aforementioned negative effects are intensified. (Visual effects, shaking, and sound effects can be turned off with commands or config)");
-        add("effect.pasterdream.snow_vow_buff.description", "During the effect period, grants 3 Luck, immunity to burn and freeze effects, provided by Snow Vow Head curios within range.");
-        add("effect.pasterdream.goldenrod_tea_buff.description", "During the duration of the effect, it provides immunity to hunger and nausea.");
-        add("effect.pasterdream.sculk_armor_buff.description", "Obtained when wearing the full Sculk set, increases maximum health, grants resistance buff when in the depths and removes darkness debuff while giving speed and resistance effects when affected by darkness debuff.");
-        add("effect.pasterdream.dyedream_armor_buff.description", "Obtained when wearing the full Dyedream Alloy set, increases maximum health and grants Absorption II every 30 seconds.");
-        add("effect.pasterdream.titanium_armor_buff.description", "Obtained when wearing the full Titanium set, grants Absorption I every 30 seconds.");
-        add("effect.pasterdream.dyedream_up_buff.description", "Obtained when wearing the full Dyedream Alloy set, deals 50% more damage when holding Dyedream (Dyedream Alloy and Melt Dream Crystal) tools.");
-        add("effect.pasterdream.melt_dream_crystal_armor_buff", "Melt Dream Protection");
-        add("effect.pasterdream.melt_dream_crystal_armor_buff.description", "Obtained when wearing the full Melt Dream Crystal set, reduces Melt-Repair cost by 50%, grants Regeneration II and Dyedream tool enhancement, grants a San Aura of +1.2 when Melt Dream Energy is above 50%, otherwise +0.6.");
-        add("effect.pasterdream.dream_wish_buff.description", "Drink the dream fruit juice to get it, and having this effect lets you enter the Dyedream World when you sleep at night.");
-        add("effect.pasterdream.dyedream_perfume_buff.description", "Obtained by drinking the Dyedream Perfume, Phantom don't attack you for the duration of its effect.");
-        add("effect.pasterdream.counter_attack_buff.description", "Increase skill damage and disappear after the next attack.");
-        add("effect.pasterdream.dream_harp_of_wanderer_buff.description", "Obtained after using the Dream Harp of Wanderer, the Dream Harp of Wanderer can be acquired from the Dyedream Train.");
-        add("effect.pasterdream.cecilia_blessing_buff.description", "Obtained after takes a fatal hit when equips Blessing of Cecilia, making you immune to damage while the effect lasts.");
-        add("effect.pasterdream.guard_buff.description", "Obtained by using the Guardian Prophecy Card, while you have this buff, damage above a certain percentage of your health will be reduced (can be changed in the Config).");
-        add("effect.pasterdream.flare_up_buff.description", "Obtained using the Wielding-Sword Prophecy card. While you have this buff, it increases attack power and attack speed, boosts skill damage multiplier, and reduces skill cooldowns.");
+        add("effect.pasterdream.rest.description", "Touch the QYM doll or get it after sleeping, and you'll get a san aura while the effect lasts.");
+        add("effect.pasterdream.cook.description", "Obtained after eating some kind of food, grants a san aura while the effect lasts.");
+        add("effect.pasterdream.cheer_up.description", "Get it when san is above 90% to gain some positive effects.");
+        add("effect.pasterdream.lethargy.description", "You gain some negative effects when san is between 40% and 60%.");
+        add("effect.pasterdream.trance.description", "You gain worse negative effects when san is between 20% and 40%.");
+        add("effect.pasterdream.insane.description", "When sanity falls below 20%, you get it and experience extremely severe negative effects. Your vision will be covered with special visual effects. When san is between 1% and 10%, you get Insane II, with looping sound effects and camera shakes. When sanity drops below 1%, you get Insane III, and the aforementioned negative effects are intensified. (Visual effects, shaking, and sound effects can be turned off with commands or config)");
+        add("effect.pasterdream.snow_vow.description", "During the effect period, grants 3 Luck, immunity to burn and freeze effects, provided by Snow Vow Head curios within range.");
+        add("effect.pasterdream.goldenrod_tea.description", "During the duration of the effect, it provides immunity to hunger and nausea.");
+        add("effect.pasterdream.sculk_armor.description", "Obtained when wearing the full Sculk set, increases maximum health, grants resistance buff when in the depths and removes darkness debuff while giving speed and resistance effects when affected by darkness debuff.");
+        add("effect.pasterdream.dyedream_armor.description", "Obtained when wearing the full Dyedream Alloy set, increases maximum health and grants Absorption II every 30 seconds.");
+        add("effect.pasterdream.titanium_armor.description", "Obtained when wearing the full Titanium set, grants Absorption I every 30 seconds.");
+        add("effect.pasterdream.dyedream_up.description", "Obtained when wearing the full Dyedream Alloy set, deals 50% more damage when holding Dyedream (Dyedream Alloy and Melt Dream Crystal) tools.");
+        add("effect.pasterdream.melt_dream_crystal_armor", "Melt Dream Protection");
+        add("effect.pasterdream.melt_dream_crystal_armor.description", "Obtained when wearing the full Melt Dream Crystal set, reduces Melt-Repair cost by 50%, grants Regeneration II and Dyedream tool enhancement, grants a San Aura of +1.2 when Melt Dream Energy is above 50%, otherwise +0.6.");
+        add("effect.pasterdream.dream_wish.description", "Drink the dream fruit juice to get it, and having this effect lets you enter the Dyedream World when you sleep at night.");
+        add("effect.pasterdream.dyedream_perfume.description", "Obtained by drinking the Dyedream Perfume, Phantom don't attack you for the duration of its effect.");
+        add("effect.pasterdream.counter_attack.description", "Increase skill damage and disappear after the next attack.");
+        add("effect.pasterdream.dream_harp_of_wanderer.description", "Obtained after using the Dream Harp of Wanderer, the Dream Harp of Wanderer can be acquired from the Dyedream Train.");
+        add("effect.pasterdream.cecilia_blessing.description", "Obtained after takes a fatal hit when equips Blessing of Cecilia, making you immune to damage while the effect lasts.");
+        add("effect.pasterdream.guard.description", "Obtained by using the Guardian Prophecy Card, while you have this buff, damage above a certain percentage of your health will be reduced (can be changed in the Config).");
+        add("effect.pasterdream.flare_up.description", "Obtained using the Wielding-Sword Prophecy card. While you have this buff, it increases attack power and attack speed, boosts skill damage multiplier, and reduces skill cooldowns.");
         add("effect.pasterdream.conflict_mark.description", "After marking another entity with the Conflict Prophecy card, that entity gains the buff. While it has this buff, it will become the target of attacks from other entities.");
-        add("effect.pasterdream.war_flag_buff.description", "After equipping the war flag, you gain it by killing enemies, which increases your attack power, and leveling up by 1 for each enemy you kill.");
-        add("effect.pasterdream.confusion_buff.description", "When applied to a player, their view will shake; when applied to other creatures, it will make them unable to move.");
-        add("effect.pasterdream.calais_spice_bottle_buff.description", "After equipping the Calais Spice Bottle, you gain it. Each time you hit an enemy, it loses 1 level and grants a random effect. Eating the required food will restore the levels.");
-        add("effect.pasterdream.shadow_silence_buff.description", "After getting this buff, shadow creatures will lose the ability to use their skills.");
-        add("effect.pasterdream.bind_buff.description", "Obtained after being hit by the White Sword's sword rain. After getting this buff, you won't be able to move.");
-        add("effect.pasterdream.restrainmove_block_buff.description", "Remove jump boosts and force-disable flying while the effect lasts.");
+        add("effect.pasterdream.war_flag.description", "After equipping the war flag, you gain it by killing enemies, which increases your attack power, and leveling up by 1 for each enemy you kill.");
+        add("effect.pasterdream.confusion.description", "When applied to a player, their view will shake; when applied to other creatures, it will make them unable to move.");
+        add("effect.pasterdream.calais_spice_bottle.description", "After equipping the Calais Spice Bottle, you gain it. Each time you hit an enemy, it loses 1 level and grants a random effect. Eating the required food will restore the levels.");
+        add("effect.pasterdream.shadow_silence.description", "After getting this buff, shadow creatures will lose the ability to use their skills.");
+        add("effect.pasterdream.bind.description", "Obtained after being hit by the White Sword's sword rain. After getting this buff, you won't be able to move.");
+        add("effect.pasterdream.restrainmove_block.description", "Remove jump boosts and force-disable flying while the effect lasts.");
 
         // Desert Hero Tomb - Quest Dialogue
         // Dyedream Crack Messages
@@ -1779,7 +1779,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("item.pasterdream.potion_bottle.highly_toxic", "Potion Bottle of Highly Toxic");
         add("item.pasterdream.potion_bottle.lightning", "Potion Bottle of Lightning");
         add("item.pasterdream.potion_bottle.rejuvenation", "Potion Bottle of Rejuvenation");
-        add("effect.pasterdream.highly_toxic_buff", "Highly Toxic");
+        add("effect.pasterdream.highly_toxic", "Highly Toxic");
         add("tooltip.pasterdream.potion_bottle.highly_toxic.description","§9After Smashing, release a highly toxic cloud, inflicting Highly Toxic, Slowness, and Weakness buff on all creatures in a 6x6 area.");
         add("tooltip.pasterdream.potion_bottle.lightning.description.1","§9After Smashing, release a dark cloud at the landing spot, and after a short time, randomly strikes lightning 4 times within a 5x5 area.");
         add("tooltip.pasterdream.potion_bottle.lightning.description.2","§7§O --Bottled Lightning");
@@ -1790,9 +1790,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.potion_bottle.berserk.description.2","§9Players in it +20% attack damage, +10% movement speed, +50% attack speed, -30% skill cooldown, -30% blink cooldown, and +30% skill damage.");
         add("tooltip.pasterdream.potion_bottle.inferno.description.1","§9After smashing, create a blazing fire in a 6x6 area, dealing magic damage over time to all enemies within the range and igniting them.");
         add("tooltip.pasterdream.potion_bottle.inferno.description.2","§9Enemies hit will get a vulnerability debuff, up to 3 stacks.");
-        add("effect.pasterdream.berserk_buff", "Frenzy");
-        add("effect.pasterdream.frozen_buff", "Flash Freeze");
-        add("effect.pasterdream.vulnerability_buff", "Vulnerability");
+        add("effect.pasterdream.berserk", "Frenzy");
+        add("effect.pasterdream.frozen", "Flash Freeze");
+        add("effect.pasterdream.vulnerability", "Vulnerability");
 
 
         // Shadow Hand Lantern
@@ -1900,11 +1900,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.WIND_VANE.get(), "Wind Vane");
         add(ModItems.WIND_KNIGHT_FLAG.get(), "Wind Knight Flag");
         add(ModItems.PAPER_PLANE.get(), "Paper Plane");
-        add("effect.pasterdream.tailwind_buff", "Tailwind");
-        add("effect.pasterdream.deadwind_buff", "Deadwind");
-        add("effect.pasterdream.windproof_buff", "Windproof");
-        add("effect.pasterdream.misty_dream_buff", "Misty Dream");
-        add("effect.pasterdream.cloud_mist_buff", "Cloud Mist");
+        add("effect.pasterdream.tailwind", "Tailwind");
+        add("effect.pasterdream.deadwind", "Deadwind");
+        add("effect.pasterdream.windproof", "Windproof");
+        add("effect.pasterdream.misty_dream", "Misty Dream");
+        add("effect.pasterdream.cloud_mist", "Cloud Mist");
         add("tooltip.pasterdream.wind_vane.desc", "§7Detects the current wind direction and the player's angle");
         add("message.pasterdream.wind_vane.angle", "Angle: %s Direction: %s");
         add("tooltip.pasterdream.wind_knight_flag.effect1", "§7▪ §9Treats deadwind as tailwind");

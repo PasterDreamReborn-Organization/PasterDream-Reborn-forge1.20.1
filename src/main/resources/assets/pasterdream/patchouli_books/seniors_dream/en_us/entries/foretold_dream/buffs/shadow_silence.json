@@ -1,7 +1,7 @@
 {
   "sortnum": 10,
   "name": "pasterdream.seniors_dream.entry.shadow_silence",
-  "icon": "pasterdream:shadow_silence_buff_icon",
+  "icon": "pasterdream:shadow_silence_icon",
   "category": "pasterdream:foretold_dream/buffs",
   "pages": [
     {

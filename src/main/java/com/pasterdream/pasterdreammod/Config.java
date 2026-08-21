@@ -87,7 +87,7 @@ public class Config
                     + "\n支持模组药水，留空则允许所有")
             .defineListAllowEmpty("balance_allowed_effects",
                     List.of("minecraft:regeneration","minecraft:speed","minecraft:strength","minecraft:luck",
-                            "minecraft:jump_boost","minecraft:health_boost","pasterdream:cook_buff"),
+                            "minecraft:jump_boost","minecraft:health_boost","pasterdream:cook"),
                     obj -> obj instanceof String);
 
     //罪恶
@@ -405,14 +405,14 @@ public class Config
 
 
     // === 卡莱调料瓶 ===
-    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> CALAIS_SPICE_BOTTLE_BUFFS = BUILDER
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> CALAIS_SPICE_BOTTLES = BUILDER
             .comment("卡莱调料瓶消耗层数时可获得的随机增益效果 ID 列表（格式：modid:effect_id），"
                     + "\n例：minecraft:regeneration 为生命恢复，minecraft:speed 为速度"
                     + "\n支持模组药水")
             .defineListAllowEmpty("calaisSpiceBottleBuffs",
                     List.of("minecraft:speed", "minecraft:haste", "minecraft:strength",
                             "minecraft:regeneration", "minecraft:resistance", "minecraft:fire_resistance",
-                            "minecraft:absorption", "pasterdream:rest_buff", "pasterdream:cook_buff"),
+                            "minecraft:absorption", "pasterdream:rest", "pasterdream:cook"),
                     obj -> obj instanceof String);
 
     private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> CALAIS_SPICE_BOTTLE_WEIGHTS = BUILDER
@@ -438,7 +438,7 @@ public class Config
             .comment("卡莱调料瓶消耗层数时可施加给敌人的随机负面效果 ID 列表（格式：modid:effect_id），"
                     + "\n例：minecraft:slowness 为缓慢，minecraft:weakness 为虚弱")
             .defineListAllowEmpty("calaisSpiceBottleDebuffs",
-                    List.of("pasterdream:confusion_buff"),
+                    List.of("pasterdream:confusion"),
                     obj -> obj instanceof String);
     private static final ForgeConfigSpec.IntValue CALAIS_SPICE_BOTTLE_DEBUFF_DURATION = BUILDER
             .comment("卡莱调料瓶负面效果的持续时间（tick），默认 100（5 秒）")
@@ -573,10 +573,10 @@ public class Config
     private static Set<ResourceLocation> cachedGhostFaceBlacklistTypes = Set.of();
 
     /** 卡莱调料瓶随机增益缓存（解析后的 MobEffect 列表） */
-    private static List<MobEffect> cachedCalaisSpiceBottleBuffs = List.of();
+    private static List<MobEffect> cachedCalaisSpiceBottleEffects = List.of();
 
-    public static List<MobEffect> getCalaisSpiceBottleBuffs() {
-        return cachedCalaisSpiceBottleBuffs;
+    public static List<MobEffect> getCalaisSpiceBottleEffects() {
+        return cachedCalaisSpiceBottleEffects;
     }
 
     /** 卡莱调料瓶随机负面效果缓存 */
@@ -755,8 +755,8 @@ public class Config
             }
             list.add(effect);
         }
-        cachedCalaisSpiceBottleBuffs = List.copyOf(list);
-        LOGGER.info("calaisSpiceBottleBuffs: loaded {} effects", cachedCalaisSpiceBottleBuffs.size());
+        cachedCalaisSpiceBottleEffects = List.copyOf(list);
+        LOGGER.info("calaisSpiceBottleBuffs: loaded {} effects", cachedCalaisSpiceBottleEffects.size());
     }
 
     private static void rebuildCalaisSpiceBottleDebuffCache() {
@@ -878,7 +878,7 @@ public class Config
         lowSanSpawnMaxNearby = LOW_SAN_SPAWN_MAX_NEARBY.get();
         lowSanSpawnRequiresSpecialSkill = LOW_SAN_SPAWN_REQUIRES_SPECIAL_SKILL.get();
 
-        calaisSpiceBottleBuffs = CALAIS_SPICE_BOTTLE_BUFFS.get();
+        calaisSpiceBottleBuffs = CALAIS_SPICE_BOTTLES.get();
         calaisSpiceBottleWeights = CALAIS_SPICE_BOTTLE_WEIGHTS.get();
         calaisSpiceBottleHealMin = CALAIS_SPICE_BOTTLE_HEAL_MIN.get();
         calaisSpiceBottleHealMax = CALAIS_SPICE_BOTTLE_HEAL_MAX.get();

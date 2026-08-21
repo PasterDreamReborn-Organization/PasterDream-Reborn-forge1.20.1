@@ -96,7 +96,7 @@ public class DreamHarpOfWandererItem extends Item {
                         new AABB(center, center).inflate(EFFECT_RADIUS),
                         p -> true);
                 for (Player nearby : nearbyPlayers) {
-                    nearby.addEffect(new MobEffectInstance(ModEffects.DREAM_HARP_OF_WANDERER_BUFF.get(),
+                    nearby.addEffect(new MobEffectInstance(ModEffects.DREAM_HARP_OF_WANDERER.get(),
                             EFFECT_DURATION, 0));
                 }
             } else {

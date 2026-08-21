@@ -151,7 +151,7 @@
 
 当 HP ≤ 100 时触发（通过 entity NBT 的 `blood_lock` 标记防重复）：
 1. 获得 DAMAGE_RESISTANCE III，持续 1200t（60秒）
-2. 移除 SHADOW_SILENCE_BUFF 效果
+2. 移除 SHADOW_SILENCE 效果
 3. 在身边 3×3 范围随机生成 4 只 ShadowHand
 4. 80 格内所有玩家:
    - DARKNESS 60t
@@ -210,7 +210,7 @@
    - 在竞技场中心下方放置 AaroncosHandChest（奖励箱）
    - 销毁生成方块
    - 授予所有玩家成就 `achievement_shadow_e_0`
-   - 移除 SHADOW_SPYON_BUFF 效果
+   - 移除 SHADOW_SPYON 效果
    - 倒计时 20 秒 → 传送回主世界重生点
    - 清理竞技场内所有非玩家实体
 
@@ -234,10 +234,10 @@
 ### 需要已搬运的效果
 | 效果 | 状态 | 用途 |
 |---|---|---|
-| SHADOW_SILENCE_BUFF | 待确认 | 技能沉默（血锁移除） |
-| CONFUSION_BUFF | 待确认 | 大量技能施加 |
-| RESTRAINMOVE_BLOCK_BUFF | 待确认 | 血锁施加 |
-| SHADOW_SPYON_BUFF | 待确认 | 竞技场追踪 |
+| SHADOW_SILENCE | 待确认 | 技能沉默（血锁移除） |
+| CONFUSION | 待确认 | 大量技能施加 |
+| RESTRAINMOVE_BLOCK | 待确认 | 血锁施加 |
+| SHADOW_SPYON | 待确认 | 竞技场追踪 |
 
 ### 需要已搬运的方块/物品
 | 类型 | 名称 | 用途 |
@@ -287,7 +287,7 @@
 > **当前进度**：阶段 1~4 已完成（BOSS 双手实体、技能、Boss 条、支撑实体均已搬运），仅剩 **阶段 5（竞技场系统）** 与 **阶段 6（资源整合）** 待搬运。
 
 ### 阶段 1: 准备工作 ✅ 已完成
-1. 确认 `ModEffects` 中有 `SHADOW_SILENCE_BUFF`、`CONFUSION_BUFF` 等效果
+1. 确认 `ModEffects` 中有 `SHADOW_SILENCE`、`CONFUSION` 等效果
 2. 确认 `ModParticleTypes` 中有 `SHADOW_STONE_PARTICLE`
 3. 搬运 `ShadowMagicballEntity` 实体
 4. 搬运 `ShadowTuneTotemEntity` 实体

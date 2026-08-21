@@ -138,7 +138,7 @@ public class ShadowIntrudeHandler {
         }
         sendMessage(entity, "message.pasterdream.shadow_intrude.end_1");
         sendMessage(entity, "message.pasterdream.shadow_intrude.end_2");
-        entity.removeEffect(ModEffects.SHADOW_SPYON_BUFF.get());
+        entity.removeEffect(ModEffects.SHADOW_SPYON.get());
     }
 
     private static void sendMessage(LivingEntity entity, String key) {

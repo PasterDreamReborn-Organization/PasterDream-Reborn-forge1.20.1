@@ -269,16 +269,16 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.TERRA_FLOATING_ISLAND.get());
         basicItem(ModItems.WORLDTREE_SEEDPOD.get());
         basicItem(ModItems.GARLAND.get());
-        basicItem(ModItems.REST_BUFF_ICON.get());
-        basicItem(ModItems.CHEER_UP_BUFF_ICON.get());
-        basicItem(ModItems.LETHARGY_BUFF_ICON.get());
-        basicItem(ModItems.TRANCE_BUFF_ICON.get());
-        basicItem(ModItems.INSANE_BUFF_ICON.get());
-        basicItem(ModItems.CHAOS_BUFF_ICON.get());
-        basicItem(ModItems.DREAM_WISH_BUFF_ICON.get());
-        basicItem(ModItems.COOK_BUFF_ICON.get());
-        basicItem(ModItems.SHADOW_SILENCE_BUFF_ICON.get());
-        basicItem(ModItems.BIND_BUFF_ICON.get());
+        basicItem(ModItems.REST_ICON.get());
+        basicItem(ModItems.CHEER_UP_ICON.get());
+        basicItem(ModItems.LETHARGY_ICON.get());
+        basicItem(ModItems.TRANCE_ICON.get());
+        basicItem(ModItems.INSANE_ICON.get());
+        basicItem(ModItems.CHAOS_ICON.get());
+        basicItem(ModItems.DREAM_WISH_ICON.get());
+        basicItem(ModItems.COOK_ICON.get());
+        basicItem(ModItems.SHADOW_SILENCE_ICON.get());
+        basicItem(ModItems.BIND_ICON.get());
         withExistingParent(ModItems.FOURLEAF_CLOVER_CURIO.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/fourleaf_clover"));
         basicItem(ModItems.SNOW_VOW_HEAD.get());

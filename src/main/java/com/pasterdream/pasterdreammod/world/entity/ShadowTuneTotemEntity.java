@@ -192,7 +192,7 @@ public class ShadowTuneTotemEntity extends Monster implements GeoEntity {
                 }
             }
             if (target instanceof Player player) {
-                player.addEffect(new MobEffectInstance(ModEffects.OPPRESSION_BUFF.get(), 20, 0));
+                player.addEffect(new MobEffectInstance(ModEffects.OPPRESSION.get(), 20, 0));
                 player.removeEffect(MobEffects.DAMAGE_RESISTANCE);
             }
         }

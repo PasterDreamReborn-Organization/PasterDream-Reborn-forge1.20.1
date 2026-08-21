@@ -19,11 +19,11 @@ public class PhantomTargetMixin {
         Mob self = (Mob) (Object) this;
         if (target instanceof Player player) {
             if (self instanceof Phantom
-                    && player.hasEffect(ModEffects.DYEDREAM_PERFUME_BUFF.get())) {
+                    && player.hasEffect(ModEffects.DYEDREAM_PERFUME.get())) {
                 ci.cancel();
             }
             if (self instanceof Warden
-                    && player.hasEffect(ModEffects.SCULK_ARMOR_BUFF.get())) {
+                    && player.hasEffect(ModEffects.SCULK_ARMOR.get())) {
                 ci.cancel();
             }
         }

@@ -49,7 +49,7 @@ public class EmptyVesselItem extends Item {
                 }
             }
 
-            entity.addEffect(new MobEffectInstance(ModEffects.MEMENTO_BUFF.get(), 3600, 0));
+            entity.addEffect(new MobEffectInstance(ModEffects.MEMENTO.get(), 3600, 0));
             world.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()),
                     ModSounds.DING_0.get(), SoundSource.PLAYERS, 1, 1);
         }

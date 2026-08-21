@@ -409,7 +409,7 @@ public class ProphecyCardItem extends Item {
 
                 // 对每个敌人施加混乱效果，持续 10 秒（200 ticks）
                 for (LivingEntity target : entities) {
-                    target.addEffect(new MobEffectInstance(ModEffects.CONFUSION_BUFF.get(), 10 * 20, 0));
+                    target.addEffect(new MobEffectInstance(ModEffects.CONFUSION.get(), 10 * 20, 0));
                 }
 
                 // 音效
@@ -498,7 +498,7 @@ public class ProphecyCardItem extends Item {
         return (level, player, hand, stack) -> {
             if (!level.isClientSide()) {
                 // 服务端：给予 120 秒怒气爆发
-                player.addEffect(new MobEffectInstance(ModEffects.FLARE_UP_BUFF.get(), 120 * 20, 0));
+                player.addEffect(new MobEffectInstance(ModEffects.FLARE_UP.get(), 120 * 20, 0));
                 // 音效
                 level.playSound(null, player.getX(), player.getY(), player.getZ(),
                         ModSounds.EVASION.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
@@ -620,7 +620,7 @@ public class ProphecyCardItem extends Item {
             if (!level.isClientSide()) {
                 // 服务端：给予 120 秒伤害吸收 III + 60秒守护
                 player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120 * 20, 2));
-                player.addEffect(new MobEffectInstance(ModEffects.GUARD_BUFF.get(), 60 * 20, 0));
+                player.addEffect(new MobEffectInstance(ModEffects.GUARD.get(), 60 * 20, 0));
                 // 音效
                 level.playSound(null, player.getX(), player.getY(), player.getZ(),
                         ModSounds.EVASION.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
@@ -641,7 +641,7 @@ public class ProphecyCardItem extends Item {
                 // 服务端：给予 120 秒速度 III + 跳跃提升 II + 高速反射
                 player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 120 * 20, 2));
                 player.addEffect(new MobEffectInstance(MobEffects.JUMP, 120 * 20, 1));
-                player.addEffect(new MobEffectInstance(ModEffects.RAPID_REACTION_BUFF.get(), 120 * 20, 0));
+                player.addEffect(new MobEffectInstance(ModEffects.RAPID_REACTION.get(), 120 * 20, 0));
                 // 音效
                 level.playSound(null, player.getX(), player.getY(), player.getZ(),
                         ModSounds.EVASION.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
@@ -660,7 +660,7 @@ public class ProphecyCardItem extends Item {
         return (level, player, hand, stack) -> {
             if (!level.isClientSide()) {
                 // 服务端：给予 120 秒圣杯
-                player.addEffect(new MobEffectInstance(ModEffects.HOLY_GRAIL_BUFF.get(), 120 * 20, 0));
+                player.addEffect(new MobEffectInstance(ModEffects.HOLY_GRAIL.get(), 120 * 20, 0));
                 // 音效
                 level.playSound(null, player.getX(), player.getY(), player.getZ(),
                         ModSounds.EVASION.get(), SoundSource.PLAYERS, 1.0F, 1.0F);

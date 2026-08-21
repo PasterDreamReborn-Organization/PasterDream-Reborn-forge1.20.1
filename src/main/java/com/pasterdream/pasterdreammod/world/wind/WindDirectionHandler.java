@@ -50,7 +50,7 @@ public final class WindDirectionHandler {
 
         // 进入保底：主世界高空 Y > 310 且有迷梦效果时立即传送进风之旅途
         if (player.level().dimension().equals(Level.OVERWORLD)) {
-            if (player.getY() > 310 && player.hasEffect(ModEffects.MISTY_DREAM_BUFF.get()) && player instanceof ServerPlayer sp) {
+            if (player.getY() > 310 && player.hasEffect(ModEffects.MISTY_DREAM.get()) && player instanceof ServerPlayer sp) {
                 teleportToWindJourney(sp);
             }
             return;
@@ -59,7 +59,7 @@ public final class WindDirectionHandler {
         if (!player.level().dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD)) return;
 
         // 在风之旅途持续给予云霞效果（HUD 进度显示）
-        player.addEffect(new MobEffectInstance(ModEffects.CLOUD_MIST_BUFF.get(), 200, 0, false, false));
+        player.addEffect(new MobEffectInstance(ModEffects.CLOUD_MIST.get(), 200, 0, false, false));
 
         // 退出保底：坠入虚空 Y < 0 立即传送回主世界
         if (player.getY() < 0 && player instanceof ServerPlayer sp) {
@@ -68,7 +68,7 @@ public final class WindDirectionHandler {
         }
 
         if (player.tickCount % TICK_INTERVAL != 0) return;
-        if (player.hasEffect(ModEffects.WINDPROOF_BUFF.get())) return;
+        if (player.hasEffect(ModEffects.WINDPROOF.get())) return;
         applyWind(player);
     }
 
@@ -147,12 +147,12 @@ public final class WindDirectionHandler {
 
     private static void applyTailwind(Player player) {
         int amplifier = (int) player.getPersistentData().getDouble("player_tailwind_force");
-        player.addEffect(new MobEffectInstance(ModEffects.TAILWIND_BUFF.get(), 20, amplifier));
+        player.addEffect(new MobEffectInstance(ModEffects.TAILWIND.get(), 20, amplifier));
     }
 
     private static void applyDeadwind(Player player) {
         int amplifier = (int) player.getPersistentData().getDouble("player_deadwind_force");
-        player.addEffect(new MobEffectInstance(ModEffects.DEADWIND_BUFF.get(), 20, amplifier));
+        player.addEffect(new MobEffectInstance(ModEffects.DEADWIND.get(), 20, amplifier));
     }
 
     private static boolean hasWindKnightFlag(Player player) {

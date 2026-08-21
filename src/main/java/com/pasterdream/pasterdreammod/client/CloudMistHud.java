@@ -47,13 +47,13 @@ public class CloudMistHud {
 
     private static double computeCloudMist(Player player) {
         // 进入：主世界持有迷梦，高度 260~310 之间
-        if (player.hasEffect(ModEffects.MISTY_DREAM_BUFF.get())
+        if (player.hasEffect(ModEffects.MISTY_DREAM.get())
                 && player.level().dimension().equals(Level.OVERWORLD)
                 && player.getY() > 260 && player.getY() <= 310) {
             return (player.getY() - 260) * 2 / 100.0;
         }
         // 退出：风之旅途持有云霞，高度 0~50 之间
-        if (player.hasEffect(ModEffects.CLOUD_MIST_BUFF.get())
+        if (player.hasEffect(ModEffects.CLOUD_MIST.get())
                 && player.level().dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD)
                 && player.getY() > 0 && player.getY() <= 50) {
             return (50 - player.getY()) * 2 / 100.0;

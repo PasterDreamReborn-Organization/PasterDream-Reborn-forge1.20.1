@@ -17,7 +17,7 @@ public class SculkArmorWardenImmunityMixin {
     private void onHurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         LivingEntity self = (LivingEntity) (Object) this;
         if (self instanceof Player player
-                && player.hasEffect(ModEffects.SCULK_ARMOR_BUFF.get())
+                && player.hasEffect(ModEffects.SCULK_ARMOR.get())
                 && source.getEntity() instanceof Warden) {
             cir.setReturnValue(false);
         }
