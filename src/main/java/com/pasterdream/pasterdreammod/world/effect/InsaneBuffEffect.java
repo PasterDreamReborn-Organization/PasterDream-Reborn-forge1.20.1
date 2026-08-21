@@ -13,11 +13,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.common.ForgeMod;
 
-public class InsandBuffEffect extends MobEffect {
+public class InsaneBuffEffect extends MobEffect {
 
     private static final String UUID = "a2fe40e7-6ef7-4713-bb35-5717740bc22e";
 
-    public InsandBuffEffect() {
+    public InsaneBuffEffect() {
         super(MobEffectCategory.HARMFUL, -14744315);
         this.addAttributeModifier(ModAttributes.BLINK_CD.get(), UUID, 2, AttributeModifier.Operation.ADDITION);
         this.addAttributeModifier(Attributes.MOVEMENT_SPEED, UUID, -0.3, AttributeModifier.Operation.MULTIPLY_BASE);
@@ -29,7 +29,7 @@ public class InsandBuffEffect extends MobEffect {
 
     @Override
     public String getDescriptionId() {
-        return "effect.pasterdream.insand_buff";
+        return "effect.pasterdream.insane_buff";
     }
 
     @Override

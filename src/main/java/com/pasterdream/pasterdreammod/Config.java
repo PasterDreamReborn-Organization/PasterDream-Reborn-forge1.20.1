@@ -169,13 +169,13 @@ public class Config
             .comment("恍惚效果下界 / 疯狂效果上界，默认 0.2（20%）")
             .defineInRange("sanTranceLowerThreshold", 0.2, 0.0, 1.0);
 
-    private static final ForgeConfigSpec.DoubleValue SAN_INSAND_LV2_THRESHOLD = BUILDER
+    private static final ForgeConfigSpec.DoubleValue SAN_INSANE_LV2_THRESHOLD = BUILDER
             .comment("疯狂 II 触发阈值（ratio < 该值时升级为 Lv2），默认 0.1（10%）")
-            .defineInRange("sanInsandLv2Threshold", 0.1, 0.0, 1.0);
+            .defineInRange("sanInsaneLv2Threshold", 0.1, 0.0, 1.0);
 
-    private static final ForgeConfigSpec.DoubleValue SAN_INSAND_LV3_THRESHOLD = BUILDER
+    private static final ForgeConfigSpec.DoubleValue SAN_INSANE_LV3_THRESHOLD = BUILDER
             .comment("疯狂 III 触发阈值（ratio < 该值时升级为 Lv3），默认 0.01（1%）")
-            .defineInRange("sanInsandLv3Threshold", 0.01, 0.0, 1.0);
+            .defineInRange("sanInsaneLv3Threshold", 0.01, 0.0, 1.0);
 
     // === 融梦能量条 HUD 位置（预设1：左下角） ===
     private static final ForgeConfigSpec.IntValue MELT_DREAM_ENERGY_BAR_X = BUILDER
@@ -506,8 +506,8 @@ public class Config
     public static double sanLethargyUpperThreshold;
     public static double sanLethargyLowerThreshold;
     public static double sanTranceLowerThreshold;
-    public static double sanInsandLv2Threshold;
-    public static double sanInsandLv3Threshold;
+    public static double sanInsaneLv2Threshold;
+    public static double sanInsaneLv3Threshold;
 
     // === 融梦能量条 & 精神值条 HUD 位置 ===
     public static int meltDreamEnergyBarX;
@@ -827,8 +827,8 @@ public class Config
         sanLethargyUpperThreshold = SAN_LETHARGY_UPPER_THRESHOLD.get();
         sanLethargyLowerThreshold = SAN_LETHARGY_LOWER_THRESHOLD.get();
         sanTranceLowerThreshold = SAN_TRANCE_LOWER_THRESHOLD.get();
-        sanInsandLv2Threshold = SAN_INSAND_LV2_THRESHOLD.get();
-        sanInsandLv3Threshold = SAN_INSAND_LV3_THRESHOLD.get();
+        sanInsaneLv2Threshold = SAN_INSANE_LV2_THRESHOLD.get();
+        sanInsaneLv3Threshold = SAN_INSANE_LV3_THRESHOLD.get();
         meltDreamEnergyBarX = MELT_DREAM_ENERGY_BAR_X.get();
         meltDreamEnergyBarYFromBottom = MELT_DREAM_ENERGY_BAR_Y_FROM_BOTTOM.get();
         meltDreamEnergyBarDecimalPlaces = MELT_DREAM_ENERGY_BAR_DECIMAL_PLACES.get();

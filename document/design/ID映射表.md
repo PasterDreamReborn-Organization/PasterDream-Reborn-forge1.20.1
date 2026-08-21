@@ -654,7 +654,7 @@
 | `cheerup_buff`                | `cheer_up_buff`               | 重命名，加下划线  | `CheerUpBuffEffect`，San≥90%给予                                  |
 | `lethargy_buff`               | `lethargy_buff`               | 不改        | `LethargyBuffEffect`，San 40%~60%时给予                            |
 | `trance_buff`                 | `trance_buff`                 | 不改        | `TranceBuffEffect`，San 20%~40%时给予                              |
-| `insand_buff`                 | `insand_buff`                 | 不改        | `InsandBuffEffect`，San<20%，三级（<1%/>1%/>10%）                    |
+| `insane_buff`                 | `insane_buff`                 | 不改        | `InsaneBuffEffect`，San<20%，三级（<1%/>1%/>10%）                    |
 | `goldenrod_tea_buff`          | `goldenrod_tea_buff`          | 不改        | `GoldenrodTeaBuffEffect`，每 tick 移除饥饿与反胃                        |
 | `dyedream_perfume_buff`       | `dyedream_perfume_buff`       | 不改，效果逻辑已改 | `DyedreamPerfumeBuffEffect`，配合 `PhantomTargetMixin`            |
 | `teleportation_buff`          | 待搬运                           | -         | -                                                              |

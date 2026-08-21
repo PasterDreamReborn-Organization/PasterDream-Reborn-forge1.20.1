@@ -98,8 +98,8 @@ public class SanAuraHandler {
                 player.addEffect(new MobEffectInstance(ModEffects.TRANCE_BUFF.get(),
                         THRESHOLD_EFFECT_DURATION, 0, false, false));
             } else if (ratio < Config.sanTranceLowerThreshold) {
-                int level = ratio < Config.sanInsandLv3Threshold ? 2 : ratio < Config.sanInsandLv2Threshold ? 1 : 0;
-                player.addEffect(new MobEffectInstance(ModEffects.INSAND_BUFF.get(),
+                int level = ratio < Config.sanInsaneLv3Threshold ? 2 : ratio < Config.sanInsaneLv2Threshold ? 1 : 0;
+                player.addEffect(new MobEffectInstance(ModEffects.INSANE_BUFF.get(),
                         THRESHOLD_EFFECT_DURATION, level, false, false));
             }
         });
