@@ -2,14 +2,20 @@ package com.pasterdream.pasterdreammod.world.item.curio;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.san.ISanModifier;
+import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -28,6 +34,8 @@ public class SealOfTheCorruptedItem extends Item implements ICurioItem, ISanModi
     private static final UUID ENTITY_REACH_UUID = UUID.fromString("b84e7f10-74e3-43f5-95f9-968877248549");
     private static final UUID BLOCK_REACH_UUID = UUID.fromString("f55792ba-17c1-43bb-86ac-ff805d06ce3c");
     private static final UUID ATTACK_DAMAGE_UUID = UUID.fromString("4b798e40-aac3-43a2-b93b-c927ec3a2c59");
+    private static final ResourceLocation TALENT_SHADOW_ADV =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/talent_shadow");
 
     public SealOfTheCorruptedItem() {
         super(new Properties().stacksTo(1).rarity(ModRarities.EPIC));
@@ -46,6 +54,32 @@ public class SealOfTheCorruptedItem extends Item implements ICurioItem, ISanModi
                     .orElse(true);
         }
         return true;
+    }
+
+    @Override
+    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
+        if (!(slotContext.entity() instanceof ServerPlayer player)) return;
+        if (player.isCreative()) return;
+        if (AdvancementHelper.isDone(player, TALENT_SHADOW_ADV)) return;
+        player.displayClientMessage(Component.translatable("message.pasterdream.seal_of_the_corrupted.rejected"), true);
+        clearEquippedCurio(player, stack.getItem());
+        player.hurt(player.level().damageSources().generic(), 5.0F);
+        if (player.level() instanceof ServerLevel serverLevel) {
+            ItemEntity itemEntity = new IndestructibleItemEntity(serverLevel,
+                    player.getX(), player.getY() + 0.5, player.getZ(), new ItemStack(stack.getItem()));
+            itemEntity.setPickUpDelay(20);
+            itemEntity.setDeltaMovement(0, 0.2, 0);
+            serverLevel.addFreshEntity(itemEntity);
+        }
+    }
+
+    private static void clearEquippedCurio(ServerPlayer player, Item item) {
+        CuriosApi.getCuriosInventory(player).ifPresent(handler ->
+                handler.findFirstCurio(item).ifPresent(result ->
+                        handler.setEquippedCurio(result.slotContext().identifier(),
+                                result.slotContext().index(), ItemStack.EMPTY)
+                )
+        );
     }
 
     @Override

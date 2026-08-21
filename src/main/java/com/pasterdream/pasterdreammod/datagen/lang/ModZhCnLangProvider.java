@@ -1136,11 +1136,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.HIYORI_BUTTERFLY_HAIRPIN.get(), "妃爱的蝴蝶结发夹");
         add("tooltip.pasterdream.hiyori_butterfly_hairpin.lore", "§7§o-- 因为常轨脱离 所以creative");
 
-        add(ModItems.KAICHU_OMAMORI.get(), "怀中御守");
+
         add(ModItems.BROOCH_OF_WHITE_ORCHID.get(), "白厄花胸针");
         add("tooltip.pasterdream.brooch_of_white_orchid.effect", "§7▪ §9不再会受到环境造成的降san影响");
         add("tooltip.pasterdream.brooch_of_white_orchid.effect2", "§7▪ §9白厄剑对所有生物增伤50%");
         add("tooltip.pasterdream.brooch_of_white_orchid.effect3", "§7▪ §9白厄剑雨无视受伤无敌帧");
+        add("message.pasterdream.brooch_of_white_orchid.rejected", "这件饰品拒绝了你");
+        add(ModItems.KAICHU_OMAMORI.get(), "怀中御守");
         add("tooltip.pasterdream.brooch_of_white_orchid.flavor", "§o§7 -- 我消逝于无形  此刻享受你应得的荣耀");
         add("tooltip.pasterdream.kaichu_omamori.effect.foxfire", "§7▪ §9对12*12区域范围内生成狐火立场");
         add("tooltip.pasterdream.kaichu_omamori.effect.vulnerable", "§7▪ §9使除玩家外的生物受到20%的易伤和缓慢V效果");
@@ -1334,6 +1336,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.white_sword.skill_passive_name", "被动：§6光之追逐");
         add("tooltip.pasterdream.white_sword.desc8", "§7▪ §9近战攻击时有§c50% §9概率向目标释放追踪剑雨");
         add("message.pasterdream.white_sword.no_energy", "融梦能量不足");
+        add("message.pasterdream.white_sword.no_talent", "未选择<明灯> 无法使用此剑");
         add("entity.pasterdream.white_sword_rain_projectile", "白厄剑雨");
 
         // 影刃
@@ -1348,6 +1351,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.shadow_sword.desc3", "§7▪ §4当没有精神值可供消耗时 挥砍会反噬自身生命");
         add("tooltip.pasterdream.shadow_sword.flavor", "§7§o——梦魇渐渐变得尖锐，铸成了这把利剑");
         add("message.pasterdream.shadow_sword.san_disabled", "§c影刃拒绝了你");
+        add("message.pasterdream.shadow_sword.no_talent", "未选择<暗影> 无法使用此剑");
 
         // Ice Shadow Hammer
         add("tooltip.pasterdream.ice_shadow_hammer.skill_name", "战技：§3依诺的撼地");
@@ -1366,6 +1370,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.seal_of_the_corrupted.effect2", "§7▪ §9暗影生物对你保持中立");
         add("tooltip.pasterdream.seal_of_the_corrupted.effect3", "§7▪ §9因低精神值诞生的暗影生物为你而战");
         add("tooltip.pasterdream.seal_of_the_corrupted.flavor", "§7§o——我将成为你的阴影 一并体会你的痛苦");
+        add("message.pasterdream.seal_of_the_corrupted.rejected", "这件饰品拒绝了你");
 
         // 泰拉浮岛模型
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "泰拉浮岛模型");

@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.world.item.whiteswordtool;
 
+import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
+import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
@@ -59,6 +61,8 @@ public class WhiteSwordItem extends SwordItem {
     private static final double ACTIVE_DAMAGE_RATIO = 0.15; // 主动技能伤害系数(基于攻击力)
     private static final double PASSIVE_DAMAGE_RATIO = 0.1; // 被动触发伤害系数(基于攻击力)
     private static final double SWEEPING_EDGE_SPREAD_BONUS = 0.5; // 横扫之刃每级增加散布范围
+    private static final ResourceLocation TALENT_LIGHT_ADV =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/talent_light");
 
     public WhiteSwordItem(Tier tier, int damage, float speed) {
         super(tier, damage, speed, new Properties().fireResistant().rarity(ModRarities.LEGENDARY));
@@ -72,7 +76,10 @@ public class WhiteSwordItem extends SwordItem {
         ItemStack stack = player.getItemInHand(hand);
         if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
         if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
-            // TODO: Check for advancement achievement_talent_light once advancement system is ported
+            if (!player.isCreative() && !AdvancementHelper.isDone(serverPlayer, TALENT_LIGHT_ADV)) {
+                player.displayClientMessage(Component.translatable("message.pasterdream.white_sword.no_talent"), false);
+                return InteractionResultHolder.fail(stack);
+            }
             if (player.isCreative() || checkEnergy(serverPlayer)) {
                 if (!player.isCreative()) {
                     MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -ENERGY_COST);
