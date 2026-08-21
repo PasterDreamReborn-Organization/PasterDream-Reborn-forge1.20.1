@@ -14,6 +14,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowD
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalDisplayItem;
+import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem;
 import net.minecraft.world.item.BlockItem;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapItem;
@@ -89,19 +90,15 @@ import com.pasterdream.pasterdreammod.world.item.ThermalDaggerItem;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
 import com.pasterdream.pasterdreammod.world.item.PebbleItem;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -915,8 +912,7 @@ public class ModItems {
                 }
             });
 
-    public static final RegistryObject<Item> ELIXIR_BOTTLE = ITEMS.register("elixir_bottle",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ELIXIR_BOTTLE = ITEMS.register("elixir_bottle", () -> new ElixirBottleItem(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> ELIXIR_BOTTLE_OF_POTION = ITEMS.register("elixir_bottle_of_potion",
             ElixirBottleOfPotionItem::new);
