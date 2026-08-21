@@ -36,8 +36,15 @@ public class TerraswordWaveEntity extends PathfinderMob {
 
     private int lifeTicks = 0;
     private static final int MAX_LIFE_TICKS = 25; // 最大存活时间(tick)
-    private static final double COLLISION_RADIUS_BASE = 2.5; // 基础碰撞半径
+    private static final double COLLISION_RADIUS_BASE = 2.5; // 基础碰撞半径（水平）
+    private static final double COLLISION_HEIGHT = 3.0; // 攻击范围高度（竖直，格）
     private static final double COLLISION_RADIUS_SWEEPING_BONUS = 0.5; // 横扫之刃每级碰撞半径加成
+    private static final int MAX_SWEEPING_EDGE_LEVEL = 3; // 横扫之刃加成生效的最大等级(III)
+    private static final int PARTICLE_COUNT_BASE = 8; // 基础粒子数量
+    private static final int PARTICLE_COUNT_SWEEPING_BONUS = 2; // 横扫之刃每级粒子数量加成
+    private static final double PARTICLE_SPREAD_BASE = 0.3; // 基础水平粒子散布
+    private static final double PARTICLE_SPREAD_SWEEPING_BONUS = 0.3; // 横扫之刃每级水平粒子散布加成
+    private static final double PARTICLE_VELOCITY = 0.1; // 粒子初速度
     private static final double BASE_DAMAGE_OFFSET = 2.0; // 基础伤害偏移
     private static final float SMITE_BANE_MULTIPLIER = 2.5f; // 亡灵杀手/节肢杀手每级伤害加成
     private static final float PENETRATION_DECAY = 0.25f; // 每次穿透伤害衰减系数
@@ -140,17 +147,18 @@ public class TerraswordWaveEntity extends PathfinderMob {
             lifeTicks++;
 
             CompoundTag data = this.getPersistentData();
-            int sweepingEdge = data.getInt("sweeping_edge");
+            int sweepingEdge = Math.min(data.getInt("sweeping_edge"), MAX_SWEEPING_EDGE_LEVEL);
 
-            int particleCount = 3 + sweepingEdge * 2;
-            double particleSpread = 0.2 + sweepingEdge * 0.3;
+            int particleCount = PARTICLE_COUNT_BASE + sweepingEdge * PARTICLE_COUNT_SWEEPING_BONUS;
+            double particleSpread = PARTICLE_SPREAD_BASE + sweepingEdge * PARTICLE_SPREAD_SWEEPING_BONUS;
+            double particleVerticalSpread = COLLISION_HEIGHT / 2;
             if (level instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(),
                         this.getX(), this.getY(), this.getZ(),
-                        particleCount, particleSpread, particleSpread, particleSpread, 0.1);
+                        particleCount, particleSpread, particleVerticalSpread, particleSpread, PARTICLE_VELOCITY);
                 serverLevel.sendParticles(ModParticleTypes.TERRASWORD_WAVE_PARTICLE.get(),
                         this.getX(), this.getY(), this.getZ(),
-                        particleCount, particleSpread, particleSpread * 2, particleSpread, 0.1);
+                        particleCount, particleSpread, particleVerticalSpread, particleSpread, PARTICLE_VELOCITY);
             }
 
             double pasterAtk = data.getDouble("paster_atk");
@@ -161,8 +169,11 @@ public class TerraswordWaveEntity extends PathfinderMob {
 
             double radius = COLLISION_RADIUS_BASE / 2d + sweepingEdge * COLLISION_RADIUS_SWEEPING_BONUS;
             Vec3 center = new Vec3(this.getX(), this.getY(), this.getZ());
+            AABB attackBox = new AABB(center.x - radius, center.y - COLLISION_HEIGHT / 2,
+                    center.z - radius, center.x + radius, center.y + COLLISION_HEIGHT / 2,
+                    center.z + radius);
             List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class,
-                    new AABB(center, center).inflate(radius), e -> true)
+                    attackBox, e -> true)
                     .stream().sorted(Comparator.comparingDouble(e -> e.distanceToSqr(center))).toList();
             Player owner = resolveOwner();
             for (LivingEntity target : entities) {
@@ -213,7 +224,7 @@ public class TerraswordWaveEntity extends PathfinderMob {
 
             // Reflect incoming projectiles
             List<Projectile> projectiles = level.getEntitiesOfClass(Projectile.class,
-                    new AABB(center, center).inflate(radius), e -> true)
+                    attackBox, e -> true)
                     .stream().filter(p -> !reflectedProjectiles.contains(p.getUUID())).toList();
             for (Projectile projectile : projectiles) {
                 Entity projOwner = projectile.getOwner();
