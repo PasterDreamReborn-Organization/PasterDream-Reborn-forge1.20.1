@@ -32,10 +32,7 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.ToolActions;
 import net.minecraft.world.level.block.Block;
@@ -48,7 +45,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.item.TieredItem;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -113,6 +109,7 @@ public class PasterDreamMod
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::registerItemColors);
+        modEventBus.addListener(this::registerItemModels);
         MinecraftForge.EVENT_BUS.addListener(this::AddItemTooltip);
         MinecraftForge.EVENT_BUS.addListener(this::AddCommand);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
@@ -219,6 +216,11 @@ public class PasterDreamMod
                 ResourceLocation.fromNamespaceAndPath(MOD_ID, "type"),
                 (stack, level, entity, seed) -> PotionBottleItem.getPredicateValue(stack)
         );
+    }
+
+    private void registerItemModels(ModelEvent.ModifyBakingResult event)
+    {
+        ModItemModels.register(event);
     }
 
     private void registerItemColors(RegisterColorHandlersEvent.Item event)
