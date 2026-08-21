@@ -202,6 +202,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SWEET_DREAM_MUSIC_DISC.get());
                         output.accept(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get());
                         output.accept(ModItems.AARONCOS_MUSIC_DISC.get());
+                        output.accept(ModItems.WIND_JOURNEY_MUSIC_DISC.get());
                         // 预言卡（动态遍历所有已注册类型，含 KJS / 拓展模组注册的）
                         output.accept(ModItems.EMPTY_PROPHECY_CARD.get());
                         for (String type : ProphecyCardItem.getRegisteredTypes()) {

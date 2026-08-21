@@ -261,6 +261,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         // 音乐唱片
         tag(ItemTags.MUSIC_DISCS)
                 .add(ModItems.SWEET_DREAM_MUSIC_DISC.get())
-                .add(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get());
+                .add(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get())
+                .add(ModItems.AARONCOS_MUSIC_DISC.get())
+                .add(ModItems.WIND_JOURNEY_MUSIC_DISC.get());
     }
 }

@@ -134,9 +134,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.elixir_bottle_of_rage_elixir.client.fail", "§7你已经饮用过这个药水了");
         add(ModItems.BUBBLE_TEA.get(), "珍珠奶茶");
         add(ModItems.SWEET_DREAM_MUSIC_DISC.get(), "音乐唱片");
-        add(ModItems.SWEET_DREAM_MUSIC_DISC.get().getDescriptionId() + ".desc", "PasterDream - 甜蜜的梦");
+        add(ModItems.SWEET_DREAM_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - 甜蜜的梦");
         add(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get(), "音乐唱片");
-        add(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get().getDescriptionId() + ".desc", "PasterDream - 落雪之梦");
+        add(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - 落雪之梦");
+        add(ModItems.WIND_JOURNEY_MUSIC_DISC.get(), "音乐唱片");
+        add(ModItems.WIND_JOURNEY_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - 风之旅途");
         add(ModItems.PINEAPPLE_LOVE_SEA.get(), "凤梨爱琴海");
         add(ModItems.BLUE_HEART_OF_THE_SEA.get(), "蔚蓝海洋之心");
         add(ModItems.ELDER_GUARDIAN_SCALE.get(), "远古守卫者鳞片");

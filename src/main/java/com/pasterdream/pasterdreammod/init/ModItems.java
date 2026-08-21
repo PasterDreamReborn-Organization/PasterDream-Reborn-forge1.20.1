@@ -1798,6 +1798,8 @@ public class ModItems {
             () -> new RecordItem(0, ModSounds.SWEET_DREAM_MUSIC, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 2220));
     public static final RegistryObject<Item> SNOWFALL_DREAM_MUSIC_DISC = ITEMS.register("snowfall_dream_music_disc",
             () -> new RecordItem(0, ModSounds.SNOWFALL_DREAM_MUSIC, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 2520));
+    public static final RegistryObject<Item> WIND_JOURNEY_MUSIC_DISC = ITEMS.register("wind_journey_music_disc",
+            () -> new RecordItem(0, ModSounds.WIND_JOURNEY, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 4240));
 
     //调试工具
     public static final RegistryObject<Item> DEBUG_SWORD = ITEMS.register("debug_sword", DebugSwordItem::new);

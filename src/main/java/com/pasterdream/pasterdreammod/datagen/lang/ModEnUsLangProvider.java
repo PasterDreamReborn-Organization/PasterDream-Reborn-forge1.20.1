@@ -134,6 +134,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SWEET_DREAM_MUSIC_DISC.get().getDescriptionId() + ".desc", "PasterDream - Sweet Dream");
         add(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get(), "Music Disc");
         add(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get().getDescriptionId() + ".desc", "PasterDream - Snowfall Dream");
+        add(ModItems.WIND_JOURNEY_MUSIC_DISC.get(), "Music Disc");
+        add(ModItems.WIND_JOURNEY_MUSIC_DISC.get().getDescriptionId() + ".desc", "§dPasterDream§7 - Wind Journey");
         add(ModItems.PINEAPPLE_LOVE_SEA.get(), "Pineapple Love Sea");
         add(ModItems.BLUE_HEART_OF_THE_SEA.get(), "Blue Heart Of The Sea");
         add(ModItems.ELDER_GUARDIAN_SCALE.get(), "Elder Guardian Scale");

@@ -2660,6 +2660,18 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.SOUL_ESSENCE.get()), has(ModItems.SOUL_ESSENCE.get()))
                 .save(pWriter);
 
+        // 亚伦柯斯之触音乐唱片 = nightmare_fuel + shadow_light + black_metal_grain + pure_horror
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.AARONCOS_MUSIC_DISC.get(), 1)
+                .pattern("aba")
+                .pattern("cdc")
+                .pattern("aba")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', ModItems.SHADOW_LIGHT.get())
+                .define('c', ModItems.BLACK_METAL_GRAIN.get())
+                .define('d', ModItems.PURE_HORROR.get())
+                .unlockedBy(getHasName(ModItems.PURE_HORROR.get()), has(ModItems.PURE_HORROR.get()))
+                .save(pWriter);
+
         // 染梦书桌
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.DYEDREAM_DESK.get(), 1)
                 .pattern(" a ")
