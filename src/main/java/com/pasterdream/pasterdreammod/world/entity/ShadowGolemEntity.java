@@ -189,7 +189,7 @@ public class ShadowGolemEntity extends Monster implements GeoEntity, IShadowMob 
 
             // 1 tick after start: play roar sound
             if (skillTimer == 43) {
-                this.playSound(ModSounds.ROAR0.get(), 1.2f, 1);
+                this.playSound(ModSounds.SHADOW_ROAR.get(), 1.2f, 1);
             }
 
             // 8 ticks after start: set skill animation

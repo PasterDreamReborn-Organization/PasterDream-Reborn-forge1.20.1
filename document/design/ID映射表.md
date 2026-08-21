@@ -722,7 +722,7 @@
 | 旧 ID                   | 新 ID                   | 变更说明   | 备注                                                          |
 |------------------------|------------------------|--------|-------------------------------------------------------------|
 | `dyedream_world`       | `dyedream_world`       | 不改，已实现 | `DimensionType` + `NoiseSettings` + `LevelStem` 已完成 datagen |
-| `lamp_shadow_world`    | `lamp_shadow_world`    | 不改，待搬运 | -                                                           |
+| `lamp_shadow_world`    | `lamp_shadow_world`    | 不改，已实现 | `DimensionType` + `NoiseSettings` + `LevelStem` 已完成 datagen |
 | `wind_journey_world`   | `wind_journey_world`   | 不改，已实现 | `DimensionType` + `NoiseSettings` + `LevelStem` 已完成 datagen |
 | `aaroncos_arena_world` | `aaroncos_arena_world` | 不改，已实现 | `DimensionType` + `NoiseSettings` + `LevelStem` 已完成 datagen |
 
@@ -792,5 +792,68 @@
 > - `white_sword_spark`（白剑火花，旧 `white_sword_spark_particle`）
 > - `poison_gas_1`（毒气变体，旧 `poison_gas_particle_1`）
 > - `rejuvenation`（回春，旧 `rejuvenation_particle`）
+
+---
+
+## 音效映射
+
+> 源模组旧音效 ID → 重置模组新音效 ID 对照表
+> 本轮统一重命名：去无意义数字后缀、语义化命名；已同步重命名 `assets/pasterdream/sounds/*.ogg` 与 `sounds.json` 引用
+> 已语义化的音效（`doll`、`evasion`、`terrorbeak_roar` 等）标「不改」
+
+| 旧 ID                     | 新 ID                     | 变更说明                        | 使用场景                                                  |
+|--------------------------|--------------------------|-----------------------------|-------------------------------------------------------|
+| `sword1`                 | `sword_slash`            | 重命名，语义化                    | 剑类武器蓄力技能触发（北海弱潮/融梦利刃/炼狱/丛云/尘镜门）                     |
+| `skill0`                 | `sword_awaken`           | 重命名，语义化                    | 草薙进化、失落剑冢拔剑                                         |
+| `skill1`                 | `skill_hit`              | 重命名，语义化                    | 蓄力技能命中                                               |
+| `skill2`                 | `skill_hit_heavy`        | 重命名，语义化                    | 融骸斩击（龙息爆炸）命中                                         |
+| `coin0`                  | `coin_drop`              | 重命名，语义化                    | 融梦币掉落                                                |
+| `coin1`                  | `coin_exchange`          | 重命名，语义化                    | 融梦币拆分/合并                                             |
+| `ding_0`                 | `ding`                   | 重命名，去 `_0` 后缀              | 风标/金狐雕像/空瓶/暮影灯提示音                                     |
+| `pliers0`                | `pliers`                 | 重命名，去 `_0` 后缀              | 钳子剪断                                                 |
+| `dream0`                 | `awake`                  | 重命名，语义化（苏醒）               | 苍白骨针/根须骨针/骨针护符激活、雪绒花、冶梦莲、怒药                         |
+| `losemind0`              | `lose_mind`              | 重命名，去 `_0` 后缀、补下划线        | SAN 丧失（疯癫音效）                                         |
+| `roar0`                  | `shadow_roar`            | 重命名，语义化                    | 暗影魔像/暗影手钓鱼/暮影灯事件咆哮                                   |
+| `ghost0`                 | `ghost_wail`             | 重命名，语义化                    | 哀嚎影鬼召唤技能                                             |
+| `shadow0`                | `shadow_ominous`         | 重命名，语义化                    | 暮影灯事件开幕、暗影火盆仪式                                       |
+| `shadow_music_0`         | `shadow_music`           | 重命名，去 `_0` 后缀              | 暗影事件背景音乐                                             |
+| `stone_break`            | `stone_shatter`          | 重命名，语义化                    | 亚伦柯斯左右手音调图腾石崩                                        |
+| `stone_break_0`          | `stone_crack`            | 重命名，语义化                    | 亚伦柯斯左右手魔法球蓄力石裂                                       |
+| `shadow_trap_0`          | `shadow_trap`            | 重命名，去 `_0` 后缀              | 暗影手陷阱触发                                              |
+| `wind_knight_skill_0`    | `wind_knight_skill`      | 重命名，去 `_0` 后缀              | 破风骑士技能                                               |
+| `doll`                   | `doll`                   | 不改                           | 人偶方块、诅咒人偶饰品                                          |
+| `evasion`                | `evasion`                | 不改                           | 闪避效果/时之沙/预言卡                                          |
+| `dyedream_crack`         | `dyedream_crack`         | 不改                           | 染梦裂隙方块                                               |
+| `sweet_dream_music`      | `sweet_dream_music`      | 不改                           | 甜梦唱片、群系音乐                                           |
+| `snowfall_dream_music`   | `snowfall_dream_music`   | 不改                           | 落雪梦唱片、群系音乐                                          |
+| `thermal_dagger`         | `thermal_dagger`         | 不改                           | 热力匕首                                                |
+| `sword_wave`             | `sword_wave`             | 不改                           | 裂地剑波                                                |
+| `fox_fire`               | `fox_fire`               | 不改                           | 狐火                                                  |
+| `life_crystal`           | `life_crystal`           | 不改                           | 生命水晶方块                                              |
+| `melt_dream_crystal_chest_open_rare` | `melt_dream_crystal_chest_open_rare` | 不改 | 融梦水晶宝箱开启（稀有）                              |
+| `melt_dream_crystal_chest_open_legend` | `melt_dream_crystal_chest_open_legend` | 不改 | 融梦水晶宝箱开启（传说）                            |
+| `dream_harp_of_wanderer` | `dream_harp_of_wanderer` | 不改                           | 漂泊旅者的染梦竖琴                                          |
+| `dream_accumulator`      | `dream_accumulator`      | 不改                           | 梦蓄器方块                                               |
+| `zipper`                 | `zipper`                 | 不改                           | 储物袋拉链                                               |
+| `wind_chime`             | `wind_chime`             | 不改                           | 风向标、梦列列车广播、群系风铃                                     |
+| `terrorbeak_roar`        | `terrorbeak_roar`        | 不改                           | 恐怖喙鸟吼叫                                              |
+| `squeal_wave`            | `squeal_wave`            | 不改                           | 尖啸波弹射物                                              |
+| `beetle_attack`          | `beetle_attack`          | 不改                           | 黑甲虫攻击                                               |
+| `beetle_skill`           | `beetle_skill`           | 不改                           | 黑甲虫母体技能                                             |
+| `white_sword_rain`       | `white_sword_rain`       | 不改                           | 白剑雨技能                                               |
+| `shadow_sword`           | `shadow_sword`           | 不改                           | 暗影剑                                                 |
+| `shadow_vortex`          | `shadow_vortex`          | 不改                           | 亚伦柯斯漩涡技能                                           |
+| `shadow_vortex_book`     | `shadow_vortex_book`     | 不改（当前未引用）                  | 暗影漩涡之书（预留）                                          |
+| `aaroncos_spawn`         | `aaroncos_spawn`         | 不改                           | 亚伦柯斯之触出生                                            |
+| `aaroncos_music`         | `aaroncos_music`         | 不改                           | 亚伦柯斯之触 BOSS 音乐、唱片                                   |
+| `shadow_door`            | `shadow_door`            | 不改                           | 暗影地牢门/屏障/手宝箱/暮影灯传送                                   |
+| `lightning_charge`       | `lightning_charge`       | 不改                           | 闪电药剂                                                |
+| `frozen_shock`           | `frozen_shock`           | 不改                           | 冰霜药剂                                                |
+| `inferno_impact`         | `inferno_impact`         | 不改                           | 炼狱药剂                                                |
+| `shadow_hand_lantern`    | `shadow_hand_lantern`    | 不改                           | 暗影手灯笼                                               |
+| `thundercloud_attack`    | `thundercloud_attack`    | 不改                           | 雷云/高压雷云攻击                                          |
+| `breeze_wind`            | `breeze_wind`            | 不改                           | 风之旅途群系环境音（微风）                                        |
+| `wind_journey`           | `wind_journey`           | 不改                           | 风之旅途维度音乐                                            |
+| `bone_wing_fire_ball`    | `bone_wing_fire_ball`    | 不改                           | 骨翼火球弹射物                                             |
 
 

@@ -973,7 +973,7 @@ public class ModItems {
 
                     if (applied) {
                         level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                                ModSounds.DREAM0.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                                ModSounds.AWAKE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
                         if (entity instanceof Player player) {
                             player.displayClientMessage(Component.translatable("item.pasterdream.elixir_bottle_of_rage_elixir.client.success"), false);
                         }

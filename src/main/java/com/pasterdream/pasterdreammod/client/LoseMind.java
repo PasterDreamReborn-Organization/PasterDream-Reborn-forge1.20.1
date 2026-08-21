@@ -49,11 +49,11 @@ public class LoseMind {
 
         if (inSoundRange && Config.lowSanSound) {
             if (!wasInSoundRange || player.tickCount - lastSoundTick >= SOUND_INTERVAL) {
-                player.playSound(ModSounds.LOSEMIND0.get(), 0.8F, 1.0F);
+                player.playSound(ModSounds.LOSE_MIND.get(), 0.8F, 1.0F);
                 lastSoundTick = player.tickCount;
             }
         } else if (wasInSoundRange) {
-            MC.getSoundManager().stop(ModSounds.LOSEMIND0.getId(), null);
+            MC.getSoundManager().stop(ModSounds.LOSE_MIND.getId(), null);
         }
         wasInSoundRange = inSoundRange;
 

@@ -61,7 +61,7 @@ public class BeihaiRuoTideSwordItem extends SwordItem {
                 target.hurt(player.damageSources().playerAttack(player), bonusDamage);
             }
             target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
-                    ModSounds.SKILL1.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
+                    ModSounds.SKILL_HIT.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
             target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
                     SoundEvents.BUBBLE_COLUMN_UPWARDS_AMBIENT, SoundSource.NEUTRAL, 0.8f, 1.0f);
             if (target.level() instanceof ServerLevel serverLevel) {
@@ -93,7 +93,7 @@ public class BeihaiRuoTideSwordItem extends SwordItem {
         if (!level.isClientSide && !stack.getOrCreateTag().getBoolean("skill")) {
             stack.getOrCreateTag().putBoolean("skill", true);
             SkillCooldownHelper.applySharedCooldown(player, COOLDOWN_TICKS);
-            level.playSound(null, player.blockPosition(), ModSounds.SWORD1.get(), SoundSource.PLAYERS, 0.8f, 1.0f);
+            level.playSound(null, player.blockPosition(), ModSounds.SWORD_SLASH.get(), SoundSource.PLAYERS, 0.8f, 1.0f);
             if (level instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(ModParticleTypes.BUFF_0_PARTICLE.get(), player.getX(), player.getY() - 0.5, player.getZ(), 20, 0.5, 1, 0.5, 1);
             }

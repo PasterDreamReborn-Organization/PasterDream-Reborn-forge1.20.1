@@ -349,7 +349,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
         setAnimation("skill_tunetotem");
         addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 40, 1, false, false));
         setDeltaMovement(new Vec3(0, -2, 0));
-        playSoundAt(ModSounds.STONE_BREAK.get(), 1, 1);
+        playSoundAt(ModSounds.STONE_SHATTER.get(), 1, 1);
 
         // 15-block confusion to non-friendly targets
         Vec3 center = new Vec3(getX(), getY(), getZ());
@@ -373,7 +373,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
 
     private void runMagicballSkill() {
         if (skillTick == 5) {
-            playSoundAt(ModSounds.STONE_BREAK_0.get(), 1, 1);
+            playSoundAt(ModSounds.STONE_CRACK.get(), 1, 1);
         }
         if (skillTick == 35) {
             // Look at nearest player

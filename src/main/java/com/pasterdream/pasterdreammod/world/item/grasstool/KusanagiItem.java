@@ -49,9 +49,9 @@ public class KusanagiItem extends SwordItem {
                 }
             }
             if (!level.isClientSide()) {
-                level.playSound(null, entity.blockPosition(), ModSounds.SKILL0.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
+                level.playSound(null, entity.blockPosition(), ModSounds.SWORD_AWAKEN.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
             } else {
-                level.playLocalSound(entity.getX(), entity.getY(), entity.getZ(), ModSounds.SKILL0.get(), SoundSource.NEUTRAL, 1.0f, 1.0f, false);
+                level.playLocalSound(entity.getX(), entity.getY(), entity.getZ(), ModSounds.SWORD_AWAKEN.get(), SoundSource.NEUTRAL, 1.0f, 1.0f, false);
             }
             if (level instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(ParticleTypes.END_ROD, entity.getX(), entity.getY(), entity.getZ(), 5, 1, 1, 1, 0.5);

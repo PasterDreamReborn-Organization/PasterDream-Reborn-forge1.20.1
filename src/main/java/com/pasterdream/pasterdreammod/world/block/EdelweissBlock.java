@@ -85,7 +85,7 @@ public class EdelweissBlock extends FlowerBlock {
         }
 
         // Sound
-        world.playSound(null, pos, ModSounds.DREAM0.get(), SoundSource.NEUTRAL, 1, 1);
+        world.playSound(null, pos, ModSounds.AWAKE.get(), SoundSource.NEUTRAL, 1, 1);
     }
 
     private static boolean matchesPattern(Level world, BlockPos pos) {

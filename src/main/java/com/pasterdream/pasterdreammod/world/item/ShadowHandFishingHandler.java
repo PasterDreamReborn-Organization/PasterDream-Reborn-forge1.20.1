@@ -42,7 +42,7 @@ public class ShadowHandFishingHandler {
         // 10% 概率发出阴影傀儡吼叫声，但什么都不生成
         if (level.getRandom().nextDouble() < 0.10) {
             level.playSound(player, player.blockPosition(),
-                    ModSounds.ROAR0.get(), SoundSource.HOSTILE, 1.0F, 1.0F);
+                    ModSounds.SHADOW_ROAR.get(), SoundSource.HOSTILE, 1.0F, 1.0F);
         }
 
         // 15% 概率生成阴影之手

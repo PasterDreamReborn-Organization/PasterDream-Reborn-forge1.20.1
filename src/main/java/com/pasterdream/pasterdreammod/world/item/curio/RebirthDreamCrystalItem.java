@@ -52,7 +52,7 @@ public class RebirthDreamCrystalItem extends Item implements ICurioItem {
                 Item picked = loot.get(player.getRandom().nextInt(loot.size()));
                 ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(picked));
             }
-            level.playSound(null, player.blockPosition(), ModSounds.DING_0.get(), SoundSource.PLAYERS, 1, 1);
+            level.playSound(null, player.blockPosition(), ModSounds.DING.get(), SoundSource.PLAYERS, 1, 1);
         }
 
         if (!player.getAbilities().instabuild) {

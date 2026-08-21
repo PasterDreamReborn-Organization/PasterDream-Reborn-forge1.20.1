@@ -133,7 +133,7 @@ public class ShadowHandTrapBlock extends BaseEntityBlock {
         }
 
         // 播放音效
-        world.playSound(null, pos, ModSounds.SHADOW_TRAP_0.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
+        world.playSound(null, pos, ModSounds.SHADOW_TRAP.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
 
         // 5 点魔法伤害
         player.hurt(new DamageSource(world.registryAccess()

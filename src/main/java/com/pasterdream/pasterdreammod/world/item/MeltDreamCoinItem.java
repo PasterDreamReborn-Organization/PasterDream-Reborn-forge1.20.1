@@ -35,12 +35,12 @@ public class MeltDreamCoinItem extends Item {
         if (isPile) {
             stack.shrink(1);
             ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.MELT_DREAM_COIN.get(), 10));
-            level.playSound(null, player.blockPosition(), ModSounds.COIN1.get(), SoundSource.PLAYERS, 1, 1);
+            level.playSound(null, player.blockPosition(), ModSounds.COIN_EXCHANGE.get(), SoundSource.PLAYERS, 1, 1);
         } else {
             if (stack.getCount() >= 10) {
                 stack.shrink(10);
                 ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.MELT_DREAM_COIN_PILE.get(), 1));
-                level.playSound(null, player.blockPosition(), ModSounds.COIN1.get(), SoundSource.PLAYERS, 1, 1);
+                level.playSound(null, player.blockPosition(), ModSounds.COIN_EXCHANGE.get(), SoundSource.PLAYERS, 1, 1);
             }
         }
         return InteractionResultHolder.success(stack);
@@ -49,7 +49,7 @@ public class MeltDreamCoinItem extends Item {
     @Override
     public boolean onDroppedByPlayer(ItemStack itemstack, Player entity) {
         if (!isPile && !entity.level().isClientSide) {
-            entity.level().playSound(null, entity.blockPosition(), ModSounds.COIN0.get(), SoundSource.PLAYERS, 1, 1);
+            entity.level().playSound(null, entity.blockPosition(), ModSounds.COIN_DROP.get(), SoundSource.PLAYERS, 1, 1);
         }
         return true;
     }

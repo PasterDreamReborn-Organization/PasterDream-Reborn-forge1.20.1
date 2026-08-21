@@ -122,10 +122,10 @@ public class TwilightLanternInteractionHandler {
 
     private static void handleReset(Level world, BlockPos pos, TwilightLanternBlockEntity lantern, Player entity) {
         if (!world.isClientSide()) {
-            world.playSound(null, pos, ModSounds.DING_0.get(), SoundSource.NEUTRAL, 1, 1);
+            world.playSound(null, pos, ModSounds.DING.get(), SoundSource.NEUTRAL, 1, 1);
         } else {
             world.playLocalSound(pos.getX(), pos.getY(), pos.getZ(),
-                    ModSounds.DING_0.get(), SoundSource.NEUTRAL, 1, 1, false);
+                    ModSounds.DING.get(), SoundSource.NEUTRAL, 1, 1, false);
         }
         entity.displayClientMessage(Component.translatable("message.pasterdream.twilight_lantern.data_reset"), false);
         lantern.setEventSwitch(false);

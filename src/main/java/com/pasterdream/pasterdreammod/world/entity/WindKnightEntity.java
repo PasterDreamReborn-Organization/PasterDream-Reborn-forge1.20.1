@@ -207,7 +207,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
                         sl.sendParticles(ParticleTypes.CRIT, center.x, center.y + 1.5, center.z, 80, 3, 0.5, 3, 0.1);
                     }
                     if (!level().isClientSide()) {
-                        level().playSound(null, BlockPos.containing(center), ModSounds.WIND_KNIGHT_SKILL_0.get(), SoundSource.MASTER, 1.1f, 0.9f);
+                        level().playSound(null, BlockPos.containing(center), ModSounds.WIND_KNIGHT_SKILL.get(), SoundSource.MASTER, 1.1f, 0.9f);
                         level().playSound(null, BlockPos.containing(center), SoundEvents.GENERIC_EXPLODE, SoundSource.MASTER, 0.7f, 1f);
                     }
                     addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 20, 0, false, false));

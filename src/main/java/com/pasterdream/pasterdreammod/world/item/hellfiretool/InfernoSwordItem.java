@@ -56,7 +56,7 @@ public class InfernoSwordItem extends SwordItem {
             stack.getOrCreateTag().putBoolean(TAG_SKILL, true);
             SkillCooldownHelper.applySharedCooldown(player, SKILL_COOLDOWN_TICKS);
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                    ModSounds.SWORD1.get(), SoundSource.PLAYERS, SKILL_SOUND_VOLUME, 1.0f);
+                    ModSounds.SWORD_SLASH.get(), SoundSource.PLAYERS, SKILL_SOUND_VOLUME, 1.0f);
             if (level instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(ModParticleTypes.BUFF_0_PARTICLE.get(), player.getX(), player.getY() - 0.5, player.getZ(), 20, 0.5, 1, 0.5, 1);
             }
@@ -71,7 +71,7 @@ public class InfernoSwordItem extends SwordItem {
             stack.getOrCreateTag().putBoolean(TAG_SKILL, false);
             // 龙息爆炸 + skill2 音效
             target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
-                    ModSounds.SKILL2.get(), SoundSource.NEUTRAL, HIT_SOUND_VOLUME, 1.0f);
+                    ModSounds.SKILL_HIT_HEAVY.get(), SoundSource.NEUTRAL, HIT_SOUND_VOLUME, 1.0f);
             target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
                     Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse("entity.dragon_fireball.explode"))), SoundSource.NEUTRAL, DRAGON_SOUND_VOLUME, 1.0f);
             // 熔岩粒子

@@ -173,7 +173,7 @@ public class GoldenFoxSculptureBlock extends BaseEntityBlock {
 
             // Sound effects
             world.playSound(null, pos, SoundEvents.FOX_AMBIENT, SoundSource.MASTER, 1.2f, 1f);
-            world.playSound(null, pos, ModSounds.DING_0.get(), SoundSource.PLAYERS, 1f, 1f);
+            world.playSound(null, pos, ModSounds.DING.get(), SoundSource.PLAYERS, 1f, 1f);
 
             // Particles
             if (world instanceof ServerLevel serverLevel) {
