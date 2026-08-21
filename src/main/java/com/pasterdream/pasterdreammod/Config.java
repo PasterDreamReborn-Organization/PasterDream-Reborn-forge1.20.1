@@ -478,7 +478,7 @@ public class Config
                     + "\n例：supplementaries:slingshot_projectile 为 Supplementary 模组的弹弓弹射物"
                     + "\n支持模组投射物，默认屏蔽弹弓弹射物以避免与弹弓自身机制冲突")
             .defineListAllowEmpty("ghostFaceProjectileBlacklist",
-                    List.of("supplementaries:slingshot_projectile"),
+                    List.of("supplementaries:slingshot_projectile","tide:fishing_bobber"),
                     obj -> obj instanceof String);
 
     // === 重生之梦水晶 ===
