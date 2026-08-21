@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.helper.BossDamageLimiter;
+import com.pasterdream.pasterdreammod.helper.BossLimitProfile;
 import com.pasterdream.pasterdreammod.helper.ShadowDifficultyHelper;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModEffects;
@@ -112,8 +113,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
         setPersistenceRequired();
         this.moveControl = new FlyingMoveControl(this, 10, true);
         this.bossInfo.setVisible(false);
-        this.damageLimiter = new BossDamageLimiter(
-                (float) Config.bossDamageCap, (float) Config.bossDpsCap, Config.bossRangeCap);
+        this.damageLimiter = new BossDamageLimiter(BossLimitProfile.AARONCOS);
     }
 
     @Override
