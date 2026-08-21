@@ -743,4 +743,54 @@
 | `wind_journey_biome_1` | `misty_dream_cloud_layer`       | 重命名，已实现 | 迷梦云层，`ModBiomes` 中完成 datagen |
 | `aaroncos_arena_biome` | `aaroncos_arena_biome`          | 不改，已实现 | 亚伦柯斯竞技场，`ModBiomes` 中完成 datagen |
 
+---
+
+## 粒子映射
+
+> 源模组旧粒子 ID → 重置模组新粒子 ID 对照表
+> 本轮统一重命名：去掉冗余 `_particle` 后缀、无意义数字后缀，语义化保留变体名；已同步重命名 `assets/pasterdream/particles/*.json` 与 `textures/particle/*.png`（含 `_N` 多帧）
+> 旧 ID 中未搬运（重置模组中无对应实现）的粒子以 `未搬运` 标注
+
+| 旧 ID                              | 新 ID                    | 变更说明                                       | 备注                                                       |
+|-----------------------------------|-------------------------|--------------------------------------------|----------------------------------------------------------|
+| `leaves_particle`                 | `leaves`                | 重命名，去 `_particle` 后缀                         | 群系环境粒子 `ModBiomes`                                        |
+| `buff_0_particle`                 | `buff`                  | 重命名，去 `_particle` 及 `_0` 后缀                  | 增益光环粒子                                                  |
+| `dust_0_particle`                 | `dust`                  | 重命名，去 `_particle` 及 `_0` 后缀                  | 通用灰尘/命中特效                                              |
+| `crack_0_particle`                | `crack`                 | 重命名，去 `_particle` 及 `_0` 后缀                  | 裂纹特效                                                    |
+| `dreamfertiliter_particle`        | `dream_fertilizer`      | 重命名，修拼写 `fertiliter→fertilizer`、补下划线、去 `_particle` | 梦肥                                                    |
+| `meltdream_crystal_particle`      | `melt_dream_crystal`    | 重命名，补下划线、去 `_particle` 后缀                   | 融梦水晶                                                    |
+| `meltdream_crystal_big_particle`  | `melt_dream_crystal_big` | 重命名，补下划线、去 `_particle` 后缀                   | 融梦水晶（大）                                                 |
+| `spore_particle`                  | `spore`                 | 重命名，去 `_particle` 后缀                         | 孢子                                                       |
+| `soul_particle`                   | `soul`                  | 重命名，去 `_particle` 后缀                         | 灵魂                                                       |
+| `squeal_wave_particle`            | `squeal_wave`           | 重命名，去 `_particle` 后缀                         | 尖啸波                                                      |
+| `shadow_stone_particle`           | `shadow_stone`          | 重命名，去 `_particle` 后缀                         | 阴影石                                                      |
+| `terrasword_wave_particle`        | `terrasword_wave`       | 重命名，去 `_particle` 后缀                         | 裂地剑波                                                    |
+| `poison_gas_particle`             | `poison_gas`            | 重命名，去 `_particle` 后缀                         | 毒气                                                       |
+| `firefly_particle`                | `firefly`               | 重命名，去 `_particle` 后缀                         | 萤火虫，群系环境粒子                                            |
+| `firefly_glass_jar_particle`      | `firefly_glass_jar`     | 重命名，去 `_particle` 后缀                         | 萤火虫罐                                                    |
+| `light_firefly_glass_jar_particle`| `light_firefly_glass_jar` | 重命名，去 `_particle` 后缀                         | 萤火虫罐（发光）                                                |
+| `lightning_particle`              | `lightning`             | 重命名，去 `_particle` 后缀                         | 闪电                                                       |
+| `yellow_smoke_particle`           | `yellow_smoke`          | 重命名，去 `_particle` 后缀                         | 黄烟                                                       |
+| `fury_spell_particle`             | `berserk`               | 重命名，语义化（狂暴）                                | 原名 `berserk_particle`，`ModParticles` 绑定 `FurySpellParticle` |
+| `snowflake_0_particle`            | `snowflake_0`           | 重命名，去 `_particle` 后缀                         | 雪花变体 0                                                   |
+| `snowflake_1_particle`            | `snowflake_1`           | 重命名，去 `_particle` 后缀                         | 雪花变体 1                                                   |
+| `fox_fire_0_particle`             | `fox_fire_0`            | 重命名，去 `_particle` 后缀                         | 狐火变体 0                                                   |
+| `fox_fire_1_particle`             | `fox_fire_1`            | 重命名，去 `_particle` 后缀                         | 狐火变体 1                                                   |
+| `feather_white_particle`          | `feather_white`         | 重命名，去 `_particle` 后缀                         | 白色羽毛                                                    |
+| `dyedream_0_particle`             | 未搬运                     | -                                          | -                                                        |
+| `sculk_particle`                  | 未搬运                     | -                                          | -                                                        |
+| `attack_0_particle`               | `sharp_sword_slash`           | 重命名                                          | -                                                        |
+| `starcall_particle`               | `inferno`                        | 重命名                                          | -                                                        |
+| `calle_particle`                  | 未搬运                     | -                                          | -                                                        |
+| `poison_soul_particle`            | 未搬运                     | -                                          | -                                                        |
+| `healing_spell_particle`          | 未搬运                     | -                                          | -                                                        |
+| `golden_particle`                 | 未搬运                     | -                                          | -                                                        |
+| `silver_particle`                 | 未搬运                     | -                                          | -                                                        |
+| `white_star_particle`             | 未搬运                     | -                                          | -                                                        |
+
+> 重置模组新增、源模组无对应旧 ID 的粒子（`新 ID` 一列为空）：
+> - `white_sword_spark`（白剑火花，旧 `white_sword_spark_particle`）
+> - `poison_gas_1`（毒气变体，旧 `poison_gas_particle_1`）
+> - `rejuvenation`（回春，旧 `rejuvenation_particle`）
+
 
