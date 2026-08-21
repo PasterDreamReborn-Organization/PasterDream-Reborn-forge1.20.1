@@ -100,7 +100,7 @@ public class DreamingLotusBlock extends DoublePlantBlock {
         }
 
         // 音效
-        world.playSound(null, pos, ModSounds.DREAM0.get(), SoundSource.BLOCKS, 1, 1);
+        world.playSound(null, pos, ModSounds.AWAKE.get(), SoundSource.BLOCKS, 1, 1);
 
         // 替换为 misty_dreaming_lotus（上下两半）
         Block oldBlock = world.getBlockState(pos).getBlock();

@@ -1,24 +1,24 @@
 {
-  "sword1": {
-    "sounds": [{"name": "pasterdream:sword1", "stream": false}]
+  "sword_slash": {
+    "sounds": [{"name": "pasterdream:sword_slash", "stream": false}]
   },
-  "skill1": {
-    "sounds": [{"name": "pasterdream:skill1", "stream": false}]
+  "skill_hit": {
+    "sounds": [{"name": "pasterdream:skill_hit", "stream": false}]
   },
-  "skill2": {
-    "sounds": [{"name": "pasterdream:skill2", "stream": false}]
+  "skill_hit_heavy": {
+    "sounds": [{"name": "pasterdream:skill_hit_heavy", "stream": false}]
   },
-  "coin0": {
-    "sounds": [{"name": "pasterdream:coin0", "stream": false}]
+  "coin_drop": {
+    "sounds": [{"name": "pasterdream:coin_drop", "stream": false}]
   },
-  "coin1": {
-    "sounds": [{"name": "pasterdream:coin1", "stream": false}]
+  "coin_exchange": {
+    "sounds": [{"name": "pasterdream:coin_exchange", "stream": false}]
   },
-  "skill0": {
-    "sounds": [{"name": "pasterdream:skill0", "stream": false}]
+  "sword_awaken": {
+    "sounds": [{"name": "pasterdream:sword_awaken", "stream": false}]
   },
-  "pliers0": {
-    "sounds": [{"name": "pasterdream:pliers0", "stream": false}]
+  "pliers": {
+    "sounds": [{"name": "pasterdream:pliers", "stream": false}]
   },
   "dyedream_crack":
   {
@@ -28,17 +28,17 @@
   {
     "sounds": [{"name": "pasterdream:doll", "stream": false}]
   },
-  "dream0":
+  "awake":
   {
-    "sounds": [{"name": "pasterdream:dream0", "stream": false}]
+    "sounds": [{"name": "pasterdream:awake", "stream": false}]
   },
   "evasion":
   {
     "sounds": [{"name": "pasterdream:evasion", "stream": false}]
   },
-  "losemind0":
+  "lose_mind":
   {
-    "sounds": [{"name": "pasterdream:losemind0", "stream": false}]
+    "sounds": [{"name": "pasterdream:lose_mind", "stream": false}]
   },
   "sweet_dream_music":
   {
@@ -72,8 +72,8 @@
   {
     "sounds": [{"name": "pasterdream:dream_harp_of_wanderer", "stream": false}]
   },
-  "ding_0": {
-    "sounds": [{"name": "pasterdream:ding_0", "stream": false}]
+  "ding": {
+    "sounds": [{"name": "pasterdream:ding", "stream": false}]
   },
   "dream_accumulator":
   {
@@ -87,14 +87,14 @@
   {
     "sounds": [{"name": "pasterdream:wind_chime", "stream": false}]
   },
-  "roar0": {
-    "sounds": [{"name": "pasterdream:roar0", "stream": false}]
+  "shadow_roar": {
+    "sounds": [{"name": "pasterdream:shadow_roar", "stream": false}]
   },
   "terrorbeak_roar": {
     "sounds": [{"name": "pasterdream:terrorbeak_roar", "stream": false}]
   },
-  "ghost0": {
-    "sounds": [{"name": "pasterdream:ghost0", "stream": false}]
+  "ghost_wail": {
+    "sounds": [{"name": "pasterdream:ghost_wail", "stream": false}]
   },
   "squeal_wave": {
     "sounds": [{"name": "pasterdream:squeal_wave", "stream": false}]
@@ -123,17 +123,17 @@
   "aaroncos_music": {
     "sounds": [{"name": "pasterdream:aaroncos_music", "stream": true}]
   },
-  "stone_break": {
-    "sounds": [{"name": "pasterdream:stone_break", "stream": false}]
+  "stone_shatter": {
+    "sounds": [{"name": "pasterdream:stone_shatter", "stream": false}]
   },
-  "stone_break_0": {
-    "sounds": [{"name": "pasterdream:stone_break_0", "stream": false}]
+  "stone_crack": {
+    "sounds": [{"name": "pasterdream:stone_crack", "stream": false}]
   },
-  "shadow0": {
-    "sounds": [{"name": "pasterdream:shadow0", "stream": false}]
+  "shadow_ominous": {
+    "sounds": [{"name": "pasterdream:shadow_ominous", "stream": false}]
   },
-  "shadow_music_0": {
-    "sounds": [{"name": "pasterdream:shadow_music_0", "stream": true}]
+  "shadow_music": {
+    "sounds": [{"name": "pasterdream:shadow_music", "stream": true}]
   },
   "shadow_door": {
     "sounds": [{"name": "pasterdream:shadow_door", "stream": false}]
@@ -150,11 +150,11 @@
   "shadow_hand_lantern": {
     "sounds": [{"name": "pasterdream:shadow_hand_lantern", "stream": false}]
   },
-  "shadow_trap_0": {
-    "sounds": [{"name": "pasterdream:shadow_trap_0", "stream": false}]
+  "shadow_trap": {
+    "sounds": [{"name": "pasterdream:shadow_trap", "stream": false}]
   },
-  "wind_knight_skill_0": {
-    "sounds": [{"name": "pasterdream:wind_knight_skill_0", "stream": false}]
+  "wind_knight_skill": {
+    "sounds": [{"name": "pasterdream:wind_knight_skill", "stream": false}]
   },
   "thundercloud_attack": {
     "sounds": [{"name": "pasterdream:thundercloud_attack", "stream": false}]

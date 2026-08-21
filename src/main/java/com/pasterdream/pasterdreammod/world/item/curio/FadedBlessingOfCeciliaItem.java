@@ -68,7 +68,7 @@ public class FadedBlessingOfCeciliaItem extends Item implements ICurioItem {
                     }
                     level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
                     ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.BLESSING_OF_CECILIA.get()));
-                    level.playSound(null, pos, ModSounds.DREAM0.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
+                    level.playSound(null, pos, ModSounds.AWAKE.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
                 }
                 return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
             }

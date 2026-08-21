@@ -41,7 +41,7 @@ public class WindVaneItem extends Item {
                     FMT.format(player.getXRot()), FMT.format(player.getYRot())), true);
             player.displayClientMessage(Component.translatable("message.pasterdream.wind_vane.direction." + direction), false);
             level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()),
-                    ModSounds.DING_0.get(), SoundSource.PLAYERS, 1, 1);
+                    ModSounds.DING.get(), SoundSource.PLAYERS, 1, 1);
         }
         return super.use(level, player, hand);
     }

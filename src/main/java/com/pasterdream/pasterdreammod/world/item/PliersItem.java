@@ -37,7 +37,7 @@ public class PliersItem extends Item {
                 level.addFreshEntity(new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
                         new ItemStack(state.getBlock())));
             }
-            level.playSound(null, pos, ModSounds.PLIERS0.get(), SoundSource.PLAYERS, 0.5f, 1);
+            level.playSound(null, pos, ModSounds.PLIERS.get(), SoundSource.PLAYERS, 0.5f, 1);
         }
         return super.mineBlock(stack, level, state, pos, entity);
     }
@@ -45,7 +45,7 @@ public class PliersItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                ModSounds.PLIERS0.get(), SoundSource.PLAYERS, 0.5f, 1);
+                ModSounds.PLIERS.get(), SoundSource.PLAYERS, 0.5f, 1);
         return super.use(level, player, hand);
     }
 
@@ -97,7 +97,7 @@ public class PliersItem extends Item {
                 level.destroyBlock(pos, false);
             }
         }
-        level.playSound(null, pos, ModSounds.PLIERS0.get(), SoundSource.PLAYERS, 0.5f, 1);
+        level.playSound(null, pos, ModSounds.PLIERS.get(), SoundSource.PLAYERS, 0.5f, 1);
         return InteractionResult.SUCCESS;
     }
 }

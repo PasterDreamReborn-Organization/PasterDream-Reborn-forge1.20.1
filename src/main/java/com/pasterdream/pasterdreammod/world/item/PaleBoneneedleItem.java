@@ -104,7 +104,7 @@ public class PaleBoneneedleItem extends Item {
                     player.getX(), player.getY(), player.getZ(),
                     64, 0.1, 1, 0.1, 0.2);
             level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()),
-                    ModSounds.DREAM0.get(), SoundSource.NEUTRAL, 0.5f, 1.0f);
+                    ModSounds.AWAKE.get(), SoundSource.NEUTRAL, 0.5f, 1.0f);
 
             scheduleDelayed(() -> {
                 teleportToOverworldAndSpawn(serverLevel, player);
@@ -176,7 +176,7 @@ public class PaleBoneneedleItem extends Item {
                         target.getX(), target.getY(), target.getZ(),
                         64, 0.1, 1, 0.1, 0.2);
                 level.playSound(null, BlockPos.containing(target.getX(), target.getY(), target.getZ()),
-                        ModSounds.DREAM0.get(), SoundSource.NEUTRAL, 0.5f, 1.0f);
+                        ModSounds.AWAKE.get(), SoundSource.NEUTRAL, 0.5f, 1.0f);
 
                 scheduleDelayed(() -> {
                     teleportToOverworldAndSpawn(serverLevel, target);

@@ -91,7 +91,7 @@ public class RootsPaleBoneneedleItem extends Item {
                         player.getX(), player.getY(), player.getZ(),
                         64, 0.1, 1, 0.1, 0.2);
                 level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()),
-                        ModSounds.DREAM0.get(), SoundSource.NEUTRAL, 0.5f, 1.0f);
+                        ModSounds.AWAKE.get(), SoundSource.NEUTRAL, 0.5f, 1.0f);
 
                 PaleBoneneedleItem.scheduleDelayed(() -> {
                     PaleBoneneedleItem.teleportToOverworldAndSpawn(serverLevel, player);

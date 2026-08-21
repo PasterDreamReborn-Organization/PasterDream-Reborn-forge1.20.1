@@ -46,7 +46,7 @@ public class MurakumoKusanagiItem extends SwordItem {
                 target.hurt(player.damageSources().playerAttack(player), extraDamage);
             }
             target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
-                    ModSounds.SKILL1.get(), target.getSoundSource(), 1.5f, 1.0f);
+                    ModSounds.SKILL_HIT.get(), target.getSoundSource(), 1.5f, 1.0f);
             if (target.level() instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(ModParticleTypes.DUST_0_PARTICLE.get(), target.getX(), target.getY(), target.getZ(), 64, 1.5, 1.8, 1.5, 0.2);
                 serverLevel.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(), target.getX(), target.getY(), target.getZ(), 64, 1.5, 1.8, 1.5, 0.2);
@@ -70,7 +70,7 @@ public class MurakumoKusanagiItem extends SwordItem {
             stack.getOrCreateTag().putBoolean("skill", true);
             SkillCooldownHelper.applySharedCooldown(player, COOLDOWN_TICKS);
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                    ModSounds.SWORD1.get(), SoundSource.PLAYERS, 0.8f, 1.0f);
+                    ModSounds.SWORD_SLASH.get(), SoundSource.PLAYERS, 0.8f, 1.0f);
             if (level instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(ModParticleTypes.BUFF_0_PARTICLE.get(), player.getX(), player.getY() - 0.5, player.getZ(), 20, 0.5, 1, 0.5, 1);
             }

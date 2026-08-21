@@ -52,7 +52,7 @@ public class TwilightLanternTickHandler {
 
         // Tick 18: first ominous message + shadow0 sound
         if (tick == 18) {
-            playSound(world, pos, ModSounds.SHADOW0.get());
+            playSound(world, pos, ModSounds.SHADOW_OMINOUS.get());
             broadcastMessage(world, pos, Component.translatable("message.pasterdream.twilight_lantern.event_start"));
         }
 
@@ -63,8 +63,8 @@ public class TwilightLanternTickHandler {
 
         // Tick 55: second message + shadow_music_0 + shadow golem roar
         if (tick == 55) {
-            playSound(world, pos, ModSounds.SHADOW_MUSIC_0.get(), SoundSource.RECORDS);
-            playSound(world, pos, ModSounds.ROAR0.get(), SoundSource.HOSTILE);
+            playSound(world, pos, ModSounds.SHADOW_MUSIC.get(), SoundSource.RECORDS);
+            playSound(world, pos, ModSounds.SHADOW_ROAR.get(), SoundSource.HOSTILE);
             broadcastMessage(world, pos, Component.translatable("message.pasterdream.twilight_lantern.event_mid"));
         }
 

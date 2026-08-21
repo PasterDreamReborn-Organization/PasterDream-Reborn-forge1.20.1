@@ -166,7 +166,7 @@ public class CurioPassiveHandler {
                 // 饰品激活动画 + 骨针音效
                 ModNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),
                         new CurioActivationPacket(ModItems.PALE_BONE_NEEDLE_TALISMAN.get()));
-                player.level().playSound(null, player.blockPosition(), ModSounds.DREAM0.get(),
+                player.level().playSound(null, player.blockPosition(), ModSounds.AWAKE.get(),
                         SoundSource.NEUTRAL, 1.0F, 1.0F);
 
                 // 粒子

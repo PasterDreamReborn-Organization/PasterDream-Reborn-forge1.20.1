@@ -80,8 +80,8 @@ public class ShadowBrazierBlockEntity extends BlockEntity implements GeoBlockEnt
             for (Player player : players) {
                 player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
             }
-            level.playSound(null, worldPosition, ModSounds.SHADOW0.get(), SoundSource.NEUTRAL, 1, 1);
-            level.playSound(null, worldPosition, ModSounds.SHADOW_MUSIC_0.get(), SoundSource.NEUTRAL, 1, 1);
+            level.playSound(null, worldPosition, ModSounds.SHADOW_OMINOUS.get(), SoundSource.NEUTRAL, 1, 1);
+            level.playSound(null, worldPosition, ModSounds.SHADOW_MUSIC.get(), SoundSource.NEUTRAL, 1, 1);
         }
 
         // t=6: 2 terrorbeaks

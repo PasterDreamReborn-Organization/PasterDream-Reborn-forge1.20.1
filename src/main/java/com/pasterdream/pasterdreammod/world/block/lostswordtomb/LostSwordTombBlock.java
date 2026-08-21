@@ -140,7 +140,7 @@ public class LostSwordTombBlock extends HorizontalDirectionalBlock implements En
                     new ItemStack(Items.MOSSY_COBBLESTONE));
             mossyEntity.setPickUpDelay(5);
             world.addFreshEntity(mossyEntity);
-            world.playSound(null, pos, ModSounds.SKILL0.get(), SoundSource.NEUTRAL, 1, 1);
+            world.playSound(null, pos, ModSounds.SWORD_AWAKEN.get(), SoundSource.NEUTRAL, 1, 1);
             world.sendParticles(ModParticleTypes.DUST_0_PARTICLE.get(),
                     pos.getX() + 0.5, pos.getY() + 0.8, pos.getZ() + 0.5,
                     16, 0.3, 0.2, 0.3, 0.5);
