@@ -557,6 +557,9 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
                         MobSpawnType.MOB_SUMMONED);
                     if (shadowHand != null) {
                         shadowHand.setYRot(random.nextFloat() * 360F);
+                        if (shadowHand instanceof ShadowHandEntity shadowHandEntity) {
+                            shadowHandEntity.setMasterBoss(this);
+                        }
                     }
                 }
             }

@@ -50,6 +50,10 @@ public class ShadowHandEntity extends Monster implements GeoEntity, IShadowMob {
     private long lastSwing;
     public String animationprocedure = "empty";
 
+    /** 当此暗影之手由亚伦柯斯BOSS召唤时，记录BOSS的实体ID，用于共享BOSS仇恨目标 */
+    private int masterBossId = -1;
+    private int masterBossSyncTick;
+
     public ShadowHandEntity(PlayMessages.SpawnEntity packet, Level world) {
         this(ModEntities.SHADOW_HAND.get(), world);
     }
@@ -244,6 +248,20 @@ public class ShadowHandEntity extends Monster implements GeoEntity, IShadowMob {
     public void aiStep() {
         super.aiStep();
         this.setNoGravity(true);
+        // 跟从BOSS仇恨目标：每10 tick同步一次，共享BOSS当前目标（含非玩家单位）
+        if (masterBossId >= 0) {
+            if (++masterBossSyncTick % 10 == 0) {
+                Entity boss = level().getEntity(masterBossId);
+                if (boss instanceof Mob mob) {
+                    LivingEntity target = mob.getTarget();
+                    if (target != null && target.isAlive()) {
+                        this.setTarget(target);
+                    }
+                } else {
+                    masterBossId = -1;
+                }
+            }
+        }
     }
 
     public static void init() {
@@ -331,6 +349,18 @@ public class ShadowHandEntity extends Monster implements GeoEntity, IShadowMob {
     public void setAnimation(String animation) {
         this.animationprocedure = animation;
         this.entityData.set(ANIMATION, animation);
+    }
+
+    /**
+     * 由亚伦柯斯BOSS召唤时调用，记录BOSS并共享其仇恨目标。
+     * 之后该暗影之手会持续跟从BOSS当前目标（含非玩家单位）。
+     */
+    public void setMasterBoss(Mob boss) {
+        this.masterBossId = boss.getId();
+        LivingEntity target = boss.getTarget();
+        if (target != null && target.isAlive()) {
+            this.setTarget(target);
+        }
     }
 
     @Override

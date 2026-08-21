@@ -3,6 +3,8 @@ package com.pasterdream.pasterdreammod.world.item.curio;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
+import com.pasterdream.pasterdreammod.world.entity.AaroncosLeftHandEntity;
+import com.pasterdream.pasterdreammod.world.entity.AaroncosRightHandEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.Monster;
@@ -41,6 +43,8 @@ public class SealOfTheCorruptedHandler {
         if (!(event.getNewTarget() instanceof Player player)) return;
         if (!hasSeal(player)) return;
         if (!event.getEntity().getType().is(ModEntityTypeTags.SHADOW_MOB)) return;
+        // 亚伦柯斯BOSS不受堕落者之印影响，始终攻击佩戴者
+        if (event.getEntity() instanceof AaroncosLeftHandEntity || event.getEntity() instanceof AaroncosRightHandEntity) return;
 
         if (event.getEntity() instanceof Mob mob
                 && event.getEntity().getPersistentData().getBoolean(FRIENDLY_TAG)) {
