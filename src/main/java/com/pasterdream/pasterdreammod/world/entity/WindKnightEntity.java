@@ -22,6 +22,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -69,7 +70,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     // 可调参数
     private static final int XP_REWARD = 32;                    // 经验值
     private static final double MELEE_SPEED = 1.25;             // 近战攻击速度
-    private static final double MELEE_REACH_EXTRA = 4.0;        // 近战攻击距离附加
+    private static final double MELEE_REACH_EXTRA = 6.0;        // 近战攻击距离附加
     private static final int TARGET_INFORM_INTERVAL = 10;       // 目标通知间隔（tick）
     private static final double STROLL_SPEED = 0.8;             // 闲逛速度
     private static final float STEP_SOUND_VOLUME = 0.15f;       // 脚步声音量
@@ -181,6 +182,15 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     public boolean hurt(DamageSource source, float amount) {
         if (source.is(DamageTypes.IN_FIRE) || source.is(DamageTypes.FALL) || source.is(DamageTypes.LIGHTNING_BOLT))
             return false;
+
+        // 先记录攻击者，保证即使伤害被限伤减免或免伤拦截，也会反击并转向攻击者
+        if (!level().isClientSide() && !source.is(DamageTypeTags.NO_ANGER)) {
+            Entity attacker = source.getEntity();
+            if (attacker instanceof LivingEntity living) {
+                this.setLastHurtByMob(living);
+            }
+        }
+
         float prevBucket = damageLimiter.getDamageBucket();
         amount = damageLimiter.limit(this, source, amount);
         if (amount < 0) return false;
