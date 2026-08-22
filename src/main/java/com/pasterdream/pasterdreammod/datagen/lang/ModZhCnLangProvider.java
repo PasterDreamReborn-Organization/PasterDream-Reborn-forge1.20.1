@@ -493,7 +493,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("block.pasterdream.wind_knight_altar.need_torso", "需要 [凝风铁锭] 组装躯干");
         add("block.pasterdream.wind_knight_altar.need_arms", "需要 [凝风铁锭] 组装手臂");
         add("block.pasterdream.wind_knight_altar.need_head", "需要 [凝风铁锭] 组装头颅");
-        add("block.pasterdream.wind_knight_altar.throw_lightning", "将雷电药剂瓶投掷到祭坛附近以唤醒傀儡");
+        add("block.pasterdream.wind_knight_altar.throw_lightning", "需要 [雷电药剂瓶]：右键祭坛，或将药剂瓶投掷到祭坛附近以唤醒傀儡");
         add("block.pasterdream.golden_fox_sculpture.no_reaction", "雕像没有反应...");
         add("block.pasterdream.golden_fox_sculpture.cooldown", "雕像还在沉睡... 还需等待 %s 秒");
         add(ModBlocks.FOX_SCULPTURE.get(), "狐狸雕像");

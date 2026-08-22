@@ -479,7 +479,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("block.pasterdream.wind_knight_altar.need_torso", "Need [Congeal Wind Iron Ingot] to assemble the torso");
         add("block.pasterdream.wind_knight_altar.need_arms", "Need [Congeal Wind Iron Ingot] to assemble the arms");
         add("block.pasterdream.wind_knight_altar.need_head", "Need [Congeal Wind Iron Ingot] to assemble the head");
-        add("block.pasterdream.wind_knight_altar.throw_lightning", "Throw a lightning potion bottle near the altar to awaken it");
+        add("block.pasterdream.wind_knight_altar.throw_lightning", "Requires a Lightning Potion Bottle: right-click the altar, or throw the bottle near the altar to awaken it");
         add("block.pasterdream.golden_fox_sculpture.no_reaction", "The sculpture does not respond...");
         add("block.pasterdream.golden_fox_sculpture.cooldown", "The sculpture is still slumbering... %s seconds remaining");
         add(ModBlocks.FOX_SCULPTURE.get(), "Fox Sculpture");
