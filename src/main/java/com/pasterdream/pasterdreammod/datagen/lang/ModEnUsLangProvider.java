@@ -1410,6 +1410,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.GHOST_FACE.get(), "Ghost Face");
         add("tooltip.pasterdream.ghost_face.effect.1", "§7▪ §9When using ranged weapons, fire an extra shot, with a 20% chance to fire another one.");
         add("tooltip.pasterdream.ghost_face.effect.2", "§7▪ §9Ranged weapon projectiles ignore invincibility frames.");
+        add("tooltip.pasterdream.ghost_face.cooldown", "§7▪ §9Cooldown: %s seconds");
 
         // Advancements - Story
         add("advancements.pasterdream.story.root.title", "PasterDream");

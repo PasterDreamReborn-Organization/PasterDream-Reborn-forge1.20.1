@@ -62,6 +62,13 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
 public class CurioPassiveHandler {
 
+    /**
+     * 鬼魂之面复制判定：主弹幕由玩家本体直接发射，生成位置贴近玩家；
+     * 副弹幕（由主弹幕分裂而来，例如钷子弹的 divide/hitDivide）在父弹幕当前位置生成，
+     * 通常已远离玩家本体。据此跳过副弹幕，只复制主弹幕。
+     */
+    private static final double GHOST_FACE_CLONE_MAX_SPAWN_DISTANCE_SQR = 9.0; // 3 格
+
 
     @SubscribeEvent
     public static void onLivingChangeTarget(LivingChangeTargetEvent event) {
@@ -451,6 +458,10 @@ public class CurioPassiveHandler {
         // 配置文件黑名单
         if (Config.isGhostFaceProjectileBlacklisted(projectile.getType())) return;
 
+        // 跳过由父投射物分裂出的副弹幕：副弹幕在父弹幕当前位置生成，远离玩家本体，
+        // 若仍按“玩家所有”处理会被鬼魂之面重复复制（鬼魂之面应只复制玩家直接发射的主弹幕）
+        if (projectile.distanceToSqr(player) > GHOST_FACE_CLONE_MAX_SPAWN_DISTANCE_SQR) return;
+
         CompoundTag pd = player.getPersistentData();
         // 如果 ArrowLooseEvent 已设置数据（弓/弩），用实际箭矢类型覆盖默认的 Arrow 类型
         if (pd.contains("pasterdream_ghost_face_delay")) {
@@ -468,6 +479,9 @@ public class CurioPassiveHandler {
             }
             return;
         }
+
+        // 内置冷却：冷却期内不复制（非弓/弩投射物在此统一安排复制）
+        if (isGhostFaceOnCooldown(player)) return;
 
         // 非弓/弩投射物：读取当前速度与伤害
         Vec3 motion = projectile.getDeltaMovement();
@@ -507,6 +521,8 @@ public class CurioPassiveHandler {
             pd.putString("pasterdream_ghost_face_potion_type",
                     PotionBottleItem.getPotionType(potionBottle.getItem()));
         }
+
+        markGhostFaceClone(player);
     }
 
     /**
@@ -522,6 +538,9 @@ public class CurioPassiveHandler {
                 .map(h -> h.findFirstCurio(ModItems.GHOST_FACE.get()).isPresent())
                 .orElse(false);
         if (!hasGhostFace) return;
+
+        // 内置冷却：冷却期内不复制
+        if (isGhostFaceOnCooldown(player)) return;
 
         ItemStack bow = event.getBow();
 
@@ -562,6 +581,8 @@ public class CurioPassiveHandler {
         pd.putBoolean("pasterdream_ghost_face_flame", flame);
         pd.putBoolean("pasterdream_ghost_face_crit", crit);
         pd.putInt("pasterdream_ghost_face_type", 0); // 箭矢类型
+
+        markGhostFaceClone(player);
     }
 
     /**
@@ -691,6 +712,23 @@ public class CurioPassiveHandler {
         pd.remove("pasterdream_ghost_face_type");
         pd.remove("pasterdream_ghost_face_clone");
         pd.remove("pasterdream_ghost_face_potion_type");
+    }
+
+    /**
+     * 鬼魂之面复制内置冷却：判断距离上次复制是否仍在冷却期内。
+     */
+    private static boolean isGhostFaceOnCooldown(Player player) {
+        int cooldownTicks = Config.ghostFaceCloneCooldownSeconds * 20;
+        if (cooldownTicks <= 0) return false;
+        long lastClone = player.getPersistentData().getLong("pasterdream_ghost_face_last_clone");
+        return lastClone > 0 && player.level().getGameTime() - lastClone < cooldownTicks;
+    }
+
+    /**
+     * 记录鬼魂之面本次复制发生的时间点。
+     */
+    private static void markGhostFaceClone(Player player) {
+        player.getPersistentData().putLong("pasterdream_ghost_face_last_clone", player.level().getGameTime());
     }
 
     private static void teleportToSpawn(ServerPlayer sp) {
