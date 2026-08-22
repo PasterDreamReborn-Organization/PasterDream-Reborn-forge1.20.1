@@ -3,12 +3,15 @@ package com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.renderhelper.RendBakedModel;
+import com.pasterdream.pasterdreammod.init.ModItemModels;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -39,18 +42,24 @@ public class ElixirBottleRenderer extends BlockEntityWithoutLevelRenderer
     @Override
     public void renderByItem(ItemStack stack, ItemDisplayContext transformType, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay)
     {
+        BakedModel bottleModel = ModItemModels.getElixirBottleModel();
+        if (bottleModel != null)
+        {
+            RendBakedModel.rend(bottleModel, poseStack, buffer, packedLight, packedOverlay);
+        }
+
         FluidStack fluid = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).map(fluidHandlerItem -> fluidHandlerItem.getFluidInTank(0)).orElse(FluidStack.EMPTY);
 
         TextureAtlasSprite bottleSprite = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "item/elixir_bottle"));
 
-        float z = 0f;
+        float z = 0.53125f;
 
         if (!fluid.isEmpty())
         {
             drawFluidLayer(fluid, poseStack, buffer, packedLight, packedOverlay, 0, 0, 1, 1, z);
         }
 
-        drawBottleLayer(bottleSprite, poseStack, buffer, packedLight, packedOverlay, 0, 0, 1, 1, z);
+        //drawBottleLayer(bottleSprite, poseStack, buffer, packedLight, packedOverlay, 0, 0, 1, 1, z);
     }
 
     private void drawFluidLayer(FluidStack fluidStack, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay, float minX, float maxX, float minY, float maxY, float z)

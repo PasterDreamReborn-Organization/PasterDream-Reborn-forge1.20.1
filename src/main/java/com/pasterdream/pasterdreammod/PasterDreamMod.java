@@ -110,6 +110,7 @@ public class PasterDreamMod
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::registerItemColors);
         modEventBus.addListener(this::registerItemModels);
+        modEventBus.addListener(this::getItemModels);
         MinecraftForge.EVENT_BUS.addListener(this::AddItemTooltip);
         MinecraftForge.EVENT_BUS.addListener(this::AddCommand);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
@@ -221,6 +222,11 @@ public class PasterDreamMod
     private void registerItemModels(ModelEvent.ModifyBakingResult event)
     {
         ModItemModels.register(event);
+    }
+
+    private void getItemModels(ModelEvent.BakingCompleted event)
+    {
+        ModItemModels.getBakedModel(event);
     }
 
     private void registerItemColors(RegisterColorHandlersEvent.Item event)
