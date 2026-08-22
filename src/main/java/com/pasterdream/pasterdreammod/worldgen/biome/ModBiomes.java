@@ -62,9 +62,9 @@ public class ModBiomes {
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "misty_dream_cloud_layer"));
 
     // ===== 亚伦柯斯竞技场维度群系 =====
-    public static final ResourceKey<Biome> AARONCOS_ARENA_BIOME =
+    public static final ResourceKey<Biome> AARONCOS_ARENA =
             ResourceKey.create(Registries.BIOME,
-                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_arena_biome"));
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_arena"));
 
     private static final ResourceKey<SoundEvent> SWEET_DREAM_MUSIC_KEY =
             ResourceKey.create(Registries.SOUND_EVENT,
@@ -122,7 +122,7 @@ public class ModBiomes {
         context.register(MISTY_DREAM_CLOUD_LAYER, mistyDreamCloudLayer(placedFeatures, carvers));
 
         // 亚伦柯斯竞技场（虚空占位群系：无地物 / 无生成 / 无雕刻器）
-        context.register(AARONCOS_ARENA_BIOME, aaroncosArenaBiome(placedFeatures, carvers));
+        context.register(AARONCOS_ARENA, aaroncosArenaBiome(placedFeatures, carvers));
     }
 
     // ==================== 共享辅助方法 ====================

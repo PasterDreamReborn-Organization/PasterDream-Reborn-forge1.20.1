@@ -260,7 +260,7 @@ public class ModLevelStems {
         context.register(WIND_JOURNEY_WORLD, new LevelStem(windJourneyDimType, windJourneyChunkGenerator));
 
         // ===== 亚伦柯斯竞技场维度 =====
-        Holder<Biome> aaroncosArenaBiome = biomes.getOrThrow(ModBiomes.AARONCOS_ARENA_BIOME);
+        Holder<Biome> aaroncosArenaBiome = biomes.getOrThrow(ModBiomes.AARONCOS_ARENA);
         Holder<DimensionType> aaroncosArenaDimType = dimensionTypes.getOrThrow(ModDimensionTypes.AARONCOS_ARENA_WORLD);
         Holder<NoiseGeneratorSettings> aaroncosArenaNoise = noiseSettings.getOrThrow(ModNoiseSettings.AARONCOS_ARENA_WORLD);
 

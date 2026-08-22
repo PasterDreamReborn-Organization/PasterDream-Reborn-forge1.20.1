@@ -827,6 +827,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("biome.pasterdream.shadow_ocean","阴影之海");
         add("biome.pasterdream.wind_moor_archipelago","风泊群岛");
         add("biome.pasterdream.misty_dream_cloud_layer","迷梦云层");
+        add("biome.pasterdream.aaroncos_arena","亚伦柯斯竞技场");
 
         add("recipe.pasterdream.copy", "复制");
         add("recipe.pasterdream.research", "研究");
