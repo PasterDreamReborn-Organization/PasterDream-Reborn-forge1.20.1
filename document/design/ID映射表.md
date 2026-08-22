@@ -743,7 +743,7 @@
 | `biome_shadow_2`       | `shadow_ruins`                | 重命名     | 阴影古迹                          |
 | `wind_journey_biome_0` | `wind_moor_archipelago`         | 重命名，已实现 | 风泊群岛，`ModBiomes` 中完成 datagen |
 | `wind_journey_biome_1` | `misty_dream_cloud_layer`       | 重命名，已实现 | 迷梦云层，`ModBiomes` 中完成 datagen |
-| `aaroncos_arena_biome` | `aaroncos_arena_biome`          | 不改，已实现 | 亚伦柯斯竞技场，`ModBiomes` 中完成 datagen |
+| `aaroncos_arena_biome` | `aaroncos_arena`                | 改名（去 `_biome` 后缀），已实现 | 亚伦柯斯竞技场，`ModBiomes` 中完成 datagen |
 
 ---
 
