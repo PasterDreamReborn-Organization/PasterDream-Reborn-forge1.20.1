@@ -5,6 +5,8 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
+import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -71,7 +73,21 @@ public class WindKnightAltarProcedure {
                 player.displayClientMessage(Component.translatable("block.pasterdream.wind_knight_altar.need_head"), true);
             }
         } else if (stage == 4) {
-            player.displayClientMessage(Component.translatable("block.pasterdream.wind_knight_altar.throw_lightning"), true);
+            if (mainHand.is(PotionBottleRegistry.POTION_BOTTLE.get())
+                    && PotionBottleItem.TYPE_LIGHTNING.equals(PotionBottleItem.getPotionType(mainHand))) {
+                if (!player.getAbilities().instabuild)
+                    mainHand.shrink(1);
+                if (world instanceof ServerLevel sl) {
+                    ItemStack stack = PotionBottleItem.createWithType(
+                            PotionBottleRegistry.POTION_BOTTLE.get(), PotionBottleItem.TYPE_LIGHTNING);
+                    Vec3 center = new Vec3(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
+                    var effect = PotionBottleItem.getEffect(PotionBottleItem.TYPE_LIGHTNING);
+                    if (effect != null)
+                        effect.onBottleBreak(stack, sl, player, center);
+                }
+            } else {
+                player.displayClientMessage(Component.translatable("block.pasterdream.wind_knight_altar.throw_lightning"), true);
+            }
         }
     }
 
@@ -81,19 +97,24 @@ public class WindKnightAltarProcedure {
                 center.offset(SUMMON_RADIUS, SUMMON_RADIUS, SUMMON_RADIUS))) {
             BlockState state = world.getBlockState(p);
             if (state.is(ModBlocks.WIND_KNIGHT_ALTAR.get()) && state.getValue(WindKnightAltarBlock.STAGE) == 4) {
-                world.setBlock(p, state.setValue(WindKnightAltarBlock.STAGE, 0), 3);
-                var boss = ModEntities.WIND_KNIGHT.get().spawn(world,
-                        BlockPos.containing(p.getX() + 0.5, p.getY() + 1, p.getZ() + 0.5), MobSpawnType.MOB_SUMMONED);
-                if (boss != null)
-                    boss.setYRot(world.random.nextFloat() * 360F);
-                spawnThundercloud(world, p.getX() + 6.5, p.getY() + 8, p.getZ() + 6.5);
-                spawnThundercloud(world, p.getX() - 6.5, p.getY() + 8, p.getZ() + 6.5);
-                spawnThundercloud(world, p.getX() + 6.5, p.getY() + 8, p.getZ() - 6.5);
-                spawnThundercloud(world, p.getX() - 6.5, p.getY() + 8, p.getZ() - 6.5);
-                world.playSound(null, p, ModSounds.SHADOW_DOOR.get(), SoundSource.MASTER, 1f, 1f);
+                summonAt(world, p);
                 return;
             }
         }
+    }
+
+    private static void summonAt(ServerLevel world, BlockPos p) {
+        BlockState state = world.getBlockState(p);
+        world.setBlock(p, state.setValue(WindKnightAltarBlock.STAGE, 0), 3);
+        var boss = ModEntities.WIND_KNIGHT.get().spawn(world,
+                BlockPos.containing(p.getX() + 0.5, p.getY() + 1, p.getZ() + 0.5), MobSpawnType.MOB_SUMMONED);
+        if (boss != null)
+            boss.setYRot(world.random.nextFloat() * 360F);
+        spawnThundercloud(world, p.getX() + 6.5, p.getY() + 8, p.getZ() + 6.5);
+        spawnThundercloud(world, p.getX() - 6.5, p.getY() + 8, p.getZ() + 6.5);
+        spawnThundercloud(world, p.getX() + 6.5, p.getY() + 8, p.getZ() - 6.5);
+        spawnThundercloud(world, p.getX() - 6.5, p.getY() + 8, p.getZ() - 6.5);
+        world.playSound(null, p, ModSounds.SHADOW_DOOR.get(), SoundSource.MASTER, 1f, 1f);
     }
 
     private static void spawnThundercloud(ServerLevel level, double x, double y, double z) {
