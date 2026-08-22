@@ -549,6 +549,10 @@ public class Config
                     List.of("supplementaries:slingshot_projectile","tide:fishing_bobber"),
                     obj -> obj instanceof String);
 
+    private static final ForgeConfigSpec.IntValue GHOST_FACE_CLONE_COOLDOWN = BUILDER
+            .comment("鬼魂之面复制弹幕的内置冷却时间（秒），默认 3 秒，设为 0 可关闭冷却")
+            .defineInRange("ghostFaceCloneCooldownSeconds", 3, 0, Integer.MAX_VALUE);
+
     // === 重生之梦水晶 ===
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> REBIRTH_DREAM_CRYSTAL_LOOT = BUILDER
             .comment("重生之梦水晶 shift+右键 释放遗物中的灵魂时可随机获得的物品 ID 列表（格式：modid:item_id），"
@@ -654,6 +658,7 @@ public class Config
 
     //鬼魂之面
     public static List<? extends String> ghostFaceProjectileBlacklist;
+    public static int ghostFaceCloneCooldownSeconds;
     private static Set<ResourceLocation> cachedGhostFaceBlacklistTypes = Set.of();
 
     /** 卡莱调料瓶随机增益缓存（解析后的 MobEffect 列表） */
@@ -1039,6 +1044,7 @@ public class Config
         calaisSpiceBottleEvasionDuration = CALAIS_SPICE_BOTTLE_EVASION_DURATION.get();
 
         ghostFaceProjectileBlacklist = GHOST_FACE_PROJECTILE_BLACKLIST.get();
+        ghostFaceCloneCooldownSeconds = GHOST_FACE_CLONE_COOLDOWN.get();
         rebuildGhostFaceBlacklistCache();
 
         rebirthDreamCrystalLoot = REBIRTH_DREAM_CRYSTAL_LOOT.get();
