@@ -376,25 +376,25 @@ public class Config
             .define("windKnightDamageCapEnabled", true);
 
     private static final ForgeConfigSpec.BooleanValue WIND_KNIGHT_DPS_CAP_ENABLED = BUILDER
-            .comment("破风骑士：是否启用 DPS 限制（每秒总伤害上限），默认 false。"
+            .comment("破风骑士：是否启用 DPS 限制（每秒总伤害上限），默认 true。"
                     + "\n仅在启用单次伤害限制（windKnightDamageCapEnabled=true）时生效")
-            .define("windKnightDpsCapEnabled", false);
+            .define("windKnightDpsCapEnabled", true);
 
     private static final ForgeConfigSpec.BooleanValue WIND_KNIGHT_RANGE_CAP_ENABLED = BUILDER
-            .comment("破风骑士：是否启用远距离减伤（超出限伤距离后伤害线性衰减），默认 false")
-            .define("windKnightRangeCapEnabled", false);
+            .comment("破风骑士：是否启用远距离减伤（超出限伤距离后伤害线性衰减），默认 true")
+            .define("windKnightRangeCapEnabled", true);
 
     private static final ForgeConfigSpec.DoubleValue WIND_KNIGHT_DAMAGE_CAP = BUILDER
-            .comment("破风骑士：单次受击伤害上限（同时也是 DPS 桶容量），默认 40")
-            .defineInRange("windKnightDamageCap", 40.0, 1.0, 1_000_000.0);
+            .comment("破风骑士：单次受击伤害上限（同时也是 DPS 桶容量），默认 20")
+            .defineInRange("windKnightDamageCap", 20.0, 1.0, 1_000_000.0);
 
     private static final ForgeConfigSpec.DoubleValue WIND_KNIGHT_DPS_CAP = BUILDER
             .comment("破风骑士：DPS 桶每秒恢复量，默认 200")
             .defineInRange("windKnightDpsCap", 200.0, 1.0, 1_000_000.0);
 
     private static final ForgeConfigSpec.DoubleValue WIND_KNIGHT_RANGE_CAP = BUILDER
-            .comment("破风骑士：限伤距离衰减起始距离（格），默认 12")
-            .defineInRange("windKnightRangeCap", 12.0, 1.0, 256.0);
+            .comment("破风骑士：限伤距离衰减起始距离（格），默认 8")
+            .defineInRange("windKnightRangeCap", 8.0, 1.0, 256.0);
 
     // === 亚伦柯斯之触 ===
     private static final ForgeConfigSpec.BooleanValue AARONCOS_TOUCH_IMMUNE_TO_NEGATIVE_EFFECTS = BUILDER

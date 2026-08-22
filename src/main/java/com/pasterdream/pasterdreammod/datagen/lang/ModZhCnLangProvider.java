@@ -1185,6 +1185,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.boboji_curio.effect.flavor", "§7▪ §e瞬身术增加音效和粒子拖尾");
         add("tooltip.pasterdream.boboji_curio.lore", "§7§o谨以此献给曾陪伴我的它");
         add("tooltip.pasterdream.boboji_curio.dedication", "§7§o-- 一只名为啵啵鸡的黄绿色虎皮鹦鹉");
+        add(ModItems.SHADOW_BREATH.get(), "暗影之息");
+        add("tooltip.pasterdream.shadow_breath.0", "§7▪ §9在精神值分别低于60%/40%/20%时");
+        add("tooltip.pasterdream.shadow_breath.1", "§7▪ §9增加1/2/4点攻击力");
         add(ModItems.MOSS_PHANTOM_MEMBRANE.get(), "光合幻翼膜");
         add("tooltip.pasterdream.moss_phantom_membrane.effect", "§7▪ §9在光亮的环境下会为正在装备的鞘翅缓慢恢复耐久");
         add(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get(), "萤火光合幻翼膜");

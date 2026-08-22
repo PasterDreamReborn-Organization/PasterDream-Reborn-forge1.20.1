@@ -70,7 +70,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     // 可调参数
     private static final int XP_REWARD = 32;                    // 经验值
     private static final double MELEE_SPEED = 1.25;             // 近战攻击速度
-    private static final double MELEE_REACH_EXTRA = 6.0;        // 近战攻击距离附加
+    private static final double MELEE_REACH = 6.0;              // 近战攻击距离（格，中心距）
     private static final int TARGET_INFORM_INTERVAL = 10;       // 目标通知间隔（tick）
     private static final double STROLL_SPEED = 0.8;             // 闲逛速度
     private static final float STEP_SOUND_VOLUME = 0.15f;       // 脚步声音量
@@ -353,7 +353,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
 
         @Override
         protected double getAttackReachSqr(LivingEntity entity) {
-            return this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth() + MELEE_REACH_EXTRA;
+            return this.mob.getBbWidth() + entity.getBbWidth() + MELEE_REACH * MELEE_REACH;
         }
 
         @Override
