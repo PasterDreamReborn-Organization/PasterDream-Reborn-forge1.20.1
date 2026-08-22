@@ -690,6 +690,10 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.LOOT_GENERATOR.get())//吞掉这个物品
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
