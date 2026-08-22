@@ -333,6 +333,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BRIGHT_BUTTERFLY_CURIO.get());
                         output.accept(ModItems.ICE_SHADOW_CURIO.get());
                         output.accept(ModItems.BOBOJI_CURIO.get());
+                        output.accept(ModItems.SHADOW_BREATH.get());
                         output.accept(ModItems.MOSS_PHANTOM_MEMBRANE.get());
                         output.accept(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get());
                         output.accept(ModItems.RABBIT_FOOT_NECKLACE.get());

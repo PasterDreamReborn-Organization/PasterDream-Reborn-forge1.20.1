@@ -1008,6 +1008,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.boboji_curio.effect.flavor", "§7▪ §eAdds sound effects and particle trails to Blink");
         add("tooltip.pasterdream.boboji_curio.lore", "§7§oDedicated to the one who once accompanied me");
         add("tooltip.pasterdream.boboji_curio.dedication", "§7§o-- A yellow-green budgerigar named Boboji");
+        add(ModItems.SHADOW_BREATH.get(), "Shadow Breath");
+        add("tooltip.pasterdream.shadow_breath.0", "§7▪ §9When SAN falls below 60%/40%/20%");
+        add("tooltip.pasterdream.shadow_breath.1", "§7▪ §9Grants 1/2/4 bonus Attack Damage");
         add(ModItems.MOSS_PHANTOM_MEMBRANE.get(), "Moss Phantom Membrane");
         add("tooltip.pasterdream.moss_phantom_membrane.effect", "§7▪ §9Slowly repairs the equipped Elytra in bright light");
         add(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get(), "Light Moss Phantom Membrane");
