@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -74,7 +75,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     private static final float STEP_SOUND_VOLUME = 0.15f;       // 脚步声音量
     private static final float STEP_SOUND_PITCH = 1.0f;         // 脚步声音调
     private static final float DIMENSION_SCALE = 1.6f;          // 实体碰撞箱缩放
-    private static final int SKILL_COOLDOWN = 100;              // 技能冷却（tick）
+    private static final int SKILL_COOLDOWN = 180;              // 技能冷却
     private static final double SKILL_TRIGGER_DIST = 36.0;      // 技能触发距离（平方，6格）
     private static final int SKILL_DELAY = 25;                  // 技能释放延迟（tick）
     private static final double SKILL_RADIUS = 7.0;             // 技能范围（格）
@@ -101,14 +102,16 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     private static final double ATTACK_DAMAGE = 20;             // 攻击伤害属性
     private static final double FOLLOW_RANGE = 16;              // 追踪距离属性
     private static final double KNOCKBACK_RESISTANCE = 0.4;     // 击退抗性属性
-    private static final long SWING_DURATION = 7L;              // 攻击动画时长（tick）
+    private static final int ATTACK_ANIM_LENGTH = 20;           // 攻击动画时长（tick，attack 动画长 1s）
+    private static final int ATTACK_INTERVAL = 25;              // 攻击间隔（tick），略大于动画时长避免重叠
+    private static final int ATTACK_DAMAGE_DELAY = 10;          // 攻击动画播放后延迟结算伤害（tick）
+    private static final int SKILL_ANIM_LENGTH_TICKS = 50;      // 技能动画时长（tick，skill_0 约 2.52s）
     private static final int DEATH_TIME = 20;                   // 死亡动画时长（tick）
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final ServerBossEvent bossInfo = new ServerBossEvent(this.getDisplayName(), ServerBossEvent.BossBarColor.GREEN, ServerBossEvent.BossBarOverlay.PROGRESS);
-    private boolean swinging;
-    private long lastSwing;
     public String animationprocedure = "empty";
+    private int procedureTimer;
     private int skillCooldown;
     private final BossDamageLimiter damageLimiter;
 
@@ -147,12 +150,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, MELEE_SPEED, false) {
-            @Override
-            protected double getAttackReachSqr(LivingEntity entity) {
-                return this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth() + MELEE_REACH_EXTRA;
-            }
-        });
+        this.goalSelector.addGoal(1, new AnimationMeleeAttackGoal(this, MELEE_SPEED, false));
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this).setAlertOthers());
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, TARGET_INFORM_INTERVAL, false, false,
                 target -> target instanceof Player player && !player.isCreative() && !player.isSpectator()));
@@ -209,6 +207,13 @@ public class WindKnightEntity extends Monster implements GeoEntity {
         super.baseTick();
         damageLimiter.tick();
         skillTick();
+        if (!level().isClientSide()) {
+            if (procedureTimer > 0) {
+                procedureTimer--;
+                if (procedureTimer == 0)
+                    setAnimation("empty");
+            }
+        }
         this.refreshDimensions();
     }
 
@@ -238,9 +243,14 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     private void skillTick() {
         if (skillCooldown >= SKILL_COOLDOWN) {
             LivingEntity target = getTarget();
-            if (target != null && target.isAlive() && distanceToSqr(target) <= SKILL_TRIGGER_DIST) {
-                setAnimation("skill_0");
+            // 只有在未播放其他程序动画（普攻/技能）时才释放战技，避免动画互相覆盖
+            if (target != null && target.isAlive() && distanceToSqr(target) <= SKILL_TRIGGER_DIST
+                    && animationprocedure.equals("empty")) {
+                startProcedureAnimation("skill_0", SKILL_ANIM_LENGTH_TICKS);
                 PasterDreamMod.queueServerWork(SKILL_DELAY, () -> {
+                    // 延迟期间骑士可能死亡/被移除，此时不得再造成伤害或释放粒子
+                    if (this.isRemoved() || !this.isAlive())
+                        return;
                     Vec3 center = position();
                     for (Entity e : level().getEntitiesOfClass(Entity.class,
                             new AABB(center, center).inflate(SKILL_RADIUS), e -> true).stream()
@@ -264,7 +274,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
                 });
                 addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, SLOWDOWN_EFFECT_DURATION, SLOWDOWN_EFFECT_AMPLIFIER, false, false));
                 PasterDreamMod.queueServerWork(HURT_SOUND_DELAY, () -> {
-                    if (!level().isClientSide())
+                    if (!level().isClientSide() && !this.isRemoved() && this.isAlive())
                         level().playSound(null, BlockPos.containing(position()), SoundEvents.IRON_GOLEM_HURT, SoundSource.MASTER, HURT_SOUND_VOLUME, HURT_SOUND_PITCH);
                 });
                 skillCooldown = 0;
@@ -288,47 +298,80 @@ public class WindKnightEntity extends Monster implements GeoEntity {
                 .add(Attributes.KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE);
     }
 
-    private PlayState movementPredicate(AnimationState event) {
-        if (this.animationprocedure.equals("empty")) {
-            if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F) || this.isSprinting()) {
-                return event.setAndContinue(RawAnimation.begin().thenLoop("walk"));
-            }
-            return event.setAndContinue(RawAnimation.begin().thenLoop("idle"));
-        }
-        return PlayState.STOP;
-    }
+    /**
+     * 单控制器方案：服务器权威驱动动画状态，客户端只负责播放当前动画。
+     * 优先级：技能/程序动画（含普攻） > 行走/待机。
+     * 通过比较当前动画名称决定是否切换，不再依赖 getAnimationState()==STOPPED，
+     * 从而消除"有时无法播放战技/普攻动画"的竞态问题。
+     */
+    private PlayState animationPredicate(AnimationState event) {
+        AnimationController<WindKnightEntity> controller = event.getController();
+        String currentName = controller.getCurrentAnimation() == null
+                ? "" : controller.getCurrentAnimation().animation().name();
 
-    private PlayState attackingPredicate(AnimationState event) {
-        if (!this.animationprocedure.equals("empty"))
-            return PlayState.STOP;
-        double d1 = this.getX() - this.xOld;
-        double d0 = this.getZ() - this.zOld;
-        float velocity = (float) Math.sqrt(d1 * d1 + d0 * d0);
-        if (getAttackAnim(event.getPartialTick()) > 0f && !this.swinging) {
-            this.swinging = true;
-            this.lastSwing = level().getGameTime();
+        // 1. 技能/程序动画（最高优先级，普攻也走这里）
+        if (!animationprocedure.equals("empty")) {
+            if (!animationprocedure.equals(currentName)) {
+                controller.setAnimation(RawAnimation.begin().thenPlay(animationprocedure));
+            }
+            return PlayState.CONTINUE;
         }
-        if (this.swinging && this.lastSwing + SWING_DURATION <= level().getGameTime()) {
-            this.swinging = false;
-        }
-        if (this.swinging && event.getController().getAnimationState() == AnimationController.State.STOPPED) {
-            event.getController().forceAnimationReset();
-            return event.setAndContinue(RawAnimation.begin().thenPlay("attack"));
+
+        // 2. 行走/待机
+        boolean moving = event.isMoving()
+                || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)
+                || this.isSprinting();
+        String target = moving ? "walk" : "idle";
+        if (!target.equals(currentName)) {
+            controller.setAnimation(RawAnimation.begin().thenLoop(target));
         }
         return PlayState.CONTINUE;
     }
 
-    private PlayState procedurePredicate(AnimationState event) {
-        if (!animationprocedure.equals("empty") && event.getController().getAnimationState() == AnimationController.State.STOPPED) {
-            event.getController().setAnimation(RawAnimation.begin().thenPlay(this.animationprocedure));
-            if (event.getController().getAnimationState() == AnimationController.State.STOPPED) {
-                this.animationprocedure = "empty";
-                event.getController().forceAnimationReset();
-            }
-        } else if (animationprocedure.equals("empty")) {
-            return PlayState.STOP;
+    /**
+     * 近战攻击：普攻通过 startProcedureAnimation 走程序动画，由服务器驱动，
+     * 先播动画再延迟结算伤害。
+     */
+    private static class AnimationMeleeAttackGoal extends MeleeAttackGoal {
+        private final WindKnightEntity mob;
+        private long lastAttackTick = -ATTACK_INTERVAL;
+
+        public AnimationMeleeAttackGoal(WindKnightEntity mob, double speed, boolean followingTargetEvenIfNotSeen) {
+            super(mob, speed, followingTargetEvenIfNotSeen);
+            this.mob = mob;
         }
-        return PlayState.CONTINUE;
+
+        @Override
+        protected double getAttackReachSqr(LivingEntity entity) {
+            return this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth() + MELEE_REACH_EXTRA;
+        }
+
+        @Override
+        protected int getAttackInterval() {
+            return this.adjustedTickDelay(ATTACK_INTERVAL);
+        }
+
+        @Override
+        protected void checkAndPerformAttack(LivingEntity enemy, double distToEnemySqr) {
+            double reach = getAttackReachSqr(enemy);
+            // 未在播放其他程序动画（战技/普攻）时才普攻，与战技互斥，避免动画互相覆盖
+            if (distToEnemySqr <= reach && this.getTicksUntilNextAttack() <= 0
+                    && mob.animationprocedure.equals("empty")
+                    && mob.level().getGameTime() >= lastAttackTick + ATTACK_INTERVAL) {
+                this.resetAttackCooldown();
+                this.lastAttackTick = mob.level().getGameTime();
+                // 先播放攻击动画，延迟 10 tick 后再结算伤害
+                this.mob.startProcedureAnimation("attack", ATTACK_ANIM_LENGTH);
+                PasterDreamMod.queueServerWork(ATTACK_DAMAGE_DELAY, () -> {
+                    if (!this.mob.isRemoved() && this.mob.isAlive()
+                            && enemy.isAlive()
+                            && this.mob.distanceToSqr(enemy) <= reach) {
+                        this.mob.swing(InteractionHand.MAIN_HAND);
+                        this.mob.doHurtTarget(enemy);
+                    }
+                });
+            }
+        }
     }
 
     @Override
@@ -357,11 +400,20 @@ public class WindKnightEntity extends Monster implements GeoEntity {
         this.entityData.set(ANIMATION, animation);
     }
 
+    /**
+     * 启动技能/程序动画（普攻也走这里）。先清空再设置，强制触发 SynchedEntityData 的值变化，
+     * 确保客户端即使在连续/重叠攻击时也能收到同步并重新播放动画。
+     * 服务器端记录时长，到期后由 baseTick 自动清空。
+     */
+    public void startProcedureAnimation(String animation, int durationTicks) {
+        this.setAnimation("empty");
+        this.setAnimation(animation);
+        this.procedureTimer = durationTicks;
+    }
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar data) {
-        data.add(new AnimationController<>(this, "movement", 4, this::movementPredicate));
-        data.add(new AnimationController<>(this, "attacking", 4, this::attackingPredicate));
-        data.add(new AnimationController<>(this, "procedure", 4, this::procedurePredicate));
+        data.add(new AnimationController<>(this, "wind_knight", 4, this::animationPredicate));
     }
 
     @Override
