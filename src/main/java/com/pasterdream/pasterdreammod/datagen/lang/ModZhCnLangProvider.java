@@ -1580,6 +1580,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.GHOST_FACE.get(), "鬼魂之面");
         add("tooltip.pasterdream.ghost_face.effect.1", "§7▪ §9使用远程武器时，额外发射一发射弹，20%再发射一发");
         add("tooltip.pasterdream.ghost_face.effect.2", "§7▪ §9远程武器射弹无视无敌帧");
+        add("tooltip.pasterdream.ghost_face.cooldown", "§7▪ §9复制弹幕效果有%s秒冷却");
 
         // 进度 - 故事
         add("advancements.pasterdream.story.root.title", "帕斯特之梦");
