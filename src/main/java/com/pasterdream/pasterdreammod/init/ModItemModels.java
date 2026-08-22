@@ -18,4 +18,21 @@ public class ModItemModels
             event.getModels().put(modelLocation, new CustomRendererBakedModel(original));
         }
     }
+
+    private static BakedModel elixirBottleModel;
+
+    public static void getBakedModel(ModelEvent.BakingCompleted event)
+    {
+        ModelResourceLocation location = new ModelResourceLocation(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "elixir_bottle"), "inventory");
+        elixirBottleModel = event.getModels().get(location);
+        if (elixirBottleModel == null)
+        {
+            elixirBottleModel = event.getModelManager().getMissingModel();
+        }
+    }
+
+    public static BakedModel getElixirBottleModel()
+    {
+        return elixirBottleModel;
+    }
 }
