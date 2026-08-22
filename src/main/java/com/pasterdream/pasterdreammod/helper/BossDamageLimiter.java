@@ -7,24 +7,22 @@ import net.minecraft.world.entity.LivingEntity;
 
 /**
  * BOSS 三层限伤系统：单发上限 + 距离衰减 + DPS 桶。
- * 参考 Cataclysm 设计。
+ * 参考 Cataclysm 设计。每个实例绑定一个 {@link BossLimitProfile}，
+ * 运行期实时读取 {@link Config#getBossLimitValues(BossLimitProfile)}。
  */
 public class BossDamageLimiter {
-    private final float baseDamageCap;
-    private final float dpsCap;
-    private final double rangeCap;
+    private final BossLimitProfile profile;
     private float damageBucket;
 
-    public BossDamageLimiter(float baseDamageCap, float dpsCap, double rangeCap) {
-        this.baseDamageCap = baseDamageCap;
-        this.dpsCap = dpsCap;
-        this.rangeCap = rangeCap;
+    public BossDamageLimiter(BossLimitProfile profile) {
+        this.profile = profile;
     }
 
     /** 每 tick 衰减 DPS 桶 */
     public void tick() {
-        if (Config.bossDamageCapEnabled && Config.bossDpsCapEnabled && damageBucket > 0) {
-            damageBucket = Math.max(0, damageBucket - dpsCap / 20f);
+        BossLimitValues v = Config.getBossLimitValues(profile);
+        if (v.damageCapEnabled() && v.dpsCapEnabled() && damageBucket > 0) {
+            damageBucket = Math.max(0, damageBucket - v.dpsCap() / 20f);
         }
     }
 
@@ -37,11 +35,12 @@ public class BossDamageLimiter {
         if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
             return amount;
 
-        boolean singleHitEnabled = Config.bossDamageCapEnabled;
-        boolean dpsEnabled = singleHitEnabled && Config.bossDpsCapEnabled;
-        boolean rangeEnabled = Config.bossRangeCapEnabled;
+        BossLimitValues v = Config.getBossLimitValues(profile);
+        boolean singleHitEnabled = v.damageCapEnabled();
+        boolean dpsEnabled = singleHitEnabled && v.dpsCapEnabled();
+        boolean rangeEnabled = v.rangeCapEnabled();
 
-        float effectiveCap = getEffectiveCap(self);
+        float effectiveCap = getEffectiveCap(self, v);
 
         // 第一层：单发上限
         if (singleHitEnabled) {
@@ -51,15 +50,15 @@ public class BossDamageLimiter {
         // 第二层：距离衰减
         if (rangeEnabled && source.getEntity() != null) {
             double distSqr = self.distanceToSqr(source.getEntity());
-            double limitSqr = rangeCap * rangeCap;
-            double maxLimit = rangeCap * 1.5;
+            double limitSqr = v.rangeCap() * v.rangeCap();
+            double maxLimit = v.rangeCap() * 1.5;
             double maxLimitSqr = maxLimit * maxLimit;
 
             if (distSqr >= maxLimitSqr)
                 return -1;
             if (distSqr > limitSqr) {
                 double distance = Math.sqrt(distSqr);
-                float multiplier = (float) ((maxLimit - distance) / (maxLimit - rangeCap));
+                float multiplier = (float) ((maxLimit - distance) / (maxLimit - v.rangeCap()));
                 amount *= multiplier;
                 if (amount <= 0)
                     return -1;
@@ -94,13 +93,13 @@ public class BossDamageLimiter {
         return damageBucket;
     }
 
-    private float getEffectiveCap(LivingEntity self) {
-        if (Config.bossShadowDifficultyAffectsDamageCap) {
+    private float getEffectiveCap(LivingEntity self, BossLimitValues v) {
+        if (v.shadowDifficultyAffectsDamageCap()) {
             int tier = ShadowDifficultyHelper.getDifficultyContext(self);
             double atkMult = ShadowDifficultyHelper.getAttackMultiplier(tier);
             if (atkMult > 0)
-                return (float) (baseDamageCap / atkMult);
+                return (float) (v.damageCap() / atkMult);
         }
-        return baseDamageCap;
+        return v.damageCap();
     }
 }

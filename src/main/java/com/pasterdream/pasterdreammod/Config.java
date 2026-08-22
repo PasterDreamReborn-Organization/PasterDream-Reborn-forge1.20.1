@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod;
 
+import com.pasterdream.pasterdreammod.helper.BossLimitProfile;
+import com.pasterdream.pasterdreammod.helper.BossLimitValues;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
@@ -328,6 +330,72 @@ public class Config
             .comment("BOSS 限伤距离衰减起始距离（格），超过此距离伤害线性衰减，默认 12")
             .defineInRange("bossRangeCap", 12.0, 1.0, 256.0);
 
+    // === BOSS 限伤系统 · 亚伦柯斯之触独立配置 ===
+    private static final ForgeConfigSpec.BooleanValue AARONCOS_DAMAGE_CAP_INDEPENDENT = BUILDER
+            .comment("亚伦柯斯之触（左右手）是否使用独立限伤配置（否则沿用上方全局 BOSS 限伤配置），默认 false")
+            .define("aaroncosDamageCapIndependent", false);
+
+    private static final ForgeConfigSpec.BooleanValue AARONCOS_SHADOW_DIFFICULTY_AFFECTS_DAMAGE_CAP = BUILDER
+            .comment("亚伦柯斯之触：暗影难度是否影响限伤值（难度越高 damageCap 越低），默认 false")
+            .define("aaroncosShadowDifficultyAffectsDamageCap", false);
+
+    private static final ForgeConfigSpec.BooleanValue AARONCOS_DAMAGE_CAP_ENABLED = BUILDER
+            .comment("亚伦柯斯之触：是否启用单次伤害限制（单次受击伤害上限），默认 true。"
+                    + "\n设为 false 时，单发上限与 DPS 限制均不生效")
+            .define("aaroncosDamageCapEnabled", true);
+
+    private static final ForgeConfigSpec.BooleanValue AARONCOS_DPS_CAP_ENABLED = BUILDER
+            .comment("亚伦柯斯之触：是否启用 DPS 限制（每秒总伤害上限），默认 false。"
+                    + "\n仅在启用单次伤害限制（aaroncosDamageCapEnabled=true）时生效")
+            .define("aaroncosDpsCapEnabled", false);
+
+    private static final ForgeConfigSpec.BooleanValue AARONCOS_RANGE_CAP_ENABLED = BUILDER
+            .comment("亚伦柯斯之触：是否启用远距离减伤（超出限伤距离后伤害线性衰减），默认 false")
+            .define("aaroncosRangeCapEnabled", false);
+
+    private static final ForgeConfigSpec.DoubleValue AARONCOS_DAMAGE_CAP = BUILDER
+            .comment("亚伦柯斯之触：单次受击伤害上限（同时也是 DPS 桶容量），默认 40")
+            .defineInRange("aaroncosDamageCap", 40.0, 1.0, 1_000_000.0);
+
+    private static final ForgeConfigSpec.DoubleValue AARONCOS_DPS_CAP = BUILDER
+            .comment("亚伦柯斯之触：DPS 桶每秒恢复量，默认 200")
+            .defineInRange("aaroncosDpsCap", 200.0, 1.0, 1_000_000.0);
+
+    private static final ForgeConfigSpec.DoubleValue AARONCOS_RANGE_CAP = BUILDER
+            .comment("亚伦柯斯之触：限伤距离衰减起始距离（格），默认 12")
+            .defineInRange("aaroncosRangeCap", 12.0, 1.0, 256.0);
+
+    // === BOSS 限伤系统 · 破风骑士独立配置 ===
+    private static final ForgeConfigSpec.BooleanValue WIND_KNIGHT_DAMAGE_CAP_INDEPENDENT = BUILDER
+            .comment("破风骑士是否使用独立限伤配置（否则沿用上方全局 BOSS 限伤配置），默认 false")
+            .define("windKnightDamageCapIndependent", false);
+
+    private static final ForgeConfigSpec.BooleanValue WIND_KNIGHT_DAMAGE_CAP_ENABLED = BUILDER
+            .comment("破风骑士：是否启用单次伤害限制（单次受击伤害上限），默认 true。"
+                    + "\n设为 false 时，单发上限与 DPS 限制均不生效")
+            .define("windKnightDamageCapEnabled", true);
+
+    private static final ForgeConfigSpec.BooleanValue WIND_KNIGHT_DPS_CAP_ENABLED = BUILDER
+            .comment("破风骑士：是否启用 DPS 限制（每秒总伤害上限），默认 false。"
+                    + "\n仅在启用单次伤害限制（windKnightDamageCapEnabled=true）时生效")
+            .define("windKnightDpsCapEnabled", false);
+
+    private static final ForgeConfigSpec.BooleanValue WIND_KNIGHT_RANGE_CAP_ENABLED = BUILDER
+            .comment("破风骑士：是否启用远距离减伤（超出限伤距离后伤害线性衰减），默认 false")
+            .define("windKnightRangeCapEnabled", false);
+
+    private static final ForgeConfigSpec.DoubleValue WIND_KNIGHT_DAMAGE_CAP = BUILDER
+            .comment("破风骑士：单次受击伤害上限（同时也是 DPS 桶容量），默认 40")
+            .defineInRange("windKnightDamageCap", 40.0, 1.0, 1_000_000.0);
+
+    private static final ForgeConfigSpec.DoubleValue WIND_KNIGHT_DPS_CAP = BUILDER
+            .comment("破风骑士：DPS 桶每秒恢复量，默认 200")
+            .defineInRange("windKnightDpsCap", 200.0, 1.0, 1_000_000.0);
+
+    private static final ForgeConfigSpec.DoubleValue WIND_KNIGHT_RANGE_CAP = BUILDER
+            .comment("破风骑士：限伤距离衰减起始距离（格），默认 12")
+            .defineInRange("windKnightRangeCap", 12.0, 1.0, 256.0);
+
     // === 亚伦柯斯之触 ===
     private static final ForgeConfigSpec.BooleanValue AARONCOS_TOUCH_IMMUNE_TO_NEGATIVE_EFFECTS = BUILDER
             .comment("亚伦柯斯之触（左右手）是否免疫负面状态效果（有害类效果，如中毒、虚弱、缓慢等），默认 true")
@@ -635,6 +703,53 @@ public class Config
     public static double bossRangeCap;
     public static boolean aaroncosTouchImmuneToNegativeEffects;
 
+    // BOSS 限伤系统 · 独立配置
+    public static boolean aaroncosDamageCapIndependent;
+    public static boolean aaroncosShadowDifficultyAffectsDamageCap;
+    public static boolean aaroncosDamageCapEnabled;
+    public static boolean aaroncosDpsCapEnabled;
+    public static boolean aaroncosRangeCapEnabled;
+    public static double aaroncosDamageCap;
+    public static double aaroncosDpsCap;
+    public static double aaroncosRangeCap;
+    public static boolean windKnightDamageCapIndependent;
+    public static boolean windKnightDamageCapEnabled;
+    public static boolean windKnightDpsCapEnabled;
+    public static boolean windKnightRangeCapEnabled;
+    public static double windKnightDamageCap;
+    public static double windKnightDpsCap;
+    public static double windKnightRangeCap;
+
+    /**
+     * 解析某 BOSS 档位实际生效的限伤配置。
+     * 档位未开启独立配置时回落到全局（GLOBAL）配置。
+     */
+    public static BossLimitValues getBossLimitValues(BossLimitProfile profile) {
+        return switch (profile) {
+            case AARONCOS -> aaroncosDamageCapIndependent
+                    ? new BossLimitValues(
+                            aaroncosShadowDifficultyAffectsDamageCap,
+                            aaroncosDamageCapEnabled, aaroncosDpsCapEnabled, aaroncosRangeCapEnabled,
+                            (float) aaroncosDamageCap, (float) aaroncosDpsCap, aaroncosRangeCap)
+                    : getBossLimitValues(BossLimitProfile.GLOBAL);
+            case WIND_KNIGHT -> {
+                BossLimitValues base = windKnightDamageCapIndependent
+                        ? new BossLimitValues(
+                                false,
+                                windKnightDamageCapEnabled, windKnightDpsCapEnabled, windKnightRangeCapEnabled,
+                                (float) windKnightDamageCap, (float) windKnightDpsCap, windKnightRangeCap)
+                        : getBossLimitValues(BossLimitProfile.GLOBAL);
+                // 破风骑士非暗影生物，不受暗影难度影响，强制关闭难度缩放
+                yield new BossLimitValues(false, base.damageCapEnabled(), base.dpsCapEnabled(),
+                        base.rangeCapEnabled(), base.damageCap(), base.dpsCap(), base.rangeCap());
+            }
+            case GLOBAL -> new BossLimitValues(
+                    bossShadowDifficultyAffectsDamageCap,
+                    bossDamageCapEnabled, bossDpsCapEnabled, bossRangeCapEnabled,
+                    (float) bossDamageCap, (float) bossDpsCap, bossRangeCap);
+        };
+    }
+
     // === 大便携储物袋抓取生物 ===
     public static boolean creatureCaptureEnabled;
     public static List<? extends String> creatureCaptureEntities;
@@ -879,6 +994,21 @@ public class Config
         bossDpsCap = BOSS_DPS_CAP.get();
         bossRangeCap = BOSS_RANGE_CAP.get();
         aaroncosTouchImmuneToNegativeEffects = AARONCOS_TOUCH_IMMUNE_TO_NEGATIVE_EFFECTS.get();
+        aaroncosDamageCapIndependent = AARONCOS_DAMAGE_CAP_INDEPENDENT.get();
+        aaroncosShadowDifficultyAffectsDamageCap = AARONCOS_SHADOW_DIFFICULTY_AFFECTS_DAMAGE_CAP.get();
+        aaroncosDamageCapEnabled = AARONCOS_DAMAGE_CAP_ENABLED.get();
+        aaroncosDpsCapEnabled = AARONCOS_DPS_CAP_ENABLED.get();
+        aaroncosRangeCapEnabled = AARONCOS_RANGE_CAP_ENABLED.get();
+        aaroncosDamageCap = AARONCOS_DAMAGE_CAP.get();
+        aaroncosDpsCap = AARONCOS_DPS_CAP.get();
+        aaroncosRangeCap = AARONCOS_RANGE_CAP.get();
+        windKnightDamageCapIndependent = WIND_KNIGHT_DAMAGE_CAP_INDEPENDENT.get();
+        windKnightDamageCapEnabled = WIND_KNIGHT_DAMAGE_CAP_ENABLED.get();
+        windKnightDpsCapEnabled = WIND_KNIGHT_DPS_CAP_ENABLED.get();
+        windKnightRangeCapEnabled = WIND_KNIGHT_RANGE_CAP_ENABLED.get();
+        windKnightDamageCap = WIND_KNIGHT_DAMAGE_CAP.get();
+        windKnightDpsCap = WIND_KNIGHT_DPS_CAP.get();
+        windKnightRangeCap = WIND_KNIGHT_RANGE_CAP.get();
         creatureCaptureEnabled = CREATURE_CAPTURE_ENABLED.get();
         creatureCaptureEntities = CREATURE_CAPTURE_ENTITIES.get();
 
