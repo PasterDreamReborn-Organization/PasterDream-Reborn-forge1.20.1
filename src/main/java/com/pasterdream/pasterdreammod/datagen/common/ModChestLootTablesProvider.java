@@ -1004,6 +1004,10 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.ICE_SHADOW_CURIO.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(40))
                         )

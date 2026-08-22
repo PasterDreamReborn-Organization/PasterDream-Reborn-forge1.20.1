@@ -44,7 +44,7 @@ public class ShadowBreathItem extends Item implements ICurioItem {
     private static final String[] REGEN_LEVELS = {"I", "II", "III"};
 
     public ShadowBreathItem() {
-        super(new Item.Properties().stacksTo(1));
+        super(new Item.Properties().stacksTo(1).rarity(ModRarities.SUPERIOR));
     }
 
     @Override

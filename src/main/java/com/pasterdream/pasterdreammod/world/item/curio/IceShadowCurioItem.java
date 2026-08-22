@@ -13,14 +13,14 @@ import java.util.List;
 
 public class IceShadowCurioItem extends Item implements ICurioItem {
     public IceShadowCurioItem() {
-        super(new Item.Properties().stacksTo(1));
+        super(new Item.Properties().stacksTo(1).rarity(ModRarities.MASTER));
     }
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
         tooltip.add(ModRarities.qualityTooltip(ModRarities.MASTER));
-        tooltip.add(Component.translatable("tooltip.pasterdream.ice_shadow_curio.0").withStyle(ChatFormatting.BLUE));
-        tooltip.add(Component.translatable("tooltip.pasterdream.ice_shadow_curio.1").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("tooltip.pasterdream.ice_shadow_curio.0"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.ice_shadow_curio.1"));
     }
 }
