@@ -1920,13 +1920,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_vane.direction.5", "Current wind: §aSouthwest Wind");
         add("message.pasterdream.wind_vane.direction.6", "Current wind: §aWest Wind");
         add("message.pasterdream.wind_vane.direction.7", "Current wind: §aNorthwest Wind");
-        add("message.pasterdream.wind_direction.announce.0", "§7§oThe sun rises... The howling wind blows toward §aNorth");
-        add("message.pasterdream.wind_direction.announce.1", "§7§oThe sun rises... The howling wind blows toward §aNortheast");
-        add("message.pasterdream.wind_direction.announce.2", "§7§oThe sun rises... The howling wind blows toward §aEast");
-        add("message.pasterdream.wind_direction.announce.3", "§7§oThe sun rises... The howling wind blows toward §aSoutheast");
-        add("message.pasterdream.wind_direction.announce.4", "§7§oThe sun rises... The howling wind blows toward §aSouth");
-        add("message.pasterdream.wind_direction.announce.5", "§7§oThe sun rises... The howling wind blows toward §aSouthwest");
-        add("message.pasterdream.wind_direction.announce.6", "§7§oThe sun rises... The howling wind blows toward §aWest");
-        add("message.pasterdream.wind_direction.announce.7", "§7§oThe sun rises... The howling wind blows toward §aNorthwest");
+        add("message.pasterdream.wind_direction.announce.0", "§7§oThe sun rises... The howling wind blows toward §aSouth");
+        add("message.pasterdream.wind_direction.announce.1", "§7§oThe sun rises... The howling wind blows toward §aSouthwest");
+        add("message.pasterdream.wind_direction.announce.2", "§7§oThe sun rises... The howling wind blows toward §aWest");
+        add("message.pasterdream.wind_direction.announce.3", "§7§oThe sun rises... The howling wind blows toward §aNorthwest");
+        add("message.pasterdream.wind_direction.announce.4", "§7§oThe sun rises... The howling wind blows toward §aNorth");
+        add("message.pasterdream.wind_direction.announce.5", "§7§oThe sun rises... The howling wind blows toward §aNortheast");
+        add("message.pasterdream.wind_direction.announce.6", "§7§oThe sun rises... The howling wind blows toward §aEast");
+        add("message.pasterdream.wind_direction.announce.7", "§7§oThe sun rises... The howling wind blows toward §aSoutheast");
     }
 }

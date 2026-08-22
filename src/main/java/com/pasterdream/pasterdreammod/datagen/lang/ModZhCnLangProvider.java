@@ -2429,14 +2429,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_vane.direction.5", "当前风向：§a西南风");
         add("message.pasterdream.wind_vane.direction.6", "当前风向：§a西风");
         add("message.pasterdream.wind_vane.direction.7", "当前风向：§a西北风");
-        add("message.pasterdream.wind_direction.announce.0", "§7§o朝阳升起... 呼啸的风正吹往 §a北方");
-        add("message.pasterdream.wind_direction.announce.1", "§7§o朝阳升起... 呼啸的风正吹往 §a东北方");
-        add("message.pasterdream.wind_direction.announce.2", "§7§o朝阳升起... 呼啸的风正吹往 §a东方");
-        add("message.pasterdream.wind_direction.announce.3", "§7§o朝阳升起... 呼啸的风正吹往 §a东南方");
-        add("message.pasterdream.wind_direction.announce.4", "§7§o朝阳升起... 呼啸的风正吹往 §a南方");
-        add("message.pasterdream.wind_direction.announce.5", "§7§o朝阳升起... 呼啸的风正吹往 §a西南方");
-        add("message.pasterdream.wind_direction.announce.6", "§7§o朝阳升起... 呼啸的风正吹往 §a西方");
-        add("message.pasterdream.wind_direction.announce.7", "§7§o朝阳升起... 呼啸的风正吹往 §a西北方");
+        add("message.pasterdream.wind_direction.announce.0", "§7§o朝阳升起... 呼啸的风正吹往 §a南方");
+        add("message.pasterdream.wind_direction.announce.1", "§7§o朝阳升起... 呼啸的风正吹往 §a西南方");
+        add("message.pasterdream.wind_direction.announce.2", "§7§o朝阳升起... 呼啸的风正吹往 §a西方");
+        add("message.pasterdream.wind_direction.announce.3", "§7§o朝阳升起... 呼啸的风正吹往 §a西北方");
+        add("message.pasterdream.wind_direction.announce.4", "§7§o朝阳升起... 呼啸的风正吹往 §a北方");
+        add("message.pasterdream.wind_direction.announce.5", "§7§o朝阳升起... 呼啸的风正吹往 §a东北方");
+        add("message.pasterdream.wind_direction.announce.6", "§7§o朝阳升起... 呼啸的风正吹往 §a东方");
+        add("message.pasterdream.wind_direction.announce.7", "§7§o朝阳升起... 呼啸的风正吹往 §a东南方");
 
         // 药水箭
 
