@@ -90,7 +90,7 @@ public class ModDimensionTypes {
                 256,                        // 逻辑高度
                 BlockTags.INFINIBURN_OVERWORLD,
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world"),
-                0.0f,                       // 环境光照
+                0.5f,                       // 环境光照
                 new DimensionType.MonsterSettings(
                         true,               // 猪灵安全
                         false,              // 禁止袭击
