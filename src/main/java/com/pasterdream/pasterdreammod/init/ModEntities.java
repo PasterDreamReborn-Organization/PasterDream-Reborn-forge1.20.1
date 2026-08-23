@@ -12,6 +12,7 @@ import com.pasterdream.pasterdreammod.world.entity.ShadowGolemEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPotionBottle;
 import com.pasterdream.pasterdreammod.world.entity.RejuvenationBottleEntity;
+import com.pasterdream.pasterdreammod.world.entity.PotionBottleEffectEntity;
 import com.pasterdream.pasterdreammod.world.entity.PebbleProjectile;
 import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
@@ -122,6 +123,14 @@ public class ModEntities {
                     .setTrackingRange(64)
                     .setUpdateInterval(1)
                     .setCustomClientFactory(RejuvenationBottleEntity::new)
+                    .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<PotionBottleEffectEntity>> POTION_BOTTLE_EFFECT_ENTITY = register("potion_bottle_effect_entity",
+            EntityType.Builder.<PotionBottleEffectEntity>of(PotionBottleEffectEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(false)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(PotionBottleEffectEntity::new)
                     .sized(0.5f, 0.5f));
 
     public static final RegistryObject<EntityType<PebbleProjectile>> PEBBLE_PROJECTILE = register("pebble_projectile",

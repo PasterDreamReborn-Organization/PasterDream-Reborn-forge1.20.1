@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.world.block.windknightaltar;
 
-import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
@@ -46,7 +45,7 @@ public class WindKnightAltarProcedure {
                 world.playSound(null, pos, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 1f, 1f);
                 if (world instanceof ServerLevel sl)
                     sl.sendParticles(ParticleTypes.SCRAPE, pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5, 12, 0.7, 0.7, 0.7, 0.1);
-                PasterDreamMod.queueServerWork(1, () -> world.setBlock(pos, world.getBlockState(pos).setValue(WindKnightAltarBlock.STAGE, 2), 3));
+                world.setBlock(pos, state.setValue(WindKnightAltarBlock.STAGE, 2), 3);
             } else {
                 player.displayClientMessage(Component.translatable("block.pasterdream.wind_knight_altar.need_torso"), true);
             }
@@ -57,7 +56,7 @@ public class WindKnightAltarProcedure {
                     sl.sendParticles(ParticleTypes.SCRAPE, pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5, 20, 0.9, 1, 0.9, 0.1);
                 if (!player.getAbilities().instabuild)
                     mainHand.shrink(1);
-                PasterDreamMod.queueServerWork(1, () -> world.setBlock(pos, world.getBlockState(pos).setValue(WindKnightAltarBlock.STAGE, 3), 3));
+                world.setBlock(pos, state.setValue(WindKnightAltarBlock.STAGE, 3), 3);
             } else {
                 player.displayClientMessage(Component.translatable("block.pasterdream.wind_knight_altar.need_arms"), true);
             }
@@ -68,7 +67,7 @@ public class WindKnightAltarProcedure {
                     sl.sendParticles(ParticleTypes.SCRAPE, pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5, 24, 0.9, 1, 0.9, 0.1);
                 if (!player.getAbilities().instabuild)
                     mainHand.shrink(1);
-                PasterDreamMod.queueServerWork(1, () -> world.setBlock(pos, world.getBlockState(pos).setValue(WindKnightAltarBlock.STAGE, 4), 3));
+                world.setBlock(pos, state.setValue(WindKnightAltarBlock.STAGE, 4), 3);
             } else {
                 player.displayClientMessage(Component.translatable("block.pasterdream.wind_knight_altar.need_head"), true);
             }

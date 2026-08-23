@@ -94,13 +94,11 @@ public final class WindDirectionHandler {
             int direction = level.getRandom().nextInt(8);
             rule.set(direction, level.getServer());
 
-            // 换向播报（延迟 2 tick）
-            PasterDreamMod.queueServerWork(2, () -> {
-                for (ServerPlayer p : level.players()) {
-                    p.displayClientMessage(
-                            Component.translatable("message.pasterdream.wind_direction.announce." + direction), false);
-                }
-            });
+            // 换向播报
+            for (ServerPlayer p : level.players()) {
+                p.displayClientMessage(
+                        Component.translatable("message.pasterdream.wind_direction.announce." + direction), false);
+            }
 
             // 换向音效 + 羽毛粒子
             for (ServerPlayer p : level.players()) {

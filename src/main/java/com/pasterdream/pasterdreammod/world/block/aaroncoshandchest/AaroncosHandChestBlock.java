@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.aaroncoshandchest;
 
+import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -11,6 +12,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -40,6 +43,14 @@ public class AaroncosHandChestBlock extends BaseEntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new AaroncosHandChestTileEntity(pos, state);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
+        return type == ModBlockEntities.AARONCOS_HAND_CHEST.get()
+                ? (blockLevel, pos, state, blockEntity) -> AaroncosHandChestTileEntity.tick(blockLevel, pos, state, (AaroncosHandChestTileEntity) blockEntity)
+                : null;
     }
 
     @Override

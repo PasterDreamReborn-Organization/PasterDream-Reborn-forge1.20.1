@@ -23,6 +23,7 @@ import com.pasterdream.pasterdreammod.world.item.armoritem.AngelWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.ForsakensWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MachineLightWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymArmorEvents;
+import com.pasterdream.pasterdreammod.world.dimension.AaroncosArenaTeleporter;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -411,6 +412,7 @@ public class PasterDreamMod
             });
             actions.forEach(e -> e.getKey().run());
             WORK_QUEUE.removeAll(actions);
+            AaroncosArenaTeleporter.tickEntryCooldowns();
         }
     }
 
