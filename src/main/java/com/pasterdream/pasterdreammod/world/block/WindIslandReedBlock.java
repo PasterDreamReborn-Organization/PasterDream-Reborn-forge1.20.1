@@ -1,7 +1,9 @@
 package com.pasterdream.pasterdreammod.world.block;
 
+import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -19,6 +21,11 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 public class WindIslandReedBlock extends DoublePlantBlock {
     public WindIslandReedBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
+        return groundState.is(ModBlockTags.WIND_PLANTS_CAN_PLACE_ON);
     }
 
     @Override
