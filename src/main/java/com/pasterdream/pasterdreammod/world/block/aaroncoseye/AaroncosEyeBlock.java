@@ -1,8 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.aaroncoseye;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -65,22 +63,6 @@ public class AaroncosEyeBlock extends BaseEntityBlock {
     @Override
     public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
         return 0;
-    }
-
-    @Override
-    public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean moving) {
-        super.onPlace(state, world, pos, oldState, moving);
-        world.scheduleTick(pos, this, 20);
-    }
-
-    @Override
-    public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-        super.tick(state, world, pos, random);
-        BlockEntity be = world.getBlockEntity(pos);
-        if (be instanceof AaroncosEyeTileEntity eye) {
-            eye.onServerTick();
-        }
-        world.scheduleTick(pos, this, 20);
     }
 
     @Override
