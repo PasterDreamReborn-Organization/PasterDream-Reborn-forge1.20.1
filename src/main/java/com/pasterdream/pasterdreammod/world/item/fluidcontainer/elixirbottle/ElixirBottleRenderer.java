@@ -2,7 +2,6 @@ package com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.renderhelper.RendBakedModel;
 import com.pasterdream.pasterdreammod.init.ModItemModels;
 import net.minecraft.client.Minecraft;
@@ -43,26 +42,22 @@ public class ElixirBottleRenderer extends BlockEntityWithoutLevelRenderer
     public void renderByItem(ItemStack stack, ItemDisplayContext transformType, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay)
     {
         BakedModel bottleModel = ModItemModels.getElixirBottleModel();
-        if (bottleModel != null)
-        {
-            RendBakedModel.rend(bottleModel, poseStack, buffer, packedLight, packedOverlay);
-        }
+
+        poseStack.pushPose();
+
+        RendBakedModel.rend(bottleModel, poseStack, buffer, packedLight, packedOverlay);
 
         FluidStack fluid = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).map(fluidHandlerItem -> fluidHandlerItem.getFluidInTank(0)).orElse(FluidStack.EMPTY);
 
-        TextureAtlasSprite bottleSprite = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "item/elixir_bottle"));
-
-        float z = 0.53125f;
-
         if (!fluid.isEmpty())
         {
-            drawFluidLayer(fluid, poseStack, buffer, packedLight, packedOverlay, 0, 0, 1, 1, z);
+            drawFluidLayer(fluid, poseStack, buffer, packedLight, packedOverlay);
         }
 
-        //drawBottleLayer(bottleSprite, poseStack, buffer, packedLight, packedOverlay, 0, 0, 1, 1, z);
+        poseStack.popPose();
     }
 
-    private void drawFluidLayer(FluidStack fluidStack, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay, float minX, float maxX, float minY, float maxY, float z)
+    private void drawFluidLayer(FluidStack fluidStack, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay)
     {
         IClientFluidTypeExtensions extensions = IClientFluidTypeExtensions.of(fluidStack.getFluid());
         ResourceLocation stillTexture = extensions.getStillTexture(fluidStack);
@@ -85,39 +80,20 @@ public class ElixirBottleRenderer extends BlockEntityWithoutLevelRenderer
         float g = ((color >> 8) & 0xFF) / 255f;
         float b = (color & 0xFF) / 255f;
 
+        drawFluid(poseStack, buffer, sprite, packedLight, packedOverlay, 0.46875f, false, fluidAmount, r, g, b, a);
+        drawFluid(poseStack, buffer, sprite, packedLight, packedOverlay, 0.53125f, true, fluidAmount, r, g, b, a);
+    }
+
+    private void drawFluid(PoseStack poseStack, MultiBufferSource buffer, TextureAtlasSprite sprite, int packedLight, int packedOverlay, float z, boolean direction, int fluidAmount, float r, float g, float b, float a)
+    {
         if (fluidAmount > 0)
         {
             double proportion = Math.min(1, (double) fluidAmount / 286);
             VertexConsumer consumer = buffer.getBuffer(RenderType.translucent());
             Matrix4f matrix = poseStack.last().pose();
 
-            consumer.vertex(matrix, 6 / 16f, (float)((4 + 2 * proportion) / 16f), z).color(r, g, b, a)
-                    .uv(sprite.getU(6f), sprite.getV((float)(12 - 2 * proportion)))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
+            addQuad(sprite, consumer, matrix, 6 / 16f, 4 / 16f, 10 / 16f, (float)((4 + 2 * proportion) / 16f), z, 6f, 12f, 10f, (float)(12 - 2 * proportion), r, g, b, a, packedLight, packedOverlay, direction);
 
-            consumer.vertex(matrix, 6 / 16f, 4 / 16f, z).color(r, g, b, a)
-                    .uv(sprite.getU(6f), sprite.getV(12f))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
-
-            consumer.vertex(matrix, 10 / 16f, 4 / 16f, z).color(r, g, b, a)
-                    .uv(sprite.getU(10f), sprite.getV(12f))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
-
-            consumer.vertex(matrix, 10 / 16f, (float)((4 + 2 * proportion) / 16f), z).color(r, g, b, a)
-                    .uv(sprite.getU(10f), sprite.getV((float)(12 - 2 * proportion)))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
         }
 
         if (fluidAmount > 286)  //1000 * 2 / 7
@@ -126,33 +102,7 @@ public class ElixirBottleRenderer extends BlockEntityWithoutLevelRenderer
             VertexConsumer consumer = buffer.getBuffer(RenderType.translucent());
             Matrix4f matrix = poseStack.last().pose();
 
-            consumer.vertex(matrix, 5 / 16f, (float)((6 + proportion) / 16f), z).color(r, g, b, a)
-                    .uv(sprite.getU(5f), sprite.getV((float)(10 - proportion)))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
-
-            consumer.vertex(matrix, 5 / 16f, 6 / 16f, z).color(r, g, b, a)
-                    .uv(sprite.getU(5), sprite.getV(10))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
-
-            consumer.vertex(matrix, 11 / 16f, 6 / 16f, z).color(r, g, b, a)
-                    .uv(sprite.getU(11), sprite.getV(10))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
-
-            consumer.vertex(matrix, 11 / 16f, (float)((6 + proportion) / 16f), z).color(r, g, b, a)
-                    .uv(sprite.getU(11), sprite.getV((float)(10 - proportion)))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
+            addQuad(sprite, consumer, matrix, 5 / 16f, 6 / 16f, 11 / 16f, (float)((6 + proportion) / 16f), z, 5f, 10f, 11f, (float)(10 - proportion), r, g, b, a, packedLight, packedOverlay, direction);
         }
 
         if (fluidAmount > 429)  //1000 * 3 / 7
@@ -161,33 +111,7 @@ public class ElixirBottleRenderer extends BlockEntityWithoutLevelRenderer
             VertexConsumer consumer = buffer.getBuffer(RenderType.translucent());
             Matrix4f matrix = poseStack.last().pose();
 
-            consumer.vertex(matrix, 4 / 16f, (float)((7 + 3 * proportion) / 16f), z).color(r, g, b, a)
-                    .uv(sprite.getU(4), sprite.getV((float)(9 - 3 * proportion)))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
-
-            consumer.vertex(matrix, 4 / 16f, 7 / 16f, z).color(r, g, b, a)
-                    .uv(sprite.getU(4), sprite.getV(9))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
-
-            consumer.vertex(matrix, 12 / 16f, 7 / 16f, z).color(r, g, b, a)
-                    .uv(sprite.getU(12), sprite.getV(9))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
-
-            consumer.vertex(matrix, 12 / 16f, (float)((7 + 3 * proportion) / 16f), z).color(r, g, b, a)
-                    .uv(sprite.getU(12), sprite.getV((float)(9 - 3 * proportion)))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
+            addQuad(sprite, consumer, matrix, 4 / 16f, 7 / 16f, 12 / 16f, (float)((7 + 3 * proportion) / 16f), z, 4f, 9f, 12f, (float)(9 - 3 * proportion), r, g, b, a, packedLight, packedOverlay, direction);
         }
 
         if (fluidAmount > 857)  //1000 * 6 / 7
@@ -196,67 +120,25 @@ public class ElixirBottleRenderer extends BlockEntityWithoutLevelRenderer
             VertexConsumer consumer = buffer.getBuffer(RenderType.translucent());
             Matrix4f matrix = poseStack.last().pose();
 
-            consumer.vertex(matrix, 5 / 16f, (float)((10 + proportion) / 16f), z).color(r, g, b, a)
-                    .uv(sprite.getU(5), sprite.getV((float)(6 - proportion)))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
-
-            consumer.vertex(matrix, 5 / 16f, 10 / 16f, z).color(r, g, b, a)
-                    .uv(sprite.getU(5), sprite.getV(6))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
-
-            consumer.vertex(matrix, 11 / 16f, 10 / 16f, z).color(r, g, b, a)
-                    .uv(sprite.getU(11), sprite.getV(6))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
-
-            consumer.vertex(matrix, 11 / 16f, (float)((10 + proportion) / 16f), z).color(r, g, b, a)
-                    .uv(sprite.getU(11), sprite.getV((float)(6 - proportion)))
-                    .overlayCoords(packedOverlay)
-                    .uv2(packedLight)
-                    .normal(0, 0, 1)
-                    .endVertex();
+            addQuad(sprite, consumer, matrix, 5 / 16f, 10 / 16f, 11 / 16f, (float)((10 + proportion) / 16f), z, 5f, 6f, 11f, (float)(6 - proportion), r, g, b, a, packedLight, packedOverlay, direction);
         }
     }
 
-    private void drawBottleLayer(TextureAtlasSprite sprite, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay, float minX, float maxX, float minY, float maxY, float z)
+    private void addQuad(TextureAtlasSprite sprite, VertexConsumer consumer, Matrix4f matrix, float x1, float y1, float x2, float y2, float z, float u1, float v1, float u2, float v2, float r, float g, float b, float a, int packedLight, int packedOverlay, boolean direction)
     {
-        VertexConsumer consumer = buffer.getBuffer(RenderType.translucent());
-        Matrix4f matrix = poseStack.last().pose();
-
-        consumer.vertex(matrix, 0, 0, z).color(1f, 1f, 1f, 1f)
-                .uv(sprite.getU0(), sprite.getV1())
-                .overlayCoords(packedOverlay)
-                .uv2(packedLight)
-                .normal(0, 0, 1)
-                .endVertex();
-
-        consumer.vertex(matrix, 1, 0, z).color(1f, 1f, 1f, 1f)
-                .uv(sprite.getU1(), sprite.getV1())
-                .overlayCoords(packedOverlay)
-                .uv2(packedLight)
-                .normal(0, 0, 1)
-                .endVertex();
-
-        consumer.vertex(matrix, 1, 1, z).color(1f, 1f, 1f, 1f)
-                .uv(sprite.getU1(), sprite.getV0())
-                .overlayCoords(packedOverlay)
-                .uv2(packedLight)
-                .normal(0, 0, 1)
-                .endVertex();
-
-        consumer.vertex(matrix, 0, 1, z).color(1f, 1f, 1f, 1f)
-                .uv(sprite.getU0(), sprite.getV0())
-                .overlayCoords(packedOverlay)
-                .uv2(packedLight)
-                .normal(0, 0, 1)
-                .endVertex();
+        if (direction)
+        {
+            consumer.vertex(matrix, x1, y2, z).color(r,g,b,a).uv(sprite.getU(u1), sprite.getV(v2)).overlayCoords(packedOverlay).uv2(packedLight).normal(0,0,1).endVertex();
+            consumer.vertex(matrix, x1, y1, z).color(r,g,b,a).uv(sprite.getU(u1), sprite.getV(v1)).overlayCoords(packedOverlay).uv2(packedLight).normal(0,0,1).endVertex();
+            consumer.vertex(matrix, x2, y1, z).color(r,g,b,a).uv(sprite.getU(u2), sprite.getV(v1)).overlayCoords(packedOverlay).uv2(packedLight).normal(0,0,1).endVertex();
+            consumer.vertex(matrix, x2, y2, z).color(r,g,b,a).uv(sprite.getU(u2), sprite.getV(v2)).overlayCoords(packedOverlay).uv2(packedLight).normal(0,0,1).endVertex();
+        }
+            else
+            {
+                consumer.vertex(matrix, x2, y2, z).color(r,g,b,a).uv(sprite.getU(u2),sprite.getV(v2)).overlayCoords(packedOverlay).uv2(packedLight).normal(0,0,1).endVertex();
+                consumer.vertex(matrix, x2, y1, z).color(r,g,b,a).uv(sprite.getU(u2),sprite.getV(v1)).overlayCoords(packedOverlay).uv2(packedLight).normal(0,0,1).endVertex();
+                consumer.vertex(matrix, x1, y1, z).color(r,g,b,a).uv(sprite.getU(u1),sprite.getV(v1)).overlayCoords(packedOverlay).uv2(packedLight).normal(0,0,1).endVertex();
+                consumer.vertex(matrix, x1, y2, z).color(r,g,b,a).uv(sprite.getU(u1),sprite.getV(v2)).overlayCoords(packedOverlay).uv2(packedLight).normal(0,0,1).endVertex();
+            }
     }
 }
