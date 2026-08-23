@@ -875,6 +875,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("book.pasterdream.title.侵染教堂-亮面", "侵染教堂-亮面");
         add("book.pasterdream.title.暮影之笼", "暮影之笼");
         add("book.pasterdream.title.暗影图书馆", "暗影图书馆");
+        add("book.pasterdream.title.沉淀阴影", "沉淀阴影");
+        add("book.pasterdream.title.阴影游记", "阴影游记");
+        add("book.pasterdream.title.暗影地牢", "暗影地牢");
 
         add("book.pasterdream.title.破风的骑士", "破风的骑士");
         add("book.pasterdream.title.清晨的新风", "清晨的新风");
@@ -2118,13 +2121,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.shadow_dungeon.page0", "还记得之前在探索的时候发现了一种奇怪的遗迹，像是一种仪式供奉着中间的一个东西。但当时我伸手去触碰它，却毫无反应，从残破的结构来看应该是年久失修坏掉了？");
         add("pasterdream.seniors_dream.entry.shadow_dungeon.page1", "但我们最近提炼出来的黑金属和那个核心的材质很相似...还有中间那个会发光的白色灯块，我应该尝试去修复它。如果我能成功...我会把修复方法记录下来。以及...我的感觉告诉我这个遗迹不会只有地上的这部分...这个明亮的核心就像是盏灯，它的存在酝生了下面的影子。");
 
-        add("pasterdream.seniors_dream.entry.scare", "恐惧");
-        add("pasterdream.seniors_dream.entry.scare.page0", "\"这里还有感觉吗？嘿，不要睡过去！撑住！\"$(br)脸已经被摧残的血肉模糊，身体像是被蹂躏了一样，他的腰部及以下已经没有了知觉，脊柱应该是被撕裂了。$(br)\"你不会死的，把这个喝下去，这边呢？还能感觉到吗？\"$(br)一声惨叫，当我向着声音跑过去的时候看到了眼前的景象，躺在血泊里的这个人。");
-        add("pasterdream.seniors_dream.entry.scare.page1", "\"能告诉我发生了什么事吗，救援正在路上\"$(br)\"不要...不要再向前了...不要...\"他艰难地说着，沙哑低沉的声音需要把耳朵凑进去才能听到。$(br)\"你还...年轻...不要再去触碰...黑暗...\"随后他的嗓子再也发不出声音，手滑落下来。");
-        add("pasterdream.seniors_dream.entry.scare.page2", "他的脖头上戴着象征着探险家的坠饰，张开的手心握着自己家人的照片，和妻子重病的药费欠款清单。$(br)\"看来已经是...为了通过这个赚取药费吗...\"$(br)我握住了他那个拿着纸团的手\"这个就由我来吧...\"");
-        add("pasterdream.seniors_dream.entry.scare.page3", "我低下头，闭上眼默哀。$(br)忽然间一阵耳鸣，伴随着眩晕的感觉，我合上的双眼前显现出了画面。$(br)两只巨大的像手一样的怪物，而\"我\"的视角好像就是那个探险家！$(br)其中一只手伴随着巨大的破风声将\"我\"冲撞到墙上，然后四指合十砸碎了地面和我的双腿。$(br)在这巨大的冲击之下，口袋里的骨针也刺入了\"我\"的大腿。");
-        add("pasterdream.seniors_dream.entry.scare.page4", "整个梦的过程只过了数秒，但却无比真实...$(br)我喘着气，眩晕的感觉逐渐消散，但恐惧的感觉弥漫全身。$(br)因为在最后，那个手心中间的\"眼睛\"，好像...看了真正的我一眼...");
-
 
         // 实体
         add(ModEntities.PINK_CHICKEN.get(), "粉红鸡");
@@ -2230,7 +2226,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.dream_accumulator.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");
         add("message.pasterdream.story_guide.not_entered_lamp_shadow", "你尚未踏足灯影之下");
         add("message.pasterdream.story_guide.all_done", "灯影之下的所有笔记都已解析完毕");
-        add("message.pasterdream.story_guide.need_infested_church", "你需要先自行找到有关灯影之下的笔记");
 
         add("message.pasterdream.dream_train.train_pass", "一辆逐梦列车呼啸而过...");
         add("message.pasterdream.dream_train.location_info", "列车向我们暴露了一个位置信息... §aX：%s §aZ：%s");
@@ -2416,6 +2411,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.christmas_tree", "圣诞树");
         add("structure.pasterdream.fluffy_wind_church", "萦风教堂");
         add("structure.pasterdream.aaroncos_arena_portal", "亚伦柯斯竞技场传送门");
+        add("structure.pasterdream.shadow_underground_workroom", "阴影地下工作室");
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "你尚未知晓如何激活影灯");
         add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "需要用融梦水晶碎片点燃影灯");
         add("message.pasterdream.twilight_lantern.event_start", "§8诡异的灯笼突然剧烈抖动，黑色的阴影从灯芯里流出");

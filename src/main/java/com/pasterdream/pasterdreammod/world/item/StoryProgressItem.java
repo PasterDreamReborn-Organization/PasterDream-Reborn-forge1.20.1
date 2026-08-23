@@ -1,8 +1,9 @@
 package com.pasterdream.pasterdreammod.world.item;
 
-import com.pasterdream.pasterdreammod.helper.itemwithnbt.dreamnoteswithnbt.DreamNotesWithNBT;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWithNBTToCreativeModeTab;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,26 +22,22 @@ public class StoryProgressItem extends Item {
     private static final ResourceLocation ENTER_LAMP_SHADOW_WORLD =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/enter_lamp_shadow_world");
 
-    /** 剧情线终点 */
-    private static final ResourceLocation SCARE_ADV =
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/scare");
+    /** 剧情线终点（发放完暗影地牢笔记书后即全部完成） */
+    private static final ResourceLocation ALL_DONE_ADV =
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_dungeon");
 
-    /**
-     * 前置进度 → 下一本笔记 content 键，按剧情顺序排列。
-     * infestedChurch（侵染教堂-黑面）需玩家自行探索获取，不在此列。
-     */
-    private static final ResourceLocation[] PREREQUISITE_ADVANCEMENTS = {
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/lamp_shadow_root"),
+    /** 发放笔记书时同步授予的剧情进度，按顺序排列 */
+    private static final ResourceLocation[] GRANT_ADVANCEMENTS = {
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/deposition_shadow"),
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_travelogue"),
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_dungeon")
     };
 
-    private static final String[] NEXT_NOTE_CONTENTS = {
-            "depositionShadow",
-            "shadowTravelogue",
-            "shadowDungeon",
-            "scare"
+    /** 发放的笔记书 content 键，与 GRANT_ADVANCEMENTS 一一对应 */
+    private static final String[] NEXT_NOTE_BOOK_CONTENTS = {
+            "沉淀阴影",
+            "阴影游记",
+            "暗影地牢"
     };
 
     public StoryProgressItem(Properties properties) {
@@ -67,34 +64,44 @@ public class StoryProgressItem extends Item {
         }
 
         // 2. 全部完成？
-        if (isAdvancementDone(serverPlayer, SCARE_ADV)) {
+        if (isAdvancementDone(serverPlayer, ALL_DONE_ADV)) {
             serverPlayer.displayClientMessage(
                     Component.translatable("message.pasterdream.story_guide.all_done"), true);
             return InteractionResultHolder.fail(stack);
         }
 
-        // 3. 从后往前找最高已完成的前置进度，发放下一本笔记
-        for (int i = PREREQUISITE_ADVANCEMENTS.length - 1; i >= 0; i--) {
-            if (isAdvancementDone(serverPlayer, PREREQUISITE_ADVANCEMENTS[i])) {
-                ItemStack note = DreamNotesWithNBT.dreamNotesWithNBT(
-                        ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", NEXT_NOTE_CONTENTS[i]);
-
-                if (!player.getInventory().add(note)) {
-                    player.drop(note, false);
-                }
-
-                level.playSound(null, player.blockPosition(),
-                        SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1.0f, 1.0f);
-
-                stack.shrink(1);
-                return InteractionResultHolder.consume(stack);
+        // 3. 从后往前找最高已完成的前置进度，发放下一本笔记书并同步授予进度
+        int grantIndex = 0;
+        for (int i = GRANT_ADVANCEMENTS.length - 1; i >= 0; i--) {
+            if (isAdvancementDone(serverPlayer, GRANT_ADVANCEMENTS[i])) {
+                grantIndex = i + 1;
+                break;
             }
         }
 
-        // 4. 已入场但 lamp_shadow_root 未完成 → 还需自行寻找侵染教堂-黑面
-        serverPlayer.displayClientMessage(
-                Component.translatable("message.pasterdream.story_guide.need_infested_church"), true);
-        return InteractionResultHolder.fail(stack);
+        ItemStack note = DreamNotesBookWithNBTToCreativeModeTab.buildNBT(NEXT_NOTE_BOOK_CONTENTS[grantIndex]);
+        if (!player.getInventory().add(note)) {
+            player.drop(note, false);
+        }
+
+        grantAdvancement(serverPlayer, GRANT_ADVANCEMENTS[grantIndex]);
+
+        level.playSound(null, player.blockPosition(),
+                SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1.0f, 1.0f);
+
+        stack.shrink(1);
+        return InteractionResultHolder.consume(stack);
+    }
+
+    private static void grantAdvancement(ServerPlayer player, ResourceLocation id) {
+        Advancement adv = player.server.getAdvancements().getAdvancement(id);
+        if (adv == null) {
+            return;
+        }
+        AdvancementProgress progress = player.getAdvancements().getOrStartProgress(adv);
+        for (String criteria : progress.getRemainingCriteria()) {
+            player.getAdvancements().award(adv, criteria);
+        }
     }
 
     private static boolean isAdvancementDone(ServerPlayer player, ResourceLocation id) {

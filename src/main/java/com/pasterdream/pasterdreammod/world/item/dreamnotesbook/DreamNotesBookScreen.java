@@ -102,7 +102,7 @@ public class DreamNotesBookScreen extends Screen
     private List<String> wrapTextToLine(String text, int width)
     {
         List<String> lines = new ArrayList<>();
-        String[] paragraphs = text.replace("\r\n", "\n").split("\n", -1);
+        String[] paragraphs = text.replace("\r\n", "\n").replace("$(br)", "\n").split("\n", -1);
         for (String paragraph : paragraphs)
         {
             if (paragraph.isEmpty())
