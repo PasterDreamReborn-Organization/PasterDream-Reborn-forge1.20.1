@@ -1,13 +1,10 @@
 package com.pasterdream.pasterdreammod.world.block;
 
-import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 
@@ -18,14 +15,9 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
  * 这里覆写 {@link #updateShape}，在检测到另一半消失时用 {@link Block#UPDATE_SUPPRESS_DROPS}
  * 静默移除自身，使战利品表只对被破坏的那一半生效，且不破坏原版的破坏粒子与掉落流程。
  */
-public class WindIslandReedBlock extends DoublePlantBlock {
+public class WindIslandReedBlock extends WindTallPlantBlock {
     public WindIslandReedBlock(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-        return groundState.is(ModBlockTags.WIND_PLANTS_CAN_PLACE_ON);
     }
 
     @Override

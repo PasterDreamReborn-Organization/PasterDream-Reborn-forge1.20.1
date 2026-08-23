@@ -678,7 +678,7 @@ public class ModBlocks {
             });
 
     //风之植物系列
-    public static final RegistryObject<Block> HAIRY_MOSS = BLOCKS.register("hairy_moss", () -> new BushBlock(
+    public static final RegistryObject<Block> HAIRY_MOSS = BLOCKS.register("hairy_moss", () -> new WindPlantBlock(
             BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GREEN)
                     .instabreak()
@@ -688,20 +688,9 @@ public class ModBlocks {
                     .offsetType(BlockBehaviour.OffsetType.XZ)
                     .pushReaction(PushReaction.DESTROY)
                     .replaceable()
-    ) {
-        @Override
-        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-            Vec3 offset = state.getOffset(world, pos);
-            return box(5, 0, 5, 11, 10, 11).move(offset.x, offset.y, offset.z);
-        }
+    ));
 
-        @Override
-        public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-            return groundState.is(ModBlockTags.WIND_PLANTS_CAN_PLACE_ON);
-        }
-    });
-
-    public static final RegistryObject<Block> WIND_CLEAVING_GRASS = BLOCKS.register("wind_cleaving_grass", () -> new BushBlock(
+    public static final RegistryObject<Block> WIND_CLEAVING_GRASS = BLOCKS.register("wind_cleaving_grass", () -> new WindPlantBlock(
             BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GREEN)
                     .instabreak()
@@ -711,20 +700,9 @@ public class ModBlocks {
                     .offsetType(BlockBehaviour.OffsetType.XZ)
                     .pushReaction(PushReaction.DESTROY)
                     .replaceable()
-    ) {
-        @Override
-        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-            Vec3 offset = state.getOffset(world, pos);
-            return box(5, 0, 5, 11, 10, 11).move(offset.x, offset.y, offset.z);
-        }
+    ));
 
-        @Override
-        public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-            return groundState.is(ModBlockTags.WIND_PLANTS_CAN_PLACE_ON);
-        }
-    });
-
-    public static final RegistryObject<Block> WIND_FEATHER_GRASS = BLOCKS.register("wind_feather_grass", () -> new DoublePlantBlock(
+    public static final RegistryObject<Block> WIND_FEATHER_GRASS = BLOCKS.register("wind_feather_grass", () -> new WindTallPlantBlock(
             BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_GREEN)
                     .instabreak()
@@ -734,18 +712,7 @@ public class ModBlocks {
                     .offsetType(BlockBehaviour.OffsetType.XZ)
                     .pushReaction(PushReaction.DESTROY)
                     .replaceable()
-    ) {
-        @Override
-        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-            Vec3 offset = state.getOffset(world, pos);
-            return box(3, 0, 3, 13, 16, 13).move(offset.x, offset.y, offset.z);
-        }
-
-        @Override
-        public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-            return groundState.is(ModBlockTags.WIND_PLANTS_CAN_PLACE_ON);
-        }
-    });
+    ));
 
     public static final RegistryObject<Block> WIND_ISLAND_REED = BLOCKS.register("wind_island_reed", () -> new WindIslandReedBlock(
             BlockBehaviour.Properties.of()

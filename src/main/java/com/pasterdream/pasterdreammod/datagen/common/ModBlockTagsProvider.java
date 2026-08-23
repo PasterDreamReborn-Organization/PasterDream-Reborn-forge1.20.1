@@ -494,10 +494,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(Blocks.CRIMSON_NYLIUM)
                 .add(Blocks.WARPED_NYLIUM);
 
-        tag(ModBlockTags.WIND_PLANTS_CAN_PLACE_ON)
-                .add(ModBlocks.CYAN_MOSS_STONE.get())
-                .add(ModBlocks.CYAN_STONE.get());
-
         tag(BlockTags.VALID_SPAWN)
                 .add(ModBlocks.SHADOW_NYLIUM.get())
                 .add(ModBlocks.SHADOW_WART_BLOCK.get())
