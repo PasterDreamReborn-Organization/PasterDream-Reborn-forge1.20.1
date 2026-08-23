@@ -884,6 +884,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> POTTED_REED = registerPotted(REED, "potted_reed");
     public static final RegistryObject<Block> POTTED_RYE = registerPotted(RYE, "potted_rye");
     public static final RegistryObject<Block> POTTED_OATS = registerPotted(OATS, "potted_oats");
+    public static final RegistryObject<Block> POTTED_HAIRY_MOSS = registerPotted(HAIRY_MOSS, "potted_hairy_moss");
+    public static final RegistryObject<Block> POTTED_WIND_CLEAVING_GRASS = registerPotted(WIND_CLEAVING_GRASS, "potted_wind_cleaving_grass");
     public static final RegistryObject<Block> POTTED_DYEDREAM_COROLLA_CROP = registerPottedCrop(DYEDREAM_COROLLA_CROP, "potted_dyedream_corolla_crop", ModItems.DYEDREAM_COROLLA, 1, ModItems.DYEDREAM_COROLLA_CROP_AGE_0, ModItems.DYEDREAM_COROLLA_CROP_AGE_1);
     public static final RegistryObject<Block> POTTED_WHITE_COROLLA_CROP = registerPottedCrop(WHITE_COROLLA_CROP, "potted_white_corolla_crop", ModItems.WHITE_COROLLA, 1, ModItems.WHITE_COROLLA_CROP_AGE_0, ModItems.WHITE_COROLLA_CROP_AGE_1);
     public static final RegistryObject<Block> POTTED_LIGHT_BALL_CROP = registerPottedCrop(LIGHT_BALL_CROP, "potted_light_ball_crop", ModItems.LIGHT_BALL, 1, ModItems.LIGHT_BALL_CROP_AGE_0, ModItems.LIGHT_BALL_CROP_AGE_1, 12);
