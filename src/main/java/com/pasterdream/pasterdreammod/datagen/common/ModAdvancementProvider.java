@@ -409,13 +409,6 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/shadow_dungeon"), existingFileHelper);
 
-            Advancement scare = Advancement.Builder.advancement()
-                    .parent(shadowDungeon)
-                    .addCriterion("read_scare_note",
-                            ReadDreamNoteTrigger.TriggerInstance.forContent("scare"))
-                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
-                            "story/scare"), existingFileHelper);
-
             // ========== 无名剧情线（暗影地牢 NPC 对话 + 灯影选择） ==========
             // 纯逻辑标记，不在进度界面显示
 

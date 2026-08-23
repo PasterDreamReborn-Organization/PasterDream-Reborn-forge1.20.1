@@ -867,6 +867,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.侵染教堂-亮面", "Infested Church - Bright Face");
         add("book.pasterdream.title.暮影之笼", "Twilight Cage");
         add("book.pasterdream.title.暗影图书馆", "Shadow Library");
+        add("book.pasterdream.title.沉淀阴影", "Deposition of Shadow");
+        add("book.pasterdream.title.阴影游记", "Shadow Travelogue");
+        add("book.pasterdream.title.暗影地牢", "Shadow Dungeon");
 
         add("book.pasterdream.title.破风的骑士", "Wind Break Knight");
         add("book.pasterdream.title.清晨的新风", "Morning New Wind");
@@ -1722,7 +1725,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.dream_accumulator.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
         add("message.pasterdream.story_guide.not_entered_lamp_shadow", "You have not yet set foot in the Lamp Shadow World");
         add("message.pasterdream.story_guide.all_done", "All Lamp Shadow World notes have been resolved");
-        add("message.pasterdream.story_guide.need_infested_church", "You must first discover the Lamp Shadow World notes on your own");
 
         add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past...");
         add("message.pasterdream.dream_train.location_info", "The train revealed a location... §aX：%s §aZ：%s");
