@@ -32,6 +32,9 @@ public final class WindDirectionHandler {
     /** 玩家风向判定节流间隔（tick），对应原作 config player total tick update 默认值 5 */
     private static final int TICK_INTERVAL = 5;
 
+    /** 换向后微风音效延迟计数，>0 时每 tick 递减 */
+    private static int breezeSoundDelay = 0;
+
     private WindDirectionHandler() {}
 
     @SubscribeEvent
@@ -39,6 +42,12 @@ public final class WindDirectionHandler {
         if (event.phase != TickEvent.Phase.END) return;
         if (!(event.level instanceof ServerLevel level)) return;
         if (!level.dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD)) return;
+        if (breezeSoundDelay > 0 && --breezeSoundDelay == 0) {
+            for (ServerPlayer p : level.players()) {
+                level.playSound(null, BlockPos.containing(p.getX(), p.getY(), p.getZ()),
+                        ModSounds.BREEZE_WIND.get(), SoundSource.WEATHER, 1, 1);
+            }
+        }
         tickWindChange(level);
     }
 
@@ -109,12 +118,7 @@ public final class WindDirectionHandler {
             }
 
             // 微风音效（延迟 79 tick）
-            PasterDreamMod.queueServerWork(79, () -> {
-                for (ServerPlayer p : level.players()) {
-                    level.playSound(null, BlockPos.containing(p.getX(), p.getY(), p.getZ()),
-                            ModSounds.BREEZE_WIND.get(), SoundSource.WEATHER, 1, 1);
-                }
-            });
+            breezeSoundDelay = 79;
         }
 
         if (dayTime == 1 || dayTime == 5) {

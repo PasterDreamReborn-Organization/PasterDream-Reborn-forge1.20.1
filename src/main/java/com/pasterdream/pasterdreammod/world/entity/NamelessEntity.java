@@ -2,6 +2,8 @@ package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import net.minecraft.nbt.CompoundTag;
+
+import java.util.UUID;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -32,10 +34,20 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class NamelessEntity extends PathfinderMob implements GeoEntity {
+    public enum DialoguePhase {
+        NONE, FIRST, SECOND
+    }
+
     public static final EntityDataAccessor<String> ANIMATION = SynchedEntityData.defineId(NamelessEntity.class, EntityDataSerializers.STRING);
     public static final EntityDataAccessor<String> TEXTURE = SynchedEntityData.defineId(NamelessEntity.class, EntityDataSerializers.STRING);
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     public String animationprocedure = "empty";
+
+    /** 对话状态机：当前阶段、下一行行号、距下一行剩余 tick、对话玩家 */
+    private DialoguePhase dialoguePhase = DialoguePhase.NONE;
+    private int dialogueLine = 1;
+    private int dialogueTickLeft = 0;
+    private UUID dialoguePlayer;
 
     public NamelessEntity(PlayMessages.SpawnEntity packet, Level world) {
         this(ModEntities.NAMELESS.get(), world);
@@ -94,6 +106,11 @@ public class NamelessEntity extends PathfinderMob implements GeoEntity {
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putString("Texture", this.getTexture());
+        compound.putString("DialoguePhase", this.dialoguePhase.name());
+        compound.putInt("DialogueLine", this.dialogueLine);
+        compound.putInt("DialogueTickLeft", this.dialogueTickLeft);
+        if (this.dialoguePlayer != null)
+            compound.putUUID("DialoguePlayer", this.dialoguePlayer);
     }
 
     @Override
@@ -101,6 +118,19 @@ public class NamelessEntity extends PathfinderMob implements GeoEntity {
         super.readAdditionalSaveData(compound);
         if (compound.contains("Texture"))
             this.setTexture(compound.getString("Texture"));
+        if (compound.contains("DialoguePhase")) {
+            try {
+                this.dialoguePhase = DialoguePhase.valueOf(compound.getString("DialoguePhase"));
+            } catch (IllegalArgumentException e) {
+                this.dialoguePhase = DialoguePhase.NONE;
+            }
+        }
+        if (compound.contains("DialogueLine"))
+            this.dialogueLine = compound.getInt("DialogueLine");
+        if (compound.contains("DialogueTickLeft"))
+            this.dialogueTickLeft = compound.getInt("DialogueTickLeft");
+        if (compound.hasUUID("DialoguePlayer"))
+            this.dialoguePlayer = compound.getUUID("DialoguePlayer");
     }
 
     @Override
@@ -128,6 +158,45 @@ public class NamelessEntity extends PathfinderMob implements GeoEntity {
     public void aiStep() {
         super.aiStep();
         this.updateSwingTime();
+        if (!this.level().isClientSide() && this.dialoguePhase != DialoguePhase.NONE) {
+            if (--this.dialogueTickLeft <= 0) {
+                this.advanceDialogue();
+            }
+        }
+    }
+
+    /** 开始一段对话，下一 tick 立即发送第一行 */
+    public void startDialogue(ServerPlayer player, DialoguePhase phase) {
+        this.dialoguePlayer = player.getUUID();
+        this.dialoguePhase = phase;
+        this.dialogueLine = 1;
+        this.dialogueTickLeft = 0;
+    }
+
+    private void advanceDialogue() {
+        ServerPlayer player = this.getDialoguePlayer();
+        DialoguePhase phase = this.dialoguePhase;
+        if (player == null) {
+            // 玩家已下线，中止对话
+            this.dialoguePhase = DialoguePhase.NONE;
+            return;
+        }
+        int totalLines = phase == DialoguePhase.FIRST
+                ? NamelessDialogueHandler.FIRST_LINES : NamelessDialogueHandler.SECOND_LINES;
+        if (this.dialogueLine <= totalLines) {
+            NamelessDialogueHandler.sendLine(player, NamelessDialogueHandler.lineKey(phase, this.dialogueLine));
+            this.dialogueLine++;
+            this.dialogueTickLeft = NamelessDialogueHandler.LINE_INTERVAL;
+        } else {
+            this.dialoguePhase = DialoguePhase.NONE;
+            NamelessDialogueHandler.finishDialogue(this, player, phase);
+        }
+    }
+
+    private ServerPlayer getDialoguePlayer() {
+        if (this.dialoguePlayer == null || this.level().getServer() == null)
+            return null;
+        return this.level().getServer().getPlayerList().getPlayer(this.dialoguePlayer);
     }
 
     public static void init() {
