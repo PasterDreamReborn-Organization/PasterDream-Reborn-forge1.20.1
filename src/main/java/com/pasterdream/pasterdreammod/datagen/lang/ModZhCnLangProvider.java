@@ -597,6 +597,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.POTTED_LIGHT_BALL_CROP.get(), "盆栽流明堇");
         add(ModBlocks.POTTED_CLOUD_CROP.get(), "盆栽玲云花");
         add(ModBlocks.POTTED_COTTON_CROP.get(), "盆栽棉花");
+        add(ModBlocks.POTTED_HAIRY_MOSS.get(), "盆栽茸毛苔");
+        add(ModBlocks.POTTED_WIND_CLEAVING_GRASS.get(), "盆栽斩风草");
 
         add(ModItems.DEBUG_SWORD.get(), "调试之剑");
         add(ModItems.LOOT_GENERATOR.get(), "战利品生成器");

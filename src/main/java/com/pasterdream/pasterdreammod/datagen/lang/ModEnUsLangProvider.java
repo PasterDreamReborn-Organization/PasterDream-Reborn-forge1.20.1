@@ -583,6 +583,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.POTTED_LIGHT_BALL_CROP.get(), "Potted Light Ball");
         add(ModBlocks.POTTED_CLOUD_CROP.get(), "Potted Cloud");
         add(ModBlocks.POTTED_COTTON_CROP.get(), "Potted Cotton");
+        add(ModBlocks.POTTED_HAIRY_MOSS.get(), "Potted Hairy Moss");
+        add(ModBlocks.POTTED_WIND_CLEAVING_GRASS.get(), "Potted Wind Cleaving Grass");
 
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "Melt Dream Crystal Fragment");
         add(ModItems.MELT_DREAM_AURORIAN_STEEL.get(), "Melt Dream Aurorian Steel");
