@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.BossDamageLimiter;
 import com.pasterdream.pasterdreammod.helper.BossLimitProfile;
@@ -108,6 +109,9 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     private static final int ATTACK_DAMAGE_DELAY = 10;          // 攻击动画播放后延迟结算伤害（tick）
     private static final int SKILL_ANIM_LENGTH_TICKS = 50;      // 技能动画时长（tick，skill_0 约 2.52s）
     private static final int DEATH_TIME = 20;                   // 死亡动画时长（tick）
+    private static final double LIGHTNING_SPAWN_HEIGHT = 5.0;   // 落雷生成高度（目标头顶上方，格）
+    private static final double LIGHTNING_DAMAGE = 7;           // 落雷伤害（与雷云一致）
+    private static final int LIGHTNING_DELAY_TICKS = 10;        // 落雷延迟（普攻命中后延迟的 tick 数）
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final ServerBossEvent bossInfo = new ServerBossEvent(this.getDisplayName(), ServerBossEvent.BossBarColor.GREEN, ServerBossEvent.BossBarOverlay.PROGRESS);
@@ -339,6 +343,29 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     }
 
     /**
+     * 普攻命中后延迟 LIGHTNING_DELAY_TICKS tick，再按配置概率（Config.windKnightLightningChance）
+     * 在目标头顶召唤落雷。落雷与雷云实体所使用的攻击一致：从天而降的 LightningProjectileEntity。
+     */
+    private void attemptLightningStrike(LivingEntity target) {
+        PasterDreamMod.queueServerWork(LIGHTNING_DELAY_TICKS, () -> {
+            // 延迟期间骑士或目标可能死亡/被移除，此时不得再召唤落雷
+            if (this.isRemoved() || !this.isAlive() || target.isRemoved() || !target.isAlive())
+                return;
+            if (level().isClientSide() || random.nextDouble() > Config.windKnightLightningChance)
+                return;
+            LightningProjectileEntity proj = new LightningProjectileEntity(ModEntities.LIGHTNING_PROJECTILE.get(), level());
+            proj.setBaseDamage(LIGHTNING_DAMAGE);
+            proj.setKnockback(0);
+            proj.setSilent(true);
+            proj.setPierceLevel((byte) 1);
+            proj.setPos(target.getX(), target.getY() + LIGHTNING_SPAWN_HEIGHT, target.getZ());
+            proj.shoot(0, -1, 0, 1, 0);
+            level().addFreshEntity(proj);
+            level().playSound(null, target.getOnPos(), ModSounds.THUNDERCLOUD_ATTACK.get(), SoundSource.MASTER, 0.6f, 1f);
+        });
+    }
+
+    /**
      * 近战攻击：普攻通过 startProcedureAnimation 走程序动画，由服务器驱动，
      * 先播动画再延迟结算伤害。
      */
@@ -378,6 +405,9 @@ public class WindKnightEntity extends Monster implements GeoEntity {
                             && this.mob.distanceToSqr(enemy) <= reach) {
                         this.mob.swing(InteractionHand.MAIN_HAND);
                         this.mob.doHurtTarget(enemy);
+                        if (enemy.isAlive()) {
+                            this.mob.attemptLightningStrike(enemy);
+                        }
                     }
                 });
             }
