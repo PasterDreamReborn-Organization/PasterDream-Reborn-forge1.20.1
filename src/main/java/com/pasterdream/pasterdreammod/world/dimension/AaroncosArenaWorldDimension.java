@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.GameModeHelper;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -20,9 +21,14 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Mod.EventBusSubscriber
 public final class AaroncosArenaWorldDimension {
@@ -31,6 +37,56 @@ public final class AaroncosArenaWorldDimension {
     public static final ResourceKey<Level> AARONCOS_ARENA_WORLD = ResourceKey.create(
             ResourceKey.createRegistryKey(ResourceLocation.fromNamespaceAndPath("minecraft", "dimension")),
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_arena_world"));
+
+    // ===== 竞技场离场会话：手箱开启后 410 tick 内倒计时并传送所有玩家回主世界 =====
+
+    private record ExitSession(BlockPos chestPos, int elapsed) {}
+
+    private static final Map<ServerLevel, ExitSession> EXIT_SESSIONS = new HashMap<>();
+    private static final int[] COUNTDOWN_ELAPSED = {10, 210, 310, 350, 400};
+    private static final String[] COUNTDOWN_MSG =
+            {"离开倒计时 20秒", "离开倒计时 10秒", "离开倒计时 5秒", "离开倒计时 3秒", "离开倒计时 1秒"};
+    private static final int EXIT_TOTAL_TICKS = 410;
+
+    /** 手箱开启时启动离场会话（倒计时提示 + 传回主世界 + 清理竞技场内非玩家实体） */
+    public static void startExitSession(ServerLevel arena, BlockPos chestPos) {
+        EXIT_SESSIONS.put(arena, new ExitSession(chestPos, 0));
+    }
+
+    @SubscribeEvent
+    public static void onArenaLevelTick(TickEvent.LevelTickEvent event) {
+        if (event.phase != TickEvent.Phase.END) return;
+        if (!(event.level instanceof ServerLevel arena)) return;
+        if (!arena.dimension().equals(AARONCOS_ARENA_WORLD)) return;
+
+        ExitSession session = EXIT_SESSIONS.get(arena);
+        if (session == null) return;
+
+        int elapsed = session.elapsed() + 1;
+        for (int i = 0; i < COUNTDOWN_ELAPSED.length; i++) {
+            if (elapsed == COUNTDOWN_ELAPSED[i]) {
+                for (Player p : arena.players()) {
+                    if (p instanceof ServerPlayer sp)
+                        sp.displayClientMessage(Component.literal(COUNTDOWN_MSG[i]), true);
+                }
+            }
+        }
+
+        if (elapsed >= EXIT_TOTAL_TICKS) {
+            EXIT_SESSIONS.remove(arena);
+            for (Player p : new ArrayList<>(arena.players())) {
+                if (p instanceof ServerPlayer sp)
+                    AaroncosArenaTeleporter.teleportToOverworldSpawn(sp);
+            }
+            Vec3 center = Vec3.atCenterOf(session.chestPos());
+            for (Entity e : arena.getEntitiesOfClass(Entity.class, new AABB(center, center).inflate(37.5),
+                    e -> !(e instanceof Player))) {
+                e.discard();
+            }
+        } else {
+            EXIT_SESSIONS.put(arena, new ExitSession(session.chestPos(), elapsed));
+        }
+    }
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class DimensionSpecialEffectsHandler {

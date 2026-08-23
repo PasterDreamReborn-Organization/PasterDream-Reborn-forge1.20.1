@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
-import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import net.minecraft.core.BlockPos;
@@ -52,6 +51,7 @@ public class SmallStoneSpiritEntity extends Monster implements GeoEntity {
     private boolean swinging;
     private long lastSwing;
     public String animationprocedure = "empty";
+    private int stoneBlockCountdown = -1;
 
     public SmallStoneSpiritEntity(PlayMessages.SpawnEntity packet, Level world) {
         this(ModEntities.SMALL_STONE_SPIRIT.get(), world);
@@ -140,7 +140,8 @@ public class SmallStoneSpiritEntity extends Monster implements GeoEntity {
             }
             if (world.getBlockState(pos).isAir() && !world.getBlockState(pos.below()).isAir()) {
                 if (this.getRandom().nextFloat() > 0.5f) {
-                    PasterDreamMod.queueServerWork(22, () -> world.setBlock(pos, ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get().defaultBlockState(), 3));
+                    // 死亡动画结束后（22t）在脚下生成石块
+                    stoneBlockCountdown = 22;
                 }
             }
         }
@@ -163,6 +164,17 @@ public class SmallStoneSpiritEntity extends Monster implements GeoEntity {
     public void baseTick() {
         super.baseTick();
         this.refreshDimensions();
+        if (stoneBlockCountdown > 0) {
+            stoneBlockCountdown--;
+            if (stoneBlockCountdown == 0) {
+                BlockPos pos = this.blockPosition();
+                if (!level().isClientSide()
+                        && level().getBlockState(pos).isAir()
+                        && !level().getBlockState(pos.below()).isAir()) {
+                    level().setBlock(pos, ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get().defaultBlockState(), 3);
+                }
+            }
+        }
     }
 
     @Override

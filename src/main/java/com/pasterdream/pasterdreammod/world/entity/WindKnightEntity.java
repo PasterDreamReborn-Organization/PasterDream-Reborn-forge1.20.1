@@ -118,6 +118,13 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     public String animationprocedure = "empty";
     private int procedureTimer;
     private int skillCooldown;
+    private int skillDamageCountdown;
+    private int hurtSoundCountdown;
+    private int lightningCountdown;
+    private LivingEntity pendingLightningTarget;
+    private int attackDamageCountdown;
+    private LivingEntity pendingAttackTarget;
+    private double pendingAttackReachSqr;
     private final BossDamageLimiter damageLimiter;
 
     public WindKnightEntity(PlayMessages.SpawnEntity packet, Level world) {
@@ -227,6 +234,15 @@ public class WindKnightEntity extends Monster implements GeoEntity {
                 if (procedureTimer == 0)
                     setAnimation("empty");
             }
+            // 延迟事件倒计时：技能伤害 / 受击音效 / 落雷 / 普攻伤害
+            if (skillDamageCountdown > 0 && --skillDamageCountdown == 0)
+                executeSkillDamage();
+            if (hurtSoundCountdown > 0 && --hurtSoundCountdown == 0)
+                executeHurtSound();
+            if (lightningCountdown > 0 && --lightningCountdown == 0)
+                executeLightningStrike();
+            if (attackDamageCountdown > 0 && --attackDamageCountdown == 0)
+                executeAttackDamage();
         }
         this.refreshDimensions();
     }
@@ -261,42 +277,48 @@ public class WindKnightEntity extends Monster implements GeoEntity {
             if (target != null && target.isAlive() && distanceToSqr(target) <= SKILL_TRIGGER_DIST
                     && animationprocedure.equals("empty")) {
                 startProcedureAnimation("skill_0", SKILL_ANIM_LENGTH_TICKS);
-                PasterDreamMod.queueServerWork(SKILL_DELAY, () -> {
-                    // 延迟期间骑士可能死亡/被移除，此时不得再造成伤害或释放粒子
-                    if (this.isRemoved() || !this.isAlive())
-                        return;
-                    Vec3 center = position();
-                    for (Entity e : level().getEntitiesOfClass(Entity.class,
-                            new AABB(center, center).inflate(SKILL_RADIUS), e -> true).stream()
-                            .sorted(Comparator.comparingDouble(en -> en.distanceToSqr(center))).toList()) {
-                        if (!e.getType().is(SPECIAL_ENTITY) && !(e instanceof WindKnightEntity)
-                                && !(e instanceof Player player && (player.isCreative() || player.isSpectator()))) {
-                            e.hurt(damageSources().mobAttack(this), SKILL_DAMAGE);
-                            if (level() instanceof ServerLevel sl)
-                                sl.sendParticles(ParticleTypes.EXPLOSION, e.getX(), e.getY(), e.getZ(), EXPLOSION_PARTICLE_COUNT, PARTICLE_SPREAD, PARTICLE_SPREAD, PARTICLE_SPREAD, PARTICLE_SPREAD);
-                        }
-                    }
-                    if (level() instanceof ServerLevel sl) {
-                        sl.sendParticles(ParticleTypes.CLOUD, center.x, center.y + CLOUD_PARTICLE_Y_OFFSET, center.z, BIG_PARTICLE_COUNT, SKILL_RADIUS, BIG_PARTICLE_SPREAD_Y, SKILL_RADIUS, PARTICLE_SPREAD);
-                        sl.sendParticles(ParticleTypes.CRIT, center.x, center.y + CLOUD_PARTICLE_Y_OFFSET, center.z, BIG_PARTICLE_COUNT, SKILL_RADIUS, BIG_PARTICLE_SPREAD_Y, SKILL_RADIUS, PARTICLE_SPREAD);
-                    }
-                    if (!level().isClientSide()) {
-                        level().playSound(null, BlockPos.containing(center), ModSounds.WIND_KNIGHT_SKILL.get(), SoundSource.MASTER, SKILL_SOUND_VOLUME, SKILL_SOUND_PITCH);
-                        level().playSound(null, BlockPos.containing(center), SoundEvents.GENERIC_EXPLODE, SoundSource.MASTER, EXPLODE_SOUND_VOLUME, EXPLODE_SOUND_PITCH);
-                    }
-                    addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, SPEED_EFFECT_DURATION, SPEED_EFFECT_AMPLIFIER, false, false));
-                });
+                skillDamageCountdown = SKILL_DELAY;
+                hurtSoundCountdown = HURT_SOUND_DELAY;
                 addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, SLOWDOWN_EFFECT_DURATION, SLOWDOWN_EFFECT_AMPLIFIER, false, false));
-                PasterDreamMod.queueServerWork(HURT_SOUND_DELAY, () -> {
-                    if (!level().isClientSide() && !this.isRemoved() && this.isAlive())
-                        level().playSound(null, BlockPos.containing(position()), SoundEvents.IRON_GOLEM_HURT, SoundSource.MASTER, HURT_SOUND_VOLUME, HURT_SOUND_PITCH);
-                });
                 skillCooldown = 0;
             }
         } else {
             skillCooldown++;
         }
         clearFire();
+    }
+
+    /** 技能伤害结算：由 baseTick 在 SKILL_DELAY 后调用 */
+    private void executeSkillDamage() {
+        // 延迟期间骑士可能死亡/被移除，此时不得再造成伤害或释放粒子
+        if (this.isRemoved() || !this.isAlive())
+            return;
+        Vec3 center = position();
+        for (Entity e : level().getEntitiesOfClass(Entity.class,
+                new AABB(center, center).inflate(SKILL_RADIUS), e -> true).stream()
+                .sorted(Comparator.comparingDouble(en -> en.distanceToSqr(center))).toList()) {
+            if (!e.getType().is(SPECIAL_ENTITY) && !(e instanceof WindKnightEntity)
+                    && !(e instanceof Player player && (player.isCreative() || player.isSpectator()))) {
+                e.hurt(damageSources().mobAttack(this), SKILL_DAMAGE);
+                if (level() instanceof ServerLevel sl)
+                    sl.sendParticles(ParticleTypes.EXPLOSION, e.getX(), e.getY(), e.getZ(), EXPLOSION_PARTICLE_COUNT, PARTICLE_SPREAD, PARTICLE_SPREAD, PARTICLE_SPREAD, PARTICLE_SPREAD);
+            }
+        }
+        if (level() instanceof ServerLevel sl) {
+            sl.sendParticles(ParticleTypes.CLOUD, center.x, center.y + CLOUD_PARTICLE_Y_OFFSET, center.z, BIG_PARTICLE_COUNT, SKILL_RADIUS, BIG_PARTICLE_SPREAD_Y, SKILL_RADIUS, PARTICLE_SPREAD);
+            sl.sendParticles(ParticleTypes.CRIT, center.x, center.y + CLOUD_PARTICLE_Y_OFFSET, center.z, BIG_PARTICLE_COUNT, SKILL_RADIUS, BIG_PARTICLE_SPREAD_Y, SKILL_RADIUS, PARTICLE_SPREAD);
+        }
+        if (!level().isClientSide()) {
+            level().playSound(null, BlockPos.containing(center), ModSounds.WIND_KNIGHT_SKILL.get(), SoundSource.MASTER, SKILL_SOUND_VOLUME, SKILL_SOUND_PITCH);
+            level().playSound(null, BlockPos.containing(center), SoundEvents.GENERIC_EXPLODE, SoundSource.MASTER, EXPLODE_SOUND_VOLUME, EXPLODE_SOUND_PITCH);
+        }
+        addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, SPEED_EFFECT_DURATION, SPEED_EFFECT_AMPLIFIER, false, false));
+    }
+
+    /** 受击音效：由 baseTick 在 HURT_SOUND_DELAY 后调用 */
+    private void executeHurtSound() {
+        if (!level().isClientSide() && !this.isRemoved() && this.isAlive())
+            level().playSound(null, BlockPos.containing(position()), SoundEvents.IRON_GOLEM_HURT, SoundSource.MASTER, HURT_SOUND_VOLUME, HURT_SOUND_PITCH);
     }
 
     public static void init() {
@@ -347,22 +369,52 @@ public class WindKnightEntity extends Monster implements GeoEntity {
      * 在目标头顶召唤落雷。落雷与雷云实体所使用的攻击一致：从天而降的 LightningProjectileEntity。
      */
     private void attemptLightningStrike(LivingEntity target) {
-        PasterDreamMod.queueServerWork(LIGHTNING_DELAY_TICKS, () -> {
-            // 延迟期间骑士或目标可能死亡/被移除，此时不得再召唤落雷
-            if (this.isRemoved() || !this.isAlive() || target.isRemoved() || !target.isAlive())
-                return;
-            if (level().isClientSide() || random.nextDouble() > Config.windKnightLightningChance)
-                return;
-            LightningProjectileEntity proj = new LightningProjectileEntity(ModEntities.LIGHTNING_PROJECTILE.get(), level());
-            proj.setBaseDamage(LIGHTNING_DAMAGE);
-            proj.setKnockback(0);
-            proj.setSilent(true);
-            proj.setPierceLevel((byte) 1);
-            proj.setPos(target.getX(), target.getY() + LIGHTNING_SPAWN_HEIGHT, target.getZ());
-            proj.shoot(0, -1, 0, 1, 0);
-            level().addFreshEntity(proj);
-            level().playSound(null, target.getOnPos(), ModSounds.THUNDERCLOUD_ATTACK.get(), SoundSource.MASTER, 0.6f, 1f);
-        });
+        pendingLightningTarget = target;
+        lightningCountdown = LIGHTNING_DELAY_TICKS;
+    }
+
+    /** 落雷结算：由 baseTick 在 LIGHTNING_DELAY_TICKS 后调用 */
+    private void executeLightningStrike() {
+        LivingEntity target = pendingLightningTarget;
+        pendingLightningTarget = null;
+        // 延迟期间骑士或目标可能死亡/被移除，此时不得再召唤落雷
+        if (target == null || this.isRemoved() || !this.isAlive() || target.isRemoved() || !target.isAlive())
+            return;
+        if (level().isClientSide() || random.nextDouble() > Config.windKnightLightningChance)
+            return;
+        LightningProjectileEntity proj = new LightningProjectileEntity(ModEntities.LIGHTNING_PROJECTILE.get(), level());
+        proj.setBaseDamage(LIGHTNING_DAMAGE);
+        proj.setKnockback(0);
+        proj.setSilent(true);
+        proj.setPierceLevel((byte) 1);
+        proj.setPos(target.getX(), target.getY() + LIGHTNING_SPAWN_HEIGHT, target.getZ());
+        proj.shoot(0, -1, 0, 1, 0);
+        level().addFreshEntity(proj);
+        level().playSound(null, target.getOnPos(), ModSounds.THUNDERCLOUD_ATTACK.get(), SoundSource.MASTER, 0.6f, 1f);
+    }
+
+    /** 记录待结算的普攻伤害：由攻击 Goal 触发，baseTick 在 ATTACK_DAMAGE_DELAY 后结算 */
+    public void scheduleAttackDamage(LivingEntity enemy, double reachSqr) {
+        pendingAttackTarget = enemy;
+        pendingAttackReachSqr = reachSqr;
+        attackDamageCountdown = ATTACK_DAMAGE_DELAY;
+    }
+
+    /** 普攻伤害结算：由 baseTick 在 ATTACK_DAMAGE_DELAY 后调用 */
+    private void executeAttackDamage() {
+        LivingEntity enemy = pendingAttackTarget;
+        pendingAttackTarget = null;
+        if (enemy == null)
+            return;
+        if (!this.isRemoved() && this.isAlive()
+                && enemy.isAlive()
+                && this.distanceToSqr(enemy) <= pendingAttackReachSqr) {
+            this.swing(InteractionHand.MAIN_HAND);
+            this.doHurtTarget(enemy);
+            if (enemy.isAlive()) {
+                this.attemptLightningStrike(enemy);
+            }
+        }
     }
 
     /**
@@ -397,19 +449,9 @@ public class WindKnightEntity extends Monster implements GeoEntity {
                     && mob.level().getGameTime() >= lastAttackTick + ATTACK_INTERVAL) {
                 this.resetAttackCooldown();
                 this.lastAttackTick = mob.level().getGameTime();
-                // 先播放攻击动画，延迟 10 tick 后再结算伤害
+                // 先播放攻击动画，延迟 ATTACK_DAMAGE_DELAY tick 后再结算伤害
                 this.mob.startProcedureAnimation("attack", ATTACK_ANIM_LENGTH);
-                PasterDreamMod.queueServerWork(ATTACK_DAMAGE_DELAY, () -> {
-                    if (!this.mob.isRemoved() && this.mob.isAlive()
-                            && enemy.isAlive()
-                            && this.mob.distanceToSqr(enemy) <= reach) {
-                        this.mob.swing(InteractionHand.MAIN_HAND);
-                        this.mob.doHurtTarget(enemy);
-                        if (enemy.isAlive()) {
-                            this.mob.attemptLightningStrike(enemy);
-                        }
-                    }
-                });
+                this.mob.scheduleAttackDamage(enemy, reach);
             }
         }
     }
