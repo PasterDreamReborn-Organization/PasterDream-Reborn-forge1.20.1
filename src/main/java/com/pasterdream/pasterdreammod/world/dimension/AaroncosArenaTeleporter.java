@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -73,7 +74,7 @@ public final class AaroncosArenaTeleporter {
         // 客户端停留在传送门坐标并继续上报移动，服务端确认窗口超时后接受旧坐标，把玩家拖回门口。
         // 因此改为下一 tick 起连续 3 tick 强制同步（客户端重生处理完毕后位置包必定生效）。
         for (int delay = 1; delay <= 3; delay++) {
-            PasterDreamMod.queueServerWork(delay, () -> forcePosition(player, destination));
+            player.server.tell(new TickTask(delay, () -> forcePosition(player, destination)));
         }
         player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 120, 0));
         GameModeHelper.saveAndSetAdventure(player);
