@@ -38,7 +38,7 @@ public class ElixirBottleItem extends Item
             if (fluid.isEmpty())
             {
                 tooltip.add(Component.translatable("tooltip.pasterdream.空").withStyle(ChatFormatting.GRAY));
-                tooltip.add(Component.translatable("tooltip.pasterdream.总容量：").append("1000 mB").withStyle(ChatFormatting.GRAY));
+                tooltip.add(Component.translatable("tooltip.pasterdream.总容量:").append("1000 mB").withStyle(ChatFormatting.GRAY));
             }
                 else
                 {
