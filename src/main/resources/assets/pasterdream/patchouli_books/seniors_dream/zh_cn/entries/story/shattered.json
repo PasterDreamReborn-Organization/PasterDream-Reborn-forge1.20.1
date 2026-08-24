@@ -1,0 +1,17 @@
+{
+  "sortnum": 5,
+  "name": "pasterdream.seniors_dream.entry.shattered",
+  "icon": "pasterdream:dream_notes_lamp_shadow_world",
+  "category": "pasterdream:story",
+  "advancement": "pasterdream:story/shattered",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shattered.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shattered.page1"
+    }
+  ]
+}

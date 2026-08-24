@@ -1,0 +1,17 @@
+{
+  "sortnum": 4,
+  "name": "pasterdream.seniors_dream.entry.bargain",
+  "icon": "pasterdream:dream_notes_lamp_shadow_world",
+  "category": "pasterdream:story",
+  "advancement": "pasterdream:story/bargain",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.bargain.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.bargain.page1"
+    }
+  ]
+}

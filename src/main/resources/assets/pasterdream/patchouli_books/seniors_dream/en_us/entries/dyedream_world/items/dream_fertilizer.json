@@ -1,0 +1,17 @@
+{
+  "sortnum": 11,
+  "name": "pasterdream.seniors_dream.entry.dream_fertilizer",
+  "icon": "pasterdream:dream_fertilizer",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:dream_fertilizer",
+      "text": "pasterdream.seniors_dream.entry.dream_fertilizer.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.dream_fertilizer.page1"
+    }
+  ]
+}

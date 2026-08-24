@@ -729,7 +729,7 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "theLurkersInTheShadow"));
                         output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "infestedChurch"));
                         output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "depositionShadow"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "shadowTravelogue"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "lampShadowTravelogue1"));
                         output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "shadowDungeon"));
                         output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "scare"));
 
@@ -782,8 +782,12 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("暮影之笼"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("暗影图书馆"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("沉淀阴影"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("阴影游记"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("灯影游记 其一"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("暗影地牢"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("暗影地牢入口"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("欺诈"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("交易"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("破碎"));
 
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("破风的骑士"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("清晨的新风"));

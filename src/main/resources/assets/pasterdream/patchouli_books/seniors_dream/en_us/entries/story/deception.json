@@ -1,0 +1,17 @@
+{
+  "sortnum": 3,
+  "name": "pasterdream.seniors_dream.entry.deception",
+  "icon": "pasterdream:dream_notes_lamp_shadow_world",
+  "category": "pasterdream:story",
+  "advancement": "pasterdream:story/deception",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.deception.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.deception.page1"
+    }
+  ]
+}

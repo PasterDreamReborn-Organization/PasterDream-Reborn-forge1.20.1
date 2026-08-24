@@ -1,0 +1,25 @@
+{
+  "sortnum": 4,
+  "name": "pasterdream.seniors_dream.entry.garden_decryption_nippy_edelweiss",
+  "icon": "pasterdream:nippy_edelweiss",
+  "category": "pasterdream:dyedream_world/structures",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/garden_decryption_nippy_edelweiss.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.garden_decryption_nippy_edelweiss.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.garden_decryption_nippy_edelweiss.page2"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.garden_decryption_nippy_edelweiss.page3"
+    }
+  ]
+}

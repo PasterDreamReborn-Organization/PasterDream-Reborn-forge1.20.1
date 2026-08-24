@@ -61,7 +61,7 @@ public class GUIBackGroundRender
     public static ResourceLocation THE_LURKERS_IN_THE_SHADOW = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/the_lurkers_in_the_shadow.png");
     public static ResourceLocation INFESTED_CHURCH = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/infested_church.png");
     public static ResourceLocation DEPOSITION_SHADOW = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/deposition_shadow.png");
-    public static ResourceLocation SHADOW_TRAVELOGUE = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/shadow_travelogue.png");
+    public static ResourceLocation LAMP_SHADOW_TRAVELOGUE_1 = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/lamp_shadow_travelogue_1.png");
     public static ResourceLocation SHADOW_DUNGEON = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/shadow_dungeon.png");
     public static ResourceLocation SCARE = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dream_notes/scare.png");
 

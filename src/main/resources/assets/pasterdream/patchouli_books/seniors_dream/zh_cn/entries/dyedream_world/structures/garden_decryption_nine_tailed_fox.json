@@ -1,0 +1,25 @@
+{
+  "sortnum": 5,
+  "name": "pasterdream.seniors_dream.entry.garden_decryption_nine_tailed_fox",
+  "icon": "pasterdream:golden_fox_sculpture",
+  "category": "pasterdream:dyedream_world/structures",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/garden_decryption_nine_tailed_fox.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.garden_decryption_nine_tailed_fox.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.garden_decryption_nine_tailed_fox.page2"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.garden_decryption_nine_tailed_fox.page3"
+    }
+  ]
+}

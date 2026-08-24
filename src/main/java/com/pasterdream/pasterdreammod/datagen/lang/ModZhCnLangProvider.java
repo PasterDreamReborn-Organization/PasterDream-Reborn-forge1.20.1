@@ -815,7 +815,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.theLurkersInTheShadow", "§8阴影中的潜藏者");
         add("tooltip.pasterdream.infestedChurch", "§8侵染教堂");
         add("tooltip.pasterdream.depositionShadow", "§8沉淀阴影");
-        add("tooltip.pasterdream.shadowTravelogue", "§8阴影游记");
+        add("tooltip.pasterdream.lampShadowTravelogue1", "§8灯影游记 其一");
         add("tooltip.pasterdream.shadowDungeon", "§8暗影地牢");
         add("tooltip.pasterdream.scare", "§8恐惧");
 
@@ -878,8 +878,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("book.pasterdream.title.暮影之笼", "暮影之笼");
         add("book.pasterdream.title.暗影图书馆", "暗影图书馆");
         add("book.pasterdream.title.沉淀阴影", "沉淀阴影");
-        add("book.pasterdream.title.阴影游记", "阴影游记");
+        add("book.pasterdream.title.灯影游记 其一", "灯影游记 其一");
         add("book.pasterdream.title.暗影地牢", "暗影地牢");
+        add("book.pasterdream.title.暗影地牢入口", "暗影地牢入口");
+        add("book.pasterdream.title.欺诈", "欺诈");
+        add("book.pasterdream.title.交易", "交易");
+        add("book.pasterdream.title.破碎", "破碎");
 
         add("book.pasterdream.title.破风的骑士", "破风的骑士");
         add("book.pasterdream.title.清晨的新风", "清晨的新风");
@@ -914,13 +918,18 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("book.pasterdream.content.探求秘辛", "为了收集一些必要的资源，我在长途跋涉后来到了一片沙漠。\n基于我要寻找的资源相当罕见这一情况，我可能不得不在此停留一段时间，因此，我设法找到了位于沙漠边缘的一座村庄，并建造了这座供我居住的小屋。\n每天日出时出门探索，日落前回到这座临时居所中；晚上或是刮起沙暴无法出门的时候，则和村中的村民攀谈或者是在家里打发时间——这就是我在这片沙漠的日常。\n转眼间半年过去了，白天的探索没有任何进展，但我和村民间的关系却日渐熟络起来。\n大人们对我在夜晚保护他们不受怪物侵扰的行动感激不尽，孩童们则醉心于我分享的游历各方时的冒险故事——渐渐的，村民们开始向我透露一些从未给其他旅者讲述过的“秘辛”：\n“我们村的铁匠几乎从不出门，所以你应该也没怎么见过他。据说他曾是某个国家的御用工匠，他的家族专门为王室锻造各式各样的精兵利器；但在王国毁灭后，他的家族就此没落，最后流浪到我们这里定居了。他好像还不太能接受自己的处境，把工坊造的离我们村子有点远，我们平时也跟他交往不深，只有工作层面的交流......但如果是你的话，应该能和他打好关系吧......”\n村民们似乎想让我去开导孤僻的没落锻造贵族（虽然我觉得他们只是指望在我跟那位打好关系后，让他们能用更便宜的价格修理工具罢了）。于是我带着我珍藏多年的陈酿，造访了铁匠的工坊。\n......\n虽然中间经历了许多波折，但我们最终成为了挚友。在一次对饮中，我向年事已高的他表示，希望他家族的精湛锻造技术能流传下去；虽然我已经在与他的相处中对他的锻造技法有所了解，但我无论如何也无法独自还原出他的技术，像他那样锻造出能力优越的装备。\n他在长时间的沉思后，掏出纸笔，为我绘制了一张设计图，并告诉我：只有严格按照他的工坊的布局，才能最大程度地将大气中的某种......物质？引导并汇聚起来，从而锻造出超凡而新颖的工具。折服于他的慷慨与信任，我将我携带的几乎所有值钱的物件全部留下作为谢礼，并带着这份设计图离开了此处。\n不知不觉，好像已经在这片沙漠停留太久了啊......\n是时候踏上新的旅途了——等我下一次在某地停留时，就试着按照这份设计图来建造一座工坊吧。\nBy 极星");
         add("book.pasterdream.content.研究笔记:黑金属", "要说起这段研究的起因，得归溯于我在这片漆黑的梦境发现的一些古怪的金属。\n就在那些倒挂的灯笼，遗迹，或者是一些陶罐宝盒里，质地看起来就像铁一样，不过锈迹却不是那种褐色的层皮，而是很多黑色的小洞的那种奇怪金属。\n但是用一般的熔炉去熔炼它不会有任何的反应，我索性把它丢进了岩浆，当然是不出意外地直接熔化，和岩浆合而为一了。\n我和夜岚为了研究这个金属，就在这附近去找了一个破旧的梯形房子。\n在一次巧合中，二楼滴落下来的流体阴影滴进了装有这些金属的罐子，然后这些阴影好像有意识一样，自己填补进了这些锈蚀的洞里。“这些还不够”，“看来这些金属可能只是一种载体，真正缺少的是那些影子”。\n随着不断地研究，我们得出了以下的配方：“高温，流动的阴影，以及那种影子怪物的身体”。\n我们从这里醒来，带上了一些材料设备，再一次躺在了前往灯影之下的床上......\n随着机器的轰鸣声，以及融合，熔化，凝结......最终一块黑色的金属应声落在了地上......\nBy 琴雨梦");
         add("book.pasterdream.content.灯影游记 其二", "我很好奇这些真菌是怎么长在这个地方的？\n这里的天空没有光，没有熟悉的太阳，没有任何一种可靠的能量来源，甚至这里的土壤也不见得能提供养料。\n但这些真菌却能把菌丝扎进这些黑色的石头里，长成比人还大的蘑菇树，甚至还长出可以发光的果实。\n同时，这些植物还孕育了一些可能是本地的小动物？这些甲虫应该是以这里的真菌为食，成群结队地在这个地方生活。\n面对黑暗的它们，似乎进化出了白色的眼睛，也许这是能让它们适应黑暗的原因。\n这些生命组合起来所谓的“生态系统”......只能说完全不能用现代科学去解释。\n不过好像从那个染上粉色的世界到这个漆黑且遍地都是怪物的地方早就不是所谓科学能解释的了，完全就是主观构想出来的虚幻产物。\n嗐，我也不是做科研的人。不过嘛，这些蘑菇......会不会很好吃？\n我觉得我应该去研究一些食谱。（还有去找一个试验品！）\nBy 琴雨梦");
+        add("book.pasterdream.content.灯影游记 其一", "这里是一些有关在这里探索的记录：\n打败黑色透明的怪物会掉落一些......会“蠕动”的黑色胶状物。\n一种瓦石地形上会有一些陶罐和坟墓，能从里面掏出来一些好东西。\n部分锁链和遗迹里会有些锈蚀的金属，这种金属貌似并不属于现实存在的元素。\n长满蘑菇的地方生活着一些甲虫，它们很喜欢吃一种本地的白色花朵，可以和它们成为朋友。\n液体状的“阴影”小湖会在沉淀阴影的表面流淌。\nBy 未署名");
+        add("book.pasterdream.content.暗影地牢入口", "这不是你应该来的地方，从哪里来就滚回哪里去。\nBy 卡莱");
+        add("book.pasterdream.content.欺诈", "它并不信任我，它留下了我的影子来限制我，如同人类一般，我的影子学习我如何思考，战斗，逐渐向我靠拢，但它听命于暗影，它始终跟随着我，监视着我是否完成交易内容。\n我在阅读亚伦柯斯遗留的手稿和暗影之书后，我尝试建立一套和暗影沟通的新方式，单方面的。\n我成功了！我欺骗了我的影子，也包括暗影，逃离前我狂笑着，我在暗影面前大摇大摆的离开了这里。\nBy 卡莱");
+        add("book.pasterdream.content.交易", "我逐渐向深处走去，脚步也逐渐轻快，直到我被淹没在这黑水之间，无数的低语如同海水一般涌来，大脑传来的剧烈疼痛差点让我昏死过去，低语逐渐汇聚，最后只剩下一个声音。\n“给我你的力量，作为条件，我可以给你做任何事，但不是作为你的奴隶”\n此刻低语又散作一团，似乎在激烈讨论着，最后再次凝聚起来。\n“门”\n还未等我反应过来是什么，我已经被踹出黑暗之地了。\nBy 卡莱");
+        add("book.pasterdream.content.破碎", "“闭嘴！！我如今变成模样都是拜他所赐，你还有什么脸和我提让我救他！”\n“你看看我这张脸，还是人的模样吗！！和外面那些怪物有什么区别，而且你知道吗？你不知道，很疼，真的很疼，真该把你扔进火里让你也感觉一下！！我已经整整十天没有可以睡个安稳了。”\n“至于伊诺，我为什么要救她？我和蠢货一样......”\n“不对，不对！不对！！都是你们，你们都该死！！”\n“如果没有你们，这一切都不会有的。你，既然你一心如此，那就永远待在这里吧。至于亚伦柯斯，我会亲自打开封印，将他挫骨扬灰！”\nBy 卡莱");
         add("book.pasterdream.content.黑暗之地", "不不不，这里......我很难看清这里的一切，我感觉黑色的迷雾就在我的眼睛上！\n我只能像无头苍蝇似地大声呼喊：“夜岚！你在哪,听得见吗？”\n这要说到前几天，我们在那个粉红色的梦境里探索那座被侵染的教堂。我在教堂的漂浮书卷中找到了一位名为卡莱的前辈留下的笔记，末尾那个坐标指向了下界的上层。相信在看这本书的你们也经历过那阵令人不适的低语，那会儿夜岚便领着我穿过了传送门，去寻那盏该死的灯笼。\n夜岚拿过装备，准备向上攀登：“我先带上装备去看看那个暮影之笼，你在这等我一会，如果那边没问题我再叫你过来。”\n我回了一句“嗯。”就在下面等着她的消息。\n然后，突然，应该就是在夜岚触摸灯笼的时候，我感觉有超多黑色的迷雾漫了过来，然后我什么都看不到了......\n迷雾散去后，我匆忙跑上去找她，但她已不在灯的附近。\n在我调查暮影之笼附近的时候，突然间，我脑子里全是那个鬼东西的低语，身体根本不受控制。我的最后一段记忆，就是我的手死死按在了那冰冷的灯罩上。之后......我就什么都不记得了。\n卡莱说得对，它真的会蛊惑人心......\n不过看现在这种情况，我应该是摸到灯笼之后昏迷，正好倒在那个黑色的床上了，然后就成了现在这个鬼样子。\n“喂！能听到我说话吗！喂！有人吗——！”\n就在我这样四处呼喊的时候，一只手突然伸过来捂住了我的嘴，于是我只能像这样：“你在......啊啊啊啊.....这什......唔唔！（放开我！）” 发出一些含糊不清的声音。\n随后，夜岚那熟悉的，刻意压低的声音传入我的耳中：“嘘！别说话！是我。”\n她见我安静下来，松开了捂住我嘴巴的手——不得不说，她的力气还真不小，按得我痛死了......\n我瞪着她，发出了我从刚刚就被她的手堵住的抱怨声：“你干什么！很痛的，没轻没重的，我感觉我刚刚被钳子夹住了！”\n夜岚指着......额，外面，对着我说：“你没看见外面那堆鬼东西吗？想活命就小心点。”\n我顺着她的手指看过去，只看到了一堵墙隔绝了我的眼睛和她想让我看的东西：“我寻思我也看不见啊......这是哪里？”\n夜岚摊了下手：“这里是我盖的庇护所，害，其实是借别人的坟用用。”\n嘶......借别人的坟......我顿时感到一股寒意，正要好好问问她有关这件事呢，刚说出第一个字，她立刻一声：“嘘！”示意我小点声\n好吧，看来我刚刚差点闯祸了。唉，夜岚同学啊夜岚同学，你居然是会用其他人的坟做庇护所的人。嗯，太坏了。（这一句是开玩笑的~）\n夜岚坐下后，盯着我看：“话说你竟然会跟过来，我也没给你发信号吧。”\n我挠了挠头：“这不担心你嘛~突然就起黑色迷雾了，我怕你出事，就马上跟过来了。”\n夜岚略有点惊疑地看着我：“接着？已经过去差不多3天了。”\n啊？三......三天吗？原来过去这么久了？这里的时间和下界的时间不一样吗？\n然后，夜岚向我讲述了在这里的故事......包括这个“坟头”。\n她的讲述解开了我对这个世界的很多疑惑，我只能感叹道：“这样啊......”\n不过想了想......最后决定先不记录这些。\n很多模糊的东西......我需要去认真的求证一下。\nBy 琴雨梦");
         add("book.pasterdream.content.阴影小木屋", "经过长时间的探索和比对，我对这个黑暗的世界的各环境做了大致的记录。\n这个世界的绝大多数地域都十分危险。\n被浓厚阴影覆盖的山地，流淌与凝结的阴影不断催生着可怖的、仅仅望见就会失神的怪物。\n堆满遗骨和断壁残垣的平原，无尽的怨魂发出凄厉的嚎叫，完全无法久留。\n唯独这里，这片长满了真菌“树”的“森林”是相对比较安全的。\n真菌的“树叶”上生长着数个发光体，在这个漆黑的世界里，这样的光芒似乎能驱散暗影，抑制阴影生物的产生。\n这里的原住民是一种温顺的甲虫，只要不向其发起攻击，就能平安无事。\n在这片森林中漫步时，我偶然发现了一座房子。\n有趣的是，这间小屋的墙壁似乎是由真菌树的菌柄做成的。\n我试着将菌柄表面附着的一层阴影剥离开后，发现其外表与房屋的墙壁别无二致——是一种类似于......去皮原木的材质？\n这间房屋似乎已经被废置很久了，人类的生活痕迹只剩下了寥寥数片地毯，连身为原住民的甲虫都在这间小屋里安家了，我不得不赶走它们才能细致观察房屋内部。\n就在我检查房屋的地板时，我发现了数片附着在地板上的不自然的阴影。\n我站在远处，用一只脚轻踩这片阴影。\n阴影底下赫然伸出一只由阴影构成的手，抓住了我的脚，试图把我拉进地下。我拼命挣扎，终于把脚从暗影之手中拔了出来，但是，当它的手心触碰到我的脚踝时，我感觉我的理智似乎被剥离了一层。\n在我试图清扫掉另一片阴影时，它在消尽前改变了形状，变成了我在阴影覆盖的山地见到的那种手型怪物，我费了一番功夫才将其斩碎。\n我有预感，我会在其他地方再次见到这种“陷阱”。\nBy 极星");
         add("book.pasterdream.content.阴影地下工作室", "虽然这片森林相对安全，但为了完全根绝阴影生物的打扰，我决定在地下修建一个工作场所。\n得益于从主世界带来的部分物资，我至少能在卧室里建造一个能冲澡的小房间——毕竟在大片的阴影中游过泳后总会想好好冲个身子。\n我把这个世界各处能找的植物中的大部分栽进了花坛里。虽然多少有点怪异，但观赏这些植物总能略微放松一下身心。\n在这些灰黑色的植物中，一种被我称作“阴影蘑菇”的植物尤为特殊——与其他植物不同，这种蘑菇似乎有着和树苗类似的性质：只要有充足的生长空间，它就能长成森林中随处可见的那种菌木。看来这片森林的形成似乎与这种蘑菇息息相关了。\n不过值得注意的是，这种蘑菇的生长必须要有充足的空间。\n之前我把它种在花坛里的时候，它突然疯长起来，把我的花坛弄得一塌糊涂。\n为了防止这种情况再次发生，我将其移出了花坛，并限制了它的生长空间。（旁边那棵已经长好的菌木则被我留了下来，供我继续研究）\n在不断地捣鼓这个世界的某些材料后，我总算是复现了我来到这个世界所用的那张黑色的长床。看样子，只要在上面躺下就能让我回到原来的世界吧。\n但这个世界中仍有许多未知等着我去探索；在将这一切究明之前，我不打算轻易回到主世界。\n啊，好像有一只甲虫爬进来了。虽然这种甲虫并没有什么攻击性，但我还是不太喜欢有生物打扰，该去赶走它了。\nBy 极星");
         add("book.pasterdream.content.-被阴影浸染的字迹潦草的笔记-", "难以置信，我竟然能从那种恐怖的生物的手中逃出来。\n那是一对掌心长着一只白色眼睛的黑色大手，仅仅是与其对视，就让我浑身战栗，根本无法涌起与其战斗的欲望。\n即便如此，我也强行鼓起勇气与其对峙，却发现它可怕的力量远超我的想象。\n仅仅是对其做出最轻微的攻击，都会引起强烈的反击。\n由于战斗时实在过于慌张，我甚至没有分清楚我究竟攻击的是哪只手。\n然而，我清楚地记得，攻击其中一只手会让其长出一根尖刺，并使其疯狂的挥动那根尖刺。\n而攻击另一只手会让其释放出一座看起来蕴含了极大能量的尖塔，看起来似乎会发生剧烈的爆炸。\n在见到这种可怕的反击后，我立即仓皇逃窜，逃到最后连我也忘记了自己是如何逃离的。\n后来者啊，希望我这丢人的经历能为你的探索做出一些贡献。\n除非你有能足以踏遍这个阴森可怕的世界而不受任何威胁的力量，否则请你千万别前往那“眼睛”的所在之处。\n-作者名字模糊不清-");
         add("book.pasterdream.content.关于黑暗之手的随笔", "在对这个世界所有群系的探索大致结束后，我对这个世界的几乎所有结构都有了相当程度上的了解......\n除了那被四根“手指”包裹的“眼睛”......\n那中心发光的传送门似乎通向一个结构简单、但并不安全的空间。\n出于保险起见，我设法将一个装有图像传输装置的坚固机器送进了这个传送门，让它代替我进行勘察。\n穿过传送门后，它缓缓落在了一个“竞技场”的中心。\n图像开始变得模糊不清起来，地面大幅震动，随即两只黑色的巨手从空气中浮现。\n那两只手在发现我投入传送门的这个“异物”后，立即一前一后地向它发起了猛攻。\n视野中，一只手突然冲撞了过来，将机器掀了个底朝天，随即在一阵黑暗与暴风中，机器的视野彻底暗转并失去了与我的联系。\n不行，这样的话变数还是太大了——仅凭获取到的这点信息的话，根本没有任何胜算。\n即便如此，我还是姑且留下这份笔记。虽然几乎没有什么有价值的信息，但应该还是能对给后来者起到一些作用的。\nBy 极星");
-        add("book.pasterdream.content.侵染教堂-黑面", "我很庆幸还能活着回来，离开那永无光明的地方。但很快我就发现，那股阴森冷暗的气息依旧没有消失，直到一道裂缝出现空中，从中逐渐渗出一股黑色粘稠的液体。\n它，跟过来了……\n那股液体低落在地面，随后便开始污染周围，逐渐侵蚀教堂。我一边用泉水减缓蔓延的速度，一边回想那本书中的知识。 我不太确定书中的方法是否可以行，但目前只能赌一把了。我在教堂里面找到了所需的蜡烛，线，但还缺少一个关键物品：容器。\n我放弃了教堂中那几个被侵蚀的箱子，看着那几个破了大洞的灯笼祈祷可以用。灯笼在丢进符文中间，逐渐开始升空，黑液被一股巨大的拉力吸引，不断融入灯笼之中，直到教堂停止了侵染。灯芯忽然点燃，发出渗人的白光。\n我连忙接住空中掉落的灯笼，一股冰冷刺骨的寒意从怀中传来，低语萦绕着我，传入我的大脑。\nBy 卡莱");
-        add("book.pasterdream.content.侵染教堂-亮面", "竟然是一座教堂……\n我和伊诺在并没有贸然进入，虽然之前的建筑并未有什么危险，但绕圈飞行两周半后我们才决定进入。\n\"小姐，这个教堂有点奇怪，和教会要求的并不相同，还有是内饰的东西也差很多\"\n我踹了一脚讲台，毕竟教堂的讲台下是没有箱子的。祷告日会持续大半天，讲台下的箱子里面会放一些食物的。除此之外就是，太小了，甚至没有领地内村庄的教堂大，而且里面几乎没有太多有关祷告的物件。\n在我准备离开时，伊诺发现了异常，讲台下面多了一个白金色的箱子。 我确定之前讲台之下没有任何东西，但这个箱子的出现让我感到了一丝紧张。在我犹豫是否要打开这个箱子时，熟悉的风铃声再次响起，从那个箱子处传来……\nBy 卡莱");
+        add("book.pasterdream.content.侵染教堂-黑面", "我很庆幸还能活着回来，离开那永无光明的地方。但很快我就发现，那股阴森冷暗的气息依旧没有消失，直到一道裂缝出现空中，从中逐渐渗出一股黑色粘稠的液体。\n它，跟过来了......\n那股液体低落在地面，随后便开始污染周围，逐渐侵蚀教堂。我一边用泉水减缓蔓延的速度，一边回想那本书中的知识。 我不太确定书中的方法是否可以行，但目前只能赌一把了。我在教堂里面找到了所需的蜡烛，线，但还缺少一个关键物品：容器。\n我放弃了教堂中那几个被侵蚀的箱子，看着那几个破了大洞的灯笼祈祷可以用。灯笼在丢进符文中间，逐渐开始升空，黑液被一股巨大的拉力吸引，不断融入灯笼之中，直到教堂停止了侵染。灯芯忽然点燃，发出渗人的白光。\n我连忙接住空中掉落的灯笼，一股冰冷刺骨的寒意从怀中传来，低语萦绕着我，传入我的大脑。\nBy 卡莱");
+        add("book.pasterdream.content.侵染教堂-亮面", "竟然是一座教堂......\n我和伊诺在并没有贸然进入，虽然之前的建筑并未有什么危险，但谨慎起见我们绕着这座教堂好几圈才决定进入。\n“小姐，这个教堂有点奇怪，和教会要求的并不相同，还有是内饰的东西也差很多”\n我踹了一脚讲台，教堂的讲台下是没有箱子的。每周的祷告日会持续大半天，讲台下的箱子里面会放一些食物的。除此之外就是，太小了，甚至没有领地内村庄的教堂大，而且里面几乎没有太多有关祷告的物件。\n在我准备离开时，伊诺发现了异常，讲台下面多了一个白金色的箱子。\n我确定之前讲台之下没有任何东西，但这个箱子的出现让我感到了一丝紧张。在我犹豫是否要打开这个箱子时，熟悉的风铃声再次响起，从那个箱子处传来......\nBy 卡莱");
         add("book.pasterdream.content.暮影之笼", "尽管我把它藏在这里，我还是担心会被发现，所以留下这份书信，警告后来的旅行者，不要轻易的靠近这里，里面的东西并不是世间力量可以对抗的，你会被污染，蛊惑，借此引发祸端，将整个世界拖入黑暗。\n当然，我也并不会担心，如果你拥有超越于我的能力，便可以去探索被我封存的东西，甚至可以去完成我未曾触及之物。\nBy 卡莱");
         add("book.pasterdream.content.与黑色双手的决战和败北", "我写下这张笔记，以警示那些试图挑战它的旅者：「它」远比想象中的更为强大。\n关于那个闪光的传送门彼端的世界究竟为何，探索灯影的其他寻梦者们和我的好友留下的笔记给了我答案：门后是一个闭锁的小型世界，里面有形似一双手的恐怖阴影生物。\n为了战胜它，我用粉红梦境中能获得的最强韧的金属制作了盔甲和武器，并做好了一切我认为能做的准备后，跳入了传送门。\n然而，即使我认为我已经做好了充足的准备，这场战斗却仍然艰苦至极。\n无穷无尽的不知从何处涌出的暗影怪物、黑色双手的猛烈进攻无时无刻不在摧残着我的精神、意志和体力。\n即便如此，我也尽我所能地对他发动攻击，而换来的则是更为强烈的反击——不管怎么说，我还是认为我有对它造成有效伤害。\n就在我认为这样下去说不定有胜算的时候，可怕的事情发生了。\n一瞬间我的视野陷入了黑暗，一片漆黑之中好似无穷无尽的阴影生物蠕动而出，而我的攻击甚至无法穿透围绕那双手的厚厚一层阴影。\n被怪物包围，药水用尽、身受重创的我，在脑海中强烈祈求着这只是一场梦，拿起苍白骨针猛的往自己手臂上扎去。\n一阵刺痛之后，我的视野被强光夺去。眨眼间，我已身处熟悉的床边。但满身的冷汗、布满裂纹的盔甲和空空如也的药水瓶告诉我，刚才的经历并不是简单的一场梦。\n果然，要想击败这恐怖的生物，需要能够抑制阴影，或是能融入阴影、从内部破坏它的武器。\n果然是我还遗漏了什么要点吗。或许，等待其他援助者前来，和他们一同面对它才是更好的选择。\n在那之前，我得先想办法找到更为强大的武器......\nBy 千夜");
         add("book.pasterdream.content.暗影图书馆", "我也知道你也会好奇这种地方为何会存在，我将废墟收集到残留之物整理了起来并存储在这里，这里你可以了解到我的故事以及更早的历史。\n如果你只是想了解暗影，那很可惜了，这类资料被销毁或则藏匿。它很危险，无论如何都不要接触它。\n当然，我留有保险。（笑脸）\nBy 卡莱");
@@ -1869,9 +1878,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.dyedream_sky_island.page1", "");
 
         // 失落剑冢
-        add("pasterdream.seniors_dream.entry.lost_sword_tomb", "失落剑冢");
-        add("pasterdream.seniors_dream.entry.lost_sword_tomb.page0", "失落剑冢是一个只能在丛林群系发现的结构，中间有一把插在石头里面的石中剑，需要用大力出奇迹的方法才能拔出来，除非……$(br2)获取到的失落之剑可以赋予丛林的力量升级为草薙，不过这柄剑似乎有点嗜杀，试着满足它，也许可以引出它所没表现出来的更多强大力量……");
-        add("pasterdream.seniors_dream.entry.lost_sword_tomb.page1", "");
+        add("pasterdream.seniors_dream.entry.the_lost_sword_tomb", "失落剑冢");
+        add("pasterdream.seniors_dream.entry.the_lost_sword_tomb.page0", "失落剑冢是一个只能在丛林群系发现的结构，中间有一把插在石头里面的石中剑，需要用大力出奇迹的方法才能拔出来，除非……$(br2)获取到的失落之剑可以赋予丛林的力量升级为草薙，不过这柄剑似乎有点嗜杀，试着满足它，也许可以引出它所没表现出来的更多强大力量……");
+        add("pasterdream.seniors_dream.entry.the_lost_sword_tomb.page1", "");
 
         // 渔夫小屋
         add("pasterdream.seniors_dream.entry.fisherman_hut", "渔夫小屋");
@@ -1879,11 +1888,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.fisherman_hut.page1", "——我相信他们一定有着其他理由才会独自来到海边生活，或许，这片深海里还有更深的秘密。");
 
         // 沙漠遗迹
-        add("pasterdream.seniors_dream.entry.desert_ruins", "沙漠遗迹");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page0", "在主世界的沙漠里，有时会发现这种奇怪的遗迹，看来似乎已经被掠夺者和尸壳占领，或许你可以在探索之余顺手处理掉这些敌人……");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page1", "");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page2", "传说中，那里埋葬着一位未完成遗志的战士，被深埋于地下，等待着能有一位迷途的旅行者前来，来完成他的遗愿，继承他的衣钵……");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page3", "");
+        add("pasterdream.seniors_dream.entry.desert_fortress", "沙漠遗迹");
+        add("pasterdream.seniors_dream.entry.desert_fortress.page0", "在主世界的沙漠里，有时会发现这种奇怪的遗迹，看来似乎已经被掠夺者和尸壳占领，或许你可以在探索之余顺手处理掉这些敌人……");
+        add("pasterdream.seniors_dream.entry.desert_fortress.page1", "");
+        add("pasterdream.seniors_dream.entry.desert_fortress.page2", "传说中，那里埋葬着一位未完成遗志的战士，被深埋于地下，等待着能有一位迷途的旅行者前来，来完成他的遗愿，继承他的衣钵……");
+        add("pasterdream.seniors_dream.entry.desert_fortress.page3", "");
 
         // 暮影之笼
         add("pasterdream.seniors_dream.entry.twilight_lantern", "暮影之笼");
@@ -1990,6 +1999,19 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.milky_way_jelly.page0", "或许终有一天，你需要以凡人之躯跨越某些常规办法下无法逾越的天险，登顶世界的顶层，而原本从染梦世界中获得的星河果冻性能显然不太好，这时，你将目光放到了染梦世界的云朵和现实的羽毛上……");
         add("pasterdream.seniors_dream.entry.milky_way_jelly.page1", "当你食用了这块全新的果冻后，会有一股力量将你送到世界的顶层，并赋予你缓降效果，让你慢慢落地，这样一来，某些难以跨越的屏障想必也无法阻挡你了。$(br2)——当大地不再是人类的阻碍，星海便是我们的目标");
 
+        // 衍梦肥泥
+        add("pasterdream.seniors_dream.entry.dream_fertilizer", "衍梦肥泥");
+        add("pasterdream.seniors_dream.entry.dream_fertilizer.page0", "你在这个梦境发现了独有的粉色史莱姆后，你应该设法从它的身上获得一种粉色的史莱姆球，并试着把粉色史莱姆球和骨粉块放在一起进行研磨，似乎可以获得一种软泥……$(br2)这种软泥对于任何作物，哪怕是梦境中生长的作物，都有很强的催熟作用。它衍生于梦境，所以被命名为衍梦肥泥，希望它可以庇佑你的作物蓬勃生长。");
+        add("pasterdream.seniors_dream.entry.dream_fertilizer.page1", "——至少粉色史莱姆不会保佑你……但是是从人家尸体上拿到的史莱姆球，所以也可以视为粉色史莱姆在保佑你的作物。");
+
+        // 蓄梦池
+        add("pasterdream.seniors_dream.entry.dream_accumulator", "蓄梦池");
+        add("pasterdream.seniors_dream.entry.dream_accumulator.page0", "在地下实验室，你可以找到这种小巧的仪器。它缓慢地汇聚着周围的空气，让它们沉到池底，似乎需要给它一些时间。不过在前辈的实验室中，还有一种吸附剂材料。加入仪器后，仪器周围以更快的速度凝聚空气中的尘埃。这种尘埃最终会凝聚成染梦粉尘，一种重要的合成材料。$(br2)把仪器带回现实世界之后，仪器的效率会大打折扣，不过，它依旧能缓慢捕捉现实世界的梦境能量，虽然缓慢，但聊胜于无吧。");
+
+        // 寻梦者笔记
+        add("pasterdream.seniors_dream.entry.dream_notes_dyedream_world", "寻梦者笔记");
+        add("pasterdream.seniors_dream.entry.dream_notes_dyedream_world.page0", "你并非第一个进入梦境的寻梦者，在你之前有多位前辈曾踏入梦境之中。在梦中的各个角落，你可以找到他们留下的笔记，有些笔记是他们亲笔写就，也有一些笔记是梦境将他们的所见具现成文。有些笔记只是他们的心事或者碎碎念，但有一些则记载了梦境中更深层的隐秘。$(br2)如果是想要更进一步追寻梦境的秘辛的话，或许你应该搜寻一下这些笔记，并好好阅读一下？");
+
         // 染梦教堂
         add("pasterdream.seniors_dream.entry.dyedream_church", "染梦教堂");
         add("pasterdream.seniors_dream.entry.dyedream_church.page1", "当你在染梦世界探索时，有可能会发现这种漂浮在天空中的神秘教堂，你可以在这个教堂内发现一个融梦水晶箱，讲经台上还有来自寻梦者前辈们的随记，或许你应该仔细检查一下教堂内部的边边角角，说不定能有意外之喜……");
@@ -2006,56 +2028,61 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.dyedream_worldtree.page2", "——连通天地的世界树，支撑着整个梦境的美好。");
 
         // 花园解密-迷梦冶梦莲
-        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus", "花园解密-迷梦冶梦莲");
-        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page1", "你可以在染梦平原发现这种奇怪的遗迹，顶上种有一种名为「冶梦莲」的美丽花朵，在花朵下方有着来自最早的寻梦者的提示，你或许应该根据她的提示来寻找对应的植物……");
-        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page2", "或许应该从琴雨梦的提示中的铃、云、流明和小伞来寻找答案？");
-        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page3", "解开谜题后获得的花朵似乎可以用于前往风的梦境，也可以去寻找传说中的神狐……");
+        add("pasterdream.seniors_dream.entry.garden_decryption_misty_dreaming_lotus", "花园解密-迷梦冶梦莲");
+        add("pasterdream.seniors_dream.entry.garden_decryption_misty_dreaming_lotus.page1", "你可以在染梦平原发现这种奇怪的遗迹，顶上种有一种名为「冶梦莲」的美丽花朵，在花朵下方有着来自最早的寻梦者的提示，你或许应该根据她的提示来寻找对应的植物……");
+        add("pasterdream.seniors_dream.entry.garden_decryption_misty_dreaming_lotus.page2", "或许应该从琴雨梦的提示中的铃、云、流明和小伞来寻找答案？");
+        add("pasterdream.seniors_dream.entry.garden_decryption_misty_dreaming_lotus.page3", "解开谜题后获得的花朵似乎可以用于前往风的梦境，也可以去寻找传说中的神狐……");
 
         // 花园解密-凛冽雪绒花
-        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss", "花园解密-凛冽雪绒花");
-        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page1", "在染梦世界的雪原，你可能会发现这种奇特的结构，在下方的书桌上，你会找到来自最初那位寻梦者的笔记，你需要根据她的提示来找到对应的植物和生物。");
-        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page2", "似乎需要从梦染、灯、奇异几个字入手，去找找看吧。");
-        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page3", "解开谜题后获得的花朵似乎有着奇特的低温触感……");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nippy_edelweiss", "花园解密-凛冽雪绒花");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nippy_edelweiss.page1", "在染梦世界的雪原，你可能会发现这种奇特的结构，在下方的书桌上，你会找到来自最初那位寻梦者的笔记，你需要根据她的提示来找到对应的植物和生物。");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nippy_edelweiss.page2", "似乎需要从梦染、灯、奇异几个字入手，去找找看吧。");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nippy_edelweiss.page3", "解开谜题后获得的花朵似乎有着奇特的低温触感……");
 
         // 花园解密-九尾狐
-        add("pasterdream.seniors_dream.entry.garden_golden_fox", "花园解密-九尾狐");
-        add("pasterdream.seniors_dream.entry.garden_golden_fox.page1", "在梦境中，有时你会看见这种有着狐狸样子的雕像的遗迹，上方的寻梦者永恒书卷中有着琴雨梦给予的提示，或许需要一种奇特的莲花，也许你应该先去看看其他的花园解密……");
-        add("pasterdream.seniors_dream.entry.garden_golden_fox.page2", "当你唤醒九尾狐后，她会满足你一个愿望，至于满足愿望的方法，那位少女也在书中一并告诉你了……");
-        add("pasterdream.seniors_dream.entry.garden_golden_fox.page3", "——那奇妙的神狐，她将满足你的愿望，或是给予你御邪的护符。");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nine_tailed_fox", "花园解密-九尾狐");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nine_tailed_fox.page1", "在梦境中，有时你会看见这种有着狐狸样子的雕像的遗迹，上方的寻梦者永恒书卷中有着琴雨梦给予的提示，或许需要一种奇特的莲花，也许你应该先去看看其他的花园解密……");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nine_tailed_fox.page2", "当你唤醒九尾狐后，她会满足你一个愿望，至于满足愿望的方法，那位少女也在书中一并告诉你了……");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nine_tailed_fox.page3", "——那奇妙的神狐，她将满足你的愿望，或是给予你御邪的护符。");
 
         // 染梦实验室
-        add("pasterdream.seniors_dream.entry.dream_lab", "染梦实验室");
-        add("pasterdream.seniors_dream.entry.dream_lab.page1", "在染梦的平原，你会发现这种前辈的遗迹，外观上看并不起眼，可是内部别有洞天……");
-        add("pasterdream.seniors_dream.entry.dream_lab.page3", "看起来，这似乎是前辈寻梦者进行某种实验所做出的尝试，那名为蓄梦池的装置似乎是前辈们尝试的最终结果，至于他们为什么离开，就不得而知了……");
-        add("pasterdream.seniors_dream.entry.dream_lab.page4", "——这里是寻梦者们驾驭梦境力量的尝试，是探寻梦境真实的一大步……");
+        add("pasterdream.seniors_dream.entry.dyedream_laboratory", "染梦实验室");
+        add("pasterdream.seniors_dream.entry.dyedream_laboratory.page1", "在染梦的平原，你会发现这种前辈的遗迹，外观上看并不起眼，可是内部别有洞天……");
+        add("pasterdream.seniors_dream.entry.dyedream_laboratory.page3", "看起来，这似乎是前辈寻梦者进行某种实验所做出的尝试，那名为蓄梦池的装置似乎是前辈们尝试的最终结果，至于他们为什么离开，就不得而知了……");
+        add("pasterdream.seniors_dream.entry.dyedream_laboratory.page4", "——这里是寻梦者们驾驭梦境力量的尝试，是探寻梦境真实的一大步……");
 
         // 融梦涌泉井
-        add("pasterdream.seniors_dream.entry.melt_dream_well", "融梦涌泉井");
-        add("pasterdream.seniors_dream.entry.melt_dream_well.page1", "在染梦世界的平原，有时会分布着这样一种水井，或许你应该纵身一跃，亲自到井底一探究竟……");
-        add("pasterdream.seniors_dream.entry.melt_dream_well.page3", "在这种奇妙的水井中，流淌的并非一般的清水，而是一种一直在变幻色彩的神秘液体，这种液体充斥着融梦能量，你可以尝试着效仿前辈寻梦者，找到一种可以利用它的办法……");
-        add("pasterdream.seniors_dream.entry.melt_dream_well.page4", "井内的一些小角落还有可能会有一些箱子，积极地寻找一下吧。");
-        add("pasterdream.seniors_dream.entry.melt_dream_well.page5", "——井下静静地闪耀着流光，照耀着地下的生灵。");
+        add("pasterdream.seniors_dream.entry.melt_dream_liquid_well", "融梦涌泉井");
+        add("pasterdream.seniors_dream.entry.melt_dream_liquid_well.page1", "在染梦世界的平原，有时会分布着这样一种水井，或许你应该纵身一跃，亲自到井底一探究竟……");
+        add("pasterdream.seniors_dream.entry.melt_dream_liquid_well.page3", "在这种奇妙的水井中，流淌的并非一般的清水，而是一种一直在变幻色彩的神秘液体，这种液体充斥着融梦能量，你可以尝试着效仿前辈寻梦者，找到一种可以利用它的办法……");
+        add("pasterdream.seniors_dream.entry.melt_dream_liquid_well.page4", "井内的一些小角落还有可能会有一些箱子，积极地寻找一下吧。");
+        add("pasterdream.seniors_dream.entry.melt_dream_liquid_well.page5", "——井下静静地闪耀着流光，照耀着地下的生灵。");
 
         // 染梦小客栈
-        add("pasterdream.seniors_dream.entry.dyedream_inn", "染梦小客栈");
-        add("pasterdream.seniors_dream.entry.dyedream_inn.page1", "染梦世界存在着这种小客栈，它不知出自何人之手，却能为疲惫的梦境旅行者们提供歇脚的地方。");
-        add("pasterdream.seniors_dream.entry.dyedream_inn.page2", "上层的箱子里似乎还有前辈们留下来的物品，你当然可以拿它们为你的探索做些补给。下层不仅有丰富的矿石，那书卷中还记载着两位前辈寻梦者那比肩神话的尝试……");
+        add("pasterdream.seniors_dream.entry.dyedream_tavern", "染梦小客栈");
+        add("pasterdream.seniors_dream.entry.dyedream_tavern.page1", "染梦世界存在着这种小客栈，它不知出自何人之手，却能为疲惫的梦境旅行者们提供歇脚的地方。");
+        add("pasterdream.seniors_dream.entry.dyedream_tavern.page2", "上层的箱子里似乎还有前辈们留下来的物品，你当然可以拿它们为你的探索做些补给。下层不仅有丰富的矿石，那书卷中还记载着两位前辈寻梦者那比肩神话的尝试……");
 
         // 染梦穿云塔
-        add("pasterdream.seniors_dream.entry.dyedream_cloud_tower", "染梦穿云塔");
-        add("pasterdream.seniors_dream.entry.dyedream_cloud_tower.page1", "在染梦的梦境中，这种高耸入云的尖塔很容易引起你的注意力。它有两种不同的建筑样式，每座塔的底部房间里都能找到先来者的游记……$(br2)说到塔，爬到顶端似乎是必备的环节，塔顶应该会有一些战利品，也许你应该仔细在塔顶寻找一下？不过，塔的样式不同，战利品的位置似乎也会有所差异……");
-        add("pasterdream.seniors_dream.entry.dyedream_cloud_tower.page2", "——爬到塔顶→鸟瞰点同步→信仰之跃→bang！同步失败~");
+        add("pasterdream.seniors_dream.entry.dyedream_tower", "染梦穿云塔");
+        add("pasterdream.seniors_dream.entry.dyedream_tower.page1", "在染梦的梦境中，这种高耸入云的尖塔很容易引起你的注意力。它有两种不同的建筑样式，每座塔的底部房间里都能找到先来者的游记……$(br2)说到塔，爬到顶端似乎是必备的环节，塔顶应该会有一些战利品，也许你应该仔细在塔顶寻找一下？不过，塔的样式不同，战利品的位置似乎也会有所差异……");
+        add("pasterdream.seniors_dream.entry.dyedream_tower.page2", "——爬到塔顶→鸟瞰点同步→信仰之跃→bang！同步失败~");
 
         // 浮空神庙
-        add("pasterdream.seniors_dream.entry.floating_temple", "浮空神庙");
-        add("pasterdream.seniors_dream.entry.floating_temple.page1", "在染梦世界的天空中，会有这样的建筑被云朵衬托着，浮在天上。这座古典时代的神庙让所有进入这座建筑被它的神圣肃穆所打动。你会在神庙里发现一个融梦水晶箱，以及一份前辈们的书卷……");
-        add("pasterdream.seniors_dream.entry.floating_temple.page2", "——当神庙飘浮于染梦的苍穹，万神也将流连于迷梦之中");
+        add("pasterdream.seniors_dream.entry.dyedream_floating_temple", "浮空神庙");
+        add("pasterdream.seniors_dream.entry.dyedream_floating_temple.page1", "在染梦世界的天空中，会有这样的建筑被云朵衬托着，浮在天上。这座古典时代的神庙让所有进入这座建筑被它的神圣肃穆所打动。你会在神庙里发现一个融梦水晶箱，以及一份前辈们的书卷……");
+        add("pasterdream.seniors_dream.entry.dyedream_floating_temple.page2", "——当神庙飘浮于染梦的苍穹，万神也将流连于迷梦之中");
 
         // 侵染教堂
-        add("pasterdream.seniors_dream.entry.infected_church", "侵染教堂");
-        add("pasterdream.seniors_dream.entry.infected_church.page1", "");
-        add("pasterdream.seniors_dream.entry.infected_church.page2", "在染梦世界中探索时，偶尔会在天空中发现这种一半被来自另一个梦境的阴影与黑暗侵蚀染黑的教堂。在这座暗影侵染的教堂中可能发现融梦水晶箱，如果在这座教堂的角落里仔细寻找，也许能够发现遗落的宝箱。");
-        add("pasterdream.seniors_dream.entry.infected_church.page3", "除此之外，在这里存在着寻梦者前辈留下的笔记。根据笔记的指引前往下界，想办法穿越基岩层，或许能够找到黑暗的来源……$(br2)——为暗影所侵蚀的教堂，在其背后隐藏着不祥与疯狂。");
+        add("pasterdream.seniors_dream.entry.invaded_church", "侵染教堂");
+        add("pasterdream.seniors_dream.entry.invaded_church.page1", "");
+        add("pasterdream.seniors_dream.entry.invaded_church.page2", "在染梦世界中探索时，偶尔会在天空中发现这种一半被来自另一个梦境的阴影与黑暗侵蚀染黑的教堂。在这座暗影侵染的教堂中可能发现融梦水晶箱，如果在这座教堂的角落里仔细寻找，也许能够发现遗落的宝箱。");
+        add("pasterdream.seniors_dream.entry.invaded_church.page3", "除此之外，在这里存在着寻梦者前辈留下的笔记。根据笔记的指引前往下界，想办法穿越基岩层，或许能够找到黑暗的来源……$(br2)——为暗影所侵蚀的教堂，在其背后隐藏着不祥与疯狂。");
+
+        // 萦风教堂
+        add("pasterdream.seniors_dream.entry.fluffy_wind_church", "萦风教堂");
+        add("pasterdream.seniors_dream.entry.fluffy_wind_church.page1", "在染梦世界中探索时，偶尔会在天空中发现这样一种一半被来自另一个梦境的青苔与微风所侵染为翠绿色的教堂。在这座微风萦绕的教堂中能够发现融梦水晶箱。仔细寻找的话，在角落里也能够发现一些遗落的宝箱。");
+        add("pasterdream.seniors_dream.entry.fluffy_wind_church.page2", "在教堂正中的讲台之上有一件寻梦者的永恒书卷，可以从中获取来自最初寻梦者的笔记。或许按照笔记吃下迷梦炖菜飞向高空就能到达将教堂侵染为翠绿的另一场梦境？$(br2)——萦绕着翠绿与微风的教堂，蕴藏着渴望飞翔的梦。");
 
         // 灯影之下
         add("pasterdream.seniors_dream.category.lamp_shadow_world", "灯影之下");
@@ -2084,8 +2111,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 暗影高炉
         add("pasterdream.seniors_dream.entry.shadow_blast_furnace", "暗影高炉");
-        add("pasterdream.seniors_dream.entry.shadow_blast_furnace.page0", "在阴影的梦境中，你找到了琴雨梦和夜岚的实验遗存，在遗迹里留有这项装置的残骸和一份蓝图，对照着蓝图，似乎可以复现这台机器。$(br2)这台机器以梦境中的熔融阴影和噩梦为燃料，可以转化一些物品，使它们浸染上阴影。除此之外，它似乎还可以用来修复锈蚀金属……");
-        add("pasterdream.seniors_dream.entry.shadow_blast_furnace.page1", "——熔炼黑暗的机器，要令万物都染上黑暗。");
+        add("pasterdream.seniors_dream.entry.shadow_blast_furnace.page1", "在阴影的梦境中，你找到了琴雨梦和夜岚的实验遗存，在遗迹里留有这项装置的残骸和一份蓝图，对照着蓝图，似乎可以复现这台机器。$(br2)这台机器以梦境中的熔融阴影和噩梦为燃料，可以转化一些物品，使它们浸染上阴影。除此之外，它似乎还可以用来修复锈蚀金属……");
+        add("pasterdream.seniors_dream.entry.shadow_blast_furnace.page2", "——熔炼黑暗的机器，要令万物都染上黑暗。");
 
         // 笔记残页
         add("pasterdream.seniors_dream.entry.broken_note", "笔记残页");
@@ -2115,14 +2142,26 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.deposition_shadow.page1", "沉淀阴影——荒寂的灯影世界。");
         add("pasterdream.seniors_dream.entry.deposition_shadow.page2", "不过让人感到奇怪的是...这些影子一样的怪物并不会攻击我，但与我随行的人就没那么幸运。还有散落在这里的一些瓶瓶罐罐，通天的锁链，遍地的骸骨...又是谁建造了这些...或者说，这些只是我的想象罢了...");
 
-        add("pasterdream.seniors_dream.entry.shadow_travelogue", "阴影游记");
-        add("pasterdream.seniors_dream.entry.shadow_travelogue.page0", "这里是一些有关在这里探索的记录：");
-        add("pasterdream.seniors_dream.entry.shadow_travelogue.page1", "阴影游记——探索记录附图。");
-        add("pasterdream.seniors_dream.entry.shadow_travelogue.page2", "打败黑色透明的怪物会掉落一些...会\"蠕动\"的黑色胶状物。$(br)一种瓦石地形上会有一些陶罐和坟墓，能从里面掏出来一些好东西。$(br)部分锁链和遗迹里会有些锈蚀的金属，这种金属貌似并不属于现实存在的元素。$(br)长满蘑菇的地方生活着一些甲虫，它们很喜欢吃一种本地的白色花朵，可以和它们成为朋友。$(br)液体状的\"阴影\"小湖会在沉淀阴影的表面流淌。");
+        add("pasterdream.seniors_dream.entry.lamp_shadow_travelogue_1", "灯影游记 其一");
+        add("pasterdream.seniors_dream.entry.lamp_shadow_travelogue_1.page0", "这里是一些有关在这里探索的记录：");
+        add("pasterdream.seniors_dream.entry.lamp_shadow_travelogue_1.page1", "灯影游记 其一——探索记录附图。");
+        add("pasterdream.seniors_dream.entry.lamp_shadow_travelogue_1.page2", "打败黑色透明的怪物会掉落一些......会“蠕动”的黑色胶状物。$(br)一种瓦石地形上会有一些陶罐和坟墓，能从里面掏出来一些好东西。$(br)部分锁链和遗迹里会有些锈蚀的金属，这种金属貌似并不属于现实存在的元素。$(br)长满蘑菇的地方生活着一些甲虫，它们很喜欢吃一种本地的白色花朵，可以和它们成为朋友。$(br)液体状的“阴影”小湖会在沉淀阴影的表面流淌。");
 
         add("pasterdream.seniors_dream.entry.shadow_dungeon", "暗影地牢");
         add("pasterdream.seniors_dream.entry.shadow_dungeon.page0", "还记得之前在探索的时候发现了一种奇怪的遗迹，像是一种仪式供奉着中间的一个东西。但当时我伸手去触碰它，却毫无反应，从残破的结构来看应该是年久失修坏掉了？");
         add("pasterdream.seniors_dream.entry.shadow_dungeon.page1", "但我们最近提炼出来的黑金属和那个核心的材质很相似...还有中间那个会发光的白色灯块，我应该尝试去修复它。如果我能成功...我会把修复方法记录下来。以及...我的感觉告诉我这个遗迹不会只有地上的这部分...这个明亮的核心就像是盏灯，它的存在酝生了下面的影子。");
+
+        add("pasterdream.seniors_dream.entry.deception", "欺诈");
+        add("pasterdream.seniors_dream.entry.deception.page0", "它并不信任我，它留下了我的影子来限制我，如同人类一般，我的影子学习我如何思考，战斗，逐渐向我靠拢，但它听命于暗影，它始终跟随着我，监视着我是否完成交易内容。$(br)我在阅读亚伦柯斯遗留的手稿和暗影之书后，我尝试建立一套和暗影沟通的新方式，单方面的。");
+        add("pasterdream.seniors_dream.entry.deception.page1", "我成功了！我欺骗了我的影子，也包括暗影，逃离前我狂笑着，我在暗影面前大摇大摆的离开了这里。");
+
+        add("pasterdream.seniors_dream.entry.bargain", "交易");
+        add("pasterdream.seniors_dream.entry.bargain.page0", "我逐渐向深处走去，脚步也逐渐轻快，直到我被淹没在这黑水之间，无数的低语如同海水一般涌来，大脑传来的剧烈疼痛差点让我昏死过去，低语逐渐汇聚，最后只剩下一个声音。$(br)“给我你的力量，作为条件，我可以给你做任何事，但不是作为你的奴隶”");
+        add("pasterdream.seniors_dream.entry.bargain.page1", "此刻低语又散作一团，似乎在激烈讨论着，最后再次凝聚起来。$(br)“门”$(br)还未等我反应过来是什么，我已经被踹出黑暗之地了。");
+
+        add("pasterdream.seniors_dream.entry.shattered", "破碎");
+        add("pasterdream.seniors_dream.entry.shattered.page0", "“闭嘴！！我如今变成模样都是拜他所赐，你还有什么脸和我提让我救他！”$(br)“你看看我这张脸，还是人的模样吗！！和外面那些怪物有什么区别，而且你知道吗？你不知道，很疼，真的很疼，真该把你扔进火里让你也感觉一下！！我已经整整十天没有可以睡个安稳了。”");
+        add("pasterdream.seniors_dream.entry.shattered.page1", "“至于伊诺，我为什么要救她？我和蠢货一样......”$(br)“不对，不对！不对！！都是你们，你们都该死！！”$(br)“如果没有你们，这一切都不会有的。你，既然你一心如此，那就永远待在这里吧。至于亚伦柯斯，我会亲自打开封印，将他挫骨扬灰！”");
 
 
         // 实体

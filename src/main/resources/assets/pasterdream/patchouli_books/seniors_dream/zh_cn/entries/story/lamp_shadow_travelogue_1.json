@@ -1,0 +1,22 @@
+{
+  "sortnum": 1,
+  "name": "pasterdream.seniors_dream.entry.lamp_shadow_travelogue_1",
+  "icon": "pasterdream:dream_notes_lamp_shadow_world",
+  "category": "pasterdream:story",
+  "advancement": "pasterdream:story/lamp_shadow_travelogue_1",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.lamp_shadow_travelogue_1.page0"
+    },
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/story/lamp_shadow_travelogue_1.png"],
+      "text": "pasterdream.seniors_dream.entry.lamp_shadow_travelogue_1.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.lamp_shadow_travelogue_1.page2"
+    }
+  ]
+}

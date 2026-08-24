@@ -810,7 +810,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.theLurkersInTheShadow", "§8The Lurkers In The Shadow");
         add("tooltip.pasterdream.infestedChurch", "§8Infested Church");
         add("tooltip.pasterdream.depositionShadow", "§8Deposition Shadow");
-        add("tooltip.pasterdream.shadowTravelogue", "§8Shadow Travelogue");
+        add("tooltip.pasterdream.lampShadowTravelogue1", "§8Lamp Shadow Travelogue 1");
         add("tooltip.pasterdream.shadowDungeon", "§8Shadow Dungeon");
         add("tooltip.pasterdream.scare", "§8Scare");
 
@@ -873,8 +873,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.暮影之笼", "Twilight Cage");
         add("book.pasterdream.title.暗影图书馆", "Shadow Library");
         add("book.pasterdream.title.沉淀阴影", "Deposition of Shadow");
-        add("book.pasterdream.title.阴影游记", "Shadow Travelogue");
+        add("book.pasterdream.title.灯影游记 其一", "Lamp Shadow Travelogue 1");
         add("book.pasterdream.title.暗影地牢", "Shadow Dungeon");
+        add("book.pasterdream.title.暗影地牢入口", "Shadow Dungeon Entrance");
+        add("book.pasterdream.title.欺诈", "Deception");
+        add("book.pasterdream.title.交易", "Bargain");
+        add("book.pasterdream.title.破碎", "Shattered");
 
         add("book.pasterdream.title.破风的骑士", "Wind Break Knight");
         add("book.pasterdream.title.清晨的新风", "Morning New Wind");

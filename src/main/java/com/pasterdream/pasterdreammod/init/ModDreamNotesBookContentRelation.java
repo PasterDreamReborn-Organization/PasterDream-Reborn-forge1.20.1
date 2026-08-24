@@ -67,12 +67,10 @@ public class ModDreamNotesBookContentRelation
                         .append("\n").append(Component.translatable("pasterdream.seniors_dream.entry.deposition_shadow.page1"))
                         .append("\n").append(Component.translatable("pasterdream.seniors_dream.entry.deposition_shadow.page2")),
                 GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);
-        DreamNotesBookRegistry.register("阴影游记",
-                Component.translatable("book.pasterdream.title.阴影游记"),
-                "琴雨梦",
-                Component.translatable("pasterdream.seniors_dream.entry.shadow_travelogue.page0").copy()
-                        .append("\n").append(Component.translatable("pasterdream.seniors_dream.entry.shadow_travelogue.page1"))
-                        .append("\n").append(Component.translatable("pasterdream.seniors_dream.entry.shadow_travelogue.page2")),
+        DreamNotesBookRegistry.register("灯影游记 其一",
+                Component.translatable("book.pasterdream.title.灯影游记 其一"),
+                "未署名",
+                Component.translatable("book.pasterdream.content.灯影游记 其一"),
                 GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);
         DreamNotesBookRegistry.register("暗影地牢",
                 Component.translatable("book.pasterdream.title.暗影地牢"),
@@ -80,6 +78,10 @@ public class ModDreamNotesBookContentRelation
                 Component.translatable("pasterdream.seniors_dream.entry.shadow_dungeon.page0").copy()
                         .append("\n").append(Component.translatable("pasterdream.seniors_dream.entry.shadow_dungeon.page1")),
                 GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);
+        DreamNotesBookRegistry.register("暗影地牢入口", Component.translatable("book.pasterdream.title.暗影地牢入口"), "卡莱", Component.translatable("book.pasterdream.content.暗影地牢入口"), GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);
+        DreamNotesBookRegistry.register("欺诈", Component.translatable("book.pasterdream.title.欺诈"), "卡莱", Component.translatable("book.pasterdream.content.欺诈"), GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);
+        DreamNotesBookRegistry.register("交易", Component.translatable("book.pasterdream.title.交易"), "卡莱", Component.translatable("book.pasterdream.content.交易"), GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);
+        DreamNotesBookRegistry.register("破碎", Component.translatable("book.pasterdream.title.破碎"), "卡莱", Component.translatable("book.pasterdream.content.破碎"), GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);
 
         DreamNotesBookRegistry.register("破风的骑士", Component.translatable("book.pasterdream.title.破风的骑士"), "琴雨梦", Component.translatable("book.pasterdream.content.破风的骑士"), GUIBackGroundRender.DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD, 0xFF000000);
         DreamNotesBookRegistry.register("清晨的新风", Component.translatable("book.pasterdream.title.清晨的新风"), "琴雨梦", Component.translatable("book.pasterdream.content.清晨的新风"), GUIBackGroundRender.DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD, 0xFF000000);

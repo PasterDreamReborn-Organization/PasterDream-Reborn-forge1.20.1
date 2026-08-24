@@ -1,0 +1,21 @@
+{
+  "sortnum": 12,
+  "name": "pasterdream.seniors_dream.entry.fluffy_wind_church",
+  "icon": "pasterdream:congeal_wind",
+  "category": "pasterdream:dyedream_world/structures",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/fluffy_wind_church.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.fluffy_wind_church.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.fluffy_wind_church.page2"
+    }
+  ]
+}
