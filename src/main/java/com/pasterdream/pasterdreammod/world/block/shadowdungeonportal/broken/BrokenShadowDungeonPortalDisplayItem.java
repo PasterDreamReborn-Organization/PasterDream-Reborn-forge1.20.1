@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.block.shadowdungeonportal;
+package com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken;
 
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.world.item.BlockItem;

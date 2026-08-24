@@ -1597,7 +1597,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_brazier.key_dropped", "在火盆的夹层里掉落出一把钥匙");
 
         // 破损传送门消息
-        add("message.pasterdream.broken_portal.too_low", "地牢的结构被破坏，传送门没有反应");
+        add("message.pasterdream.broken_portal.too_low", "暗影地牢传送门核心Y轴过低，地牢结构无法生成");
         add("message.pasterdream.broken_portal.creative_repaired", "创造模式：核心无条件修复");
         add("message.pasterdream.broken_portal.need_materials", "双手持§e黑金属§f和§e影灯§f以修复核心");
         add("message.pasterdream.broken_portal.repaired", "核心已修复");
