@@ -1919,6 +1919,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.fluffy_wind_church", "Fluffy Wind Church");
         add("structure.pasterdream.aaroncos_arena_portal", "Aaroncos Arena Portal");
         add("structure.pasterdream.shadow_underground_workroom", "Shadow Underground Workroom");
+        add("structure.pasterdream.shadow_dungeon", "Shadow Dungeon");
+
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "You do not yet know how to activate the shadow lantern");
         add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "You need to light the shadow lantern with a Melt Dream Crystal Fragment");
         add("message.pasterdream.twilight_lantern.event_start", "§8The eerie lantern suddenly shakes violently, black shadows flow out from the wick.");

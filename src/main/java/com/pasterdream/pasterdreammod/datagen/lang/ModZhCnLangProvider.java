@@ -2456,6 +2456,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.fluffy_wind_church", "萦风教堂");
         add("structure.pasterdream.aaroncos_arena_portal", "亚伦柯斯竞技场传送门");
         add("structure.pasterdream.shadow_underground_workroom", "阴影地下工作室");
+        add("structure.pasterdream.shadow_dungeon", "暗影地牢");
+
         add("message.pasterdream.twilight_lantern.activate_fail_no_knowledge", "你尚未知晓如何激活影灯");
         add("message.pasterdream.twilight_lantern.activate_fail_no_crystal", "需要用融梦水晶碎片点燃影灯");
         add("message.pasterdream.twilight_lantern.event_start", "§8诡异的灯笼突然剧烈抖动，黑色的阴影从灯芯里流出");
