@@ -1437,6 +1437,12 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.DYEDREAM_BUD_NUGGET.get()), has(ModItems.DYEDREAM_BUD_NUGGET.get()))
                 .save(pWriter);
 
+        // 染梦水晶块 → 4× 染梦晶芽粒（分解）
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_BUD_NUGGET.get(), 4)
+                .requires(ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_BUD_BLOCK.get()), has(ModBlocks.DYEDREAM_BUD_BLOCK.get()))
+                .save(pWriter);
+
         // 染梦玻璃 + 晶芽粒 → 4× 染梦水晶砖
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DYEDREAM_BUD_BRICKS.get(), 4)
                 .pattern("ab")

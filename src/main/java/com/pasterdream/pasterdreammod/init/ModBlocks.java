@@ -503,7 +503,12 @@ public class ModBlocks {
                     .pushReaction(PushReaction.DESTROY)
                     .replaceable()
 
-    ));
+    ) {
+        @Override
+        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+            return box(2, 0, 2, 14, 13, 14);
+        }
+    });
     public static final RegistryObject<Block> TALL_STEM_GRASS = BLOCKS.register("tall_stem_grass", () -> new DoublePlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noCollission().noOcclusion().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).replaceable()) {
         @Override
         public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
