@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.effect.ShadowSpyonEffect;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosLeftHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosRightHandEntity;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
@@ -177,6 +178,7 @@ public final class AaroncosArenaWorldDimension {
                 for (Player p : arena.players()) {
                     if (p instanceof ServerPlayer sp)
                         AdvancementHelper.grant(sp, DEFEAT_AARONCOS_ADV, "defeat_aaroncos");
+                    ShadowSpyonEffect.allowRemoval(p);
                     p.removeEffect(ModEffects.SHADOW_SPYON.get());
                 }
             } else {

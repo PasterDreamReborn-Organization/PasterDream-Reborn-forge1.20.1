@@ -17,6 +17,7 @@
     "PhantomTargetMixin",
     "BrightButterflyCurioMixin",
     "SculkArmorWardenImmunityMixin",
+    "ShadowSpyonProtectionMixin",
     "WardenTargetMixin",
     "WorldGenRegionMixin",
     "ServerboundSetStructureBlockPacketMixin",
