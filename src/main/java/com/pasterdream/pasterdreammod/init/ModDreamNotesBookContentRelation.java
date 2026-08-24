@@ -67,12 +67,10 @@ public class ModDreamNotesBookContentRelation
                         .append("\n").append(Component.translatable("pasterdream.seniors_dream.entry.deposition_shadow.page1"))
                         .append("\n").append(Component.translatable("pasterdream.seniors_dream.entry.deposition_shadow.page2")),
                 GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);
-        DreamNotesBookRegistry.register("阴影游记",
-                Component.translatable("book.pasterdream.title.阴影游记"),
-                "琴雨梦",
-                Component.translatable("pasterdream.seniors_dream.entry.shadow_travelogue.page0").copy()
-                        .append("\n").append(Component.translatable("pasterdream.seniors_dream.entry.shadow_travelogue.page1"))
-                        .append("\n").append(Component.translatable("pasterdream.seniors_dream.entry.shadow_travelogue.page2")),
+        DreamNotesBookRegistry.register("灯影游记 其一",
+                Component.translatable("book.pasterdream.title.灯影游记 其一"),
+                "未署名",
+                Component.translatable("book.pasterdream.content.灯影游记 其一"),
                 GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);
         DreamNotesBookRegistry.register("暗影地牢",
                 Component.translatable("book.pasterdream.title.暗影地牢"),

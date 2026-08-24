@@ -395,15 +395,15 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/deposition_shadow"), existingFileHelper);
 
-            Advancement shadowTravelogue = Advancement.Builder.advancement()
+            Advancement lampShadowTravelogue1 = Advancement.Builder.advancement()
                     .parent(depositionShadow)
-                    .addCriterion("read_shadow_travelogue_note",
-                            ReadDreamNoteTrigger.TriggerInstance.forContent("shadowTravelogue"))
+                    .addCriterion("read_lamp_shadow_travelogue_1_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("lampShadowTravelogue1"))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
-                            "story/shadow_travelogue"), existingFileHelper);
+                            "story/lamp_shadow_travelogue_1"), existingFileHelper);
 
             Advancement shadowDungeon = Advancement.Builder.advancement()
-                    .parent(shadowTravelogue)
+                    .parent(lampShadowTravelogue1)
                     .addCriterion("read_shadow_dungeon_note",
                             ReadDreamNoteTrigger.TriggerInstance.forContent("shadowDungeon"))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,

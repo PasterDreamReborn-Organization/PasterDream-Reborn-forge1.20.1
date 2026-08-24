@@ -32,14 +32,14 @@ public class StoryProgressItem extends Item {
     /** 发放笔记书时同步授予的剧情进度，按顺序排列 */
     private static final ResourceLocation[] GRANT_ADVANCEMENTS = {
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/deposition_shadow"),
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_travelogue"),
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/lamp_shadow_travelogue_1"),
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_dungeon")
     };
 
     /** 发放的笔记书 content 键，与 GRANT_ADVANCEMENTS 一一对应 */
     private static final String[] NEXT_NOTE_BOOK_CONTENTS = {
             "沉淀阴影",
-            "阴影游记",
+            "灯影游记 其一",
             "暗影地牢"
     };
 

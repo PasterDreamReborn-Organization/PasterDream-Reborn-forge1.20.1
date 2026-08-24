@@ -19,7 +19,7 @@ public class ModDreamNotesContentRelation
         DreamNotesRegistry.register("theLurkersInTheShadow", 786, 1024, GUIBackGroundRender.THE_LURKERS_IN_THE_SHADOW);
         DreamNotesRegistry.register("infestedChurch", 786, 1024, GUIBackGroundRender.INFESTED_CHURCH);
         DreamNotesRegistry.register("depositionShadow", 786, 1024, GUIBackGroundRender.DEPOSITION_SHADOW);
-        DreamNotesRegistry.register("shadowTravelogue", 786, 1024, GUIBackGroundRender.SHADOW_TRAVELOGUE);
+        DreamNotesRegistry.register("lampShadowTravelogue1", 786, 1024, GUIBackGroundRender.LAMP_SHADOW_TRAVELOGUE_1);
         DreamNotesRegistry.register("shadowDungeon", 786, 1024, GUIBackGroundRender.SHADOW_DUNGEON);
         DreamNotesRegistry.register("scare", 786, 1024, GUIBackGroundRender.SCARE);
 
