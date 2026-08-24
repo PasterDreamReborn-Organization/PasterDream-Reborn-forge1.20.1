@@ -570,6 +570,11 @@ public class Config
                             "pasterdream:empty_vessel"),
                     obj -> obj instanceof String);
 
+    // === 暮影之笼 · 据点守卫 ===
+    private static final ForgeConfigSpec.DoubleValue BASTION_GUARD_GRANT_RADIUS = BUILDER
+            .comment("暮影之笼据点守卫事件完成时授予「据点守卫」进度的半径（格），默认 80")
+            .defineInRange("bastionGuardGrantRadius", 80.0, 1.0, 256.0);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     // === 时之沙 ===
@@ -681,6 +686,9 @@ public class Config
 
     // === 重生之梦水晶 ===
     public static List<? extends String> rebirthDreamCrystalLoot;
+
+    // === 暮影之笼 · 据点守卫 ===
+    public static double bastionGuardGrantRadius;
 
     /** 重生之梦水晶随机掉落缓存（解析后的 Item 列表） */
     private static List<Item> cachedRebirthDreamCrystalLoot = List.of();
@@ -1057,6 +1065,8 @@ public class Config
         rebuildRebirthDreamCrystalLootCache();
 
         toolsmithBlueprintTradeChance = TOOLSMITH_BLUEPRINT_TRADE_CHANCE.get();
+
+        bastionGuardGrantRadius = BASTION_GUARD_GRANT_RADIUS.get();
 
         rebuildSinInstakillCache();
         rebuildConflictMarkBlacklistCache();
