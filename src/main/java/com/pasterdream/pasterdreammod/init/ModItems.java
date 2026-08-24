@@ -12,8 +12,8 @@ import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlast
 import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.barrier.ShadowDungeonBarrierItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowDungeonGateItem;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternDisplayItem;
-import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalDisplayItem;
-import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalDisplayItem;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalDisplayItem;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem;
 import net.minecraft.world.item.BlockItem;
 import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeDisplayItem;

@@ -32,8 +32,8 @@ import com.pasterdream.pasterdreammod.world.block.fireflynest.FireflyNestBlockEn
 import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.NippyEdelweissBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.dreamspawner.DreamSpawnerBlockEntity;
-import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalTileEntity;
-import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalTileEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalTileEntity;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalTileEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexTileEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierBlockEntity;

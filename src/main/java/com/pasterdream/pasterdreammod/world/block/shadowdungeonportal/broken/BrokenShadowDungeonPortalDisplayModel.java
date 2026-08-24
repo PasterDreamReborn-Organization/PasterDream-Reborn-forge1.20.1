@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.block.shadowdungeonportal;
+package com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import net.minecraft.resources.ResourceLocation;
