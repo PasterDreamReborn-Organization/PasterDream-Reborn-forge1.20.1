@@ -1424,7 +1424,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_brazier.key_dropped", "A key drops from the crevice of the brazier");
 
         // Broken Portal Messages
-        add("message.pasterdream.broken_portal.too_low", "The structure is damaged, the portal has no response");
+        add("message.pasterdream.broken_portal.too_low", "Shadow Dungeon Portal's Y-axis height is too low, Shadow Dungeon Structure Can't Spawn.");
         add("message.pasterdream.broken_portal.creative_repaired", "Creative mode: Core repaired unconditionally");
         add("message.pasterdream.broken_portal.need_materials", "Hold §eBlack Metal Ingot §fand §eShadow Light §fin both hands to repair the core");
         add("message.pasterdream.broken_portal.repaired", "Core repaired");

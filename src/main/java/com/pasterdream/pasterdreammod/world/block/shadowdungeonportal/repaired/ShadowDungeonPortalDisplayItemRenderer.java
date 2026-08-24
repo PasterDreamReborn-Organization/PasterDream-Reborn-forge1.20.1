@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.block.shadowdungeonportal;
+package com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired;
 
 import software.bernie.geckolib.renderer.GeoItemRenderer;
 

@@ -18,8 +18,8 @@ import com.pasterdream.pasterdreammod.world.block.desertherotomb.DesertHeroTombB
 import com.pasterdream.pasterdreammod.world.block.foxsculpture.FoxSculptureBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.ecologyglassjar.EcologyGlassJarBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJarBlockEntityRenderer;
-import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.BrokenShadowDungeonPortalTileRenderer;
-import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.ShadowDungeonPortalTileRenderer;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalTileRenderer;
+import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierBlockRenderer;
