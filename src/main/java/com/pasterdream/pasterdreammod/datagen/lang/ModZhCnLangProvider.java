@@ -1536,8 +1536,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("dialogue.pasterdream.nameless.first_8", "无名：我为什么还在这里？因为我无法逃离，也不再想尝试逃离这里了。在你还可以回家的时候...尽快回头吧。");
         add("dialogue.pasterdream.nameless.first_9", "无名：......");
         add("dialogue.pasterdream.nameless.first_10", "无名：你为什么还在这里......");
-        add("dialogue.pasterdream.nameless.first_11", "无名：一直待在这里只会侵蚀你的精神...我不能让你向下深入了，这种渴求未知的想法只会让阴影更容易控制你的精神...这也是为了你好。");
-        add("dialogue.pasterdream.nameless.first_12", "无名：我不能让你继续留在这里了...请离开吧。");
+        add("dialogue.pasterdream.nameless.first_11", "无名：一直待在这里只会侵蚀你的精神......我不能让你向下深入了，这种渴求未知的想法只会让阴影更容易控制你的精神......这也是为了你好。");
+        add("dialogue.pasterdream.nameless.first_12", "无名：我不能让你继续留在这里了......请离开吧。");
 
         // 无名对话：第二次对话
         add("dialogue.pasterdream.nameless.second_1", "无名：你见到了它们出现在你的世界里？");
@@ -1548,20 +1548,20 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("dialogue.pasterdream.nameless.second_6", "无名：这样看来，你确实有使用那股力量的'资质'。");
         add("dialogue.pasterdream.nameless.second_7", "无名：在这层下面，其实是一位已故之人的坟墓。我存在于此地也是为了信守那份承诺，'守护他的坟墓'的承诺。");
         add("dialogue.pasterdream.nameless.second_8", "无名：如果是你，或许能得到他的认可。");
-        add("dialogue.pasterdream.nameless.second_9", "无名：如果你执意要斗争下去...那么就再次触碰下方的门扉吧，如果你确实得到了承认，门自然会打开。");
+        add("dialogue.pasterdream.nameless.second_9", "无名：如果你执意要斗争下去......那么就再次触碰下方的门扉吧，如果你确实得到了承认，门自然会打开。");
         add("dialogue.pasterdream.nameless.second_10", "无名：去抚摸暮影长床，无需考虑结果，只需做出遵从你内心的第一选择。");
 
         // 无名对话：选择后半（灯）
         add("dialogue.pasterdream.nameless.light_1", "无名：看起来，你已经选择了投身于光明，成为这里的一缕光芒。");
         add("dialogue.pasterdream.nameless.light_2", "无名：现在的你，身为'灯'的你，应该有实力去阻止祂，战胜祂。");
         add("dialogue.pasterdream.nameless.light_3", "无名：那么请启程去寻找吧，寻找亚伦柯斯的眼睛。");
-        add("dialogue.pasterdream.nameless.light_4", "无名：愿你武运昌隆，在这次战斗后，依旧成为照亮黑夜的灯盏。");
+        add("dialogue.pasterdream.nameless.light_4", "无名：祝愿你武运昌隆，在这次战斗后，依旧成为照亮黑夜的灯盏。");
 
         // 无名对话：选择后半（影）
         add("dialogue.pasterdream.nameless.shadow_1", "无名：看起来，你已经选择了融身于黑暗，成为这里的一丝阴影。");
         add("dialogue.pasterdream.nameless.shadow_2", "无名：现在的你，身为'影'的你，似乎有资格去接纳祂，融入祂。");
         add("dialogue.pasterdream.nameless.shadow_3", "无名：那么请启程去寻找吧，寻找亚伦柯斯的眼睛。");
-        add("dialogue.pasterdream.nameless.shadow_4", "无名：愿你武运昌隆，在这次战斗后，依然能保持你生而为人的清醒。");
+        add("dialogue.pasterdream.nameless.shadow_4", "无名：祝愿你武运昌隆，在这次战斗后，依然能保持你生而为人的清醒。");
 
         // 无名对话：等待状态
         add("dialogue.pasterdream.nameless.wait", "无名：......");
@@ -1676,6 +1676,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.defeat_aaroncos.description", "击败亚伦柯斯之触");
         add("message.pasterdream.aaroncos_arena.need_progress", "尚未完成前置进度");
         add("message.pasterdream.aaroncos_arena.battle_in_progress", "有玩家正在挑战亚伦柯斯，暂不允许进入");
+        add("message.pasterdream.aaroncos_arena.exit_countdown", "离开倒计时 %s秒");
         add("advancements.pasterdream.story.shadow_intrude_complete.title", "暗影入侵");
         add("advancements.pasterdream.story.shadow_intrude_complete.description", "完成暗影入侵事件");
         add("advancements.pasterdream.story.dig_up_a_tomb.title", "邻家有女初长成，力拔山兮气盖世");

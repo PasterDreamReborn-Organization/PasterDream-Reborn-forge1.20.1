@@ -1501,6 +1501,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.defeat_aaroncos.description", "Defeat Aaroncos's Touch");
         add("message.pasterdream.aaroncos_arena.need_progress", "You haven't completed the prerequisite progress yet");
         add("message.pasterdream.aaroncos_arena.battle_in_progress", "A player is challenging Aaroncos, entry is not allowed for now");
+        add("message.pasterdream.aaroncos_arena.exit_countdown", "Leaving in %s seconds");
         add("advancements.pasterdream.story.shadow_intrude_complete.title", "Shadow Intrusion");
         add("advancements.pasterdream.story.shadow_intrude_complete.description", "Complete the shadow intrusion event");
         add("advancements.pasterdream.story.dig_up_a_tomb.title", "Sweet Sixteen, with the Strength of a Titan");

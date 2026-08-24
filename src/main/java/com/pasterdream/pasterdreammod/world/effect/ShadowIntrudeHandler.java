@@ -21,6 +21,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
@@ -108,12 +109,8 @@ public class ShadowIntrudeHandler {
     }
 
     private static void spawnShadowMobs(Level world, LivingEntity entity, double x, double y, double z) {
-        int offsetX = Mth.nextInt(world.getRandom(), -SPAWN_OFFSET_RANGE, SPAWN_OFFSET_RANGE);
-        int offsetZ = Mth.nextInt(world.getRandom(), -SPAWN_OFFSET_RANGE, SPAWN_OFFSET_RANGE);
-        BlockPos spawnPos = BlockPos.containing(x + offsetX, y, z + offsetZ);
-        if (!world.isEmptyBlock(spawnPos.above(2))
-                || !world.isEmptyBlock(spawnPos.above(1))
-                || world.isEmptyBlock(spawnPos.below(1))) {
+        BlockPos spawnPos = findGroundSpawnPos(world, x, y, z);
+        if (spawnPos == null) {
             return;
         }
         if (world instanceof ServerLevel serverLevel) {
@@ -128,6 +125,41 @@ public class ShadowIntrudeHandler {
         }
     }
 
+    /**
+     * 在玩家附近找一个可站立的地面生成点。
+     * 随机水平偏移后，从玩家上方开始向下扫描实际地面，兼容高度差（悬崖/坡面）与近地空中的场景，
+     * 不再依赖玩家所在的确切 Y 值。
+     */
+    private static BlockPos findGroundSpawnPos(Level world, double x, double y, double z) {
+        int startY = Math.min(world.getMaxBuildHeight() - 1, Mth.floor(y) + 16);
+        int stopY = Math.max(world.getMinBuildHeight(), Mth.floor(y) - 24);
+        for (int attempt = 0; attempt < 8; attempt++) {
+            int offsetX = Mth.nextInt(world.getRandom(), -SPAWN_OFFSET_RANGE, SPAWN_OFFSET_RANGE);
+            int offsetZ = Mth.nextInt(world.getRandom(), -SPAWN_OFFSET_RANGE, SPAWN_OFFSET_RANGE);
+            BlockPos pos = new BlockPos(Mth.floor(x + offsetX), startY, Mth.floor(z + offsetZ));
+            if (!world.hasChunkAt(pos)) {
+                continue;
+            }
+            BlockPos ground = pos;
+            while (ground.getY() > stopY && world.getBlockState(ground).isAir()) {
+                ground = ground.below();
+            }
+            BlockState groundState = world.getBlockState(ground);
+            if (groundState.isAir() || !groundState.getFluidState().isEmpty() || !groundState.isSolid()) {
+                continue;
+            }
+            if (Math.abs((ground.getY() + 1) - y) > 32) {
+                continue;
+            }
+            BlockPos spawnPos = ground.above();
+            if (!world.isEmptyBlock(spawnPos) || !world.isEmptyBlock(spawnPos.above())) {
+                continue;
+            }
+            return spawnPos;
+        }
+        return null;
+    }
+
     private static void finish(Level world, LivingEntity entity, CompoundTag data) {
         data.putBoolean(KEY_INTRUDE, false);
         data.putBoolean(KEY_END, false);
@@ -138,6 +170,7 @@ public class ShadowIntrudeHandler {
         }
         sendMessage(entity, "message.pasterdream.shadow_intrude.end_1");
         sendMessage(entity, "message.pasterdream.shadow_intrude.end_2");
+        ShadowSpyonEffect.allowRemoval(entity);
         entity.removeEffect(ModEffects.SHADOW_SPYON.get());
     }
 

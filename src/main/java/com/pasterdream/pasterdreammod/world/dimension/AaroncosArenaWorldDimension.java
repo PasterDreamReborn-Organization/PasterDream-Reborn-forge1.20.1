@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.world.effect.ShadowSpyonEffect;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosLeftHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosRightHandEntity;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
@@ -20,6 +21,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Mirror;
@@ -65,8 +67,8 @@ public final class AaroncosArenaWorldDimension {
 
     private static final Map<ServerLevel, ExitSession> EXIT_SESSIONS = new HashMap<>();
     private static final int[] COUNTDOWN_ELAPSED = {10, 210, 310, 350, 400};
-    private static final String[] COUNTDOWN_MSG =
-            {"离开倒计时 20秒", "离开倒计时 10秒", "离开倒计时 5秒", "离开倒计时 3秒", "离开倒计时 1秒"};
+    private static final int[] COUNTDOWN_SECONDS = {20, 10, 5, 3, 1};
+    private static final String COUNTDOWN_MSG_KEY = "message.pasterdream.aaroncos_arena.exit_countdown";
     private static final int EXIT_TOTAL_TICKS = 410;
 
     /** 手箱开启时启动离场会话（倒计时提示 + 传回主世界 + 清理竞技场内非玩家实体） */
@@ -132,7 +134,7 @@ public final class AaroncosArenaWorldDimension {
                 if (elapsed == COUNTDOWN_ELAPSED[i]) {
                     for (Player p : arena.players()) {
                         if (p instanceof ServerPlayer sp)
-                            sp.displayClientMessage(Component.literal(COUNTDOWN_MSG[i]), true);
+                            sp.displayClientMessage(Component.translatable(COUNTDOWN_MSG_KEY, COUNTDOWN_SECONDS[i]), true);
                     }
                 }
             }
@@ -177,11 +179,35 @@ public final class AaroncosArenaWorldDimension {
                 for (Player p : arena.players()) {
                     if (p instanceof ServerPlayer sp)
                         AdvancementHelper.grant(sp, DEFEAT_AARONCOS_ADV, "defeat_aaroncos");
+                    ShadowSpyonEffect.allowRemoval(p);
                     p.removeEffect(ModEffects.SHADOW_SPYON.get());
                 }
+            } else if (isChallengeAbandoned(arena)) {
+                // 清场逻辑：挑战过程中所有玩家均死亡或全部离开竞技场维度 → 清除场内 BOSS（保留物品掉落）
+                BATTLES.remove(arena);
+                clearArenaCombatants(arena);
             } else {
                 BATTLES.put(arena, new BattleSession(battle.eyePos(), elapsed));
             }
+        }
+    }
+
+    /** 挑战是否被弃：场内不存在存活且非旁观模式的玩家（即全部死亡或全部离开竞技场维度） */
+    private static boolean isChallengeAbandoned(ServerLevel arena) {
+        for (Player p : arena.players()) {
+            if (p.isAlive() && !p.isSpectator()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /** 清除竞技场内 BOSS 及召唤物（保留玩家与物品掉落） */
+    private static void clearArenaCombatants(ServerLevel arena) {
+        AABB box = new AABB(ARENA_CENTER, ARENA_CENTER).inflate(49.5);
+        for (Entity e : arena.getEntitiesOfClass(Entity.class, box,
+                e -> !(e instanceof Player) && !(e instanceof ItemEntity))) {
+            e.discard();
         }
     }
 
