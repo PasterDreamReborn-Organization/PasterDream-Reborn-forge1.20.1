@@ -1,0 +1,17 @@
+{
+  "sortnum": 1,
+  "name": "pasterdream.seniors_dream.entry.the_lost_sword_tomb",
+  "icon": "pasterdream:sword_embryo",
+  "category": "pasterdream:foretold_dream/structures",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.the_lost_sword_tomb.page0"
+    },
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/foretold_dream/structures/the_lost_sword_tomb.png"],
+      "text": "pasterdream.seniors_dream.entry.the_lost_sword_tomb.page1"
+    }
+  ]
+}

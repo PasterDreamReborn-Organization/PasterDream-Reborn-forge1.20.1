@@ -1,0 +1,26 @@
+{
+  "sortnum": 3,
+  "name": "pasterdream.seniors_dream.entry.desert_fortress",
+  "icon": "pasterdream:desert_hero_tomb",
+  "category": "pasterdream:foretold_dream/structures",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.desert_fortress.page0"
+    },
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/foretold_dream/structures/desert_fortress_surface.png"],
+      "text": "pasterdream.seniors_dream.entry.desert_fortress.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.desert_fortress.page2"
+    },
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/foretold_dream/structures/desert_fortress_underground.png"],
+      "text": "pasterdream.seniors_dream.entry.desert_fortress.page3"
+    }
+  ]
+}

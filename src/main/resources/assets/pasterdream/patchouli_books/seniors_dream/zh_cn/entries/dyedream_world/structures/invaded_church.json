@@ -1,0 +1,21 @@
+{
+  "sortnum": 11,
+  "name": "pasterdream.seniors_dream.entry.invaded_church",
+  "icon": "pasterdream:shadow_candle",
+  "category": "pasterdream:dyedream_world/structures",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/invaded_church.png"],
+      "text": "pasterdream.seniors_dream.entry.invaded_church.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.invaded_church.page2"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.invaded_church.page3"
+    }
+  ]
+}

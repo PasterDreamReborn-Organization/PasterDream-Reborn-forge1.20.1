@@ -1869,9 +1869,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.dyedream_sky_island.page1", "");
 
         // 失落剑冢
-        add("pasterdream.seniors_dream.entry.lost_sword_tomb", "失落剑冢");
-        add("pasterdream.seniors_dream.entry.lost_sword_tomb.page0", "失落剑冢是一个只能在丛林群系发现的结构，中间有一把插在石头里面的石中剑，需要用大力出奇迹的方法才能拔出来，除非……$(br2)获取到的失落之剑可以赋予丛林的力量升级为草薙，不过这柄剑似乎有点嗜杀，试着满足它，也许可以引出它所没表现出来的更多强大力量……");
-        add("pasterdream.seniors_dream.entry.lost_sword_tomb.page1", "");
+        add("pasterdream.seniors_dream.entry.the_lost_sword_tomb", "失落剑冢");
+        add("pasterdream.seniors_dream.entry.the_lost_sword_tomb.page0", "失落剑冢是一个只能在丛林群系发现的结构，中间有一把插在石头里面的石中剑，需要用大力出奇迹的方法才能拔出来，除非……$(br2)获取到的失落之剑可以赋予丛林的力量升级为草薙，不过这柄剑似乎有点嗜杀，试着满足它，也许可以引出它所没表现出来的更多强大力量……");
+        add("pasterdream.seniors_dream.entry.the_lost_sword_tomb.page1", "");
 
         // 渔夫小屋
         add("pasterdream.seniors_dream.entry.fisherman_hut", "渔夫小屋");
@@ -1879,11 +1879,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.fisherman_hut.page1", "——我相信他们一定有着其他理由才会独自来到海边生活，或许，这片深海里还有更深的秘密。");
 
         // 沙漠遗迹
-        add("pasterdream.seniors_dream.entry.desert_ruins", "沙漠遗迹");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page0", "在主世界的沙漠里，有时会发现这种奇怪的遗迹，看来似乎已经被掠夺者和尸壳占领，或许你可以在探索之余顺手处理掉这些敌人……");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page1", "");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page2", "传说中，那里埋葬着一位未完成遗志的战士，被深埋于地下，等待着能有一位迷途的旅行者前来，来完成他的遗愿，继承他的衣钵……");
-        add("pasterdream.seniors_dream.entry.desert_ruins.page3", "");
+        add("pasterdream.seniors_dream.entry.desert_fortress", "沙漠遗迹");
+        add("pasterdream.seniors_dream.entry.desert_fortress.page0", "在主世界的沙漠里，有时会发现这种奇怪的遗迹，看来似乎已经被掠夺者和尸壳占领，或许你可以在探索之余顺手处理掉这些敌人……");
+        add("pasterdream.seniors_dream.entry.desert_fortress.page1", "");
+        add("pasterdream.seniors_dream.entry.desert_fortress.page2", "传说中，那里埋葬着一位未完成遗志的战士，被深埋于地下，等待着能有一位迷途的旅行者前来，来完成他的遗愿，继承他的衣钵……");
+        add("pasterdream.seniors_dream.entry.desert_fortress.page3", "");
 
         // 暮影之笼
         add("pasterdream.seniors_dream.entry.twilight_lantern", "暮影之笼");
@@ -2019,56 +2019,61 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.dyedream_worldtree.page2", "——连通天地的世界树，支撑着整个梦境的美好。");
 
         // 花园解密-迷梦冶梦莲
-        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus", "花园解密-迷梦冶梦莲");
-        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page1", "你可以在染梦平原发现这种奇怪的遗迹，顶上种有一种名为「冶梦莲」的美丽花朵，在花朵下方有着来自最早的寻梦者的提示，你或许应该根据她的提示来寻找对应的植物……");
-        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page2", "或许应该从琴雨梦的提示中的铃、云、流明和小伞来寻找答案？");
-        add("pasterdream.seniors_dream.entry.garden_misty_dreaming_lotus.page3", "解开谜题后获得的花朵似乎可以用于前往风的梦境，也可以去寻找传说中的神狐……");
+        add("pasterdream.seniors_dream.entry.garden_decryption_misty_dreaming_lotus", "花园解密-迷梦冶梦莲");
+        add("pasterdream.seniors_dream.entry.garden_decryption_misty_dreaming_lotus.page1", "你可以在染梦平原发现这种奇怪的遗迹，顶上种有一种名为「冶梦莲」的美丽花朵，在花朵下方有着来自最早的寻梦者的提示，你或许应该根据她的提示来寻找对应的植物……");
+        add("pasterdream.seniors_dream.entry.garden_decryption_misty_dreaming_lotus.page2", "或许应该从琴雨梦的提示中的铃、云、流明和小伞来寻找答案？");
+        add("pasterdream.seniors_dream.entry.garden_decryption_misty_dreaming_lotus.page3", "解开谜题后获得的花朵似乎可以用于前往风的梦境，也可以去寻找传说中的神狐……");
 
         // 花园解密-凛冽雪绒花
-        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss", "花园解密-凛冽雪绒花");
-        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page1", "在染梦世界的雪原，你可能会发现这种奇特的结构，在下方的书桌上，你会找到来自最初那位寻梦者的笔记，你需要根据她的提示来找到对应的植物和生物。");
-        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page2", "似乎需要从梦染、灯、奇异几个字入手，去找找看吧。");
-        add("pasterdream.seniors_dream.entry.garden_nippy_edelweiss.page3", "解开谜题后获得的花朵似乎有着奇特的低温触感……");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nippy_edelweiss", "花园解密-凛冽雪绒花");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nippy_edelweiss.page1", "在染梦世界的雪原，你可能会发现这种奇特的结构，在下方的书桌上，你会找到来自最初那位寻梦者的笔记，你需要根据她的提示来找到对应的植物和生物。");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nippy_edelweiss.page2", "似乎需要从梦染、灯、奇异几个字入手，去找找看吧。");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nippy_edelweiss.page3", "解开谜题后获得的花朵似乎有着奇特的低温触感……");
 
         // 花园解密-九尾狐
-        add("pasterdream.seniors_dream.entry.garden_golden_fox", "花园解密-九尾狐");
-        add("pasterdream.seniors_dream.entry.garden_golden_fox.page1", "在梦境中，有时你会看见这种有着狐狸样子的雕像的遗迹，上方的寻梦者永恒书卷中有着琴雨梦给予的提示，或许需要一种奇特的莲花，也许你应该先去看看其他的花园解密……");
-        add("pasterdream.seniors_dream.entry.garden_golden_fox.page2", "当你唤醒九尾狐后，她会满足你一个愿望，至于满足愿望的方法，那位少女也在书中一并告诉你了……");
-        add("pasterdream.seniors_dream.entry.garden_golden_fox.page3", "——那奇妙的神狐，她将满足你的愿望，或是给予你御邪的护符。");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nine_tailed_fox", "花园解密-九尾狐");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nine_tailed_fox.page1", "在梦境中，有时你会看见这种有着狐狸样子的雕像的遗迹，上方的寻梦者永恒书卷中有着琴雨梦给予的提示，或许需要一种奇特的莲花，也许你应该先去看看其他的花园解密……");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nine_tailed_fox.page2", "当你唤醒九尾狐后，她会满足你一个愿望，至于满足愿望的方法，那位少女也在书中一并告诉你了……");
+        add("pasterdream.seniors_dream.entry.garden_decryption_nine_tailed_fox.page3", "——那奇妙的神狐，她将满足你的愿望，或是给予你御邪的护符。");
 
         // 染梦实验室
-        add("pasterdream.seniors_dream.entry.dream_lab", "染梦实验室");
-        add("pasterdream.seniors_dream.entry.dream_lab.page1", "在染梦的平原，你会发现这种前辈的遗迹，外观上看并不起眼，可是内部别有洞天……");
-        add("pasterdream.seniors_dream.entry.dream_lab.page3", "看起来，这似乎是前辈寻梦者进行某种实验所做出的尝试，那名为蓄梦池的装置似乎是前辈们尝试的最终结果，至于他们为什么离开，就不得而知了……");
-        add("pasterdream.seniors_dream.entry.dream_lab.page4", "——这里是寻梦者们驾驭梦境力量的尝试，是探寻梦境真实的一大步……");
+        add("pasterdream.seniors_dream.entry.dyedream_laboratory", "染梦实验室");
+        add("pasterdream.seniors_dream.entry.dyedream_laboratory.page1", "在染梦的平原，你会发现这种前辈的遗迹，外观上看并不起眼，可是内部别有洞天……");
+        add("pasterdream.seniors_dream.entry.dyedream_laboratory.page3", "看起来，这似乎是前辈寻梦者进行某种实验所做出的尝试，那名为蓄梦池的装置似乎是前辈们尝试的最终结果，至于他们为什么离开，就不得而知了……");
+        add("pasterdream.seniors_dream.entry.dyedream_laboratory.page4", "——这里是寻梦者们驾驭梦境力量的尝试，是探寻梦境真实的一大步……");
 
         // 融梦涌泉井
-        add("pasterdream.seniors_dream.entry.melt_dream_well", "融梦涌泉井");
-        add("pasterdream.seniors_dream.entry.melt_dream_well.page1", "在染梦世界的平原，有时会分布着这样一种水井，或许你应该纵身一跃，亲自到井底一探究竟……");
-        add("pasterdream.seniors_dream.entry.melt_dream_well.page3", "在这种奇妙的水井中，流淌的并非一般的清水，而是一种一直在变幻色彩的神秘液体，这种液体充斥着融梦能量，你可以尝试着效仿前辈寻梦者，找到一种可以利用它的办法……");
-        add("pasterdream.seniors_dream.entry.melt_dream_well.page4", "井内的一些小角落还有可能会有一些箱子，积极地寻找一下吧。");
-        add("pasterdream.seniors_dream.entry.melt_dream_well.page5", "——井下静静地闪耀着流光，照耀着地下的生灵。");
+        add("pasterdream.seniors_dream.entry.melt_dream_liquid_well", "融梦涌泉井");
+        add("pasterdream.seniors_dream.entry.melt_dream_liquid_well.page1", "在染梦世界的平原，有时会分布着这样一种水井，或许你应该纵身一跃，亲自到井底一探究竟……");
+        add("pasterdream.seniors_dream.entry.melt_dream_liquid_well.page3", "在这种奇妙的水井中，流淌的并非一般的清水，而是一种一直在变幻色彩的神秘液体，这种液体充斥着融梦能量，你可以尝试着效仿前辈寻梦者，找到一种可以利用它的办法……");
+        add("pasterdream.seniors_dream.entry.melt_dream_liquid_well.page4", "井内的一些小角落还有可能会有一些箱子，积极地寻找一下吧。");
+        add("pasterdream.seniors_dream.entry.melt_dream_liquid_well.page5", "——井下静静地闪耀着流光，照耀着地下的生灵。");
 
         // 染梦小客栈
-        add("pasterdream.seniors_dream.entry.dyedream_inn", "染梦小客栈");
-        add("pasterdream.seniors_dream.entry.dyedream_inn.page1", "染梦世界存在着这种小客栈，它不知出自何人之手，却能为疲惫的梦境旅行者们提供歇脚的地方。");
-        add("pasterdream.seniors_dream.entry.dyedream_inn.page2", "上层的箱子里似乎还有前辈们留下来的物品，你当然可以拿它们为你的探索做些补给。下层不仅有丰富的矿石，那书卷中还记载着两位前辈寻梦者那比肩神话的尝试……");
+        add("pasterdream.seniors_dream.entry.dyedream_tavern", "染梦小客栈");
+        add("pasterdream.seniors_dream.entry.dyedream_tavern.page1", "染梦世界存在着这种小客栈，它不知出自何人之手，却能为疲惫的梦境旅行者们提供歇脚的地方。");
+        add("pasterdream.seniors_dream.entry.dyedream_tavern.page2", "上层的箱子里似乎还有前辈们留下来的物品，你当然可以拿它们为你的探索做些补给。下层不仅有丰富的矿石，那书卷中还记载着两位前辈寻梦者那比肩神话的尝试……");
 
         // 染梦穿云塔
-        add("pasterdream.seniors_dream.entry.dyedream_cloud_tower", "染梦穿云塔");
-        add("pasterdream.seniors_dream.entry.dyedream_cloud_tower.page1", "在染梦的梦境中，这种高耸入云的尖塔很容易引起你的注意力。它有两种不同的建筑样式，每座塔的底部房间里都能找到先来者的游记……$(br2)说到塔，爬到顶端似乎是必备的环节，塔顶应该会有一些战利品，也许你应该仔细在塔顶寻找一下？不过，塔的样式不同，战利品的位置似乎也会有所差异……");
-        add("pasterdream.seniors_dream.entry.dyedream_cloud_tower.page2", "——爬到塔顶→鸟瞰点同步→信仰之跃→bang！同步失败~");
+        add("pasterdream.seniors_dream.entry.dyedream_tower", "染梦穿云塔");
+        add("pasterdream.seniors_dream.entry.dyedream_tower.page1", "在染梦的梦境中，这种高耸入云的尖塔很容易引起你的注意力。它有两种不同的建筑样式，每座塔的底部房间里都能找到先来者的游记……$(br2)说到塔，爬到顶端似乎是必备的环节，塔顶应该会有一些战利品，也许你应该仔细在塔顶寻找一下？不过，塔的样式不同，战利品的位置似乎也会有所差异……");
+        add("pasterdream.seniors_dream.entry.dyedream_tower.page2", "——爬到塔顶→鸟瞰点同步→信仰之跃→bang！同步失败~");
 
         // 浮空神庙
-        add("pasterdream.seniors_dream.entry.floating_temple", "浮空神庙");
-        add("pasterdream.seniors_dream.entry.floating_temple.page1", "在染梦世界的天空中，会有这样的建筑被云朵衬托着，浮在天上。这座古典时代的神庙让所有进入这座建筑被它的神圣肃穆所打动。你会在神庙里发现一个融梦水晶箱，以及一份前辈们的书卷……");
-        add("pasterdream.seniors_dream.entry.floating_temple.page2", "——当神庙飘浮于染梦的苍穹，万神也将流连于迷梦之中");
+        add("pasterdream.seniors_dream.entry.dyedream_floating_temple", "浮空神庙");
+        add("pasterdream.seniors_dream.entry.dyedream_floating_temple.page1", "在染梦世界的天空中，会有这样的建筑被云朵衬托着，浮在天上。这座古典时代的神庙让所有进入这座建筑被它的神圣肃穆所打动。你会在神庙里发现一个融梦水晶箱，以及一份前辈们的书卷……");
+        add("pasterdream.seniors_dream.entry.dyedream_floating_temple.page2", "——当神庙飘浮于染梦的苍穹，万神也将流连于迷梦之中");
 
         // 侵染教堂
-        add("pasterdream.seniors_dream.entry.infected_church", "侵染教堂");
-        add("pasterdream.seniors_dream.entry.infected_church.page1", "");
-        add("pasterdream.seniors_dream.entry.infected_church.page2", "在染梦世界中探索时，偶尔会在天空中发现这种一半被来自另一个梦境的阴影与黑暗侵蚀染黑的教堂。在这座暗影侵染的教堂中可能发现融梦水晶箱，如果在这座教堂的角落里仔细寻找，也许能够发现遗落的宝箱。");
-        add("pasterdream.seniors_dream.entry.infected_church.page3", "除此之外，在这里存在着寻梦者前辈留下的笔记。根据笔记的指引前往下界，想办法穿越基岩层，或许能够找到黑暗的来源……$(br2)——为暗影所侵蚀的教堂，在其背后隐藏着不祥与疯狂。");
+        add("pasterdream.seniors_dream.entry.invaded_church", "侵染教堂");
+        add("pasterdream.seniors_dream.entry.invaded_church.page1", "");
+        add("pasterdream.seniors_dream.entry.invaded_church.page2", "在染梦世界中探索时，偶尔会在天空中发现这种一半被来自另一个梦境的阴影与黑暗侵蚀染黑的教堂。在这座暗影侵染的教堂中可能发现融梦水晶箱，如果在这座教堂的角落里仔细寻找，也许能够发现遗落的宝箱。");
+        add("pasterdream.seniors_dream.entry.invaded_church.page3", "除此之外，在这里存在着寻梦者前辈留下的笔记。根据笔记的指引前往下界，想办法穿越基岩层，或许能够找到黑暗的来源……$(br2)——为暗影所侵蚀的教堂，在其背后隐藏着不祥与疯狂。");
+
+        // 萦风教堂
+        add("pasterdream.seniors_dream.entry.fluffy_wind_church", "萦风教堂");
+        add("pasterdream.seniors_dream.entry.fluffy_wind_church.page1", "在染梦世界中探索时，偶尔会在天空中发现这样一种一半被来自另一个梦境的青苔与微风所侵染为翠绿色的教堂。在这座微风萦绕的教堂中能够发现融梦水晶箱。仔细寻找的话，在角落里也能够发现一些遗落的宝箱。");
+        add("pasterdream.seniors_dream.entry.fluffy_wind_church.page2", "在教堂正中的讲台之上有一件寻梦者的永恒书卷，可以从中获取来自最初寻梦者的笔记。或许按照笔记吃下迷梦炖菜飞向高空就能到达将教堂侵染为翠绿的另一场梦境？$(br2)——萦绕着翠绿与微风的教堂，蕴藏着渴望飞翔的梦。");
 
         // 灯影之下
         add("pasterdream.seniors_dream.category.lamp_shadow_world", "灯影之下");
@@ -2097,8 +2102,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 暗影高炉
         add("pasterdream.seniors_dream.entry.shadow_blast_furnace", "暗影高炉");
-        add("pasterdream.seniors_dream.entry.shadow_blast_furnace.page0", "在阴影的梦境中，你找到了琴雨梦和夜岚的实验遗存，在遗迹里留有这项装置的残骸和一份蓝图，对照着蓝图，似乎可以复现这台机器。$(br2)这台机器以梦境中的熔融阴影和噩梦为燃料，可以转化一些物品，使它们浸染上阴影。除此之外，它似乎还可以用来修复锈蚀金属……");
-        add("pasterdream.seniors_dream.entry.shadow_blast_furnace.page1", "——熔炼黑暗的机器，要令万物都染上黑暗。");
+        add("pasterdream.seniors_dream.entry.shadow_blast_furnace.page1", "在阴影的梦境中，你找到了琴雨梦和夜岚的实验遗存，在遗迹里留有这项装置的残骸和一份蓝图，对照着蓝图，似乎可以复现这台机器。$(br2)这台机器以梦境中的熔融阴影和噩梦为燃料，可以转化一些物品，使它们浸染上阴影。除此之外，它似乎还可以用来修复锈蚀金属……");
+        add("pasterdream.seniors_dream.entry.shadow_blast_furnace.page2", "——熔炼黑暗的机器，要令万物都染上黑暗。");
 
         // 笔记残页
         add("pasterdream.seniors_dream.entry.broken_note", "笔记残页");

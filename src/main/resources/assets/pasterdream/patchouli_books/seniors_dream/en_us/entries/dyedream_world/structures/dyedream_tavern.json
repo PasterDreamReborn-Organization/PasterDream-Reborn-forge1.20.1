@@ -1,0 +1,21 @@
+{
+  "sortnum": 8,
+  "name": "pasterdream.seniors_dream.entry.dyedream_tavern",
+  "icon": "pasterdream:textures/item/dream_notes_book_dyedream_world.png",
+  "category": "pasterdream:dyedream_world/structures",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/dyedream_tavern.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.dyedream_tavern.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.dyedream_tavern.page2"
+    }
+  ]
+}
