@@ -1,0 +1,13 @@
+{
+  "sortnum": 12,
+  "name": "pasterdream.seniors_dream.entry.dream_accumulator",
+  "icon": "pasterdream:dream_accumulator",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:dream_accumulator",
+      "text": "pasterdream.seniors_dream.entry.dream_accumulator.page0"
+    }
+  ]
+}

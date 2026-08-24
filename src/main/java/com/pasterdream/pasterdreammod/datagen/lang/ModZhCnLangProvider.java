@@ -1990,6 +1990,19 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.milky_way_jelly.page0", "或许终有一天，你需要以凡人之躯跨越某些常规办法下无法逾越的天险，登顶世界的顶层，而原本从染梦世界中获得的星河果冻性能显然不太好，这时，你将目光放到了染梦世界的云朵和现实的羽毛上……");
         add("pasterdream.seniors_dream.entry.milky_way_jelly.page1", "当你食用了这块全新的果冻后，会有一股力量将你送到世界的顶层，并赋予你缓降效果，让你慢慢落地，这样一来，某些难以跨越的屏障想必也无法阻挡你了。$(br2)——当大地不再是人类的阻碍，星海便是我们的目标");
 
+        // 衍梦肥泥
+        add("pasterdream.seniors_dream.entry.dream_fertilizer", "衍梦肥泥");
+        add("pasterdream.seniors_dream.entry.dream_fertilizer.page0", "你在这个梦境发现了独有的粉色史莱姆后，你应该设法从它的身上获得一种粉色的史莱姆球，并试着把粉色史莱姆球和骨粉块放在一起进行研磨，似乎可以获得一种软泥……$(br2)这种软泥对于任何作物，哪怕是梦境中生长的作物，都有很强的催熟作用。它衍生于梦境，所以被命名为衍梦肥泥，希望它可以庇佑你的作物蓬勃生长。");
+        add("pasterdream.seniors_dream.entry.dream_fertilizer.page1", "——至少粉色史莱姆不会保佑你……但是是从人家尸体上拿到的史莱姆球，所以也可以视为粉色史莱姆在保佑你的作物。");
+
+        // 蓄梦池
+        add("pasterdream.seniors_dream.entry.dream_accumulator", "蓄梦池");
+        add("pasterdream.seniors_dream.entry.dream_accumulator.page0", "在地下实验室，你可以找到这种小巧的仪器。它缓慢地汇聚着周围的空气，让它们沉到池底，似乎需要给它一些时间。不过在前辈的实验室中，还有一种吸附剂材料。加入仪器后，仪器周围以更快的速度凝聚空气中的尘埃。这种尘埃最终会凝聚成染梦粉尘，一种重要的合成材料。$(br2)把仪器带回现实世界之后，仪器的效率会大打折扣，不过，它依旧能缓慢捕捉现实世界的梦境能量，虽然缓慢，但聊胜于无吧。");
+
+        // 寻梦者笔记
+        add("pasterdream.seniors_dream.entry.dream_notes_dyedream_world", "寻梦者笔记");
+        add("pasterdream.seniors_dream.entry.dream_notes_dyedream_world.page0", "你并非第一个进入梦境的寻梦者，在你之前有多位前辈曾踏入梦境之中。在梦中的各个角落，你可以找到他们留下的笔记，有些笔记是他们亲笔写就，也有一些笔记是梦境将他们的所见具现成文。有些笔记只是他们的心事或者碎碎念，但有一些则记载了梦境中更深层的隐秘。$(br2)如果是想要更进一步追寻梦境的秘辛的话，或许你应该搜寻一下这些笔记，并好好阅读一下？");
+
         // 染梦教堂
         add("pasterdream.seniors_dream.entry.dyedream_church", "染梦教堂");
         add("pasterdream.seniors_dream.entry.dyedream_church.page1", "当你在染梦世界探索时，有可能会发现这种漂浮在天空中的神秘教堂，你可以在这个教堂内发现一个融梦水晶箱，讲经台上还有来自寻梦者前辈们的随记，或许你应该仔细检查一下教堂内部的边边角角，说不定能有意外之喜……");
