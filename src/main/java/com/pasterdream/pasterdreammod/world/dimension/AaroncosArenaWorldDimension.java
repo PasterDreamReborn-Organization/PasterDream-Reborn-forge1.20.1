@@ -21,6 +21,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Mirror;
@@ -181,9 +182,32 @@ public final class AaroncosArenaWorldDimension {
                     ShadowSpyonEffect.allowRemoval(p);
                     p.removeEffect(ModEffects.SHADOW_SPYON.get());
                 }
+            } else if (isChallengeAbandoned(arena)) {
+                // 清场逻辑：挑战过程中所有玩家均死亡或全部离开竞技场维度 → 清除场内 BOSS（保留物品掉落）
+                BATTLES.remove(arena);
+                clearArenaCombatants(arena);
             } else {
                 BATTLES.put(arena, new BattleSession(battle.eyePos(), elapsed));
             }
+        }
+    }
+
+    /** 挑战是否被弃：场内不存在存活且非旁观模式的玩家（即全部死亡或全部离开竞技场维度） */
+    private static boolean isChallengeAbandoned(ServerLevel arena) {
+        for (Player p : arena.players()) {
+            if (p.isAlive() && !p.isSpectator()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /** 清除竞技场内 BOSS 及召唤物（保留玩家与物品掉落） */
+    private static void clearArenaCombatants(ServerLevel arena) {
+        AABB box = new AABB(ARENA_CENTER, ARENA_CENTER).inflate(49.5);
+        for (Entity e : arena.getEntitiesOfClass(Entity.class, box,
+                e -> !(e instanceof Player) && !(e instanceof ItemEntity))) {
+            e.discard();
         }
     }
 
