@@ -66,8 +66,8 @@ public final class AaroncosArenaWorldDimension {
 
     private static final Map<ServerLevel, ExitSession> EXIT_SESSIONS = new HashMap<>();
     private static final int[] COUNTDOWN_ELAPSED = {10, 210, 310, 350, 400};
-    private static final String[] COUNTDOWN_MSG =
-            {"离开倒计时 20秒", "离开倒计时 10秒", "离开倒计时 5秒", "离开倒计时 3秒", "离开倒计时 1秒"};
+    private static final int[] COUNTDOWN_SECONDS = {20, 10, 5, 3, 1};
+    private static final String COUNTDOWN_MSG_KEY = "message.pasterdream.aaroncos_arena.exit_countdown";
     private static final int EXIT_TOTAL_TICKS = 410;
 
     /** 手箱开启时启动离场会话（倒计时提示 + 传回主世界 + 清理竞技场内非玩家实体） */
@@ -133,7 +133,7 @@ public final class AaroncosArenaWorldDimension {
                 if (elapsed == COUNTDOWN_ELAPSED[i]) {
                     for (Player p : arena.players()) {
                         if (p instanceof ServerPlayer sp)
-                            sp.displayClientMessage(Component.literal(COUNTDOWN_MSG[i]), true);
+                            sp.displayClientMessage(Component.translatable(COUNTDOWN_MSG_KEY, COUNTDOWN_SECONDS[i]), true);
                     }
                 }
             }
