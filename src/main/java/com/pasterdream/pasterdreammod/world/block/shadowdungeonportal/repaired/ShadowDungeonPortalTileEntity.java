@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
 import com.pasterdream.pasterdreammod.world.block.geckolibblock.AnimatableSync;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -58,21 +59,29 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
             return;
         }
 
-        if (blockPosition.getY() >= level.getMinBuildHeight() + 70)
+        if (isEntry)
         {
-            if (!checkIsHavePlayer())
+            if (blockPosition.getY() >= level.getMinBuildHeight() + 70)
             {
-                animationState = 1;
-                setChangedAndSync();
+                if (!checkIsHavePlayer())
+                {
+                    animationState = 1;
+                    setChangedAndSync();
+                }
+                    else
+                    {
+                        player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.此暗影地牢中存在其他玩家"), false);
+                    }
             }
                 else
                 {
-                    player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.地牢中存在其他玩家"), false);
+                    player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.too_low"), false);
                 }
         }
             else
             {
-                player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.地牢Y轴高度过低"), false);
+                animationState = 1;
+                setChangedAndSync();
             }
     }
 
@@ -84,11 +93,6 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
         AABB checkBox = new AABB(entryPosition.getX() - 12, level.getMinBuildHeight() + 2, entryPosition.getZ() - 12, entryPosition.getX() + 12, level.getMinBuildHeight() + 65, entryPosition.getZ() + 12);
         List<Player> players = level.getEntitiesOfClass(Player.class, checkBox);
         return !players.isEmpty();
-    }
-
-    private void teleportPlayer(ServerPlayer player, ServerLevel level, BlockPos blockPosition)
-    {
-        player.teleportTo(level, blockPosition.getX(), level.getMinBuildHeight() + 64, blockPosition.getZ() + 0.5, 90, 30);
     }
 
     private List<Player> getNearlyPlayer(BlockPos portalPos)
@@ -152,7 +156,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                         blockEntity.playerList = blockEntity.getNearlyPlayer(blockPosition);
                         for (Player player : blockEntity.playerList)
                         {
-                            player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.距离传送还有3秒"), false);
+                            player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.传送倒计时：").append("3"), false);
                         }
                     }
                     case 1 -> blockEntity.placeStructure("shadow_dungeon_shadow_bed", blockPosition.getX() - 12, level.getMinBuildHeight() + 1, blockPosition.getZ() - 12);
@@ -173,30 +177,72 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                     }
                     case 9 ->
                     {
-                        //生成无名层
+                        boolean is2Times = false;
+
+                        for (Player player : blockEntity.playerList)
+                        {
+                            Advancement advancement = ((ServerPlayer)player).server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_npc_first_dialogue"));
+                            if (advancement != null && ((ServerPlayer)player).getAdvancements().getOrStartProgress(advancement).isDone())
+                            {
+                                is2Times = true;
+                            }
+                        }
+
+                        if(is2Times)
+                        {
+                            blockEntity.placeStructure("shadow_dungeon_nameless_overworld", blockPosition.getX() - 11, level.getMinBuildHeight() + 18, blockPosition.getZ() - 11);
+                        }
+                            else
+                            {
+                                blockEntity.placeStructure("shadow_dungeon_nameless_dyedream_world", blockPosition.getX() - 11, level.getMinBuildHeight() + 18, blockPosition.getZ() - 11);
+                            }
                     }
                     case 10 ->
                     {
-                        //生成暗影火盆层
+                        switch (level.getRandom().nextInt(2))
+                        {
+                            case 0 -> blockEntity.placeStructure("shadow_dungeon_shadow_brazier", blockPosition.getX() - 11, level.getMinBuildHeight() + 27, blockPosition.getZ() - 11);
+                            case 1 -> blockEntity.placeStructure("shadow_dungeon_black_beetle", blockPosition.getX() - 11, level.getMinBuildHeight() + 27, blockPosition.getZ() - 11);
+                        }
                     }
                     case 11 ->
                     {
-                        //生成挖掘层
+                        switch (level.getRandom().nextInt(3))
+                        {
+                            case 0 -> blockEntity.placeStructure("shadow_dungeon_digging_0", blockPosition.getX() - 11, level.getMinBuildHeight() + 36, blockPosition.getZ() - 11);
+                            case 1 -> blockEntity.placeStructure("shadow_dungeon_digging_1", blockPosition.getX() - 11, level.getMinBuildHeight() + 36, blockPosition.getZ() - 11);
+                            case 2 -> blockEntity.placeStructure("shadow_dungeon_digging_2", blockPosition.getX() - 11, level.getMinBuildHeight() + 36, blockPosition.getZ() - 11);
+                        }
                     }
                     case 12 ->
                     {
-                        //生成图书馆
+                        switch (level.getRandom().nextInt(4))
+                        {
+                            case 0 -> blockEntity.placeStructure("shadow_dungeon_shadow_library_0", blockPosition.getX() - 11, level.getMinBuildHeight() + 45, blockPosition.getZ() - 11);
+                            case 1 -> blockEntity.placeStructure("shadow_dungeon_shadow_library_1", blockPosition.getX() - 11, level.getMinBuildHeight() + 45, blockPosition.getZ() - 11);
+                            case 2 -> blockEntity.placeStructure("shadow_dungeon_shadow_library_2", blockPosition.getX() - 11, level.getMinBuildHeight() + 45, blockPosition.getZ() - 11);
+                            case 3 -> blockEntity.placeStructure("shadow_dungeon_shadow_library_3", blockPosition.getX() - 11, level.getMinBuildHeight() + 45, blockPosition.getZ() - 11);
+                        }
+
                     }
                     case 13 ->
                     {
-                        //生成迷宫层
+                        switch (level.getRandom().nextInt(6))
+                        {
+                            case 0 -> blockEntity.placeStructure("shadow_dungeon_mezz_0", blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
+                            case 1 -> blockEntity.placeStructure("shadow_dungeon_mezz_1", blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
+                            case 2 -> blockEntity.placeStructure("shadow_dungeon_mezz_2", blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
+                            case 3 -> blockEntity.placeStructure("shadow_dungeon_mezz_3", blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
+                            case 4 -> blockEntity.placeStructure("shadow_dungeon_mezz_4", blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
+                            case 5 -> blockEntity.placeStructure("shadow_dungeon_mezz_5", blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
+                        }
                     }
 
                     case 20 ->
                     {
                         for (Player player : blockEntity.playerList)
                         {
-                            player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.距离传送还有2秒"), false);
+                            player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.传送倒计时：").append("2"), false);
                         }
                     }
 
@@ -204,7 +250,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                     {
                         for (Player player : blockEntity.playerList)
                         {
-                            player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.距离传送还有1秒"), false);
+                            player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.传送倒计时：").append("1"), false);
                         }
                     }
 
@@ -226,7 +272,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                             blockEntity.playerList = blockEntity.getNearlyPlayer(blockPosition);
                             for (Player player : blockEntity.playerList)
                             {
-                                player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.距离传送还有3秒"), false);
+                                player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.传送倒计时：").append("3"), false);
                             }
                         }
 
@@ -234,7 +280,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                         {
                             for (Player player : blockEntity.playerList)
                             {
-                                player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.距离传送还有2秒"), false);
+                                player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.传送倒计时：").append("2"), false);
                             }
                         }
 
@@ -242,7 +288,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                         {
                             for (Player player : blockEntity.playerList)
                             {
-                                player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.距离传送还有1秒"), false);
+                                player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.传送倒计时：").append("1"), false);
                             }
                         }
 
