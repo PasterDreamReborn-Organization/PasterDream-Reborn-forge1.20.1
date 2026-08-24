@@ -1423,12 +1423,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.shadow_brazier.extinguished", "The brazier burns out and shatters on the ground");
         add("message.pasterdream.shadow_brazier.key_dropped", "A key drops from the crevice of the brazier");
 
-        // Broken Portal Messages
+        //Shadow Dungeon Portal Messages
         add("message.pasterdream.broken_portal.too_low", "Shadow Dungeon Portal's Y-axis height is too low, Shadow Dungeon Structure Can't Spawn.");
         add("message.pasterdream.broken_portal.creative_repaired", "Creative mode: Core repaired unconditionally");
         add("message.pasterdream.broken_portal.need_materials", "Hold §eBlack Metal Ingot §fand §eShadow Light §fin both hands to repair the core");
         add("message.pasterdream.broken_portal.repaired", "Core repaired");
         add("message.pasterdream.broken_portal.lack_knowledge", "You don't yet understand how to repair this core");
+        add("message.pasterdream.broken_portal.此暗影地牢中存在其他玩家", "This Shadow Dungeon have other players, Please wait or find and use other Shadow Dungeon Portal.");
+        add("message.pasterdream.broken_portal.传送倒计时：", "Teleport last time:");
 
         // Calais Spice Bottle
         add(ModItems.CALAIS_SPICE_BOTTLE.get(), "Calais Spice Bottle");
