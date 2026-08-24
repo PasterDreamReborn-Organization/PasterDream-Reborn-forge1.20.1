@@ -25,22 +25,28 @@ public class StoryProgressItem extends Item {
     private static final ResourceLocation ENTER_LAMP_SHADOW_WORLD =
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/enter_lamp_shadow_world");
 
-    /** 剧情线终点（发放完暗影地牢笔记书后即全部完成） */
+    /** 剧情线终点（发放完破碎笔记书后即全部完成） */
     private static final ResourceLocation ALL_DONE_ADV =
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_dungeon");
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shattered");
 
     /** 发放笔记书时同步授予的剧情进度，按顺序排列 */
     private static final ResourceLocation[] GRANT_ADVANCEMENTS = {
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/deposition_shadow"),
             ResourceLocation.fromNamespaceAndPath("pasterdream", "story/lamp_shadow_travelogue_1"),
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_dungeon")
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_dungeon"),
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/deception"),
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/bargain"),
+            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shattered")
     };
 
     /** 发放的笔记书 content 键，与 GRANT_ADVANCEMENTS 一一对应 */
     private static final String[] NEXT_NOTE_BOOK_CONTENTS = {
             "沉淀阴影",
             "灯影游记 其一",
-            "暗影地牢"
+            "暗影地牢",
+            "欺诈",
+            "交易",
+            "破碎"
     };
 
     /** 打开剧情笔记书时授予的剧情进度（content 键 → 进度ID） */

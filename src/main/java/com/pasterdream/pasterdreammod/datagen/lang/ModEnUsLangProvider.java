@@ -875,6 +875,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.沉淀阴影", "Deposition of Shadow");
         add("book.pasterdream.title.灯影游记 其一", "Lamp Shadow Travelogue 1");
         add("book.pasterdream.title.暗影地牢", "Shadow Dungeon");
+        add("book.pasterdream.title.暗影地牢入口", "Shadow Dungeon Entrance");
+        add("book.pasterdream.title.欺诈", "Deception");
+        add("book.pasterdream.title.交易", "Bargain");
+        add("book.pasterdream.title.破碎", "Shattered");
 
         add("book.pasterdream.title.破风的骑士", "Wind Break Knight");
         add("book.pasterdream.title.清晨的新风", "Morning New Wind");
