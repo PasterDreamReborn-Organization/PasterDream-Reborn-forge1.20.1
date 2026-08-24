@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.item.dreamnotesbook;
 import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
 import com.pasterdream.pasterdreammod.event.ModWorldGenEvents.TwilightLanternPlacedData;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
+import com.pasterdream.pasterdreammod.world.item.StoryProgressItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -52,6 +53,9 @@ public class DreamNotesBookItem extends Item
             {
                 String content = compoundTag.getString("content");
                 ModCriteriaTriggers.READ_DREAM_NOTE.trigger(serverPlayer, content);
+
+                // 剧情笔记书：打开时授予剧情进度（同时由进度解锁帕秋莉对应词条）
+                StoryProgressItem.grantProgressOnNoteOpened(serverPlayer, content);
 
                 if ("侵染教堂-黑面".equals(content))
                 {

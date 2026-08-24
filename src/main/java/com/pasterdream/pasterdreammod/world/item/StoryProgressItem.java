@@ -16,6 +16,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class StoryProgressItem extends Item {
 
     /** 入场检测：玩家是否进入过灯影之下 */
@@ -39,6 +42,15 @@ public class StoryProgressItem extends Item {
             "阴影游记",
             "暗影地牢"
     };
+
+    /** 打开剧情笔记书时授予的剧情进度（content 键 → 进度ID） */
+    private static final Map<String, ResourceLocation> NOTE_OPEN_ADVANCEMENTS = new HashMap<>();
+
+    static {
+        for (int i = 0; i < NEXT_NOTE_BOOK_CONTENTS.length; i++) {
+            NOTE_OPEN_ADVANCEMENTS.put(NEXT_NOTE_BOOK_CONTENTS[i], GRANT_ADVANCEMENTS[i]);
+        }
+    }
 
     public StoryProgressItem(Properties properties) {
         super(properties);
@@ -101,6 +113,17 @@ public class StoryProgressItem extends Item {
         AdvancementProgress progress = player.getAdvancements().getOrStartProgress(adv);
         for (String criteria : progress.getRemainingCriteria()) {
             player.getAdvancements().award(adv, criteria);
+        }
+    }
+
+    /**
+     * 打开剧情笔记书时调用：授予对应的剧情进度（幂等），并由进度联动解锁帕秋莉对应词条。
+     * 笔记书可在多人间流转，实际打开者获得进度，利好多人模式。
+     */
+    public static void grantProgressOnNoteOpened(ServerPlayer player, String content) {
+        ResourceLocation advancementId = NOTE_OPEN_ADVANCEMENTS.get(content);
+        if (advancementId != null) {
+            grantAdvancement(player, advancementId);
         }
     }
 

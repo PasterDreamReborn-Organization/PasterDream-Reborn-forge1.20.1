@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.block.twilightlantern;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.advancements.Advancement;
@@ -82,8 +83,9 @@ public class TwilightLanternTickHandler {
 
         // Tick 2600: event completes, set key=true, grant bastion_guard to eligible players
         if (tick == EVENT_END_TICK) {
+            double radius = Config.bastionGuardGrantRadius;
             boolean playerNearby = !world.getEntitiesOfClass(Player.class,
-                    AABB.ofSize(new Vec3(x, y, z), 46, 46, 46), e -> true).isEmpty();
+                    AABB.ofSize(new Vec3(x, y, z), radius * 2, radius * 2, radius * 2), e -> true).isEmpty();
 
             if (playerNearby) {
                 lantern.setKey(true);
@@ -91,7 +93,7 @@ public class TwilightLanternTickHandler {
 
                 // Grant bastion_guard to all nearby players who have read 侵染教堂-黑面
                 for (Player player : world.players()) {
-                    if (player.distanceToSqr(x, y, z) > 46 * 46) continue;
+                    if (player.distanceToSqr(x, y, z) > radius * radius) continue;
                     if (!(player instanceof ServerPlayer sp)) continue;
                     if (!isAdvancementDone(sp, LAMP_SHADOW_ROOT_ADV)) continue;
                     grantAdvancement(sp, BASTION_GUARD_ADV, BASTION_GUARD_CRITERION);
