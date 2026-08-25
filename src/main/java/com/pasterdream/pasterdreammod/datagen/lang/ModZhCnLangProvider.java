@@ -2443,7 +2443,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.big_bubbles_7", "大气泡");
         add("structure.pasterdream.bocchi_0", "波奇");
         add("structure.pasterdream.bocchi_1", "波奇");
-        add("structure.pasterdream.breakwing_curtain", "破翼帷幕");
+        add("structure.pasterdream.break_wind_curtain", "破风幕帐");
         add("structure.pasterdream.hakurei_reimu", "博丽灵梦");
         add("structure.pasterdream.hot_air_balloon_0", "热气球");
         add("structure.pasterdream.hot_air_balloon_1", "热气球");

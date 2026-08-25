@@ -1906,7 +1906,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.big_bubbles_7", "Big Bubble");
         add("structure.pasterdream.bocchi_0", "Bocchi");
         add("structure.pasterdream.bocchi_1", "Bocchi");
-        add("structure.pasterdream.breakwing_curtain", "Breakwing Curtain");
+        add("structure.pasterdream.break_wind_curtain", "Break Wind Curtain");
         add("structure.pasterdream.hakurei_reimu", "Hakurei Reimu");
         add("structure.pasterdream.hot_air_balloon_0", "Hot Air Balloon");
         add("structure.pasterdream.hot_air_balloon_1", "Hot Air Balloon");
