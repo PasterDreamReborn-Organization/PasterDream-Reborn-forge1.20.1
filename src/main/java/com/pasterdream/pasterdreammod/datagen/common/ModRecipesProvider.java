@@ -520,29 +520,29 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     private void meltDreamToolRecipes(Consumer<FinishedRecipe> pWriter) {
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
-                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
                         Ingredient.of(ModItems.DYEDREAM_PICKAXE.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
                         RecipeCategory.TOOLS, ModItems.MELT_DREAM_PICKAXE.get())
                 .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":melt_dream_pickaxe_smithing");
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
-                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
                         Ingredient.of(ModItems.DYEDREAM_AXE.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
                         RecipeCategory.TOOLS, ModItems.MELT_DREAM_AXE.get())
                 .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":melt_dream_axe_smithing");
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
-                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
                         Ingredient.of(ModItems.DYEDREAM_SHOVEL.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
                         RecipeCategory.TOOLS, ModItems.MELT_DREAM_SHOVEL.get())
                 .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":melt_dream_shovel_smithing");
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ModItems.DYEDREAM_UPGRADE.get()),
-                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
                         Ingredient.of(ModItems.DYEDREAM_HOE.get()),
+                        Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
                         RecipeCategory.TOOLS, ModItems.MELT_DREAM_HOE.get())
                 .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":melt_dream_hoe_smithing");
