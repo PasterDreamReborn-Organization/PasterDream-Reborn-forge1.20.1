@@ -67,8 +67,8 @@ public final class WindDirectionHandler {
 
         if (!player.level().dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD)) return;
 
-        // 在风之旅途持续给予云霞效果（HUD 进度显示）
-        player.addEffect(new MobEffectInstance(ModEffects.CLOUD_MIST.get(), 200, 0, false, false));
+        // 在风之旅途持续给予云雾效果（HUD 进度显示）；ambient+不可见，避免产生粒子
+        player.addEffect(new MobEffectInstance(ModEffects.CLOUD_MIST.get(), 200, 0, true, false));
 
         // 退出保底：坠入虚空 Y < 0 立即传送回主世界
         if (player.getY() < 0 && player instanceof ServerPlayer sp) {

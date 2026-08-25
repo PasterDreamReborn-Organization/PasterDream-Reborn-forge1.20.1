@@ -4,7 +4,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 
 /**
- * 迷梦 buff：标记效果，由奇异炖菜给予，用于在主世界高空显示进入风之旅途的云霞进度。
+ * 迷梦 buff：标记效果，由奇异炖菜给予，用于在主世界高空显示进入风之旅途的云雾进度。
  * 实际传送由 WindDirectionHandler 的保底判定（Y>310）触发。
  */
 public class MistyDreamEffect extends MobEffect {
