@@ -1869,6 +1869,20 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         // 凝风铁锭 ↔ 凝风铁粒
         RecipeHelpers.storageCompress(pWriter, ModItems.CONGEAL_WIND_IRON_NUGGET.get(), ModItems.CONGEAL_WIND_IRON_INGOT.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(pWriter, ModItems.CONGEAL_WIND_IRON_INGOT.get(), ModItems.CONGEAL_WIND_IRON_NUGGET.get(), PasterDreamMod.MOD_ID);
+        // 萦风合金锭
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FLUFFY_WIND_ALLOY_INGOT.get(), 2)
+                .pattern("dcd")
+                .pattern("aba")
+                .pattern("dcd")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .define('b', ModItems.PULSE_WIND_RUNNER_CRYSTAL.get())
+                .define('c', ModItems.TITANIUM_INGOT.get())
+                .define('d', ModItems.CONGEAL_WIND.get())
+                .unlockedBy(getHasName(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()), has(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()))
+                .save(pWriter);
+        // 萦风合金块 ↔ 萦风合金锭
+        RecipeHelpers.storageCompress(pWriter, ModItems.FLUFFY_WIND_ALLOY_INGOT.get(), ModItems.FLUFFY_WIND_ALLOY_BLOCK.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.FLUFFY_WIND_ALLOY_BLOCK.get(), ModItems.FLUFFY_WIND_ALLOY_INGOT.get(), PasterDreamMod.MOD_ID);
         // 凝风铁灯笼：中间火把 + 外围8凝风铁粒
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CONGEAL_WIND_IRON_LANTERN.get(), 1)
                 .pattern("aaa")

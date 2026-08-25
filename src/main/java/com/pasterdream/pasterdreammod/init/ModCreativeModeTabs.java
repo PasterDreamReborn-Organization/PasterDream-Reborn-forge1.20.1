@@ -138,6 +138,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_INGOT.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_INGOT.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_INGOT.get());
                         output.accept(ModItems.TITANIUM_NUGGET.get());
                         output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
@@ -582,6 +583,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CONGEAL_WIND_BLOCK.get());
                         output.accept(ModItems.WIND_RUNNER_CRYSTAL_BLOCK.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_BLOCK.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_BLOCK.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_BARS.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_LANTERN.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_CHAIN.get());

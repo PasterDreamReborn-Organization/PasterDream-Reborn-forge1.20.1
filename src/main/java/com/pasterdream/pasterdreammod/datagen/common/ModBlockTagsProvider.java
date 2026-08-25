@@ -101,6 +101,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CONGEAL_WIND_ORE.get())
                 .add(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get())
                 .add(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get())
+                .add(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get())
                 .add(ModBlocks.EJECTION_PRESSURE_PLATE.get())
                 .add(ModBlocks.EJECTION_PRESSURE_BLOCK.get())
                 .add(ModBlocks.CONGEAL_WIND_IRON_BARS.get())
@@ -285,6 +286,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get())
                 .add(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get())
                 .add(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get())
+                .add(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get())
                 .add(ModBlocks.EJECTION_PRESSURE_PLATE.get())
                 .add(ModBlocks.EJECTION_PRESSURE_BLOCK.get())
                 .add(ModBlocks.CONGEAL_WIND_IRON_BARS.get());
@@ -304,6 +306,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.TITANIUM_BLOCK.get())
                 .add(ModBlocks.MOLTEN_GOLD_BLOCK.get())
                 .add(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get())
+                .add(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get())
                 .add(ModBlocks.BLACK_METAL_BLOCK.get());
 
         tag(Tags.Blocks.ORES)

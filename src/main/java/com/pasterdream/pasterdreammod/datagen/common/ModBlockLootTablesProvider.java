@@ -90,6 +90,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.CONGEAL_WIND_BLOCK.get());
         dropSelf(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get());
         dropSelf(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get());
+        dropSelf(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get());
         dropSelf(ModBlocks.EJECTION_PRESSURE_PLATE.get());
         dropSelf(ModBlocks.EJECTION_PRESSURE_BLOCK.get());
         dropSelf(ModBlocks.CONGEAL_WIND_IRON_BARS.get());
