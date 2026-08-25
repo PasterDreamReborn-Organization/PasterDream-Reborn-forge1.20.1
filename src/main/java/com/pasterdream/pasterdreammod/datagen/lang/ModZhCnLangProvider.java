@@ -1589,6 +1589,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.aaroncos_music_disc", "音乐唱片");
         add("item.pasterdream.aaroncos_music_disc.desc", "§dPasterDream§7 - 亚伦柯斯之触");
         add("item.pasterdream.pure_horror", "纯粹恐惧");
+        add("tooltip.pasterdream.pure_horror", "§7它让我的脊椎发出了可怕的颤抖...");
         add("entity.pasterdream.shadow_magicball", "暗影魔法球");
         add("entity.pasterdream.shadow_tune_totem", "暗影符文塔");
         add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在蓄能");

@@ -215,7 +215,7 @@ public class ModItems {
     public static final RegistryObject<Item> WHITE_CRYSTAL = ITEMS.register("white_crystal",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> SHADOW_HILT = ITEMS.register("shadow_hilt",
-            () -> new ShadowHiltItem());
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> TALENT_LIGHT = ITEMS.register("talent_light",
             () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
     public static final RegistryObject<Item> TALENT_SHADOW = ITEMS.register("talent_shadow",
@@ -1408,7 +1408,7 @@ public class ModItems {
     public static final RegistryObject<Item> AARONCOS_MUSIC_DISC = ITEMS.register("aaroncos_music_disc",
             () -> new RecordItem(0, ModSounds.AARONCOS_MUSIC, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 2980));
     public static final RegistryObject<Item> PURE_HORROR = ITEMS.register("pure_horror",
-            PureHorrorItem::new);
+            () -> new Item(new Item.Properties().stacksTo(64)));
     public static final RegistryObject<Item> SHADOW_HAND_TRAP = ITEMS.register("shadow_hand_trap",
             () -> new ShadowHandTrapItem(ModBlocks.SHADOW_HAND_TRAP.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_BRAZIER = ITEMS.register("shadow_brazier",

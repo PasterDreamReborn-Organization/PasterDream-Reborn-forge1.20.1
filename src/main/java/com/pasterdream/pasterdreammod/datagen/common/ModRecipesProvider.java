@@ -1151,7 +1151,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .pattern("dbd")
                 .define('a', Items.IRON_INGOT)
                 .define('b', ModItems.DYEDREAM_ALLOY_INGOT.get())
-                .define('c', Items.GHAST_TEAR)
+                .define('c', ModItems.DYEDREAM_BUD_NUGGET.get())
                 .define('d', ModItems.BLACK_STICK.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
                 .save(pWriter);
