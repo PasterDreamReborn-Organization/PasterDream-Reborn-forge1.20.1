@@ -21,7 +21,8 @@ public class AddToolTip
         if(stack.is(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())){
             tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_crystal_fragment"));
         }
-        if(stack.is(ModItems.TITANIUM_UPGRADE.get()) || stack.is(ModItems.SCULK_UPGRADE.get()) || stack.is(ModItems.DYEDREAM_UPGRADE.get())){
+        if(stack.is(ModItems.TITANIUM_UPGRADE.get()) || stack.is(ModItems.SCULK_UPGRADE.get()) || stack.is(ModItems.DYEDREAM_UPGRADE.get())
+                || stack.is(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get())){
             tooltip.add(Component.translatable("tooltip.pasterdreammod.upgrade_kit"));
         }
         if(stack.is(ModItems.TITANIUM_HELMET.get()) || stack.is(ModItems.TITANIUM_CHESTPLATE.get())

@@ -178,6 +178,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_UPGRADE.get(), "钛金升级套件");
         add(ModItems.SCULK_UPGRADE.get(), "回响升级套件");
         add(ModItems.DYEDREAM_UPGRADE.get(), "染梦升级套件");
+        add(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get(), "萦风合金升级套件");
         add(ModItems.DEEP_SEA_TREASURE.get(), "深海秘宝");
         add(ModItems.DYEDREAM_DEEP_SEA_TREASURE.get(), "染梦深海秘宝");
         add(ModItems.SHADOW_DEEP_SEA_TREASURE.get(), "浸影深海秘宝");
@@ -193,6 +194,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.CONGEAL_WIND_IRON_AXE.get(), "凝风铁斧");
         add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get(), "凝风铁锹");
         add(ModItems.CONGEAL_WIND_IRON_HOE.get(), "凝风铁锄");
+        add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get(), "萦风合金剑");
+        add(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get(), "萦风合金镐");
+        add(ModItems.FLUFFY_WIND_ALLOY_AXE.get(), "萦风合金斧");
+        add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get(), "萦风合金锹");
+        add(ModItems.FLUFFY_WIND_ALLOY_HOE.get(), "萦风合金锄");
         add(ModItems.COPPER_HELMET.get(), "铜头盔");
         add(ModItems.COPPER_CHESTPLATE.get(), "铜胸甲");
         add(ModItems.COPPER_LEGGINGS.get(), "铜护腿");
@@ -1412,6 +1418,20 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.ice_shadow_hammer.5", "§7▪ §9冷却时间：§c4秒");
         add("tooltip.pasterdream.ice_shadow_hammer.cost", "§7▪ §4融梦能量消耗：§c0.5");
         add("message.pasterdream.ice_shadow_hammer.no_energy", "§c融梦能量不足");
+
+        // 萦风合金剑
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.skill_name", "战技：§9萦风引雷");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc1", "§7▪ §9Shift+右键切换风/雷模式");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc2", "§7▪ §9风·§f疾风突进§9：向准心突进，对沿途敌人造成 §c2.5×移动速度×攻击力 §9伤害");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc3", "§7▪ §9风之冷却：§c2秒");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc4", "§7▪ §9雷·§e萦风引雷§9：向目标头顶降下 §c5 §9道追踪落雷，每道造成 §c攻击力×1.0 §9范围雷电伤害(4×3×4)");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc5", "§7▪ §9雷之消耗：§c1.0 §9融梦能量，冷却：§c5秒");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name", "被动：§b雷随疾风");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1", "§7▪ §9移动速度越高伤害越高：§c伤害=(1+移动速度)×攻击力");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive2", "§7▪ §9攻击附带 §c攻击力×0.1 §9的雷电伤害");
+        add("message.pasterdream.fluffy_wind_alloy_sword.mode_wind", "§f当前模式：疾风突进");
+        add("message.pasterdream.fluffy_wind_alloy_sword.mode_thunder", "§e当前模式：萦风引雷");
+        add("message.pasterdream.fluffy_wind_alloy_sword.no_energy", "§c融梦能量不足");
 
         // 堕落者之印
         add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "堕落者之印");

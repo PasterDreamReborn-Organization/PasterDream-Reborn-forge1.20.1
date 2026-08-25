@@ -228,6 +228,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TITANIUM_UPGRADE.get());
                         output.accept(ModItems.SCULK_UPGRADE.get());
                         output.accept(ModItems.DYEDREAM_UPGRADE.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get());
                         output.accept(ModItems.ATTACK_ENHANCE_STONE.get());
                         output.accept(ModItems.LUCK_ENHANCE_STONE.get());
                         // 铜工具
@@ -247,6 +248,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CONGEAL_WIND_IRON_AXE.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_SHOVEL.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_HOE.get());
+                        // 萦风合金工具
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_SWORD.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_AXE.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_HOE.get());
                         // 钛金工具
                         output.accept(ModItems.TITANIUM_SWORD.get());
                         output.accept(ModItems.TITANIUM_PICKAXE.get());
