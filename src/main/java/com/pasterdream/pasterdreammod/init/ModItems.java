@@ -228,6 +228,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CONGEAL_WIND_IRON_NUGGET = ITEMS.register("congeal_wind_iron_nugget",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_INGOT = ITEMS.register("fluffy_wind_alloy_ingot",
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> PULSE_WIND_RUNNER_CRYSTAL = ITEMS.register("pulse_wind_runner_crystal",
             () -> new PulseWindRunnerCrystalItem());
     public static final RegistryObject<Item> WIND_KNIGHT_ALTAR = ITEMS.register("wind_knight_altar",
@@ -1194,6 +1196,8 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> CONGEAL_WIND_IRON_BLOCK = ITEMS.register("congeal_wind_iron_block",
             () -> new BlockItem(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_BLOCK = ITEMS.register("fluffy_wind_alloy_block",
+            () -> new BlockItem(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> EJECTION_PRESSURE_PLATE = ITEMS.register("ejection_pressure_plate",
             () -> new BlockItem(ModBlocks.EJECTION_PRESSURE_PLATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> EJECTION_PRESSURE_BLOCK = ITEMS.register("ejection_pressure_block",

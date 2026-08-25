@@ -131,6 +131,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.WIND_RUNNER_CRYSTAL.get());
         basicItem(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get());
         basicItem(ModItems.CONGEAL_WIND_IRON_INGOT.get());
+        basicItem(ModItems.FLUFFY_WIND_ALLOY_INGOT.get());
         basicItem(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
         basicItem(ModItems.LIGHT_BALL.get());
         basicItem(ModItems.COTTON.get());

@@ -60,6 +60,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.CONGEAL_WIND_BLOCK.get(), cubeAll(ModBlocks.CONGEAL_WIND_BLOCK.get()));
         simpleBlockWithItem(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get(), cubeAll(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get()));
         simpleBlockWithItem(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get(), cubeAll(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get()));
+        simpleBlockWithItem(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get(), cubeAll(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get()));
         var ejectionPressureBlockModel = models().cubeBottomTop(
                 ModBlocks.EJECTION_PRESSURE_BLOCK.getId().getPath(),
                 modLoc("block/ejection_pressure_block"),

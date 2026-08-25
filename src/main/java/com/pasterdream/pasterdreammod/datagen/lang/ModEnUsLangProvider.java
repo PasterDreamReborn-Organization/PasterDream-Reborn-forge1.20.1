@@ -153,6 +153,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(), "Pulse Windrunner Crystal");
         add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "Congeal Wind Iron Ingot");
         add(ModItems.CONGEAL_WIND_IRON_NUGGET.get(), "Congeal Wind Iron Nugget");
+        add(ModItems.FLUFFY_WIND_ALLOY_INGOT.get(), "Fluffy Wind Alloy Ingot");
         add("tooltip.pasterdream.white_crystal", "§7Core material for crafting the White Calamity Sword");
         add(ModItems.LIGHT_BALL.get(), "Light Ball");
         add(ModItems.COTTON.get(), "Cotton");
@@ -280,6 +281,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.CONGEAL_WIND_BLOCK.get(), "Congeal Wind Block");
         add(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get(), "Windrunner Crystal Block");
         add(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get(), "Congeal Wind Iron Block");
+        add(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get(), "Fluffy Wind Alloy Block");
         add(ModBlocks.CONGEAL_WIND_IRON_BARS.get(), "Congeal Wind Iron Bars");
         add(ModBlocks.CONGEAL_WIND_IRON_LANTERN.get(), "Congeal Wind Iron Lantern");
         add(ModBlocks.CONGEAL_WIND_IRON_CHAIN.get(), "Congeal Wind Iron Chain");
