@@ -1,0 +1,31 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"particle": "pasterdream:block/congeal_wind_iron_chain",
+		"all": "pasterdream:block/congeal_wind_iron_chain"
+	},
+	"elements": [
+		{
+			"from": [4.5, 0, 8],
+			"to": [11.5, 16, 8],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [10, 0, 5, 16], "texture": "#all"},
+				"south": {"uv": [5, 0, 10, 16], "texture": "#all"}
+			}
+		},
+		{
+			"from": [8, 0, 4.5],
+			"to": [8, 16, 11.5],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"east": {"uv": [5, 0, 10, 16], "texture": "#all"},
+				"west": {"uv": [10, 0, 5, 16], "texture": "#all"}
+			}
+		}
+	]
+}

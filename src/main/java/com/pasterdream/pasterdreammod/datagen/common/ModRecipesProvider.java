@@ -1825,6 +1825,40 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         // 凝风铁块 ↔ 凝风铁锭
         RecipeHelpers.storageCompress(pWriter, ModItems.CONGEAL_WIND_IRON_INGOT.get(), ModItems.CONGEAL_WIND_IRON_BLOCK.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(pWriter, ModItems.CONGEAL_WIND_IRON_BLOCK.get(), ModItems.CONGEAL_WIND_IRON_INGOT.get(), PasterDreamMod.MOD_ID);
+        // 凝风铁锭 ↔ 凝风铁粒
+        RecipeHelpers.storageCompress(pWriter, ModItems.CONGEAL_WIND_IRON_NUGGET.get(), ModItems.CONGEAL_WIND_IRON_INGOT.get(), PasterDreamMod.MOD_ID);
+        RecipeHelpers.storageDecompress(pWriter, ModItems.CONGEAL_WIND_IRON_INGOT.get(), ModItems.CONGEAL_WIND_IRON_NUGGET.get(), PasterDreamMod.MOD_ID);
+        // 凝风铁灯笼：中间火把 + 外围8凝风铁粒
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CONGEAL_WIND_IRON_LANTERN.get(), 1)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', ModItems.CONGEAL_WIND_IRON_NUGGET.get())
+                .define('b', Items.TORCH)
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_NUGGET.get()), has(ModItems.CONGEAL_WIND_IRON_NUGGET.get()))
+                .save(pWriter);
+        // 凝风铁活板门：4×凝风铁锭 → 2（仿原版铁活板门）
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModItems.CONGEAL_WIND_IRON_TRAPDOOR.get(), 2)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        // 凝风铁锁链：上下2粒 + 中间锭 → 1（仿原版锁链）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CONGEAL_WIND_IRON_CHAIN.get(), 1)
+                .pattern("b")
+                .pattern("a")
+                .pattern("b")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .define('b', ModItems.CONGEAL_WIND_IRON_NUGGET.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        // 凝风铁压力板：3×凝风铁锭连一排 → 2
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModItems.CONGEAL_WIND_IRON_PRESSURE_PLATE.get(), 2)
+                .pattern("aaa")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
         // 凝风铁栏杆：6×凝风铁锭 → 16
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CONGEAL_WIND_IRON_BARS.get(), 16)
                 .pattern("aaa")

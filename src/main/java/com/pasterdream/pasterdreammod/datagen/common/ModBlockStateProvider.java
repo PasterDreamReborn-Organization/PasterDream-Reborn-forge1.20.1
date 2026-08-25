@@ -70,6 +70,28 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.EJECTION_PRESSURE_PLATE);
         var congealWindIronBarsTex = modLoc("block/congeal_wind_iron_bars");
         paneBlock((IronBarsBlock) ModBlocks.CONGEAL_WIND_IRON_BARS.get(), congealWindIronBarsTex, congealWindIronBarsTex);
+        // 凝风铁灯笼
+        var congealWindIronLanternStanding = models().withExistingParent("congeal_wind_iron_lantern", mcLoc("block/template_lantern"))
+                .texture("lantern", modLoc("block/congeal_wind_iron_lantern")).renderType("cutout");
+        var congealWindIronLanternHanging = models().withExistingParent("congeal_wind_iron_lantern_hanging", mcLoc("block/template_hanging_lantern"))
+                .texture("lantern", modLoc("block/congeal_wind_iron_lantern")).renderType("cutout");
+        getVariantBuilder(ModBlocks.CONGEAL_WIND_IRON_LANTERN.get())
+                .partialState().with(LanternBlock.HANGING, false).modelForState().modelFile(congealWindIronLanternStanding).addModel()
+                .partialState().with(LanternBlock.HANGING, true).modelForState().modelFile(congealWindIronLanternHanging).addModel();
+        // 凝风铁锁链（模型手写维护：assets/pasterdream/models/block/congeal_wind_iron_chain.json）
+        getVariantBuilder(ModBlocks.CONGEAL_WIND_IRON_CHAIN.get())
+                .partialState().with(ChainBlock.AXIS, Direction.Axis.X).modelForState().modelFile(new ModelFile.UncheckedModelFile(modLoc("block/congeal_wind_iron_chain"))).rotationX(90).rotationY(90).addModel()
+                .partialState().with(ChainBlock.AXIS, Direction.Axis.Y).modelForState().modelFile(new ModelFile.UncheckedModelFile(modLoc("block/congeal_wind_iron_chain"))).addModel()
+                .partialState().with(ChainBlock.AXIS, Direction.Axis.Z).modelForState().modelFile(new ModelFile.UncheckedModelFile(modLoc("block/congeal_wind_iron_chain"))).rotationX(90).addModel();
+        // 凝风铁活板门
+        trapdoorBlockWithRenderType((TrapDoorBlock) ModBlocks.CONGEAL_WIND_IRON_TRAPDOOR.get(),
+                modLoc("block/congeal_wind_iron_trapdoor"),
+                true,
+                "cutout");
+        blockItem(ModBlocks.CONGEAL_WIND_IRON_TRAPDOOR, "_bottom");
+        // 凝风铁压力板
+        pressurePlateBlock((PressurePlateBlock) ModBlocks.CONGEAL_WIND_IRON_PRESSURE_PLATE.get(), blockTexture(ModBlocks.CONGEAL_WIND_IRON_PRESSURE_PLATE.get()));
+        blockItem(ModBlocks.CONGEAL_WIND_IRON_PRESSURE_PLATE);
         simpleBlockWithItem(ModBlocks.SOUL_ORE.get(), cubeAll(ModBlocks.SOUL_ORE.get()));
         simpleBlockWithItem(ModBlocks.RAW_TITANIUM_BLOCK.get(), cubeAll(ModBlocks.RAW_TITANIUM_BLOCK.get()));
         simpleBlockWithItem(ModBlocks.SALT_BLOCK.get(), cubeAll(ModBlocks.SALT_BLOCK.get()));

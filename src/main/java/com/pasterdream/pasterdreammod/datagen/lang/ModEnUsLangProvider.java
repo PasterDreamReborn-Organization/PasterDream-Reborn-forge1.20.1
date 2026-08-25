@@ -152,6 +152,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.WIND_RUNNER_CRYSTAL.get(), "Windrunner Crystal");
         add(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(), "Pulse Windrunner Crystal");
         add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "Congeal Wind Iron Ingot");
+        add(ModItems.CONGEAL_WIND_IRON_NUGGET.get(), "Congeal Wind Iron Nugget");
         add("tooltip.pasterdream.white_crystal", "§7Core material for crafting the White Calamity Sword");
         add(ModItems.LIGHT_BALL.get(), "Light Ball");
         add(ModItems.COTTON.get(), "Cotton");
@@ -275,6 +276,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get(), "Windrunner Crystal Block");
         add(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get(), "Congeal Wind Iron Block");
         add(ModBlocks.CONGEAL_WIND_IRON_BARS.get(), "Congeal Wind Iron Bars");
+        add(ModBlocks.CONGEAL_WIND_IRON_LANTERN.get(), "Congeal Wind Iron Lantern");
+        add(ModBlocks.CONGEAL_WIND_IRON_CHAIN.get(), "Congeal Wind Iron Chain");
+        add(ModBlocks.CONGEAL_WIND_IRON_TRAPDOOR.get(), "Congeal Wind Iron Trapdoor");
+        add(ModBlocks.CONGEAL_WIND_IRON_PRESSURE_PLATE.get(), "Congeal Wind Iron Pressure Plate");
         add(ModBlocks.EJECTION_PRESSURE_PLATE.get(), "Ejection Pressure Plate");
         add(ModBlocks.EJECTION_PRESSURE_BLOCK.get(), "Ejection Pressure Block");
         add(ModBlocks.RAW_TITANIUM_BLOCK.get(), "Raw Titanium Block");
