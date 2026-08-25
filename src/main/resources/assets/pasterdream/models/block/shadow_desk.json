@@ -2,7 +2,7 @@
   "parent": "pasterdream:custom/shadow_desk",
   "textures": {
     "all": "pasterdream:block/shadow_desk",
-    "particle": "pasterdream:block/chiseled_shadow_stone_brick",
+    "particle": "pasterdream:block/shadow_desk",
     "0": "pasterdream:block/shadow_desk",
     "missing": "pasterdream:block/shadow_desk"
   },

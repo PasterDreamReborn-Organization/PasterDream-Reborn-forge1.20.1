@@ -675,6 +675,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PLIERS.get());
                         output.accept(ModItems.DYEDREAM_DESK.get());
                         output.accept(ModItems.SHADOW_DESK.get());
+                        output.accept(ModItems.WIND_MOOR_DESK.get());
                         output.accept(ModItems.PICNIC_BASKET.get());
                         output.accept(ModItems.SHADOW_CHEST.get());
                         output.accept(ModItems.WIND_MOOR_CRATE.get());
