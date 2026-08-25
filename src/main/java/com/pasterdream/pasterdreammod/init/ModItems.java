@@ -3,7 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamDrinkAndFoodProperties;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestItem;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestItem;
 import com.pasterdream.pasterdreammod.world.block.cropblock.MatureCropItem;
 import com.pasterdream.pasterdreammod.world.block.doll.qymdoll.QYMDollItem;
 import com.pasterdream.pasterdreammod.world.block.doll.uuzdoll.UUZDollItem;
@@ -23,7 +23,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowhandtrap.ShadowHandTrapI
 import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronItem;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestItem;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestItem;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestItem;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableItem;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersItem;
 import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestItem;
@@ -433,15 +433,15 @@ public class ModItems {
 
     // ===== 影蚀系列 =====
     public static final RegistryObject<Item> SHADOW_EROSION_DAGGER = ITEMS.register("shadow_erosion_dagger",
-            () -> new ShadowErosionDaggerItem(ModToolTiers.SHADOW_EROSION_DAGGER, 3, -2.0f, new Item.Properties()));
+            () -> new ShadowErosionDaggerItem(ModToolTiers.SHADOW_EROSION, 3, -2.0f, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_EROSION_PICKAXE = ITEMS.register("shadow_erosion_pickaxe",
-            () -> new ShadowErosionPickaxeItem(ModToolTiers.SHADOW_EROSION_PICKAXE, 1, -2.8f, new Item.Properties()));
+            () -> new ShadowErosionPickaxeItem(ModToolTiers.SHADOW_EROSION, 2, -2.8f, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_EROSION_AXE = ITEMS.register("shadow_erosion_axe",
-            () -> new ShadowErosionAxeItem(ModToolTiers.SHADOW_EROSION_AXE, 1, -3.0f, new Item.Properties()));
+            () -> new ShadowErosionAxeItem(ModToolTiers.SHADOW_EROSION, 7, -3.0f, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_EROSION_SHOVEL = ITEMS.register("shadow_erosion_shovel",
-            () -> new ShadowErosionShovelItem(ModToolTiers.SHADOW_EROSION_SHOVEL, 1, -3.0f, new Item.Properties()));
+            () -> new ShadowErosionShovelItem(ModToolTiers.SHADOW_EROSION, 3, -3.0f, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_EROSION_HOE = ITEMS.register("shadow_erosion_hoe",
-            () -> new ShadowErosionHoeItem(ModToolTiers.SHADOW_EROSION_HOE, 0, 0.0f, new Item.Properties()));
+            () -> new ShadowErosionHoeItem(ModToolTiers.SHADOW_EROSION, -2, 0.0f, new Item.Properties()));
 
     // ===== 独立武器 =====
     public static final RegistryObject<Item> THERMAL_DAGGER = ITEMS.register("thermal_dagger",
@@ -1753,6 +1753,7 @@ public class ModItems {
     public static final RegistryObject<Item> DYEDREAM_DESK = ITEMS.register("dyedream_desk", () -> new BlockItem(ModBlocks.DYEDREAM_DESK.get(), new Item.Properties()));
     public static final RegistryObject<Item> MORTAR = ITEMS.register("mortar", () -> new MortarItem(new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_DESK = ITEMS.register("shadow_desk", () -> new BlockItem(ModBlocks.SHADOW_DESK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_MOOR_DESK = ITEMS.register("wind_moor_desk", () -> new BlockItem(ModBlocks.WIND_MOOR_DESK.get(), new Item.Properties()));
     public static final RegistryObject<Item> PICNIC_BASKET = ITEMS.register("picnic_basket", () -> new BlockItem(ModBlocks.PICNIC_BASKET.get(), new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_CHEST = ITEMS.register("shadow_chest", () -> new ShadowChestItem(ModBlocks.SHADOW_CHEST.get(), new Item.Properties()));
     public static final RegistryObject<Item> WIND_MOOR_CRATE = ITEMS.register("wind_moor_crate", () -> new BlockItem(ModBlocks.WIND_MOOR_CRATE.get(), new Item.Properties()));

@@ -9,8 +9,9 @@ import net.minecraft.resources.ResourceLocation;
 public class GUIBackGroundRender
 {
     public static ResourceLocation PASTERDREAM_INVENTORY_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/pasterdream_inventory.png");
-    public static ResourceLocation DYEDREAM_DESK_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/dyedream_desk.png");
-    public static ResourceLocation SHADOW_DESK_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/shadow_desk.png");
+    public static ResourceLocation DYEDREAM_DESK_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/desk/dyedream_desk.png");
+    public static ResourceLocation SHADOW_DESK_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/desk/shadow_desk.png");
+    public static ResourceLocation WIND_MOOR_DESK_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/desk/wind_moor_desk.png");
     public static ResourceLocation STORAGE_BAG_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/storage_bag.png");
     public static ResourceLocation BIG_STORAGE_BAG_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/big_storage_bag.png");
     public static ResourceLocation MELT_DREAM_CRYSTAL_CHEST_GUI = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/melt_dream_crystal_chest.png");
@@ -122,6 +123,11 @@ public class GUIBackGroundRender
     public static void rendShadowDeskGUI(GuiGraphics guiGraphics, int x, int y)
     {
         guiGraphics.blit(SHADOW_DESK_GUI, x, y, 0, 0, 28, 51, 28, 51);
+    }
+
+    public static void rendWindMoorDeskGUI(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(WIND_MOOR_DESK_GUI, x, y, 0, 0, 28, 51, 28, 51);
     }
 
     public static void rendStorageBagGUI(GuiGraphics guiGraphics, int x, int y)

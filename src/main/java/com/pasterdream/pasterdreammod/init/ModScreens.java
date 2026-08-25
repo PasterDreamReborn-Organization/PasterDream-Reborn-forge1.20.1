@@ -1,14 +1,15 @@
 package com.pasterdream.pasterdreammod.init;
 
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket.PicnicBasketScreen;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestScreen;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.windmoorcrate.WindMoorCrateScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.picnicbasket.PicnicBasketScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateScreen;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanScreen;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.desk.dyedreamdesk.DyedreamDeskScreen;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.desk.shadowdesk.ShadowDeskScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.ShadowDeskScreen;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorScreen;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronScreen;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.windmoordesk.WindMoorDeskScreen;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestScreen;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableScreen;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceScreen;
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.ShadowSelectEndScreen;
@@ -34,6 +35,7 @@ public class ModScreens
             MenuScreens.register(ModMenus.MORTAR.get(), MortarScreen::new);
             MenuScreens.register(ModMenus.DYEDREAM_DESK.get(), DyedreamDeskScreen::new);
             MenuScreens.register(ModMenus.SHADOW_DESK.get(), ShadowDeskScreen::new);
+            MenuScreens.register(ModMenus.WIND_MOOR_DESK.get(), WindMoorDeskScreen::new);
             MenuScreens.register(ModMenus.PICNIC_BASKET.get(), PicnicBasketScreen::new);
             MenuScreens.register(ModMenus.SHADOW_CHEST.get(), ShadowChestScreen::new);
             MenuScreens.register(ModMenus.WIND_MOOR_CRATE.get(), WindMoorCrateScreen::new);

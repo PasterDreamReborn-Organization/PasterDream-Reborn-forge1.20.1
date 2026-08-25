@@ -1,7 +1,5 @@
 package com.pasterdream.pasterdreammod.world.item.lootgenerator;
 
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.IItemContainerInventory;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.ItemContainerBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -17,13 +15,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.IItemHandler;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
-import java.util.Random;
 
 public class LootGeneratorItem extends Item
 {

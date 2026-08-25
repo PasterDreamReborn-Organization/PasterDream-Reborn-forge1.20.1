@@ -1,24 +1,26 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket.PicnicBasketBlockEntity;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.picnicbasket.PicnicBasketMenu;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestBlockEntity;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.shadowchest.ShadowChestMenu;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.windmoorcrate.WindMoorCrateBlockEntity;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.crate.windmoorcrate.WindMoorCrateMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.picnicbasket.PicnicBasketBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.picnicbasket.PicnicBasketMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.shadowchest.ShadowChestMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.crate.windmoorcrate.WindMoorCrateMenu;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanMenu;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.desk.dyedreamdesk.DyedreamDeskBlockEntity;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.desk.dyedreamdesk.DyedreamDeskMenu;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.desk.shadowdesk.ShadowDeskBlockEntity;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.desk.shadowdesk.ShadowDeskMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.dyedreamdesk.DyedreamDeskMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.ShadowDeskBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.shadowdesk.ShadowDeskMenu;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorMenu;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronMenu;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestBlockEntity;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.windmoordesk.WindMoorDeskBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.desk.windmoordesk.WindMoorDeskMenu;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.itemcontainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestMenu;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableMenu;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceBlockEntity;
@@ -80,6 +82,12 @@ public class ModMenus
     {
         BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
         return new ShadowDeskMenu(windowId, inv, (ShadowDeskBlockEntity) blockEntity);
+    }));
+
+    public static final RegistryObject<MenuType<WindMoorDeskMenu>> WIND_MOOR_DESK = MENUS.register("wind_moor_desk", () -> IForgeMenuType.create((windowId, inv, data) ->
+    {
+        BlockEntity blockEntity = inv.player.level().getBlockEntity(data.readBlockPos());
+        return new WindMoorDeskMenu(windowId, inv, (WindMoorDeskBlockEntity) blockEntity);
     }));
 
     public static final RegistryObject<MenuType<PicnicBasketMenu>> PICNIC_BASKET = MENUS.register("picnic_basket", () -> IForgeMenuType.create((windowId, inv, data) ->
