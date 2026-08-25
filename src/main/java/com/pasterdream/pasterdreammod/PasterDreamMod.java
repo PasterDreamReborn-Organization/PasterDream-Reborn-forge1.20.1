@@ -30,11 +30,13 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.ToolActions;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.AddReloadListenerEvent;
@@ -68,6 +70,7 @@ public class PasterDreamMod
     public static final String MOD_ID = "pasterdream";
 
     private static final UUID SWIFT_STRIKE_ATTACK_SPEED_UUID = UUID.fromString("bdf05f70-b53d-4828-8e37-9a502bde0ec1");
+    private static final UUID CONGEAL_WIND_IRON_REACH_UUID = UUID.fromString("7c2a9f4e-5d81-4b3a-9e6c-1f8d0a2b4c6e");
 
     public PasterDreamMod(FMLJavaModLoadingContext context)
     {
@@ -308,9 +311,28 @@ public class PasterDreamMod
     public static void onItemAttributeModifier(ItemAttributeModifierEvent event) {
         if (event.getSlotType() != EquipmentSlot.MAINHAND) return;
 
+        ItemStack stack = event.getItemStack();
+        Item item = stack.getItem();
+
+        // 凝风铁工具：+1 触及距离
+        if (item == ModItems.CONGEAL_WIND_IRON_SWORD.get()
+                || item == ModItems.CONGEAL_WIND_IRON_PICKAXE.get()
+                || item == ModItems.CONGEAL_WIND_IRON_AXE.get()
+                || item == ModItems.CONGEAL_WIND_IRON_SHOVEL.get()
+                || item == ModItems.CONGEAL_WIND_IRON_HOE.get()) {
+            event.addModifier(
+                    ForgeMod.ENTITY_REACH.get(),
+                    new AttributeModifier(
+                            CONGEAL_WIND_IRON_REACH_UUID,
+                            "Congeal Wind Iron reach bonus",
+                            1.0,
+                            AttributeModifier.Operation.ADDITION
+                    )
+            );
+        }
+
         var swiftStrike = ModEnchantment.SWIFT_STRIKE_ENCHANTMENT.get();
 
-        ItemStack stack = event.getItemStack();
         int level = stack.getEnchantmentLevel(swiftStrike);
         if (level > 0) {
             double multiplier = stack.getItem() instanceof AxeItem ? 0.04 : 0.06;

@@ -138,10 +138,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_INGOT.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_INGOT.get());
-                        output.accept(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
                         output.accept(ModItems.TITANIUM_NUGGET.get());
                         output.accept(ModItems.MOLTEN_GOLD_NUGGET.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_NUGGET.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_NUGGET.get());
                         output.accept(ModItems.SOUL_DUST.get());
                         output.accept(ModItems.DEEP_SEA_TREASURE.get());
                         output.accept(DeepTreasureItem.createSuper(ModItems.DEEP_SEA_TREASURE.get()));
@@ -240,6 +240,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.COPPER_CHESTPLATE.get());
                         output.accept(ModItems.COPPER_LEGGINGS.get());
                         output.accept(ModItems.COPPER_BOOTS.get());
+                        // 凝风铁工具
+                        output.accept(ModItems.CONGEAL_WIND_IRON_SWORD.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_PICKAXE.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_AXE.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_SHOVEL.get());
+                        output.accept(ModItems.CONGEAL_WIND_IRON_HOE.get());
                         // 钛金工具
                         output.accept(ModItems.TITANIUM_SWORD.get());
                         output.accept(ModItems.TITANIUM_PICKAXE.get());

@@ -79,5 +79,11 @@ public class AddToolTip
             tooltip.add(Component.translatable("tooltip.pasterdream.shadow_blast_furnace_core.1"));
             tooltip.add(Component.translatable("tooltip.pasterdream.shadow_blast_furnace_core.2"));
         }
+        if(stack.is(ModItems.SHADOW_HILT.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdream.shadow_hilt"));
+        }
+        if(stack.is(ModItems.PURE_HORROR.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdream.pure_horror"));
+        }
     }
 }

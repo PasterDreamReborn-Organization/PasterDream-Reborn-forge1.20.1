@@ -187,6 +187,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.COPPER_AXE.get(), "铜斧");
         add(ModItems.COPPER_SHOVEL.get(), "铜锹");
         add(ModItems.COPPER_HOE.get(), "铜锄");
+        add(ModItems.CONGEAL_WIND_IRON_SWORD.get(), "凝风铁剑");
+        add(ModItems.CONGEAL_WIND_IRON_PICKAXE.get(), "凝风铁镐");
+        add(ModItems.CONGEAL_WIND_IRON_AXE.get(), "凝风铁斧");
+        add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get(), "凝风铁锹");
+        add(ModItems.CONGEAL_WIND_IRON_HOE.get(), "凝风铁锄");
         add(ModItems.COPPER_HELMET.get(), "铜头盔");
         add(ModItems.COPPER_CHESTPLATE.get(), "铜胸甲");
         add(ModItems.COPPER_LEGGINGS.get(), "铜护腿");
@@ -1584,6 +1589,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.aaroncos_music_disc", "音乐唱片");
         add("item.pasterdream.aaroncos_music_disc.desc", "§dPasterDream§7 - 亚伦柯斯之触");
         add("item.pasterdream.pure_horror", "纯粹恐惧");
+        add("tooltip.pasterdream.pure_horror", "§7它让我的脊椎发出了可怕的颤抖...");
         add("entity.pasterdream.shadow_magicball", "暗影魔法球");
         add("entity.pasterdream.shadow_tune_totem", "暗影符文塔");
         add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在蓄能");
@@ -2437,7 +2443,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.big_bubbles_7", "大气泡");
         add("structure.pasterdream.bocchi_0", "波奇");
         add("structure.pasterdream.bocchi_1", "波奇");
-        add("structure.pasterdream.breakwing_curtain", "破翼帷幕");
+        add("structure.pasterdream.break_wind_curtain", "破风幕帐");
         add("structure.pasterdream.hakurei_reimu", "博丽灵梦");
         add("structure.pasterdream.hot_air_balloon_0", "热气球");
         add("structure.pasterdream.hot_air_balloon_1", "热气球");

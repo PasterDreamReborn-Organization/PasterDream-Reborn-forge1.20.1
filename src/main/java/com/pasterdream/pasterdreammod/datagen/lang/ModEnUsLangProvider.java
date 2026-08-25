@@ -179,6 +179,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.COPPER_AXE.get(), "Copper Axe");
         add(ModItems.COPPER_SHOVEL.get(), "Copper Shovel");
         add(ModItems.COPPER_HOE.get(), "Copper Hoe");
+        add(ModItems.CONGEAL_WIND_IRON_SWORD.get(), "Congeal Wind Iron Sword");
+        add(ModItems.CONGEAL_WIND_IRON_PICKAXE.get(), "Congeal Wind Iron Pickaxe");
+        add(ModItems.CONGEAL_WIND_IRON_AXE.get(), "Congeal Wind Iron Axe");
+        add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get(), "Congeal Wind Iron Shovel");
+        add(ModItems.CONGEAL_WIND_IRON_HOE.get(), "Congeal Wind Iron Hoe");
         add(ModItems.COPPER_HELMET.get(), "Copper Helmet");
         add(ModItems.COPPER_CHESTPLATE.get(), "Copper Chestplate");
         add(ModItems.COPPER_LEGGINGS.get(), "Copper Leggings");
@@ -1411,6 +1416,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("item.pasterdream.aaroncos_music_disc", "Aaroncos Music Disc");
         add("item.pasterdream.aaroncos_music_disc.desc", "§dPasterDream§7 - Aaroncos's Touch");
         add("item.pasterdream.pure_horror", "Pure Horror");
+        add("tooltip.pasterdream.pure_horror", "§7It sends a terrible shiver down my spine...");
         add("entity.pasterdream.shadow_magicball", "Shadow Magicball");
         add("entity.pasterdream.shadow_tune_totem", "Shadow Tune Totem");
         add("message.pasterdream.shadow_tune_totem.charging", "The Shadow Tune Totem is charging energy");
@@ -1900,7 +1906,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.big_bubbles_7", "Big Bubble");
         add("structure.pasterdream.bocchi_0", "Bocchi");
         add("structure.pasterdream.bocchi_1", "Bocchi");
-        add("structure.pasterdream.breakwing_curtain", "Breakwing Curtain");
+        add("structure.pasterdream.break_wind_curtain", "Break Wind Curtain");
         add("structure.pasterdream.hakurei_reimu", "Hakurei Reimu");
         add("structure.pasterdream.hot_air_balloon_0", "Hot Air Balloon");
         add("structure.pasterdream.hot_air_balloon_1", "Hot Air Balloon");

@@ -225,6 +225,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         terraBladeRecipe(pWriter);
         starWishRodRecipe(pWriter);
         copperToolRecipes(pWriter);
+        congealWindIronToolRecipes(pWriter);
         copperArmorRecipes(pWriter);
         titaniumToolRecipes(pWriter);
         dyedreamToolRecipes(pWriter);
@@ -589,6 +590,46 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('a', Items.COPPER_INGOT)
                 .define('b', Items.STICK)
                 .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(pWriter);
+    }
+
+    // ===== 凝风铁工具配方 =====
+
+    private void congealWindIronToolRecipes(Consumer<FinishedRecipe> pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.CONGEAL_WIND_IRON_SWORD.get())
+                .pattern("a")
+                .pattern("a")
+                .pattern("b")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CONGEAL_WIND_IRON_PICKAXE.get())
+                .pattern("aaa")
+                .pattern(" b ")
+                .pattern(" b ")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CONGEAL_WIND_IRON_AXE.get())
+                .pattern("aa")
+                .pattern("ab")
+                .pattern(" b")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CONGEAL_WIND_IRON_SHOVEL.get())
+                .pattern("a")
+                .pattern("b")
+                .pattern("b")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CONGEAL_WIND_IRON_HOE.get())
+                .pattern("aa")
+                .pattern(" b")
+                .pattern(" b")
+                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
                 .save(pWriter);
     }
 
@@ -1110,7 +1151,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .pattern("dbd")
                 .define('a', Items.IRON_INGOT)
                 .define('b', ModItems.DYEDREAM_ALLOY_INGOT.get())
-                .define('c', Items.GHAST_TEAR)
+                .define('c', ModItems.DYEDREAM_BUD_NUGGET.get())
                 .define('d', ModItems.BLACK_STICK.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_ALLOY_INGOT.get()), has(ModItems.DYEDREAM_ALLOY_INGOT.get()))
                 .save(pWriter);

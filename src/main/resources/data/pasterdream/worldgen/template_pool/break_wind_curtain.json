@@ -1,12 +1,12 @@
 {
-  "name": "pasterdream:breakwing_curtain",
+  "name": "pasterdream:break_wind_curtain",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "pasterdream:breakwing_curtain",
+        "location": "pasterdream:break_wind_curtain",
         "projection": "rigid",
         "processors": {
           "processors": [
