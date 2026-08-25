@@ -42,6 +42,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
     private int animationState = 0;
     private int tickCounter = 0;
     private List<Player> playerList = new ArrayList<>();
+    private int progress = 0;//0:第一次进入，1:第二次进入，2:后续刷材料
 
     public boolean isEntry = true;
     public BlockPos targetPosition = new BlockPos(0, 0, 0);
@@ -157,6 +158,17 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                         for (Player player : blockEntity.playerList)
                         {
                             player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.传送倒计时：").append("3"), false);
+                            Advancement _1timesAdvancement = ((ServerPlayer)player).server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_npc_first_dialogue"));
+                            if (_1timesAdvancement != null && ((ServerPlayer)player).getAdvancements().getOrStartProgress(_1timesAdvancement).isDone())
+                            {
+                                blockEntity.progress = 1;
+                            }
+
+                            Advancement finishedAdvancement = ((ServerPlayer)player).server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_choice"));
+                            if (finishedAdvancement != null && ((ServerPlayer)player).getAdvancements().getOrStartProgress(finishedAdvancement).isDone())
+                            {
+                                blockEntity.progress = 2;
+                            }
                         }
                     }
                     case 1 -> blockEntity.placeStructure("shadow_dungeon_shadow_bed", blockPosition.getX() - 12, level.getMinBuildHeight() + 1, blockPosition.getZ() - 12);
@@ -177,18 +189,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                     }
                     case 9 ->
                     {
-                        boolean is2Times = false;
-
-                        for (Player player : blockEntity.playerList)
-                        {
-                            Advancement advancement = ((ServerPlayer)player).server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_npc_first_dialogue"));
-                            if (advancement != null && ((ServerPlayer)player).getAdvancements().getOrStartProgress(advancement).isDone())
-                            {
-                                is2Times = true;
-                            }
-                        }
-
-                        if(is2Times)
+                        if(blockEntity.progress == 1)
                         {
                             blockEntity.placeStructure("shadow_dungeon_nameless_overworld", blockPosition.getX() - 11, level.getMinBuildHeight() + 18, blockPosition.getZ() - 11);
                         }
@@ -259,7 +260,14 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                         blockEntity.animationState = 0;
                         blockEntity.tickCounter = -1;
                         blockEntity.setChangedAndSync();
-                        blockEntity.teleportPlayers(blockEntity.playerList, blockPosition.getX() + 4.5, level.getMinBuildHeight() + 63, blockPosition.getZ() + 0.5);
+                        if(blockEntity.progress == 1)
+                        {
+                            blockEntity.teleportPlayers(blockEntity.playerList, blockPosition.getX() + 4.5, level.getMinBuildHeight() + 19, blockPosition.getZ() + 0.5);
+                        }
+                            else
+                            {
+                                blockEntity.teleportPlayers(blockEntity.playerList, blockPosition.getX() + 4.5, level.getMinBuildHeight() + 63, blockPosition.getZ() + 0.5);
+                            }
                     }
                 }
             }
