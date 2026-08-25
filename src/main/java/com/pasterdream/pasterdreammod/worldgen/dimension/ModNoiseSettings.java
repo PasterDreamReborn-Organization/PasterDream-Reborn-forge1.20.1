@@ -89,7 +89,7 @@ public class ModNoiseSettings {
                 lampShadowOriginalRouter.depth(),
                 lampShadowOriginalRouter.ridges(),
                 lampShadowSmoothTerrain,                            //初始密度（平滑，用于群系放置）
-                lampShadowOriginalRouter.finalDensity(),            //最终密度（原版，含jaggedness+洞穴：补充地表起伏确保陆地高于海平面）
+                lampShadowSmoothTerrain,            //最终密度（原版，含jaggedness+洞穴：补充地表起伏确保陆地高于海平面）
                 DensityFunctions.constant(1.0D),           //矿脉开关→1（禁用）
                 DensityFunctions.constant(1.0D),           //矿脉脊状→1（禁用）
                 DensityFunctions.constant(1.0D)            //矿脉间隙→1（禁用）
