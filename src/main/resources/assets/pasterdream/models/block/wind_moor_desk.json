@@ -1,0 +1,11 @@
+{
+  "parent": "pasterdream:custom/wind_moor_desk",
+  "textures":
+  {
+    "all": "pasterdream:block/wind_moor_desk",
+    "particle": "pasterdream:block/wind_moor_desk",
+    "0": "pasterdream:block/wind_moor_desk",
+    "missing": "pasterdream:block/wind_moor_desk"
+  },
+  "render_type": "cutout"
+}

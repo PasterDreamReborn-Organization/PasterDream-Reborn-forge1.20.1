@@ -73,6 +73,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.PINK_SHROOMLIGHT.get())
                 .add(ModBlocks.DYEDREAM_DESK.get())
                 .add(ModBlocks.SHADOW_DESK.get())
+                .add(ModBlocks.WIND_MOOR_DESK.get())
                 .add(ModBlocks.PICNIC_BASKET.get())
                 .add(ModBlocks.WIND_MOOR_CRATE.get())
                 .add(ModBlocks.SHADOW_STEM.get())

@@ -1,7 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.claypan;
 
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
-import com.pasterdream.pasterdreammod.world.block.ItemContainer.desk.dyedreamdesk.DyedreamDeskBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
