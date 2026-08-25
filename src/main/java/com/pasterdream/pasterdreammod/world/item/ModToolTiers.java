@@ -21,6 +21,9 @@ public enum ModToolTiers implements Tier {
     // 钛金
     TITANIUM(1721, 9.0F, 3.5F, 4, 17,
             () -> Ingredient.of(ModItems.TITANIUM_INGOT.get())),
+    // 凝风铁
+    CONGEAL_WIND_IRON(750, 7.0F, 2.5F, 3, 12,
+            () -> Ingredient.of(ModItems.CONGEAL_WIND_IRON_INGOT.get())),
 
     // 影蚀 (Shadow Erosion) - 黑金属工具
     SHADOW_EROSION_DAGGER(1725, 13.0F, 3.0F, 4, 16,

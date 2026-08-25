@@ -187,6 +187,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.COPPER_AXE.get(), "铜斧");
         add(ModItems.COPPER_SHOVEL.get(), "铜锹");
         add(ModItems.COPPER_HOE.get(), "铜锄");
+        add(ModItems.CONGEAL_WIND_IRON_SWORD.get(), "凝风铁剑");
+        add(ModItems.CONGEAL_WIND_IRON_PICKAXE.get(), "凝风铁镐");
+        add(ModItems.CONGEAL_WIND_IRON_AXE.get(), "凝风铁斧");
+        add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get(), "凝风铁锹");
+        add(ModItems.CONGEAL_WIND_IRON_HOE.get(), "凝风铁锄");
         add(ModItems.COPPER_HELMET.get(), "铜头盔");
         add(ModItems.COPPER_CHESTPLATE.get(), "铜胸甲");
         add(ModItems.COPPER_LEGGINGS.get(), "铜护腿");

@@ -339,6 +339,18 @@ public class ModItems {
     public static final RegistryObject<Item> COPPER_BOOTS = ITEMS.register("copper_boots",
             () -> new ArmorItem(ModArmorMaterials.COPPER, ArmorItem.Type.BOOTS, new Item.Properties()));
 
+    // ===== 凝风铁工具 =====
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_SWORD = ITEMS.register("congeal_wind_iron_sword",
+            () -> new SwordItem(ModToolTiers.CONGEAL_WIND_IRON, 3, -1.4f, new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_PICKAXE = ITEMS.register("congeal_wind_iron_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.CONGEAL_WIND_IRON, 1, -1.8f, new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_AXE = ITEMS.register("congeal_wind_iron_axe",
+            () -> new AxeItem(ModToolTiers.CONGEAL_WIND_IRON, 5.5f, -2.0f, new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_SHOVEL = ITEMS.register("congeal_wind_iron_shovel",
+            () -> new ShovelItem(ModToolTiers.CONGEAL_WIND_IRON, 1.5f, -2.0f, new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_HOE = ITEMS.register("congeal_wind_iron_hoe",
+            () -> new HoeItem(ModToolTiers.CONGEAL_WIND_IRON, -2, -1.0f, new Item.Properties()));
+
     // ===== 钛金工具 =====
     public static final RegistryObject<Item> TITANIUM_SWORD = ITEMS.register("titanium_sword",
             () -> new SwordItem(ModToolTiers.TITANIUM, 3, -2.4f, new Item.Properties()));

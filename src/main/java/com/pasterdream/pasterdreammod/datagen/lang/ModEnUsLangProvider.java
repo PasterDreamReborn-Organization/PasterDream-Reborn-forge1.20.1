@@ -179,6 +179,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.COPPER_AXE.get(), "Copper Axe");
         add(ModItems.COPPER_SHOVEL.get(), "Copper Shovel");
         add(ModItems.COPPER_HOE.get(), "Copper Hoe");
+        add(ModItems.CONGEAL_WIND_IRON_SWORD.get(), "Congeal Wind Iron Sword");
+        add(ModItems.CONGEAL_WIND_IRON_PICKAXE.get(), "Congeal Wind Iron Pickaxe");
+        add(ModItems.CONGEAL_WIND_IRON_AXE.get(), "Congeal Wind Iron Axe");
+        add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get(), "Congeal Wind Iron Shovel");
+        add(ModItems.CONGEAL_WIND_IRON_HOE.get(), "Congeal Wind Iron Hoe");
         add(ModItems.COPPER_HELMET.get(), "Copper Helmet");
         add(ModItems.COPPER_CHESTPLATE.get(), "Copper Chestplate");
         add(ModItems.COPPER_LEGGINGS.get(), "Copper Leggings");
