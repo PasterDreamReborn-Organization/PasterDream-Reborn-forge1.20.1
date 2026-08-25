@@ -226,6 +226,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CONGEAL_WIND_IRON_INGOT = ITEMS.register("congeal_wind_iron_ingot",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_NUGGET = ITEMS.register("congeal_wind_iron_nugget",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PULSE_WIND_RUNNER_CRYSTAL = ITEMS.register("pulse_wind_runner_crystal",
             () -> new PulseWindRunnerCrystalItem());
     public static final RegistryObject<Item> WIND_KNIGHT_ALTAR = ITEMS.register("wind_knight_altar",
@@ -1186,6 +1188,14 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.EJECTION_PRESSURE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> CONGEAL_WIND_IRON_BARS = ITEMS.register("congeal_wind_iron_bars",
             () -> new BlockItem(ModBlocks.CONGEAL_WIND_IRON_BARS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_LANTERN = ITEMS.register("congeal_wind_iron_lantern",
+            () -> new BlockItem(ModBlocks.CONGEAL_WIND_IRON_LANTERN.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_CHAIN = ITEMS.register("congeal_wind_iron_chain",
+            () -> new BlockItem(ModBlocks.CONGEAL_WIND_IRON_CHAIN.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_TRAPDOOR = ITEMS.register("congeal_wind_iron_trapdoor",
+            () -> new BlockItem(ModBlocks.CONGEAL_WIND_IRON_TRAPDOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CONGEAL_WIND_IRON_PRESSURE_PLATE = ITEMS.register("congeal_wind_iron_pressure_plate",
+            () -> new BlockItem(ModBlocks.CONGEAL_WIND_IRON_PRESSURE_PLATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> BREAK_WIND_CURTAIN = ITEMS.register("break_wind_curtain",
             () -> new BlockItem(ModBlocks.BREAK_WIND_CURTAIN.get(), new Item.Properties()));
     public static final RegistryObject<Item> CHRISTMAS_LIGHTS = ITEMS.register("christmas_lights",

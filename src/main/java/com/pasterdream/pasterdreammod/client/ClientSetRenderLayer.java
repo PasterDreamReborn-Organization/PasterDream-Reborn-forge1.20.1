@@ -16,6 +16,9 @@ public class ClientSetRenderLayer
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WIND_MOOR_PANE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUST_BLACK_METAL_BARS.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CONGEAL_WIND_IRON_BARS.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CONGEAL_WIND_IRON_CHAIN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CONGEAL_WIND_IRON_TRAPDOOR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CONGEAL_WIND_IRON_LANTERN.get(), RenderType.cutout());
 
         // ===== translucent 渲染（半透明玻璃） =====
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DYEDREAM_GLASS.get(), RenderType.translucent());

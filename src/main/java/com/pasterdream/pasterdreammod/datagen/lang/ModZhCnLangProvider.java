@@ -163,6 +163,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.WIND_RUNNER_CRYSTAL.get(), "风行者水晶");
         add(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(), "脉冲风行者水晶");
         add(ModItems.CONGEAL_WIND_IRON_INGOT.get(), "凝风铁锭");
+        add(ModItems.CONGEAL_WIND_IRON_NUGGET.get(), "凝风铁粒");
         add("tooltip.pasterdream.white_crystal", "§7制作白厄剑的核心材料");
         add(ModItems.LIGHT_BALL.get(), "流明光球");
         add(ModItems.COTTON.get(), "棉花");
@@ -289,6 +290,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get(), "风行者水晶块");
         add(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get(), "凝风铁块");
         add(ModBlocks.CONGEAL_WIND_IRON_BARS.get(), "凝风铁栏杆");
+        add(ModBlocks.CONGEAL_WIND_IRON_LANTERN.get(), "凝风铁灯笼");
+        add(ModBlocks.CONGEAL_WIND_IRON_CHAIN.get(), "凝风铁锁链");
+        add(ModBlocks.CONGEAL_WIND_IRON_TRAPDOOR.get(), "凝风铁活板门");
+        add(ModBlocks.CONGEAL_WIND_IRON_PRESSURE_PLATE.get(), "凝风铁压力板");
         add(ModBlocks.EJECTION_PRESSURE_PLATE.get(), "弹射压力板");
         add(ModBlocks.EJECTION_PRESSURE_BLOCK.get(), "弹射方块");
         add(ModBlocks.RAW_TITANIUM_BLOCK.get(), "粗钛金块");
