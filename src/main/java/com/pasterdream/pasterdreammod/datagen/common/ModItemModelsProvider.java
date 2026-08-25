@@ -151,6 +151,12 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.CONGEAL_WIND_IRON_AXE);
         handheldItem(ModItems.CONGEAL_WIND_IRON_SHOVEL);
         handheldItem(ModItems.CONGEAL_WIND_IRON_HOE);
+        handheldItem(ModItems.FLUFFY_WIND_ALLOY_SWORD);
+        handheldItem(ModItems.FLUFFY_WIND_ALLOY_PICKAXE);
+        handheldItem(ModItems.FLUFFY_WIND_ALLOY_AXE);
+        handheldItem(ModItems.FLUFFY_WIND_ALLOY_SHOVEL);
+        handheldItem(ModItems.FLUFFY_WIND_ALLOY_HOE);
+        basicItem(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get());
         basicItem(ModItems.COPPER_HELMET.get());
         basicItem(ModItems.COPPER_CHESTPLATE.get());
         basicItem(ModItems.COPPER_LEGGINGS.get());

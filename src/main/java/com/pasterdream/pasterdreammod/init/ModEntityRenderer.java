@@ -43,6 +43,7 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.THUNDERCLOUD.get(), ThundercloudRenderer::new);
         event.registerEntityRenderer(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), HighvoltageThundercloudRenderer::new);
         event.registerEntityRenderer(ModEntities.LIGHTNING_PROJECTILE.get(), EmptyEntityRenderer::new);
+        event.registerEntityRenderer(ModEntities.WIND_ALLOY_LIGHTNING.get(), EmptyEntityRenderer::new);
         event.registerEntityRenderer(ModEntities.BONE_WING.get(), BoneWingRenderer::new);
         event.registerEntityRenderer(ModEntities.ASH_BONE_WING.get(), AshBoneWingRenderer::new);
         event.registerEntityRenderer(ModEntities.BONE_WING_FIRE_BALL_PROJECTILE.get(), BoneWingFireBallProjectileRenderer::new);

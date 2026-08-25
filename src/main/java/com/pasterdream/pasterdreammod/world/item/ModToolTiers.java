@@ -24,6 +24,9 @@ public enum ModToolTiers implements Tier {
     // 凝风铁
     CONGEAL_WIND_IRON(750, 7.0F, 2.5F, 3, 12,
             () -> Ingredient.of(ModItems.CONGEAL_WIND_IRON_INGOT.get())),
+    // 萦风合金
+    FLUFFY_WIND_ALLOY(1500, 13.0F, 4.0F, 4, 22,
+            () -> Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get())),
 
     // 影蚀
     SHADOW_EROSION(1725, 13.0F, 3.0F, 4, 16,
@@ -34,7 +37,7 @@ public enum ModToolTiers implements Tier {
             () -> Ingredient.of(ModItems.DYEDREAM_ALLOY_INGOT.get())),
 
     // 融梦水晶
-    MELT_DREAM(1728, 14.0F, 4.5F, 5, 12,
+    MELT_DREAM(1728, 14.0F, 4.5F, 5, 22,
             () -> Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())),
 
     // 狱炎
@@ -90,15 +93,6 @@ public enum ModToolTiers implements Tier {
     // 断裂英雄之剑
     BROKEN_HERO_SWORD(100, 1.0F, 3.0F, 1, 0,
             Ingredient::of);
-
-    // TRUEST_MOLTENGOLD_SWORD(1255, 1.0F, 3.0F, 1, 23,
-    //         () -> Ingredient.of(ModItems.MOLTEN_GOLD_INGOT.get())),  // 与 TRUE_MOLTENGOLD 同级，可用后者替代
-
-    // CREATIVE_SWORD(100, 4.0F, 6.0F, 1, 2,
-    //         () -> Ingredient.of()),  // 调试武器，暂不搬运
-
-    // DREAM_WAND(0, 4.0F, 2.0F, 1, 2,
-    //         () -> Ingredient.of());  // 万能工具，暂不搬运
 
     private final int uses;
     private final float speed;

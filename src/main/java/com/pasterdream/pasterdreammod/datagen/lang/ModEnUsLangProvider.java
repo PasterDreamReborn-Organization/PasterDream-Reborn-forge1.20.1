@@ -170,6 +170,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.TITANIUM_UPGRADE.get(), "Titanium Upgrade");
         add(ModItems.SCULK_UPGRADE.get(), "Sculk Upgrade");
         add(ModItems.DYEDREAM_UPGRADE.get(), "Dyedream Upgrade");
+        add(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get(), "Fluffy Wind Alloy Upgrade");
         add(ModItems.DEEP_SEA_TREASURE.get(), "Deep Sea Treasure");
         add(ModItems.DYEDREAM_DEEP_SEA_TREASURE.get(), "Dyedream Deep Treasure");
         add(ModItems.SHADOW_DEEP_SEA_TREASURE.get(), "Shadow Deep Sea Treasure");
@@ -185,6 +186,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.CONGEAL_WIND_IRON_AXE.get(), "Congeal Wind Iron Axe");
         add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get(), "Congeal Wind Iron Shovel");
         add(ModItems.CONGEAL_WIND_IRON_HOE.get(), "Congeal Wind Iron Hoe");
+        add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get(), "Fluffy Wind Alloy Sword");
+        add(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get(), "Fluffy Wind Alloy Pickaxe");
+        add(ModItems.FLUFFY_WIND_ALLOY_AXE.get(), "Fluffy Wind Alloy Axe");
+        add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get(), "Fluffy Wind Alloy Shovel");
+        add(ModItems.FLUFFY_WIND_ALLOY_HOE.get(), "Fluffy Wind Alloy Hoe");
         add(ModItems.COPPER_HELMET.get(), "Copper Helmet");
         add(ModItems.COPPER_CHESTPLATE.get(), "Copper Chestplate");
         add(ModItems.COPPER_LEGGINGS.get(), "Copper Leggings");
@@ -1242,6 +1248,20 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.ice_shadow_hammer.5", "§7▪ §9Cooldown: §c4s");
         add("tooltip.pasterdream.ice_shadow_hammer.cost", "§7▪ §4Melt Dream Energy Cost: §c0.5");
         add("message.pasterdream.ice_shadow_hammer.no_energy", "§cNot enough Melt Dream Energy");
+
+        // Fluffy Wind Alloy Sword
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.skill_name", "Combat Art: §9Wind-and-Thunder");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc1", "§7▪ §9Shift+Right-click to switch Wind/Thunder mode");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc2", "§7▪ §9Wind·§fSwift Wind Dash§9: dash toward crosshair, dealing §c2.5×MoveSpeed×ATK §9damage to enemies in the way");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc3", "§7▪ §9Wind cooldown: §c2s");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc4", "§7▪ §9Thunder·§eThunderstorm§9: call §c5 §9tracking lightning bolts on target, each dealing §cATK×1.0 §9AOE lightning damage(4×3×4)");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc5", "§7▪ §9Thunder cost: §c1.0 §9Melt Dream Energy, cooldown: §c5s");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name", "Passive: §bThunder Follows the Wind");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1", "§7▪ §9Faster = more damage: §cDamage=(1+MoveSpeed)×ATK");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive2", "§7▪ §9Attacks also deal §cATK×0.1 §9lightning damage");
+        add("message.pasterdream.fluffy_wind_alloy_sword.mode_wind", "§fMode: Swift Wind Dash");
+        add("message.pasterdream.fluffy_wind_alloy_sword.mode_thunder", "§eMode: Thunderstorm");
+        add("message.pasterdream.fluffy_wind_alloy_sword.no_energy", "§cNot enough Melt Dream Energy");
 
         // Seal of the Fallen
         add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "Seal of the Corrupted");

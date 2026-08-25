@@ -129,6 +129,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.MOLTEN_GOLD_SWORD.get())
                 .add(ModItems.COPPER_SWORD.get())
                 .add(ModItems.CONGEAL_WIND_IRON_SWORD.get())
+                .add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get())
                 .add(ModItems.TITANIUM_SWORD.get())
                 .add(ModItems.DYEDREAM_SWORD.get())
                 .add(ModItems.HELLFIRE_SWORD.get())
@@ -148,6 +149,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.MOLTEN_GOLD_PICKAXE.get())
                 .add(ModItems.COPPER_PICKAXE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_PICKAXE.get())
+                .add(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get())
                 .add(ModItems.TITANIUM_PICKAXE.get())
                 .add(ModItems.DYEDREAM_PICKAXE.get())
                 .add(ModItems.HELLFIRE_PICKAXE.get());
@@ -155,18 +157,21 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.MOLTEN_GOLD_AXE.get())
                 .add(ModItems.COPPER_AXE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_AXE.get())
+                .add(ModItems.FLUFFY_WIND_ALLOY_AXE.get())
                 .add(ModItems.TITANIUM_AXE.get())
                 .add(ModItems.DYEDREAM_AXE.get());
         tag(ItemTags.SHOVELS)
                 .add(ModItems.MOLTEN_GOLD_SHOVEL.get())
                 .add(ModItems.COPPER_SHOVEL.get())
                 .add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get())
+                .add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get())
                 .add(ModItems.TITANIUM_SHOVEL.get())
                 .add(ModItems.DYEDREAM_SHOVEL.get());
         tag(ItemTags.HOES)
                 .add(ModItems.MOLTEN_GOLD_HOE.get())
                 .add(ModItems.COPPER_HOE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_HOE.get())
+                .add(ModItems.FLUFFY_WIND_ALLOY_HOE.get())
                 .add(ModItems.TITANIUM_HOE.get())
                 .add(ModItems.DYEDREAM_HOE.get());
 
