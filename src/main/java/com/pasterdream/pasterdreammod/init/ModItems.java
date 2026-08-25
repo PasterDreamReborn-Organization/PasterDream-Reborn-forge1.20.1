@@ -418,15 +418,15 @@ public class ModItems {
 
     // ===== 影蚀系列 =====
     public static final RegistryObject<Item> SHADOW_EROSION_DAGGER = ITEMS.register("shadow_erosion_dagger",
-            () -> new ShadowErosionDaggerItem(ModToolTiers.SHADOW_EROSION_DAGGER, 3, -2.0f, new Item.Properties()));
+            () -> new ShadowErosionDaggerItem(ModToolTiers.SHADOW_EROSION, 3, -2.0f, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_EROSION_PICKAXE = ITEMS.register("shadow_erosion_pickaxe",
-            () -> new ShadowErosionPickaxeItem(ModToolTiers.SHADOW_EROSION_PICKAXE, 1, -2.8f, new Item.Properties()));
+            () -> new ShadowErosionPickaxeItem(ModToolTiers.SHADOW_EROSION, 2, -2.8f, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_EROSION_AXE = ITEMS.register("shadow_erosion_axe",
-            () -> new ShadowErosionAxeItem(ModToolTiers.SHADOW_EROSION_AXE, 1, -3.0f, new Item.Properties()));
+            () -> new ShadowErosionAxeItem(ModToolTiers.SHADOW_EROSION, 7, -3.0f, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_EROSION_SHOVEL = ITEMS.register("shadow_erosion_shovel",
-            () -> new ShadowErosionShovelItem(ModToolTiers.SHADOW_EROSION_SHOVEL, 1, -3.0f, new Item.Properties()));
+            () -> new ShadowErosionShovelItem(ModToolTiers.SHADOW_EROSION, 3, -3.0f, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_EROSION_HOE = ITEMS.register("shadow_erosion_hoe",
-            () -> new ShadowErosionHoeItem(ModToolTiers.SHADOW_EROSION_HOE, 0, 0.0f, new Item.Properties()));
+            () -> new ShadowErosionHoeItem(ModToolTiers.SHADOW_EROSION, -2, 0.0f, new Item.Properties()));
 
     // ===== 独立武器 =====
     public static final RegistryObject<Item> THERMAL_DAGGER = ITEMS.register("thermal_dagger",
