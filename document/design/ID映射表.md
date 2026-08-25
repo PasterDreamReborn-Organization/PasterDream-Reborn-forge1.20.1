@@ -646,30 +646,30 @@
 
 ## 状态效果映射
 
-| 旧 ID                          | 新 ID                          | 变更说明      | 备注                                                             |
-|-------------------------------|-------------------------------|-----------|----------------------------------------------------------------|
-| `dyedreamup_buff`             | `dyedream_up`            | 重命名，加下划线  | 标记效果，已实现                                                       |
+| 旧 ID                          | 新 ID                          | 变更说明      | 备注                                                         |
+|-------------------------------|-------------------------------|-----------|------------------------------------------------------------|
+| `dyedreamup_buff`             | `dyedream_up`            | 重命名，加下划线  | 标记效果，已实现                                                   |
 | `dyedream_armor`         | `dyedream_armor`         | 不改        | `DyedreamArmorEffect`                                      |
 | `sculk_armor`            | `sculk_armor`            | 不改        | `SculkArmorEffect`                                         |
 | `dreamwish_buff`              | `dream_wish`             | 重命名，加下划线  | `DreamWishEffect`，标记效果                                     |
-| `expup_buff`                  | 待搬运                           | -         | -                                                              |
+| `expup_buff`                  | 待搬运                           | -         | -                                                          |
 | `cheerup_buff`                | `cheer_up`               | 重命名，加下划线  | `CheerUpEffect`，San≥90%给予                                  |
 | `lethargy`               | `lethargy`               | 不改        | `LethargyEffect`，San 40%~60%时给予                            |
 | `trance`                 | `trance`                 | 不改        | `TranceEffect`，San 20%~40%时给予                              |
 | `insane`                 | `insane`                 | 不改        | `InsaneEffect`，San<20%，三级（<1%/>1%/>10%）                    |
 | `goldenrod_tea`          | `goldenrod_tea`          | 不改        | `GoldenrodTeaEffect`，每 tick 移除饥饿与反胃                        |
 | `dyedream_perfume`       | `dyedream_perfume`       | 不改，效果逻辑已改 | `DyedreamPerfumeEffect`，配合 `PhantomTargetMixin`            |
-| `teleportation_buff`          | 待搬运                           | -         | -                                                              |
+| `teleportation_buff`          | 待搬运                           | -         | -                                                          |
 | `fondillusion_buff`           | `misty_dream`            | 重命名      | `MistyDreamEffect`，迷梦标记，主世界高空显示进入进度                        |
 | `rest`                   | `rest`                   | 不改        | `RestEffect`，+0.9 理智光环                                     |
-| `dream_harp_of_wanderer` | `dream_harp_of_wanderer` | 不改        | `DreamharpOfWandererBuffEffect`，+4最大生命、+2.4SAN光环、+1%速度、治疗      |
+| `dream_harp_of_wanderer` | `dream_harp_of_wanderer` | 不改        | `DreamharpOfWandererBuffEffect`，+4最大生命、+2.4SAN光环、+1%速度、治疗  |
 | -                             | `counter_attack`         | 新增        | `CounterAttackEffect`，战技伤害倍率 +50%，配合反击戒指触发                 |
 | `bind`                   | `bind`                   | 不改        | `BindEffect`，移速降至 0，由白厄剑雨命中施加，持续 2s                        |
 | `shadow_silence`         | `shadow_silence`         | 不改        | `ShadowSilenceEffect`，标记效果，由白厄剑雨命中 shadow_mob 实体时施加，持续 10s |
-| `cloudmist_buff`              | `cloud_mist`             | 重命名      | `CloudMistEffect`，云霞标记，风之旅途显示退出进度                           |
+| `cloudmist_buff`              | `cloud_mist`             | 重命名      | `CloudMistEffect`，云雾标记，风之旅途显示退出进度                          |
 | `tailwind`               | `tailwind`               | 不改        | `TailwindEffect`，顺风，移速/闪烁距离提升，与逆风互斥                        |
 | `deadwind`               | `deadwind`               | 不改        | `DeadwindEffect`，逆风，移速/闪烁距离降低，与顺风互斥                        |
-| `windproof`              | `windproof`              | 不改        | `WindproofEffect`，防风标记，免疫顺风/逆风                            |
+| `windproof`              | `windproof`              | 不改        | `WindproofEffect`，防风标记，免疫顺风/逆风                             |
 
 ---
 

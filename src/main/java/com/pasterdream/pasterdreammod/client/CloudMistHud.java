@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
 /**
- * 云霞 HUD：进入/退出风之旅途时根据玩家高度显示渐进的云霞贴图。
+ * 云雾 HUD：进入/退出风之旅途时根据玩家高度显示渐进的云雾贴图。
  * 进度由客户端按「效果 + 维度 + 高度」实时计算，不依赖服务端 NBT 同步。
  */
 @OnlyIn(Dist.CLIENT)
@@ -52,7 +52,7 @@ public class CloudMistHud {
                 && player.getY() > 260 && player.getY() <= 310) {
             return (player.getY() - 260) * 2 / 100.0;
         }
-        // 退出：风之旅途持有云霞，高度 0~50 之间
+        // 退出：风之旅途持有云雾，高度 0~50 之间
         if (player.hasEffect(ModEffects.CLOUD_MIST.get())
                 && player.level().dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD)
                 && player.getY() > 0 && player.getY() <= 50) {
