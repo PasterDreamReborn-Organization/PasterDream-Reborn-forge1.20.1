@@ -43,14 +43,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
             SoundEvents.EMPTY, 10.0F, 1.0F,
             () -> Ingredient.of(ModItems.MEMORY_GEM.get())),
 
-    // 天使之翼
-    ANGEL_WING("angel_wing", 30, new int[]{2, 6, 5, 2}, 9,
-            SoundEvents.ARMOR_EQUIP_ELYTRA, 2.0F, 0.0F,
-            () -> Ingredient.of(Items.FEATHER)),
-
-    FORSAKENS_WING("forsakens_wing", 30, new int[]{2, 7, 5, 2}, 7,
-            SoundEvents.ARMOR_EQUIP_ELYTRA, 3.0F, 0.0F,
-            () -> Ingredient.of(ModItems.NIGHTMARE_FUEL.get())),
+    // 天使之翼已改为背饰，不再使用盔甲材质
 
     // 机械光翼
     MACHINE_LIGHT_WING("machine_light_wing", 34, new int[]{2, 7, 5, 2}, 9,

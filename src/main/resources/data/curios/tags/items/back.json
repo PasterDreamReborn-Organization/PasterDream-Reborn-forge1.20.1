@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:air",
+    "pasterdream:angel_wing",
+    "pasterdream:forsakens_wing"
+  ]
+}

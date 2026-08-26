@@ -84,8 +84,8 @@ import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymWindShirtItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymSwayingSkirtItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCloudBootsItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MachineLightWingItem;
-import com.pasterdream.pasterdreammod.world.item.armoritem.AngelWingItem;
-import com.pasterdream.pasterdreammod.world.item.armoritem.ForsakensWingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.AngelWingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.ForsakensWingItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import com.pasterdream.pasterdreammod.world.item.MeltDreamCoinItem;
 import com.pasterdream.pasterdreammod.world.item.PaleBoneneedleItem;
@@ -1913,13 +1913,11 @@ public class ModItems {
 
     // 天使之翼
     public static final RegistryObject<Item> ANGEL_WING = ITEMS.register("angel_wing",
-            () -> new AngelWingItem(ModArmorMaterials.ANGEL_WING, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+            () -> new AngelWingItem());
 
     // 遗忘之翼
     public static final RegistryObject<Item> FORSAKENS_WING = ITEMS.register("forsakens_wing",
-            () -> new ForsakensWingItem(ModArmorMaterials.FORSAKENS_WING, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+            () -> new ForsakensWingItem());
 
     // 厚翅甲壳
     public static final RegistryObject<Item> BLACK_BEETLE_CARAPACE = ITEMS.register("black_beetle_carapace",
