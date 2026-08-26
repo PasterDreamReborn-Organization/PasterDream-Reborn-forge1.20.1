@@ -14,9 +14,11 @@ public class MeltDreamCrystalArmorEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
-        // 生命恢复 II
-        entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60, 1,
-                true, false, false));
+        // 每 10 秒（200 tick）给予一次生命恢复 II
+        if (entity.tickCount % 200 == 0) {
+            entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 240, 1,
+                    true, false, false));
+        }
     }
 
     @Override
