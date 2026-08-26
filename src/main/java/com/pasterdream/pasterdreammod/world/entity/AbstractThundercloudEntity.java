@@ -26,6 +26,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
@@ -104,6 +105,8 @@ public abstract class AbstractThundercloudEntity extends Monster implements GeoE
         super.registerGoals();
         // 被攻击后记住攻击者作为仇恨目标（落雷会优先打它）
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        // 自动仇恨附近的玩家（创造/旁观者被 vanilla 排除）
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, false));
     }
 
     @Override
