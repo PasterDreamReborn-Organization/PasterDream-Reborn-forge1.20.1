@@ -23,7 +23,8 @@
     "ServerboundSetStructureBlockPacketMixin",
     "StructureBlockEntityMixin",
     "StructureTemplateMixin",
-    "LocateCommandMixin"
+    "LocateCommandMixin",
+    "ItemStackElytraFlyMixin"
   ],
   "client": [
     "BossHealthOverlayAccessor",

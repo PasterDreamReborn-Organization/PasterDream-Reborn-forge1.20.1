@@ -102,6 +102,8 @@ public class ModEffects {
             EFFECTS.register("misty_dream", MistyDreamEffect::new);
     public static final RegistryObject<MobEffect> CLOUD_MIST =
             EFFECTS.register("cloud_mist", CloudMistEffect::new);
+    public static final RegistryObject<MobEffect> WIND_RUNNER =
+            EFFECTS.register("wind_runner", WindRunnerEffect::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

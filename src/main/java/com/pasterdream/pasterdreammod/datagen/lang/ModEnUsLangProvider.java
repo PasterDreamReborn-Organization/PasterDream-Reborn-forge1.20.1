@@ -108,6 +108,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.milky_way_jelly.flavor", "§7§O --The Milky Way knows no bounds, an ocean of stars without end.");
         add(ModItems.FORTUNE_JELLY.get(), "Fortune Jelly");
         add("tooltip.pasterdreammod.fortune_jelly", "§9After eating, gain Luck I (1:00)");
+        add(ModItems.WIND_RUNNER_JELLY.get(), "Wind Runner Jelly");
+        add("tooltip.pasterdreammod.wind_runner_jelly", "§9After eating, gain Wind Runner (3:00), allowing elytra flight without an elytra");
         add("item.minecraft.potion.effect.luck", "Potion of Luck");
         add("item.minecraft.splash_potion.effect.luck", "Splash Potion of Luck");
         add("item.minecraft.lingering_potion.effect.luck", "Lingering Potion of Luck");
@@ -1773,6 +1775,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.shadow_silence.description", "After getting this buff, shadow creatures will lose the ability to use their skills.");
         add("effect.pasterdream.bind.description", "Obtained after being hit by the White Sword's sword rain. After getting this buff, you won't be able to move.");
         add("effect.pasterdream.restrainmove_block.description", "Remove jump boosts and force-disable flying while the effect lasts.");
+        add("effect.pasterdream.wind_runner.description", "Obtained by eating the Wind Runner Jelly, allows elytra flight without an elytra while the effect lasts.");
 
         // Desert Hero Tomb - Quest Dialogue
         // Dyedream Crack Messages
@@ -1994,6 +1997,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.tailwind", "Tailwind");
         add("effect.pasterdream.deadwind", "Deadwind");
         add("effect.pasterdream.windproof", "Windproof");
+        add("effect.pasterdream.wind_runner", "Wind Runner");
         add("effect.pasterdream.misty_dream", "Misty Dream");
         add("effect.pasterdream.cloud_mist", "Cloud Mist");
         add("tooltip.pasterdream.wind_vane.desc", "§7Detects the current wind direction and the player's angle");
