@@ -27,6 +27,7 @@ import com.pasterdream.pasterdreammod.network.san.MaxSanSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
 import com.pasterdream.pasterdreammod.network.shadowerosion.ShadowErosionMiningSpeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.shadowselect.ShadowSelectEndButtonPacket;
+import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindAlloyMiningSpeedSyncPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkRegistry;
@@ -76,6 +77,8 @@ public class ModNetwork
 
         CHANNEL.registerMessage(id++, ShadowErosionMiningSpeedSyncPacket.class, ShadowErosionMiningSpeedSyncPacket::encode, ShadowErosionMiningSpeedSyncPacket::decode, ShadowErosionMiningSpeedSyncPacket::handle);
 
+        CHANNEL.registerMessage(id++, WindAlloyMiningSpeedSyncPacket.class, WindAlloyMiningSpeedSyncPacket::encode, WindAlloyMiningSpeedSyncPacket::decode, WindAlloyMiningSpeedSyncPacket::handle);
+
         CHANNEL.registerMessage(id++, ShadowSelectEndButtonPacket.class, ShadowSelectEndButtonPacket::encode, ShadowSelectEndButtonPacket::decode, ShadowSelectEndButtonPacket::handle);
     }
 
@@ -105,6 +108,11 @@ public class ModNetwork
     }
 
     public static void sendShadowErosionMiningSpeedSyncPacketToPlayer(ShadowErosionMiningSpeedSyncPacket packet, ServerPlayer player)
+    {
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
+    }
+
+    public static void sendWindAlloyMiningSpeedSyncPacketToPlayer(WindAlloyMiningSpeedSyncPacket packet, ServerPlayer player)
     {
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
     }

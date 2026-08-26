@@ -1434,6 +1434,22 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.fluffy_wind_alloy_sword.mode_thunder", "§e当前模式：萦风引雷");
         add("message.pasterdream.fluffy_wind_alloy_sword.no_energy", "§c融梦能量不足");
 
+        // 萦风合金工具
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive_name", "被动：§b疾风过境");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive1", "§7▪ §9移动速度越快挖掘越快：§c挖掘速度=(1+移动速度×4)×基础速度");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive2", "§7▪ §9挖掘时掉落物被风卷到身边");
+        add("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.skill_name", "战技：§b风蚀共振");
+        add("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.desc1", "§7▪ §9潜行挖掘时，沿击打方向共振破坏 §c3×3×3 §9同类方块");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.skill_name", "战技：§b落叶秋风");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc1", "§7▪ §9潜行挖掘原木时，连锁破坏相连原木与周围树叶");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc2", "§7▪ §9近战攻击同样吃到被动：§c伤害=(1+移动速度)×攻击力");
+        add("tooltip.pasterdream.fluffy_wind_alloy_shovel.skill_name", "战技：§b沙尘漩涡");
+        add("tooltip.pasterdream.fluffy_wind_alloy_shovel.desc1", "§7▪ §9潜行挖掘时，沿击打方向连锁破坏 §c3×3×3 §9同类方块");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.skill_name", "战技：§b春风化雨");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc1", "§7▪ §9右键催熟面前 §c3×3 §9作物（每格消耗 §c1 §9耐久）");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc2", "§7▪ §9冷却时间：§c3秒");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc3", "§7▪ §9潜行左键：以打击点为中心采集 §c5×5 §9范围的作物，或沿击打方向连锁 §c3×3×3 §9同类方块");
+
         // 堕落者之印
         add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "堕落者之印");
         add("tooltip.pasterdream.seal_of_the_corrupted.effect1", "§7▪ §9不会受到低精神值带来的负面效果");
