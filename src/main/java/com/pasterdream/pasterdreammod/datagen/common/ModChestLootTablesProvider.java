@@ -1498,38 +1498,484 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
         consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/wind_journey_chest"),
                 LootTable.lootTable()
+                        // 维度特色物品，固定2抽取，幸运影响系数0.15
                         .withPool(LootPool.lootPool()
-                                .setBonusRolls(ConstantValue.exactly(0F))
-                                .setRolls(ConstantValue.exactly(1F))
+                                .setBonusRolls(ConstantValue.exactly(0.15F))
+                                .setRolls(ConstantValue.exactly(2.0F))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND.get())
+                                        .setWeight(4)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_NUGGET.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CLOUD.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_RUNNER_CRYSTAL.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(5))
+                        )
+                        // 植物，固定2抽取，幸运影响系数0.1
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.1F))
+                                .setRolls(ConstantValue.exactly(2.0F))
+                                .add(LootItem.lootTableItem(ModItems.HAIRY_MOSS.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_CLEAVING_GRASS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_FEATHER_GRASS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_ISLAND_REED.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                        )
+                        // 食物，固定3抽取，幸运影响系数0.15
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.15F))
+                                .setRolls(ConstantValue.exactly(3.0F))
+                                .add(LootItem.lootTableItem(ModItems.WIND_RUNNER_JELLY.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.FORTUNE_JELLY.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(Items.BREAD)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(Items.APPLE)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(Items.COOKED_CHICKEN)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_JAR_OF_MILK.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CHOCOLATE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                        )
+                        // 建材，固定1抽取，不提供额外抽取次数
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.CYAN_STONE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 32.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CYAN_STONE_BRICKS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 32.0F))))
+                                .add(LootItem.lootTableItem(ModItems.MOSSY_CYAN_STONE_BRICKS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 32.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_MOOR_LOG.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 32.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_MOOR_PLANKS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 32.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CLOUD.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 16.0F))))
+                                .add(LootItem.lootTableItem(ModItems.THICK_CLOUD.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 16.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_LANTERN.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 4.0F))))
+                        )
+                        // 装备&工具，固定1抽取，幸运影响系数0.1
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.1F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_PICKAXE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F)))
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                UniformGenerator.between(1.0F, 4.0F))
+                                                .allowTreasure()))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_SWORD.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F)))
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                UniformGenerator.between(1.0F, 4.0F))
+                                                .allowTreasure()))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_SHOVEL.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F)))
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                UniformGenerator.between(1.0F, 4.0F))
+                                                .allowTreasure()))
+                                .add(LootItem.lootTableItem(Items.IRON_PICKAXE)
+                                        .setWeight(1)
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                UniformGenerator.between(1.0F, 4.0F))
+                                                .allowTreasure()))
+                                .add(LootItem.lootTableItem(Items.IRON_SWORD)
+                                        .setWeight(1)
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                UniformGenerator.between(1.0F, 4.0F))
+                                                .allowTreasure()))
+                                .add(LootItem.lootTableItem(Items.FIREWORK_ROCKET)
+                                        .setWeight(4)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 12.0F))))
                                 .add(LootItem.lootTableItem(Items.FEATHER)
                                         .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1F, 5F))))
-                                .add(LootItem.lootTableItem(Items.FIREWORK_ROCKET)
+                                                UniformGenerator.between(2.0F, 8.0F))))
+                        )
+                        // 材料物品，固定1抽取，幸运影响系数0.25
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.25F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_NUGGET.get())
+                                        .setWeight(5)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(3.0F, 5.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(2F, 7F))))
-                                .add(LootItem.lootTableItem(Items.ARROW)
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(5F, 12F))))
-                                .add(LootItem.lootTableItem(ModItems.MAGIC_STONE.get())
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_RUNNER_CRYSTAL.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(4F, 10F)))))
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(90))
+                        )
+                        // 稀有材料，固定1抽取，幸运影响系数1（萦风合金锭为Boss产出的延伸，概率极低）
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(1.0F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.FLUFFY_WIND_ALLOY_INGOT.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(400))
+                        )
+                        // 特殊物品，固定1抽取，无幸运修正系数
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.PAPER_PLANE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_VANE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_KNIGHT_FLAG.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.BREAK_WIND_CURTAIN.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_JOURNEY_MUSIC_DISC.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.LUCK_ENHANCE_STONE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(30)))
+                        // 附魔书，固定1抽取，无幸运修正系数
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(Items.BOOK)
+                                        .setWeight(1)
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                UniformGenerator.between(1.0F, 20.0F))
+                                                .allowTreasure()))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(3))
+                        )
         );
 
         // 风之旅途稀有战利品（原 loots_relic_7）：风岛/风车小屋/失落风骑士遗迹
         consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/wind_journey_chest_rare"),
                 LootTable.lootTable()
+                        // 维度特色物品，固定2抽取，幸运影响系数0.2
                         .withPool(LootPool.lootPool()
-                                .setBonusRolls(ConstantValue.exactly(0F))
-                                .setRolls(ConstantValue.exactly(1F))
-                                .add(LootItem.lootTableItem(Items.DIRT)
+                                .setBonusRolls(ConstantValue.exactly(0.2F))
+                                .setRolls(ConstantValue.exactly(2.0F))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND.get())
+                                        .setWeight(4)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_NUGGET.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 4.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CLOUD.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1F)))))
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_RUNNER_CRYSTAL.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(9))
+                        )
+                        // 植物，固定2抽取，幸运影响系数0.1
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.1F))
+                                .setRolls(ConstantValue.exactly(2.0F))
+                                .add(LootItem.lootTableItem(ModItems.HAIRY_MOSS.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(2.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_CLEAVING_GRASS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(2.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_FEATHER_GRASS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(2.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_ISLAND_REED.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(2.0F, 3.0F))))
+                        )
+                        // 食物，固定3抽取，幸运影响系数0.15
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.15F))
+                                .setRolls(ConstantValue.exactly(3.0F))
+                                .add(LootItem.lootTableItem(ModItems.WIND_RUNNER_JELLY.get())
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.FORTUNE_JELLY.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(Items.BREAD)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(Items.APPLE)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(Items.COOKED_CHICKEN)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_JAR_OF_MILK.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CHOCOLATE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                        )
+                        // 建材，固定1抽取，不提供额外抽取次数
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.CYAN_STONE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 48.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CYAN_STONE_BRICKS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 48.0F))))
+                                .add(LootItem.lootTableItem(ModItems.MOSSY_CYAN_STONE_BRICKS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 48.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_MOOR_LOG.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 48.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_MOOR_PLANKS.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 48.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CLOUD.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 24.0F))))
+                                .add(LootItem.lootTableItem(ModItems.THICK_CLOUD.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 24.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_LANTERN.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 6.0F))))
+                        )
+                        // 装备&工具，固定1抽取，幸运影响系数0.1
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.1F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_PICKAXE.get())
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F)))
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                UniformGenerator.between(2.0F, 5.0F))
+                                                .allowTreasure()))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_SWORD.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F)))
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                UniformGenerator.between(2.0F, 5.0F))
+                                                .allowTreasure()))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_SHOVEL.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F)))
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                UniformGenerator.between(2.0F, 5.0F))
+                                                .allowTreasure()))
+                                .add(LootItem.lootTableItem(Items.IRON_PICKAXE)
+                                        .setWeight(1)
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                UniformGenerator.between(2.0F, 5.0F))
+                                                .allowTreasure()))
+                                .add(LootItem.lootTableItem(Items.IRON_SWORD)
+                                        .setWeight(1)
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                UniformGenerator.between(2.0F, 5.0F))
+                                                .allowTreasure()))
+                                .add(LootItem.lootTableItem(Items.FIREWORK_ROCKET)
+                                        .setWeight(4)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(6.0F, 16.0F))))
+                                .add(LootItem.lootTableItem(Items.FEATHER)
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(3.0F, 10.0F))))
+                        )
+                        // 材料物品，固定1抽取，幸运影响系数0.25
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.25F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_NUGGET.get())
+                                        .setWeight(5)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(3.0F, 6.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND.get())
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_RUNNER_CRYSTAL.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_INGOT.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(80))
+                        )
+                        // 稀有材料，固定1抽取，幸运影响系数1（萦风合金锭为Boss产出的延伸，概率极低）
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(1.0F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.FLUFFY_WIND_ALLOY_INGOT.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(300))
+                        )
+                        // 特殊物品，固定1抽取，无幸运修正系数
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.PAPER_PLANE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_VANE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_KNIGHT_FLAG.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.BREAK_WIND_CURTAIN.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_JOURNEY_MUSIC_DISC.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(20)))
+                        // 附魔书，固定1抽取，无幸运修正系数
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.0F))
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(Items.BOOK)
+                                        .setWeight(1)
+                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                                UniformGenerator.between(5.0F, 25.0F))
+                                                .allowTreasure()))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(2))
+                        )
         );
 
         // 圣诞树战利品（原 loots_relic_8）
