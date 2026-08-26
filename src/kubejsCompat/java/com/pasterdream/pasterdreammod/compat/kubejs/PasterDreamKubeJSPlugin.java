@@ -1,8 +1,11 @@
 package com.pasterdream.pasterdreammod.compat.kubejs;
 
 import com.pasterdream.pasterdreammod.PasterDreamTipsManager;
+import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import dev.latvian.mods.kubejs.KubeJSPlugin;
 import dev.latvian.mods.kubejs.script.BindingsEvent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Rarity;
 
 import java.util.List;
 
@@ -11,6 +14,7 @@ public class PasterDreamKubeJSPlugin extends KubeJSPlugin {
     @Override
     public void registerBindings(BindingsEvent event) {
         event.add("PasterDreamTips", new TipsBinding());
+        event.add("PasterDreamRarities", new RaritiesBinding());
     }
 
     public static class TipsBinding {
@@ -41,6 +45,32 @@ public class PasterDreamKubeJSPlugin extends KubeJSPlugin {
 
         public void reset() {
             PasterDreamTipsManager.INSTANCE.resetToDefaults();
+        }
+    }
+
+    public static class RaritiesBinding {
+
+        public List<String> getNames() {
+            return ModRarities.names();
+        }
+
+        public int getTier(String name) {
+            Rarity rarity = ModRarities.byName(name);
+            Integer tier = rarity == null ? null : ModRarities.tierOf(rarity);
+            return tier == null ? 0 : tier;
+        }
+
+        public Rarity getRarity(String name) {
+            return ModRarities.byName(name);
+        }
+
+        public Component getQualityTooltip(String name) {
+            Rarity rarity = ModRarities.byName(name);
+            return rarity == null ? Component.empty() : ModRarities.qualityTooltip(rarity);
+        }
+
+        public String getQualityTooltipString(String name) {
+            return getQualityTooltip(name).getString();
         }
     }
 }
