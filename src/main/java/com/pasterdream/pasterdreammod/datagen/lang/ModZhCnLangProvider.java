@@ -693,6 +693,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.loot_table.not_set", "§7未设置");
         add("tooltip.pasterdream.loot_generator.usage.shift", "§7对容器使用Shift+右键以在容器生成战利品");
         add("tooltip.pasterdream.右键打开GUI以查看蓝图结构", "右键打开GUI以查看蓝图结构");
+        add("tooltip.pasterdream.蓝图搭建消耗规则", "§7创造模式搭建时不消耗物品，生存模式搭建时需要消耗，第一次右键打开GUI，在里面可以点击“放置”按钮，第二次右键即可放置");
 
         add("tooltip.pasterdream.normal_loot_table", "§3普通战利品：%s，权重：%d，幸运权重倍率：%f");
         add("tooltip.pasterdream.rare_loot_table", "§a稀有战利品：%s，权重：%d，幸运权重倍率：%f");
@@ -1642,8 +1643,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("block.pasterdream.shadow_brazier", "暗影火盆");
         add("block.pasterdream.shadow_blast_furnace_core", "暗影高炉核心");
         add("tooltip.pasterdream.shadow_hand_trap", "§7--你挖下来这个做什么？");
-        add("tooltip.pasterdream.shadow_blast_furnace_core.1", "在完成多方块结构时");
-        add("tooltip.pasterdream.shadow_blast_furnace_core.2", "使用对应蓝图右键此核心以进行搭建");
         add("message.pasterdream.shadow_brazier.need_candle", "需要用阴影蜡烛点燃火盆");
         add("message.pasterdream.shadow_brazier.lit", "火盆被点燃，但带来的并不是光明...");
         add("message.pasterdream.shadow_brazier.shadow_spread", "阴影从四周蔓延开来");

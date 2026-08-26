@@ -41,6 +41,7 @@ public class BluePrintItem extends Item
     {
         super.appendHoverText(stack, level, tooltip, flag);
         tooltip.add(Component.translatable("tooltip.pasterdream.右键打开GUI以查看蓝图结构"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.蓝图搭建消耗规则"));
     }
 
     private void handleClientInteraction(Player player, ItemStack stack, @Nullable BlockPos clickedPos)
