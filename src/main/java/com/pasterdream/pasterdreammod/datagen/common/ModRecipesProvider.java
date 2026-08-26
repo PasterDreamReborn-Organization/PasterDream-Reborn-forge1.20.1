@@ -229,6 +229,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         fluffyWindAlloyToolRecipes(pWriter);
         copperArmorRecipes(pWriter);
         titaniumToolRecipes(pWriter);
+        titaniumToolDirectRecipes(pWriter);
         dyedreamToolRecipes(pWriter);
         titaniumArmorRecipes(pWriter);
         sculkArmorRecipes(pWriter);
@@ -425,35 +426,26 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     // ===== 黑石棍配方 =====
 
     private void blackStickRecipes(Consumer<FinishedRecipe> pWriter) {
-        // 黑石 + 黑曜石 → 黑石棍（斜向）
+        // 黑石 → 黑石棍（斜向）
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLACK_STICK.get(), 1)
                 .pattern("  a")
                 .pattern(" b ")
                 .pattern("a  ")
                 .define('a', Items.BLACKSTONE)
-                .define('b', Items.OBSIDIAN)
+                .define('b', Items.BLACKSTONE)
                 .unlockedBy(getHasName(Items.BLACKSTONE), has(Items.BLACKSTONE))
                 .save(pWriter);
 
-        // 黑石 + 黑曜石 → 黑石棍（直向）
+        // 黑石 → 黑石棍（直向）
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLACK_STICK.get(), 1)
                 .pattern("a")
                 .pattern("b")
                 .pattern("a")
                 .define('a', Items.BLACKSTONE)
-                .define('b', Items.OBSIDIAN)
+                .define('b', Items.BLACKSTONE)
                 .unlockedBy(getHasName(Items.BLACKSTONE), has(Items.BLACKSTONE))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":black_stick_straight");
-
-        // 黑石 + 哭泣黑曜石 → 黑石棍（斜向）
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLACK_STICK.get(), 1)
-                .pattern("  a")
-                .pattern(" b ")
-                .pattern("a  ")
-                .define('a', Items.BLACKSTONE)
-                .define('b', Items.CRYING_OBSIDIAN)
-                .unlockedBy(getHasName(Items.CRYING_OBSIDIAN), has(Items.CRYING_OBSIDIAN))
-                .save(pWriter, PasterDreamMod.MOD_ID + ":black_stick_from_crying_obsidian");
+        
     }
 
     // ===== 炙焰金工具配方 =====
@@ -597,41 +589,10 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     // ===== 凝风铁工具配方 =====
 
     private void congealWindIronToolRecipes(Consumer<FinishedRecipe> pWriter) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.CONGEAL_WIND_IRON_SWORD.get())
-                .pattern("a")
-                .pattern("a")
-                .pattern("b")
-                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
-                .save(pWriter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CONGEAL_WIND_IRON_PICKAXE.get())
-                .pattern("aaa")
-                .pattern(" b ")
-                .pattern(" b ")
-                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
-                .save(pWriter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CONGEAL_WIND_IRON_AXE.get())
-                .pattern("aa")
-                .pattern("ab")
-                .pattern(" b")
-                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
-                .save(pWriter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CONGEAL_WIND_IRON_SHOVEL.get())
-                .pattern("a")
-                .pattern("b")
-                .pattern("b")
-                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
-                .save(pWriter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CONGEAL_WIND_IRON_HOE.get())
-                .pattern("aa")
-                .pattern(" b")
-                .pattern(" b")
-                .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get()).define('b', ModItems.BLACK_STICK.get())
-                .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
-                .save(pWriter);
+        RecipeHelpers.toolSetRecipes(pWriter,
+                ModItems.CONGEAL_WIND_IRON_INGOT.get(), ModItems.BLACK_STICK.get(), PasterDreamMod.MOD_ID,
+                ModItems.CONGEAL_WIND_IRON_SWORD.get(), ModItems.CONGEAL_WIND_IRON_PICKAXE.get(), ModItems.CONGEAL_WIND_IRON_AXE.get(),
+                ModItems.CONGEAL_WIND_IRON_SHOVEL.get(), ModItems.CONGEAL_WIND_IRON_HOE.get());
     }
 
     // ===== 萦风合金工具配方（锻造台：凝结之风 + 凝风铁工具 + 萦风合金升级套件） =====
@@ -776,6 +737,15 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         RecipeCategory.TOOLS, ModItems.TITANIUM_HOE.get())
                 .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_hoe_smithing");
+    }
+
+    // ===== 钛金工具配方（直接合成） =====
+
+    private void titaniumToolDirectRecipes(Consumer<FinishedRecipe> pWriter) {
+        RecipeHelpers.toolSetRecipes(pWriter,
+                ModItems.TITANIUM_INGOT.get(), ModItems.BLACK_STICK.get(), PasterDreamMod.MOD_ID,
+                ModItems.TITANIUM_SWORD.get(), ModItems.TITANIUM_PICKAXE.get(), ModItems.TITANIUM_AXE.get(),
+                ModItems.TITANIUM_SHOVEL.get(), ModItems.TITANIUM_HOE.get());
     }
 
     // ===== 材料配方 =====
