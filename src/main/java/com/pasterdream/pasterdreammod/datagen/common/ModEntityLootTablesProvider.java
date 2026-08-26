@@ -217,15 +217,11 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem.lootTableItem(ModItems.JELLYFISH_MUD.get())
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 3)))
                                         .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1)))
-                                .add(LootItem.lootTableItem(ModItems.GLASS_JAR_OF_WATER.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1))))
                                 .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))))
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1))))
         );
 
         consumer.accept(
