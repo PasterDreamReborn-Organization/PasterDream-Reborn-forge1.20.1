@@ -516,7 +516,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.CONGEAL_WIND_IRON_LANTERN.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/congeal_wind_iron_lantern"));
 
-        withExistingParent(ModItems.CONGEAL_WIND_IRON_CHAIN.getId().getPath(), modLoc("block/congeal_wind_iron_chain"));
+        withExistingParent(ModItems.CONGEAL_WIND_IRON_CHAIN.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/congeal_wind_iron_chain"));
 
         basicItem(ModItems.NIGHTMARE_FUEL.get());
 
