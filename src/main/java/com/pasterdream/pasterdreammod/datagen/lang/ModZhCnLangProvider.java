@@ -1430,6 +1430,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name", "被动：§b雷随疾风");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1", "§7▪ §9移动速度越高伤害越高：§c伤害=(1+移动速度)×攻击力");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive2", "§7▪ §9攻击附带 §c攻击力×0.1 §9的雷电伤害");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive3", "§7▪ §9破坏方块或击杀生物时，掉落物被风卷到身边");
         add("message.pasterdream.fluffy_wind_alloy_sword.mode_wind", "§f当前模式：疾风突进");
         add("message.pasterdream.fluffy_wind_alloy_sword.mode_thunder", "§e当前模式：萦风引雷");
         add("message.pasterdream.fluffy_wind_alloy_sword.no_energy", "§c融梦能量不足");
@@ -1443,6 +1444,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_axe.skill_name", "战技：§b落叶秋风");
         add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc1", "§7▪ §9潜行挖掘原木时，连锁破坏相连原木与周围树叶");
         add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc2", "§7▪ §9近战攻击同样吃到被动：§c伤害=(1+移动速度)×攻击力");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc3", "§7▪ §9击杀生物时，掉落物被风卷到身边");
         add("tooltip.pasterdream.fluffy_wind_alloy_shovel.skill_name", "战技：§b沙尘漩涡");
         add("tooltip.pasterdream.fluffy_wind_alloy_shovel.desc1", "§7▪ §9潜行挖掘时，沿击打方向连锁破坏 §c3×3×3 §9同类方块");
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.skill_name", "战技：§b春风化雨");

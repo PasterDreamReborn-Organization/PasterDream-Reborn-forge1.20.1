@@ -52,6 +52,7 @@ public class FluffyWindAlloyAxeItem extends AxeItem implements FluffyWindAlloyTo
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_axe.skill_name"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_axe.desc1"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_axe.desc2"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_axe.desc3"));
     }
 
     // ==================== 被动 · 攻击吃到疾风过境 ====================

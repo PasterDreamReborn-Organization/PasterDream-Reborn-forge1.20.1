@@ -93,6 +93,11 @@ public final class FluffyWindAlloyToolHelper {
         item.setPickUpDelay(0);
     }
 
+    /** 把指定掉落物吹向玩家（用于击杀生物 / 连锁破坏的掉落） */
+    public static void blowDropToPlayer(ItemEntity item, Vec3 target) {
+        blowItemToward(item, target);
+    }
+
     // ===== 连锁破坏 =====
 
     /** 破坏一个方块：按战利品表掉落并把掉落物吹向玩家 */

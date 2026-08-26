@@ -1259,6 +1259,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name", "Passive: §bThunder Follows the Wind");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1", "§7▪ §9Faster = more damage: §cDamage=(1+MoveSpeed)×ATK");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive2", "§7▪ §9Attacks also deal §cATK×0.1 §9lightning damage");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive3", "§7▪ §9Drops from broken blocks or killed mobs are swept to you by the wind");
         add("message.pasterdream.fluffy_wind_alloy_sword.mode_wind", "§fMode: Swift Wind Dash");
         add("message.pasterdream.fluffy_wind_alloy_sword.mode_thunder", "§eMode: Thunderstorm");
         add("message.pasterdream.fluffy_wind_alloy_sword.no_energy", "§cNot enough Melt Dream Energy");
@@ -1272,6 +1273,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_axe.skill_name", "Tool Art: §bAutumn Wind");
         add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc1", "§7▪ §9When sneaking, mining logs chains connected logs and blows away nearby leaves");
         add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc2", "§7▪ §9Melee attacks also gain the passive: §cDamage=(1+MoveSpeed)×ATK");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc3", "§7▪ §9Drops from killed mobs are swept to you by the wind");
         add("tooltip.pasterdream.fluffy_wind_alloy_shovel.skill_name", "Tool Art: §bSand Whirlwind");
         add("tooltip.pasterdream.fluffy_wind_alloy_shovel.desc1", "§7▪ §9When sneaking, mining chains §c3×3×3 §9blocks of the same type along the hit direction");
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.skill_name", "Tool Art: §bSpring Rain");

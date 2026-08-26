@@ -317,6 +317,7 @@ public class FluffyWindAlloySwordItem extends SwordItem {
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.passive2"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.passive3"));
     }
 
     @Override
