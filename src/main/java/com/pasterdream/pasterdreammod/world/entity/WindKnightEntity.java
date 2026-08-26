@@ -82,8 +82,6 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     private static final double SKILL_TRIGGER_DIST = 36.0;      // 技能触发距离（平方，6格）
     private static final int SKILL_DELAY = 25;                  // 技能释放延迟（tick）
     private static final int SKILL_INVULNERABLE_TICKS = 40;     // 技能释放期间无敌时长（tick，2s）
-    private static final double PASSIVE_INVULNERABLE_CHANCE = 0.3; // 被动：受击后获得无敌的概率
-    private static final int PASSIVE_INVULNERABLE_TICKS = 20;      // 被动：受击后获得的无敌时长（tick，1s）
     private static final double SKILL_RADIUS = 7.0;             // 技能范围（格）
     private static final float SKILL_DAMAGE = 30;               // 技能伤害
     private static final int EXPLOSION_PARTICLE_COUNT = 3;      // 爆炸粒子数量
@@ -230,10 +228,11 @@ public class WindKnightEntity extends Monster implements GeoEntity {
         if (amount < 0) return false;
         boolean result = super.hurt(source, amount);
         if (!result) damageLimiter.rollback(prevBucket);
-        // 被动：受击后按概率获得短暂无敌（取较长者，避免覆盖技能无敌），触发时播放祭坛修复同款粒子
+        // 被动：受击后按概率获得短暂无敌（概率/时长/开关由 Config 控制，取较长者避免覆盖技能无敌），触发时播放祭坛修复同款粒子
         if (result && !level().isClientSide()
-                && random.nextDouble() < PASSIVE_INVULNERABLE_CHANCE) {
-            skillInvulnerableCountdown = Math.max(skillInvulnerableCountdown, PASSIVE_INVULNERABLE_TICKS);
+                && Config.windKnightPassiveInvulnerableEnabled
+                && random.nextDouble() < Config.windKnightPassiveInvulnerableChance) {
+            skillInvulnerableCountdown = Math.max(skillInvulnerableCountdown, Config.windKnightPassiveInvulnerableTicks);
             if (level() instanceof ServerLevel sl)
                 sl.sendParticles(ParticleTypes.SCRAPE, getX(), getY() + getBbHeight() * 0.6, getZ(), 24, 1.2, 1.0, 1.2, 0.1);
         }
