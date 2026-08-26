@@ -891,6 +891,13 @@ public class ModItems {
                 }
             });
 
+    public static final RegistryObject<Item> WIND_RUNNER_JELLY = ITEMS.register("wind_runner_jelly",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()
+                    .food(new FoodProperties.Builder().nutrition(6).alwaysEat().saturationMod(0.415f)
+                            .effect(() -> new MobEffectInstance(ModEffects.WIND_RUNNER.get(), 3600, 0), 1.0f)
+                            .build()).useDuration(25)
+            ));
+
     public static final RegistryObject<Item> LIGHT_ORGAN = ITEMS.register("light_organ",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(-1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.GLOWING, 100, 0), 1.0f)

@@ -111,6 +111,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.milky_way_jelly.flavor", "§7§O --银河无际，星海无涯");
         add(ModItems.FORTUNE_JELLY.get(), "福灵果冻");
         add("tooltip.pasterdreammod.fortune_jelly", "§9食用后，获得幸运I（1:00）");
+        add(ModItems.WIND_RUNNER_JELLY.get(), "风行者果冻");
+        add("tooltip.pasterdreammod.wind_runner_jelly", "§9食用后，获得风行者（3:00），期间无需鞘翅即可进行鞘翅飞行");
         add("item.minecraft.potion.effect.luck", "幸运药水");
         add("item.minecraft.splash_potion.effect.luck", "喷溅型幸运药水");
         add("item.minecraft.lingering_potion.effect.luck", "滞留型幸运药水");
@@ -2307,6 +2309,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.shadow_silence.description", "暗影生物获得该buff后，会失去释放技能的能力。");
         add("effect.pasterdream.bind.description", "被白厄剑的剑雨攻击后获得，获得该buff后，会无法移动。");
         add("effect.pasterdream.restrainmove_block.description", "效果持续期间移除跳跃提升并强制禁用飞行。");
+        add("effect.pasterdream.wind_runner.description", "食用风行者果冻获得，效果持续期间无需鞘翅即可进行鞘翅飞行。");
 
         // 染梦裂隙消息
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5身体从这个奇怪的洞穴中穿过，但并没有什么反应。");
@@ -2531,6 +2534,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.tailwind", "顺风");
         add("effect.pasterdream.deadwind", "逆风");
         add("effect.pasterdream.windproof", "防风");
+        add("effect.pasterdream.wind_runner", "风行者");
         add("effect.pasterdream.misty_dream", "迷梦");
         add("effect.pasterdream.cloud_mist", "云雾");
         add("tooltip.pasterdream.wind_vane.desc", "§7检测当前的风向与玩家的角度");

@@ -1,0 +1,36 @@
+{
+  "type": "pasterdream:mortar",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:wind_plant_extract",
+      "amount": 125
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:jellyfish_jello",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:wind_runner_crystal",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:congeal_wind",
+      "count": 2
+    },
+    {
+      "item": "minecraft:sugar",
+      "count": 2
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:wind_runner_jelly",
+      "count": 1
+    }
+  ]
+}

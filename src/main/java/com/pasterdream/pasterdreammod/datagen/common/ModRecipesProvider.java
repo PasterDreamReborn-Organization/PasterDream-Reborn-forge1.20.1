@@ -2631,6 +2631,19 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                                 has(ModItems.MORTAR.get())),
                 pWriter, "glass_jar_of_wind_plant_extract");
 
+        // 风行者果冻：罐装风植萃取液 + 水母果冻 + 风行者水晶 + 凝结之风 + 糖（研钵作为工具不消耗，罐子由 remainder 返还）
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.WIND_RUNNER_JELLY.get(), 1)
+                        .requires(ModItems.MORTAR.get())
+                        .requires(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get())
+                        .requires(ModItems.JELLYFISH_JELLO.get())
+                        .requires(ModItems.WIND_RUNNER_CRYSTAL.get())
+                        .requires(ModItems.CONGEAL_WIND.get(), 2)
+                        .requires(Items.SUGAR, 2)
+                        .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get()),
+                                has(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get())),
+                pWriter, "wind_runner_jelly");
+
         // 厚重阴影 (4 shadow → 1 thick_shadow)
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.THICK_SHADOW.get(), 1)
                 .pattern("aa")
