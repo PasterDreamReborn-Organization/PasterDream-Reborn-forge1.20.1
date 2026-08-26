@@ -36,6 +36,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
@@ -100,9 +101,9 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     private static final float HURT_SOUND_PITCH = 1.1f;         // 受击音效音调
     private static final double MOVE_SPEED = 0.25;              // 移动速度属性
     private static final double MAX_HEALTH = 250;               // 最大生命属性
-    private static final double ARMOR = 10;                     // 护甲属性
+    private static final double ARMOR = 20;                     // 护甲属性
     private static final double ATTACK_DAMAGE = 20;             // 攻击伤害属性
-    private static final double FOLLOW_RANGE = 16;              // 追踪距离属性
+    private static final double FOLLOW_RANGE = 32;              // 追踪距离属性
     private static final double KNOCKBACK_RESISTANCE = 0.4;     // 击退抗性属性
     private static final int ATTACK_ANIM_LENGTH = 20;           // 攻击动画时长（tick，attack 动画长 1s）
     private static final int ATTACK_INTERVAL = 25;              // 攻击间隔（tick），略大于动画时长避免重叠
@@ -112,6 +113,19 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     private static final double LIGHTNING_SPAWN_HEIGHT = 5.0;   // 落雷生成高度（目标头顶上方，格）
     private static final double LIGHTNING_DAMAGE = 7;           // 落雷伤害（与雷云一致）
     private static final int LIGHTNING_DELAY_TICKS = 10;        // 落雷延迟（普攻命中后延迟的 tick 数）
+
+    // 狂暴（半血）阶段参数
+    private static final float ENRAGE_HEALTH_RATIO = 0.5f;          // 狂暴触发血量比例（≤50%）
+    private static final float ENRAGE_DAMAGE_MULTIPLIER = 1.5f;     // 狂暴阶段造成的伤害倍率
+    private static final int ENRAGE_RESISTANCE_AMPLIFIER = 1;       // 抗性提升 II（amplifier=1）
+    private static final int ENRAGE_RESISTANCE_DURATION = 60;       // 抗性提升持续时长（tick）
+    private static final int ENRAGE_RESISTANCE_REFRESH = 30;        // 抗性提升刷新间隔（tick）
+    private static final int ENRAGE_CLOUD_COUNT = 4;                // 召唤高压雷云数量
+    private static final double ENRAGE_CLOUD_HEIGHT = 6.0;          // 高压雷云生成高度（头顶上方，格）
+    private static final double ENRAGE_CLOUD_RADIUS = 2.0;          // 高压雷云环绕半径（格）
+    private static final int ENRAGE_CLOUD_RESISTANCE_AMPLIFIER = 1; // 召唤雷云获得抗性提升 II
+    private static final int ENRAGE_CLOUD_STRENGTH_AMPLIFIER = 1;   // 召唤雷云获得力量 II
+    private static final int ENRAGE_CLOUD_EFFECT_DURATION = 1200;   // 召唤雷云增益持续时长（tick，60s）
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final ServerBossEvent bossInfo = new ServerBossEvent(this.getDisplayName(), ServerBossEvent.BossBarColor.GREEN, ServerBossEvent.BossBarOverlay.PROGRESS);
@@ -126,6 +140,8 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     private LivingEntity pendingAttackTarget;
     private double pendingAttackReachSqr;
     private final BossDamageLimiter damageLimiter;
+    private boolean enrageCloudsSpawned;
+    private int enrageResistanceCountdown;
 
     public WindKnightEntity(PlayMessages.SpawnEntity packet, Level world) {
         this(ModEntities.WIND_KNIGHT.get(), world);
@@ -229,6 +245,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
         damageLimiter.tick();
         skillTick();
         if (!level().isClientSide()) {
+            enrageTick();
             if (procedureTimer > 0) {
                 procedureTimer--;
                 if (procedureTimer == 0)
@@ -299,7 +316,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
                 .sorted(Comparator.comparingDouble(en -> en.distanceToSqr(center))).toList()) {
             if (!e.getType().is(SPECIAL_ENTITY) && !(e instanceof WindKnightEntity)
                     && !(e instanceof Player player && (player.isCreative() || player.isSpectator()))) {
-                e.hurt(damageSources().mobAttack(this), SKILL_DAMAGE);
+                e.hurt(damageSources().mobAttack(this), SKILL_DAMAGE * (isEnraged() ? ENRAGE_DAMAGE_MULTIPLIER : 1.0f));
                 if (level() instanceof ServerLevel sl)
                     sl.sendParticles(ParticleTypes.EXPLOSION, e.getX(), e.getY(), e.getZ(), EXPLOSION_PARTICLE_COUNT, PARTICLE_SPREAD, PARTICLE_SPREAD, PARTICLE_SPREAD, PARTICLE_SPREAD);
             }
@@ -391,6 +408,74 @@ public class WindKnightEntity extends Monster implements GeoEntity {
         proj.shoot(0, -1, 0, 1, 0);
         level().addFreshEntity(proj);
         level().playSound(null, target.getOnPos(), ModSounds.THUNDERCLOUD_ATTACK.get(), SoundSource.MASTER, 0.6f, 1f);
+    }
+
+    /** 是否处于狂暴阶段（半血及以下） */
+    private boolean isEnraged() {
+        return this.getHealth() <= this.getMaxHealth() * ENRAGE_HEALTH_RATIO;
+    }
+
+    /**
+     * 狂暴阶段逻辑：半血以下时持续获得抗性提升 II，
+     * 并在首次进入狂暴时于头顶周围召唤高压雷云。恢复半血以上后可再次触发。
+     */
+    private void enrageTick() {
+        if (this.isRemoved() || !this.isAlive())
+            return;
+        if (isEnraged()) {
+            if (--enrageResistanceCountdown <= 0) {
+                enrageResistanceCountdown = ENRAGE_RESISTANCE_REFRESH;
+                addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, ENRAGE_RESISTANCE_DURATION, ENRAGE_RESISTANCE_AMPLIFIER, false, false));
+            }
+            if (!enrageCloudsSpawned) {
+                enrageCloudsSpawned = true;
+                spawnEnrageThunderclouds();
+            }
+        } else {
+            enrageCloudsSpawned = false;
+        }
+    }
+
+    /** 在头顶周围召唤 ENRAGE_CLOUD_COUNT 朵高压雷云（跟随骑士的仇恨目标） */
+    private void spawnEnrageThunderclouds() {
+        if (!(level() instanceof ServerLevel sl))
+            return;
+        for (int i = 0; i < ENRAGE_CLOUD_COUNT; i++) {
+            double angle = 2 * Math.PI * i / ENRAGE_CLOUD_COUNT;
+            double x = getX() + Math.cos(angle) * ENRAGE_CLOUD_RADIUS;
+            double z = getZ() + Math.sin(angle) * ENRAGE_CLOUD_RADIUS;
+            HighvoltageThundercloudEntity cloud = new HighvoltageThundercloudEntity(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get(), level());
+            // 向上找最近的空气格，避免雷云卡进天花板/墙壁
+            double cloudY = getY() + ENRAGE_CLOUD_HEIGHT;
+            while (cloudY < level().getMaxBuildHeight() - 1
+                    && !level().isEmptyBlock(BlockPos.containing(x, cloudY, z))) {
+                cloudY++;
+            }
+            cloud.setPos(x, cloudY, z);
+            cloud.setSummoningKnight(this);
+            cloud.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, ENRAGE_CLOUD_EFFECT_DURATION, ENRAGE_CLOUD_RESISTANCE_AMPLIFIER, false, false));
+            cloud.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, ENRAGE_CLOUD_EFFECT_DURATION, ENRAGE_CLOUD_STRENGTH_AMPLIFIER, false, false));
+            sl.addFreshEntity(cloud);
+            LivingEntity target = getTarget();
+            if (target != null && target.isAlive() && !target.isRemoved()) {
+                cloud.setTarget(target);
+            }
+        }
+    }
+
+    /** 近战伤害：狂暴（半血以下）阶段造成的伤害 ×1.5 */
+    @Override
+    public boolean doHurtTarget(Entity target) {
+        if (!isEnraged())
+            return super.doHurtTarget(target);
+        AttributeInstance attack = this.getAttribute(Attributes.ATTACK_DAMAGE);
+        if (attack == null)
+            return super.doHurtTarget(target);
+        double base = attack.getBaseValue();
+        attack.setBaseValue(base * ENRAGE_DAMAGE_MULTIPLIER);
+        boolean result = super.doHurtTarget(target);
+        attack.setBaseValue(base);
+        return result;
     }
 
     /** 记录待结算的普攻伤害：由攻击 Goal 触发，baseTick 在 ATTACK_DAMAGE_DELAY 后结算 */
