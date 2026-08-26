@@ -43,7 +43,6 @@ public class ForsakensWingItem extends Item implements GeoItem, ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(ModRarities.qualityTooltip(ModRarities.LEGENDARY));
         tooltip.add(Component.translatable("tooltip.pasterdream.forsakens_wing.flight"));
         tooltip.add(Component.translatable("tooltip.pasterdream.forsakens_wing.immune"));
         tooltip.add(Component.translatable("tooltip.pasterdream.forsakens_wing.flavor"));

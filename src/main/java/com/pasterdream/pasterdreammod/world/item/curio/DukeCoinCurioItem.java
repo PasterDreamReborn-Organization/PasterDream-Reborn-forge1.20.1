@@ -67,7 +67,6 @@ public class DukeCoinCurioItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.EXCELLENT));
         list.add(Component.translatable("tooltip.pasterdream.duke_coin_curio.effect.luck"));
         list.add(Component.translatable("tooltip.pasterdream.duke_coin_curio.effect.blink_cd"));
         list.add(Component.translatable("tooltip.pasterdream.duke_coin_curio.flavor"));

@@ -66,7 +66,6 @@ public class FourleafCloverCurioItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.EXCELLENT));
         list.add(Component.translatable("tooltip.pasterdream.fourleaf_clover_curio.effect.health"));
         list.add(Component.translatable("tooltip.pasterdream.fourleaf_clover_curio.effect.luck"));
         list.add(Component.translatable("tooltip.pasterdream.fourleaf_clover_curio.flavor"));

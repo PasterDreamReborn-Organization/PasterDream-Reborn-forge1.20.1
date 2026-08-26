@@ -2,7 +2,6 @@ package com.pasterdream.pasterdreammod.world.item.armoritem.qym;
 
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
-import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
@@ -42,7 +41,6 @@ public class QymWindShirtItem extends ArmorItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.MIRACLE));
         list.add(Component.translatable("tooltip.pasterdream.qym_wind_shirt.flight"));
         list.add(Component.translatable("tooltip.pasterdream.qym_wind_shirt.fall_immune"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.set_bonus"));
