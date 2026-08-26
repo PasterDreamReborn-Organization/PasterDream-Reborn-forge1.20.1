@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.item.windalloy;
+package com.pasterdream.pasterdreammod.world.item.fluffywindalloy;
 
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;

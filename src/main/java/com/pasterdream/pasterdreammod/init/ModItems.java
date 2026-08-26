@@ -66,7 +66,11 @@ import com.pasterdream.pasterdreammod.world.item.tidetool.BeihaiRuoTideSwordItem
 import com.pasterdream.pasterdreammod.world.item.tidetool.TideSwordItem;
 import com.pasterdream.pasterdreammod.world.item.whiteswordtool.WhiteSwordItem;
 import com.pasterdream.pasterdreammod.world.item.shadowswordtool.ShadowSwordItem;
-import com.pasterdream.pasterdreammod.world.item.windalloy.FluffyWindAlloySwordItem;
+import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloySwordItem;
+import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyPickaxeItem;
+import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyAxeItem;
+import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyShovelItem;
+import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyHoeItem;
 import com.pasterdream.pasterdreammod.world.item.shadowerosiontool.*;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
@@ -360,13 +364,13 @@ public class ModItems {
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_SWORD = ITEMS.register("fluffy_wind_alloy_sword",
             () -> new FluffyWindAlloySwordItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_PICKAXE = ITEMS.register("fluffy_wind_alloy_pickaxe",
-            () -> new PickaxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, 1, -2.3f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyPickaxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_AXE = ITEMS.register("fluffy_wind_alloy_axe",
-            () -> new AxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, 5.5f, -2.5f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyAxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_SHOVEL = ITEMS.register("fluffy_wind_alloy_shovel",
-            () -> new ShovelItem(ModToolTiers.FLUFFY_WIND_ALLOY, 1.5f, -2.5f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyShovelItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_HOE = ITEMS.register("fluffy_wind_alloy_hoe",
-            () -> new HoeItem(ModToolTiers.FLUFFY_WIND_ALLOY, -3, -1.5f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyHoeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     // ===== 钛金工具 =====
     public static final RegistryObject<Item> TITANIUM_SWORD = ITEMS.register("titanium_sword",

@@ -1263,6 +1263,22 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.fluffy_wind_alloy_sword.mode_thunder", "§eMode: Thunderstorm");
         add("message.pasterdream.fluffy_wind_alloy_sword.no_energy", "§cNot enough Melt Dream Energy");
 
+        // Fluffy Wind Alloy Tools
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive_name", "Passive: §bGale Passage");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive1", "§7▪ §9Faster = faster mining: §cMining Speed=(1+MoveSpeed×4)×Base");
+        add("tooltip.pasterdream.fluffy_wind_alloy_tool.passive2", "§7▪ §9Drops are swept to you by the wind while mining");
+        add("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.skill_name", "Tool Art: §bWind Erosion Resonance");
+        add("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.desc1", "§7▪ §9When sneaking, mining resonates §c3×3×3 §9blocks of the same type along the hit direction");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.skill_name", "Tool Art: §bAutumn Wind");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc1", "§7▪ §9When sneaking, mining logs chains connected logs and blows away nearby leaves");
+        add("tooltip.pasterdream.fluffy_wind_alloy_axe.desc2", "§7▪ §9Melee attacks also gain the passive: §cDamage=(1+MoveSpeed)×ATK");
+        add("tooltip.pasterdream.fluffy_wind_alloy_shovel.skill_name", "Tool Art: §bSand Whirlwind");
+        add("tooltip.pasterdream.fluffy_wind_alloy_shovel.desc1", "§7▪ §9When sneaking, mining chains §c3×3×3 §9blocks of the same type along the hit direction");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.skill_name", "Tool Art: §bSpring Rain");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc1", "§7▪ §9Right-click to ripen §c3×3 §9crops in front (§c1 §9durability per block)");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc2", "§7▪ §9Cooldown: §c3s");
+        add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc3", "§7▪ §9Sneak+Left-click: harvest §c5×5 §9crops centered on the hit point, or chain §c3×3×3 §9blocks of the same type along the hit direction");
+
         // Seal of the Fallen
         add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "Seal of the Corrupted");
         add("tooltip.pasterdream.seal_of_the_corrupted.effect1", "§7▪ §9Immune to negative effects from low sanity");
