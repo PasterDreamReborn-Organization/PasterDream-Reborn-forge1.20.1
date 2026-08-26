@@ -266,7 +266,6 @@ public class WhiteSwordItem extends SwordItem {
     @Override
     public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(stack, world, list, flag);
-        list.add(ModRarities.qualityTooltip(ModRarities.LEGENDARY));
         list.add(Component.translatable("tooltip.pasterdream.white_sword.skill_name"));
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc1"));
         list.add(Component.translatable("tooltip.pasterdream.white_sword.desc2"));

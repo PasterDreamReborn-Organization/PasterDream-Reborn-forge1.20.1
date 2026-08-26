@@ -21,7 +21,6 @@ public class TerraFloatingIslandItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.EPIC));
         list.add(Component.translatable("tooltip.pasterdream.terra_floating_island.desc1"));
         list.add(Component.translatable("tooltip.pasterdream.terra_floating_island.desc2"));
         list.add(Component.translatable("tooltip.pasterdream.terra_floating_island.desc3"));

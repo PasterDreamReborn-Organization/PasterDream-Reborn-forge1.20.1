@@ -56,7 +56,6 @@ public class TravelerBeltItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.COMMON));
         list.add(Component.translatable("tooltip.pasterdream.traveler_belt.effect"));
     }
 }

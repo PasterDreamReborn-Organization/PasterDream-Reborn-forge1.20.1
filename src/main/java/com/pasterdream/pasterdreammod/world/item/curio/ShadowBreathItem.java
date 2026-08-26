@@ -170,7 +170,6 @@ public class ShadowBreathItem extends Item implements ICurioItem {
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
-        tooltip.add(ModRarities.qualityTooltip(ModRarities.SUPERIOR));
         if (Screen.hasShiftDown() && level != null && level.isClientSide()) {
             addCurrentBonusTooltip(tooltip);
         } else {

@@ -155,7 +155,6 @@ public class IceShadowHammerItem extends SwordItem {
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
-        tooltip.add(ModRarities.qualityTooltip(ModRarities.EPIC));
         tooltip.add(Component.translatable("tooltip.pasterdream.ice_shadow_hammer.skill_name"));
         tooltip.add(Component.translatable("tooltip.pasterdream.ice_shadow_hammer.0"));
         tooltip.add(Component.translatable("tooltip.pasterdream.ice_shadow_hammer.1"));

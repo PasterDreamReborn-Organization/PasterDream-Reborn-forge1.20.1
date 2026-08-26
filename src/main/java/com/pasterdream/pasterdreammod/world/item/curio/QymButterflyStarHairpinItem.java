@@ -66,7 +66,6 @@ public class QymButterflyStarHairpinItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.MIRACLE));
         list.add(Component.translatable("tooltip.pasterdream.qym_butterfly_star_hairpin.effect"));
         list.add(Component.translatable("tooltip.pasterdream.qym_butterfly_star_hairpin.lore"));
     }

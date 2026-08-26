@@ -64,10 +64,6 @@ public class StrikeRingItem extends Item implements ICurioItem {
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
         int lv = getLv(stack);
-        switch (lv){
-            case 1-> list.add(ModRarities.qualityTooltip(ModRarities.COMMON));
-            case 2-> list.add(ModRarities.qualityTooltip(ModRarities.EXCELLENT));
-        }
         list.add(Component.translatable("tooltip.pasterdream.lv", lv).withStyle(ChatFormatting.GREEN));
         list.add(Component.translatable("tooltip.pasterdream.strike_ring.effect", (lv+1)).withStyle(ChatFormatting.BLUE));
         if (Screen.hasShiftDown()) {

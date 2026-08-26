@@ -167,7 +167,6 @@ public class KaichuOmamoriItem extends Item implements ICurioItem {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        list.add(ModRarities.qualityTooltip(ModRarities.LEGENDARY));
         list.add(Component.translatable("tooltip.pasterdream.kaichu_omamori.effect.foxfire"));
         list.add(Component.translatable("tooltip.pasterdream.kaichu_omamori.effect.vulnerable"));
         list.add(Component.translatable("tooltip.pasterdream.kaichu_omamori.effect.regen"));
