@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -1652,9 +1653,30 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                                 UniformGenerator.between(1.0F, 4.0F))
                                                 .allowTreasure()))
                                 .add(LootItem.lootTableItem(Items.FIREWORK_ROCKET)
-                                        .setWeight(4)
+                                        .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(4.0F, 12.0F))))
+                                                UniformGenerator.between(4.0F, 12.0F)))
+                                        .apply(SetNbtFunction.setTag(new CompoundTag() { {
+                                            put("Fireworks", new CompoundTag() { {
+                                                putByte("Flight", (byte) 2);
+                                                put("Explosions", new ListTag() { {
+                                                    add(new CompoundTag() { {
+                                                        putByte("Type", (byte) 1);
+                                                        putIntArray("Colors", new int[] { 0x9DD6FF });
+                                                        putIntArray("FadeColors", new int[] { 0xFFFFFF });
+                                                    } });
+                                                } });
+                                            } });
+                                        } })))
+                                .add(LootItem.lootTableItem(Items.FIREWORK_ROCKET)
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(4.0F, 12.0F)))
+                                        .apply(SetNbtFunction.setTag(new CompoundTag() { {
+                                            put("Fireworks", new CompoundTag() { {
+                                                putByte("Flight", (byte) 2);
+                                            } });
+                                        } })))
                                 .add(LootItem.lootTableItem(Items.FEATHER)
                                         .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
@@ -1896,9 +1918,30 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                                 UniformGenerator.between(2.0F, 5.0F))
                                                 .allowTreasure()))
                                 .add(LootItem.lootTableItem(Items.FIREWORK_ROCKET)
-                                        .setWeight(4)
+                                        .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(6.0F, 16.0F))))
+                                                UniformGenerator.between(6.0F, 16.0F)))
+                                        .apply(SetNbtFunction.setTag(new CompoundTag() { {
+                                            put("Fireworks", new CompoundTag() { {
+                                                putByte("Flight", (byte) 3);
+                                                put("Explosions", new ListTag() { {
+                                                    add(new CompoundTag() { {
+                                                        putByte("Type", (byte) 1);
+                                                        putIntArray("Colors", new int[] { 0x9DD6FF, 0xFFFFFF });
+                                                        putIntArray("FadeColors", new int[] { 0x55AAFF });
+                                                    } });
+                                                } });
+                                            } });
+                                        } })))
+                                .add(LootItem.lootTableItem(Items.FIREWORK_ROCKET)
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(6.0F, 16.0F)))
+                                        .apply(SetNbtFunction.setTag(new CompoundTag() { {
+                                            put("Fireworks", new CompoundTag() { {
+                                                putByte("Flight", (byte) 3);
+                                            } });
+                                        } })))
                                 .add(LootItem.lootTableItem(Items.FEATHER)
                                         .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
