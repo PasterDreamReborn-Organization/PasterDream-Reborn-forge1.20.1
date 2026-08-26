@@ -598,7 +598,7 @@ public class AaroncosLeftHandEntity extends Monster implements GeoEntity, IShado
             return;
         if (getHealth() <= 100) {
             bloodLock = true;
-            addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 3, false, false));
+            addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 2, false, false));
             removeEffect(ModEffects.SHADOW_SILENCE.get());
 
             // Spawn 4 ShadowHands
