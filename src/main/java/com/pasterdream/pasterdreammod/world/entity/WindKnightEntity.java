@@ -81,6 +81,9 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     private static final int SKILL_COOLDOWN = 180;              // 技能冷却
     private static final double SKILL_TRIGGER_DIST = 36.0;      // 技能触发距离（平方，6格）
     private static final int SKILL_DELAY = 25;                  // 技能释放延迟（tick）
+    private static final int SKILL_INVULNERABLE_TICKS = 40;     // 技能释放期间无敌时长（tick，2s）
+    private static final double PASSIVE_INVULNERABLE_CHANCE = 0.3; // 被动：受击后获得无敌的概率
+    private static final int PASSIVE_INVULNERABLE_TICKS = 20;      // 被动：受击后获得的无敌时长（tick，1s）
     private static final double SKILL_RADIUS = 7.0;             // 技能范围（格）
     private static final float SKILL_DAMAGE = 30;               // 技能伤害
     private static final int EXPLOSION_PARTICLE_COUNT = 3;      // 爆炸粒子数量
@@ -104,7 +107,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     private static final double ARMOR = 20;                     // 护甲属性
     private static final double ATTACK_DAMAGE = 20;             // 攻击伤害属性
     private static final double FOLLOW_RANGE = 32;              // 追踪距离属性
-    private static final double KNOCKBACK_RESISTANCE = 0.4;     // 击退抗性属性
+    private static final double KNOCKBACK_RESISTANCE = 1.0;     // 击退抗性属性
     private static final int ATTACK_ANIM_LENGTH = 20;           // 攻击动画时长（tick，attack 动画长 1s）
     private static final int ATTACK_INTERVAL = 25;              // 攻击间隔（tick），略大于动画时长避免重叠
     private static final int ATTACK_DAMAGE_DELAY = 10;          // 攻击动画播放后延迟结算伤害（tick）
@@ -134,6 +137,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     private int skillCooldown;
     private int skillDamageCountdown;
     private int hurtSoundCountdown;
+    private int skillInvulnerableCountdown;
     private int lightningCountdown;
     private LivingEntity pendingLightningTarget;
     private int attackDamageCountdown;
@@ -209,6 +213,9 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     public boolean hurt(DamageSource source, float amount) {
         if (source.is(DamageTypes.IN_FIRE) || source.is(DamageTypes.FALL) || source.is(DamageTypes.LIGHTNING_BOLT))
             return false;
+        // 技能释放期间无敌（可被 BYPASSES_INVULNERABILITY 穿透，如 /kill）
+        if (skillInvulnerableCountdown > 0 && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
+            return false;
 
         // 先记录攻击者，保证即使伤害被限伤减免或免伤拦截，也会反击并转向攻击者
         if (!level().isClientSide() && !source.is(DamageTypeTags.NO_ANGER)) {
@@ -223,7 +230,21 @@ public class WindKnightEntity extends Monster implements GeoEntity {
         if (amount < 0) return false;
         boolean result = super.hurt(source, amount);
         if (!result) damageLimiter.rollback(prevBucket);
+        // 被动：受击后按概率获得短暂无敌（取较长者，避免覆盖技能无敌），触发时播放祭坛修复同款粒子
+        if (result && !level().isClientSide()
+                && random.nextDouble() < PASSIVE_INVULNERABLE_CHANCE) {
+            skillInvulnerableCountdown = Math.max(skillInvulnerableCountdown, PASSIVE_INVULNERABLE_TICKS);
+            if (level() instanceof ServerLevel sl)
+                sl.sendParticles(ParticleTypes.SCRAPE, getX(), getY() + getBbHeight() * 0.6, getZ(), 24, 1.2, 1.0, 1.2, 0.1);
+        }
         return result;
+    }
+
+    @Override
+    public boolean isInvulnerableTo(DamageSource source) {
+        return skillInvulnerableCountdown > 0
+                && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)
+                || super.isInvulnerableTo(source);
     }
 
     @Override
@@ -256,6 +277,8 @@ public class WindKnightEntity extends Monster implements GeoEntity {
                 executeSkillDamage();
             if (hurtSoundCountdown > 0 && --hurtSoundCountdown == 0)
                 executeHurtSound();
+            if (skillInvulnerableCountdown > 0)
+                skillInvulnerableCountdown--;
             if (lightningCountdown > 0 && --lightningCountdown == 0)
                 executeLightningStrike();
             if (attackDamageCountdown > 0 && --attackDamageCountdown == 0)
@@ -296,6 +319,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
                 startProcedureAnimation("skill_0", SKILL_ANIM_LENGTH_TICKS);
                 skillDamageCountdown = SKILL_DELAY;
                 hurtSoundCountdown = HURT_SOUND_DELAY;
+                skillInvulnerableCountdown = SKILL_INVULNERABLE_TICKS;
                 addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, SLOWDOWN_EFFECT_DURATION, SLOWDOWN_EFFECT_AMPLIFIER, false, false));
                 skillCooldown = 0;
             }
