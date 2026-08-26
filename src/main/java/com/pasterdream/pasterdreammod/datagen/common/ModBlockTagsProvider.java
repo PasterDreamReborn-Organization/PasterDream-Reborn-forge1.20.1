@@ -290,11 +290,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get())
                 .add(ModBlocks.EJECTION_PRESSURE_PLATE.get())
                 .add(ModBlocks.EJECTION_PRESSURE_BLOCK.get())
-                .add(ModBlocks.CONGEAL_WIND_IRON_BARS.get());
+                .add(ModBlocks.CONGEAL_WIND_IRON_BARS.get())
+                .add(ModBlocks.TITANIUM_ORE.get());
         // 需要钻石工具挖掘
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
-                .add(ModBlocks.TITANIUM_ORE.get())
                 .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
                 .add(ModBlocks.RAW_TITANIUM_BLOCK.get())
                 .add(ModBlocks.TITANIUM_BLOCK.get())

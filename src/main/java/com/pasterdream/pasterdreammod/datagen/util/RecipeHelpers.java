@@ -236,6 +236,51 @@ public final class RecipeHelpers {
                 .save(writer);
     }
 
+    /**
+     * 直接合成工具组配方：材料 + 手柄 → 剑/镐/斧/铲/锄（原版形状）。
+     * 保存 ID 格式：{@code <tool>_direct}
+     */
+    public static void toolSetRecipes(Consumer<FinishedRecipe> writer,
+                                      ItemLike material, ItemLike handle, String modId,
+                                      ItemLike sword, ItemLike pickaxe, ItemLike axe,
+                                      ItemLike shovel, ItemLike hoe) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, sword)
+                .pattern("a")
+                .pattern("a")
+                .pattern("b")
+                .define('a', material).define('b', handle)
+                .unlockedBy(getHasName(material), has(material))
+                .save(writer, modId + ":" + getItemName(sword) + "_direct");
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pickaxe)
+                .pattern("aaa")
+                .pattern(" b ")
+                .pattern(" b ")
+                .define('a', material).define('b', handle)
+                .unlockedBy(getHasName(material), has(material))
+                .save(writer, modId + ":" + getItemName(pickaxe) + "_direct");
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, axe)
+                .pattern("aa")
+                .pattern("ab")
+                .pattern(" b")
+                .define('a', material).define('b', handle)
+                .unlockedBy(getHasName(material), has(material))
+                .save(writer, modId + ":" + getItemName(axe) + "_direct");
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, shovel)
+                .pattern("a")
+                .pattern("b")
+                .pattern("b")
+                .define('a', material).define('b', handle)
+                .unlockedBy(getHasName(material), has(material))
+                .save(writer, modId + ":" + getItemName(shovel) + "_direct");
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, hoe)
+                .pattern("aa")
+                .pattern(" b")
+                .pattern(" b")
+                .define('a', material).define('b', handle)
+                .unlockedBy(getHasName(material), has(material))
+                .save(writer, modId + ":" + getItemName(hoe) + "_direct");
+    }
+
     private static String getHasName(ItemLike item) {
         return BuiltInRegistries.ITEM.getKey(item.asItem()).getPath();
     }
