@@ -711,6 +711,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.按住Shift+右键点击打开的融梦水晶箱可复位（写入此物品NBT中包含的战利品列表）", "§7Press Shift And Right Mouse Button Click Opened Melt Dream Crystal Chest Can Reset(Write LootTable From NBT Which In This Item)");
         add("tooltip.pasterdream.reset_cost_melt_dream_energy", "Reset Cost %f Melt Dream Energy");
         add("tooltip.pasterdream.右键打开GUI以查看蓝图结构", "Right Mouse Click To Open GUI And View The Blue Print Structure.");
+        add("tooltip.pasterdream.蓝图搭建消耗规则", "§7Building In Creative Mode Does Not Consume Items, But In Survival Mode It Does. Right Click The First Time To Open The GUI And Click \"Place\". Right Click The Second Time To Place.");
 
         add("tooltip.pasterdream.空", "Empty");
         add("tooltip.pasterdream.总容量:", "Total Capacity:");

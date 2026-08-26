@@ -693,6 +693,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.loot_table.not_set", "§7未设置");
         add("tooltip.pasterdream.loot_generator.usage.shift", "§7对容器使用Shift+右键以在容器生成战利品");
         add("tooltip.pasterdream.右键打开GUI以查看蓝图结构", "右键打开GUI以查看蓝图结构");
+        add("tooltip.pasterdream.蓝图搭建消耗规则", "§7创造模式搭建时不消耗物品，生存模式搭建时需要消耗，第一次右键打开GUI，在里面可以点击“放置”按钮，第二次右键即可放置");
 
         add("tooltip.pasterdream.normal_loot_table", "§3普通战利品：%s，权重：%d，幸运权重倍率：%f");
         add("tooltip.pasterdream.rare_loot_table", "§a稀有战利品：%s，权重：%d，幸运权重倍率：%f");
