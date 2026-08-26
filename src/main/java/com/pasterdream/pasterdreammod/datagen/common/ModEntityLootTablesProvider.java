@@ -231,6 +231,13 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem.lootTableItem(ModItems.CYAN_STONE.get())
                                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.WIND_RUNNER_CRYSTAL.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                                        .apply(new ApplyEntityLootingFunction.Builder(Enchantments.MOB_LOOTING, 1)))
+                                .add(EmptyLootItem.emptyItem().setWeight(4)))
         );
 
         //雷云

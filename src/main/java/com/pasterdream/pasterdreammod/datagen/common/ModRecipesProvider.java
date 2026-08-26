@@ -2815,6 +2815,18 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.PURE_HORROR.get()), has(ModItems.PURE_HORROR.get()))
                 .save(pWriter);
 
+        // 风之旅途音乐唱片 = 破风幕帐 + 凝风铁粒 + 云朵 + 灵魂精华
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WIND_JOURNEY_MUSIC_DISC.get(), 1)
+                .pattern("abc")
+                .pattern("bdb")
+                .pattern("cba")
+                .define('a', ModItems.BREAK_WIND_CURTAIN.get())
+                .define('b', ModItems.CONGEAL_WIND_IRON_NUGGET.get())
+                .define('c', ModItems.CLOUD.get())
+                .define('d', ModItems.SOUL_ESSENCE.get())
+                .unlockedBy(getHasName(ModItems.SOUL_ESSENCE.get()), has(ModItems.SOUL_ESSENCE.get()))
+                .save(pWriter);
+
         // 染梦书桌
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.DYEDREAM_DESK.get(), 1)
                 .pattern(" a ")
