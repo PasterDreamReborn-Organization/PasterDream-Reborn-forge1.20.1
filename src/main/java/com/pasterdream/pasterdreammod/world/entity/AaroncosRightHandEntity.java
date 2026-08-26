@@ -749,7 +749,7 @@ public class AaroncosRightHandEntity extends Monster implements GeoEntity, IShad
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
             .add(Attributes.MOVEMENT_SPEED, 0.6)
-            .add(Attributes.MAX_HEALTH, 500)
+            .add(Attributes.MAX_HEALTH, 250)
             .add(Attributes.ARMOR, 4)
             .add(Attributes.ATTACK_DAMAGE, 18)
             .add(Attributes.FOLLOW_RANGE, 64)
