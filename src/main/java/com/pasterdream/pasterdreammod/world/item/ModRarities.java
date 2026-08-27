@@ -14,7 +14,7 @@ public final class ModRarities {
     public static final Rarity COMMON    = Rarity.create("pasterdream_common",   ChatFormatting.WHITE);
     public static final Rarity EXCELLENT = Rarity.create("pasterdream_excellent", ChatFormatting.GREEN);
     public static final Rarity SUPERIOR  = Rarity.create("pasterdream_superior",  ChatFormatting.AQUA);
-    public static final Rarity MASTER    = Rarity.create("pasterdream_master",    ChatFormatting.DARK_BLUE);
+    public static final Rarity MASTER    = Rarity.create("pasterdream_master",    ChatFormatting.BLUE);
     public static final Rarity ANCIENT   = Rarity.create("pasterdream_ancient",   ChatFormatting.DARK_PURPLE);
     public static final Rarity EPIC      = Rarity.create("pasterdream_epic",      ChatFormatting.LIGHT_PURPLE);
     public static final Rarity LEGENDARY = Rarity.create("pasterdream_legendary", ChatFormatting.RED);
