@@ -198,7 +198,7 @@ public class FluffyWindAlloySwordItem extends SwordItem {
         level.playSound(null, player.blockPosition(),
                 ModSounds.SWORD_SLASH.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
 
-        player.getCooldowns().addCooldown(stack.getItem(), flying ? WIND_FLIGHT_COOLDOWN_TICKS : WIND_COOLDOWN_TICKS);
+        SkillCooldownHelper.applySharedCooldown(player, flying ? WIND_FLIGHT_COOLDOWN_TICKS : WIND_COOLDOWN_TICKS);
     }
 
     // ==================== 雷 · 萦风引雷 ====================
@@ -234,7 +234,7 @@ public class FluffyWindAlloySwordItem extends SwordItem {
 
         player.level().playSound(null, player.blockPosition(),
                 ModSounds.LIGHTNING_CHARGE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
-        player.getCooldowns().addCooldown(stack.getItem(), THUNDER_COOLDOWN_TICKS);
+        SkillCooldownHelper.applySharedCooldown(player, THUNDER_COOLDOWN_TICKS);
     }
 
     /** 沿准心射线寻找第一个命中的活体目标（追踪落雷目标） */
