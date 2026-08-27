@@ -735,6 +735,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.dyedream_armor", "染梦守护");
         add("effect.pasterdream.titanium_armor", "钛金守护");
         add("effect.pasterdream.dyedream_up", "染梦工具增强");
+        add("effect.pasterdream.melt_dream_crystal_armor", "融梦守护");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9启用飞行能力");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4融梦能量消耗：1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9获得飞行能力且免疫摔落伤害");
@@ -2284,39 +2285,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.black_beetle.easter_egg_1", "来,小亮给大家整个活！");
         add("message.pasterdream.black_beetle.easter_egg_2", "草,走,忽略!ጿ ኈ ቼ ዽ ጿ");
         add("entity.pasterdream.golden_fox.vanish", "金色狐狸在完成了你许下的愿望之后消失了...");
-
-        //jeed兼容
-        add("effect.pasterdream.rest.description", "触摸琴雨梦玩偶或睡觉后获得，效果持续期间获得理智光环。");
-        add("effect.pasterdream.cook.description", "食用部分食物后获得，效果持续期间获得理智光环。");
-        add("effect.pasterdream.cheer_up.description", "san高于90%的时候获得，获得一些正面效果。");
-        add("effect.pasterdream.lethargy.description", "san在40%和60%之间的时候获得，获得一些负面效果。");
-        add("effect.pasterdream.trance.description", "san在20%和40%之间的时候获得，获得更严重的负面效果。");
-        add("effect.pasterdream.insane.description", "san低于20%的时候获得，获得极为严重的负面效果，视线会被特殊的视觉效果覆盖，san在1%~10%时会获得疯狂II，循环播放音效并视角抖动，san低于1%时获得疯狂III，前面所述负面会得到加强。（视觉效果，抖动和音效可以指令或配置关闭）");
-        add("effect.pasterdream.snow_vow.description", "效果期间+3幸运，免疫燃烧和冻结效果，由雪下的誓言饰品在范围内给予。");
-        add("effect.pasterdream.goldenrod_tea.description", "效果持续期间免疫饥饿和反胃效果。");
-        add("effect.pasterdream.sculk_armor.description", "穿戴全套回响套装时获得，增加最大生命值，身处深层时获得抗性提升，受到黑暗效果时移除黑暗并给予速度和抗性效果。");
-        add("effect.pasterdream.dyedream_armor.description", "穿戴全套染梦合金套装时获得，增加最大生命值并每30秒获得伤害吸收II。");
-        add("effect.pasterdream.titanium_armor.description", "穿戴全套钛金套装时获得，每30秒获得伤害吸收I。");
-        add("effect.pasterdream.dyedream_up.description", "穿戴全套染梦合金套装时获得，持有染梦(染梦合金与融梦水晶)工具时伤害+50%");
-        add("effect.pasterdream.melt_dream_crystal_armor", "融梦守护");
-        add("effect.pasterdream.melt_dream_crystal_armor.description", "穿戴全套融梦水晶套装时获得，融梦修补费用-50%，获得生命恢复II与染梦工具增强，融梦能量>50%时理智光环+1.2，否则+0.6。");
-        add("effect.pasterdream.dream_wish.description", "饮用梦境果汁获得，拥有该效果在晚上睡觉以进入染梦世界。");
-        add("effect.pasterdream.dyedream_perfume.description", "饮用染梦香水获得，效果持续期间幻翼不会攻击你。");
-        add("effect.pasterdream.counter_attack.description", "增加战技伤害，下一次攻击后消失。");
-        add("effect.pasterdream.dream_harp_of_wanderer.description", "使用漂泊旅者的染梦竖琴后获得，漂泊旅者的染梦竖琴可以从染梦列车中得到。");
-        add("effect.pasterdream.cecilia_blessing.description", "戴着塞西莉娅受到致命伤害后获得，效果期间获得伤害免疫。");
-        add("effect.pasterdream.guard.description", "使用守护预言卡获得，拥有该buff时，超过一定生命百分比的部分伤害将会受到减伤（可在配置里修改）");
-        add("effect.pasterdream.holy_grail.description", "使用圣杯预言卡获得，拥有该buff时，效果持续期间+15最大生命值，并免疫一部分负面状态，获得自然生命恢复且血量越低，回血速度越快。");
-        add("effect.pasterdream.rapid_reaction.description", "使用疾行预言卡获得，拥有该buff时，增加上坡高度，降低瞬身术冷却并免疫摔落伤害。");
-        add("effect.pasterdream.flare_up.description", "使用执剑预言卡获得，拥有该buff时，增加攻击力和攻击速度，增加战技伤害倍率并降低技能冷却时间。");
-        add("effect.pasterdream.conflict_mark.description", "使用纷争预言卡标记其它实体后该实体获得，拥有该buff时，将会成为其它实体攻击目标。");
-        add("effect.pasterdream.war_flag.description", "装备战争旗帜后击杀敌人后获得，期间增加攻击力，并每击杀一个敌人增加1级。");
-        add("effect.pasterdream.confusion.description", "施加给玩家后，玩家的视角将会抖动，施加给其它生物后，会使该生物失去行动能力。");
-        add("effect.pasterdream.calais_spice_bottle.description", "装备卡莱调料瓶后获得，每次击中敌人后减少1层等级并获得随机效果，食用符合要求食物会恢复层数。");
-        add("effect.pasterdream.shadow_silence.description", "暗影生物获得该buff后，会失去释放技能的能力。");
-        add("effect.pasterdream.bind.description", "被白厄剑的剑雨攻击后获得，获得该buff后，会无法移动。");
-        add("effect.pasterdream.restrainmove_block.description", "效果持续期间移除跳跃提升并强制禁用飞行。");
-        add("effect.pasterdream.wind_runner.description", "食用风行者果冻获得，效果持续期间无需鞘翅即可进行鞘翅飞行。");
 
         // 染梦裂隙消息
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5身体从这个奇怪的洞穴中穿过，但并没有什么反应。");

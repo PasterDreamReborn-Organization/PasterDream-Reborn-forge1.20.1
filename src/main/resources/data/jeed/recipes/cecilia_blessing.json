@@ -1,9 +1,0 @@
-{
-  "type": "jeed:effect_provider",
-  "effect": "pasterdream:cecilia_blessing",
-  "providers": [
-    {
-      "item": "pasterdream:blessing_of_cecilia"
-    }
-  ]
-}

@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 
 /**
  * 风行者 buff：效果持续期间无需鞘翅即可进行鞘翅飞行。
- * 飞行判定由 ItemStackElytraFlyMixin 实现
+ * 飞行判定由 PlayerElytraFlyMixin / LivingEntityElytraFlyMixin / LocalPlayerElytraFlyMixin 实现
  */
 public class WindRunnerEffect extends MobEffect {
 
