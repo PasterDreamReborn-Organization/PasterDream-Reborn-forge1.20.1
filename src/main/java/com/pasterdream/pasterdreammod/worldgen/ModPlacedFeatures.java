@@ -240,6 +240,7 @@ public class ModPlacedFeatures {
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_tomb"));
 
     //原版维度花草
+    public static final ResourceKey<PlacedFeature> FOURLEAF_CLOVER_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fourleaf_clover_patch"));
     public static final ResourceKey<PlacedFeature> GOLDENROD_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "goldenrod_patch"));
     public static final ResourceKey<PlacedFeature> FERRARIA_CRISPA_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ferraria_crispa_patch"));
     public static final ResourceKey<PlacedFeature> MALVA_SINENSIS_CAVAN_PATCH = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "malva_sinensis_cavan_patch"));
@@ -686,6 +687,9 @@ public class ModPlacedFeatures {
                 List.of(CountPlacement.of(1), InSquarePlacement.spread(),
                         onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         ON_SHADOW_GROUND)));
+        //四叶草 — 主世界稀有生成，平均每 64 区块 1 簇
+        context.register(FOURLEAF_CLOVER_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.FOURLEAF_CLOVER_PATCH), List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
+
         //秋麒麟
         context.register(GOLDENROD_PATCH, new PlacedFeature(cf.getOrThrow(ModConfiguredFeatures.GOLDENROD_PATCH), List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), onHeightmap(Heightmap.Types.WORLD_SURFACE_WG))));
 
