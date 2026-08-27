@@ -1796,25 +1796,25 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past...");
         add("message.pasterdream.dream_train.location_info", "The train revealed a location... §aX：%s §aZ：%s");
 
-        add("message.pasterdream.desert_hero_tomb.line1", "At long last, a visitor has come.");
-        add("message.pasterdream.desert_hero_tomb.line2", "I have no regrets, only one final request.");
-        add("message.pasterdream.desert_hero_tomb.line3", "As you can see, this is all that remains of me.");
-        add("message.pasterdream.desert_hero_tomb.line4", "I bestow this sword upon you. Will you help me drive out the invaders?");
-        add("message.pasterdream.desert_hero_tomb.line5", "Well done, my gratitude.");
-        add("message.pasterdream.desert_hero_tomb.line6", "You have proven your worth. I shall grant you the true sword.");
-        add("message.pasterdream.desert_hero_tomb.line7", "Its name is: §e'Chenjingmen' Desert Blade");
-        add("message.pasterdream.desert_hero_tomb.task_clear_threats", "[Clear the nearby Pillagers and Husks]");
-        add("message.pasterdream.desert_hero_tomb.threats_remaining", "The threats nearby have not been cleared. He will not respond.");
-        add("message.pasterdream.desert_hero_tomb.quest1", "1. Bring me 10 Rice Cakes");
-        add("message.pasterdream.desert_hero_tomb.quest2", "2. I want a horse by my side");
-        add("message.pasterdream.desert_hero_tomb.quest3", "3. Gain the recognition of an entire village as their hero");
+        add("message.pasterdream.desert_hero_tomb.line1", "I never expected to meet a true hero willing to hear my words...");
+        add("message.pasterdream.desert_hero_tomb.line2", "I mean no harm, yet I have a small matter I must trouble you with.");
+        add("message.pasterdream.desert_hero_tomb.line3", "These bandits and demons around here have robbed me of my rest.");
+        add("message.pasterdream.desert_hero_tomb.line4", "Take this sword, friend, and rid me of all the villains and demons around here. How about it?");
+        add("message.pasterdream.desert_hero_tomb.line5", "What skill! This sword is not wasted on a hero such as you.");
+        add("message.pasterdream.desert_hero_tomb.line6", "Yet I have three unfulfilled wishes. Grant them all, and I shall unlock this sword's true power.");
+        add("message.pasterdream.desert_hero_tomb.line7", "Its true name is: §e'Chenjingmen' Desert Blade.");
+        add("message.pasterdream.desert_hero_tomb.task_clear_threats", "[Clear out the nearby Pillagers and Husks]");
+        add("message.pasterdream.desert_hero_tomb.threats_remaining", "The bandits and demons nearby are not yet cleared. I shall not speak with you until then.");
+        add("message.pasterdream.desert_hero_tomb.quest1", "First: I confess, I crave those rice cakes. Bring me ten of them.");
+        add("message.pasterdream.desert_hero_tomb.quest2", "Second: I grow weary in this tomb, longing for the days of galloping with my blade. Find me a fine horse.");
+        add("message.pasterdream.desert_hero_tomb.quest3", "Third: this sword's power recognizes no villain. Win the praise of the village's elders and children, and I shall unlock its strength.");
         add("message.pasterdream.desert_hero_tomb.task1_complete", "Task 1 Complete");
         add("message.pasterdream.desert_hero_tomb.task2_complete", "Task 2 Complete");
         add("message.pasterdream.desert_hero_tomb.task3_complete", "Task 3 Complete");
-        add("message.pasterdream.desert_hero_tomb.all_tasks_done", "My wishes have been fulfilled. Bring me the Desert Sword.");
-        add("message.pasterdream.desert_hero_tomb.receive_sword", "Please accept this: its name is 'Chenjingmen' Desert Blade");
-        add("message.pasterdream.desert_hero_tomb.bring_sword", "My wishes have been fulfilled. Bring me the Desert Sword.");
-        add("message.pasterdream.desert_hero_tomb.already_completed", "Someone has already fulfilled all his wishes. He no longer responds.");
+        add("message.pasterdream.desert_hero_tomb.all_tasks_done", "My wishes are fulfilled. Bring me my Desert Sword.");
+        add("message.pasterdream.desert_hero_tomb.receive_sword", "Take it, friend. Its true power is now fully yours: §e'Chenjingmen' Desert Blade.\n§rI have nothing left to give you.");
+        add("message.pasterdream.desert_hero_tomb.bring_sword", "My wishes are fulfilled. Bring me my Desert Sword.");
+        add("message.pasterdream.desert_hero_tomb.already_completed", "I have nothing left to give you.");
 
         // Prophecy Cards
         add(ModItems.EMPTY_PROPHECY_CARD.get(), "Empty Prophecy Card");

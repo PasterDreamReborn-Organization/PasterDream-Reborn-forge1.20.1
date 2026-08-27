@@ -176,6 +176,13 @@ public class DesertHeroTombHandler {
             be.setQuestNumber(player, 3);
             player.displayClientMessage(
                     Component.translatable("message.pasterdream.desert_hero_tomb.all_tasks_done"), false);
+        } else {
+            player.displayClientMessage(
+                    Component.translatable("message.pasterdream.desert_hero_tomb.quest1"), false);
+            player.displayClientMessage(
+                    Component.translatable("message.pasterdream.desert_hero_tomb.quest2"), false);
+            player.displayClientMessage(
+                    Component.translatable("message.pasterdream.desert_hero_tomb.quest3"), false);
         }
     }
 
