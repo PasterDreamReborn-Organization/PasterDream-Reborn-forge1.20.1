@@ -123,7 +123,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§eThe taste feels familiar, as if it came from Snow Tears Cold... wait, what?");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail", "§7You have already tasted this ice cream flavor");
         add(ModItems.ELIXIR_BOTTLE.get(), "Elixir Bottle");
-        add(ModItems.ELIXIR_BOTTLE_OF_POTION.get(), "Elixir Bottle of Potion");
         add("tooltip.pasterdreammod.elixir_bottle_of_potion.uses", "§7Remaining uses: %s");
         add(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get(), "Elixir Bottle of Melt Dream");
         add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "Elixir Bottle of Rage Elixir");

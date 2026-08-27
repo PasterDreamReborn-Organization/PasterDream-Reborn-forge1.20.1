@@ -18,7 +18,6 @@ import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
-import com.pasterdream.pasterdreammod.world.item.ElixirBottleOfPotionItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.AngelWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.ForsakensWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MachineLightWingItem;
@@ -102,7 +101,6 @@ public class PasterDreamMod
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
-        modEventBus.addListener(this::registerItemColors);
         modEventBus.addListener(this::registerItemModels);
         modEventBus.addListener(this::getItemModels);
         MinecraftForge.EVENT_BUS.addListener(this::AddItemTooltip);
@@ -150,6 +148,7 @@ public class PasterDreamMod
     {
         FluidHandlerResolvers.FluidHandlerResolverRegister();
         ModFluidContainerRelation.registerFluidContainerRelation();
+        ModFluidPropertiesRelation.register();
         ModDreamNotesContentRelation.registerDreamNotesContentRelation();
         ModDreamNotesBookContentRelation.registerDreamNotesBookContentRelation();
         ModBluePrintsContentRelation.registerBluePrintsContentRelation();
@@ -221,15 +220,6 @@ public class PasterDreamMod
     private void getItemModels(ModelEvent.BakingCompleted event)
     {
         ModItemModels.getBakedModel(event);
-    }
-
-    private void registerItemColors(RegisterColorHandlersEvent.Item event)
-    {
-        // 灵药瓶（装药水）：按药水颜色对液体层(layer1)染色，瓶身(layer0)不染色
-        event.register(
-                (stack, tintIndex) -> tintIndex == 1 ? PotionUtils.getColor(ElixirBottleOfPotionItem.getPotion(stack)) : -1,
-                ModItems.ELIXIR_BOTTLE_OF_POTION.get()
-        );
     }
 
     private void AddItemTooltip(ItemTooltipEvent event)

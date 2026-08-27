@@ -4,6 +4,8 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.compat.jei.brewingrecipe.FortuneJellyJeiBrewingRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.shadowblastfurnacerecipe.ShadowBlastFurnaceJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.shadowblastfurnacerecipe.ShadowBlastFurnaceRecipeCategory;
+import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
+import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceRecipe;
 import com.pasterdream.pasterdreammod.world.block.shadowblastfurnace.ShadowBlastFurnaceScreen;
 import mezz.jei.api.recipe.vanilla.IJeiBrewingRecipe;
@@ -24,6 +26,7 @@ import com.pasterdream.pasterdreammod.init.ModFluids;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModPotions;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
@@ -40,10 +43,8 @@ import com.pasterdream.pasterdreammod.world.item.lootgenerator.LootGeneratorItem
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarRecipe;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarScreen;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
-import com.pasterdream.pasterdreammod.world.fluid.PotionFluidHelper;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
-import com.pasterdream.pasterdreammod.world.item.ElixirBottleOfPotionItem;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
@@ -194,27 +195,28 @@ public class ModJEIPlugin implements IModPlugin
                 PotionBottleRegistry.POTION_BOTTLE.get(),
                 (stack, context) -> PotionBottleItem.getPotionType(stack));
 
-        // 药水灵药瓶：按内置 FluidTank 中药水流体的 "Potion" 键区分不同药水，让 JEI 每种药水各显示一个条目
-        registration.registerSubtypeInterpreter(
-                ModItems.ELIXIR_BOTTLE_OF_POTION.get(),
-                (stack, context) -> {
-                    Potion potion = ElixirBottleOfPotionItem.getPotion(stack);
-                    if (potion == Potions.EMPTY)
-                    {
-                        return IIngredientSubtypeInterpreter.NONE;
-                    }
-                    ResourceLocation key = BuiltInRegistries.POTION.getKey(potion);
-                    return key != null ? key.toString() : IIngredientSubtypeInterpreter.NONE;
-                });
-
         // 通用「药水」流体：按 NBT 中的 "Potion" 键区分不同药水流体
-        registration.registerSubtypeInterpreter(
-                ForgeTypes.FLUID_STACK,
-                ModFluids.POTION.get(),
-                (IIngredientSubtypeInterpreter<FluidStack>) (stack, context) -> {
-                    CompoundTag tag = stack.getTag();
-                    return (tag != null && tag.contains("Potion")) ? tag.getString("Potion") : IIngredientSubtypeInterpreter.NONE;
-                });
+        registration.registerSubtypeInterpreter(ForgeTypes.FLUID_STACK, ModFluids.POTION.get(), (fluidStack, context) ->
+        {
+            CompoundTag compoundTag = fluidStack.getTag();
+
+            if (compoundTag.contains("EffectList"))
+            {
+                List<GenericMobEffect> effectList = PotionHelper.getEffectType(fluidStack);
+                StringBuilder effectString = new StringBuilder();
+
+                for(GenericMobEffect effect : effectList)
+                {
+                    effectString.append(effect.effectType().getDisplayName());
+                }
+
+                return effectString.toString();
+            }
+                else
+                {
+                    return IIngredientSubtypeInterpreter.NONE;
+                }
+        });
     }
 
     //将流体添加至JEI物品列表
@@ -240,12 +242,12 @@ public class ModJEIPlugin implements IModPlugin
         fluidStacks.add(new FluidStack(ModFluids.WIND_PLANT_EXTRACT.get(),1000));
         fluidStacks.add(new FluidStack(ModFluids.YEAST.get(),1000));
         fluidStacks.add(new FluidStack(ModFluids.INK.get(), 1000));
-        // 通用「药水」流体：按每种药水各显示一个条目（NBT 记录药水 id 与效果列表）
-        for (Potion potion : BuiltInRegistries.POTION) {
-            if (potion == Potions.EMPTY) {
-                continue;
-            }
-            fluidStacks.add(PotionFluidHelper.createStack(potion, 1000));
+
+        for (MobEffect effect : BuiltInRegistries.MOB_EFFECT)
+        {
+            List<GenericMobEffect> effectList = new ArrayList<>();
+            effectList.add(new GenericMobEffect(effect, 2, 18000)); //3级15分钟（实际等级是level+1,例如level=2的实际上是3级）
+            fluidStacks.add(PotionHelper.createNBTPotion(effectList, 1000));
         }
 
         registration.addExtraIngredients(ForgeTypes.FLUID_STACK, fluidStacks);
