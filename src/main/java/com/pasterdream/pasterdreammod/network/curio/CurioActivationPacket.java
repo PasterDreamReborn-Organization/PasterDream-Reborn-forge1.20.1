@@ -1,10 +1,9 @@
 package com.pasterdream.pasterdreammod.network.curio;
 
-import net.minecraft.client.Minecraft;
+import com.pasterdream.pasterdreammod.client.network.ClientPacketHandlers;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -27,9 +26,7 @@ public class CurioActivationPacket {
     }
 
     public static void handle(CurioActivationPacket message, Supplier<NetworkEvent.Context> context) {
-        context.get().enqueueWork(() -> {
-            Minecraft.getInstance().gameRenderer.displayItemActivation(new ItemStack(message.item));
-        });
+        context.get().enqueueWork(() -> ClientPacketHandlers.handleCurioActivation(message.item));
         context.get().setPacketHandled(true);
     }
 }

@@ -2,8 +2,8 @@ package com.pasterdream.pasterdreammod.network.san;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.capability.san.ISan;
+import com.pasterdream.pasterdreammod.client.network.ClientPacketHandlers;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -41,17 +41,7 @@ public class IsSanEnableSyncPacket
 
     public static void handle(IsSanEnableSyncPacket packet, Supplier<NetworkEvent.Context> context)
     {
-        context.get().enqueueWork(() ->
-        {
-            Player player = Minecraft.getInstance().player;
-            if (player != null)
-            {
-                player.getCapability(ModCapabilities.SAN).ifPresent(capability ->
-                {
-                    capability.setIsSanEnable(packet.isEnabled);
-                });
-            }
-        });
+        context.get().enqueueWork(() -> ClientPacketHandlers.handleIsSanEnableSync(packet.isEnabled));
         context.get().setPacketHandled(true);
     }
 

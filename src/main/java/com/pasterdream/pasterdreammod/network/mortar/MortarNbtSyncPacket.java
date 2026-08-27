@@ -1,6 +1,6 @@
 package com.pasterdream.pasterdreammod.network.mortar;
 
-import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
+import com.pasterdream.pasterdreammod.client.network.ClientPacketHandlers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
@@ -32,15 +32,7 @@ public class MortarNbtSyncPacket
         {
             if (ctx.get().getDirection().getReceptionSide().isClient())
             {
-                var player = net.minecraft.client.Minecraft.getInstance().player;
-                if (player != null)
-                {
-                    var stack = player.getMainHandItem();
-                    if (stack.getItem() instanceof MortarItem)
-                    {
-                        stack.setTag(msg.nbt);
-                    }
-                }
+                ClientPacketHandlers.handleMortarNbtSync(msg.nbt);
             }
         });
         ctx.get().setPacketHandled(true);
