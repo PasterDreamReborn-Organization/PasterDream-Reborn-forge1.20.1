@@ -1,9 +1,0 @@
-{
-  "type": "jeed:effect_provider",
-  "effect": "pasterdream:counter_attack",
-  "providers": [
-    {
-      "item": "pasterdream:counter_ring"
-    }
-  ]
-}

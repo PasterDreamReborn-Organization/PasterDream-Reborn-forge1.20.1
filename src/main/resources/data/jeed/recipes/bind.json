@@ -1,9 +1,0 @@
-{
-  "type": "jeed:effect_provider",
-  "effect": "pasterdream:bind",
-  "providers": [
-    {
-      "item": "pasterdream:white_sword"
-    }
-  ]
-}
