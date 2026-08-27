@@ -2558,6 +2558,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_direction.announce.6", "§7§o朝阳升起... 呼啸的风正吹往 §a东方");
         add("message.pasterdream.wind_direction.announce.7", "§7§o朝阳升起... 呼啸的风正吹往 §a东南方");
 
+        // 画作
+        add("painting.pasterdream.pasterdream_title.title", "帕斯特之梦");
+        add("painting.pasterdream.pasterdream_title.author", "阿墨");
+        add("painting.pasterdream.pasterdream_start.title", "帕斯特之梦 启动！");
+        add("painting.pasterdream.pasterdream_start.author", "【pl】莫");
+        add("painting.pasterdream.pasterdream_aerolite_dust.title", "琴雨梦");
+        add("painting.pasterdream.pasterdream_aerolite_dust.author", "异星之尘");
+
         // 药水箭
 
     }
