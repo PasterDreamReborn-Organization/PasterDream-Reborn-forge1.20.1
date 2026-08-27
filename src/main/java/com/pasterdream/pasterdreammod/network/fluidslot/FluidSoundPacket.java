@@ -1,16 +1,8 @@
 package com.pasterdream.pasterdreammod.network.fluidslot;
 
-import net.minecraft.client.Minecraft;
+import com.pasterdream.pasterdreammod.client.network.ClientPacketHandlers;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.common.SoundAction;
-import net.minecraftforge.common.SoundActions;
-import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -45,31 +37,7 @@ public class FluidSoundPacket
         {
             if (context.getDirection().getReceptionSide().isClient())
             {
-                Level level = Minecraft.getInstance().level;
-                if (level == null)
-                {
-                    return;
-                }
-
-                Player player = Minecraft.getInstance().player;
-                if (player == null)
-                {
-                    return;
-                }
-
-                Fluid fluid = ForgeRegistries.FLUIDS.getValue(message.fluidId);
-                if (fluid != null)
-                {
-                    FluidType fluidType = fluid.getFluidType();
-                    SoundAction action = message.isFill ? SoundActions.BUCKET_FILL : SoundActions.BUCKET_EMPTY;
-                    SoundEvent sound = fluidType.getSound(action);
-                    if (sound == null)
-                    {
-                        sound = message.isFill ? SoundEvents.BUCKET_FILL : SoundEvents.BUCKET_EMPTY;
-                    }
-
-                    player.playSound(sound, 1.0F, 1.0F);
-                }
+                ClientPacketHandlers.handleFluidSound(message.fluidId, message.isFill);
             }
         });
         context.setPacketHandled(true);

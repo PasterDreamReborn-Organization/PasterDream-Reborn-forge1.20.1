@@ -1,7 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item.dreamnotes;
 
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
-import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -47,7 +46,7 @@ public class DreamNotesItem extends Item
         {
             if (!content.isEmpty())
             {
-                Minecraft.getInstance().setScreen(new DreamNotesScreen(content));
+                DreamNotesClientHelper.openDreamNotesScreen(content);
             }
         }
         else

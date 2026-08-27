@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.world.item.debugsword;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -47,12 +46,7 @@ public class DebugSwordHandler
 
         if (player.level().isClientSide)
         {
-            if (Minecraft.getInstance().screen instanceof DebugBlockOptionsScreen)
-            {
-                return;
-            }
-
-            Minecraft.getInstance().setScreen(new DebugBlockOptionsScreen(event.getPos(), player, player.level()));
+            DebugSwordClientHandler.showBlockOptionsScreen(event, player);
         }
     }
 

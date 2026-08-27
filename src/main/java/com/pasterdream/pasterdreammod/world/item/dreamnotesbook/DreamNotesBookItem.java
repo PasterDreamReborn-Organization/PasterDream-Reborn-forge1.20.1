@@ -4,7 +4,6 @@ import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
 import com.pasterdream.pasterdreammod.event.ModWorldGenEvents.TwilightLanternPlacedData;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.world.item.StoryProgressItem;
-import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -44,7 +43,7 @@ public class DreamNotesBookItem extends Item
         if (level.isClientSide)
         {
             DreamNotesBookInfo dreamNotesBookInfo = (compoundTag != null && compoundTag.contains("content")) ? DreamNotesBookRegistry.getInfo(compoundTag.getString("content")) : null;
-            Minecraft.getInstance().setScreen(new DreamNotesBookScreen(dreamNotesBookInfo));
+            DreamNotesBookClientHelper.openDreamNotesBookScreen(dreamNotesBookInfo);
         }
         else
         {

@@ -15,17 +15,11 @@ import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
 import com.pasterdream.pasterdreammod.event.PlayerEvents;
 import com.pasterdream.pasterdreammod.event.RecipeUnlockHandler;
 import com.pasterdream.pasterdreammod.init.*;
-import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
-import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
-import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
-import com.pasterdream.pasterdreammod.world.item.ElixirBottleOfPotionItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MachineLightWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymArmorEvents;
 import com.pasterdream.pasterdreammod.world.dimension.AaroncosArenaTeleporter;
-import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -33,7 +27,6 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.ForgeMod;
@@ -104,9 +97,6 @@ public class PasterDreamMod
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
-        modEventBus.addListener(this::registerItemColors);
-        modEventBus.addListener(this::registerItemModels);
-        modEventBus.addListener(this::getItemModels);
         MinecraftForge.EVENT_BUS.addListener(this::AddItemTooltip);
         MinecraftForge.EVENT_BUS.addListener(this::AddCommand);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
@@ -134,9 +124,6 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(ModWorldGenEvents::onCheckSpawn);
         MinecraftForge.EVENT_BUS.addListener(RecipeUnlockHandler::onBlockBreak);
         MinecraftForge.EVENT_BUS.addListener(ModMobSpawnEvents::onEntityJoinLevel);
-        modEventBus.addListener(this::AddOverlays);
-        modEventBus.addListener(this::AddEntityRenderersEvent);
-        modEventBus.addListener(this::AddRegisterLayerDefinitions);
         MinecraftForge.EVENT_BUS.addListener(this::onAddReloadListeners);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -167,73 +154,11 @@ public class PasterDreamMod
         ClientSetRenderLayer.register();
         ModScreens.register(event);
         ModBlockEntityRenderer.FMLClientSetupEventRegister(event);
-        event.enqueueWork(this::registerItemProperties);
+        event.enqueueWork(ClientModEvents::registerItemProperties);
         event.enqueueWork(() -> {
             CuriosRendererRegistry.register(ModItems.ANGEL_WING.get(), AngelWingRenderer::new);
             CuriosRendererRegistry.register(ModItems.FORSAKENS_WING.get(), ForsakensWingRenderer::new);
         });
-    }
-
-    private void registerItemProperties()
-    {
-        // 星者祈愿钓竿出杆切换模型（原版 cast predicate 仅注册在 Items.FISHING_ROD 上）
-        ItemProperties.register(
-                ModItems.STAR_WISH_ROD.get(),
-                ResourceLocation.parse("cast"),
-                (stack, level, entity, seed) -> {
-                    if (entity == null) return 0.0F;
-                    boolean held = entity.getMainHandItem() == stack || entity.getOffhandItem() == stack;
-                    if (entity instanceof net.minecraft.world.entity.player.Player player) {
-                        return held && player.fishing != null ? 1.0F : 0.0F;
-                    }
-                    return 0.0F;
-                }
-        );
-
-        ItemProperties.register(
-                ModItems.RED_DEW_RING.get(),
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, "lv"),
-                (stack, level, entity, seed) -> RedDewRingItem.getPredicateValue(RedDewRingItem.getLv(stack))
-        );
-
-        ItemProperties.register(
-                ModItems.STRIKE_RING.get(),
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, "lv"),
-                (stack, level, entity, seed) -> StrikeRingItem.getPredicateValue(StrikeRingItem.getLv(stack))
-        );
-
-        // 预言卡：按 NBT Type 切换纹理
-        ItemProperties.register(
-                ModItems.PROPHECY_CARD.get(),
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, "type"),
-                (stack, level, entity, seed) -> ProphecyCardItem.getPredicateValue(stack)
-        );
-
-        // 药剂瓶：按 NBT PotionType 切换纹理
-        ItemProperties.register(
-                PotionBottleRegistry.POTION_BOTTLE.get(),
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, "type"),
-                (stack, level, entity, seed) -> PotionBottleItem.getPredicateValue(stack)
-        );
-    }
-
-    private void registerItemModels(ModelEvent.ModifyBakingResult event)
-    {
-        ModItemModels.register(event);
-    }
-
-    private void getItemModels(ModelEvent.BakingCompleted event)
-    {
-        ModItemModels.getBakedModel(event);
-    }
-
-    private void registerItemColors(RegisterColorHandlersEvent.Item event)
-    {
-        // 灵药瓶（装药水）：按药水颜色对液体层(layer1)染色，瓶身(layer0)不染色
-        event.register(
-                (stack, tintIndex) -> tintIndex == 1 ? PotionUtils.getColor(ElixirBottleOfPotionItem.getPotion(stack)) : -1,
-                ModItems.ELIXIR_BOTTLE_OF_POTION.get()
-        );
     }
 
     private void AddItemTooltip(ItemTooltipEvent event)
@@ -244,27 +169,6 @@ public class PasterDreamMod
     private void AddCommand(RegisterCommandsEvent event)
     {
         ModCommands.register(event.getDispatcher());
-    }
-
-    private void AddOverlays(RegisterGuiOverlaysEvent event)
-    {
-        event.registerAboveAll("melt_dream_energy", MeltDreamEnergyTank.MELT_DREAM_ENERGY_TANK);
-        event.registerAboveAll("san", SanTank.SAN_TANK);
-        event.registerBelowAll("lose_mind", LoseMind.GUI_OVERLAY);
-        event.registerAboveAll("aaroncos_hand_boss_bar", AaroncosHandBossBar.OVERLAY);
-        event.registerAboveAll("wind_knight_boss_bar", WindKnightBossBar.OVERLAY);
-        event.registerBelowAll("cloud_mist_hud", CloudMistHud.GUI_OVERLAY);
-    }
-
-    private void AddEntityRenderersEvent(EntityRenderersEvent.RegisterRenderers event)
-    {
-        ModBlockEntityRenderer.EntityRenderersEventRegister(event);
-        ModEntityRenderer.registerRenderers(event);
-    }
-
-    private void AddRegisterLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event)
-    {
-        ModEntityRenderer.registerLayerDefinitions(event);
     }
 
     private void onAddReloadListeners(AddReloadListenerEvent event)

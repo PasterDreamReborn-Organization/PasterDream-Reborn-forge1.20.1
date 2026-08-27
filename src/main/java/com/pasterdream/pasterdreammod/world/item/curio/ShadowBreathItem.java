@@ -1,11 +1,8 @@
 package com.pasterdream.pasterdreammod.world.item.curio;
 
-import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,7 +13,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -41,7 +37,11 @@ public class ShadowBreathItem extends Item implements ICurioItem {
     /** 生命恢复效果即将到期（1 tick）时重新施加，保证恢复节奏不断档。 */
     private static final int REGEN_REFRESH_THRESHOLD = 1;
     /** 生命恢复等级对应的罗马数字显示名。 */
-    private static final String[] REGEN_LEVELS = {"I", "II", "III"};
+    static final String[] REGEN_LEVELS = {"I", "II", "III"};
+
+    static String getRegenLevelName(int regenTier) {
+        return REGEN_LEVELS[regenTier];
+    }
 
     public ShadowBreathItem() {
         super(new Item.Properties().stacksTo(1).rarity(ModRarities.SUPERIOR));
@@ -113,17 +113,17 @@ public class ShadowBreathItem extends Item implements ICurioItem {
     }
 
     /** 理智 ≥ 50%：每 +10% 理智 1 档，最高 5 档（+20%）。 */
-    private static int getDamageTier(double ratio) {
+    static int getDamageTier(double ratio) {
         return ratio >= 0.5 ? Math.min((int) ((ratio - 0.5) * 10.0), 5) : 0;
     }
 
     /** 理智 < 50%：每 -10% 理智 1 档，最高 5 档（+10 护甲）。 */
-    private static int getArmorTier(double ratio) {
+    static int getArmorTier(double ratio) {
         return ratio < 0.5 ? Math.min((int) ((0.5 - ratio) * 10.0), 5) : 0;
     }
 
     /** 理智 ≤ 40%：每 -10% 理智 1 级，最高 3 级（生命恢复 III）；40% 以上无生命恢复。 */
-    private static int getRegenTier(double ratio) {
+    static int getRegenTier(double ratio) {
         return ratio <= 0.4 ? Math.min((int) ((0.4 - ratio) * 10.0), 2) : -1;
     }
 
@@ -171,54 +171,12 @@ public class ShadowBreathItem extends Item implements ICurioItem {
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
         if (Screen.hasShiftDown() && level != null && level.isClientSide()) {
-            addCurrentBonusTooltip(tooltip);
+            ShadowBreathClientTooltip.addCurrentBonusTooltip(tooltip);
         } else {
             for (int i = 0; i < 9; i++) {
                 tooltip.add(Component.translatable("tooltip.pasterdream.shadow_breath." + i));
             }
             tooltip.add(Component.translatable("tooltip.pasterdream.shadow_breath.hint"));
         }
-    }
-
-    /** 按住 Shift 时展示基于玩家当前理智的实时加成。 */
-    private static void addCurrentBonusTooltip(List<Component> tooltip) {
-        Player player = Minecraft.getInstance().player;
-        if (player == null) return;
-        player.getCapability(ModCapabilities.SAN).ifPresent(capability -> {
-            if (!capability.getIsSanEnabled()) {
-                tooltip.add(Component.translatable("tooltip.pasterdream.shadow_breath.current.disabled"));
-                return;
-            }
-            double san = capability.getSanValue();
-            double maxSan = capability.getMaxSanValue();
-            AttributeInstance attr = player.getAttribute(ModAttributes.MAX_SAN_EXTRA.get());
-            if (attr != null) {
-                maxSan += attr.getValue();
-            }
-            double ratio = maxSan > 0 ? san / maxSan : 0.0;
-            int damageTier = getDamageTier(ratio);
-            int armorTier = getArmorTier(ratio);
-            int regenTier = getRegenTier(ratio);
-
-            tooltip.add(Component.translatable("tooltip.pasterdream.shadow_breath.current.header"));
-            boolean hasBonus = false;
-            if (damageTier > 0) {
-                tooltip.add(Component.translatable("tooltip.pasterdream.shadow_breath.current.attack",
-                        damageTier * 4, damageTier * 4));
-                hasBonus = true;
-            }
-            if (armorTier > 0) {
-                tooltip.add(Component.translatable("tooltip.pasterdream.shadow_breath.current.armor", armorTier * 2));
-                hasBonus = true;
-            }
-            if (regenTier >= 0) {
-                tooltip.add(Component.translatable("tooltip.pasterdream.shadow_breath.current.regen",
-                        REGEN_LEVELS[regenTier]));
-                hasBonus = true;
-            }
-            if (!hasBonus) {
-                tooltip.add(Component.translatable("tooltip.pasterdream.shadow_breath.current.none"));
-            }
-        });
     }
 }

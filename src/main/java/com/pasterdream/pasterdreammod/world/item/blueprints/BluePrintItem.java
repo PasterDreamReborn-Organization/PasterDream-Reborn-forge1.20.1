@@ -1,10 +1,8 @@
 package com.pasterdream.pasterdreammod.world.item.blueprints;
 
-import com.pasterdream.pasterdreammod.helper.localnbtreader.LocalNBTReader;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.network.blueprint.BlueprintPlacePacket;
 import com.pasterdream.pasterdreammod.network.blueprint.UpdateBlueprintPlacingPacket;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -67,7 +65,7 @@ public class BluePrintItem extends Item
                     BluePrintInfo info = BluePrintRegistry.getInfo(tag.getString("content"));
                     if (info != null)
                     {
-                        Minecraft.getInstance().setScreen(new BluePrintScreen(LocalNBTReader.getCompoundTag(info.materialNBT()), LocalNBTReader.getCompoundTag(info.resultNBT())));
+                        BluePrintClientHelper.openBluePrintScreen(info);
                     }
                 }
             }
