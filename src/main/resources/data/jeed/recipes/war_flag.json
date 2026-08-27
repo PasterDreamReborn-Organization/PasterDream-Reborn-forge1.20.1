@@ -1,9 +1,0 @@
-{
-  "type": "jeed:effect_provider",
-  "effect": "pasterdream:war_flag",
-  "providers": [
-    {
-      "item": "pasterdream:war_flag"
-    }
-  ]
-}

@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.dreamnotesbook;
 
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -24,9 +25,9 @@ public class ClientModelEvents
     @SubscribeEvent
     public static void onRegisterAdditionalModels(ModelEvent.RegisterAdditional event)
     {
-        for (ModelResourceLocation modelResourceLocation : DreamNotesBookRegistry.getModelLocations())
+        for (ResourceLocation resourceLocation : DreamNotesBookRegistry.getModelLocations())
         {
-            event.register(modelResourceLocation);
+            event.register(new ModelResourceLocation(resourceLocation.getNamespace(), resourceLocation.getPath(), "inventory"));
         }
     }
 }

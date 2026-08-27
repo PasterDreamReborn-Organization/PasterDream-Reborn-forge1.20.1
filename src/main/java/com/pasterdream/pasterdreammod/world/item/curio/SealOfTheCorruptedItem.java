@@ -100,7 +100,6 @@ public class SealOfTheCorruptedItem extends Item implements ICurioItem, ISanModi
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.EPIC));
         list.add(Component.translatable("tooltip.pasterdream.seal_of_the_corrupted.effect1"));
         list.add(Component.translatable("tooltip.pasterdream.seal_of_the_corrupted.effect2"));
         list.add(Component.translatable("tooltip.pasterdream.seal_of_the_corrupted.effect3"));

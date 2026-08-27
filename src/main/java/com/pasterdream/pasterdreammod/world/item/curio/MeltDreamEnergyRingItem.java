@@ -51,7 +51,6 @@ public class MeltDreamEnergyRingItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.SUPERIOR));
         list.add(Component.translatable("tooltip.pasterdream.melt_dream_energy_ring.effect1"));
         if (Screen.hasShiftDown()) {
             list.add(Component.translatable("tooltip.pasterdream.introduction.tooltip"));

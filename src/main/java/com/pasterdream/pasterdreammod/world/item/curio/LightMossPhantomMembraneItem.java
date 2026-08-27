@@ -49,7 +49,6 @@ public class LightMossPhantomMembraneItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.EXCELLENT));
         list.add(Component.translatable("tooltip.pasterdream.light_moss_phantom_membrane.effect"));
         list.add(Component.translatable("tooltip.pasterdream.light_moss_phantom_membrane.effect.dark"));
     }

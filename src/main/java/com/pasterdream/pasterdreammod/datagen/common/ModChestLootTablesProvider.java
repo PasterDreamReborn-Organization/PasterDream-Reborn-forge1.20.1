@@ -1523,6 +1523,10 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.MAGIC_STONE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(5))
                         )
@@ -1576,6 +1580,18 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CHOCOLATE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.JELLYFISH_MUD.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.JELLYFISH_JELLO.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.FIG.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 3.0F))))
@@ -1745,7 +1761,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(EmptyLootItem.emptyItem()
-                                        .setWeight(30)))
+                                        .setWeight(80)))
                         // 附魔书，固定1抽取，无幸运修正系数
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
@@ -1785,6 +1801,10 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.WIND_RUNNER_CRYSTAL.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.MAGIC_STONE.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
@@ -1844,6 +1864,18 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.JELLYFISH_MUD.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 4.0F))))
+                                .add(LootItem.lootTableItem(ModItems.JELLYFISH_JELLO.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 4.0F))))
+                                .add(LootItem.lootTableItem(ModItems.FIG.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 4.0F))))
                         )
                         // 建材，固定1抽取，不提供额外抽取次数
                         .withPool(LootPool.lootPool()
@@ -2006,7 +2038,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(EmptyLootItem.emptyItem()
-                                        .setWeight(20)))
+                                        .setWeight(50)))
                         // 附魔书，固定1抽取，无幸运修正系数
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
@@ -2136,7 +2168,23 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .add(LootItem.lootTableItem(Items.HONEY_BOTTLE)
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1F, 2F)))))
+                                                UniformGenerator.between(1F, 2F))))
+                                .add(LootItem.lootTableItem(ModItems.JELLYFISH_MUD.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.JELLYFISH_JELLO.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.FIG.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.WIND_RUNNER_JELLY.get())
+                                        .setWeight(5)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(2.0F, 5.0F)))))
                         // 装饰&彩灯，抽取2~3次，无幸运修正
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0F))

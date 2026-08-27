@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.world.item.dreamnotesbook;
 
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -9,9 +8,9 @@ import java.util.*;
 public class DreamNotesBookRegistry
 {
     private static final Map<String, DreamNotesBookInfo> NOTES = new HashMap<>();
-    private static final List<ModelResourceLocation> MODEL_LOCATIONS = new ArrayList<>();
+    private static final List<ResourceLocation> MODEL_LOCATIONS = new ArrayList<>();
 
-    public static void register(String contentName, Component title, String author, Component content, ResourceLocation GUI, int GUI_X, int GUI_Y, int contentStartX, int contentStartY, int contentFinalX, int contentFinalY, ModelResourceLocation itemTexture, int color)
+    public static void register(String contentName, Component title, String author, Component content, ResourceLocation GUI, int GUI_X, int GUI_Y, int contentStartX, int contentStartY, int contentFinalX, int contentFinalY, ResourceLocation itemTexture, int color)
     {
         if (NOTES.containsKey(contentName))
         {
@@ -26,7 +25,7 @@ public class DreamNotesBookRegistry
         return NOTES.get(contentName);
     }
 
-    public static List<ModelResourceLocation> getModelLocations()
+    public static List<ResourceLocation> getModelLocations()
     {
         return Collections.unmodifiableList(MODEL_LOCATIONS);
     }

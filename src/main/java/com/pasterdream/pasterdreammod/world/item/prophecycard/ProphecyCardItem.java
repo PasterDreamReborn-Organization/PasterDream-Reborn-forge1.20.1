@@ -5,7 +5,6 @@ import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -343,7 +342,7 @@ public class ProphecyCardItem extends Item {
 
     @OnlyIn(Dist.CLIENT)
     private static void showTotemEffect(ItemStack stack) {
-        Minecraft.getInstance().gameRenderer.displayItemActivation(stack);
+        ProphecyCardClientEffect.showTotemEffect(stack);
     }
 
     // 允许生效的buff（可在配置文件修改）

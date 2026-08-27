@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item.fluffywindalloy;
 
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -50,7 +51,7 @@ public class FluffyWindAlloyHoeItem extends HoeItem implements FluffyWindAlloyTo
             int ripened = FluffyWindAlloyToolHelper.ripenCrops(level, pos);
             if (ripened > 0) {
                 stack.hurtAndBreak(ripened, player, p -> p.broadcastBreakEvent(context.getHand()));
-                player.getCooldowns().addCooldown(stack.getItem(), RIPEN_COOLDOWN_TICKS);
+                SkillCooldownHelper.applySharedCooldown(player, RIPEN_COOLDOWN_TICKS);
                 level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
         }

@@ -2,8 +2,8 @@ package com.pasterdream.pasterdreammod.network.meltdreamenergy;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.IMeltDreamEnergy;
+import com.pasterdream.pasterdreammod.client.network.ClientPacketHandlers;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -41,17 +41,7 @@ public class MeltDreamEnergySyncPacket
 
     public static void handle(MeltDreamEnergySyncPacket packet, Supplier<NetworkEvent.Context> context)
     {
-        context.get().enqueueWork(() ->
-        {
-            Player player = Minecraft.getInstance().player;
-            if (player != null)
-            {
-                player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(capability ->
-                {
-                    capability.setMeltDreamEnergy(packet.meltDreamEnergy);
-                });
-            }
-        });
+        context.get().enqueueWork(() -> ClientPacketHandlers.handleMeltDreamEnergySync(packet.meltDreamEnergy));
         context.get().setPacketHandled(true);
     }
 

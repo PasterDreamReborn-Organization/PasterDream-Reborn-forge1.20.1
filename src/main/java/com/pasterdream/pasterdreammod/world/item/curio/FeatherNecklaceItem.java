@@ -66,7 +66,6 @@ public class FeatherNecklaceItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.EXCELLENT));
         list.add(Component.translatable("tooltip.pasterdream.feather_necklace.effect1"));
         list.add(Component.translatable("tooltip.pasterdream.feather_necklace.effect2"));
     }

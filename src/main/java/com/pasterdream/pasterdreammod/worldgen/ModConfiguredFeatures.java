@@ -330,6 +330,8 @@ public class ModConfiguredFeatures {
 
 
     // ===== 原版维度花草 =====
+    // 四叶草 — 原作 fourleaf_clover_plant 结构，主世界稀有生成
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FOURLEAF_CLOVER_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fourleaf_clover_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> GOLDENROD_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "goldenrod_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> FERRARIA_CRISPA_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "ferraria_crispa_patch"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> MALVA_SINENSIS_CAVAN_PATCH = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "malva_sinensis_cavan_patch"));
@@ -751,6 +753,9 @@ public class ModConfiguredFeatures {
         context.register(SHADOW_TOMB, new ConfiguredFeature<>(ModFeatures.SHADOW_TOMB.get(),
                 NoneFeatureConfiguration.INSTANCE));
 
+
+        //四叶草 — 主世界稀有簇（原作 fourleaf_clover_plant 结构）
+        context.register(FOURLEAF_CLOVER_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(12, 6, 3, simpleBlockInAir(BlockStateProvider.simple(ModBlocks.FOURLEAF_CLOVER.get())))));
 
         //秋麒麟
         context.register(GOLDENROD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(12, 6, 3, simpleBlockInAir(BlockStateProvider.simple(ModBlocks.GOLDENROD.get())))));

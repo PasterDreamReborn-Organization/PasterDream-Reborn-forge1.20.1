@@ -42,7 +42,6 @@ public class LightButterflyCurioItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.SUPERIOR));
         list.add(Component.translatable("tooltip.pasterdream.light_butterfly_curio.effect"));
         list.add(Component.translatable("tooltip.pasterdream.light_butterfly_curio.energy"));
     }

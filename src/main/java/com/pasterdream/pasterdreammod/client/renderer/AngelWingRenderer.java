@@ -1,14 +1,25 @@
 package com.pasterdream.pasterdreammod.client.renderer;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.pasterdream.pasterdreammod.client.model.AngelWingModel;
-import com.pasterdream.pasterdreammod.world.item.armoritem.AngelWingItem;
+import com.pasterdream.pasterdreammod.world.item.curio.AngelWingItem;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.client.ICurioRenderer;
 
-public class AngelWingRenderer extends GeoArmorRenderer<AngelWingItem> {
+public class AngelWingRenderer extends GeoArmorRenderer<AngelWingItem> implements ICurioRenderer {
 
     public AngelWingRenderer() {
         super(new AngelWingModel());
@@ -26,5 +37,23 @@ public class AngelWingRenderer extends GeoArmorRenderer<AngelWingItem> {
     public RenderType getRenderType(AngelWingItem animatable, ResourceLocation texture,
                                     MultiBufferSource bufferSource, float partialTick) {
         return RenderType.entityTranslucent(getTextureLocation(animatable));
+    }
+
+    @Override
+    public <T extends LivingEntity, M extends EntityModel<T>> void render(
+            ItemStack stack, SlotContext slotContext, PoseStack poseStack,
+            RenderLayerParent<T, M> renderLayerParent, MultiBufferSource bufferSource,
+            int light, float limbSwing, float limbSwingAmount, float partialTicks,
+            float ageInTicks, float netHeadYaw, float headPitch) {
+        if (!(stack.getItem() instanceof AngelWingItem item)) return;
+        LivingEntity entity = slotContext.entity();
+        if (entity == null || !(renderLayerParent.getModel() instanceof HumanoidModel<?> baseModel)) return;
+
+        this.prepForRender(entity, stack, EquipmentSlot.CHEST, baseModel);
+        poseStack.pushPose();
+        RenderType renderType = this.getRenderType(item, this.getTextureLocation(item), bufferSource, partialTicks);
+        VertexConsumer buffer = ItemRenderer.getArmorFoilBuffer(bufferSource, renderType, false, stack.hasFoil());
+        this.defaultRender(poseStack, item, bufferSource, null, buffer, 0.0F, partialTicks, light);
+        poseStack.popPose();
     }
 }

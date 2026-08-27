@@ -78,7 +78,6 @@ public class FadedBlessingOfCeciliaItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.MASTER));
         list.add(Component.translatable("tooltip.pasterdream.faded_blessing_of_cecilia.effect0"));
         list.add(Component.translatable("tooltip.pasterdream.faded_blessing_of_cecilia.hint"));
     }

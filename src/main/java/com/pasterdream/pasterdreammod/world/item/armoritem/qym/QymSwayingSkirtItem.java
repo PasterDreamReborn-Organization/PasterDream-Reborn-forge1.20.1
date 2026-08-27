@@ -2,7 +2,6 @@ package com.pasterdream.pasterdreammod.world.item.armoritem.qym;
 
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
-import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
@@ -41,7 +40,6 @@ public class QymSwayingSkirtItem extends ArmorItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.MIRACLE));
         list.add(Component.translatable("tooltip.pasterdream.qym_swaying_skirt.energy"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.set_bonus"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.damage_reduce"));
