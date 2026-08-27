@@ -1523,6 +1523,10 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.MAGIC_STONE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(5))
                         )
@@ -1785,6 +1789,10 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.WIND_RUNNER_CRYSTAL.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.MAGIC_STONE.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
