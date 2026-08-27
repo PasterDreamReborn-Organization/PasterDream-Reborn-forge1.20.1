@@ -2330,25 +2330,25 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.dream_train.location_info", "列车向我们暴露了一个位置信息... §aX：%s §aZ：%s");
 
         // 沙漠英雄墓 - 任务对话
-        add("message.pasterdream.desert_hero_tomb.line1", "良久，竟有来者。");
-        add("message.pasterdream.desert_hero_tomb.line2", "无苦心，有孥，吾有一事相求。");
-        add("message.pasterdream.desert_hero_tomb.line3", "如卿所见，吾今也。");
-        add("message.pasterdream.desert_hero_tomb.line4", "以剑授汝，可否助我逐外寇也？");
-        add("message.pasterdream.desert_hero_tomb.line5", "为得好，子曰谢酬。");
-        add("message.pasterdream.desert_hero_tomb.line6", "汝又能终吾三请，吾以真剑付汝。");
-        add("message.pasterdream.desert_hero_tomb.line7", "其名为：§e『沉荆门』朔漠");
-        add("message.pasterdream.desert_hero_tomb.task_clear_threats", "[清除附近的掠夺者与尸壳]");
-        add("message.pasterdream.desert_hero_tomb.threats_remaining", "尚未清除附近的威胁，他不予回应");
-        add("message.pasterdream.desert_hero_tomb.quest1", "1.为我带来10块年糕");
-        add("message.pasterdream.desert_hero_tomb.quest2", "2.我想要一匹马在旁边陪着我");
-        add("message.pasterdream.desert_hero_tomb.quest3", "3.获得一个全村庄村民的英雄认可时来见我");
+        add("message.pasterdream.desert_hero_tomb.line1", "不意今日，遇着一位能听俺言语的好汉……");
+        add("message.pasterdream.desert_hero_tomb.line2", "俺不曾有甚么歹念，却有一桩杂事，要烦劳好汉相助。");
+        add("message.pasterdream.desert_hero_tomb.line3", "这周遭的贼寇妖魔着实搅扰得人不得安枕。");
+        add("message.pasterdream.desert_hero_tomb.line4", "这口剑且借与好汉，替俺将四下的恶贼妖魔都除了，如何？");
+        add("message.pasterdream.desert_hero_tomb.line5", "好汉身手果然了得！俺这口宝剑赠与了好汉也不算埋没了它。");
+        add("message.pasterdream.desert_hero_tomb.line6", "如今俺还有三桩心愿未了，若好汉肯一一成就，俺便为好汉解开这口宝剑的本来真力。");
+        add("message.pasterdream.desert_hero_tomb.line7", "此剑真名唤作：§e『沉荆门』朔漠。");
+        add("message.pasterdream.desert_hero_tomb.task_clear_threats", "[清理掉附近的掠夺者和尸壳]");
+        add("message.pasterdream.desert_hero_tomb.threats_remaining", "四下的草寇妖邪尚未肃清，某便不与好汉多言。");
+        add("message.pasterdream.desert_hero_tomb.quest1", "第一桩：说来惭愧，俺对那年糕着实馋得紧，有劳好汉替俺寻来十块年糕。");
+        add("message.pasterdream.desert_hero_tomb.quest2", "第二桩：俺在这坟里头，着实闷得慌，好生思念横刀跃马的日子，劳烦好汉为俺寻得一匹好马。");
+        add("message.pasterdream.desert_hero_tomb.quest3", "第三桩：俺这剑的真本事不认歹人，须得好汉让这村中老幼都称一声'英雄'，俺才肯为你解开真力。");
         add("message.pasterdream.desert_hero_tomb.task1_complete", "任务1完成");
         add("message.pasterdream.desert_hero_tomb.task2_complete", "任务2完成");
         add("message.pasterdream.desert_hero_tomb.task3_complete", "任务3完成");
-        add("message.pasterdream.desert_hero_tomb.all_tasks_done", "吾心愿已成，请携朔漠大剑见我");
-        add("message.pasterdream.desert_hero_tomb.receive_sword", "请君收下吧：此名为『沉荆门』朔漠");
-        add("message.pasterdream.desert_hero_tomb.bring_sword", "吾心愿已成，请携朔漠大剑见我");
-        add("message.pasterdream.desert_hero_tomb.already_completed", "已有人完成他的全部愿望，他便不再回应");
+        add("message.pasterdream.desert_hero_tomb.all_tasks_done", "俺的心愿已了，好汉但须携俺那口朔漠大剑来见俺。");
+        add("message.pasterdream.desert_hero_tomb.receive_sword", "好汉收了罢，这口剑的真本事如今已尽数为你解开了：§e『沉荆门』朔漠。\n§r俺已再没甚别物送与好汉了。");
+        add("message.pasterdream.desert_hero_tomb.bring_sword", "俺的心愿已了，好汉但须携俺那口朔漠大剑来见俺。");
+        add("message.pasterdream.desert_hero_tomb.already_completed", "俺已再没甚别物送与好汉了");
 
         // 预言卡
         add(ModItems.EMPTY_PROPHECY_CARD.get(), "空白预言卡");
