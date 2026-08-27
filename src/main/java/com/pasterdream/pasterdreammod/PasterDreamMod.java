@@ -88,6 +88,7 @@ public class PasterDreamMod
         ModMenus.register(modEventBus);             //注册菜单
         ModRecipes.register(modEventBus);           //注册配方
         ModSounds.register(modEventBus);            //注册音效
+        ModPaintings.register(modEventBus);         //注册画作
         ModEffects.register(modEventBus);           //注册药水效果
         ModPotions.register(modEventBus);           //注册药水类型
         ModAttributes.register(modEventBus);        //注册属性

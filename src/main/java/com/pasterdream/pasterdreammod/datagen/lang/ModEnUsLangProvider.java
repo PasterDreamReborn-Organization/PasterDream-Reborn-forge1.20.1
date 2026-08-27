@@ -2020,5 +2020,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_direction.announce.5", "§7§oThe sun rises... The howling wind blows toward §aNortheast");
         add("message.pasterdream.wind_direction.announce.6", "§7§oThe sun rises... The howling wind blows toward §aEast");
         add("message.pasterdream.wind_direction.announce.7", "§7§oThe sun rises... The howling wind blows toward §aSoutheast");
+
+        // Paintings
+        add("painting.pasterdream.pasterdream_title.title", "Pasterdream Title");
+        add("painting.pasterdream.pasterdream_title.author", "阿墨");
+        add("painting.pasterdream.pasterdream_start.title", "Pasterdream Start");
+        add("painting.pasterdream.pasterdream_start.author", "【pl】莫");
+        add("painting.pasterdream.pasterdream_aerolite_dust.title", "琴雨梦");
+        add("painting.pasterdream.pasterdream_aerolite_dust.author", "异星之尘");
     }
 }
