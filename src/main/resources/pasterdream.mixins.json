@@ -24,7 +24,8 @@
     "StructureBlockEntityMixin",
     "StructureTemplateMixin",
     "LocateCommandMixin",
-    "ItemStackElytraFlyMixin"
+    "LivingEntityElytraFlyMixin",
+    "PlayerElytraFlyMixin"
   ],
   "client": [
     "BossHealthOverlayAccessor",
@@ -32,6 +33,7 @@
     "IMixinOptionInstance",
     "LevelRendererMixin",
     "LightTextureGammaMixin",
+    "LocalPlayerElytraFlyMixin",
     "MusicManagerMixin",
     "SituationalMusicMixin",
     "BlockElementMixin"
