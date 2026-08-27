@@ -879,6 +879,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.染梦世界树", "Dyedream World Tree");
         add("book.pasterdream.title.代达罗斯之翼与浮空岛", "Wings Of DaiDaLuoSi And Floating Island");
         add("book.pasterdream.title.星河果冻和浮空岛", "Galaxy Jelly and Floating Island");
+        add("book.pasterdream.title.融梦釜与融梦炼金术", "Melt Dream Cauldron and Melt Dream Alchemy");
 
         add("book.pasterdream.title.探求秘辛", "Desert Cottage");
 
@@ -904,6 +905,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("book.pasterdream.title.破风的骑士", "Wind Break Knight");
         add("book.pasterdream.title.清晨的新风", "Morning New Wind");
+        add("book.pasterdream.title.魔法使的记录-其一", "Magician's Records - 1");
+        add("book.pasterdream.title.魔法使的记录-其二", "Magician's Records - 2");
+        add("book.pasterdream.title.空岛的圣诞树", "Christmas Tree on the Sky Island");
 
         add("book.pasterdream.title.精铸工坊", "Weapon Workshop");
         add("book.pasterdream.title.暗影高炉", "Shadow Blast Furnace");
