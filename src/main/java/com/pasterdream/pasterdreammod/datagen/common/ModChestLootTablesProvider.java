@@ -1745,7 +1745,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(EmptyLootItem.emptyItem()
-                                        .setWeight(30)))
+                                        .setWeight(50)))
                         // 附魔书，固定1抽取，无幸运修正系数
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
@@ -2006,7 +2006,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(EmptyLootItem.emptyItem()
-                                        .setWeight(20)))
+                                        .setWeight(30)))
                         // 附魔书，固定1抽取，无幸运修正系数
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
