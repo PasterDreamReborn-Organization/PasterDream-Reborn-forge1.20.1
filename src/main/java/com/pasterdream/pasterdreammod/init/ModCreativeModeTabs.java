@@ -867,6 +867,9 @@ public class ModCreativeModeTabs {
                         output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_dyedream_world_normal"));
                         output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_dyedream_world_rare"));
                         output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_dyedream_world_legend"));
+                        output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_wind_journey_world_normal"));
+                        output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_wind_journey_world_rare"));
+                        output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/melt_dream_crystal_chest_wind_journey_world_legend"));
                         output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/wind_journey_chest"));
                         output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/wind_journey_chest_rare"));
                         output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/christmas_tree_chest"));
@@ -876,12 +879,14 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_3.get());
                         output.accept(MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestDyedreamWorldNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
                         output.accept(MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestWorldTreeNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
+                        output.accept(MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestWindJourneyWorldNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
                         output.accept(MeltDreamCrystalChestLootTableNBT.onlyNormal(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
                         output.accept(MeltDreamCrystalChestLootTableNBT.onlyRare(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
                         output.accept(MeltDreamCrystalChestLootTableNBT.onlyLegend(ModItems.MELT_DREAM_CRYSTAL_CHEST.get()));
                         output.accept(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get());
                         output.accept(MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestDyedreamWorldNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
                         output.accept(MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestWorldTreeNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
+                        output.accept(MeltDreamCrystalChestLootTableNBT.meltDreamCrystalChestWindJourneyWorldNBT(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
                         output.accept(MeltDreamCrystalChestLootTableNBT.onlyNormal(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
                         output.accept(MeltDreamCrystalChestLootTableNBT.onlyRare(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
                         output.accept(MeltDreamCrystalChestLootTableNBT.onlyLegend(ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get()));
