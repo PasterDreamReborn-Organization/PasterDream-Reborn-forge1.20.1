@@ -788,6 +788,7 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦世界树"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("代达罗斯之翼与浮空岛"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("星河果冻和浮空岛"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("融梦釜与融梦炼金术"));
 
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("探求秘辛"));
 
@@ -813,6 +814,9 @@ public class ModCreativeModeTabs {
 
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("破风的骑士"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("清晨的新风"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使的记录-其一"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使的记录-其二"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("空岛的圣诞树"));
 
                         output.accept(NBTBookRegisterToCreativeModTab.GardenDecryption.MistyDreamingLotus());
                         output.accept(NBTBookRegisterToCreativeModTab.GardenDecryption.PiercingEdelweiss());
