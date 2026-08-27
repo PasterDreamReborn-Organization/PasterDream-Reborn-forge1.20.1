@@ -49,6 +49,7 @@ public class ModBiomeModifierProvider implements DataProvider
             addFeature(entries, "pebble_patch", ModPlacedFeatures.PEBBLE_PATCH, featureLookup, BiomeTags.IS_OVERWORLD, GenerationStep.Decoration.SURFACE_STRUCTURES);
 
             addPatch(entries, "goldenrod_patch", ModPlacedFeatures.GOLDENROD_PATCH, featureLookup, BiomeTags.IS_OVERWORLD);
+            addPatch(entries, "fourleaf_clover_patch", ModPlacedFeatures.FOURLEAF_CLOVER_PATCH, featureLookup, BiomeTags.IS_OVERWORLD);
             TagKey<Biome> flowerFieldTag = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "can_flower_field_spawn_biome"));
             addPatch(entries, "ferraria_crispa_patch", ModPlacedFeatures.FERRARIA_CRISPA_PATCH, featureLookup, flowerFieldTag);
             addPatch(entries, "malva_sinensis_cavan_patch", ModPlacedFeatures.MALVA_SINENSIS_CAVAN_PATCH, featureLookup, flowerFieldTag);
