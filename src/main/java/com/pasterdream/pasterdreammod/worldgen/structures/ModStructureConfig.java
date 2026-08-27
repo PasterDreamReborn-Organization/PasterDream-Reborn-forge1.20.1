@@ -130,7 +130,7 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_8", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 301706210, 1, null, false));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_9", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 306900320, 1, null, false));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_10", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 1855702116, 1, null, false));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:christmas_tree", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 55, 80, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 48, 24, 885566331, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:christmas_tree", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 55, 80, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 157, 78, 885566331, 1, null, false));
 
         return STRUCTURES;
     }
