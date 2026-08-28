@@ -1,8 +1,6 @@
 package com.pasterdream.pasterdreammod;
 
 import com.pasterdream.pasterdreammod.client.*;
-import com.pasterdream.pasterdreammod.client.renderer.AngelWingRenderer;
-import com.pasterdream.pasterdreammod.client.renderer.ForsakensWingRenderer;
 import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.FluidHandlerResolvers;
 import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateManager;
@@ -56,7 +54,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib.GeckoLib;
-import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 @Mod(PasterDreamMod.MOD_ID)
 public class PasterDreamMod
@@ -97,8 +94,6 @@ public class PasterDreamMod
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
-        modEventBus.addListener(this::registerItemModels);
-        modEventBus.addListener(this::getItemModels);
         MinecraftForge.EVENT_BUS.addListener(this::AddItemTooltip);
         MinecraftForge.EVENT_BUS.addListener(this::AddCommand);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
@@ -158,18 +153,6 @@ public class PasterDreamMod
         ModScreens.register(event);
         ModBlockEntityRenderer.FMLClientSetupEventRegister(event);
         event.enqueueWork(ClientModEvents::registerItemProperties);
-    }
-
-    private void registerItemModels(ModelEvent.ModifyBakingResult event)
-    {
-        ModItemModels.register(event);
-    }
-
-    private void getItemModels(ModelEvent.BakingCompleted event)
-    {
-        ModItemModels.getBakedModel(event);
-        CuriosRendererRegistry.register(ModItems.ANGEL_WING.get(), AngelWingRenderer::new);
-        CuriosRendererRegistry.register(ModItems.FORSAKENS_WING.get(), ForsakensWingRenderer::new);
     }
 
     private void AddItemTooltip(ItemTooltipEvent event)

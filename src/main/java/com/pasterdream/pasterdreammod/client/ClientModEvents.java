@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.client;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.client.renderer.AngelWingRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.ForsakensWingRenderer;
 import com.pasterdream.pasterdreammod.init.ModItemModels;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModEntityRenderer;
@@ -18,6 +20,7 @@ import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 /**
  * 仅客户端注册的模组事件（MOD 总线）。
@@ -37,6 +40,8 @@ public class ClientModEvents
     public static void getItemModels(ModelEvent.BakingCompleted event)
     {
         ModItemModels.getBakedModel(event);
+        CuriosRendererRegistry.register(ModItems.ANGEL_WING.get(), AngelWingRenderer::new);
+        CuriosRendererRegistry.register(ModItems.FORSAKENS_WING.get(), ForsakensWingRenderer::new);
     }
 
     @SubscribeEvent
