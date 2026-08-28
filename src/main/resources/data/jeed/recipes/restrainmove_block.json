@@ -1,0 +1,13 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "pasterdream:restrainmove_block",
+  "providers": [
+    {
+      "item": "pasterdream:aaroncos_left_hand_spawn_egg"
+
+    },
+    {
+      "item": "pasterdream:aaroncos_right_hand_spawn_egg"
+    }
+  ]
+}
