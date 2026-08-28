@@ -54,7 +54,10 @@ public class PasterDreamTipsManager {
             "/kill @e[type=minecraft:bat]",
             "人类坠入梦境。",
             "你知道站在营火边可以让你恢复san吗？",
-            "部分食物会给予恢复san的增益。"
+            "部分食物会给予恢复san的增益。",
+            "不同的梦境有不同进去的方法，前辈的笔记会帮到你！",
+            "亲斤巾白其斤牛寺之梦",
+            "java.lang.NullPointerException:Tooltip for the mod is Null"
     );
 
     private final List<String> customTips = new ArrayList<>();
