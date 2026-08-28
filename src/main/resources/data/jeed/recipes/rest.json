@@ -1,0 +1,15 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "pasterdream:rest",
+  "providers": [
+    {
+      "item": "pasterdream:qym_doll"
+    },
+    {
+      "item": "pasterdream:uuz_doll"
+    },
+    {
+      "tag": "minecraft:beds"
+    }
+  ]
+}
