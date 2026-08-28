@@ -332,8 +332,8 @@ public class Config
 
     // === BOSS 限伤系统 · 亚伦柯斯之触独立配置 ===
     private static final ForgeConfigSpec.BooleanValue AARONCOS_DAMAGE_CAP_INDEPENDENT = BUILDER
-            .comment("亚伦柯斯之触（左右手）是否使用独立限伤配置（否则沿用上方全局 BOSS 限伤配置），默认 false")
-            .define("aaroncosDamageCapIndependent", false);
+            .comment("亚伦柯斯之触（左右手）是否使用独立限伤配置（否则沿用上方全局 BOSS 限伤配置），默认 true")
+            .define("aaroncosDamageCapIndependent", true);
 
     private static final ForgeConfigSpec.BooleanValue AARONCOS_SHADOW_DIFFICULTY_AFFECTS_DAMAGE_CAP = BUILDER
             .comment("亚伦柯斯之触：暗影难度是否影响限伤值（难度越高 damageCap 越低），默认 false")
@@ -345,17 +345,17 @@ public class Config
             .define("aaroncosDamageCapEnabled", true);
 
     private static final ForgeConfigSpec.BooleanValue AARONCOS_DPS_CAP_ENABLED = BUILDER
-            .comment("亚伦柯斯之触：是否启用 DPS 限制（每秒总伤害上限），默认 false。"
+            .comment("亚伦柯斯之触：是否启用 DPS 限制（每秒总伤害上限），默认 true。"
                     + "\n仅在启用单次伤害限制（aaroncosDamageCapEnabled=true）时生效")
-            .define("aaroncosDpsCapEnabled", false);
+            .define("aaroncosDpsCapEnabled", true);
 
     private static final ForgeConfigSpec.BooleanValue AARONCOS_RANGE_CAP_ENABLED = BUILDER
             .comment("亚伦柯斯之触：是否启用远距离减伤（超出限伤距离后伤害线性衰减），默认 false")
             .define("aaroncosRangeCapEnabled", false);
 
     private static final ForgeConfigSpec.DoubleValue AARONCOS_DAMAGE_CAP = BUILDER
-            .comment("亚伦柯斯之触：单次受击伤害上限（同时也是 DPS 桶容量），默认 40")
-            .defineInRange("aaroncosDamageCap", 40.0, 1.0, 1_000_000.0);
+            .comment("亚伦柯斯之触：单次受击伤害上限（同时也是 DPS 桶容量），默认 35")
+            .defineInRange("aaroncosDamageCap", 35.0, 1.0, 1_000_000.0);
 
     private static final ForgeConfigSpec.DoubleValue AARONCOS_DPS_CAP = BUILDER
             .comment("亚伦柯斯之触：DPS 桶每秒恢复量，默认 200")
