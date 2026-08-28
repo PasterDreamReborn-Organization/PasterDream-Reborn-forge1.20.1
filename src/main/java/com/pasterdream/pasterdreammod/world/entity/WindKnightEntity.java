@@ -250,6 +250,7 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     public void addAdditionalSaveData(@NotNull CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putString("Texture", this.getTexture());
+        compound.putBoolean("EnrageCloudsSpawned", enrageCloudsSpawned);
     }
 
     @Override
@@ -257,6 +258,8 @@ public class WindKnightEntity extends Monster implements GeoEntity {
         super.readAdditionalSaveData(compound);
         if (compound.contains("Texture"))
             this.setTexture(compound.getString("Texture"));
+        if (compound.contains("EnrageCloudsSpawned"))
+            enrageCloudsSpawned = compound.getBoolean("EnrageCloudsSpawned");
     }
 
     @Override
