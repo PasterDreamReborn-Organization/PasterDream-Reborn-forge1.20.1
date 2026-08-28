@@ -4,7 +4,6 @@ import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
-import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -45,7 +44,6 @@ public class QymCloudBootsItem extends ArmorItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.MIRACLE));
         list.add(Component.translatable("tooltip.pasterdream.qym_cloud_boots.blink"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cloud_boots.skill_cd"));
         list.add(Component.translatable("tooltip.pasterdream.qym_cat_ears.set_bonus"));

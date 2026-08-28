@@ -56,6 +56,8 @@ import net.minecraft.client.multiplayer.ClientLevel;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -217,6 +219,60 @@ public class ModJEIPlugin implements IModPlugin
                     return IIngredientSubtypeInterpreter.NONE;
                 }
         });
+
+        // 深海宝藏系列：区分普通 / 超级（附魔闪烁）变体
+        for (Item item : List.of(
+                ModItems.DEEP_SEA_TREASURE.get(),
+                ModItems.DYEDREAM_DEEP_SEA_TREASURE.get(),
+                ModItems.SHADOW_DEEP_SEA_TREASURE.get())) {
+            registration.registerSubtypeInterpreter(item,
+                    (stack, context) -> stack.getTag() != null && stack.getTag().getBoolean("deep_treasure_super")
+                            ? "super" : IIngredientSubtypeInterpreter.NONE);
+        }
+
+        // 梦笔记系列 / 蓝图 / 梦笔记书：按 NBT "content" 区分不同内容
+        for (Item item : List.of(
+                ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(),
+                ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(),
+                ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(),
+                ModItems.DREAM_NOTES_BOOK.get(),
+                ModItems.BLUE_PRINT.get())) {
+            registration.registerSubtypeInterpreter(item,
+                    (stack, context) -> {
+                        CompoundTag tag = stack.getTag();
+                        return tag != null && tag.contains("content") ? tag.getString("content") : IIngredientSubtypeInterpreter.NONE;
+                    });
+        }
+
+        // 原版成书：按 NBT "title" 区分不同书（笔记标签内加入多本不同内容的成书）
+        registration.registerSubtypeInterpreter(
+                Items.WRITTEN_BOOK,
+                (stack, context) -> {
+                    CompoundTag tag = stack.getTag();
+                    return tag != null && tag.contains("title") ? tag.getString("title") : IIngredientSubtypeInterpreter.NONE;
+                });
+
+        // 融梦水晶宝箱 / 重置工具：按 NBT "LootTables" 列表中的战利品表区分不同配置
+        for (Item item : List.of(
+                ModItems.MELT_DREAM_CRYSTAL_CHEST.get(),
+                ModItems.MELT_DREAM_CRYSTAL_CHEST_RESET_TOOL.get())) {
+            registration.registerSubtypeInterpreter(item,
+                    (stack, context) -> {
+                        CompoundTag tag = stack.getTag();
+                        if (tag == null || !tag.contains("LootTables")) {
+                            return IIngredientSubtypeInterpreter.NONE;
+                        }
+                        ListTag lootTables = tag.getList("LootTables", Tag.TAG_COMPOUND);
+                        StringBuilder key = new StringBuilder();
+                        for (int i = 0; i < lootTables.size(); i++) {
+                            if (i > 0) {
+                                key.append(',');
+                            }
+                            key.append(lootTables.getCompound(i).getString("LootTable"));
+                        }
+                        return key.toString();
+                    });
+        }
     }
 
     //将流体添加至JEI物品列表

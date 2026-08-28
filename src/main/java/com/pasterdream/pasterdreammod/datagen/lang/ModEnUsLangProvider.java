@@ -711,6 +711,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.按住Shift+右键点击打开的融梦水晶箱可复位（写入此物品NBT中包含的战利品列表）", "§7Press Shift And Right Mouse Button Click Opened Melt Dream Crystal Chest Can Reset(Write LootTable From NBT Which In This Item)");
         add("tooltip.pasterdream.reset_cost_melt_dream_energy", "Reset Cost %f Melt Dream Energy");
         add("tooltip.pasterdream.右键打开GUI以查看蓝图结构", "Right Mouse Click To Open GUI And View The Blue Print Structure.");
+        add("tooltip.pasterdream.蓝图搭建消耗规则", "§7Building In Creative Mode Does Not Consume Items, But In Survival Mode It Does. Right Click The First Time To Open The GUI And Click \"Place\". Right Click The Second Time To Place.");
 
         add("tooltip.pasterdream.空", "Empty");
         add("tooltip.pasterdream.总容量:", "Total Capacity:");
@@ -729,6 +730,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.dyedream_armor", "Dyedream Protection");
         add("effect.pasterdream.titanium_armor", "Titanium Protection");
         add("effect.pasterdream.dyedream_up", "Dyedream Tool Boost");
+        add("effect.pasterdream.melt_dream_crystal_armor", "Melt Dream Protection");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9Enables flight");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4Melt Dream Energy Cost: 1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
@@ -878,6 +880,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.染梦世界树", "Dyedream World Tree");
         add("book.pasterdream.title.代达罗斯之翼与浮空岛", "Wings Of DaiDaLuoSi And Floating Island");
         add("book.pasterdream.title.星河果冻和浮空岛", "Galaxy Jelly and Floating Island");
+        add("book.pasterdream.title.融梦釜与融梦炼金术", "Melt Dream Cauldron and Melt Dream Alchemy");
 
         add("book.pasterdream.title.探求秘辛", "Desert Cottage");
 
@@ -903,6 +906,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("book.pasterdream.title.破风的骑士", "Wind Break Knight");
         add("book.pasterdream.title.清晨的新风", "Morning New Wind");
+        add("book.pasterdream.title.魔法使的记录-其一", "Magician's Records - 1");
+        add("book.pasterdream.title.魔法使的记录-其二", "Magician's Records - 2");
+        add("book.pasterdream.title.空岛的圣诞树", "Christmas Tree on the Sky Island");
 
         add("book.pasterdream.title.精铸工坊", "Weapon Workshop");
         add("book.pasterdream.title.暗影高炉", "Shadow Blast Furnace");
@@ -1469,8 +1475,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("block.pasterdream.shadow_brazier", "Shadow Brazier");
         add("block.pasterdream.shadow_blast_furnace_core", "Shadow Blast Furnace Core");
         add("tooltip.pasterdream.shadow_hand_trap", "§7--Why would you dig this up?");
-        add("tooltip.pasterdream.shadow_blast_furnace_core.1", "When the multi-block structure is complete");
-        add("tooltip.pasterdream.shadow_blast_furnace_core.2", "Right-click this core with the corresponding blueprint to build");
         add("message.pasterdream.shadow_brazier.need_candle", "You need a Shadow Candle to light the brazier");
         add("message.pasterdream.shadow_brazier.lit", "The brazier ignites, but brings no light...");
         add("message.pasterdream.shadow_brazier.shadow_spread", "Shadow spreads from all around");
@@ -1746,38 +1750,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.black_beetle.easter_egg_2", "Grass, walk, ignore! ጿ ኈ ቼ ዽ ጿ");
         add("entity.pasterdream.golden_fox.vanish", "The golden fox vanished after fulfilling your wish...");
 
-        //jeed Compatible
-        add("effect.pasterdream.rest.description", "Touch the QYM doll or get it after sleeping, and you'll get a san aura while the effect lasts.");
-        add("effect.pasterdream.cook.description", "Obtained after eating some kind of food, grants a san aura while the effect lasts.");
-        add("effect.pasterdream.cheer_up.description", "Get it when san is above 90% to gain some positive effects.");
-        add("effect.pasterdream.lethargy.description", "You gain some negative effects when san is between 40% and 60%.");
-        add("effect.pasterdream.trance.description", "You gain worse negative effects when san is between 20% and 40%.");
-        add("effect.pasterdream.insane.description", "When sanity falls below 20%, you get it and experience extremely severe negative effects. Your vision will be covered with special visual effects. When san is between 1% and 10%, you get Insane II, with looping sound effects and camera shakes. When sanity drops below 1%, you get Insane III, and the aforementioned negative effects are intensified. (Visual effects, shaking, and sound effects can be turned off with commands or config)");
-        add("effect.pasterdream.snow_vow.description", "During the effect period, grants 3 Luck, immunity to burn and freeze effects, provided by Snow Vow Head curios within range.");
-        add("effect.pasterdream.goldenrod_tea.description", "During the duration of the effect, it provides immunity to hunger and nausea.");
-        add("effect.pasterdream.sculk_armor.description", "Obtained when wearing the full Sculk set, increases maximum health, grants resistance buff when in the depths and removes darkness debuff while giving speed and resistance effects when affected by darkness debuff.");
-        add("effect.pasterdream.dyedream_armor.description", "Obtained when wearing the full Dyedream Alloy set, increases maximum health and grants Absorption II every 30 seconds.");
-        add("effect.pasterdream.titanium_armor.description", "Obtained when wearing the full Titanium set, grants Absorption I every 30 seconds.");
-        add("effect.pasterdream.dyedream_up.description", "Obtained when wearing the full Dyedream Alloy set, deals 50% more damage when holding Dyedream (Dyedream Alloy and Melt Dream Crystal) tools.");
-        add("effect.pasterdream.melt_dream_crystal_armor", "Melt Dream Protection");
-        add("effect.pasterdream.melt_dream_crystal_armor.description", "Obtained when wearing the full Melt Dream Crystal set, reduces Melt-Repair cost by 50%, grants Regeneration II and Dyedream tool enhancement, grants a San Aura of +1.2 when Melt Dream Energy is above 50%, otherwise +0.6.");
-        add("effect.pasterdream.dream_wish.description", "Drink the dream fruit juice to get it, and having this effect lets you enter the Dyedream World when you sleep at night.");
-        add("effect.pasterdream.dyedream_perfume.description", "Obtained by drinking the Dyedream Perfume, Phantom don't attack you for the duration of its effect.");
-        add("effect.pasterdream.counter_attack.description", "Increase skill damage and disappear after the next attack.");
-        add("effect.pasterdream.dream_harp_of_wanderer.description", "Obtained after using the Dream Harp of Wanderer, the Dream Harp of Wanderer can be acquired from the Dyedream Train.");
-        add("effect.pasterdream.cecilia_blessing.description", "Obtained after takes a fatal hit when equips Blessing of Cecilia, making you immune to damage while the effect lasts.");
-        add("effect.pasterdream.guard.description", "Obtained by using the Guardian Prophecy Card, while you have this buff, damage above a certain percentage of your health will be reduced (can be changed in the Config).");
-        add("effect.pasterdream.flare_up.description", "Obtained using the Wielding-Sword Prophecy card. While you have this buff, it increases attack power and attack speed, boosts skill damage multiplier, and reduces skill cooldowns.");
-        add("effect.pasterdream.conflict_mark.description", "After marking another entity with the Conflict Prophecy card, that entity gains the buff. While it has this buff, it will become the target of attacks from other entities.");
-        add("effect.pasterdream.war_flag.description", "After equipping the war flag, you gain it by killing enemies, which increases your attack power, and leveling up by 1 for each enemy you kill.");
-        add("effect.pasterdream.confusion.description", "When applied to a player, their view will shake; when applied to other creatures, it will make them unable to move.");
-        add("effect.pasterdream.calais_spice_bottle.description", "After equipping the Calais Spice Bottle, you gain it. Each time you hit an enemy, it loses 1 level and grants a random effect. Eating the required food will restore the levels.");
-        add("effect.pasterdream.shadow_silence.description", "After getting this buff, shadow creatures will lose the ability to use their skills.");
-        add("effect.pasterdream.bind.description", "Obtained after being hit by the White Sword's sword rain. After getting this buff, you won't be able to move.");
-        add("effect.pasterdream.restrainmove_block.description", "Remove jump boosts and force-disable flying while the effect lasts.");
-        add("effect.pasterdream.wind_runner.description", "Obtained by eating the Wind Runner Jelly, allows elytra flight without an elytra while the effect lasts.");
-
-        // Desert Hero Tomb - Quest Dialogue
         // Dyedream Crack Messages
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5Your body passes through this strange hole, but nothing happens.");
         add("message.pasterdream.dyedream_crack.first_contact.2", "§5You can feel that this crack-like thing interacts with this world and another place. The different environments nearby might have been born because of it.");
@@ -1797,25 +1769,25 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past...");
         add("message.pasterdream.dream_train.location_info", "The train revealed a location... §aX：%s §aZ：%s");
 
-        add("message.pasterdream.desert_hero_tomb.line1", "At long last, a visitor has come.");
-        add("message.pasterdream.desert_hero_tomb.line2", "I have no regrets, only one final request.");
-        add("message.pasterdream.desert_hero_tomb.line3", "As you can see, this is all that remains of me.");
-        add("message.pasterdream.desert_hero_tomb.line4", "I bestow this sword upon you. Will you help me drive out the invaders?");
-        add("message.pasterdream.desert_hero_tomb.line5", "Well done, my gratitude.");
-        add("message.pasterdream.desert_hero_tomb.line6", "You have proven your worth. I shall grant you the true sword.");
-        add("message.pasterdream.desert_hero_tomb.line7", "Its name is: §e'Chenjingmen' Desert Blade");
-        add("message.pasterdream.desert_hero_tomb.task_clear_threats", "[Clear the nearby Pillagers and Husks]");
-        add("message.pasterdream.desert_hero_tomb.threats_remaining", "The threats nearby have not been cleared. He will not respond.");
-        add("message.pasterdream.desert_hero_tomb.quest1", "1. Bring me 10 Rice Cakes");
-        add("message.pasterdream.desert_hero_tomb.quest2", "2. I want a horse by my side");
-        add("message.pasterdream.desert_hero_tomb.quest3", "3. Gain the recognition of an entire village as their hero");
+        add("message.pasterdream.desert_hero_tomb.line1", "I never expected to meet a true hero willing to hear my words...");
+        add("message.pasterdream.desert_hero_tomb.line2", "I mean no harm, yet I have a small matter I must trouble you with.");
+        add("message.pasterdream.desert_hero_tomb.line3", "These bandits and demons around here have robbed me of my rest.");
+        add("message.pasterdream.desert_hero_tomb.line4", "Take this sword, friend, and rid me of all the villains and demons around here. How about it?");
+        add("message.pasterdream.desert_hero_tomb.line5", "What skill! This sword is not wasted on a hero such as you.");
+        add("message.pasterdream.desert_hero_tomb.line6", "Yet I have three unfulfilled wishes. Grant them all, and I shall unlock this sword's true power.");
+        add("message.pasterdream.desert_hero_tomb.line7", "Its true name is: §e'Chenjingmen' Desert Blade.");
+        add("message.pasterdream.desert_hero_tomb.task_clear_threats", "[Clear out the nearby Pillagers and Husks]");
+        add("message.pasterdream.desert_hero_tomb.threats_remaining", "The bandits and demons nearby are not yet cleared. I shall not speak with you until then.");
+        add("message.pasterdream.desert_hero_tomb.quest1", "First: I confess, I crave those rice cakes. Bring me ten of them.");
+        add("message.pasterdream.desert_hero_tomb.quest2", "Second: I grow weary in this tomb, longing for the days of galloping with my blade. Find me a fine horse.");
+        add("message.pasterdream.desert_hero_tomb.quest3", "Third: this sword's power recognizes no villain. Win the praise of the village's elders and children, and I shall unlock its strength.");
         add("message.pasterdream.desert_hero_tomb.task1_complete", "Task 1 Complete");
         add("message.pasterdream.desert_hero_tomb.task2_complete", "Task 2 Complete");
         add("message.pasterdream.desert_hero_tomb.task3_complete", "Task 3 Complete");
-        add("message.pasterdream.desert_hero_tomb.all_tasks_done", "My wishes have been fulfilled. Bring me the Desert Sword.");
-        add("message.pasterdream.desert_hero_tomb.receive_sword", "Please accept this: its name is 'Chenjingmen' Desert Blade");
-        add("message.pasterdream.desert_hero_tomb.bring_sword", "My wishes have been fulfilled. Bring me the Desert Sword.");
-        add("message.pasterdream.desert_hero_tomb.already_completed", "Someone has already fulfilled all his wishes. He no longer responds.");
+        add("message.pasterdream.desert_hero_tomb.all_tasks_done", "My wishes are fulfilled. Bring me my Desert Sword.");
+        add("message.pasterdream.desert_hero_tomb.receive_sword", "Take it, friend. Its true power is now fully yours: §e'Chenjingmen' Desert Blade.\n§rI have nothing left to give you.");
+        add("message.pasterdream.desert_hero_tomb.bring_sword", "My wishes are fulfilled. Bring me my Desert Sword.");
+        add("message.pasterdream.desert_hero_tomb.already_completed", "I have nothing left to give you.");
 
         // Prophecy Cards
         add(ModItems.EMPTY_PROPHECY_CARD.get(), "Empty Prophecy Card");
@@ -2021,5 +1993,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_direction.announce.5", "§7§oThe sun rises... The howling wind blows toward §aNortheast");
         add("message.pasterdream.wind_direction.announce.6", "§7§oThe sun rises... The howling wind blows toward §aEast");
         add("message.pasterdream.wind_direction.announce.7", "§7§oThe sun rises... The howling wind blows toward §aSoutheast");
+
+        // Paintings
+        add("painting.pasterdream.pasterdream_title.title", "Pasterdream Title");
+        add("painting.pasterdream.pasterdream_title.author", "阿墨");
+        add("painting.pasterdream.pasterdream_start.title", "Pasterdream Start");
+        add("painting.pasterdream.pasterdream_start.author", "【pl】莫");
+        add("painting.pasterdream.pasterdream_aerolite_dust.title", "琴雨梦");
+        add("painting.pasterdream.pasterdream_aerolite_dust.author", "异星之尘");
     }
 }

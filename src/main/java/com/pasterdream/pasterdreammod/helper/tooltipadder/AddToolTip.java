@@ -1,8 +1,10 @@
 package com.pasterdream.pasterdreammod.helper.tooltipadder;
 
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 
 import java.util.List;
@@ -14,6 +16,12 @@ public class AddToolTip
         //用于向其他已有物品添加tooltip
         ItemStack stack = event.getItemStack();
         List<Component> tooltip = event.getToolTip();
+
+        // 自定义稀有度自动品质行（无需在物品内手动添加）
+        Rarity rarity = stack.getRarity();
+        if (ModRarities.tierOf(rarity) != null) {
+            tooltip.add(1, ModRarities.qualityTooltip(rarity));
+        }
 
         if(stack.is(ModItems.MAGIC_STONE.get())){
             tooltip.add(Component.translatable("tooltip.pasterdreammod.magic_stone"));
@@ -75,10 +83,6 @@ public class AddToolTip
         }
         if(stack.is(ModItems.SHADOW_DUNGEON_KEY.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.shadow_dungeon_key"));
-        }
-        if(stack.is(ModItems.SHADOW_BLAST_FURNACE_CORE.get())){
-            tooltip.add(Component.translatable("tooltip.pasterdream.shadow_blast_furnace_core.1"));
-            tooltip.add(Component.translatable("tooltip.pasterdream.shadow_blast_furnace_core.2"));
         }
         if(stack.is(ModItems.SHADOW_HILT.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.shadow_hilt"));

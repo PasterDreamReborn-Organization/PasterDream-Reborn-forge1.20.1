@@ -29,6 +29,6 @@ public class ModCuriosSlots {
         InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE,
                 () -> SlotTypePreset.CHARM.getMessageBuilder().size(1).build());
         InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE,
-                () -> SlotTypePreset.CURIO.getMessageBuilder().size(2).build());
+                () -> SlotTypePreset.CURIO.getMessageBuilder().size(1).build());
     }
 }

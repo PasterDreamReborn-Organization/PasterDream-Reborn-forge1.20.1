@@ -99,7 +99,6 @@ public class AllkindsRingItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.LEGENDARY));
         list.add(Component.translatable("tooltip.pasterdream.allkinds_ring.flavor"));
         list.add(Component.translatable("tooltip.pasterdream.allkinds_ring.lore"));
         list.add(Component.translatable("tooltip.pasterdream.allkinds_ring.skill_cd"));

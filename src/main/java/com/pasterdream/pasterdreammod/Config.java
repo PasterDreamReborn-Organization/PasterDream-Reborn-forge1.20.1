@@ -400,6 +400,18 @@ public class Config
             .comment("破风骑士普攻命中后在目标头顶召唤落雷（雷云实体所使用的落雷投射物）的概率，默认 0.5（50%），允许最小值为0，最大值为1")
             .defineInRange("windKnightLightningChance", 0.5, 0.0, 1.0);
 
+    private static final ForgeConfigSpec.BooleanValue WIND_KNIGHT_PASSIVE_INVULNERABLE_ENABLED = BUILDER
+            .comment("破风骑士：是否启用受击后概率获得短暂无敌的被动，默认 true")
+            .define("windKnightPassiveInvulnerableEnabled", true);
+
+    private static final ForgeConfigSpec.DoubleValue WIND_KNIGHT_PASSIVE_INVULNERABLE_CHANCE = BUILDER
+            .comment("破风骑士：被动无敌触发概率（受击后获得无敌的概率），默认 0.3（30%），允许最小值为0，最大值为1")
+            .defineInRange("windKnightPassiveInvulnerableChance", 0.3, 0.0, 1.0);
+
+    private static final ForgeConfigSpec.IntValue WIND_KNIGHT_PASSIVE_INVULNERABLE_TICKS = BUILDER
+            .comment("破风骑士：被动获得的无敌时长（tick，20 tick = 1 秒），默认 20")
+            .defineInRange("windKnightPassiveInvulnerableTicks", 20, 1, Integer.MAX_VALUE);
+
     // === 亚伦柯斯之触 ===
     private static final ForgeConfigSpec.BooleanValue AARONCOS_TOUCH_IMMUNE_TO_NEGATIVE_EFFECTS = BUILDER
             .comment("亚伦柯斯之触（左右手）是否免疫负面状态效果（有害类效果，如中毒、虚弱、缓慢等），默认 true")
@@ -737,6 +749,9 @@ public class Config
     public static double windKnightDpsCap;
     public static double windKnightRangeCap;
     public static double windKnightLightningChance;
+    public static boolean windKnightPassiveInvulnerableEnabled;
+    public static double windKnightPassiveInvulnerableChance;
+    public static int windKnightPassiveInvulnerableTicks;
 
     /**
      * 解析某 BOSS 档位实际生效的限伤配置。
@@ -1028,6 +1043,9 @@ public class Config
         windKnightDpsCap = WIND_KNIGHT_DPS_CAP.get();
         windKnightRangeCap = WIND_KNIGHT_RANGE_CAP.get();
         windKnightLightningChance = WIND_KNIGHT_LIGHTNING_CHANCE.get();
+        windKnightPassiveInvulnerableEnabled = WIND_KNIGHT_PASSIVE_INVULNERABLE_ENABLED.get();
+        windKnightPassiveInvulnerableChance = WIND_KNIGHT_PASSIVE_INVULNERABLE_CHANCE.get();
+        windKnightPassiveInvulnerableTicks = WIND_KNIGHT_PASSIVE_INVULNERABLE_TICKS.get();
         creatureCaptureEnabled = CREATURE_CAPTURE_ENABLED.get();
         creatureCaptureEntities = CREATURE_CAPTURE_ENTITIES.get();
 

@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod;
 
 import com.pasterdream.pasterdreammod.client.*;
+import com.pasterdream.pasterdreammod.client.renderer.AngelWingRenderer;
+import com.pasterdream.pasterdreammod.client.renderer.ForsakensWingRenderer;
 import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.FluidHandlerResolvers;
 import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateManager;
@@ -13,18 +15,13 @@ import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
 import com.pasterdream.pasterdreammod.event.PlayerEvents;
 import com.pasterdream.pasterdreammod.event.RecipeUnlockHandler;
 import com.pasterdream.pasterdreammod.init.*;
-import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
-import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
-import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
 import com.pasterdream.pasterdreammod.world.item.armoritem.AngelWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.ForsakensWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MachineLightWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymArmorEvents;
 import com.pasterdream.pasterdreammod.world.dimension.AaroncosArenaTeleporter;
-import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -32,7 +29,6 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.ForgeMod;
@@ -62,6 +58,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib.GeckoLib;
+import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 @Mod(PasterDreamMod.MOD_ID)
 public class PasterDreamMod
@@ -86,6 +83,7 @@ public class PasterDreamMod
         ModMenus.register(modEventBus);             //注册菜单
         ModRecipes.register(modEventBus);           //注册配方
         ModSounds.register(modEventBus);            //注册音效
+        ModPaintings.register(modEventBus);         //注册画作
         ModEffects.register(modEventBus);           //注册药水效果
         ModPotions.register(modEventBus);           //注册药水类型
         ModAttributes.register(modEventBus);        //注册属性
@@ -121,8 +119,6 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onAdvancementEarned);
         MinecraftForge.EVENT_BUS.addListener(QymArmorEvents::onEquipChange);
         MinecraftForge.EVENT_BUS.addListener(MachineLightWingItem::onEquipChange);
-        MinecraftForge.EVENT_BUS.addListener(AngelWingItem::onEquipChange);
-        MinecraftForge.EVENT_BUS.addListener(ForsakensWingItem::onEquipChange);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onItemAttributeModifier);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onShelterLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onGuardLivingHurt);
@@ -132,9 +128,6 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(ModWorldGenEvents::onCheckSpawn);
         MinecraftForge.EVENT_BUS.addListener(RecipeUnlockHandler::onBlockBreak);
         MinecraftForge.EVENT_BUS.addListener(ModMobSpawnEvents::onEntityJoinLevel);
-        modEventBus.addListener(this::AddOverlays);
-        modEventBus.addListener(this::AddEntityRenderersEvent);
-        modEventBus.addListener(this::AddRegisterLayerDefinitions);
         MinecraftForge.EVENT_BUS.addListener(this::onAddReloadListeners);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -220,6 +213,11 @@ public class PasterDreamMod
     private void getItemModels(ModelEvent.BakingCompleted event)
     {
         ModItemModels.getBakedModel(event);
+        event.enqueueWork(ClientModEvents::registerItemProperties);
+        event.enqueueWork(() -> {
+            CuriosRendererRegistry.register(ModItems.ANGEL_WING.get(), AngelWingRenderer::new);
+            CuriosRendererRegistry.register(ModItems.FORSAKENS_WING.get(), ForsakensWingRenderer::new);
+        });
     }
 
     private void AddItemTooltip(ItemTooltipEvent event)
@@ -230,27 +228,6 @@ public class PasterDreamMod
     private void AddCommand(RegisterCommandsEvent event)
     {
         ModCommands.register(event.getDispatcher());
-    }
-
-    private void AddOverlays(RegisterGuiOverlaysEvent event)
-    {
-        event.registerAboveAll("melt_dream_energy", MeltDreamEnergyTank.MELT_DREAM_ENERGY_TANK);
-        event.registerAboveAll("san", SanTank.SAN_TANK);
-        event.registerBelowAll("lose_mind", LoseMind.GUI_OVERLAY);
-        event.registerAboveAll("aaroncos_hand_boss_bar", AaroncosHandBossBar.OVERLAY);
-        event.registerAboveAll("wind_knight_boss_bar", WindKnightBossBar.OVERLAY);
-        event.registerAboveAll("cloud_mist_hud", CloudMistHud.GUI_OVERLAY);
-    }
-
-    private void AddEntityRenderersEvent(EntityRenderersEvent.RegisterRenderers event)
-    {
-        ModBlockEntityRenderer.EntityRenderersEventRegister(event);
-        ModEntityRenderer.registerRenderers(event);
-    }
-
-    private void AddRegisterLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event)
-    {
-        ModEntityRenderer.registerLayerDefinitions(event);
     }
 
     private void onAddReloadListeners(AddReloadListenerEvent event)

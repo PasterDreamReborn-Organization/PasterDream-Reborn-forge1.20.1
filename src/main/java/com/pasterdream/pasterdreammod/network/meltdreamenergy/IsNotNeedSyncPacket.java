@@ -2,7 +2,7 @@ package com.pasterdream.pasterdreammod.network.meltdreamenergy;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.IMeltDreamEnergy;
-import net.minecraft.client.Minecraft;
+import com.pasterdream.pasterdreammod.client.network.ClientPacketHandlers;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
@@ -39,17 +39,7 @@ public class IsNotNeedSyncPacket
 
     public static void handle(IsNotNeedSyncPacket packet, Supplier<NetworkEvent.Context> context)
     {
-        context.get().enqueueWork(() ->
-        {
-            Player player = Minecraft.getInstance().player;
-            if (player != null)
-            {
-                player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(capability ->
-                {
-                    capability.setIsOrNotNeedConsumeDreamEnergy(packet.isNotNeed);
-                });
-            }
-        });
+        context.get().enqueueWork(() -> ClientPacketHandlers.handleIsNotNeedSync(packet.isNotNeed));
         context.get().setPacketHandled(true);
     }
 }

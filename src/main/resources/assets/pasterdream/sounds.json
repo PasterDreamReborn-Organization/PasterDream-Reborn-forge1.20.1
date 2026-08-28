@@ -109,7 +109,7 @@
     "sounds": [{"name": "pasterdream:white_sword_rain", "stream": false, "volume": 0.4}]
   },
   "shadow_sword": {
-    "sounds": [{"name": "pasterdream:shadow_sword", "stream": true}]
+    "sounds": [{"name": "pasterdream:shadow_sword", "stream": true, "volume": 0.5}]
   },
   "shadow_vortex": {
     "sounds": [{"name": "pasterdream:shadow_vortex", "stream": false}]

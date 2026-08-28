@@ -17,7 +17,6 @@ public class WarFlagItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.ANCIENT));
         list.add(Component.translatable("tooltip.pasterdream.war_flag.effect1"));
         list.add(Component.translatable("tooltip.pasterdream.war_flag.effect2"));
         list.add(Component.translatable("tooltip.pasterdream.war_flag.effect3"));

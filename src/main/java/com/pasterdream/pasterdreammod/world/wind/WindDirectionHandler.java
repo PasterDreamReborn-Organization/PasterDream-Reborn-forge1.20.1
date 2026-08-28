@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.world.dimension.WindJourneyDimension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -86,6 +87,7 @@ public final class WindDirectionHandler {
         ServerLevel next = player.server.getLevel(WindJourneyDimension.WIND_JOURNEY_WORLD);
         if (next != null) {
             player.teleportTo(next, player.getX(), player.getY(), player.getZ(), player.getYRot(), player.getXRot());
+            resendActiveEffects(player);
         }
     }
 
@@ -93,6 +95,18 @@ public final class WindDirectionHandler {
         ServerLevel overworld = player.server.getLevel(Level.OVERWORLD);
         if (overworld == null) return;
         player.teleportTo(overworld, player.getX(), 304, player.getZ(), player.getYRot(), player.getXRot());
+        resendActiveEffects(player);
+    }
+
+    /**
+     * teleportTo 跨维度只发 RespawnPacket，客户端会新建一个不带任何效果实例的 LocalPlayer，
+     * 而原版 changeDimension 会在重生包后逐条重发效果包。这里手动补发，
+     * 否则玩家所有状态效果在客户端消失（HUD 图标、hasEffect 判定失效）。
+     */
+    private static void resendActiveEffects(ServerPlayer player) {
+        for (MobEffectInstance effect : player.getActiveEffects()) {
+            player.connection.send(new ClientboundUpdateMobEffectPacket(player.getId(), effect));
+        }
     }
 
     private static void tickWindChange(ServerLevel level) {

@@ -709,6 +709,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                         .addModels(new ConfiguredModel(seedlingModel))
                         .partialState().with(net.minecraft.world.level.block.state.properties.BlockStateProperties.AGE_1, 1)
                         .addModels(new ConfiguredModel(matureModel));
+            } else if (potted == ModBlocks.POTTED_FOURLEAF_CLOVER) {
+                // 四叶草本体是 3D 模型，cross 交叉渲染会变成"八瓣"，
+                // 手写盆栽模型 = 原版花盆 + 四叶草 3D 元素（见 models/block/potted_fourleaf_clover.json）
+                simpleBlock(potted.get(), models().getExistingFile(modLoc("block/potted_fourleaf_clover")));
             } else {
                 var plantTex = modLoc("block/" + plant.getId().getPath());
                 var pottedModel = models().withExistingParent(potted.getId().getPath(), mcLoc("block/flower_pot_cross"))

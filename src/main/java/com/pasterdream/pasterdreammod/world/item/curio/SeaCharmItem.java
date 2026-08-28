@@ -49,6 +49,5 @@ public class SeaCharmItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.EXCELLENT));
     }
 }

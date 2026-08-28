@@ -31,7 +31,7 @@ public class NamelessDialogueHandler {
         if (!AdvancementHelper.isDone(player, FIRST_DIALOGUE)) {
             entity.startDialogue(player, NamelessEntity.DialoguePhase.FIRST);
         } else if (!AdvancementHelper.isDone(player, INTRUDE_COMPLETE)) {
-            sendLine(player, "dialogue.pasterdream.nameless.wait");
+            entity.startDialogue(player, NamelessEntity.DialoguePhase.FIRST);
         } else if (!AdvancementHelper.isDone(player, SECOND_DIALOGUE)) {
             entity.startDialogue(player, NamelessEntity.DialoguePhase.SECOND);
         } else {

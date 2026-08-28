@@ -27,12 +27,12 @@ public class DreamNotesBookOverrides extends ItemOverrides
             DreamNotesBookInfo info = DreamNotesBookRegistry.getInfo(tag.getString("content"));
             if (info != null && info.itemTexture() != null)
             {
-                return Minecraft.getInstance().getModelManager().getModel(info.itemTexture());
+                return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(info.itemTexture().getNamespace(), info.itemTexture().getPath(), "inventory"));
             }
-                else
-                {
-                    return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(PasterDreamMod.MOD_ID, "gun_mu", "inventory"));
-                }
+            else
+            {
+                return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(PasterDreamMod.MOD_ID, "dream_notes_book", "inventory"));
+            }
         }
         return original;
     }

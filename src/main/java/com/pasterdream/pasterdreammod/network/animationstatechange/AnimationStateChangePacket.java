@@ -1,10 +1,8 @@
 package com.pasterdream.pasterdreammod.network.animationstatechange;
 
-import com.pasterdream.pasterdreammod.world.block.geckolibblock.AnimatableSync;
-import net.minecraft.client.Minecraft;
+import com.pasterdream.pasterdreammod.client.network.ClientPacketHandlers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -33,17 +31,7 @@ public class AnimationStateChangePacket
 
     public static void handle(AnimationStateChangePacket message, Supplier<NetworkEvent.Context> context)
     {
-        context.get().enqueueWork(() ->
-        {
-            if (Minecraft.getInstance().level != null)
-            {
-                BlockEntity blockEntity = Minecraft.getInstance().level.getBlockEntity(message.pos);
-                if (blockEntity instanceof AnimatableSync sync)
-                {
-                    sync.setAnimationState(message.animationState);
-                }
-            }
-        });
+        context.get().enqueueWork(() -> ClientPacketHandlers.handleAnimationStateChange(message.pos, message.animationState));
         context.get().setPacketHandled(true);
     }
 }

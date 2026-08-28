@@ -72,12 +72,6 @@ public class RedDewRingItem extends Item implements ICurioItem {
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
         int lv = getLv(stack);
-        switch (lv){
-            case 1-> list.add(ModRarities.qualityTooltip(ModRarities.COMMON));
-            case 2-> list.add(ModRarities.qualityTooltip(ModRarities.EXCELLENT));
-            case 3-> list.add(ModRarities.qualityTooltip(ModRarities.SUPERIOR));
-            case 4-> list.add(ModRarities.qualityTooltip(ModRarities.MASTER));
-        }
         list.add(Component.translatable("tooltip.pasterdream.lv", lv).withStyle(ChatFormatting.GREEN));
         list.add(Component.translatable("tooltip.pasterdream.red_dew_ring.effect", lv).withStyle(ChatFormatting.BLUE));
         if (Screen.hasShiftDown()) {

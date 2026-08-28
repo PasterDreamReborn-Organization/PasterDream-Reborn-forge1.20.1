@@ -1449,13 +1449,11 @@
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [0, 90, -180],
-			"translation": [0, 10, 1.25],
-			"scale": [0.6, 0.6, 0.6]
+			"translation": [0, 14, 1.25]
 		},
 		"thirdperson_lefthand": {
 			"rotation": [0, 90, -180],
-			"translation": [0, 10, 1.25],
-			"scale": [0.6, 0.6, 0.6]
+			"translation": [0, 14, 1.25]
 		},
 		"firstperson_righthand": {
 			"rotation": [20, 100, -180],

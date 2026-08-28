@@ -133,7 +133,6 @@ public class BobojiCurioItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.LEGENDARY));
         list.add(Component.translatable("tooltip.pasterdream.boboji_curio.stat.speed"));
         list.add(Component.translatable("tooltip.pasterdream.boboji_curio.stat.range"));
         list.add(Component.translatable("tooltip.pasterdream.boboji_curio.stat.cd"));

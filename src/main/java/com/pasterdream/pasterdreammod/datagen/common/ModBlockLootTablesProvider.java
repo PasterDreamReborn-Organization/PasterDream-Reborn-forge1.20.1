@@ -230,7 +230,9 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.JUNGLE_SPORANGIUM.get(),
                 block -> LootHelpers.createShearsOrSilkTouchSelfElseItem(ModBlocks.JUNGLE_SPORANGIUM.get(),ModItems.JUNGLE_SPORE.get(),1.0F,1.0F));
 
-        dropOther(ModBlocks.FOURLEAF_CLOVER.get(), ModItems.FOURLEAF_CLOVER_CURIO.get());
+        add(ModBlocks.FOURLEAF_CLOVER.get(), block -> createSilkTouchOrShearsDispatchTable(block,
+                LootItem.lootTableItem(ModItems.FOURLEAF_CLOVER_CURIO.get())
+                        .when(LootItemRandomChanceCondition.randomChance(0.05F))));
 
         // ===== 风之植物系列 =====
         add(ModBlocks.HAIRY_MOSS.get(),

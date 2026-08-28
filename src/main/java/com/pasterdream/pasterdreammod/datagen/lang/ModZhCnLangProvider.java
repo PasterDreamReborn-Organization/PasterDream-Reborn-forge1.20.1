@@ -693,6 +693,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.loot_table.not_set", "§7未设置");
         add("tooltip.pasterdream.loot_generator.usage.shift", "§7对容器使用Shift+右键以在容器生成战利品");
         add("tooltip.pasterdream.右键打开GUI以查看蓝图结构", "右键打开GUI以查看蓝图结构");
+        add("tooltip.pasterdream.蓝图搭建消耗规则", "§7创造模式搭建时不消耗物品，生存模式搭建时需要消耗，第一次右键打开GUI，在里面可以点击“放置”按钮，第二次右键即可放置");
 
         add("tooltip.pasterdream.normal_loot_table", "§3普通战利品：%s，权重：%d，幸运权重倍率：%f");
         add("tooltip.pasterdream.rare_loot_table", "§a稀有战利品：%s，权重：%d，幸运权重倍率：%f");
@@ -734,6 +735,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.dyedream_armor", "染梦守护");
         add("effect.pasterdream.titanium_armor", "钛金守护");
         add("effect.pasterdream.dyedream_up", "染梦工具增强");
+        add("effect.pasterdream.melt_dream_crystal_armor", "融梦守护");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9启用飞行能力");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4融梦能量消耗：1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9获得飞行能力且免疫摔落伤害");
@@ -883,6 +885,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("book.pasterdream.title.染梦世界树", "染梦世界树");
         add("book.pasterdream.title.代达罗斯之翼与浮空岛", "代达罗斯之翼与浮空岛");
         add("book.pasterdream.title.星河果冻和浮空岛", "星河果冻和浮空岛");
+        add("book.pasterdream.title.融梦釜与融梦炼金术", "融梦釜与融梦炼金术");
 
         add("book.pasterdream.title.探求秘辛", "探求秘辛");
 
@@ -908,6 +911,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("book.pasterdream.title.破风的骑士", "破风的骑士");
         add("book.pasterdream.title.清晨的新风", "清晨的新风");
+        add("book.pasterdream.title.魔法使的记录-其一", "魔法使的记录-其一");
+        add("book.pasterdream.title.魔法使的记录-其二", "魔法使的记录-其二");
+        add("book.pasterdream.title.空岛的圣诞树", "空岛的圣诞树");
 
         add("book.pasterdream.title.精铸工坊", "精铸工坊");
         add("book.pasterdream.title.暗影高炉", "暗影高炉");
@@ -936,6 +942,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("book.pasterdream.content.染梦世界树", "偶然远眺风景时，我在视野的尽头发现了这棵参天巨树。走到树底仰望，树干高耸入云，甚至难以望见枝叶。\n挖掘根部周围的泥土，可以发现其根茎延伸不算很长，似乎难以解释其异常的高度。\n蜿蜒的树干形成了一条天然的阶梯，可以让人较为轻松地攀爬而上，但有些地方仍要自行徒手攀登。爬到枝干的顶端后，能看到其内部存在一个小空洞。\n闪烁着光芒的白色涌泉从侧面的树干中流出，无论哪里都显得尤为反常——但是相比于这个世界本身的神奇，这点景象已经不足以使我感到惊奇。\n回到树下后，我开始思考这棵树得以形成和正常生长的原因。对此，我做出了某种猜想：\n这个世界属于某种梦境，而其大气中存在的梦境能量的分布是不均匀的。\n就像大气现象导致天候变化一样，这种融于梦境大气中的能量——融梦能量的分布应该也是不均匀的。\n融梦能量沉积较多的区域，能量沉积下来化作了实体，形成了大陆、空岛、树木等这个世界的一切。而那些融梦能量小范围大量聚集的结果，就是融梦水晶箱——这也解释了为什么打开箱子时会有融梦能量逸散而出。\n照这个理论进行推论，在这个梦境世界的中心——融梦能量最为富集的地方，理应会形成一种体积巨大的结构；而丰富的融梦能量会化为大量的融梦水晶箱积蓄其中。\n想到这里，我回头看向了参天巨木所在的方向。它有可能正是这个梦境世界的世界树，融梦能量的富集场所，有着大量融梦水晶箱的梦幻之地。\n我理应再次登上这棵树，对其内部结构一探究竟。之前的一无所获一定是我遗漏了什么......\nBy 极星");
         add("book.pasterdream.content.代达罗斯之翼与浮空岛", "代达罗斯之翼与浮空岛\n在我从那颗参天大树中悻然离开后不久，千夜追上了我，打断了我重新探索的计划\n”看到那些悬浮在半空的岛了吗？我想上去看看那里有没有什么宝藏。”我向千夜提议\n没想到千夜直接给我泼了桶冷水，”我看你是失了智。我们又不会飞，怎么上去呢？”\n”关于这点，我有个大胆的想法……”\n在千夜难以置信的目光中，我拿出了之前路上捡到的那些粉红色的鸡掉落的羽毛。之后，我把之前捡到的蜡烛重新熔成蜡，用这些蜡把羽毛粘在了一起，费了不少力做出了两对羽翼。”\n”所以你是想当伊卡洛斯。”\n”不，我觉得我会是代达罗斯。毕竟这里的太阳可不会融化这些蜡。而且不试试怎么知道呢？毕竟……”\n事情超乎寻常的顺利——虽然按照常理来说，人是没法用这种羽翼飞翔的；但不知为何，这里的风像是托着羽翼般，使我们能毫不费力地飞行。我们很轻松地就飞到了我之前只能抬头仰望的浮空岛上。\n抵达岛上后，千夜直接冲进了那间小屋中。我也紧随其后，在这里找了个地儿坐下来，和她交谈起来。\n\n”话说回来，这个世界也太超乎常理了吧”千夜把那对羽翼卸了下来，开始观察它有没有散架。\n\n”所以我说了，这个世界应该是属于某种梦境或者幻境吧\n\n毕竟我完全搞不懂这种岛屿是怎么安然无恙地悬浮在空中，在我们踩上去后又能纹丝不动的。”\n\n”这个房子也是，虽然一看就像是人为制造的，但根本没有人类生活过的迹象。另外，我还是无法理解这玩意凭什么能运作。”千夜抖了抖手上的羽翼说。\n”别较真了，梦里啥都有可能嘛。”\nBy 极星");
         add("book.pasterdream.content.星河果冻和浮空岛", "在我从那颗参天大树中悻然离开后不久，千夜追上了我，打断了我接下来的探索计划，我认为现在我还是把我的探索计划和她说明了比较好......\n“看到那些悬浮在半空的岛了吗？我想上去看看那里有没有什么宝藏。”我向千夜提议\n没想到千夜直接给我泼了桶冷水，“我看你是失了智。我们又不会飞，怎么上去呢？”\n“关于这点，我有个大胆的想法……”\n在千夜难以置信的目光中，我拿出了之前在这个世界中的一些建筑中搜寻得到的果冻状物品\n“这是什么东西？”\n“这是我从那些建筑中搜寻到的物品，吃了它似乎会‘嗖’地一下飞到天上去，所以......”\n  她很快明白了我的想法：“所以你是想当阿姆斯特朗？”\n  “不，我觉得我顶多是万户，这只是登上浮空岛而已。好了，我们来试试吧”\n事情超乎寻常的顺利——虽然按照常理来说，现实中并不存在这种只要吃掉就会让人高高飞起的果冻，不过幸亏有这东西，我们很轻松地就飞到了我之前只能抬头仰望的浮空岛上。\n-抵达岛上后，千夜直接冲进了那间小屋中。我也紧随其后，在这里找了个地儿坐下来，和她交谈起来。\n“话说回来，这个世界也太超乎常理了吧”千夜也坐了下来，开始整理被风吹乱的头发。\n“所以我说了，这个世界应该是属于某种梦境或者幻境吧，毕竟我完全搞不懂这种岛屿是怎么安然无恙地悬浮在空中，在我们踩上去后又能纹丝不动的。”\n“这个房子也是，虽然一看就像是人为制造的，但根本没有人类生活过的迹象。另外，我还是无法理解这种果冻凭什么吃了能让我们飞起来。”\n“别较真了，梦里啥都有可能嘛。”\nBy 极星");
+        add("book.pasterdream.content.融梦釜与融梦炼金术", "我在那粉色的世界转了很久，直到我在那棵巨型的树下面发现了那个机器，我的炼金研究有了进展。\n我通过在梦境里面解构分析这台机器，终于明白了这个机器的运行原理，这台机器本质上是使用梦境特殊的能量，来进行炼金合成，而这种能量，在梦境里面某种闪亮的泉水：融梦涌泉中含量最多。\n接下来是最关键的步骤，融梦涌泉水能为现在那近乎死板的炼金术带来什么？研究这件事是最难的也是最枯燥的。首先，我需要能承载这种药水的容器，通过我不断实验，我最终确定使用耐腐蚀极强的钛金以及和融梦涌泉相性更好的材料，而我叫它：灵药瓶。\n接下来寻找相性材料也耗费了我一部分时间，在实验中，我才发现我低估了融梦涌泉和这台机器的潜力，融梦涌泉水使用这台机器进行炼金时，可以为原本生效时间很短的药水延长时间，甚至可以加强某些药水的效力，古书写的那死板的炼金术在那台机器面前根本不值一提。不过那么厉害的东西，总得有个名字，我就姑且叫它：融梦釜，而这种炼金术我叫它融梦炼金术。\nBy 青岚");
         add("book.pasterdream.content.探求秘辛", "为了收集一些必要的资源，我在长途跋涉后来到了一片沙漠。\n基于我要寻找的资源相当罕见这一情况，我可能不得不在此停留一段时间，因此，我设法找到了位于沙漠边缘的一座村庄，并建造了这座供我居住的小屋。\n每天日出时出门探索，日落前回到这座临时居所中；晚上或是刮起沙暴无法出门的时候，则和村中的村民攀谈或者是在家里打发时间——这就是我在这片沙漠的日常。\n转眼间半年过去了，白天的探索没有任何进展，但我和村民间的关系却日渐熟络起来。\n大人们对我在夜晚保护他们不受怪物侵扰的行动感激不尽，孩童们则醉心于我分享的游历各方时的冒险故事——渐渐的，村民们开始向我透露一些从未给其他旅者讲述过的“秘辛”：\n“我们村的铁匠几乎从不出门，所以你应该也没怎么见过他。据说他曾是某个国家的御用工匠，他的家族专门为王室锻造各式各样的精兵利器；但在王国毁灭后，他的家族就此没落，最后流浪到我们这里定居了。他好像还不太能接受自己的处境，把工坊造的离我们村子有点远，我们平时也跟他交往不深，只有工作层面的交流......但如果是你的话，应该能和他打好关系吧......”\n村民们似乎想让我去开导孤僻的没落锻造贵族（虽然我觉得他们只是指望在我跟那位打好关系后，让他们能用更便宜的价格修理工具罢了）。于是我带着我珍藏多年的陈酿，造访了铁匠的工坊。\n......\n虽然中间经历了许多波折，但我们最终成为了挚友。在一次对饮中，我向年事已高的他表示，希望他家族的精湛锻造技术能流传下去；虽然我已经在与他的相处中对他的锻造技法有所了解，但我无论如何也无法独自还原出他的技术，像他那样锻造出能力优越的装备。\n他在长时间的沉思后，掏出纸笔，为我绘制了一张设计图，并告诉我：只有严格按照他的工坊的布局，才能最大程度地将大气中的某种......物质？引导并汇聚起来，从而锻造出超凡而新颖的工具。折服于他的慷慨与信任，我将我携带的几乎所有值钱的物件全部留下作为谢礼，并带着这份设计图离开了此处。\n不知不觉，好像已经在这片沙漠停留太久了啊......\n是时候踏上新的旅途了——等我下一次在某地停留时，就试着按照这份设计图来建造一座工坊吧。\nBy 极星");
         add("book.pasterdream.content.研究笔记:黑金属", "要说起这段研究的起因，得归溯于我在这片漆黑的梦境发现的一些古怪的金属。\n就在那些倒挂的灯笼，遗迹，或者是一些陶罐宝盒里，质地看起来就像铁一样，不过锈迹却不是那种褐色的层皮，而是很多黑色的小洞的那种奇怪金属。\n但是用一般的熔炉去熔炼它不会有任何的反应，我索性把它丢进了岩浆，当然是不出意外地直接熔化，和岩浆合而为一了。\n我和夜岚为了研究这个金属，就在这附近去找了一个破旧的梯形房子。\n在一次巧合中，二楼滴落下来的流体阴影滴进了装有这些金属的罐子，然后这些阴影好像有意识一样，自己填补进了这些锈蚀的洞里。“这些还不够”，“看来这些金属可能只是一种载体，真正缺少的是那些影子”。\n随着不断地研究，我们得出了以下的配方：“高温，流动的阴影，以及那种影子怪物的身体”。\n我们从这里醒来，带上了一些材料设备，再一次躺在了前往灯影之下的床上......\n随着机器的轰鸣声，以及融合，熔化，凝结......最终一块黑色的金属应声落在了地上......\nBy 琴雨梦");
         add("book.pasterdream.content.灯影游记 其二", "我很好奇这些真菌是怎么长在这个地方的？\n这里的天空没有光，没有熟悉的太阳，没有任何一种可靠的能量来源，甚至这里的土壤也不见得能提供养料。\n但这些真菌却能把菌丝扎进这些黑色的石头里，长成比人还大的蘑菇树，甚至还长出可以发光的果实。\n同时，这些植物还孕育了一些可能是本地的小动物？这些甲虫应该是以这里的真菌为食，成群结队地在这个地方生活。\n面对黑暗的它们，似乎进化出了白色的眼睛，也许这是能让它们适应黑暗的原因。\n这些生命组合起来所谓的“生态系统”......只能说完全不能用现代科学去解释。\n不过好像从那个染上粉色的世界到这个漆黑且遍地都是怪物的地方早就不是所谓科学能解释的了，完全就是主观构想出来的虚幻产物。\n嗐，我也不是做科研的人。不过嘛，这些蘑菇......会不会很好吃？\n我觉得我应该去研究一些食谱。（还有去找一个试验品！）\nBy 琴雨梦");
@@ -956,6 +963,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("book.pasterdream.content.暗影图书馆", "我也知道你也会好奇这种地方为何会存在，我将废墟收集到残留之物整理了起来并存储在这里，这里你可以了解到我的故事以及更早的历史。\n如果你只是想了解暗影，那很可惜了，这类资料被销毁或则藏匿。它很危险，无论如何都不要接触它。\n当然，我留有保险。（笑脸）\nBy 卡莱");
         add("book.pasterdream.content.破风的骑士", "古希腊风格建筑的残垣断壁，围绕成一个圆环的神庙，在这中心供奉着一个并不起眼的祭坛。\n是用来求雨？还是期望能预测风的方向？还是供奉自己的守护神？\n我靠近处于中心的那个半砖状祭坛蹲下，发现在祭坛中间留有一个黑色的洞，里面竖放着一张圈起的纸条。\n上面画着一些潦草的图案，还有数字标号的顺序。一块蓝色的水晶，还有3个类似金属制成的盔甲。\n以及这张纸最下面的一行写着\n“破风的骑士”将驱逐其守护之物以外的一切......\nBy 琴雨梦");
         add("book.pasterdream.content.清晨的新风", "这是新的一天的开始，也是新的风向的到来。\n伴随着风铃的声音，飘落的羽毛，以及从东方升起的旭光。\n风是属于这里的恩赐，顺应风的方向将是我们探索的助力，而逆风将可能使我们寸步难行。\n风不仅指引我们旅途的方向，也是一种特殊的钥匙。\n风只会在新的一天到来的时候再度吹拂，无法通过任何方式预言。\n如果错过了清晨风的指引，或是在这个梦境之外无法用身体去感受风向，那么，风向标可以跨越现实与梦来告诉你当今的风向。\n以及在这里散落的一些宝藏，将可以改变风对我们的影响。\n还有许多风的秘密......也许风会在某时某刻向我们揭晓。\nBy 琴雨梦");
+        add("book.pasterdream.content.魔法使的记录-其一", "粉红，飞花，云彩，以及各种仅仅存在于幻想中的建筑，这个世界的一切就像一位少女的所有梦幻的具现。\n这么说来，这个世界确确实实是梦境没错，安宁，惬意，简直就是最美好的美梦......\n不过，即使这是梦境，我的习惯依然引导着我向自己提出了几个问题：如此美丽的世界是从何而来？那些神秘的建筑是出自何人之手？以及...我所感受到的奇妙感觉是从何而来？\n搞清楚这些，我或许能掌握更多的秘辛，学习更多的魔法\n多么奇妙的世界啊，真是诱人，这个世界的所有谜题都在引诱我探求真相\nBy 绫苒");
+        add("book.pasterdream.content.魔法使的记录-其二", "风，云，空岛。这个世界无时无刻不在被风支配着，就连云也足以让人立足。每天朝阳升起，这里的风向将会再次发生变化......\n在这里必须顺从风的旨意，顺风会让我们的旅途一帆风顺，逆风则让我们举步维艰。\n为了探索这里，我制作了一个热气球，并用火焰魔法提供升力。至于动力......交给风来决定吧。\n毕竟是长途探索，我姑且还是把生活空间搬到了热气球上，并且好好把它加固了一下。\n不过嘛......俗话说计划赶不上变化，有一次热气球经过空中悬浮的那些圆环时被卡住了，于是我将圆环的云朵边框破坏掉，结果就是热气球突然向前猛冲，差点把我甩飞出去。\n这么看来，这东西有能加速通过物体的作用......嗯......用鞘翅应该可以更灵活地探索。不过不是很安全就是了。\n我把我的热气球丢弃在那里，带上鞘翅和烟花就继续了旅途。\n至于箱子里剩下的魔法宝石什么的......真带不了了，丢了吧，反正也不是什么很贵重的东西。\nBy 绫苒");
+        add("book.pasterdream.content.空岛的圣诞树", "凭借着鞘翅和这里随处可见的破风幕帐，我到达了一座充满圣诞节气息的空岛。\n这里的一切建立在云层之上，如同神话中的天国，连永恒的时间都未曾在这里留下它的刻度，只留下了渺渺寒冬。\n这座岛屿也许是这个世界本身所具有的景观，也许是曾经有人为了欢度节日而建起的。\n除了我们，还有其他不属于这个梦境的人来到这里。他们或是朝拜，或是单纯享受节日气氛。\n在我们的文明中，圣诞树不仅象征着好运与平安，也是春天到来的先兆。\n不知道其他世界的人们会怎么看待这棵树。或许他们也会认为很喜庆吧。\n我绕着圣诞树环视一周，在箱子里找到了雪花状的发卡。\n拿着它，我莫名有一种感觉，就像一个人对另一个人立下誓言，约束彼此。\n是结盟时以誓言立志，还是情侣立下白头偕老的约定？我不得而知......\n我不太想纠结这些小事，还是把它留下吧，说不定会有后来的寻梦者需要它。\n......其实单纯是因为我不习惯戴太多发卡而已，留给后来者什么的都是次要的。\nBy 绫苒");
 
         add("book.pasterdream.花园解密-迷梦冶梦莲_第1页", "         花园解密\n\n西北的风吹过叮铃作响\n\n东北的云彩遮住了暖阳\n\n西南的光芒婉流明夕阳\n\n东南的亭亭小伞生其旁\n\n四周的矮草依花微风岸\n\n得以迷醉那冶梦的花莲");
         add("book.pasterdream.花园解密-凛冽雪绒花_第1页", "         花园解密\n\n北方的大树抵挡了刺骨寒风\n\n南方的花朵染上了梦的颜色\n\n西方的灯笼代替了落日暖阳\n\n东方的草从见证了时间流淌\n\n这座花园的园丁们\n是由雪组成的小人\n和会飞的蓝色精灵\n\n");
@@ -1642,8 +1652,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("block.pasterdream.shadow_brazier", "暗影火盆");
         add("block.pasterdream.shadow_blast_furnace_core", "暗影高炉核心");
         add("tooltip.pasterdream.shadow_hand_trap", "§7--你挖下来这个做什么？");
-        add("tooltip.pasterdream.shadow_blast_furnace_core.1", "在完成多方块结构时");
-        add("tooltip.pasterdream.shadow_blast_furnace_core.2", "使用对应蓝图右键此核心以进行搭建");
         add("message.pasterdream.shadow_brazier.need_candle", "需要用阴影蜡烛点燃火盆");
         add("message.pasterdream.shadow_brazier.lit", "火盆被点燃，但带来的并不是光明...");
         add("message.pasterdream.shadow_brazier.shadow_spread", "阴影从四周蔓延开来");
@@ -2278,39 +2286,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.black_beetle.easter_egg_2", "草,走,忽略!ጿ ኈ ቼ ዽ ጿ");
         add("entity.pasterdream.golden_fox.vanish", "金色狐狸在完成了你许下的愿望之后消失了...");
 
-        //jeed兼容
-        add("effect.pasterdream.rest.description", "触摸琴雨梦玩偶或睡觉后获得，效果持续期间获得理智光环。");
-        add("effect.pasterdream.cook.description", "食用部分食物后获得，效果持续期间获得理智光环。");
-        add("effect.pasterdream.cheer_up.description", "san高于90%的时候获得，获得一些正面效果。");
-        add("effect.pasterdream.lethargy.description", "san在40%和60%之间的时候获得，获得一些负面效果。");
-        add("effect.pasterdream.trance.description", "san在20%和40%之间的时候获得，获得更严重的负面效果。");
-        add("effect.pasterdream.insane.description", "san低于20%的时候获得，获得极为严重的负面效果，视线会被特殊的视觉效果覆盖，san在1%~10%时会获得疯狂II，循环播放音效并视角抖动，san低于1%时获得疯狂III，前面所述负面会得到加强。（视觉效果，抖动和音效可以指令或配置关闭）");
-        add("effect.pasterdream.snow_vow.description", "效果期间+3幸运，免疫燃烧和冻结效果，由雪下的誓言饰品在范围内给予。");
-        add("effect.pasterdream.goldenrod_tea.description", "效果持续期间免疫饥饿和反胃效果。");
-        add("effect.pasterdream.sculk_armor.description", "穿戴全套回响套装时获得，增加最大生命值，身处深层时获得抗性提升，受到黑暗效果时移除黑暗并给予速度和抗性效果。");
-        add("effect.pasterdream.dyedream_armor.description", "穿戴全套染梦合金套装时获得，增加最大生命值并每30秒获得伤害吸收II。");
-        add("effect.pasterdream.titanium_armor.description", "穿戴全套钛金套装时获得，每30秒获得伤害吸收I。");
-        add("effect.pasterdream.dyedream_up.description", "穿戴全套染梦合金套装时获得，持有染梦(染梦合金与融梦水晶)工具时伤害+50%");
-        add("effect.pasterdream.melt_dream_crystal_armor", "融梦守护");
-        add("effect.pasterdream.melt_dream_crystal_armor.description", "穿戴全套融梦水晶套装时获得，融梦修补费用-50%，获得生命恢复II与染梦工具增强，融梦能量>50%时理智光环+1.2，否则+0.6。");
-        add("effect.pasterdream.dream_wish.description", "饮用梦境果汁获得，拥有该效果在晚上睡觉以进入染梦世界。");
-        add("effect.pasterdream.dyedream_perfume.description", "饮用染梦香水获得，效果持续期间幻翼不会攻击你。");
-        add("effect.pasterdream.counter_attack.description", "增加战技伤害，下一次攻击后消失。");
-        add("effect.pasterdream.dream_harp_of_wanderer.description", "使用漂泊旅者的染梦竖琴后获得，漂泊旅者的染梦竖琴可以从染梦列车中得到。");
-        add("effect.pasterdream.cecilia_blessing.description", "戴着塞西莉娅受到致命伤害后获得，效果期间获得伤害免疫。");
-        add("effect.pasterdream.guard.description", "使用守护预言卡获得，拥有该buff时，超过一定生命百分比的部分伤害将会受到减伤（可在配置里修改）");
-        add("effect.pasterdream.holy_grail.description", "使用圣杯预言卡获得，拥有该buff时，效果持续期间+15最大生命值，并免疫一部分负面状态，获得自然生命恢复且血量越低，回血速度越快。");
-        add("effect.pasterdream.rapid_reaction.description", "使用疾行预言卡获得，拥有该buff时，增加上坡高度，降低瞬身术冷却并免疫摔落伤害。");
-        add("effect.pasterdream.flare_up.description", "使用执剑预言卡获得，拥有该buff时，增加攻击力和攻击速度，增加战技伤害倍率并降低技能冷却时间。");
-        add("effect.pasterdream.conflict_mark.description", "使用纷争预言卡标记其它实体后该实体获得，拥有该buff时，将会成为其它实体攻击目标。");
-        add("effect.pasterdream.war_flag.description", "装备战争旗帜后击杀敌人后获得，期间增加攻击力，并每击杀一个敌人增加1级。");
-        add("effect.pasterdream.confusion.description", "施加给玩家后，玩家的视角将会抖动，施加给其它生物后，会使该生物失去行动能力。");
-        add("effect.pasterdream.calais_spice_bottle.description", "装备卡莱调料瓶后获得，每次击中敌人后减少1层等级并获得随机效果，食用符合要求食物会恢复层数。");
-        add("effect.pasterdream.shadow_silence.description", "暗影生物获得该buff后，会失去释放技能的能力。");
-        add("effect.pasterdream.bind.description", "被白厄剑的剑雨攻击后获得，获得该buff后，会无法移动。");
-        add("effect.pasterdream.restrainmove_block.description", "效果持续期间移除跳跃提升并强制禁用飞行。");
-        add("effect.pasterdream.wind_runner.description", "食用风行者果冻获得，效果持续期间无需鞘翅即可进行鞘翅飞行。");
-
         // 染梦裂隙消息
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5身体从这个奇怪的洞穴中穿过，但并没有什么反应。");
         add("message.pasterdream.dyedream_crack.first_contact.2", "§5你能感觉到这个类似裂隙一样的东西在与这个世界和另外一处地方交互，附近不同的环境可能正是因为此而诞生。");
@@ -2331,25 +2306,25 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.dream_train.location_info", "列车向我们暴露了一个位置信息... §aX：%s §aZ：%s");
 
         // 沙漠英雄墓 - 任务对话
-        add("message.pasterdream.desert_hero_tomb.line1", "良久，竟有来者。");
-        add("message.pasterdream.desert_hero_tomb.line2", "无苦心，有孥，吾有一事相求。");
-        add("message.pasterdream.desert_hero_tomb.line3", "如卿所见，吾今也。");
-        add("message.pasterdream.desert_hero_tomb.line4", "以剑授汝，可否助我逐外寇也？");
-        add("message.pasterdream.desert_hero_tomb.line5", "为得好，子曰谢酬。");
-        add("message.pasterdream.desert_hero_tomb.line6", "汝又能终吾三请，吾以真剑付汝。");
-        add("message.pasterdream.desert_hero_tomb.line7", "其名为：§e『沉荆门』朔漠");
-        add("message.pasterdream.desert_hero_tomb.task_clear_threats", "[清除附近的掠夺者与尸壳]");
-        add("message.pasterdream.desert_hero_tomb.threats_remaining", "尚未清除附近的威胁，他不予回应");
-        add("message.pasterdream.desert_hero_tomb.quest1", "1.为我带来10块年糕");
-        add("message.pasterdream.desert_hero_tomb.quest2", "2.我想要一匹马在旁边陪着我");
-        add("message.pasterdream.desert_hero_tomb.quest3", "3.获得一个全村庄村民的英雄认可时来见我");
+        add("message.pasterdream.desert_hero_tomb.line1", "不意今日，遇着一位能听俺言语的好汉……");
+        add("message.pasterdream.desert_hero_tomb.line2", "俺不曾有甚么歹念，却有一桩杂事，要烦劳好汉相助。");
+        add("message.pasterdream.desert_hero_tomb.line3", "这周遭的贼寇妖魔着实搅扰得人不得安枕。");
+        add("message.pasterdream.desert_hero_tomb.line4", "这口剑且借与好汉，替俺将四下的恶贼妖魔都除了，如何？");
+        add("message.pasterdream.desert_hero_tomb.line5", "好汉身手果然了得！俺这口宝剑赠与了好汉也不算埋没了它。");
+        add("message.pasterdream.desert_hero_tomb.line6", "如今俺还有三桩心愿未了，若好汉肯一一成就，俺便为好汉解开这口宝剑的本来真力。");
+        add("message.pasterdream.desert_hero_tomb.line7", "此剑真名唤作：§e『沉荆门』朔漠。");
+        add("message.pasterdream.desert_hero_tomb.task_clear_threats", "[清理掉附近的掠夺者和尸壳]");
+        add("message.pasterdream.desert_hero_tomb.threats_remaining", "四下的草寇妖邪尚未肃清，某便不与好汉多言。");
+        add("message.pasterdream.desert_hero_tomb.quest1", "第一桩：说来惭愧，俺对那年糕着实馋得紧，有劳好汉替俺寻来十块年糕。");
+        add("message.pasterdream.desert_hero_tomb.quest2", "第二桩：俺在这坟里头，着实闷得慌，好生思念横刀跃马的日子，劳烦好汉为俺寻得一匹好马。");
+        add("message.pasterdream.desert_hero_tomb.quest3", "第三桩：俺这剑的真本事不认歹人，须得好汉让这村中老幼都称一声'英雄'，俺才肯为你解开真力。");
         add("message.pasterdream.desert_hero_tomb.task1_complete", "任务1完成");
         add("message.pasterdream.desert_hero_tomb.task2_complete", "任务2完成");
         add("message.pasterdream.desert_hero_tomb.task3_complete", "任务3完成");
-        add("message.pasterdream.desert_hero_tomb.all_tasks_done", "吾心愿已成，请携朔漠大剑见我");
-        add("message.pasterdream.desert_hero_tomb.receive_sword", "请君收下吧：此名为『沉荆门』朔漠");
-        add("message.pasterdream.desert_hero_tomb.bring_sword", "吾心愿已成，请携朔漠大剑见我");
-        add("message.pasterdream.desert_hero_tomb.already_completed", "已有人完成他的全部愿望，他便不再回应");
+        add("message.pasterdream.desert_hero_tomb.all_tasks_done", "俺的心愿已了，好汉但须携俺那口朔漠大剑来见俺。");
+        add("message.pasterdream.desert_hero_tomb.receive_sword", "好汉收了罢，这口剑的真本事如今已尽数为你解开了：§e『沉荆门』朔漠。\n§r俺已再没甚别物送与好汉了。");
+        add("message.pasterdream.desert_hero_tomb.bring_sword", "俺的心愿已了，好汉但须携俺那口朔漠大剑来见俺。");
+        add("message.pasterdream.desert_hero_tomb.already_completed", "俺已再没甚别物送与好汉了");
 
         // 预言卡
         add(ModItems.EMPTY_PROPHECY_CARD.get(), "空白预言卡");
@@ -2558,6 +2533,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_direction.announce.5", "§7§o朝阳升起... 呼啸的风正吹往 §a东北方");
         add("message.pasterdream.wind_direction.announce.6", "§7§o朝阳升起... 呼啸的风正吹往 §a东方");
         add("message.pasterdream.wind_direction.announce.7", "§7§o朝阳升起... 呼啸的风正吹往 §a东南方");
+
+        // 画作
+        add("painting.pasterdream.pasterdream_title.title", "帕斯特之梦");
+        add("painting.pasterdream.pasterdream_title.author", "阿墨");
+        add("painting.pasterdream.pasterdream_start.title", "帕斯特之梦 启动！");
+        add("painting.pasterdream.pasterdream_start.author", "【pl】莫");
+        add("painting.pasterdream.pasterdream_aerolite_dust.title", "琴雨梦");
+        add("painting.pasterdream.pasterdream_aerolite_dust.author", "异星之尘");
 
         // 药水箭
 

@@ -33,7 +33,6 @@ public class CrossNecklaceItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.SUPERIOR));
         list.add(Component.translatable("tooltip.pasterdream.cross_necklace.effect"));
     }
 }

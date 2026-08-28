@@ -6,7 +6,7 @@
     "0": "pasterdream:block/firefly_nest",
     "1": "pasterdream:block/firefly_nest_grass",
     "2": "pasterdream:block/firefly_nest_water",
-    "missing": "pasterdream:block/"
+    "missing": "pasterdream:block/firefly_nest_water"
   },
   "render_type": "cutout_mipped"
 }

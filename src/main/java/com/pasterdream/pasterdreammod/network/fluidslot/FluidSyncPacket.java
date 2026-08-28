@@ -1,9 +1,7 @@
 package com.pasterdream.pasterdreammod.network.fluidslot;
 
-import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
-import net.minecraft.client.Minecraft;
+import com.pasterdream.pasterdreammod.client.network.ClientPacketHandlers;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -44,14 +42,7 @@ public class FluidSyncPacket
 
     public static void handle(FluidSyncPacket message, Supplier<NetworkEvent.Context> context)
     {
-        context.get().enqueueWork(() ->
-        {
-            Player player = Minecraft.getInstance().player;
-            if (player != null && player.containerMenu instanceof AbstractContainerMenuWithFluidSlot menu && menu.containerId == message.containerId)
-            {
-                menu.syncFluidsFromClient(message.fluids);
-            }
-        });
+        context.get().enqueueWork(() -> ClientPacketHandlers.handleFluidSync(message.containerId, message.fluids));
         context.get().setPacketHandled(true);
     }
 }

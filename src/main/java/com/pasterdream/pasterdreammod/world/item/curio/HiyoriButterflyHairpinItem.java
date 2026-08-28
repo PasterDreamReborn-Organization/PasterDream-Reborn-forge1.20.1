@@ -52,7 +52,6 @@ public class HiyoriButterflyHairpinItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(ModRarities.qualityTooltip(ModRarities.EPIC));
         list.add(Component.translatable("tooltip.pasterdream.hiyori_butterfly_hairpin.lore"));
     }
 }
