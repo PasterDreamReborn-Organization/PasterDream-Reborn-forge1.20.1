@@ -527,15 +527,19 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.MELT_DREAM_LIQUID_BUCKET.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.YINHUL_COTTON_CANDY.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
                         )
                         // ===== 饰品，固定1次抽取 =====
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(ModItems.EMBRYO_RING.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.EMBRYO_NECKLACE.get())
+                                .add(LootItem.lootTableItem(ModItems.LIGHT_BUTTERFLY_CURIO.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
@@ -659,14 +663,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.LIGHT_BUTTERFLY_CURIO.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.YINHUL_COTTON_CANDY.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.SNOW_VOW_HEAD.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -685,10 +681,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.SAND_OF_TIME.get())
                                         .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.MELT_DREAM_LIQUID_BUCKET.get())
-                                        .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.DUKE_COIN_CURIO.get())
