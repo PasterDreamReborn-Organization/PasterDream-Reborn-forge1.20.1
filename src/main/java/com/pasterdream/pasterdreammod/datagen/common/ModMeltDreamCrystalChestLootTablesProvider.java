@@ -437,6 +437,10 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SWORD_EMBRYO.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.FOURLEAF_CLOVER_CURIO.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -532,6 +536,14 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.YINHUL_COTTON_CANDY.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SWORD_EMBRYO.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
@@ -687,7 +699,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get())
+                                .add(LootItem.lootTableItem(ModItems.CHENJINGMEN_DESERT_SWORD.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
