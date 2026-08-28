@@ -78,7 +78,7 @@ public class ElixirBottleItem extends Item
         ItemStack itemStack = player.getItemInHand(interactionHand);
         FluidStack fluidStack = getFluidStack(itemStack);
 
-        if (!fluidStack.isEmpty() && FluidDrinkPropertiesRegistry.getProperties(fluidStack.getFluid()) != null)
+        if (!fluidStack.isEmpty() && FluidDrinkPropertiesRegistry.getProperties(fluidStack) != null)
         {
             player.startUsingItem(interactionHand);
             return InteractionResultHolder.consume(itemStack);
@@ -93,10 +93,10 @@ public class ElixirBottleItem extends Item
     public int getUseDuration(ItemStack itemStack)
     {
         FluidStack fluidStack = getFluidStack(itemStack);
-        GenericFluidDrinkProperties drinkProperties = FluidDrinkPropertiesRegistry.getProperties(fluidStack.getFluid());
+        GenericFluidDrinkProperties drinkProperties = FluidDrinkPropertiesRegistry.getProperties(fluidStack);
 
-        int time = drinkProperties.getUseDuration();
-        int drinkAmount = drinkProperties.getDrinkAmount();
+        int time = drinkProperties != null ? drinkProperties.getUseDuration() : 32;
+        int drinkAmount = drinkProperties != null ? drinkProperties.getDrinkAmount() : 250;
 
         if(fluidStack.getAmount() >= drinkAmount)
         {
@@ -120,7 +120,7 @@ public class ElixirBottleItem extends Item
         if (!level.isClientSide && entity instanceof Player player)
         {
             FluidStack fluidStack = getFluidStack(itemStack);
-            GenericFluidDrinkProperties drinkProperties = FluidDrinkPropertiesRegistry.getProperties(fluidStack.getFluid());
+            GenericFluidDrinkProperties drinkProperties = FluidDrinkPropertiesRegistry.getProperties(fluidStack);
             if (drinkProperties != null)
             {
                 int drinkAmount = drinkProperties.getDrinkAmount();
