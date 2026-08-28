@@ -273,6 +273,10 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.LIFE_CRYSTAL.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
                         )
                         // ===== 饰品，固定1次抽取 =====
                         .withPool(LootPool.lootPool()
@@ -386,10 +390,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CARAPAX_CHARM.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.LIFE_CRYSTAL.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
@@ -521,6 +521,10 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                                 UniformGenerator.between(1.0F, 2.0F))))
                                 .add(LootItem.lootTableItem(ModItems.PINEAPPLE_LOVE_SEA.get())
                                         .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.LIFE_CRYSTAL.get())
+                                        .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                         )
@@ -689,10 +693,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.DUKE_COIN_CURIO.get())
                                         .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.LIFE_CRYSTAL.get())
-                                        .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get())
