@@ -33,6 +33,7 @@ description: 客户端渲染（RenderType、HUD、粒子、音效、GeckoLib 动
 - `init/ModSounds.java` 注册 `SoundEvent`
 - `assets/pasterdream/sounds.json` + `sounds/<name>.ogg` 手动维护
 - 调用 `level.playSound()`，优先复用原版 `SoundEvents`
+- **字幕**：翻译键**不**由 SoundEvent 注册名自动推导，必须在该条目的 `"subtitle"` 字段写明 `"subtitles.pasterdream.<name>"`，否则 `WeighedSoundEvents.getSubtitle()` 为 null，永远不显示字幕（lang 里加键也没用）。字幕显示还需：开启设置-字幕、音量不为 0、且在衰减范围内
 
 ---
 
