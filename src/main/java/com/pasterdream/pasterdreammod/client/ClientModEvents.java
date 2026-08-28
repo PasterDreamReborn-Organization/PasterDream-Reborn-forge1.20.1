@@ -5,7 +5,6 @@ import com.pasterdream.pasterdreammod.init.ModItemModels;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModEntityRenderer;
 import com.pasterdream.pasterdreammod.init.ModBlockEntityRenderer;
-import com.pasterdream.pasterdreammod.world.item.ElixirBottleOfPotionItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
@@ -13,11 +12,9 @@ import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ModelEvent;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -30,16 +27,6 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = PasterDreamMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientModEvents
 {
-    @SubscribeEvent
-    public static void registerItemColors(RegisterColorHandlersEvent.Item event)
-    {
-        // 灵药瓶（装药水）：按药水颜色对液体层(layer1)染色，瓶身(layer0)不染色
-        event.register(
-                (stack, tintIndex) -> tintIndex == 1 ? PotionUtils.getColor(ElixirBottleOfPotionItem.getPotion(stack)) : -1,
-                ModItems.ELIXIR_BOTTLE_OF_POTION.get()
-        );
-    }
-
     @SubscribeEvent
     public static void registerItemModels(ModelEvent.ModifyBakingResult event)
     {

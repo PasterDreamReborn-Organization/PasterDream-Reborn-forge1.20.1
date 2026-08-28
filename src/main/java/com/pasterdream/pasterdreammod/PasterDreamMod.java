@@ -17,8 +17,6 @@ import com.pasterdream.pasterdreammod.event.RecipeUnlockHandler;
 import com.pasterdream.pasterdreammod.init.*;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
-import com.pasterdream.pasterdreammod.world.item.armoritem.AngelWingItem;
-import com.pasterdream.pasterdreammod.world.item.armoritem.ForsakensWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MachineLightWingItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymArmorEvents;
 import com.pasterdream.pasterdreammod.world.dimension.AaroncosArenaTeleporter;
@@ -159,50 +157,7 @@ public class PasterDreamMod
         ClientSetRenderLayer.register();
         ModScreens.register(event);
         ModBlockEntityRenderer.FMLClientSetupEventRegister(event);
-        event.enqueueWork(this::registerItemProperties);
-    }
-
-    private void registerItemProperties()
-    {
-        // 星者祈愿钓竿出杆切换模型（原版 cast predicate 仅注册在 Items.FISHING_ROD 上）
-        ItemProperties.register(
-                ModItems.STAR_WISH_ROD.get(),
-                ResourceLocation.parse("cast"),
-                (stack, level, entity, seed) -> {
-                    if (entity == null) return 0.0F;
-                    boolean held = entity.getMainHandItem() == stack || entity.getOffhandItem() == stack;
-                    if (entity instanceof net.minecraft.world.entity.player.Player player) {
-                        return held && player.fishing != null ? 1.0F : 0.0F;
-                    }
-                    return 0.0F;
-                }
-        );
-
-        ItemProperties.register(
-                ModItems.RED_DEW_RING.get(),
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, "lv"),
-                (stack, level, entity, seed) -> RedDewRingItem.getPredicateValue(RedDewRingItem.getLv(stack))
-        );
-
-        ItemProperties.register(
-                ModItems.STRIKE_RING.get(),
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, "lv"),
-                (stack, level, entity, seed) -> StrikeRingItem.getPredicateValue(StrikeRingItem.getLv(stack))
-        );
-
-        // 预言卡：按 NBT Type 切换纹理
-        ItemProperties.register(
-                ModItems.PROPHECY_CARD.get(),
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, "type"),
-                (stack, level, entity, seed) -> ProphecyCardItem.getPredicateValue(stack)
-        );
-
-        // 药剂瓶：按 NBT PotionType 切换纹理
-        ItemProperties.register(
-                PotionBottleRegistry.POTION_BOTTLE.get(),
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, "type"),
-                (stack, level, entity, seed) -> PotionBottleItem.getPredicateValue(stack)
-        );
+        event.enqueueWork(ClientModEvents::registerItemProperties);
     }
 
     private void registerItemModels(ModelEvent.ModifyBakingResult event)
@@ -213,11 +168,8 @@ public class PasterDreamMod
     private void getItemModels(ModelEvent.BakingCompleted event)
     {
         ModItemModels.getBakedModel(event);
-        event.enqueueWork(ClientModEvents::registerItemProperties);
-        event.enqueueWork(() -> {
-            CuriosRendererRegistry.register(ModItems.ANGEL_WING.get(), AngelWingRenderer::new);
-            CuriosRendererRegistry.register(ModItems.FORSAKENS_WING.get(), ForsakensWingRenderer::new);
-        });
+        CuriosRendererRegistry.register(ModItems.ANGEL_WING.get(), AngelWingRenderer::new);
+        CuriosRendererRegistry.register(ModItems.FORSAKENS_WING.get(), ForsakensWingRenderer::new);
     }
 
     private void AddItemTooltip(ItemTooltipEvent event)

@@ -1,9 +1,0 @@
-{
-  "type": "jeed:effect_provider",
-  "effect": "pasterdream:snow_vow",
-  "providers": [
-    {
-      "item": "pasterdream:snow_vow_head"
-    }
-  ]
-}
