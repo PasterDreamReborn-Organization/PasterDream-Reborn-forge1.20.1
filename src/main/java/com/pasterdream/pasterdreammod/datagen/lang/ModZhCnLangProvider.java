@@ -1824,7 +1824,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 分类
         add("pasterdream.seniors_dream.category.rules", "机制介绍");
-        add("pasterdream.seniors_dream.category.rules.desc", "本篇介绍模组中的核心机制。");
+        add("pasterdream.seniors_dream.category.rules.desc", "本篇介绍模组中的机制");
         add("pasterdream.seniors_dream.category.rules_shadow_difficulty", "暗影难度系统");
         add("pasterdream.seniors_dream.category.rules_shadow_difficulty.desc", "随着你在疯狂的泥潭中越陷越深，阴影中的存在也开始注意到你。它们并非幻觉——当你的精神防线足够薄弱时，暗影生物便会在你周围的黑暗中显形。你的理智越是不堪一击，它们出现得就越频繁，种类也越是可怖。$(br2)--暗影侵袭");
 
@@ -1852,7 +1852,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 钓鱼
         add("pasterdream.seniors_dream.entry.fishing", "钓鱼");
-        add("pasterdream.seniors_dream.entry.fishing.page0", "在闲暇时光，我们也许会坐在水边，拿着钓竿，接受海洋的恩赐。现在在海洋附近钓鱼有可能钓出来自海洋深处的宝藏——深海秘宝，哪怕在梦境的辽阔海洋中，你也能甩出浮标，获得宝藏。你的幸运值越高，就越有可能获得深海秘宝，有的时候，你可能会获得闪耀着奇特光芒的深海秘宝……");
+        add("pasterdream.seniors_dream.entry.fishing.page0", "在闲暇时光，我们也许会坐在水边，拿着钓竿，接受海洋的恩赐(空军)，现在在海洋附近钓鱼有可能钓出来自海洋深处的宝藏——深海秘宝，哪怕在梦境的辽阔海洋中，你也能甩出浮标，获得宝藏，你的幸运值越高，就越有可能获得深海秘宝，有的时候，你可能会获得闪耀着奇特光芒的深海秘宝......");
         add("pasterdream.seniors_dream.entry.fishing.page1", "也许，在梦境中钓出来的深海秘宝能获得一些较为独特的宝藏，比如色彩缤纷的水晶碎片，以及闪烁着光芒的一桶泉水……");
 
         // 暗影难度系统
@@ -1865,7 +1865,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 此梦先觉
         add("pasterdream.seniors_dream.category.foretold_dream", "此梦先觉");
-        add("pasterdream.seniors_dream.category.foretold_dream.desc", "原版维度中的新增机制与知识。");
+        add("pasterdream.seniors_dream.category.foretold_dream.desc", "此类别介绍原版的维度中的新增机制和知识");
         add("pasterdream.seniors_dream.category.foretold_dream_items", "新增物品");
         add("pasterdream.seniors_dream.category.foretold_dream_items.desc", "原版维度中新增的物品。");
         add("pasterdream.seniors_dream.category.foretold_dream_structures", "新增结构");
@@ -1997,7 +1997,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.sculk_armor.page1", "免疫幽匿的黑暗恐惧；$(br)受到黑暗buff时，改为获得1分钟的速度II和抗性提升II；$(br)监守者不会攻击持有此buff的玩家。");
 
         add("pasterdream.seniors_dream.entry.dyedream_armor", "染梦守护");
-        add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "当玩家穿戴全套染梦套装时获得此buff。具体效果为：$(br)最大生命值+4；$(br)每30秒获得伤害吸收II；$(br)获得染梦工具增强效果：染梦合金工具和融梦水晶工具的伤害增加50%%。");
+        add("pasterdream.seniors_dream.entry.dyedream_armor.page0", "当玩家穿戴全套染梦套装时获得此buff。具体效果为：$(br)最大生命值+4；$(br)每30秒获得伤害吸收I；$(br)获得染梦工具增强效果：染梦合金工具和融梦水晶工具的伤害增加50%%。");
 
         add("pasterdream.seniors_dream.entry.dream_wish", "美梦祈愿");
         add("pasterdream.seniors_dream.entry.dream_wish.page0", "当玩家饮用梦境果汁后获得的buff效果。具体效果为：$(br)持有此buff睡觉时会进入染梦世界");
@@ -2012,7 +2012,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.category.dyedream_world", "染梦世间");
         add("pasterdream.seniors_dream.category.dyedream_world.desc", "起源之梦。当你穿过染梦裂隙时，眼前豁然开朗，映入你眼帘的是充满飞花和粉红的奇幻世界，眼前的所有景象如同一位少女最绮丽的幻想具现而成，这就是你寻梦之旅的第一站，开始你追寻梦幻的旅途吧，寻梦者。");
         add("pasterdream.seniors_dream.category.dyedream_world_items", "方块与物品");
-        add("pasterdream.seniors_dream.category.dyedream_world_items.desc", "染梦维度中的方块与物品。");
+        add("pasterdream.seniors_dream.category.dyedream_world_items.desc", "染梦维度中的物品");
         add("pasterdream.seniors_dream.category.dyedream_world_structures", "结构");
         add("pasterdream.seniors_dream.category.dyedream_world_structures.desc", "染梦维度中的结构。");
 
@@ -2152,7 +2152,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.category.lamp_shadow_world", "灯影之下");
         add("pasterdream.seniors_dream.category.lamp_shadow_world.desc", "阳光越是强烈的地方阴影就越是深邃。这里是另外一个世界，堕落，疯癫，同化，皆是寻梦者的归属。但废墟中的残留的文字似乎隐藏更多的未知。当你站在那片黑暗之前，你会如何抉择？");
         add("pasterdream.seniors_dream.category.lamp_shadow_world_items", "方块与物品");
-        add("pasterdream.seniors_dream.category.lamp_shadow_world_items.desc", "灯影之下的一些方块与物品。");
+        add("pasterdream.seniors_dream.category.lamp_shadow_world_items.desc", "本篇介绍灯影之下的一些方块与物品");
         add("pasterdream.seniors_dream.category.lamp_shadow_world_structures", "结构");
         add("pasterdream.seniors_dream.category.lamp_shadow_world_structures.desc", "灯影之下的结构。");
 
