@@ -244,6 +244,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         pinkMushroomRecipes(pWriter);
         pinkSlimeRecipes(pWriter);
         claypanRecipe(pWriter);
+        dreamAccumulatorRecipe(pWriter);
         dustRecipes(pWriter);
         quartzRecipes(pWriter);
         alloyRecipes(pWriter);
@@ -1639,6 +1640,21 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('a', ItemTags.TERRACOTTA)
                 .define('b', Items.WHITE_DYE)
                 .unlockedBy(getHasName(Items.WHITE_DYE), has(Items.WHITE_DYE))
+                .save(pWriter);
+    }
+
+    // ===== 蓄梦池配方 =====
+
+    private void dreamAccumulatorRecipe(Consumer<FinishedRecipe> pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.DREAM_ACCUMULATOR.get(), 1)
+                .pattern(" a ")
+                .pattern("bcb")
+                .pattern("bdb")
+                .define('a', ModBlocks.DYEDREAM_GLASS.get())
+                .define('b', ModItems.POLISHED_CALCITE.get())
+                .define('c', ModItems.TITANIUM_INGOT.get())
+                .define('d', ModItems.CHISELED_DYEDREAM_QUARTZ_BLOCK.get())
+                .unlockedBy(getHasName(ModItems.TITANIUM_INGOT.get()), has(ModItems.TITANIUM_INGOT.get()))
                 .save(pWriter);
     }
 
