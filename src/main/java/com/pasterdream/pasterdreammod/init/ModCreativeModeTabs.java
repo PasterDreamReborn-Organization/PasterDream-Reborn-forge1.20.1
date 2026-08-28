@@ -1,9 +1,10 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
-import com.pasterdream.pasterdreammod.helper.itemwithnbt.blueprintwithnbt.BluePrintWithNBT;
 import com.pasterdream.pasterdreammod.helper.itemwithnbt.dreamnoteswithnbt.DreamNotesWithNBT;
 import com.pasterdream.pasterdreammod.helper.itemwithnbt.lootgeneratorwithnbt.LootGeneratorWithNBT;
+import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
+import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestLootTableNBT;
 import com.pasterdream.pasterdreammod.world.item.DeepTreasureItem;
 import com.pasterdream.pasterdreammod.world.item.blueprints.BluePrintWithNBTToCreativeModeTab;
@@ -11,20 +12,24 @@ import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.dreamnotes.NBTBookRegisterToCreativeModTab;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWithNBTToCreativeModeTab;
-import com.pasterdream.pasterdreammod.world.item.ElixirBottleOfPotionItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
+import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleWithFluidNBTBuilder;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModCreativeModeTabs {
 
@@ -105,17 +110,36 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ELIXIR_BOTTLE.get());
                         output.accept(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get());
                         output.accept(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get());
-                        // 自动注册所有已注册药水（原版 + 本模组 + 其它模组）到灵药瓶；
-                        // 喷溅/滞留是物品(Items.SPLASH_POTION/LINGERING_POTION)而非 Potion，这里天然不包含；
-                        // 跳过「空」药水（无效果的纯空白灵药瓶）
-                        for (Potion potion : BuiltInRegistries.POTION) {
-                            if (potion == Potions.EMPTY) {
-                                continue;
-                            }
-                            output.accept(ElixirBottleOfPotionItem.withPotion(potion));
-                        }
                     })
                     .build());
+
+    public static final RegistryObject<CreativeModeTab> PASTERDREAM_ELIXIR_BOTTLE_TAB = CREATIVE_MODE_TABS.register("pasterdream_elixir_bottle_tab",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.elixir_bottle_tab"))
+                    .icon(() -> new ItemStack(ModItems.ELIXIR_BOTTLE.get()))
+                    .displayItems((parameters, output) ->
+                    {
+                        output.accept(ModItems.ELIXIR_BOTTLE.get());
+                        for(Fluid fluid : BuiltInRegistries.FLUID)
+                        {
+                            if (fluid == ModFluids.POTION.get())
+                            {
+                                List<GenericMobEffect> allEffectList = new ArrayList<>();
+                                for(MobEffect effect : BuiltInRegistries.MOB_EFFECT)
+                                {
+                                    List<GenericMobEffect> effectList = new ArrayList<>();
+                                    effectList.add(new GenericMobEffect(effect, 2, 18000));
+                                    allEffectList.add(new GenericMobEffect(effect, 2, 18000));
+                                    output.accept(ElixirBottleWithFluidNBTBuilder.builder(PotionHelper.createNBTPotion(effectList, 1000)));
+                                }
+                                output.accept(ElixirBottleWithFluidNBTBuilder.builder(PotionHelper.createNBTPotion(allEffectList, 1000)));
+                            }
+                                else
+                                {
+                                    output.accept(ElixirBottleWithFluidNBTBuilder.builder(new FluidStack(fluid, 1000)));
+                                }
+                        }
+                    }).build());
 
     // ===== 物品 =====
     // 来源: 旧 paster_tab_0 (材料/杂项)
