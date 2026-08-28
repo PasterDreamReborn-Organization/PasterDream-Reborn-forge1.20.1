@@ -1436,7 +1436,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc1", "§7▪ §9Shift+右键切换风/雷模式");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc2", "§7▪ §9风·§f疾风突进§9：向准心突进，对沿途敌人造成 §c2.5×移动速度×攻击力 §9伤害");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc3", "§7▪ §9风之冷却：§c2秒");
-        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc4", "§7▪ §9雷·§e萦风引雷§9：向目标头顶降下 §c5 §9道追踪落雷，每道造成 §c攻击力×1.0 §9范围雷电伤害(4×3×4)");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc4", "§7▪ §9雷·§e萦风引雷§9：向准心处的生物或方块降下 §c5 §9道落雷，每道造成 §c攻击力×1.0 §9范围雷电伤害(4×3×4)");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc5", "§7▪ §9雷之消耗：§c1.0 §9融梦能量，冷却：§c5秒");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name", "被动：§b雷随疾风");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1", "§7▪ §9移动速度越高伤害越高：§c伤害=(1+移动速度)×攻击力");

@@ -8,6 +8,8 @@ import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.world.entity.FoxFireEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -26,8 +28,12 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -41,8 +47,9 @@ import java.util.Optional;
  * 萦风合金剑 —— 风雷双模式战技 + 通用被动。
  *
  * 风 · 疾风突进：右键向准心突进，对沿途敌人造成 10×移动速度×攻击力 伤害，冷却 2s。
- * 雷 · 萦风引雷：右键向目标头顶降下 5 道追踪落雷（间隔 10tick），每道造成 攻击力×1.5
- *               的 4×3×4 范围雷电伤害，消耗融梦能量 1.0，冷却 5s。
+ * 雷 · 萦风引雷：右键对准心处的生物或方块降下 5 道落雷（间隔 10tick），命中生物则落雷于其脚下并追踪，
+ *               命中方块则落雷于方块上表面，每道造成 攻击力×1.0 的 4×3×4 范围雷电伤害，
+ *               消耗融梦能量 1.0，冷却 5s。
  * 被动 · 雷随疾风：移动速度越高伤害越高，伤害=(1+移动速度)×攻击力，并附带攻击力×0.1 雷电伤害。
  *
  * 说明：伤害公式中的"移动速度"= max(移动速度属性, 进行攻击时的瞬时移动速度)。
@@ -214,8 +221,11 @@ public class FluffyWindAlloySwordItem extends SwordItem {
             MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(player, -THUNDER_ENERGY_COST);
         }
 
-        LivingEntity target = findTarget(player);
-        Vec3 fallback = player.getEyePosition(1.0f).add(player.getLookAngle().scale(THUNDER_TARGET_RANGE));
+        ThunderTarget thunderTarget = resolveThunderTarget(player);
+        LivingEntity target = thunderTarget != null ? thunderTarget.target() : null;
+        Vec3 fallback = thunderTarget != null
+                ? thunderTarget.strikePos()
+                : player.getEyePosition(1.0f).add(player.getLookAngle().scale(THUNDER_TARGET_RANGE));
         float atk = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE)
                 * SkillCooldownHelper.getSkillDamageMultiplier(player);
         atk += stack.getEnchantmentLevel(Enchantments.SHARPNESS) * (float) SHARPNESS_DAMAGE_BONUS; // 锋利加成
@@ -237,28 +247,50 @@ public class FluffyWindAlloySwordItem extends SwordItem {
         SkillCooldownHelper.applySharedCooldown(player, THUNDER_COOLDOWN_TICKS);
     }
 
-    /** 沿准心射线寻找第一个命中的活体目标（追踪落雷目标） */
-    private LivingEntity findTarget(ServerPlayer player) {
+    /** 沿准心射线判定雷击目标：实体与方块取更近者。
+     *  命中实体 → 落雷于生物脚下（追踪）；命中方块 → 落雷于方块上表面（固定）；两者皆无 → 返回 null。 */
+    private ThunderTarget resolveThunderTarget(ServerPlayer player) {
         Vec3 eye = player.getEyePosition(1.0f);
         Vec3 look = player.getLookAngle();
         Vec3 end = eye.add(look.scale(THUNDER_TARGET_RANGE));
         Level level = player.level();
-        LivingEntity best = null;
-        double bestDist = Double.MAX_VALUE;
+
+        // 实体命中检测
+        LivingEntity entity = null;
+        double entityDist = Double.MAX_VALUE;
         for (LivingEntity e : level.getEntitiesOfClass(LivingEntity.class,
                 player.getBoundingBox().inflate(THUNDER_TARGET_RANGE),
                 e -> e != player && e.isAlive())) {
             Optional<Vec3> hit = e.getBoundingBox().inflate(0.3).clip(eye, end);
             if (hit.isPresent()) {
                 double dist = eye.distanceToSqr(hit.get());
-                if (dist < bestDist) {
-                    bestDist = dist;
-                    best = e;
+                if (dist < entityDist) {
+                    entityDist = dist;
+                    entity = e;
                 }
             }
         }
-        return best;
+
+        // 方块命中检测（与实体比较距离，取更近者）
+        BlockHitResult blockHit = level.clip(new ClipContext(eye, end,
+                ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
+        if (blockHit.getType() == HitResult.Type.BLOCK) {
+            BlockPos pos = blockHit.getBlockPos();
+            double blockDist = eye.distanceToSqr(blockHit.getLocation());
+            if (entity == null || blockDist <= entityDist) {
+                // 命中方块 → 落雷于方块上表面
+                BlockState state = level.getBlockState(pos);
+                double top = state.getShape(level, pos).max(Direction.Axis.Y);
+                return new ThunderTarget(null, new Vec3(pos.getX() + 0.5, pos.getY() + top, pos.getZ() + 0.5));
+            }
+        }
+
+        // 命中实体 → 落雷于生物脚下
+        return entity != null ? new ThunderTarget(entity, new Vec3(entity.getX(), entity.getY(), entity.getZ())) : null;
     }
+
+    /** 雷击目标：target 非空表示追踪实体（落雷于脚下），否则按 strikePos 固定落雷（方块上表面）。 */
+    private record ThunderTarget(LivingEntity target, Vec3 strikePos) {}
 
     /** 是否为玩家自己的仆从/召唤物/同队盟友（战技不应命中） */
     private static boolean isOwnedMinion(LivingEntity e, @Nullable Player owner) {

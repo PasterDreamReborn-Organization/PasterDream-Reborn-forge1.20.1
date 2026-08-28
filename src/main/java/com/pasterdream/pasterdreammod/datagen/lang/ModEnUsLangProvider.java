@@ -1261,7 +1261,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc1", "§7▪ §9Shift+Right-click to switch Wind/Thunder mode");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc2", "§7▪ §9Wind·§fSwift Wind Dash§9: dash toward crosshair, dealing §c2.5×MoveSpeed×ATK §9damage to enemies in the way");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc3", "§7▪ §9Wind cooldown: §c2s");
-        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc4", "§7▪ §9Thunder·§eThunderstorm§9: call §c5 §9tracking lightning bolts on target, each dealing §cATK×1.0 §9AOE lightning damage(4×3×4)");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc4", "§7▪ §9Thunder·§eThunderstorm§9: call §c5 §9lightning bolts at the creature or block in your crosshair, each dealing §cATK×1.0 §9AOE lightning damage(4×3×4)");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc5", "§7▪ §9Thunder cost: §c1.0 §9Melt Dream Energy, cooldown: §c5s");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name", "Passive: §bThunder Follows the Wind");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1", "§7▪ §9Faster = more damage: §cDamage=(1+MoveSpeed)×ATK");
