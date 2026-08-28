@@ -1,0 +1,9 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:regeneration",
+  "providers": [
+    {
+      "item": "pasterdream:kaichu_omamori"
+    }
+  ]
+}

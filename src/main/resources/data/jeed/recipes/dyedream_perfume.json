@@ -1,0 +1,9 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "pasterdream:dyedream_perfume",
+  "providers": [
+    {
+      "item": "pasterdream:glass_jar_of_dyedream_perfume"
+    }
+  ]
+}
