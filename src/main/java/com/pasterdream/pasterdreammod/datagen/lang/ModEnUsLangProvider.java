@@ -1871,7 +1871,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_crack", "Dyedream Crack");
         add("structure.pasterdream.campsite_overworld", "Campsite");
         add("structure.pasterdream.the_lost_sword_tomb", "The Lost Sword Tomb");
+        add("structure.pasterdream.desert_cottage", "Desert Cottage");
         add("structure.pasterdream.dyedream_church_0", "Dream Church");
+        add("structure.pasterdream.dyedream_church_1", "Dream Church");
         add("structure.pasterdream.dyedream_church_2", "Dream Church");
         add("structure.pasterdream.dyedream_church_4", "Dream Church");
         add("structure.pasterdream.dyedream_church_6", "Dream Church");
