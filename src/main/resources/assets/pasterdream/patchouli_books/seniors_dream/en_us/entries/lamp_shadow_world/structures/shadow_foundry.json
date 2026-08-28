@@ -1,0 +1,22 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.entry.shadow_foundry",
+  "icon": "pasterdream:shadow_blast_furnace_core",
+  "category": "pasterdream:lamp_shadow_world/structures",
+  "advancement": "pasterdream:story/enter_lamp_shadow_world",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/lamp_shadow_world/structures/shadow_foundry.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_foundry.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_foundry.page1"
+    }
+  ]
+}

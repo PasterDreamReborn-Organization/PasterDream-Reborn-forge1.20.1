@@ -1,0 +1,7 @@
+{
+  "sortnum": 1,
+  "name": "pasterdream.seniors_dream.category.lamp_shadow_world_structures",
+  "description": "pasterdream.seniors_dream.category.lamp_shadow_world_structures.desc",
+  "icon": "pasterdream:shadow_desk",
+  "parent": "pasterdream:lamp_shadow_world"
+}
