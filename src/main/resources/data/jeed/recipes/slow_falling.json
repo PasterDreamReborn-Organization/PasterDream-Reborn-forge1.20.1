@@ -1,0 +1,9 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:slow_falling",
+  "providers": [
+    {
+      "item": "pasterdream:galaxy_jelly"
+    }
+  ]
+}

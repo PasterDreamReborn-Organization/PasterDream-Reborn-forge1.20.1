@@ -729,7 +729,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.dyedream_armor", "Dyedream Protection");
         add("effect.pasterdream.titanium_armor", "Titanium Protection");
         add("effect.pasterdream.dyedream_up", "Dyedream Tool Boost");
-        add("effect.pasterdream.melt_dream_crystal_armor", "Melt Dream Protection");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9Enables flight");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4Melt Dream Energy Cost: 1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
@@ -1749,6 +1748,38 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.black_beetle.easter_egg_2", "Grass, walk, ignore! ጿ ኈ ቼ ዽ ጿ");
         add("entity.pasterdream.golden_fox.vanish", "The golden fox vanished after fulfilling your wish...");
 
+        //jeed Compatible
+        add("effect.pasterdream.rest.description", "Touch the QYM doll or get it after sleeping, and you'll get a san aura while the effect lasts.");
+        add("effect.pasterdream.cook.description", "Obtained after eating some kind of food, grants a san aura while the effect lasts.");
+        add("effect.pasterdream.cheer_up.description", "Get it when san is above 90% to gain some positive effects.");
+        add("effect.pasterdream.lethargy.description", "You gain some negative effects when san is between 40% and 60%.");
+        add("effect.pasterdream.trance.description", "You gain worse negative effects when san is between 20% and 40%.");
+        add("effect.pasterdream.insane.description", "When sanity falls below 20%, you get it and experience extremely severe negative effects. Your vision will be covered with special visual effects. When san is between 1% and 10%, you get Insane II, with looping sound effects and camera shakes. When sanity drops below 1%, you get Insane III, and the aforementioned negative effects are intensified. (Visual effects, shaking, and sound effects can be turned off with commands or config)");
+        add("effect.pasterdream.snow_vow.description", "During the effect period, grants 3 Luck, immunity to burn and freeze effects, provided by Snow Vow Head curios within range.");
+        add("effect.pasterdream.goldenrod_tea.description", "During the duration of the effect, it provides immunity to hunger and nausea.");
+        add("effect.pasterdream.sculk_armor.description", "Obtained when wearing the full Sculk set, increases maximum health, grants resistance buff when in the depths and removes darkness debuff while giving speed and resistance effects when affected by darkness debuff.");
+        add("effect.pasterdream.dyedream_armor.description", "Obtained when wearing the full Dyedream Alloy set, increases maximum health and grants Absorption II every 30 seconds.");
+        add("effect.pasterdream.titanium_armor.description", "Obtained when wearing the full Titanium set, grants Absorption I every 30 seconds.");
+        add("effect.pasterdream.dyedream_up.description", "Obtained when wearing the full Dyedream Alloy set, deals 50% more damage when holding Dyedream (Dyedream Alloy and Melt Dream Crystal) tools.");
+        add("effect.pasterdream.melt_dream_crystal_armor", "Melt Dream Protection");
+        add("effect.pasterdream.melt_dream_crystal_armor.description", "Obtained when wearing the full Melt Dream Crystal set, reduces Melt-Repair cost by 50%, grants Regeneration II and Dyedream tool enhancement, grants a San Aura of +1.2 when Melt Dream Energy is above 50%, otherwise +0.6.");
+        add("effect.pasterdream.dream_wish.description", "Drink the dream fruit juice to get it, and having this effect lets you enter the Dyedream World when you sleep at night.");
+        add("effect.pasterdream.dyedream_perfume.description", "Obtained by drinking the Dyedream Perfume, Phantom don't attack you for the duration of its effect.");
+        add("effect.pasterdream.counter_attack.description", "Increase skill damage and disappear after the next attack.");
+        add("effect.pasterdream.dream_harp_of_wanderer.description", "Obtained after using the Dream Harp of Wanderer, the Dream Harp of Wanderer can be acquired from the Dyedream Train.");
+        add("effect.pasterdream.cecilia_blessing.description", "Obtained after takes a fatal hit when equips Blessing of Cecilia, making you immune to damage while the effect lasts.");
+        add("effect.pasterdream.guard.description", "Obtained by using the Guardian Prophecy Card, while you have this buff, damage above a certain percentage of your health will be reduced (can be changed in the Config).");
+        add("effect.pasterdream.flare_up.description", "Obtained using the Wielding-Sword Prophecy card. While you have this buff, it increases attack power and attack speed, boosts skill damage multiplier, and reduces skill cooldowns.");
+        add("effect.pasterdream.conflict_mark.description", "After marking another entity with the Conflict Prophecy card, that entity gains the buff. While it has this buff, it will become the target of attacks from other entities.");
+        add("effect.pasterdream.war_flag.description", "After equipping the war flag, you gain it by killing enemies, which increases your attack power, and leveling up by 1 for each enemy you kill.");
+        add("effect.pasterdream.confusion.description", "When applied to a player, their view will shake; when applied to other creatures, it will make them unable to move.");
+        add("effect.pasterdream.calais_spice_bottle.description", "After equipping the Calais Spice Bottle, you gain it. Each time you hit an enemy, it loses 1 level and grants a random effect. Eating the required food will restore the levels.");
+        add("effect.pasterdream.shadow_silence.description", "After getting this buff, shadow creatures will lose the ability to use their skills.");
+        add("effect.pasterdream.bind.description", "Obtained after being hit by the White Sword's sword rain. After getting this buff, you won't be able to move.");
+        add("effect.pasterdream.restrainmove_block.description", "Remove jump boosts and force-disable flying while the effect lasts.");
+        add("effect.pasterdream.wind_runner.description", "Obtained by eating the Wind Runner Jelly, allows elytra flight without an elytra while the effect lasts.");
+
+        // Desert Hero Tomb - Quest Dialogue
         // Dyedream Crack Messages
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5Your body passes through this strange hole, but nothing happens.");
         add("message.pasterdream.dyedream_crack.first_contact.2", "§5You can feel that this crack-like thing interacts with this world and another place. The different environments nearby might have been born because of it.");
