@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
@@ -260,6 +261,13 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                         blockEntity.animationState = 0;
                         blockEntity.tickCounter = -1;
                         blockEntity.setChangedAndSync();
+                        for (Player player : blockEntity.playerList)
+                        {
+                            if (player instanceof ServerPlayer serverPlayer)
+                            {
+                                AdvancementHelper.grant(serverPlayer, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_prisoner"), "enter_shadow_dungeon");
+                            }
+                        }
                         if(blockEntity.progress == 1)
                         {
                             blockEntity.teleportPlayers(blockEntity.playerList, blockPosition.getX() + 4.5, level.getMinBuildHeight() + 19, blockPosition.getZ() + 0.5);

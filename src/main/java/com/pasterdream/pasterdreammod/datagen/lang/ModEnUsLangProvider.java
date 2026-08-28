@@ -1257,7 +1257,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.ice_shadow_hammer.no_energy", "§cNot enough Melt Dream Energy");
 
         // Fluffy Wind Alloy Sword
-        add("tooltip.pasterdream.fluffy_wind_alloy_sword.skill_name", "Combat Art: §9Wind-and-Thunder");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.skill_name", "Combat Art: §bWind-and-Thunder");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc1", "§7▪ §9Shift+Right-click to switch Wind/Thunder mode");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc2", "§7▪ §9Wind·§fSwift Wind Dash§9: dash toward crosshair, dealing §c2.5×MoveSpeed×ATK §9damage to enemies in the way");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc3", "§7▪ §9Wind cooldown: §c2s");
@@ -1548,6 +1548,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.bastion_guard.description", "Complete the Twilight Lantern bastion guard event");
         add("advancements.pasterdream.story.enter_lamp_shadow_world.title", "Lamp Shadow World");
         add("advancements.pasterdream.story.enter_lamp_shadow_world.description", "Delve into the darkest side of the world");
+        add("advancements.pasterdream.story.shadow_prisoner.title", "Weary Prisoner");
+        add("advancements.pasterdream.story.shadow_prisoner.description", "Repair the Shadow Dungeon Portal and enter the Shadow Dungeon");
         add("advancements.pasterdream.story.shadow_choice.title", "Light and Shadow");
         add("advancements.pasterdream.story.shadow_choice.description", "Make your choice between light and shadow");
         add("advancements.pasterdream.story.talent_light.title", "Faith in Light");

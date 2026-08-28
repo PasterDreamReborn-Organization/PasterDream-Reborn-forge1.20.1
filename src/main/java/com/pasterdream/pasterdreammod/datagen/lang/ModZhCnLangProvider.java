@@ -1432,7 +1432,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.ice_shadow_hammer.no_energy", "§c融梦能量不足");
 
         // 萦风合金剑
-        add("tooltip.pasterdream.fluffy_wind_alloy_sword.skill_name", "战技：§9萦风引雷");
+        add("tooltip.pasterdream.fluffy_wind_alloy_sword.skill_name", "战技：§b萦风引雷");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc1", "§7▪ §9Shift+右键切换风/雷模式");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc2", "§7▪ §9风·§f疾风突进§9：向准心突进，对沿途敌人造成 §c2.5×移动速度×攻击力 §9伤害");
         add("tooltip.pasterdream.fluffy_wind_alloy_sword.desc3", "§7▪ §9风之冷却：§c2秒");
@@ -1727,6 +1727,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.bastion_guard.description", "完成暮影之笼的据点守卫事件");
         add("advancements.pasterdream.story.enter_lamp_shadow_world.title", "灯影之下");
         add("advancements.pasterdream.story.enter_lamp_shadow_world.description", "深入世界中最黑暗的一面");
+        add("advancements.pasterdream.story.shadow_prisoner.title", "困顿囚徒");
+        add("advancements.pasterdream.story.shadow_prisoner.description", "修复暗影地牢传送门并进入暗影地牢");
         add("advancements.pasterdream.story.shadow_choice.title", "灯与影");
         add("advancements.pasterdream.story.shadow_choice.description", "做出灯与影的选择");
         add("advancements.pasterdream.story.talent_light.title", "信仰光明");

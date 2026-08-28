@@ -387,6 +387,22 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/enter_lamp_shadow_world"), existingFileHelper);
 
+            // 困顿囚徒 —— 首次进入暗影地牢（原作 achievement_shadow_c_0，程序授予，+10 XP）
+            Advancement shadowPrisoner = Advancement.Builder.advancement()
+                    .parent(enterLampShadowWorld)
+                    .display(
+                            ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get(),
+                            Component.translatable("advancements.pasterdream.story.shadow_prisoner.title"),
+                            Component.translatable("advancements.pasterdream.story.shadow_prisoner.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("enter_shadow_dungeon", new ImpossibleTrigger.TriggerInstance())
+                    .rewards(AdvancementRewards.Builder.experience(10))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_prisoner"), existingFileHelper);
+
             // ========== 灯影世界剧情线（纯逻辑进度，不在进度界面显示）==========
             Advancement depositionShadow = Advancement.Builder.advancement()
                     .parent(enterLampShadowWorld)
@@ -439,16 +455,16 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/shadow_npc_first_dialogue"), existingFileHelper);
 
-            // 暗影入侵事件完成（解锁第二次对话）—— 可见目标进度
+            // 暗影入侵事件完成（解锁第二次对话）—— 可见目标进度，挂困顿囚徒之后
             Advancement shadowIntrudeComplete = Advancement.Builder.advancement()
-                    .parent(enterLampShadowWorld)
+                    .parent(shadowPrisoner)
                     .display(
                             ModItems.NIGHTMARE_FUEL.get(),
                             Component.translatable("advancements.pasterdream.story.shadow_intrude_complete.title"),
                             Component.translatable("advancements.pasterdream.story.shadow_intrude_complete.description"),
                             null,
                             FrameType.GOAL,
-                            true, true, false
+                            true, true, true
                     )
                     .addCriterion("intrude_complete", new ImpossibleTrigger.TriggerInstance())
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
@@ -460,16 +476,16 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/shadow_npc_second_dialogue"), existingFileHelper);
 
-            // 灯与影 —— 做出选择（原作 achievement_shadow_d_0，parent 原作 shadow_c_0 暂留占位，挂到灯影之下 Tab 根进度下）
+            // 灯与影 —— 做出选择（原作 achievement_shadow_d_0，parent 原作 shadow_c_0，现挂到暗影入侵 shadow_intrude_complete 之下）
             Advancement shadowChoice = Advancement.Builder.advancement()
-                    .parent(enterLampShadowWorld)
+                    .parent(shadowIntrudeComplete)
                     .display(
                             ModBlocks.SHADOW_CANDLE.get(),
                             Component.translatable("advancements.pasterdream.story.shadow_choice.title"),
                             Component.translatable("advancements.pasterdream.story.shadow_choice.description"),
                             null,
                             FrameType.TASK,
-                            true, true, false
+                            true, true, true
                     )
                     .addCriterion("make_choice", new ImpossibleTrigger.TriggerInstance())
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
