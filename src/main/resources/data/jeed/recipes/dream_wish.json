@@ -1,9 +1,0 @@
-{
-  "type": "jeed:effect_provider",
-  "effect": "pasterdream:dream_wish",
-  "providers": [
-    {
-      "item": "pasterdream:glass_jar_of_dream_juice"
-    }
-  ]
-}
