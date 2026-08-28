@@ -405,8 +405,8 @@ public class Config
             .define("windKnightPassiveInvulnerableEnabled", true);
 
     private static final ForgeConfigSpec.DoubleValue WIND_KNIGHT_PASSIVE_INVULNERABLE_CHANCE = BUILDER
-            .comment("破风骑士：被动无敌触发概率（受击后获得无敌的概率），默认 0.3（30%），允许最小值为0，最大值为1")
-            .defineInRange("windKnightPassiveInvulnerableChance", 0.3, 0.0, 1.0);
+            .comment("破风骑士：被动无敌触发概率（受击后获得无敌的概率），默认 0.2（20%），允许最小值为0，最大值为1")
+            .defineInRange("windKnightPassiveInvulnerableChance", 0.2, 0.0, 1.0);
 
     private static final ForgeConfigSpec.IntValue WIND_KNIGHT_PASSIVE_INVULNERABLE_TICKS = BUILDER
             .comment("破风骑士：被动获得的无敌时长（tick，20 tick = 1 秒），默认 20")
