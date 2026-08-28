@@ -428,6 +428,7 @@ public class Config
                     + "\n仅 Shift+右键时可抓取，无法抓取 Boss 生物（凋零、末影龙）")
             .defineListAllowEmpty("creatureCaptureEntities",
                     List.of("pasterdream:pink_chicken", "pasterdream:pink_slime",
+                            "pasterdream:jellyfish", "pasterdream:friendly_shadow_ghost",
                             "minecraft:chicken", "minecraft:slime", "minecraft:silverfish",
                             "minecraft:vex", "minecraft:endermite", "minecraft:frog",
                             "minecraft:tadpole", "minecraft:tropical_fish", "minecraft:pufferfish",
