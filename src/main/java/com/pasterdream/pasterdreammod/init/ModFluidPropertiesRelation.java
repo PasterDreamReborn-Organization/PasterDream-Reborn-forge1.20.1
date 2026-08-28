@@ -56,6 +56,6 @@ public class ModFluidPropertiesRelation
                     }
             }
         })));
-
+        FluidDrinkPropertiesRegistry.register(ModFluids.POTION.get(), new GenericFluidDrinkProperties().drinkAmount(250).useDuration(32).food(new FoodProperties.Builder().alwaysEat().build()));
     }
 }

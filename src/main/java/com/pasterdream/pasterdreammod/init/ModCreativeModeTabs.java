@@ -115,7 +115,7 @@ public class ModCreativeModeTabs {
 
     public static final RegistryObject<CreativeModeTab> PASTERDREAM_ELIXIR_BOTTLE_TAB = CREATIVE_MODE_TABS.register("pasterdream_elixir_bottle_tab",
             () -> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup.pasterdream.elixir_bottle_tab"))
+                    .title(Component.translatable("itemGroup.pasterdream.pasterdream_elixir_bottle_tab"))
                     .icon(() -> new ItemStack(ModItems.ELIXIR_BOTTLE.get()))
                     .displayItems((parameters, output) ->
                     {

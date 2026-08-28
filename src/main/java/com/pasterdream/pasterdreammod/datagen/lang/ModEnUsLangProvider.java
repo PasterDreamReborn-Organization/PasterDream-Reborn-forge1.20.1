@@ -641,6 +641,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("fluid.pasterdream.ink","Ink(fluid)");
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "Paster Dream | Food & Drinks");
+        add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "Paster Dream | Elixir Bottle");
         add("itemGroup.pasterdream.pasterdream_items_tab", "Paster Dream | Items");
         add("itemGroup.pasterdream.pasterdream_gear_tab", "Paster Dream | Gear");
         add("itemGroup.pasterdream.pasterdream_blocks_tab", "Dye Dream World");
