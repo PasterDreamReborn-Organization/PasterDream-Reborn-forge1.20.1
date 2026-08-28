@@ -4,7 +4,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.material.Fluid;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,5 +94,10 @@ public class GenericFluidDrinkProperties
     public BiConsumer<LivingEntity, Level> getDrinkSpecial()
     {
         return drinkSpecial;
+    }
+
+    public static GenericFluidDrinkProperties copy(GenericFluidDrinkProperties properties)
+    {
+        return new GenericFluidDrinkProperties().drinkAmount(properties.getDrinkAmount()).useDuration(properties.getUseDuration()).food(properties.getFoodProperties()).sanAdd(properties.getSanAdd()).meltDreamEnergyAdd(properties.getMeltDreamEnergyAdd()).onDrinkSpecial(properties.getDrinkSpecial());
     }
 }

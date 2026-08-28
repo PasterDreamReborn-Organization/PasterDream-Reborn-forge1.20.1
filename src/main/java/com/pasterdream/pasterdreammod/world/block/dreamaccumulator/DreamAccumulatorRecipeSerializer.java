@@ -52,7 +52,7 @@ public class DreamAccumulatorRecipeSerializer implements RecipeSerializer<DreamA
 
         int time = buffer.readVarInt();
         ItemIngredient catalyst = ItemIngredient.fromNetwork(buffer);
-        float catalystMultiplier = buffer.readFloat();
+        double catalystMultiplier = buffer.readDouble();
         ItemStack output = buffer.readItem();
         return new DreamAccumulatorRecipe(id, biomeTags, time, catalyst, catalystMultiplier, output);
     }
