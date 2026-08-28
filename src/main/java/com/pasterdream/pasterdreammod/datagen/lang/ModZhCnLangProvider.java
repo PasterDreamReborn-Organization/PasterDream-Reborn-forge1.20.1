@@ -126,7 +126,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.success", "§e味道有些熟悉，好像是来自雪泪寒……等等？");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.client.fail", "§7你已经品尝过这个冰淇淋的味道了");
         add(ModItems.ELIXIR_BOTTLE.get(), "灵药瓶");
-        add(ModItems.ELIXIR_BOTTLE_OF_POTION.get(), "装有药水的灵药瓶");
         add("tooltip.pasterdreammod.elixir_bottle_of_potion.uses", "§7剩余饮用次数：%s");
         add(ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get(), "融梦灵药瓶");
         add(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get(), "狂暴战意灵药");
