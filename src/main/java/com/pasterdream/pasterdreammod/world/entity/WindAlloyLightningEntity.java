@@ -25,7 +25,8 @@ import java.util.UUID;
 
 /**
  * 萦风引雷的落雷载体实体 —— 由萦风合金剑（雷模式）生成。
- * 每 10 tick 在目标头顶降下一道纯视觉落雷（setVisualOnly），
+ * 每 10 tick 在目标位置降下一道纯视觉落雷（setVisualOnly），
+ * 命中生物时落雷于其脚下（追踪），命中方块时落雷于其上表面（固定），
  * 并造成 攻击力×1.5 的 4×3×4 范围 AOE 雷电伤害，共 5 道后消散。
  * 通过每 tick 重新读取目标位置实现"追踪"。
  */
@@ -147,7 +148,7 @@ public class WindAlloyLightningEntity extends Entity {
         // 追踪：每 tick 重新读取目标位置
         LivingEntity target = resolveTarget();
         if (target != null) {
-            this.setPos(target.getX(), target.getY() + target.getBbHeight() * 0.9, target.getZ());
+            this.setPos(target.getX(), target.getY(), target.getZ());
         } else if (lastStrikePos != null) {
             this.setPos(lastStrikePos.x, lastStrikePos.y, lastStrikePos.z);
         }
@@ -166,7 +167,7 @@ public class WindAlloyLightningEntity extends Entity {
     private void strike(ServerLevel sl, LivingEntity target) {
         Vec3 strikePos;
         if (target != null) {
-            strikePos = new Vec3(target.getX(), target.getY() + target.getBbHeight() * 0.9, target.getZ());
+            strikePos = new Vec3(target.getX(), target.getY(), target.getZ());
         } else if (lastStrikePos != null) {
             strikePos = lastStrikePos;
         } else if (fallbackPos != null) {
