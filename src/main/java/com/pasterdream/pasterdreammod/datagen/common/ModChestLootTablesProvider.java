@@ -398,7 +398,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                         )
                         .withPool(LootPool.lootPool()
                                 // 染梦装备，固定1抽取，幸运影响系数1（概率太低了，所以加了幸运影响系数）
-                                .setBonusRolls(ConstantValue.exactly(1.0F))
+                                .setBonusRolls(ConstantValue.exactly(0.5F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.DYEDREAM_UPGRADE.get())
                                         .setWeight(1)
@@ -788,7 +788,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                         )
                         .withPool(LootPool.lootPool()
                                 // 染梦装备，固定1抽取，幸运影响系数1（概率太低了，所以加了幸运影响系数）
-                                .setBonusRolls(ConstantValue.exactly(1.0F))
+                                .setBonusRolls(ConstantValue.exactly(0.5F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.DYEDREAM_UPGRADE.get())
                                         .setWeight(1)

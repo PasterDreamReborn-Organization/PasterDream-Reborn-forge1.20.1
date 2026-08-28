@@ -2751,6 +2751,13 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(Items.PAPER), has(Items.PAPER))
                 .save(pWriter);
 
+        // 羽毛笔 = 羽毛 + 铁粒
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FEATHER_PEN.get(), 1)
+                .requires(Items.FEATHER)
+                .requires(Items.IRON_NUGGET)
+                .unlockedBy(getHasName(Items.FEATHER), has(Items.FEATHER))
+                .save(pWriter);
+
         // 4x 笔记残页 -> 未解析的笔记
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.UNKNOWN_NOTE.get(), 1)
                 .requires(ModItems.BROKEN_NOTE.get(), 4)
