@@ -39,8 +39,9 @@ public class MortarRecipeSerializer extends GenericPasterDreamRecipeSerializer<M
             itemInputs.add(ItemIngredient.fromNetwork(buffer));
         }
 
+        int outputFluidCount = buffer.readVarInt();
         List<FluidIngredient> fluidOutputs = new ArrayList<>();
-        for (int i = 0; i < fluidCount; i++)
+        for (int i = 0; i < outputFluidCount; i++)
         {
             fluidOutputs.add(FluidIngredient.fromNetwork(buffer));
         }
