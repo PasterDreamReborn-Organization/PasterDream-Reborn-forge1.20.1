@@ -2153,6 +2153,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.category.lamp_shadow_world.desc", "阳光越是强烈的地方阴影就越是深邃。这里是另外一个世界，堕落，疯癫，同化，皆是寻梦者的归属。但废墟中的残留的文字似乎隐藏更多的未知。当你站在那片黑暗之前，你会如何抉择？");
         add("pasterdream.seniors_dream.category.lamp_shadow_world_items", "方块与物品");
         add("pasterdream.seniors_dream.category.lamp_shadow_world_items.desc", "灯影之下的一些方块与物品。");
+        add("pasterdream.seniors_dream.category.lamp_shadow_world_structures", "结构");
+        add("pasterdream.seniors_dream.category.lamp_shadow_world_structures.desc", "灯影之下的结构。");
 
         add("pasterdream.seniors_dream.entry.brooch_of_white_orchid", "白厄花胸针");
         add("pasterdream.seniors_dream.entry.brooch_of_white_orchid.page0", "当你在至暗的梦境中选择了光明，击败了盘踞于深邃阴影中的大手后，你能获得这么一枚奇妙的胸针。它所蕴藏的光明力量可以让你在容易致人疯狂的环境中保持清醒。如果你戴着它拿起一把光明之剑，似乎可以让那把剑更加致命……");
@@ -2196,6 +2198,20 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.bright_butterfly_curio", "光明飞蝶");
         add("pasterdream.seniors_dream.entry.bright_butterfly_curio.page0", "在过去，第一位进入灯影的寻梦者借助光明飞蝶掌控暗影的力量，最终成功离开了灯影之下。在掌控了光明的力量后，你或许可以尝试用白厄水晶改造一下夜明蝶……$(br2)利用白厄水晶复现了光明飞蝶，并将其佩戴后，你的眼中常驻光明，眼前的黑暗消散殆尽。任何尝试夺走你眼前光明的手段都将失效。");
         add("pasterdream.seniors_dream.entry.bright_butterfly_curio.page1", "——眼中所见皆为光明之时，黑暗自然无处遁形。");
+
+        // 灯影之下-结构
+        add("pasterdream.seniors_dream.entry.shadow_foundry", "阴影铸造厂");
+        add("pasterdream.seniors_dream.entry.shadow_foundry.page0", "过去的寻梦者在这片黑暗之地摸爬滚打，留下了许多遗存，其中，这座废墟是琴雨梦和夜岚的有关锈蚀金属的研究所遗留下来的。$(br2)在这里，你能找到一份暗影高炉的蓝图以及它的残骸。你或许可以尝试一下在其他地方重新搭建这台机器，并用它尝试复现琴雨梦的研究成果……");
+        add("pasterdream.seniors_dream.entry.shadow_foundry.page1", "——人类从不会停止追寻未知的脚步，哪怕在永暗的梦境之中亦是如此，这座遗迹便是最好的证明……");
+
+        add("pasterdream.seniors_dream.entry.shadow_dungeon_structure", "暗影地牢");
+        add("pasterdream.seniors_dream.entry.shadow_dungeon_structure.page0", "未完成");
+
+        add("pasterdream.seniors_dream.entry.aaroncos_arena_portal", "怪异手状结构");
+        add("pasterdream.seniors_dream.entry.aaroncos_arena_portal.page0", "当你在灯影之下探索时，有时会发现这种手状结构，它的掌心有着传送门状的白色裂隙。$(br2)可是，当你尝试站在它手心的裂隙中时，却什么都没有发生。$(br2)或许现在不是时候，让我们继续在梦中的旅途，总有一天，这里会向你展示它全部的秘密。");
+
+        add("pasterdream.seniors_dream.entry.aaroncos_arena", "亚伦柯斯竞技场");
+        add("pasterdream.seniors_dream.entry.aaroncos_arena.page0", "当你在灯与影之中做出了你的选择后，你终于获得了资格穿过传送门，前来见证无比恐怖的暗影之手。这里会侵蚀你的理智，让你在之后的战斗中慢慢落入劣势。$(br2)无论你是选择化身为灯来消灭它，战胜它，还是选择融入阴影来接纳它，取代它，这一次战斗都是前所未有的恶战。请确保做好了万全准备再来向它发起挑战。");
 
         // 剧情
         add("pasterdream.seniors_dream.category.story", "剧情");

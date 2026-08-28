@@ -1,0 +1,13 @@
+{
+  "sortnum": 1,
+  "name": "pasterdream.seniors_dream.entry.shadow_dungeon_structure",
+  "icon": "pasterdream:broken_shadow_dungeon_portal",
+  "category": "pasterdream:lamp_shadow_world/structures",
+  "advancement": "pasterdream:story/enter_lamp_shadow_world",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_dungeon_structure.page0"
+    }
+  ]
+}

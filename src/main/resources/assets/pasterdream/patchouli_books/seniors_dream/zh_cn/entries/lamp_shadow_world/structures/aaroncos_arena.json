@@ -1,0 +1,18 @@
+{
+  "sortnum": 3,
+  "name": "pasterdream.seniors_dream.entry.aaroncos_arena",
+  "icon": "pasterdream:aaroncos_arena_create",
+  "category": "pasterdream:lamp_shadow_world/structures",
+  "advancement": "pasterdream:story/shadow_choice",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/lamp_shadow_world/structures/aaroncos_arena.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.aaroncos_arena.page0"
+    }
+  ]
+}
