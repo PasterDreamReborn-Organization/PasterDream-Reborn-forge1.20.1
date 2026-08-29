@@ -9,6 +9,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
@@ -129,5 +134,52 @@ public class PotionHelper
         fluidStack.setTag(NBT);
 
         return fluidStack;
+    }
+
+    public static List<GenericMobEffect> getListGenericMobEffectFromPotion(Potion potion)
+    {
+        List<MobEffectInstance> potionEffects = potion.getEffects();
+        List<GenericMobEffect> effectList = new ArrayList<>();
+        for (MobEffectInstance effectInstance : potionEffects)
+        {
+            effectList.add(GenericMobEffect.fromMobEffectInstanceToGenericMobEffect(effectInstance));
+        }
+        return effectList;
+    }
+
+    public static List<GenericMobEffect> getListGenericMobEffectFromGenericPotion(ItemStack itemStack)
+    {
+        List<MobEffectInstance> customListEffects = PotionUtils.getCustomEffects(itemStack);
+        List<GenericMobEffect> effectList = new ArrayList<>();
+        for(MobEffectInstance effectInstance : customListEffects)
+        {
+            effectList.add(GenericMobEffect.fromMobEffectInstanceToGenericMobEffect(effectInstance));
+        }
+
+        return effectList;
+    }
+
+    public static Potion getPotionFromListGenericMobEffect(List<GenericMobEffect> effectList)
+    {
+        for (Potion potion : BuiltInRegistries.POTION)
+        {
+            if (getListGenericMobEffectFromPotion(potion).equals(effectList))
+            {
+                return potion;
+            }
+        }
+
+        return null;
+    }
+
+    public static ItemStack getCustomEffectPotion(List<GenericMobEffect> effectList)
+    {
+        List<MobEffectInstance> potionEffects = new ArrayList<>();
+        for(GenericMobEffect effect : effectList)
+        {
+            potionEffects.add(GenericMobEffect.fromGenericMobEffectToEffectInstance(effect));
+        }
+
+        return PotionUtils.setCustomEffects(new ItemStack(Items.POTION), potionEffects);
     }
 }

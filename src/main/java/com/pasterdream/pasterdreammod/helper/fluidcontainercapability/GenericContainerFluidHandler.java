@@ -8,33 +8,31 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 public class GenericContainerFluidHandler implements IFluidHandlerItem
 {
     private ItemStack inputItem;
-    private Item item;
     private FluidContainerRegistry.ContainerEntry entry;
     private ItemStack outputItem = null;
     private int defaultCapacity;
 
-    public GenericContainerFluidHandler(ItemStack input)
+    public GenericContainerFluidHandler(ItemStack itemStack)
     {
-        inputItem = input;
-        item = input.getItem();
-        entry = FluidContainerRegistry.getEntryForFillToEmpty(item);
+        inputItem = itemStack;
+        entry = FluidContainerRegistry.getEntryForFillToEmpty(inputItem);
 
         if (entry == null)
         {
-            FluidContainerRegistry.ContainerEntry anyEntry = FluidContainerRegistry.getAnyEntryForEmpty(item);
+            FluidContainerRegistry.ContainerEntry anyEntry = FluidContainerRegistry.getAnyEntryForEmpty(inputItem.getItem());
             if (anyEntry != null)
             {
-                defaultCapacity = anyEntry.amount;
+                defaultCapacity = anyEntry.fluidStack.getAmount();
             }
+                else
+                {
+                    defaultCapacity = 1000;
+                }
+        }
             else
             {
-                defaultCapacity = 1000;
+                defaultCapacity = entry.fluidStack.getAmount();
             }
-        }
-        else
-        {
-            defaultCapacity = entry.amount;
-        }
     }
 
     @Override
@@ -46,14 +44,14 @@ public class GenericContainerFluidHandler implements IFluidHandlerItem
     @Override
     public FluidStack getFluidInTank(int tank)
     {
-        if (entry != null && inputItem.getItem() == entry.filledItem)
+        if (entry != null && inputItem.getItem() == entry.fullContainerItemStack.getItem())
         {
-            return new FluidStack(entry.fluid, entry.amount);
+            return entry.fluidStack;
         }
-        else
-        {
-            return FluidStack.EMPTY;
-        }
+            else
+            {
+                return FluidStack.EMPTY;
+            }
     }
 
     @Override
@@ -63,16 +61,16 @@ public class GenericContainerFluidHandler implements IFluidHandlerItem
     }
 
     @Override
-    public boolean isFluidValid(int tank, FluidStack stack)
+    public boolean isFluidValid(int tank, FluidStack fluidStack)
     {
         if (entry != null)
         {
             return false;
         }
-        else
-        {   //空杯：检查是否有注册关系
-            return FluidContainerRegistry.getEntryForEmptyAndFluid(item, stack.getFluid()) != null;
-        }
+            else
+            {   //空杯：检查是否有注册关系
+                return FluidContainerRegistry.getEntryForEmptyAndFluid(inputItem, fluidStack) != null;
+            }
     }
 
     @Override
@@ -84,44 +82,45 @@ public class GenericContainerFluidHandler implements IFluidHandlerItem
         }
 
         //根据空物品和流体动态查找条目
-        FluidContainerRegistry.ContainerEntry entry = FluidContainerRegistry.getEntryForEmptyAndFluid(item, resource.getFluid());
-        if (entry == null || resource.getAmount() < entry.amount)
+        FluidContainerRegistry.ContainerEntry entry = FluidContainerRegistry.getEntryForEmptyAndFluid(inputItem, resource);
+        if (entry == null || resource.getAmount() < entry.fluidStack.getAmount())
         {
             return 0;
         }
 
         if (action.execute())
         {   //创建满杯
-            outputItem = new ItemStack(entry.filledItem, inputItem.getCount());
+            outputItem = new ItemStack(entry.fullContainerItemStack.getItem(), inputItem.getCount());
+            outputItem.setTag(entry.fullContainerItemStack.getTag());
         }
-        return entry.amount;
+        return entry.fluidStack.getAmount();
     }
 
     @Override
     public FluidStack drain(FluidStack resource, FluidAction action)
     {
-        if (entry == null || inputItem.getItem() != entry.filledItem || resource.isEmpty() || resource.getAmount() < entry.amount || !resource.isFluidEqual(new FluidStack(entry.fluid, entry.amount)))
+        if (entry == null || inputItem.getItem() != entry.fullContainerItemStack.getItem() || resource.isEmpty() || resource.getAmount() < entry.fluidStack.getAmount() || !resource.isFluidEqual(entry.fluidStack))
         {
             return FluidStack.EMPTY;
         }
-        else
-        {
-            return drain(entry.amount, action);
-        }
+            else
+            {
+                return drain(entry.fluidStack.getAmount(), action);
+            }
     }
 
     @Override
     public FluidStack drain(int maxDrain, FluidAction action)
     {
-        if (entry == null || inputItem.getItem() != entry.filledItem || maxDrain < entry.amount)
+        if (entry == null || inputItem.getItem() != entry.fullContainerItemStack.getItem() || maxDrain < entry.fluidStack.getAmount())
         {
             return FluidStack.EMPTY;
         }
 
-        FluidStack drained = new FluidStack(entry.fluid, entry.amount);
+        FluidStack drained = entry.fluidStack.copy();
         if (action.execute())
         {
-            ItemStack newStack = new ItemStack(entry.emptyItem);
+            ItemStack newStack = new ItemStack(entry.emptyContainerItemStack.getItem());
             inputItem = newStack;
             outputItem = newStack;
         }
@@ -135,9 +134,9 @@ public class GenericContainerFluidHandler implements IFluidHandlerItem
         {
             return outputItem;
         }
-        else
-        {
-            return inputItem;
-        }
+            else
+            {
+                return inputItem;
+            }
     }
 }

@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.FluidContainerRegistry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -26,7 +27,6 @@ public class ModFluidContainerRelation
         FluidContainerRegistry.register(ModItems.GLASS_CUP.get(), ModFluids.HONEY_JUICE.get(), 250, ModItems.GLASS_CUP_OF_HONEY_JUICE.get());
         FluidContainerRegistry.register(ModItems.GLASS_CUP.get(), ModFluids.WATERMELON_JUICE.get(), 250, ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get());
 
-        FluidContainerRegistry.register(ModItems.ELIXIR_BOTTLE.get(), ModFluids.RAGE_ELIXIR.get(), 1000, ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get());
-        FluidContainerRegistry.register(ModItems.ELIXIR_BOTTLE.get(), ModFluids.MELT_DREAM_LIQUID.get(), 1000, ModItems.ELIXIR_BOTTLE_OF_MELT_DREAM.get());
+        FluidContainerRegistry.register(Items.GLASS_BOTTLE, ModFluids.HONEY_JUICE.get(), 250, Items.HONEY_BOTTLE);
     }
 }
