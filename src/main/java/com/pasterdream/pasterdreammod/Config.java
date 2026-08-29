@@ -412,6 +412,10 @@ public class Config
             .comment("破风骑士：被动获得的无敌时长（tick，20 tick = 1 秒），默认 20")
             .defineInRange("windKnightPassiveInvulnerableTicks", 20, 1, Integer.MAX_VALUE);
 
+    private static final ForgeConfigSpec.BooleanValue WIND_KNIGHT_IMMUNE_TO_NEGATIVE_EFFECTS = BUILDER
+            .comment("破风骑士：是否免疫负面状态效果（有害类效果，如中毒、虚弱、缓慢等），默认 true")
+            .define("windKnightImmuneToNegativeEffects", true);
+
     // === 亚伦柯斯之触 ===
     private static final ForgeConfigSpec.BooleanValue AARONCOS_TOUCH_IMMUNE_TO_NEGATIVE_EFFECTS = BUILDER
             .comment("亚伦柯斯之触（左右手）是否免疫负面状态效果（有害类效果，如中毒、虚弱、缓慢等），默认 true")
@@ -753,6 +757,7 @@ public class Config
     public static boolean windKnightPassiveInvulnerableEnabled;
     public static double windKnightPassiveInvulnerableChance;
     public static int windKnightPassiveInvulnerableTicks;
+    public static boolean windKnightImmuneToNegativeEffects;
 
     /**
      * 解析某 BOSS 档位实际生效的限伤配置。
@@ -1047,6 +1052,7 @@ public class Config
         windKnightPassiveInvulnerableEnabled = WIND_KNIGHT_PASSIVE_INVULNERABLE_ENABLED.get();
         windKnightPassiveInvulnerableChance = WIND_KNIGHT_PASSIVE_INVULNERABLE_CHANCE.get();
         windKnightPassiveInvulnerableTicks = WIND_KNIGHT_PASSIVE_INVULNERABLE_TICKS.get();
+        windKnightImmuneToNegativeEffects = WIND_KNIGHT_IMMUNE_TO_NEGATIVE_EFFECTS.get();
         creatureCaptureEnabled = CREATURE_CAPTURE_ENABLED.get();
         creatureCaptureEntities = CREATURE_CAPTURE_ENTITIES.get();
 
