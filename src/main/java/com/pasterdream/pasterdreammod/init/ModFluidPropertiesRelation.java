@@ -16,7 +16,7 @@ public class ModFluidPropertiesRelation
 {
     public static void register()
     {
-        FluidDrinkPropertiesRegistry.register(ModFluids.MELT_DREAM_LIQUID.get(), new GenericFluidDrinkProperties().drinkAmount(1000).useDuration(32).food(new FoodProperties.Builder().alwaysEat().build()).meltDreamEnergyAdd(15));
+        FluidDrinkPropertiesRegistry.register(ModFluids.MELT_DREAM_LIQUID.get(), new GenericFluidDrinkProperties().drinkAmount(1000).useDuration(32).food(new FoodProperties.Builder().alwaysEat().build()).meltDreamEnergyAdd(25));
         FluidDrinkPropertiesRegistry.register(ModFluids.RAGE_ELIXIR.get(), new GenericFluidDrinkProperties().drinkAmount(1000).useDuration(32).food(new FoodProperties.Builder().alwaysEat().build()).onDrinkSpecial(((livingEntity, level) ->
         {
             if (level.isClientSide)
