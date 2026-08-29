@@ -27,6 +27,7 @@ import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -52,6 +53,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -205,6 +207,16 @@ public class WindKnightEntity extends Monster implements GeoEntity {
     @Override
     public SoundEvent getDeathSound() {
         return SoundEvents.IRON_GOLEM_DEATH;
+    }
+
+    /** 被动：免疫负面状态效果（开关由 Config.windKnightImmuneToNegativeEffects 控制，默认开启） */
+    @Override
+    public boolean addEffect(MobEffectInstance effectInstance, @Nullable Entity entity) {
+        if (Config.windKnightImmuneToNegativeEffects
+                && effectInstance.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
+            return false;
+        }
+        return super.addEffect(effectInstance, entity);
     }
 
     @Override
