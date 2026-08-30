@@ -1489,6 +1489,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.broken_portal.lack_knowledge", "You don't yet understand how to repair this core");
         add("message.pasterdream.broken_portal.此暗影地牢中存在其他玩家", "This Shadow Dungeon have other players, Please wait or find and use other Shadow Dungeon Portal.");
         add("message.pasterdream.broken_portal.传送倒计时：", "Teleport last time:");
+        add("message.pasterdream.broken_portal.已传送出暗影地牢内的掉落物", "Teleported out the Items in the Shadow Dungeon");
 
         // Calais Spice Bottle
         add(ModItems.CALAIS_SPICE_BOTTLE.get(), "Calais Spice Bottle");
