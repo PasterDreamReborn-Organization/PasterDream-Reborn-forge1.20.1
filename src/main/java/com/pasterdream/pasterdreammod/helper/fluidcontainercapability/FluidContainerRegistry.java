@@ -37,11 +37,7 @@ public class FluidContainerRegistry
     {
         if(itemStack.getItem() == Items.GLASS_BOTTLE)
         {
-            ItemStack waterBottle = new ItemStack(Items.POTION);
-            CompoundTag NBT = new CompoundTag();
-            NBT.putString("Potion", "minecraft:water");
-
-            return new ContainerEntry(itemStack, new FluidStack(Fluids.WATER, 250), waterBottle);    //仅作为有效空流体容器识别
+            return new ContainerEntry(itemStack, new FluidStack(Fluids.WATER, 250), PotionHelper.getWaterBottle());    //仅作为有效空流体容器识别
         }
             else
             {
@@ -54,10 +50,7 @@ public class FluidContainerRegistry
     {
         if(itemStack.getItem() == Items.POTION)
         {
-            List<GenericMobEffect> effectList = PotionHelper.getListGenericMobEffectFromPotion(PotionUtils.getPotion(itemStack));
-            FluidStack potionFluidStack = (effectList.isEmpty() ? PotionHelper.createNBTPotion(PotionHelper.getListGenericMobEffectFromGenericPotion(itemStack), 250) : PotionHelper.createNBTPotion(effectList, 250));
-
-            return new ContainerEntry(new ItemStack(Items.GLASS_BOTTLE), potionFluidStack, itemStack);
+            return new ContainerEntry(new ItemStack(Items.GLASS_BOTTLE), PotionHelper.createNBTPotion(PotionHelper.getListGenericMobEffectFromPotion(itemStack), 250), itemStack);
         }
             else
             {
@@ -68,20 +61,26 @@ public class FluidContainerRegistry
     @Nullable
     public static ContainerEntry getEntryForEmptyAndFluid(ItemStack emptyContainerItemStack, FluidStack fluidStack)
     {
-        if(emptyContainerItemStack.getItem() == Items.GLASS_BOTTLE && fluidStack.getFluid() == ModFluids.POTION.get())
+        if(emptyContainerItemStack.getItem() == Items.GLASS_BOTTLE)
         {
-            List<GenericMobEffect> effectList = PotionHelper.getEffectType(fluidStack);
-            Potion potion = PotionHelper.getPotionFromListGenericMobEffect(effectList);
-            ItemStack potionItem = (potion != null ? PotionUtils.setPotion(new ItemStack(Items.POTION), potion) : PotionHelper.getCustomEffectPotion(effectList));
-            FluidStack fillFluidStack = new FluidStack(fluidStack.getFluid(), 250);
-            fillFluidStack.setTag(fluidStack.getTag());
-            return new ContainerEntry(new ItemStack(Items.GLASS_BOTTLE), fillFluidStack, potionItem);
-        }
-            else
+            if (fluidStack.getFluid() == ModFluids.POTION.get())
             {
-                Map<Fluid, ContainerEntry> map = EMPTY_FLUID_TO_ENTRY.get(emptyContainerItemStack.getItem());
-                return map != null ? map.get(fluidStack.getFluid()) : null;
+                List<GenericMobEffect> effectList = PotionHelper.getEffectType(fluidStack);
+                Potion potion = PotionHelper.getPotionFromListGenericMobEffect(effectList);
+                ItemStack potionItem = (potion != null ? PotionUtils.setPotion(new ItemStack(Items.POTION), potion) : PotionHelper.getCustomEffectPotion(effectList));
+                FluidStack fillFluidStack = new FluidStack(fluidStack.getFluid(), 250);
+                fillFluidStack.setTag(fluidStack.getTag());
+                return new ContainerEntry(new ItemStack(Items.GLASS_BOTTLE), fillFluidStack, potionItem);
             }
+            else
+                if (fluidStack.getFluid() == Fluids.WATER)
+                {
+                    return new ContainerEntry(new ItemStack(Items.GLASS_BOTTLE), new FluidStack(Fluids.WATER, 250), PotionHelper.getWaterBottle());
+                }
+        }
+
+        Map<Fluid, ContainerEntry> map = EMPTY_FLUID_TO_ENTRY.get(emptyContainerItemStack.getItem());
+        return map != null ? map.get(fluidStack.getFluid()) : null;
     }
 
     @Nullable
