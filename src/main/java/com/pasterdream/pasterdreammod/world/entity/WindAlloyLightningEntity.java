@@ -1,7 +1,9 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.init.ModEntities;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -13,6 +15,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -204,12 +209,23 @@ public class WindAlloyLightningEntity extends Entity {
             if (smite > 0 && e.getMobType() == MobType.UNDEAD) dmg += smite * SMITE_BANE_DAMAGE;
             if (baneOfArthropods > 0 && e.getMobType() == MobType.ARTHROPOD) dmg += baneOfArthropods * SMITE_BANE_DAMAGE;
             if (ownerPlayer != null) {
-                e.hurt(e.level().damageSources().playerAttack(ownerPlayer), dmg);
+                e.hurt(lightningDamageSource(e, ownerPlayer), dmg);
             } else {
                 e.hurt(e.level().damageSources().lightningBolt(), dmg);
             }
             if (fireAspect > 0) e.setSecondsOnFire(fireAspect * FIRE_ASPECT_TICK_MULTIPLIER);
         }
+    }
+
+    /** 构造以玩家为施伤者的雷电伤害源，保留击杀归属（lastHurtByPlayer） */
+    private static DamageSource lightningDamageSource(LivingEntity target, @Nullable Player owner) {
+        if (owner == null) {
+            return target.level().damageSources().lightningBolt();
+        }
+        Holder<DamageType> holder = target.level().registryAccess()
+                .registryOrThrow(Registries.DAMAGE_TYPE)
+                .getHolderOrThrow(DamageTypes.LIGHTNING_BOLT);
+        return new DamageSource(holder, owner);
     }
 
     /** 是否为玩家自己的仆从/召唤物/同队盟友（战技不应命中） */
