@@ -229,7 +229,7 @@ public class ShadowSwordItem extends SwordItem {
 
             event.setCanceled(true);
             event.getEntity().invulnerableTime = 0;
-            event.getEntity().hurt(level.damageSources().magic(), magicDamage);
+            event.getEntity().hurt(level.damageSources().indirectMagic(player, player), magicDamage);
 
             int sweepingLevel = sword.getEnchantmentLevel(Enchantments.SWEEPING_EDGE);
             if (sweepingLevel > 0) {
@@ -241,7 +241,7 @@ public class ShadowSwordItem extends SwordItem {
                                 && !(e instanceof TamableAnimal ta && ta.isOwnedBy(player)));
                 for (LivingEntity target : nearby) {
                     target.invulnerableTime = 0;
-                    target.hurt(level.damageSources().magic(), sweepDamage);
+                    target.hurt(level.damageSources().indirectMagic(player, player), sweepDamage);
                 }
             }
 
