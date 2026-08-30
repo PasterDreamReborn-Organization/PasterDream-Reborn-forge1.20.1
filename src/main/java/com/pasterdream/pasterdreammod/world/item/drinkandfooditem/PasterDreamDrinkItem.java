@@ -161,8 +161,8 @@ public class PasterDreamDrinkItem extends Item
             return stack;
         }
 
-        var entry = FluidContainerRegistry.getEntryForFillToEmpty(this);
-        Item emptyContainer = entry != null ? entry.emptyItem : null;
+        var entry = FluidContainerRegistry.getEntryForFillToEmpty(new ItemStack(this));
+        Item emptyContainer = entry != null ? entry.emptyContainerItemStack.getItem() : null;
         stack.shrink(1);
 
         if (stack.isEmpty())

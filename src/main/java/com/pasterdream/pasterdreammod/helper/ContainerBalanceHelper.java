@@ -27,14 +27,14 @@ public final class ContainerBalanceHelper {
      * 获取物品对应的空容器类型。先查 craftRemainder，再查 FluidContainerRegistry。
      * 若都不是容器则返回 null。
      */
-    private static Item getEmptyContainerType(ItemStack stack) {
-        ItemStack remainder = stack.getItem().getCraftingRemainingItem(stack);
+    private static Item getEmptyContainerType(ItemStack itemStack) {
+        ItemStack remainder = itemStack.getItem().getCraftingRemainingItem(itemStack);
         if (!remainder.isEmpty()) {
             return remainder.getItem();
         }
-        FluidContainerRegistry.ContainerEntry entry = FluidContainerRegistry.getEntryForFillToEmpty(stack.getItem());
+        FluidContainerRegistry.ContainerEntry entry = FluidContainerRegistry.getEntryForFillToEmpty(itemStack);
         if (entry != null) {
-            return entry.emptyItem;
+            return entry.emptyContainerItemStack.getItem();
         }
         return null;
     }
