@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.helper.potionhelper;
 
+import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.FluidContainerRegistry;
 import com.pasterdream.pasterdreammod.init.ModFluids;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -14,6 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
@@ -127,6 +130,11 @@ public class PotionHelper
             listEffect.add(singleEffect);
         }
 
+        if (listEffect.isEmpty())
+        {
+            return new FluidStack(Fluids.WATER, amount);
+        }
+
         CompoundTag NBT = new CompoundTag();
         NBT.put("EffectList", listEffect);
 
@@ -136,27 +144,17 @@ public class PotionHelper
         return fluidStack;
     }
 
+    public static List<GenericMobEffect> getListGenericMobEffectFromPotion(ItemStack itemStack)
+    {
+        Potion potion = PotionUtils.getPotion(itemStack);
+        List<MobEffectInstance> potionEffects = (potion == Potions.EMPTY ? PotionUtils.getCustomEffects(itemStack) : potion.getEffects());
+        return GenericMobEffect.fromListMobEffectInstanceToListGenericMobEffect(potionEffects);
+    }
+
     public static List<GenericMobEffect> getListGenericMobEffectFromPotion(Potion potion)
     {
         List<MobEffectInstance> potionEffects = potion.getEffects();
-        List<GenericMobEffect> effectList = new ArrayList<>();
-        for (MobEffectInstance effectInstance : potionEffects)
-        {
-            effectList.add(GenericMobEffect.fromMobEffectInstanceToGenericMobEffect(effectInstance));
-        }
-        return effectList;
-    }
-
-    public static List<GenericMobEffect> getListGenericMobEffectFromGenericPotion(ItemStack itemStack)
-    {
-        List<MobEffectInstance> customListEffects = PotionUtils.getCustomEffects(itemStack);
-        List<GenericMobEffect> effectList = new ArrayList<>();
-        for(MobEffectInstance effectInstance : customListEffects)
-        {
-            effectList.add(GenericMobEffect.fromMobEffectInstanceToGenericMobEffect(effectInstance));
-        }
-
-        return effectList;
+        return GenericMobEffect.fromListMobEffectInstanceToListGenericMobEffect(potionEffects);
     }
 
     public static Potion getPotionFromListGenericMobEffect(List<GenericMobEffect> effectList)
@@ -181,5 +179,15 @@ public class PotionHelper
         }
 
         return PotionUtils.setCustomEffects(new ItemStack(Items.POTION), potionEffects);
+    }
+
+    public static ItemStack getWaterBottle()
+    {
+        ItemStack waterBottle = new ItemStack(Items.POTION);
+        CompoundTag NBT = new CompoundTag();
+        NBT.putString("Potion", "minecraft:water");
+        waterBottle.setTag(NBT);
+
+        return waterBottle;
     }
 }
