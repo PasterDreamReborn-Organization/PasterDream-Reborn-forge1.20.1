@@ -16,6 +16,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -97,6 +98,15 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
         return !players.isEmpty();
     }
 
+    private List<ItemEntity> checkIsHaveLostItem()
+    {
+        Level level = this.level;
+        BlockPos entryPosition = this.worldPosition;
+
+        AABB checkBox = new AABB(entryPosition.getX() - 12, level.getMinBuildHeight() + 2, entryPosition.getZ() - 12, entryPosition.getX() + 12, level.getMinBuildHeight() + 65, entryPosition.getZ() + 12);
+        return level.getEntitiesOfClass(ItemEntity.class, checkBox);
+    }
+
     private List<Player> getNearlyPlayer(BlockPos portalPos)
     {
         if ((level instanceof ServerLevel))
@@ -156,21 +166,41 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                     case 0 ->
                     {
                         blockEntity.playerList = blockEntity.getNearlyPlayer(blockPosition);
-                        for (Player player : blockEntity.playerList)
-                        {
-                            player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.传送倒计时：").append("3"), false);
-                            Advancement _1timesAdvancement = ((ServerPlayer)player).server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_npc_first_dialogue"));
-                            if (_1timesAdvancement != null && ((ServerPlayer)player).getAdvancements().getOrStartProgress(_1timesAdvancement).isDone())
-                            {
-                                blockEntity.progress = 1;
-                            }
+                        List<ItemEntity> itemEntities = blockEntity.checkIsHaveLostItem();
 
-                            Advancement finishedAdvancement = ((ServerPlayer)player).server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_choice"));
-                            if (finishedAdvancement != null && ((ServerPlayer)player).getAdvancements().getOrStartProgress(finishedAdvancement).isDone())
+                        if (itemEntities.isEmpty())
+                        {
+                            for (Player player : blockEntity.playerList)
                             {
-                                blockEntity.progress = 2;
+                                player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.传送倒计时：").append("3"), false);
+                                Advancement _1timesAdvancement = ((ServerPlayer)player).server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_npc_first_dialogue"));
+                                if (_1timesAdvancement != null && ((ServerPlayer)player).getAdvancements().getOrStartProgress(_1timesAdvancement).isDone())
+                                {
+                                    blockEntity.progress = 1;
+                                }
+
+                                Advancement finishedAdvancement = ((ServerPlayer)player).server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_choice"));
+                                if (finishedAdvancement != null && ((ServerPlayer)player).getAdvancements().getOrStartProgress(finishedAdvancement).isDone())
+                                {
+                                    blockEntity.progress = 2;
+                                }
                             }
                         }
+                            else
+                            {
+                                for(ItemEntity itemEntity : itemEntities)
+                                {
+                                    itemEntity.setPos(blockPosition.getX() + 0.5, blockPosition.getY() - 1, blockPosition.getZ() + 0.5);
+                                }
+
+                                for (Player player : blockEntity.playerList)
+                                {
+                                    player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.已传送出暗影地牢内的掉落物"), false);
+                                }
+                                blockEntity.animationState = 0;
+                                blockEntity.tickCounter = -1;
+                                blockEntity.setChangedAndSync();
+                            }
                     }
                     case 1 -> blockEntity.placeStructure("shadow_dungeon_shadow_bed", blockPosition.getX() - 12, level.getMinBuildHeight() + 1, blockPosition.getZ() - 12);
                     case 2 -> blockEntity.placeStructure("shadow_dungeon_single_floor_frame", blockPosition.getX() - 12, level.getMinBuildHeight() + 17, blockPosition.getZ() - 12);
@@ -258,6 +288,12 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
 
                     case 60 ->
                     {
+                        List<ItemEntity> itemEntities = blockEntity.checkIsHaveLostItem();
+                        for(ItemEntity itemEntity : itemEntities)
+                        {
+                            itemEntity.discard();
+                        }
+
                         blockEntity.animationState = 0;
                         blockEntity.tickCounter = -1;
                         blockEntity.setChangedAndSync();

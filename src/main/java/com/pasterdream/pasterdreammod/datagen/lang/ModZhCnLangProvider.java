@@ -1666,6 +1666,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.broken_portal.lack_knowledge", "你还不知道如何修复这个核心");
         add("message.pasterdream.broken_portal.此暗影地牢中存在其他玩家", "此暗影地牢中存在其他玩家，请稍后再来或寻找并使用其他暗影地牢传送门");
         add("message.pasterdream.broken_portal.传送倒计时：", "传送倒计时：");
+        add("message.pasterdream.broken_portal.已传送出暗影地牢内的掉落物", "已传送出暗影地牢内的掉落物");
 
         //卡莱的调料瓶
         add(ModItems.CALAIS_SPICE_BOTTLE.get(), "卡莱的调料瓶");
