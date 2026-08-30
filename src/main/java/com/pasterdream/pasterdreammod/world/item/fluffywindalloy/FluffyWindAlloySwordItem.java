@@ -313,6 +313,7 @@ public class FluffyWindAlloySwordItem extends SwordItem {
             if (!(event.getSource().getEntity() instanceof Player player)) return;
             if (!(player.getMainHandItem().getItem() instanceof FluffyWindAlloySwordItem)) return;
             if (player.getPersistentData().getBoolean(APPLYING_TAG)) return;
+            if (event.getSource().getDirectEntity() == null) return;
             if (event.getSource().getDirectEntity() != player) return;
 
             LivingEntity target = event.getEntity();
