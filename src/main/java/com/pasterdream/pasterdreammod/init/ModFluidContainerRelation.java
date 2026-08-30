@@ -1,17 +1,16 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.FluidContainerRegistry;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.common.ForgeMod;
 
 public class ModFluidContainerRelation
 {
     public static void registerFluidContainerRelation()
     {
         FluidContainerRegistry.register(ModItems.GLASS_JAR.get(), Fluids.WATER, 125, ModItems.GLASS_JAR_OF_WATER.get());
-        FluidContainerRegistry.register(ModItems.GLASS_JAR.get(), ForgeRegistries.FLUIDS.getValue(ResourceLocation.fromNamespaceAndPath("minecraft", "milk")), 125, ModItems.GLASS_JAR_OF_MILK.get());
+        FluidContainerRegistry.register(ModItems.GLASS_JAR.get(), ForgeMod.MILK.get(), 125, ModItems.GLASS_JAR_OF_MILK.get());
         FluidContainerRegistry.register(ModItems.GLASS_JAR.get(), ModFluids.DREAM_JUICE.get(), 125, ModItems.GLASS_JAR_OF_DREAM_JUICE.get());
         FluidContainerRegistry.register(ModItems.GLASS_JAR.get(), ModFluids.GOLDENROD_TEA.get(), 125, ModItems.GLASS_JAR_OF_GOLDENROD_TEA.get());
         FluidContainerRegistry.register(ModItems.GLASS_JAR.get(), ModFluids.GUIDING_DRUG.get(), 125, ModItems.GLASS_JAR_OF_GUIDING_DRUG.get());
