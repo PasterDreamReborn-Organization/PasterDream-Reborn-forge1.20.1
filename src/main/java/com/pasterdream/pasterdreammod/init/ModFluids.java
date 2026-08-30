@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.fluid.*;
 import com.pasterdream.pasterdreammod.world.fluidtype.*;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -57,6 +58,8 @@ public class ModFluids
 
     public static void register(IEventBus eventBus)
     {
+        ForgeMod.enableMilkFluid(); //启用Forge的牛奶
+
         FLUID_TYPES.register(eventBus);
         FLUIDS.register(eventBus);
     }
