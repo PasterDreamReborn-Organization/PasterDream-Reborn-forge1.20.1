@@ -1353,7 +1353,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.magnifying_glass_of_sherry.3", "§7▪ §9+50% Mining Speed");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.4", "§7▪ §9+100% Melee Damage");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.5", "§7▪ §9+200% Damage when bare-handed");
-        add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§f▪ §4Weapon skills cannot be released");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§7▪ §4Weapon skills cannot be released");
         add("message.pasterdream.skill_locked", "§cSkill locked");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.7", "§7Exclusive memento of bei_xu.");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.8", "§6PasterDream: Reborn Copywriter");
@@ -1563,6 +1563,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.talent_shadow.description", "Choose the shadow in the choice between light and shadow");
         add("advancements.pasterdream.story.defeat_aaroncos.title", "Shadow and Dust");
         add("advancements.pasterdream.story.defeat_aaroncos.description", "Defeat Aaroncos's Touch");
+        add("advancements.pasterdream.story.tame_friendly_ghost.title", "A Friend in the Shadow");
+        add("advancements.pasterdream.story.tame_friendly_ghost.description", "Tame a friendly shadow ghost with a Soul Essence");
         add("message.pasterdream.aaroncos_arena.need_progress", "You haven't completed the prerequisite progress yet");
         add("message.pasterdream.aaroncos_arena.battle_in_progress", "A player is challenging Aaroncos, entry is not allowed for now");
         add("message.pasterdream.aaroncos_arena.exit_countdown", "Leaving in %s seconds");

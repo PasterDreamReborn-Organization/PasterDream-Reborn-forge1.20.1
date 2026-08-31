@@ -37,6 +37,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
@@ -48,6 +49,8 @@ import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
+
+import java.util.EnumSet;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAttackMob, GeoEntity, ITextureVariant, IShadowMob {
@@ -108,7 +111,70 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
         super.registerGoals();
         this.targetSelector.addGoal(1, new OwnerHurtTargetGoal(this));
         this.goalSelector.addGoal(2, new OwnerHurtByTargetGoal(this));
-        this.goalSelector.addGoal(3, new RandomStrollGoal(this, 0.8, 20) {
+        // 驻留模式：驯服后右键切换（仿原版猫狗坐下），飞行怨魂无 onGround，故自实现
+        this.goalSelector.addGoal(1, new Goal() {
+            {
+                this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
+            }
+
+            @Override
+            public boolean canContinueToUse() {
+                return FriendlyShadowGhostEntity.this.isOrderedToSit();
+            }
+
+            @Override
+            public boolean canUse() {
+                if (!FriendlyShadowGhostEntity.this.isTame()) {
+                    return false;
+                } else if (FriendlyShadowGhostEntity.this.isInWaterOrBubble()) {
+                    return false;
+                } else {
+                    LivingEntity owner = FriendlyShadowGhostEntity.this.getOwner();
+                    if (owner == null) {
+                        return FriendlyShadowGhostEntity.this.isOrderedToSit();
+                    } else {
+                        return FriendlyShadowGhostEntity.this.distanceToSqr(owner) < 144.0
+                                && owner.getLastHurtByMob() != null
+                                ? false : FriendlyShadowGhostEntity.this.isOrderedToSit();
+                    }
+                }
+            }
+
+            @Override
+            public void start() {
+                FriendlyShadowGhostEntity.this.getNavigation().stop();
+                FriendlyShadowGhostEntity.this.setInSittingPose(true);
+            }
+
+            @Override
+            public void stop() {
+                FriendlyShadowGhostEntity.this.setInSittingPose(false);
+            }
+        });
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.1, Ingredient.of(ModItems.SOUL_ESSENCE.get()), false) {
+            @Override
+            public boolean canUse() {
+                if (FriendlyShadowGhostEntity.this.isTame()) {
+                    if (FriendlyShadowGhostEntity.this.isOrderedToSit()) {
+                        return false;
+                    }
+                    LivingEntity owner = FriendlyShadowGhostEntity.this.getOwner();
+                    if (!(owner instanceof Player ownerPlayer) || !ownerPlayer.isAlive() || ownerPlayer.isSpectator()) {
+                        return false;
+                    }
+                    if (!FriendlyShadowGhostEntity.this.isOwnedBy(ownerPlayer)) {
+                        return false;
+                    }
+                    if (!(ownerPlayer.getMainHandItem().is(ModItems.SOUL_ESSENCE.get())
+                            || ownerPlayer.getOffhandItem().is(ModItems.SOUL_ESSENCE.get()))) {
+                        return false;
+                    }
+                    return super.canUse() && this.player == ownerPlayer;
+                }
+                return super.canUse();
+            }
+        });
+        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.8, 20) {
             @Override
             protected Vec3 getPosition() {
                 var random = FriendlyShadowGhostEntity.this.getRandom();
@@ -118,14 +184,14 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
                 return new Vec3(dx, dy, dz);
             }
         });
-        this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.2, false) {
+        this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.2, false) {
             @Override
             protected double getAttackReachSqr(LivingEntity entity) {
                 return this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth();
             }
         });
-        this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 1, 10f, 2f, false));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1, 10f, 2f, false));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(7, new NearestAttackableTargetGoal<>(this, Mob.class, 10, false, false,
                 target -> !target.getType().is(ModEntityTypeTags.SHADOW_MOB)));
         this.targetSelector.addGoal(8, new HurtByTargetGoal(this));
@@ -193,8 +259,12 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
                     this.usePlayerItem(player, hand, itemstack);
                     this.heal(4);
                     return InteractionResult.sidedSuccess(this.level().isClientSide());
+                } else if (this.isFood(itemstack)) {
+                    return InteractionResult.PASS;
                 } else {
-                    return super.mobInteract(player, hand);
+                    this.setOrderedToSit(!this.isOrderedToSit());
+                    this.setTarget(null);
+                    return InteractionResult.sidedSuccess(this.level().isClientSide());
                 }
             }
         } else if (this.isFood(itemstack)) {

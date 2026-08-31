@@ -1533,7 +1533,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.magnifying_glass_of_sherry.3", "§7▪ §9挖掘速度 +50%");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.4", "§7▪ §9近战伤害 +100%");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.5", "§7▪ §9空手时伤害 +200%");
-        add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§f▪ §4无法释放武器战技");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§7▪ §4无法释放武器战技");
         add("message.pasterdream.skill_locked", "§c战技被锁，无法释放");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.7", "§7bei_xu的专属遗物。");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.8", "§6PasterDream: Reborn 文案");
@@ -1742,6 +1742,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.talent_shadow.description", "在灯与影的抉择中选择暗影");
         add("advancements.pasterdream.story.defeat_aaroncos.title", "吹影镂尘");
         add("advancements.pasterdream.story.defeat_aaroncos.description", "击败亚伦柯斯之触");
+        add("advancements.pasterdream.story.tame_friendly_ghost.title", "影中知己");
+        add("advancements.pasterdream.story.tame_friendly_ghost.description", "用灵魂精华驯服一只友善怨魂");
         add("message.pasterdream.aaroncos_arena.need_progress", "尚未完成前置进度");
         add("message.pasterdream.aaroncos_arena.battle_in_progress", "有玩家正在挑战亚伦柯斯，暂不允许进入");
         add("message.pasterdream.aaroncos_arena.exit_countdown", "离开倒计时 %s秒");
