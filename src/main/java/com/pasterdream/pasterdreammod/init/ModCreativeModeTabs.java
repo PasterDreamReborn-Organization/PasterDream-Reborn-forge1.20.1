@@ -220,6 +220,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BLACK_BEETLE_CARAPACE.get());
                         output.accept(ModItems.BLACK_BEETLE_VOCALCORD.get());
                         output.accept(ModItems.PEBBLE.get());
+                        output.accept(ModItems.DREAM_TRAIN_TICKET.get());
                         // 饰品
                         output.accept(ModItems.EMBRYO_CHARM.get());
                         output.accept(ModItems.EMBRYO_NECKLACE.get());

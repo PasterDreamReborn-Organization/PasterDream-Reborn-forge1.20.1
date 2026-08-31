@@ -160,6 +160,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TALENT_LIGHT.get(), "信仰光明");
         add(ModItems.TALENT_SHADOW.get(), "暗影仆从");
         add("tooltip.pasterdream.shadow_hilt", "§7制作影刃的核心材料");
+        add(ModItems.DREAM_TRAIN_TICKET.get(), "逐梦列车车票");
+        add("tooltip.pasterdream.dream_train_ticket", "§7印有车次与梦境的凭证");
+        add("tooltip.pasterdream.dream_train_ticket.usage", "§7在头顶召唤一辆逐梦列车，每个维度只能使用一次");
         add(ModItems.CONGEAL_WIND.get(), "凝结之风");
         add(ModItems.WIND_RUNNER_CRYSTAL.get(), "风行者水晶");
         add(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(), "脉冲风行者水晶");
@@ -2323,6 +2326,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("message.pasterdream.dream_train.train_pass", "一辆逐梦列车呼啸而过...");
         add("message.pasterdream.dream_train.location_info", "列车向我们暴露了一个位置信息... §aX：%s §aZ：%s");
+        add("message.pasterdream.dream_train_ticket.already_used", "这个维度的逐梦列车已经呼啸而过了...");
+        add("message.pasterdream.dream_train_ticket.dimension_used", "这个维度的逐梦列车已经被召唤过了...");
 
         // 沙漠英雄墓 - 任务对话
         add("message.pasterdream.desert_hero_tomb.line1", "不意今日，遇着一位能听俺言语的好汉……");

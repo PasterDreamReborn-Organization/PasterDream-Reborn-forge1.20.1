@@ -87,6 +87,7 @@ import com.pasterdream.pasterdreammod.world.item.armoritem.MachineLightWingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.AngelWingItem;
 import com.pasterdream.pasterdreammod.world.item.curio.ForsakensWingItem;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
+import com.pasterdream.pasterdreammod.world.item.dreamtrainticket.DreamTrainTicketItem;
 import com.pasterdream.pasterdreammod.world.item.MeltDreamCoinItem;
 import com.pasterdream.pasterdreammod.world.item.PaleBoneneedleItem;
 import com.pasterdream.pasterdreammod.world.item.PliersItem;
@@ -276,6 +277,10 @@ public class ModItems {
                     .food(new FoodProperties.Builder().nutrition(1).saturationMod(0).build())));
     public static final RegistryObject<Item> PERGAMYN = ITEMS.register("pergamyn",
             () -> new Item(new Item.Properties()));
+
+    // ===== 逐梦列车车票 =====
+    public static final RegistryObject<Item> DREAM_TRAIN_TICKET = ITEMS.register("dream_train_ticket",
+            DreamTrainTicketItem::new);
 
     // ===== 深海秘宝 =====
     public static final RegistryObject<Item> DEEP_SEA_TREASURE = ITEMS.register("deep_sea_treasure",
