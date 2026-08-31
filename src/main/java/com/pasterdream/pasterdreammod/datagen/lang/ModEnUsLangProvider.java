@@ -1353,7 +1353,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.magnifying_glass_of_sherry.3", "§7▪ §9+50% Mining Speed");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.4", "§7▪ §9+100% Melee Damage");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.5", "§7▪ §9+200% Damage when bare-handed");
-        add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§f▪ §4Weapon skills cannot be released");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§7▪ §4Weapon skills cannot be released");
         add("message.pasterdream.skill_locked", "§cSkill locked");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.7", "§7Exclusive memento of bei_xu.");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.8", "§6PasterDream: Reborn Copywriter");
