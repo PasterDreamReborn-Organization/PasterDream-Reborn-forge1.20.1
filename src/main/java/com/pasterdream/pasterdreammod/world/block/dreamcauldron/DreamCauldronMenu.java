@@ -28,13 +28,21 @@ public class DreamCauldronMenu extends AbstractContainerMenuWithFluidSlot
 
         addFluidSlot(new FluidSlot(fluidContainer, 0, 162, 18));
         addFluidSlot(new FluidSlot(fluidContainer, 1, 9, 45));
+        addFluidSlot(new FluidSlot(fluidContainer, 2, 94, 45)
+        {
+            @Override
+            public boolean mayPlace(FluidStack stack)
+            {
+                return false;
+            }
+        });
 
         for (int i = 0; i < 3; i++)
         {
             addSlot(new SlotItemHandler(handler, i, 54 + i * 28, 15));
         }
 
-        addSlot(new SlotItemHandler(handler, 3, 82, 46)
+        addSlot(new SlotItemHandler(handler, 3, 69, 46)
         {
             @Override
             public boolean mayPlace(ItemStack stack)

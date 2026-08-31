@@ -14,10 +14,6 @@
   "itemInputs":
   [
     {
-      "item": "pasterdream:elixir_bottle",
-      "count": 1
-    },
-    {
       "item": "minecraft:golden_carrot",
       "count": 1
     },
@@ -26,12 +22,12 @@
       "count": 1
     }
   ],
-  "itemOutputs":
+  "fluidOutputs":
   [
     {
-      "item": "pasterdream:elixir_bottle_of_potion",
-      "count": 1,
-      "nbt": "{Fluid:{FluidName:\"pasterdream:potion\",Amount:1000,Tag:{Potion:\"minecraft:long_night_vision\"}}}"
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:night_vision\",lvl:0,time:9600}]}"
     }
   ]
 }
