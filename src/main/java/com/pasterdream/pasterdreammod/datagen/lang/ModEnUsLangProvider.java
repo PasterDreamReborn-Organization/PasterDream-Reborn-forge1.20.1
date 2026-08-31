@@ -149,6 +149,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.TALENT_LIGHT.get(), "Faith in Light");
         add(ModItems.TALENT_SHADOW.get(), "Shadow Servant");
         add("tooltip.pasterdream.shadow_hilt", "§7A core material for crafting shadow blades");
+        add(ModItems.DREAM_TRAIN_TICKET.get(), "Dream Train Ticket");
+        add("tooltip.pasterdream.dream_train_ticket", "§7A voucher stamped with a train number and dreams");
+        add("tooltip.pasterdream.dream_train_ticket.usage", "§7Summons a Dream Train above your head, once per dimension (including the Dyedream World)");
         add(ModItems.CONGEAL_WIND.get(), "Congeal Wind");
         add(ModItems.WIND_RUNNER_CRYSTAL.get(), "Windrunner Crystal");
         add(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(), "Pulse Windrunner Crystal");
@@ -1771,6 +1774,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past...");
         add("message.pasterdream.dream_train.location_info", "The train revealed a location... §aX：%s §aZ：%s");
+        add("message.pasterdream.dream_train_ticket.already_used", "The Dream Train has already rumbled past in this dimension...");
+        add("message.pasterdream.dream_train_ticket.dimension_used", "A Dream Train has already been summoned in this dimension...");
 
         add("message.pasterdream.desert_hero_tomb.line1", "I never expected to meet a true hero willing to hear my words...");
         add("message.pasterdream.desert_hero_tomb.line2", "I mean no harm, yet I have a small matter I must trouble you with.");
