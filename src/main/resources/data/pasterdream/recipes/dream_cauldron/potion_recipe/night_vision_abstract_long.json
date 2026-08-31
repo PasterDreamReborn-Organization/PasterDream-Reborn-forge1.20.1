@@ -5,22 +5,18 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:night_vision\",lvl:0,time:9600}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:night_vision\",lvl:0,time:18000}]}"
     },
     {
       "fluid": "pasterdream:guiding_drug",
-      "amount": 125
+      "amount": 1000
     }
   ],
   "itemInputs":
   [
     {
-      "item": "pasterdream:light_ball",
-      "count": 1
-    },
-    {
-      "item": "pasterdream:white_orchid_flower",
-      "count": 1
+      "item": "minecraft:redstone_block",
+      "count": 64
     }
   ],
   "fluidOutputs":
@@ -28,7 +24,7 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:night_vision\",lvl:0,time:18000}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:night_vision\",lvl:0,time:2147483647}]}"
     }
   ]
 }

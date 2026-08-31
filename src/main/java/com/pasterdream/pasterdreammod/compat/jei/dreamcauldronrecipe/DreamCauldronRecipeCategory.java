@@ -58,47 +58,47 @@ public class DreamCauldronRecipeCategory implements IRecipeCategory<DreamCauldro
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, DreamCauldronJEIRecipe recipe, IFocusGroup focuses)
     {
-        List<FluidIngredient> fluidIngredients = recipe.getInputFluidIngredients();
+        List<FluidIngredient> inputFluidIngredients = recipe.getInputFluidIngredients();
 
         IRecipeSlotBuilder fluidSlot0 = builder.addSlot(RecipeIngredientRole.INPUT, 154, 19).setFluidRenderer(1000, false, 16, 16);
-        if (fluidIngredients.size() > 0)
+        if (!inputFluidIngredients.isEmpty())
         {
-            FluidIngredient fluid0Ingredient = fluidIngredients.get(0);
-            if (fluid0Ingredient.getFluid() != null)
+            FluidIngredient fluidIngredient = inputFluidIngredients.get(0);
+            if (fluidIngredient.getFluid() != null)
             {
-                fluidSlot0.addFluidStack(fluid0Ingredient.getFluid(), fluid0Ingredient.getAmount());
+                fluidSlot0.addFluidStack(fluidIngredient.getFluid(), fluidIngredient.getAmount(), fluidIngredient.getNbt());
             }
             else
-                if (fluid0Ingredient.getTag() != null)
+                if (fluidIngredient.getTag() != null)
                 {
-                    var tag = ForgeRegistries.FLUIDS.tags().getTag(fluid0Ingredient.getTag());
+                    var tag = ForgeRegistries.FLUIDS.tags().getTag(fluidIngredient.getTag());
                     if (tag != null)
                     {
                         for (Fluid fluid : tag)
                         {
-                            fluidSlot0.addFluidStack(fluid, fluid0Ingredient.getAmount());
+                            fluidSlot0.addFluidStack(fluid, fluidIngredient.getAmount(), fluidIngredient.getNbt());
                         }
                     }
                 }
         }
 
         IRecipeSlotBuilder fluidSlot1 = builder.addSlot(RecipeIngredientRole.INPUT, 1, 46).setFluidRenderer(1000, false, 16, 16);
-        if (fluidIngredients.size() > 1)
+        if (inputFluidIngredients.size() > 1)
         {
-            FluidIngredient fluid1Ingredient = fluidIngredients.get(1);
-            if (fluid1Ingredient.getFluid() != null)
+            FluidIngredient fluidIngredient = inputFluidIngredients.get(1);
+            if (fluidIngredient.getFluid() != null)
             {
-                fluidSlot1.addFluidStack(fluid1Ingredient.getFluid(), fluid1Ingredient.getAmount());
+                fluidSlot1.addFluidStack(fluidIngredient.getFluid(), fluidIngredient.getAmount(), fluidIngredient.getNbt());
             }
             else
-                if (fluid1Ingredient.getTag() != null)
+                if (fluidIngredient.getTag() != null)
                 {
-                    var tag = ForgeRegistries.FLUIDS.tags().getTag(fluid1Ingredient.getTag());
+                    var tag = ForgeRegistries.FLUIDS.tags().getTag(fluidIngredient.getTag());
                     if (tag != null)
                     {
                         for (Fluid fluid : tag)
                         {
-                            fluidSlot1.addFluidStack(fluid, fluid1Ingredient.getAmount());
+                            fluidSlot1.addFluidStack(fluid, fluidIngredient.getAmount(), fluidIngredient.getNbt());
                         }
                     }
                 }
@@ -129,12 +129,16 @@ public class DreamCauldronRecipeCategory implements IRecipeCategory<DreamCauldro
             index++;
         }
 
-        IRecipeSlotBuilder slot = builder.addSlot(RecipeIngredientRole.OUTPUT, 73, 46);
-        ItemIngredient outputItemIngredient = recipe.getOutputItemIngredients().get(0);
-        if (outputItemIngredient.getItem() != null)
+        IRecipeSlotBuilder slot = builder.addSlot(RecipeIngredientRole.OUTPUT, 60, 46);
+        List<ItemIngredient> outputItemIngredients = recipe.getOutputItemIngredients();
+
+        if (!outputItemIngredients.isEmpty())
         {
-            slot.addItemStack(outputItemIngredient.getItemStack());
-        }
+            ItemIngredient outputItemIngredient = outputItemIngredients.get(0);
+            if (outputItemIngredient.getItem() != null)
+            {
+                slot.addItemStack(outputItemIngredient.getItemStack());
+            }
             else
             {
                 if (outputItemIngredient.getTag() != null)
@@ -144,11 +148,37 @@ public class DreamCauldronRecipeCategory implements IRecipeCategory<DreamCauldro
                     {
                         for (Item item : tag)
                         {
-                            fluidSlot1.addItemStack(new ItemStack(item, outputItemIngredient.getCount(), outputItemIngredient.getNbt()));
+                            slot.addItemStack(new ItemStack(item, outputItemIngredient.getCount(), outputItemIngredient.getNbt()));
                         }
                     }
                 }
             }
+        }
+
+        List<FluidIngredient> outputFluidIngredients = recipe.getOutputFluidIngredients();
+
+        IRecipeSlotBuilder outputFluidSlot = builder.addSlot(RecipeIngredientRole.OUTPUT, 86, 46).setFluidRenderer(1000, false, 16, 16);
+        if (!outputFluidIngredients.isEmpty())
+        {
+            FluidIngredient fluidIngredient = outputFluidIngredients.get(0);
+            if (fluidIngredient.getFluid() != null)
+            {
+                outputFluidSlot.addFluidStack(fluidIngredient.getFluid(), fluidIngredient.getAmount(), fluidIngredient.getNbt());
+            }
+            else
+                if (fluidIngredient.getTag() != null)
+                {
+                    var tag = ForgeRegistries.FLUIDS.tags().getTag(fluidIngredient.getTag());
+                    if (tag != null)
+                    {
+                        for (Fluid fluid : tag)
+                        {
+                            outputFluidSlot.addFluidStack(fluid, fluidIngredient.getAmount(), fluidIngredient.getNbt());
+                        }
+                    }
+                }
+        }
+
     }
 
     @Override

@@ -18,9 +18,9 @@ import java.util.Optional;
 
 public class DreamCauldronRecipe extends GenericPasterDreamRecipe
 {
-    public DreamCauldronRecipe(ResourceLocation id, List<FluidIngredient> fluidInputs, List<ItemIngredient> itemInputs, List<ItemIngredient> itemOutputs)
+    public DreamCauldronRecipe(ResourceLocation id, List<FluidIngredient> fluidInputs, List<ItemIngredient> itemInputs, List<FluidIngredient> fluidOutputs, List<ItemIngredient> itemOutputs)
     {
-        super(id, fluidInputs, itemInputs, List.of(), itemOutputs, 0);
+        super(id, fluidInputs, itemInputs, fluidOutputs, itemOutputs, 0);
     }
 
     @Override
