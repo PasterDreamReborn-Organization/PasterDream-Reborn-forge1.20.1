@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.advancement.critereon.*;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
+import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;
@@ -387,6 +388,25 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/enter_lamp_shadow_world"), existingFileHelper);
 
+            // 影中知己 —— 驯服友善怨魂
+            Advancement tameFriendlyGhost = Advancement.Builder.advancement()
+                    .parent(enterLampShadowWorld)
+                    .display(
+                            ModItems.SOUL_ESSENCE.get(),
+                            Component.translatable("advancements.pasterdream.story.tame_friendly_ghost.title"),
+                            Component.translatable("advancements.pasterdream.story.tame_friendly_ghost.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("tame_friendly_ghost",
+                            TameAnimalTrigger.TriggerInstance.tamedAnimal(
+                                    EntityPredicate.Builder.entity()
+                                            .of(ModEntities.FRIENDLY_SHADOW_GHOST.get())
+                                            .build()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/tame_friendly_ghost"), existingFileHelper);
+
             // 困顿囚徒 —— 首次进入暗影地牢（原作 achievement_shadow_c_0，程序授予，+10 XP）
             Advancement shadowPrisoner = Advancement.Builder.advancement()
                     .parent(enterLampShadowWorld)
@@ -521,9 +541,9 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/talent_shadow"), existingFileHelper);
 
-            // 吹影镂尘 —— 击败亚伦柯斯之触（原作 achievement_shadow_e_0）
+            // 吹影镂尘 —— 击败亚伦柯斯之触（原作 achievement_shadow_e_0），挂暗影入侵之后
             Advancement defeatAaroncos = Advancement.Builder.advancement()
-                    .parent(shadowChoice)
+                    .parent(shadowIntrudeComplete)
                     .display(
                             ModItems.PURE_HORROR.get(),
                             Component.translatable("advancements.pasterdream.story.defeat_aaroncos.title"),

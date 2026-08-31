@@ -1742,6 +1742,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.talent_shadow.description", "在灯与影的抉择中选择暗影");
         add("advancements.pasterdream.story.defeat_aaroncos.title", "吹影镂尘");
         add("advancements.pasterdream.story.defeat_aaroncos.description", "击败亚伦柯斯之触");
+        add("advancements.pasterdream.story.tame_friendly_ghost.title", "影中知己");
+        add("advancements.pasterdream.story.tame_friendly_ghost.description", "用灵魂精华驯服一只友善怨魂");
         add("message.pasterdream.aaroncos_arena.need_progress", "尚未完成前置进度");
         add("message.pasterdream.aaroncos_arena.battle_in_progress", "有玩家正在挑战亚伦柯斯，暂不允许进入");
         add("message.pasterdream.aaroncos_arena.exit_countdown", "离开倒计时 %s秒");

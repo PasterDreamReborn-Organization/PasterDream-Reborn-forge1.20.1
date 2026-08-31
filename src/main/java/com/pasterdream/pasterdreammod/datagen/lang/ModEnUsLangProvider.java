@@ -1563,6 +1563,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.talent_shadow.description", "Choose the shadow in the choice between light and shadow");
         add("advancements.pasterdream.story.defeat_aaroncos.title", "Shadow and Dust");
         add("advancements.pasterdream.story.defeat_aaroncos.description", "Defeat Aaroncos's Touch");
+        add("advancements.pasterdream.story.tame_friendly_ghost.title", "A Friend in the Shadow");
+        add("advancements.pasterdream.story.tame_friendly_ghost.description", "Tame a friendly shadow ghost with a Soul Essence");
         add("message.pasterdream.aaroncos_arena.need_progress", "You haven't completed the prerequisite progress yet");
         add("message.pasterdream.aaroncos_arena.battle_in_progress", "A player is challenging Aaroncos, entry is not allowed for now");
         add("message.pasterdream.aaroncos_arena.exit_countdown", "Leaving in %s seconds");
