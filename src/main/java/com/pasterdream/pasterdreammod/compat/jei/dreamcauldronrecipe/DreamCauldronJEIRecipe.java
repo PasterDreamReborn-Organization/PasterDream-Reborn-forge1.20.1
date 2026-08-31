@@ -10,12 +10,14 @@ public class DreamCauldronJEIRecipe
 {
     private final List<FluidIngredient> inputFluidIngredients;
     private final List<ItemIngredient> inputItemIngredients;
+    private final List<FluidIngredient> outputFluidIngredients;
     private final List<ItemIngredient> outputItemIngredients;
 
     public DreamCauldronJEIRecipe(DreamCauldronRecipe recipe)
     {
         this.inputFluidIngredients = recipe.getInputFluidIngredients() != null ? recipe.getInputFluidIngredients() : List.of();
         this.inputItemIngredients = recipe.getInputItemIngredients() != null ? recipe.getInputItemIngredients() : List.of();
+        this.outputFluidIngredients = recipe.getOutputFluidIngredients() != null ? recipe.getOutputFluidIngredients() : List.of();
         this.outputItemIngredients = recipe.getOutputItemIngredients() != null ? recipe.getOutputItemIngredients() : List.of();
     }
 
@@ -27,6 +29,11 @@ public class DreamCauldronJEIRecipe
     public List<ItemIngredient> getInputItemIngredients()
     {
         return inputItemIngredients;
+    }
+
+    public List<FluidIngredient> getOutputFluidIngredients()
+    {
+        return outputFluidIngredients;
     }
 
     public List<ItemIngredient> getOutputItemIngredients()

@@ -51,6 +51,7 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
 {
     private static final int FLUID0_CAPACITY = 2000;
     private static final int FLUID1_CAPACITY = 8000;
+    private static final int OUTPUT_FLUID_CAPACITY = 1000;
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private int animationState = 0;
@@ -70,6 +71,13 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
             }
         },
         new FluidTank(FLUID1_CAPACITY)
+        {
+            protected void onContentsChanged()
+            {
+                setChangedAndSync();
+            }
+        },
+        new FluidTank(OUTPUT_FLUID_CAPACITY)
         {
             protected void onContentsChanged()
             {
@@ -139,24 +147,104 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
         }
     };
 
+    //自定义外部流体能力
+    private class DreamCauldronFluidHandler implements IFluidHandler
+    {
+        @Override
+        public int getTanks()
+        {
+            return fluidTanks.length;
+        }
+
+        @Override
+        public FluidStack getFluidInTank(int tank)
+        {
+            if (tank < 0 || tank >= fluidTanks.length) return FluidStack.EMPTY;
+            return fluidTanks[tank].getFluid();
+        }
+
+        @Override
+        public int getTankCapacity(int tank)
+        {
+            if (tank < 0 || tank >= fluidTanks.length)
+            {
+                return 0;
+            }
+                else
+                {
+                    return fluidTanks[tank].getCapacity();
+                }
+        }
+
+        @Override
+        public boolean isFluidValid(int tank, FluidStack stack)
+        {
+            return tank != 2;   //0和1号槽位允许输入
+        }
+
+        @Override
+        public int fill(FluidStack resource, FluidAction action)
+        {
+            if (resource.isEmpty())
+            {
+                return 0;
+            }
+            //先尝试填充0号槽位，若不成功则尝试1号槽位
+            int filled = fillTank(0, resource, action);
+            if (filled > 0)
+            {
+                return filled;
+            }
+            return fillTank(1, resource, action);
+        }
+
+        private int fillTank(int index, FluidStack resource, FluidAction action)
+        {
+            FluidTank tank = fluidTanks[index];
+            //输出槽禁止填充
+            if (index == 2)
+            {
+                return 0;
+            }
+
+            //检查流体是否有效
+            if (!tank.isFluidValid(resource))
+            {
+                return 0;
+            }
+            FluidStack current = tank.getFluid();
+
+            //槽为空或流体类型匹配，尝试填充
+            if (current.isEmpty() || current.isFluidEqual(resource))
+            {
+                return tank.fill(resource, action);
+            }
+            return 0;
+        }
+
+        @Override
+        public FluidStack drain(FluidStack resource, FluidAction action)
+        {
+            return fluidTanks[2].drain(resource, action);   //只允许从输出槽抽取
+        }
+
+        @Override
+        public FluidStack drain(int maxDrain, FluidAction action)
+        {
+            return fluidTanks[2].drain(maxDrain, action);
+        }
+    }
+
     private final LazyOptional<IItemHandler> itemHandlerCap = LazyOptional.of(() -> itemHandler);
     private final LazyOptional<IItemHandler> externalHandlerCap = LazyOptional.of(() -> externalHandler);
-    private final LazyOptional<IFluidHandler> fluidTank0Cap = LazyOptional.of(() -> fluidTanks[0]);
-    private final LazyOptional<IFluidHandler> fluidTank1Cap = LazyOptional.of(() -> fluidTanks[1]);
+    private final LazyOptional<IFluidHandler> fluidHandlerCap = LazyOptional.of(DreamCauldronFluidHandler::new);
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side)
     {
         if (cap == ForgeCapabilities.FLUID_HANDLER)
         {
-            if (side == Direction.NORTH || side == Direction.SOUTH || side == Direction.EAST || side == Direction.WEST)
-            {
-                return fluidTank1Cap.cast();
-            }
-                else
-                {
-                    return fluidTank0Cap.cast();
-                }
+            return fluidHandlerCap.cast();
         }
 
         if (cap == ForgeCapabilities.ITEM_HANDLER)
@@ -177,9 +265,9 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
     public void invalidateCaps()
     {
         super.invalidateCaps();
-        fluidTank0Cap.invalidate();
-        fluidTank1Cap.invalidate();
+        fluidHandlerCap.invalidate();
         itemHandlerCap.invalidate();
+        externalHandlerCap.invalidate();
     }
 
     public void craft()
@@ -203,6 +291,9 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
         inputFluids.add(fluidTanks[0].getFluid().copy());
         inputFluids.add(fluidTanks[1].getFluid().copy());
 
+        List<FluidStack> outputFluids = new ArrayList<>(1);
+        outputFluids.add(fluidTanks[2].getFluid().copy());
+
         //配方匹配
         MatchedRecipeResult<DreamCauldronRecipe> matched = RecipeMatcher.match(inputItems, inputFluids, recipes);
         if (matched == null)
@@ -210,16 +301,15 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
             return;
         }
 
-        DreamCauldronRecipe recipe = matched.recipe();
-
         MachineInventory matchedRecipeInputsAndOutputs = matched.matchedRecipeInputsAndOutputs();
 
         List<ItemStack> requiredItems = matchedRecipeInputsAndOutputs.inputItemStacks();
         List<FluidStack> requiredFluids = matchedRecipeInputsAndOutputs.inputFluidStacks();
         List<ItemStack> outputItemsRecipe = matchedRecipeInputsAndOutputs.outputItemStacks();
+        List<FluidStack> outputFluidsRecipe = matchedRecipeInputsAndOutputs.outputFluidStacks();
 
-        MachineInventory recipeInventory = new MachineInventory(requiredItems, requiredFluids, outputItemsRecipe, new ArrayList<>());
-        MachineInventoryWithFluidSlotMaxStackSize machineData = new MachineInventoryWithFluidSlotMaxStackSize(inputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), inputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), outputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), new ArrayList<>(), 2000);
+        MachineInventory recipeInventory = new MachineInventory(requiredItems, requiredFluids, outputItemsRecipe, outputFluidsRecipe);
+        MachineInventoryWithFluidSlotMaxStackSize machineData = new MachineInventoryWithFluidSlotMaxStackSize(inputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), inputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), outputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), outputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), 1000);
         MachineInventory result = RecipeProcesser.recipeProcessor(recipeInventory, machineData);
 
         if (result == null)
@@ -238,9 +328,12 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
         itemHandler.setStackInSlot(3, newOutputItems.get(0));
 
         List<FluidStack> newInputFluids = result.inputFluidStacks();
+        List<FluidStack> newOutputFluids = result.outputFluidStacks();
 
         fluidTanks[0].setFluid(newInputFluids.get(0));
         fluidTanks[1].setFluid(newInputFluids.get(1));
+
+        fluidTanks[2].setFluid(newOutputFluids.get(0));
 
         //同步
         setChangedAndSync();
@@ -290,6 +383,7 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
         super.saveAdditional(tag);
         tag.put("FluidTank0", fluidTanks[0].writeToNBT(new CompoundTag()));
         tag.put("FluidTank1", fluidTanks[1].writeToNBT(new CompoundTag()));
+        tag.put("OutputFluidTank", fluidTanks[2].writeToNBT(new CompoundTag()));
         tag.put("Inventory", itemHandler.serializeNBT());
     }
 
@@ -299,6 +393,7 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
         super.load(tag);
         fluidTanks[0].readFromNBT(tag.getCompound("FluidTank0"));
         fluidTanks[1].readFromNBT(tag.getCompound("FluidTank1"));
+        fluidTanks[2].readFromNBT(tag.getCompound("OutputFluidTank"));
         itemHandler.deserializeNBT(tag.getCompound("Inventory"));
     }
 

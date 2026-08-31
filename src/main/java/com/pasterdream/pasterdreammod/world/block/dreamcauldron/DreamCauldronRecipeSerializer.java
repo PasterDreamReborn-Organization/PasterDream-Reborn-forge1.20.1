@@ -17,16 +17,17 @@ public class DreamCauldronRecipeSerializer extends GenericPasterDreamRecipeSeria
     {
         List<FluidIngredient> fluidInputs = parseFluidIngredients(json, "fluidInputs");
         List<ItemIngredient> itemInputs = parseItemIngredients(json, "itemInputs");
+        List<FluidIngredient> fluidOutputs = parseFluidIngredients(json, "fluidOutputs");
         List<ItemIngredient> itemOutputs = parseItemIngredients(json, "itemOutputs");
-        return new DreamCauldronRecipe(recipeId, fluidInputs, itemInputs, itemOutputs);
+        return new DreamCauldronRecipe(recipeId, fluidInputs, itemInputs, fluidOutputs, itemOutputs);
     }
 
     @Override
     public DreamCauldronRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer)
     {
-        int fluidCount = buffer.readVarInt();
+        int inputFluidCount = buffer.readVarInt();
         List<FluidIngredient> fluidInputs = new ArrayList<>();
-        for (int i = 0; i < fluidCount; i++)
+        for (int i = 0; i < inputFluidCount; i++)
         {
             fluidInputs.add(FluidIngredient.fromNetwork(buffer));
         }
@@ -38,6 +39,13 @@ public class DreamCauldronRecipeSerializer extends GenericPasterDreamRecipeSeria
             itemInputs.add(ItemIngredient.fromNetwork(buffer));
         }
 
+        int outputFluidCount = buffer.readVarInt();
+        List<FluidIngredient> fluidOutputs = new ArrayList<>();
+        for (int i = 0; i < outputFluidCount; i++)
+        {
+            fluidOutputs.add(FluidIngredient.fromNetwork(buffer));
+        }
+
         int outputItemCount = buffer.readVarInt();
         List<ItemIngredient> itemOutputs = new ArrayList<>();
         for (int i = 0; i < outputItemCount; i++)
@@ -45,7 +53,7 @@ public class DreamCauldronRecipeSerializer extends GenericPasterDreamRecipeSeria
             itemOutputs.add(ItemIngredient.fromNetwork(buffer));
         }
 
-        return new DreamCauldronRecipe(recipeId, fluidInputs, itemInputs, itemOutputs);
+        return new DreamCauldronRecipe(recipeId, fluidInputs, itemInputs, fluidOutputs, itemOutputs);
     }
 
     @Override
@@ -58,15 +66,21 @@ public class DreamCauldronRecipeSerializer extends GenericPasterDreamRecipeSeria
         }
 
         buffer.writeVarInt(recipe.getInputItemIngredients().size());
-        for (ItemIngredient ingredient : recipe.getInputItemIngredients())
+        for (ItemIngredient itemIngredient : recipe.getInputItemIngredients())
         {
-            ingredient.toNetwork(buffer);
+            itemIngredient.toNetwork(buffer);
+        }
+
+        buffer.writeVarInt(recipe.getOutputFluidIngredients().size());
+        for (FluidIngredient fluidIngredient : recipe.getOutputFluidIngredients())
+        {
+            fluidIngredient.toNetwork(buffer);
         }
 
         buffer.writeVarInt(recipe.getOutputItemIngredients().size());
-        for (ItemIngredient ingredient : recipe.getOutputItemIngredients())
+        for (ItemIngredient itemIngredient : recipe.getOutputItemIngredients())
         {
-            ingredient.toNetwork(buffer);
+            itemIngredient.toNetwork(buffer);
         }
     }
 }
