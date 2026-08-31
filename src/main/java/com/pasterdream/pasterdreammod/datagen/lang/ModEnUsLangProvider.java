@@ -2006,5 +2006,15 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("painting.pasterdream.pasterdream_start.author", "【pl】莫");
         add("painting.pasterdream.pasterdream_aerolite_dust.title", "琴雨梦");
         add("painting.pasterdream.pasterdream_aerolite_dust.author", "异星之尘");
+        add("painting.pasterdream.pasterdream_portal.title", "Portal");
+        add("painting.pasterdream.pasterdream_portal.author", "煮饭婆");
+        add("painting.pasterdream.pasterdream_telescope.title", "Telescope");
+        add("painting.pasterdream.pasterdream_telescope.author", "煮饭婆");
+        add("painting.pasterdream.pasterdream_dyedream_flower.title", "Dyed Flower");
+        add("painting.pasterdream.pasterdream_dyedream_flower.author", "煮饭婆");
+        add("painting.pasterdream.pasterdream_dyedream_station.title", "Dyed Station");
+        add("painting.pasterdream.pasterdream_dyedream_station.author", "煮饭婆");
+        add("painting.pasterdream.pasterdream_pink_yellow_house.title", "Pink and Yellow House");
+        add("painting.pasterdream.pasterdream_pink_yellow_house.author", "煮饭婆");
     }
 }
