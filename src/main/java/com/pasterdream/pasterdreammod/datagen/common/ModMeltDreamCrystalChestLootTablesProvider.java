@@ -714,6 +714,16 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .apply(SpawnEntityFunction.Builder.spawnOnly(
                                                 ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), 1, 0)))
                         )
+                        // ===== 逐梦列车车票，独立抽取5% =====
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.DREAM_TRAIN_TICKET.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(19))
+                        )
         );
         consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "chests/melt_dream_crystal_chest_wind_journey_world_normal"),
@@ -1462,6 +1472,16 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                                 ConstantValue.exactly(1.0F)))
                                         .apply(SpawnEntityFunction.Builder.spawnOnly(
                                                 ModEntities.MELT_DREAM_CRYSTAL_ENTITY.get(), 1, 0)))
+                        )
+                        // ===== 逐梦列车车票，独立抽取5% =====
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(ModItems.DREAM_TRAIN_TICKET.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(EmptyLootItem.emptyItem()
+                                        .setWeight(19))
                         )
         );
     }
