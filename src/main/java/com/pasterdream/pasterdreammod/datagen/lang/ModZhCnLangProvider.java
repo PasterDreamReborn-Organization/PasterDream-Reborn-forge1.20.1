@@ -2562,6 +2562,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("painting.pasterdream.pasterdream_start.author", "【pl】莫");
         add("painting.pasterdream.pasterdream_aerolite_dust.title", "琴雨梦");
         add("painting.pasterdream.pasterdream_aerolite_dust.author", "异星之尘");
+        add("painting.pasterdream.pasterdream_portal.title", "传送门");
+        add("painting.pasterdream.pasterdream_portal.author", "煮饭婆");
+        add("painting.pasterdream.pasterdream_telescope.title", "望远镜");
+        add("painting.pasterdream.pasterdream_telescope.author", "煮饭婆");
+        add("painting.pasterdream.pasterdream_dyedream_flower.title", "染梦花");
+        add("painting.pasterdream.pasterdream_dyedream_flower.author", "煮饭婆");
+        add("painting.pasterdream.pasterdream_dyedream_station.title", "染梦车站");
+        add("painting.pasterdream.pasterdream_dyedream_station.author", "煮饭婆");
+        add("painting.pasterdream.pasterdream_pink_yellow_house.title", "粉房子，黄房子");
+        add("painting.pasterdream.pasterdream_pink_yellow_house.author", "煮饭婆");
 
         // 药水箭
 

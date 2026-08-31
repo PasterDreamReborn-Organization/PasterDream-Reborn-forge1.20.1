@@ -18,6 +18,16 @@ public class ModPaintings {
             PAINTINGS.register("pasterdream_start", () -> new PaintingVariant(64, 64));
     public static final RegistryObject<PaintingVariant> PASTERDREAM_AEROLITE_DUST =
             PAINTINGS.register("pasterdream_aerolite_dust", () -> new PaintingVariant(256, 256));
+    public static final RegistryObject<PaintingVariant> PASTERDREAM_PORTAL =
+            PAINTINGS.register("pasterdream_portal", () -> new PaintingVariant(16, 16));
+    public static final RegistryObject<PaintingVariant> PASTERDREAM_TELESCOPE =
+            PAINTINGS.register("pasterdream_telescope", () -> new PaintingVariant(32, 16));
+    public static final RegistryObject<PaintingVariant> PASTERDREAM_DYEDREAM_FLOWER =
+            PAINTINGS.register("pasterdream_dyedream_flower", () -> new PaintingVariant(16, 16));
+    public static final RegistryObject<PaintingVariant> PASTERDREAM_DYEDREAM_STATION =
+            PAINTINGS.register("pasterdream_dyedream_station", () -> new PaintingVariant(32, 32));
+    public static final RegistryObject<PaintingVariant> PASTERDREAM_PINK_YELLOW_HOUSE =
+            PAINTINGS.register("pasterdream_pink_yellow_house", () -> new PaintingVariant(32, 16));
 
     public static void register(IEventBus eventBus) {
         PAINTINGS.register(eventBus);
