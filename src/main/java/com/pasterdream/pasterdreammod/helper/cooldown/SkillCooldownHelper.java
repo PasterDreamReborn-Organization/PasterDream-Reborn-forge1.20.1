@@ -15,10 +15,17 @@ public class SkillCooldownHelper {
      * scaled by the player's skill_cooldown attribute.
      */
     public static void applySharedCooldown(Player player, int baseTicks) {
-        float multiplier = getAttributeValue(player, ModAttributes.SKILL_COOLDOWN_RATE.get(), 1.0f);
+        float multiplier = getSkillCooldownMultiplier(player);
         int finalTicks = Math.max(1, Math.round(baseTicks * multiplier));
         BuiltInRegistries.ITEM.getTagOrEmpty(ModItemTags.SKILL_COOLDOWN)
                 .forEach(holder -> player.getCooldowns().addCooldown(holder.value(), finalTicks));
+    }
+
+    /**
+     * Returns the player's skill cooldown multiplier (default 1.0 = no change).
+     */
+    public static float getSkillCooldownMultiplier(Player player) {
+        return getAttributeValue(player, ModAttributes.SKILL_COOLDOWN_RATE.get(), 1.0f);
     }
 
     /**
