@@ -365,6 +365,10 @@ public class Config
             .comment("亚伦柯斯之触：限伤距离衰减起始距离（格），默认 12")
             .defineInRange("aaroncosRangeCap", 12.0, 1.0, 256.0);
 
+    private static final ForgeConfigSpec.BooleanValue AARONCOS_TOUCH_IMMUNE_TO_NEGATIVE_EFFECTS = BUILDER
+            .comment("亚伦柯斯之触（左右手）是否免疫负面状态效果（有害类效果，如中毒、虚弱、缓慢等），默认 true")
+            .define("aaroncosTouchImmuneToNegativeEffects", true);
+
     // === BOSS 限伤系统 · 破风骑士独立配置 ===
     private static final ForgeConfigSpec.BooleanValue WIND_KNIGHT_DAMAGE_CAP_INDEPENDENT = BUILDER
             .comment("破风骑士是否使用独立限伤配置（否则沿用上方全局 BOSS 限伤配置），默认 false")
@@ -416,10 +420,6 @@ public class Config
             .comment("破风骑士：是否免疫负面状态效果（有害类效果，如中毒、虚弱、缓慢等），默认 true")
             .define("windKnightImmuneToNegativeEffects", true);
 
-    // === 亚伦柯斯之触 ===
-    private static final ForgeConfigSpec.BooleanValue AARONCOS_TOUCH_IMMUNE_TO_NEGATIVE_EFFECTS = BUILDER
-            .comment("亚伦柯斯之触（左右手）是否免疫负面状态效果（有害类效果，如中毒、虚弱、缓慢等），默认 true")
-            .define("aaroncosTouchImmuneToNegativeEffects", true);
 
     // === 大便携储物袋抓取生物 ===
     private static final ForgeConfigSpec.BooleanValue CREATURE_CAPTURE_ENABLED = BUILDER
