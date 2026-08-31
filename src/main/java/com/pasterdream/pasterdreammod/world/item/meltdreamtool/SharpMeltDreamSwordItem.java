@@ -25,7 +25,6 @@ import java.util.List;
  */
 public class SharpMeltDreamSwordItem extends SwordItem {
 
-    private static final String TAG_COOLDOWN = "SharpCooldown";
     private static final String TAG_CHARGED = "SharpCharged";
     private static final int COOLDOWN_WITHOUT_BUFF = 100; // 无染梦守护时冷却(tick)
     private static final int COOLDOWN_WITH_BUFF = 60; // 有染梦守护时冷却(tick)
@@ -50,19 +49,19 @@ public class SharpMeltDreamSwordItem extends SwordItem {
         ItemStack stack = player.getItemInHand(hand);
         if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
         if (!level.isClientSide) {
-            long now = level.getGameTime();
-            long lastUse = stack.getOrCreateTag().getLong(TAG_COOLDOWN);
+            // 原版物品冷却作为唯一冷却源：踏云之靴每 tick 清除该冷却 → 真正零冷却；
+            // 冷却倍率属性（狂暴/燃起等）也经 applySharedCooldown 缩放，与 HUD 显示一致。
+            if (player.getCooldowns().isOnCooldown(stack.getItem())) {
+                return InteractionResultHolder.fail(stack);
+            }
             // 染梦守护 buff 缩短冷却：3 秒 vs 5 秒
             int cooldownTicks = player.hasEffect(ModEffects.DYEDREAM_ARMOR.get()) ? COOLDOWN_WITH_BUFF : COOLDOWN_WITHOUT_BUFF;
-            if (now - lastUse >= cooldownTicks) {
-                stack.getOrCreateTag().putLong(TAG_COOLDOWN, now);
-                stack.getOrCreateTag().putBoolean(TAG_CHARGED, true);
-                SkillCooldownHelper.applySharedCooldown(player, cooldownTicks);
-                level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                        ModSounds.SWORD_SLASH.get(), player.getSoundSource(), 1.0f, 1.0f);
-                if (level instanceof ServerLevel serverLevel) {
-                    serverLevel.sendParticles(ModParticleTypes.BUFF_0_PARTICLE.get(), player.getX(), player.getY() - 0.5, player.getZ(), 20, 0.5, 1, 0.5, 1);
-                }
+            stack.getOrCreateTag().putBoolean(TAG_CHARGED, true);
+            SkillCooldownHelper.applySharedCooldown(player, cooldownTicks);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    ModSounds.SWORD_SLASH.get(), player.getSoundSource(), 1.0f, 1.0f);
+            if (level instanceof ServerLevel serverLevel) {
+                serverLevel.sendParticles(ModParticleTypes.BUFF_0_PARTICLE.get(), player.getX(), player.getY() - 0.5, player.getZ(), 20, 0.5, 1, 0.5, 1);
             }
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
