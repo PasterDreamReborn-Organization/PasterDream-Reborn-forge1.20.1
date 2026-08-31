@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.curio;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModItems;
@@ -9,6 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
@@ -25,11 +28,12 @@ import java.util.UUID;
 
 public class SoulGemOfAkizukiAyaneItem extends Item implements ICurioItem {
 
-    private static final double ENERGY_PER_SEC = 1.5;
+    private static final double ENERGY_PER_MIN = 90.0;
     private static final double FRAGILE_ENERGY_THRESHOLD = 30.0;
     private static final int NO_CONSUME_TICKS = 2400; // 2 分钟
     private static final int ACTIVATION_COOLDOWN_TICKS = 5400; // 4 分半钟
 
+    private static final UUID MELT_DREAM_VARIABILITY_UUID = UUID.fromString("b0c1d2e3-f4a5-6b7c-8d9e-0f1a2b3c4d5e");
     private static final UUID SKILL_DAMAGE_UUID = UUID.fromString("c8f0a1b2-3c4d-4e5f-6a7b-8c9d0e1f2a3b");
     private static final UUID MAGIC_DAMAGE_UUID = UUID.fromString("d9e1b2c3-4d5e-6f7a-8b9c-0d1e2f3a4b5c");
     private static final UUID ACTIVATION_SKILL_DAMAGE_UUID = UUID.fromString("e8f0a1b2-3c4d-4e5f-6a7b-8c9d0e1f2a3b");
@@ -45,10 +49,13 @@ public class SoulGemOfAkizukiAyaneItem extends Item implements ICurioItem {
     }
 
     @Override
-    public void curioTick(SlotContext slotContext, ItemStack stack) {
-        if (!(slotContext.entity() instanceof ServerPlayer player)) return;
-        if (player.tickCount % 20 != 0) return;
-        MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(player, ENERGY_PER_SEC);
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+        Multimap<Attribute, AttributeModifier> modifiers = HashMultimap.create();
+        modifiers.put(ModAttributes.MELT_DREAM_VARIABILITY.get(),
+                new AttributeModifier(MELT_DREAM_VARIABILITY_UUID,
+                        "pasterdream.soul_gem_of_akizuki_ayane.melt_dream_variability",
+                        ENERGY_PER_MIN, AttributeModifier.Operation.ADDITION));
+        return modifiers;
     }
 
     @Override
