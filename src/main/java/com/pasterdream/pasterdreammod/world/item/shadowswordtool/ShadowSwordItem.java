@@ -13,6 +13,7 @@ import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -57,6 +58,7 @@ public class ShadowSwordItem extends SwordItem {
     private static final double SAN_VARIABILITY_MODIFIER = -3.6; // SAN波动属性修正
     private static final double SAN_ATTACK_SPEED_FACTOR = 0.5; // SAN-攻速转换系数
     private static final double SAN_ATTACK_DAMAGE_FACTOR = 0.75; // SAN-攻击力转换系数
+    private static final int SAN_RATIO_REFRESH_TICKS = 20; // sanRatio 刷新冷却(tick)，避免手持模型频繁刷新
     private static final float CRIT_DETECTION_THRESHOLD = 1.3f; // 暴击判定阈值
     private static final float CRIT_DAMAGE_MULTIPLIER = 1.5f; // 暴击伤害倍率
     private static final double MAGIC_DAMAGE_BASE = 2.5; // 噩梦斩基础魔法伤害系数
@@ -168,11 +170,15 @@ public class ShadowSwordItem extends SwordItem {
         if (!world.isClientSide && entity instanceof ServerPlayer sp) {
             if (SanHelper.getIsSanEnabled(sp)) {
                 if (selected) {
-                    double maxSan = SanHelper.getPlayerMaxSan(sp);
-                    double newRatio = maxSan > 0.0 ? SanHelper.getPlayerSan(sp) / maxSan : 1.0;
-                    boolean hasKey = itemstack.getOrCreateTag().contains("sanRatio");
-                    if (!hasKey || Math.abs(newRatio - itemstack.getOrCreateTag().getDouble("sanRatio")) > 0.01) {
-                        itemstack.getOrCreateTag().putDouble("sanRatio", newRatio);
+                    CompoundTag tag = itemstack.getOrCreateTag();
+                    boolean hasKey = tag.contains("sanRatio");
+                    if (!hasKey || sp.tickCount % SAN_RATIO_REFRESH_TICKS == 0) {
+                        double maxSan = SanHelper.getPlayerMaxSan(sp);
+                        double newRatio = maxSan > 0.0 ? SanHelper.getPlayerSan(sp) / maxSan : 1.0;
+                        newRatio = Math.max(0.0, Math.min(1.0, newRatio));
+                        if (!hasKey || tag.getDouble("sanRatio") != newRatio) {
+                            tag.putDouble("sanRatio", newRatio);
+                        }
                     }
                 }
             } else {
