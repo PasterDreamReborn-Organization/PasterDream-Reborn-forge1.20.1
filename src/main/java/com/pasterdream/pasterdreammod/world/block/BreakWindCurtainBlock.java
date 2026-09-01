@@ -1,7 +1,9 @@
 package com.pasterdream.pasterdreammod.world.block;
 
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -123,6 +125,11 @@ public class BreakWindCurtainBlock extends Block implements SimpleWaterloggedBlo
         if (!entity.onGround()) {
             Vec3 look = entity.getLookAngle();
             entity.setDeltaMovement(new Vec3(look.x * 5, look.y, look.z * 5));
+
+            // 玩家飞行穿过破风幕帐时触发进度：乘风破幕
+            if (entity instanceof ServerPlayer sp) {
+                ModCriteriaTriggers.BREAK_WIND_CURTAIN.trigger(sp);
+            }
         }
     }
 }

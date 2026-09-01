@@ -1206,6 +1206,74 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/enter_wind_journey"), existingFileHelper);
 
+            // ========== 风之旅途子进度：展翅的无翼鸟 ==========
+            // 食用风行者果冻（获得风行者效果）
+            Advancement winglessBird = Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            ModItems.WIND_RUNNER_JELLY.get(),
+                            Component.translatable("advancements.pasterdream.story.wingless_bird.title"),
+                            Component.translatable("advancements.pasterdream.story.wingless_bird.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("eat_wind_runner_jelly", ConsumeItemTrigger.TriggerInstance.usedItem(
+                            ModItems.WIND_RUNNER_JELLY.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/wingless_bird"), existingFileHelper);
+
+            // ========== 展翅的无翼鸟子进度：乘风破幕 ==========
+            // 飞行穿过破风幕帐
+            Advancement breakWindCurtain = Advancement.Builder.advancement()
+                    .parent(winglessBird)
+                    .display(
+                            ModItems.BREAK_WIND_CURTAIN.get(),
+                            Component.translatable("advancements.pasterdream.story.break_wind_curtain.title"),
+                            Component.translatable("advancements.pasterdream.story.break_wind_curtain.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("pass_break_wind_curtain",
+                            BreakWindCurtainTrigger.TriggerInstance.passed())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/break_wind_curtain"), existingFileHelper);
+
+            // ========== 展翅的无翼鸟子进度：云端珍藏 ==========
+            // 打开风之旅途的融梦水晶箱
+            Advancement windJourneyTreasure = Advancement.Builder.advancement()
+                    .parent(winglessBird)
+                    .display(
+                            ModItems.MELT_DREAM_CRYSTAL_CHEST.get(),
+                            Component.translatable("advancements.pasterdream.story.wind_journey_treasure.title"),
+                            Component.translatable("advancements.pasterdream.story.wind_journey_treasure.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, false
+                    )
+                    .addCriterion("open_wind_journey_crystal_chest",
+                            OpenWindJourneyCrystalChestTrigger.TriggerInstance.open())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/wind_journey_treasure"), existingFileHelper);
+
+            // ========== 展翅的无翼鸟子进度：空岛的圣诞树 ==========
+            // 阅读圣诞树岛上的《空岛的圣诞树》笔记
+            Advancement christmasTreeIsland = Advancement.Builder.advancement()
+                    .parent(winglessBird)
+                    .display(
+                            ModItems.CHRISTMAS_LIGHTS.get(),
+                            Component.translatable("advancements.pasterdream.story.christmas_tree_island.title"),
+                            Component.translatable("advancements.pasterdream.story.christmas_tree_island.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, false
+                    )
+                    .addCriterion("read_christmas_tree_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("空岛的圣诞树"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/christmas_tree_island"), existingFileHelper);
+
             // ========== 风之旅途子进度：风伴你而行 ==========
             // 获得过顺风与逆风效果（两者互斥，需两个 effects_changed 判定）
             Advancement windFollow = Advancement.Builder.advancement()

@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.*;
 import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
 import com.pasterdream.pasterdreammod.world.block.geckolibblock.AnimatableSync;
+import com.pasterdream.pasterdreammod.world.dimension.WindJourneyDimension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -130,6 +131,12 @@ public class MeltDreamCrystalChestBlockEntity extends BlockEntity implements Geo
         if (level == null || level.isClientSide)
         {
             return;
+        }
+
+        // 在风之旅途世界打开融梦水晶箱时触发进度：云端珍藏
+        if (level.dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD))
+        {
+            ModCriteriaTriggers.OPEN_WIND_JOURNEY_CRYSTAL_CHEST.trigger(player);
         }
 
         //抽奖决定品质
