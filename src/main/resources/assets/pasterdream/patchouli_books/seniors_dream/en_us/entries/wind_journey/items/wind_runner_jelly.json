@@ -1,0 +1,18 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.entry.wind_runner_jelly",
+  "icon": "pasterdream:wind_runner_jelly",
+  "category": "pasterdream:wind_journey/items",
+  "advancement": "pasterdream:story/enter_wind_journey",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:wind_runner_jelly",
+      "text": "pasterdream.seniors_dream.entry.wind_runner_jelly.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.wind_runner_jelly.page1"
+    }
+  ]
+}

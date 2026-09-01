@@ -1,0 +1,18 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.entry.wind_direction",
+  "icon": "pasterdream:congeal_wind",
+  "category": "pasterdream:wind_journey",
+  "advancement": "pasterdream:story/enter_wind_journey",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.wind_direction.page0"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:wind_vane",
+      "text": "pasterdream.seniors_dream.entry.wind_direction.page1"
+    }
+  ]
+}

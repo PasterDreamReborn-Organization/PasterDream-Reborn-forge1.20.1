@@ -1,0 +1,7 @@
+{
+  "sortnum": 1,
+  "name": "pasterdream.seniors_dream.category.wind_journey_structures",
+  "description": "pasterdream.seniors_dream.category.wind_journey_structures.desc",
+  "icon": "pasterdream:wind_moor_desk",
+  "parent": "pasterdream:wind_journey"
+}

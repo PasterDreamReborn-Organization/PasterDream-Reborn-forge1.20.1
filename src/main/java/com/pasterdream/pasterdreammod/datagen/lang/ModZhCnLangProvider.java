@@ -2266,6 +2266,34 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.aaroncos_arena", "亚伦柯斯竞技场");
         add("pasterdream.seniors_dream.entry.aaroncos_arena.page0", "当你在灯与影之中做出了你的选择后，你终于获得了资格穿过传送门，前来见证无比恐怖的暗影之手。这里会侵蚀你的理智，让你在之后的战斗中慢慢落入劣势。$(br2)无论你是选择化身为灯来消灭它，战胜它，还是选择融入阴影来接纳它，取代它，这一次战斗都是前所未有的恶战。请确保做好了万全准备再来向它发起挑战。");
 
+        // 风之旅途
+        add("pasterdream.seniors_dream.category.wind_journey", "风之旅途");
+        add("pasterdream.seniors_dream.category.wind_journey.desc", "天空的尽头，是浩瀚的云海与萦风的群岛。不管是云层中形态各异的热气球与玩偶，还是群岛上高耸的风泊树或浮岛，他们都在告诉你，放慢脚步，随风而行。");
+        add("pasterdream.seniors_dream.category.wind_journey_items", "物品");
+        add("pasterdream.seniors_dream.category.wind_journey_items.desc", "本篇介绍风之旅途的部分物品。");
+        add("pasterdream.seniors_dream.category.wind_journey_structures", "结构");
+        add("pasterdream.seniors_dream.category.wind_journey_structures.desc", "本篇介绍风之旅途的部分结构。");
+
+        add("pasterdream.seniors_dream.entry.wind_direction", "风向");
+        add("pasterdream.seniors_dream.entry.wind_direction.page0", "在这个被风托举起来的世界，强烈的气流会给你的探索造成极大影响。在每天清晨，风都可能会改变自己的方向，并持续这个方向直到第二个清晨。$(br2)当伴风前进时，不管是跑跳还是使用瞬身术，都会变得更快更远，但逆风而行，则会被极大地掣肘。");
+        add("pasterdream.seniors_dream.entry.wind_direction.page1", "因此在这里探索，顺着风的方向前进似乎是一种明智之举。你也可以制作一个风向标，它能帮助你看清风向和自己现在的所处位置。");
+
+        add("pasterdream.seniors_dream.entry.wind_runner_jelly", "风行者果冻");
+        add("pasterdream.seniors_dream.entry.wind_runner_jelly.page0", "一种独属于风之旅途的果冻，而且它居然可以合成制作出来？！$(br2)如果给水母果冻添加一点甜味，加上岛屿凝结的水晶和风，再配合一点植物的提取物一起研磨的话……");
+        add("pasterdream.seniors_dream.entry.wind_runner_jelly.page1", "风行者果冻可以让你在即使不装备鞘翅类装备的情况下仍然启用鞘翅飞行，不过有些翅膀的加速功能和创造飞行功能还是做不到的啦。$(br2)——等等，不能飞，那你是怎么到这个梦境来的？");
+
+        add("pasterdream.seniors_dream.entry.break_wind_curtain", "破风幕帐");
+        add("pasterdream.seniors_dream.entry.break_wind_curtain.page0", "在云层飞行的时候，你会发现这种青绿色的一层“膜”。不用担心，撞上它也不会受到什么伤害，不过确实可以“感受到动能”。破风幕帐会多给予你一份飞行的能量，给予短暂的加速效果，如果能多穿过几个，飞跃云层并不是什么难事。$(br2)当然，这种好东西可以用吸收了梦境力量和风的力量的一些物品来制作。");
+        add("pasterdream.seniors_dream.entry.break_wind_curtain.page1", "——什么叫你撞到破风幕帐的边框上了?");
+
+        add("pasterdream.seniors_dream.entry.christmas_tree_island", "圣诞树岛");
+        add("pasterdream.seniors_dream.entry.christmas_tree_island.page0", "这是一座似乎不属于这里的岛屿，这里常年积雪，四季如冬，闪烁的彩灯、喧嚣的动物更为这里添加一份生机。$(br2)环顾一圈岛屿，相信你会不由得感叹：这地方简直富得流油！圣诞树上居然会用钻石块点缀！$(br2)岛屿的正中间，最大的树下有许多箱子，里面藏着一个雪白的发卡。这个发卡凝结了寒冬气息，带上它，冰雪也会庇佑你，让你免受火焰灼伤之痛。");
+        add("pasterdream.seniors_dream.entry.christmas_tree_island.page1", "——那些骑飞天扫帚的女巫要是能飞到这里拿到发卡，应该就不用怕烧死了。");
+
+        add("pasterdream.seniors_dream.entry.break_wind_knight_altar", "破风骑士祭坛");
+        add("pasterdream.seniors_dream.entry.break_wind_knight_altar.page0", "在风泊群岛的上方，还有一座面积不小的岛屿，也就是破风骑士祭坛。断壁残垣似乎在讲述过去的恶战，如今的一片寂静不禁让人感叹沧海桑田。角斗场正中央，有一册永恒书卷，看来琴雨梦已经研究清楚了如何唤醒骑士。$(br2)想要召唤破风骑士，需要在祭坛的正中央插入这个岛屿埋藏的水晶，然后用蕴含狂风力量的铁锭组装它的躯干与头部，最后，需要一点闪电的力量激活它……$(br2)破风骑士会驱逐一切入侵者，如果想要挑战它，请做好充足的准备。");
+        add("pasterdream.seniors_dream.entry.break_wind_knight_altar.page1", "——搞半天搞要自己拼啊。");
+
         // 剧情
         add("pasterdream.seniors_dream.category.story", "剧情");
         add("pasterdream.seniors_dream.category.story.desc", "本篇为模组剧情整合。");
