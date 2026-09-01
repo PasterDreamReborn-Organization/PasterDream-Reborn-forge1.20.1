@@ -2481,7 +2481,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.twilight_lantern", "暮影之笼");
         add("structure.pasterdream.wind_island", "风之岛");
         add("structure.pasterdream.windmill_lodge", "风车小屋");
-        add("structure.pasterdream.lost_windknight_ruins", "失落风骑士遗迹");
+        add("structure.pasterdream.break_wind_knight_altar", "破风骑士祭坛");
         add("structure.pasterdream.windmoor_tree", "风泊树");
         add("structure.pasterdream.wind_infested_stone_0", "风侵石");
         add("structure.pasterdream.wind_infested_stone_1", "风侵石");
