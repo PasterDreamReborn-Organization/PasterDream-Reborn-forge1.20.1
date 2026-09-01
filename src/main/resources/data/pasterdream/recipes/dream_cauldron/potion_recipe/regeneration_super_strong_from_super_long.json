@@ -1,0 +1,34 @@
+{
+  "type": "pasterdream:dream_cauldron",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:regeneration\",lvl:0,time:3600}]}"
+    },
+    {
+      "fluid": "pasterdream:guiding_drug",
+      "amount": 125
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "minecraft:glowstone_dust",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:singularity_fern",
+      "count": 1
+    }
+  ],
+  "fluidOutputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:regeneration\",lvl:2,time:800}]}"
+    }
+  ]
+}
