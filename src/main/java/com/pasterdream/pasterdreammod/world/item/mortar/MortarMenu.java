@@ -223,12 +223,12 @@ public class MortarMenu extends AbstractContainerMenuWithFluidSlot
             return;
         }
 
-        MortarRecipe recipe = matched.recipe();
+        MachineInventory matchedRecipeInputsAndOutputs = matched.matchedRecipeInputsAndOutputs();
 
-        List<ItemStack> requiredItems = recipe.getInputItemIngredients().stream().map(ItemIngredient::getItemStack).map(ItemStack::copy).collect(Collectors.toList());
-        List<FluidStack> requiredFluids = recipe.getInputFluidIngredients().stream().map(FluidIngredient::getFluidStack).map(FluidStack::copy).collect(Collectors.toList());
-        List<ItemStack> outputItemsRecipe = recipe.getOutputItemIngredients().stream().map(ItemIngredient::getItemStack).map(ItemStack::copy).collect(Collectors.toList());
-        List<FluidStack> outputFluidsRecipe = recipe.getOutputFluidIngredients().stream().map(FluidIngredient::getFluidStack).map(FluidStack::copy).collect(Collectors.toList());
+        List<ItemStack> requiredItems = matchedRecipeInputsAndOutputs.inputItemStacks();
+        List<FluidStack> requiredFluids = matchedRecipeInputsAndOutputs.inputFluidStacks();
+        List<ItemStack> outputItemsRecipe = matchedRecipeInputsAndOutputs.outputItemStacks();
+        List<FluidStack> outputFluidsRecipe = matchedRecipeInputsAndOutputs.outputFluidStacks();
 
         MachineInventory recipeInventory = new MachineInventory(requiredItems, requiredFluids, outputItemsRecipe, outputFluidsRecipe);
         MachineInventoryWithFluidSlotMaxStackSize machineData = new MachineInventoryWithFluidSlotMaxStackSize(inputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), inputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), outputItems.stream().map(ItemStack::copy).collect(Collectors.toList()), outputFluids.stream().map(FluidStack::copy).collect(Collectors.toList()), 1000);
