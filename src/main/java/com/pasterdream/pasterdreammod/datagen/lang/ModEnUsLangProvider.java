@@ -991,6 +991,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.CARAPAX_CHARM.get(), "Carapax Charm");
         add(ModItems.WORLDTREE_SEEDPOD.get(), "Worldtree Seedpod");
         add(ModItems.GARLAND.get(), "Garland");
+        add(ModItems.WIND_SPIRIT.get(), "Wind Spirit");
+        add("tooltip.pasterdream.wind_spirit.effect1", "§7▪ §9When worn, projectiles fired by the player travel 50% faster");
         add(ModItems.REST_ICON.get(), "Rest Icon");
         add(ModItems.CHEER_UP_ICON.get(), "Cheer Up Icon");
         add(ModItems.LETHARGY_ICON.get(), "Lethargy Icon");
