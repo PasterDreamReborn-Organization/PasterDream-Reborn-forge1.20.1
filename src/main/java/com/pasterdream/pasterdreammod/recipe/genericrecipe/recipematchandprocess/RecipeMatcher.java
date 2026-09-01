@@ -84,9 +84,6 @@ public class RecipeMatcher
 
         for (T recipe : recipes)
         {
-            List<Item> inputItemTypes = inputItems.stream().filter(itemStack -> !itemStack.isEmpty()).map(ItemStack::getItem).collect(Collectors.toList());
-            List<Fluid> inputFluidTypes = inputFluids.stream().filter(fluidStack -> !fluidStack.isEmpty()).map(FluidStack::getFluid).collect(Collectors.toList());
-
             if (matchesTypes(recipe, inputItemTypes, inputFluidTypes))
             {
                 for(ItemIngredient itemIngredient : recipe.getOutputItems())
@@ -146,34 +143,34 @@ public class RecipeMatcher
                 }
 
             }
-                else
-                {   //item匹配
-                    ItemStack itemStack = itemIngredient.getItemStack();
-                    boolean isMatched = false;
-                    ItemStackWithoutCount recipeItemType = new ItemStackWithoutCount(itemStack.getItem(), itemStack.getTag());
-                    ItemStackWithoutCount needRemovedItem = recipeItemType;
+            else
+            {   //item匹配
+                ItemStack itemStack = itemIngredient.getItemStack();
+                boolean isMatched = false;
+                ItemStackWithoutCount recipeItemType = new ItemStackWithoutCount(itemStack.getItem(), itemStack.getTag());
+                ItemStackWithoutCount needRemovedItem = recipeItemType;
 
-                    for(ItemStackWithoutCount inputItemType : copyInputItemTypes)
+                for(ItemStackWithoutCount inputItemType : copyInputItemTypes)
+                {
+                    if (ItemStackWithoutCount.isSame(recipeItemType, inputItemType))
                     {
-                        if (ItemStackWithoutCount.isSame(recipeItemType, inputItemType))
-                        {
-                            needRemovedItem = inputItemType;
-                            isMatched = true;
-                            matchedRecipeInputsAndOutputs.inputItemStacks().add(itemStack);
-                            break;
-                        }
+                        needRemovedItem = inputItemType;
+                        isMatched = true;
+                        matchedRecipeInputsAndOutputs.inputItemStacks().add(itemStack);
+                        break;
                     }
-
-                    if(!isMatched)
-                    {   //匹配失败
-
-                        return false;
-                    }
-                        else
-                        {
-                            copyInputItemTypes.remove(needRemovedItem);
-                        }
                 }
+
+                if(!isMatched)
+                {   //匹配失败
+
+                    return false;
+                }
+                else
+                {
+                    copyInputItemTypes.remove(needRemovedItem);
+                }
+            }
         }
 
         if (!copyInputItemTypes.isEmpty())
@@ -216,33 +213,33 @@ public class RecipeMatcher
                     return false;
                 }
             }
-                else
-                {   //fluid匹配
-                    FluidStack fluidStack = fluidIngredient.getFluidStack();
-                    boolean isMatched = false;
-                    FluidStackWithoutAmount recipeFluidType = new FluidStackWithoutAmount(fluidStack.getFluid(), fluidStack.getTag());
-                    FluidStackWithoutAmount needRemovedFluid = recipeFluidType;
+            else
+            {   //fluid匹配
+                FluidStack fluidStack = fluidIngredient.getFluidStack();
+                boolean isMatched = false;
+                FluidStackWithoutAmount recipeFluidType = new FluidStackWithoutAmount(fluidStack.getFluid(), fluidStack.getTag());
+                FluidStackWithoutAmount needRemovedFluid = recipeFluidType;
 
-                    for(FluidStackWithoutAmount inputFluidType : copyInputFluidTypes)
+                for(FluidStackWithoutAmount inputFluidType : copyInputFluidTypes)
+                {
+                    if (FluidStackWithoutAmount.isSame(recipeFluidType, inputFluidType))
                     {
-                        if (FluidStackWithoutAmount.isSame(recipeFluidType, inputFluidType))
-                        {
-                            needRemovedFluid = inputFluidType;
-                            isMatched = true;
-                            matchedRecipeInputsAndOutputs.inputFluidStacks().add(fluidStack);
-                            break;
-                        }
+                        needRemovedFluid = inputFluidType;
+                        isMatched = true;
+                        matchedRecipeInputsAndOutputs.inputFluidStacks().add(fluidStack);
+                        break;
                     }
-
-                    if(!isMatched)
-                    {   //匹配失败
-                        return false;
-                    }
-                        else
-                        {
-                            copyInputFluidTypes.remove(needRemovedFluid);
-                        }
                 }
+
+                if(!isMatched)
+                {   //匹配失败
+                    return false;
+                }
+                else
+                {
+                    copyInputFluidTypes.remove(needRemovedFluid);
+                }
+            }
         }
 
         if (!copyInputFluidTypes.isEmpty())
