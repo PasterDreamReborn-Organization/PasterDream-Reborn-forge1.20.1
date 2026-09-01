@@ -1104,6 +1104,8 @@ public class ModItems {
             FadedBlessingOfCeciliaItem::new);
     public static final RegistryObject<Item> PALE_BONE_NEEDLE_TALISMAN = ITEMS.register("pale_bone_needle_talisman",
             PaleBoneNeedleTalismanItem::new);
+    public static final RegistryObject<Item> WIND_SPIRIT = ITEMS.register("wind_spirit",
+            WindSpiritItem::new);
 
     // ===== 饰品（项链） =====
     public static final RegistryObject<Item> EMBRYO_NECKLACE = ITEMS.register("embryo_necklace",

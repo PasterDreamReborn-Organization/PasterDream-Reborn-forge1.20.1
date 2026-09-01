@@ -364,6 +364,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SEA_CHARM.get());
                         output.accept(ModItems.CARAPAX_CHARM.get());
                         output.accept(ModItems.WORLDTREE_SEEDPOD.get());
+                        output.accept(ModItems.WIND_SPIRIT.get());
                         output.accept(ModItems.GARLAND.get());
                         output.accept(ModItems.FOURLEAF_CLOVER_CURIO.get());
                         output.accept(ModItems.SNOW_VOW_HEAD.get());

@@ -526,6 +526,28 @@ public class CurioPassiveHandler {
     }
 
     /**
+     * 风精灵：佩戴后玩家发射的弹射物速度提高 50%
+     */
+    @SubscribeEvent
+    public static void onWindSpiritProjectileJoin(EntityJoinLevelEvent event) {
+        if (event.getLevel().isClientSide()) return;
+        if (!(event.getEntity() instanceof Projectile projectile)) return;
+        if (!(projectile.getOwner() instanceof Player player)) return;
+        // 防止重复加速（跨维度传送、克隆等再次进入世界时不再叠加）
+        if (projectile.getPersistentData().getBoolean("pasterdream_wind_spirit_boosted")) return;
+
+        boolean hasWindSpirit = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.WIND_SPIRIT.get()).isPresent())
+                .orElse(false);
+        if (!hasWindSpirit) return;
+
+        Vec3 motion = projectile.getDeltaMovement();
+        if (motion.lengthSqr() <= 0.0) return;
+        projectile.setDeltaMovement(motion.scale(1.5));
+        projectile.getPersistentData().putBoolean("pasterdream_wind_spirit_boosted", true);
+    }
+
+    /**
      * 鬼魂之面：弓/弩 — 投射物 +1，20% 再 +1
      * 保持 ArrowLooseEvent 以获得精确的蓄力速度和附魔数据
      */

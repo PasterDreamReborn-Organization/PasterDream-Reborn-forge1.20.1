@@ -281,6 +281,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.TERRA_FLOATING_ISLAND.get());
         basicItem(ModItems.WORLDTREE_SEEDPOD.get());
         basicItem(ModItems.GARLAND.get());
+        basicItem(ModItems.WIND_SPIRIT.get());
         basicItem(ModItems.REST_ICON.get());
         basicItem(ModItems.CHEER_UP_ICON.get());
         basicItem(ModItems.LETHARGY_ICON.get());

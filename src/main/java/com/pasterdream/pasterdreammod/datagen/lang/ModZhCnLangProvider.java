@@ -1156,6 +1156,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.CARAPAX_CHARM.get(), "龟壳护身符");
         add(ModItems.WORLDTREE_SEEDPOD.get(), "世界树种荚");
         add(ModItems.GARLAND.get(), "花环");
+        add(ModItems.WIND_SPIRIT.get(), "风精灵");
+        add("tooltip.pasterdream.wind_spirit.effect1", "§7▪ §9佩戴后，玩家发射的弹射物速度提高50%");
         add(ModItems.REST_ICON.get(), "休憩图标");
         add(ModItems.CHEER_UP_ICON.get(), "振奋图标");
         add(ModItems.LETHARGY_ICON.get(), "不振图标");
