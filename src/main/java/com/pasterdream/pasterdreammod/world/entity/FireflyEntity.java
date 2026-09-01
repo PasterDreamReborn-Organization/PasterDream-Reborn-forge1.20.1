@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.core.BlockPos;
@@ -9,6 +10,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.Difficulty;
@@ -135,8 +137,12 @@ public class FireflyEntity extends PathfinderMob implements GeoEntity {
                 player.drop(litJar, false);
             }
 
-            if (!this.level().isClientSide())
+            if (!this.level().isClientSide()) {
+                if (player instanceof ServerPlayer serverPlayer) {
+                    ModCriteriaTriggers.CAPTURE_FIREFLY.trigger(serverPlayer);
+                }
                 this.discard();
+            }
             return InteractionResult.SUCCESS;
         }
         return super.mobInteract(player, hand);

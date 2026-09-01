@@ -1652,6 +1652,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_kaichu_omamori.description", "Get the Kaichu Omamori. When you actually make the sleeping golden fox's dream come true, she will give you this special keepsake.");
         add("advancements.pasterdream.story.enter_wind_journey.title", "Journey of Wind");
         add("advancements.pasterdream.story.enter_wind_journey.description", "Enter the Journey of Wind dimension");
+        add("advancements.pasterdream.story.condense_wind_dew.title", "Condensing Wind into Dew");
+        add("advancements.pasterdream.story.condense_wind_dew.description", "Craft a Glass Jar of Wind Plant Extract");
+        add("advancements.pasterdream.story.crystal_wind_runner.title", "Crystal of the Wind Runner");
+        add("advancements.pasterdream.story.crystal_wind_runner.description", "Obtain a Wind Runner Crystal");
+        add("advancements.pasterdream.story.firefly_in_jar.title", "Firefly in a Jar");
+        add("advancements.pasterdream.story.firefly_in_jar.description", "Capture a firefly by right-clicking it with an Ecology Glass Jar");
+        add("advancements.pasterdream.story.sea_bloom.title", "Bloom of the Sea");
+        add("advancements.pasterdream.story.sea_bloom.description", "Breed a jellyfish using kelp");
         add("advancements.pasterdream.story.wingless_bird.title", "The Wingless Bird Takes Flight");
         add("advancements.pasterdream.story.wingless_bird.description", "Eat a Wind Runner Jelly");
         add("advancements.pasterdream.story.break_wind_curtain.title", "Ride the Wind, Break the Curtain");

@@ -1832,6 +1832,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_kaichu_omamori.description", "获得怀中御守，当你真正将正在睡觉的金色狐狸的梦变为现实，她会给予你这个特殊的纪念品。");
         add("advancements.pasterdream.story.enter_wind_journey.title", "风之旅途");
         add("advancements.pasterdream.story.enter_wind_journey.description", "进入风之旅途维度");
+        add("advancements.pasterdream.story.condense_wind_dew.title", "凝风为露");
+        add("advancements.pasterdream.story.condense_wind_dew.description", "合成风植萃取液");
+        add("advancements.pasterdream.story.crystal_wind_runner.title", "晶凝风行");
+        add("advancements.pasterdream.story.crystal_wind_runner.description", "获得风行者水晶");
+        add("advancements.pasterdream.story.firefly_in_jar.title", "瓶中萤火");
+        add("advancements.pasterdream.story.firefly_in_jar.description", "用生态玻璃罐右键捕获一只萤火虫");
+        add("advancements.pasterdream.story.sea_bloom.title", "海的繁衍");
+        add("advancements.pasterdream.story.sea_bloom.description", "用海带繁殖水母");
         add("advancements.pasterdream.story.wingless_bird.title", "展翅的无翼鸟");
         add("advancements.pasterdream.story.wingless_bird.description", "食用风行者果冻");
         add("advancements.pasterdream.story.break_wind_curtain.title", "乘风破幕");

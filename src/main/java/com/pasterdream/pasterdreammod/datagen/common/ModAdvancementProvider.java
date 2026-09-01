@@ -1206,6 +1206,75 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/enter_wind_journey"), existingFileHelper);
 
+            // ========== 风之旅途子进度：凝风为露 ==========
+            // 合成风植萃取液
+            Advancement condenseWindDew = Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get(),
+                            Component.translatable("advancements.pasterdream.story.condense_wind_dew.title"),
+                            Component.translatable("advancements.pasterdream.story.condense_wind_dew.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("craft_wind_plant_extract", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/condense_wind_dew"), existingFileHelper);
+
+            // ========== 风之旅途子进度：晶凝风行 ==========
+            // 获得风行者水晶
+            Advancement crystalWindRunner = Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            ModItems.WIND_RUNNER_CRYSTAL.get(),
+                            Component.translatable("advancements.pasterdream.story.crystal_wind_runner.title"),
+                            Component.translatable("advancements.pasterdream.story.crystal_wind_runner.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("get_wind_runner_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.WIND_RUNNER_CRYSTAL.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/crystal_wind_runner"), existingFileHelper);
+
+            // ========== 风之旅途子进度：瓶中萤火 ==========
+            // 用生态玻璃罐右键捕获一只萤火虫
+            Advancement fireflyInJar = Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            ModItems.FIREFLY_GLASS_JAR.get(),
+                            Component.translatable("advancements.pasterdream.story.firefly_in_jar.title"),
+                            Component.translatable("advancements.pasterdream.story.firefly_in_jar.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("capture_firefly",
+                            CaptureFireflyTrigger.TriggerInstance.captured())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/firefly_in_jar"), existingFileHelper);
+
+            // ========== 风之旅途子进度：海的繁衍 ==========
+            // 用海带繁殖水母
+            Advancement seaBloom = Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            ModItems.JELLYFISH_MUD.get(),
+                            Component.translatable("advancements.pasterdream.story.sea_bloom.title"),
+                            Component.translatable("advancements.pasterdream.story.sea_bloom.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("breed_jellyfish",
+                            BredAnimalsTrigger.TriggerInstance.bredAnimals(
+                                    EntityPredicate.Builder.entity().of(ModEntities.JELLYFISH.get())))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/sea_bloom"), existingFileHelper);
+
             // ========== 风之旅途子进度：展翅的无翼鸟 ==========
             // 食用风行者果冻（获得风行者效果）
             Advancement winglessBird = Advancement.Builder.advancement()
