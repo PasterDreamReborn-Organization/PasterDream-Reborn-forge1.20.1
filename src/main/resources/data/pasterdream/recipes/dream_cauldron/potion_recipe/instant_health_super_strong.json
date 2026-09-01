@@ -1,0 +1,38 @@
+{
+  "type": "pasterdream:dream_cauldron",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:instant_health\",lvl:1,time:1}]}"
+    },
+    {
+      "fluid": "pasterdream:guiding_drug",
+      "amount": 125
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:dyedream_corolla",
+      "count": 1
+    },
+    {
+      "item": "minecraft:honeycomb",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:singularity_fern",
+      "count": 1
+    }
+  ],
+  "fluidOutputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:instant_health\",lvl:2,time:1}]}"
+    }
+  ]
+}
