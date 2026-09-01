@@ -1,15 +1,14 @@
 package com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess;
 
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidStackWithoutAmount;
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
-import net.minecraft.world.item.Item;
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemStackWithoutCount;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class RecipeMatcher
 {
@@ -45,12 +44,46 @@ public class RecipeMatcher
             return null;
         }
 
+        Set<ItemStackWithoutCount> inputItemTypes = new HashSet<>();
+        for(ItemStack itemStack : inputItems)
+        {
+            boolean needSkip = false;
+
+            for(ItemStackWithoutCount itemStackWithoutCount : inputItemTypes)
+            {
+                if(ItemStackWithoutCount.isSame(itemStackWithoutCount, new ItemStackWithoutCount(itemStack.getItem(), itemStack.getTag())))
+                {
+                    needSkip = true;
+                }
+            }
+
+            if(!itemStack.isEmpty() && !needSkip)
+            {
+                inputItemTypes.add(new ItemStackWithoutCount(itemStack.getItem(), itemStack.getTag()));
+            }
+        }
+
+        Set<FluidStackWithoutAmount> inputFluidTypes = new HashSet<>();
+        for(FluidStack fluidStack : inputFluids)
+        {
+            boolean needSkip = false;
+
+            for(FluidStackWithoutAmount fluidStackWithoutAmount : inputFluidTypes)
+            {
+                if(FluidStackWithoutAmount.isSame(fluidStackWithoutAmount, new FluidStackWithoutAmount(fluidStack.getFluid(), fluidStack.getTag())))
+                {
+                    needSkip = true;
+                }
+            }
+
+            if(!fluidStack.isEmpty() && !needSkip)
+            {
+                inputFluidTypes.add(new FluidStackWithoutAmount(fluidStack.getFluid(), fluidStack.getTag()));
+            }
+        }
 
         for (T recipe : recipes)
         {
-            List<Item> inputItemTypes = inputItems.stream().filter(itemStack -> !itemStack.isEmpty()).map(ItemStack::getItem).collect(Collectors.toList());
-            List<Fluid> inputFluidTypes = inputFluids.stream().filter(fluidStack -> !fluidStack.isEmpty()).map(FluidStack::getFluid).collect(Collectors.toList());
-
             if (matchesTypes(recipe, inputItemTypes, inputFluidTypes))
             {
                 for(ItemIngredient itemIngredient : recipe.getOutputItems())
@@ -69,8 +102,11 @@ public class RecipeMatcher
         return null;
     }
 
-    private static boolean matchesTypes(IProcessingRecipe recipe, List<Item> inputItemTypes, List<Fluid> inputFluidTypes)
+    private static boolean matchesTypes(IProcessingRecipe recipe, Set<ItemStackWithoutCount> InputItemTypes, Set<FluidStackWithoutAmount> inputFluidTypes)
     {
+        Set<ItemStackWithoutCount> copyInputItemTypes = new HashSet<>(InputItemTypes);
+        Set<FluidStackWithoutAmount> copyInputFluidTypes = new HashSet<>(inputFluidTypes);
+
         matchedRecipeInputsAndOutputs = new MachineInventory(new ArrayList<>(), new ArrayList<>(),new ArrayList<>(), new ArrayList<>());
         for (ItemIngredient itemIngredient : recipe.getInputItems())
         {
@@ -80,11 +116,23 @@ public class RecipeMatcher
                 boolean isMatched = false;
                 for(ItemStack itemStack : listItemStackFromTag)
                 {
-                    if (inputItemTypes.contains(itemStack.getItem()))
-                    {   //成功匹配
-                        inputItemTypes.remove(itemStack.getItem());
-                        isMatched = true;
-                        matchedRecipeInputsAndOutputs.inputItemStacks().add(itemStack);
+                    ItemStackWithoutCount recipeItemType = new ItemStackWithoutCount(itemStack.getItem(), itemStack.getTag());
+                    ItemStackWithoutCount needRemovedItem = recipeItemType;
+
+                    for(ItemStackWithoutCount inputItemType : copyInputItemTypes)
+                    {
+                        if (ItemStackWithoutCount.isSame(recipeItemType, inputItemType))
+                        {
+                            needRemovedItem = inputItemType;
+                            isMatched = true;
+                            matchedRecipeInputsAndOutputs.inputItemStacks().add(itemStack);
+                            break;
+                        }
+                    }
+
+                    if(isMatched)
+                    {
+                        copyInputItemTypes.remove(needRemovedItem);
                         break;
                     }
                 }
@@ -95,22 +143,37 @@ public class RecipeMatcher
                 }
 
             }
-                else
-                {   //item匹配
-                    ItemStack itemStack = itemIngredient.getItemStack();
-                    if (inputItemTypes.contains(itemStack.getItem()))
-                    {   //成功匹配
-                        inputItemTypes.remove(itemStack.getItem());
+            else
+            {   //item匹配
+                ItemStack itemStack = itemIngredient.getItemStack();
+                boolean isMatched = false;
+                ItemStackWithoutCount recipeItemType = new ItemStackWithoutCount(itemStack.getItem(), itemStack.getTag());
+                ItemStackWithoutCount needRemovedItem = recipeItemType;
+
+                for(ItemStackWithoutCount inputItemType : copyInputItemTypes)
+                {
+                    if (ItemStackWithoutCount.isSame(recipeItemType, inputItemType))
+                    {
+                        needRemovedItem = inputItemType;
+                        isMatched = true;
                         matchedRecipeInputsAndOutputs.inputItemStacks().add(itemStack);
+                        break;
                     }
-                        else
-                        {   //匹配失败
-                            return false;
-                        }
                 }
+
+                if(!isMatched)
+                {   //匹配失败
+
+                    return false;
+                }
+                else
+                {
+                    copyInputItemTypes.remove(needRemovedItem);
+                }
+            }
         }
 
-        if (!inputItemTypes.isEmpty())
+        if (!copyInputItemTypes.isEmpty())
         {   //物品输入槽有配方以外的物品
             return false;
         }
@@ -124,11 +187,23 @@ public class RecipeMatcher
                 boolean isMatched = false;
                 for(FluidStack fluidStack : listFluidStackFromTag)
                 {
-                    if (inputFluidTypes.contains(fluidStack.getFluid()))
-                    {   //成功匹配
-                        inputFluidTypes.remove(fluidStack.getFluid());
-                        isMatched = true;
-                        matchedRecipeInputsAndOutputs.inputFluidStacks().add(fluidStack);
+                    FluidStackWithoutAmount recipeFluidType = new FluidStackWithoutAmount(fluidStack.getFluid(), fluidStack.getTag());
+                    FluidStackWithoutAmount needRemovedFluid = recipeFluidType;
+
+                    for(FluidStackWithoutAmount inputFluidType : copyInputFluidTypes)
+                    {
+                        if (FluidStackWithoutAmount.isSame(recipeFluidType, inputFluidType))
+                        {
+                            needRemovedFluid = inputFluidType;
+                            isMatched = true;
+                            matchedRecipeInputsAndOutputs.inputFluidStacks().add(fluidStack);
+                            break;
+                        }
+                    }
+
+                    if(isMatched)
+                    {
+                        copyInputFluidTypes.remove(needRemovedFluid);
                         break;
                     }
                 }
@@ -141,19 +216,33 @@ public class RecipeMatcher
             else
             {   //fluid匹配
                 FluidStack fluidStack = fluidIngredient.getFluidStack();
-                if (inputFluidTypes.contains(fluidStack.getFluid()))
-                {   //成功匹配
-                    inputFluidTypes.remove(fluidStack.getFluid());
-                    matchedRecipeInputsAndOutputs.inputFluidStacks().add(fluidStack);
-                }
-                    else
-                    {   //匹配失败
-                        return false;
+                boolean isMatched = false;
+                FluidStackWithoutAmount recipeFluidType = new FluidStackWithoutAmount(fluidStack.getFluid(), fluidStack.getTag());
+                FluidStackWithoutAmount needRemovedFluid = recipeFluidType;
+
+                for(FluidStackWithoutAmount inputFluidType : copyInputFluidTypes)
+                {
+                    if (FluidStackWithoutAmount.isSame(recipeFluidType, inputFluidType))
+                    {
+                        needRemovedFluid = inputFluidType;
+                        isMatched = true;
+                        matchedRecipeInputsAndOutputs.inputFluidStacks().add(fluidStack);
+                        break;
                     }
+                }
+
+                if(!isMatched)
+                {   //匹配失败
+                    return false;
+                }
+                else
+                {
+                    copyInputFluidTypes.remove(needRemovedFluid);
+                }
             }
         }
 
-        if (!inputFluidTypes.isEmpty())
+        if (!copyInputFluidTypes.isEmpty())
         {   //流体输入槽有配方以外的流体
             return false;
         }

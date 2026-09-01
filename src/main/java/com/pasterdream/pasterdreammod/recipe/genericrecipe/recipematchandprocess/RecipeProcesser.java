@@ -1,16 +1,15 @@
 package com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess;
 
+import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RecipeProcesser
 {
     public static MachineInventory recipeProcessor(MachineInventory matchedRecipeInputsAndOutputs, MachineInventoryWithFluidSlotMaxStackSize machineInventory)
     {
-        MachineInventory backUp = new MachineInventory(machineInventory.inputItemStacks().stream().map(ItemStack::copy).collect(Collectors.toList()), machineInventory.inputFluidStacks().stream().map(FluidStack::copy).collect(Collectors.toList()), machineInventory.outputItemStacks().stream().map(ItemStack::copy).collect(Collectors.toList()), machineInventory.outputFluidStacks().stream().map(FluidStack::copy).collect(Collectors.toList()));
         //匹配输入物品
         List<ItemStack> matchedInputItemStacks = matchedRecipeInputsAndOutputs.inputItemStacks();
         List<ItemStack> machineInputItemStacks = machineInventory.inputItemStacks();
@@ -25,7 +24,7 @@ public class RecipeProcesser
             for(int j = 0; j < machineInputItemSize; j++)
             {
                 ItemStack machineInputItemStack = machineInputItemStacks.get(j);
-                if (ItemStack.isSameItem(matchedInputItemStack, machineInputItemStack))
+                if (ItemStack.isSameItemSameTags(matchedInputItemStack, machineInputItemStack))
                 {
                     int machineItemCount = machineInputItemStack.getCount();
                     if(machineItemCount >= matchedItemCount)
@@ -66,7 +65,7 @@ public class RecipeProcesser
             for(int j = 0; j < machineInputFluidSize; j++)
             {
                 FluidStack machineInputFluidStack = machineInputFluidStacks.get(j);
-                if (matchedInputFluidStack.getFluid().equals(machineInputFluidStack.getFluid()))
+                if (FluidIngredient.isSameFluidSameTags(matchedInputFluidStack, machineInputFluidStack))
                 {
                     int machineFluidAmount = machineInputFluidStack.getAmount();
                     if(machineFluidAmount >= matchedFluidAmount)
@@ -163,7 +162,7 @@ public class RecipeProcesser
                 int machineOutputFluidAmount = machineOutputFluidStack.getAmount();
                 int machineOutputFluidMaxStackSize = machineInventory.FluidSlotMaxStackSize();
 
-                if(machineOutputFluidStack.getFluid() == matchedOutputFluidStack.getFluid() && FluidStack.areFluidStackTagsEqual(machineOutputFluidStack, matchedOutputFluidStack))
+                if(FluidIngredient.isSameFluidSameTags(matchedOutputFluidStack , machineOutputFluidStack))
                 {
                     if(machineOutputFluidAmount + matchedOutputFluidAmount <= machineOutputFluidMaxStackSize)
                     {
