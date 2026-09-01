@@ -343,14 +343,16 @@ public class FluffyWindAlloySwordItem extends SwordItem {
         super.appendHoverText(stack, level, tooltip, flag);
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.skill_name"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.desc1"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.desc_wind_header"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.desc2"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.desc3"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.desc_thunder_header"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.desc4"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.desc5"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.desc6"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.passive2"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.passive3"));
     }
 
     @Override

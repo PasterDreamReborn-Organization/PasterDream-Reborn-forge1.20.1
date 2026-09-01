@@ -114,7 +114,5 @@ public class InfernoSwordItem extends SwordItem {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.inferno_sword.5"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.inferno_sword.6"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.inferno_sword.7"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.inferno_sword.8"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.inferno_sword.9"));
     }
 }

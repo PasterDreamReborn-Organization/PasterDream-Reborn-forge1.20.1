@@ -112,6 +112,5 @@ public class BeihaiRuoTideSwordItem extends SwordItem {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.beihai_ruo_tide_sword.5"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.beihai_ruo_tide_sword.6"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.beihai_ruo_tide_sword.7"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.beihai_ruo_tide_sword.8"));
     }
 }

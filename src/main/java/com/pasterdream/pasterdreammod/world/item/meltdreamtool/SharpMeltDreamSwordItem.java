@@ -108,7 +108,6 @@ public class SharpMeltDreamSwordItem extends SwordItem {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_melt_dream_sword.2"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_melt_dream_sword.3"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_melt_dream_sword.4"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.sharp_melt_dream_sword.5"));
         MeltDreamToolHelper.appendHoverText(stack, level, tooltip, flag);
     }
 }
