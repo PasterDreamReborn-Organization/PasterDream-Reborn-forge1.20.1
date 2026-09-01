@@ -5,18 +5,22 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:night_vision\",lvl:0,time:18000}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:luck\",lvl:0,time:18000}]}"
     },
     {
       "fluid": "pasterdream:guiding_drug",
-      "amount": 1000
+      "amount": 125
     }
   ],
   "itemInputs":
   [
     {
-      "item": "minecraft:redstone_block",
-      "count": 64
+      "item": "minecraft:glowstone_dust",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:singularity_fern",
+      "count": 1
     }
   ],
   "fluidOutputs":
@@ -24,7 +28,7 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:night_vision\",lvl:0,time:2147483647}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:luck\",lvl:2,time:3600}]}"
     }
   ]
 }
