@@ -84,6 +84,9 @@ public class RecipeMatcher
 
         for (T recipe : recipes)
         {
+            List<Item> inputItemTypes = inputItems.stream().filter(itemStack -> !itemStack.isEmpty()).map(ItemStack::getItem).collect(Collectors.toList());
+            List<Fluid> inputFluidTypes = inputFluids.stream().filter(fluidStack -> !fluidStack.isEmpty()).map(FluidStack::getFluid).collect(Collectors.toList());
+
             if (matchesTypes(recipe, inputItemTypes, inputFluidTypes))
             {
                 for(ItemIngredient itemIngredient : recipe.getOutputItems())
