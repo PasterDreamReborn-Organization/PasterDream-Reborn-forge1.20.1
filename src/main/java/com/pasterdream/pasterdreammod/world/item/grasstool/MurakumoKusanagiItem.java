@@ -87,6 +87,5 @@ public class MurakumoKusanagiItem extends SwordItem {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.murakumo_kusanagi.4"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.murakumo_kusanagi.5"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.murakumo_kusanagi.6"));
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.murakumo_kusanagi.7"));
     }
 }

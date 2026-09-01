@@ -142,8 +142,6 @@ public class ShadowSwordItem extends SwordItem {
         tooltip.add(Component.translatable("tooltip.pasterdream.shadow_sword.passive_name"));
         tooltip.add(Component.translatable("tooltip.pasterdream.shadow_sword.desc1"));
         tooltip.add(Component.translatable("tooltip.pasterdream.shadow_sword.desc2"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.shadow_sword.desc3"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.shadow_sword.flavor"));
     }
 
     @Override

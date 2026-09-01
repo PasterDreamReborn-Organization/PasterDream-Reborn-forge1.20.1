@@ -161,7 +161,5 @@ public class IceShadowHammerItem extends SwordItem {
         tooltip.add(Component.translatable("tooltip.pasterdream.ice_shadow_hammer.2"));
         tooltip.add(Component.translatable("tooltip.pasterdream.ice_shadow_hammer.3"));
         tooltip.add(Component.translatable("tooltip.pasterdream.ice_shadow_hammer.4"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.ice_shadow_hammer.5"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.ice_shadow_hammer.cost"));
     }
 }

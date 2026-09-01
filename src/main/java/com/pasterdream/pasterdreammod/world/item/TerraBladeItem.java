@@ -164,7 +164,6 @@ public class TerraBladeItem extends SwordItem {
         tooltip.add(Component.translatable("tooltip.pasterdream.terra_blade.desc2"));
         tooltip.add(Component.translatable("tooltip.pasterdream.terra_blade.desc3"));
         tooltip.add(Component.translatable("tooltip.pasterdream.terra_blade.desc4"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.terra_blade.desc5"));
     }
 
     @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
