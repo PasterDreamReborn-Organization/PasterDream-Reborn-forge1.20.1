@@ -8,8 +8,6 @@ import net.minecraft.nbt.TagParser;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -243,5 +241,22 @@ public class FluidIngredient
     public boolean hasNbt()
     {
         return nbt != null;
+    }
+
+    public static boolean isSameFluid(FluidStack fluidStack0, FluidStack fluidStack1)
+    {
+        return fluidStack0.getFluid().equals(fluidStack1.getFluid());
+    }
+
+    public static boolean isSameFluidSameTags(FluidStack fluidStack0, FluidStack fluidStack1)
+    {
+        if(fluidStack0.hasTag() && fluidStack1.hasTag())
+        {
+            return isSameFluid(fluidStack0, fluidStack1) && fluidStack0.getTag().equals(fluidStack1.getTag());
+        }
+            else
+            {
+                return isSameFluid(fluidStack0, fluidStack1);
+            }
     }
 }
