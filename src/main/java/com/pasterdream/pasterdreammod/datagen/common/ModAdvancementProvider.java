@@ -51,6 +51,9 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
         private static final ResourceKey<Level> LAMP_SHADOW_WORLD =
                 ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_world"));
 
+        private static final ResourceKey<Level> WIND_JOURNEY_WORLD =
+                ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world"));
+
         @Override
         public void generate(HolderLookup.@NotNull Provider registries,
                              @NotNull Consumer<Advancement> saver,
@@ -109,22 +112,6 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             ModItems.PLIERS.get()))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/create_pliers"), existingFileHelper);
-
-            // ========== 染梦裂隙子进度：下午茶时光 ==========
-            Advancement createresearchtable = Advancement.Builder.advancement()
-                    .parent(dyedreamCrackAdv)
-                    .display(
-                            ModItems.RESEARCH_TABLE.get(),
-                            Component.translatable("advancements.pasterdream.story.create_research_table.title"),
-                            Component.translatable("advancements.pasterdream.story.create_research_table.description"),
-                            null,
-                            FrameType.TASK,
-                            true, true, false
-                    )
-                    .addCriterion("create_research_table", InventoryChangeTrigger.TriggerInstance.hasItems(
-                            ModItems.RESEARCH_TABLE.get()))
-                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
-                            "story/create_research_table"), existingFileHelper);
 
             // ========== 染梦裂隙子进度：染梦世界 ==========
             Advancement dyedreamWorld = Advancement.Builder.advancement()
@@ -407,9 +394,69 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/tame_friendly_ghost"), existingFileHelper);
 
+            // 于影共眠 —— 在暮影长床入睡前往灯影（原作 achievement_shadow_a_1，程序授予，+10 XP）
+            Advancement sleepWithShadow = Advancement.Builder.advancement()
+                    .parent(enterLampShadowWorld)
+                    .display(
+                            ModItems.SHADOW_BED.get(),
+                            Component.translatable("advancements.pasterdream.story.sleep_with_shadow.title"),
+                            Component.translatable("advancements.pasterdream.story.sleep_with_shadow.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("sleep_with_shadow", new ImpossibleTrigger.TriggerInstance())
+                    .rewards(AdvancementRewards.Builder.experience(10))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/sleep_with_shadow"), existingFileHelper);
+
+            // 浸影回忆 —— 获得笔记残页（原作 achievement_shadow_a_0，+10 XP，解锁解析配方）
+            Advancement shadowBrokenNote = Advancement.Builder.advancement()
+                    .parent(enterLampShadowWorld)
+                    .display(
+                            ModItems.BROKEN_NOTE.get(),
+                            Component.translatable("advancements.pasterdream.story.broken_note.title"),
+                            Component.translatable("advancements.pasterdream.story.broken_note.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("obtain_broken_note", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ItemPredicate.Builder.item().of(ModItems.BROKEN_NOTE.get())
+                                    .withCount(MinMaxBounds.Ints.exactly(1)).build()))
+                    .addCriterion("has_lamp_shadow_root",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/enter_lamp_shadow_world")))
+                    .rewards(AdvancementRewards.Builder.experience(10)
+                            .addRecipe(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "unknown_note")))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/broken_note"), existingFileHelper);
+
+            // 于影研读 —— 获得研究台（原作 achievement_shadow_a_1 位置，+10 XP）
+            Advancement shadowResearchTable = Advancement.Builder.advancement()
+                    .parent(shadowBrokenNote)
+                    .display(
+                            ModItems.RESEARCH_TABLE.get(),
+                            Component.translatable("advancements.pasterdream.story.research_table.title"),
+                            Component.translatable("advancements.pasterdream.story.research_table.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("obtain_research_table", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.RESEARCH_TABLE.get()))
+                    .addCriterion("has_lamp_shadow_root",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/enter_lamp_shadow_world")))
+                    .rewards(AdvancementRewards.Builder.experience(10))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/research_table"), existingFileHelper);
+
             // 困顿囚徒 —— 首次进入暗影地牢（原作 achievement_shadow_c_0，程序授予，+10 XP）
             Advancement shadowPrisoner = Advancement.Builder.advancement()
-                    .parent(enterLampShadowWorld)
+                    .parent(shadowResearchTable)
                     .display(
                             ModBlocks.BROKEN_SHADOW_DUNGEON_PORTAL.get(),
                             Component.translatable("advancements.pasterdream.story.shadow_prisoner.title"),
@@ -1097,6 +1144,24 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             ModItems.KAICHU_OMAMORI.get()))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "treasure/get_kaichu_omamori"), existingFileHelper);
+
+            // ========== 风之旅途 Tab 页根进度（独立 tab，CHALLENGE）==========
+            // 首次进入 wind_journey_world 维度时触发
+            Advancement enterWindJourney = Advancement.Builder.advancement()
+                    .display(
+                            ModBlocks.CYAN_MOSS_STONE.get(),
+                            Component.translatable("advancements.pasterdream.story.enter_wind_journey.title"),
+                            Component.translatable("advancements.pasterdream.story.enter_wind_journey.description"),
+                            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                    "textures/block/cyan_stone_bricks.png"),
+                            FrameType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("enter_wind_journey",
+                            ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(WIND_JOURNEY_WORLD))
+                    .rewards(AdvancementRewards.Builder.experience(100))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/enter_wind_journey"), existingFileHelper);
 
 
         }

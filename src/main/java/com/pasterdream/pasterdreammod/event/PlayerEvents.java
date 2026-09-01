@@ -48,6 +48,9 @@ public class PlayerEvents {
     private static final ResourceLocation PURE_AND_FLAWLESS_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/pure_and_flawless");
     private static final ResourceLocation DREAM_FERTILIZER_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dream_fertilizer");
     private static final ResourceLocation LOOK_AT_PINK_SHEEP_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/look_at_pink_sheep");
+    private static final ResourceLocation ENTER_LAMP_SHADOW_WORLD_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/enter_lamp_shadow_world");
+    private static final ResourceLocation BROKEN_NOTE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/broken_note");
+    private static final ResourceLocation RESEARCH_TABLE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/research_table");
 
     /** 进度 ID → 染梦笔记 content 键列表 */
     private static final java.util.Map<ResourceLocation, java.util.List<String>> ADVANCEMENT_NOTE_CONTENT = java.util.Map.of(
@@ -117,6 +120,20 @@ public class PlayerEvents {
                         ModCriteriaTriggers.LOOK_AT_PINK_SHEEP.trigger(serverPlayer);
                         break;
                     }
+                }
+            }
+
+            // 前置进度型进度兜底：已拥有灯影之下根进度且已持有对应物品时授予（浸影回忆/于影研读）
+            if (player instanceof ServerPlayer serverPlayer
+                    && player.tickCount % 20 == 0
+                    && isAdvancementDone(serverPlayer, ENTER_LAMP_SHADOW_WORLD_ADV)) {
+                if (!isAdvancementDone(serverPlayer, BROKEN_NOTE_ADV)
+                        && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.BROKEN_NOTE.get()))) {
+                    ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
+                }
+                if (!isAdvancementDone(serverPlayer, RESEARCH_TABLE_ADV)
+                        && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.RESEARCH_TABLE.get()))) {
+                    ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
                 }
             }
         }
@@ -326,6 +343,11 @@ public class PlayerEvents {
         Advancement advancement = event.getAdvancement();
         if (advancement == null) {
             return;
+        }
+
+        // 获得灯影之下根进度后，立即检查依赖该进度的进度（浸影回忆/于影研读）
+        if (advancement.getId().equals(ENTER_LAMP_SHADOW_WORLD_ADV)) {
+            ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
         }
 
         java.util.List<String> contents = ADVANCEMENT_NOTE_CONTENT.get(advancement.getId());
