@@ -1,6 +1,6 @@
 {
   "type": "minecraft:jigsaw",
-  "start_pool": "pasterdream:christmas_tree",
+  "start_pool": "pasterdream:christmas_tree_island",
   "size": 1,
   "max_distance_from_center": 64,
   "spawn_overrides": {},
