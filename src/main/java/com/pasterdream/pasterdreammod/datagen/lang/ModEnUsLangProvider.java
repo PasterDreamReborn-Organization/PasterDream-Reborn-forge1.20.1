@@ -1955,7 +1955,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.small_ballon_8", "Small Balloon");
         add("structure.pasterdream.small_ballon_9", "Small Balloon");
         add("structure.pasterdream.small_ballon_10", "Small Balloon");
-        add("structure.pasterdream.christmas_tree", "Christmas Tree");
+        add("structure.pasterdream.christmas_tree_island", "Christmas Tree Island");
         add("structure.pasterdream.fluffy_wind_church", "Fluffy Wind Church");
         add("structure.pasterdream.aaroncos_arena_portal", "Aaroncos Arena Portal");
         add("structure.pasterdream.shadow_underground_workroom", "Shadow Underground Workroom");

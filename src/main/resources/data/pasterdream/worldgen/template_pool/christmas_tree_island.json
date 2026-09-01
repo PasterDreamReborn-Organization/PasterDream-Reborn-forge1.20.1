@@ -1,12 +1,12 @@
 {
-  "name": "pasterdream:christmas_tree",
+  "name": "pasterdream:christmas_tree_island",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "pasterdream:christmas_tree",
+        "location": "pasterdream:christmas_tree_island",
         "projection": "rigid",
         "processors": {
           "processors": [
