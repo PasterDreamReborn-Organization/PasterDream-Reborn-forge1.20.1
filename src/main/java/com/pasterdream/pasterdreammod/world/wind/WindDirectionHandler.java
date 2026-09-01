@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.world.wind;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.advancement.critereon.WindFlightTrigger;
+import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModGameRules;
 import com.pasterdream.pasterdreammod.init.ModItems;
@@ -8,6 +10,7 @@ import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.world.dimension.WindJourneyDimension;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket;
 import net.minecraft.resources.ResourceKey;
@@ -75,6 +78,11 @@ public final class WindDirectionHandler {
         if (player.getY() < 0 && player instanceof ServerPlayer sp) {
             teleportBackToOverworld(sp);
             return;
+        }
+
+        // 带顺风/逆风效果累计飞行距离（逐 tick 结算）
+        if (player instanceof ServerPlayer sp) {
+            trackWindFlight(sp);
         }
 
         if (player.tickCount % TICK_INTERVAL != 0) return;
@@ -169,6 +177,47 @@ public final class WindDirectionHandler {
     private static void applyDeadwind(Player player) {
         int amplifier = (int) player.getPersistentData().getDouble("player_deadwind_force");
         player.addEffect(new MobEffectInstance(ModEffects.DEADWIND.get(), 20, amplifier));
+    }
+
+    /**
+     * 累计带顺风/逆风效果时的鞘翅飞行距离（水平方向），并驱动风之旅途飞行挑战进度。
+     * 距离存入玩家持久数据，跨维度/跨存档保留。
+     */
+    private static void trackWindFlight(ServerPlayer player) {
+        boolean flying = player.isFallFlying() && !player.isPassenger();
+        boolean tailwind = player.hasEffect(ModEffects.TAILWIND.get());
+        boolean deadwind = player.hasEffect(ModEffects.DEADWIND.get());
+
+        CompoundTag data = player.getPersistentData();
+        if (!flying || (!tailwind && !deadwind)) {
+            // 不在计数状态：清空上一位置，避免传送/复位产生距离尖峰
+            data.remove("wind_flight_prev_x");
+            data.remove("wind_flight_prev_z");
+            return;
+        }
+
+        double x = player.getX();
+        double z = player.getZ();
+        if (data.contains("wind_flight_prev_x")) {
+            double dx = x - data.getDouble("wind_flight_prev_x");
+            double dz = z - data.getDouble("wind_flight_prev_z");
+            double dist = Math.sqrt(dx * dx + dz * dz);
+            // 单 tick 移动上限 10 格，屏蔽传送等瞬移
+            if (dist < 10) {
+                if (tailwind) {
+                    double total = data.getDouble("wind_flight_tailwind") + dist;
+                    data.putDouble("wind_flight_tailwind", total);
+                    ModCriteriaTriggers.WIND_FLIGHT.trigger(player, WindFlightTrigger.FlightType.TAILWIND, total);
+                }
+                if (deadwind) {
+                    double total = data.getDouble("wind_flight_deadwind") + dist;
+                    data.putDouble("wind_flight_deadwind", total);
+                    ModCriteriaTriggers.WIND_FLIGHT.trigger(player, WindFlightTrigger.FlightType.DEADWIND, total);
+                }
+            }
+        }
+        data.putDouble("wind_flight_prev_x", x);
+        data.putDouble("wind_flight_prev_z", z);
     }
 
     private static boolean hasWindKnightFlag(Player player) {

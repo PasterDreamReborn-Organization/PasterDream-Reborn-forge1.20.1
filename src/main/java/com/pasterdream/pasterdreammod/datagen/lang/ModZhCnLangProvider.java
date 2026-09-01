@@ -582,6 +582,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.WIND_CLEAVING_GRASS.get(), "斩风草");
         add(ModBlocks.WIND_FEATHER_GRASS.get(), "风羽草");
         add(ModBlocks.WIND_ISLAND_REED.get(), "风岛芦苇");
+        add(ModItems.WIND_TAILWIND_ICON.get(), "顺风印记");
+        add(ModItems.WIND_DEADWIND_ICON.get(), "逆风印记");
 
         add(ModBlocks.SHADOW_SHORT_ROOTS.get(), "阴影矮菌索");
         add(ModBlocks.SHADOW_ROOTS.get(), "阴影菌索");
@@ -1830,6 +1832,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_kaichu_omamori.description", "获得怀中御守，当你真正将正在睡觉的金色狐狸的梦变为现实，她会给予你这个特殊的纪念品。");
         add("advancements.pasterdream.story.enter_wind_journey.title", "风之旅途");
         add("advancements.pasterdream.story.enter_wind_journey.description", "进入风之旅途维度");
+        add("advancements.pasterdream.story.wind_follow.title", "风伴你而行");
+        add("advancements.pasterdream.story.wind_follow.description", "获得过顺风与逆风效果");
+        add("advancements.pasterdream.story.wind_deadwind_flight.title", "逆风而进");
+        add("advancements.pasterdream.story.wind_deadwind_flight.description", "在逆风效果下累计飞行2000格");
+        add("advancements.pasterdream.story.wind_tailwind_flight.title", "御风而行");
+        add("advancements.pasterdream.story.wind_tailwind_flight.description", "在顺风效果下累计飞行2000格");
 
 
         // 帕秋莉宝典

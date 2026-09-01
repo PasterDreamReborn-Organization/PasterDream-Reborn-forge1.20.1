@@ -490,6 +490,12 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.WIND_ISLAND_REED.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/wind_island_reed_top"));
 
+        // 风之旅途飞行挑战进度图标（模型复用效果图标贴图）
+        withExistingParent(ModItems.WIND_TAILWIND_ICON.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/wind_tailwind_icon"));
+        withExistingParent(ModItems.WIND_DEADWIND_ICON.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/wind_deadwind_icon"));
+
         // 阴影植物系列
         withExistingParent(ModItems.SHADOW_SHORT_ROOTS.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/shadow_short_roots"));

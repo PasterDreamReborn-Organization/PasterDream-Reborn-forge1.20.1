@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.advancement.critereon.*;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
+import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.advancements.*;
@@ -1204,6 +1205,61 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .rewards(AdvancementRewards.Builder.experience(100))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/enter_wind_journey"), existingFileHelper);
+
+            // ========== 风之旅途子进度：风伴你而行 ==========
+            // 获得过顺风与逆风效果（两者互斥，需两个 effects_changed 判定）
+            Advancement windFollow = Advancement.Builder.advancement()
+                    .parent(enterWindJourney)
+                    .display(
+                            Items.FEATHER,
+                            Component.translatable("advancements.pasterdream.story.wind_follow.title"),
+                            Component.translatable("advancements.pasterdream.story.wind_follow.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("has_tailwind", EffectsChangedTrigger.TriggerInstance.hasEffects(
+                            MobEffectsPredicate.effects().and(ModEffects.TAILWIND.get())))
+                    .addCriterion("has_deadwind", EffectsChangedTrigger.TriggerInstance.hasEffects(
+                            MobEffectsPredicate.effects().and(ModEffects.DEADWIND.get())))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/wind_follow"), existingFileHelper);
+
+            // ========== 风伴你而行子进度：逆风而进 ==========
+            // 逆风效果下累计鞘翅飞行 2000 格
+            Advancement windDeadwindFlight = Advancement.Builder.advancement()
+                    .parent(windFollow)
+                    .display(
+                            ModItems.WIND_DEADWIND_ICON.get(),
+                            Component.translatable("advancements.pasterdream.story.wind_deadwind_flight.title"),
+                            Component.translatable("advancements.pasterdream.story.wind_deadwind_flight.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("fly_2000_with_deadwind",
+                            WindFlightTrigger.TriggerInstance.flown(WindFlightTrigger.FlightType.DEADWIND,
+                                    MinMaxBounds.Doubles.atLeast(2000)))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/wind_deadwind_flight"), existingFileHelper);
+
+            // ========== 风伴你而行子进度：御风而行 ==========
+            // 顺风效果下累计鞘翅飞行 2000 格
+            Advancement windTailwindFlight = Advancement.Builder.advancement()
+                    .parent(windFollow)
+                    .display(
+                            ModItems.WIND_TAILWIND_ICON.get(),
+                            Component.translatable("advancements.pasterdream.story.wind_tailwind_flight.title"),
+                            Component.translatable("advancements.pasterdream.story.wind_tailwind_flight.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("fly_2000_with_tailwind",
+                            WindFlightTrigger.TriggerInstance.flown(WindFlightTrigger.FlightType.TAILWIND,
+                                    MinMaxBounds.Doubles.atLeast(2000)))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/wind_tailwind_flight"), existingFileHelper);
 
 
         }
