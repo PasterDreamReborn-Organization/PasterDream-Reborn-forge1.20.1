@@ -719,7 +719,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SAND_OF_TIME.get());
                         output.accept(ModItems.LIFE_CRYSTAL.get());
                         output.accept(ModItems.GOLDEN_FOX_SCULPTURE.get());
-                        output.accept(ModItems.WIND_KNIGHT_ALTAR.get());
+                        output.accept(ModItems.BREAK_WIND_KNIGHT_ALTAR.get());
                         output.accept(ModItems.DESERT_HERO_TOMB.get());
                         output.accept(ModItems.MELT_DREAM_CRYSTAL_CHEST.get());
                         output.accept(ModItems.OPENED_MELT_DREAM_CRYSTAL_CHEST.get());

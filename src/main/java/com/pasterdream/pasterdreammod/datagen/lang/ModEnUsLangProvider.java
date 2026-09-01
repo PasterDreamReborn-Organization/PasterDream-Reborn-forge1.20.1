@@ -497,12 +497,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.RESEARCH_TABLE.get(), "Research Table");
         add(ModBlocks.LOST_SWORD_TOMB.get(), "Lost Sword Tomb");
         add(ModBlocks.GOLDEN_FOX_SCULPTURE.get(), "Golden Fox Sculpture");
-        add(ModBlocks.WIND_KNIGHT_ALTAR.get(), "Wind Knight Altar");
-        add("block.pasterdream.wind_knight_altar.need_crystal", "Embed a [Windrunner Crystal]");
-        add("block.pasterdream.wind_knight_altar.need_torso", "Need [Congeal Wind Iron Ingot] to assemble the torso");
-        add("block.pasterdream.wind_knight_altar.need_arms", "Need [Congeal Wind Iron Ingot] to assemble the arms");
-        add("block.pasterdream.wind_knight_altar.need_head", "Need [Congeal Wind Iron Ingot] to assemble the head");
-        add("block.pasterdream.wind_knight_altar.throw_lightning", "Requires a Lightning Potion Bottle: right-click the altar, or throw the bottle near the altar to awaken it");
+        add(ModBlocks.BREAK_WIND_KNIGHT_ALTAR.get(), "Wind Knight Altar");
+        add("block.pasterdream.break_wind_knight_altar.need_crystal", "Embed a [Windrunner Crystal]");
+        add("block.pasterdream.break_wind_knight_altar.need_torso", "Need [Congeal Wind Iron Ingot] to assemble the torso");
+        add("block.pasterdream.break_wind_knight_altar.need_arms", "Need [Congeal Wind Iron Ingot] to assemble the arms");
+        add("block.pasterdream.break_wind_knight_altar.need_head", "Need [Congeal Wind Iron Ingot] to assemble the head");
+        add("block.pasterdream.break_wind_knight_altar.throw_lightning", "Requires a Lightning Potion Bottle: right-click the altar, or throw the bottle near the altar to awaken it");
         add("block.pasterdream.golden_fox_sculpture.no_reaction", "The sculpture does not respond...");
         add("block.pasterdream.golden_fox_sculpture.cooldown", "The sculpture is still slumbering... %s seconds remaining");
         add(ModBlocks.FOX_SCULPTURE.get(), "Fox Sculpture");
