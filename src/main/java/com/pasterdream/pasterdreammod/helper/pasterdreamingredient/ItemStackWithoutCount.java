@@ -2,11 +2,7 @@ package com.pasterdream.pasterdreammod.helper.pasterdreamingredient;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ItemStackWithoutCount
 {
