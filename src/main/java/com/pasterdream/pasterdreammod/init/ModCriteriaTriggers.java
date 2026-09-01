@@ -11,6 +11,7 @@ import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDraw
 import com.pasterdream.pasterdreammod.advancement.critereon.OpenDyedreamCrystalChestTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.OpenWindJourneyCrystalChestTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.SummonWindKnightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.WindFlightTrigger;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -60,6 +61,9 @@ public class ModCriteriaTriggers {
     /** 用生态玻璃罐右键捕获萤火虫 */
     public static final CaptureFireflyTrigger CAPTURE_FIREFLY = new CaptureFireflyTrigger();
 
+    /** 在破风骑士祭坛召唤破风骑士 */
+    public static final SummonWindKnightTrigger SUMMON_WIND_KNIGHT = new SummonWindKnightTrigger();
+
     public static void init() {
         CriteriaTriggers.register(USE_BONE_NEEDLE);
         CriteriaTriggers.register(FOUND_TOMB);
@@ -74,5 +78,6 @@ public class ModCriteriaTriggers {
         CriteriaTriggers.register(BREAK_WIND_CURTAIN);
         CriteriaTriggers.register(OPEN_WIND_JOURNEY_CRYSTAL_CHEST);
         CriteriaTriggers.register(CAPTURE_FIREFLY);
+        CriteriaTriggers.register(SUMMON_WIND_KNIGHT);
     }
 }

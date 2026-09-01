@@ -1840,6 +1840,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.firefly_in_jar.description", "用生态玻璃罐右键捕获一只萤火虫");
         add("advancements.pasterdream.story.sea_bloom.title", "海的繁衍");
         add("advancements.pasterdream.story.sea_bloom.description", "用海带繁殖水母");
+        add("advancements.pasterdream.story.congeal_wind.title", "风凝有形");
+        add("advancements.pasterdream.story.congeal_wind.description", "获得凝结之风");
+        add("advancements.pasterdream.story.congeal_wind_iron.title", "凝风锻铁");
+        add("advancements.pasterdream.story.congeal_wind_iron.description", "获得凝风铁锭");
+        add("advancements.pasterdream.story.lightning_in_bottle.title", "瓶中闪电");
+        add("advancements.pasterdream.story.lightning_in_bottle.description", "合成雷电药剂瓶");
+        add("advancements.pasterdream.story.summon_wind_knight.title", "破风的骑士");
+        add("advancements.pasterdream.story.summon_wind_knight.description", "召唤破风骑士");
+        add("advancements.pasterdream.story.pulse_wind_runner_crystal.title", "风核脉动");
+        add("advancements.pasterdream.story.pulse_wind_runner_crystal.description", "获得脉冲风行者水晶");
         add("advancements.pasterdream.story.wingless_bird.title", "展翅的无翼鸟");
         add("advancements.pasterdream.story.wingless_bird.description", "食用风行者果冻");
         add("advancements.pasterdream.story.break_wind_curtain.title", "乘风破幕");

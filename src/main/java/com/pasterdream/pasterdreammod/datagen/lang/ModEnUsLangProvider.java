@@ -1660,6 +1660,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.firefly_in_jar.description", "Capture a firefly by right-clicking it with an Ecology Glass Jar");
         add("advancements.pasterdream.story.sea_bloom.title", "Bloom of the Sea");
         add("advancements.pasterdream.story.sea_bloom.description", "Breed a jellyfish using kelp");
+        add("advancements.pasterdream.story.congeal_wind.title", "Wind Takes Shape");
+        add("advancements.pasterdream.story.congeal_wind.description", "Obtain Congeal Wind");
+        add("advancements.pasterdream.story.congeal_wind_iron.title", "Forging Iron from Wind");
+        add("advancements.pasterdream.story.congeal_wind_iron.description", "Obtain a Congeal Wind Iron Ingot");
+        add("advancements.pasterdream.story.lightning_in_bottle.title", "Lightning in a Bottle");
+        add("advancements.pasterdream.story.lightning_in_bottle.description", "Craft a Lightning Potion Bottle");
+        add("advancements.pasterdream.story.summon_wind_knight.title", "The Wind-Breaking Knight");
+        add("advancements.pasterdream.story.summon_wind_knight.description", "Summon the Wind-Breaking Knight");
+        add("advancements.pasterdream.story.pulse_wind_runner_crystal.title", "Pulse of the Wind Core");
+        add("advancements.pasterdream.story.pulse_wind_runner_crystal.description", "Obtain a Pulse Wind Runner Crystal");
         add("advancements.pasterdream.story.wingless_bird.title", "The Wingless Bird Takes Flight");
         add("advancements.pasterdream.story.wingless_bird.description", "Eat a Wind Runner Jelly");
         add("advancements.pasterdream.story.break_wind_curtain.title", "Ride the Wind, Break the Curtain");
