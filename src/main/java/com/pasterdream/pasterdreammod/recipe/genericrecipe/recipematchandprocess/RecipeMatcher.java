@@ -154,7 +154,7 @@ public class RecipeMatcher
         }
 
         if (!inputFluidTypes.isEmpty())
-        {   //物品输入槽有配方以外的物品
+        {   //流体输入槽有配方以外的流体
             return false;
         }
 

@@ -14,7 +14,7 @@ public class MatchSingleFluid
             List<FluidStack> ListFluidStackFromTag = fluidIngredient.getListFluidStackFromTag();
             for(FluidStack fluidStack : ListFluidStackFromTag)
             {
-                if(fluidStack.getFluid().equals(matchFluid.getFluid()))
+                if(fluidIngredient.isSameFluidSameTags(fluidStack, matchFluid))
                 {
                     return fluidStack;
                 }
@@ -24,7 +24,7 @@ public class MatchSingleFluid
             else
             {
                 FluidStack fluidStack = fluidIngredient.getFluidStack();
-                if(fluidStack.getFluid().equals(matchFluid.getFluid()))
+                if(fluidIngredient.isSameFluidSameTags(fluidStack, matchFluid))
                 {
                     return fluidStack;
                 }
