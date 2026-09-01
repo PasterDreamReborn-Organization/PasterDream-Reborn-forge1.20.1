@@ -5,7 +5,7 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:night_vision\",lvl:0,time:9600}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:speed\",lvl:0,time:9600}]}"
     },
     {
       "fluid": "pasterdream:guiding_drug",
@@ -15,11 +15,11 @@
   "itemInputs":
   [
     {
-      "item": "minecraft:shroomlight",
+      "item": "minecraft:feather",
       "count": 1
     },
     {
-      "item": "pasterdream:white_orchid_flower",
+      "item": "pasterdream:congeal_wind",
       "count": 1
     },
     {
@@ -32,7 +32,7 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:night_vision\",lvl:0,time:18000}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:speed\",lvl:0,time:18000}]}"
     }
   ]
 }
