@@ -410,6 +410,48 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/sleep_with_shadow"), existingFileHelper);
 
+            // 暗炉之心 —— 获得暗影高炉核心（前置：灯影之下根进度）
+            Advancement shadowBlastFurnaceCore = Advancement.Builder.advancement()
+                    .parent(enterLampShadowWorld)
+                    .display(
+                            ModItems.SHADOW_BLAST_FURNACE_CORE.get(),
+                            Component.translatable("advancements.pasterdream.story.shadow_blast_furnace_core.title"),
+                            Component.translatable("advancements.pasterdream.story.shadow_blast_furnace_core.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("obtain_shadow_blast_furnace_core", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.SHADOW_BLAST_FURNACE_CORE.get()))
+                    .addCriterion("has_lamp_shadow_root",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/enter_lamp_shadow_world")))
+                    .rewards(AdvancementRewards.Builder.experience(10))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/shadow_blast_furnace_core"), existingFileHelper);
+
+            // 0.0.0 巧克力 —— 获得黑金属粒（原作 achievement_shadow_b_0，隐藏，+10 XP）
+            Advancement chocolate000 = Advancement.Builder.advancement()
+                    .parent(shadowBlastFurnaceCore)
+                    .display(
+                            ModItems.BLACK_METAL_GRAIN.get(),
+                            Component.translatable("advancements.pasterdream.story.chocolate_000.title"),
+                            Component.translatable("advancements.pasterdream.story.chocolate_000.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, true
+                    )
+                    .addCriterion("obtain_black_metal_grain", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.BLACK_METAL_GRAIN.get()))
+                    .addCriterion("has_lamp_shadow_root",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/enter_lamp_shadow_world")))
+                    .rewards(AdvancementRewards.Builder.experience(10))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/chocolate_000"), existingFileHelper);
+
             // 浸影回忆 —— 获得笔记残页（原作 achievement_shadow_a_0，+10 XP，解锁解析配方）
             Advancement shadowBrokenNote = Advancement.Builder.advancement()
                     .parent(enterLampShadowWorld)
