@@ -28,6 +28,12 @@ public class TrueShadowBedInteractionHandler {
     private static final ResourceLocation SHADOW_CHOICE_ADV =
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_choice");
 
+    private static final ResourceLocation ENTER_LAMP_SHADOW_WORLD_ADV =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/enter_lamp_shadow_world");
+
+    private static final ResourceLocation SLEEP_WITH_SHADOW_ADV =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/sleep_with_shadow");
+
     public static void execute(Level world, BlockPos pos, Player entity) {
         if (entity == null) return;
         if (world.isClientSide()) return;
@@ -54,6 +60,10 @@ public class TrueShadowBedInteractionHandler {
 
         // Drain 10 San and teleport to lamp_shadow_world
         SanHelper.addPlayerSanAndSync(sp, -10);
+        // 于影共眠 —— 拥有灯影之下根进度且在暮影长床入眠时授予
+        if (AdvancementHelper.isDone(sp, ENTER_LAMP_SHADOW_WORLD_ADV)) {
+            AdvancementHelper.grant(sp, SLEEP_WITH_SHADOW_ADV, "sleep_with_shadow");
+        }
         sp.server.execute(() -> LampShadowWorldTeleporter.execute(sp.level(), sp));
     }
 

@@ -1533,8 +1533,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.melt_dream_liquid_bucket.description", "Obtain a bucket of Melt Dream Spring");
         add("advancements.pasterdream.story.create_pliers.title", "太陽とレインボ一");
         add("advancements.pasterdream.story.create_pliers.description", "Make a pair of pliers");
-        add("advancements.pasterdream.story.create_research_table.title", "Afternoon Tea Time");
-        add("advancements.pasterdream.story.create_research_table.description", "Craft a research table to carry out research.");
         add("advancements.pasterdream.story.galaxy_jelly.title", "Star Gel");
         add("advancements.pasterdream.story.galaxy_jelly.description", "Get the Galaxy Jelly, a jelly that can be found in the deep-sea treasures and chests in the dream, and it can make you soar to the clouds.");
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "Space Professional Voice Actor");
@@ -1553,6 +1551,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.bastion_guard.description", "Complete the Twilight Lantern bastion guard event");
         add("advancements.pasterdream.story.enter_lamp_shadow_world.title", "Lamp Shadow World");
         add("advancements.pasterdream.story.enter_lamp_shadow_world.description", "Delve into the darkest side of the world");
+        add("advancements.pasterdream.story.sleep_with_shadow.title", "Sleeping with the Shadow");
+        add("advancements.pasterdream.story.sleep_with_shadow.description", "Use a self-made Twilight Shadow Bed to travel to the Lamp Shadow World");
+        add("advancements.pasterdream.story.broken_note.title", "Dipped in Shadow Memory");
+        add("advancements.pasterdream.story.broken_note.description", "Obtain a fragment of the notes from the dream beneath the lamp shadow");
+        add("advancements.pasterdream.story.research_table.title", "Reading in the Shadow");
+        add("advancements.pasterdream.story.research_table.description", "Craft a research table to decipher the notes");
         add("advancements.pasterdream.story.shadow_prisoner.title", "Weary Prisoner");
         add("advancements.pasterdream.story.shadow_prisoner.description", "Repair the Shadow Dungeon Portal and enter the Shadow Dungeon");
         add("advancements.pasterdream.story.shadow_choice.title", "Light and Shadow");

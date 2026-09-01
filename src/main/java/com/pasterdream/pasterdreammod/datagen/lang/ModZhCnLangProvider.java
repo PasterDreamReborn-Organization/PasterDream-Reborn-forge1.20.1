@@ -1712,8 +1712,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.melt_dream_liquid_bucket.description", "获得一桶融梦涌泉");
         add("advancements.pasterdream.story.create_pliers.title", "太陽とレインボ一");
         add("advancements.pasterdream.story.create_pliers.description", "制作一把园艺钳");
-        add("advancements.pasterdream.story.create_research_table.title", "下午茶时光");
-        add("advancements.pasterdream.story.create_research_table.description", "制作研究台以开展研究");
         add("advancements.pasterdream.story.galaxy_jelly.title", "星辰凝胶");
         add("advancements.pasterdream.story.galaxy_jelly.description", "获得星河果冻，一种能在梦境中的深海秘宝和箱子中找到的果冻，它能让你飞至云霄。");
         add("advancements.pasterdream.story.eat_galaxy_jelly_on_high_height.title", "太空专业配音员");
@@ -1732,6 +1730,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.bastion_guard.description", "完成暮影之笼的据点守卫事件");
         add("advancements.pasterdream.story.enter_lamp_shadow_world.title", "灯影之下");
         add("advancements.pasterdream.story.enter_lamp_shadow_world.description", "深入世界中最黑暗的一面");
+        add("advancements.pasterdream.story.sleep_with_shadow.title", "于影共眠");
+        add("advancements.pasterdream.story.sleep_with_shadow.description", "利用自制的暮影长床前往灯影");
+        add("advancements.pasterdream.story.broken_note.title", "浸影回忆");
+        add("advancements.pasterdream.story.broken_note.description", "获得一张灯影之下梦境的笔记残片");
+        add("advancements.pasterdream.story.research_table.title", "于影研读");
+        add("advancements.pasterdream.story.research_table.description", "制作研究台以解析笔记");
         add("advancements.pasterdream.story.shadow_prisoner.title", "困顿囚徒");
         add("advancements.pasterdream.story.shadow_prisoner.description", "修复暗影地牢传送门并进入暗影地牢");
         add("advancements.pasterdream.story.shadow_choice.title", "灯与影");

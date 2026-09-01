@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundDesertFortressTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundTombTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.HasAdvancementTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDrawingTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.OpenDyedreamCrystalChestTrigger;
@@ -40,6 +41,9 @@ public class ModCriteriaTriggers {
     /** 在染梦世界打开融梦水晶箱 */
     public static final OpenDyedreamCrystalChestTrigger OPEN_DYEDREAM_CRYSTAL_CHEST = new OpenDyedreamCrystalChestTrigger();
 
+    /** 玩家已完成指定进度（前置进度检查） */
+    public static final HasAdvancementTrigger HAS_ADVANCEMENT = new HasAdvancementTrigger();
+
     public static void init() {
         CriteriaTriggers.register(USE_BONE_NEEDLE);
         CriteriaTriggers.register(FOUND_TOMB);
@@ -49,5 +53,6 @@ public class ModCriteriaTriggers {
         CriteriaTriggers.register(EAT_GALAXY_JELLY_AT_HEIGHT);
         CriteriaTriggers.register(LOOK_AT_PINK_SHEEP);
         CriteriaTriggers.register(OPEN_DYEDREAM_CRYSTAL_CHEST);
+        CriteriaTriggers.register(HAS_ADVANCEMENT);
     }
 }
