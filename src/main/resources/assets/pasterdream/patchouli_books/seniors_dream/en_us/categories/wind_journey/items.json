@@ -1,0 +1,7 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.category.wind_journey_items",
+  "description": "pasterdream.seniors_dream.category.wind_journey_items.desc",
+  "icon": "pasterdream:boboji_curio",
+  "parent": "pasterdream:wind_journey"
+}

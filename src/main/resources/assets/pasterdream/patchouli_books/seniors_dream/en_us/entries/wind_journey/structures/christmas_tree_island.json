@@ -1,0 +1,22 @@
+{
+  "sortnum": 1,
+  "name": "pasterdream.seniors_dream.entry.christmas_tree_island",
+  "icon": "pasterdream:christmas_lights",
+  "category": "pasterdream:wind_journey/structures",
+  "advancement": "pasterdream:story/enter_wind_journey",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/wind_journey/structures/christmas_tree_island.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.christmas_tree_island.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.christmas_tree_island.page1"
+    }
+  ]
+}

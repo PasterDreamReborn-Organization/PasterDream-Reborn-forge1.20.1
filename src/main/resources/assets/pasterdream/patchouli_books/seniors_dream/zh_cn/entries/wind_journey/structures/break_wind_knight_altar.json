@@ -1,0 +1,22 @@
+{
+  "sortnum": 2,
+  "name": "pasterdream.seniors_dream.entry.break_wind_knight_altar",
+  "icon": "pasterdream:break_wind_knight_altar",
+  "category": "pasterdream:wind_journey/structures",
+  "advancement": "pasterdream:story/enter_wind_journey",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/wind_journey/structures/break_wind_knight_altar.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.break_wind_knight_altar.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.break_wind_knight_altar.page1"
+    }
+  ]
+}

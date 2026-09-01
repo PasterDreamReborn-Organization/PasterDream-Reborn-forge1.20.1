@@ -1,0 +1,22 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.entry.break_wind_curtain",
+  "icon": "pasterdream:break_wind_curtain",
+  "category": "pasterdream:wind_journey/structures",
+  "advancement": "pasterdream:story/enter_wind_journey",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/wind_journey/structures/break_wind_curtain.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.break_wind_curtain.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.break_wind_curtain.page1"
+    }
+  ]
+}
