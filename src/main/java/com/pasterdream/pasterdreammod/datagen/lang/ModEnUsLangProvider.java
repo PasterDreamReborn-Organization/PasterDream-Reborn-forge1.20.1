@@ -1640,6 +1640,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_sliver_bell.description", "Get the silver bell, and it will only show its true form when you combine it with the light you found in the deep darkness.");
         add("advancements.pasterdream.get_kaichu_omamori.title", "The Golden Fox's Wish");
         add("advancements.pasterdream.get_kaichu_omamori.description", "Get the Kaichu Omamori. When you actually make the sleeping golden fox's dream come true, she will give you this special keepsake.");
+        add("advancements.pasterdream.story.enter_wind_journey.title", "Journey of Wind");
+        add("advancements.pasterdream.story.enter_wind_journey.description", "Enter the Journey of Wind dimension");
 
         // Patchouli book
 

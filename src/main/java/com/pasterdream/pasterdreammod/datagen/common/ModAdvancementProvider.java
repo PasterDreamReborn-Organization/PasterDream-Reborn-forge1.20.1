@@ -51,6 +51,9 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
         private static final ResourceKey<Level> LAMP_SHADOW_WORLD =
                 ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_world"));
 
+        private static final ResourceKey<Level> WIND_JOURNEY_WORLD =
+                ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world"));
+
         @Override
         public void generate(HolderLookup.@NotNull Provider registries,
                              @NotNull Consumer<Advancement> saver,
@@ -1097,6 +1100,24 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             ModItems.KAICHU_OMAMORI.get()))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "treasure/get_kaichu_omamori"), existingFileHelper);
+
+            // ========== 风之旅途 Tab 页根进度（独立 tab，CHALLENGE）==========
+            // 首次进入 wind_journey_world 维度时触发
+            Advancement enterWindJourney = Advancement.Builder.advancement()
+                    .display(
+                            ModBlocks.CYAN_MOSS_STONE.get(),
+                            Component.translatable("advancements.pasterdream.story.enter_wind_journey.title"),
+                            Component.translatable("advancements.pasterdream.story.enter_wind_journey.description"),
+                            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                    "textures/block/cyan_stone_bricks.png"),
+                            FrameType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("enter_wind_journey",
+                            ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(WIND_JOURNEY_WORLD))
+                    .rewards(AdvancementRewards.Builder.experience(100))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/enter_wind_journey"), existingFileHelper);
 
 
         }

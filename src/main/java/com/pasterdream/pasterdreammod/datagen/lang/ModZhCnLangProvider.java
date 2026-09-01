@@ -1820,6 +1820,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_sliver_bell.description", "获得银色铃铛，当你把从深邃黑暗找到的光明与之结合，它方能展现它的真实形态。");
         add("advancements.pasterdream.get_kaichu_omamori.title", "金狐的愿望");
         add("advancements.pasterdream.get_kaichu_omamori.description", "获得怀中御守，当你真正将正在睡觉的金色狐狸的梦变为现实，她会给予你这个特殊的纪念品。");
+        add("advancements.pasterdream.story.enter_wind_journey.title", "风之旅途");
+        add("advancements.pasterdream.story.enter_wind_journey.description", "进入风之旅途维度");
 
 
         // 帕秋莉宝典
