@@ -568,6 +568,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.WIND_CLEAVING_GRASS.get(), "Wind Cleaving Grass");
         add(ModBlocks.WIND_FEATHER_GRASS.get(), "Wind Feather Grass");
         add(ModBlocks.WIND_ISLAND_REED.get(), "Wind Island Reed");
+        add(ModItems.WIND_TAILWIND_ICON.get(), "Tailwind Emblem");
+        add(ModItems.WIND_DEADWIND_ICON.get(), "Headwind Emblem");
 
         add(ModBlocks.SHADOW_SHORT_ROOTS.get(), "Shadow Short Roots");
         add(ModBlocks.SHADOW_ROOTS.get(), "Shadow Roots");
@@ -1650,6 +1652,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_kaichu_omamori.description", "Get the Kaichu Omamori. When you actually make the sleeping golden fox's dream come true, she will give you this special keepsake.");
         add("advancements.pasterdream.story.enter_wind_journey.title", "Journey of Wind");
         add("advancements.pasterdream.story.enter_wind_journey.description", "Enter the Journey of Wind dimension");
+        add("advancements.pasterdream.story.wind_follow.title", "Wind Accompanies You");
+        add("advancements.pasterdream.story.wind_follow.description", "Have experienced both the tailwind and headwind effects");
+        add("advancements.pasterdream.story.wind_deadwind_flight.title", "Advancing Against the Wind");
+        add("advancements.pasterdream.story.wind_deadwind_flight.description", "Fly a total of 2000 blocks with the headwind effect");
+        add("advancements.pasterdream.story.wind_tailwind_flight.title", "Riding the Wind");
+        add("advancements.pasterdream.story.wind_tailwind_flight.description", "Fly a total of 2000 blocks with the tailwind effect");
 
         // Patchouli book
 

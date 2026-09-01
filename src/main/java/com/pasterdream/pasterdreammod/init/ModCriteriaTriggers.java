@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDraw
 import com.pasterdream.pasterdreammod.advancement.critereon.OpenDyedreamCrystalChestTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.WindFlightTrigger;
 import net.minecraft.advancements.CriteriaTriggers;
 
 /**
@@ -44,6 +45,9 @@ public class ModCriteriaTriggers {
     /** 玩家已完成指定进度（前置进度检查） */
     public static final HasAdvancementTrigger HAS_ADVANCEMENT = new HasAdvancementTrigger();
 
+    /** 带顺风/逆风效果累计飞行距离 */
+    public static final WindFlightTrigger WIND_FLIGHT = new WindFlightTrigger();
+
     public static void init() {
         CriteriaTriggers.register(USE_BONE_NEEDLE);
         CriteriaTriggers.register(FOUND_TOMB);
@@ -54,5 +58,6 @@ public class ModCriteriaTriggers {
         CriteriaTriggers.register(LOOK_AT_PINK_SHEEP);
         CriteriaTriggers.register(OPEN_DYEDREAM_CRYSTAL_CHEST);
         CriteriaTriggers.register(HAS_ADVANCEMENT);
+        CriteriaTriggers.register(WIND_FLIGHT);
     }
 }

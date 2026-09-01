@@ -1719,6 +1719,12 @@ public class ModItems {
     public static final RegistryObject<Item> WIND_ISLAND_REED = ITEMS.register("wind_island_reed",
             () -> new BlockItem(ModBlocks.WIND_ISLAND_REED.get(), new Item.Properties()));//f18
 
+    // ===== 风之旅途飞行挑战进度图标（隐藏物品，仅作进度显示用）=====
+    public static final RegistryObject<Item> WIND_TAILWIND_ICON = ITEMS.register("wind_tailwind_icon",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> WIND_DEADWIND_ICON = ITEMS.register("wind_deadwind_icon",
+            () -> new Item(new Item.Properties()));
+
     // ===== 阴影植物系列 =====
     public static final RegistryObject<Item> SHADOW_SHORT_ROOTS = ITEMS.register("shadow_short_roots",
             () -> new BlockItem(ModBlocks.SHADOW_SHORT_ROOTS.get(), new Item.Properties()));
