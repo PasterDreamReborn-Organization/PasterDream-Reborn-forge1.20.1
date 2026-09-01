@@ -948,7 +948,7 @@ public class ModBlocks {
         return potted;
     }
 
-    public static final RegistryObject<Block> WIND_KNIGHT_ALTAR = BLOCKS.register("wind_knight_altar", () -> new WindKnightAltarBlock());
+    public static final RegistryObject<Block> BREAK_WIND_KNIGHT_ALTAR = BLOCKS.register("break_wind_knight_altar", () -> new WindKnightAltarBlock());
 
     /** Maps crop Block → its PottedCropBlock. Used by FlowerPotBlockMixin. */
     public static final Map<Block, PottedCropBlock> CROP_TO_POTTED = new java.util.HashMap<>();

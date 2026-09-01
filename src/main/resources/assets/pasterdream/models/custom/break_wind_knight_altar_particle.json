@@ -1,0 +1,6 @@
+{
+  "parent": "pasterdream:displaysettings/break_wind_knight_altar.item",
+  "textures": {
+    "particle": "pasterdream:block/break_wind_knight_altar"
+  }
+}

@@ -238,8 +238,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> PULSE_WIND_RUNNER_CRYSTAL = ITEMS.register("pulse_wind_runner_crystal",
             () -> new PulseWindRunnerCrystalItem());
-    public static final RegistryObject<Item> WIND_KNIGHT_ALTAR = ITEMS.register("wind_knight_altar",
-            () -> new WindKnightAltarItem(ModBlocks.WIND_KNIGHT_ALTAR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BREAK_WIND_KNIGHT_ALTAR = ITEMS.register("break_wind_knight_altar",
+            () -> new WindKnightAltarItem(ModBlocks.BREAK_WIND_KNIGHT_ALTAR.get(), new Item.Properties()));
     public static final RegistryObject<Item> WIND_VANE = ITEMS.register("wind_vane",
             WindVaneItem::new);
     public static final RegistryObject<Item> LIGHT_BALL = ITEMS.register("light_ball",

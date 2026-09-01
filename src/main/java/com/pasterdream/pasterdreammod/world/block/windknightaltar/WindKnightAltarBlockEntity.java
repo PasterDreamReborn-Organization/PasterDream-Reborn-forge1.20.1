@@ -17,7 +17,7 @@ public class WindKnightAltarBlockEntity extends BlockEntity implements GeoBlockE
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public WindKnightAltarBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.WIND_KNIGHT_ALTAR.get(), pos, state);
+        super(ModBlockEntities.BREAK_WIND_KNIGHT_ALTAR.get(), pos, state);
     }
 
     @Override

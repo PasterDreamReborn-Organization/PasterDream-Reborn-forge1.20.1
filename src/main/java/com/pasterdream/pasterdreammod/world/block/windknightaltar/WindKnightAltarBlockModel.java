@@ -6,11 +6,11 @@ import software.bernie.geckolib.model.GeoModel;
 
 public class WindKnightAltarBlockModel extends GeoModel<WindKnightAltarBlockEntity> {
     private static final String[] STAGE_NAMES = {
-            "wind_knight_altar",
-            "wind_knight_altar_torso",
-            "wind_knight_altar_arms",
-            "wind_knight_altar_head",
-            "wind_knight_altar_complete"
+            "break_wind_knight_altar",
+            "break_wind_knight_altar_torso",
+            "break_wind_knight_altar_arms",
+            "break_wind_knight_altar_head",
+            "break_wind_knight_altar_complete"
     };
 
     private String stageName(WindKnightAltarBlockEntity animatable) {
@@ -25,7 +25,7 @@ public class WindKnightAltarBlockModel extends GeoModel<WindKnightAltarBlockEnti
 
     @Override
     public ResourceLocation getTextureResource(WindKnightAltarBlockEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/block/wind_knight_altar.png");
+        return ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/block/break_wind_knight_altar.png");
     }
 
     @Override

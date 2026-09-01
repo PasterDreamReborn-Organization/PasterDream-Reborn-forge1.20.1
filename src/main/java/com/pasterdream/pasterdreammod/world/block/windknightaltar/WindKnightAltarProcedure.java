@@ -36,7 +36,7 @@ public class WindKnightAltarProcedure {
                 if (!player.getAbilities().instabuild)
                     mainHand.shrink(1);
             } else {
-                player.displayClientMessage(Component.translatable("block.pasterdream.wind_knight_altar.need_crystal"), true);
+                player.displayClientMessage(Component.translatable("block.pasterdream.break_wind_knight_altar.need_crystal"), true);
             }
         } else if (stage == 1) {
             if (mainHand.is(ModItems.CONGEAL_WIND_IRON_INGOT.get())) {
@@ -47,7 +47,7 @@ public class WindKnightAltarProcedure {
                     sl.sendParticles(ParticleTypes.SCRAPE, pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5, 12, 0.7, 0.7, 0.7, 0.1);
                 world.setBlock(pos, state.setValue(WindKnightAltarBlock.STAGE, 2), 3);
             } else {
-                player.displayClientMessage(Component.translatable("block.pasterdream.wind_knight_altar.need_torso"), true);
+                player.displayClientMessage(Component.translatable("block.pasterdream.break_wind_knight_altar.need_torso"), true);
             }
         } else if (stage == 2) {
             if (mainHand.is(ModItems.CONGEAL_WIND_IRON_INGOT.get())) {
@@ -58,7 +58,7 @@ public class WindKnightAltarProcedure {
                     mainHand.shrink(1);
                 world.setBlock(pos, state.setValue(WindKnightAltarBlock.STAGE, 3), 3);
             } else {
-                player.displayClientMessage(Component.translatable("block.pasterdream.wind_knight_altar.need_arms"), true);
+                player.displayClientMessage(Component.translatable("block.pasterdream.break_wind_knight_altar.need_arms"), true);
             }
         } else if (stage == 3) {
             if (mainHand.is(ModItems.CONGEAL_WIND_IRON_INGOT.get())) {
@@ -69,7 +69,7 @@ public class WindKnightAltarProcedure {
                     mainHand.shrink(1);
                 world.setBlock(pos, state.setValue(WindKnightAltarBlock.STAGE, 4), 3);
             } else {
-                player.displayClientMessage(Component.translatable("block.pasterdream.wind_knight_altar.need_head"), true);
+                player.displayClientMessage(Component.translatable("block.pasterdream.break_wind_knight_altar.need_head"), true);
             }
         } else if (stage == 4) {
             if (mainHand.is(PotionBottleRegistry.POTION_BOTTLE.get())
@@ -85,7 +85,7 @@ public class WindKnightAltarProcedure {
                         effect.onBottleBreak(stack, sl, player, center);
                 }
             } else {
-                player.displayClientMessage(Component.translatable("block.pasterdream.wind_knight_altar.throw_lightning"), true);
+                player.displayClientMessage(Component.translatable("block.pasterdream.break_wind_knight_altar.throw_lightning"), true);
             }
         }
     }
@@ -95,7 +95,7 @@ public class WindKnightAltarProcedure {
         for (BlockPos p : BlockPos.betweenClosed(center.offset(-SUMMON_RADIUS, -SUMMON_RADIUS, -SUMMON_RADIUS),
                 center.offset(SUMMON_RADIUS, SUMMON_RADIUS, SUMMON_RADIUS))) {
             BlockState state = world.getBlockState(p);
-            if (state.is(ModBlocks.WIND_KNIGHT_ALTAR.get()) && state.getValue(WindKnightAltarBlock.STAGE) == 4) {
+            if (state.is(ModBlocks.BREAK_WIND_KNIGHT_ALTAR.get()) && state.getValue(WindKnightAltarBlock.STAGE) == 4) {
                 summonAt(world, p);
                 return;
             }
