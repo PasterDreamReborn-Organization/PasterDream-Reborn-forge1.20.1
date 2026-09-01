@@ -153,7 +153,7 @@ public class RecipeMatcher
             }
         }
 
-        if (!recipe.getInputFluids().isEmpty() && !inputFluidTypes.isEmpty())
+        if (!inputFluidTypes.isEmpty())
         {   //流体输入槽有配方以外的流体
             return false;
         }
