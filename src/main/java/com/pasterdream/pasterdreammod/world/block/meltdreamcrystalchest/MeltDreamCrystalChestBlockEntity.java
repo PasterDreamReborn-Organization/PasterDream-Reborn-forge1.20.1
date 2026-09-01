@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest;
 
 import com.pasterdream.pasterdreammod.Config;
+import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
 import com.pasterdream.pasterdreammod.init.*;
 import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
 import com.pasterdream.pasterdreammod.world.block.geckolibblock.AnimatableSync;
@@ -163,6 +164,9 @@ public class MeltDreamCrystalChestBlockEntity extends BlockEntity implements Geo
 
         openingPlayer = player;
         level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+
+        // 开启融梦水晶箱获得2点融梦能量
+        MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(player, 2.0);
     }
 
     public static void tick(Level level, BlockPos blockPosition, BlockState blockState, MeltDreamCrystalChestBlockEntity blockEntity)
