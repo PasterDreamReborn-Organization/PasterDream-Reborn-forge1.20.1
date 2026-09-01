@@ -10,6 +10,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -152,13 +153,31 @@ public class TerraswordWaveEntity extends PathfinderMob {
             int particleCount = PARTICLE_COUNT_BASE + sweepingEdge * PARTICLE_COUNT_SWEEPING_BONUS;
             double particleSpread = PARTICLE_SPREAD_BASE + sweepingEdge * PARTICLE_SPREAD_SWEEPING_BONUS;
             double particleVerticalSpread = COLLISION_HEIGHT / 2;
+            double radius = COLLISION_RADIUS_BASE / 2d + sweepingEdge * COLLISION_RADIUS_SWEEPING_BONUS;
+            Vec3 center = new Vec3(this.getX(), this.getY(), this.getZ());
+
+            // 朝向框架：3格高度轴始终垂直于移动方向（水平飞行时保持竖直，斜向/竖直飞行时随之倾斜）
+            Vec3 moveDir = this.getDeltaMovement();
+            if (moveDir.lengthSqr() < 1.0E-7) {
+                moveDir = new Vec3(0, 1, 0);
+            } else {
+                moveDir = moveDir.normalize();
+            }
+            Vec3 up = new Vec3(0, 1, 0);
+            Vec3 side = moveDir.cross(up);
+            if (side.lengthSqr() < 1.0E-7) {
+                side = new Vec3(1, 0, 0);
+            } else {
+                side = side.normalize();
+            }
+            Vec3 heightAxis = moveDir.cross(side).normalize();
+            final Vec3 finalSide = side;
+            final Vec3 finalHeightAxis = heightAxis;
+            final Vec3 finalMoveDir = moveDir;
+
             if (level instanceof ServerLevel serverLevel) {
-                serverLevel.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(),
-                        this.getX(), this.getY(), this.getZ(),
-                        particleCount, particleSpread, particleVerticalSpread, particleSpread, PARTICLE_VELOCITY);
-                serverLevel.sendParticles(ModParticleTypes.TERRASWORD_WAVE_PARTICLE.get(),
-                        this.getX(), this.getY(), this.getZ(),
-                        particleCount, particleSpread, particleVerticalSpread, particleSpread, PARTICLE_VELOCITY);
+                spawnOrientedParticles(serverLevel, center, finalSide, finalHeightAxis, finalMoveDir,
+                        particleCount, particleSpread, particleVerticalSpread);
             }
 
             double pasterAtk = data.getDouble("paster_atk");
@@ -167,14 +186,18 @@ public class TerraswordWaveEntity extends PathfinderMob {
             int fireAspect = data.getInt("fire_aspect");
             int knockback = data.getInt("knockback");
 
-            double radius = COLLISION_RADIUS_BASE / 2d + sweepingEdge * COLLISION_RADIUS_SWEEPING_BONUS;
-            Vec3 center = new Vec3(this.getX(), this.getY(), this.getZ());
-            AABB attackBox = new AABB(center.x - radius, center.y - COLLISION_HEIGHT / 2,
-                    center.z - radius, center.x + radius, center.y + COLLISION_HEIGHT / 2,
-                    center.z + radius);
+            double halfWidth = radius;
+            double halfHeight = COLLISION_HEIGHT / 2;
+            double halfDepth = radius;
+            double searchRange = Math.max(halfWidth, Math.max(halfHeight, halfDepth));
+            AABB attackBox = new AABB(center, center).inflate(searchRange);
             List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class,
                     attackBox, e -> true)
-                    .stream().sorted(Comparator.comparingDouble(e -> e.distanceToSqr(center))).toList();
+                    .stream()
+                    .filter(e -> isInsideOBB(e.getBoundingBox().getCenter(), center, finalSide, finalHeightAxis, finalMoveDir,
+                            halfWidth, halfHeight, halfDepth))
+                    .sorted(Comparator.comparingDouble(e -> e.distanceToSqr(center)))
+                    .toList();
             Player owner = resolveOwner();
             for (LivingEntity target : entities) {
                 if (target != owner && !(target instanceof TerraswordWaveEntity)
@@ -225,7 +248,11 @@ public class TerraswordWaveEntity extends PathfinderMob {
             // Reflect incoming projectiles
             List<Projectile> projectiles = level.getEntitiesOfClass(Projectile.class,
                     attackBox, e -> true)
-                    .stream().filter(p -> !reflectedProjectiles.contains(p.getUUID())).toList();
+                    .stream()
+                    .filter(p -> !reflectedProjectiles.contains(p.getUUID())
+                            && isInsideOBB(p.getBoundingBox().getCenter(), center, finalSide, finalHeightAxis, finalMoveDir,
+                                    halfWidth, halfHeight, halfDepth))
+                    .toList();
             for (Projectile projectile : projectiles) {
                 Entity projOwner = projectile.getOwner();
                 if (owner != null && projOwner != null && projOwner.getUUID().equals(owner.getUUID())) {
@@ -301,6 +328,37 @@ public class TerraswordWaveEntity extends PathfinderMob {
     public void setOwner(Player player) {
         this.owner = player;
         this.ownerUUID = player.getUUID();
+    }
+
+    /**
+     * 判断点是否落在朝向碰撞盒（OBB）内：高度轴垂直于移动方向。
+     */
+    private boolean isInsideOBB(Vec3 point, Vec3 center, Vec3 side, Vec3 heightAxis, Vec3 moveDir,
+                                double halfWidth, double halfHeight, double halfDepth) {
+        Vec3 rel = point.subtract(center);
+        return Math.abs(rel.dot(side)) <= halfWidth
+                && Math.abs(rel.dot(heightAxis)) <= halfHeight
+                && Math.abs(rel.dot(moveDir)) <= halfDepth;
+    }
+
+    /**
+     * 在垂直于移动方向的平面内散布粒子。
+     */
+    private void spawnOrientedParticles(ServerLevel serverLevel, Vec3 center, Vec3 side, Vec3 heightAxis, Vec3 moveDir,
+                                        int count, double spread, double verticalSpread) {
+        for (int i = 0; i < count; i++) {
+            double u = (serverLevel.random.nextDouble() - 0.5) * 2.0;
+            double v = (serverLevel.random.nextDouble() - 0.5) * 2.0;
+            double w = (serverLevel.random.nextDouble() - 0.5) * 2.0;
+            Vec3 offset = side.scale(u * spread)
+                    .add(heightAxis.scale(v * verticalSpread))
+                    .add(moveDir.scale(w * spread));
+            Vec3 pos = center.add(offset);
+            serverLevel.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(),
+                    pos.x, pos.y, pos.z, 1, 0, 0, 0, PARTICLE_VELOCITY);
+            serverLevel.sendParticles(ModParticleTypes.TERRASWORD_WAVE_PARTICLE.get(),
+                    pos.x, pos.y, pos.z, 1, 0, 0, 0, PARTICLE_VELOCITY);
+        }
     }
 
     @Nullable
