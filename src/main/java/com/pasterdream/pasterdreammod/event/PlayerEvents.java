@@ -51,6 +51,8 @@ public class PlayerEvents {
     private static final ResourceLocation ENTER_LAMP_SHADOW_WORLD_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/enter_lamp_shadow_world");
     private static final ResourceLocation BROKEN_NOTE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/broken_note");
     private static final ResourceLocation RESEARCH_TABLE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/research_table");
+    private static final ResourceLocation SHADOW_BLAST_FURNACE_CORE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_blast_furnace_core");
+    private static final ResourceLocation CHOCOLATE_000_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/chocolate_000");
 
     /** 进度 ID → 染梦笔记 content 键列表 */
     private static final java.util.Map<ResourceLocation, java.util.List<String>> ADVANCEMENT_NOTE_CONTENT = java.util.Map.of(
@@ -133,6 +135,14 @@ public class PlayerEvents {
                 }
                 if (!isAdvancementDone(serverPlayer, RESEARCH_TABLE_ADV)
                         && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.RESEARCH_TABLE.get()))) {
+                    ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
+                }
+                if (!isAdvancementDone(serverPlayer, SHADOW_BLAST_FURNACE_CORE_ADV)
+                        && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.SHADOW_BLAST_FURNACE_CORE.get()))) {
+                    ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
+                }
+                if (!isAdvancementDone(serverPlayer, CHOCOLATE_000_ADV)
+                        && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.BLACK_METAL_GRAIN.get()))) {
                     ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
                 }
             }

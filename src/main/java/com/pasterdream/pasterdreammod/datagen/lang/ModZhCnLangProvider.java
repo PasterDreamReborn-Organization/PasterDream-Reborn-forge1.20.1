@@ -1732,6 +1732,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.enter_lamp_shadow_world.description", "深入世界中最黑暗的一面");
         add("advancements.pasterdream.story.sleep_with_shadow.title", "于影共眠");
         add("advancements.pasterdream.story.sleep_with_shadow.description", "利用自制的暮影长床前往灯影");
+        add("advancements.pasterdream.story.shadow_blast_furnace_core.title", "暗炉之心");
+        add("advancements.pasterdream.story.shadow_blast_furnace_core.description", "获得暗影高炉核心");
+        add("advancements.pasterdream.story.chocolate_000.title", "0.0.0 巧克力");
+        add("advancements.pasterdream.story.chocolate_000.description", "制作并获得黑金属粒");
         add("advancements.pasterdream.story.broken_note.title", "浸影回忆");
         add("advancements.pasterdream.story.broken_note.description", "获得一张灯影之下梦境的笔记残片");
         add("advancements.pasterdream.story.research_table.title", "于影研读");

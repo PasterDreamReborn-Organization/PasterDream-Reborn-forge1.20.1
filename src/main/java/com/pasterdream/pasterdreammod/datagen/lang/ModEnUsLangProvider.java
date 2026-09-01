@@ -1553,6 +1553,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.enter_lamp_shadow_world.description", "Delve into the darkest side of the world");
         add("advancements.pasterdream.story.sleep_with_shadow.title", "Sleeping with the Shadow");
         add("advancements.pasterdream.story.sleep_with_shadow.description", "Use a self-made Twilight Shadow Bed to travel to the Lamp Shadow World");
+        add("advancements.pasterdream.story.shadow_blast_furnace_core.title", "Heart of the Dark Furnace");
+        add("advancements.pasterdream.story.shadow_blast_furnace_core.description", "Obtain the Shadow Blast Furnace Core");
+        add("advancements.pasterdream.story.chocolate_000.title", "0.0.0 Chocolate");
+        add("advancements.pasterdream.story.chocolate_000.description", "Craft and obtain Black Metal Grains");
         add("advancements.pasterdream.story.broken_note.title", "Dipped in Shadow Memory");
         add("advancements.pasterdream.story.broken_note.description", "Obtain a fragment of the notes from the dream beneath the lamp shadow");
         add("advancements.pasterdream.story.research_table.title", "Reading in the Shadow");
