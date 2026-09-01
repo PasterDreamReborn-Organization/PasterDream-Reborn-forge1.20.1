@@ -74,6 +74,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.COBWEB_SHADOW_BOOKSHELF.get())
                 .add(ModItems.KEY_SHADOW_BOOKSHELF.get());
 
+        // 寻梦者笔记书可放入原版雕纹书架（ChiseledBookShelf 仅接受 bookshelf_books 标签的物品）
+        tag(ItemTags.BOOKSHELF_BOOKS)
+                .add(ModItems.DREAM_NOTES_BOOK.get())
+                .add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get())
+                .add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get())
+                .add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get());
+
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "shadow_stones")))
                 .add(ModItems.SHADOW_STONE.get())
                 .add(ModItems.SHADOW_STONE_BRICK.get())
