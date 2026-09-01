@@ -1,12 +1,12 @@
 {
-  "name": "pasterdream:lost_windknight_ruins",
+  "name": "pasterdream:break_wind_knight_altar",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "pasterdream:lost_windknight_ruins",
+        "location": "pasterdream:break_wind_knight_altar",
         "projection": "rigid",
         "processors": {
           "processors": [

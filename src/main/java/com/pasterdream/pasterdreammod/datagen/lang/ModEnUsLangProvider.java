@@ -1925,7 +1925,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("structure.pasterdream.twilight_lantern", "Twilight Lantern");
         add("structure.pasterdream.wind_island", "Wind Island");
         add("structure.pasterdream.windmill_lodge", "Windmill Lodge");
-        add("structure.pasterdream.lost_windknight_ruins", "Lost Windknight Ruins");
+        add("structure.pasterdream.break_wind_knight_altar", "Break Wind Knight Altar");
         add("structure.pasterdream.windmoor_tree", "Windmoor Tree");
         add("structure.pasterdream.wind_infested_stone_0", "Wind-infested Stone");
         add("structure.pasterdream.wind_infested_stone_1", "Wind-infested Stone");
