@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.init;
 
+import com.pasterdream.pasterdreammod.advancement.critereon.BreakWindCurtainTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.EatGalaxyJellyAtHeightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundDesertFortressTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundTombTrigger;
@@ -7,6 +8,7 @@ import com.pasterdream.pasterdreammod.advancement.critereon.HasAdvancementTrigge
 import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDrawingTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.OpenDyedreamCrystalChestTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.OpenWindJourneyCrystalChestTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.WindFlightTrigger;
@@ -48,6 +50,12 @@ public class ModCriteriaTriggers {
     /** 带顺风/逆风效果累计飞行距离 */
     public static final WindFlightTrigger WIND_FLIGHT = new WindFlightTrigger();
 
+    /** 穿过破风幕帐 */
+    public static final BreakWindCurtainTrigger BREAK_WIND_CURTAIN = new BreakWindCurtainTrigger();
+
+    /** 在风之旅途世界打开融梦水晶箱 */
+    public static final OpenWindJourneyCrystalChestTrigger OPEN_WIND_JOURNEY_CRYSTAL_CHEST = new OpenWindJourneyCrystalChestTrigger();
+
     public static void init() {
         CriteriaTriggers.register(USE_BONE_NEEDLE);
         CriteriaTriggers.register(FOUND_TOMB);
@@ -59,5 +67,7 @@ public class ModCriteriaTriggers {
         CriteriaTriggers.register(OPEN_DYEDREAM_CRYSTAL_CHEST);
         CriteriaTriggers.register(HAS_ADVANCEMENT);
         CriteriaTriggers.register(WIND_FLIGHT);
+        CriteriaTriggers.register(BREAK_WIND_CURTAIN);
+        CriteriaTriggers.register(OPEN_WIND_JOURNEY_CRYSTAL_CHEST);
     }
 }

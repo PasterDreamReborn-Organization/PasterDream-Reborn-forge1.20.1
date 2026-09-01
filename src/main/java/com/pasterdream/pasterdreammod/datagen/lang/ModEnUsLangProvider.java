@@ -1652,6 +1652,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_kaichu_omamori.description", "Get the Kaichu Omamori. When you actually make the sleeping golden fox's dream come true, she will give you this special keepsake.");
         add("advancements.pasterdream.story.enter_wind_journey.title", "Journey of Wind");
         add("advancements.pasterdream.story.enter_wind_journey.description", "Enter the Journey of Wind dimension");
+        add("advancements.pasterdream.story.wingless_bird.title", "The Wingless Bird Takes Flight");
+        add("advancements.pasterdream.story.wingless_bird.description", "Eat a Wind Runner Jelly");
+        add("advancements.pasterdream.story.break_wind_curtain.title", "Ride the Wind, Break the Curtain");
+        add("advancements.pasterdream.story.break_wind_curtain.description", "Pass through a Break Wind Curtain");
+        add("advancements.pasterdream.story.wind_journey_treasure.title", "Treasure Among the Clouds");
+        add("advancements.pasterdream.story.wind_journey_treasure.description", "Open a Melt Dream Crystal Chest in the Journey of Wind");
+        add("advancements.pasterdream.story.christmas_tree_island.title", "Christmas Tree on the Sky Island");
+        add("advancements.pasterdream.story.christmas_tree_island.description", "Read the note from the Christmas Tree Island");
         add("advancements.pasterdream.story.wind_follow.title", "Wind Accompanies You");
         add("advancements.pasterdream.story.wind_follow.description", "Have experienced both the tailwind and headwind effects");
         add("advancements.pasterdream.story.wind_deadwind_flight.title", "Advancing Against the Wind");

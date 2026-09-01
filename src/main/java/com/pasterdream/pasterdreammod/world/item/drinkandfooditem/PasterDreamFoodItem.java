@@ -7,8 +7,10 @@ import com.pasterdream.pasterdreammod.helper.drinkandfoodproperties.PasterDreamD
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
 import net.minecraft.ChatFormatting;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -135,6 +137,9 @@ public class PasterDreamFoodItem extends Item
             {
                 MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(player, meltDreamEnergyAdd);
             }
+
+            player.awardStat(Stats.ITEM_USED.get(this));
+            CriteriaTriggers.CONSUME_ITEM.trigger(player, stack);
         }
 
         if (!level.isClientSide)
