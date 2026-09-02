@@ -25,7 +25,8 @@
     "StructureTemplateMixin",
     "LocateCommandMixin",
     "LivingEntityElytraFlyMixin",
-    "PlayerElytraFlyMixin"
+    "PlayerElytraFlyMixin",
+    "ItemStackGetAttributeModifiersMixin"
   ],
   "client": [
     "BossHealthOverlayAccessor",
