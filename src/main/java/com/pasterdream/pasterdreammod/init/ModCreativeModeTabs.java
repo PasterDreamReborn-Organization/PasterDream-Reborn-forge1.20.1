@@ -364,20 +364,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SEA_CHARM.get());
                         output.accept(ModItems.CARAPAX_CHARM.get());
                         output.accept(ModItems.WORLDTREE_SEEDPOD.get());
-                        output.accept(ModItems.WIND_SPIRIT.get());
                         output.accept(ModItems.GARLAND.get());
                         output.accept(ModItems.FOURLEAF_CLOVER_CURIO.get());
                         output.accept(ModItems.SNOW_VOW_HEAD.get());
                         output.accept(ModItems.QYM_BUTTERFLY_STAR_HAIRPIN.get());
-                        output.accept(ModItems.BROOCH_OF_WHITE_ORCHID.get());
-                        output.accept(ModItems.SEAL_OF_THE_CORRUPTED.get());
                         output.accept(ModItems.LIGHT_BUTTERFLY_CURIO.get());
                         output.accept(ModItems.BRIGHT_BUTTERFLY_CURIO.get());
-                        output.accept(ModItems.ICE_SHADOW_CURIO.get());
-                        output.accept(ModItems.BOBOJI_CURIO.get());
-                        output.accept(ModItems.SHADOW_BREATH.get());
-                        output.accept(ModItems.MOSS_PHANTOM_MEMBRANE.get());
-                        output.accept(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get());
                         output.accept(ModItems.RABBIT_FOOT_NECKLACE.get());
                         output.accept(ModItems.FEATHER_NECKLACE.get());
                         output.accept(ModItems.HEALTH_NECKLACE.get());
@@ -396,12 +388,22 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MELT_DREAM_ENERGY_RING.get());
                         output.accept(ModItems.STORAGE_BAG.get());
                         output.accept(ModItems.LARGE_STORAGE_BAG.get());
+                        // 灯影之下饰品
+                        output.accept(ModItems.BROOCH_OF_WHITE_ORCHID.get());
+                        output.accept(ModItems.SEAL_OF_THE_CORRUPTED.get());
+                        output.accept(ModItems.SHADOW_BREATH.get());
+                        output.accept(ModItems.CALAIS_SPICE_BOTTLE.get());
+                        output.accept(ModItems.GHOST_FACE.get());
                         output.accept(ModItems.WAR_FLAG.get());
+                        output.accept(ModItems.ICE_SHADOW_CURIO.get());
+                        // 风之旅途饰品
+                        output.accept(ModItems.BOBOJI_CURIO.get());
+                        output.accept(ModItems.MOSS_PHANTOM_MEMBRANE.get());
+                        output.accept(ModItems.LIGHT_MOSS_PHANTOM_MEMBRANE.get());
                         output.accept(ModItems.WIND_KNIGHT_FLAG.get());
                         output.accept(ModItems.PAPER_PLANE.get());
                         output.accept(ModItems.WIND_VANE.get());
-                        output.accept(ModItems.CALAIS_SPICE_BOTTLE.get());
-                        output.accept(ModItems.GHOST_FACE.get());
+                        output.accept(ModItems.WIND_SPIRIT.get());
                     })
                     .build());
 
