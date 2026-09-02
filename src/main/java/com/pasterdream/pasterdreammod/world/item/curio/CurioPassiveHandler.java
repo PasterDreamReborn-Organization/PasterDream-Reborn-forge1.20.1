@@ -84,7 +84,7 @@ public class CurioPassiveHandler {
 
     @SubscribeEvent
     public static void onLivingAttack(LivingAttackEvent event) {
-        // 塞西莉娅的加护：攻击无法命中
+        // 塞西莉亚的加护：攻击无法命中
         if (event.getEntity().hasEffect(ModEffects.CECILIA_BLESSING.get())) {
             event.setCanceled(true);
         }
@@ -92,7 +92,7 @@ public class CurioPassiveHandler {
 
     @SubscribeEvent
     public static void onLivingKnockBack(LivingKnockBackEvent event) {
-        // 塞西莉娅的加护：免疫击退
+        // 塞西莉亚的加护：免疫击退
         if (event.getEntity().hasEffect(ModEffects.CECILIA_BLESSING.get())) {
             event.setCanceled(true);
         }
@@ -100,7 +100,7 @@ public class CurioPassiveHandler {
 
     @SubscribeEvent
     public static void onMobEffectRemove(MobEffectEvent.Remove event) {
-        // 佩戴塞西莉娅的加护 / 失色的塞西莉娅的加护时，效果不可被移除
+        // 佩戴塞西莉亚的加护 / 失色的塞西莉亚的加护时，效果不可被移除
         var instance = event.getEffectInstance();
         if (instance == null || instance.getEffect() != ModEffects.CECILIA_BLESSING.get()) return;
         if (event.getEntity() instanceof Player player
@@ -115,13 +115,13 @@ public class CurioPassiveHandler {
 
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
-        // 塞西莉娅的加护生效中：取消所有伤害
+        // 塞西莉亚的加护生效中：取消所有伤害
         if (event.getEntity().hasEffect(ModEffects.CECILIA_BLESSING.get())) {
             event.setCanceled(true);
             return;
         }
 
-        // 塞西莉娅的加护：常驻强制20%减伤
+        // 塞西莉亚的加护：常驻强制20%减伤
         if (event.getEntity() instanceof Player player
                 && CuriosApi.getCuriosInventory(player)
                     .map(h -> h.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).isPresent())
@@ -150,7 +150,7 @@ public class CurioPassiveHandler {
             }
         }
 
-        // 塞西莉娅的加护 / 苍白骨针护符：拦截致命伤害
+        // 塞西莉亚的加护 / 苍白骨针护符：拦截致命伤害
         if (!(event.getEntity() instanceof Player player)) return;
         // 致死判定（event.getAmount() 已计算抗性，此处加上伤害吸收）
         if (player.getHealth() + player.getAbsorptionAmount() - event.getAmount() > 0.0F) return;
@@ -184,7 +184,7 @@ public class CurioPassiveHandler {
                             player.getX(), player.getY(), player.getZ(), 64, 1, 1, 1, 0.2);
                 }
 
-                // 施加效果：1.5秒塞西莉娅的加护 + 瞬间治疗
+                // 施加效果：1.5秒塞西莉亚的加护 + 瞬间治疗
                 player.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING.get(), 30, 0, false, false));
                 player.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, 0, false, false));
 

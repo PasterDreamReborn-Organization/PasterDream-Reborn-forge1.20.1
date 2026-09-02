@@ -1171,13 +1171,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.COOK_ICON.get(), "料理图标");
         add(ModItems.SHADOW_SILENCE_ICON.get(), "暗影沉默图标");
         add(ModItems.BIND_ICON.get(), "束缚图标");
-        add(ModItems.BLESSING_OF_CECILIA.get(), "塞西莉娅的加护");
+        add(ModItems.BLESSING_OF_CECILIA.get(), "塞西莉亚的加护");
         add("tooltip.pasterdream.blessing_of_cecilia.effect0", "§7▪ §9常驻：强制20%减伤");
         add("tooltip.pasterdream.blessing_of_cecilia.effect1", "§7 受到致命伤害时：");
         add("tooltip.pasterdream.blessing_of_cecilia.effect2", "§7▪ §9获得5秒的伤害免疫");
         add("tooltip.pasterdream.blessing_of_cecilia.effect3", "§7▪ §9并在10秒内获得抗性提升V、生命恢复X、伤害吸收V与速度II");
         add("tooltip.pasterdream.blessing_of_cecilia.lore", "§7§o--我会守护你，直到永远...");
-        add(ModItems.FADED_BLESSING_OF_CECILIA.get(), "失色塞西莉娅的加护");
+        add(ModItems.FADED_BLESSING_OF_CECILIA.get(), "失色塞西莉亚的加护");
         add("tooltip.pasterdream.faded_blessing_of_cecilia.effect0", "§7▪ §9常驻：抗性提升I");
         add("tooltip.pasterdream.faded_blessing_of_cecilia.hint", "§7或许我们应该亲手将它浸泡于融梦涌泉");
         add(ModItems.PALE_BONE_NEEDLE_TALISMAN.get(), "苍白骨针护符");
@@ -1332,7 +1332,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.goldenrod_tea", "秋麒麟茶");
         add("effect.pasterdream.cook", "料理");
         add("effect.pasterdream.dream_wish", "美梦祈愿");
-        add("effect.pasterdream.cecilia_blessing", "塞西莉娅的加护");
+        add("effect.pasterdream.cecilia_blessing", "塞西莉亚的加护");
         add("effect.pasterdream.rest", "休憩");
         add("effect.pasterdream.dream_harp_of_wanderer", "漂泊旅者的染梦竖琴");
         add("effect.pasterdream.guard", "守护");
@@ -1815,7 +1815,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.get_star_wish_rod.title", "鱼儿如浩空繁星");
         add("advancements.pasterdream.get_star_wish_rod.description", "获得占星者的祈愿，去寻求海中更诱人的宝藏吧。");
         add("advancements.pasterdream.get_blessing_of_cecilia.title", "我恨你是一块木头");
-        add("advancements.pasterdream.get_blessing_of_cecilia.description", "获得塞西莉娅的加护，比不死图腾更强大的保命饰品。");
+        add("advancements.pasterdream.get_blessing_of_cecilia.description", "获得塞西莉亚的加护，比不死图腾更强大的保命饰品。");
         add("advancements.pasterdream.get_light_butterfly_curio.title", "黑夜蝴蝶");
         add("advancements.pasterdream.get_light_butterfly_curio.description", "获得夜明蝶，提供夜视的特殊蝴蝶，也许，你应当从最深邃的黑暗寻求升级它的东西。");
         add("advancements.pasterdream.get_qym_doll.title", "可爱即是正义");
