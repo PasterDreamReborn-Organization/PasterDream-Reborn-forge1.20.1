@@ -79,7 +79,7 @@ public class PotionHelper
 
     private static String formatTime(int ticks)
     {
-        if (ticks == 0)
+        if (ticks == 0 || ticks == 1)
         {
             return "";
         }

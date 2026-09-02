@@ -62,7 +62,7 @@ public class MortarRecipeCategory implements IRecipeCategory<MortarJEIRecipe>
             IRecipeSlotBuilder FluidSlot = builder.addSlot(RecipeIngredientRole.INPUT, 6 + (index % 2) * 18, 6 + (index / 2) * 18).setFluidRenderer(1000, false, 16, 16);
             if (inputFluidIngredient.getFluid() != null)
             {
-                FluidSlot.addFluidStack(inputFluidIngredient.getFluid(), inputFluidIngredient.getAmount());
+                FluidSlot.addFluidStack(inputFluidIngredient.getFluid(), inputFluidIngredient.getAmount(), inputFluidIngredient.getNbt());
             }
             else
                 if (inputFluidIngredient.getTag() != null)
@@ -72,7 +72,7 @@ public class MortarRecipeCategory implements IRecipeCategory<MortarJEIRecipe>
                     {
                         for (Fluid fluid : tag)
                         {
-                            FluidSlot.addFluidStack(fluid, inputFluidIngredient.getAmount());
+                            FluidSlot.addFluidStack(fluid, inputFluidIngredient.getAmount(), inputFluidIngredient.getNbt());
                         }
                     }
                 }
@@ -110,7 +110,7 @@ public class MortarRecipeCategory implements IRecipeCategory<MortarJEIRecipe>
             IRecipeSlotBuilder FluidSlot = builder.addSlot(RecipeIngredientRole.OUTPUT, 6 + (index * 18), 68).setFluidRenderer(1000, false, 16, 16);
             if (outputFluidIngredient.getFluid() != null)
             {
-                FluidSlot.addFluidStack(outputFluidIngredient.getFluid(), outputFluidIngredient.getAmount());
+                FluidSlot.addFluidStack(outputFluidIngredient.getFluid(), outputFluidIngredient.getAmount(), outputFluidIngredient.getNbt());
             }
             else
                 if (outputFluidIngredient.getTag() != null)
@@ -120,7 +120,7 @@ public class MortarRecipeCategory implements IRecipeCategory<MortarJEIRecipe>
                     {
                         for (Fluid fluid : tag)
                         {
-                            FluidSlot.addFluidStack(fluid, outputFluidIngredient.getAmount());
+                            FluidSlot.addFluidStack(fluid, outputFluidIngredient.getAmount(), outputFluidIngredient.getNbt());
                         }
                     }
                 }
