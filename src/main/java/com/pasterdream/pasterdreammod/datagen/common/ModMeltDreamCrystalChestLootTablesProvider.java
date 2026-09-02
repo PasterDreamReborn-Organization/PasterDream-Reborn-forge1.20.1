@@ -679,14 +679,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.SWEET_DREAM_MUSIC_DISC.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.SNOWFALL_DREAM_MUSIC_DISC.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.SLIVER_BELL.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -704,6 +696,10 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.BLESSING_OF_CECILIA.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
@@ -1157,10 +1153,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.WIND_JOURNEY_MUSIC_DISC.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.LUCK_ENHANCE_STONE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -1427,10 +1419,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.WIND_JOURNEY_MUSIC_DISC.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
