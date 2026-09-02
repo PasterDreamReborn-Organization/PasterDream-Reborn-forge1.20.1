@@ -903,6 +903,10 @@ public class ModItems {
                             .build()).useDuration(25)
             ));
 
+    public static final RegistryObject<Item> SHADOW_JELLY = ITEMS.register("shadow_jelly",
+            () -> new ShadowJellyItem(new PasterDreamDrinkAndFoodProperties().sanAdd(-10)
+                    .food(new FoodProperties.Builder().nutrition(2).saturationMod(0.1f).alwaysEat().build()).useDuration(25)));
+
     public static final RegistryObject<Item> LIGHT_ORGAN = ITEMS.register("light_organ",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().sanAdd(-1)
                     .food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.GLOWING, 100, 0), 1.0f)

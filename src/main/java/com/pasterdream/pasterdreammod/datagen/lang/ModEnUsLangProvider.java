@@ -110,6 +110,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.fortune_jelly", "§9After eating, gain Luck I (1:00)");
         add(ModItems.WIND_RUNNER_JELLY.get(), "Wind Runner Jelly");
         add("tooltip.pasterdreammod.wind_runner_jelly", "§9After eating, gain Wind Runner (3:00), allowing elytra flight without an elytra");
+        add(ModItems.SHADOW_JELLY.get(), "Shadow Jelly");
+        add("tooltip.pasterdreammod.shadow_jelly", "§9After eating, your shadow difficulty will rise or fall by 1 tier");
+        add("tooltip.pasterdreammod.shadow_jelly.flavor", "§7§O --Only fools and madmen would eat this dreadful jelly");
+        add("message.pasterdream.shadow_jelly.up", "§5Your shadow difficulty increased! Current tier: %s (%s)");
+        add("message.pasterdream.shadow_jelly.down", "§7Your shadow difficulty decreased! Current tier: %s (%s)");
+        add("message.pasterdream.shadow_jelly.unchanged", "§7Your shadow difficulty did not change (current tier: %s)");
+        add("message.pasterdream.shadow_difficulty.tier.0", "Very Easy");
+        add("message.pasterdream.shadow_difficulty.tier.1", "Easy");
+        add("message.pasterdream.shadow_difficulty.tier.2", "Normal");
+        add("message.pasterdream.shadow_difficulty.tier.3", "Hard");
         add("item.minecraft.potion.effect.luck", "Potion of Luck");
         add("item.minecraft.splash_potion.effect.luck", "Splash Potion of Luck");
         add("item.minecraft.lingering_potion.effect.luck", "Lingering Potion of Luck");

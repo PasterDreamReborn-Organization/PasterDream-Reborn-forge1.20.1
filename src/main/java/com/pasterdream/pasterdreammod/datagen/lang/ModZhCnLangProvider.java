@@ -113,6 +113,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.fortune_jelly", "§9食用后，获得幸运I（1:00）");
         add(ModItems.WIND_RUNNER_JELLY.get(), "风行者果冻");
         add("tooltip.pasterdreammod.wind_runner_jelly", "§9食用后，获得风行者（3:00），期间无需鞘翅即可进行鞘翅飞行");
+        add(ModItems.SHADOW_JELLY.get(), "暗影果冻");
+        add("tooltip.pasterdreammod.shadow_jelly", "§9食用后会使自身的暗影难度升高或降低1级");
+        add("tooltip.pasterdreammod.shadow_jelly.flavor", "§7§O --傻子和疯子才会吃的令人难以下咽的果冻");
+        add("message.pasterdream.shadow_jelly.up", "§5你的暗影难度提升了！当前难度：%s 级（%s）");
+        add("message.pasterdream.shadow_jelly.down", "§7你的暗影难度降低了！当前难度：%s 级（%s）");
+        add("message.pasterdream.shadow_jelly.unchanged", "§7你的暗影难度没有变化（当前：%s 级）");
+        add("message.pasterdream.shadow_difficulty.tier.0", "极简单");
+        add("message.pasterdream.shadow_difficulty.tier.1", "简单");
+        add("message.pasterdream.shadow_difficulty.tier.2", "普通");
+        add("message.pasterdream.shadow_difficulty.tier.3", "困难");
         add("item.minecraft.potion.effect.luck", "幸运药水");
         add("item.minecraft.splash_potion.effect.luck", "喷溅型幸运药水");
         add("item.minecraft.lingering_potion.effect.luck", "滞留型幸运药水");
