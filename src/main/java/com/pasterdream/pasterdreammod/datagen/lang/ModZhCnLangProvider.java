@@ -2596,6 +2596,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.small_ballon_9", "小气球");
         add("structure.pasterdream.small_ballon_10", "小气球");
         add("structure.pasterdream.christmas_tree_island", "圣诞树岛");
+        add("structure.pasterdream.windbell_cage", "风铃笼");
         add("structure.pasterdream.fluffy_wind_church", "萦风教堂");
         add("structure.pasterdream.aaroncos_arena_portal", "亚伦柯斯竞技场传送门");
         add("structure.pasterdream.shadow_underground_workroom", "阴影地下工作室");
