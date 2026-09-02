@@ -2069,6 +2069,8 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('b', ModItems.SOUL_DUST.get())
                 .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":magic_stone_from_ice_bud");
+        // 染梦浮冰：9×染梦冰 → 1
+        RecipeHelpers.storageCompress(pWriter, ModBlocks.DYEDREAM_ICE.get(), ModBlocks.DYEDREAM_PACKED_ICE.get(), PasterDreamMod.MOD_ID);
     }
 
     // ===== 方解石系列配方 =====
