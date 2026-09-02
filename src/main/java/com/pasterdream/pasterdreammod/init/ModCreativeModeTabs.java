@@ -93,6 +93,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MILKY_WAY_JELLY.get());
                         output.accept(ModItems.FORTUNE_JELLY.get());
                         output.accept(ModItems.WIND_RUNNER_JELLY.get());
+                        output.accept(ModItems.SHADOW_JELLY.get());
                         output.accept(ModItems.MELT_DREAM_COTTON_CANDY.get());
                         output.accept(ModItems.YINHUL_COTTON_CANDY.get());
                         output.accept(ModItems.JELLYFISH_MUD.get());

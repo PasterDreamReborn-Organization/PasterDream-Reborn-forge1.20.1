@@ -65,9 +65,7 @@ public class ModDreamNotesBookContentRelation
         DreamNotesBookRegistry.register("沉淀阴影",
                 Component.translatable("book.pasterdream.title.沉淀阴影"),
                 "琴雨梦",
-                Component.translatable("pasterdream.seniors_dream.entry.deposition_shadow.page0").copy()
-                        .append("\n").append(Component.translatable("pasterdream.seniors_dream.entry.deposition_shadow.page1"))
-                        .append("\n").append(Component.translatable("pasterdream.seniors_dream.entry.deposition_shadow.page2")),
+                Component.translatable("book.pasterdream.content.沉淀阴影"),
                 GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);
         DreamNotesBookRegistry.register("灯影游记 其一",
                 Component.translatable("book.pasterdream.title.灯影游记 其一"),
@@ -77,8 +75,7 @@ public class ModDreamNotesBookContentRelation
         DreamNotesBookRegistry.register("暗影地牢",
                 Component.translatable("book.pasterdream.title.暗影地牢"),
                 "琴雨梦",
-                Component.translatable("pasterdream.seniors_dream.entry.shadow_dungeon.page0").copy()
-                        .append("\n").append(Component.translatable("pasterdream.seniors_dream.entry.shadow_dungeon.page1")),
+                Component.translatable("book.pasterdream.content.暗影地牢"),
                 GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);
         DreamNotesBookRegistry.register("暗影地牢入口", Component.translatable("book.pasterdream.title.暗影地牢入口"), "卡莱", Component.translatable("book.pasterdream.content.暗影地牢入口"), GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);
         DreamNotesBookRegistry.register("欺诈", Component.translatable("book.pasterdream.title.欺诈"), "卡莱", Component.translatable("book.pasterdream.content.欺诈"), GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 140, 180, CONTENT_START_X, CONTENT_START_Y, CONTENT_FINAL_X, CONTENT_FINAL_Y, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD, 0xFFFFFFFF);

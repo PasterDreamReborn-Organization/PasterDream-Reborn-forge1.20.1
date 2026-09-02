@@ -1,0 +1,33 @@
+{
+  "type": "pasterdream:mortar",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:nightmare_fuel",
+      "count": 2
+    },
+    {
+      "item": "minecraft:slime_ball",
+      "count": 1
+    },
+    {
+      "item": "minecraft:sugar",
+      "count": 2
+    },
+    {
+      "item": "pasterdream:shadow_fungus",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:white_orchid_flower",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:shadow_jelly",
+      "count": 1
+    }
+  ]
+}

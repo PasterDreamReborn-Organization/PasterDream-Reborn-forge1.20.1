@@ -2731,6 +2731,19 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                                 has(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get())),
                 pWriter, "wind_runner_jelly");
 
+        // 暗影果冻：噩梦燃料 + 粘液球 + 糖 + 阴影蘑菇 + 白厄花（研钵作为工具不消耗）
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SHADOW_JELLY.get(), 1)
+                        .requires(ModItems.MORTAR.get())
+                        .requires(ModItems.NIGHTMARE_FUEL.get(), 2)
+                        .requires(Items.SLIME_BALL)
+                        .requires(Items.SUGAR, 2)
+                        .requires(ModItems.SHADOW_FUNGUS.get())
+                        .requires(ModItems.WHITE_ORCHID_FLOWER.get())
+                        .unlockedBy(getHasName(ModItems.NIGHTMARE_FUEL.get()),
+                                has(ModItems.NIGHTMARE_FUEL.get())),
+                pWriter, "shadow_jelly");
+
         // 厚重阴影 (4 shadow → 1 thick_shadow)
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.THICK_SHADOW.get(), 1)
                 .pattern("aa")
