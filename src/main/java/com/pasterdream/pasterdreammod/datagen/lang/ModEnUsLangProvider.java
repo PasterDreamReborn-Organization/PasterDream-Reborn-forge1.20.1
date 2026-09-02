@@ -2021,6 +2021,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // ===== Wind Journey: wind direction mechanic =====
         add(ModItems.WIND_VANE.get(), "Wind Vane");
         add(ModItems.WIND_KNIGHT_FLAG.get(), "Wind Knight Flag");
+        add(ModItems.FRACTURED_ANGEL_STATUE.get(), "Fractured Angel Statue");
         add(ModItems.PAPER_PLANE.get(), "Paper Plane");
         add("effect.pasterdream.tailwind", "Tailwind");
         add("effect.pasterdream.deadwind", "Deadwind");
@@ -2031,6 +2032,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.wind_vane.desc", "§7Detects the current wind direction and the player's angle");
         add("message.pasterdream.wind_vane.angle", "Angle: %s Direction: %s");
         add("tooltip.pasterdream.wind_knight_flag.effect1", "§7▪ §9Treats deadwind as tailwind");
+        add("tooltip.pasterdream.fractured_angel_statue.effect1", "§7▪ §9When damaged, has a 10% chance to gain 1s of invulnerability");
+        add("tooltip.pasterdream.fractured_angel_statue.effect2", "§7▪ §9Immune to kinetic damage from elytra flight collisions");
+        add("tooltip.pasterdream.fractured_angel_statue.effect3", "§7▪ §9Immune to fall damage");
+        add("tooltip.pasterdream.fractured_angel_statue.lore", "§7§o-- The boneless angel, Cecilia");
         add("tooltip.pasterdream.paper_plane.effect1", "§7▪ §9Amplifies the wind's effect on yourself");
         add("tooltip.pasterdream.paper_plane.description", "§7§o-- The childhood we left behind");
         add("message.pasterdream.wind_vane.direction.0", "Current wind: §aNorth Wind");

@@ -404,6 +404,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PAPER_PLANE.get());
                         output.accept(ModItems.WIND_VANE.get());
                         output.accept(ModItems.WIND_SPIRIT.get());
+                        output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
                     })
                     .build());
 

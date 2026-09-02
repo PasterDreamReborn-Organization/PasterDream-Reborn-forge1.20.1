@@ -1161,6 +1161,9 @@ public class ModItems {
     public static final RegistryObject<Item> WIND_KNIGHT_FLAG = ITEMS.register("wind_knight_flag",
             WindKnightFlagItem::new);
 
+    public static final RegistryObject<Item> FRACTURED_ANGEL_STATUE = ITEMS.register("fractured_angel_statue",
+            FracturedAngelStatueItem::new);
+
     public static final RegistryObject<Item> PAPER_PLANE = ITEMS.register("paper_plane",
             PaperPlaneItem::new);
 
