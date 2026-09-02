@@ -1,38 +1,35 @@
 {
   "type": "pasterdream:dream_cauldron",
-  "fluidInputs":
-  [
+  "fluidInputs": [
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:health_boost\",lvl:0,time:12000}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:night_vision\",lvl:0,time:9600}]}"
     },
     {
       "fluid": "pasterdream:guiding_drug",
       "amount": 125
     }
   ],
-  "itemInputs":
-  [
+  "itemInputs": [
     {
-      "item": "minecraft:golden_apple",
+      "item": "pasterdream:malva_sinensis_cavan",
       "count": 1
     },
     {
-      "item": "pasterdream:life_crystal",
-      "count": 3
+      "item": "pasterdream:cloud_crop_age_1",
+      "count": 1
     },
     {
       "item": "pasterdream:light_ball",
       "count": 1
     }
   ],
-  "fluidOutputs":
-  [
+  "fluidOutputs": [
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:health_boost\",lvl:0,time:24000}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:slow_falling\",lvl:0,time:7200}]}"
     }
   ]
 }

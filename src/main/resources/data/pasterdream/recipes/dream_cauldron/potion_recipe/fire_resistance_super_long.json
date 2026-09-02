@@ -5,7 +5,7 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:health_boost\",lvl:0,time:12000}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:fire_resistance\",lvl:0,time:9600}]}"
     },
     {
       "fluid": "pasterdream:guiding_drug",
@@ -15,12 +15,12 @@
   "itemInputs":
   [
     {
-      "item": "minecraft:golden_apple",
-      "count": 1
+      "item": "minecraft:snowball",
+      "count": 8
     },
     {
-      "item": "pasterdream:life_crystal",
-      "count": 3
+      "item": "pasterdream:dyedream_ice",
+      "count": 1
     },
     {
       "item": "pasterdream:light_ball",
@@ -32,7 +32,7 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:health_boost\",lvl:0,time:24000}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:fire_resistance\",lvl:0,time:18000}]}"
     }
   ]
 }
