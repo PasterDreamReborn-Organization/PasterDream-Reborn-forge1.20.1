@@ -1693,6 +1693,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.dyedream_crack.description", "在下一次的梦中醒来，裂隙会与你的梦境共鸣。");
         add("advancements.pasterdream.story.dyedream_world.title", "哥德堡安眠曲");
         add("advancements.pasterdream.story.dyedream_world.description", "访问染梦之境");
+        add("advancements.pasterdream.story.misty_dreaming_lotus.title", "冶梦花莲");
+        add("advancements.pasterdream.story.misty_dreaming_lotus.description", "依照寻梦者的提示，在冶梦莲四周种下花草完成花园解密，冶梦的花莲将化作迷梦冶梦莲。");
+        add("advancements.pasterdream.story.queer_soup.title", "梦随风起");
+        add("advancements.pasterdream.story.queer_soup.description", "合成奇异炖菜，迷梦萦绕于心。风将带着你的梦，飞向天空的尽头。");
         add("advancements.pasterdream.story.dream_fertilizer.title", "不可食用果冻");
         add("advancements.pasterdream.story.dream_fertilizer.description", "制作并使用衍梦肥泥挥洒梦境的土地");
         add("advancements.pasterdream.story.dyedream_dust.title", "把梦捧在手心里!");

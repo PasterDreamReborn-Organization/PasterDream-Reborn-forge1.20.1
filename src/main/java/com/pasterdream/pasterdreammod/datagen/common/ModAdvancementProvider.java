@@ -131,6 +131,38 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/dyedream_world"), existingFileHelper);
 
+            // ========== 哥德堡安眠曲子进度：冶梦花莲 ==========
+            Advancement mistyDreamingLotus = Advancement.Builder.advancement()
+                    .parent(dyedreamWorld)
+                    .display(
+                            ModItems.MISTY_DREAMING_LOTUS.get(),
+                            Component.translatable("advancements.pasterdream.story.misty_dreaming_lotus.title"),
+                            Component.translatable("advancements.pasterdream.story.misty_dreaming_lotus.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("has_misty_dreaming_lotus", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.MISTY_DREAMING_LOTUS.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/misty_dreaming_lotus"), existingFileHelper);
+
+            // ========== 冶梦花莲子进度：梦随风起 ==========
+            Advancement.Builder.advancement()
+                    .parent(mistyDreamingLotus)
+                    .display(
+                            ModItems.QUEER_SOUP.get(),
+                            Component.translatable("advancements.pasterdream.story.queer_soup.title"),
+                            Component.translatable("advancements.pasterdream.story.queer_soup.description"),
+                            null,
+                            FrameType.GOAL,
+                            true, true, false
+                    )
+                    .addCriterion("has_queer_soup", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ModItems.QUEER_SOUP.get()))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/queer_soup"), existingFileHelper);
+
             // ========== 染梦世界子进度：方块人会梦见粉红羊吗 ==========
             Advancement.Builder.advancement()
                     .parent(dyedreamWorld)

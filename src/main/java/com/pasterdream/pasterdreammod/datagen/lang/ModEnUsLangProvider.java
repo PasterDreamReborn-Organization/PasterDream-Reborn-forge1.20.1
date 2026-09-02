@@ -1514,6 +1514,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.dyedream_crack.description", "Wake up in the next dream, the crack will resonate with your dream.");
         add("advancements.pasterdream.story.dyedream_world.title", "Gothenburg Lullaby");
         add("advancements.pasterdream.story.dyedream_world.description", "Visit the Dyedream World");
+        add("advancements.pasterdream.story.misty_dreaming_lotus.title", "The Dream-Forging Lotus");
+        add("advancements.pasterdream.story.misty_dreaming_lotus.description", "Follow the dream seeker's hints and plant the flowers around the Dreaming Lotus to complete the garden decryption — the dream-forging lotus will transform into a Misty Dreaming Lotus.");
+        add("advancements.pasterdream.story.queer_soup.title", "Dreams Rise with the Wind");
+        add("advancements.pasterdream.story.queer_soup.description", "Craft the Queer Soup and let the misty dream linger in your heart. The wind will carry your dreams to the end of the sky.");
         add("advancements.pasterdream.story.dream_fertilizer.title", "Inedible Jelly");
         add("advancements.pasterdream.story.dream_fertilizer.description", "Craft and use Dream Fertilizer to spread on the dream land");
         add("advancements.pasterdream.story.dyedream_dust.title", "Holding the Dream in Your Palm!");
