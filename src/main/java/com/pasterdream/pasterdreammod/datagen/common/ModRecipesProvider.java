@@ -3240,6 +3240,18 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                         "melt_dream_energy_ring_from_embryo"));
 
+        // 草莓甜心 = 染梦木板 + 染梦合金锭 + 线 + 银色铃铛
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.STRAWBERRY_HEART.get(), 1)
+                .pattern("aba")
+                .pattern("cdc")
+                .pattern("aba")
+                .define('a', ModItems.DYEDREAM_PLANKS.get())
+                .define('b', ModItems.DYEDREAM_ALLOY_INGOT.get())
+                .define('c', Items.STRING)
+                .define('d', ModItems.SLIVER_BELL.get())
+                .unlockedBy(getHasName(ModItems.SLIVER_BELL.get()), has(ModItems.SLIVER_BELL.get()))
+                .save(pWriter);
+
         // ===== 金狐狸交易配方 =====
         saveGoldenFoxTrade(pWriter, Ingredient.of(Items.GOLDEN_APPLE), new ItemStack(Items.ENCHANTED_GOLDEN_APPLE),
                 "golden_fox_trade_golden_apple");
