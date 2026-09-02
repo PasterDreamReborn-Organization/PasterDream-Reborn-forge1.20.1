@@ -1528,9 +1528,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.magnifying_glass_of_sherry.4", "§7▪ §9近战伤害 +100%");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.5", "§7▪ §9空手时伤害 +200%");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§7▪ §4无法释放武器战技");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.7", "§7▪ §9获得防火效果，免疫火焰伤害");
         add("message.pasterdream.skill_locked", "§c战技被锁，无法释放");
-        add("tooltip.pasterdream.magnifying_glass_of_sherry.7", "§7bei_xu的专属遗物。");
-        add("tooltip.pasterdream.magnifying_glass_of_sherry.8", "§6PasterDream: Reborn 文案");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.8", "§7bei_xu的专属遗物。");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.9", "§6PasterDream: Reborn 文案");
 
         // 琴雨梦装备
         add(ModItems.QYM_CAT_EARS.get(), "琴雨梦的猫耳发卡");
