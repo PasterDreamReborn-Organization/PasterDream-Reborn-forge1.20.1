@@ -676,7 +676,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("button.pasterdream.copy_button", "复制");
         add("button.pasterdream.research_button", "研究");
 
-        add("tooltip.pasterdreammod.magic_stone", "§7§o哪个魔法师的兜里不会踹几块魔法石呢？");
+        add("tooltip.pasterdreammod.magic_stone", "§7§o哪个魔法使的兜里不会揣几块魔法石呢？");
         add("tooltip.pasterdreammod.goldenrod_tea", "§d持续移除饥饿与反胃效果");
         add("tooltip.pasterdreammod.glass_cup_of_honey_juice", "§d饮用后清空所有负面效果");
         add("tooltip.pasterdreammod.dyedream_perfume", "§d清空未睡眠天数，幻翼不会攻击你");
