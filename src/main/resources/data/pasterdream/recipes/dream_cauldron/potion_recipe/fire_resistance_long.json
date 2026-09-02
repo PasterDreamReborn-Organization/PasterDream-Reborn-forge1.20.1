@@ -3,9 +3,8 @@
   "fluidInputs":
   [
     {
-      "fluid": "pasterdream:potion",
-      "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:health_boost\",lvl:0,time:24000}]}"
+      "fluid": "minecraft:water",
+      "amount": 1000
     },
     {
       "fluid": "pasterdream:guiding_drug",
@@ -15,11 +14,11 @@
   "itemInputs":
   [
     {
-      "item": "minecraft:glowstone_dust",
+      "item": "minecraft:magma_cream",
       "count": 1
     },
     {
-      "item": "pasterdream:singularity_fern",
+      "item": "minecraft:redstone",
       "count": 1
     }
   ],
@@ -28,7 +27,7 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:health_boost\",lvl:2,time:7200}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:fire_resistance\",lvl:0,time:9600}]}"
     }
   ]
 }

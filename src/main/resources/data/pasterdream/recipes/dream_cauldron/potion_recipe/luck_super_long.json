@@ -16,11 +16,11 @@
   [
     {
       "item": "minecraft:emerald",
-      "count": 1
+      "count": 5
     },
     {
-      "item": "pasterdream:fourleaf_clover",
-      "count": 1
+      "item": "pasterdream:dyedream_dust",
+      "count": 2
     },
     {
       "item": "pasterdream:light_ball",
