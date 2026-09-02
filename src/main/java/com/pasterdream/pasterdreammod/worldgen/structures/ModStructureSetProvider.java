@@ -25,7 +25,9 @@ public class ModStructureSetProvider implements DataProvider
     private static final Map<String, int[]> GROUP_CONFIG = Map.of(
         "dyedream_structures", new int[]{14, 6},
         "dyedream_bubbles",    new int[]{4, 2},
-        "shadow_structures",   new int[]{12, 6}
+        "shadow_structures",   new int[]{12, 6},
+        // 权重 2:1 分摊：圣诞树岛 (1/3)/52 ≈ 原频率 1/157，风铃笼 (2/3)/52 ≈ 圣诞树的 2 倍
+        "wind_journey_structures", new int[]{52, 26}
     );
 
     public ModStructureSetProvider(PackOutput output, List<StructureGenerationConfig> configs)

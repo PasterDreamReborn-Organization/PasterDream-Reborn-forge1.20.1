@@ -130,7 +130,17 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_8", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 301706210, 1, null, false));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_9", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 306900320, 1, null, false));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:small_ballon_10", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 70, 120, "", 64, 1, false, "rigid", "minecraft:empty", 1, 10, 2, 1855702116, 1, null, false));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:christmas_tree_island", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 55, 80, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 157, 78, 885566331, 1, null, false));
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:christmas_tree_island", "pasterdream:misty_dream_cloud_layer", "surface_structures", "none", "very_biased_to_bottom", 55, 80, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 157, 78, 885566331, 1, "wind_journey_structures", false));
+
+        // --- 风之旅途稀有结构（共享结构集 wind_journey_structures，与圣诞树岛同集竞争） ---
+        // windbell_cage 参照染梦世界浮空结构注册（绝对高度），权重为圣诞树岛的 2 倍（2 : 1），
+        // 绝对高度 150 高于云海所有结构的最高生成高度（bocchi/hakurei_reimu 78~140）；
+        // 结构高 72 格，顶部 222 < 维度可建造高度 256。因高位结构不能做地形投影
+        // （150 + 地表 54~75 会超出建造高度），使用静态 structure/template_pool JSON（无 heightmap），
+        // 生成高度为真实绝对高度。spacing 129 使权重公式 round(258/129)=2 与权重一致，
+        // 实际间距由 ModStructureSetProvider 的 GROUP_CONFIG wind_journey_structures 控制（52/26，
+        // 原 157/78 ÷ 3：权重 2:1 分摊后圣诞树岛保持原频率 1/157，风铃笼为圣诞树的 2 倍 1/78）。
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:windbell_cage", "pasterdream:wind_journey_world_biome", "surface_structures", "none", 150, "", 64, 1, false, "rigid", "minecraft:empty", 1, 129, 64, 873019642, 2, "wind_journey_structures", false));
 
         return STRUCTURES;
     }
