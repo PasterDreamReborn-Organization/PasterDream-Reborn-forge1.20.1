@@ -1348,9 +1348,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.magnifying_glass_of_sherry.4", "§7▪ §9+100% Melee Damage");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.5", "§7▪ §9+200% Damage when bare-handed");
         add("tooltip.pasterdream.magnifying_glass_of_sherry.6", "§7▪ §4Weapon skills cannot be released");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.7", "§7▪ §9Fire Resistance, immune to fire damage");
         add("message.pasterdream.skill_locked", "§cSkill locked");
-        add("tooltip.pasterdream.magnifying_glass_of_sherry.7", "§7Exclusive memento of bei_xu.");
-        add("tooltip.pasterdream.magnifying_glass_of_sherry.8", "§6PasterDream: Reborn Copywriter");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.8", "§7Exclusive memento of bei_xu.");
+        add("tooltip.pasterdream.magnifying_glass_of_sherry.9", "§6PasterDream: Reborn Copywriter");
 
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");

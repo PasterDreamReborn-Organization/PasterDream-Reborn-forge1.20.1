@@ -3,6 +3,9 @@ package com.pasterdream.pasterdreammod.world.item.curio;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -42,6 +45,16 @@ public class MagnifyingGlassOfSherryItem extends Item implements ICurioItem {
     }
 
     @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        LivingEntity entity = slotContext.entity();
+        if (entity == null || entity.level().isClientSide()) return;
+        if (entity.getRemainingFireTicks() > 0) {
+            entity.clearFire();
+        }
+        entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2, 0, false, false));
+    }
+
+    @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
         list.add(Component.translatable("tooltip.pasterdream.magnifying_glass_of_sherry.1"));
         list.add(Component.translatable("tooltip.pasterdream.magnifying_glass_of_sherry.2"));
@@ -51,5 +64,6 @@ public class MagnifyingGlassOfSherryItem extends Item implements ICurioItem {
         list.add(Component.translatable("tooltip.pasterdream.magnifying_glass_of_sherry.6"));
         list.add(Component.translatable("tooltip.pasterdream.magnifying_glass_of_sherry.7"));
         list.add(Component.translatable("tooltip.pasterdream.magnifying_glass_of_sherry.8"));
+        list.add(Component.translatable("tooltip.pasterdream.magnifying_glass_of_sherry.9"));
     }
 }
