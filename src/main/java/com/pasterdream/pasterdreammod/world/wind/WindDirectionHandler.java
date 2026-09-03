@@ -171,12 +171,12 @@ public final class WindDirectionHandler {
 
     private static void applyTailwind(Player player) {
         int amplifier = (int) player.getPersistentData().getDouble("player_tailwind_force");
-        player.addEffect(new MobEffectInstance(ModEffects.TAILWIND.get(), 20, amplifier));
+        player.addEffect(new MobEffectInstance(ModEffects.TAILWIND.get(), 20, amplifier, false, false));
     }
 
     private static void applyDeadwind(Player player) {
         int amplifier = (int) player.getPersistentData().getDouble("player_deadwind_force");
-        player.addEffect(new MobEffectInstance(ModEffects.DEADWIND.get(), 20, amplifier));
+        player.addEffect(new MobEffectInstance(ModEffects.DEADWIND.get(), 20, amplifier, false, false));
     }
 
     /**
