@@ -1,6 +1,6 @@
 ---
 name: recipe-container
-description: 新增/修改配方或容器类工艺方块（陶盆、法术工厂、研钵、研究台、梦蓄器、酿造、金狐交易）。覆盖通用配方框架、容器配方平衡、NBT 保留配方、JEI 兼容。当用户要加配方、做容器方块、处理带 craftRemainder 容器的合成配方时使用。
+description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、研钵、研究台、梦蓄器、酿造、金狐交易）。覆盖通用配方框架、容器配方平衡、NBT 保留配方、JEI 兼容。当用户要加配方、做容器方块、处理带 craftRemainder 容器的合成配方时使用。
 ---
 
 # 配方与容器系统
@@ -40,7 +40,7 @@ description: 新增/修改配方或容器类工艺方块（陶盆、法术工厂
 | 方块 | 包 | 模式 |
 |------|-----|------|
 | 陶盆 | `world/block/claypan/` | 独立工艺方块 |
-| 法术工厂 | `world/block/dreamcauldron/` | GeckoLib 渲染 |
+| 梦之釜 | `world/block/dreamcauldron/` | GeckoLib 渲染 |
 | 梦蓄器 | `world/block/dreamaccumulator/` | 按群系条件产出 |
 | 研究台 | `world/block/researchtable/` | Copy + Research 双模式 |
 | 研钵（物品容器） | `world/item/mortar/` | 物品型容器，含 NBT 同步 |
