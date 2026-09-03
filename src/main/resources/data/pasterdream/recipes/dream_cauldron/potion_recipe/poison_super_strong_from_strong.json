@@ -1,0 +1,38 @@
+{
+  "type": "pasterdream:dream_cauldron",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:poison\",lvl:1,time:420}]}"
+    },
+    {
+      "fluid": "pasterdream:guiding_drug",
+      "amount": 125
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:jungle_spore",
+      "count": 4
+    },
+    {
+      "item": "pasterdream:pink_mushroom",
+      "count": 4
+    },
+    {
+      "item": "pasterdream:singularity_fern",
+      "count": 1
+    }
+  ],
+  "fluidOutputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:poison\",lvl:2,time:800}]}"
+    }
+  ]
+}
