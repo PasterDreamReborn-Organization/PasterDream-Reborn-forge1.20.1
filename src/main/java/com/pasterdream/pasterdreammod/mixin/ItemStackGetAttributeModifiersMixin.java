@@ -36,22 +36,20 @@ public class ItemStackGetAttributeModifiersMixin
 
         if (tag != null)
         {
-            double AttackBoost = 0;
-            if (tag.contains("AttackBoost", Tag.TAG_DOUBLE))
-            {
-                AttackBoost = tag.getDouble("AttackBoost");
-            }
-
-            double LuckBoost = 0;
-            if (tag.contains("LuckBoost", Tag.TAG_DOUBLE))
-            {
-                LuckBoost = tag.getDouble("LuckBoost");
-            }
-
             Multimap<Attribute, AttributeModifier> map = cir.getReturnValue();
             Multimap<Attribute, AttributeModifier> newMap = HashMultimap.create(map);
-            newMap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ATTACK_BOOST_UUID, "AttackBoost", AttackBoost, AttributeModifier.Operation.ADDITION));
-            newMap.put(Attributes.LUCK, new AttributeModifier(LUCK_BOOST_UUID, "LuckBoost", LuckBoost, AttributeModifier.Operation.ADDITION));
+
+            if (tag.contains("AttackBoost", Tag.TAG_DOUBLE))
+            {
+                double AttackBoost = tag.getDouble("AttackBoost");
+                newMap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ATTACK_BOOST_UUID, "AttackBoost", AttackBoost, AttributeModifier.Operation.ADDITION));
+            }
+
+            if (tag.contains("LuckBoost", Tag.TAG_DOUBLE))
+            {
+                double LuckBoost = tag.getDouble("LuckBoost");
+                newMap.put(Attributes.LUCK, new AttributeModifier(LUCK_BOOST_UUID, "LuckBoost", LuckBoost, AttributeModifier.Operation.ADDITION));
+            }
 
             cir.setReturnValue(newMap);
         }
