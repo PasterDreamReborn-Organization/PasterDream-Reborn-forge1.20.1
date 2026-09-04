@@ -817,7 +817,7 @@ public class ModItems {
                                             stack -> stack.is(ModItemTags.GALAXY_JELLY_BOOST)).isPresent())
                                     .orElse(false);
 
-                    if (hasBoost) {
+                    if (hasBoost || entity.hasEffect(ModEffects.WIND_RUNNER.get())) {
                         entity.setDeltaMovement(entity.getDeltaMovement().x, 2, entity.getDeltaMovement().z);
                         entity.hurtMarked = true;
                         if (entity instanceof Player player) {
