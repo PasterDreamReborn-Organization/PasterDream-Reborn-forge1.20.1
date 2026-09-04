@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
+import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.helper.DreamDimensionHelper;
 import com.pasterdream.pasterdreammod.helper.GameModeHelper;
@@ -526,25 +527,23 @@ public class CurioPassiveHandler {
     }
 
     /**
-     * 风精灵：佩戴后玩家发射的弹射物速度提高 50%
+     * 箭矢速度属性：弹射物进入世界时按射手该属性值加速（值即额外倍率，速度 ×(1+值)）
      */
     @SubscribeEvent
-    public static void onWindSpiritProjectileJoin(EntityJoinLevelEvent event) {
+    public static void onArrowVelocityProjectileJoin(EntityJoinLevelEvent event) {
         if (event.getLevel().isClientSide()) return;
         if (!(event.getEntity() instanceof Projectile projectile)) return;
         if (!(projectile.getOwner() instanceof Player player)) return;
         // 防止重复加速（跨维度传送、克隆等再次进入世界时不再叠加）
-        if (projectile.getPersistentData().getBoolean("pasterdream_wind_spirit_boosted")) return;
+        if (projectile.getPersistentData().getBoolean("pasterdream_arrow_velocity_applied")) return;
 
-        boolean hasWindSpirit = CuriosApi.getCuriosInventory(player)
-                .map(h -> h.findFirstCurio(ModItems.WIND_SPIRIT.get()).isPresent())
-                .orElse(false);
-        if (!hasWindSpirit) return;
+        double bonus = player.getAttributeValue(ModAttributes.ARROW_VELOCITY.get());
+        if (bonus == 0.0) return;
 
         Vec3 motion = projectile.getDeltaMovement();
         if (motion.lengthSqr() <= 0.0) return;
-        projectile.setDeltaMovement(motion.scale(1.5));
-        projectile.getPersistentData().putBoolean("pasterdream_wind_spirit_boosted", true);
+        projectile.setDeltaMovement(motion.scale(1.0 + bonus));
+        projectile.getPersistentData().putBoolean("pasterdream_arrow_velocity_applied", true);
     }
 
     /**

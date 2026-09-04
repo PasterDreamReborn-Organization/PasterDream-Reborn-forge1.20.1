@@ -689,7 +689,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7All creatures with souls in this world have dreams\nThose fleeting memories that cannot be recalled upon waking\nShatter and melt, buried across the world, condensing into crystals\nWaiting to be discovered by new souls");
         add("tooltip.pasterdreammod.upgrade_kit", "§7Used at the smithing table to upgrade equipment Can preserve the original enhancement properties of the equipment");
         add("tooltip.pasterdream.enhance_stone.usage", "§7Used to enhance synthesis embryos at the Weapon Workshop");
-        add("tooltip.pasterdream.thermal_dagger.swim", "§7▪ §9+0.5 Swim Speed when in main hand");
+        add("tooltip.pasterdream.thermal_dagger.swim", "§7▪ §9+0.5 Swim Speed while held (does not stack)");
         add("tooltip.pasterdream.thermal_dagger", "§7§o-- Subnautica");
         add("tooltip.pasterdream.deep_treasure", "§7Splashing waves push us into the distance");
         add("tooltip.pasterdream.shadow_deep_treasure", "§7Shadows still seem to flow across its surface");
@@ -1012,7 +1012,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.WORLDTREE_SEEDPOD.get(), "Worldtree Seedpod");
         add(ModItems.GARLAND.get(), "Garland");
         add(ModItems.WIND_SPIRIT.get(), "Wind Spirit");
-        add("tooltip.pasterdream.wind_spirit.effect1", "§7▪ §9When worn, projectiles fired by the player travel 50% faster");
+        add("attribute.pasterdream.arrow_velocity", "Arrow Velocity");
         add(ModItems.REST_ICON.get(), "Rest Icon");
         add(ModItems.CHEER_UP_ICON.get(), "Cheer Up Icon");
         add(ModItems.LETHARGY_ICON.get(), "Lethargy Icon");
