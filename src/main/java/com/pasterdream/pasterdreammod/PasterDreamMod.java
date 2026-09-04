@@ -331,4 +331,20 @@ public class PasterDreamMod
             mob.setNoAi(false);
         }
     }
+
+    // 纷争标记被移除（到期/死亡/清除）时，清空所有被强制指定的仇恨，
+    // 让怪物立即停止追击与射击，而不是继续朝消失目标的方向攻击。
+    @SubscribeEvent
+    public void onConflictMarkRemoved(MobEffectEvent.Remove event) {
+        if (event.getEffect() != ModEffects.CONFLICT_MARK.get()) return;
+        LivingEntity marked = event.getEntity();
+        if (marked.level().isClientSide()) return;
+
+        double range = Config.conflictMarkRange + 32.0;
+        for (Mob mob : marked.level().getEntitiesOfClass(Mob.class, marked.getBoundingBox().inflate(range))) {
+            if (mob.getTarget() == marked) {
+                mob.setTarget(null);
+            }
+        }
+    }
 }

@@ -13,6 +13,8 @@
     "FoxTargetMixin",
     "GoldenrodTeaBuffMixin",
     "HolyGrailBuffMixin",
+    "ConflictMarkGlowMixin",
+    "MobDeadTargetClearMixin",
     "NaturalSpawnerMixin",
     "PhantomTargetMixin",
     "BrightButterflyCurioMixin",

@@ -197,8 +197,8 @@ public class LargeStorageBagItem extends Item {
         String entityId = entityData.getString("id");
         ResourceLocation rl = ResourceLocation.tryParse(entityId);
         if (rl == null) return;
+        if (!ForgeRegistries.ENTITY_TYPES.containsKey(rl)) return;
         EntityType<?> type = ForgeRegistries.ENTITY_TYPES.getValue(rl);
-        if (type == null) return;
 
         // 计算目标生成位置
         Vec3 look = player.getLookAngle();
@@ -286,8 +286,8 @@ public class LargeStorageBagItem extends Item {
         String entityId = entityData.getString("id");
         ResourceLocation rl = ResourceLocation.tryParse(entityId);
         if (rl == null) return;
+        if (!ForgeRegistries.ENTITY_TYPES.containsKey(rl)) return;
         EntityType<?> type = ForgeRegistries.ENTITY_TYPES.getValue(rl);
-        if (type == null) return;
 
         Entity entity = null;
         try {
