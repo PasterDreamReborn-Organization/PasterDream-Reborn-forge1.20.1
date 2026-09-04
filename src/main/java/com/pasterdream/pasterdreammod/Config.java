@@ -869,11 +869,12 @@ public class Config
                 LOGGER.warn("sin_instakill_entities: invalid resource location '{}', skipping", idStr);
                 continue;
             }
-            EntityType<?> et = ForgeRegistries.ENTITY_TYPES.getValue(rl);
-            if (et == null) {
+            // 注意：getValue 对未知 ID 会返回默认值（minecraft:pig），必须先 containsKey 判空
+            if (!ForgeRegistries.ENTITY_TYPES.containsKey(rl)) {
                 LOGGER.warn("sin_instakill_entities: unknown entity type '{}', skipping", idStr);
                 continue;
             }
+            EntityType<?> et = ForgeRegistries.ENTITY_TYPES.getValue(rl);
             set.add(et);
         }
         cachedSinInstakillTypes = Set.copyOf(set);
@@ -888,11 +889,12 @@ public class Config
                 LOGGER.warn("conflict_mark_blacklist: invalid resource location '{}', skipping", idStr);
                 continue;
             }
-            EntityType<?> et = ForgeRegistries.ENTITY_TYPES.getValue(rl);
-            if (et == null) {
+            // 注意：getValue 对未知 ID 会返回默认值（minecraft:pig），必须先 containsKey 判空
+            if (!ForgeRegistries.ENTITY_TYPES.containsKey(rl)) {
                 LOGGER.warn("conflict_mark_blacklist: unknown entity type '{}', skipping", idStr);
                 continue;
             }
+            EntityType<?> et = ForgeRegistries.ENTITY_TYPES.getValue(rl);
             set.add(et);
         }
         cachedConflictMarkBlacklistTypes = Set.copyOf(set);
@@ -907,11 +909,12 @@ public class Config
                 LOGGER.warn("creatureCaptureEntities: invalid resource location '{}', skipping", idStr);
                 continue;
             }
-            EntityType<?> et = ForgeRegistries.ENTITY_TYPES.getValue(rl);
-            if (et == null) {
+            // 注意：getValue 对未知 ID 会返回默认值（minecraft:pig），必须先 containsKey 判空
+            if (!ForgeRegistries.ENTITY_TYPES.containsKey(rl)) {
                 LOGGER.warn("creatureCaptureEntities: unknown entity type '{}', skipping", idStr);
                 continue;
             }
+            EntityType<?> et = ForgeRegistries.ENTITY_TYPES.getValue(rl);
             set.add(et);
         }
         cachedCaptureEntityTypes = Set.copyOf(set);
