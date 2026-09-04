@@ -1428,7 +1428,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.shadow_sword.skill_desc3", "§7▪ §9精神值消耗：5，不足则消耗5生命值，不致死");
         add("tooltip.pasterdream.shadow_sword.passive_name", "被动：§5影之疯狂");
         add("tooltip.pasterdream.shadow_sword.desc1", "§7▪ §9精神值越低伤害和攻速越高");
-        add("tooltip.pasterdream.shadow_sword.desc2", "§7▪ §9最高+75%攻击力和50%攻速");
+        add("tooltip.pasterdream.shadow_sword.desc2", "§7▪ §9最高+75%最终伤害和50%攻速");
         add("message.pasterdream.shadow_sword.san_disabled", "§c影刃拒绝了你");
         add("message.pasterdream.shadow_sword.no_talent", "未选择<暗影> 无法使用此剑");
 

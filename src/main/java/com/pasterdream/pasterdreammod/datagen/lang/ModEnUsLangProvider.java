@@ -1259,7 +1259,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.shadow_sword.skill_desc3", "§7▪ §9SAN cost: 5 (or 5 HP if insufficient, non-lethal)");
         add("tooltip.pasterdream.shadow_sword.passive_name", "Passive: §5Shadow Frenzy");
         add("tooltip.pasterdream.shadow_sword.desc1", "§7▪ §9The lower your sanity, the higher your damage and attack speed");
-        add("tooltip.pasterdream.shadow_sword.desc2", "§7▪ §9Up to +75% ATK and +50% attack speed");
+        add("tooltip.pasterdream.shadow_sword.desc2", "§7▪ §9Up to +75% final damage and +50% attack speed");
         add("message.pasterdream.shadow_sword.san_disabled", "§cThe Shadow Sword rejects you");
         add("message.pasterdream.shadow_sword.no_talent", "You haven't chosen <Shadow> to use this sword");
 

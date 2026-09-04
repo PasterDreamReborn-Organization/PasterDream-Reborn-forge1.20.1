@@ -57,7 +57,7 @@ public class ShadowSwordItem extends SwordItem {
     private static final float SKILL_MIN_HP = 1.0F; // 技能扣血后最低血量
     private static final double SAN_VARIABILITY_MODIFIER = -3.6; // SAN波动属性修正
     private static final double SAN_ATTACK_SPEED_FACTOR = 0.5; // SAN-攻速转换系数
-    private static final double SAN_ATTACK_DAMAGE_FACTOR = 0.75; // SAN-攻击力转换系数
+    private static final double SAN_ATTACK_DAMAGE_FACTOR = 0.75; // SAN-最终伤害加成系数
     private static final int SAN_RATIO_REFRESH_TICKS = 20; // sanRatio 刷新冷却(tick)，避免手持模型频繁刷新
     private static final float CRIT_DETECTION_THRESHOLD = 1.3f; // 暴击判定阈值
     private static final float CRIT_DAMAGE_MULTIPLIER = 1.5f; // 暴击伤害倍率
@@ -124,9 +124,6 @@ public class ShadowSwordItem extends SwordItem {
                 builder.put(Attributes.ATTACK_SPEED,
                         new AttributeModifier(SAN_MODIFIER_UUID, "pasterdream.shadowsword.attack_speed",
                                 SAN_ATTACK_SPEED_FACTOR * (1.0 - sanRatio), AttributeModifier.Operation.MULTIPLY_BASE));
-                builder.put(Attributes.ATTACK_DAMAGE,
-                        new AttributeModifier(SAN_MODIFIER_UUID, "pasterdream.shadowsword.attack_damage",
-                                SAN_ATTACK_DAMAGE_FACTOR * (1.0 - sanRatio), AttributeModifier.Operation.MULTIPLY_BASE));
             }
         }
         return builder.build();
@@ -207,20 +204,26 @@ public class ShadowSwordItem extends SwordItem {
         public static void onLivingHurt(LivingHurtEvent event) {
             if (!(event.getSource().getEntity() instanceof Player player)) return;
             if (!(player.getMainHandItem().getItem() instanceof ShadowSwordItem)) return;
+            if (event.getSource().getDirectEntity() != player) return;
             if (player.getPersistentData().getBoolean(APPLYING_TAG)) return;
 
             Level level = player.level();
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     ModSounds.SHADOW_SWORD.get(), SoundSource.MASTER, 1.0f, 1.0f);
 
-            if (!player.getPersistentData().getBoolean(NIGHTMARE_SLASH_TAG)) return;
+            ItemStack sword = player.getMainHandItem();
+            double sanRatio = sword.getOrCreateTag().contains("sanRatio")
+                    ? sword.getOrCreateTag().getDouble("sanRatio") : 1.0;
+            float passiveMultiplier = 1.0f + (float) (SAN_ATTACK_DAMAGE_FACTOR * (1.0 - sanRatio));
+
+            if (!player.getPersistentData().getBoolean(NIGHTMARE_SLASH_TAG)) {
+                event.setAmount(event.getAmount() * passiveMultiplier);
+                return;
+            }
 
             player.getPersistentData().remove(NIGHTMARE_SLASH_TAG);
             player.getPersistentData().putBoolean(APPLYING_TAG, true);
 
-            ItemStack sword = player.getMainHandItem();
-            double sanRatio = sword.getOrCreateTag().contains("sanRatio")
-                    ? sword.getOrCreateTag().getDouble("sanRatio") : 1.0;
             float baseDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
             float enchantBonus = EnchantmentHelper.getDamageBonus(sword, event.getEntity().getMobType());
             float effectiveAttack = baseDamage + enchantBonus;
@@ -229,7 +232,8 @@ public class ShadowSwordItem extends SwordItem {
             else critMultiplier = CRIT_DAMAGE_MULTIPLIER;
             float magicDamage = effectiveAttack * (float) (MAGIC_DAMAGE_BASE - sanRatio) * critMultiplier
                     * SkillCooldownHelper.getSkillDamageMultiplier(player)
-                    * MagicDamageHelper.getMagicDamageMultiplier(player);
+                    * MagicDamageHelper.getMagicDamageMultiplier(player)
+                    * passiveMultiplier;
 
             event.setCanceled(true);
             event.getEntity().invulnerableTime = 0;
