@@ -4,7 +4,7 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:night_vision\",lvl:0,time:9600}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:slow_falling\",lvl:0,time:4800}]}"
     },
     {
       "fluid": "pasterdream:guiding_drug",

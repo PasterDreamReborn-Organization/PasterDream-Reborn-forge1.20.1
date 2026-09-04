@@ -5,7 +5,7 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:regeneration\",lvl:1,time:440}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:invisibility\",lvl:0,time:9600}]}"
     },
     {
       "fluid": "pasterdream:guiding_drug",
@@ -15,15 +15,15 @@
   "itemInputs":
   [
     {
-      "item": "minecraft:sunflower",
+      "item": "minecraft:phantom_membrane",
       "count": 1
     },
     {
-      "item": "pasterdream:dyedream_fruit",
-      "count": 2
+      "item": "pasterdream:shadow_fungus",
+      "count": 3
     },
     {
-      "item": "pasterdream:singularity_fern",
+      "item": "pasterdream:light_ball",
       "count": 1
     }
   ],
@@ -32,7 +32,7 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:regeneration\",lvl:2,time:800}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:invisibility\",lvl:0,time:18000}]}"
     }
   ]
 }

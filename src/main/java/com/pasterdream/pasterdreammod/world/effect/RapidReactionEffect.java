@@ -23,7 +23,7 @@ public class RapidReactionEffect extends MobEffect {
         var cdAttr = entity.getAttribute(ModAttributes.BLINK_CD.get());
         if (cdAttr != null) cdAttr.removeModifier(java.util.UUID.fromString(UUID));
         var stepAttr = entity.getAttribute(ForgeMod.STEP_HEIGHT_ADDITION.get());
-        if (stepAttr != null) cdAttr.removeModifier(java.util.UUID.fromString(UUID));
+        if (stepAttr != null) stepAttr.removeModifier(java.util.UUID.fromString(UUID));
 
     }
 }

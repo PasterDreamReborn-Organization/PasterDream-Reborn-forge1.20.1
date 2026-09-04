@@ -5,17 +5,13 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:regeneration\",lvl:0,time:3600}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:regeneration\",lvl:0,time:1800}]}"
     }
   ],
   "itemInputs":
   [
     {
-      "item": "minecraft:glowstone_dust",
-      "count": 1
-    },
-    {
-      "item": "pasterdream:singularity_fern",
+      "item": "minecraft:fermented_spider_eye",
       "count": 1
     }
   ],
@@ -24,7 +20,7 @@
     {
       "fluid": "pasterdream:potion",
       "amount": 1000,
-      "nbt": "{EffectList:[{id:\"minecraft:regeneration\",lvl:2,time:800}]}"
+      "nbt": "{EffectList:[{id:\"minecraft:wither\",lvl:0,time:1800}]}"
     }
   ]
 }
