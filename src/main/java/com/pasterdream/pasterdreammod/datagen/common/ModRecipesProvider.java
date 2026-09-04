@@ -2392,6 +2392,30 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
                 .save(pWriter);
 
+        // 墨水罐合成配方一（水罐 + 玻璃罐 + 黑色染料，容器自动配平）
+        saveContainerBalancedShapeless(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_INK.get(), 2)
+                        .requires(ModItems.GLASS_JAR_OF_WATER.get(), 1)
+                        .requires(ModItems.GLASS_JAR.get(), 1)
+                        .requires(Items.BLACK_DYE, 1)
+                        .unlockedBy(getHasName(ModItems.GLASS_JAR_OF_WATER.get()), has(ModItems.GLASS_JAR_OF_WATER.get())),
+                pWriter, "glass_jar_of_ink_from_black_dye",
+                ModItems.GLASS_JAR_OF_INK.get(), 2,
+                ModItems.GLASS_JAR_OF_WATER.get(), 1,
+                ModItems.GLASS_JAR.get(), 1,
+                Items.BLACK_DYE, 1);
+
+        // 墨水罐合成配方二（水罐*2 + 墨囊，容器自动配平）
+        saveContainerBalancedShapeless(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_INK.get(), 2)
+                        .requires(ModItems.GLASS_JAR_OF_WATER.get(), 2)
+                        .requires(Items.INK_SAC, 1)
+                        .unlockedBy(getHasName(Items.INK_SAC), has(Items.INK_SAC)),
+                pWriter, "glass_jar_of_ink_from_ink_sac",
+                ModItems.GLASS_JAR_OF_INK.get(), 2,
+                ModItems.GLASS_JAR_OF_WATER.get(), 2,
+                Items.INK_SAC, 1);
+
         // 巧克力合成配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CHOCOLATE.get(), 1)
                 .requires(Items.COCOA_BEANS, 2)
