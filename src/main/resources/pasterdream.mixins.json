@@ -26,8 +26,7 @@
     "StructureBlockEntityMixin",
     "StructureTemplateMixin",
     "LocateCommandMixin",
-    "LivingEntityElytraFlyMixin",
-    "PlayerElytraFlyMixin",
+    "ItemElytraMixin",
     "ItemStackGetAttributeModifiersMixin"
   ],
   "client": [
@@ -36,7 +35,6 @@
     "IMixinOptionInstance",
     "LevelRendererMixin",
     "LightTextureGammaMixin",
-    "LocalPlayerElytraFlyMixin",
     "MusicManagerMixin",
     "SituationalMusicMixin",
     "BlockElementMixin"
