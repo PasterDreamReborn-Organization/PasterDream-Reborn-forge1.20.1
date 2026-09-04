@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item.curio;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.core.particles.ParticleTypes;
@@ -15,15 +16,13 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 /**
  * 折翼天使雕像全局被动处理器。
- * 每次受到伤害时有 10% 概率获得 1 秒无敌（触发时播放破风骑士无敌被动同款 SCRAPE 粒子）；
+ * 每次受到伤害时按配置概率获得短暂无敌（概率/时长由 Config 控制，触发时播放破风骑士无敌被动同款 SCRAPE 粒子）；
  * 佩戴期间免疫摔落伤害与鞘翅飞行撞击动能伤害。
  */
 @Mod.EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
 public class FracturedAngelStatueHandler {
 
     private static final String INVULN_UNTIL_TAG = "pasterdream:fractured_angel_statue_invuln_until";
-    private static final int INVULN_TICKS = 20;      // 1 秒无敌
-    private static final float PROC_CHANCE = 0.1F;   // 10%
 
     /** 检查玩家是否在饰品栏装备了折翼天使雕像 */
     public static boolean isWearing(ServerPlayer player) {
@@ -49,7 +48,7 @@ public class FracturedAngelStatueHandler {
         }
     }
 
-    /** 受到伤害时：10% 概率获得 1 秒无敌（同破风骑士无敌被动粒子） */
+    /** 受到伤害时：按配置概率获得短暂无敌（同破风骑士无敌被动粒子） */
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
@@ -59,9 +58,9 @@ public class FracturedAngelStatueHandler {
         if (source.is(DamageTypes.FALL) || source.is(DamageTypes.FLY_INTO_WALL)) return;
         if (isInvulnerableActive(player)) return;
 
-        if (player.getRandom().nextFloat() < PROC_CHANCE) {
+        if (player.getRandom().nextFloat() < Config.fracturedAngelStatueInvulnerableChance) {
             player.getPersistentData().putLong(INVULN_UNTIL_TAG,
-                    player.level().getGameTime() + INVULN_TICKS);
+                    player.level().getGameTime() + Config.fracturedAngelStatueInvulnerableTicks);
             if (player.level() instanceof ServerLevel sl) {
                 sl.sendParticles(ParticleTypes.SCRAPE, player.getX(),
                         player.getY() + player.getBbHeight() * 0.6, player.getZ(),
