@@ -2016,9 +2016,9 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('b', ModItems.CONGEAL_WIND_IRON_NUGGET.get())
                 .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
                 .save(pWriter);
-        // 凝风铁压力板：3×凝风铁锭连一排 → 2
-        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModItems.CONGEAL_WIND_IRON_PRESSURE_PLATE.get(), 2)
-                .pattern("aaa")
+        // 凝风铁压力板：凝风铁锭×2 → 1
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModItems.CONGEAL_WIND_IRON_PRESSURE_PLATE.get(), 1)
+                .pattern("aa")
                 .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
                 .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
                 .save(pWriter);
@@ -2037,9 +2037,9 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('b', Items.SLIME_BALL)
                 .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
                 .save(pWriter);
-        // 弹射压力板：凝风铁锭×2
+        // 弹射压力板：3×凝风铁锭连一排 → 1
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EJECTION_PRESSURE_PLATE.get(), 1)
-                .pattern("aa")
+                .pattern("aaa")
                 .define('a', ModItems.CONGEAL_WIND_IRON_INGOT.get())
                 .unlockedBy(getHasName(ModItems.CONGEAL_WIND_IRON_INGOT.get()), has(ModItems.CONGEAL_WIND_IRON_INGOT.get()))
                 .save(pWriter);
