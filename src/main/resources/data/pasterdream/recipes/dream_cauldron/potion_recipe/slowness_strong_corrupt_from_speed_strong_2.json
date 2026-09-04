@@ -1,0 +1,26 @@
+{
+  "type": "pasterdream:dream_cauldron",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:speed\",lvl:1,time:1800}]}"
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "minecraft:fermented_spider_eye",
+      "count": 1
+    }
+  ],
+  "fluidOutputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:slowness\",lvl:3,time:400}]}"
+    }
+  ]
+}
