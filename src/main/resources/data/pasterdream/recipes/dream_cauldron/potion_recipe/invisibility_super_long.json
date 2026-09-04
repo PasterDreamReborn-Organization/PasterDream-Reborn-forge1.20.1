@@ -1,0 +1,38 @@
+{
+  "type": "pasterdream:dream_cauldron",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:invisibility\",lvl:0,time:9600}]}"
+    },
+    {
+      "fluid": "pasterdream:guiding_drug",
+      "amount": 125
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "minecraft:phantom_membrane",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:shadow_fungus",
+      "count": 3
+    },
+    {
+      "item": "pasterdream:light_ball",
+      "count": 1
+    }
+  ],
+  "fluidOutputs":
+  [
+    {
+      "fluid": "pasterdream:potion",
+      "amount": 1000,
+      "nbt": "{EffectList:[{id:\"minecraft:invisibility\",lvl:0,time:18000}]}"
+    }
+  ]
+}
