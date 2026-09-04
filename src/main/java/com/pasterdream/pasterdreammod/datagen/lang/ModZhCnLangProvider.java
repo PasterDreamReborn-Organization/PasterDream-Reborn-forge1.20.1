@@ -694,7 +694,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7此世间一切拥有灵魂的生物皆有梦\n那些醒来时无法想起的细缕回忆\n破碎并融化被埋藏在世界各处凝结成晶\n等待着被新的灵魂发现");
         add("tooltip.pasterdreammod.upgrade_kit", "§7用于在锻造台处升级装备 可以保留装备的原有强化属性");
         add("tooltip.pasterdream.enhance_stone.usage", "§7用于在精铸工坊中强化合成原胚");
-        add("tooltip.pasterdream.thermal_dagger.swim", "§7▪ §9主手时 +0.5 游泳速度");
+        add("tooltip.pasterdream.thermal_dagger.swim", "§7▪ §9持有时 +0.5 游泳速度（不叠加）");
         add("tooltip.pasterdream.thermal_dagger", "§7§o-- 深海迷航");
         add("tooltip.pasterdream.deep_treasure", "§7飞溅的浪花将我们推向远方");
         add("tooltip.pasterdream.shadow_deep_treasure", "§7表面似乎还流淌着阴影");
@@ -1172,7 +1172,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.WORLDTREE_SEEDPOD.get(), "世界树种荚");
         add(ModItems.GARLAND.get(), "花环");
         add(ModItems.WIND_SPIRIT.get(), "风精灵");
-        add("tooltip.pasterdream.wind_spirit.effect1", "§7▪ §9佩戴后，玩家发射的弹射物速度提高50%");
+        add("attribute.pasterdream.arrow_velocity", "箭矢速度");
         add(ModItems.REST_ICON.get(), "休憩图标");
         add(ModItems.CHEER_UP_ICON.get(), "振奋图标");
         add(ModItems.LETHARGY_ICON.get(), "不振图标");

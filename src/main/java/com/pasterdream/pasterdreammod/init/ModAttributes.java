@@ -55,6 +55,13 @@ public class ModAttributes {
             ATTRIBUTES.register("melt_dream_variability", () -> new RangedAttribute(
                     "attribute.pasterdream.melt_dream_variability", 0.0, -120000.0, 120000.0).setSyncable(true));
 
+    /**
+     * 箭矢速度：基础值 0，值即额外倍率，发射弹射物时速度按 (1 + 值) 缩放。
+     */
+    public static final RegistryObject<Attribute> ARROW_VELOCITY =
+            ATTRIBUTES.register("arrow_velocity", () -> new RangedAttribute(
+                    "attribute.pasterdream.arrow_velocity", 0.0, -1024.0, 1024.0).setSyncable(true));
+
     public static void register(IEventBus eventBus) {
         ATTRIBUTES.register(eventBus);
     }
@@ -71,5 +78,6 @@ public class ModAttributes {
         event.add(EntityType.PLAYER, MAX_SAN_EXTRA.get());
         event.add(EntityType.PLAYER, MAX_MELT_DREAM_ENERGY_EXTRA.get());
         event.add(EntityType.PLAYER, MELT_DREAM_VARIABILITY.get());
+        event.add(EntityType.PLAYER, ARROW_VELOCITY.get());
     }
 }

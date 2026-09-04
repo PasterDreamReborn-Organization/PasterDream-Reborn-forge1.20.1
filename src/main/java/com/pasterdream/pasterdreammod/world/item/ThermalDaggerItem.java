@@ -24,14 +24,26 @@ import java.util.UUID;
 public class ThermalDaggerItem extends SwordItem {
     private static final UUID SWIM_SPEED_UUID = UUID.fromString("a1b2c3d4-e5f6-7890-abcd-ef1234567890");
     private final Multimap<Attribute, AttributeModifier> defaultModifiers;
+    private final Multimap<Attribute, AttributeModifier> offhandModifiers;
 
     public ThermalDaggerItem(Properties properties) {
         super(ModToolTiers.THERMAL_DAGGER, 3, -2.3f, properties.fireResistant());
+        AttributeModifier swimSpeed = new AttributeModifier(SWIM_SPEED_UUID, "Thermal Dagger swim speed", 0.5f,
+                AttributeModifier.Operation.ADDITION);
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.putAll(super.getDefaultAttributeModifiers(EquipmentSlot.MAINHAND));
-        builder.put(ForgeMod.SWIM_SPEED.get(),
-                new AttributeModifier(SWIM_SPEED_UUID, "Thermal Dagger swim speed", 0.5f, AttributeModifier.Operation.ADDITION));
+        builder.put(ForgeMod.SWIM_SPEED.get(), swimSpeed);
         this.defaultModifiers = builder.build();
+        this.offhandModifiers = ImmutableMultimap.of(ForgeMod.SWIM_SPEED.get(), swimSpeed);
+    }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
+        return switch (slot) {
+            case MAINHAND -> this.defaultModifiers;
+            case OFFHAND -> this.offhandModifiers;
+            default -> super.getAttributeModifiers(slot, stack);
+        };
     }
 
     @Override
