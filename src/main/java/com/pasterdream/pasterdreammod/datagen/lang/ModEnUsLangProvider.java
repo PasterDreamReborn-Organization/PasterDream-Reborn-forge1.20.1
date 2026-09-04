@@ -2528,7 +2528,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.wind_vane.desc", "§7Detects the current wind direction and the player's angle");
         add("message.pasterdream.wind_vane.angle", "Angle: %s Direction: %s");
         add("tooltip.pasterdream.wind_knight_flag.effect1", "§7▪ §9Treats deadwind as tailwind");
-        add("tooltip.pasterdream.fractured_angel_statue.effect1", "§7▪ §9When damaged, has a 10% chance to gain 1s of invulnerability");
+        add("tooltip.pasterdream.fractured_angel_statue.effect1", "§7▪ §9When damaged, has a %s%% chance to gain %ss of invulnerability");
         add("tooltip.pasterdream.fractured_angel_statue.effect2", "§7▪ §9Immune to kinetic damage from elytra flight collisions");
         add("tooltip.pasterdream.fractured_angel_statue.effect3", "§7▪ §9Immune to fall damage");
         add("tooltip.pasterdream.fractured_angel_statue.lore", "§7§o-- The boneless angel, Cecilia");
