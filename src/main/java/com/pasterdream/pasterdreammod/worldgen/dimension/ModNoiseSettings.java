@@ -152,9 +152,9 @@ public class ModNoiseSettings {
                                 VerticalAnchor.aboveBottom(5)),
                         SurfaceRules.state(Blocks.BEDROCK.defaultBlockState())
                 ),
-                // 染梦平原 / 粉顶菇山地 / 染梦雪原地表
+                // 染梦平原 / 粉顶菇山地 / 染梦雪原 / 染梦冻洋地表（冻洋与平原同规则）
                 SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_PLAINS, ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS, ModBiomes.DYEDREAM_SNOWY_PLAINS, ModBiomes.DYEDREAM_OCEAN),
+                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_PLAINS, ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS, ModBiomes.DYEDREAM_SNOWY_PLAINS, ModBiomes.DYEDREAM_FROZEN_OCEAN, ModBiomes.DYEDREAM_OCEAN),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.abovePreliminarySurface(),
                                 SurfaceRules.sequence(
@@ -178,33 +178,8 @@ public class ModNoiseSettings {
                                         )
                                 )
                         )
-                ),
-                // 染梦冻洋地表（细雪岸 + 浮冰下层）
-                SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(ModBiomes.DYEDREAM_FROZEN_OCEAN),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.abovePreliminarySurface(),
-                                SurfaceRules.sequence(
-                                        SurfaceRules.ifTrue(
-                                                SurfaceRules.ON_FLOOR,
-                                                SurfaceRules.sequence(
-                                                        // 干燥陆地 → 细雪
-                                                        SurfaceRules.ifTrue(
-                                                                SurfaceRules.waterBlockCheck(-1, 0),
-                                                                SurfaceRules.state(Blocks.POWDER_SNOW.defaultBlockState())
-                                                        ),
-                                                        // 水底 → 染梦沙
-                                                        SurfaceRules.state(ModBlocks.DYEDREAM_SAND.get().defaultBlockState())
-                                                )
-                                        ),
-                                        // 下层 → 浮冰
-                                        SurfaceRules.ifTrue(
-                                                SurfaceRules.UNDER_FLOOR,
-                                                SurfaceRules.state(Blocks.PACKED_ICE.defaultBlockState())
-                                        )
-                                )
-                        )
                 )
+                // 染梦冻洋地表已并入上方平原规则组（不再使用细雪/浮冰地表）
         );
     }
 
