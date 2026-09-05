@@ -1,10 +1,10 @@
 package com.pasterdream.pasterdreammod.event;
 
-import com.pasterdream.pasterdreammod.helper.itemwithnbt.dreamnoteswithnbt.DreamNotesWithNBT;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
+import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWithNBTToCreativeModeTab;
 import com.pasterdream.pasterdreammod.world.skill.EvasionEffectHandler;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
@@ -45,20 +45,12 @@ public class PlayerEvents {
     private static final ResourceLocation DYEDREAM_CRACK_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_crack");
     private static final ResourceLocation DYEDREAM_WORLD_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_world");
     private static final ResourceLocation ROOT_DYEDREAM_TREASURE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "treasure/root_dyedream_treasure");
-    private static final ResourceLocation PURE_AND_FLAWLESS_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/pure_and_flawless");
-    private static final ResourceLocation DREAM_FERTILIZER_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dream_fertilizer");
     private static final ResourceLocation LOOK_AT_PINK_SHEEP_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/look_at_pink_sheep");
     private static final ResourceLocation ENTER_LAMP_SHADOW_WORLD_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/enter_lamp_shadow_world");
     private static final ResourceLocation BROKEN_NOTE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/broken_note");
     private static final ResourceLocation RESEARCH_TABLE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/research_table");
     private static final ResourceLocation SHADOW_BLAST_FURNACE_CORE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_blast_furnace_core");
     private static final ResourceLocation CHOCOLATE_000_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/chocolate_000");
-
-    /** 进度 ID → 染梦笔记 content 键列表 */
-    private static final java.util.Map<ResourceLocation, java.util.List<String>> ADVANCEMENT_NOTE_CONTENT = java.util.Map.of(
-            PURE_AND_FLAWLESS_ADV, java.util.List.of("whiteCorolla", "paleBoneNeedle"),
-            DREAM_FERTILIZER_ADV, java.util.List.of("dreamFertilizer")
-    );
 
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
@@ -220,7 +212,7 @@ public class PlayerEvents {
         player.addEffect(new MobEffectInstance(ModEffects.REST.get(),
                 3600, 0, false, false));
 
-        // 玩家接触过染梦裂隙但尚未获得染梦裂隙笔记时，睡觉触发笔记发放倒计时
+        // 玩家接触过染梦裂隙但尚未获得染梦裂隙笔记书时，睡觉触发笔记书发放倒计时
         if (player instanceof ServerPlayer serverPlayer)
         {
             Advancement firstContactAdv = serverPlayer.server.getAdvancements().getAdvancement(FIRST_CONTACT_DYEDREAM_CRACK_ADV);
@@ -273,8 +265,7 @@ public class PlayerEvents {
             return;
         }
 
-        ItemStack note = DreamNotesWithNBT.dreamNotesWithNBT(
-                ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "dyedreamCreak");
+        ItemStack note = DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦裂隙");
         if (!serverPlayer.getInventory().add(note))
         {
             serverPlayer.drop(note, false);
@@ -290,7 +281,7 @@ public class PlayerEvents {
                 Component.translatable("message.pasterdream.sleep.dream_of_crack.4"), false);
     }
 
-    /** 玩家首次进入染梦世界时，授予进度并给予笔记。 */
+    /** 玩家首次进入染梦世界时，授予进度。 */
     public static void onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event)
     {
         if (!(event.getEntity() instanceof ServerPlayer serverPlayer))
@@ -331,20 +322,9 @@ public class PlayerEvents {
                 serverPlayer.getAdvancements().award(worldAdv, criteria);
             }
         }
-
-        // 发放笔记
-        ItemStack note = DreamNotesWithNBT.dreamNotesWithNBT(
-                ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "dyedreamWorld");
-        if (!serverPlayer.getInventory().add(note))
-        {
-            serverPlayer.drop(note, false);
-        }
-
-        serverPlayer.displayClientMessage(
-                Component.translatable("message.pasterdream.dyedream_world.found_note"), false);
     }
 
-    /** 玩家获得指定进度时，发放对应笔记。 */
+    /** 玩家获得指定进度时，处理进度联动。 */
     public static void onAdvancementEarned(AdvancementEvent.AdvancementEarnEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer serverPlayer)) {
             return;
@@ -359,22 +339,6 @@ public class PlayerEvents {
         if (advancement.getId().equals(ENTER_LAMP_SHADOW_WORLD_ADV)) {
             ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
         }
-
-        java.util.List<String> contents = ADVANCEMENT_NOTE_CONTENT.get(advancement.getId());
-        if (contents == null) {
-            return;
-        }
-
-        for (String content : contents) {
-            ItemStack note = DreamNotesWithNBT.dreamNotesWithNBT(
-                    ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", content);
-            if (!serverPlayer.getInventory().add(note)) {
-                serverPlayer.drop(note, false);
-            }
-        }
-
-        serverPlayer.displayClientMessage(
-                Component.translatable("message.pasterdream." + advancement.getId().getPath().replace('/', '.') + ".found_note"), false);
     }
 
     private static boolean isAdvancementDone(ServerPlayer player, ResourceLocation id) {
