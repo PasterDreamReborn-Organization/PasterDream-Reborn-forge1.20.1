@@ -271,6 +271,9 @@ public class PlayerEvents {
             serverPlayer.drop(note, false);
         }
 
+        // 发放笔记时直接授予染梦裂隙进度，避免玩家未读笔记再次睡觉导致重复发放
+        grantAdvancement(serverPlayer, DYEDREAM_CRACK_ADV);
+
         serverPlayer.displayClientMessage(
                 Component.translatable("message.pasterdream.sleep.dream_of_crack.1"), false);
         serverPlayer.displayClientMessage(
@@ -344,6 +347,18 @@ public class PlayerEvents {
     private static boolean isAdvancementDone(ServerPlayer player, ResourceLocation id) {
         var adv = player.server.getAdvancements().getAdvancement(id);
         return adv != null && player.getAdvancements().getOrStartProgress(adv).isDone();
+    }
+
+    /** 授予指定进度（幂等）。 */
+    private static void grantAdvancement(ServerPlayer player, ResourceLocation id) {
+        Advancement adv = player.server.getAdvancements().getAdvancement(id);
+        if (adv == null) {
+            return;
+        }
+        AdvancementProgress progress = player.getAdvancements().getOrStartProgress(adv);
+        for (String criteria : progress.getRemainingCriteria()) {
+            player.getAdvancements().award(adv, criteria);
+        }
     }
 
     /** 玩家登录时同步 lowSan 配置到客户端（配置项为唯一来源） */
