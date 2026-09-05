@@ -26,6 +26,7 @@
     "StructureBlockEntityMixin",
     "StructureTemplateMixin",
     "LocateCommandMixin",
+    "FireworkRocketMixin",
     "ItemElytraMixin",
     "ItemStackGetAttributeModifiersMixin"
   ],
