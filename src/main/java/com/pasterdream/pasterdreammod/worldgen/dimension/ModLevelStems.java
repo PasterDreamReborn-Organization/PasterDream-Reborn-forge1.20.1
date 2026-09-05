@@ -77,9 +77,9 @@ public class ModLevelStems {
         //  冻洋  T[-2.0,2.0]  H[-2.0,2.0]  C[-2.0,-0.19]  E[-2.0,2.0]  W[-2.0,-0.5]
         //  暖洋  T[-2.0,2.0]  H[-2.0,2.0]  C[-2.0,-0.19]  E[-2.0,2.0]  W[-0.5, 2.0]
         //  雪原  T[-2.0,-0.1]  H[-2.0,2.0] C[-0.19,2.0]  E[-2.0,2.0]  W[-2.0,2.0]
-        //  平原  T[ 0.0, 0.9]  H[-2.0,2.0] C[-0.19,2.0]  E[-2.0,2.0]  W[-2.0,2.0]
-        //  菇山  T[ 1.0,2.0]  H[-0.5,2.0] C[-0.19,2.0]  E[-0.5,2.0]  W[-2.0,2.0]
-        //  估算占比: 冻洋~18% 暖洋~31% 雪原~27% 平原~19% 菇山~5%
+        //  平原  T[ 0.0, 0.8]  H[-2.0,2.0] C[-0.19,2.0]  E[-2.0,2.0]  W[-2.0,2.0]
+        //  菇山  T[ 0.8,2.0]  H[-2.0,2.0] C[-0.19,2.0]  E[-2.0,2.0]  W[-2.0,2.0]
+        //  估算占比: 冻洋~18% 暖洋~31% 雪原~27% 平原~14% 菇山~10%
         Climate.ParameterList<Holder<Biome>> biomeParams = new Climate.ParameterList<>(List.<Pair<Climate.ParameterPoint, Holder<Biome>>>of(
                 // 染梦冻洋 — 暖/寒海域由怪异度[-2.0,-0.5]定义
                 Pair.of(
@@ -120,10 +120,10 @@ public class ModLevelStems {
                         ),
                         dyedreamSnowyPlains
                 ),
-                // 染梦平原 — 温带陆地 T[0.0,0.9] H[-2.0,2.0] E[-2.0,2.0]（让出寒冷温度带给雪原）
+                // 染梦平原 — 温带陆地 T[0.0,0.8] H[-2.0,2.0] E[-2.0,2.0]（让出温暖温度带给菇山）
                 Pair.of(
                         new Climate.ParameterPoint(
-                                Climate.Parameter.span(0.0F, 0.9F),
+                                Climate.Parameter.span(0.0F, 0.8F),
                                 Climate.Parameter.span(-2.0F, 2.0F),
                                 Climate.Parameter.span(-0.19F, 2.0F),
                                 Climate.Parameter.span(-2.0F, 2.0F),
@@ -133,13 +133,13 @@ public class ModLevelStems {
                         ),
                         dyedreamPlains
                 ),
-                // 粉顶菇山地 — 温暖高地 T[1.0,2.0] H[-0.5,2.0] E[-0.5,2.0]
+                // 粉顶菇山地 — 温暖高地 T[0.8,2.0] H[-2.0,2.0] E[-2.0,2.0]（下探温度带并放开湿度/侵蚀，扩大面积）
                 Pair.of(
                         new Climate.ParameterPoint(
-                                Climate.Parameter.span(1.0F, 2.0F),
-                                Climate.Parameter.span(-0.5F, 2.0F),
+                                Climate.Parameter.span(0.8F, 2.0F),
+                                Climate.Parameter.span(-2.0F, 2.0F),
                                 Climate.Parameter.span(-0.19F, 2.0F),
-                                Climate.Parameter.span(-0.5F, 2.0F),
+                                Climate.Parameter.span(-2.0F, 2.0F),
                                 Climate.Parameter.point(0.0F),
                                 Climate.Parameter.span(-2.0F, 2.0F),
                                 0L
