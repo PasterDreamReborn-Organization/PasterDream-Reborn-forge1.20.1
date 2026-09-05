@@ -798,6 +798,7 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("花园解密:迷梦冶梦莲"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("花园解密:凛冽雪绒花"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("花园解密:九尾狐"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦裂隙"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦游记 其一"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦游记 其二"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦游记 其三"));

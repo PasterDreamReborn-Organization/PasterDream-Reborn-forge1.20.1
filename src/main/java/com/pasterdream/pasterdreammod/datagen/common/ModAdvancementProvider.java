@@ -96,7 +96,7 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             true, true, false
                     )
                     .addCriterion("read_dyedream_crack_note",
-                            ReadDreamNoteTrigger.TriggerInstance.forContent("dyedreamCreak"))
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("染梦裂隙"))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/dyedream_crack"), existingFileHelper);
 

@@ -1,19 +1,13 @@
 package com.pasterdream.pasterdreammod.world.block.dreamaccumulator;
 
-import com.pasterdream.pasterdreammod.helper.itemwithnbt.dreamnoteswithnbt.DreamNotesWithNBT;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
-import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModSounds;
-import net.minecraft.advancements.Advancement;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -56,31 +50,11 @@ public class DreamAccumulatorBlock extends BaseEntityBlock
         return box(0, 0, 0, 16, 4, 16);
     }
 
-    private static final ResourceLocation DREAM_ACCUMULATOR_ADV =
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dream_accumulator");
-
     @Override
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPosition, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult)
     {
-        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
+        if (!level.isClientSide)
         {
-            // 首次使用蓄梦池时发放笔记
-            Advancement adv = serverPlayer.server.getAdvancements().getAdvancement(DREAM_ACCUMULATOR_ADV);
-            if (adv == null || !serverPlayer.getAdvancements().getOrStartProgress(adv).isDone())
-            {
-                ItemStack note = DreamNotesWithNBT.dreamNotesWithNBT(
-                        ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "dreamAccumulator");
-                if (!serverPlayer.getInventory().contains(note))
-                {
-                    if (!serverPlayer.getInventory().add(note))
-                    {
-                        serverPlayer.drop(note, false);
-                    }
-                    serverPlayer.displayClientMessage(
-                            Component.translatable("message.pasterdream.dream_accumulator.found_note"), false);
-                }
-            }
-
             BlockEntity blockEntity = level.getBlockEntity(blockPosition);
             if (blockEntity instanceof DreamAccumulatorBlockEntity dreamAccumulator)
             {
