@@ -24,7 +24,7 @@ public class ShadowSpyonEffect extends MobEffect {
     private static final Set<UUID> ALLOWED_REMOVALS = Collections.synchronizedSet(new HashSet<>());
 
     public ShadowSpyonEffect() {
-        super(MobEffectCategory.HARMFUL, -13421773);
+        super(MobEffectCategory.NEUTRAL, -13421773);
     }
 
     /** 显式授权移除暗影窥视（入侵完成 / 击败亚伦柯斯之触时调用），随后效果才可被真正移除。 */
