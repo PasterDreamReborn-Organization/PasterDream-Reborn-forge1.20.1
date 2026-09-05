@@ -755,7 +755,7 @@ public class ModConfiguredFeatures {
 
 
         //四叶草 — 主世界稀有簇（原作 fourleaf_clover_plant 结构）
-        context.register(FOURLEAF_CLOVER_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(12, 6, 3, simpleBlockInAir(BlockStateProvider.simple(ModBlocks.FOURLEAF_CLOVER.get())))));
+        context.register(FOURLEAF_CLOVER_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(24, 8, 3, simpleBlockInAir(BlockStateProvider.simple(ModBlocks.FOURLEAF_CLOVER.get())))));
 
         //秋麒麟
         context.register(GOLDENROD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(12, 6, 3, simpleBlockInAir(BlockStateProvider.simple(ModBlocks.GOLDENROD.get())))));
