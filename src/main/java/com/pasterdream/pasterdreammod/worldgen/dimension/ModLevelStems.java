@@ -76,10 +76,10 @@ public class ModLevelStems {
         //  群系     温度          湿度          大陆性         侵蚀          怪异度
         //  冻洋  T[-2.0,2.0]  H[-2.0,2.0]  C[-2.0,-0.19]  E[-2.0,2.0]  W[-2.0,-0.5]
         //  暖洋  T[-2.0,2.0]  H[-2.0,2.0]  C[-2.0,-0.19]  E[-2.0,2.0]  W[-0.5, 2.0]
-        //  雪原  T[-2.0,-1.0]  H[-2.0,2.0] C[-0.19,2.0]  E[-2.0,2.0]  W[-2.0,2.0]
-        //  平原  T[-0.9, 0.9]  H[-2.0,2.0] C[-0.19,2.0]  E[-2.0,2.0]  W[-2.0,2.0]
+        //  雪原  T[-2.0,-0.1]  H[-2.0,2.0] C[-0.19,2.0]  E[-2.0,2.0]  W[-2.0,2.0]
+        //  平原  T[ 0.0, 0.9]  H[-2.0,2.0] C[-0.19,2.0]  E[-2.0,2.0]  W[-2.0,2.0]
         //  菇山  T[ 1.0,2.0]  H[-0.5,2.0] C[-0.19,2.0]  E[-0.5,2.0]  W[-2.0,2.0]
-        //  估算占比: 冻洋~19% 暖洋~32% 雪原~15% 平原~28% 菇山~6%
+        //  估算占比: 冻洋~18% 暖洋~31% 雪原~27% 平原~19% 菇山~5%
         Climate.ParameterList<Holder<Biome>> biomeParams = new Climate.ParameterList<>(List.<Pair<Climate.ParameterPoint, Holder<Biome>>>of(
                 // 染梦冻洋 — 暖/寒海域由怪异度[-2.0,-0.5]定义
                 Pair.of(
@@ -107,10 +107,10 @@ public class ModLevelStems {
                         ),
                         dyedreamOcean
                 ),
-                // 染梦雪原 — 寒冷陆地 T[-2.0,-1.0] H[-2.0,2.0] E[-2.0,2.0]
+                // 染梦雪原 — 寒冷陆地 T[-2.0,-0.1] H[-2.0,2.0] E[-2.0,2.0]（温度带向中心扩展，成为占比最大的陆地群系）
                 Pair.of(
                         new Climate.ParameterPoint(
-                                Climate.Parameter.span(-2.0F, -1.0F),
+                                Climate.Parameter.span(-2.0F, -0.1F),
                                 Climate.Parameter.span(-2.0F, 2.0F),
                                 Climate.Parameter.span(-0.19F, 2.0F),
                                 Climate.Parameter.span(-2.0F, 2.0F),
@@ -120,10 +120,10 @@ public class ModLevelStems {
                         ),
                         dyedreamSnowyPlains
                 ),
-                // 染梦平原 — 陆地主体 T[-0.9,0.9] H[-2.0,2.0] E[-2.0,2.0]
+                // 染梦平原 — 温带陆地 T[0.0,0.9] H[-2.0,2.0] E[-2.0,2.0]（让出寒冷温度带给雪原）
                 Pair.of(
                         new Climate.ParameterPoint(
-                                Climate.Parameter.span(-0.9F, 0.9F),
+                                Climate.Parameter.span(0.0F, 0.9F),
                                 Climate.Parameter.span(-2.0F, 2.0F),
                                 Climate.Parameter.span(-0.19F, 2.0F),
                                 Climate.Parameter.span(-2.0F, 2.0F),
