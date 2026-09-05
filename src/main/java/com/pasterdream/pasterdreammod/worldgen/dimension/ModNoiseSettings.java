@@ -3,12 +3,14 @@ package com.pasterdream.pasterdreammod.worldgen.dimension;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.worldgen.biome.ModBiomes;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.*;
+import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 import java.util.List;
 
@@ -31,29 +33,52 @@ public class ModNoiseSettings {
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_arena_world"));
 
     public static void bootstrap(BootstapContext<NoiseGeneratorSettings> context) {
-        // 复用主世界的完整噪声路由器（洞穴、含水层、矿脉、地形起伏等）
+        // 复用主世界的完整噪声路由器（洞穴、含水层、矿脉、地形起伏等）（已修改）
+        HolderGetter<NormalNoise.NoiseParameters> noises = context.lookup(Registries.NOISE);
+
+
         NoiseGeneratorSettings overworld = NoiseGeneratorSettings.overworld(context, false, false);
         NoiseRouter originalRouter = overworld.noiseRouter();
+
+        // 自定义群系频率倍率
+        double biomeFreq = 0.5D;
+
+        DensityFunction temperature = DensityFunctions.flatCache(
+                DensityFunctions.noise(noises.getOrThrow(Noises.TEMPERATURE), biomeFreq, 0.0D)
+        );
+        DensityFunction vegetation = DensityFunctions.flatCache(
+                DensityFunctions.noise(noises.getOrThrow(Noises.VEGETATION), biomeFreq, 0.0D)
+        );
+        DensityFunction continents = DensityFunctions.flatCache(
+                DensityFunctions.noise(noises.getOrThrow(Noises.CONTINENTALNESS), biomeFreq, 0.0D)
+        );
+        DensityFunction erosion = DensityFunctions.flatCache(
+                DensityFunctions.noise(noises.getOrThrow(Noises.EROSION), biomeFreq, 0.0D)
+        );
+        DensityFunction ridges = DensityFunctions.flatCache(
+                DensityFunctions.noise(noises.getOrThrow(Noises.RIDGE), biomeFreq, 0.0D)
+        );
+
 
         DensityFunction baseTerrain = originalRouter.initialDensityWithoutJaggedness();
         DensityFunction smoothTerrain = DensityFunctions.interpolated(baseTerrain);
 
         NoiseRouter modifiedRouter = new NoiseRouter(
                 originalRouter.barrierNoise(),
-                DensityFunctions.constant(-1.0D),         //含水层水量（禁用）
-                DensityFunctions.constant(0.0D),          //含水层扩散（禁用）
-                DensityFunctions.constant(0.0D),          //熔岩湖（禁用）
-                originalRouter.temperature(),                       //温度
-                originalRouter.vegetation(),                        //植被
-                originalRouter.continents(),                        //大陆性
-                originalRouter.erosion(),                           //侵蚀
-                originalRouter.depth(),                             //深度
-                originalRouter.ridges(),                            //山脊
-                smoothTerrain,                                      //初始密度（平滑插值，用于群系放置）
-                originalRouter.finalDensity(),                      //最终密度（原版，含地形噪声与洞穴）
-                DensityFunctions.constant(1.0D),          //矿脉开关→1（禁用）
-                DensityFunctions.constant(1.0D),          //矿脉脊状→1（禁用）
-                DensityFunctions.constant(1.0D)           //矿脉间隙→1（禁用）
+                DensityFunctions.constant(-1.0D),          // 含水层水量（禁用）
+                DensityFunctions.constant(0.0D),           // 含水层扩散（禁用）
+                DensityFunctions.constant(0.0D),           // 熔岩湖（禁用）
+                temperature,                                // ← 自定义温度频率
+                vegetation,                                 // ← 自定义湿度频率
+                continents,                                 // ← 自定义大陆性频率
+                erosion,                                    // ← 自定义侵蚀频率
+                originalRouter.depth(),                     // 深度（原版）
+                ridges,                                     // ← 自定义怪异度频率
+                smoothTerrain,                              // 初始密度（平滑）
+                originalRouter.finalDensity(),              // 最终密度（含地形）
+                DensityFunctions.constant(1.0D),            // 矿脉开关（禁用）
+                DensityFunctions.constant(1.0D),            // 矿脉脊状（禁用）
+                DensityFunctions.constant(1.0D)             // 矿脉间隙（禁用）
         );
 
         context.register(DYEDREAM_WORLD, new NoiseGeneratorSettings(
