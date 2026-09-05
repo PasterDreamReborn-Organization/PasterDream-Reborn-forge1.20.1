@@ -844,6 +844,7 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("交易"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("破碎"));
 
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("无翼鸟也有展翅的梦"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("破风的骑士"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("清晨的新风"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使的记录-其二"));
