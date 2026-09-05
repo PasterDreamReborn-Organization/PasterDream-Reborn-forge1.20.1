@@ -29,6 +29,7 @@ import net.minecraft.world.phys.Vec3;
  * 暗影入侵事件：由「暗影窥视」效果每 tick 驱动。
  * 主世界夜晚、亮度低时概率触发，在玩家附近生成虚弱恐惧喙 + 暗影之手；
  * 全部击杀后（或到白天）结束，移除暗影窥视并解锁与无名的第二次对话。
+ * 已达成「暗影入侵完成」进度（story/shadow_intrude_complete）的玩家不再触发入侵。
  */
 public class ShadowIntrudeHandler {
 
@@ -76,6 +77,10 @@ public class ShadowIntrudeHandler {
 
         if (!world.isDay()) {
             if (!intruding) {
+                if (entity instanceof ServerPlayer player
+                        && AdvancementHelper.isDone(player, INTRUDE_COMPLETE_ADV)) {
+                    return;
+                }
                 if (world.getMaxLocalRawBrightness(pos) <= BRIGHTNESS_THRESHOLD && Math.random() < TRIGGER_CHANCE) {
                     data.putBoolean(KEY_INTRUDE, true);
                     data.putBoolean(KEY_END, false);
