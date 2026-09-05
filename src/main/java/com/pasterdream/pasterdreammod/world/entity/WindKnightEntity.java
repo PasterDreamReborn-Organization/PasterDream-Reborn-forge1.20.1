@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.helper.BossDamageLimiter;
 import com.pasterdream.pasterdreammod.helper.BossLimitProfile;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
@@ -352,7 +353,8 @@ public class WindKnightEntity extends Monster implements GeoEntity {
         for (Entity e : level().getEntitiesOfClass(Entity.class,
                 new AABB(center, center).inflate(SKILL_RADIUS), e -> true).stream()
                 .sorted(Comparator.comparingDouble(en -> en.distanceToSqr(center))).toList()) {
-            if (!e.getType().is(SPECIAL_ENTITY) && !(e instanceof WindKnightEntity)
+            if (!e.getType().is(SPECIAL_ENTITY) && !e.getType().is(ModEntityTypeTags.WIND_KNIGHT_MINION)
+                    && !(e instanceof WindKnightEntity)
                     && !(e instanceof Player player && (player.isCreative() || player.isSpectator()))) {
                 e.hurt(damageSources().mobAttack(this), SKILL_DAMAGE * (isEnraged() ? ENRAGE_DAMAGE_MULTIPLIER : 1.0f));
                 if (level() instanceof ServerLevel sl)

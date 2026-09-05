@@ -103,8 +103,8 @@ public abstract class AbstractThundercloudEntity extends Monster implements GeoE
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        // 被攻击后记住攻击者作为仇恨目标（落雷会优先打它）
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        // 被攻击后记住攻击者作为仇恨目标（落雷会优先打它）；忽略破风骑士，避免骑士横扫误伤锁定
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this, WindKnightEntity.class));
         // 自动仇恨附近的玩家（创造/旁观者被 vanilla 排除）
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, false));
     }
@@ -132,11 +132,12 @@ public abstract class AbstractThundercloudEntity extends Monster implements GeoE
     @Override
     public boolean hurt(DamageSource source, float amount) {
         if (!level().isClientSide()) {
-            // 被生物攻击时将其设为仇恨目标（完全免疫的伤害类型不产生仇恨）
-            if (!source.is(DamageTypes.LIGHTNING_BOLT) && !(isFireImmune() && source.is(DamageTypes.IN_FIRE))
-                    && source.getEntity() instanceof LivingEntity living && living.isAlive()) {
-                this.setTarget(living);
-            }
+        // 被生物攻击后将其设为仇恨目标（完全免疫的伤害类型不产生仇恨；不锁定破风骑士，避免骑士横扫误伤自己召唤的雷云）
+        if (!source.is(DamageTypes.LIGHTNING_BOLT) && !(isFireImmune() && source.is(DamageTypes.IN_FIRE))
+                && source.getEntity() instanceof LivingEntity living && living.isAlive()
+                && !(living instanceof WindKnightEntity)) {
+            this.setTarget(living);
+        }
             if (random.nextDouble() <= 0.5) {
                 attackWithLightning();
             }
@@ -291,7 +292,7 @@ public abstract class AbstractThundercloudEntity extends Monster implements GeoE
             proj.setKnockback(0);
             proj.setSilent(true);
             proj.setPierceLevel((byte) 1);
-            proj.setPos(0.1 * Mth.nextDouble(random, -6, 6) + target.getX(), target.getY() + 5, 0.1 * Mth.nextDouble(random, -6, 6) + target.getZ());
+            proj.setPos(0.1 * Mth.nextDouble(random, -6, 6) + target.getX(), target.getY() + ORBIT_HEIGHT, 0.1 * Mth.nextDouble(random, -6, 6) + target.getZ());
             proj.shoot(0, -1, 0, 1, 0);
             level().addFreshEntity(proj);
         }
