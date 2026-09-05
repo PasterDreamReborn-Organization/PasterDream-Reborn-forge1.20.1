@@ -49,5 +49,9 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.SHAKING_CRYSTAL.get())
                 .add(ModEntities.FOX_FIRE.get())
                 .add(ModEntities.SHADOW_TUNE_TOTEM.get());
+
+        tag(ModEntityTypeTags.WIND_KNIGHT_MINION)
+                .add(ModEntities.THUNDERCLOUD.get())
+                .add(ModEntities.HIGHVOLTAGE_THUNDERCLOUD.get());
     }
 }
