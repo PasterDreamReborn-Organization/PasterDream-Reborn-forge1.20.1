@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.mixin;
 
 import com.pasterdream.pasterdreammod.world.dimension.DyedreamDimension;
+import com.pasterdream.pasterdreammod.world.dimension.WindJourneyDimension;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.Holder;
@@ -17,13 +18,14 @@ import java.util.Optional;
 public class SituationalMusicMixin {
 
     @Inject(method = "getSituationalMusic", at = @At("RETURN"), cancellable = true)
-    private void pasterdream$injectDyedreamMusic(CallbackInfoReturnable<Music> cir) {
+    private void pasterdream$injectDreamMusic(CallbackInfoReturnable<Music> cir) {
         Music result = cir.getReturnValue();
         Minecraft mc = (Minecraft) (Object) this;
         LocalPlayer player = mc.player;
         if (player == null) return;
 
-        if (!player.level().dimension().equals(DyedreamDimension.DYEDREAM_WORLD)) return;
+        if (!player.level().dimension().equals(DyedreamDimension.DYEDREAM_WORLD)
+                && !player.level().dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD)) return;
 
         Holder<Biome> biome = player.level().getBiome(player.blockPosition());
         Optional<Music> biomeMusic = biome.value().getBackgroundMusic();

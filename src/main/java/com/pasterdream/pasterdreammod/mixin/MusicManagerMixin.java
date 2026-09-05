@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.mixin;
 
 import com.pasterdream.pasterdreammod.world.dimension.DyedreamDimension;
+import com.pasterdream.pasterdreammod.world.dimension.WindJourneyDimension;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.sounds.MusicManager;
@@ -21,7 +22,8 @@ public class MusicManagerMixin {
     private void pasterdream$adjustMusicDelay(CallbackInfo ci) {
         LocalPlayer player = minecraft.player;
         if (player == null) return;
-        if (!player.level().dimension().equals(DyedreamDimension.DYEDREAM_WORLD)) return;
+        if (!player.level().dimension().equals(DyedreamDimension.DYEDREAM_WORLD)
+                && !player.level().dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD)) return;
 
         // 有一定概率播放MC原版音乐，此时不干预间隔
         if (player.level().random.nextFloat() < 0.35f) {
