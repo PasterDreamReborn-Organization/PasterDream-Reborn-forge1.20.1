@@ -1755,6 +1755,80 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 100)
                 .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_ORE.get()), has(ModItems.MOLTEN_GOLD_ORE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":molten_gold_ingot_from_molten_gold_ore_blasting");
+
+        // ===== 染梦世界·方解石原版矿物（熔炉/高炉直接熔炼为原版产物） =====
+        // 方解石铁矿 → 铁锭
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_IRON_ORE.get()),
+                        RecipeCategory.MISC, Items.IRON_INGOT, 0.7F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_IRON_ORE.get()), has(ModItems.CALCITE_IRON_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":iron_ingot_from_calcite_iron_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_IRON_ORE.get()),
+                        RecipeCategory.MISC, Items.IRON_INGOT, 0.7F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_IRON_ORE.get()), has(ModItems.CALCITE_IRON_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":iron_ingot_from_calcite_iron_ore_blasting");
+        // 方解石铜矿 → 铜锭
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_COPPER_ORE.get()),
+                        RecipeCategory.MISC, Items.COPPER_INGOT, 0.7F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_COPPER_ORE.get()), has(ModItems.CALCITE_COPPER_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":copper_ingot_from_calcite_copper_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_COPPER_ORE.get()),
+                        RecipeCategory.MISC, Items.COPPER_INGOT, 0.7F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_COPPER_ORE.get()), has(ModItems.CALCITE_COPPER_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":copper_ingot_from_calcite_copper_ore_blasting");
+        // 方解石金矿 → 金锭
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_GOLD_ORE.get()),
+                        RecipeCategory.MISC, Items.GOLD_INGOT, 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_GOLD_ORE.get()), has(ModItems.CALCITE_GOLD_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":gold_ingot_from_calcite_gold_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_GOLD_ORE.get()),
+                        RecipeCategory.MISC, Items.GOLD_INGOT, 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_GOLD_ORE.get()), has(ModItems.CALCITE_GOLD_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":gold_ingot_from_calcite_gold_ore_blasting");
+        // 方解石煤矿 → 煤炭
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_COAL_ORE.get()),
+                        RecipeCategory.MISC, Items.COAL, 0.1F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_COAL_ORE.get()), has(ModItems.CALCITE_COAL_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":coal_from_calcite_coal_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_COAL_ORE.get()),
+                        RecipeCategory.MISC, Items.COAL, 0.1F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_COAL_ORE.get()), has(ModItems.CALCITE_COAL_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":coal_from_calcite_coal_ore_blasting");
+        // 方解石红石矿石 → 红石粉
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_REDSTONE_ORE.get()),
+                        RecipeCategory.REDSTONE, Items.REDSTONE, 0.7F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_REDSTONE_ORE.get()), has(ModItems.CALCITE_REDSTONE_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":redstone_from_calcite_redstone_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_REDSTONE_ORE.get()),
+                        RecipeCategory.REDSTONE, Items.REDSTONE, 0.7F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_REDSTONE_ORE.get()), has(ModItems.CALCITE_REDSTONE_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":redstone_from_calcite_redstone_ore_blasting");
+        // 方解石青金石矿石 → 青金石
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_LAPIS_ORE.get()),
+                        RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_LAPIS_ORE.get()), has(ModItems.CALCITE_LAPIS_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":lapis_lazuli_from_calcite_lapis_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_LAPIS_ORE.get()),
+                        RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_LAPIS_ORE.get()), has(ModItems.CALCITE_LAPIS_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":lapis_lazuli_from_calcite_lapis_ore_blasting");
+        // 方解石钻石矿石 → 钻石
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_DIAMOND_ORE.get()),
+                        RecipeCategory.MISC, Items.DIAMOND, 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_DIAMOND_ORE.get()), has(ModItems.CALCITE_DIAMOND_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":diamond_from_calcite_diamond_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_DIAMOND_ORE.get()),
+                        RecipeCategory.MISC, Items.DIAMOND, 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_DIAMOND_ORE.get()), has(ModItems.CALCITE_DIAMOND_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":diamond_from_calcite_diamond_ore_blasting");
+        // 方解石绿宝石矿石 → 绿宝石
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CALCITE_EMERALD_ORE.get()),
+                        RecipeCategory.MISC, Items.EMERALD, 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.CALCITE_EMERALD_ORE.get()), has(ModItems.CALCITE_EMERALD_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":emerald_from_calcite_emerald_ore_smelting");
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CALCITE_EMERALD_ORE.get()),
+                        RecipeCategory.MISC, Items.EMERALD, 1.0F, 100)
+                .unlockedBy(getHasName(ModItems.CALCITE_EMERALD_ORE.get()), has(ModItems.CALCITE_EMERALD_ORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":emerald_from_calcite_emerald_ore_blasting");
         // 粗炙焰金 → 炙焰金锭（熔炉 + 高炉）
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_MOLTEN_GOLD.get()),
                         RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 200)

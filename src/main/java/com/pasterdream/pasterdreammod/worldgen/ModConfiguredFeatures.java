@@ -253,6 +253,44 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_QUARTZ_ORE =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_quartz_ore"));
+
+    // ===== 染梦世界·方解石原版矿物（复刻原版非深层配置，替换方解石） =====
+    // 煤矿（原版 ore_coal size=17 / ore_coal_buried size=17,0.5）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_COAL_ORE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_coal_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_COAL_ORE_BURIED =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_coal_ore_buried"));
+    // 铁矿（原版 ore_iron size=9 / ore_iron_small size=4）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_IRON_ORE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_iron_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_IRON_ORE_SMALL =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_iron_ore_small"));
+    // 铜矿（原版 ore_copper_small size=10 / ore_copper_large size=20）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_COPPER_ORE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_copper_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_COPPER_ORE_LARGE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_copper_ore_large"));
+    // 金矿（原版 ore_gold_buried size=9,0.5，无 ore_gold_extra/深层变体）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_GOLD_ORE_BURIED =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_gold_ore_buried"));
+    // 红石矿（原版 ore_redstone size=8）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_REDSTONE_ORE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_redstone_ore"));
+    // 青金石矿（原版 ore_lapis size=7 / ore_lapis_buried size=7,1.0）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_LAPIS_ORE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_lapis_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_LAPIS_ORE_BURIED =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_lapis_ore_buried"));
+    // 钻石矿（原版 ore_diamond_small size=4,0.5 / ore_diamond_large size=12,0.7 / ore_diamond_buried size=8,1.0）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_DIAMOND_ORE_SMALL =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_diamond_ore_small"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_DIAMOND_ORE_LARGE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_diamond_ore_large"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_DIAMOND_ORE_BURIED =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_diamond_ore_buried"));
+    // 绿宝石矿（原版 ore_emerald size=3）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CALCITE_EMERALD_ORE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_emerald_ore"));
     // ===== 染梦睡莲 / 染梦莲花 =====
     public static final ResourceKey<ConfiguredFeature<?, ?>> DYEDREAM_LILY_PAD_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -960,6 +998,44 @@ public class ModConfiguredFeatures {
         // 染梦石英矿 — size=28
         context.register(DYEDREAM_QUARTZ_ORE, new ConfiguredFeature<>(Feature.ORE,
                 new OreConfiguration(oreTargets(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), TARGET_CALCITE_AND_STONES), 28, 0f)));
+
+        // ===== 染梦世界·方解石原版矿物（复刻原版非深层配置） =====
+        // 煤矿 — ore_coal(size=17) / ore_coal_buried(size=17,0.5)
+        context.register(CALCITE_COAL_ORE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_COAL_ORE.get(), List.of(TARGET_CALCITE)), 17, 0f)));
+        context.register(CALCITE_COAL_ORE_BURIED, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_COAL_ORE.get(), List.of(TARGET_CALCITE)), 17, 0.5f)));
+        // 铁矿 — ore_iron(size=9) / ore_iron_small(size=4)
+        context.register(CALCITE_IRON_ORE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_IRON_ORE.get(), List.of(TARGET_CALCITE)), 9, 0f)));
+        context.register(CALCITE_IRON_ORE_SMALL, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_IRON_ORE.get(), List.of(TARGET_CALCITE)), 4, 0f)));
+        // 铜矿 — ore_copper_small(size=10) / ore_copper_large(size=20)
+        context.register(CALCITE_COPPER_ORE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_COPPER_ORE.get(), List.of(TARGET_CALCITE)), 10, 0f)));
+        context.register(CALCITE_COPPER_ORE_LARGE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_COPPER_ORE.get(), List.of(TARGET_CALCITE)), 20, 0f)));
+        // 金矿 — ore_gold_buried(size=9,0.5)
+        context.register(CALCITE_GOLD_ORE_BURIED, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_GOLD_ORE.get(), List.of(TARGET_CALCITE)), 9, 0.5f)));
+        // 红石矿 — ore_redstone(size=8)
+        context.register(CALCITE_REDSTONE_ORE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_REDSTONE_ORE.get(), List.of(TARGET_CALCITE)), 8, 0f)));
+        // 青金石矿 — ore_lapis(size=7) / ore_lapis_buried(size=7,1.0)
+        context.register(CALCITE_LAPIS_ORE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_LAPIS_ORE.get(), List.of(TARGET_CALCITE)), 7, 0f)));
+        context.register(CALCITE_LAPIS_ORE_BURIED, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_LAPIS_ORE.get(), List.of(TARGET_CALCITE)), 7, 1.0f)));
+        // 钻石矿 — ore_diamond_small(size=4,0.5) / ore_diamond_large(size=12,0.7) / ore_diamond_buried(size=8,1.0)
+        context.register(CALCITE_DIAMOND_ORE_SMALL, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_DIAMOND_ORE.get(), List.of(TARGET_CALCITE)), 4, 0.5f)));
+        context.register(CALCITE_DIAMOND_ORE_LARGE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_DIAMOND_ORE.get(), List.of(TARGET_CALCITE)), 12, 0.7f)));
+        context.register(CALCITE_DIAMOND_ORE_BURIED, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_DIAMOND_ORE.get(), List.of(TARGET_CALCITE)), 8, 1.0f)));
+        // 绿宝石矿 — ore_emerald(size=3)
+        context.register(CALCITE_EMERALD_ORE, new ConfiguredFeature<>(Feature.ORE,
+                new OreConfiguration(oreTargets(ModBlocks.CALCITE_EMERALD_ORE.get(), List.of(TARGET_CALCITE)), 3, 0f)));
 
         // 染梦睡莲 — 原作 dyedream_lily_pad: tries=32
         context.register(DYEDREAM_LILY_PAD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,

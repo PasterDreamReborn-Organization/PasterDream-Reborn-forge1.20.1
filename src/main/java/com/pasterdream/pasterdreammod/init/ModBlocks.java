@@ -66,6 +66,7 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.Weap
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.hammer.WeaponWorkshopHammerBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -77,6 +78,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
@@ -120,6 +122,15 @@ public class ModBlocks {
     public static final RegistryObject<Block> TITANIUM_ORE = BLOCKS.register("titanium_ore", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(9f, 5f).lightLevel(s->15).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> DEEPSLATE_TITANIUM_ORE = BLOCKS.register("deepslate_titanium_ore", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.DEEPSLATE).strength(9f, 5f).lightLevel(s->15).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> MOLTEN_GOLD_ORE = BLOCKS.register("molten_gold_ore", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.NETHER_GOLD_ORE).strength(6f, 3f).requiresCorrectToolForDrops()));
+    // ===== 染梦世界·方解石原版矿物（硬度/掉落/经验与原版一致，无深层变体） =====
+    public static final RegistryObject<Block> CALCITE_COAL_ORE = BLOCKS.register("calcite_coal_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F), UniformInt.of(0, 2)));
+    public static final RegistryObject<Block> CALCITE_IRON_ORE = BLOCKS.register("calcite_iron_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
+    public static final RegistryObject<Block> CALCITE_COPPER_ORE = BLOCKS.register("calcite_copper_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
+    public static final RegistryObject<Block> CALCITE_GOLD_ORE = BLOCKS.register("calcite_gold_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
+    public static final RegistryObject<Block> CALCITE_REDSTONE_ORE = BLOCKS.register("calcite_redstone_ore", () -> new CalciteRedstoneOreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F).randomTicks().lightLevel(s -> s.getValue(BlockStateProperties.LIT) ? 9 : 0)));
+    public static final RegistryObject<Block> CALCITE_LAPIS_ORE = BLOCKS.register("calcite_lapis_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F), UniformInt.of(2, 5)));
+    public static final RegistryObject<Block> CALCITE_DIAMOND_ORE = BLOCKS.register("calcite_diamond_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> CALCITE_EMERALD_ORE = BLOCKS.register("calcite_emerald_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F), UniformInt.of(3, 7)));
     public static final RegistryObject<Block> CONGEAL_WIND_ORE = BLOCKS.register("congeal_wind_ore", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.WOOL).strength(1f, 0.5f)));
     public static final RegistryObject<Block> WIND_RUNNER_CRYSTAL_ORE = BLOCKS.register("wind_runner_crystal_ore", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).strength(9f, 3f)));
     public static final RegistryObject<Block> CONGEAL_WIND_BLOCK = BLOCKS.register("congeal_wind_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.NETHER_ORE).strength(2f, 0.5f)));

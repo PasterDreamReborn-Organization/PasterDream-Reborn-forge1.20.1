@@ -1240,6 +1240,22 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> MOLTEN_GOLD_ORE = ITEMS.register("molten_gold_ore",
             () -> new BlockItem(ModBlocks.MOLTEN_GOLD_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CALCITE_COAL_ORE = ITEMS.register("calcite_coal_ore",
+            () -> new BlockItem(ModBlocks.CALCITE_COAL_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CALCITE_IRON_ORE = ITEMS.register("calcite_iron_ore",
+            () -> new BlockItem(ModBlocks.CALCITE_IRON_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CALCITE_COPPER_ORE = ITEMS.register("calcite_copper_ore",
+            () -> new BlockItem(ModBlocks.CALCITE_COPPER_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CALCITE_GOLD_ORE = ITEMS.register("calcite_gold_ore",
+            () -> new BlockItem(ModBlocks.CALCITE_GOLD_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CALCITE_REDSTONE_ORE = ITEMS.register("calcite_redstone_ore",
+            () -> new BlockItem(ModBlocks.CALCITE_REDSTONE_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CALCITE_LAPIS_ORE = ITEMS.register("calcite_lapis_ore",
+            () -> new BlockItem(ModBlocks.CALCITE_LAPIS_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CALCITE_DIAMOND_ORE = ITEMS.register("calcite_diamond_ore",
+            () -> new BlockItem(ModBlocks.CALCITE_DIAMOND_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CALCITE_EMERALD_ORE = ITEMS.register("calcite_emerald_ore",
+            () -> new BlockItem(ModBlocks.CALCITE_EMERALD_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> CONGEAL_WIND_ORE = ITEMS.register("congeal_wind_ore",
             () -> new BlockItem(ModBlocks.CONGEAL_WIND_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> WIND_RUNNER_CRYSTAL_ORE = ITEMS.register("wind_runner_crystal_ore",
