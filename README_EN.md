@@ -39,9 +39,9 @@ If libraries are missing or you encounter issues, run:
 ## Build
 
 ```bash
+./gradlew runData     # Generate data files
 ./gradlew build       # Build Jar
 ./gradlew runClient   # Launch client
-./gradlew runData     # Generate data files
 ```
 
 ## Dependencies

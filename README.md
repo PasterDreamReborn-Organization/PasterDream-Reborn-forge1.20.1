@@ -39,9 +39,9 @@
 ## 构建
 
 ```bash
+./gradlew runData     # 生成数据文件
 ./gradlew build       # 构建 Jar 包
 ./gradlew runClient   # 启动客户端
-./gradlew runData     # 生成数据文件
 ```
 
 ## 依赖
