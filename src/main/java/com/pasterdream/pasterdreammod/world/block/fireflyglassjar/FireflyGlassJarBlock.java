@@ -82,6 +82,7 @@ public class FireflyGlassJarBlock extends BaseEntityBlock implements SimpleWater
         boolean flag = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
         return this.defaultBlockState()
                 .setValue(FACING, context.getHorizontalDirection().getOpposite())
+                .setValue(LIT, true)
                 .setValue(WATERLOGGED, flag);
     }
 
