@@ -138,6 +138,7 @@ public class PasterDreamMod
         ModCropRelation.registerCropRelation();
         ProphecyCardItem.registerAllCardEffects();
         ModEnhanceStoneAttributeRelation.registerModEnhanceStoneAttributeRelation();
+        ModShadowDungeonStructureSet.register();
 
         // 药剂瓶：发射器行为 + 砸碎效果绑定
         PotionBottleRegistry.registerDispenserBehavior();
