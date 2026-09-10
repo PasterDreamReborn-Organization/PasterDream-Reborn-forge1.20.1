@@ -70,6 +70,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_WOOD.get())
                 .add(ModBlocks.SLUMBER_PALM_LOG.get())
                 .add(ModBlocks.SLUMBER_PALM_WOOD.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get())
                 .add(ModBlocks.SLUMBER_PALM_PLANKS.get())
                 .add(ModBlocks.BIRDS_NEST.get())
                 .add(ModBlocks.PINK_MUSHROOM_BLOCK.get())
@@ -200,6 +202,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_WOOD.get())
                 .add(ModBlocks.SLUMBER_PALM_LOG.get())
                 .add(ModBlocks.SLUMBER_PALM_WOOD.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get())
                 .add(ModBlocks.SHADOW_STEM.get())
                 .add(ModBlocks.SHADOW_HYPHAE.get())
                 .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
@@ -215,6 +219,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_WOOD.get())
                 .add(ModBlocks.SLUMBER_PALM_LOG.get())
                 .add(ModBlocks.SLUMBER_PALM_WOOD.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get())
                 .add(ModBlocks.WIND_MOOR_LOG.get())
                 .add(ModBlocks.WIND_MOOR_WOOD.get())
                 .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get())
@@ -225,6 +231,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_WOOD.get())
                 .add(ModBlocks.SLUMBER_PALM_LOG.get())
                 .add(ModBlocks.SLUMBER_PALM_WOOD.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get())
                 .add(ModBlocks.SHADOW_STEM.get())
                 .add(ModBlocks.SHADOW_HYPHAE.get())
                 .add(ModBlocks.STRIPPED_SHADOW_STEM.get())
@@ -236,11 +244,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(ModBlockTags.STRIPPED_LOGS)
                 .add(ModBlocks.DYEDREAM_LOG.get())
-                .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get());
+                .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get());
 
         tag(ModBlockTags.STRIPPED_WOOD)
                 .add(ModBlocks.DYEDREAM_WOOD.get())
-                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
+                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get())
+                .add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get());
 
 
         tag(BlockTags.LEAVES)

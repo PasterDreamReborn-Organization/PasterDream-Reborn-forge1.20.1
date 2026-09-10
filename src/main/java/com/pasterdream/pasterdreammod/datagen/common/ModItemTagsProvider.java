@@ -182,6 +182,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.TITANIUM_HOE.get())
                 .add(ModItems.DYEDREAM_HOE.get());
 
+        // 原版方解石可作为石制工具的合成材料
+        tag(ItemTags.STONE_TOOL_MATERIALS)
+                .add(Items.CALCITE);
+        tag(ItemTags.STONE_CRAFTING_MATERIALS)
+                .add(Items.CALCITE);
+
         tag(ModItemTags.COMPOSTABLE)
                 // 蘑菇建材
                 .add(ModBlocks.PINK_MUSHROOM_BLOCK.get().asItem())

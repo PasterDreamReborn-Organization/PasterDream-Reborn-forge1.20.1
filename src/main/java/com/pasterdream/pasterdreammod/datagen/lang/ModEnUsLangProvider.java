@@ -296,6 +296,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_SAPLING.get(), "Dyedream Sapling");
         add(ModBlocks.SLUMBER_PALM_LOG.get(), "Slumber Palm Log");
         add(ModBlocks.SLUMBER_PALM_WOOD.get(), "Slumber Palm Wood");
+        add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get(), "Stripped Slumber Palm Log");
+        add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get(), "Stripped Slumber Palm Wood");
         add(ModBlocks.SLUMBER_PALM_LEAVES.get(), "Slumber Palm Leaves");
         add(ModBlocks.SLUMBER_PALM_PLANKS.get(), "Slumber Palm Planks");
         add(ModBlocks.SLUMBER_PALM_SAPLING.get(), "Slumber Palm Sapling");

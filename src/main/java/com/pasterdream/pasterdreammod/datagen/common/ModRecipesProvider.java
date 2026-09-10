@@ -279,11 +279,37 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.SLUMBER_PALM_LOG.get()), has(ModItems.SLUMBER_PALM_LOG.get()))
                 .save(pWriter);
 
+        // 去皮眠椰原木 → 去皮眠椰木
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.STRIPPED_SLUMBER_PALM_WOOD.get(), 3)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.STRIPPED_SLUMBER_PALM_LOG.get())
+                .unlockedBy(getHasName(ModItems.STRIPPED_SLUMBER_PALM_LOG.get()), has(ModItems.STRIPPED_SLUMBER_PALM_LOG.get()))
+                .save(pWriter);
+
         // 眠椰原木 → 眠椰木板
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.SLUMBER_PALM_PLANKS.get(), 4)
                 .requires(ModItems.SLUMBER_PALM_LOG.get())
                 .unlockedBy(getHasName(ModItems.SLUMBER_PALM_LOG.get()), has(ModItems.SLUMBER_PALM_LOG.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":slumber_palm_planks_from_log");
+
+        // 眠椰木 → 眠椰木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.SLUMBER_PALM_PLANKS.get(), 4)
+                .requires(ModItems.SLUMBER_PALM_WOOD.get())
+                .unlockedBy(getHasName(ModItems.SLUMBER_PALM_WOOD.get()), has(ModItems.SLUMBER_PALM_WOOD.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":slumber_palm_planks_from_wood");
+
+        // 去皮眠椰原木 → 眠椰木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.SLUMBER_PALM_PLANKS.get(), 4)
+                .requires(ModItems.STRIPPED_SLUMBER_PALM_LOG.get())
+                .unlockedBy(getHasName(ModItems.STRIPPED_SLUMBER_PALM_LOG.get()), has(ModItems.STRIPPED_SLUMBER_PALM_LOG.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":slumber_palm_planks_from_stripped_log");
+
+        // 去皮眠椰木 → 眠椰木板
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.SLUMBER_PALM_PLANKS.get(), 4)
+                .requires(ModItems.STRIPPED_SLUMBER_PALM_WOOD.get())
+                .unlockedBy(getHasName(ModItems.STRIPPED_SLUMBER_PALM_WOOD.get()), has(ModItems.STRIPPED_SLUMBER_PALM_WOOD.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":slumber_palm_planks_from_stripped_wood");
 
         // 风泊原木 → 风泊木
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.WIND_MOOR_WOOD.get(), 3)
