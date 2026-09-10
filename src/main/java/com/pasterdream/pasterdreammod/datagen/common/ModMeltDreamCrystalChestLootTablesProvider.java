@@ -651,10 +651,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                         //===== 传奇装备 =====
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(ModItems.BOBOJI_CURIO.get())
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.BROKEN_HERO_SWORD.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -700,6 +696,10 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.BLESSING_OF_CECILIA.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.MACHINE_LIGHT_WING.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
@@ -1145,14 +1145,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.WIND_VANE.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.BREAK_WIND_CURTAIN.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.LUCK_ENHANCE_STONE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -1251,14 +1243,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                         // ===== 饰品，固定1次抽取 =====
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(ModItems.EMBRYO_RING.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.EMBRYO_NECKLACE.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.HEALTH_NECKLACE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -1271,20 +1255,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.RED_DEW_RING.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F)))
-                                        .apply(SetNbtFunction.setTag(new CompoundTag(){ {
-                                            putInt("lv", 1);
-                                        }})))
-                                .add(LootItem.lootTableItem(ModItems.RED_DEW_RING.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F)))
-                                        .apply(SetNbtFunction.setTag(new CompoundTag(){ {
-                                            putInt("lv", 2);
-                                        }})))
                                 .add(LootItem.lootTableItem(ModItems.EMBRYO_BELT.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -1310,6 +1280,10 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.WIND_SPIRIT.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.PAPER_PLANE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
@@ -1362,14 +1336,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.BROKEN_HERO_SWORD.get())
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.TERRA_FLOATING_ISLAND.get())
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.QYM_DOLL.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -1390,10 +1356,6 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.SNOW_VOW_HEAD.get())
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.SLIVER_BELL.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -1402,16 +1364,8 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.MELT_DREAM_LIQUID_BUCKET.get())
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.DUKE_COIN_CURIO.get())
                                         .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.LIFE_CRYSTAL.get())
-                                        .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.ELIXIR_BOTTLE_OF_RAGE_ELIXIR.get())
@@ -1422,43 +1376,11 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.FLUFFY_WIND_ALLOY_INGOT.get())
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.FLUFFY_WIND_ALLOY_SWORD.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.FLUFFY_WIND_ALLOY_AXE.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.FLUFFY_WIND_ALLOY_HOE.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.WIND_KNIGHT_FLAG.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.BREAK_WIND_CURTAIN.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.LUCK_ENHANCE_STONE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
