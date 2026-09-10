@@ -112,6 +112,24 @@ public class ModBiomeModifierProvider implements DataProvider
             addFeature(entries, "dyedream_amber_candy_ore", ModPlacedFeatures.AMBER_CANDY_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
             addFeature(entries, "dyedream_dust_ore", ModPlacedFeatures.DYEDREAM_DUST_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
             addFeature(entries, "dyedream_quartz_ore", ModPlacedFeatures.DYEDREAM_QUARTZ_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            // 染梦世界·方解石原版矿物（全部染梦群系）
+            addFeature(entries, "dyedream_calcite_coal_ore_upper", ModPlacedFeatures.CALCITE_COAL_ORE_UPPER, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_coal_ore_lower", ModPlacedFeatures.CALCITE_COAL_ORE_LOWER, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_iron_ore_upper", ModPlacedFeatures.CALCITE_IRON_ORE_UPPER, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_iron_ore_middle", ModPlacedFeatures.CALCITE_IRON_ORE_MIDDLE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_iron_ore_small", ModPlacedFeatures.CALCITE_IRON_ORE_SMALL, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_copper_ore", ModPlacedFeatures.CALCITE_COPPER_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_copper_ore_large", ModPlacedFeatures.CALCITE_COPPER_ORE_LARGE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_gold_ore", ModPlacedFeatures.CALCITE_GOLD_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_gold_ore_lower", ModPlacedFeatures.CALCITE_GOLD_ORE_LOWER, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_redstone_ore", ModPlacedFeatures.CALCITE_REDSTONE_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_redstone_ore_lower", ModPlacedFeatures.CALCITE_REDSTONE_ORE_LOWER, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_lapis_ore", ModPlacedFeatures.CALCITE_LAPIS_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_lapis_ore_buried", ModPlacedFeatures.CALCITE_LAPIS_ORE_BURIED, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_diamond_ore", ModPlacedFeatures.CALCITE_DIAMOND_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_diamond_ore_large", ModPlacedFeatures.CALCITE_DIAMOND_ORE_LARGE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_diamond_ore_buried", ModPlacedFeatures.CALCITE_DIAMOND_ORE_BURIED, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
+            addFeature(entries, "dyedream_calcite_emerald_ore", ModPlacedFeatures.CALCITE_EMERALD_ORE, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_ORES);
             addFeature(entries, "dyedream_small_bud", ModPlacedFeatures.SMALL_DYEDREAM_BUD_PATCH, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_DECORATION);
             addFeature(entries, "dyedream_medium_bud", ModPlacedFeatures.MEDIUM_DYEDREAM_BUD_PATCH, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_DECORATION);
             addFeature(entries, "dyedream_large_bud", ModPlacedFeatures.LARGE_DYEDREAM_BUD_PATCH, featureLookup, tAll, GenerationStep.Decoration.UNDERGROUND_DECORATION);

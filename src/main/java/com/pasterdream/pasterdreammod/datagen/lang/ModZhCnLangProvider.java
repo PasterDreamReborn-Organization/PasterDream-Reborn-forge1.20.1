@@ -320,6 +320,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.TITANIUM_ORE.get(), "钛矿石");
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), "深层钛矿石");
         add(ModBlocks.MOLTEN_GOLD_ORE.get(), "炙焰金矿石");
+        add(ModBlocks.CALCITE_COAL_ORE.get(), "方解石煤矿石");
+        add(ModBlocks.CALCITE_IRON_ORE.get(), "方解石铁矿石");
+        add(ModBlocks.CALCITE_COPPER_ORE.get(), "方解石铜矿石");
+        add(ModBlocks.CALCITE_GOLD_ORE.get(), "方解石金矿石");
+        add(ModBlocks.CALCITE_REDSTONE_ORE.get(), "方解石红石矿石");
+        add(ModBlocks.CALCITE_LAPIS_ORE.get(), "方解石青金石矿石");
+        add(ModBlocks.CALCITE_DIAMOND_ORE.get(), "方解石钻石矿石");
+        add(ModBlocks.CALCITE_EMERALD_ORE.get(), "方解石绿宝石矿石");
         add(ModBlocks.SOUL_ORE.get(), "灵魂矿土");
         add(ModBlocks.CONGEAL_WIND_ORE.get(), "凝结之风云矿");
         add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(), "风行者水晶矿石");

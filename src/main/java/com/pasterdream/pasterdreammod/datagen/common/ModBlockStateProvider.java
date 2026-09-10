@@ -67,6 +67,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.TITANIUM_ORE.get(), cubeAll(ModBlocks.TITANIUM_ORE.get()));
         simpleBlockWithItem(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), cubeAll(ModBlocks.DEEPSLATE_TITANIUM_ORE.get()));
         simpleBlockWithItem(ModBlocks.MOLTEN_GOLD_ORE.get(), cubeAll(ModBlocks.MOLTEN_GOLD_ORE.get()));
+        simpleBlockWithItem(ModBlocks.CALCITE_COAL_ORE.get(), cubeAll(ModBlocks.CALCITE_COAL_ORE.get()));
+        simpleBlockWithItem(ModBlocks.CALCITE_IRON_ORE.get(), cubeAll(ModBlocks.CALCITE_IRON_ORE.get()));
+        simpleBlockWithItem(ModBlocks.CALCITE_COPPER_ORE.get(), cubeAll(ModBlocks.CALCITE_COPPER_ORE.get()));
+        simpleBlockWithItem(ModBlocks.CALCITE_GOLD_ORE.get(), cubeAll(ModBlocks.CALCITE_GOLD_ORE.get()));
+        simpleBlockWithItem(ModBlocks.CALCITE_REDSTONE_ORE.get(), cubeAll(ModBlocks.CALCITE_REDSTONE_ORE.get()));
+        simpleBlockWithItem(ModBlocks.CALCITE_LAPIS_ORE.get(), cubeAll(ModBlocks.CALCITE_LAPIS_ORE.get()));
+        simpleBlockWithItem(ModBlocks.CALCITE_DIAMOND_ORE.get(), cubeAll(ModBlocks.CALCITE_DIAMOND_ORE.get()));
+        simpleBlockWithItem(ModBlocks.CALCITE_EMERALD_ORE.get(), cubeAll(ModBlocks.CALCITE_EMERALD_ORE.get()));
         simpleBlockWithItem(ModBlocks.CONGEAL_WIND_ORE.get(), cubeAll(ModBlocks.CONGEAL_WIND_ORE.get()));
         simpleBlockWithItem(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(), cubeAll(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get()));
         simpleBlockWithItem(ModBlocks.CONGEAL_WIND_BLOCK.get(), cubeAll(ModBlocks.CONGEAL_WIND_BLOCK.get()));

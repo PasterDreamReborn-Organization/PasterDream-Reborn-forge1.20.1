@@ -96,6 +96,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get())
                 .add(ModBlocks.AMBER_CANDY_ORE.get())
+                .add(ModBlocks.CALCITE_COAL_ORE.get())
+                .add(ModBlocks.CALCITE_IRON_ORE.get())
+                .add(ModBlocks.CALCITE_COPPER_ORE.get())
+                .add(ModBlocks.CALCITE_GOLD_ORE.get())
+                .add(ModBlocks.CALCITE_REDSTONE_ORE.get())
+                .add(ModBlocks.CALCITE_LAPIS_ORE.get())
+                .add(ModBlocks.CALCITE_DIAMOND_ORE.get())
+                .add(ModBlocks.CALCITE_EMERALD_ORE.get())
                 .add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get())
                 .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
                 .add(ModBlocks.SMALL_DYEDREAM_BUD.get())
@@ -279,7 +287,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.ICE_BUD.get())
                 .add(ModBlocks.CHARGED_AMETHYST_BLOCK.get())
                 .add(ModBlocks.SHADOW_NYLIUM.get())
-                .add(ModBlocks.SHADOW_LIGHT.get());
+                .add(ModBlocks.SHADOW_LIGHT.get())
+                .add(ModBlocks.CALCITE_COAL_ORE.get())
+                .add(ModBlocks.CALCITE_IRON_ORE.get())
+                .add(ModBlocks.CALCITE_COPPER_ORE.get())
+                .add(ModBlocks.CALCITE_LAPIS_ORE.get());
 
 
         // 需要铁工具挖掘
@@ -306,7 +318,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.EJECTION_PRESSURE_PLATE.get())
                 .add(ModBlocks.EJECTION_PRESSURE_BLOCK.get())
                 .add(ModBlocks.CONGEAL_WIND_IRON_BARS.get())
-                .add(ModBlocks.TITANIUM_ORE.get());
+                .add(ModBlocks.TITANIUM_ORE.get())
+                .add(ModBlocks.CALCITE_GOLD_ORE.get())
+                .add(ModBlocks.CALCITE_REDSTONE_ORE.get())
+                .add(ModBlocks.CALCITE_DIAMOND_ORE.get())
+                .add(ModBlocks.CALCITE_EMERALD_ORE.get());
         // 需要钻石工具挖掘
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.DYEDREAM_ALLOY_BLOCK.get())
@@ -333,7 +349,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get())
                 .add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get())
-                .add(ModBlocks.CONGEAL_WIND_ORE.get());
+                .add(ModBlocks.CONGEAL_WIND_ORE.get())
+                .add(ModBlocks.CALCITE_COAL_ORE.get())
+                .add(ModBlocks.CALCITE_IRON_ORE.get())
+                .add(ModBlocks.CALCITE_COPPER_ORE.get())
+                .add(ModBlocks.CALCITE_GOLD_ORE.get())
+                .add(ModBlocks.CALCITE_REDSTONE_ORE.get())
+                .add(ModBlocks.CALCITE_LAPIS_ORE.get())
+                .add(ModBlocks.CALCITE_DIAMOND_ORE.get())
+                .add(ModBlocks.CALCITE_EMERALD_ORE.get());
 
 
         tag(BlockTags.STAIRS)

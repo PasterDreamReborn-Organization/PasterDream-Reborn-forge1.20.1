@@ -83,6 +83,15 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                         applyExplosionDecay(block, LootItem.lootTableItem(ModItems.RAW_MOLTEN_GOLD.get())
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F)))
                                 .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+        // ===== 染梦世界·方解石原版矿物（掉落与原版一致） =====
+        add(ModBlocks.CALCITE_COAL_ORE.get(), block -> createVanillaOreDrop(block, Items.COAL));
+        add(ModBlocks.CALCITE_IRON_ORE.get(), block -> createVanillaOreDrop(block, Items.RAW_IRON));
+        add(ModBlocks.CALCITE_GOLD_ORE.get(), block -> createVanillaOreDrop(block, Items.RAW_GOLD));
+        add(ModBlocks.CALCITE_DIAMOND_ORE.get(), block -> createVanillaOreDrop(block, Items.DIAMOND));
+        add(ModBlocks.CALCITE_EMERALD_ORE.get(), block -> createVanillaOreDrop(block, Items.EMERALD));
+        add(ModBlocks.CALCITE_COPPER_ORE.get(), block -> createCopperOreDrops(block));
+        add(ModBlocks.CALCITE_REDSTONE_ORE.get(), block -> createRedstoneOreDrops(block));
+        add(ModBlocks.CALCITE_LAPIS_ORE.get(), block -> createLapisOreDrops(block));
         add(ModBlocks.CONGEAL_WIND_ORE.get(),
                 block -> createSilkTouchDispatchTable(block,
                         applyExplosionDecay(block, LootItem.lootTableItem(ModItems.CONGEAL_WIND.get())
@@ -573,6 +582,13 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         return createSilkTouchDispatchTable(pBlock,
                 this.applyExplosionDecay(pBlock, LootItem.lootTableItem(item)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 6.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
+    }
+
+    /** 原版矿石掉落：固定 1 个 + 时运加成 + 爆炸衰减，精准采集掉落方块自身 */
+    private LootTable.Builder createVanillaOreDrop(Block pBlock, Item item) {
+        return createSilkTouchDispatchTable(pBlock,
+                this.applyExplosionDecay(pBlock, LootItem.lootTableItem(item)
                         .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
     }
 

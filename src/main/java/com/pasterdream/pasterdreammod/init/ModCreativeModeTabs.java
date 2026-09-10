@@ -445,6 +445,14 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_QUARTZ_ORE.get());
                         output.accept(ModItems.DYEDREAM_DUST_ORE.get());
                         output.accept(ModItems.AMBER_CANDY_ORE.get());
+                        output.accept(ModItems.CALCITE_COAL_ORE.get());
+                        output.accept(ModItems.CALCITE_IRON_ORE.get());
+                        output.accept(ModItems.CALCITE_COPPER_ORE.get());
+                        output.accept(ModItems.CALCITE_GOLD_ORE.get());
+                        output.accept(ModItems.CALCITE_REDSTONE_ORE.get());
+                        output.accept(ModItems.CALCITE_LAPIS_ORE.get());
+                        output.accept(ModItems.CALCITE_DIAMOND_ORE.get());
+                        output.accept(ModItems.CALCITE_EMERALD_ORE.get());
                         output.accept(ModItems.DYEDREAM_ALLOY_BLOCK.get());
                         output.accept(ModItems.PINK_SLIME_BLOCK.get());
                         output.accept(ModItems.PINK_MUSHROOM_BLOCK.get());

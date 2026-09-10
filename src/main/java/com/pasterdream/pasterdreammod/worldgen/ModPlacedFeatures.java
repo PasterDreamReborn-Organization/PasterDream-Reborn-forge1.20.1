@@ -210,6 +210,42 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DYEDREAM_QUARTZ_ORE =
             ResourceKey.create(Registries.PLACED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_quartz_ore"));
+
+    // ===== 染梦世界·方解石原版矿物（复刻原版非深层分布） =====
+    public static final ResourceKey<PlacedFeature> CALCITE_COAL_ORE_UPPER =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_coal_ore_upper"));
+    public static final ResourceKey<PlacedFeature> CALCITE_COAL_ORE_LOWER =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_coal_ore_lower"));
+    public static final ResourceKey<PlacedFeature> CALCITE_IRON_ORE_UPPER =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_iron_ore_upper"));
+    public static final ResourceKey<PlacedFeature> CALCITE_IRON_ORE_MIDDLE =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_iron_ore_middle"));
+    public static final ResourceKey<PlacedFeature> CALCITE_IRON_ORE_SMALL =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_iron_ore_small"));
+    public static final ResourceKey<PlacedFeature> CALCITE_COPPER_ORE =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_copper_ore"));
+    public static final ResourceKey<PlacedFeature> CALCITE_COPPER_ORE_LARGE =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_copper_ore_large"));
+    public static final ResourceKey<PlacedFeature> CALCITE_GOLD_ORE =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_gold_ore"));
+    public static final ResourceKey<PlacedFeature> CALCITE_GOLD_ORE_LOWER =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_gold_ore_lower"));
+    public static final ResourceKey<PlacedFeature> CALCITE_REDSTONE_ORE =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_redstone_ore"));
+    public static final ResourceKey<PlacedFeature> CALCITE_REDSTONE_ORE_LOWER =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_redstone_ore_lower"));
+    public static final ResourceKey<PlacedFeature> CALCITE_LAPIS_ORE =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_lapis_ore"));
+    public static final ResourceKey<PlacedFeature> CALCITE_LAPIS_ORE_BURIED =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_lapis_ore_buried"));
+    public static final ResourceKey<PlacedFeature> CALCITE_DIAMOND_ORE =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_diamond_ore"));
+    public static final ResourceKey<PlacedFeature> CALCITE_DIAMOND_ORE_LARGE =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_diamond_ore_large"));
+    public static final ResourceKey<PlacedFeature> CALCITE_DIAMOND_ORE_BURIED =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_diamond_ore_buried"));
+    public static final ResourceKey<PlacedFeature> CALCITE_EMERALD_ORE =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "calcite_emerald_ore"));
     // ===== 染梦睡莲 / 染梦莲花 =====
     public static final ResourceKey<PlacedFeature> DYEDREAM_LILY_PAD_PATCH =
             ResourceKey.create(Registries.PLACED_FEATURE,
@@ -982,6 +1018,91 @@ public class ModPlacedFeatures {
                 cf.getOrThrow(ModConfiguredFeatures.DYEDREAM_QUARTZ_ORE),
                 List.of(CountPlacement.of(18), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(320)))));
+
+        // ===== 染梦世界·方解石原版矿物（复刻原版非深层分布） =====
+        // 煤矿 — 原版 ore_coal_upper(count=30,uniform 136-top) / ore_coal_lower(count=20,triangle 0-192)
+        context.register(CALCITE_COAL_ORE_UPPER, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_COAL_ORE),
+                List.of(CountPlacement.of(30), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(136), VerticalAnchor.top()))));
+        context.register(CALCITE_COAL_ORE_LOWER, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_COAL_ORE_BURIED),
+                List.of(CountPlacement.of(20), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(0), VerticalAnchor.absolute(192)))));
+
+        // 铁矿 — 原版 ore_iron_upper(count=90,triangle 80-384) / ore_iron_middle(count=10,triangle -24-56) / ore_iron_small(count=10,uniform bottom-72)
+        context.register(CALCITE_IRON_ORE_UPPER, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_IRON_ORE),
+                List.of(CountPlacement.of(90), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(80), VerticalAnchor.absolute(384)))));
+        context.register(CALCITE_IRON_ORE_MIDDLE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_IRON_ORE),
+                List.of(CountPlacement.of(10), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(56)))));
+        context.register(CALCITE_IRON_ORE_SMALL, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_IRON_ORE_SMALL),
+                List.of(CountPlacement.of(10), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(72)))));
+
+        // 铜矿 — 原版 ore_copper(count=16,triangle -16-112) / ore_copper_large(count=16,triangle -16-112)
+        context.register(CALCITE_COPPER_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_COPPER_ORE),
+                List.of(CountPlacement.of(16), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(112)))));
+        context.register(CALCITE_COPPER_ORE_LARGE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_COPPER_ORE_LARGE),
+                List.of(CountPlacement.of(16), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(112)))));
+
+        // 金矿 — 原版 ore_gold(count=4,triangle -64-32) / ore_gold_lower(0-1,uniform -64--48)
+        context.register(CALCITE_GOLD_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_GOLD_ORE_BURIED),
+                List.of(CountPlacement.of(4), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(32)))));
+        context.register(CALCITE_GOLD_ORE_LOWER, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_GOLD_ORE_BURIED),
+                List.of(CountPlacement.of(UniformInt.of(0, 1)), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-48)))));
+
+        // 红石矿 — 原版 ore_redstone(count=4,uniform bottom-15) / ore_redstone_lower(count=8,triangle +(-32~32))
+        context.register(CALCITE_REDSTONE_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_REDSTONE_ORE),
+                List.of(CountPlacement.of(4), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(15)))));
+        context.register(CALCITE_REDSTONE_ORE_LOWER, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_REDSTONE_ORE),
+                List.of(CountPlacement.of(8), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(32)))));
+
+        // 青金石矿 — 原版 ore_lapis(count=2,triangle -32-32) / ore_lapis_buried(count=4,uniform bottom-64)
+        context.register(CALCITE_LAPIS_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_LAPIS_ORE),
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(-32), VerticalAnchor.absolute(32)))));
+        context.register(CALCITE_LAPIS_ORE_BURIED, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_LAPIS_ORE_BURIED),
+                List.of(CountPlacement.of(4), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64)))));
+
+        // 钻石矿 — 原版 ore_diamond(count=7) / ore_diamond_large(rarity 9) / ore_diamond_buried(count=4)，均 triangle +(-80~80)
+        context.register(CALCITE_DIAMOND_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_DIAMOND_ORE_SMALL),
+                List.of(CountPlacement.of(7), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
+        context.register(CALCITE_DIAMOND_ORE_LARGE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_DIAMOND_ORE_LARGE),
+                List.of(RarityFilter.onAverageOnceEvery(9), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
+        context.register(CALCITE_DIAMOND_ORE_BURIED, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_DIAMOND_ORE_BURIED),
+                List.of(CountPlacement.of(4), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
+
+        // 绿宝石矿 — 原版 ore_emerald(count=100,triangle -16-480)
+        context.register(CALCITE_EMERALD_ORE, new PlacedFeature(
+                cf.getOrThrow(ModConfiguredFeatures.CALCITE_EMERALD_ORE),
+                List.of(CountPlacement.of(100), InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(480)))));
 
         // 染梦睡莲 — 原作 dyedream_lily_pad: count=7, rarity=32
         context.register(DYEDREAM_LILY_PAD_PATCH, new PlacedFeature(

@@ -306,6 +306,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.TITANIUM_ORE.get(), "Titanium Ore");
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), "Deepslate Titanium Ore");
         add(ModBlocks.MOLTEN_GOLD_ORE.get(), "Molten Gold Ore");
+        add(ModBlocks.CALCITE_COAL_ORE.get(), "Calcite Coal Ore");
+        add(ModBlocks.CALCITE_IRON_ORE.get(), "Calcite Iron Ore");
+        add(ModBlocks.CALCITE_COPPER_ORE.get(), "Calcite Copper Ore");
+        add(ModBlocks.CALCITE_GOLD_ORE.get(), "Calcite Gold Ore");
+        add(ModBlocks.CALCITE_REDSTONE_ORE.get(), "Calcite Redstone Ore");
+        add(ModBlocks.CALCITE_LAPIS_ORE.get(), "Calcite Lapis Lazuli Ore");
+        add(ModBlocks.CALCITE_DIAMOND_ORE.get(), "Calcite Diamond Ore");
+        add(ModBlocks.CALCITE_EMERALD_ORE.get(), "Calcite Emerald Ore");
         add(ModBlocks.SOUL_ORE.get(), "Soul Ore");
         add(ModBlocks.CONGEAL_WIND_ORE.get(), "Congeal Wind Ore");
         add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get(), "Windrunner Crystal Ore");
