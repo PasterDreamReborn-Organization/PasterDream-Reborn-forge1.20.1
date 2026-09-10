@@ -34,7 +34,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 modLoc("block/dyedream_grass_block_side"),
                 modLoc("block/dyedream_dirt"),
                 modLoc("block/dyedream_grass_block_top"));
-        simpleBlock(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), grassBlock);
+        var snowyGrassBlock = models().cubeBottomTop(
+                ModBlocks.DYEDREAM_GRASS_BLOCK.getId().getPath() + "_snow",
+                modLoc("block/dyedream_grass_block_snow"),
+                modLoc("block/dyedream_dirt"),
+                mcLoc("block/snow"));
+        getVariantBuilder(ModBlocks.DYEDREAM_GRASS_BLOCK.get())
+                .partialState().with(SnowyDirtBlock.SNOWY, false).modelForState().modelFile(grassBlock).addModel()
+                .partialState().with(SnowyDirtBlock.SNOWY, true).modelForState().modelFile(snowyGrassBlock).addModel();
         simpleBlockItem(ModBlocks.DYEDREAM_GRASS_BLOCK.get(), grassBlock);
 
         logBlock((RotatedPillarBlock) ModBlocks.DYEDREAM_LOG.get());
