@@ -430,6 +430,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_PLANKS.get());
                         output.accept(ModItems.SLUMBER_PALM_LOG.get());
                         output.accept(ModItems.SLUMBER_PALM_WOOD.get());
+                        output.accept(ModItems.STRIPPED_SLUMBER_PALM_LOG.get());
+                        output.accept(ModItems.STRIPPED_SLUMBER_PALM_WOOD.get());
                         output.accept(ModItems.SLUMBER_PALM_LEAVES.get());
                         output.accept(ModItems.SLUMBER_PALM_PLANKS.get());
                         output.accept(ModItems.SLUMBER_PALM_SAPLING.get());

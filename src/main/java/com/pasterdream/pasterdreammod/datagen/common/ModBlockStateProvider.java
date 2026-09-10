@@ -52,6 +52,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var slumberPalmLogSide = blockTexture(ModBlocks.SLUMBER_PALM_LOG.get());
         axisBlock((RotatedPillarBlock) ModBlocks.SLUMBER_PALM_WOOD.get(), slumberPalmLogSide, slumberPalmLogSide);
         blockItem(ModBlocks.SLUMBER_PALM_WOOD);
+        logBlock((RotatedPillarBlock) ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get());
+        blockItem(ModBlocks.STRIPPED_SLUMBER_PALM_LOG);
+        var strippedSlumberPalmLogSide = blockTexture(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get());
+        axisBlock((RotatedPillarBlock) ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get(), strippedSlumberPalmLogSide, strippedSlumberPalmLogSide);
+        blockItem(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD);
         simpleBlockWithItem(ModBlocks.SLUMBER_PALM_LEAVES.get(), cubeAll(ModBlocks.SLUMBER_PALM_LEAVES.get()));
         simpleBlockWithItem(ModBlocks.SLUMBER_PALM_PLANKS.get(), cubeAll(ModBlocks.SLUMBER_PALM_PLANKS.get()));
         simpleBlock(ModBlocks.SLUMBER_PALM_SAPLING.get(),

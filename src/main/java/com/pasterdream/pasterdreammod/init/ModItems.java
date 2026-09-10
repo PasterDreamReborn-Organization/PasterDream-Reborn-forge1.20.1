@@ -1222,6 +1222,10 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.SLUMBER_PALM_LOG.get(), new Item.Properties()));
     public static final RegistryObject<Item> SLUMBER_PALM_WOOD = ITEMS.register("slumber_palm_wood",
             () -> new BlockItem(ModBlocks.SLUMBER_PALM_WOOD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STRIPPED_SLUMBER_PALM_LOG = ITEMS.register("stripped_slumber_palm_log",
+            () -> new BlockItem(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STRIPPED_SLUMBER_PALM_WOOD = ITEMS.register("stripped_slumber_palm_wood",
+            () -> new BlockItem(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get(), new Item.Properties()));
     public static final RegistryObject<Item> SLUMBER_PALM_LEAVES = ITEMS.register("slumber_palm_leaves",
             () -> new BlockItem(ModBlocks.SLUMBER_PALM_LEAVES.get(), new Item.Properties()));
     public static final RegistryObject<Item> SLUMBER_PALM_PLANKS = ITEMS.register("slumber_palm_planks",
