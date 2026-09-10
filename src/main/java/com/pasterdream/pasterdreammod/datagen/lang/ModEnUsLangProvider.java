@@ -1377,6 +1377,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // Memory Gem
         add(ModItems.MEMORY_GEM.get(), "Memory Gem");
 
+        // Origin Dream Dictionary
+        add(ModItems.ORIGIN_DREAM_DICTIONARY.get(), "Origin Dream Dictionary");
+        add("tooltip.pasterdream.origin_dream_dictionary.1", "§7▪ §9Grants Luck +10 for 3 minutes");
+        add("tooltip.pasterdream.origin_dream_dictionary.2", "§7▪ §9Instantly restores SAN +10 and Melt Dream Energy +10");
+        add("tooltip.pasterdream.origin_dream_dictionary.3", "§7Exclusive memento of Aerolite_Dust");
+        add("tooltip.pasterdream.origin_dream_dictionary.4", "§6PasterDream Creator Developer");
+
         // Memento Item
         add(ModItems.EMPTY_VESSEL.get(), "Empty Vessel");
         add("tooltip.pasterdream.empty_vessel.1", "§7▪ §9Grants Luck +10 for 3 minutes");
