@@ -1945,6 +1945,8 @@ public class ModItems {
     // 追忆
     public static final RegistryObject<Item> MEMORY_GEM = ITEMS.register("memory_gem",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ORIGIN_DREAM_DICTIONARY = ITEMS.register("origin_dream_dictionary",
+            OriginDreamDictionaryItem::new);
     public static final RegistryObject<Item> EMPTY_VESSEL = ITEMS.register("empty_vessel",
             EmptyVesselItem::new);
     public static final RegistryObject<Item> REBIRTH_DREAM_CRYSTAL = ITEMS.register("rebirth_dream_crystal",

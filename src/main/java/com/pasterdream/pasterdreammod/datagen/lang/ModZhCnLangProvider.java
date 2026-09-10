@@ -1554,6 +1554,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 追忆宝石
         add(ModItems.MEMORY_GEM.get(), "追忆宝石");
 
+        // 起源之梦辞典
+        add(ModItems.ORIGIN_DREAM_DICTIONARY.get(), "\"起源之梦辞典\"");
+        add("tooltip.pasterdream.origin_dream_dictionary.1", "§7▪ §9使用后幸运+10持续3分钟");
+        add("tooltip.pasterdream.origin_dream_dictionary.2", "§7▪ §9即时恢复SAN+10 融梦能量+10");
+        add("tooltip.pasterdream.origin_dream_dictionary.3", "§7Aerolite_Dust的专属遗物");
+        add("tooltip.pasterdream.origin_dream_dictionary.4", "§6PasterDream创作者 开发者");
+
         // 追忆物品
         add(ModItems.EMPTY_VESSEL.get(), "空容器");
         add("tooltip.pasterdream.empty_vessel.1", "§7▪ §9使用后幸运+10持续3分钟");
