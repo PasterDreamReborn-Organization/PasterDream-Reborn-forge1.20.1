@@ -4,14 +4,18 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -23,6 +27,12 @@ public class WindSpiritItem extends Item implements ICurioItem {
 
     public WindSpiritItem() {
         super(new Item.Properties().stacksTo(1).rarity(ModRarities.SUPERIOR));
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
+        list.add(Component.translatable("tooltip.pasterdream.wind_spirit.effect1"));
+        list.add(Component.translatable("tooltip.pasterdream.wind_spirit.lore"));
     }
 
     @Override
