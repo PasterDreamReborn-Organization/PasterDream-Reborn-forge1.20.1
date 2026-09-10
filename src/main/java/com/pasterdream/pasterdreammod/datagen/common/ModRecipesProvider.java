@@ -1301,6 +1301,20 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.MORTAR.get()), has(ModItems.MORTAR.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "mortar_from_mortar"));
 
+        // 精铸工坊工作台
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WEAPON_WORKSHOP_CRAFTING_TABLE.get(), 1)
+                .pattern("abc")
+                .pattern("d d")
+                .define('a', Items.ANVIL)
+                .define('b', Items.SMITHING_TABLE)
+                .define('c', Items.MAGMA_BLOCK)
+                .define('d', Items.CUT_COPPER)
+                .unlockedBy(getHasName(Items.ANVIL), has(Items.ANVIL))
+                .unlockedBy(getHasName(Items.SMITHING_TABLE), has(Items.SMITHING_TABLE))
+                .unlockedBy(getHasName(Items.MAGMA_BLOCK), has(Items.MAGMA_BLOCK))
+                .unlockedBy(getHasName(Items.CUT_COPPER), has(Items.CUT_COPPER))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "weapon_workshop_crafting_table"));
+
         // 染梦染料：粉尘碎片 + 骨粉 + 研钵（研钵不消耗）
         saveMortarCrafting(
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_DYE.get(), 7)
