@@ -109,17 +109,17 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.BUBBLE_GUM.get(), "泡泡糖");
         add(ModItems.GALAXY_JELLY.get(), "星河果冻");
         add("tooltip.pasterdreammod.galaxy_jelly", "§9食用后，将玩家抛到空中并获得7秒缓降");
-        add("tooltip.pasterdreammod.galaxy_jelly.flavor", "§7§O--将星河捧入手中");
+        add("tooltip.pasterdreammod.galaxy_jelly.flavor", "§7§o--将星河捧入手中");
         add(ModItems.MILKY_WAY_JELLY.get(), "银河果冻");
         add("tooltip.pasterdreammod.milky_way_jelly", "§9食用后，将玩家传送至维度建筑限高顶部并获得30秒缓降");
-        add("tooltip.pasterdreammod.milky_way_jelly.flavor", "§7§O--银河无际，星海无涯");
+        add("tooltip.pasterdreammod.milky_way_jelly.flavor", "§7§o--银河无际，星海无涯");
         add(ModItems.FORTUNE_JELLY.get(), "福灵果冻");
         add("tooltip.pasterdreammod.fortune_jelly", "§9食用后，获得幸运I（1:00）");
         add(ModItems.WIND_RUNNER_JELLY.get(), "风行者果冻");
         add("tooltip.pasterdreammod.wind_runner_jelly", "§9食用后，获得风行者（3:00），期间无需鞘翅即可进行鞘翅飞行");
         add(ModItems.SHADOW_JELLY.get(), "暗影果冻");
         add("tooltip.pasterdreammod.shadow_jelly", "§9食用后会使自身的暗影难度升高或降低1级");
-        add("tooltip.pasterdreammod.shadow_jelly.flavor", "§7§O--傻子和疯子才会吃的令人难以下咽的果冻");
+        add("tooltip.pasterdreammod.shadow_jelly.flavor", "§7§o--傻子和疯子才会吃的令人难以下咽的果冻");
         add("message.pasterdream.shadow_jelly.up", "§5你的暗影难度提升了！当前难度：%s 级（%s）");
         add("message.pasterdream.shadow_jelly.down", "§7你的暗影难度降低了！当前难度：%s 级（%s）");
         add("message.pasterdream.shadow_jelly.unchanged", "§7你的暗影难度没有变化（当前：%s 级）");
@@ -1256,7 +1256,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.brooch_of_white_orchid.effect3", "§7▪ §9白厄剑雨无视受伤无敌帧");
         add("message.pasterdream.brooch_of_white_orchid.rejected", "这件饰品拒绝了你");
         add(ModItems.KAICHU_OMAMORI.get(), "怀中御守");
-        add("tooltip.pasterdream.brooch_of_white_orchid.flavor", "§o§7--我消逝于无形  此刻享受你应得的荣耀");
+        add("tooltip.pasterdream.brooch_of_white_orchid.flavor", "§7§o--我消逝于无形  此刻享受你应得的荣耀");
         add("tooltip.pasterdream.kaichu_omamori.effect.foxfire", "§7▪ §9对12*12区域范围内生成狐火立场");
         add("tooltip.pasterdream.kaichu_omamori.effect.vulnerable", "§7▪ §9使除玩家外的生物受到20%的易伤和缓慢V效果");
         add("tooltip.pasterdream.kaichu_omamori.effect.regen", "§7▪ §9给予玩家生命恢复");
@@ -1266,7 +1266,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.kaichu_omamori.equip", "§7当装备时：");
         add("tooltip.pasterdream.kaichu_omamori.luck", "§7▪ §9+5幸运");
         add("tooltip.pasterdream.kaichu_omamori.hotkey", "§7▪ §9按下 §e%s §9释放狐火立场");
-        add("tooltip.pasterdream.kaichu_omamori.flavor", "§o§7--Alirea定制物品");
+        add("tooltip.pasterdream.kaichu_omamori.flavor", "§7§o--Alirea定制物品");
         add("key.pasterdream.kaichu_omamori", "激活怀中御守");
         add("key.pasterdream.cloak_activate", "启用衣装");
 
@@ -1423,7 +1423,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("command.pasterdream.lowsan.sound.get", "%s: %s");
         add("item.pasterdream.star_wish_rod", "占星者的祈愿");
         add("tooltip.pasterdream.star_wish_rod.desc", "§7▪ §9手持钓鱼时深海秘宝额外必出超级变体");
-        add("tooltip.pasterdream.star_wish_rod", "§7§O--鱼儿如浩空繁星");
+        add("tooltip.pasterdream.star_wish_rod", "§7§o--鱼儿如浩空繁星");
         add("command.pasterdream.lowsan.enabled", "启用");
         add("command.pasterdream.lowsan.disabled", "禁用");
         add("gamerule.category.pasterdream", "帕斯特之梦");
@@ -1544,7 +1544,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 草莓甜心
         add(ModItems.STRAWBERRY_HEART.get(), "草莓甜心");
         add(ModItems.SLIVER_BELL.get(),"银色铃铛");
-        add("tooltip.pasterdream.sliver_bell", "§7§O--希安喵！");
+        add("tooltip.pasterdream.sliver_bell", "§7§o--希安喵！");
         add("tooltip.pasterdream.strawberry_heart.desc1", "§7▪ §9右键演奏 §4消耗1融梦能量");
         add("tooltip.pasterdream.strawberry_heart.desc2", "§7▪ §9为范围内玩家回复4点生命 并给予短暂生命恢复，力量和速度效果");
         add("tooltip.pasterdream.strawberry_heart.desc3", "§7▪ §7冷却: 12秒 §7| §6范围: 8格");
@@ -1639,7 +1639,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.war_flag.effect1", "§7▪ §9击杀敌人获得战意效果，每击杀一个敌人增加1级，最高3级");
         add("tooltip.pasterdream.war_flag.effect2", "§7▪ §9效果持续期间增加攻击并提升回血速度");
         add("tooltip.pasterdream.war_flag.effect3", "§7▪ §9该效果可以共享给周围玩家");
-        add("tooltip.pasterdream.war_flag.description", "§7§O--这面旗帜上流淌的暗影似乎在述说遥远的过往……");
+        add("tooltip.pasterdream.war_flag.description", "§7§o--这面旗帜上流淌的暗影似乎在述说遥远的过往……");
         add("effect.pasterdream.war_flag", "战意");
         add("effect.pasterdream.bind", "束缚");
         add("effect.pasterdream.shadow_silence", "暗影沉默");
@@ -1719,7 +1719,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("block.pasterdream.shadow_hand_trap", "暗影之手陷阱");
         add("block.pasterdream.shadow_brazier", "暗影火盆");
         add("block.pasterdream.shadow_blast_furnace_core", "暗影高炉核心");
-        add("tooltip.pasterdream.shadow_hand_trap", "§7--你挖下来这个做什么？");
+        add("tooltip.pasterdream.shadow_hand_trap", "§7§o--你挖下来这个做什么？");
         add("message.pasterdream.shadow_brazier.need_candle", "需要用阴影蜡烛点燃火盆");
         add("message.pasterdream.shadow_brazier.lit", "火盆被点燃，但带来的并不是光明...");
         add("message.pasterdream.shadow_brazier.shadow_spread", "阴影从四周蔓延开来");
@@ -2524,7 +2524,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("tooltip.pasterdream.prophecy_card.balance.description", "§9使用卡牌时，当前自身拥有的部分药水效果的等级翻倍，但持续时间缩短至一半。");
         add("tooltip.pasterdream.prophecy_card.conflict.description.1", "§9使用卡牌时，将光标对应的实体标记，被标记的实体将会被成为其它实体的攻击对象，持续120秒");
-        add("tooltip.pasterdream.prophecy_card.conflict.description.2", "§7§O--至少你用完这张卡不用担心被一位白衣少女捅成玻璃碴子");
+        add("tooltip.pasterdream.prophecy_card.conflict.description.2", "§7§o--至少你用完这张卡不用担心被一位白衣少女捅成玻璃碴子");
         add("message.pasterdream.prophecy_card.conflict.marked", "让现场腥风血雨起来吧！");
         add("message.pasterdream.prophecy_card.conflict.no_target", "没有选中目标。");
         add("tooltip.pasterdream.prophecy_card.graveyard.description", "§9使用卡牌时，对以自身为中心，7*7范围内的所有敌人造成%.1f点伤害，该伤害不被减伤所降低。（此效果不对玩家生效）");
@@ -2533,11 +2533,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.prophecy_card.guard.description.2", "§9玩家若受到的任何超过其最大生命值%.1f%%的伤害，超出的部分都会减少%.1f%%。这种减伤是在护甲的减伤作用之前应用的。");
         add("tooltip.pasterdream.prophecy_card.holy_grail.description", "§9使用卡牌时，获得圣杯效果，持续120秒。效果持续期间+15最大生命值，并免疫一部分负面状态，获得自然生命恢复且血量越低，回血速度越快，低于33%的时候达到最快。");
         add("tooltip.pasterdream.prophecy_card.chaos.description.1", "§9使用卡牌时，对以自身为中心，7*7范围内的所有敌人陷入混乱并失去行动能力，持续10秒。（此效果不对玩家生效）");
-        add("tooltip.pasterdream.prophecy_card.chaos.description.2", "§7§O--THE TRUE AND NEO CHAOS");
+        add("tooltip.pasterdream.prophecy_card.chaos.description.2", "§7§o--THE TRUE AND NEO CHAOS");
         add("tooltip.pasterdream.prophecy_card.sin.description.1", "§9使用卡牌时，对以自身为中心，引燃19*19范围内的所有亡灵生物和灾厄村民15秒并造成25点伤害。");
         add("tooltip.pasterdream.prophecy_card.sin.description.2", "§9如果此实体为僵尸村民，则不会受到伤害且转化为村民。");
         add("tooltip.pasterdream.prophecy_card.sin.description.3", "§9对于那些极为烦人的生物，则直接抹杀，至于什么是极为烦人的生物，相信预言卡的判断。");
-        add("tooltip.pasterdream.prophecy_card.sin.description.4", "§5§O--直面汝罪");
+        add("tooltip.pasterdream.prophecy_card.sin.description.4", "§7§o--直面汝罪");
         add("tooltip.pasterdream.prophecy_card.wielding_sword.description", "§9使用卡牌时，获得怒气爆发效果，持续120秒。效果期间，攻击力+3，攻击速度+0.2，战技伤害倍率+30%，技能冷却-20%。");
 
 
@@ -2556,10 +2556,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.highly_toxic", "剧毒");
         add("tooltip.pasterdream.potion_bottle.highly_toxic.description","§9砸碎后释放剧毒云，对6*6区域范围内的生物施加剧毒、缓慢和虚弱");
         add("tooltip.pasterdream.potion_bottle.lightning.description.1","§9砸碎后在落地地点释放乌云，并在短时间后对5*5区域范围内生成4次随机落雷");
-        add("tooltip.pasterdream.potion_bottle.lightning.description.2","§7§O--瓶装闪电");
+        add("tooltip.pasterdream.potion_bottle.lightning.description.2","§7§o--瓶装闪电");
         add("tooltip.pasterdream.potion_bottle.rejuvenation.description","§9砸碎后释放5*5区域的治疗雾气，持续20秒，为在雾气内的玩家或和平生物恢复最大生命值的5%的血量");
         add("tooltip.pasterdream.potion_bottle.frozen.description.1","§9砸碎后在落地地点释放7*7的冷冻雾气，在其中的实体将无法移动并失去战斗能力");
-        add("tooltip.pasterdream.potion_bottle.frozen.description.2","§7§O--谁将召唤那位施雪的女孩？");
+        add("tooltip.pasterdream.potion_bottle.frozen.description.2","§7§o--谁将召唤那位施雪的女孩？");
         add("tooltip.pasterdream.potion_bottle.berserk.description.1","§9砸碎后在落地地点释放8*8的狂暴雾气");
         add("tooltip.pasterdream.potion_bottle.berserk.description.2","§9在其中的玩家攻击力+20%，移动速度+10%，攻击速度+50%，战技冷却-30%，瞬身术冷却-30%，战技伤害+30%");
         add("tooltip.pasterdream.potion_bottle.inferno.description.1","§9在6x6范围制造烈火，对范围内所有敌人周期造成魔法伤害并点燃敌人");
@@ -2689,6 +2689,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.wind_vane.desc", "§7检测当前的风向与玩家的角度");
         add("message.pasterdream.wind_vane.angle", "角度：%s 方向：%s");
         add("tooltip.pasterdream.wind_knight_flag.effect1", "§7▪ §9可以将逆风视为顺风");
+        add("tooltip.pasterdream.wind_spirit.effect1", "§7▪ §9增加50%箭矢速度");
+        add("tooltip.pasterdream.wind_spirit.lore", "§7§o--风给予你祝福");
         add("tooltip.pasterdream.fractured_angel_statue.effect1", "§7▪ §9受到伤害时有%s%%的概率获得%s秒无敌");
         add("tooltip.pasterdream.fractured_angel_statue.effect2", "§7▪ §9免疫鞘翅飞行撞击时的动能伤害");
         add("tooltip.pasterdream.fractured_angel_statue.effect3", "§7▪ §9免疫摔落伤害");
