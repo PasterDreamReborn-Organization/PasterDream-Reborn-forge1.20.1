@@ -199,7 +199,7 @@ public class FoxFireEntity extends PathfinderMob implements GeoEntity {
         for (LivingEntity living : targets) {
             if (living instanceof Player) {
                 living.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 40, 1, false, false, true));
-            } else {
+            } else if (!this.isOwnerOrOwnedPet(living)) {
                 living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 4, false, false, true));
                 living.getPersistentData().putBoolean("pasterdream:fox_fire_vulnerable", true);
             }
@@ -270,6 +270,17 @@ public class FoxFireEntity extends PathfinderMob implements GeoEntity {
             }
         }
         return null;
+    }
+
+    private boolean isOwnerOrOwnedPet(LivingEntity living) {
+        Player player = this.resolveOwner();
+        if (player == null) {
+            return false;
+        }
+        if (living == player) {
+            return true;
+        }
+        return living instanceof TamableAnimal tamable && tamable.isOwnedBy(player);
     }
 
     // ===== GeoLib =====
