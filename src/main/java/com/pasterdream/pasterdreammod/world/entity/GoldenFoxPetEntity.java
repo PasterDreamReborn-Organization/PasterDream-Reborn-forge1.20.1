@@ -65,6 +65,8 @@ public class GoldenFoxPetEntity extends TamableAnimal implements GeoEntity, Rang
 
     public static final EntityDataAccessor<Boolean> SLEEPING =
             SynchedEntityData.defineId(GoldenFoxPetEntity.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Boolean> SIT_IDLE =
+            SynchedEntityData.defineId(GoldenFoxPetEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<String> ANIMATION =
             SynchedEntityData.defineId(GoldenFoxPetEntity.class, EntityDataSerializers.STRING);
 
@@ -78,6 +80,8 @@ public class GoldenFoxPetEntity extends TamableAnimal implements GeoEntity, Rang
 
     private int ownerIdleTicks;
     private int foxFireCooldown;
+    private int sitIdleTicks;
+    private int nextSitIdleCheck;
     private boolean hasOwnerPos;
     private Vec3 lastOwnerPos = Vec3.ZERO;
     private float lastOwnerYaw;
@@ -106,6 +110,7 @@ public class GoldenFoxPetEntity extends TamableAnimal implements GeoEntity, Rang
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(SLEEPING, false);
+        this.entityData.define(SIT_IDLE, false);
         this.entityData.define(ANIMATION, "undefined");
     }
 
@@ -145,9 +150,23 @@ public class GoldenFoxPetEntity extends TamableAnimal implements GeoEntity, Rang
         return this.entityData.get(SLEEPING);
     }
 
+    private boolean isSitIdle() {
+        return this.entityData.get(SIT_IDLE);
+    }
+
+    private void setSitIdle(boolean sitIdle) {
+        this.entityData.set(SIT_IDLE, sitIdle);
+        if (!sitIdle) {
+            this.sitIdleTicks = 0;
+        }
+    }
+
     private void setSleeping(boolean sleeping) {
         if (this.isSleeping() == sleeping) {
             return;
+        }
+        if (sleeping) {
+            this.setSitIdle(false);
         }
         this.entityData.set(SLEEPING, sleeping);
         this.setAnimation(sleeping ? "transition2" : "transition");
@@ -182,7 +201,8 @@ public class GoldenFoxPetEntity extends TamableAnimal implements GeoEntity, Rang
         }
         boolean sitting = !this.isOrderedToSit();
         this.setOrderedToSit(sitting);
-        this.setSleeping(false);
+        this.setSitIdle(false);
+        this.setSleeping(sitting);
         this.setTarget(null);
         this.getNavigation().stop();
         this.jumping = false;
@@ -240,17 +260,68 @@ public class GoldenFoxPetEntity extends TamableAnimal implements GeoEntity, Rang
 
         this.updateSleepState();
         if (this.isSleeping()) {
+            this.setSprinting(false);
             this.getNavigation().stop();
             this.setTarget(null);
             Vec3 motion = this.getDeltaMovement();
             this.setDeltaMovement(motion.x * 0.2D, motion.y, motion.z * 0.2D);
         } else {
             this.tryCastFoxFire();
+            this.updateSprinting();
+            this.updateSitIdle();
         }
     }
 
+    private void updateSitIdle() {
+        if (this.isSitIdle()) {
+            boolean stillIdle = this.getTarget() == null
+                    && this.getNavigation().isDone()
+                    && this.getDeltaMovement().horizontalDistanceSqr() < 0.01D;
+            if (!stillIdle) {
+                this.setSitIdle(false);
+                return;
+            }
+            this.sitIdleTicks--;
+            if (this.sitIdleTicks <= 0) {
+                this.setSitIdle(false);
+            }
+            return;
+        }
+        if (this.isInSittingPose() || this.isOrderedToSit()) {
+            this.nextSitIdleCheck = 0;
+            return;
+        }
+        boolean standingStill = this.getTarget() == null
+                && this.getNavigation().isDone()
+                && this.getDeltaMovement().horizontalDistanceSqr() < 0.0004D;
+        if (!standingStill) {
+            this.nextSitIdleCheck = 0;
+            return;
+        }
+        if (this.nextSitIdleCheck <= 0) {
+            if (this.random.nextInt(20) == 0) {
+                this.setSitIdle(true);
+                this.sitIdleTicks = 40 + this.random.nextInt(80);
+            }
+            this.nextSitIdleCheck = 20;
+        } else {
+            this.nextSitIdleCheck--;
+        }
+    }
+
+    private void updateSprinting() {
+        boolean chase = this.getTarget() != null && this.getTarget().isAlive() && !this.isInSittingPose();
+        boolean followFast = this.getOwner() instanceof Player owner
+                && owner.isSprinting() && this.distanceToSqr(owner) > 4.0D;
+        this.setSprinting(chase || followFast);
+    }
+
     private void updateSleepState() {
-        if (!this.isTame() || this.isOrderedToSit() || !(this.getOwner() instanceof Player owner)) {
+        if (this.isOrderedToSit()) {
+            this.setSleeping(true);
+            return;
+        }
+        if (!this.isTame() || !(this.getOwner() instanceof Player owner)) {
             this.setSleeping(false);
             return;
         }
@@ -321,7 +392,7 @@ public class GoldenFoxPetEntity extends TamableAnimal implements GeoEntity, Rang
                 target.getZ() - this.getZ());
         fireball.setPos(this.getX(), this.getEyeY() - 0.3D, this.getZ());
         this.level().addFreshEntity(fireball);
-        this.playSound(ModSounds.FOX_FIRE.get(), 0.8F, 1.4F);
+        this.playSound(SoundEvents.BLAZE_SHOOT, 1.0F, 1.0F);
     }
 
     @Override
@@ -389,11 +460,14 @@ public class GoldenFoxPetEntity extends TamableAnimal implements GeoEntity, Rang
         if (this.isSleeping()) {
             return event.setAndContinue(RawAnimation.begin().thenLoop("idle"));
         }
-        if (this.isInSittingPose()) {
-            return event.setAndContinue(RawAnimation.begin().thenLoop("sit"));
-        }
         if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
+            if (this.isSprinting()) {
+                return event.setAndContinue(RawAnimation.begin().thenLoop("walk2"));
+            }
             return event.setAndContinue(RawAnimation.begin().thenLoop("walk"));
+        }
+        if (this.isSitIdle()) {
+            return event.setAndContinue(RawAnimation.begin().thenLoop("sit"));
         }
         return event.setAndContinue(RawAnimation.begin().thenLoop("idle2"));
     }
