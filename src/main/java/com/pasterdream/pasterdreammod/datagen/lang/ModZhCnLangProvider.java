@@ -2464,6 +2464,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.black_beetle.easter_egg_1", "来,小亮给大家整个活！");
         add("message.pasterdream.black_beetle.easter_egg_2", "草,走,忽略!ጿ ኈ ቼ ዽ ጿ");
         add("entity.pasterdream.golden_fox.vanish", "金色狐狸在完成了你许下的愿望之后消失了...");
+        add("entity.pasterdream.golden_fox_pet", "金狐狸");
+        add("entity.pasterdream.golden_fox.tamed", "金色狐狸成为了你的伙伴！");
+        add("message.pasterdream.golden_fox_pet.sit", "金狐狸进入待命状态");
+        add("message.pasterdream.golden_fox_pet.follow", "金狐狸开始跟随你");
 
         // 染梦裂隙消息
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5身体从这个奇怪的洞穴中穿过，但并没有什么反应。");

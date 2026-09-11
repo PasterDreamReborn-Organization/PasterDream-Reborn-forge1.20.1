@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModEntities;
+import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import com.pasterdream.pasterdreammod.recipe.GoldenFoxTradeRecipe;
@@ -104,6 +105,34 @@ public class GoldenFoxEntity extends PathfinderMob implements GeoEntity {
 
         if (world.isClientSide())
             return InteractionResult.SUCCESS;
+
+        // Turn the wild fox into a pet when offered a white heart chocolate
+        if (itemstack.is(ModItems.WHITE_HEART_CHOCOLATE.get())) {
+            double x = this.getX();
+            double y = this.getY();
+            double z = this.getZ();
+
+            GoldenFoxPetEntity pet = ModEntities.GOLDEN_FOX_PET.get().create(world);
+            if (pet != null) {
+                pet.moveTo(x, y, z, this.getYRot(), this.getXRot());
+                pet.setTame(true);
+                pet.setOwnerUUID(player.getUUID());
+                pet.setPersistenceRequired();
+                world.addFreshEntity(pet);
+            }
+
+            if (!player.getAbilities().instabuild)
+                itemstack.shrink(1);
+
+            if (world instanceof ServerLevel serverLevel) {
+                serverLevel.sendParticles(net.minecraft.core.particles.ParticleTypes.HEART,
+                        x, y + 0.5, z, 8, 0.4, 0.4, 0.4, 0.05);
+            }
+            this.playSound(SoundEvents.FOX_AMBIENT, 1f, 1.2f);
+            player.displayClientMessage(Component.translatable("entity.pasterdream.golden_fox.tamed"), true);
+            this.discard();
+            return InteractionResult.SUCCESS;
+        }
 
         // Look up data-driven trade recipe
         GoldenFoxTradeRecipe trade = null;

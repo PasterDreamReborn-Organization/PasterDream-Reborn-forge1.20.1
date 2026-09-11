@@ -1882,6 +1882,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.black_beetle.easter_egg_1", "Come on, Xiao Liang, show us what you got!");
         add("message.pasterdream.black_beetle.easter_egg_2", "Grass, walk, ignore! ጿ ኈ ቼ ዽ ጿ");
         add("entity.pasterdream.golden_fox.vanish", "The golden fox vanished after fulfilling your wish...");
+        add("entity.pasterdream.golden_fox_pet", "Golden Fox");
+        add("entity.pasterdream.golden_fox.tamed", "The golden fox became your companion!");
+        add("message.pasterdream.golden_fox_pet.sit", "Golden Fox is now staying");
+        add("message.pasterdream.golden_fox_pet.follow", "Golden Fox is now following you");
 
         // Dyedream Crack Messages
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5Your body passes through this strange hole, but nothing happens.");

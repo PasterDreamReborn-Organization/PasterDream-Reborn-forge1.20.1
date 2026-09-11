@@ -14,6 +14,8 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.PINK_CHICKEN.get(), PinkChickenRenderer::new);
         event.registerEntityRenderer(ModEntities.PINK_SLIME.get(), PinkSlimeRenderer::new);
         event.registerEntityRenderer(ModEntities.GOLDEN_FOX.get(), GoldenFoxRenderer::new);
+        event.registerEntityRenderer(ModEntities.GOLDEN_FOX_PET.get(), GoldenFoxPetRenderer::new);
+        event.registerEntityRenderer(ModEntities.GOLDEN_FOX_FIREBALL.get(), GoldenFoxFireballRenderer::new);
         event.registerEntityRenderer(ModEntities.NAMELESS.get(), NamelessRenderer::new);
         event.registerEntityRenderer(ModEntities.FIREFLY.get(), FireflyRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_GOLEM.get(), ShadowGolemRenderer::new);

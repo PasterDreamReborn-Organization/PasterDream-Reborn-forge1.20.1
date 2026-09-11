@@ -3,6 +3,8 @@ package com.pasterdream.pasterdreammod.init;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.entity.FoxFireEntity;
 import com.pasterdream.pasterdreammod.world.entity.GoldenFoxEntity;
+import com.pasterdream.pasterdreammod.world.entity.GoldenFoxFireballEntity;
+import com.pasterdream.pasterdreammod.world.entity.GoldenFoxPetEntity;
 import com.pasterdream.pasterdreammod.world.entity.MeltDreamCrystalEntityEntity;
 import com.pasterdream.pasterdreammod.world.entity.PinkChickenEntity;
 import com.pasterdream.pasterdreammod.world.entity.PinkSlimeEntity;
@@ -149,6 +151,24 @@ public class ModEntities {
                     .setUpdateInterval(3)
                     .setCustomClientFactory(GoldenFoxEntity::new)
                     .sized(0.6f, 0.6f));
+
+    public static final RegistryObject<EntityType<GoldenFoxPetEntity>> GOLDEN_FOX_PET = register("golden_fox_pet",
+            EntityType.Builder.<GoldenFoxPetEntity>of(GoldenFoxPetEntity::new, MobCategory.CREATURE)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(3)
+                    .setCustomClientFactory(GoldenFoxPetEntity::new)
+                    .fireImmune()
+                    .sized(0.6f, 0.6f));
+
+    public static final RegistryObject<EntityType<GoldenFoxFireballEntity>> GOLDEN_FOX_FIREBALL = register("golden_fox_fireball",
+            EntityType.Builder.<GoldenFoxFireballEntity>of(GoldenFoxFireballEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(false)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(2)
+                    .setCustomClientFactory(GoldenFoxFireballEntity::new)
+                    .fireImmune()
+                    .sized(0.5f, 0.5f));
 
     public static final RegistryObject<EntityType<NamelessEntity>> NAMELESS = register("nameless",
             EntityType.Builder.<NamelessEntity>of(NamelessEntity::new, MobCategory.CREATURE)
@@ -421,6 +441,7 @@ public class ModEntities {
         event.enqueueWork(PinkChickenEntity::init);
         event.enqueueWork(PinkSlimeEntity::init);
         event.enqueueWork(GoldenFoxEntity::init);
+        event.enqueueWork(GoldenFoxPetEntity::init);
         event.enqueueWork(NamelessEntity::init);
         event.enqueueWork(FireflyEntity::init);
         event.enqueueWork(BoneWingEntity::init);
@@ -451,6 +472,7 @@ public class ModEntities {
         event.put(PINK_CHICKEN.get(), PinkChickenEntity.createAttributes().build());
         event.put(PINK_SLIME.get(), PinkSlimeEntity.createAttributes().build());
         event.put(GOLDEN_FOX.get(), GoldenFoxEntity.createAttributes().build());
+        event.put(GOLDEN_FOX_PET.get(), GoldenFoxPetEntity.createAttributes().build());
         event.put(NAMELESS.get(), NamelessEntity.createAttributes().build());
         event.put(FIREFLY.get(), FireflyEntity.createAttributes().build());
         event.put(BONE_WING.get(), BoneWingEntity.createAttributes().build());
