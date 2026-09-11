@@ -22,7 +22,7 @@ Copyright (c) 2026 PasterDream: Reborn Team (ShiLiuYinYu, 2884omgpy, Garam)
 以下行为**任何情况下均禁止**，版权所有者不会授予许可：
 
 - **商业利用**：直接出售本模组，或以本模组为载体牟利（直接出售模组本身亦为 Minecraft EULA 明令禁止）。整合包内收录未修改官方版本不视为商业利用。
-- **名义使用**：将 "PasterDream"、"帕斯特之梦" 或其近似名称用于与本项目无关的任何内容。
+- **名义使用**：将 "PasterDream"、"帕斯特之梦" 或其近似名称用于与原版帕斯特之梦、本模组及其他帕斯特之梦移植版无关的任何内容。
 
 ## 3. 需事先书面许可
 
@@ -77,7 +77,7 @@ Subject to full compliance with this license:
 The following are **prohibited under all circumstances**; the copyright holder will not grant permission:
 
 - **Commercial use**: selling the mod itself or profiting from it in any way (directly selling the mod is also prohibited by the Minecraft EULA). Including unmodified official releases in modpacks is not considered commercial use.
-- **Name use**: using "PasterDream" or "Paster Dream" (or similar) for any content unrelated to this project.
+- **Name use**: using "PasterDream", "Paster Dream", or "帕斯特之梦" (or similar) for any content unrelated to the original PasterDream, this mod, or other PasterDream ports.
 
 ### 3. Requires Prior Written Permission
 
