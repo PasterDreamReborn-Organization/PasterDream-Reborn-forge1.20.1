@@ -188,6 +188,7 @@ public class FluffyWindAlloySwordItem extends SwordItem {
             float dmg = damage;
             if (smite > 0 && target.getMobType() == MobType.UNDEAD) dmg += smite * SMITE_BANE_DAMAGE;
             if (bane > 0 && target.getMobType() == MobType.ARTHROPOD) dmg += bane * SMITE_BANE_DAMAGE;
+            if (fireAspect > 0 && !target.isOnFire()) target.setSecondsOnFire(1);
             target.hurt(level.damageSources().playerAttack(player), dmg);
             double kbStr = WIND_KNOCKBACK + knockback * WIND_KNOCKBACK_ENCHANT_BONUS;
             Vec3 kb = look.scale(kbStr);

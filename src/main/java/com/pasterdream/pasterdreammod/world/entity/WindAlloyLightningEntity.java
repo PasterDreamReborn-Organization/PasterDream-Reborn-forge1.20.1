@@ -208,6 +208,7 @@ public class WindAlloyLightningEntity extends Entity {
             float dmg = attackDamage;
             if (smite > 0 && e.getMobType() == MobType.UNDEAD) dmg += smite * SMITE_BANE_DAMAGE;
             if (baneOfArthropods > 0 && e.getMobType() == MobType.ARTHROPOD) dmg += baneOfArthropods * SMITE_BANE_DAMAGE;
+            if (fireAspect > 0 && !e.isOnFire()) e.setSecondsOnFire(1);
             if (ownerPlayer != null) {
                 e.hurt(lightningDamageSource(e, ownerPlayer), dmg);
             } else {

@@ -215,6 +215,9 @@ public class TerraswordWaveEntity extends PathfinderMob {
                     }
                     float decayMultiplier = 1.0f - penetrationCount * PENETRATION_DECAY;
                     float finalDamage = damage * decayMultiplier;
+                    if (fireAspect > 0 && !target.isOnFire()) {
+                        target.setSecondsOnFire(1);
+                    }
                     if (owner != null) {
                         target.hurt(this.damageSources().playerAttack(owner), finalDamage);
                     } else {
