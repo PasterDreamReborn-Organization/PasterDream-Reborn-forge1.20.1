@@ -258,6 +258,7 @@ public class GoldenFoxPetEntity extends TamableAnimal implements GeoEntity, Rang
             this.foxFireCooldown--;
         }
 
+        this.checkWakeFromStandby();
         this.updateSleepState();
         if (this.isSleeping()) {
             this.setSprinting(false);
@@ -269,6 +270,22 @@ public class GoldenFoxPetEntity extends TamableAnimal implements GeoEntity, Rang
             this.tryCastFoxFire();
             this.updateSprinting();
             this.updateSitIdle();
+        }
+    }
+
+    private void checkWakeFromStandby() {
+        if (!this.isOrderedToSit()) {
+            return;
+        }
+        boolean selfAttacked = this.getLastHurtByMob() != null
+                && this.tickCount - this.getLastHurtByMobTimestamp() < 100;
+        boolean ownerAttacked = this.getOwner() instanceof Player owner
+                && owner.getLastHurtByMob() != null
+                && owner.tickCount - owner.getLastHurtByMobTimestamp() < 100;
+        if (selfAttacked || ownerAttacked) {
+            this.setOrderedToSit(false);
+            this.setSitIdle(false);
+            this.setSleeping(false);
         }
     }
 
