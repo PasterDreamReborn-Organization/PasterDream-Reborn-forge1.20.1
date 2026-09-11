@@ -20,7 +20,7 @@ This project is released with permission from the original author "Aerolite_Dust
 
 ## License
 
-- **Code**: [MIT](LICENSE.md) — Free to use, modify, and distribute
+- **Code**: [PDR License](LICENSE.md) — Free to play, include in modpacks, and study; addon mods, ports, modified redistribution, and commercial use require prior written permission
 - **Art Assets**: [ARR](src/main/resources/LICENSE_ASSETS.md) — All Rights Reserved. Original mod assets copyright by the original author; rewrite team assets copyright by the rewrite team. See [Asset Manifest](src/main/resources/ASSETS_MANIFEST.md)
 
 ## Installation

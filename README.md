@@ -20,7 +20,7 @@
 
 ## 协议
 
-- **代码**: [MIT](LICENSE.md) — 可自由使用、修改、分发
+- **代码**: [PDR 协议](LICENSE.md) — 可游玩、整合包收录、个人学习；制作附属模组、移植、再分发修改版或商业利用需事先获得书面许可
 - **美术资源**: [ARR](src/main/resources/LICENSE_ASSETS.md) — 保留所有权利。原模组资产版权归原作者，重写团队资产版权归重写团队。详见 [资产清单](src/main/resources/ASSETS_MANIFEST.md)
 
 ## 安装信息
