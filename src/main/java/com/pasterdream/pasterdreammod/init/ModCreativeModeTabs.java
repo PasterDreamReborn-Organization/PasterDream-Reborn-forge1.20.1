@@ -724,6 +724,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.QYM_DOLL.get());
                         output.accept(ModItems.UUZ_DOLL.get());
                         output.accept(ModItems.DYEDREAM_CRACK.get());
+                        output.accept(ModItems.DYEDREAM_WORLD_LEAPSTONE.get());
                         output.accept(ModItems.CLAYPAN.get());
                         output.accept(ModItems.CLAY_POT.get());
                         output.accept(ModItems.DREAM_CAULDRON.get());

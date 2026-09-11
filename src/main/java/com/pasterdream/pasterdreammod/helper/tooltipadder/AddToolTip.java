@@ -90,5 +90,8 @@ public class AddToolTip
         if(stack.is(ModItems.PURE_HORROR.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.pure_horror"));
         }
+        if(stack.is(ModItems.DYEDREAM_WORLD_LEAPSTONE.get())){
+            tooltip.add(Component.translatable("tooltip.pasterdream.dyedream_world_leapstone"));
+        }
     }
 }

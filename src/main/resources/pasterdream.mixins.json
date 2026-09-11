@@ -33,6 +33,7 @@
   "client": [
     "BossHealthOverlayAccessor",
     "FogRendererMixin",
+    "GuiPortalOverlayMixin",
     "IMixinOptionInstance",
     "LevelRendererMixin",
     "LightTextureGammaMixin",

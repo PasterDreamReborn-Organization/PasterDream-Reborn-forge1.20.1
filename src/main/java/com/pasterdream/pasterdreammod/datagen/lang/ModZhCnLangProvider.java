@@ -318,6 +318,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.POTTED_SLUMBER_PALM_SAPLING.get(), "盆栽眠椰树苗");
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "染梦石英矿石");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "染梦粉尘矿石");
+        add(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get(), "染梦世界跃迁石");
+        add(ModBlocks.DYEDREAM_WORLD_PORTAL.get(), "染梦世界传送门");
         add(ModBlocks.AMBER_CANDY_ORE.get(), "琥珀糖矿石");
         add(ModBlocks.TITANIUM_ORE.get(), "钛矿石");
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), "深层钛矿石");
@@ -1718,6 +1720,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.aaroncos_music_disc.desc", "§dPasterDream§7 - 亚伦柯斯之触");
         add("item.pasterdream.pure_horror", "纯粹恐惧");
         add("tooltip.pasterdream.pure_horror", "§7它让我的脊椎发出了可怕的颤抖...");
+        add("tooltip.pasterdream.dyedream_world_leapstone", "§7可搭建传送门框架；用染梦粉尘右键框架内部即可开启通往染梦世界的传送门");
         add("entity.pasterdream.shadow_magicball", "暗影魔法球");
         add("entity.pasterdream.shadow_tune_totem", "暗影符文塔");
         add("message.pasterdream.shadow_tune_totem.charging", "暗影符文塔正在蓄能");

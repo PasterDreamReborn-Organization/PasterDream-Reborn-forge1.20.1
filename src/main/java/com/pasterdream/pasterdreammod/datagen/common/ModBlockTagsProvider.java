@@ -573,6 +573,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         //不可被流体破坏的无碰撞箱方块
         tag(TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fluid_can_not_brush_nocollission_block")))
                 .add(ModBlocks.DYEDREAM_CRACK.get())
+                .add(ModBlocks.DYEDREAM_WORLD_PORTAL.get())
                 .add(ModBlocks.THE_ENDLESS_BOOK_OF_DREAM_SEEKERS.get())
                 .add(ModBlocks.BIG_BUBBLE.get())
                 .add(ModBlocks.SHADOW_VORTEX.get());
@@ -582,7 +583,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.GOLDEN_FOX_SCULPTURE.get())
                 .add(ModBlocks.FOX_SCULPTURE.get())
                 .add(ModBlocks.SHADOW_BRAZIER.get())
-                .add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get());
+                .add(ModBlocks.SHADOW_BLAST_FURNACE_CORE.get())
+                .add(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get());
+
+        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get());
 
         // ===== 盆栽植物 =====
         var flowerPots = tag(BlockTags.FLOWER_POTS);

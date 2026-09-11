@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.util.BuildingBlockFamily;
 import com.pasterdream.pasterdreammod.world.block.CalciteConeBlock;
 import com.pasterdream.pasterdreammod.world.block.FigVineBlock;
+import com.pasterdream.pasterdreammod.world.block.portal.DyedreamWorldPortalBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.*;
@@ -73,6 +74,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), cubeAll(ModBlocks.DYEDREAM_QUARTZ_ORE.get()));
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_DUST_ORE.get(), cubeAll(ModBlocks.DYEDREAM_DUST_ORE.get()));
+
+        // ===== 染梦世界传送设施 =====
+        simpleBlockWithItem(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get(), cubeAll(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get()));
+        getVariantBuilder(ModBlocks.DYEDREAM_WORLD_PORTAL.get())
+                .partialState().with(DyedreamWorldPortalBlock.AXIS, Direction.Axis.X)
+                .modelForState().modelFile(models().getExistingFile(modLoc("block/dyedream_world_portal_ns"))).addModel()
+                .partialState().with(DyedreamWorldPortalBlock.AXIS, Direction.Axis.Z)
+                .modelForState().modelFile(models().getExistingFile(modLoc("block/dyedream_world_portal_ew"))).addModel();
 
         simpleBlockWithItem(ModBlocks.AMBER_CANDY_ORE.get(), cubeAll(ModBlocks.AMBER_CANDY_ORE.get()));
 
