@@ -498,10 +498,7 @@ public class Config
             .comment("重生之梦水晶 shift+右键 释放遗物中的灵魂时可随机获得的物品 ID 列表（格式：modid:item_id），"
                     + "\n例：pasterdream:melt_dream_crystal_fragment 为融梦水晶碎片")
             .defineListAllowEmpty("rebirthDreamCrystalLoot",
-                    List.of("pasterdream:melt_dream_crystal_fragment",
-                            "pasterdream:life_crystal",
-                            "pasterdream:white_crystal",
-                            "pasterdream:soul_gem_of_akizuki_ayane",
+                    List.of("pasterdream:soul_gem_of_akizuki_ayane",
                             "pasterdream:magnifying_glass_of_sherry",
                             "pasterdream:empty_vessel"),
                     obj -> obj instanceof String);
