@@ -71,7 +71,7 @@
 - **程序**: 2884omgpy, ShiLiuYinYu, Garam
 - **美术**: 煮饭婆 (GQ2529), Garam, 小吴 (Vulmoon_XwX)
 - **文案**: 绘星tsuki (Yumihoshi), -北旭- (bei_xu), 爱摸鱼的绫苒 (Akizuki Ayane), 月琴语
-- **特别感谢**: 福米花_flow
+- **特别感谢**: 福米花_flow, pig
 
 <a href="https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1" />
