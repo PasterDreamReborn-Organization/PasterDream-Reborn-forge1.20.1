@@ -1891,7 +1891,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5Your body passes through this strange hole, but nothing happens.");
         add("message.pasterdream.dyedream_crack.first_contact.2", "§5You can feel that this crack-like thing interacts with this world and another place. The different environments nearby might have been born because of it.");
         add("message.pasterdream.dyedream_crack.first_contact.3", "§5Perhaps it's not the time yet. Let's leave the answer to the time that flows between day and night.");
-        add("message.pasterdream.dyedream_crack.first_contact.4", "§5Maybe I should flip through the Seniors Dream... there might be records about this kind of crack.");
+        add("message.pasterdream.dyedream_crack.first_contact.4", "§5Maybe you should flip through the Seniors Dream... there might be records about this kind of crack.");
         add("message.pasterdream.sleep.dream_of_crack.1", "§5You wake up startled from your sleep, with cold sweat on your back. You recall dreaming of the strange crack you encountered during your past explorations, slowly approaching and staring at you.");
         add("message.pasterdream.sleep.dream_of_crack.2", "§5That crack is likely suspicious. Perhaps you should return there to investigate.");
         add("message.pasterdream.sleep.dream_of_crack.3", "§5I must find out what happened...");
