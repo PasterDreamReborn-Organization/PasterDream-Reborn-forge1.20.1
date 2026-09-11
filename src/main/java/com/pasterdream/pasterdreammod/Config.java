@@ -516,6 +516,13 @@ public class Config
             .comment("逐梦列车车票每个维度只能有1人使用（全服共享），默认 false")
             .define("trainTicketOnePerDimension", false);
 
+    // === 法术工厂（融梦釜）药水模块 ===
+    private static final ForgeConfigSpec.BooleanValue DREAM_CAULDRON_POTION_ENABLED = BUILDER
+            .comment("法术工厂（融梦釜）药水模块总开关。",
+                    "开启后支持基础酿造/融合/勾兑/装瓶（消耗染梦果基底），并在 JEI 展示对应页面；",
+                    "关闭后釜完全交还原通用配方系统。默认 true")
+            .define("dreamCauldronPotionEnabled", true);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     // === 时之沙 ===
@@ -618,6 +625,9 @@ public class Config
 
     // === 逐梦列车车票 ===
     public static boolean trainTicketOnePerDimension;
+
+    // === 法术工厂（融梦釜）药水模块 ===
+    public static boolean dreamCauldronPotionEnabled = true;
 
     /** 重生之梦水晶随机掉落缓存（解析后的 Item 列表） */
     private static List<Item> cachedRebirthDreamCrystalLoot = List.of();
@@ -996,6 +1006,8 @@ public class Config
         bastionGuardGrantRadius = BASTION_GUARD_GRANT_RADIUS.get();
 
         trainTicketOnePerDimension = TRAIN_TICKET_ONE_PER_DIMENSION.get();
+
+        dreamCauldronPotionEnabled = DREAM_CAULDRON_POTION_ENABLED.get();
 
         rebuildSinInstakillCache();
         rebuildConflictMarkBlacklistCache();

@@ -2,11 +2,13 @@ package com.pasterdream.pasterdreammod.client.network;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronScreen;
 import com.pasterdream.pasterdreammod.world.block.geckolibblock.AnimatableSync;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -167,5 +169,20 @@ public class ClientPacketHandlers
     public static void handleCurioActivation(Item item)
     {
         Minecraft.getInstance().gameRenderer.displayItemActivation(new ItemStack(item));
+    }
+
+    /** 法术工厂提示：界面打开时渲染在三物品槽上方，否则回落到动作栏 */
+    public static void handleDreamCauldronMessage(Component message)
+    {
+        if (Minecraft.getInstance().screen instanceof DreamCauldronScreen screen)
+        {
+            screen.showCauldronMessage(message);
+            return;
+        }
+        Player player = Minecraft.getInstance().player;
+        if (player != null)
+        {
+            player.displayClientMessage(message, true);
+        }
     }
 }

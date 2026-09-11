@@ -19,8 +19,10 @@ import com.pasterdream.pasterdreammod.compat.jei.claypanrecipe.ClaypanJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.claypanrecipe.ClaypanRecipeCategory;
 import com.pasterdream.pasterdreammod.compat.jei.dreamaccumulatorrecipe.DreamAccumulatorJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.dreamaccumulatorrecipe.DreamAccumulatorRecipeCategory;
+import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.CauldronBrewRecipeCatalog;
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldronJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.DreamCauldronRecipeCategory;
+import com.pasterdream.pasterdreammod.compat.jei.dreamcauldronrecipe.ElixirBottleSubtypeInterpreter;
 import com.pasterdream.pasterdreammod.compat.jei.mortarrecipe.MortarJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.mortarrecipe.MortarRecipeCategory;
 import com.pasterdream.pasterdreammod.compat.jei.researchtablecopy.ResearchTableCopyJEIRecipe;
@@ -104,7 +106,12 @@ public class ModJEIPlugin implements IModPlugin
             List<FluidContainerRelation> fluidContainerRelations = GetAllFluidContainerCapability.getAllContainer();
 
             registration.addRecipes(ClaypanRecipeCategory.CLAYPAN_RECIPE_TYPE, claypanRecipes.stream().map(ClaypanJEIRecipe::new).collect(Collectors.toList()));
-            registration.addRecipes(DreamCauldronRecipeCategory.DREAM_CAULDRON_RECIPE_TYPE, dreamCauldronRecipes.stream().map(DreamCauldronJEIRecipe::new).collect(Collectors.toList()));
+            // 法术工厂：通用配方 + 药水模块模板页（酿造/融合/勾兑）合并注册到同一分类
+            List<DreamCauldronJEIRecipe> cauldronJeiRecipes = new ArrayList<>(
+                    dreamCauldronRecipes.stream().map(DreamCauldronJEIRecipe::new).collect(Collectors.toList()));
+            cauldronJeiRecipes.addAll(CauldronBrewRecipeCatalog.createAll().stream()
+                    .map(DreamCauldronJEIRecipe::new).collect(Collectors.toList()));
+            registration.addRecipes(DreamCauldronRecipeCategory.DREAM_CAULDRON_RECIPE_TYPE, cauldronJeiRecipes);
             registration.addRecipes(MortarRecipeCategory.MORTAR_RECIPE_TYPE, mortarRecipes.stream().map(MortarJEIRecipe::new).collect(Collectors.toList()));
             registration.addRecipes(ResearchTableCopyRecipeCategory.RESEARCH_TABLE_COPY_RECIPE_TYPE, researchTableCopyRecipes.stream().map(ResearchTableCopyJEIRecipe::new).collect(Collectors.toList()));
             registration.addRecipes(ResearchTableResearchRecipeCategory.RESEARCH_TABLE_RESEARCH_RECIPE_TYPE, researchTableResearchRecipes.stream().map(ResearchTableResearchJEIRecipe::new).collect(Collectors.toList()));
@@ -208,6 +215,10 @@ public class ModJEIPlugin implements IModPlugin
         registration.registerSubtypeInterpreter(
                 PotionBottleRegistry.POTION_BOTTLE.get(),
                 (stack, context) -> PotionBottleItem.getPotionType(stack));
+
+        // 灵药瓶按药水效果区分，让 R 查询精确命中对应法术工厂酿造配方
+        registration.registerSubtypeInterpreter(
+                ModItems.ELIXIR_BOTTLE.get(), ElixirBottleSubtypeInterpreter.INSTANCE);
 
         // 通用「药水」流体：按 NBT 中的 "Potion" 键区分不同药水流体
         registration.registerSubtypeInterpreter(ForgeTypes.FLUID_STACK, ModFluids.POTION.get(), (fluidStack, context) ->

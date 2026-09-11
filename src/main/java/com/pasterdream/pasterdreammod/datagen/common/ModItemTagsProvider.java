@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModBlockTags;
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.potion.CauldronPotionTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -294,5 +295,29 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(Items.AIR)
                 .add(ModItems.ATTACK_ENHANCE_STONE.get())
                 .add(ModItems.LUCK_ENHANCE_STONE.get());
+
+        // 法术工厂（融梦釜）药水模块标签
+        tag(CauldronPotionTags.BASE)
+                .add(ModItems.DYEDREAM_FRUIT.get());
+        tag(CauldronPotionTags.ENHANCE_REDSTONE)
+                .add(Items.REDSTONE);
+        tag(CauldronPotionTags.ENHANCE_GLOWSTONE)
+                .add(Items.GLOWSTONE_DUST);
+        tag(CauldronPotionTags.ENHANCE)
+                .addTag(CauldronPotionTags.ENHANCE_REDSTONE)
+                .addTag(CauldronPotionTags.ENHANCE_GLOWSTONE);
+        tag(CauldronPotionTags.CATALYST)
+                .add(Items.SUGAR)
+                .add(Items.RABBIT_FOOT)
+                .add(Items.BLAZE_POWDER)
+                .add(Items.GLISTERING_MELON_SLICE)
+                .add(Items.SPIDER_EYE)
+                .add(Items.GHAST_TEAR)
+                .add(Items.MAGMA_CREAM)
+                .add(Items.PUFFERFISH)
+                .add(Items.GOLDEN_CARROT)
+                .add(Items.PHANTOM_MEMBRANE)
+                .add(Items.TURTLE_HELMET)
+                .add(Items.FERMENTED_SPIDER_EYE);
     }
 }

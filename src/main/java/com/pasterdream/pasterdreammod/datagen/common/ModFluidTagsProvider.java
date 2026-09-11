@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.datagen.common;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModFluids;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.potion.CauldronPotionFluidTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -48,5 +49,11 @@ public class ModFluidTagsProvider extends FluidTagsProvider
 
         tag(TagKey.create(BuiltInRegistries.FLUID.key(), ResourceLocation.fromNamespaceAndPath("forge", "ink")))
                 .add(ModFluids.INK.get());
+
+        // 法术工厂（融梦釜）药水模块流体标签
+        tag(CauldronPotionFluidTags.SPRING)
+                .add(ModFluids.MELT_DREAM_LIQUID.get());
+        tag(CauldronPotionFluidTags.POTION)
+                .add(ModFluids.POTION.get());
     }
 }
