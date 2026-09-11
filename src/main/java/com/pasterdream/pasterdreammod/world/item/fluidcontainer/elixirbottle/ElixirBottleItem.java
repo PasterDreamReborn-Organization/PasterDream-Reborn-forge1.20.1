@@ -49,19 +49,12 @@ public class ElixirBottleItem extends Item
     {
         FluidStack fluidStack = getElixirBottleFluidStack(itemStack);
 
+        // 装液后不再在名称中拼接流体信息，统一显示紫色「灵药瓶」；流体名称/容量改在 tooltip 展示
         if (!fluidStack.isEmpty())
         {
-            // 成品药水：固定粉色「灵药瓶」，不再拼接容量/流体名（对齐法术工厂药水提示）
-            if (isPotionFluid(fluidStack))
-            {
-                return Component.translatable("item.pasterdream.elixir_bottle").withStyle(ChatFormatting.LIGHT_PURPLE);
-            }
-            return Component.translatable("item.pasterdream.elixir_bottle").append(" - " + fluidStack.getAmount() + "mB ").append(fluidStack.getDisplayName());
+            return Component.translatable("item.pasterdream.elixir_bottle").withStyle(ChatFormatting.LIGHT_PURPLE);
         }
-            else
-            {
-                return Component.translatable("item.pasterdream.elixir_bottle");
-            }
+        return Component.translatable("item.pasterdream.elixir_bottle");
     }
 
     @Override
@@ -78,7 +71,7 @@ public class ElixirBottleItem extends Item
             return;
         }
 
-        // 成品药水：每条效果一行「·名称 [等级] (时长)」，按效果类别着色，末行灰色容量
+        // 成品药水：效果行已足够，不再额外汇总流体名；末行灰色容量
         if (isPotionFluid(fluidStack))
         {
             for (GenericMobEffect effect : PotionHelper.getEffectType(fluidStack))
@@ -101,6 +94,9 @@ public class ElixirBottleItem extends Item
                     .withStyle(ChatFormatting.GRAY));
             return;
         }
+
+        // 非药水流体：显示流体名称
+        tooltip.add(fluidStack.getDisplayName());
 
         if (FluidDrinkPropertiesRegistry.getProperties(fluidStack) != null)
         {
@@ -130,6 +126,9 @@ public class ElixirBottleItem extends Item
             {
                 tooltip.add(Component.translatable("tooltip.pasterdream.不可饮用").withStyle(ChatFormatting.RED));
             }
+
+        tooltip.add(Component.translatable("pasterdream.tooltip.elixir_capacity", fluidStack.getAmount())
+                .withStyle(ChatFormatting.GRAY));
     }
 
     /** 成品药水流体判定：原模组 potion 流体且 EffectList 非空 */
