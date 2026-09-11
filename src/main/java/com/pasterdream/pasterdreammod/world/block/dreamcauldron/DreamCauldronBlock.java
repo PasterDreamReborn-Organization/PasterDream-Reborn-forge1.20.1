@@ -68,7 +68,7 @@ public class DreamCauldronBlock extends HorizontalDirectionalGeckolibBaseEntityB
             BlockEntity blockEntity = level.getBlockEntity(blockPosition);
             if (blockEntity instanceof DreamCauldronBlockEntity dreamCauldron)
             {
-                // 法术工厂装瓶：手持空玻璃瓶右键釜 → 将输出槽成品药水灌入灵药瓶；其余情况打开釜界面
+                // 法术工厂装瓶：手持空灵药瓶右键釜 → 将输出槽成品药水灌入灵药瓶；其余情况打开釜界面
                 if (Config.dreamCauldronPotionEnabled)
                 {
                     CauldronPotionModule.ActionResult result =

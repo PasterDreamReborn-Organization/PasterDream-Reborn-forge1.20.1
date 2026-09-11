@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.block.dreamcauldron.potion;
 
 import com.pasterdream.pasterdreammod.init.ModFluids;
+import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronBlockEntity;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -224,13 +225,19 @@ public final class CauldronPotionModule
         return ActionResult.handled(Component.translatable("pasterdream.cauldron.blend", outMb));
     }
 
-    // ============ 装瓶（玻璃瓶右键釜：输出槽药水灌入灵药瓶，瓶容量 1000ml） ============
+    // ============ 装瓶（空灵药瓶右键釜：输出槽药水灌入灵药瓶，瓶容量 1000ml） ============
     public static ActionResult tryBottle(DreamCauldronBlockEntity be,
                                          net.minecraft.world.entity.player.Player player,
                                          net.minecraft.world.InteractionHand hand)
     {
         ItemStack held = player.getItemInHand(hand);
-        if (held.getItem() != net.minecraft.world.item.Items.GLASS_BOTTLE)
+        if (held.getItem() != ModItems.ELIXIR_BOTTLE.get())
+        {
+            return ActionResult.pass();
+        }
+        // 必须是空灵药瓶（已装液体的瓶子交还原逻辑，打开釜界面）
+        if (!com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem
+                .getElixirBottleFluidStack(held).isEmpty())
         {
             return ActionResult.pass();
         }
@@ -240,7 +247,7 @@ public final class CauldronPotionModule
             return ActionResult.handled(Component.translatable("pasterdream.cauldron.error.bottle_empty"));
         }
 
-        // 灵药瓶容量 1000ml，饮用由原模组灵药瓶按每口 250ml 结算
+        // 灵药瓶容量 1000ml，饮用由灵药瓶按每口 250ml 结算
         int take = Math.min(output.getAmount(), 1000);
         List<MobEffectInstance> effects = PotionEffectCodec.readFluidEffects(output);
 
