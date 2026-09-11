@@ -2,9 +2,9 @@ package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
-import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -83,7 +83,7 @@ public class GoldenFoxFireballEntity extends AbstractHurtingProjectile {
             target.addEffect(new MobEffectInstance(ModEffects.BIND.get(), 10, 0, false, true), this);
             target.addEffect(new MobEffectInstance(ModEffects.VULNERABILITY.get(), 40, 0, false, true), this);
         }
-        this.playSound(ModSounds.FOX_FIRE.get(), 1.0F, 1.0F);
+        this.playSound(SoundEvents.GENERIC_EXPLODE, 1.0F, 1.0F);
     }
 
     @Override
