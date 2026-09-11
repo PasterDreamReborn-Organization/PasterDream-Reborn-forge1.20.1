@@ -89,19 +89,19 @@ public class PasterDreamClientConfig {
             .comment("精神值条预设2：创造模式下是否仅在下蹲时显示，默认 true")
             .define("sanBarPreset2SneakShowInCreative", true);
 
-    // === 低 San 效果开关 ===
+    // === 疯狂状态效果的屏幕效果设置 ===
     private static final ForgeConfigSpec.BooleanValue LOW_SAN_OVERLAY = BUILDER
-            .comment("低SAN值时的全屏画面叠加效果，默认 true。"
+            .comment("疯狂状态效果的全屏画面叠加效果，默认 true。"
                     + "\n指令 /pasterdreamdebug lowsan overlay 可运行时临时切换，重进存档后按此配置恢复")
             .define("lowSanOverlay", true);
 
     private static final ForgeConfigSpec.BooleanValue LOW_SAN_JITTER = BUILDER
-            .comment("低SAN值时的视角抖动，默认 true。"
+            .comment("疯狂状态效果的视角抖动，默认 true。"
                     + "\n指令 /pasterdreamdebug lowsan jitter 可运行时临时切换，重进存档后按此配置恢复")
             .define("lowSanJitter", true);
 
     private static final ForgeConfigSpec.BooleanValue LOW_SAN_SOUND = BUILDER
-            .comment("低SAN值时的循环音效，默认 true。"
+            .comment("疯狂状态效果的循环音效，默认 true。"
                     + "\n指令 /pasterdreamdebug lowsan sound 可运行时临时切换，重进存档后按此配置恢复")
             .define("lowSanSound", true);
 
@@ -127,7 +127,7 @@ public class PasterDreamClientConfig {
     public static double sanBarPreset2LowThreshold;
     public static boolean sanBarPreset2SneakShowInCreative;
 
-    // === 低 San 效果开关 ===
+    // === 疯狂状态效果的屏幕效果设置 ===
     public static boolean lowSanOverlay;
     public static boolean lowSanJitter;
     public static boolean lowSanSound;
