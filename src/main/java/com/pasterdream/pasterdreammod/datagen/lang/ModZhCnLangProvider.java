@@ -2749,5 +2749,25 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 药水箭
 
+        // 法术工厂（融梦釜）药水模块
+        add("pasterdream.cauldron.brew", "§d酿造完成！得到 %s ml 药水");
+        add("pasterdream.cauldron.fuse", "§d效果融合成功！得到 %s ml 药水");
+        add("pasterdream.cauldron.blend", "§d勾兑成功！得到 %s ml 药水");
+        add("pasterdream.cauldron.bottle", "§d装瓶成功！得到灵药瓶（消耗 %s ml）");
+        add("pasterdream.cauldron.error.blend_mismatch", "§c效果不一致，无法勾兑");
+        add("pasterdream.cauldron.error.blend_right_invalid", "§c右槽必须为融梦泉涌或同效果药水才能勾兑");
+        add("pasterdream.cauldron.error.brew_left_not_empty", "§c左槽必须为空才能酿造");
+        add("pasterdream.cauldron.error.enhance_conflict", "§c增强剂冲突，请二选一");
+        add("pasterdream.cauldron.error.invalid_catalyst", "§c无效催化剂，请检查原版酿造配方");
+        add("pasterdream.cauldron.error.enhance_unsupported", "§c该催化剂不支持此增强剂");
+        add("pasterdream.cauldron.error.fuse_left_too_little", "§c基底药水不足250ml，无法融合");
+        add("pasterdream.cauldron.error.fuse_need_spring", "§c融合需要融梦泉涌");
+        add("pasterdream.cauldron.error.over_capacity", "§c容量上限1000ml");
+        add("pasterdream.cauldron.error.output_not_empty", "§c输出槽不为空，请先装瓶或清空");
+        add("pasterdream.cauldron.error.bottle_empty", "§c输出槽没有成品药水，无法装瓶");
+
+        // 灵药瓶提示框（成品药水容量行）
+        add("pasterdream.tooltip.elixir_capacity", "%s mB（瓶内液体容量）");
+
     }
 }

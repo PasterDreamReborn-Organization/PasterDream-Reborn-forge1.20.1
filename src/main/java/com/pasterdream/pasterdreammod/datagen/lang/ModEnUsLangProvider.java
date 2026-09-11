@@ -2645,5 +2645,25 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("painting.pasterdream.pasterdream_dyedream_station.author", "煮饭婆");
         add("painting.pasterdream.pasterdream_pink_yellow_house.title", "Pink and Yellow House");
         add("painting.pasterdream.pasterdream_pink_yellow_house.author", "煮饭婆");
+
+        // Spell Factory (Dream Cauldron) potion module
+        add("pasterdream.cauldron.brew", "§dBrewed %s ml potion");
+        add("pasterdream.cauldron.fuse", "§dFused effects! Got %s ml potion");
+        add("pasterdream.cauldron.blend", "§dBlended %s ml potion");
+        add("pasterdream.cauldron.bottle", "§dBottled an elixir bottle (%s ml)");
+        add("pasterdream.cauldron.error.blend_mismatch", "§cEffects don't match, can't blend");
+        add("pasterdream.cauldron.error.blend_right_invalid", "§cRight tank needs Melt Dream Spring or same-effect potion to blend");
+        add("pasterdream.cauldron.error.brew_left_not_empty", "§cLeft tank must be empty to brew");
+        add("pasterdream.cauldron.error.enhance_conflict", "§cEnhancer conflict, choose one");
+        add("pasterdream.cauldron.error.invalid_catalyst", "§cInvalid catalyst, check vanilla brewing recipes");
+        add("pasterdream.cauldron.error.enhance_unsupported", "§cThis catalyst doesn't support that enhancer");
+        add("pasterdream.cauldron.error.fuse_left_too_little", "§cBase potion below 250 ml, can't fuse");
+        add("pasterdream.cauldron.error.fuse_need_spring", "§cFusing requires Melt Dream Spring");
+        add("pasterdream.cauldron.error.over_capacity", "§cCapacity limit is 1000 ml");
+        add("pasterdream.cauldron.error.output_not_empty", "§cOutput tank is not empty, bottle or clear it first");
+        add("pasterdream.cauldron.error.bottle_empty", "§cNo potion in the output tank to bottle");
+
+        // Elixir bottle tooltip (potion capacity line)
+        add("pasterdream.tooltip.elixir_capacity", "%s mB (bottle liquid capacity)");
     }
 }

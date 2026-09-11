@@ -40,7 +40,7 @@ public class DreamCauldronCraftPacket
                 BlockEntity blockEntity = level.getBlockEntity(message.blockPosition);
                 if (blockEntity instanceof DreamCauldronBlockEntity cauldron)
                 {
-                    cauldron.craft();
+                    cauldron.craft(player);
                 }
             }
         });

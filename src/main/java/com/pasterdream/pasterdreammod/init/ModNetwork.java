@@ -48,6 +48,7 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, FluidSoundPacket.class, FluidSoundPacket::encode, FluidSoundPacket::decode, FluidSoundPacket::handle);
 
         CHANNEL.registerMessage(id++, DreamCauldronCraftPacket.class, DreamCauldronCraftPacket::encode, DreamCauldronCraftPacket::decode, DreamCauldronCraftPacket::handle);
+        CHANNEL.registerMessage(id++, DreamCauldronMessagePacket.class, DreamCauldronMessagePacket::encode, DreamCauldronMessagePacket::decode, DreamCauldronMessagePacket::handle);
         CHANNEL.registerMessage(id++, MortarNbtSyncPacket.class, MortarNbtSyncPacket::encode, MortarNbtSyncPacket::decode, MortarNbtSyncPacket::handle);
         CHANNEL.registerMessage(id++, MortarCraftPacket.class, MortarCraftPacket::encode, MortarCraftPacket::decode, MortarCraftPacket::handle);
         CHANNEL.registerMessage(id++, ResearchTableCopyPacket.class, ResearchTableCopyPacket::encode, ResearchTableCopyPacket::decode, ResearchTableCopyPacket::handle);

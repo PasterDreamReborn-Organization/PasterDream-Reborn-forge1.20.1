@@ -1,6 +1,10 @@
 package com.pasterdream.pasterdreammod.world.block.dreamcauldron;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.VoxelShapeCalculator;
+import com.pasterdream.pasterdreammod.init.ModNetwork;
+import com.pasterdream.pasterdreammod.network.DreamCauldronMessagePacket;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.potion.CauldronPotionModule;
 import com.pasterdream.pasterdreammod.world.block.horizontaldirectionalblock.blockentity.HorizontalDirectionalGeckolibBaseEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,6 +24,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -63,6 +68,22 @@ public class DreamCauldronBlock extends HorizontalDirectionalGeckolibBaseEntityB
             BlockEntity blockEntity = level.getBlockEntity(blockPosition);
             if (blockEntity instanceof DreamCauldronBlockEntity dreamCauldron)
             {
+                // 法术工厂装瓶：手持空玻璃瓶右键釜 → 将输出槽成品药水灌入灵药瓶；其余情况打开釜界面
+                if (Config.dreamCauldronPotionEnabled)
+                {
+                    CauldronPotionModule.ActionResult result =
+                            CauldronPotionModule.tryBottle(dreamCauldron, player, interactionHand);
+                    if (result.outcome() == CauldronPotionModule.Outcome.HANDLED)
+                    {
+                        if (result.message() != null && player instanceof ServerPlayer serverPlayer)
+                        {
+                            ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> serverPlayer),
+                                    new DreamCauldronMessagePacket(result.message()));
+                        }
+                        return InteractionResult.SUCCESS;
+                    }
+                }
+
                 NetworkHooks.openScreen((ServerPlayer) player, dreamCauldron, buf -> buf.writeBlockPos(blockPosition));
                 level.playSound(null, blockPosition, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 1.0f, 1.0f);
             }

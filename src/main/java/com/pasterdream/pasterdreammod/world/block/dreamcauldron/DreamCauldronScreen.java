@@ -5,17 +5,31 @@ import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.network.DreamCauldronCraftPacket;
+import net.minecraft.Util;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
 public class DreamCauldronScreen extends AbstractContainerScreenWithFluidSlot<DreamCauldronMenu>
 {
+    /** 法术工厂操作结果提示（渲染在三物品槽上方），超时后自动消失 */
+    private static final long MESSAGE_DURATION_MS = 3000L;
+
+    private Component cauldronMessage;
+    private long cauldronMessageTime;
+
     public DreamCauldronScreen(DreamCauldronMenu menu, Inventory inventory, Component title)
     {
         super(menu, inventory, title);
         this.imageWidth = 180;
         this.imageHeight = 189;
+    }
+
+    /** 由 DreamCauldronMessagePacket 调用：在釜界面顶部显示提示 */
+    public void showCauldronMessage(Component message)
+    {
+        this.cauldronMessage = message;
+        this.cauldronMessageTime = Util.getMillis();
     }
 
     @Override
@@ -45,6 +59,15 @@ public class DreamCauldronScreen extends AbstractContainerScreenWithFluidSlot<Dr
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY)
     {
-
+        if (cauldronMessage != null && Util.getMillis() - cauldronMessageTime <= MESSAGE_DURATION_MS)
+        {
+            // 居中于三个物品槽正上方
+            int x = (imageWidth - font.width(cauldronMessage)) / 2;
+            guiGraphics.drawString(font, cauldronMessage, x, -8, 0xFFFFFF, false);
+        }
+        else
+        {
+            cauldronMessage = null;
+        }
     }
 }

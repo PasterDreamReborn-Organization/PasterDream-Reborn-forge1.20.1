@@ -1,12 +1,15 @@
 package com.pasterdream.pasterdreammod.world.block.dreamcauldron;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.IFluidHandlerProvider;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
 import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
+import com.pasterdream.pasterdreammod.network.DreamCauldronMessagePacket;
 import com.pasterdream.pasterdreammod.recipe.genericrecipe.recipematchandprocess.*;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.potion.CauldronPotionModule;
 import com.pasterdream.pasterdreammod.world.block.geckolibblock.AnimatableSync;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,6 +17,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -267,11 +271,26 @@ public class DreamCauldronBlockEntity extends BlockEntity implements MenuProvide
         externalHandlerCap.invalidate();
     }
 
-    public void craft()
+    public void craft(ServerPlayer player)
     {
         if (level == null || level.isClientSide)
         {
             return;
+        }
+
+        // 法术工厂药水模块优先处理（酿造/融合/勾兑）；未命中时交还原通用配方流程
+        if (Config.dreamCauldronPotionEnabled)
+        {
+            CauldronPotionModule.ActionResult result = CauldronPotionModule.tryHandle(this);
+            if (result.outcome() == CauldronPotionModule.Outcome.HANDLED)
+            {
+                if (result.message() != null && player != null)
+                {
+                    ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> player),
+                            new DreamCauldronMessagePacket(result.message()));
+                }
+                return;
+            }
         }
 
         List<DreamCauldronRecipe> recipes = level.getRecipeManager().getAllRecipesFor(ModRecipes.DREAM_CAULDRON.get());
