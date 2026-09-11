@@ -4,10 +4,13 @@ import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
+import com.pasterdream.pasterdreammod.init.ModShadowDungeonStructureSet;
 import com.pasterdream.pasterdreammod.network.animationstatechange.AnimationStateChangePacket;
+import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import com.pasterdream.pasterdreammod.world.block.geckolibblock.AnimatableSync;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -16,6 +19,8 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -45,6 +50,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
     private int tickCounter = 0;
     private List<Player> playerList = new ArrayList<>();
     private int progress = 0;//0:第一次进入，1:第二次进入，2:后续刷材料
+    private int allFloorCounts = 0;
 
     public boolean isEntry = true;
     public BlockPos targetPosition = new BlockPos(0, 0, 0);
@@ -107,6 +113,15 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
         return level.getEntitiesOfClass(ItemEntity.class, checkBox);
     }
 
+    private List<LivingEntity> checkIsHaveLivingEntity()
+    {
+        Level level = this.level;
+        BlockPos entryPosition = this.worldPosition;
+
+        AABB checkBox = new AABB(entryPosition.getX() - 12, level.getMinBuildHeight() + 2, entryPosition.getZ() - 12, entryPosition.getX() + 12, level.getMinBuildHeight() + 65, entryPosition.getZ() + 12);
+        return level.getEntitiesOfClass(LivingEntity.class, checkBox);
+    }
+
     private List<Player> getNearlyPlayer(BlockPos portalPos)
     {
         if ((level instanceof ServerLevel))
@@ -136,13 +151,13 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
         }
     }
 
-    private void placeStructure(String structureName, int x, int y, int z)
+    private void placeStructure(ResourceLocation resourceLocation, int x, int y, int z)
     {
         if(!level.isClientSide())
         {
             StructureTemplateManager manager = ((ServerLevel)level).getStructureManager();
 
-            manager.get(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, structureName)).ifPresent(template ->
+            manager.get(resourceLocation).ifPresent(template ->
             {
                 BlockPos structureOrigin = new BlockPos(x, y, z);
                 template.placeInWorld((ServerLevel)level, structureOrigin, structureOrigin, new StructurePlaceSettings(), level.getRandom(), 2);
@@ -167,8 +182,9 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                     {
                         blockEntity.playerList = blockEntity.getNearlyPlayer(blockPosition);
                         List<ItemEntity> itemEntities = blockEntity.checkIsHaveLostItem();
+                        List<LivingEntity> livingEntities = blockEntity.checkIsHaveLivingEntity();
 
-                        if (itemEntities.isEmpty())
+                        if (itemEntities.isEmpty() && livingEntities.isEmpty())
                         {
                             for (Player player : blockEntity.playerList)
                             {
@@ -193,24 +209,35 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                                     itemEntity.setPos(blockPosition.getX() + 0.5, blockPosition.getY() - 1, blockPosition.getZ() + 0.5);
                                 }
 
+                                for(LivingEntity livingEntity : livingEntities)
+                                {
+                                    if(livingEntity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob"))))
+                                    {
+                                        livingEntity.discard();
+                                    }
+                                        else
+                                        {
+                                            livingEntity.setPos(blockPosition.getX() + 0.5, blockPosition.getY() + 1, blockPosition.getZ() + 0.5);
+                                        }
+                                }
+
                                 for (Player player : blockEntity.playerList)
                                 {
                                     player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.已传送出暗影地牢内的掉落物"), false);
+                                    player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.已传送出或清除暗影地牢内的其他生物"), false);
                                 }
                                 blockEntity.animationState = 0;
                                 blockEntity.tickCounter = -1;
                                 blockEntity.setChangedAndSync();
                             }
+
+                        blockEntity.allFloorCounts = ModShadowDungeonStructureSet.ALL_FLOORS.size();
                     }
-                    case 1 -> blockEntity.placeStructure("shadow_dungeon_shadow_bed", blockPosition.getX() - 12, level.getMinBuildHeight() + 1, blockPosition.getZ() - 12);
-                    case 2 -> blockEntity.placeStructure("shadow_dungeon_single_floor_frame", blockPosition.getX() - 12, level.getMinBuildHeight() + 17, blockPosition.getZ() - 12);
-                    case 3 -> blockEntity.placeStructure("shadow_dungeon_single_floor_frame", blockPosition.getX() - 12, level.getMinBuildHeight() + 26, blockPosition.getZ() - 12);
-                    case 4 -> blockEntity.placeStructure("shadow_dungeon_single_floor_frame", blockPosition.getX() - 12, level.getMinBuildHeight() + 35, blockPosition.getZ() - 12);
-                    case 5 -> blockEntity.placeStructure("shadow_dungeon_single_floor_frame", blockPosition.getX() - 12, level.getMinBuildHeight() + 44, blockPosition.getZ() - 12);
-                    case 6 -> blockEntity.placeStructure("shadow_dungeon_single_floor_frame", blockPosition.getX() - 12, level.getMinBuildHeight() + 53, blockPosition.getZ() - 12);
-                    case 7 -> blockEntity.placeStructure("shadow_dungeon_start_room", blockPosition.getX() - 12, level.getMinBuildHeight() + 62, blockPosition.getZ() - 12);
-                    case 8 ->
+
+                    case 1 ->
                     {
+                        blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_shadow_bed"), blockPosition.getX() - 12, level.getMinBuildHeight() + 1, blockPosition.getZ() - 12);
+
                         if (level.getBlockEntity(new BlockPos(blockPosition.getX(), level.getMinBuildHeight() + 15, blockPosition.getZ() - 3)) instanceof ShadowDungeonPortalTileEntity exitPortal)
                         {
                             exitPortal.isEntry = false;
@@ -218,57 +245,96 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                             exitPortal.setChangedAndSync();
                         }
                     }
+
+                    case 2 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 1)
+                        {
+                            blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_single_floor_frame"), blockPosition.getX() - 12, level.getMinBuildHeight() + 17, blockPosition.getZ() - 12);
+                        }
+                    }
+
+                    case 3 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 2)
+                        {
+                            blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_single_floor_frame"), blockPosition.getX() - 12, level.getMinBuildHeight() + 26, blockPosition.getZ() - 12);
+                        }
+                    }
+
+                    case 4 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 3)
+                        {
+                            blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_single_floor_frame"), blockPosition.getX() - 12, level.getMinBuildHeight() + 35, blockPosition.getZ() - 12);
+                        }
+                    }
+
+                    case 5 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 4)
+                        {
+                            blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_single_floor_frame"), blockPosition.getX() - 12, level.getMinBuildHeight() + 44, blockPosition.getZ() - 12);
+                        }
+                    }
+
+                    case 6 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 5)
+                        {
+                            blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_single_floor_frame"), blockPosition.getX() - 12, level.getMinBuildHeight() + 53, blockPosition.getZ() - 12);
+                        }
+                    }
+
+                    case 7 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 6)
+                        {
+                            blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_single_floor_frame"), blockPosition.getX() - 12, level.getMinBuildHeight() + 62, blockPosition.getZ() - 12);
+                        }
+                    }
+
+                    case 8 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 7)
+                        {
+                            blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_single_floor_frame"), blockPosition.getX() - 12, level.getMinBuildHeight() + 71, blockPosition.getZ() - 12);
+                        }
+                    }
+
                     case 9 ->
                     {
-                        if(blockEntity.progress == 1)
+                        if(blockEntity.allFloorCounts >= 8)
                         {
-                            blockEntity.placeStructure("shadow_dungeon_nameless_overworld", blockPosition.getX() - 11, level.getMinBuildHeight() + 18, blockPosition.getZ() - 11);
+                            blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_single_floor_frame"), blockPosition.getX() - 12, level.getMinBuildHeight() + 80, blockPosition.getZ() - 12);
                         }
-                            else
-                            {
-                                blockEntity.placeStructure("shadow_dungeon_nameless_dyedream_world", blockPosition.getX() - 11, level.getMinBuildHeight() + 18, blockPosition.getZ() - 11);
-                            }
                     }
+
                     case 10 ->
                     {
-                        switch (level.getRandom().nextInt(2))
+                        if(blockEntity.allFloorCounts >= 9)
                         {
-                            case 0 -> blockEntity.placeStructure("shadow_dungeon_shadow_brazier", blockPosition.getX() - 11, level.getMinBuildHeight() + 27, blockPosition.getZ() - 11);
-                            case 1 -> blockEntity.placeStructure("shadow_dungeon_black_beetle", blockPosition.getX() - 11, level.getMinBuildHeight() + 27, blockPosition.getZ() - 11);
+                            blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_single_floor_frame"), blockPosition.getX() - 12, level.getMinBuildHeight() + 89, blockPosition.getZ() - 12);
                         }
                     }
+
                     case 11 ->
                     {
-                        switch (level.getRandom().nextInt(3))
+                        if(blockEntity.allFloorCounts >= 10)
                         {
-                            case 0 -> blockEntity.placeStructure("shadow_dungeon_digging_0", blockPosition.getX() - 11, level.getMinBuildHeight() + 36, blockPosition.getZ() - 11);
-                            case 1 -> blockEntity.placeStructure("shadow_dungeon_digging_1", blockPosition.getX() - 11, level.getMinBuildHeight() + 36, blockPosition.getZ() - 11);
-                            case 2 -> blockEntity.placeStructure("shadow_dungeon_digging_2", blockPosition.getX() - 11, level.getMinBuildHeight() + 36, blockPosition.getZ() - 11);
+                            blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_single_floor_frame"), blockPosition.getX() - 12, level.getMinBuildHeight() + 98, blockPosition.getZ() - 12);
                         }
                     }
+
                     case 12 ->
                     {
-                        switch (level.getRandom().nextInt(4))
+                        if(blockEntity.allFloorCounts >= 11)
                         {
-                            case 0 -> blockEntity.placeStructure("shadow_dungeon_shadow_library_0", blockPosition.getX() - 11, level.getMinBuildHeight() + 45, blockPosition.getZ() - 11);
-                            case 1 -> blockEntity.placeStructure("shadow_dungeon_shadow_library_1", blockPosition.getX() - 11, level.getMinBuildHeight() + 45, blockPosition.getZ() - 11);
-                            case 2 -> blockEntity.placeStructure("shadow_dungeon_shadow_library_2", blockPosition.getX() - 11, level.getMinBuildHeight() + 45, blockPosition.getZ() - 11);
-                            case 3 -> blockEntity.placeStructure("shadow_dungeon_shadow_library_3", blockPosition.getX() - 11, level.getMinBuildHeight() + 45, blockPosition.getZ() - 11);
+                            blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_single_floor_frame"), blockPosition.getX() - 12, level.getMinBuildHeight() + 107, blockPosition.getZ() - 12);
                         }
+                    }
 
-                    }
-                    case 13 ->
-                    {
-                        switch (level.getRandom().nextInt(6))
-                        {
-                            case 0 -> blockEntity.placeStructure("shadow_dungeon_mezz_0", blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
-                            case 1 -> blockEntity.placeStructure("shadow_dungeon_mezz_1", blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
-                            case 2 -> blockEntity.placeStructure("shadow_dungeon_mezz_2", blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
-                            case 3 -> blockEntity.placeStructure("shadow_dungeon_mezz_3", blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
-                            case 4 -> blockEntity.placeStructure("shadow_dungeon_mezz_4", blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
-                            case 5 -> blockEntity.placeStructure("shadow_dungeon_mezz_5", blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
-                        }
-                    }
+                    case 13 -> blockEntity.placeStructure(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_start_room"), blockPosition.getX() - 12, level.getMinBuildHeight() + (9 * blockEntity.allFloorCounts + 17), blockPosition.getZ() - 12);
 
                     case 20 ->
                     {
@@ -278,11 +344,107 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                         }
                     }
 
+                    case 30 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 1)
+                        {
+                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(0);
+                            blockEntity.placeStructure(floorStructureSets.get(blockEntity.progress % floorStructureSets.size()), blockPosition.getX() - 11, level.getMinBuildHeight() + 18, blockPosition.getZ() - 11);
+                        }
+                    }
+
+                    case 31 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 2)
+                        {
+                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(1);
+                            blockEntity.placeStructure(floorStructureSets.get(level.getRandom().nextInt(floorStructureSets.size())), blockPosition.getX() - 11, level.getMinBuildHeight() + 27, blockPosition.getZ() - 11);
+                        }
+                    }
+
+                    case 32 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 3)
+                        {
+                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(2);
+                            blockEntity.placeStructure(floorStructureSets.get(level.getRandom().nextInt(floorStructureSets.size())), blockPosition.getX() - 11, level.getMinBuildHeight() + 36, blockPosition.getZ() - 11);
+                        }
+                    }
+
+                    case 33 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 4)
+                        {
+                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(3);
+                            blockEntity.placeStructure(floorStructureSets.get(level.getRandom().nextInt(floorStructureSets.size())), blockPosition.getX() - 11, level.getMinBuildHeight() + 45, blockPosition.getZ() - 11);
+                        }
+                    }
+
+                    case 34 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 5)
+                        {
+                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(4);
+                            blockEntity.placeStructure(floorStructureSets.get(level.getRandom().nextInt(floorStructureSets.size())), blockPosition.getX() - 11, level.getMinBuildHeight() + 54, blockPosition.getZ() - 11);
+                        }
+                    }
+
+                    case 35 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 6)
+                        {
+                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(5);
+                            blockEntity.placeStructure(floorStructureSets.get(level.getRandom().nextInt(floorStructureSets.size())), blockPosition.getX() - 11, level.getMinBuildHeight() + 63, blockPosition.getZ() - 11);
+                        }
+                    }
+
+                    case 36 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 7)
+                        {
+                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(6);
+                            blockEntity.placeStructure(floorStructureSets.get(level.getRandom().nextInt(floorStructureSets.size())), blockPosition.getX() - 11, level.getMinBuildHeight() + 72, blockPosition.getZ() - 11);
+                        }
+                    }
+
+                    case 37 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 8)
+                        {
+                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(7);
+                            blockEntity.placeStructure(floorStructureSets.get(level.getRandom().nextInt(floorStructureSets.size())), blockPosition.getX() - 11, level.getMinBuildHeight() + 81, blockPosition.getZ() - 11);
+                        }
+                    }
+
+                    case 38 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 9)
+                        {
+                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(8);
+                            blockEntity.placeStructure(floorStructureSets.get(level.getRandom().nextInt(floorStructureSets.size())), blockPosition.getX() - 11, level.getMinBuildHeight() + 90, blockPosition.getZ() - 11);
+                        }
+                    }
+
+                    case 39 ->
+                    {
+                        if(blockEntity.allFloorCounts >= 10)
+                        {
+                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(9);
+                            blockEntity.placeStructure(floorStructureSets.get(level.getRandom().nextInt(floorStructureSets.size())), blockPosition.getX() - 11, level.getMinBuildHeight() + 99, blockPosition.getZ() - 11);
+                        }
+                    }
+
                     case 40 ->
                     {
                         for (Player player : blockEntity.playerList)
                         {
                             player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.传送倒计时：").append("1"), false);
+                        }
+
+                        if(blockEntity.allFloorCounts >= 11)
+                        {
+                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(10);
+                            blockEntity.placeStructure(floorStructureSets.get(level.getRandom().nextInt(floorStructureSets.size())), blockPosition.getX() - 11, level.getMinBuildHeight() + 108, blockPosition.getZ() - 11);
                         }
                     }
 

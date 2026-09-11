@@ -38,7 +38,9 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.SHADOW_MAGICBALL.get())
                 .add(ModEntities.SHADOW_TUNE_TOTEM.get())
                 .add(ModEntities.AARONCOS_LEFT_HAND.get())
-                .add(ModEntities.AARONCOS_RIGHT_HAND.get());
+                .add(ModEntities.AARONCOS_RIGHT_HAND.get())
+                .add(ModEntities.NAMELESS.get())
+                .add(EntityType.SILVERFISH);
 
         tag(ModEntityTypeTags.SPECIAL_ENTITY)
                 .add(EntityType.ITEM)
