@@ -113,6 +113,7 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
                     player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.1"), false);
                     player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.2"), false);
                     player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.3"), false);
+                    player.displayClientMessage(Component.translatable("message.pasterdream.dyedream_crack.first_contact.4"), false);
                     for (String criteria : progress.getRemainingCriteria())
                     {
                         player.getAdvancements().award(firstContactAdv, criteria);
