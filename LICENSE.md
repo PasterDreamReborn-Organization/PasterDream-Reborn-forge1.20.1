@@ -23,7 +23,7 @@ Copyright (c) 2026 PasterDream: Reborn Team (ShiLiuYinYu, 2884omgpy, Garam)
 
 - **附属模组**：制作、发布基于或扩展本模组内容的附属模组，包括但不限于复制本模组代码、资源或改动其机制。
 - **移植**：将本模组（或其任何部分）移植到其他 Minecraft 版本或模组加载器（Forge、NeoForge、Fabric、Quilt 等）。
-- **再分发修改版**：对代码或资源进行修改后以任何形式再分发，包括所谓的"修复版""改进版""汉化补丁"等。
+- **再分发修改版**：禁止修改代码后以任何形式再分发，包括所谓的"修复版""改进版"等。若出于玩法扩展等目的，请以**附属模组**的形式实现，并通过 Mixin 等技术在运行时修改，**不要修改模组本体**。发布资源包/光影包（其中可能包含翻译文件、物品/方块材质等）须经版权所有者书面许可。
 - **含本模组的地图出售**：出售使用、包含或展示本模组的地图、存档等制品，需事先获得书面许可。直接出售本模组本身已被 Minecraft 最终用户许可协议（EULA）明令禁止，故本协议不再重复约束。
 - **名义使用**：未经许可将 "PasterDream"、"帕斯特之梦" 或其近似名称用于与本项目无关的内容。
 
@@ -66,7 +66,7 @@ The following are **strictly prohibited** without prior written permission from 
 
 - **Addon mods**: creating or distributing addons that extend or build upon this mod, including copying its code, assets, or modifying its mechanics.
 - **Ports**: porting the mod (or any part of it) to other Minecraft versions or mod loaders (Forge, NeoForge, Fabric, Quilt, etc.).
-- **Modified redistribution**: redistributing modified versions of the code or assets, including so-called "fixed," "improved," or "language patch" versions.
+- **Modified redistribution**: redistributing modified versions of the code is prohibited, including so-called "fixed" or "improved" versions. For gameplay extensions or similar purposes, please implement them as **addon mods** and modify behavior at runtime via Mixin or similar techniques — **do not modify the mod itself**. Publishing resource packs or shader packs (which may contain translation files, item/block textures, etc.) requires prior written permission from the copyright holder.
 - **Map sales**: selling maps, worlds, or other creations that use, include, or feature this mod requires prior written permission. Directly selling the mod itself is already prohibited by the Minecraft End User License Agreement (EULA), so it is not restated here.
 - **Name use**: using "PasterDream" or "Paster Dream" (or similar) for content unrelated to this project without permission.
 
