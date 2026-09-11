@@ -304,6 +304,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.POTTED_SLUMBER_PALM_SAPLING.get(), "Potted Slumber Palm Sapling");
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "Dyedream Quartz Ore");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "Dyedream Dust Ore");
+        add(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get(), "Dyedream World Leapstone");
+        add(ModBlocks.DYEDREAM_WORLD_PORTAL.get(), "Dyedream World Portal");
         add(ModBlocks.AMBER_CANDY_ORE.get(), "Amber Candy Ore");
         add(ModBlocks.TITANIUM_ORE.get(), "Titanium Ore");
         add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), "Deepslate Titanium Ore");
@@ -1544,6 +1546,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("item.pasterdream.aaroncos_music_disc.desc", "§dPasterDream§7 - Aaroncos's Touch");
         add("item.pasterdream.pure_horror", "Pure Horror");
         add("tooltip.pasterdream.pure_horror", "§7It sends a terrible shiver down my spine...");
+        add("tooltip.pasterdream.dyedream_world_leapstone", "§7Used to build a portal frame; right-click the inside with Dyedream Dust to open a portal to the Dyedream World");
         add("entity.pasterdream.shadow_magicball", "Shadow Magicball");
         add("entity.pasterdream.shadow_tune_totem", "Shadow Tune Totem");
         add("message.pasterdream.shadow_tune_totem.charging", "The Shadow Tune Totem is charging energy");

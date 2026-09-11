@@ -44,6 +44,7 @@ import com.pasterdream.pasterdreammod.world.block.fluidblock.ShadowLiquidBlock;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlock;
 import com.pasterdream.pasterdreammod.world.block.itemcontainer.openedmeltdreamcrystalchest.OpenedMeltDreamCrystalChestBlock;
 import com.pasterdream.pasterdreammod.world.block.portal.DyedreamCrackBlock;
+import com.pasterdream.pasterdreammod.world.block.portal.DyedreamWorldPortalBlock;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableBlock;
 import com.pasterdream.pasterdreammod.world.block.theendlessbookofdreamseekers.TheEndlessBookOfDreamSeekersBlock;
 import com.pasterdream.pasterdreammod.world.block.lostswordtomb.LostSwordTombBlock;
@@ -771,6 +772,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> QYM_DOLL = BLOCKS.register("qym_doll", () -> new QYMDollBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.WOOD).strength(0F, 2147483647F).noOcclusion()));
     public static final RegistryObject<Block> UUZ_DOLL = BLOCKS.register("uuz_doll", () -> new UUZDollBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).sound(SoundType.WOOD).strength(0F, 2147483647F).noOcclusion()));
     public static final RegistryObject<Block> DYEDREAM_CRACK = BLOCKS.register("dyedream_crack", () -> new DyedreamCrackBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(-1.0F, 2147483647F).noOcclusion().noCollission().lightLevel(state -> 15)));
+    // ===== 染梦世界传送设施 =====
+    public static final RegistryObject<Block> DYEDREAM_WORLD_LEAPSTONE = BLOCKS.register("dyedream_world_leapstone", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(50.0F, 1200.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DYEDREAM_WORLD_PORTAL = BLOCKS.register("dyedream_world_portal", () -> new DyedreamWorldPortalBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).noCollission().strength(-1.0F, 3600000.0F).sound(SoundType.GLASS).lightLevel(state -> 11).noOcclusion()));
     public static final RegistryObject<Block> CLAYPAN = BLOCKS.register("claypan", () -> new ClaypanBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(0.5F, 10.0F).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> DREAM_CAULDRON = BLOCKS.register("dream_cauldron", () -> new DreamCauldronBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.CALCITE).strength(2.0F).noOcclusion()));
     public static final RegistryObject<Block> DYEDREAM_DESK = BLOCKS.register("dyedream_desk", () -> new DyedreamDeskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(1F).requiresCorrectToolForDrops().noOcclusion()));

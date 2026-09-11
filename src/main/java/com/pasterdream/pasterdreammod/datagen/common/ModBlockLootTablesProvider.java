@@ -467,6 +467,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.QYM_DOLL.get());
         dropSelf(ModBlocks.UUZ_DOLL.get());
         dropSelf(ModBlocks.DYEDREAM_CRACK.get());
+        dropSelf(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get());
+        dropNone(ModBlocks.DYEDREAM_WORLD_PORTAL.get());
         dropSelf(ModBlocks.CLAYPAN.get());
         // 小石子
         dropSelf(ModBlocks.PEBBLE.get());
