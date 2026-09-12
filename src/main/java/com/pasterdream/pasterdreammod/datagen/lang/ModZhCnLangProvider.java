@@ -693,6 +693,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("jei.pasterdream.流体容器绑定关系", "流体容器绑定关系");
         add("jei.pasterdream.通用流体储罐", "通用流体储罐");
+        add("jei.pasterdream.dyedream_contamination", "染梦侵染");
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "帕斯特之梦 | 饮食");
         add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "帕斯特之梦 | 灵药瓶");

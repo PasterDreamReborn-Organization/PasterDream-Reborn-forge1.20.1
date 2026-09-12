@@ -570,6 +570,42 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.DYEDREAM_DIRT.get())
                 .add(ModBlocks.DYEDREAM_GRASS_BLOCK.get());
 
+        // ===== 染梦侵染：来源方块 → 染梦方块 =====
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_TO_DIRT)
+                .add(Blocks.DIRT)
+                .add(Blocks.COARSE_DIRT)
+                .add(Blocks.ROOTED_DIRT)
+                .add(Blocks.NETHERRACK)
+                .add(Blocks.END_STONE);
+
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_TO_GRASS_BLOCK)
+                .add(Blocks.GRASS_BLOCK)
+                .add(Blocks.PODZOL)
+                .add(Blocks.MYCELIUM)
+                .add(Blocks.CRIMSON_NYLIUM)
+                .add(Blocks.WARPED_NYLIUM);
+
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_TO_SAND)
+                .add(Blocks.SAND)
+                .add(Blocks.RED_SAND)
+                .add(Blocks.GRAVEL);
+
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_TO_LOG)
+                .addTag(BlockTags.LOGS);
+
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_TO_LEAVES)
+                .addTag(BlockTags.LEAVES);
+
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_TO_PACKED_ICE)
+                .add(Blocks.PACKED_ICE)
+                .add(Blocks.BLUE_ICE);
+
+        tag(ModBlockTags.DYEDREAM_CONTAMINATION_BLACKLIST)
+                .add(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get())
+                .add(ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get())
+                .add(ModBlocks.DYEDREAM_WORLD_PORTAL.get())
+                .add(ModBlocks.DYEDREAM_CRACK.get());
+
         //不可被流体破坏的无碰撞箱方块
         tag(TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "fluid_can_not_brush_nocollission_block")))
                 .add(ModBlocks.DYEDREAM_CRACK.get())

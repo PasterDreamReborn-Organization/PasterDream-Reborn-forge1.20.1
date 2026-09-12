@@ -520,6 +520,23 @@ public class Config
                     "关闭后釜完全交还原通用配方系统。默认 true")
             .define("dreamCauldronPotionEnabled", true);
 
+    // === 染梦侵染 ===
+    private static final ForgeConfigSpec.BooleanValue DYEDREAM_PORTAL_CONTAMINATION_ENABLED = BUILDER
+            .comment("染梦世界传送门是否进行染梦侵染行为，默认 true")
+            .define("dyedreamPortalContaminationEnabled", true);
+
+    private static final ForgeConfigSpec.IntValue DYEDREAM_PORTAL_CONTAMINATION_RADIUS = BUILDER
+            .comment("染梦世界传送门的侵染半径（格），默认 5")
+            .defineInRange("dyedreamPortalContaminationRadius", 5, 1, 32);
+
+    private static final ForgeConfigSpec.BooleanValue DYEDREAM_CRACK_CONTAMINATION_ENABLED = BUILDER
+            .comment("染梦裂隙是否进行染梦侵染行为，默认 true")
+            .define("dyedreamCrackContaminationEnabled", true);
+
+    private static final ForgeConfigSpec.IntValue DYEDREAM_CRACK_CONTAMINATION_RADIUS = BUILDER
+            .comment("染梦裂隙的侵染半径（格），默认 5")
+            .defineInRange("dyedreamCrackContaminationRadius", 5, 1, 32);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     // === 时之沙 ===
@@ -542,6 +559,12 @@ public class Config
 
     // === 雪绒花转化 ===
     public static boolean destroyDeskOnEdelweissConversion;
+
+    // === 染梦侵染 ===
+    public static boolean dyedreamPortalContaminationEnabled = true;
+    public static int dyedreamPortalContaminationRadius = 5;
+    public static boolean dyedreamCrackContaminationEnabled = true;
+    public static int dyedreamCrackContaminationRadius = 5;
 
     // === SAN 阈值 ===
     public static double sanCheerUpThreshold;
@@ -907,6 +930,10 @@ public class Config
         meltDreamCrystalChestLegendYSpeed = MELT_DREAM_CRYSTAL_CHEST_LEGEND_Y_SPEED.get();
         destroyDeskOnDreamingLotusConversion = DESTROY_DESK_ON_DREAMING_LOTUS_CONVERSION.get();
         destroyDeskOnEdelweissConversion = DESTROY_DESK_ON_EDELWEISS_CONVERSION.get();
+        dyedreamPortalContaminationEnabled = DYEDREAM_PORTAL_CONTAMINATION_ENABLED.get();
+        dyedreamPortalContaminationRadius = DYEDREAM_PORTAL_CONTAMINATION_RADIUS.get();
+        dyedreamCrackContaminationEnabled = DYEDREAM_CRACK_CONTAMINATION_ENABLED.get();
+        dyedreamCrackContaminationRadius = DYEDREAM_CRACK_CONTAMINATION_RADIUS.get();
         mintakeeffectduration= MIN_TAKE_EFFECT_DURATION.get();
         maxtakeeffectduration= MAX_TAKE_EFFECT_DURATION.get();
         maxlevel= MAX_LEVEL.get();

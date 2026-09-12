@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.portal;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.helper.multiblockproperties.voxelshapecalculator.VoxelShapeCalculator;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
@@ -71,7 +72,18 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
         if (random.nextFloat() < 0.2f) {
             level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.BLOCKS, 0.5f, 1.0f);
         }
+        // 裂隙以自身的 10 tick 周期向外侵染，每次 30% 概率转换 1 格
+        if (Config.dyedreamCrackContaminationEnabled && random.nextFloat() < 0.3f) {
+            DyedreamContamination.tick(level, pos, Config.dyedreamCrackContaminationRadius, 1);
+        }
         level.scheduleTick(pos, this, 10);
+    }
+
+    @Override
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (Config.dyedreamCrackContaminationEnabled) {
+            DyedreamContamination.tick(level, pos, Config.dyedreamCrackContaminationRadius, 1);
+        }
     }
 
     @Override
