@@ -21,6 +21,20 @@ public class ModBlockTags {
     public static final TagKey<Block> BLAZE_FLOWER_CAN_PLACE_ON = create("blaze_flower_can_place_on");
     public static final TagKey<Block> SHADOW_PLANTS_CAN_PLACE_ON = create("shadow_plants_can_place_on");
     public static final TagKey<Block> SHADOW_EROSION_TOOL_CAN_BOOST = create("shadow_erosion_tool_can_boost");
+    /** 染梦侵染：满足此标签的方块会被转化为染梦泥土。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_DIRT = create("dyedream_contamination_to_dirt");
+    /** 染梦侵染：满足此标签的方块会被转化为染梦草方块。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_GRASS_BLOCK = create("dyedream_contamination_to_grass_block");
+    /** 染梦侵染：满足此标签的方块会被转化为染梦沙。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_SAND = create("dyedream_contamination_to_sand");
+    /** 染梦侵染：满足此标签的方块会被转化为染梦原木。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_LOG = create("dyedream_contamination_to_log");
+    /** 染梦侵染：满足此标签的方块会被转化为染梦树叶。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_LEAVES = create("dyedream_contamination_to_leaves");
+    /** 染梦侵染：满足此标签的方块会被转化为染梦浮冰。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_TO_PACKED_ICE = create("dyedream_contamination_to_packed_ice");
+    /** 染梦侵染黑名单：满足此标签的方块永远不会被转化。 */
+    public static final TagKey<Block> DYEDREAM_CONTAMINATION_BLACKLIST = create("dyedream_contamination_blacklist");
     private static TagKey<Block> create(String pName) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, pName));
     }

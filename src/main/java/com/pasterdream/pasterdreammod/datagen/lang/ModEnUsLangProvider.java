@@ -684,6 +684,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("jei.pasterdream.流体容器绑定关系", "Fluid Container Relation");
         add("jei.pasterdream.通用流体储罐", "Generic Fluid Contianer");
+        add("jei.pasterdream.dyedream_contamination", "Dyedream Contamination");
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "Paster Dream | Food & Drinks");
         add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "Paster Dream | Elixir Bottle");

@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.portal;
 
+import com.pasterdream.pasterdreammod.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -25,6 +26,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 /**
  * 染梦世界传送门方块。行为对齐原版下界传送门：
  * 无碰撞、发光、玩家/生物/掉落物进入即触发跨维度传送，框架被破坏后自动消失。
+ * 此外带有“染梦侵染”特性：随机刻时按 {@code pasterdream:dyedream_contamination} 配方，
+ * 由近及远地把周围方块转换为染梦版本。
  */
 public class DyedreamWorldPortalBlock extends Block {
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
@@ -79,6 +82,14 @@ public class DyedreamWorldPortalBlock extends Block {
             double z = pos.getZ() + random.nextDouble();
             level.addParticle(ParticleTypes.CHERRY_LEAVES, x, y, z, 0.0, 0.0, 0.0);
         }
+    }
+
+    @Override
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (!Config.dyedreamPortalContaminationEnabled) {
+            return;
+        }
+        DyedreamContamination.tick(level, pos, Config.dyedreamPortalContaminationRadius, 1);
     }
 
     @Override

@@ -11,6 +11,8 @@ import com.pasterdream.pasterdreammod.recipe.GoldenFoxTradeRecipe;
 import com.pasterdream.pasterdreammod.recipe.GoldenFoxTradeRecipeSerializer;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapedRecipe;
 import com.pasterdream.pasterdreammod.recipe.NbtPreservingShapelessRecipe;
+import com.pasterdream.pasterdreammod.world.block.portal.DyedreamContaminationRecipe;
+import com.pasterdream.pasterdreammod.world.block.portal.DyedreamContaminationRecipeSerializer;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableCopyRecipe;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableCopyRecipeSerializer;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableResearchRecipe;
@@ -44,6 +46,7 @@ public class ModRecipes
     public static final RegistryObject<RecipeType<GoldenFoxTradeRecipe>> GOLDEN_FOX_TRADE = RECIPE_TYPES.register("golden_fox_trade", () -> new RecipeType<>() {});
     public static final RegistryObject<RecipeType<ShadowBlastFurnaceRecipe>> SHADOW_BLAST_FURNACE = RECIPE_TYPES.register("shadow_blast_furnace", () -> new RecipeType<>() {});
     public static final RegistryObject<RecipeType<WeaponWorkshopCraftingTableRecipe>> WEAPON_WORKSHOP_CRAFTING_TABLE = RECIPE_TYPES.register("weapon_workshop_crafting_table", () -> new RecipeType<>() {});
+    public static final RegistryObject<RecipeType<DyedreamContaminationRecipe>> DYEDREAM_CONTAMINATION = RECIPE_TYPES.register("dyedream_contamination", () -> new RecipeType<>() {});
 
     public static final RegistryObject<RecipeSerializer<ClaypanRecipe>> CLAYPAN_SERIALIZER = RECIPE_SERIALIZERS.register("claypan", ClaypanRecipeSerializer::new);
     public static final RegistryObject<DreamCauldronRecipeSerializer> DREAM_CAULDRON_SERIALIZER = RECIPE_SERIALIZERS.register("dream_cauldron", DreamCauldronRecipeSerializer::new);
@@ -58,6 +61,7 @@ public class ModRecipes
     public static final RegistryObject<NbtPreservingShapelessRecipe.Serializer> NBT_PRESERVING_SHAPELESS_SERIALIZER = RECIPE_SERIALIZERS.register("nbt_preserving_shapeless", NbtPreservingShapelessRecipe.Serializer::new);
     public static final RegistryObject<NbtPreservingShapedRecipe.Serializer> NBT_PRESERVING_SHAPED_SERIALIZER = RECIPE_SERIALIZERS.register("nbt_preserving_shaped", NbtPreservingShapedRecipe.Serializer::new);
     public static final RegistryObject<GoldenFoxTradeRecipeSerializer> GOLDEN_FOX_TRADE_SERIALIZER = RECIPE_SERIALIZERS.register("golden_fox_trade", GoldenFoxTradeRecipeSerializer::new);
+    public static final RegistryObject<DyedreamContaminationRecipeSerializer> DYEDREAM_CONTAMINATION_SERIALIZER = RECIPE_SERIALIZERS.register("dyedream_contamination", DyedreamContaminationRecipeSerializer::new);
 
     public static void register(IEventBus eventBus)
     {

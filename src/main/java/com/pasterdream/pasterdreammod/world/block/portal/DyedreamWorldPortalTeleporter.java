@@ -13,7 +13,11 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -140,28 +144,34 @@ public final class DyedreamWorldPortalTeleporter {
 
     /**
      * 以内空左下角 {@code min} 为基准生成一座默认尺寸的传送门。
-     * 外框位于内空外扩一格，并额外清空门面两侧各一格作为通行空间，
+     * 外框位于内空外扩一格，仅掏空框架内部通道（内空横截面，沿法线两侧各扩一格），
      * 同时在框架下方（若悬空）铺设垫脚平台。
+     * <p>
+     * 生成过程中被替换的可破坏方块，若存在方块物品则作为掉落物掉出；无法破坏的方块保持原样。
      */
     private static void placePortal(ServerLevel level, BlockPos min, Direction.Axis axis) {
         BlockState frame = ModBlocks.DYEDREAM_WORLD_LEAPSTONE.get().defaultBlockState();
         BlockState air = Blocks.AIR.defaultBlockState();
 
-        // 第一遍：清空通行空间、铺设外框与垫脚平台，内空先留空。
+        // 第一遍：铺设外框与垫脚平台，内空先留空。
         for (int along = -1; along <= DEFAULT_WIDTH; along++) {
             for (int y = -2; y <= DEFAULT_HEIGHT; y++) {
                 for (int normal = -1; normal <= 1; normal++) {
                     BlockPos pos = offset(min, axis, along, y, normal);
                     if (y == -2) {
                         if (!level.getBlockState(pos).isSolid()) {
-                            level.setBlock(pos, frame, 3);
+                            generateBlock(level, pos, frame, 3);
                         }
                     } else if (normal != 0) {
-                        level.setBlock(pos, air, 3);
+                        // 只掏空框架内部通道：内空横截面（DEFAULT_WIDTH × DEFAULT_HEIGHT），
+                        // 沿法线两侧各扩一格，共 3 格深。例如 4×5 外框掏空 2×3×3。
+                        if (along >= 0 && along < DEFAULT_WIDTH && y >= 0 && y < DEFAULT_HEIGHT) {
+                            generateBlock(level, pos, air, 3);
+                        }
                     } else {
                         boolean perimeter = along == -1 || along == DEFAULT_WIDTH
                                 || y == -1 || y == DEFAULT_HEIGHT;
-                        level.setBlock(pos, perimeter ? frame : air, 3);
+                        generateBlock(level, pos, perimeter ? frame : air, 3);
                     }
                 }
             }
@@ -172,9 +182,29 @@ public final class DyedreamWorldPortalTeleporter {
                 .setValue(DyedreamWorldPortalBlock.AXIS, axis);
         for (int along = 0; along < DEFAULT_WIDTH; along++) {
             for (int y = 0; y < DEFAULT_HEIGHT; y++) {
-                level.setBlock(offset(min, axis, along, y, 0), portal, 18);
+                generateBlock(level, offset(min, axis, along, y, 0), portal, 18);
             }
         }
+    }
+
+    /**
+     * 传送门生成时替换一个方块：无法破坏的方块保持原样（返回 false）；
+     * 可破坏的方块若存在方块物品，则先按该物品掉落，再放置新方块。
+     */
+    private static boolean generateBlock(ServerLevel level, BlockPos pos, BlockState state, int flags) {
+        BlockState existing = level.getBlockState(pos);
+        if (!existing.isAir()) {
+            if (existing.getDestroySpeed(level, pos) < 0) {
+                return false;
+            }
+            if (existing != state) {
+                Item item = existing.getBlock().asItem();
+                if (item != Items.AIR) {
+                    Block.popResource(level, pos, new ItemStack(item));
+                }
+            }
+        }
+        return level.setBlock(pos, state, flags);
     }
 
     private static BlockPos offset(BlockPos min, Direction.Axis axis, int along, int y, int normal) {
