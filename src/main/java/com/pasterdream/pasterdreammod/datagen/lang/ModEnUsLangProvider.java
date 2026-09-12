@@ -131,6 +131,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.JELLYFISH_MUD.get(), "Jellyfish Mud");
         add(ModItems.JELLYFISH_JELLO.get(), "Jellfish Jello");
         add(ModItems.QUEER_SOUP.get(), "Queer Soup");
+        add("item.pasterdream.queer_soup.describe", "§7§o— This will make you hallucinate...");
         add(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get(), "Legendary Dragon Horn Ice Cream");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.describe.0", "§9Permanently +10 Luck (until death)");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.describe.1", "§9Effect does not stack");

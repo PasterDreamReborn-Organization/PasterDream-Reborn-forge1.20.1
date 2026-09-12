@@ -134,6 +134,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.JELLYFISH_MUD.get(), "水母泥");
         add(ModItems.JELLYFISH_JELLO.get(), "水母果冻");
         add(ModItems.QUEER_SOUP.get(), "奇异炖菜");
+        add("item.pasterdream.queer_soup.describe", "§7§o——这会让人产生幻觉......");
         add(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get(), "传说龙角冰淇淋");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.describe.0", "§9幸运值永久+10（直至死亡）");
         add("item.pasterdream.legendary_dragon_horn_ice_cream.describe.1", "§9效果不叠加");
