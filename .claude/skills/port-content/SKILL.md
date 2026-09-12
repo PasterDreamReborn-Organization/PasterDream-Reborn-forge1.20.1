@@ -6,7 +6,7 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 # 搬运流程
 
 > 本 skill 是跨系统的「搬运」总流程编排。搬运到具体系统时，配合对应系统 skill 获取领域细节：
-> [[recipe-container]]（配方/容器）、[[curio]]（饰品）、[[entity]]（实体）、[[worldgen]]（世界生成）、[[advancement-notes]]（进度/笔记）、[[capability]]（能力）、[[skill-system]]（技能）、[[shadow-difficulty]]（暗影难度）、[[datagen]]（数据生成）、[[client-rendering]]（渲染/粒子/音效）。
+> [[recipe-container]]（配方/容器）、[[curio]]（饰品）、[[entity]]（实体）、[[worldgen]]（世界生成）、[[advancement-notes]]（进度/笔记）、[[capability]]（能力）、[[skill-system]]（技能）、[[shadow-difficulty]]（暗影难度）、[[datagen]]（数据生成）、[[client-rendering]]（渲染/粒子/音效）、[[mixin]]（Mixin 注入）。
 
 严格按以下步骤执行，不要跳过。
 

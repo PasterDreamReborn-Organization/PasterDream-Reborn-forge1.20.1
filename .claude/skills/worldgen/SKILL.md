@@ -29,7 +29,7 @@ description: 新增/修改世界生成（群系、维度类型、噪声设置、
 
 - 自定义 `Feature<?>` 实现放 `worldgen/feature/`，与注册入口类分离
 - 结构数据生成 Provider 放 `worldgen/structures/`（`ModStructureProvider` / `ModStructureSetProvider` / `ModTemplatePoolProvider`）
-- 自定义 `DimensionSpecialEffects` 用客户端 Mixin（`FogRendererMixin`、`LevelRendererMixin`）注入
+- 自定义 `DimensionSpecialEffects` 用客户端 Mixin（`FogRendererMixin`、`LevelRendererMixin`）注入，注入约束见 [[mixin]]（禁止优先 `@Overwrite`）
 - 运行时通过 `ResourceKey` 引用（如 `ModTreeGrowers` → `ModConfiguredFeatures.DYEDREAM_TREE`）
 
 ---
