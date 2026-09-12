@@ -50,7 +50,10 @@ public final class DyedreamContamination {
             BlockState contaminated = getContaminatedState(level.getBlockState(target), recipes);
             if (contaminated != null) {
                 if (contaminated.getBlock() instanceof DoublePlantBlock) {
-                    DoublePlantBlock.placeAt(level, contaminated, target, Block.UPDATE_ALL);
+                    // 用 UPDATE_KNOWN_SHAPE 抑制形状更新：否则替换原高草时会因上下半互相 updateShape
+                    // 被连锁清除，导致只替换了一部分。
+                    DoublePlantBlock.placeAt(level, contaminated, target,
+                            Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
                 } else {
                     level.setBlockAndUpdate(target, contaminated);
                 }
