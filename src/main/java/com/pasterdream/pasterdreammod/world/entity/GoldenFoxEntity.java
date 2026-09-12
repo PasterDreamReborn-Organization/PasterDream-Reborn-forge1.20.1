@@ -106,8 +106,8 @@ public class GoldenFoxEntity extends PathfinderMob implements GeoEntity {
         if (world.isClientSide())
             return InteractionResult.SUCCESS;
 
-        // Turn the wild fox into a pet when offered a white heart chocolate
-        if (itemstack.is(ModItems.WHITE_HEART_CHOCOLATE.get())) {
+        // Turn the wild fox into a pet when offered a legendary dragon horn ice cream
+        if (itemstack.is(ModItems.LEGENDARY_DRAGON_HORN_ICE_CREAM.get())) {
             double x = this.getX();
             double y = this.getY();
             double z = this.getZ();

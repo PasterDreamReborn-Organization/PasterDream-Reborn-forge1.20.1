@@ -14,6 +14,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -46,6 +47,7 @@ import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -146,6 +148,11 @@ public class GoldenFoxPetEntity extends TamableAnimal implements GeoEntity, Rang
         return null;
     }
 
+    @Override
+    public boolean isFood(ItemStack stack) {
+        return stack.is(ItemTags.FOX_FOOD);
+    }
+
     public boolean isSleeping() {
         return this.entityData.get(SLEEPING);
     }
@@ -193,8 +200,20 @@ public class GoldenFoxPetEntity extends TamableAnimal implements GeoEntity, Rang
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
         if (!this.isTame() || !this.isOwnedBy(player)) {
             return super.mobInteract(player, hand);
+        }
+        if (this.isFood(itemstack)) {
+            if (this.getHealth() < this.getMaxHealth() && !this.level().isClientSide()) {
+                this.usePlayerItem(player, hand, itemstack);
+                float nutrition = itemstack.isEdible() && itemstack.getFoodProperties(null) != null
+                        ? itemstack.getFoodProperties(null).getNutrition()
+                        : 4.0F;
+                this.heal(nutrition);
+                this.playSound(SoundEvents.FOX_EAT, 1.0F, 1.0F);
+            }
+            return InteractionResult.sidedSuccess(this.level().isClientSide());
         }
         if (this.level().isClientSide()) {
             return InteractionResult.SUCCESS;
