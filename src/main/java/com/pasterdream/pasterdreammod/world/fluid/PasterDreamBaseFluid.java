@@ -68,7 +68,9 @@ public abstract class PasterDreamBaseFluid extends Fluid
     @Override
     public boolean isSource(FluidState state)
     {
-        return false;
+        // 这些流体仅用于储罐/配方，从不作为流体方块进入世界；
+        // JEI(15.56+) 要求 isValidIngredient 时 isSource 为 true，否则会被判为无效原料剔除。
+        return true;
     }
 
     @Override

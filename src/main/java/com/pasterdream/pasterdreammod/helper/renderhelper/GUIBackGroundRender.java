@@ -111,7 +111,12 @@ public class GUIBackGroundRender
 
     public static void rendPasterDreamInventoryGUI(GuiGraphics guiGraphics, int x, int y)
     {
+        // 联机 / 光影环境下可能残留非默认混合状态与染色，先重置再画半透明物品栏底图
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         guiGraphics.blit(PASTERDREAM_INVENTORY_GUI, x, y, 0, 0, 170, 84, 170, 84);
+        RenderSystem.disableBlend();
     }
 
     public static void rendDyedreamDeskGUI(GuiGraphics guiGraphics, int x, int y)
@@ -141,7 +146,12 @@ public class GUIBackGroundRender
 
     public static void rendMeltDreamCrystalChestGUI(GuiGraphics guiGraphics, int x, int y)
     {
+        // 联机 / 光影环境下重置混合与染色，保证半透明底图正常
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         guiGraphics.blit(MELT_DREAM_CRYSTAL_CHEST_GUI, x, y, 0, 0, 66, 66, 66, 66);
+        RenderSystem.disableBlend();
     }
 
     public static void rendPicnicBasketGUI(GuiGraphics guiGraphics, int x, int y)
