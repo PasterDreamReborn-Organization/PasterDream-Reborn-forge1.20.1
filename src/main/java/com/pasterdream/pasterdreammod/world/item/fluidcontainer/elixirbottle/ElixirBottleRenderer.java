@@ -2,12 +2,12 @@ package com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.pasterdream.pasterdreammod.helper.renderhelper.CustomRenderTypes;
 import com.pasterdream.pasterdreammod.helper.renderhelper.RendBakedModel;
 import com.pasterdream.pasterdreammod.init.ModItemModels;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BakedModel;
@@ -89,7 +89,7 @@ public class ElixirBottleRenderer extends BlockEntityWithoutLevelRenderer
         if (fluidAmount > 0)
         {
             double proportion = Math.min(1, (double) fluidAmount / 286);
-            VertexConsumer consumer = buffer.getBuffer(RenderType.translucent());
+            VertexConsumer consumer = buffer.getBuffer(CustomRenderTypes.TRANSLUCENT);
             Matrix4f matrix = poseStack.last().pose();
 
             addQuad(sprite, consumer, matrix, 6 / 16f, 4 / 16f, 10 / 16f, (float)((4 + 2 * proportion) / 16f), z, 6f, 12f, 10f, (float)(12 - 2 * proportion), r, g, b, a, packedLight, packedOverlay, direction);
@@ -99,7 +99,7 @@ public class ElixirBottleRenderer extends BlockEntityWithoutLevelRenderer
         if (fluidAmount > 286)  //1000 * 2 / 7
         {
             double proportion = Math.min(1, (double) (fluidAmount - 286) / 143);
-            VertexConsumer consumer = buffer.getBuffer(RenderType.translucent());
+            VertexConsumer consumer = buffer.getBuffer(CustomRenderTypes.TRANSLUCENT);
             Matrix4f matrix = poseStack.last().pose();
 
             addQuad(sprite, consumer, matrix, 5 / 16f, 6 / 16f, 11 / 16f, (float)((6 + proportion) / 16f), z, 5f, 10f, 11f, (float)(10 - proportion), r, g, b, a, packedLight, packedOverlay, direction);
@@ -108,7 +108,7 @@ public class ElixirBottleRenderer extends BlockEntityWithoutLevelRenderer
         if (fluidAmount > 429)  //1000 * 3 / 7
         {
             double proportion = Math.min(1, (double) (fluidAmount - 429) / 429);
-            VertexConsumer consumer = buffer.getBuffer(RenderType.translucent());
+            VertexConsumer consumer = buffer.getBuffer(CustomRenderTypes.TRANSLUCENT);
             Matrix4f matrix = poseStack.last().pose();
 
             addQuad(sprite, consumer, matrix, 4 / 16f, 7 / 16f, 12 / 16f, (float)((7 + 3 * proportion) / 16f), z, 4f, 9f, 12f, (float)(9 - 3 * proportion), r, g, b, a, packedLight, packedOverlay, direction);
@@ -117,7 +117,7 @@ public class ElixirBottleRenderer extends BlockEntityWithoutLevelRenderer
         if (fluidAmount > 857)  //1000 * 6 / 7
         {
             double proportion = Math.min(1, (double) (fluidAmount - 857) / 143);
-            VertexConsumer consumer = buffer.getBuffer(RenderType.translucent());
+            VertexConsumer consumer = buffer.getBuffer(CustomRenderTypes.TRANSLUCENT);
             Matrix4f matrix = poseStack.last().pose();
 
             addQuad(sprite, consumer, matrix, 5 / 16f, 10 / 16f, 11 / 16f, (float)((10 + proportion) / 16f), z, 5f, 6f, 11f, (float)(6 - proportion), r, g, b, a, packedLight, packedOverlay, direction);

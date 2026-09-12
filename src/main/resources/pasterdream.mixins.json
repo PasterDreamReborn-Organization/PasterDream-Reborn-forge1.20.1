@@ -39,7 +39,8 @@
     "LightTextureGammaMixin",
     "MusicManagerMixin",
     "SituationalMusicMixin",
-    "BlockElementMixin"
+    "BlockElementMixin",
+    "DynamicFluidContainerModelMixin"
   ],
   "server": [],
   "minVersion": "0.8"
