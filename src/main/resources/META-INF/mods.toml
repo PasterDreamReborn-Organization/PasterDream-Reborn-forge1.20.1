@@ -71,4 +71,11 @@ side="BOTH"
     ordering="AFTER"
     side="BOTH"
 
+[[dependencies.${mod_id}]]
+    modId="oculus"
+    mandatory=false
+    versionRange="[1.8.0,)"
+    ordering="AFTER"
+    side="CLIENT"
+
 
