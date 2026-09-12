@@ -105,6 +105,12 @@ public class PasterDreamClientConfig {
                     + "\n指令 /pasterdreamdebug lowsan sound 可运行时临时切换，重进存档后按此配置恢复")
             .define("lowSanSound", true);
 
+    // === 光影兼容 ===
+    public static final ForgeConfigSpec.BooleanValue SHADER_BLOCK_INJECTION = BUILDER
+            .comment("检测到光影生效时，把本模组的植物/树叶注入到光影的方块 ID 映射中，让它们跟随光影飘动。"
+                    + "\n此操作直接修改 Oculus/Iris 内部状态（非官方 API），默认 true。")
+            .define("shaderBlockInjection", true);
+
     public static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static boolean loadingGuiTips;
@@ -132,6 +138,9 @@ public class PasterDreamClientConfig {
     public static boolean lowSanJitter;
     public static boolean lowSanSound;
 
+    // === 光影兼容 ===
+    public static boolean shaderBlockInjection;
+
     @SubscribeEvent
     public static void onLoad(final ModConfigEvent event) {
         if (event.getConfig().getSpec() != SPEC) return;
@@ -156,6 +165,8 @@ public class PasterDreamClientConfig {
         lowSanOverlay = LOW_SAN_OVERLAY.get();
         lowSanJitter = LOW_SAN_JITTER.get();
         lowSanSound = LOW_SAN_SOUND.get();
+
+        shaderBlockInjection = SHADER_BLOCK_INJECTION.get();
 
         // 将客户端配置作为低 San 效果运行时值的初始来源（/pasterdreamdebug lowsan 指令可在运行时覆盖）
         Config.lowSanOverlay = lowSanOverlay;
