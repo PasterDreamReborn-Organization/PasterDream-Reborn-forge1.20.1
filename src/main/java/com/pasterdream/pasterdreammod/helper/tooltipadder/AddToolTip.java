@@ -78,6 +78,9 @@ public class AddToolTip
         if(stack.is(ModItems.RICE_CAKE.get())){
             tooltip.add(Component.translatable("item.pasterdream.rice_cake.describe"));
         }
+        if(stack.is(ModItems.QUEER_SOUP.get())){
+            tooltip.add(Component.translatable("item.pasterdream.queer_soup.describe"));
+        }
         if(stack.is(ModItems.WHITE_CRYSTAL.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.white_crystal"));
         }
