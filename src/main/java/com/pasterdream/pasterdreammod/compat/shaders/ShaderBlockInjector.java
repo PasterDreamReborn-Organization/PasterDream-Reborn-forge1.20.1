@@ -5,11 +5,13 @@ import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.GrowingPlantBlock;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SugarCaneBlock;
 import net.minecraft.world.level.block.VineBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.RegistryObject;
@@ -63,6 +65,15 @@ public final class ShaderBlockInjector
             "minecraft:poppy"
     };
 
+    /** 两格高植物参考方块：按 {@code half=lower/upper} 分别抄 ID，让上下半段各自正确飘动。 */
+    private static final String[] TALL_PLANT_REFERENCES = {
+            "minecraft:tall_grass",
+            "minecraft:large_fern"
+    };
+
+    private static final String PROP_HALF_LOWER = "half=lower";
+    private static final String PROP_HALF_UPPER = "half=upper";
+
     private static boolean resolved;
     private static Field fInstance;
     private static Method mGetBlockStateIds;
@@ -103,8 +114,10 @@ public final class ShaderBlockInjector
 
             OptionalInt leavesId = firstId(blockMap, LEAVES_REFERENCES);
             OptionalInt plantId = firstId(blockMap, PLANT_REFERENCES);
+            OptionalInt tallLowerId = firstIdWithProperty(blockMap, TALL_PLANT_REFERENCES, PROP_HALF_LOWER);
+            OptionalInt tallUpperId = firstIdWithProperty(blockMap, TALL_PLANT_REFERENCES, PROP_HALF_UPPER);
 
-            if (leavesId.isEmpty() && plantId.isEmpty())
+            if (leavesId.isEmpty() && plantId.isEmpty() && tallLowerId.isEmpty() && tallUpperId.isEmpty())
             {
                 lastMap = map;
                 LOGGER.info("[ShaderCompat] 当前光影包未给任何原版草/树叶分配 shader ID，跳过方块动效注入");
@@ -118,21 +131,42 @@ public final class ShaderBlockInjector
             for (RegistryObject<Block> ro : ModBlocks.BLOCKS.getEntries())
             {
                 Block block = ro.get();
-                int id = referenceIdFor(block, leavesId, plantId);
-                if (id <= 0) continue;
-
-                blocks++;
-                for (BlockState state : block.getStateDefinition().getPossibleStates())
+                if (block instanceof LeavesBlock)
                 {
-                    put.invoke(map, state, id);
-                    states++;
+                    int id = leavesId.orElse(0);
+                    if (id <= 0) continue;
+
+                    blocks++;
+                    for (BlockState state : block.getStateDefinition().getPossibleStates())
+                    {
+                        put.invoke(map, state, id);
+                        states++;
+                    }
+                }
+                else if (isWavingPlant(block))
+                {
+                    int fallback = plantId.orElse(0);
+                    if (fallback <= 0 && tallLowerId.isEmpty() && tallUpperId.isEmpty()) continue;
+
+                    blocks++;
+                    for (BlockState state : block.getStateDefinition().getPossibleStates())
+                    {
+                        int id = plantIdForState(state, fallback, tallLowerId, tallUpperId);
+                        if (id > 0)
+                        {
+                            put.invoke(map, state, id);
+                            states++;
+                        }
+                    }
                 }
             }
 
             lastMap = map;
             failures = 0;
-            LOGGER.info("[ShaderCompat] 已注入 {} 个 pasterdream 方块（{} 个方块状态）以启用光影动效（树叶ID={}, 植物ID={}）",
-                    blocks, states, leavesId.orElse(-1), plantId.orElse(-1));
+            LOGGER.info("[ShaderCompat] 已注入 {} 个 pasterdream 方块（{} 个方块状态）以启用光影动效"
+                            + "（树叶ID={}, 植物ID={}, 高植物下半={}, 高植物上半={}）",
+                    blocks, states, leavesId.orElse(-1), plantId.orElse(-1),
+                    tallLowerId.orElse(-1), tallUpperId.orElse(-1));
         }
         catch (Throwable t)
         {
@@ -159,11 +193,28 @@ public final class ShaderBlockInjector
         return OptionalInt.empty();
     }
 
-    private static int referenceIdFor(Block block, OptionalInt leavesId, OptionalInt plantId)
+    private static OptionalInt firstIdWithProperty(Map<Integer, List<String>> blockMap,
+                                                   String[] candidates,
+                                                   String property)
     {
-        if (block instanceof LeavesBlock) return leavesId.orElse(0);
-        if (isWavingPlant(block)) return plantId.orElse(0);
-        return 0;
+        for (String candidate : candidates)
+        {
+            OptionalInt id = ShaderPackConfig.findBlockIdWithProperties(blockMap, candidate, property);
+            if (id.isPresent() && id.getAsInt() > 0) return id;
+        }
+        return OptionalInt.empty();
+    }
+
+    /** 两格高方块按 {@code half} 选上/下半段 ID，其余用普通植物 ID。 */
+    private static int plantIdForState(BlockState state, int fallback, OptionalInt lower, OptionalInt upper)
+    {
+        if (state.hasProperty(DoublePlantBlock.HALF))
+        {
+            DoubleBlockHalf half = state.getValue(DoublePlantBlock.HALF);
+            int id = (half == DoubleBlockHalf.UPPER ? upper : lower).orElse(0);
+            if (id > 0) return id;
+        }
+        return fallback;
     }
 
     private static boolean isWavingPlant(Block block)

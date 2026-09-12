@@ -143,18 +143,29 @@ public final class ShaderPackConfig
         return map;
     }
 
-    /** 把 token 归一化为 {@code namespace:name} 形式（去掉属性谓词）。 */
-    private static String normalizeToken(String token)
-    {
-        int colon = token.indexOf(':');
-        if (colon < 0) return "minecraft:" + token;
+    /** 解析后的 token：{@code namespace:name} 与可选属性谓词（如 {@code half=upper}，多个以 "," 分隔）。 */
+    private record TokenParts(String name, String properties) {}
 
-        String after = token.substring(colon + 1);
-        if (after.indexOf('=') >= 0 || after.indexOf('[') >= 0)
+    private static TokenParts parseToken(String token)
+    {
+        int firstColon = token.indexOf(':');
+        if (firstColon < 0) return new TokenParts("minecraft:" + token, null);
+
+        String afterFirst = token.substring(firstColon + 1);
+        int secondColon = afterFirst.indexOf(':');
+        if (secondColon >= 0)
         {
-            return "minecraft:" + token.substring(0, colon);
+            // namespace:name:prop=val
+            String name = token.substring(0, firstColon + 1) + afterFirst.substring(0, secondColon);
+            return new TokenParts(name, afterFirst.substring(secondColon + 1));
         }
-        return token;
+        if (afterFirst.indexOf('=') >= 0 || afterFirst.indexOf('[') >= 0)
+        {
+            // name:prop=val
+            return new TokenParts("minecraft:" + token.substring(0, firstColon), afterFirst);
+        }
+        // namespace:name
+        return new TokenParts(token, null);
     }
 
     /**
@@ -163,19 +174,41 @@ public final class ShaderPackConfig
      */
     private static String plainName(String token)
     {
-        int colon = token.indexOf(':');
-        if (colon < 0) return "minecraft:" + token;
-
-        String after = token.substring(colon + 1);
-        if (after.indexOf('=') >= 0 || after.indexOf('[') >= 0) return null;
-        return token;
+        TokenParts parts = parseToken(token);
+        return parts.properties() == null ? parts.name() : null;
     }
 
     private static String namespaceOf(String token)
     {
-        String normalized = normalizeToken(token);
-        int colon = normalized.indexOf(':');
-        return colon < 0 ? "minecraft" : normalized.substring(0, colon);
+        String name = parseToken(token).name();
+        int colon = name.indexOf(':');
+        return colon < 0 ? "minecraft" : name.substring(0, colon);
+    }
+
+    /**
+     * 查找带指定属性谓词的方块（如 {@code minecraft:tall_grass} 的 {@code half=upper}）。
+     */
+    public static OptionalInt findBlockIdWithProperties(Map<Integer, List<String>> blockMap,
+                                                        String namespacedBlock,
+                                                        String requiredProperty)
+    {
+        for (Map.Entry<Integer, List<String>> entry : blockMap.entrySet())
+        {
+            for (String token : entry.getValue())
+            {
+                TokenParts parts = parseToken(token);
+                if (parts.properties() == null || !parts.name().equals(namespacedBlock)) continue;
+
+                for (String property : parts.properties().split(","))
+                {
+                    if (property.trim().equals(requiredProperty))
+                    {
+                        return OptionalInt.of(entry.getKey());
+                    }
+                }
+            }
+        }
+        return OptionalInt.empty();
     }
 
     /**
