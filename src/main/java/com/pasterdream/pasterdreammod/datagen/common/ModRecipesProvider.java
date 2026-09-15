@@ -2961,7 +2961,12 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         .requires(ModItems.ROOTS_PALE_BONENEEDLE.get())
                         .unlockedBy(getHasName(ModItems.ROOTS_PALE_BONENEEDLE.get()), has(ModItems.ROOTS_PALE_BONENEEDLE.get())),
                 pWriter, "roots_pale_boneneedle_clear", null, Map.of(0, waypointTag));
-
+        // 剑冢合成配方（你为什么要这么做？）
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LOST_SWORD_TOMB.get(), 1)
+                .requires(ModItems.SWORD_EMBRYO.get())
+                .requires(Items.MOSSY_COBBLESTONE)
+                .unlockedBy(getHasName(ModItems.SWORD_EMBRYO.get()), has(ModItems.SWORD_EMBRYO.get()))
+                .save(pWriter);
         // 苍白骨针护符 = 线 + 苍白骨针
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PALE_BONE_NEEDLE_TALISMAN.get(), 1)
                 .pattern(" a ")
