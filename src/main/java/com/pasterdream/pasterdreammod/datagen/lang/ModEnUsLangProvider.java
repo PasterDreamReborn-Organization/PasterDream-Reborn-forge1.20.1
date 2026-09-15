@@ -113,7 +113,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.FORTUNE_JELLY.get(), "Fortune Jelly");
         add("tooltip.pasterdreammod.fortune_jelly", "§9After eating, gain Luck I (1:00)");
         add(ModItems.WIND_RUNNER_JELLY.get(), "Wind Runner Jelly");
-        add("tooltip.pasterdreammod.wind_runner_jelly", "§9After eating, gain Wind Runner (3:00), allowing elytra flight without an elytra");
+        add("tooltip.pasterdreammod.wind_runner_jelly", "§9Enables Elytra flight");
+        add("tooltip.pasterdreammod.wind_runner_jelly.flavor", "§7§o--One day, the wingless bird too will spread its wings and fly");
         add(ModItems.SHADOW_JELLY.get(), "Shadow Jelly");
         add("tooltip.pasterdreammod.shadow_jelly", "§9After eating, your shadow difficulty will rise or fall by 1 tier");
         add("tooltip.pasterdreammod.shadow_jelly.flavor", "§7§o--Only fools and madmen would eat this dreadful jelly");
