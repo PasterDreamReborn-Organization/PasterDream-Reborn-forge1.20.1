@@ -64,6 +64,11 @@ public class DreamTrainTicketItem extends Item {
         ServerLevel serverLevel = (ServerLevel) level;
         String dimensionKey = level.dimension().location().toString();
 
+        if (!Config.isTrainTicketDimensionAllowed(level.dimension().location())) {
+            player.displayClientMessage(Component.translatable("message.pasterdream.dream_train_ticket.no_station"), true);
+            return InteractionResultHolder.fail(stack);
+        }
+
         if (Config.trainTicketOnePerDimension) {
             TrainTicketUsedData usedData = TrainTicketUsedData.get(serverLevel);
             if (usedData.isDimensionUsed(dimensionKey)) {

@@ -513,6 +513,16 @@ public class Config
             .comment("逐梦列车车票每个维度只能有1人使用（全服共享），默认 false")
             .define("trainTicketOnePerDimension", false);
 
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> TRAIN_TICKET_DIMENSION_WHITELIST = BUILDER
+            .comment("逐梦列车车票允许停靠的维度白名单（格式：modid:dimension_id），"
+                    + "\n不在白名单中的维度使用时会提示「逐梦列车并没有在这里设立站点，无法停靠」"
+                    + "\n默认包含原版三维度与模组的染梦世界、灯影之下、风之旅途")
+            .defineListAllowEmpty("trainTicketDimensionWhitelist",
+                    List.of("minecraft:overworld", "minecraft:the_nether", "minecraft:the_end",
+                            "pasterdream:dyedream_world", "pasterdream:lamp_shadow_world",
+                            "pasterdream:wind_journey_world"),
+                    obj -> obj instanceof String);
+
     // === 法术工厂（融梦釜）药水模块 ===
     private static final ForgeConfigSpec.BooleanValue DREAM_CAULDRON_POTION_ENABLED = BUILDER
             .comment("法术工厂（融梦釜）药水模块总开关。",
@@ -645,6 +655,15 @@ public class Config
 
     // === 逐梦列车车票 ===
     public static boolean trainTicketOnePerDimension;
+    public static List<? extends String> trainTicketDimensionWhitelist;
+
+    /** 逐梦列车车票维度白名单缓存（解析后的维度 ID 集合） */
+    private static Set<ResourceLocation> cachedTrainTicketDimensionWhitelist = Set.of();
+
+    /** 判断逐梦列车车票是否允许在该维度使用 */
+    public static boolean isTrainTicketDimensionAllowed(ResourceLocation dimension) {
+        return cachedTrainTicketDimensionWhitelist.contains(dimension);
+    }
 
     // === 法术工厂（融梦釜）药水模块 ===
     public static boolean dreamCauldronPotionEnabled = true;
@@ -916,6 +935,20 @@ public class Config
         LOGGER.info("rebirthDreamCrystalLoot: loaded {} items", cachedRebirthDreamCrystalLoot.size());
     }
 
+    private static void rebuildTrainTicketDimensionWhitelistCache() {
+        Set<ResourceLocation> set = new HashSet<>();
+        for (String idStr : trainTicketDimensionWhitelist) {
+            ResourceLocation rl = ResourceLocation.tryParse(idStr);
+            if (rl == null) {
+                LOGGER.warn("trainTicketDimensionWhitelist: invalid resource location '{}', skipping", idStr);
+                continue;
+            }
+            set.add(rl);
+        }
+        cachedTrainTicketDimensionWhitelist = Set.copyOf(set);
+        LOGGER.info("trainTicketDimensionWhitelist: loaded {} dimensions", cachedTrainTicketDimensionWhitelist.size());
+    }
+
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
@@ -1030,6 +1063,8 @@ public class Config
         bastionGuardGrantRadius = BASTION_GUARD_GRANT_RADIUS.get();
 
         trainTicketOnePerDimension = TRAIN_TICKET_ONE_PER_DIMENSION.get();
+        trainTicketDimensionWhitelist = TRAIN_TICKET_DIMENSION_WHITELIST.get();
+        rebuildTrainTicketDimensionWhitelistCache();
 
         dreamCauldronPotionEnabled = DREAM_CAULDRON_POTION_ENABLED.get();
 

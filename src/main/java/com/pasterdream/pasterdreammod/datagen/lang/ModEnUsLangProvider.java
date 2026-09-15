@@ -1933,6 +1933,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.dream_train.location_info", "The train revealed a location...... §aX：%s §aZ：%s");
         add("message.pasterdream.dream_train_ticket.already_used", "The Dream Train has already rumbled past in this dimension......");
         add("message.pasterdream.dream_train_ticket.dimension_used", "A Dream Train has already been summoned in this dimension......");
+        add("message.pasterdream.dream_train_ticket.no_station", "The Dream Train has set up no station here, so it cannot stop.");
 
         add("message.pasterdream.desert_hero_tomb.line1", "I never expected to meet a true hero willing to hear my words......");
         add("message.pasterdream.desert_hero_tomb.line2", "I mean no harm, yet I have a small matter I must trouble you with.");
