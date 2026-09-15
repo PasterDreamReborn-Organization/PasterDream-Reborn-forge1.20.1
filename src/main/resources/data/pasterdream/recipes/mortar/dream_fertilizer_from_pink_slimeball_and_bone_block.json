@@ -1,0 +1,21 @@
+{
+  "type": "pasterdream:mortar",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:pink_slimeball",
+      "count": 1
+    },
+    {
+      "item": "minecraft:bone_block",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:dream_fertilizer",
+      "count": 9
+    }
+  ]
+}

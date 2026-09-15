@@ -1561,6 +1561,15 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     private void pinkSlimeRecipes(Consumer<FinishedRecipe> pWriter) {
         RecipeHelpers.storageCompress(pWriter, ModItems.PINK_SLIMEBALL.get(), ModItems.PINK_SLIME_BLOCK.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(pWriter, ModItems.PINK_SLIME_BLOCK.get(), ModItems.PINK_SLIMEBALL.get(), PasterDreamMod.MOD_ID);
+
+        // 衍梦肥泥：粉色史莱姆球 + 骨块 + 研钵（研钵不消耗）
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DREAM_FERTILIZER.get(), 9)
+                        .requires(ModItems.PINK_SLIMEBALL.get())
+                        .requires(Items.BONE_BLOCK)
+                        .requires(ModItems.MORTAR.get())
+                        .unlockedBy(getHasName(ModItems.PINK_SLIMEBALL.get()), has(ModItems.PINK_SLIMEBALL.get())),
+                pWriter, "dream_fertilizer_from_pink_slimeball_and_bone_block");
     }
 
     // ===== 厚重云朵配方 =====
