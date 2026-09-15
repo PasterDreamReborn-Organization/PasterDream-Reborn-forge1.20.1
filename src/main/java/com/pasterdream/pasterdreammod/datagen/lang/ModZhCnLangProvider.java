@@ -2519,6 +2519,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.dream_train.location_info", "列车向我们暴露了一个位置信息...... §aX：%s §aZ：%s");
         add("message.pasterdream.dream_train_ticket.already_used", "这个维度的逐梦列车已经呼啸而过了......");
         add("message.pasterdream.dream_train_ticket.dimension_used", "这个维度的逐梦列车已经被召唤过了......");
+        add("message.pasterdream.dream_train_ticket.no_station", "逐梦列车并没有在这里设立站点，无法停靠");
 
         // 沙漠英雄墓 - 任务对话
         add("message.pasterdream.desert_hero_tomb.line1", "不意今日，遇着一位能听俺言语的好汉......");
