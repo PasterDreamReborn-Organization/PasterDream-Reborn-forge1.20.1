@@ -37,11 +37,11 @@ Copyright (c) 2026 PasterDream: Reborn Team (ShiLiuYinYu, 2884omgpy, Garam)
 
 许可申请方式：在本仓库 [GitHub Issues](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1/issues) 提出申请，或直接联系版权所有者。在获得明确书面答复前，请勿实施上述行为。
 
-## 4. 附属模组规范
+## 4. 内容规范
 
-即使获得书面许可，附属模组仍须遵守以下规范：
+以本模组为题材或载体发布的一切内容（包括但不限于附属模组、视频、直播、录屏、图文等），均须遵守以下规范：
 
-- **内容限制**：附属模组中禁止出现任何引人不适的内容，包括但不限于血腥暴力、极端猎奇、包括性暗示在内的成人内容，以及其他任意 R-18G 内容等。
+- **内容限制**：禁止出现任何引人不适的内容，包括但不限于血腥暴力、极端猎奇、包括性暗示在内的成人内容，以及其他任何 R-18G 内容等。
 
 ## 5. 保留权利
 
@@ -94,11 +94,11 @@ The following **require prior written permission** from the copyright holder; wi
 
 To request permission, open an issue on the [GitHub repository](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1/issues) or contact the copyright holder. Do not proceed until you receive an explicit written reply.
 
-### 4. Addon Mod Regulations
+### 4. Content Regulations
 
-Even with written permission, addon mods must comply with the following:
+All content published using this mod as its subject or medium (including but not limited to addon mods, videos, livestreams, recorded gameplay, articles, and images) must comply with the following:
 
-- **Content restrictions**: addon mods must not contain any content that may cause discomfort, including but not limited to graphic gore, extreme grotesque content, adult content including sexual innuendo, and any other R-18G content.
+- **Content restrictions**: no content that may cause discomfort is permitted, including but not limited to graphic gore, extreme grotesque content, adult content including sexual innuendo, or any other graphic R-18 content.
 
 ### 5. Reserved Rights
 
