@@ -116,7 +116,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.FORTUNE_JELLY.get(), "福灵果冻");
         add("tooltip.pasterdreammod.fortune_jelly", "§9食用后，获得幸运I（1:00）");
         add(ModItems.WIND_RUNNER_JELLY.get(), "风行者果冻");
-        add("tooltip.pasterdreammod.wind_runner_jelly", "§9食用后，获得风行者（3:00），期间无需鞘翅即可进行鞘翅飞行");
+        add("tooltip.pasterdreammod.wind_runner_jelly", "§9启用鞘翅飞行");
+        add("tooltip.pasterdreammod.wind_runner_jelly.flavor", "§7§o--无翼鸟终有一日也能展翅飞翔");
         add(ModItems.SHADOW_JELLY.get(), "暗影果冻");
         add("tooltip.pasterdreammod.shadow_jelly", "§9食用后会使自身的暗影难度升高或降低1级");
         add("tooltip.pasterdreammod.shadow_jelly.flavor", "§7§o--傻子和疯子才会吃的令人难以下咽的果冻");
