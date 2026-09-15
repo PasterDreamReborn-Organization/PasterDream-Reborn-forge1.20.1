@@ -429,6 +429,22 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/tame_friendly_ghost"), existingFileHelper);
 
+            // ========== 影中知己挑战进度：是……我杀了我？！ ==========
+            Advancement markWailingShadowGhost = Advancement.Builder.advancement()
+                    .parent(tameFriendlyGhost)
+                    .display(
+                            ModItems.PROPHECY_CARD.get(),
+                            Component.translatable("advancements.pasterdream.story.mark_wailing_shadow_ghost.title"),
+                            Component.translatable("advancements.pasterdream.story.mark_wailing_shadow_ghost.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("mark_wailing_shadow_ghost",
+                            MarkWailingShadowGhostTrigger.TriggerInstance.marked())
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/mark_wailing_shadow_ghost"), existingFileHelper);
+
             // 于影共眠 —— 在暮影长床入睡前往灯影（原作 achievement_shadow_a_1，程序授予，+10 XP）
             Advancement sleepWithShadow = Advancement.Builder.advancement()
                     .parent(enterLampShadowWorld)
@@ -771,6 +787,22 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .addCriterion("new_standard_sword_drawing", NewStandardSwordDrawingTrigger.TriggerInstance.draw())
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "adventure/new_standard_sword_drawing"), existingFileHelper);
+
+            // ========== 挑战进度3：物归原主……？ ==========
+            Advancement return_to_owner = Advancement.Builder.advancement()
+                    .parent(new_standard_sword_drawing)
+                    .display(
+                            ModItems.LOST_SWORD_TOMB.get(),
+                            Component.translatable("advancements.pasterdream.return_to_owner.title"),
+                            Component.translatable("advancements.pasterdream.return_to_owner.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, true
+                    )
+                    .addCriterion("crafted_lost_sword_tomb", RecipeCraftedTrigger.TriggerInstance.craftedItem(
+                            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lost_sword_tomb")))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "adventure/return_to_owner"), existingFileHelper);
 
             Advancement find_desert_fortress = Advancement.Builder.advancement()
                     .parent(ADVENTURE_ROOT)

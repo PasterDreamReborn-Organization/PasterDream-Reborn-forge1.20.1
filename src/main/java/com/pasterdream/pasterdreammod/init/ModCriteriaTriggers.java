@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.advancement.critereon.FoundDesertFortressT
 import com.pasterdream.pasterdreammod.advancement.critereon.FoundTombTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.HasAdvancementTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.LookAtPinkSheepTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.MarkWailingShadowGhostTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.NewStandardSwordDrawingTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.OpenDyedreamCrystalChestTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.OpenWindJourneyCrystalChestTrigger;
@@ -30,6 +31,9 @@ public class ModCriteriaTriggers {
 
     /** 新概念拔剑 */
     public static final NewStandardSwordDrawingTrigger NEW_STANDARD_SWORD_DRAWING = new NewStandardSwordDrawingTrigger();
+
+    /** 用纷争预言卡标记悲泣尖啸怨魂 */
+    public static final MarkWailingShadowGhostTrigger MARK_WAILING_SHADOW_GHOST = new MarkWailingShadowGhostTrigger();
 
     /** 阅读特定内容的寻梦者笔记 */
     public static final ReadDreamNoteTrigger READ_DREAM_NOTE = new ReadDreamNoteTrigger();
@@ -68,6 +72,7 @@ public class ModCriteriaTriggers {
         CriteriaTriggers.register(USE_BONE_NEEDLE);
         CriteriaTriggers.register(FOUND_TOMB);
         CriteriaTriggers.register(NEW_STANDARD_SWORD_DRAWING);
+        CriteriaTriggers.register(MARK_WAILING_SHADOW_GHOST);
         CriteriaTriggers.register(READ_DREAM_NOTE);
         CriteriaTriggers.register(FOUND_DESERT_FORTRESS);
         CriteriaTriggers.register(EAT_GALAXY_JELLY_AT_HEIGHT);
