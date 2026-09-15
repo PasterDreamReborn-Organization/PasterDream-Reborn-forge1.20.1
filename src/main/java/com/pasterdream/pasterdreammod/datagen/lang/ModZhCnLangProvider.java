@@ -1857,6 +1857,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.defeat_aaroncos.description", "击败亚伦柯斯之触");
         add("advancements.pasterdream.story.tame_friendly_ghost.title", "影中知己");
         add("advancements.pasterdream.story.tame_friendly_ghost.description", "用灵魂精华驯服一只友善怨魂");
+        add("advancements.pasterdream.story.mark_wailing_shadow_ghost.title", "是……我杀了我？！");
+        add("advancements.pasterdream.story.mark_wailing_shadow_ghost.description", "用纷争预言卡标记悲泣尖啸怨魂。");
         add("message.pasterdream.aaroncos_arena.need_progress", "尚未完成前置进度");
         add("message.pasterdream.aaroncos_arena.battle_in_progress", "有玩家正在挑战亚伦柯斯，暂不允许进入");
         add("message.pasterdream.aaroncos_arena.exit_countdown", "离开倒计时 %s秒");
@@ -1866,6 +1868,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.dig_up_a_tomb.description", "你......你把什么东西挖下来了？？？");
         add("advancements.pasterdream.new_standard_sword_drawing.title", "新概念拔剑");
         add("advancements.pasterdream.new_standard_sword_drawing.description", "因为你拔不出这把剑，气急败坏之下，索性你把你的敌人当作了开石头的工具！");
+        add("advancements.pasterdream.return_to_owner.title", "物归原主……？");
+        add("advancements.pasterdream.return_to_owner.description", "你为什么要这么做？");
         add("advancements.pasterdream.craft_kusanagi.title", "丛林之力");
         add("advancements.pasterdream.craft_kusanagi.description", "做出草雍，一把蕴含了丛林力量的剑，它饥渴地寻求着亡魂……");
         add("advancements.pasterdream.get_murakumo_kusanagi.title", "刀下亡魂");

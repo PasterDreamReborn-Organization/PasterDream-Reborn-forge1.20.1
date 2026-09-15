@@ -1678,6 +1678,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.defeat_aaroncos.description", "Defeat Aaroncos's Touch");
         add("advancements.pasterdream.story.tame_friendly_ghost.title", "A Friend in the Shadow");
         add("advancements.pasterdream.story.tame_friendly_ghost.description", "Tame a friendly shadow ghost with a Soul Essence");
+        add("advancements.pasterdream.story.mark_wailing_shadow_ghost.title", "Was it me who killed me?!");
+        add("advancements.pasterdream.story.mark_wailing_shadow_ghost.description", "Mark a Wailing Shadow Ghost with the Conflict Prophecy Card.");
         add("message.pasterdream.aaroncos_arena.need_progress", "You haven't completed the prerequisite progress yet");
         add("message.pasterdream.aaroncos_arena.battle_in_progress", "A player is challenging Aaroncos, entry is not allowed for now");
         add("message.pasterdream.aaroncos_arena.exit_countdown", "Leaving in %s seconds");
@@ -1687,6 +1689,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.dig_up_a_tomb.description", "You...... what exactly did you dig up???");
         add("advancements.pasterdream.new_standard_sword_drawing.title", "New Standard Sword Drawing");
         add("advancements.pasterdream.new_standard_sword_drawing.description", "Because you couldn't pull out the sword, you ended up using your enemy as a tool to break stones!");
+        add("advancements.pasterdream.return_to_owner.title", "Returned to Its Rightful Owner...?");
+        add("advancements.pasterdream.return_to_owner.description", "Why do you want to do this?");
         add("advancements.pasterdream.craft_kusanagi.title", "Power of the Jungle");
         add("advancements.pasterdream.craft_kusanagi.description", "Craft Kusanagi, a sword imbued with the power of the jungle. It is hungrily seeking lost souls...");
         add("advancements.pasterdream.get_murakumo_kusanagi.title", "Lost Souls Under the Sword");
