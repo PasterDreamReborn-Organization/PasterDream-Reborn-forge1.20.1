@@ -22,6 +22,7 @@
 
 | Skill | 何时用 | 路径 |
 |-------|--------|------|
+| `design-grill` | 动手前拷问模糊想法、理清设计意图（写规范/登记 ID/搬运之前） | `.claude/skills/design-grill/SKILL.md` |
 | `port-content` | 从源模组搬运方块/物品/工具/护甲/实体（跨系统总流程编排） | `.claude/skills/port-content/SKILL.md` |
 | `datagen` | 跑 runData、加 Provider、改标签/模型/配方生成逻辑 | `.claude/skills/datagen/SKILL.md` |
 | `entity` | 加实体、改实体 AI/渲染/掉落/自然生成 | `.claude/skills/entity/SKILL.md` |
