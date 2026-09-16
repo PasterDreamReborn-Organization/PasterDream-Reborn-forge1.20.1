@@ -53,6 +53,14 @@ description: 客户端渲染（RenderType、HUD、粒子、音效、GeckoLib 动
 
 ---
 
+## 美术资产登记
+
+- **新增或重绘**的纹理（`textures/` 下）必须追加到 `src/main/resources/ASSETS_MANIFEST.md` 的对应小节（重绘 / 新增）
+- 纯重命名、直接复制自原模组的纹理**不**登记
+- 该清单是版权归属依据（重写团队资产采用 ARR 协议），漏登记 = 版权声明不完整
+
+---
+
 ## 关键约束
 
 - 客户端代码放 `client/`，`@EventBusSubscriber(value = Dist.CLIENT)`，服务端不可用的类（`Minecraft`、渲染器）**绝不**出现在通用路径
@@ -73,6 +81,7 @@ description: 客户端渲染（RenderType、HUD、粒子、音效、GeckoLib 动
 | 渲染器 | `client/renderer/` |
 | GUI 渲染辅助 | `helper/renderhelper/` |
 | GUI 组件 | `component/` |
+| 美术资产清单 | `src/main/resources/ASSETS_MANIFEST.md` |
 
 ---
 
