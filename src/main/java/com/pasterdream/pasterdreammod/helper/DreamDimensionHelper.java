@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -15,16 +16,18 @@ import java.util.Set;
 public final class DreamDimensionHelper {
     private DreamDimensionHelper() {}
 
-    public static final Set<ResourceKey<Level>> DREAM_DIMENSIONS = Set.of(
-            ResourceKey.create(Registries.DIMENSION,
-                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_world")),
-            ResourceKey.create(Registries.DIMENSION,
-                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_world")),
-            ResourceKey.create(Registries.DIMENSION,
-                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world")),
-            ResourceKey.create(Registries.DIMENSION,
-                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_arena_world"))
-    );
+    public static final Set<ResourceKey<Level>> DREAM_DIMENSIONS = new HashSet<>();
+
+    static {
+        DREAM_DIMENSIONS.add(ResourceKey.create(Registries.DIMENSION,
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_world")));
+        DREAM_DIMENSIONS.add(ResourceKey.create(Registries.DIMENSION,
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_world")));
+        DREAM_DIMENSIONS.add(ResourceKey.create(Registries.DIMENSION,
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey_world")));
+        DREAM_DIMENSIONS.add(ResourceKey.create(Registries.DIMENSION,
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_arena_world")));
+    }
 
     public static boolean isDreamDimension(Level level) {
         return DREAM_DIMENSIONS.contains(level.dimension());
