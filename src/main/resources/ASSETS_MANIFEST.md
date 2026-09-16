@@ -51,6 +51,7 @@ textures/item/glass_cup_of_dyedream_juice.png
 textures/item/glass_cup_of_honey_juice.png
 textures/item/glass_cup_of_uncooked_dyedream_flower_tea.png
 textures/item/glass_cup_of_watermelon_juice.png
+textures/item/glass_jar_of_ink.png
 textures/item/luck_enhance_stone.png
 textures/item/melt_dream_axe.png
 textures/item/melt_dream_hoe.png
@@ -145,7 +146,6 @@ textures/item/fortune_jelly.png
 textures/item/fractured_angel_statue.png
 textures/item/galaxy_jelly.png
 textures/item/glass_cup_of_slumber_palm_club_soda.png
-textures/item/glass_jar_of_ink.png
 textures/item/magnifying_glass_of_sherry.png
 textures/item/martini_glass.png
 textures/item/martini_glass_of_sea_salt_slumber_palm_beverage.png
