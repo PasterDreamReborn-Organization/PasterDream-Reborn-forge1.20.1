@@ -44,6 +44,7 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 
 - 写入 `document/design/ID映射表.md`
 - 运行 `cd tools && python generate_id_mapping.py` 刷新 `mapping.json`
+- **完全新设计 / 原作废案**（非搬运）**不**登记映射表，改登记 `document/design/新内容列表.md`
 
 ---
 
@@ -208,6 +209,7 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 - 复制到 `assets/pasterdream/textures/block/` 或 `textures/item/`
 - 实体纹理：非 GeckoLib → `textures/entities/`，GeckoLib → `textures/entity/`
 - 如为动画纹理，同步复制同名 `.mcmeta` 文件
+- **新增或重绘**的纹理同步登记 `src/main/resources/ASSETS_MANIFEST.md`（纯重命名/直接搬运的原模组纹理不登记）
 
 ---
 
@@ -316,6 +318,8 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 | 战利品表工具 | `datagen/util/LootHelpers.java` |
 | 渲染层 | `client/ClientSetRenderLayer.java` |
 | 材质目录 | `src/main/resources/assets/pasterdream/textures/` |
+| 美术资产清单 | `src/main/resources/ASSETS_MANIFEST.md`（重绘/新增纹理登记） |
+| 新内容列表 | `document/design/新内容列表.md`（非搬运内容登记） |
 | Geo 模型 | `src/main/resources/assets/pasterdream/geo/`（.geo.json） |
 | 动画文件 | `src/main/resources/assets/pasterdream/animations/`（.animation.json） |
 | 自定义模型 | `src/main/resources/assets/pasterdream/models/custom/` |
