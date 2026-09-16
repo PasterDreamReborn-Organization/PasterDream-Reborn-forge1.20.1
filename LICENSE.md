@@ -41,7 +41,7 @@ Copyright (c) 2026 PasterDream: Reborn Team (ShiLiuYinYu, 2884omgpy, Garam)
 
 以本模组为题材或载体发布的一切内容（包括但不限于附属模组、视频、图文等），均须遵守以下规范：
 
-- **内容限制**：禁止出现任何引人不适的内容，包括但不限于血腥、暴力、猎奇、成人或性暗示内容，以及其他包含任何 R-18G 要素的内容等。
+- **内容限制**：禁止出现任何引人不适的内容，包括但不限于LGBTQ、血腥、暴力、猎奇、成人或性暗示内容，以及其他包含任何 R-18G 要素的内容等。
 
 ## 5. 保留权利
 
@@ -98,7 +98,7 @@ To request permission, open an issue on the [GitHub repository](https://github.c
 
 All content published using this mod as its subject or medium (including but not limited to addon mods, videos, livestreams, recorded gameplay, articles, and images) must comply with the following:
 
-- **Content restrictions**: no content that may cause discomfort is permitted, including but not limited to graphic gore, extreme grotesque content, adult content including sexual innuendo, or any other graphic R-18 content.
+- **Content restrictions**: no content that may cause discomfort is permitted, including but not limited to LGBTQ, graphic gore, extreme grotesque content, adult content including sexual innuendo, or any other graphic R-18 content.
 
 ### 5. Reserved Rights
 
