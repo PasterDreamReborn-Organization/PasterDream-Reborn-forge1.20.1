@@ -2,6 +2,8 @@ package com.pasterdream.pasterdreammod.world.skill;
 
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
+import com.pasterdream.pasterdreammod.world.item.curio.FracturedAngelStatueHandler;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -11,7 +13,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class BlinkSkill {
 
-    public static void execute(Player player) {
+    public static void execute(ServerPlayer player) {
         if (player == null || player.level().isClientSide()) return;
 
         boolean creative = player.getAbilities().instabuild;
@@ -29,6 +31,7 @@ public class BlinkSkill {
             doDisplacement(player);
         }
 
+        FracturedAngelStatueHandler.onBlink(player);
         applyEvasionBuff(player);
     }
 

@@ -2744,6 +2744,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fractured_angel_statue.effect1", "§7▪ §9受到伤害时有%s%%的概率获得%s秒无敌");
         add("tooltip.pasterdream.fractured_angel_statue.effect2", "§7▪ §9免疫鞘翅飞行撞击时的动能伤害");
         add("tooltip.pasterdream.fractured_angel_statue.effect3", "§7▪ §9免疫摔落伤害");
+        add("tooltip.pasterdream.fractured_angel_statue.effect4", "§7▪ §9使用瞬身术时若主手为弩，则立即为其装填弹射物");
         add("tooltip.pasterdream.fractured_angel_statue.lore", "§7§o--无骨的天使西丽亚");
         add("tooltip.pasterdream.paper_plane.effect1", "§7▪ §9增大风向对自身的影响");
         add("tooltip.pasterdream.paper_plane.description", "§7§o--我们所逝去的童年时光");
