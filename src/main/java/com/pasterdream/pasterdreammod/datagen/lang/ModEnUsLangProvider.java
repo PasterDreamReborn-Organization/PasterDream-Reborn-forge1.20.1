@@ -2641,6 +2641,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fractured_angel_statue.effect1", "§7▪ §9When damaged, has a %s%% chance to gain %ss of invulnerability");
         add("tooltip.pasterdream.fractured_angel_statue.effect2", "§7▪ §9Immune to kinetic damage from elytra flight collisions");
         add("tooltip.pasterdream.fractured_angel_statue.effect3", "§7▪ §9Immune to fall damage");
+        add("tooltip.pasterdream.fractured_angel_statue.effect4", "§7▪ §9Instantly loads a projectile into your main-hand crossbow when using Blink");
         add("tooltip.pasterdream.fractured_angel_statue.lore", "§7§o--The boneless angel, Cecilia");
         add("tooltip.pasterdream.paper_plane.effect1", "§7▪ §9Amplifies the wind's effect on yourself");
         add("tooltip.pasterdream.paper_plane.description", "§7§o--The childhood we left behind");

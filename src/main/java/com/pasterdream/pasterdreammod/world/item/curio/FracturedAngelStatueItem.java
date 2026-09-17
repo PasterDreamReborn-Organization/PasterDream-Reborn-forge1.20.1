@@ -40,6 +40,7 @@ public class FracturedAngelStatueItem extends Item implements ICurioItem {
                 formatSeconds(Config.fracturedAngelStatueInvulnerableTicks)));
         list.add(Component.translatable("tooltip.pasterdream.fractured_angel_statue.effect2"));
         list.add(Component.translatable("tooltip.pasterdream.fractured_angel_statue.effect3"));
+        list.add(Component.translatable("tooltip.pasterdream.fractured_angel_statue.effect4"));
         list.add(Component.translatable("tooltip.pasterdream.fractured_angel_statue.lore"));
     }
 
