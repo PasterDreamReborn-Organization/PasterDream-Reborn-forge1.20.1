@@ -63,11 +63,11 @@ public class FadedBlessingOfCeciliaItem extends Item implements ICurioItem {
             var pos = hitResult.getBlockPos();
             if (level.getBlockState(pos).is(ModBlocks.MELTDREAM_LIQUID.get())) {
                 if (!level.isClientSide()) {
+                    ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.BLESSING_OF_CECILIA.get()));
                     if (!player.getAbilities().instabuild) {
                         stack.shrink(1);
                     }
                     level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
-                    ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.BLESSING_OF_CECILIA.get()));
                     level.playSound(null, pos, ModSounds.AWAKE.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
                 }
                 return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
