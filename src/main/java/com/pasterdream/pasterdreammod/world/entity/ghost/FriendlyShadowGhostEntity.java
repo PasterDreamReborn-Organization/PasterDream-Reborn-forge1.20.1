@@ -110,7 +110,7 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
     protected void registerGoals() {
         super.registerGoals();
         this.targetSelector.addGoal(1, new OwnerHurtTargetGoal(this));
-        this.goalSelector.addGoal(2, new OwnerHurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new OwnerHurtByTargetGoal(this));
         // 驻留模式：驯服后右键切换（仿原版猫狗坐下），飞行怨魂无 onGround，故自实现
         this.goalSelector.addGoal(1, new Goal() {
             {
@@ -192,7 +192,7 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
         });
         this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1, 10f, 2f, false));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(7, new NearestAttackableTargetGoal<>(this, Mob.class, 10, false, false,
+        this.targetSelector.addGoal(7, new NearestAttackableTargetGoal<>(this, Monster.class, 10, false, false,
                 target -> !target.getType().is(ModEntityTypeTags.SHADOW_MOB)));
         this.targetSelector.addGoal(8, new HurtByTargetGoal(this));
         this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25, 30, 12f) {
