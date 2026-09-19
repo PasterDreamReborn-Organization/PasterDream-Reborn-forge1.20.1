@@ -1595,6 +1595,35 @@ public class ModItems {
     public static final RegistryObject<Item> DYEDREAM_QUARTZ_BLOCK_WALL = ITEMS.register("dyedream_quartz_block_wall",
             () -> new BlockItem(ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get(), new Item.Properties()));
 
+    // ===== 染梦砂岩建材系列 =====
+
+    public static final RegistryObject<Item> DYEDREAM_SANDSTONE = ITEMS.register("dyedream_sandstone",
+            () -> new BlockItem(ModBlocks.DYEDREAM_SANDSTONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_SANDSTONE_STAIRS = ITEMS.register("dyedream_sandstone_stairs",
+            () -> new BlockItem(ModBlocks.DYEDREAM_SANDSTONE_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_SANDSTONE_SLAB = ITEMS.register("dyedream_sandstone_slab",
+            () -> new BlockItem(ModBlocks.DYEDREAM_SANDSTONE_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DYEDREAM_SANDSTONE_WALL = ITEMS.register("dyedream_sandstone_wall",
+            () -> new BlockItem(ModBlocks.DYEDREAM_SANDSTONE_WALL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CUT_DYEDREAM_SANDSTONE = ITEMS.register("cut_dyedream_sandstone",
+            () -> new BlockItem(ModBlocks.CUT_DYEDREAM_SANDSTONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CUT_DYEDREAM_SANDSTONE_STAIRS = ITEMS.register("cut_dyedream_sandstone_stairs",
+            () -> new BlockItem(ModBlocks.CUT_DYEDREAM_SANDSTONE_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CUT_DYEDREAM_SANDSTONE_SLAB = ITEMS.register("cut_dyedream_sandstone_slab",
+            () -> new BlockItem(ModBlocks.CUT_DYEDREAM_SANDSTONE_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CUT_DYEDREAM_SANDSTONE_WALL = ITEMS.register("cut_dyedream_sandstone_wall",
+            () -> new BlockItem(ModBlocks.CUT_DYEDREAM_SANDSTONE_WALL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHISELED_DYEDREAM_SANDSTONE = ITEMS.register("chiseled_dyedream_sandstone",
+            () -> new BlockItem(ModBlocks.CHISELED_DYEDREAM_SANDSTONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SMOOTH_DYEDREAM_SANDSTONE = ITEMS.register("smooth_dyedream_sandstone",
+            () -> new BlockItem(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SMOOTH_DYEDREAM_SANDSTONE_STAIRS = ITEMS.register("smooth_dyedream_sandstone_stairs",
+            () -> new BlockItem(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SMOOTH_DYEDREAM_SANDSTONE_SLAB = ITEMS.register("smooth_dyedream_sandstone_slab",
+            () -> new BlockItem(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SMOOTH_DYEDREAM_SANDSTONE_WALL = ITEMS.register("smooth_dyedream_sandstone_wall",
+            () -> new BlockItem(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_WALL.get(), new Item.Properties()));
+
     // ===== 染梦木板建材系列 =====
 
     public static final RegistryObject<Item> DYEDREAM_PLANKS = ITEMS.register("dyedream_planks",

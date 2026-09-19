@@ -95,6 +95,8 @@ textures/block/calcite_gold_ore.png
 textures/block/calcite_iron_ore.png
 textures/block/calcite_lapis_ore.png
 textures/block/calcite_redstone_ore.png
+textures/block/chiseled_dyedream_sandstone.png
+textures/block/cut_dyedream_sandstone.png
 textures/block/congeal_wind_iron_chain.png
 textures/block/congeal_wind_iron_lantern.png
 textures/block/congeal_wind_iron_pressure_plate.png
@@ -102,6 +104,9 @@ textures/block/congeal_wind_iron_trapdoor.png
 textures/block/dyedream_budding_block.png
 textures/block/dyedream_farmland.png
 textures/block/dyedream_farmland_moist.png
+textures/block/dyedream_sandstone.png
+textures/block/dyedream_sandstone_bottom.png
+textures/block/dyedream_sandstone_top.png
 textures/block/dyedream_world_leapstone.png
 textures/block/dyedream_world_portal.png
 textures/block/shadow_stone_cage_rune.png

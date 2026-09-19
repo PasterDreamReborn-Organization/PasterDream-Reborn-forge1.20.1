@@ -179,6 +179,63 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock((WallBlock) ModBlocks.DYEDREAM_QUARTZ_BLOCK_WALL.get(), quartzTex);
         // wall inventory model handled in ModItemModelsProvider
 
+        // ===== 染梦砂岩建材系列 =====
+
+        var sandstoneSide = modLoc("block/dyedream_sandstone");
+        var sandstoneTop = modLoc("block/dyedream_sandstone_top");
+        var sandstoneBottom = modLoc("block/dyedream_sandstone_bottom");
+
+        var sandstoneModel = models().cubeBottomTop(
+                ModBlocks.DYEDREAM_SANDSTONE.getId().getPath(),
+                sandstoneSide,
+                sandstoneBottom,
+                sandstoneTop);
+        simpleBlockWithItem(ModBlocks.DYEDREAM_SANDSTONE.get(), sandstoneModel);
+
+        stairsBlock((StairBlock) ModBlocks.DYEDREAM_SANDSTONE_STAIRS.get(), sandstoneSide, sandstoneBottom, sandstoneTop);
+        blockItem(ModBlocks.DYEDREAM_SANDSTONE_STAIRS);
+
+        slabBlock((SlabBlock) ModBlocks.DYEDREAM_SANDSTONE_SLAB.get(), sandstoneSide, sandstoneSide, sandstoneBottom, sandstoneTop);
+        blockItem(ModBlocks.DYEDREAM_SANDSTONE_SLAB);
+
+        wallBlock((WallBlock) ModBlocks.DYEDREAM_SANDSTONE_WALL.get(), sandstoneSide);
+
+        var cutSandstoneTex = modLoc("block/cut_dyedream_sandstone");
+        var cutSandstoneModel = models().cubeColumn(
+                ModBlocks.CUT_DYEDREAM_SANDSTONE.getId().getPath(),
+                cutSandstoneTex,
+                sandstoneTop);
+        simpleBlockWithItem(ModBlocks.CUT_DYEDREAM_SANDSTONE.get(), cutSandstoneModel);
+
+        stairsBlock((StairBlock) ModBlocks.CUT_DYEDREAM_SANDSTONE_STAIRS.get(), cutSandstoneTex);
+        blockItem(ModBlocks.CUT_DYEDREAM_SANDSTONE_STAIRS);
+
+        slabBlock((SlabBlock) ModBlocks.CUT_DYEDREAM_SANDSTONE_SLAB.get(), cutSandstoneTex, cutSandstoneTex, cutSandstoneTex, cutSandstoneTex);
+        blockItem(ModBlocks.CUT_DYEDREAM_SANDSTONE_SLAB);
+
+        wallBlock((WallBlock) ModBlocks.CUT_DYEDREAM_SANDSTONE_WALL.get(), cutSandstoneTex);
+
+        var chiseledSandstoneTex = modLoc("block/chiseled_dyedream_sandstone");
+        var chiseledSandstoneModel = models().cubeColumn(
+                ModBlocks.CHISELED_DYEDREAM_SANDSTONE.getId().getPath(),
+                chiseledSandstoneTex,
+                sandstoneTop);
+        simpleBlockWithItem(ModBlocks.CHISELED_DYEDREAM_SANDSTONE.get(), chiseledSandstoneModel);
+
+        // 平滑染梦砂岩复用砂岩顶面纹理（与原版平滑砂岩一致）
+        var smoothSandstoneModel = models().cubeAll(
+                ModBlocks.SMOOTH_DYEDREAM_SANDSTONE.getId().getPath(),
+                sandstoneTop);
+        simpleBlockWithItem(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE.get(), smoothSandstoneModel);
+
+        stairsBlock((StairBlock) ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_STAIRS.get(), sandstoneTop);
+        blockItem(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_STAIRS);
+
+        slabBlock((SlabBlock) ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_SLAB.get(), modLoc("block/smooth_dyedream_sandstone"), sandstoneTop, sandstoneTop, sandstoneTop);
+        blockItem(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_SLAB);
+
+        wallBlock((WallBlock) ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_WALL.get(), sandstoneTop);
+
         simpleBlock(ModBlocks.DYEDREAM_SAPLING.get(),
                 models().cross(ModBlocks.DYEDREAM_SAPLING.getId().getPath(),
                         blockTexture(ModBlocks.DYEDREAM_SAPLING.get())).renderType("cutout"));
