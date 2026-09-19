@@ -350,6 +350,10 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.CYAN_STONE_PILLAR.get());
         dropSelf(ModBlocks.DYEDREAM_BUD_BLOCK.get());
         buildingFamily(new BuildingBlockFamily(ModBlocks.DYEDREAM_BUD_BRICKS, ModBlocks.DYEDREAM_BUD_STAIRS, ModBlocks.DYEDREAM_BUD_SLAB, ModBlocks.DYEDREAM_BUD_WALL));
+        buildingFamily(new BuildingBlockFamily(ModBlocks.DYEDREAM_SANDSTONE, ModBlocks.DYEDREAM_SANDSTONE_STAIRS, ModBlocks.DYEDREAM_SANDSTONE_SLAB, ModBlocks.DYEDREAM_SANDSTONE_WALL));
+        buildingFamily(new BuildingBlockFamily(ModBlocks.CUT_DYEDREAM_SANDSTONE, ModBlocks.CUT_DYEDREAM_SANDSTONE_STAIRS, ModBlocks.CUT_DYEDREAM_SANDSTONE_SLAB, ModBlocks.CUT_DYEDREAM_SANDSTONE_WALL));
+        buildingFamily(new BuildingBlockFamily(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE, ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_STAIRS, ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_SLAB, ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_WALL));
+        dropSelf(ModBlocks.CHISELED_DYEDREAM_SANDSTONE.get());
         buildingFamily(new BuildingBlockFamily(ModBlocks.SHADOW_STONE_BRICK, ModBlocks.SHADOW_STONE_BRICK_STAIRS, ModBlocks.SHADOW_STONE_BRICK_SLAB, ModBlocks.SHADOW_STONE_BRICK_WALL));
         buildingFamily(new BuildingBlockFamily(ModBlocks.NARROW_SHADOW_STONE_BRICK, ModBlocks.NARROW_SHADOW_STONE_BRICK_STAIRS, ModBlocks.NARROW_SHADOW_STONE_BRICK_SLAB, ModBlocks.NARROW_SHADOW_STONE_BRICK_WALL));
         buildingFamily(new BuildingBlockFamily(ModBlocks.SHADOW_STONE_TILES, ModBlocks.SHADOW_STONE_TILES_STAIRS, ModBlocks.SHADOW_STONE_TILES_SLAB, ModBlocks.SHADOW_STONE_TILES_WALL));

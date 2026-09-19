@@ -243,6 +243,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         dreamAccumulatorRecipe(pWriter);
         dustRecipes(pWriter);
         quartzRecipes(pWriter);
+        sandstoneRecipes(pWriter);
         alloyRecipes(pWriter);
         miscOreRecipes(pWriter);
         calciteRecipes(pWriter);
@@ -1737,6 +1738,63 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         SingleItemRecipeBuilder.stonecutting(quartzIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_QUARTZ_BLOCK_WALL.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_QUARTZ_BLOCK.get()), has(ModItems.DYEDREAM_QUARTZ_BLOCK.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":dyedream_quartz_block_wall_from_stonecutting");
+    }
+
+    // ===== 染梦砂岩配方 =====
+
+    private void sandstoneRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 4× 染梦沙 → 染梦砂岩
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.DYEDREAM_SANDSTONE.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModBlocks.DYEDREAM_SAND.get())
+                .unlockedBy(getHasName(ModBlocks.DYEDREAM_SAND.get()), has(ModBlocks.DYEDREAM_SAND.get()))
+                .save(pWriter);
+
+        // 4× 染梦砂岩 → 4× 切制染梦砂岩
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CUT_DYEDREAM_SANDSTONE.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.DYEDREAM_SANDSTONE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_SANDSTONE.get()), has(ModItems.DYEDREAM_SANDSTONE.get()))
+                .save(pWriter);
+
+        // 2× 染梦砂岩台阶 → 雕纹染梦砂岩
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_DYEDREAM_SANDSTONE.get(), 1)
+                .pattern("a")
+                .pattern("a")
+                .define('a', ModItems.DYEDREAM_SANDSTONE_SLAB.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_SANDSTONE_SLAB.get()), has(ModItems.DYEDREAM_SANDSTONE_SLAB.get()))
+                .save(pWriter);
+
+        // 烧制：染梦砂岩 → 平滑染梦砂岩
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.DYEDREAM_SANDSTONE.get()),
+                        RecipeCategory.MISC, ModItems.SMOOTH_DYEDREAM_SANDSTONE.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.DYEDREAM_SANDSTONE.get()), has(ModItems.DYEDREAM_SANDSTONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":smooth_dyedream_sandstone_from_smelting");
+
+        // 砂岩 / 切制 / 平滑 三种变体的楼梯、台阶、墙（合成 + 切石机）
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.DYEDREAM_SANDSTONE.get(), ModItems.DYEDREAM_SANDSTONE_STAIRS.get(),
+                ModItems.DYEDREAM_SANDSTONE_SLAB.get(), ModItems.DYEDREAM_SANDSTONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.CUT_DYEDREAM_SANDSTONE.get(), ModItems.CUT_DYEDREAM_SANDSTONE_STAIRS.get(),
+                ModItems.CUT_DYEDREAM_SANDSTONE_SLAB.get(), ModItems.CUT_DYEDREAM_SANDSTONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.SMOOTH_DYEDREAM_SANDSTONE.get(), ModItems.SMOOTH_DYEDREAM_SANDSTONE_STAIRS.get(),
+                ModItems.SMOOTH_DYEDREAM_SANDSTONE_SLAB.get(), ModItems.SMOOTH_DYEDREAM_SANDSTONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 切石机：染梦砂岩 → 切制 / 雕纹
+        var sandstoneIngredient = Ingredient.of(ModItems.DYEDREAM_SANDSTONE.get());
+        SingleItemRecipeBuilder.stonecutting(sandstoneIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.CUT_DYEDREAM_SANDSTONE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_SANDSTONE.get()), has(ModItems.DYEDREAM_SANDSTONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":cut_dyedream_sandstone_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(sandstoneIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_DYEDREAM_SANDSTONE.get())
+                .unlockedBy(getHasName(ModItems.DYEDREAM_SANDSTONE.get()), has(ModItems.DYEDREAM_SANDSTONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_dyedream_sandstone_from_stonecutting");
     }
 
     // ===== 染梦合金配方 =====
