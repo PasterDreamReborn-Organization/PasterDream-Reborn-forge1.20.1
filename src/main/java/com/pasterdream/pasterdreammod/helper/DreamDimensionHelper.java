@@ -29,6 +29,19 @@ public final class DreamDimensionHelper {
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "aaroncos_arena_world")));
     }
 
+    /**
+     * 供 KubeJS 等外部脚本在启动阶段登记额外的梦境维度（格式：modid:dimension_id）。
+     * 仅在世界加载前调用是安全的；解析失败返回 false。
+     */
+    public static boolean register(String dimensionId) {
+        ResourceLocation rl = ResourceLocation.tryParse(dimensionId);
+        if (rl == null) {
+            return false;
+        }
+        DREAM_DIMENSIONS.add(ResourceKey.create(Registries.DIMENSION, rl));
+        return true;
+    }
+
     public static boolean isDreamDimension(Level level) {
         return DREAM_DIMENSIONS.contains(level.dimension());
     }
