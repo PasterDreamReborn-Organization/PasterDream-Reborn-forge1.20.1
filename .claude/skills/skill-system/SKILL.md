@@ -33,6 +33,7 @@ ModKeyMappings (按键) → BlinkPacket (网络) → BlinkSkill (逻辑) → Eva
 - 冷却与战技锁定复用 `helper/cooldown/`（`SkillCooldownHelper`、`SkillLockHelper`）
 - 网络包注册在 `init/ModNetwork.java`
 - 技能逻辑放 `world/skill/`，纯效果定义放 `world/effect/`（业务逻辑不要塞进 MobEffect 类）
+- 需「不可被牛奶 / totem / `/effect clear` / 其它 mod 清除」的效果标记实现 `world/effect/ProtectedRemovalEffect`，正当移除前调用其 `allowRemoval`（由 `ProtectedEffectRemovalMixin` 统一拦截，参考暗影窥视 / 回避）
 
 ---
 

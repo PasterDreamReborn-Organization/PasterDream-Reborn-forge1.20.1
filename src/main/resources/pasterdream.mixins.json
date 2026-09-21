@@ -19,7 +19,7 @@
     "PhantomTargetMixin",
     "BrightButterflyCurioMixin",
     "SculkArmorWardenImmunityMixin",
-    "ShadowSpyonProtectionMixin",
+    "ProtectedEffectRemovalMixin",
     "WardenTargetMixin",
     "WorldGenRegionMixin",
     "ServerLevelSleepTimeMixin",

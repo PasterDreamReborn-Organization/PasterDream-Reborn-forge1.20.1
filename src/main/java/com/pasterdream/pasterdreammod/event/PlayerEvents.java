@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import com.pasterdream.pasterdreammod.world.dimension.WindJourneyDimension;
+import com.pasterdream.pasterdreammod.world.effect.EvasionEffect;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWithNBTToCreativeModeTab;
 import com.pasterdream.pasterdreammod.world.skill.EvasionEffectHandler;
 import net.minecraft.advancements.Advancement;
@@ -172,6 +173,7 @@ public class PlayerEvents {
 
         int amplifier = effect.getAmplifier();
         int duration = effect.getDuration();
+        EvasionEffect.allowRemoval(player);
         player.removeEffect(ModEffects.EVASION.get());
 
         // multi-level evasion: consume one level, keep remainder
