@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.item.debugtool.menu;
 import com.pasterdream.pasterdreammod.init.ModMenus;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ClientItemHandlerContext;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ServerMenuReturnStack;
+import com.pasterdream.pasterdreammod.world.item.debugtool.slot.ActiveStatusChangeableSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.MenuProvider;
@@ -12,7 +13,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 public class ItemHandlerMenu extends AbstractContainerMenu
@@ -61,7 +61,7 @@ public class ItemHandlerMenu extends AbstractContainerMenu
         {
             int x = 8 + (i % 8) * 18;
             int y = 8 + ((i % 32) / 8) * 18;
-            this.addSlot(new SlotItemHandler(handler, i, x, y)
+            addSlot(new ActiveStatusChangeableSlot(handler, i, x, y)
             {
                 @Override
                 public void set(ItemStack stack)
