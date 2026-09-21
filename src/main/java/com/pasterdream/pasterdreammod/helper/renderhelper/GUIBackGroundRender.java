@@ -112,6 +112,8 @@ public class GUIBackGroundRender
     public static ResourceLocation WIND_KNIGHT_BOSS_BAR_EMPTY = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/wind_knight_boss_bar/wind_knight_boss_bar_empty.png");
     public static ResourceLocation WIND_KNIGHT_BOSS_BAR_FULL = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/wind_knight_boss_bar/wind_knight_boss_bar_full.png");
 
+    public static ResourceLocation ITEM_HANDLER_AND_FLUID_HANDLER_SCREEN = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/gui/item_handler_and_fluid_handler_view_screen.png");
+
     public static void rendPasterDreamInventoryGUI(GuiGraphics guiGraphics, int x, int y)
     {
         // 联机 / 光影环境下可能残留非默认混合状态与染色，先重置再画半透明物品栏底图
@@ -419,5 +421,10 @@ public class GUIBackGroundRender
         int w = (int) Math.round(196 * percent);
         if (w > 0)
             guiGraphics.blit(WIND_KNIGHT_BOSS_BAR_FULL, x, y, 22, 1, w, 23, 256, 32);
+    }
+
+    public static void rendItemHandlerAndFluidHandlerScreen(GuiGraphics guiGraphics, int x, int y)
+    {
+        guiGraphics.blit(ITEM_HANDLER_AND_FLUID_HANDLER_SCREEN, x, y, 0, 0, 176, 86, 176, 86);
     }
 }

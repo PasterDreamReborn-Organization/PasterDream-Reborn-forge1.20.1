@@ -501,8 +501,17 @@ public class NBTEditorWidget extends AbstractScrollWidget
         {
             int[] selection = textField.getSelectionStartAndEndCharIndex();
             allString.delete(selection[0], selection[1]);
-            cursorLine = selectionStartLine;
-            cursorColumn = selectionStartColumn;
+            if(selectionStartLine < selectionEndLine || selectionStartLine == selectionEndLine && selectionStartColumn <= selectionEndColumn)
+            {
+                cursorLine = selectionStartLine;
+                cursorColumn = selectionStartColumn;
+            }
+                else
+                {
+                    cursorLine = selectionEndLine;
+                    cursorColumn = selectionEndColumn;
+                }
+
             syncIndexFromLineAndColumn();
             cancelSelection();
             refreshLines();

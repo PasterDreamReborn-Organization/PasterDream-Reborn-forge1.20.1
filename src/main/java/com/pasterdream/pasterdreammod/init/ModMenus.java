@@ -37,6 +37,7 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.W
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolItemEditorMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.ItemHandlerMenu;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
 import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.StorageBagMenu;
 import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.LargeStorageBagMenu;
@@ -169,7 +170,7 @@ public class ModMenus
     public static final RegistryObject<MenuType<ShadowSelectEndMenu>> SHADOW_SELECT_END = MENUS.register("shadow_select_end", () -> IForgeMenuType.create((windowId, inv, data) -> new ShadowSelectEndMenu(windowId, inv)));
 
     public static final RegistryObject<MenuType<DebugToolItemEditorMenu>> DEBUG_TOOL_ITEM_EDITOR = MENUS.register("debug_tool_item_editor", () -> IForgeMenuType.create((windowId, playerInventory, data) -> new DebugToolItemEditorMenu(windowId, playerInventory)));
-
+    public static final RegistryObject<MenuType<ItemHandlerMenu>> ITEM_HANDLER = MENUS.register("item_handler", () -> IForgeMenuType.create(ItemHandlerMenu::new));
 
 
     public static void register(IEventBus eventBus)
