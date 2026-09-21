@@ -13,6 +13,8 @@ public class SanTank
 {
     private static final int BAR_WIDTH = 28;
     private static final int BAR_HEIGHT = 26;
+    /** 总变化率低于该值（每 tick，等价原作 SAN_VARIABILITY 的 5）时箭头缩小显示。 */
+    private static final double SAN_ARROW_SMALL_RATE = 5.0 / 1200.0;
 
     public static final IGuiOverlay SAN_TANK = (gui, guiGraphics, partialTick, width, height) ->
     {
@@ -26,6 +28,7 @@ public class SanTank
 
             double sanValue = capability.getSanValue();
             double maxSanValue = capability.getMaxSanValue();
+            double sanRate = capability.getSanRate();
             var attr = player.getAttribute(ModAttributes.MAX_SAN_EXTRA.get());
             if (attr != null) {
                 maxSanValue += attr.getValue();
@@ -36,14 +39,14 @@ public class SanTank
                 if (PasterDreamClientConfig.sanBarPreset == 2) {
                     renderPreset2(guiGraphics, width, height, sanValue, maxSanValue);
                 } else {
-                    renderPreset1(guiGraphics, width, height, sanValue, maxSanValue);
+                    renderPreset1(guiGraphics, width, height, sanValue, maxSanValue, sanRate);
                 }
             }
         });
     };
 
     /** 预设1：默认右下角，显示小数 + 最大值。支持仅下蹲显示bar、仅下蹲显示数值 */
-    private static void renderPreset1(GuiGraphics guiGraphics, int width, int height, double sanValue, double maxSanValue)
+    private static void renderPreset1(GuiGraphics guiGraphics, int width, int height, double sanValue, double maxSanValue, double sanRate)
     {
         var player = Minecraft.getInstance().player;
         boolean sneaking = player != null && player.isShiftKeyDown();
@@ -55,6 +58,14 @@ public class SanTank
         int barY = height - PasterDreamClientConfig.sanBarYFromBottom;
         GUIBackGroundRender.rendSanBar(guiGraphics, barX, barY);
         GUIBackGroundRender.rendSanAmountBar(guiGraphics, barX, barY, sanValue / maxSanValue);
+
+        if (PasterDreamClientConfig.sanBarPreset1ShowChangeArrow && sanRate != 0)
+        {
+            boolean small = Math.abs(sanRate) < SAN_ARROW_SMALL_RATE;
+            int arrowX = barX + 14 + (small ? 3 : 0);
+            int arrowY = barY + 10 + (small ? 8 : 0);
+            GUIBackGroundRender.rendSanChangeArrow(guiGraphics, arrowX, arrowY, sanRate > 0, small);
+        }
 
         if (PasterDreamClientConfig.sanBarPreset1SneakPrecise && !sneaking) {
             RenderSystem.disableBlend();

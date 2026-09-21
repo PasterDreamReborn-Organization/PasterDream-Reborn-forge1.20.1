@@ -81,6 +81,18 @@ public class ClientPacketHandlers
         }
     }
 
+    public static void handleSanRateSync(double sanRate)
+    {
+        Player player = Minecraft.getInstance().player;
+        if (player != null)
+        {
+            player.getCapability(ModCapabilities.SAN).ifPresent(capability ->
+            {
+                capability.setSanRate(sanRate);
+            });
+        }
+    }
+
     public static void handleMaxSanSync(double maxSanValue)
     {
         Player player = Minecraft.getInstance().player;

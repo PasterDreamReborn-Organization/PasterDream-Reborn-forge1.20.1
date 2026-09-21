@@ -69,8 +69,12 @@ public class SanAuraHandler {
             envRate = modifier.modifyEnvRate(envRate);
         }
 
-        double totalRate = attributeRate + envRate;
-        if (totalRate != 0 && !freezeSan) {
+        double totalRate = freezeSan ? 0.0 : attributeRate + envRate;
+
+        // 同步最终总变化率到客户端（供 SAN 条箭头显示）
+        SanHelper.setPlayerSanRateAndSync(player, totalRate);
+
+        if (totalRate != 0) {
             SanHelper.addPlayerSanAndSync(player, totalRate);
         }
 

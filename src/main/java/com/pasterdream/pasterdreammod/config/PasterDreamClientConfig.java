@@ -77,6 +77,10 @@ public class PasterDreamClientConfig {
             .comment("精神值条预设1：数值小数位数（0~4），默认 4")
             .defineInRange("sanBarPreset1DecimalPlaces", 4, 0, 4);
 
+    private static final ForgeConfigSpec.BooleanValue SAN_BAR_PRESET1_SHOW_CHANGE_ARROW = BUILDER
+            .comment("精神值条预设1：是否显示SAN变化箭头（↑ 上升 / ↓ 下降），默认 true")
+            .define("sanBarPreset1ShowChangeArrow", true);
+
     private static final ForgeConfigSpec.DoubleValue SAN_BAR_PRESET2_SCALE = BUILDER
             .comment("精神值条预设2的缩放比例，默认 0.5（28×26 缩小为 14×13）")
             .defineInRange("sanBarPreset2Scale", 0.5, 0.1, 1.5);
@@ -129,6 +133,7 @@ public class PasterDreamClientConfig {
     public static boolean sanBarPreset1SneakPrecise;
     public static boolean sanBarPreset1SneakShowBar;
     public static int sanBarPreset1DecimalPlaces;
+    public static boolean sanBarPreset1ShowChangeArrow;
     public static double sanBarPreset2Scale;
     public static double sanBarPreset2LowThreshold;
     public static boolean sanBarPreset2SneakShowInCreative;
@@ -159,6 +164,7 @@ public class PasterDreamClientConfig {
         sanBarPreset1SneakPrecise = SAN_BAR_PRESET1_SNEAK_PRECISE.get();
         sanBarPreset1SneakShowBar = SAN_BAR_PRESET1_SNEAK_SHOW_BAR.get();
         sanBarPreset1DecimalPlaces = SAN_BAR_PRESET1_DECIMAL_PLACES.get();
+        sanBarPreset1ShowChangeArrow = SAN_BAR_PRESET1_SHOW_CHANGE_ARROW.get();
         sanBarPreset2Scale = SAN_BAR_PRESET2_SCALE.get();
         sanBarPreset2LowThreshold = SAN_BAR_PRESET2_LOW_THRESHOLD.get();
         sanBarPreset2SneakShowInCreative = SAN_BAR_PRESET2_SNEAK_SHOW_IN_CREATIVE.get();

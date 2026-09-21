@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.network.san.IsSanEnableSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.MaxSanSyncPacket;
+import com.pasterdream.pasterdreammod.network.san.SanRateSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -32,6 +33,17 @@ public class SanHelper
         {
             capability.addSanValue(sanValue);
             SanSyncPacket.sendToPlayer(player, capability);
+        });
+    }
+
+    /** 写入最终总变化率（每 tick）并在变化时同步到客户端（仅用于 HUD 箭头）。 */
+    public static void setPlayerSanRateAndSync(ServerPlayer player, double sanRate)
+    {
+        player.getCapability(ModCapabilities.SAN).ifPresent(capability ->
+        {
+            if (capability.getSanRate() == sanRate) return;
+            capability.setSanRate(sanRate);
+            SanRateSyncPacket.sendToPlayer(player, capability);
         });
     }
 
