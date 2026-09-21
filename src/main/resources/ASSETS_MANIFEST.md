@@ -126,6 +126,7 @@ textures/gui/dream_notes_book/dream_notes_book_overworld.png
 textures/gui/dream_notes_book/dream_notes_book_wind_journey_world.png
 textures/gui/dream_notes_book/empty_notes.png
 textures/gui/dream_notes_book/shadow_dyed_dream_notes_book.png
+textures/item/chocolate_storage_cell.png
 textures/item/congeal_wind_iron_axe.png
 textures/item/congeal_wind_iron_hoe.png
 textures/item/congeal_wind_iron_lantern.png

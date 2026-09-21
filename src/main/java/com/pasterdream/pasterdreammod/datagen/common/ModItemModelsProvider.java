@@ -75,7 +75,14 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.COARSE_SALT.get());
         basicItem(ModItems.SALT.get());
         basicItem(ModItems.PINK_EGG.get());
-        basicItem(ModItems.CHOCOLATE.get());
+        ItemModelBuilder chocolateStorageCell = withExistingParent("chocolate_storage_cell", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/chocolate_storage_cell"));
+        withExistingParent(ModItems.CHOCOLATE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/chocolate"))
+                .override()
+                .predicate(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "storage_cell"), 1.0F)
+                .model(chocolateStorageCell)
+                .end();
         basicItem(ModItems.DYEDREAM_FRUIT.get());;
         basicItem(ModItems.FIG.get());
         basicItem(ModItems.CAKE_BASE.get());
