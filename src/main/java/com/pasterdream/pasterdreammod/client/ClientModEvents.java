@@ -15,6 +15,7 @@ import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ModelEvent;
@@ -22,6 +23,8 @@ import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
+
+import java.util.Locale;
 
 /**
  * 仅客户端注册的模组事件（MOD 总线）。
@@ -105,11 +108,31 @@ public class ClientModEvents
                 (stack, level, entity, seed) -> ProphecyCardItem.getPredicateValue(stack)
         );
 
+        // 巧克力：被重命名为含「存储元件」/「storage cell」时切换为存储元件纹理
+        ItemProperties.register(
+                ModItems.CHOCOLATE.get(),
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "storage_cell"),
+                (stack, level, entity, seed) -> isChocolateStorageCell(stack) ? 1.0F : 0.0F
+        );
+
         // 药剂瓶：按 NBT PotionType 切换纹理
         ItemProperties.register(
                 PotionBottleRegistry.POTION_BOTTLE.get(),
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "type"),
                 (stack, level, entity, seed) -> PotionBottleItem.getPredicateValue(stack)
         );
+    }
+
+    /**
+     * 判断巧克力是否被重命名为存储元件（名称含「存储元件」或「storage cell」，大小写不敏感）。
+     */
+    private static boolean isChocolateStorageCell(ItemStack stack)
+    {
+        if (stack == null || stack.isEmpty() || !stack.hasCustomHoverName())
+        {
+            return false;
+        }
+        String name = stack.getHoverName().getString().toLowerCase(Locale.ROOT);
+        return name.contains("存储元件") || name.contains("storage cell");
     }
 }
