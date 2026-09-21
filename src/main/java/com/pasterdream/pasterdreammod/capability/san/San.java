@@ -7,6 +7,7 @@ public class San implements ISan
     private double sanValue = 100.0;
     private boolean isEnabled = true;
     private double maxSanValue = 100.0;
+    private double sanRate = 0.0;
 
     @Override
     public double getSanValue()
@@ -55,6 +56,18 @@ public class San implements ISan
     public void addMaxSanValue(double delta)
     {
         setMaxSanValue(delta + maxSanValue);
+    }
+
+    @Override
+    public double getSanRate()
+    {
+        return sanRate;
+    }
+
+    @Override
+    public void setSanRate(double sanRate)
+    {
+        this.sanRate = sanRate;
     }
 
     @Override

@@ -26,6 +26,7 @@ import com.pasterdream.pasterdreammod.network.skill.TerraBladeSwingPacket;
 import com.pasterdream.pasterdreammod.network.san.IsSanEnableSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.MaxSanSyncPacket;
+import com.pasterdream.pasterdreammod.network.san.SanRateSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
 import com.pasterdream.pasterdreammod.network.shadowerosion.ShadowErosionMiningSpeedSyncPacket;
 import com.pasterdream.pasterdreammod.network.shadowselect.ShadowSelectEndButtonPacket;
@@ -68,6 +69,7 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, SanSyncPacket.class, SanSyncPacket::encode, SanSyncPacket::decode, SanSyncPacket::handle);
         CHANNEL.registerMessage(id++, IsSanEnableSyncPacket.class, IsSanEnableSyncPacket::encode, IsSanEnableSyncPacket::decode, IsSanEnableSyncPacket::handle);
         CHANNEL.registerMessage(id++, MaxSanSyncPacket.class, MaxSanSyncPacket::encode, MaxSanSyncPacket::decode, MaxSanSyncPacket::handle);
+        CHANNEL.registerMessage(id++, SanRateSyncPacket.class, SanRateSyncPacket::encode, SanRateSyncPacket::decode, SanRateSyncPacket::handle);
         CHANNEL.registerMessage(id++, LowSanConfigSyncPacket.class, LowSanConfigSyncPacket::encode, LowSanConfigSyncPacket::decode, LowSanConfigSyncPacket::handle);
 
         CHANNEL.registerMessage(id++, AnimationStateChangePacket.class, AnimationStateChangePacket::encode, AnimationStateChangePacket::decode, AnimationStateChangePacket::handle);
@@ -105,6 +107,11 @@ public class ModNetwork
     }
 
     public static void sendMaxSanSyncPacketToPlayer(MaxSanSyncPacket packet, ServerPlayer player)
+    {
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
+    }
+
+    public static void sendSanRateSyncPacketToPlayer(SanRateSyncPacket packet, ServerPlayer player)
     {
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
     }
