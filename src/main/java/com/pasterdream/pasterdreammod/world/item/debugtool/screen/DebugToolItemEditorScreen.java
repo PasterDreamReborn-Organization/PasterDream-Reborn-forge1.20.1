@@ -1,27 +1,32 @@
 package com.pasterdream.pasterdreammod.world.item.debugtool.screen;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerScreenWithFluidSlot;
+import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
-import com.pasterdream.pasterdreammod.helper.stringhelper.ListStringFromCompoundTag;
 import com.pasterdream.pasterdreammod.helper.stringhelper.StringHelper;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
+import com.pasterdream.pasterdreammod.network.debugtool.OpenItemHandlerPacket;
 import com.pasterdream.pasterdreammod.network.menu.SetSlotNbtPacket;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ClientItemHandlerContext;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolItemEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.widget.NBTPreviewWidget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.TagParser;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.IItemHandler;
 
-public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidSlot<DebugToolItemEditorMenu>
+public class DebugToolItemEditorScreen extends AbstractContainerScreen<DebugToolItemEditorMenu>
 {
     private NBTPreviewWidget nbtPreviewWidget;
+    private boolean thisItemIsNotHaveItemHandler = false;
 
     public DebugToolItemEditorScreen(DebugToolItemEditorMenu menu, Inventory playerInventory, Component title)
     {
@@ -52,8 +57,8 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
                 else
                     if(index == 36)
                     {
-                        slot.x = width / 2 - 51;
-                        slot.y = height / 4 - 29;
+                        slot.x = width / 2 - 8;
+                        slot.y = height / 8 - 18;
                     }
         }
 
@@ -64,7 +69,6 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
             CompoundTag nbt = itemStack == null ? null : itemStack.getTag();
             nbtPreviewWidget.setListString(StringHelper.ListStringFromString(nbt == null ? "" : nbt.toString(), width / 2 - 104));
         });
-
         addRenderableWidget(nbtPreviewWidget);
 
         Button NBTEditorButton = Button.builder(Component.translatable("button.pasterdream.编辑NBT"), button ->
@@ -79,33 +83,47 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
                 }
                     catch (CommandSyntaxException e)
                     {
-                        return Component.translatable("error.pasterdream.invalid_nbt", e.getMessage());
+                        return Component.translatable("error.pasterdream.无效的NBT", e.getMessage());
                     }
 
                 ModNetwork.CHANNEL.sendToServer(new SetSlotNbtPacket(36, parsed));
                 return null;
             }));
         }).pos(5, height - 21).size(width / 2 - 95, 16).build();
-
         addRenderableWidget(NBTEditorButton);
+
+        Button ItemHandlerButton = Button.builder(Component.translatable("button.pasterdream.操作ItemHandler"), button ->
+        {
+            ItemStack stack = menu.getSlot(36).getItem();
+            IItemHandler handler = stack.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
+            if (handler != null)
+            {
+                thisItemIsNotHaveItemHandler = false;
+                ClientItemHandlerContext.set(handler);
+                ModNetwork.CHANNEL.sendToServer(new OpenItemHandlerPacket(menu.containerId, 36));
+            }
+                else
+                {
+                    thisItemIsNotHaveItemHandler = true;
+                }
+        }).pos(width / 2 - 48, height * 3 / 8 - 39).size(96, 16).build();
+        addRenderableWidget(ItemHandlerButton);
     }
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY)
     {
-        GUIBackGroundRender.rendMinecraftGUIBackground(guiGraphics, width / 2 - 85, 0, 85, height / 2 - 42);
-        GUIBackGroundRender.rendMinecraftGUIBackground(guiGraphics, width / 2, 0, 85, height / 2 - 42);
-        GUIBackGroundRender.rendMinecraftGUIBackground(guiGraphics, width / 2 - 85, height / 2 - 42, 85, height / 2 - 42);
-        GUIBackGroundRender.rendMinecraftGUIBackground(guiGraphics, width / 2, height / 2 - 42, 85, height / 2 - 42);
+        GUIBackGroundRender.rendMinecraftGUIBackground(guiGraphics, width / 2 - 85, 0, 170, height / 4 - 21);
+        GUIBackGroundRender.rendMinecraftGUIBackground(guiGraphics, width / 2 - 85, height / 4 - 21, 170, height / 4 - 21);
+        GUIBackGroundRender.rendMinecraftGUIBackground(guiGraphics, width / 2 - 85, height / 2 - 42, 170, height / 4 - 21);
+        GUIBackGroundRender.rendMinecraftGUIBackground(guiGraphics, width / 2 - 85, height * 3 / 4 - 63, 170, height / 4 - 21);
 
         GUIBackGroundRender.rendPasterDreamInventoryGUI(guiGraphics, width / 2 - 85, height - 84);
 
         GUIBackGroundRender.rendMinecraftGUIBackground(guiGraphics, 0, 0, width / 2 - 85, height);
         GUIBackGroundRender.rendMinecraftGUIBackground(guiGraphics, width / 2 + 85, 0, width / 2 - 85, height);
 
-        GUIBackGroundRender.rendMinecraftSingleSlot(guiGraphics, width / 2 - 52, height / 4 - 30);
-
-        super.renderBg(guiGraphics, partialTick, mouseX, mouseY);
+        GUIBackGroundRender.rendMinecraftSingleSlot(guiGraphics, width / 2 - 9, height / 8 - 19);
     }
 
     @Override
@@ -114,6 +132,11 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
         renderBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         renderTooltip(guiGraphics, mouseX, mouseY);
+
+        if(thisItemIsNotHaveItemHandler)
+        {
+            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 3 / 8 - 18, Component.translatable("message.pasterdream.无ItemHandler").getString(), 0xFFFF0000);
+        }
     }
 
     @Override

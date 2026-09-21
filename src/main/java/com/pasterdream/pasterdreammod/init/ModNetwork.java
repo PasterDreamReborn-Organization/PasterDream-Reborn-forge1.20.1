@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.network.blueprint.BlueprintPlacePacket;
 import com.pasterdream.pasterdreammod.network.blueprint.StartBlueprintPlacementPacket;
 import com.pasterdream.pasterdreammod.network.blueprint.UpdateBlueprintPlacingPacket;
 import com.pasterdream.pasterdreammod.network.debugsword.DebugBlockActionPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.OpenItemHandlerPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSlotInteractPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSoundPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSyncPacket;
@@ -89,6 +90,7 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, ShadowSelectEndButtonPacket.class, ShadowSelectEndButtonPacket::encode, ShadowSelectEndButtonPacket::decode, ShadowSelectEndButtonPacket::handle);
 
         CHANNEL.registerMessage(id++, SetSlotNbtPacket.class, SetSlotNbtPacket::encode, SetSlotNbtPacket::new, SetSlotNbtPacket::handle);
+        CHANNEL.registerMessage(id++, OpenItemHandlerPacket.class, OpenItemHandlerPacket::encode, OpenItemHandlerPacket::decode, OpenItemHandlerPacket::handle);
     }
 
     public static void sendMeltDreamEnergySyncPacketToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)

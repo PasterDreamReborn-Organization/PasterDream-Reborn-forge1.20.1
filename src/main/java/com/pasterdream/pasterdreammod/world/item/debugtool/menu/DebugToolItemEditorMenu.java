@@ -1,22 +1,29 @@
 package com.pasterdream.pasterdreammod.world.item.debugtool.menu;
 
-import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
-import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.IFluidContainer;
 import com.pasterdream.pasterdreammod.init.ModMenus;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.DebugItemEditorMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ItemHandlerLaunchData;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.PlayerEditorSlotData;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.IItemHandler;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 
-public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot
+public class DebugToolItemEditorMenu extends AbstractContainerMenu implements DebugItemEditorMenu
 {
     private final Container editorContainer;
+    private final Player player;
 
     public DebugToolItemEditorMenu(int id, Inventory playerInventory)
     {
@@ -36,20 +43,29 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot
         }
 
         this.editorContainer = new SimpleContainer(1);
+        player = playerInventory.player;
+        if (!player.level().isClientSide)
+        {
+            ItemStack stored = PlayerEditorSlotData.get(player);
+            if (!stored.isEmpty())
+            {
+                editorContainer.setItem(0, stored.copy());
+            }
+        }
+
         addSlot(new Slot(editorContainer, 0, 189, 31)
         {
             @Override
-            public void set(ItemStack stack)
+            public void set(ItemStack itemStack)
             {
-                super.set(stack);
+                super.set(itemStack);
+                PlayerEditorSlotData.set(player, itemStack);
                 for (Consumer<ItemStack> consumer : editorSlotListeners)
                 {
-                    consumer.accept(stack);
+                    consumer.accept(itemStack);
                 }
             }
         });
-
-
     }
 
     private final List<Consumer<ItemStack>> editorSlotListeners = new CopyOnWriteArrayList<>();
@@ -62,16 +78,6 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot
     public void clearEditorSlotListeners()
     {
         editorSlotListeners.clear();
-    }
-
-    @Override
-    public void removed(Player player)
-    {
-        super.removed(player);
-        if (!player.level().isClientSide)
-        {
-            clearContainer(editorContainer, player);
-        }
     }
 
     private void clearContainer(Container container, Player player)
@@ -129,14 +135,43 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot
     }
 
     @Override
-    protected IFluidContainer getFluidContainer()
-    {
-        return null;
-    }
-
-    @Override
     public boolean stillValid(Player player)
     {
         return true;
+    }
+
+    @Override
+    public MenuProvider asMenuProvider()
+    {
+        return new MenuProvider()
+        {
+            @Override
+            public Component getDisplayName()
+            {
+                return Component.empty();
+            }
+
+            @Override
+            public AbstractContainerMenu createMenu(int id, Inventory playerInventory, Player player)
+            {
+                return new DebugToolItemEditorMenu(id, playerInventory);
+            }
+        };
+    }
+
+    @Override
+    public ItemHandlerLaunchData provideItemHandlerLaunch()
+    {
+        ItemStack stack = this.editorContainer.getItem(0);
+        IItemHandler handler = stack.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
+        if(handler != null)
+        {
+            Runnable onChanged = () -> PlayerEditorSlotData.set(player, stack);
+            return new ItemHandlerLaunchData(handler, onChanged);
+        }
+            else
+            {
+                return null;
+            }
     }
 }
