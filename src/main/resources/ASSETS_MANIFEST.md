@@ -120,6 +120,11 @@ textures/block/slumber_palm_planks.png
 textures/block/slumber_palm_sapling.png
 textures/block/stripped_slumber_palm_log.png
 textures/block/stripped_slumber_palm_log_top.png
+textures/block/chiseled_white_sandstone.png
+textures/block/cut_white_sandstone.png
+textures/block/white_sandstone.png
+textures/block/white_sandstone_bottom.png
+textures/block/white_sandstone_top.png
 textures/gui/dream_notes_book/dream_notes_book_dyedream_world.png
 textures/gui/dream_notes_book/dream_notes_book_lamp_shadow_world.png
 textures/gui/dream_notes_book/dream_notes_book_overworld.png

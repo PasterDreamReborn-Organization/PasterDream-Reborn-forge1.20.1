@@ -244,6 +244,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         dustRecipes(pWriter);
         quartzRecipes(pWriter);
         sandstoneRecipes(pWriter);
+        whiteSandstoneRecipes(pWriter);
         alloyRecipes(pWriter);
         miscOreRecipes(pWriter);
         calciteRecipes(pWriter);
@@ -1795,6 +1796,63 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         SingleItemRecipeBuilder.stonecutting(sandstoneIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_DYEDREAM_SANDSTONE.get())
                 .unlockedBy(getHasName(ModItems.DYEDREAM_SANDSTONE.get()), has(ModItems.DYEDREAM_SANDSTONE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_dyedream_sandstone_from_stonecutting");
+    }
+
+    // ===== 白砂岩配方 =====
+
+    private void whiteSandstoneRecipes(Consumer<FinishedRecipe> pWriter) {
+        // 4× 白沙 → 白砂岩
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.WHITE_SANDSTONE.get(), 1)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModBlocks.WHITE_SAND.get())
+                .unlockedBy(getHasName(ModBlocks.WHITE_SAND.get()), has(ModBlocks.WHITE_SAND.get()))
+                .save(pWriter);
+
+        // 4× 白砂岩 → 4× 切制白砂岩
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CUT_WHITE_SANDSTONE.get(), 4)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', ModItems.WHITE_SANDSTONE.get())
+                .unlockedBy(getHasName(ModItems.WHITE_SANDSTONE.get()), has(ModItems.WHITE_SANDSTONE.get()))
+                .save(pWriter);
+
+        // 2× 白砂岩台阶 → 雕纹白砂岩
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_WHITE_SANDSTONE.get(), 1)
+                .pattern("a")
+                .pattern("a")
+                .define('a', ModItems.WHITE_SANDSTONE_SLAB.get())
+                .unlockedBy(getHasName(ModItems.WHITE_SANDSTONE_SLAB.get()), has(ModItems.WHITE_SANDSTONE_SLAB.get()))
+                .save(pWriter);
+
+        // 烧制：白砂岩 → 平滑白砂岩
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.WHITE_SANDSTONE.get()),
+                        RecipeCategory.MISC, ModItems.SMOOTH_WHITE_SANDSTONE.get(), 1.0F, 200)
+                .unlockedBy(getHasName(ModItems.WHITE_SANDSTONE.get()), has(ModItems.WHITE_SANDSTONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":smooth_white_sandstone_from_smelting");
+
+        // 砂岩 / 切制 / 平滑 三种变体的楼梯、台阶、墙（合成 + 切石机）
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.WHITE_SANDSTONE.get(), ModItems.WHITE_SANDSTONE_STAIRS.get(),
+                ModItems.WHITE_SANDSTONE_SLAB.get(), ModItems.WHITE_SANDSTONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.CUT_WHITE_SANDSTONE.get(), ModItems.CUT_WHITE_SANDSTONE_STAIRS.get(),
+                ModItems.CUT_WHITE_SANDSTONE_SLAB.get(), ModItems.CUT_WHITE_SANDSTONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.SMOOTH_WHITE_SANDSTONE.get(), ModItems.SMOOTH_WHITE_SANDSTONE_STAIRS.get(),
+                ModItems.SMOOTH_WHITE_SANDSTONE_SLAB.get(), ModItems.SMOOTH_WHITE_SANDSTONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
+
+        // 切石机：白砂岩 → 切制 / 雕纹
+        var whiteSandstoneIngredient = Ingredient.of(ModItems.WHITE_SANDSTONE.get());
+        SingleItemRecipeBuilder.stonecutting(whiteSandstoneIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.CUT_WHITE_SANDSTONE.get())
+                .unlockedBy(getHasName(ModItems.WHITE_SANDSTONE.get()), has(ModItems.WHITE_SANDSTONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":cut_white_sandstone_from_stonecutting");
+        SingleItemRecipeBuilder.stonecutting(whiteSandstoneIngredient, RecipeCategory.BUILDING_BLOCKS, ModItems.CHISELED_WHITE_SANDSTONE.get())
+                .unlockedBy(getHasName(ModItems.WHITE_SANDSTONE.get()), has(ModItems.WHITE_SANDSTONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_white_sandstone_from_stonecutting");
     }
 
     // ===== 染梦合金配方 =====

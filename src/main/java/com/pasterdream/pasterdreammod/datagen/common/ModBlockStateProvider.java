@@ -236,6 +236,63 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         wallBlock((WallBlock) ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_WALL.get(), sandstoneTop);
 
+        // ===== 白砂岩建材系列 =====
+
+        var whiteSandstoneSide = modLoc("block/white_sandstone");
+        var whiteSandstoneTop = modLoc("block/white_sandstone_top");
+        var whiteSandstoneBottom = modLoc("block/white_sandstone_bottom");
+
+        var whiteSandstoneModel = models().cubeBottomTop(
+                ModBlocks.WHITE_SANDSTONE.getId().getPath(),
+                whiteSandstoneSide,
+                whiteSandstoneBottom,
+                whiteSandstoneTop);
+        simpleBlockWithItem(ModBlocks.WHITE_SANDSTONE.get(), whiteSandstoneModel);
+
+        stairsBlock((StairBlock) ModBlocks.WHITE_SANDSTONE_STAIRS.get(), whiteSandstoneSide, whiteSandstoneBottom, whiteSandstoneTop);
+        blockItem(ModBlocks.WHITE_SANDSTONE_STAIRS);
+
+        slabBlock((SlabBlock) ModBlocks.WHITE_SANDSTONE_SLAB.get(), whiteSandstoneSide, whiteSandstoneSide, whiteSandstoneBottom, whiteSandstoneTop);
+        blockItem(ModBlocks.WHITE_SANDSTONE_SLAB);
+
+        wallBlock((WallBlock) ModBlocks.WHITE_SANDSTONE_WALL.get(), whiteSandstoneSide);
+
+        var cutWhiteSandstoneTex = modLoc("block/cut_white_sandstone");
+        var cutWhiteSandstoneModel = models().cubeColumn(
+                ModBlocks.CUT_WHITE_SANDSTONE.getId().getPath(),
+                cutWhiteSandstoneTex,
+                whiteSandstoneTop);
+        simpleBlockWithItem(ModBlocks.CUT_WHITE_SANDSTONE.get(), cutWhiteSandstoneModel);
+
+        stairsBlock((StairBlock) ModBlocks.CUT_WHITE_SANDSTONE_STAIRS.get(), cutWhiteSandstoneTex);
+        blockItem(ModBlocks.CUT_WHITE_SANDSTONE_STAIRS);
+
+        slabBlock((SlabBlock) ModBlocks.CUT_WHITE_SANDSTONE_SLAB.get(), cutWhiteSandstoneTex, cutWhiteSandstoneTex, cutWhiteSandstoneTex, cutWhiteSandstoneTex);
+        blockItem(ModBlocks.CUT_WHITE_SANDSTONE_SLAB);
+
+        wallBlock((WallBlock) ModBlocks.CUT_WHITE_SANDSTONE_WALL.get(), cutWhiteSandstoneTex);
+
+        var chiseledWhiteSandstoneTex = modLoc("block/chiseled_white_sandstone");
+        var chiseledWhiteSandstoneModel = models().cubeColumn(
+                ModBlocks.CHISELED_WHITE_SANDSTONE.getId().getPath(),
+                chiseledWhiteSandstoneTex,
+                whiteSandstoneTop);
+        simpleBlockWithItem(ModBlocks.CHISELED_WHITE_SANDSTONE.get(), chiseledWhiteSandstoneModel);
+
+        // 平滑白砂岩复用砂岩顶面纹理（与原版平滑砂岩一致）
+        var smoothWhiteSandstoneModel = models().cubeAll(
+                ModBlocks.SMOOTH_WHITE_SANDSTONE.getId().getPath(),
+                whiteSandstoneTop);
+        simpleBlockWithItem(ModBlocks.SMOOTH_WHITE_SANDSTONE.get(), smoothWhiteSandstoneModel);
+
+        stairsBlock((StairBlock) ModBlocks.SMOOTH_WHITE_SANDSTONE_STAIRS.get(), whiteSandstoneTop);
+        blockItem(ModBlocks.SMOOTH_WHITE_SANDSTONE_STAIRS);
+
+        slabBlock((SlabBlock) ModBlocks.SMOOTH_WHITE_SANDSTONE_SLAB.get(), modLoc("block/smooth_white_sandstone"), whiteSandstoneTop, whiteSandstoneTop, whiteSandstoneTop);
+        blockItem(ModBlocks.SMOOTH_WHITE_SANDSTONE_SLAB);
+
+        wallBlock((WallBlock) ModBlocks.SMOOTH_WHITE_SANDSTONE_WALL.get(), whiteSandstoneTop);
+
         simpleBlock(ModBlocks.DYEDREAM_SAPLING.get(),
                 models().cross(ModBlocks.DYEDREAM_SAPLING.getId().getPath(),
                         blockTexture(ModBlocks.DYEDREAM_SAPLING.get())).renderType("cutout"));
