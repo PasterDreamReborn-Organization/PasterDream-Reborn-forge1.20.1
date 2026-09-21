@@ -66,7 +66,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "mushrooms")))
                 .add(ModBlocks.PINK_MUSHROOM.get().asItem())
-                .add(ModBlocks.TALL_PINK_MUSHROOM.get().asItem());
+                .add(ModBlocks.TALL_PINK_MUSHROOM.get().asItem())
+                .add(ModBlocks.SHADOW_FUNGUS.get().asItem());
 
         // 阴影书架兼容标签
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "bookshelves")))

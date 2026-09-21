@@ -509,6 +509,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(Tags.Blocks.BOOKSHELVES)
                 .add(ModBlocks.SHADOW_BOOKSHELF.get());
 
+        // 阴影书架提供附魔能力（与书架同，需在附魔台两格内且中间方块可传导）
+        tag(BlockTags.ENCHANTMENT_POWER_PROVIDER)
+                .add(ModBlocks.SHADOW_BOOKSHELF.get());
+
         // ===== 模组玻璃板 =====
 
         tag(ModBlockTags.MOD_GLASS_PANE)
