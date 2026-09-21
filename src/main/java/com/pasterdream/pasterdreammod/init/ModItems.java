@@ -1394,6 +1394,36 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.AZURE_SEA_SAND.get(), new Item.Properties()));
     public static final RegistryObject<Item> THICK_CLOUD = ITEMS.register("thick_cloud",
             () -> new BlockItem(ModBlocks.THICK_CLOUD.get(), new Item.Properties()));
+
+    // ===== 白砂岩建材系列 =====
+
+    public static final RegistryObject<Item> WHITE_SANDSTONE = ITEMS.register("white_sandstone",
+            () -> new BlockItem(ModBlocks.WHITE_SANDSTONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WHITE_SANDSTONE_STAIRS = ITEMS.register("white_sandstone_stairs",
+            () -> new BlockItem(ModBlocks.WHITE_SANDSTONE_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WHITE_SANDSTONE_SLAB = ITEMS.register("white_sandstone_slab",
+            () -> new BlockItem(ModBlocks.WHITE_SANDSTONE_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WHITE_SANDSTONE_WALL = ITEMS.register("white_sandstone_wall",
+            () -> new BlockItem(ModBlocks.WHITE_SANDSTONE_WALL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CUT_WHITE_SANDSTONE = ITEMS.register("cut_white_sandstone",
+            () -> new BlockItem(ModBlocks.CUT_WHITE_SANDSTONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CUT_WHITE_SANDSTONE_STAIRS = ITEMS.register("cut_white_sandstone_stairs",
+            () -> new BlockItem(ModBlocks.CUT_WHITE_SANDSTONE_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CUT_WHITE_SANDSTONE_SLAB = ITEMS.register("cut_white_sandstone_slab",
+            () -> new BlockItem(ModBlocks.CUT_WHITE_SANDSTONE_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CUT_WHITE_SANDSTONE_WALL = ITEMS.register("cut_white_sandstone_wall",
+            () -> new BlockItem(ModBlocks.CUT_WHITE_SANDSTONE_WALL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHISELED_WHITE_SANDSTONE = ITEMS.register("chiseled_white_sandstone",
+            () -> new BlockItem(ModBlocks.CHISELED_WHITE_SANDSTONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SMOOTH_WHITE_SANDSTONE = ITEMS.register("smooth_white_sandstone",
+            () -> new BlockItem(ModBlocks.SMOOTH_WHITE_SANDSTONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SMOOTH_WHITE_SANDSTONE_STAIRS = ITEMS.register("smooth_white_sandstone_stairs",
+            () -> new BlockItem(ModBlocks.SMOOTH_WHITE_SANDSTONE_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SMOOTH_WHITE_SANDSTONE_SLAB = ITEMS.register("smooth_white_sandstone_slab",
+            () -> new BlockItem(ModBlocks.SMOOTH_WHITE_SANDSTONE_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SMOOTH_WHITE_SANDSTONE_WALL = ITEMS.register("smooth_white_sandstone_wall",
+            () -> new BlockItem(ModBlocks.SMOOTH_WHITE_SANDSTONE_WALL.get(), new Item.Properties()));
+
     public static final RegistryObject<Item> SHADOW = ITEMS.register("shadow",
             () -> new BlockItem(ModBlocks.SHADOW.get(), new Item.Properties()));
     public static final RegistryObject<Item> THICK_SHADOW = ITEMS.register("thick_shadow",

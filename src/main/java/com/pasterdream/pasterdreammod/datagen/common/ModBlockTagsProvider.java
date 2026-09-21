@@ -408,6 +408,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         addBuildingFamilyToTags(smoothDyedreamSandstoneFamily);
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.CHISELED_DYEDREAM_SANDSTONE.get());
 
+        // ===== 白砂岩建材系列 =====
+        var whiteSandstoneFamily = new BuildingBlockFamily(ModBlocks.WHITE_SANDSTONE, ModBlocks.WHITE_SANDSTONE_STAIRS, ModBlocks.WHITE_SANDSTONE_SLAB, ModBlocks.WHITE_SANDSTONE_WALL);
+        var cutWhiteSandstoneFamily = new BuildingBlockFamily(ModBlocks.CUT_WHITE_SANDSTONE, ModBlocks.CUT_WHITE_SANDSTONE_STAIRS, ModBlocks.CUT_WHITE_SANDSTONE_SLAB, ModBlocks.CUT_WHITE_SANDSTONE_WALL);
+        var smoothWhiteSandstoneFamily = new BuildingBlockFamily(ModBlocks.SMOOTH_WHITE_SANDSTONE, ModBlocks.SMOOTH_WHITE_SANDSTONE_STAIRS, ModBlocks.SMOOTH_WHITE_SANDSTONE_SLAB, ModBlocks.SMOOTH_WHITE_SANDSTONE_WALL);
+        addBuildingFamilyToTags(whiteSandstoneFamily);
+        addBuildingFamilyToTags(cutWhiteSandstoneFamily);
+        addBuildingFamilyToTags(smoothWhiteSandstoneFamily);
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.CHISELED_WHITE_SANDSTONE.get());
+
         // 方解石锥
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.CALCITE_CONE.get());
 

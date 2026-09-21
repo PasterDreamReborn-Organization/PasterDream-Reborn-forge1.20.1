@@ -411,6 +411,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModBlocks.SMOOTH_DYEDREAM_SANDSTONE_WALL.getId().getPath(), mcLoc("block/wall_inventory"))
                 .texture("wall", modLoc("block/dyedream_sandstone_top"));
 
+        wallItem(ModBlocks.WHITE_SANDSTONE_WALL, ModBlocks.WHITE_SANDSTONE);
+        wallItem(ModBlocks.CUT_WHITE_SANDSTONE_WALL, ModBlocks.CUT_WHITE_SANDSTONE);
+        withExistingParent(ModBlocks.SMOOTH_WHITE_SANDSTONE_WALL.getId().getPath(), mcLoc("block/wall_inventory"))
+                .texture("wall", modLoc("block/white_sandstone_top"));
+
         wallItem(ModBlocks.DYEDREAM_BUD_WALL, ModBlocks.DYEDREAM_BUD_BRICKS);
         wallItem(ModBlocks.POLISHED_CALCITE_WALL, ModBlocks.POLISHED_CALCITE);
         wallItem(ModBlocks.CALCITE_TILES_WALL, ModBlocks.CALCITE_TILES);
