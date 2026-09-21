@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
 import com.pasterdream.pasterdreammod.world.entity.IShadowMob;
 import com.pasterdream.pasterdreammod.world.entity.ghost.ITextureVariant;
+import com.pasterdream.pasterdreammod.world.entity.goal.AvoidLitCampfireGoal;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -142,6 +143,7 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
     @Override
     protected void registerGoals() {
         super.registerGoals();
+        this.goalSelector.addGoal(0, new AvoidLitCampfireGoal(this, 1.5));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, getVariant().meleeSpeed, false) {
             @Override
             protected double getAttackReachSqr(LivingEntity entity) {

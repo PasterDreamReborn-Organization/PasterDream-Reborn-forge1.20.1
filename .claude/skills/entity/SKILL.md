@@ -50,6 +50,7 @@ description: 新增/修改实体（生物、弹射物、投影物）。覆盖实
 - 实现 `IShadowMob` 标记接口
 - 加入 `#pasterdream:shadow_mob` 实体标签（`ModEntityTypeTags`）
 - 难度相关逻辑见 `.claude/skills/shadow-difficulty/SKILL.md`
+- 远离营火：`TerrorbeakEntity` / `ShadowHandEntity` 复用 `world/entity/goal/AvoidLitCampfireGoal`（节流方块扫描 + `MoveControl` 直线逃离，不触发寻路）
 
 ---
 

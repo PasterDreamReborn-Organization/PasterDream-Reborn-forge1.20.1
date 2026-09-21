@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.entity;
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.helper.ShadowDifficultyHelper;
 import com.pasterdream.pasterdreammod.init.ModEntities;
+import com.pasterdream.pasterdreammod.world.entity.goal.AvoidLitCampfireGoal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -93,6 +94,7 @@ public class ShadowHandEntity extends Monster implements GeoEntity, IShadowMob {
 
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(0, new AvoidLitCampfireGoal(this, 1.8));
         this.goalSelector.addGoal(1, new Goal() {
             {
                 this.setFlags(EnumSet.of(Goal.Flag.MOVE));
