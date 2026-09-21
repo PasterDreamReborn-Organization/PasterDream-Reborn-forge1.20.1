@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.compat.kubejs;
 import com.pasterdream.pasterdreammod.PasterDreamTipsManager;
 import com.pasterdream.pasterdreammod.compat.kubejs.food.PasterDreamFoodEvents;
 import com.pasterdream.pasterdreammod.compat.kubejs.food.PasterDreamFoodRegistry;
+import com.pasterdream.pasterdreammod.helper.DreamDimensionHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import dev.latvian.mods.kubejs.KubeJSPlugin;
@@ -28,6 +29,7 @@ public class PasterDreamKubeJSPlugin extends KubeJSPlugin {
         event.add("PasterDreamRarities", new RaritiesBinding());
         event.add("PasterDreamSkills", new SkillsBinding());
         event.add("PasterDreamFoods", new PasterDreamFoodsBinding());
+        event.add("PasterDreamDimensions", new DreamDimensionsBinding());
     }
 
     public static class TipsBinding {
@@ -163,6 +165,23 @@ public class PasterDreamKubeJSPlugin extends KubeJSPlugin {
         /** 返回全部注册项（键为物品 id）。 */
         public Map<?, ?> getAll() {
             return PasterDreamFoodRegistry.getAll();
+        }
+    }
+
+    /**
+     * 梦境维度绑定：让整合包/KubeJS 脚本在启动阶段把额外维度登记为「梦境维度」，
+     * 使其享受苍白骨针、琴雨梦套装、融梦能量戒指等梦境专属效果。
+     *
+     * <p>用法示例（startup_scripts）：
+     * <pre>{@code
+     * PasterDreamDimensions.register('twilightforest:twilight_forest');
+     * }</pre>
+     */
+    public static class DreamDimensionsBinding {
+
+        /** 登记一个梦境维度（格式：modid:dimension_id），成功返回 true。 */
+        public boolean register(String dimensionId) {
+            return DreamDimensionHelper.register(dimensionId);
         }
     }
 }
