@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.world.block.portal.DyedreamWorldPortalShape;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -36,6 +37,9 @@ public class DyedreamDustItem extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
+        if (!Config.dyedreamWorldLeapstoneEnabled) {
+            return InteractionResult.PASS;
+        }
         Level level = context.getLevel();
         BlockPos clicked = context.getClickedPos();
         BlockPos faceAdjacent = clicked.relative(context.getClickedFace());
@@ -53,6 +57,9 @@ public class DyedreamDustItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
+        if (!Config.dyedreamWorldLeapstoneEnabled) {
+            return InteractionResultHolder.pass(stack);
+        }
         Vec3 eye = player.getEyePosition();
         Vec3 end = eye.add(player.getLookAngle().scale(RAY_LENGTH));
         BlockHitResult hit = level.clip(new ClipContext(eye, end,

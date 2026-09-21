@@ -547,6 +547,12 @@ public class Config
             .comment("染梦裂隙的侵染半径（格），默认 5")
             .defineInRange("dyedreamCrackContaminationRadius", 5, 1, 32);
 
+    // === 染梦世界跃迁石（0.2.0 测试性内容） ===
+    private static final ForgeConfigSpec.BooleanValue DYEDREAM_WORLD_LEAPSTONE_ENABLED = BUILDER
+            .comment("是否启用染梦世界跃迁石相关内容（框架识别、染梦粉尘激活、跨维度传送、传送门侵染与合成配方）。"
+                    + "\n该内容为 0.2.0 的测试性内容，后续版本可能重置，故默认关闭")
+            .define("dyedreamWorldLeapstoneEnabled", false);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     // === 时之沙 ===
@@ -575,6 +581,9 @@ public class Config
     public static int dyedreamPortalContaminationRadius = 5;
     public static boolean dyedreamCrackContaminationEnabled = true;
     public static int dyedreamCrackContaminationRadius = 5;
+
+    // === 染梦世界跃迁石 ===
+    public static boolean dyedreamWorldLeapstoneEnabled = false;
 
     // === SAN 阈值 ===
     public static double sanCheerUpThreshold;
@@ -967,6 +976,7 @@ public class Config
         dyedreamPortalContaminationRadius = DYEDREAM_PORTAL_CONTAMINATION_RADIUS.get();
         dyedreamCrackContaminationEnabled = DYEDREAM_CRACK_CONTAMINATION_ENABLED.get();
         dyedreamCrackContaminationRadius = DYEDREAM_CRACK_CONTAMINATION_RADIUS.get();
+        dyedreamWorldLeapstoneEnabled = DYEDREAM_WORLD_LEAPSTONE_ENABLED.get();
         mintakeeffectduration= MIN_TAKE_EFFECT_DURATION.get();
         maxtakeeffectduration= MAX_TAKE_EFFECT_DURATION.get();
         maxlevel= MAX_LEVEL.get();

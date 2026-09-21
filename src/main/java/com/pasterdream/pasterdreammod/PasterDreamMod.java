@@ -16,6 +16,7 @@ import com.pasterdream.pasterdreammod.init.*;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymArmorEvents;
+import com.pasterdream.pasterdreammod.world.conditions.DyedreamWorldLeapstoneEnabledCondition;
 import com.pasterdream.pasterdreammod.world.dimension.AaroncosArenaTeleporter;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,6 +29,7 @@ import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.ToolActions;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
@@ -67,6 +69,8 @@ public class PasterDreamMod
         GeckoLib.initialize();
 
         IEventBus modEventBus = context.getModEventBus();
+
+        CraftingHelper.register(new DyedreamWorldLeapstoneEnabledCondition.Serializer());
 
         ModItems.register(modEventBus);             //注册物品
         ModCreativeModeTabs.register(modEventBus);  //注册创造模式物品栏

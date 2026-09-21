@@ -64,7 +64,7 @@ public class DyedreamWorldPortalBlock extends Block {
         if (level.isClientSide) {
             // 客户端沿用原版：标记 isInsidePortal，由 LocalPlayer 驱动屏幕叠加层与旋转强度
             entity.handleInsidePortal(pos);
-        } else if (level instanceof ServerLevel serverLevel) {
+        } else if (level instanceof ServerLevel serverLevel && Config.dyedreamWorldLeapstoneEnabled) {
             DyedreamWorldPortalTeleporter.tickServerPortal(entity, serverLevel, pos, state);
         }
     }
@@ -86,7 +86,7 @@ public class DyedreamWorldPortalBlock extends Block {
 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (!Config.dyedreamPortalContaminationEnabled) {
+        if (!Config.dyedreamWorldLeapstoneEnabled || !Config.dyedreamPortalContaminationEnabled) {
             return;
         }
         DyedreamContamination.tick(level, pos, Config.dyedreamPortalContaminationRadius, 1);
