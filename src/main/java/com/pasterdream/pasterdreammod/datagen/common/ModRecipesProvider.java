@@ -23,7 +23,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import com.pasterdream.pasterdreammod.world.conditions.DyedreamWorldLeapstoneEnabledCondition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -1630,15 +1632,20 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter);
 
         // 8×染梦水晶块 + 1×染梦粉尘 → 8×染梦世界跃迁石
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.DYEDREAM_WORLD_LEAPSTONE.get(), 8)
-                .pattern("aaa")
-                .pattern("aba")
-                .pattern("aaa")
-                .define('a', ModItems.DYEDREAM_BUD_BLOCK.get())
-                .define('b', ModItems.DYEDREAM_DUST.get())
-                .unlockedBy(getHasName(ModItems.DYEDREAM_BUD_BLOCK.get()), has(ModItems.DYEDREAM_BUD_BLOCK.get()))
-                .unlockedBy(getHasName(ModItems.DYEDREAM_DUST.get()), has(ModItems.DYEDREAM_DUST.get()))
-                .save(pWriter);
+        // 0.2.0 测试性内容：受 dyedreamWorldLeapstoneEnabled 配置控制，默认关闭
+        ConditionalRecipe.builder()
+                .addCondition(DyedreamWorldLeapstoneEnabledCondition.INSTANCE)
+                .addRecipe(writer -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.DYEDREAM_WORLD_LEAPSTONE.get(), 8)
+                        .pattern("aaa")
+                        .pattern("aba")
+                        .pattern("aaa")
+                        .define('a', ModItems.DYEDREAM_BUD_BLOCK.get())
+                        .define('b', ModItems.DYEDREAM_DUST.get())
+                        .unlockedBy(getHasName(ModItems.DYEDREAM_BUD_BLOCK.get()), has(ModItems.DYEDREAM_BUD_BLOCK.get()))
+                        .unlockedBy(getHasName(ModItems.DYEDREAM_DUST.get()), has(ModItems.DYEDREAM_DUST.get()))
+                        .save(writer))
+                .generateAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "recipes/misc/dyedream_world_leapstone"))
+                .build(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_world_leapstone"));
     }
 
     // ===== 染梦石英配方 =====

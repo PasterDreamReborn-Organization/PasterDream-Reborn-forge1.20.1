@@ -35,6 +35,17 @@ description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、
 
 ---
 
+## 配置开关配方
+
+需要按配置项开关（默认关闭的测试性内容等）的配方，用 Forge 条件配方实现，**不要**在 datagen 里读配置决定是否生成（会导致产物不确定）。
+
+- 条件类放 `world/conditions/`，实现 `ICondition` + 内嵌 `IConditionSerializer`；`test()` 读 `Config` 静态字段
+- 注册必须早于 datagen 序列化：在 `PasterDreamMod` **构造方法**中 `CraftingHelper.register(new XxxCondition.Serializer())`（放 `commonSetup` 会太晚导致 `Unknown condition type`）
+- datagen：`ConditionalRecipe.builder().addCondition(条件).addRecipe(w -> builder.save(w)).generateAdvancement(<advId>).build(writer, <recipeId>)`，需显式传 `advId` 以保持进度文件路径不变
+- 参考：`world/conditions/DyedreamWorldLeapstoneEnabledCondition.java`（染梦世界跃迁石，配置默认关闭）
+
+---
+
 ## 容器工艺方块清单
 
 | 方块 | 包 | 模式 |
