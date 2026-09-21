@@ -15,10 +15,10 @@ import java.util.UUID;
 /**
  * 暗影窥视 —— 使玩家成为暗影的「窥视」目标，每 tick 触发一次暗影入侵。
  * 效果无法被牛奶解除，由暗影入侵完成或击败亚伦柯斯之触时移除。
- * 外部 mod / 命令 / 牛奶 / totem 的清除逻辑会被 ShadowSpyonProtectionMixin 拦截，
+ * 外部 mod / 命令 / 牛奶 / totem 的清除逻辑会被 ProtectedEffectRemovalMixin 拦截，
  * 仅当通过 {@link #allowRemoval(Entity)} 显式授权后才能移除。
  */
-public class ShadowSpyonEffect extends MobEffect {
+public class ShadowSpyonEffect extends MobEffect implements ProtectedRemovalEffect {
 
     /** 显式授权移除的实体 UUID 集合（一次性：授权后随即被消费，避免常驻内存） */
     private static final Set<UUID> ALLOWED_REMOVALS = Collections.synchronizedSet(new HashSet<>());
@@ -35,8 +35,19 @@ public class ShadowSpyonEffect extends MobEffect {
     }
 
     /** 消费一次授权：已授权则返回 true（允许移除），否则返回 false（阻止移除）。 */
-    public static boolean consumeRemovalAllowance(LivingEntity entity) {
+    @Override
+    public boolean consumeRemovalAllowance(LivingEntity entity) {
         return ALLOWED_REMOVALS.remove(entity.getUUID());
+    }
+
+    @Override
+    public boolean hasRemovalAllowance(LivingEntity entity) {
+        return ALLOWED_REMOVALS.contains(entity.getUUID());
+    }
+
+    @Override
+    public boolean forceApplicableWhenAffected() {
+        return true;
     }
 
     @Override
