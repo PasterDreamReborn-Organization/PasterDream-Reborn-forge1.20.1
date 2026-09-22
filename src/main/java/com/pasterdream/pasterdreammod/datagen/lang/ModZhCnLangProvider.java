@@ -558,6 +558,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get(), "去皮风泊木");
         add(ModBlocks.WIND_MOOR_LEAVES_0.get(), "风泊树叶");
         add(ModBlocks.WIND_MOOR_LEAVES_1.get(), "风泊树叶");
+        add(ModBlocks.WIND_MOOR_SAPLING.get(), "风泊树苗");
+        add(ModBlocks.POTTED_WIND_MOOR_SAPLING.get(), "盆栽风泊树苗");
         add(ModBlocks.WIND_MOOR_PLANKS.get(), "风泊木板");
         add(ModBlocks.WIND_MOOR_STAIRS.get(), "风泊木楼梯");
         add(ModBlocks.WIND_MOOR_SLAB.get(), "风泊木台阶");

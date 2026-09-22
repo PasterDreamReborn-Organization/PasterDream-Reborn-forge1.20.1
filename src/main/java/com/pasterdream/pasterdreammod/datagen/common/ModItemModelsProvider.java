@@ -385,6 +385,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.SLUMBER_PALM_SAPLING.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/slumber_palm_sapling"));
 
+        withExistingParent(ModItems.WIND_MOOR_SAPLING.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/wind_moor_sapling"));
+
         fenceItem(ModBlocks.DYEDREAM_FENCE, ModBlocks.DYEDREAM_PLANKS);
         buttonItem(ModBlocks.DYEDREAM_BUTTON, ModBlocks.DYEDREAM_PLANKS);
         basicItem(ModItems.DYEDREAM_DOOR.get());

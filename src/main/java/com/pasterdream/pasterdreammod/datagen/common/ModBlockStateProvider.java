@@ -547,6 +547,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.WIND_MOOR_LEAVES_0.get(), cubeAll(ModBlocks.WIND_MOOR_LEAVES_0.get()));
         simpleBlockWithItem(ModBlocks.WIND_MOOR_LEAVES_1.get(), cubeAll(ModBlocks.WIND_MOOR_LEAVES_1.get()));
 
+        simpleBlock(ModBlocks.WIND_MOOR_SAPLING.get(),
+                models().cross(ModBlocks.WIND_MOOR_SAPLING.getId().getPath(),
+                        blockTexture(ModBlocks.WIND_MOOR_SAPLING.get())).renderType("cutout"));
+
         // 无花果藤（底部 head → fig_vine 材质，上方 body → 风泊树叶材质）
         var figVineHead = models().cross(ModBlocks.FIG_VINE.getId().getPath(), modLoc("block/fig_vine")).renderType("cutout");
         var figVineBody = models().cross(ModBlocks.FIG_VINE.getId().getPath() + "_body", modLoc("block/wind_moor_leaves_0")).renderType("cutout");

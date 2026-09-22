@@ -28,6 +28,15 @@ public class ModTreeGrowers {
         }
     };
 
+    // 风泊树苗：生长成小型风泊树（金合欢树干/树冠塑形器 + 垂叶装饰器）
+    public static final AbstractTreeGrower WIND_MOOR = new AbstractTreeGrower() {
+        @Nullable
+        @Override
+        protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean hasFlowers) {
+            return ModConfiguredFeatures.SMALL_WIND_MOOR_TREE;
+        }
+    };
+
     public static final AbstractTreeGrower DYEDREAM = new AbstractTreeGrower() {
         @Nullable
         @Override

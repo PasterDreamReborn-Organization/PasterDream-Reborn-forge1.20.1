@@ -231,6 +231,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.TALL_PINK_MUSHROOM.get())
                 // 植物栏 —— 树苗/睡莲
                 .add(ModItems.DYEDREAM_SAPLING.get())
+                .add(ModItems.WIND_MOOR_SAPLING.get())
                 .add(ModItems.DYEDREAM_LILY_PAD.get())
                 // 植物栏 —— 阴影植物
                 .add(ModItems.SHADOW_SHORT_ROOTS.get())

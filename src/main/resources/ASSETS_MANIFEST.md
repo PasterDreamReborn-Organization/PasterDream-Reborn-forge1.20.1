@@ -125,6 +125,7 @@ textures/block/cut_white_sandstone.png
 textures/block/white_sandstone.png
 textures/block/white_sandstone_bottom.png
 textures/block/white_sandstone_top.png
+textures/block/wind_moor_sapling.png
 textures/gui/dream_notes_book/dream_notes_book_dyedream_world.png
 textures/gui/dream_notes_book/dream_notes_book_lamp_shadow_world.png
 textures/gui/dream_notes_book/dream_notes_book_overworld.png

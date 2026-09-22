@@ -262,7 +262,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.SAPLINGS)
                 .add(ModBlocks.DYEDREAM_SAPLING.get())
-                .add(ModBlocks.SLUMBER_PALM_SAPLING.get());
+                .add(ModBlocks.SLUMBER_PALM_SAPLING.get())
+                .add(ModBlocks.WIND_MOOR_SAPLING.get());
 
         tag(BlockTags.FLOWERS)
                 .add(ModBlocks.GOLDENROD.get())

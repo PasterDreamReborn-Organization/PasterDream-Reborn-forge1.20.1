@@ -426,8 +426,9 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.WIND_MOOR_WOOD.get());
         dropSelf(ModBlocks.STRIPPED_WIND_MOOR_LOG.get());
         dropSelf(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
-        add(ModBlocks.WIND_MOOR_LEAVES_0.get(), LootHelpers::creategrassesDrops);
-        add(ModBlocks.WIND_MOOR_LEAVES_1.get(), LootHelpers::creategrassesDrops);
+        add(ModBlocks.WIND_MOOR_LEAVES_0.get(), block -> LootHelpers.createLeavesDrops(block, ModBlocks.WIND_MOOR_SAPLING.get()));
+        add(ModBlocks.WIND_MOOR_LEAVES_1.get(), block -> LootHelpers.createLeavesDrops(block, ModBlocks.WIND_MOOR_SAPLING.get()));
+        dropSelf(ModBlocks.WIND_MOOR_SAPLING.get());
         // 无花果藤：破坏掉落无花果（1-2 个，受时运影响）
         add(ModBlocks.FIG_VINE.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))

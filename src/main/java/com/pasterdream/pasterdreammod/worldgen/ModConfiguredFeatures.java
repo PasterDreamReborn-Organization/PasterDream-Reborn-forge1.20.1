@@ -27,6 +27,7 @@ import net.minecraft.world.level.levelgen.feature.HugeFungusConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import com.pasterdream.pasterdreammod.worldgen.feature.foliageplacers.DreamFoliagePlacer;
 import com.pasterdream.pasterdreammod.worldgen.feature.SlumberPalmTreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.LakeFeature;
@@ -36,6 +37,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlace
 import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import com.pasterdream.pasterdreammod.worldgen.feature.LightBallTreeDecorator;
+import com.pasterdream.pasterdreammod.worldgen.feature.WindMoorDroopingDecorator;
 import com.pasterdream.pasterdreammod.worldgen.feature.PinkShroomlightTreeDecorator;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -66,6 +68,10 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SLUMBER_PALM_TREE =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "slumber_palm_tree"));
+    // 小型风泊树 — 风泊树苗生长（金合欢树干/树冠塑形器 + WindMoorDroopingDecorator）
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_WIND_MOOR_TREE =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "small_wind_moor_tree"));
     // 粉顶菌巨树 (丛林树形态, 2×2)
     public static final ResourceKey<ConfiguredFeature<?, ?>> PINK_MUSHROOM_TREE =
             ResourceKey.create(Registries.CONFIGURED_FEATURE,
@@ -625,6 +631,21 @@ public class ModConfiguredFeatures {
                         8,                     // arm_count：每条树冠 8 条星臂（GT 同款）
                         2,                     // max_droop：臂末最多下垂 2 格
                         false)));              // center_fill：不填充中心（GT 同款）
+
+        // 小型风泊树 — 风泊树苗生长，直接采用金合欢的树干/树冠塑形器（同染梦树的 TreeConfiguration 写法），
+        // 再用 WindMoorDroopingDecorator 在冠底垂挂较长无花果藤与下垂风泊树叶
+        context.register(SMALL_WIND_MOOR_TREE, new ConfiguredFeature<>(Feature.TREE,
+                new TreeConfiguration.TreeConfigurationBuilder(
+                        BlockStateProvider.simple(ModBlocks.WIND_MOOR_LOG.get()),
+                        new ForkingTrunkPlacer(7, 2, 2),
+                        new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                                .add(ModBlocks.WIND_MOOR_LEAVES_0.get().defaultBlockState(), 1)
+                                .add(ModBlocks.WIND_MOOR_LEAVES_1.get().defaultBlockState(), 1)),
+                        new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
+                        new TwoLayersFeatureSize(1, 0, 2))
+                        .decorators(List.of(WindMoorDroopingDecorator.INSTANCE))
+                        .ignoreVines()
+                        .build()));
 
         // 染梦树 — 寒冷群系云杉形态变体 (使用染梦原木/树叶, 云杉树干+针叶塑形器)
         context.register(DYEDREAM_TREE_COLD_SPRUCE, new ConfiguredFeature<>(Feature.TREE,

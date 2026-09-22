@@ -763,6 +763,12 @@
     "crop_4b": {
       "age": "0"
     },
+    "windmoor_leaves_0": {
+      "persistent": "true"
+    },
+    "windmoor_leaves_1": {
+      "persistent": "true"
+    },
     "windmoor_leaves_2": {
       "head": "false"
     }
