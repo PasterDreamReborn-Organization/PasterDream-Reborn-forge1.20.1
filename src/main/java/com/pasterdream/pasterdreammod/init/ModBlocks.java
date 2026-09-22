@@ -817,6 +817,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> STRIPPED_WIND_MOOR_WOOD = BLOCKS.register("stripped_wind_moor_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f)));
     public static final RegistryObject<Block> WIND_MOOR_LOG = BLOCKS.register("wind_moor_log", () -> new StrippableRotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f), () -> STRIPPED_WIND_MOOR_LOG.get()));
     public static final RegistryObject<Block> WIND_MOOR_WOOD = BLOCKS.register("wind_moor_wood", () -> new StrippableRotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f), () -> STRIPPED_WIND_MOOR_WOOD.get()));
+    // 风泊树苗：生长成小型风泊树（金合欢树干/树冠塑形器）
+    public static final RegistryObject<Block> WIND_MOOR_SAPLING = BLOCKS.register("wind_moor_sapling", () -> new SaplingBlock(ModTreeGrowers.WIND_MOOR, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().randomTicks().sound(SoundType.GRASS)));
     // ===== 风泊木板建材系列 =====
     public static final RegistryObject<Block> WIND_MOOR_PLANKS = BLOCKS.register("wind_moor_planks", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f)));
     public static final RegistryObject<Block> WIND_MOOR_STAIRS = BLOCKS.register("wind_moor_stairs", () -> new StairBlock(WIND_MOOR_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).dynamicShape()));
@@ -828,21 +830,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> WIND_MOOR_TRAPDOOR = BLOCKS.register("wind_moor_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).noOcclusion().dynamicShape(), BlockSetType.OAK));
     public static final RegistryObject<Block> WIND_MOOR_PRESSURE_PLATE = BLOCKS.register("wind_moor_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).noCollission().dynamicShape().forceSolidOn(), BlockSetType.OAK));
     public static final RegistryObject<Block> WIND_MOOR_BUTTON = BLOCKS.register("wind_moor_button", () -> new ButtonBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(2f, 3f).noCollission().dynamicShape(), BlockSetType.OAK, 30, true));
-    // ===== 风泊树叶（不走随机刻） =====
-    public static final RegistryObject<Block> WIND_MOOR_LEAVES_0 = BLOCKS.register("wind_moor_leaves_0", () -> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).sound(SoundType.GRASS).strength(0.2F, 0.2F).noOcclusion().ignitedByLava().isRedstoneConductor((blockState, level, blockPos) -> false).isSuffocating((blockState, level, blockPos) -> false).isViewBlocking((blockState, level, blockPos) -> false))
-    {
-        @Override
-        public boolean isRandomlyTicking(BlockState state) {
-            return false;
-        }
-    });
-    public static final RegistryObject<Block> WIND_MOOR_LEAVES_1 = BLOCKS.register("wind_moor_leaves_1", () -> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).sound(SoundType.GRASS).strength(0.2F, 0.2F).noOcclusion().ignitedByLava().isRedstoneConductor((blockState, level, blockPos) -> false).isSuffocating((blockState, level, blockPos) -> false).isViewBlocking((blockState, level, blockPos) -> false))
-    {
-        @Override
-        public boolean isRandomlyTicking(BlockState state) {
-            return false;
-        }
-    });
+    // ===== 风泊树叶（普通树叶：会自然腐烂；玩家放置自动 persistent，结构内由 block_properties 设为 persistent） =====
+    public static final RegistryObject<Block> WIND_MOOR_LEAVES_0 = BLOCKS.register("wind_moor_leaves_0", () -> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).sound(SoundType.GRASS).strength(0.2F, 0.2F).noOcclusion().ignitedByLava().isRedstoneConductor((blockState, level, blockPos) -> false).isSuffocating((blockState, level, blockPos) -> false).isViewBlocking((blockState, level, blockPos) -> false)));
+    public static final RegistryObject<Block> WIND_MOOR_LEAVES_1 = BLOCKS.register("wind_moor_leaves_1", () -> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).sound(SoundType.GRASS).strength(0.2F, 0.2F).noOcclusion().ignitedByLava().isRedstoneConductor((blockState, level, blockPos) -> false).isSuffocating((blockState, level, blockPos) -> false).isViewBlocking((blockState, level, blockPos) -> false)));
     public static final RegistryObject<Block> FIG_VINE = BLOCKS.register("fig_vine", () -> new FigVineBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).randomTicks().sound(SoundType.CAVE_VINES).instabreak().noCollission().noOcclusion().ignitedByLava().isRedstoneConductor((blockState, level, blockPos) -> false).pushReaction(PushReaction.DESTROY)));
     public static final RegistryObject<Block> THE_ENDLESS_BOOK_OF_DREAM_SEEKERS = BLOCKS.register("the_endless_book_of_dream_seekers", () -> new TheEndlessBookOfDreamSeekersBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(-1F, 2147483647F).noOcclusion().noCollission().lightLevel(state -> 15)));
     public static final RegistryObject<Block> RESEARCH_TABLE = BLOCKS.register("research_table", () -> new ResearchTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).sound(SoundType.WOOD).strength(1F, 0.2F).noOcclusion()));
@@ -947,6 +937,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> POTTED_NIPPY_EDELWEISS = registerPotted(NIPPY_EDELWEISS, "potted_nippy_edelweiss", 5);
     public static final RegistryObject<Block> POTTED_DYEDREAM_SAPLING = registerPotted(DYEDREAM_SAPLING, "potted_dyedream_sapling");
     public static final RegistryObject<Block> POTTED_SLUMBER_PALM_SAPLING = registerPotted(SLUMBER_PALM_SAPLING, "potted_slumber_palm_sapling");
+    public static final RegistryObject<Block> POTTED_WIND_MOOR_SAPLING = registerPotted(WIND_MOOR_SAPLING, "potted_wind_moor_sapling");
     public static final RegistryObject<Block> POTTED_REED = registerPotted(REED, "potted_reed");
     public static final RegistryObject<Block> POTTED_RYE = registerPotted(RYE, "potted_rye");
     public static final RegistryObject<Block> POTTED_OATS = registerPotted(OATS, "potted_oats");

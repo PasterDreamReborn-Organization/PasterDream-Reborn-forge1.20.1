@@ -544,6 +544,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get(), "Stripped Wind Moor Wood");
         add(ModBlocks.WIND_MOOR_LEAVES_0.get(), "Wind Moor Leaves");
         add(ModBlocks.WIND_MOOR_LEAVES_1.get(), "Wind Moor Leaves");
+        add(ModBlocks.WIND_MOOR_SAPLING.get(), "Wind Moor Sapling");
+        add(ModBlocks.POTTED_WIND_MOOR_SAPLING.get(), "Potted Wind Moor Sapling");
         add(ModBlocks.WIND_MOOR_PLANKS.get(), "Wind Moor Planks");
         add(ModBlocks.WIND_MOOR_STAIRS.get(), "Wind Moor Stairs");
         add(ModBlocks.WIND_MOOR_SLAB.get(), "Wind Moor Slab");

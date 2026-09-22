@@ -1892,6 +1892,7 @@ public class ModItems {
     public static final RegistryObject<Item> STRIPPED_WIND_MOOR_WOOD = ITEMS.register("stripped_wind_moor_wood", () -> new BlockItem(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get(), new Item.Properties()));
     public static final RegistryObject<Item> WIND_MOOR_LEAVES_0 = ITEMS.register("wind_moor_leaves_0", () -> new BlockItem(ModBlocks.WIND_MOOR_LEAVES_0.get(), new Item.Properties()));
     public static final RegistryObject<Item> WIND_MOOR_LEAVES_1 = ITEMS.register("wind_moor_leaves_1", () -> new BlockItem(ModBlocks.WIND_MOOR_LEAVES_1.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_MOOR_SAPLING = ITEMS.register("wind_moor_sapling", () -> new BlockItem(ModBlocks.WIND_MOOR_SAPLING.get(), new Item.Properties()));
     // ===== 风泊木板建材系列 =====
     public static final RegistryObject<Item> WIND_MOOR_PLANKS = ITEMS.register("wind_moor_planks", () -> new BlockItem(ModBlocks.WIND_MOOR_PLANKS.get(), new Item.Properties()));
     public static final RegistryObject<Item> WIND_MOOR_STAIRS = ITEMS.register("wind_moor_stairs", () -> new BlockItem(ModBlocks.WIND_MOOR_STAIRS.get(), new Item.Properties()));
