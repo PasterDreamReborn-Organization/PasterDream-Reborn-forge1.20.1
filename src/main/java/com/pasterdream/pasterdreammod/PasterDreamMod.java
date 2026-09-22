@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.FluidHandlerResolvers;
 import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateManager;
 import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
+import com.pasterdream.pasterdreammod.event.CookOverflowHandler;
 import com.pasterdream.pasterdreammod.event.ModMobDrops;
 import com.pasterdream.pasterdreammod.event.ModMobSpawnEvents;
 import com.pasterdream.pasterdreammod.event.ModVillagerTrades;
@@ -113,6 +114,9 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onAttackEntity);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerChangedDimension);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onAdvancementEarned);
+        MinecraftForge.EVENT_BUS.addListener(CookOverflowHandler::onItemUseStart);
+        MinecraftForge.EVENT_BUS.addListener(CookOverflowHandler::onItemUseStop);
+        MinecraftForge.EVENT_BUS.addListener(CookOverflowHandler::onItemUseFinish);
         MinecraftForge.EVENT_BUS.addListener(QymArmorEvents::onEquipChange);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onItemAttributeModifier);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onShelterLivingHurt);

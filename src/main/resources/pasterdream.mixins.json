@@ -30,7 +30,8 @@
     "LocateCommandMixin",
     "FireworkRocketMixin",
     "ItemElytraMixin",
-    "ItemStackGetAttributeModifiersMixin"
+    "ItemStackGetAttributeModifiersMixin",
+    "PlayerCanEatMixin"
   ],
   "client": [
     "BossHealthOverlayAccessor",
