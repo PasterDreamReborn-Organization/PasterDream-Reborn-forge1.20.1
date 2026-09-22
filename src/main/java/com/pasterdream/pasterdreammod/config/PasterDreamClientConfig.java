@@ -115,6 +115,13 @@ public class PasterDreamClientConfig {
                     + "\n此操作直接修改 Oculus/Iris 内部状态（非官方 API），默认 true。")
             .define("shaderBlockInjection", true);
 
+    // === JEI 兼容 ===
+    public static final ForgeConfigSpec.BooleanValue SHOW_FLUIDS_IN_JEI = BUILDER
+            .comment("是否在 JEI 的原料列表（右侧物品/流体栏）中显示本模组的流体。"
+                    + "\n默认 false：流体不出现在原料列表中，但仍会正常显示在配方里。"
+                    + "\n修改后需重启游戏生效。")
+            .define("showFluidsInJei", false);
+
     public static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static boolean loadingGuiTips;
@@ -146,6 +153,9 @@ public class PasterDreamClientConfig {
     // === 光影兼容 ===
     public static boolean shaderBlockInjection;
 
+    // === JEI 兼容 ===
+    public static boolean showFluidsInJei;
+
     @SubscribeEvent
     public static void onLoad(final ModConfigEvent event) {
         if (event.getConfig().getSpec() != SPEC) return;
@@ -173,6 +183,8 @@ public class PasterDreamClientConfig {
         lowSanSound = LOW_SAN_SOUND.get();
 
         shaderBlockInjection = SHADER_BLOCK_INJECTION.get();
+
+        showFluidsInJei = SHOW_FLUIDS_IN_JEI.get();
 
         // 将客户端配置作为低 San 效果运行时值的初始来源（/pasterdreamdebug lowsan 指令可在运行时覆盖）
         Config.lowSanOverlay = lowSanOverlay;
