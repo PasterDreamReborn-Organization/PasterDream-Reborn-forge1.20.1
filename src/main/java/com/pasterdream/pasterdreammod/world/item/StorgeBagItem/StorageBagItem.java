@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
@@ -46,6 +47,12 @@ public class StorageBagItem extends Item {
      */
     public static void saveInventoryTag(ItemStack stack, ListTag items) {
         stack.getOrCreateTag().put(TAG_INVENTORY, items);
+    }
+
+    @Override
+    public @Nullable ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt)
+    {
+        return new StorageBagInventoryCapability(stack);
     }
 
     @Override
