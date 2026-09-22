@@ -15,6 +15,7 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -658,12 +659,16 @@ public class ModConfiguredFeatures {
                         .ignoreVines()
                         .build()));
 
+        // 粉顶菌菌盖：底面为菌孔面（其余面为菌盖，内部相邻面由 updateShape 自动隐藏）
+        BlockState pinkMushroomCap = ModBlocks.PINK_MUSHROOM_BLOCK.get().defaultBlockState()
+                .setValue(HugeMushroomBlock.DOWN, false);
+
         // 粉顶菌巨树 — 2×2 骨粉催熟，丛林树形态
         context.register(PINK_MUSHROOM_TREE, new ConfiguredFeature<>(Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         BlockStateProvider.simple(ModBlocks.PINK_MUSHROOM_STEM.get()),
                         new MegaJungleTrunkPlacer(7, 2, 12),  // 7~21 格
-                        BlockStateProvider.simple(ModBlocks.PINK_MUSHROOM_BLOCK.get()),
+                        BlockStateProvider.simple(pinkMushroomCap),
                         new MegaJungleFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 2),
                         new TwoLayersFeatureSize(1, 0, 2))
                         .decorators(List.of(PinkShroomlightTreeDecorator.INSTANCE))
@@ -674,7 +679,7 @@ public class ModConfiguredFeatures {
         // 粉顶菌巨菇 — 单株骨粉催熟，使用自定义特征附加菌光体
         context.register(PINK_HUGE_MUSHROOM, new ConfiguredFeature<>(ModFeatures.PINK_HUGE_MUSHROOM.get(),
                 new HugeMushroomFeatureConfiguration(
-                        BlockStateProvider.simple(ModBlocks.PINK_MUSHROOM_BLOCK.get()),
+                        BlockStateProvider.simple(pinkMushroomCap),
                         BlockStateProvider.simple(ModBlocks.PINK_MUSHROOM_STEM.get()),
                         3)));
 

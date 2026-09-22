@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod;
 
 import com.pasterdream.pasterdreammod.client.*;
+import com.pasterdream.pasterdreammod.compat.LegacyRegistryCompat;
 import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.helper.fluidhandler.FluidHandlerResolvers;
 import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateManager;
@@ -128,6 +129,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(RecipeUnlockHandler::onBlockBreak);
         MinecraftForge.EVENT_BUS.addListener(ModMobSpawnEvents::onEntityJoinLevel);
         MinecraftForge.EVENT_BUS.addListener(this::onAddReloadListeners);
+        MinecraftForge.EVENT_BUS.addListener(LegacyRegistryCompat::onMissingMappings);
 
         MinecraftForge.EVENT_BUS.register(this);
 
