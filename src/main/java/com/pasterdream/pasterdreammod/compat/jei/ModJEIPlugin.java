@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.compat.jei;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.compat.jei.brewingrecipe.FortuneJellyJeiBrewingRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.fluidcontainerrelation.FluidContainerRecipeCategory;
 import com.pasterdream.pasterdreammod.compat.jei.shadowblastfurnacerecipe.ShadowBlastFurnaceJEIRecipe;
@@ -61,6 +62,9 @@ import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.ingredients.subtypes.IIngredientSubtypeInterpreter;
 import mezz.jei.api.registration.*;
+import mezz.jei.api.runtime.IEditModeConfig;
+import mezz.jei.api.runtime.IJeiRuntime;
+import mezz.jei.api.runtime.IIngredientManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 
@@ -341,5 +345,35 @@ public class ModJEIPlugin implements IModPlugin
         }
 
         registration.addExtraIngredients(ForgeTypes.FLUID_STACK, fluidStacks);
+    }
+
+    //按配置控制本模组流体是否出现在 JEI 原料列表中（配方显示不受影响）
+    @Override
+    public void onRuntimeAvailable(IJeiRuntime runtime)
+    {
+        IIngredientManager ingredientManager = runtime.getIngredientManager();
+        IEditModeConfig editModeConfig = runtime.getEditModeConfig();
+        boolean show = PasterDreamClientConfig.showFluidsInJei;
+
+        for (FluidStack fluidStack : ingredientManager.getAllIngredients(ForgeTypes.FLUID_STACK))
+        {
+            ResourceLocation key = BuiltInRegistries.FLUID.getKey(fluidStack.getFluid());
+            if (key == null || !PasterDreamMod.MOD_ID.equals(key.getNamespace()))
+            {
+                continue;
+            }
+
+            ingredientManager.createTypedIngredient(ForgeTypes.FLUID_STACK, fluidStack).ifPresent(typed ->
+            {
+                if (show)
+                {
+                    editModeConfig.showIngredientUsingConfigFile(typed, IEditModeConfig.HideMode.WILDCARD);
+                }
+                else
+                {
+                    editModeConfig.hideIngredientUsingConfigFile(typed, IEditModeConfig.HideMode.WILDCARD);
+                }
+            });
+        }
     }
 }
