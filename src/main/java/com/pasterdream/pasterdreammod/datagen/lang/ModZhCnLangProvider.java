@@ -389,9 +389,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_PRESSURE_PLATE.get(), "染梦木压力板");
         add(ModBlocks.DYEDREAM_BUTTON.get(), "染梦木按钮");
         add(ModBlocks.PINK_SLIME_BLOCK.get(), "粉色粘液块");
-        add(ModBlocks.PINK_MUSHROOM_BLOCK.get(), "粉顶菌菌盖");
+        add(ModBlocks.PINK_MUSHROOM_BLOCK.get(), "粉顶菌方块");
         add(ModBlocks.PINK_MUSHROOM_STEM.get(), "粉顶菌菌柄");
-        add(ModBlocks.PINK_MUSHROOM_PORES.get(), "粉顶菌菌孔块");
         add(ModBlocks.PINK_SHROOMLIGHT.get(), "粉顶菌菌光体");
         add(ModBlocks.PINK_MUSHROOM.get(), "粉顶菇");
         add(ModBlocks.TALL_PINK_MUSHROOM.get(), "高粉顶菇");

@@ -378,14 +378,42 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var stemTex = modLoc("block/pink_mushroom_stem");
         var stemTopTex = modLoc("block/pink_mushroom_stem_top");
 
-        var capModel = models().cube(ModBlocks.PINK_MUSHROOM_BLOCK.getId().getPath(),
-                poreTex, capTex, capTex, capTex, capTex, capTex).texture("particle", poreTex);
-        simpleBlockWithItem(ModBlocks.PINK_MUSHROOM_BLOCK.get(), capModel);
+        // 菌盖/菌孔合并为单一方块：6 个布尔属性控制每面显示菌盖或菌孔（参考原版巨型蘑菇方块）
+        var capFaceModel = models().withExistingParent(ModBlocks.PINK_MUSHROOM_BLOCK.getId().getPath(),
+                mcLoc("block/template_single_face")).texture("texture", capTex);
+        var poreFaceModel = models().withExistingParent(ModBlocks.PINK_MUSHROOM_BLOCK.getId().getPath() + "_inside",
+                mcLoc("block/template_single_face")).texture("texture", poreTex);
+        var capInventoryModel = models().cubeAll(ModBlocks.PINK_MUSHROOM_BLOCK.getId().getPath() + "_inventory", capTex);
+
+        var mushroomBlockBuilder = getMultipartBuilder(ModBlocks.PINK_MUSHROOM_BLOCK.get());
+        mushroomBlockBuilder.part().modelFile(capFaceModel).uvLock(true)
+                .addModel().condition(HugeMushroomBlock.NORTH, true);
+        mushroomBlockBuilder.part().modelFile(capFaceModel).uvLock(true).rotationY(90)
+                .addModel().condition(HugeMushroomBlock.EAST, true);
+        mushroomBlockBuilder.part().modelFile(capFaceModel).uvLock(true).rotationY(180)
+                .addModel().condition(HugeMushroomBlock.SOUTH, true);
+        mushroomBlockBuilder.part().modelFile(capFaceModel).uvLock(true).rotationY(270)
+                .addModel().condition(HugeMushroomBlock.WEST, true);
+        mushroomBlockBuilder.part().modelFile(capFaceModel).uvLock(true).rotationX(270)
+                .addModel().condition(HugeMushroomBlock.UP, true);
+        mushroomBlockBuilder.part().modelFile(capFaceModel).uvLock(true).rotationX(90)
+                .addModel().condition(HugeMushroomBlock.DOWN, true);
+        mushroomBlockBuilder.part().modelFile(poreFaceModel)
+                .addModel().condition(HugeMushroomBlock.NORTH, false);
+        mushroomBlockBuilder.part().modelFile(poreFaceModel).rotationY(90)
+                .addModel().condition(HugeMushroomBlock.EAST, false);
+        mushroomBlockBuilder.part().modelFile(poreFaceModel).rotationY(180)
+                .addModel().condition(HugeMushroomBlock.SOUTH, false);
+        mushroomBlockBuilder.part().modelFile(poreFaceModel).rotationY(270)
+                .addModel().condition(HugeMushroomBlock.WEST, false);
+        mushroomBlockBuilder.part().modelFile(poreFaceModel).rotationX(270)
+                .addModel().condition(HugeMushroomBlock.UP, false);
+        mushroomBlockBuilder.part().modelFile(poreFaceModel).rotationX(90)
+                .addModel().condition(HugeMushroomBlock.DOWN, false);
+        simpleBlockItem(ModBlocks.PINK_MUSHROOM_BLOCK.get(), capInventoryModel);
 
         axisBlock((RotatedPillarBlock) ModBlocks.PINK_MUSHROOM_STEM.get(), stemTex, stemTopTex);
         blockItem(ModBlocks.PINK_MUSHROOM_STEM);
-
-        simpleBlockWithItem(ModBlocks.PINK_MUSHROOM_PORES.get(), models().cubeAll(ModBlocks.PINK_MUSHROOM_PORES.getId().getPath(), poreTex));
 
         simpleBlockWithItem(ModBlocks.PINK_SHROOMLIGHT.get(), cubeAll(ModBlocks.PINK_SHROOMLIGHT.get()));
 

@@ -173,11 +173,6 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                                 .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
         add(ModBlocks.PINK_MUSHROOM_STEM.get(),
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
-        add(ModBlocks.PINK_MUSHROOM_PORES.get(),
-                block -> createSilkTouchDispatchTable(block,
-                        applyExplosionDecay(block, LootItem.lootTableItem(ModBlocks.PINK_MUSHROOM.get())
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
         dropSelf(ModBlocks.PINK_SHROOMLIGHT.get());
 
         dropSelf(ModBlocks.PINK_MUSHROOM.get());

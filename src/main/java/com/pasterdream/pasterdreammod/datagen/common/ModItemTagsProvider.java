@@ -195,7 +195,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModBlocks.PINK_MUSHROOM_BLOCK.get().asItem())
                 .add(ModBlocks.PINK_MUSHROOM_STEM.get().asItem())
                 .add(ModBlocks.PINK_SHROOMLIGHT.get().asItem())
-                .add(ModBlocks.PINK_MUSHROOM_PORES.get().asItem())
                 .add(ModItems.SHADOW_WART_BLOCK.get())
                 .add(ModItems.SHADOW_SHROOMLIGHT.get())
                 // 植物栏 —— 花

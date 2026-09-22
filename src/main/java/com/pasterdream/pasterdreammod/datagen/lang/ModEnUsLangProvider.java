@@ -375,9 +375,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.DYEDREAM_PRESSURE_PLATE.get(), "Dyedream Pressure Plate");
         add(ModBlocks.DYEDREAM_BUTTON.get(), "Dyedream Button");
         add(ModBlocks.PINK_SLIME_BLOCK.get(), "Pink Slime Block");
-        add(ModBlocks.PINK_MUSHROOM_BLOCK.get(), "Pink Mushroom Cap");
+        add(ModBlocks.PINK_MUSHROOM_BLOCK.get(), "Pink Mushroom Block");
         add(ModBlocks.PINK_MUSHROOM_STEM.get(), "Pink Mushroom Stem");
-        add(ModBlocks.PINK_MUSHROOM_PORES.get(), "Pink Mushroom Pores");
         add(ModBlocks.PINK_SHROOMLIGHT.get(), "Pink Shroomlight");
         add(ModBlocks.PINK_MUSHROOM.get(), "Pink Mushroom");
         add(ModBlocks.TALL_PINK_MUSHROOM.get(), "Tall Pink Mushroom");

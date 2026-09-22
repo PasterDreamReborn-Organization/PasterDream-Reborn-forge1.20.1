@@ -31,7 +31,7 @@
     "pinkslime_block": "pink_slime_block",
     "pinkagaric_0": "pink_mushroom_block",
     "pinkagaric_1": "pink_mushroom_stem",
-    "pinkagaric_2": "pink_mushroom_pores",
+    "pinkagaric_2": "pink_mushroom_block",
     "pinkagaric_3": "pink_shroomlight",
     "flower_8": "pink_mushroom",
     "flower_10": "tall_pink_mushroom",
@@ -771,6 +771,22 @@
     },
     "windmoor_leaves_2": {
       "head": "false"
+    },
+    "pinkagaric_0": {
+      "down": "false",
+      "up": "true",
+      "north": "true",
+      "south": "true",
+      "east": "true",
+      "west": "true"
+    },
+    "pinkagaric_2": {
+      "down": "false",
+      "up": "false",
+      "north": "false",
+      "south": "false",
+      "east": "false",
+      "west": "false"
     }
   }
 }

@@ -459,7 +459,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PINK_SLIME_BLOCK.get());
                         output.accept(ModItems.PINK_MUSHROOM_BLOCK.get());
                         output.accept(ModItems.PINK_MUSHROOM_STEM.get());
-                        output.accept(ModItems.PINK_MUSHROOM_PORES.get());
                         output.accept(ModItems.PINK_SHROOMLIGHT.get());
                         output.accept(ModItems.DYEDREAM_ICE.get());
                         output.accept(ModItems.DYEDREAM_PACKED_ICE.get());
