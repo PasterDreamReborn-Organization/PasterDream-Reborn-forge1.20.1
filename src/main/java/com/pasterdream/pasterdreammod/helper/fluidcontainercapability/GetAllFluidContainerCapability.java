@@ -8,6 +8,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +20,12 @@ public class GetAllFluidContainerCapability
 
     public static List<FluidContainerRelation> getAllContainer()
     {
+        allFluidContainerRelation.clear();
         for (Item item : BuiltInRegistries.ITEM)
         {
             ItemStack itemStack = new ItemStack(item);
-            itemStack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(iFluidHandlerItem ->
+            Object fluidHandlerCandidate = itemStack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve().orElse(null);
+            if (fluidHandlerCandidate instanceof IFluidHandlerItem iFluidHandlerItem)
             {
                 int fluidTankCount = iFluidHandlerItem.getTanks();
                 if (fluidTankCount != 0)
@@ -51,11 +54,12 @@ public class GetAllFluidContainerCapability
                                 if (iFluidHandlerItem.fill(fullCapacityFluidStack, IFluidHandler.FluidAction.SIMULATE) == fluidTankCapacity)
                                 {
                                     AtomicReference<ItemStack> AtomicReferenceFullFluidContainer = new AtomicReference<>(itemStack.copy());
-                                    AtomicReferenceFullFluidContainer.get().getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(handler ->
+                                    Object fullHandlerCandidate = AtomicReferenceFullFluidContainer.get().getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve().orElse(null);
+                                    if (fullHandlerCandidate instanceof IFluidHandlerItem handler)
                                     {
                                         handler.fill(fluidStack, IFluidHandler.FluidAction.EXECUTE);
                                         AtomicReferenceFullFluidContainer.set(handler.getContainer());
-                                    });
+                                    }
 
                                     fullFluidContainer = AtomicReferenceFullFluidContainer.get();
 
@@ -86,7 +90,7 @@ public class GetAllFluidContainerCapability
                         }
                     }
                 }
-            });
+            }
         }
         return allFluidContainerRelation;
     }

@@ -25,11 +25,6 @@ public class MortarItemCapabilityProvider implements ICapabilityProvider
         {
             return inventoryOption.lazyMap(MortarInventory::getItemHandler).cast();
         }
-
-        if (cap == ForgeCapabilities.FLUID_HANDLER_ITEM)
-        {
-            return inventoryOption.lazyMap(MortarInventory::getFluidTanks).cast();
-        }
         return LazyOptional.empty();
     }
 }
