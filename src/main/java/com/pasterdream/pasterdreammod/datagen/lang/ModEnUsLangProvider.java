@@ -1472,6 +1472,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("button.pasterdream.确认", "confirm");
         add("button.pasterdream.取消", "cancel");
         add("button.pasterdream.编辑NBT", "Edit NBT");
+        add("error.pasterdream.无效的NBT", "Invalid NBT");
+        add("button.pasterdream.操作ItemHandler", "Operate ItemHandler");
+        add("message.pasterdream.无ItemHandler", " Not Have ItemHandler");
 
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");

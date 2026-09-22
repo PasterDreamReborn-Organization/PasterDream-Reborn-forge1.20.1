@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.mortar;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -13,6 +14,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
@@ -51,11 +53,14 @@ public class MortarItem extends Item
                 {
                     return new MortarMenu(id, inventory, stack, hand);
                 }
-            }, buf ->
-            {
-                buf.writeBoolean(hand == InteractionHand.MAIN_HAND);
-            });
+            }, buffer -> buffer.writeBoolean(hand == InteractionHand.MAIN_HAND));
         }
         return InteractionResultHolder.success(stack);
+    }
+
+    @Override
+    public @Nullable ICapabilityProvider initCapabilities(ItemStack itemStack, @Nullable CompoundTag nbt)
+    {
+        return new MortarItemCapabilityProvider(itemStack);
     }
 }

@@ -37,7 +37,7 @@ public class StorageBagMenu extends AbstractContainerMenu {
         // 储物袋槽位 3×3
         int bagTexLeft = 45;
         int bagStartX = bagTexLeft + (86 - 3 * 18) / 2 - 1;
-        int bagStartY = 17 + 6;
+        int bagStartY = 17 + 7;
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 addSlot(new SlotItemHandler(bagInventory, row * 3 + col,
@@ -84,7 +84,7 @@ public class StorageBagMenu extends AbstractContainerMenu {
         // 储物袋槽位 3×3
         int bagTexLeft = 45;
         int bagStartX = bagTexLeft + (86 - 3 * 18) / 2 + 1;
-        int bagStartY = 17 - 6;
+        int bagStartY = 17 - 7;
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 addSlot(new SlotItemHandler(bagInventory, row * 3 + col,

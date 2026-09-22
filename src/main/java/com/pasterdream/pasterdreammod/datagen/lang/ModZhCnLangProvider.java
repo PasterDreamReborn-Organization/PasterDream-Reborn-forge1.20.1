@@ -1652,6 +1652,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("button.pasterdream.确认", "确认");
         add("button.pasterdream.取消", "取消");
         add("button.pasterdream.编辑NBT", "编辑NBT");
+        add("error.pasterdream.无效的NBT", "无效的NBT");
+        add("button.pasterdream.操作ItemHandler", "操作ItemHandler");
+        add("message.pasterdream.无ItemHandler", "无ItemHandler");
 
         // 琴雨梦装备
         add(ModItems.QYM_CAT_EARS.get(), "琴雨梦的猫耳发卡");
