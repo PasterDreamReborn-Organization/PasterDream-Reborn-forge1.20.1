@@ -76,6 +76,7 @@
 | 出现新的搬运类型或流程变化 | `document/design/策划文档.md` §六 + `port-content` skill |
 | 新增/改动配方平衡相关数值 | `document/rule/program/容器配方平衡系统.md` |
 | 新增/改动暗影难度相关逻辑 | `document/rule/program/暗影难度系统.md` |
+| 新增/改动料理（cook）溢出机制相关逻辑 | `document/rule/program/料理状态效果.md` |
 | 新增/重命名 ID | `document/design/ID映射表.md`，并刷新 `mapping.json` |
 | 新增**非搬运**内容（全新设计 / 原作废案） | `document/design/新内容列表.md` |
 | 新增或重绘**纹理** | `src/main/resources/ASSETS_MANIFEST.md`（纯重命名/直接搬运的原模组纹理不登记） |

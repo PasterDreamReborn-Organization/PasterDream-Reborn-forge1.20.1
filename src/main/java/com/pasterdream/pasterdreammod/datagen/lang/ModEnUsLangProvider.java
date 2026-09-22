@@ -1256,6 +1256,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.dyedream_perfume", "Dyedream Perfume");
         add("effect.pasterdream.goldenrod_tea", "Goldenrod Tea");
         add("effect.pasterdream.cook", "Cook");
+        add("effect.pasterdream.cook.description", "While active, you can eat any food even with a full hunger bar. Overflowed hunger or saturation is converted into health, and if health is full, into yellow absorption hearts. Each level raises the yellow-heart cap by 10 (I=20 / II=30 / III=40).");
         add("effect.pasterdream.dream_wish", "Dream Wish");
         add("effect.pasterdream.cecilia_blessing", "Blessing of Cecilia");
         add("effect.pasterdream.rest", "Rest");

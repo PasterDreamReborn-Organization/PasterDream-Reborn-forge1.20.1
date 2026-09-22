@@ -1430,6 +1430,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.dyedream_perfume", "染梦香水");
         add("effect.pasterdream.goldenrod_tea", "秋麒麟茶");
         add("effect.pasterdream.cook", "料理");
+        add("effect.pasterdream.cook.description", "拥有该效果时，满饱食度也能进食任意食物；进食时溢出的饱食度或饱和度会转化为生命值，生命值已满时转化为黄心（吸收）。每级提高黄心上限 10 点（I=20 / II=30 / III=40）。");
         add("effect.pasterdream.dream_wish", "美梦祈愿");
         add("effect.pasterdream.cecilia_blessing", "塞西莉亚的加护");
         add("effect.pasterdream.rest", "休憩");
