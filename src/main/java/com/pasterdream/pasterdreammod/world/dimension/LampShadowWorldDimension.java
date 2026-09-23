@@ -45,16 +45,18 @@ public final class LampShadowWorldDimension {
                     return false;
                 }
 
+                // Forge 语义：返回 true = 取消（跳过）原版雨雪渲染，返回 false = 正常渲染。
+                // 灯影之下需要下雨，故这里必须返回 false（用黑色雨纹理由 LevelRendererMixin 处理）。
                 @Override
                 public boolean renderSnowAndRain(ClientLevel level, int ticks, float partialTick,
                                                   net.minecraft.client.renderer.LightTexture lightTexture,
                                                   double camX, double camY, double camZ) {
-                    return true;
+                    return false;
                 }
 
                 @Override
                 public boolean tickRain(ClientLevel level, int ticks, Camera camera) {
-                    return true;
+                    return false;
                 }
             };
             event.register(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_world"), customEffect);

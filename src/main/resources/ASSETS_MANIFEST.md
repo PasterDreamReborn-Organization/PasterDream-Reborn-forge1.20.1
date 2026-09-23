@@ -224,6 +224,7 @@ textures/patchouli_books/seniors_dream/en_us/entries/wind_journey/structures/win
 textures/item/gun_mu.png
 textures/item/shuo_de_dao_li.png
 textures/item/use_guide.png
+textures/environment/black_rain.png
 ```
 
 ---
