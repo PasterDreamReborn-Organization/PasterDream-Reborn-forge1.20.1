@@ -42,6 +42,18 @@ public final class DreamDimensionHelper {
         return true;
     }
 
+    /**
+     * 从梦境维度集合中移除一个维度（格式：modid:dimension_id）。
+     * 解析失败或维度本来就不在集合中时返回 false；确实删除了返回 true。
+     */
+    public static boolean unregister(String dimensionId) {
+        ResourceLocation rl = ResourceLocation.tryParse(dimensionId);
+        if (rl == null) {
+            return false;
+        }
+        return DREAM_DIMENSIONS.remove(ResourceKey.create(Registries.DIMENSION, rl));
+    }
+
     public static boolean isDreamDimension(Level level) {
         return DREAM_DIMENSIONS.contains(level.dimension());
     }
