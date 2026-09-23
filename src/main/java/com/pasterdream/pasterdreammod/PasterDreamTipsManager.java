@@ -56,8 +56,11 @@ public class PasterDreamTipsManager {
             "你知道站在营火边可以让你恢复san吗？",
             "部分食物会给予恢复san的增益。",
             "不同的梦境有不同进去的方法，前辈的笔记会帮到你！",
-            "亲斤巾白其斤牛寺之梦",
-            "java.lang.NullPointerException:Tooltip for the mod is Null"
+            "梦之特斯帕",
+            "java.lang.NullPointerException:Tooltip for the mod is Null",
+            "PasterDream Tip: PasterDream Tip: PasterDream Tip: PasterDream Tip:",
+            "当你决心面对那深邃的黑暗，请一定要记得保持自己的理智，祝你好运…",
+            "不要在黑暗的地方待得太久，过于黑暗的环境会导致掉san！"
     );
 
     private final List<String> customTips = new ArrayList<>();
