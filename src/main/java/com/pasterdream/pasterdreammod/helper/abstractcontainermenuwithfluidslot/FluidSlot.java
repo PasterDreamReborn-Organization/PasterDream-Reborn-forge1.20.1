@@ -7,15 +7,23 @@ public class FluidSlot
 {
     public final int fluidSlotIndex;
     private final IFluidContainer container;
-    public final int x;
-    public final int y;
+    public int x;
+    public int y;
+    private boolean active = true;
+    private Runnable onChanged;
 
     public FluidSlot(IFluidContainer container, int fluidSlotIndex, int x, int y)
+    {
+        this(container, fluidSlotIndex, x, y, null);
+    }
+
+    public FluidSlot(IFluidContainer container, int fluidSlotIndex, int x, int y, Runnable onChanged)
     {
         this.container = container;
         this.fluidSlotIndex = fluidSlotIndex;
         this.x = x;
         this.y = y;
+        this.onChanged = onChanged;
     }
 
     public FluidStack getFluid()
@@ -26,6 +34,11 @@ public class FluidSlot
     public void setFluid(FluidStack fluidStack)
     {
         container.setFluid(fluidSlotIndex, fluidStack);
+        container.setChanged();
+        if(onChanged != null)
+        {
+            onChanged.run();
+        }
     }
 
     public int getMaxCapacity()
@@ -46,5 +59,15 @@ public class FluidSlot
     public boolean mayPickup(Player player)
     {
         return container.canTakeFluid(fluidSlotIndex, player);
+    }
+
+    public void setActive(boolean active)
+    {
+        this.active = active;
+    }
+
+    public boolean isActive()
+    {
+        return active;
     }
 }
