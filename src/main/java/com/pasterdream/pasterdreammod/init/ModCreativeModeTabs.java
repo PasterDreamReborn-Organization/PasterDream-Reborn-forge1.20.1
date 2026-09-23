@@ -943,7 +943,8 @@ public class ModCreativeModeTabs {
                     {
                         output.accept(ModItems.DEBUG_SWORD.get());
                         output.accept(ModItems.LOOT_GENERATOR.get());
-                        output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/picnic_basket"));
+                        output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/picnic_basket_overworld"));
+                        output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/picnic_basket_dyedream_world"));
                         output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/dyedream_relic_chest_loot_common"));
                         output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/dyedream_relic_chest_loot_rare"));
                         output.accept(LootGeneratorWithNBT.create(ModItems.LOOT_GENERATOR.get(), "pasterdream:chests/shadow_relic_chest_loot_common"));

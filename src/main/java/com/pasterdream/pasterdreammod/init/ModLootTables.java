@@ -16,8 +16,8 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModLootTables {
 
 
-    public static final ResourceLocation PICNIC_BASKET_LOOT =
-           ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/picnic_basket");
+    public static final ResourceLocation PICNIC_BASKET_OVERWORLD_LOOT =
+           ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/picnic_basket_overworld");
     public static final ResourceLocation DYEDREAM_RELIC_CHEST_LOOT_COMMON =
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/dyedream_relic_chest_loot_common");
     public static final ResourceLocation DYEDREAM_RELIC_CHEST_LOOT_RARE =

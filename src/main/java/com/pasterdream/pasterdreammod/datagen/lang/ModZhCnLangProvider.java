@@ -90,6 +90,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.RICE_CAKE.get(), "年糕");
         add("item.pasterdream.rice_cake.describe", "§7§o某个沙漠遗魂可能对这个感兴趣......");
         add(ModItems.DYEDREAM_POPSICLE.get(), "染梦冰棒");
+        add("tooltip.pasterdreammod.dyedream_popsicle", "§9食用后，减少玩家5秒燃烧时间");
         add(ModItems.FRIED_EGG.get(), "煎蛋");
         add(ModItems.BACON_AND_EGG.get(), "培根煎蛋");
         add(ModItems.ODD_BACON_AND_EGG.get(), "奇怪的培根煎蛋");
@@ -2836,5 +2837,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 灵药瓶提示框（成品药水容量行）
         add("pasterdream.tooltip.elixir_capacity", "%s mB（瓶内液体容量）");
 
+        // 旅人标题兼容
+        add("travelerstitles.pasterdream.dyedream_world", "染梦世界");
+        add("travelerstitles.pasterdream.dyedream_world.color", "ff9ec4");
+        add("travelerstitles.pasterdream.lamp_shadow_world", "灯影之下");
+        add("travelerstitles.pasterdream.lamp_shadow_world.color", "bdbdbd");
+        add("travelerstitles.pasterdream.wind_journey_world", "风之旅途");
+        add("travelerstitles.pasterdream.wind_journey_world.color", "7ce8ab");
+        add("travelerstitles.pasterdream.aaroncos_arena_world", "亚伦柯斯竞技场");
+        add("travelerstitles.pasterdream.aaroncos_arena_world.color", "900a0a");
     }
 }

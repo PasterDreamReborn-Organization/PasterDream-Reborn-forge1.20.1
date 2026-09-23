@@ -87,6 +87,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.RICE_CAKE.get(), "Rice Cake");
         add("item.pasterdream.rice_cake.describe", "A lingering spirit of desert might be interested in this......");
         add(ModItems.DYEDREAM_POPSICLE.get(), "Dyedream Popsicle");
+        add("tooltip.pasterdreammod.dyedream_popsicle", "§9After eating, reduces the player's 5 seconds of burning time.");
         add(ModItems.FRIED_EGG.get(), "Fried Egg");
         add(ModItems.BACON_AND_EGG.get(), "Bacon and Egg");
         add(ModItems.ODD_BACON_AND_EGG.get(), "Odd Bacon and Egg");
@@ -2730,5 +2731,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         // Elixir bottle tooltip (potion capacity line)
         add("pasterdream.tooltip.elixir_capacity", "%s mB (bottle liquid capacity)");
+
+        // traveler title compat
+        add("travelerstitles.pasterdream.dyedream_world", "The Dyedream World");
+        add("travelerstitles.pasterdream.dyedream_world.color", "ff9ec4");
+        add("travelerstitles.pasterdream.lamp_shadow_world", "Under the Lamp Shadow");
+        add("travelerstitles.pasterdream.lamp_shadow_world.color", "bdbdbd");
+        add("travelerstitles.pasterdream.wind_journey_world", "Wind Journey World");
+        add("travelerstitles.pasterdream.wind_journey_world.color", "7ce8ab");
+        add("travelerstitles.pasterdream.aaroncos_arena_world", "Aaroncos Arena");
+        add("travelerstitles.pasterdream.aaroncos_arena_world.color", "900a0a");
+
     }
 }
