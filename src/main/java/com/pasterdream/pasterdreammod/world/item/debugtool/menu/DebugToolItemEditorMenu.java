@@ -1,9 +1,10 @@
 package com.pasterdream.pasterdreammod.world.item.debugtool.menu;
 
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidSlot;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.IFluidContainer;
 import com.pasterdream.pasterdreammod.init.ModMenus;
-import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.DebugItemEditorMenu;
-import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ItemHandlerLaunchData;
-import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.PlayerEditorSlotData;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
 import net.minecraft.world.MenuProvider;
@@ -14,16 +15,18 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 
-public class DebugToolItemEditorMenu extends AbstractContainerMenu implements DebugItemEditorMenu
+public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot implements DebugItemEditorMenu
 {
     private final Container editorContainer;
     private final Player player;
+    private final IFluidContainer fluidContainer;
 
     public DebugToolItemEditorMenu(int id, Inventory playerInventory)
     {
@@ -53,7 +56,7 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenu implements De
             }
         }
 
-        addSlot(new Slot(editorContainer, 0, 189, 31)
+        addSlot(new Slot(editorContainer, 0, 152, 12)
         {
             @Override
             public void set(ItemStack itemStack)
@@ -66,6 +69,14 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenu implements De
                 }
             }
         });
+
+        this.fluidContainer = new PlayerFluidSlotContainer(player);
+        for (int i = 0; i < fluidContainer.getFluidContainerSize(); i++)
+        {
+            addFluidSlot(new FluidSlot(fluidContainer, i, 88 - 72 + 18 * i, 88));
+        }
+
+        reBuildLastFluids();
     }
 
     private final List<Consumer<ItemStack>> editorSlotListeners = new CopyOnWriteArrayList<>();
@@ -135,6 +146,12 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenu implements De
     }
 
     @Override
+    protected IFluidContainer getFluidContainer()
+    {
+        return fluidContainer;
+    }
+
+    @Override
     public boolean stillValid(Player player)
     {
         return true;
@@ -162,12 +179,28 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenu implements De
     @Override
     public ItemHandlerLaunchData provideItemHandlerLaunch()
     {
-        ItemStack stack = this.editorContainer.getItem(0);
-        IItemHandler handler = stack.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
+        ItemStack itemStack = this.editorContainer.getItem(0);
+        IItemHandler handler = itemStack.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
         if(handler != null)
         {
-            Runnable onChanged = () -> PlayerEditorSlotData.set(player, stack);
+            Runnable onChanged = () -> PlayerEditorSlotData.set(player, itemStack);
             return new ItemHandlerLaunchData(handler, onChanged);
+        }
+            else
+            {
+                return null;
+            }
+    }
+
+    @Override
+    public FluidHandlerLaunchData provideFluidHandlerLaunch()
+    {
+        ItemStack itemStack = this.editorContainer.getItem(0);
+        IFluidHandler handler = itemStack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve().orElse(null);
+        if(handler != null)
+        {
+            Runnable onChanged = () -> PlayerEditorSlotData.set(player, itemStack);
+            return new FluidHandlerLaunchData(handler, onChanged);
         }
             else
             {

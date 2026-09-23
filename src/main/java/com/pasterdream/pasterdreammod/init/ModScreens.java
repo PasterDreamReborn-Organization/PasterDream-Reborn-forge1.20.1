@@ -19,6 +19,7 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.Weapo
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableScreen;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneScreen;
 import com.pasterdream.pasterdreammod.world.item.debugtool.screen.DebugToolItemEditorScreen;
+import com.pasterdream.pasterdreammod.world.item.debugtool.screen.FluidHandlerScreen;
 import com.pasterdream.pasterdreammod.world.item.debugtool.screen.ItemHandlerScreen;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarScreen;
 import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.StorageBagScreen;
@@ -55,6 +56,7 @@ public class ModScreens
             MenuScreens.register(ModMenus.SHADOW_SELECT_END.get(), ShadowSelectEndScreen::new);
             MenuScreens.register(ModMenus.DEBUG_TOOL_ITEM_EDITOR.get(), DebugToolItemEditorScreen::new);
             MenuScreens.register(ModMenus.ITEM_HANDLER.get(), ItemHandlerScreen::new);
+            MenuScreens.register(ModMenus.FLUID_HANDLER.get(), FluidHandlerScreen::new);
         });
     }
 }

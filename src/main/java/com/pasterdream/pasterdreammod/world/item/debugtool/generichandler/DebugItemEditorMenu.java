@@ -10,4 +10,7 @@ public interface DebugItemEditorMenu
 
     @Nullable
     ItemHandlerLaunchData provideItemHandlerLaunch();
+
+    @Nullable
+    FluidHandlerLaunchData provideFluidHandlerLaunch();
 }
