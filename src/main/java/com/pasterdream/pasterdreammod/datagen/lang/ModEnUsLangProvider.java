@@ -1488,6 +1488,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("error.pasterdream.无效的NBT", "Invalid NBT");
         add("button.pasterdream.操作ItemHandler", "Operate ItemHandler");
         add("message.pasterdream.无ItemHandler", " Not Have ItemHandler");
+        add("message.pasterdream.无EnergyStorage", "Not Have EnergyStorage");
+        add("message.pasterdream.可放电", "Dischargeable");
+        add("message.pasterdream.不可放电", "Can't Dischargeable");
+        add("message.pasterdream.可充电", "Chargeable");
+        add("message.pasterdream.不可充电", "Can't Chargeable");
+        add("button.pasterdream.充电", "Charge");
 
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");

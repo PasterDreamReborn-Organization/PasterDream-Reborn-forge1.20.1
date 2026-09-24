@@ -15,6 +15,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 
@@ -27,6 +28,7 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot 
     private final Container editorContainer;
     private final Player player;
     private final IFluidContainer fluidContainer;
+    public IEnergyStorage energyStorage = null;
 
     public DebugToolItemEditorMenu(int id, Inventory playerInventory)
     {
@@ -45,14 +47,17 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot 
             }
         }
 
-        this.editorContainer = new SimpleContainer(1);
+        this.editorContainer = new SimpleContainer(2);
         player = playerInventory.player;
         if (!player.level().isClientSide)
         {
-            ItemStack stored = PlayerEditorSlotData.get(player);
-            if (!stored.isEmpty())
+            for(int i = 0; i <= 1; i++)
             {
-                editorContainer.setItem(0, stored.copy());
+                ItemStack stored = PlayerEditorSlotData.get(player, i);
+                if (!stored.isEmpty())
+                {
+                    editorContainer.setItem(i, stored.copy());
+                }
             }
         }
 
@@ -62,11 +67,12 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot 
             public void set(ItemStack itemStack)
             {
                 super.set(itemStack);
-                PlayerEditorSlotData.set(player, itemStack);
+                PlayerEditorSlotData.set(player, itemStack, 0);
                 for (Consumer<ItemStack> consumer : editorSlotListeners)
                 {
                     consumer.accept(itemStack);
                 }
+                energyStorage = itemStack.getCapability(ForgeCapabilities.ENERGY).resolve().orElse(null);
             }
         });
 
@@ -75,6 +81,16 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot 
         {
             addFluidSlot(new FluidSlot(fluidContainer, i, 88 - 72 + 18 * i, 88));
         }
+
+        addSlot(new Slot(editorContainer, 1, 152, 128)
+        {
+            @Override
+            public void set(ItemStack itemStack)
+            {
+                super.set(itemStack);
+                PlayerEditorSlotData.set(player, itemStack, 1);
+            }
+        });
 
         reBuildLastFluids();
     }
@@ -118,7 +134,7 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot 
         ItemStack stack = slot.getItem();
         ItemStack copy = stack.copy();
 
-        if ((index >= 36))
+        if ((index == 36 || index == 45))
         {   //从机器移出到背包
             if (!this.moveItemStackTo(stack, 0, 36, false))
             {
@@ -128,7 +144,7 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot 
         else
             if((index >= 0 && index <= 35))
             {   //从背包移入输入槽
-                if (!this.moveItemStackTo(stack, 36, 37, false))
+                if (!(this.moveItemStackTo(stack, 36, 37, false) || this.moveItemStackTo(stack, 45, 46, false)))
                 {
                     return ItemStack.EMPTY;
                 }
@@ -183,7 +199,7 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot 
         IItemHandler handler = itemStack.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
         if(handler != null)
         {
-            Runnable onChanged = () -> PlayerEditorSlotData.set(player, itemStack);
+            Runnable onChanged = () -> PlayerEditorSlotData.set(player, itemStack, 0);
             return new ItemHandlerLaunchData(handler, onChanged);
         }
             else
@@ -199,7 +215,7 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot 
         IFluidHandler handler = itemStack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve().orElse(null);
         if(handler != null)
         {
-            Runnable onChanged = () -> PlayerEditorSlotData.set(player, itemStack);
+            Runnable onChanged = () -> PlayerEditorSlotData.set(player, itemStack, 0);
             return new FluidHandlerLaunchData(handler, onChanged);
         }
             else
