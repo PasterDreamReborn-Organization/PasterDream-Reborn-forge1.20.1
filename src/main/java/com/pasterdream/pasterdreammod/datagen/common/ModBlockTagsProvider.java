@@ -48,6 +48,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.WHITE_SAND.get())
                 .add(ModBlocks.AZURE_SEA_SAND.get());
 
+        // 沙子（甘蔗、仙人掌、枯木、竹子、杜鹃等按此标签判定）
+        tag(BlockTags.SAND)
+                .add(ModBlocks.DYEDREAM_SAND.get())
+                .add(ModBlocks.WHITE_SAND.get())
+                .add(ModBlocks.AZURE_SEA_SAND.get());
+
 
         // 可以用锄头来挖掘
         tag(BlockTags.MINEABLE_WITH_HOE)
