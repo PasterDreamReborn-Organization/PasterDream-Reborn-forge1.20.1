@@ -1,10 +1,13 @@
 package com.pasterdream.pasterdreammod.mixin;
 
+import com.pasterdream.pasterdreammod.world.dimension.LampShadowDimension;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.dimension.DimensionType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
@@ -30,5 +33,22 @@ public class ServerLevelWeatherMixin {
             overworld.setWeatherParameters(clearTime, rainTime, raining, thundering);
             ci.cancel();
         }
+    }
+
+    /**
+     * 原版 {@code advanceWeatherCycle} 仅在 {@code dimensionType().hasSkyLight()} 为真时才推进
+     * 降雨/雷暴等级；否则 {@code rainLevel} 恒为 0，客户端永远收不到降雨等级、也就下不了雨。
+     * 灯影之下为了保持漆黑刻意关闭了天光（hasSkyLight=false），因此需要在此放行天气推进。
+     * 该维度的 {@code serverLevelData} 是 DerivedLevelData（写入为空实现、读取主世界），
+     * 所以放行后只会镜像主世界天气，不会产生独立的天气循环。
+     */
+    @Redirect(method = "advanceWeatherCycle", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/world/level/dimension/DimensionType;hasSkyLight()Z"))
+    private boolean pasterdream$allowWeatherWithoutSkyLight(DimensionType dimensionType) {
+        if (dimensionType.hasSkyLight()) {
+            return true;
+        }
+        ServerLevel self = (ServerLevel) (Object) this;
+        return self.dimension().equals(LampShadowDimension.LAMP_SHADOW_WORLD);
     }
 }

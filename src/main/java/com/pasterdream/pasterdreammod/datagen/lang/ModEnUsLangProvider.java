@@ -207,6 +207,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.CONGEAL_WIND_IRON_AXE.get(), "Congeal Wind Iron Axe");
         add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get(), "Congeal Wind Iron Shovel");
         add(ModItems.CONGEAL_WIND_IRON_HOE.get(), "Congeal Wind Iron Hoe");
+        add(ModItems.WINDWREATHED_THUNDER_SPEAR.get(), "Windwreathed Thunder Spear");
         add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get(), "Fluffy Wind Alloy Sword");
         add(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get(), "Fluffy Wind Alloy Pickaxe");
         add(ModItems.FLUFFY_WIND_ALLOY_AXE.get(), "Fluffy Wind Alloy Axe");

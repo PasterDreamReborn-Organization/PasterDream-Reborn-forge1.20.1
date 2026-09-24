@@ -279,6 +279,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CONGEAL_WIND_IRON_AXE.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_SHOVEL.get());
                         output.accept(ModItems.CONGEAL_WIND_IRON_HOE.get());
+                        output.accept(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
                         // 萦风合金工具
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_SWORD.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get());

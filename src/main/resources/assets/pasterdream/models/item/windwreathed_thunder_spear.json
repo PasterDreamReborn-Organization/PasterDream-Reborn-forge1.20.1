@@ -1,0 +1,6 @@
+{
+  "parent": "pasterdream:displaysettings/windwreathed_thunder_spear.item",
+  "textures": {
+    "layer0": "pasterdream:item/windwreathed_thunder_spear"
+  }
+}
