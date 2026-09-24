@@ -1458,8 +1458,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.3", "§7▪ §9Restores 1.5 Melt Dream Energy per second");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.4", "§7▪ §9+40% Skill Damage");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.5", "§7▪ §9+50% Magic Damage");
-        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.6", "§f▪ §4Melt Dream Energy consumption doubled");
-        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.7", "§f▪ §4Damage taken is doubled when Melt Dream Energy is below 30");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.6", "§7▪ §4Melt Dream Energy consumption doubled");
+        add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.7", "§7▪ §4Damage taken is doubled when Melt Dream Energy is below 30");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.8", "§7Exclusive memento of Ayane.");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.9", "§7Shift right-click in main hand to fully restore Melt Dream Energy, disable its consumption and gain +60% Skill Damage and Magic Damage for 2 minutes (4.5 min cooldown)");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.10", "§6PasterDream: Reborn Copywriter");
