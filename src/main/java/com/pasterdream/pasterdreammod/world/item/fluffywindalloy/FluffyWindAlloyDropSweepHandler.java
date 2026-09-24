@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.world.item.fluffywindalloy;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
+import com.pasterdream.pasterdreammod.world.item.WindwreathedThunderSpearItem;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -12,7 +14,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 /**
- * 萦风合金被动 · 风卷：手持萦风合金工具/剑时，掉落物被风卷到玩家身边（持续生效）。
+ * 萦风合金被动 · 风卷：手持萦风合金工具/剑/雷矛时，掉落物被风卷到玩家身边（持续生效）。
  * <p>
  * 1. 方块掉落：通过 BreakEvent 在方块真正被破坏时触发，延迟 1 tick 等待掉落物生成后再吹向玩家。
  * 2. 击杀掉落：通过 LivingDropsEvent 在生物死亡掉落生成前把掉落物吹向玩家。
@@ -22,7 +24,9 @@ public class FluffyWindAlloyDropSweepHandler {
 
     private static boolean isWindAlloyHeld(Player player) {
         var item = player.getMainHandItem().getItem();
-        return item instanceof FluffyWindAlloyTool || item instanceof FluffyWindAlloySwordItem;
+        return item instanceof FluffyWindAlloyTool
+                || item instanceof FluffyWindAlloySwordItem
+                || item instanceof WindwreathedThunderSpearItem;
     }
 
     @SubscribeEvent
@@ -38,7 +42,9 @@ public class FluffyWindAlloyDropSweepHandler {
     public static void onLivingDrops(LivingDropsEvent event) {
         if (!(event.getSource().getEntity() instanceof Player player)) return;
         if (player instanceof FakePlayer) return; // 自动化假玩家不享受加成
-        if (!isWindAlloyHeld(player)) return;
+        // 手持萦风系列武器，或击杀来自投掷出的雷矛（此时武器已离手）
+        boolean thrownSpear = event.getSource().getDirectEntity() instanceof WindThunderSpearEntity;
+        if (!isWindAlloyHeld(player) && !thrownSpear) return;
         Vec3 target = player.getEyePosition(1.0F);
         for (ItemEntity drop : event.getDrops()) {
             if (!drop.isAlive()) continue;

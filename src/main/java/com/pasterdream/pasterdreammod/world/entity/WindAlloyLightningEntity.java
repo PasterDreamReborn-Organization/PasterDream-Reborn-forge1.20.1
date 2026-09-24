@@ -46,6 +46,7 @@ public class WindAlloyLightningEntity extends Entity {
 
     private int ticks = 0;
     private int strikeIndex = 0;
+    private int strikes = STRIKES;   // 落雷数量（默认 5，可由不同武器覆盖）
     private float attackDamage;
     private int smite;
     private int baneOfArthropods;
@@ -87,6 +88,11 @@ public class WindAlloyLightningEntity extends Entity {
         this.fireAspect = fireAspect;
     }
 
+    /** 覆盖落雷数量（萦风合金剑默认 5 道；萦风雷矛引雷为 1 道）。须在加入世界前调用。 */
+    public void setStrikes(int strikes) {
+        this.strikes = Math.max(1, strikes);
+    }
+
     @Override
     public boolean isPushable() { return false; }
 
@@ -103,6 +109,7 @@ public class WindAlloyLightningEntity extends Entity {
     protected void readAdditionalSaveData(CompoundTag tag) {
         ticks = tag.getInt("Ticks");
         strikeIndex = tag.getInt("StrikeIndex");
+        strikes = tag.contains("Strikes") ? Math.max(1, tag.getInt("Strikes")) : STRIKES;
         attackDamage = tag.getFloat("AttackDamage");
         smite = tag.getInt("Smite");
         baneOfArthropods = tag.getInt("BaneOfArthropods");
@@ -121,6 +128,7 @@ public class WindAlloyLightningEntity extends Entity {
     protected void addAdditionalSaveData(CompoundTag tag) {
         tag.putInt("Ticks", ticks);
         tag.putInt("StrikeIndex", strikeIndex);
+        tag.putInt("Strikes", strikes);
         tag.putFloat("AttackDamage", attackDamage);
         tag.putInt("Smite", smite);
         tag.putInt("BaneOfArthropods", baneOfArthropods);
@@ -158,13 +166,13 @@ public class WindAlloyLightningEntity extends Entity {
             this.setPos(lastStrikePos.x, lastStrikePos.y, lastStrikePos.z);
         }
 
-        if (ticks % STRIKE_INTERVAL == 0 && strikeIndex < STRIKES) {
+        if (ticks % STRIKE_INTERVAL == 0 && strikeIndex < strikes) {
             strike(sl, target);
             strikeIndex++;
         }
         ticks++;
 
-        if (strikeIndex >= STRIKES && ticks > STRIKES * STRIKE_INTERVAL) {
+        if (strikeIndex >= strikes && ticks > strikes * STRIKE_INTERVAL) {
             this.discard();
         }
     }
