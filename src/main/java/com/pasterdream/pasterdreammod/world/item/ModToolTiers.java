@@ -92,7 +92,11 @@ public enum ModToolTiers implements Tier {
 
     // 断裂英雄之剑
     BROKEN_HERO_SWORD(100, 1.0F, 3.0F, 1, 0,
-            Ingredient::of);
+            Ingredient::of),
+
+    // 萦风雷矛（风之旅途毕业级，参考泰拉剑/影刃量级）
+    WINDWREATHED_THUNDER_SPEAR(2011, 13.0F, 9.0F, 5, 22,
+            () -> Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get()));
 
     private final int uses;
     private final float speed;

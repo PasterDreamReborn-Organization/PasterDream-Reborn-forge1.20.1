@@ -34,6 +34,7 @@ import com.pasterdream.pasterdreammod.world.entity.WindKnightEntity;
 import com.pasterdream.pasterdreammod.world.entity.ThundercloudEntity;
 import com.pasterdream.pasterdreammod.world.entity.LightningProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
+import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
 import com.pasterdream.pasterdreammod.world.entity.HighvoltageThundercloudEntity;
 import com.pasterdream.pasterdreammod.world.entity.FireflyEntity;
 import com.pasterdream.pasterdreammod.world.entity.BoneWingEntity;
@@ -423,6 +424,14 @@ public class ModEntities {
                     .setTrackingRange(64)
                     .setUpdateInterval(1)
                     .setCustomClientFactory(WindAlloyLightningEntity::new)
+                    .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<WindThunderSpearEntity>> WIND_THUNDER_SPEAR = register("wind_thunder_spear",
+            EntityType.Builder.<WindThunderSpearEntity>of(WindThunderSpearEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(WindThunderSpearEntity::new)
                     .sized(0.5f, 0.5f));
 
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder) {

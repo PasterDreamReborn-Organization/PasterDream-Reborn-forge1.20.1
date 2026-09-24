@@ -366,7 +366,8 @@ public class ModItems {
     public static final RegistryObject<Item> CONGEAL_WIND_IRON_HOE = ITEMS.register("congeal_wind_iron_hoe",
             () -> new HoeItem(ModToolTiers.CONGEAL_WIND_IRON, -2, -1.0f, new Item.Properties()));
     public static final RegistryObject<Item> WINDWREATHED_THUNDER_SPEAR = ITEMS.register("windwreathed_thunder_spear",
-            WindwreathedThunderSpearItem::new);
+            () -> new WindwreathedThunderSpearItem(ModToolTiers.WINDWREATHED_THUNDER_SPEAR, 6, -1.6f,
+                    new Item.Properties().fireResistant().rarity(ModRarities.LEGENDARY)));
 
     // ===== 萦风合金工具 =====
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_SWORD = ITEMS.register("fluffy_wind_alloy_sword",

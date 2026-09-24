@@ -153,7 +153,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.BROKEN_HERO_SWORD.get())
                 .add(ModItems.TERRA_BLADE.get())
                 .add(ModItems.WHITE_SWORD.get())
-                .add(ModItems.SHADOW_SWORD.get());
+                .add(ModItems.SHADOW_SWORD.get())
+                .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
         tag(ItemTags.PICKAXES)
                 .add(ModItems.MOLTEN_GOLD_PICKAXE.get())
                 .add(ModItems.COPPER_PICKAXE.get())
@@ -270,7 +271,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.SHADOW_SWORD.get())
                 .add(ModItems.ICE_SHADOW_HAMMER.get())
                 .add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get())
-                .add(ModItems.FLUFFY_WIND_ALLOY_HOE.get());
+                .add(ModItems.FLUFFY_WIND_ALLOY_HOE.get())
+                .add(ModItems.WINDWREATHED_THUNDER_SPEAR.get());
 
         // 占星者的祈愿钓竿标签 —— 手持此类钓竿时深海秘宝必出 super 变体
         tag(TagKey.create(Registries.ITEM,
