@@ -214,6 +214,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.CONGEAL_WIND_IRON_AXE.get(), "凝风铁斧");
         add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get(), "凝风铁锹");
         add(ModItems.CONGEAL_WIND_IRON_HOE.get(), "凝风铁锄");
+        add(ModItems.WINDWREATHED_THUNDER_SPEAR.get(), "萦风雷矛");
         add(ModItems.FLUFFY_WIND_ALLOY_SWORD.get(), "萦风合金剑");
         add(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get(), "萦风合金镐");
         add(ModItems.FLUFFY_WIND_ALLOY_AXE.get(), "萦风合金斧");

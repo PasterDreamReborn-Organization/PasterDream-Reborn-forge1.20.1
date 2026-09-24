@@ -175,6 +175,7 @@ textures/item/soul_gem_of_akizuki_ayane.png
 textures/item/war_flag.png
 textures/item/wind_runner_jelly.png
 textures/item/wind_spirit.png
+textures/item/windwreathed_thunder_spear.png
 textures/mob_effect/conflict_mark.png
 textures/mob_effect/melt_dream_crystal_armor.png
 textures/mob_effect/war_flag.png
