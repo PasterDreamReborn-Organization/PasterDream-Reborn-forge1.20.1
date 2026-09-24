@@ -43,14 +43,14 @@ public class SetSlotNbtPacket
             if(player != null)
             {
                 AbstractContainerMenu menu = player.containerMenu;
-                if(packet.slotIndex >=0 && packet.slotIndex < menu.slots.size())
+                if(packet.slotIndex >= 0 && packet.slotIndex < menu.slots.size())
                 {
                     Slot slot = menu.getSlot(packet.slotIndex);
                     ItemStack itemStack = slot.getItem();
                     if (!itemStack.isEmpty())
                     {
                         itemStack.setTag(packet.tag == null ? null : packet.tag.copy());
-                        slot.setChanged();
+                        slot.set(itemStack);
                         menu.broadcastChanges();
                     }
                 }
