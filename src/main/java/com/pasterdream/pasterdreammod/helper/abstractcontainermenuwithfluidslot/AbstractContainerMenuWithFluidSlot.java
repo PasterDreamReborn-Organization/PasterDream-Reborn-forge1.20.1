@@ -59,7 +59,7 @@ public abstract class AbstractContainerMenuWithFluidSlot extends AbstractContain
             @Override
             public boolean isActive()
             {
-                return true;
+                return slot.isActive();
             }
 
             @Override

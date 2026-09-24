@@ -555,13 +555,10 @@ public class ProphecyCardItem extends Item {
                     } else if (target instanceof Zombie zombie && zombie.isBaby()) {
                         // 小僵尸（非僵尸村民）：直接秒杀（通用伤害，免疫无效）
                         zombie.hurt(genericSource, zombie.getMaxHealth() * 2);
-                    } else if (target.getMobType() == MobType.UNDEAD
-                            || target instanceof Pillager
-                            || target instanceof Vindicator
-                            || target instanceof Evoker
-                            || target instanceof Ravager
+                    } else if (target.getMobType() == MobType.UNDEAD ||
+                        target.getMobType() == MobType.ILLAGER
                             || target instanceof Witch) {
-                        // 亡灵生物和灾厄村民：引燃 15 秒 + 25 点火焰伤害
+                        // 亡灵生物和灾厄村民：引燃 15 秒 + 25 点伤害
                         target.setSecondsOnFire(15);
                         target.hurt(Source, 25);
                     }

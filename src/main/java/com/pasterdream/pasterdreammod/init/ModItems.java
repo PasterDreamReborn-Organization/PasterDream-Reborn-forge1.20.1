@@ -733,8 +733,13 @@ public class ModItems {
                         int remainingTicks = entity.getRemainingFireTicks();
                         entity.setRemainingFireTicks(Math.max(0, remainingTicks - 100));
                     }
+                }//减少燃烧时间
+                @Override
+                public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+                    super.appendHoverText(stack, level, tooltip, flag);
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_popsicle"));
                 }
-            });//减少燃烧时间
+            });
 
     public static final RegistryObject<Item> FRIED_EGG = ITEMS.register("fried_egg",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties()

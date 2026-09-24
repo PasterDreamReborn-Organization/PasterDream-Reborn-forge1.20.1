@@ -174,14 +174,18 @@ public class PasterDreamKubeJSPlugin extends KubeJSPlugin {
      *
      * <p>用法示例（startup_scripts）：
      * <pre>{@code
-     * PasterDreamDimensions.register('twilightforest:twilight_forest');
+     * PasterDreamDimensions.register('modid:xxx');
+     * PasterDreamDimensions.unregister('modid:xxx');
      * }</pre>
      */
     public static class DreamDimensionsBinding {
 
-        /** 登记一个梦境维度（格式：modid:dimension_id），成功返回 true。 */
         public boolean register(String dimensionId) {
             return DreamDimensionHelper.register(dimensionId);
+        }
+
+        public boolean unregister(String dimensionId) {
+            return DreamDimensionHelper.unregister(dimensionId);
         }
     }
 }

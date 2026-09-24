@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.world.item.debugtool.screen;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerScreenWithFluidSlot;
+import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidSlot;
 import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.helper.stringhelper.StringHelper;
@@ -13,7 +15,6 @@ import com.pasterdream.pasterdreammod.world.item.debugtool.widget.NBTPreviewWidg
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.TagParser;
 import net.minecraft.network.chat.Component;
@@ -23,7 +24,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 
-public class DebugToolItemEditorScreen extends AbstractContainerScreen<DebugToolItemEditorMenu>
+public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidSlot<DebugToolItemEditorMenu>
 {
     private NBTPreviewWidget nbtPreviewWidget;
     private boolean thisItemIsNotHaveItemHandler = false;
@@ -60,6 +61,19 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreen<DebugTool
                         slot.x = width / 2 - 8;
                         slot.y = height / 8 - 18;
                     }
+                    else
+                        if(index >= 37 && index <= 44)
+                        {
+                            slot.x = width / 2 - 71 + 18 * (index - 37);
+                            slot.y = height * 5 / 8 - 61;
+                        }
+        }
+
+        for (FluidSlot fluidSlot : menu.getFluidSlots())
+        {
+            int index = fluidSlot.fluidSlotIndex;
+            fluidSlot.x = width / 2 - 72 + 18 * index;
+            fluidSlot.y = height * 5 / 8 - 62;
         }
 
         CompoundTag NBT = menu.getSlot(36).getItem().getTag();
@@ -124,6 +138,13 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreen<DebugTool
         GUIBackGroundRender.rendMinecraftGUIBackground(guiGraphics, width / 2 + 85, 0, width / 2 - 85, height);
 
         GUIBackGroundRender.rendMinecraftSingleSlot(guiGraphics, width / 2 - 9, height / 8 - 19);
+
+        for(int i = 0; i < 8; i++)
+        {
+            GUIBackGroundRender.rendMinecraftSingleSlot(guiGraphics, width / 2 - 72 + 18 * i, height * 5 / 8 - 62);
+        }
+
+        super.renderBg(guiGraphics, partialTick, mouseX, mouseY);
     }
 
     @Override

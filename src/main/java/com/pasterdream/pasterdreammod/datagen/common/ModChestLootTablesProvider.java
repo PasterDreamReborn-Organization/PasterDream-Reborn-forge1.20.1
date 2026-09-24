@@ -27,7 +27,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
     @Override
     public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/picnic_basket"),//原loots_relic_9
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/picnic_basket_overworld"),//原loots_relic_9
                 LootTable.lootTable()
                         // 幸运影响系数0.15，移除原版的2-4次抽取，改为固定4次抽取
                         .withPool(LootPool.lootPool()
@@ -86,6 +86,75 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(2.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CHOCOLATE.get())
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(2.0F, 4.0F))))
+                                .add(LootItem.lootTableItem(Items.GOLDEN_APPLE)
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                        )
+        );
+        consumer.accept(
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/picnic_basket_dyedream_world"),
+                LootTable.lootTable()
+                        // 幸运影响系数0.15，移除原版的2-4次抽取，改为固定4次抽取
+                        .withPool(LootPool.lootPool()
+                                .setBonusRolls(ConstantValue.exactly(0.15F))
+                                .setRolls(ConstantValue.exactly(4.0F))
+                                .add(LootItem.lootTableItem(Items.BREAD)
+                                        .setWeight(4)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 4.0F))))
+                                .add(LootItem.lootTableItem(ModItems.DYEDREAM_FRUIT.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_CUP_OF_DYEDREAM_JUICE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.PINK_HEART_CHOCOLATE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_JAR_OF_DREAM_JUICE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.DYEDREAM_FRUIT_BUN_CAKE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get())//TODO:加入眠椰树生成后替换为海盐眠椰饮
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(Items.APPLE)//TODO:加入眠椰树生成后替换为眠椰
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(2.0F, 4.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SANDWICH.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.POPPING_CANDY.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_CUP_OF_HONEY_JUICE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.GLASS_CUP_OF_COOKED_DYEDREAM_FLOWER_TEA.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(ModItems.CREAM_BUN_CAKE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(2.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.BUBBLE_GUM.get())
                                         .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(2.0F, 4.0F))))
