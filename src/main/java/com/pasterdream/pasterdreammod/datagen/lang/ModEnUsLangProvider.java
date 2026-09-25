@@ -2531,7 +2531,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.pink_chicken.page2", "Of course, if you'd like them to breed, you can try feeding them Dyedream Fruit.");
 
         add("pasterdream.seniors_dream.entry.pink_slime", "Pink Slime");
-        add("pasterdream.seniors_dream.entry.pink_slime.page0", "This adorable pink little thing appears in the Dyedream World. But since its color is so close to its surroundings, you've probably already overlooked it many times. Though it's called a slime, it's vastly different from the green slimes we see in the Overworld.");
+        add("pasterdream.seniors_dream.entry.pink_slime.page0", "This adorable pink little thing appears in the Dyedream World. But since their own color is so close to their surroundings, you've probably already brushed past them many times. Though it's called a slime, it's vastly different from the green slimes we see in the Overworld.");
         add("pasterdream.seniors_dream.entry.pink_slime.page2", "For one, they bear players no hostility, and they don't seem to have the larger individuals (perhaps the Dyedream World left them a bit malnourished), so defeating them won't cause them to split. For another, when the Pink Slimeballs they produce are stacked into blocks, their properties seem a little different too.$(br)Pink Slime Blocks can indeed prevent fall damage like slime blocks. But it's more like a honey block — so sticky that you simply can't jump, and this thing... this sticky, and still a gravity block?!");
 
         add("pasterdream.seniors_dream.entry.friendly_shadow_ghost", "Friendly Shadow Ghost");

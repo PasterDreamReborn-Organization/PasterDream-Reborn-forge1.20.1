@@ -3,6 +3,7 @@
   "name": "pasterdream.seniors_dream.entry.aaroncos_left_hand",
   "icon": "pasterdream:aaroncos_left_hand_spawn_egg",
   "category": "pasterdream:creatures/hostile",
+  "advancement": "pasterdream:story/shadow_choice",
   "pages": [
     {
       "type": "patchouli:text",
