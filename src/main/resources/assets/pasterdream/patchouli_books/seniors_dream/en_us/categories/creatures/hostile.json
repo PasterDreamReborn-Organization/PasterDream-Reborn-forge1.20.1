@@ -1,0 +1,7 @@
+{
+  "sortnum": 1,
+  "name": "pasterdream.seniors_dream.category.creatures_hostile",
+  "description": "pasterdream.seniors_dream.category.creatures_hostile.desc",
+  "icon": "pasterdream:shadow_roots",
+  "parent": "pasterdream:creatures"
+}

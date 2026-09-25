@@ -1,0 +1,20 @@
+{
+  "sortnum": 2,
+  "name": "pasterdream.seniors_dream.entry.wind_knight",
+  "icon": "pasterdream:wind_knight_spawn_egg",
+  "category": "pasterdream:creatures/hostile",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.wind_knight.page0"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "pasterdream:wind_knight"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.wind_knight.page2"
+    }
+  ]
+}

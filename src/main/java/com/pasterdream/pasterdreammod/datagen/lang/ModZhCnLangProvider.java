@@ -2275,8 +2275,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.qym_armor_set.page1", "而你穿上全部套装后，还会在梦境中自行闪避所有针对你的攻击，不过，如果你以凡人之躯行于大地的话，是没有办法获得这位前辈寻梦者的随身物品的，你或许需要足以创造万物的神明之力……$(br)——最初的寻梦少女沉眠于长虹中，静待后来的入梦之人探寻未知。");
 
         add("pasterdream.seniors_dream.entry.pale_boneneedle", "苍白骨针");
-        add("pasterdream.seniors_dream.entry.pale_boneneedle.page0", "你在雪山上发现了一种具有强烈香气的苍白雪莲，这种香气具有明显的提神效果。已经成为寻梦者，曾经在梦中迷失的你想到一个妙计，将苍白雪莲的花冠和骨质针具绑在一起，剧烈的疼痛和香气的刺激想必能让你迅速清醒，离开梦境。$(br)而如果把来自末地的珍珠和古城的回响融入到苍白骨针中，也许会有奇效……");
-        add("pasterdream.seniors_dream.entry.pale_boneneedle.page1", "——无论梦幻是洁净的染梦还是深邃的阴影，梦醒之时，我们将会重逢。");
+        add("pasterdream.seniors_dream.entry.pale_boneneedle.page0", "你在雪山上发现了一种具有强烈香气的苍白雪莲，这种香气具有明显的提神效果。已经成为寻梦者，曾经在梦中迷失的你想到一个妙计，将苍白雪莲的花冠和骨质针具绑在一起，剧烈的疼痛和香气的刺激想必能让你迅速清醒，离开梦境。");
+        add("pasterdream.seniors_dream.entry.pale_boneneedle.page1", "当然，如果你没有骨针，最终迷失在梦境中，可以在一些遗迹里搜寻一番，说不定可以找到骨针来离开梦境。$(br)——无论梦幻是洁净的染梦还是深邃的阴影，梦醒之时，我们将会重逢。");
 
         add("pasterdream.seniors_dream.entry.dyedream_perfume", "染梦香水");
         add("pasterdream.seniors_dream.entry.dyedream_perfume.page0", "在染梦的梦境中，地上的植物吸引了你的注意力，那香气让你有了一种新思路：或许可以把它们收集起来，用它们制作香水……$(br)当你饮用这独特的饮料后，一定时间内幻翼不会来打扰你，并且梦境的力量让你就像睡了一觉一样，接下来几天都不会有幻翼像苍蝇一样飞在你头顶了……");
@@ -2309,6 +2309,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.dyedream_world_leapstone", "染梦世界跃迁石");
         add("pasterdream.seniors_dream.entry.dyedream_world_leapstone.page0", "作为寻梦者，你可能需要经常在主世界和染梦世界之间穿行，但是目前常用的办法要么比较劳神费力，要么需要各种材料，都难以作为长期稳定的梦境入口，所幸的是，寻梦的魔法使研发出一种跃迁石，可以用于搭建稳定的传送门框架，让你能建立起染梦世界和主世界的稳定通道，使用染梦粉尘就能激活传送门。$(br)在染梦世界和主世界，你可能会找到纯白的魔法使有关这次实验的痕迹，或许可以重新搭建一下框架？");
         add("pasterdream.seniors_dream.entry.dyedream_world_leapstone.page1", "值得注意的是，传送门的原理是建立人工裂隙，自然会带来一定的侵染，请谨慎选择建造传送门的位置。$(br)$(#ff0000)该方块为0.2.0独有的测试性内容，相关的结构并未实际生成在游戏内。");
+
+        // 溯源苍白骨针
+        add("pasterdream.seniors_dream.entry.roots_pale_boneneedle", "溯源苍白骨针");
+        add("pasterdream.seniors_dream.entry.roots_pale_boneneedle.page0", "在日常的梦境穿梭中，骨针的利用率真是很严重的问题，况且我的住处和主世界研究所不在同一个地方，每次用苍白骨针都要跑好远的路，好麻烦好麻烦。而且每次还要上雪山寻找苍白雪莲，超级麻烦，才不是因为我非常怕冷什么的。");
+        add("pasterdream.seniors_dream.entry.roots_pale_boneneedle.page1", "我突然有一个非常天才的想法，古城的幽匿回响有向监守者标记目标大致方位的功能，而末影珍珠不仅可以强化标记的精准度，还可以在把我送出梦境时携带上末影的传送功能，进而让骨针在使用后还可以再次利用，而不是直接报废，同时还能直接把我传送到标记点。如果把它们用在骨针上，应该可以在使用骨针出梦后传送到目标地点。");
+        add("pasterdream.seniors_dream.entry.roots_pale_boneneedle.page2", "正好我有之前冒死搜寻剩下的回响碎片和没用完的末影珍珠各一个，和骨针放在一起合成后的产物完美符合我的预期，嗯，基于标记回溯点这个功能，就叫它溯源苍白骨针吧。$(br)嘿嘿，本小姐真是个超级天才。$(br)By 绫苒");
 
         // 染梦教堂
         add("pasterdream.seniors_dream.entry.dyedream_church", "染梦教堂");
@@ -2510,6 +2516,41 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.shattered.page0", "“闭嘴！！我如今变成模样都是拜他所赐，你还有什么脸和我提让我救他！”$(br)“你看看我这张脸，还是人的模样吗！！和外面那些怪物有什么区别，而且你知道吗？你不知道，很疼，真的很疼，真该把你扔进火里让你也感觉一下！！我已经整整十天没有可以睡个安稳了。”");
         add("pasterdream.seniors_dream.entry.shattered.page1", "“至于伊诺，我为什么要救她？我和蠢货一样......”$(br)“不对，不对！不对！！都是你们，你们都该死！！”$(br)“如果没有你们，这一切都不会有的。你，既然你一心如此，那就永远待在这里吧。至于亚伦柯斯，我会亲自打开封印，将他挫骨扬灰！”");
 
+        // 生物
+        add("pasterdream.seniors_dream.category.creatures", "生物");
+        add("pasterdream.seniors_dream.category.creatures.desc", "本类别介绍模组中的生物。");
+        add("pasterdream.seniors_dream.category.creatures_friendly", "友善与中立生物");
+        add("pasterdream.seniors_dream.category.creatures_friendly.desc", "本类别介绍模组中的友善与中立生物。");
+        add("pasterdream.seniors_dream.category.creatures_hostile", "敌对生物");
+        add("pasterdream.seniors_dream.category.creatures_hostile.desc", "本类别介绍模组中的敌对生物。");
+
+        add("pasterdream.seniors_dream.entry.pink_chicken", "粉红鸡");
+        add("pasterdream.seniors_dream.entry.pink_chicken.page0", "你有时会在染梦世界的探索中发现这种鸡。这种染梦世界独有的鸡和你在主世界随处可见，每天拿来做晚餐的鸡并不一样，主世界的鸡没有可以飞翔的，而粉红鸡可以像鱼在水里游一样在空中遨游，而它们的翅膀......非常......呃，神奇。");
+        add("pasterdream.seniors_dream.entry.pink_chicken.page2", "当然，你如果有兴趣让它们繁殖，可以尝试喂给它们染梦果。");
+
+        add("pasterdream.seniors_dream.entry.pink_slime", "粉红史莱姆");
+        add("pasterdream.seniors_dream.entry.pink_slime.page0", "这种可爱的粉色小玩意会在染梦世界出现，不过由于颜色和环境过于相近，你大概也已经漏过它好多次了。当然它虽然叫史莱姆，但是我们在主世界见到的那种绿色史莱姆差异巨大。");
+        add("pasterdream.seniors_dream.entry.pink_slime.page2", "一方面它们不会仇视玩家，而且好像没有那些更加庞大的个体(看样子是染梦世界让它们有点营养不良)，所以击败它们也不会分裂。另一方面，它产生的粉史莱姆球堆集成块时，性质似乎也不太一样。$(br)粉史莱姆块确实像粘液块一样能防止摔落受伤。但是它更像是蜂蜜块，黏糊糊的根本跳不起来，而且这玩意......这么黏还是重力方块？！");
+
+        add("pasterdream.seniors_dream.entry.friendly_shadow_ghost", "友善怨魂");
+        add("pasterdream.seniors_dream.entry.friendly_shadow_ghost.page0", "在灯影之下这种极端恶劣的环境下，阴影森林是相对安全的地方，虽然这里会出现尖啸怨魂，但是不需要害怕，它们对你是中立的，你可以尝试用灵魂精华去驯服它们，它们就会成为你忠心的卫士。");
+        add("pasterdream.seniors_dream.entry.friendly_shadow_ghost.page2", "但是有一点请注意，虽然它们叫友善怨魂，但是请不要攻击无主的友善怨魂和其他人驯服的友善怨魂，它们暴躁的脾气会让它们攻击每一个伤害它们的生物，哪怕是共同效忠一主的友善怨魂。");
+
+        add("pasterdream.seniors_dream.entry.jellyfish", "水母");
+        add("pasterdream.seniors_dream.entry.jellyfish.page0", "这种友善的小生物会在风之旅途梦境的风波群岛出现，而且似乎被玩家伤害了也不会反击。它们漂浮在天上(遨游云海，很合理)，而且似乎对海带情有独钟。");
+        add("pasterdream.seniors_dream.entry.jellyfish.page2", "你可能会好奇这个梦境根本没有海带，他们是为什么会喜欢这种食物，而且为什么新诞生的小水母体积和成年水母一样。这个问题嘛......毕竟这里是梦境，梦里什么都有。$(br)如果击杀它们，会掉落一种叫水母泥的物质，这是一种可以用来制作果冻的优秀原料，而且就算不经过加工，它们本身也可以直接吃，虽然不太建议生吃就是了......");
+
+        add("pasterdream.seniors_dream.entry.aaroncos_left_hand", "亚伦柯斯之触—左手");
+        add("pasterdream.seniors_dream.entry.aaroncos_left_hand.page0", "当你前往亚伦柯斯竞技场，并右键正中间的诡异眼睛，你就会召唤亚伦柯斯之触，这是一名暗影受害者的残余躯体——一双巨大的手。因为暗影的影响，现在这双手已经变得无比巨大。");
+        add("pasterdream.seniors_dream.entry.aaroncos_left_hand.page2", "亚伦柯斯残留的左手，它拥有着更加坚硬的护甲。这一只手是所向披靡的格斗者。除了普通的攻击以外，左手还有两个伤害极高的技能：有时它的掌心会伸出一把暗影凝聚而成的巨剑进行360°挥砍，有时是握成拳开始锤击地面。$(br)左手的伤害均为物理伤害，并且会对任何胆敢挑战它的人带来毁灭性的打击。如果想要挑战这双手，请做好充足的应对左手格斗攻击的准备。");
+
+        add("pasterdream.seniors_dream.entry.aaroncos_right_hand", "亚伦柯斯之触—右手");
+        add("pasterdream.seniors_dream.entry.aaroncos_right_hand.page0", "当你前往亚伦柯斯竞技场，并右键正中间的诡异眼睛，你就会召唤亚伦柯斯之触，这是一名暗影受害者的残余躯体——一双巨大的手。因为暗影的影响，现在这双手已经变得无比巨大。");
+        add("pasterdream.seniors_dream.entry.aaroncos_right_hand.page2", "亚伦柯斯残留的右手，它是强大难缠的法术师，除了普通的发射追踪法球外，它还会施展两种非常强大的法术：召唤暗影漩涡和暗影符文塔。$(br)暗影漩涡是一种吸引力极强的黑洞漩涡，一旦生物被困在里面，几乎无法逃出，从而被暗影席卷至死；而暗影符文塔是一种延迟爆破法术载体，充能完毕后就会自爆，造成巨大的法术伤害，如果有机会，一定要尽早摧毁暗影符文塔，避免破坏性巨大的爆炸毁灭你的所有努力。");
+
+        add("pasterdream.seniors_dream.entry.wind_knight", "破风骑士");
+        add("pasterdream.seniors_dream.entry.wind_knight.page0", "患上白血病，被困在病房的少女在梦境中幻想了一名骑士，而她的幻想也具象在她的梦境之中，静候在天空的祭坛中，等待雷鸣的唤醒。");
+        add("pasterdream.seniors_dream.entry.wind_knight.page2", "破风骑士的招式分为突刺和回旋斩，前者攻击速度较快，是破风骑士的主要招式，而后者的范围和伤害都较为恐怖，在回旋斩前，破风骑士会有明显的前兆动作。$(br)实际上，如果装备良好，与破风骑士本身的战斗实在不算是困难。但在你与破风骑士的战斗进行到一半时，破风骑士会召唤四个雷云，在你头上劈下落雷。这是与破风骑士战斗的最具有威胁的因素。请在战斗前确保自己有足够的反杂兵能力和防空能力。");
 
         // 实体
         add(ModEntities.PINK_CHICKEN.get(), "粉红鸡");

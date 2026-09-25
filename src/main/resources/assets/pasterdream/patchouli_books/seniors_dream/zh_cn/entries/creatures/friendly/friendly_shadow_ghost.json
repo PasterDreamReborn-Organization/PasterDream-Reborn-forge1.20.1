@@ -1,0 +1,20 @@
+{
+  "sortnum": 2,
+  "name": "pasterdream.seniors_dream.entry.friendly_shadow_ghost",
+  "icon": "pasterdream:friendly_shadow_ghost_spawn_egg",
+  "category": "pasterdream:creatures/friendly",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.friendly_shadow_ghost.page0"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "pasterdream:friendly_shadow_ghost"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.friendly_shadow_ghost.page2"
+    }
+  ]
+}
