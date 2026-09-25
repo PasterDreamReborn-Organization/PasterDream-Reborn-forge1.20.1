@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidSlot;
 import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.helper.stringhelper.GetItemProperties;
 import com.pasterdream.pasterdreammod.helper.stringhelper.StringHelper;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.network.debugtool.EnergyTransferPacket;
@@ -27,9 +28,12 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.IItemHandler;
 
+import java.util.List;
+
 public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidSlot<DebugToolItemEditorMenu>
 {
     private NBTPreviewWidget nbtPreviewWidget;
+    private NBTPreviewWidget itemPropertiesPreviewWidget;
     private boolean thisItemIsNotHaveItemHandler = false;
 
     public DebugToolItemEditorScreen(DebugToolItemEditorMenu menu, Inventory playerInventory, Component title)
@@ -85,7 +89,8 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
             fluidSlot.y = height * 5 / 8 - 62;
         }
 
-        CompoundTag NBT = menu.getSlot(36).getItem().getTag();
+        ItemStack _36SlotItemStack = menu.getSlot(36).getItem();
+        CompoundTag NBT = _36SlotItemStack.getTag();
         nbtPreviewWidget = new NBTPreviewWidget(5, 5, width / 2 - 95, height - 26, StringHelper.ListStringFromString(NBT == null ? "" : NBT.toString(), width / 2 - 104));
         menu.addEditorSlotListener(itemStack ->
         {
@@ -96,7 +101,7 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
 
         Button NBTEditorButton = Button.builder(Component.translatable("button.pasterdream.编辑NBT"), button ->
         {
-            CompoundTag nbt = menu.getSlot(36).getItem().getTag();
+            CompoundTag nbt = _36SlotItemStack.getTag();
             Minecraft.getInstance().setScreen(new DebugToolNBTEditorScreen(this, nbt == null ? "" : nbt.toString(), savedText ->
             {
                 CompoundTag parsed;
@@ -115,10 +120,18 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
         }).pos(5, height - 21).size(width / 2 - 95, 16).build();
         addRenderableWidget(NBTEditorButton);
 
+        List<String> itemProperties = StringHelper.ListStringFromString(GetItemProperties.getItemProperties(_36SlotItemStack), width / 2 - 104);
+        itemPropertiesPreviewWidget = new NBTPreviewWidget(width / 2 + 90, 5, width / 2 - 95, height - 10, itemProperties);
+        menu.addEditorSlotListener(itemStack ->
+        {
+            List<String> changedItemProperties = StringHelper.ListStringFromString(GetItemProperties.getItemProperties(itemStack), width / 2 - 104);
+            itemPropertiesPreviewWidget.setListString(changedItemProperties);
+        });
+        addRenderableWidget(itemPropertiesPreviewWidget);
+
         Button ItemHandlerButton = Button.builder(Component.translatable("button.pasterdream.操作ItemHandler"), button ->
         {
-            ItemStack stack = menu.getSlot(36).getItem();
-            IItemHandler handler = stack.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
+            IItemHandler handler = _36SlotItemStack.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
             if (handler != null)
             {
                 thisItemIsNotHaveItemHandler = false;
@@ -224,11 +237,26 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY)
     {
-        if (nbtPreviewWidget != null && button == 0 && nbtPreviewWidget.mouseDragged(mouseX, mouseY, button, dragX, dragY))
+        boolean needReturn = false;
+
+        if(nbtPreviewWidget != null && button == 0 && nbtPreviewWidget.mouseDragged(mouseX, mouseY, button, dragX, dragY))
+        {
+            needReturn = true;
+        }
+
+        if(itemPropertiesPreviewWidget != null && button == 0 && itemPropertiesPreviewWidget.mouseDragged(mouseX, mouseY, button, dragX, dragY))
+        {
+            needReturn = true;
+        }
+
+        if(needReturn)
         {
             return true;
         }
-        return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
+            else
+            {
+                return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
+            }
     }
 
     @Override

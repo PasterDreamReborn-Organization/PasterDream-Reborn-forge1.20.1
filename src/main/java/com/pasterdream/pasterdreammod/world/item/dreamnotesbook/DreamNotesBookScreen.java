@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.component.arrowbutton.LeftArrowButton;
 import com.pasterdream.pasterdreammod.component.arrowbutton.RightArrowButton;
 import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.helper.stringhelper.StringHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -78,7 +79,7 @@ public class DreamNotesBookScreen extends Screen
             contentFinalY = dreamNotesBookInfo.contentFinalY();
             color = dreamNotesBookInfo.color();
 
-            pageContent = warpListTextToPage(wrapTextToLine(content.getString(), contentFinalX - contentStartX), contentFinalY - contentStartY);
+            pageContent = warpListTextToPage(StringHelper.ListStringFromString(content.getString(), contentFinalX - contentStartX), contentFinalY - contentStartY);
             totalPage = pageContent.size() + 1;
         }
             else
@@ -97,38 +98,6 @@ public class DreamNotesBookScreen extends Screen
 
                 totalPage = 1;
             }
-    }
-
-    //将字符串按宽度拆分为行
-    private List<String> wrapTextToLine(String text, int width)
-    {
-        List<String> lines = new ArrayList<>();
-        String[] paragraphs = text.replace("\r\n", "\n").replace("$(br)", "\n").split("\n", -1);
-        for (String paragraph : paragraphs)
-        {
-            if (paragraph.isEmpty())
-            {
-                lines.add("");
-            }
-                else
-                {
-                    if (font.width(paragraph) <= Math.max(8, width))
-                    {
-                        lines.add(paragraph);
-                    }
-                        else
-                        {
-                            String remaining = paragraph;
-                            while (!remaining.isEmpty())
-                            {
-                                String trimmed = font.plainSubstrByWidth(remaining, Math.max(8, width));
-                                remaining = remaining.substring(trimmed.length());
-                                lines.add(trimmed);
-                            }
-                        }
-                }
-        }
-        return lines;
     }
 
     //将拆分成行的字符串按高度拆分页
