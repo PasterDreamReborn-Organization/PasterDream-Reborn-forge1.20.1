@@ -81,10 +81,8 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
 
     // ===== 突进 · 破风（原版激流式） =====
     private static final int DASH_COOLDOWN_TICKS = 60;      // 基础冷却 3s
-    private static final int DASH_COOLDOWN_PER_RIPTIDE_LEVEL = 20; // 每级激流延长突进冷却 1s
-    private static final int DASH_COOLDOWN_RIPTIDE_MAX_LEVELS = 3;  // 激流最多计入 3 级（冷却最多 +3s）
+    private static final int DASH_COOLDOWN_PER_RIPTIDE_LEVEL = 20; // 每级激流延长突进冷却 1s（不封顶）
     private static final int DASH_RIPTIDE_LEVEL = 2;        // 基础冲量档位(0~3)，决定冲量
-    private static final int DASH_MAX_RIPTIDE_LEVEL = 5;    // 计入激流附魔后的冲量档位上限
     private static final int DASH_SPIN_TICKS = 20;          // 自旋攻击时长(tick)，原版激流同为 20
     private static final double DASH_DAMAGE_BONUS = 1.5;    // 突进伤害倍率（原版自旋为 1.0）
     private static final double DASH_SWEEP_BASE = 1.5;      // 溅射基础半径(格)
@@ -95,7 +93,7 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
 
     // ===== 融梦能量 =====
     private static final double SKILL_ENERGY_COST = 1.0;      // 基础消耗：投掷固定 1.0；突进基础 1.0
-    private static final double DASH_ENERGY_PER_RIPTIDE_LEVEL = 1.0; // 每级激流增加突进能量消耗
+    private static final double DASH_ENERGY_PER_RIPTIDE_LEVEL = 1.0; // 每级激流增加突进能量消耗（不封顶）
     private static final String NO_ENERGY_KEY = "message.pasterdream.windwreathed_thunder_spear.no_energy";
 
     // ===== 投掷 · 萦风投雷 =====
@@ -203,9 +201,9 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
     // ==================== 突进 · 破风（原版激流式） ====================
 
     private void dash(ItemStack stack, Player player, Level level) {
-        // 激流附魔增强冲量：基础档位 + 激流等级，封顶
+        // 激流附魔增强冲量：基础档位 + 激流等级（不封顶）
         int riptide = stack.getEnchantmentLevel(Enchantments.RIPTIDE);
-        // 能量消耗 = 1.0 + 每级激流 1.0；双端校验，服务端结算
+        // 能量消耗 = 1.0 + 每级激流 1.0（不封顶）；双端校验，服务端结算
         double energyCost = SKILL_ENERGY_COST + riptide * DASH_ENERGY_PER_RIPTIDE_LEVEL;
         if (!player.isCreative() && MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(player) < energyCost) {
             if (!level.isClientSide) {
@@ -216,7 +214,7 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         if (!level.isClientSide && !player.isCreative() && player instanceof ServerPlayer serverPlayer) {
             MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -energyCost);
         }
-        int powerLevel = Math.min(DASH_RIPTIDE_LEVEL + riptide, DASH_MAX_RIPTIDE_LEVEL);
+        int powerLevel = DASH_RIPTIDE_LEVEL + riptide;
 
         float yRot = player.getYRot();
         float xRot = player.getXRot();
@@ -240,9 +238,8 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
 
         // 伤害不在此处结算：由自旋接触触发（ThunderSpearPassiveHandler），覆盖整条冲刺路径
         // 接入战技共享冷却（随 SKILL_COOLDOWN_RATE 缩放，并联动其它战技武器）
-        // 激流每级延长冷却 1s（最多 +3s）
-        int cooldownTicks = DASH_COOLDOWN_TICKS
-                + Math.min(riptide, DASH_COOLDOWN_RIPTIDE_MAX_LEVELS) * DASH_COOLDOWN_PER_RIPTIDE_LEVEL;
+        // 激流每级延长冷却 1s（不封顶）
+        int cooldownTicks = DASH_COOLDOWN_TICKS + riptide * DASH_COOLDOWN_PER_RIPTIDE_LEVEL;
         SkillCooldownHelper.applySharedCooldown(player, cooldownTicks);
         player.awardStat(Stats.ITEM_USED.get(this));
     }

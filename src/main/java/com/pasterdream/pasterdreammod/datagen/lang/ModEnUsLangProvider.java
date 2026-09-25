@@ -1398,7 +1398,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // Windwreathed Thunder Spear
         add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "Combat Art: §bWindwreathed Thunder Throw");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_header", "§bDash·Windbreak:");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9Right-click to charge a dash (base 3s cooldown, 1 Melt Dream Energy); Riptide boosts power but adds 1s cooldown and 1.0 energy per level (max +3 each)");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9Right-click to charge a dash (base 3s cooldown, 1 Melt Dream Energy); Riptide boosts power but adds 1s cooldown and 1.0 energy per level");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header", "§eThrow·Windwreathed Thunder Throw:");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9Shift+Right-click to charge a phantom throw (costs 1 Melt Dream Energy); on hit it chains lightning and returns automatically (on cooldown until it returns)");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive_name", "Passive: §bThunder Follows the Wind");
