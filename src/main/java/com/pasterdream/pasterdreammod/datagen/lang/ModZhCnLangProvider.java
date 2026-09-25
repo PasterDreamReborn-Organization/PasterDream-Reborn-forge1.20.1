@@ -739,6 +739,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_expansion_tab", "帕斯特之梦 | 拓展栏");
         add("itemGroup.pasterdream.pasterdream_memento_tab", "帕斯特之梦 | 追忆");
         add("itemGroup.pasterdream.wind_journey_world", "风之旅途");
+        add("pack.pasterdream.legacy_textures.desc", "帕斯特之梦 · 旧版材质包：将重绘的方块与物品纹理还原为原模组旧材质");
 
 
         add("button.pasterdream.mortarbutton", "研磨");
