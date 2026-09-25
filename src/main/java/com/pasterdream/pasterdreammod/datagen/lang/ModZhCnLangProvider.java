@@ -735,6 +735,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_shadow_tab", "灯影之下");
         add("itemGroup.pasterdream.pasterdream_plants_tab", "帕斯特之梦 | 植物");
         add("itemGroup.pasterdream.pasterdream_dream_notes_tab", "帕斯特之梦 | 笔记");
+        add("itemGroup.pasterdream.deprecated_pasterdream_dream_notes_tab", "帕斯特之梦 | 已弃用的笔记");
         add("itemGroup.pasterdream.pasterdream_dream_debug_tab", "帕斯特之梦 | 调试栏");
         add("itemGroup.pasterdream.pasterdream_expansion_tab", "帕斯特之梦 | 拓展栏");
         add("itemGroup.pasterdream.pasterdream_memento_tab", "帕斯特之梦 | 追忆");

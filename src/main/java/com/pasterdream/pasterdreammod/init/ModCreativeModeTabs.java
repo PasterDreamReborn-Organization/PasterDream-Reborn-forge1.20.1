@@ -812,29 +812,11 @@ public class ModCreativeModeTabs {
     public static final RegistryObject<CreativeModeTab> PASTERDREAM_DREAM_NOTES_TAB = CREATIVE_MODE_TABS.register("pasterdream_dream_notes_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_dream_notes_tab"))
-                    .icon(() -> new ItemStack(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get()))
+                    .icon(() -> new ItemStack(ModItems.DREAM_NOTES_BOOK.get()))
                     .displayItems((parameters, output) ->
                     {
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "developerNameList"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "dyedreamCreak"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "dyedreamWorld"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "pinkSlime"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "whiteCorolla"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "paleBoneNeedle"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "dreamFertilizer"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "dreamAccumulator"));
-
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "theLurkersInTheShadow"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "infestedChurch"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "depositionShadow"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "lampShadowTravelogue1"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "shadowDungeon"));
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "scare"));
-
                         // 剧情进度引导物品
                         output.accept(ModItems.DREAM_NOTES_STORY_GUIDE.get());
-
-                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "content", "notHaveWingsBirdHaveSpreadWingsDreamToo"));
 
                         output.accept(BluePrintWithNBTToCreativeModeTab.buildNBT("精铸工坊"));
                         output.accept(BluePrintWithNBTToCreativeModeTab.buildNBT("暗影高炉"));
@@ -899,6 +881,33 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使的记录-其二"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("空岛的圣诞树"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("风铃笼"));
+                    })
+                    .build());
+
+    //已弃用的寻梦者笔记
+    public static final RegistryObject<CreativeModeTab> DEPRECATED_PASTERDREAM_DREAM_NOTES_TAB = CREATIVE_MODE_TABS.register("deprecated_pasterdream_dream_notes_tab",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.pasterdream.deprecated_pasterdream_dream_notes_tab"))
+                    .icon(() -> new ItemStack(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get()))
+                    .displayItems((parameters, output) ->
+                    {
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "developerNameList"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "dyedreamCreak"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "dyedreamWorld"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "pinkSlime"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "whiteCorolla"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "paleBoneNeedle"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "dreamFertilizer"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "content", "dreamAccumulator"));
+
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "theLurkersInTheShadow"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "infestedChurch"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "depositionShadow"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "lampShadowTravelogue1"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "shadowDungeon"));
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "content", "scare"));
+
+                        output.accept(DreamNotesWithNBT.dreamNotesWithNBT(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "content", "notHaveWingsBirdHaveSpreadWingsDreamToo"));
 
                         output.accept(NBTBookRegisterToCreativeModTab.GardenDecryption.MistyDreamingLotus());
                         output.accept(NBTBookRegisterToCreativeModTab.GardenDecryption.PiercingEdelweiss());
@@ -933,8 +942,7 @@ public class ModCreativeModeTabs {
                         output.accept(NBTBookRegisterToCreativeModTab.lampShadowWorld.DecisiveBattleWithShadowHandsAndFail());
                         output.accept(NBTBookRegisterToCreativeModTab.WindJourneyWorld.WindBreakKnight());
                         output.accept(NBTBookRegisterToCreativeModTab.WindJourneyWorld.MorningNewWind());
-                    })
-                    .build());
+                    }).build());
 
     public static final RegistryObject<CreativeModeTab> PASTERDREAM_DREAM_DEBUG_TAB = CREATIVE_MODE_TABS.register("pasterdream_dream_debug_tab",
             () -> CreativeModeTab.builder()
