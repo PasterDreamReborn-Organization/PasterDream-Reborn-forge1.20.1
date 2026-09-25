@@ -70,16 +70,18 @@ public class ModNoiseSettings {
                 overworld.useLegacyRandomSource()
         ));
 
-        // 灯影之下维度噪声设置（基于主世界噪声，禁用含水层/熔岩湖/矿脉）
+        // 灯影之下维度噪声设置（基于主世界噪声，禁用熔岩湖/矿脉，保留含水层以免洞穴被影液灌满）
         NoiseGeneratorSettings lampShadowOverworld = NoiseGeneratorSettings.overworld(context, false, false);
         NoiseRouter lampShadowOriginalRouter = lampShadowOverworld.noiseRouter();
 
+        // 初始密度（不含 jaggedness）仅用于群系放置与 preliminary surface，不能拿来当最终密度：
+        // 否则地表起伏被抹平，会在地表高度整体贴着海平面，形成大片仅一格深的影液浅湖。
         DensityFunction lampShadowBaseTerrain = lampShadowOriginalRouter.initialDensityWithoutJaggedness();
         DensityFunction lampShadowSmoothTerrain = DensityFunctions.interpolated(lampShadowBaseTerrain);
 
         NoiseRouter lampShadowRouter = new NoiseRouter(
                 lampShadowOriginalRouter.barrierNoise(),
-                DensityFunctions.constant(-1.0D),          //含水层水量（禁用）
+                DensityFunctions.constant(-1.0D),          //含水层水量（-1：不生成独立地下水位，静默保留海平面以下连通流体）
                 DensityFunctions.constant(0.0D),           //含水层扩散（禁用）
                 DensityFunctions.constant(0.0D),           //熔岩湖（禁用）
                 lampShadowOriginalRouter.temperature(),
@@ -89,7 +91,7 @@ public class ModNoiseSettings {
                 lampShadowOriginalRouter.depth(),
                 lampShadowOriginalRouter.ridges(),
                 lampShadowSmoothTerrain,                            //初始密度（平滑，用于群系放置）
-                lampShadowSmoothTerrain,            //最终密度（原版，含jaggedness+洞穴：补充地表起伏确保陆地高于海平面）
+                lampShadowOriginalRouter.finalDensity(),            //最终密度（原版，含 jaggedness+洞穴，保证陆地高于海平面）
                 DensityFunctions.constant(1.0D),           //矿脉开关→1（禁用）
                 DensityFunctions.constant(1.0D),           //矿脉脊状→1（禁用）
                 DensityFunctions.constant(1.0D)            //矿脉间隙→1（禁用）
@@ -104,7 +106,7 @@ public class ModNoiseSettings {
                 lampShadowOverworld.spawnTarget(),
                 63,  //海平面
                 false,                                              //启用怪物生成
-                false,                                              //禁用含水层
+                lampShadowOverworld.aquifersEnabled(),              //启用含水层：海平面以下空腔按含水层逻辑处理，避免全部灌满影液
                 false,                                              //禁用矿脉
                 lampShadowOverworld.useLegacyRandomSource()
         ));
