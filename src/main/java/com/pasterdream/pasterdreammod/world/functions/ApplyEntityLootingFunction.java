@@ -6,6 +6,8 @@ import com.google.gson.JsonSerializationContext;
 import com.pasterdream.pasterdreammod.init.ModLootTables;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -32,11 +34,7 @@ public class ApplyEntityLootingFunction extends LootItemConditionalFunction {
 
     @Override
     protected ItemStack run(ItemStack stack, LootContext ctx) {
-        ItemStack tool = ctx.getParamOrNull(LootContextParams.TOOL);
-        int looting = 0;
-        if (tool != null) {
-            looting = EnchantmentHelper.getItemEnchantmentLevel(enchantment, tool);
-        }
+        int looting = getKillerEnchantLevel(ctx);
         if (looting > 0) {
             RandomSource random = ctx.getRandom();
             int bonus = 0;
@@ -46,6 +44,21 @@ public class ApplyEntityLootingFunction extends LootItemConditionalFunction {
             stack.grow(bonus);
         }
         return stack;
+    }
+
+    /**
+     * 从击杀者手中读取附魔等级。实体战利品上下文不提供 {@code LootContextParams.TOOL}，
+     * 故必须经 {@code KILLER_ENTITY}（回退 {@code LAST_DAMAGE_PLAYER}）取击杀者主手物品。
+     */
+    private int getKillerEnchantLevel(LootContext ctx) {
+        Entity killer = ctx.getParamOrNull(LootContextParams.KILLER_ENTITY);
+        if (killer == null) {
+            killer = ctx.getParamOrNull(LootContextParams.LAST_DAMAGE_PLAYER);
+        }
+        if (killer instanceof LivingEntity living) {
+            return EnchantmentHelper.getItemEnchantmentLevel(enchantment, living.getMainHandItem());
+        }
+        return 0;
     }
 
     @Override

@@ -6,6 +6,8 @@ import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.world.entity.FoxFireEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,6 +18,9 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -347,8 +352,16 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
             target.invulnerableTime = 0;
             target.hurt(target.level().damageSources().playerAttack(player), mainDamage);
             target.invulnerableTime = 0;
-            target.hurt(target.level().damageSources().lightningBolt(), lightningDamage);
+            target.hurt(lightningSource(target, player), lightningDamage);
             player.getPersistentData().remove(APPLYING_TAG);
+        }
+
+        /** 以玩家为击杀归属的雷电伤害源，避免无来源伤害导致击杀/抢夺/统计丢失。 */
+        private static DamageSource lightningSource(LivingEntity target, Player player) {
+            Holder<DamageType> holder = target.level().registryAccess()
+                    .registryOrThrow(Registries.DAMAGE_TYPE)
+                    .getHolderOrThrow(DamageTypes.LIGHTNING_BOLT);
+            return new DamageSource(holder, player, player);
         }
     }
 

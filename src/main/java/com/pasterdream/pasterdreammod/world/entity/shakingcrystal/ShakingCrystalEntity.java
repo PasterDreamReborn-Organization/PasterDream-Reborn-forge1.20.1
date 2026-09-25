@@ -273,8 +273,9 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
                     living.setSecondsOnFire(fireAspect * FIRE_ASPECT_TICK_MULTIPLIER);
             }
 
+            if (owner == null) continue;
             entity.invulnerableTime = 0;
-            entity.hurt(level().damageSources().playerAttack(owner != null ? owner : null), finalDamage);
+            entity.hurt(level().damageSources().playerAttack(owner), finalDamage);
         }
     }
 

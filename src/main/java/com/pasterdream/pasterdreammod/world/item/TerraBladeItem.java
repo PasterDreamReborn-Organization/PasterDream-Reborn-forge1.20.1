@@ -148,7 +148,6 @@ public class TerraBladeItem extends SwordItem {
             waveData.putInt("bane_of_arthropods", stack.getEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS));
             waveData.putInt("fire_aspect", stack.getEnchantmentLevel(Enchantments.FIRE_ASPECT));
             waveData.putInt("knockback", stack.getEnchantmentLevel(Enchantments.KNOCKBACK));
-            waveData.putInt("looting", stack.getEnchantmentLevel(Enchantments.MOB_LOOTING));
             waveData.putBoolean("ignore_iframe", hasCharm);
 
             level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()),

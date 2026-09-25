@@ -220,8 +220,6 @@ public class TerraswordWaveEntity extends PathfinderMob {
                     }
                     if (owner != null) {
                         target.hurt(this.damageSources().playerAttack(owner), finalDamage);
-                    } else {
-                        target.hurt(this.damageSources().magic(), finalDamage);
                     }
                     penetrationCount++;
                     if (fireAspect > 0) {

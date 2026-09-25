@@ -148,7 +148,7 @@ public class CurioPassiveHandler {
                 LivingEntity target = event.getEntity();
                 float magicDamage = target.getHealth() * 0.05F * MagicDamageHelper.getMagicDamageMultiplier(player);
                 target.invulnerableTime = 0;
-                target.hurt(target.level().damageSources().magic(), magicDamage);
+                target.hurt(target.level().damageSources().indirectMagic(player, player), magicDamage);
             }
         }
 

@@ -108,6 +108,26 @@ public class WindThunderSpearEntity extends AbstractArrow implements GeoEntity {
         this.fireAspect = fireAspect;
     }
 
+    /** 解析投掷者（重登/跨存档后 cachedOwner 可能为空，回退到 ownerUUID），保证伤害有击杀归属。 */
+    @Nullable
+    private Player resolveOwner() {
+        if (this.cachedOwner instanceof Player p && !p.isRemoved()) {
+            return p;
+        }
+        if (this.getOwner() instanceof Player p) {
+            this.cachedOwner = p;
+            return p;
+        }
+        if (this.ownerUUID != null && this.level() instanceof ServerLevel sl) {
+            Entity e = sl.getEntity(this.ownerUUID);
+            if (e instanceof Player p) {
+                this.cachedOwner = p;
+                return p;
+            }
+        }
+        return null;
+    }
+
     @Override
     protected ItemStack getPickupItem() {
         return this.spearItem.copy();
@@ -182,7 +202,7 @@ public class WindThunderSpearEntity extends AbstractArrow implements GeoEntity {
         if (!(result.getEntity() instanceof LivingEntity target)) {
             return;
         }
-        Player owner = this.cachedOwner instanceof Player p ? p : null;
+        Player owner = resolveOwner();
         float dmg = this.attackDamage;
         if (this.smite > 0 && target.getMobType() == MobType.UNDEAD) dmg += this.smite * SMITE_BANE_DAMAGE;
         if (this.baneOfArthropods > 0 && target.getMobType() == MobType.ARTHROPOD) dmg += this.baneOfArthropods * SMITE_BANE_DAMAGE;
