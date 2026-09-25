@@ -1575,7 +1575,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_header", "§b突进·破风：");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9普通右键蓄力突进，冷却 3 秒；激流附魔可增强冲量");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header", "§e投掷·萦风投雷：");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9shift+右键蓄力投掷，命中后触发连锁闪电并自动飞回");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9shift+右键蓄力投掷虚影，命中后触发连锁闪电并自动飞回；虚影返回前无法再次投掷");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive_name", "被动：§b雷随疾风");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive1", "§7▪ §9移动速度越高伤害越高，并附带雷电伤害");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive2", "§7▪ §9破坏方块或击杀生物时，掉落物会被风卷至身边");
