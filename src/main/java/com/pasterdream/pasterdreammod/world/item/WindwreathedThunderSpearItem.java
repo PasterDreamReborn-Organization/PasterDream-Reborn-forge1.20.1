@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item;
 
+import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.world.entity.FoxFireEntity;
@@ -48,6 +49,7 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 
 import javax.annotation.Nullable;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
@@ -73,14 +75,23 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
     private static final int CHARGE_THRESHOLD = 10; // 蓄满所需 tick（原版三叉戟同为 10）
 
     // ===== 突进 · 破风（原版激流式） =====
-    private static final int DASH_COOLDOWN_TICKS = 60;      // 冷却 3s
+    private static final int DASH_COOLDOWN_TICKS = 60;      // 基础冷却 3s
+    private static final int DASH_COOLDOWN_PER_RIPTIDE_LEVEL = 20; // 每级激流延长突进冷却 1s
+    private static final int DASH_COOLDOWN_RIPTIDE_MAX_LEVELS = 3;  // 激流最多计入 3 级（冷却最多 +3s）
     private static final int DASH_RIPTIDE_LEVEL = 2;        // 基础冲量档位(0~3)，决定冲量
     private static final int DASH_MAX_RIPTIDE_LEVEL = 5;    // 计入激流附魔后的冲量档位上限
     private static final int DASH_SPIN_TICKS = 20;          // 自旋攻击时长(tick)，原版激流同为 20
     private static final double DASH_DAMAGE_BONUS = 1.5;    // 突进伤害倍率（原版自旋为 1.0）
     private static final double DASH_SWEEP_BASE = 1.5;      // 溅射基础半径(格)
     private static final double DASH_SWEEP_PER_LEVEL = 0.5; // 横扫之刃每级溅射半径加成
+    private static final double DASH_SWEEP_MIN_RATIO = 0.4; // 溅射距离衰减：边缘保留 40%（中心 100%）
+    private static final int DASH_SWEEP_MAX_TARGETS = 4;    // 突进溅射最多命中数（主目标以外，按距离取最近）
     private static final double RIPTIDE_DASH_DAMAGE_PER_LEVEL = 0.25; // 激流每级突进伤害加成
+
+    // ===== 融梦能量 =====
+    private static final double SKILL_ENERGY_COST = 1.0;      // 基础消耗：投掷固定 1.0；突进基础 1.0
+    private static final double DASH_ENERGY_PER_RIPTIDE_LEVEL = 1.0; // 每级激流增加突进能量消耗
+    private static final String NO_ENERGY_KEY = "message.pasterdream.windwreathed_thunder_spear.no_energy";
 
     // ===== 投掷 · 萦风投雷 =====
     private static final float THROW_SPEED = 2.5F;            // 投掷速度（原版三叉戟同为 2.5）
@@ -152,6 +163,13 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         if (player.getCooldowns().isOnCooldown(stack.getItem())) {
             return InteractionResultHolder.fail(stack);
         }
+        // 融梦能量不足（基础 1.0）：双端预检避免蓄力后无反馈；突进的激流附加消耗由 dash() 实时校验
+        if (!player.isCreative() && MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(player) < SKILL_ENERGY_COST) {
+            if (!level.isClientSide) {
+                player.displayClientMessage(Component.translatable(NO_ENERGY_KEY), true);
+            }
+            return InteractionResultHolder.fail(stack);
+        }
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(stack);
     }
@@ -182,6 +200,17 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
     private void dash(ItemStack stack, Player player, Level level) {
         // 激流附魔增强冲量：基础档位 + 激流等级，封顶
         int riptide = stack.getEnchantmentLevel(Enchantments.RIPTIDE);
+        // 能量消耗 = 1.0 + 每级激流 1.0；双端校验，服务端结算
+        double energyCost = SKILL_ENERGY_COST + riptide * DASH_ENERGY_PER_RIPTIDE_LEVEL;
+        if (!player.isCreative() && MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(player) < energyCost) {
+            if (!level.isClientSide) {
+                player.displayClientMessage(Component.translatable(NO_ENERGY_KEY), true);
+            }
+            return;
+        }
+        if (!level.isClientSide && !player.isCreative() && player instanceof ServerPlayer serverPlayer) {
+            MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -energyCost);
+        }
         int powerLevel = Math.min(DASH_RIPTIDE_LEVEL + riptide, DASH_MAX_RIPTIDE_LEVEL);
 
         float yRot = player.getYRot();
@@ -206,7 +235,10 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
 
         // 伤害不在此处结算：由自旋接触触发（ThunderSpearPassiveHandler），覆盖整条冲刺路径
         // 接入战技共享冷却（随 SKILL_COOLDOWN_RATE 缩放，并联动其它战技武器）
-        SkillCooldownHelper.applySharedCooldown(player, DASH_COOLDOWN_TICKS);
+        // 激流每级延长冷却 1s（最多 +3s）
+        int cooldownTicks = DASH_COOLDOWN_TICKS
+                + Math.min(riptide, DASH_COOLDOWN_RIPTIDE_MAX_LEVELS) * DASH_COOLDOWN_PER_RIPTIDE_LEVEL;
+        SkillCooldownHelper.applySharedCooldown(player, cooldownTicks);
         player.awardStat(Stats.ITEM_USED.get(this));
     }
 
@@ -216,6 +248,12 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         Level level = player.level();
         boolean creative = player.isCreative();
         if (!creative) {
+            // 融梦能量不足：不投掷（use() 已预检，此处为服务端权威兜底）
+            if (MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(player) < SKILL_ENERGY_COST) {
+                player.displayClientMessage(Component.translatable(NO_ENERGY_KEY), true);
+                return;
+            }
+            MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(player, -SKILL_ENERGY_COST);
             stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(player.getUsedItemHand()));
         }
 
@@ -324,7 +362,9 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         ItemStack stack = player.getMainHandItem();
         int riptide = stack.getEnchantmentLevel(Enchantments.RIPTIDE);
         int sweeping = stack.getEnchantmentLevel(Enchantments.SWEEPING_EDGE);
-        double moveSpeed = player.getAttributeValue(Attributes.MOVEMENT_SPEED);
+        // 突进伤害吃移速：取移速属性与瞬时速度的较大值（突进冲量也计入，故激流/高移速下爆发更高）
+        double moveSpeed = Math.max(player.getAttributeValue(Attributes.MOVEMENT_SPEED),
+                player.getDeltaMovement().horizontalDistance());
         double atk = player.getAttributeValue(Attributes.ATTACK_DAMAGE)
                 * SkillCooldownHelper.getSkillDamageMultiplier(player);
         atk += stack.getEnchantmentLevel(Enchantments.SHARPNESS) * SHARPNESS_DAMAGE_BONUS;
@@ -334,15 +374,24 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         if (target.getMobType() == MobType.ARTHROPOD) damage += stack.getEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS) * SMITE_BANE_DAMAGE;
         event.setAmount(damage);
 
-        // 横扫之刃扩大突进溅射范围
+        // 横扫之刃扩大突进溅射范围；溅射最多命中 DASH_SWEEP_MAX_TARGETS 个（按距离取最近），
+        // 且伤害由中心向边缘线性衰减至 40%，避免高移速/高附魔下一发横扫清场
         if (sweeping > 0 && player.level() instanceof ServerLevel sl) {
             double radius = DASH_SWEEP_BASE + Math.min(sweeping, 3) * DASH_SWEEP_PER_LEVEL;
-            player.getPersistentData().putBoolean(APPLYING_TAG, true);
-            for (LivingEntity nearby : sl.getEntitiesOfClass(LivingEntity.class,
+            Vec3 center = target.position();
+            List<LivingEntity> candidates = sl.getEntitiesOfClass(LivingEntity.class,
                     target.getBoundingBox().inflate(radius),
-                    e -> e != player && e != target && e.isAlive() && !isOwnedMinion(e, player))) {
+                    e -> e != player && e != target && e.isAlive() && !isOwnedMinion(e, player));
+            candidates.sort(Comparator.comparingDouble(e -> e.distanceToSqr(center)));
+            player.getPersistentData().putBoolean(APPLYING_TAG, true);
+            int hit = 0;
+            for (LivingEntity nearby : candidates) {
+                if (hit >= DASH_SWEEP_MAX_TARGETS) break;
+                double ratio = 1.0 - (1.0 - DASH_SWEEP_MIN_RATIO)
+                        * Math.min(Math.sqrt(nearby.distanceToSqr(center)) / radius, 1.0);
                 nearby.invulnerableTime = 0;
-                nearby.hurt(sl.damageSources().playerAttack(player), damage);
+                nearby.hurt(sl.damageSources().playerAttack(player), (float) (damage * ratio));
+                hit++;
             }
             player.getPersistentData().remove(APPLYING_TAG);
         }

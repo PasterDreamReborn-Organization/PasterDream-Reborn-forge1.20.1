@@ -1573,12 +1573,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 萦风雷矛
         add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "战技：§b萦风投雷");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_header", "§b突进·破风：");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9普通右键蓄力突进，冷却 3 秒；激流附魔可增强冲量");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9普通右键蓄力突进（基础冷却 3 秒、消耗 1 融梦能量）；激流附魔增强冲量，每级 +1 秒冷却、+1.0 能量消耗（最多各 +3）");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header", "§e投掷·萦风投雷：");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9shift+右键蓄力投掷虚影，命中后触发连锁闪电并自动飞回；虚影返回前无法再次投掷");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9shift+右键蓄力投掷虚影（消耗 1 融梦能量），命中后触发连锁闪电并自动飞回；虚影返回前无法再次投掷");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive_name", "被动：§b雷随疾风");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive1", "§7▪ §9移动速度越高伤害越高，并附带雷电伤害");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive2", "§7▪ §9破坏方块或击杀生物时，掉落物会被风卷至身边");
+        add("message.pasterdream.windwreathed_thunder_spear.no_energy", "§c融梦能量不足");
 
         // 堕落者之印
         add(ModItems.SEAL_OF_THE_CORRUPTED.get(), "堕落者之印");
