@@ -1,0 +1,7 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.category.creatures_friendly",
+  "description": "pasterdream.seniors_dream.category.creatures_friendly.desc",
+  "icon": "pasterdream:fourleaf_clover",
+  "parent": "pasterdream:creatures"
+}
