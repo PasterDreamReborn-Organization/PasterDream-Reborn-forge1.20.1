@@ -78,6 +78,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.STRIPPED_SLUMBER_PALM_LOG.get())
                 .add(ModBlocks.STRIPPED_SLUMBER_PALM_WOOD.get())
                 .add(ModBlocks.SLUMBER_PALM_PLANKS.get())
+                .add(ModBlocks.SLUMBER_PALM_BLOCK.get())
+                .add(ModBlocks.SLUMBER_PALM_WALL_BLOCK.get())
                 .add(ModBlocks.BIRDS_NEST.get())
                 .add(ModBlocks.PINK_MUSHROOM_BLOCK.get())
                 .add(ModBlocks.PINK_MUSHROOM_STEM.get())

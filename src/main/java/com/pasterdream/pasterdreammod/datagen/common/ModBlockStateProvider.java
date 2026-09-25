@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.util.BuildingBlockFamily;
 import com.pasterdream.pasterdreammod.world.block.CalciteConeBlock;
 import com.pasterdream.pasterdreammod.world.block.FigVineBlock;
+import com.pasterdream.pasterdreammod.world.block.SlumberPalmWallBlock;
 import com.pasterdream.pasterdreammod.world.block.portal.DyedreamWorldPortalBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
@@ -70,6 +71,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.SLUMBER_PALM_SAPLING.get(),
                 models().cross(ModBlocks.SLUMBER_PALM_SAPLING.getId().getPath(),
                         blockTexture(ModBlocks.SLUMBER_PALM_SAPLING.get())).renderType("cutout"));
+
+        var slumberPalmBlockModel = models().getExistingFile(modLoc("block/slumber_palm_block"));
+        getVariantBuilder(ModBlocks.SLUMBER_PALM_BLOCK.get()).forAllStates(state ->
+                ConfiguredModel.builder().modelFile(slumberPalmBlockModel).build());
+        getVariantBuilder(ModBlocks.SLUMBER_PALM_WALL_BLOCK.get()).forAllStates(state -> {
+            Direction facing = state.getValue(SlumberPalmWallBlock.FACING);
+            ModelFile wallModel = models().getExistingFile(modLoc("block/slumber_palm_wall_block_" + facing.getName()));
+            return ConfiguredModel.builder().modelFile(wallModel).build();
+        });
 
         simpleBlockWithItem(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), cubeAll(ModBlocks.DYEDREAM_QUARTZ_ORE.get()));
 

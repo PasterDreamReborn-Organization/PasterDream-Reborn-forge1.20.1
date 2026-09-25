@@ -32,6 +32,7 @@ import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJa
 import com.pasterdream.pasterdreammod.world.block.fireflynest.FireflyNestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.birdsnest.BirdsNestBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.NippyEdelweissBlockEntity;
+import com.pasterdream.pasterdreammod.world.block.SlumberPalmBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.dreamspawner.DreamSpawnerBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalTileEntity;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalTileEntity;
@@ -103,6 +104,7 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<AaroncosEyeTileEntity>> AARONCOS_EYE = BLOCK_ENTITIES.register("aaroncos_eye", () -> BlockEntityType.Builder.of(AaroncosEyeTileEntity::new, ModBlocks.AARONCOS_EYE.get()).build(null));
     public static final RegistryObject<BlockEntityType<AaroncosHandChestTileEntity>> AARONCOS_HAND_CHEST = BLOCK_ENTITIES.register("aaroncos_hand_chest", () -> BlockEntityType.Builder.of(AaroncosHandChestTileEntity::new, ModBlocks.AARONCOS_HAND_CHEST.get()).build(null));
     public static final RegistryObject<BlockEntityType<DreamTrainBroadcastBlockEntity>> DREAM_TRAIN_BROADCAST = BLOCK_ENTITIES.register("dream_train_broadcast", () -> BlockEntityType.Builder.of(DreamTrainBroadcastBlockEntity::new, ModBlocks.DREAM_TRAIN_STRUCTURE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<SlumberPalmBlockEntity>> SLUMBER_PALM = BLOCK_ENTITIES.register("slumber_palm_block", () -> BlockEntityType.Builder.of(SlumberPalmBlockEntity::new, ModBlocks.SLUMBER_PALM_BLOCK.get(), ModBlocks.SLUMBER_PALM_WALL_BLOCK.get()).build(null));
 
     public static void register(IEventBus eventBus)
     {

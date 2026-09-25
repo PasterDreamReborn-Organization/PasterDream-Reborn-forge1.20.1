@@ -125,6 +125,7 @@ textures/block/shadow_stone_cage_rune.png
 textures/block/shadow_stone_holy_grail_rune.png
 textures/block/shadow_stone_oblation_rune.png
 textures/block/shadow_stone_tripod_cauldron_rune.png
+textures/block/slumber_palm_block.png
 textures/block/slumber_palm_leaves.png
 textures/block/slumber_palm_log.png
 textures/block/slumber_palm_log_top.png

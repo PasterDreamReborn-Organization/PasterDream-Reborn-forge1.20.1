@@ -97,5 +97,9 @@ public class ClientSetRenderLayer
 
         // ===== 萤火虫巢 =====
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIREFLY_NEST.get(), RenderType.cutoutMipped());
+
+        // ===== 眠椰块 =====
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SLUMBER_PALM_BLOCK.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SLUMBER_PALM_WALL_BLOCK.get(), RenderType.cutout());
     }
 }

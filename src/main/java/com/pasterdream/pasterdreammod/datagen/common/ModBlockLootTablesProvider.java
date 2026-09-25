@@ -51,6 +51,12 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.SLUMBER_PALM_LEAVES.get(), block -> LootHelpers.createLeavesDrops(block, ModBlocks.SLUMBER_PALM_SAPLING.get(), ModItems.SLUMBER_PALM.get()));
         dropSelf(ModBlocks.SLUMBER_PALM_PLANKS.get());
         dropSelf(ModBlocks.SLUMBER_PALM_SAPLING.get());
+        add(ModBlocks.SLUMBER_PALM_BLOCK.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModItems.SLUMBER_PALM.get())
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2))))));
+        add(ModBlocks.SLUMBER_PALM_WALL_BLOCK.get(), block -> createSilkTouchDispatchTable(block,
+                applyExplosionDecay(block, LootItem.lootTableItem(ModItems.SLUMBER_PALM.get())
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2))))));
 
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(),
                 block -> createSilkTouchDispatchTable(block,

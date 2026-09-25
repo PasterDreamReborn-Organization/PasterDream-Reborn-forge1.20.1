@@ -319,6 +319,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.SLUMBER_PALM_LEAVES.get(), "眠椰树叶");
         add(ModBlocks.SLUMBER_PALM_PLANKS.get(), "眠椰木板");
         add(ModBlocks.SLUMBER_PALM_SAPLING.get(), "眠椰树苗");
+        add(ModBlocks.SLUMBER_PALM_BLOCK.get(), "眠椰块");
         add(ModBlocks.POTTED_SLUMBER_PALM_SAPLING.get(), "盆栽眠椰树苗");
         add(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), "染梦石英矿石");
         add(ModBlocks.DYEDREAM_DUST_ORE.get(), "染梦粉尘矿石");
