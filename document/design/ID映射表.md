@@ -555,7 +555,7 @@
 | `desert_sword`                 | `desert_sword`                              | 不改                                                               | 客制化类 `DesertSwordItem`，手持时获得缓慢+抗性提升效果                                                                    |
 | `true_desert_sword`            | `chenjingmen_desert_sword`                  | 重命名，`true_desert_sword` → `chenjingmen_desert_sword`（『沉荆门』朔漠）    | 客制化类 `ChenjingmenDesertSwordItem`，战技：绝地反击（基于已损生命造成额外伤害）                                                  |
 | `broken_hero_sword`            | `broken_hero_sword`                         | 不改                                                               | 无需客制化类，直接用 `SwordItem`，fireResistant                                                                     |
-| `terra_sword`                  | `terra_blade`                               | 重命名，`terra_sword` → `terra_blade`（大地之刃）                          | 客制化类 `TerraBladeItem`，右键激活泰拉剑技（消耗融梦能量），剑气实体系统待后续实现                                                       |
+| `terra_sword`                  | `terra_blade`                               | 重命名，`terra_sword` → `terra_blade`（大地之刃）                          | 客制化类 `TerraBladeItem`，shift+右键开关剑气状态，开启后每次挥剑释放剑气（每道消耗 0.5 融梦能量、5tick 冷却），剑气实体 `TerraswordWaveEntity` 已实现                                                       |
 | `create_sword`                 | `debug_sword`                               | 重命名                                                              | 客制化类 `DebugSwordItem`                                                                                    |
 | `lootstable_create_0`          | `loot_generator`                            | 重命名                                                              | 客制化类 `DebugSwordItem`                                                                                    |
 | `lootstable_create_1`          | 删除                                          | -                                                                | 客制化类 `LootGeneratorItem`                                                                                 |
@@ -574,7 +574,7 @@
 | `carapax_charm`                | `carapax_charm`                             | 不改                                                               | 客制化类 `CarapaxCharmItem`，实现 `ICurioItem`，-8% 移动速度、+2 护甲、+1 盔甲韧性，禁止重复装备                                    |
 | `ceciliacare_charm`            | `blessing_of_cecilia`                       | 重命名，`ceciliacare_charm` → `blessing_of_cecilia`（塞西莉亚的加护）         | 客制化类 `BlessingOfCeciliaItem`，实现 `ICurioItem`，生命值≤15%时触发不死图腾效果，消耗自身变成 `faded_blessing_of_cecilia`         |
 | `turn_pale_cecilia`            | `faded_blessing_of_cecilia`                 | 重命名，`turn_pale_cecilia` → `faded_blessing_of_cecilia`（失色塞西莉亚的加护） | 客制化类 `FadedBlessingOfCeciliaItem`，右键对融梦涌泉使用变成 `blessing_of_cecilia`                                      |
-| `terra_charm`                  | `terra_floating_island`                     | 重命名，`terra_charm` → `terra_floating_island`（泰拉浮岛模型）              | 客制化类 `TerraFloatingIslandItem`，实现 `ICurioItem`，装备于 charm 插槽，增强大地之刃战技（冷却-60%、剑气伤害+30%、能量消耗-0.2）           |
+| `terra_charm`                  | `terra_floating_island`                     | 重命名，`terra_charm` → `terra_floating_island`（泰拉浮岛模型）              | 客制化类 `TerraFloatingIslandItem`，实现 `ICurioItem`，装备于 charm 插槽，增强大地之刃战技（剑气伤害+30%、剑气无视无敌帧、能量消耗 0.5→0.4；代码未实现冷却缩减）           |
 | `worldtree_seedpod`            | `worldtree_seedpod`                         | 不改                                                               | 客制化类 `WorldtreeSeedpodItem`，实现 `ICurioItem`，染梦世界树环境持续消耗饱食度 + 融梦能量                                        |
 | `garland`                      | `garland`                                   | 不改                                                               | 客制化类 `GarlandItem`，实现 `ICurioItem`，SAN 变异 +0.48，每 tick 0.4% 概率损耗 1 耐久，耐久耗尽消失                             |
 | `fourleaf_clover_curio`        | `fourleaf_clover_curio`                     | 不改                                                               | 客制化类 `FourleafCloverCurioItem`，实现 `ICurioItem`，+1 最大生命值、+6 幸运，禁止重复装备                                     |
@@ -606,9 +606,9 @@
 | `ghost_face_head`              | `ghost_face`                                | 重命名，去 `_head` 后缀                                                 | 待搬运                                                                                                                      |
 | `shadow_breath`                | `shadow_breath`                             | 不改                                                               | 客制化类 `ShadowBreathItem`，实现 `ICurioItem`：理智≥50%时每+10%理智攻击力+4%、魔法伤害+4%（最高+20%）；理智<50%时每-10%理智护甲值+2（最高+10），理智≤40%获得生命恢复I、每-10%理智生命恢复+1级（最高III）；理智系统关闭时无效；按住Shift查看当前实时加成，品质 SUPERIOR |
 | `white_crystal`                | `white_crystal`                             | 不改                                                               | 客制化类 `WhiteCrystalItem`，制作白厄剑的核心材料                                                                       |
-| `white_sword`                  | `white_sword`                               | 不改                                                               | 客制化类 `WhiteSwordItem`，右键战技「白厄剑雨」：选取准星10格内实体/方块为落点，消耗 0.1 融梦能量释放多波剑雨，命中造成近战伤害+束缚+暗影沉寐                     |
+| `white_sword`                  | `white_sword`                               | 不改                                                               | 客制化类 `WhiteSwordItem`，右键战技「白厄剑雨」：向视线方向释放 6 波共 55 发剑雨（准星 20 格内有实体则追踪），消耗 1.5 融梦能量、冷却 2 秒，命中造成魔法伤害+束缚 6 秒，对暗影生物沉默 10 秒                     |
 | `shadow_sword`                 | `shadow_sword`                              | 不改                                                               | 客制化类 `ShadowSwordItem`，SAN越低攻速/伤害越高（最高+50%/+75%），挥剑触发技能冷却，SAN耗尽时反噬生命，品质 LEGENDARY                        |
-| `iceshadow_hammer`             | `ice_shadow_hammer`                         | 重命名，`iceshadow` → `ice_shadow`，加下划线                              | 客制化类 `IceShadowHammerItem`，右键地面「伊诺的撼地」：消耗 0.1 融梦能量，召唤撼地水晶，混乱+冻结+3 波 AOE（ATK×1.0/1.0/1.5），品质 EPIC         |
+| `iceshadow_hammer`             | `ice_shadow_hammer`                         | 重命名，`iceshadow` → `ice_shadow`，加下划线                              | 客制化类 `IceShadowHammerItem`，右键地面「伊诺的撼地」：消耗 0.5 融梦能量，召唤撼地水晶，混乱+冻结+3 波 AOE（ATK×1.0/1.0/1.5），品质 EPIC         |
 | `iceshadow_curio`              | `ice_shadow_curio`                          | 重命名，`iceshadow` → `ice_shadow`，加下划线                              | 客制化类 `IceShadowCurioItem`，装备后冰影战锤技能额外释放 2 个撼地水晶，品质 MASTER                                                |
 | `white_sword_rain`             | `white_sword_rain`                          | 不改                                                               | 客制化类 `WhiteSwordRainItem`，弹射物视觉载体                                                                        |
 | `boboji_curio`                 | `boboji_curio`                              | 不改                                                               | 客制化类 `BobojiCurioItem`，实现 `ICurioItem`，+5%速度、+0.1瞬身术距离、-0.2冷却、-0.4消耗，禁止重复装备                              |
@@ -620,8 +620,8 @@
 | `allkinds_ring`                | `allkinds_ring`                             | 不改                                                               | 客制化类 `AllkindsRingItem`，实现 `ICurioItem`，+4 生命、+2 攻击、+0.1 攻速、+0.2 触及、+0.5 方块触及、+5% 移速，品质 LEGENDARY，跳过战技属性 |
 | `cradle_in_ones_arms`          | `kaichu_omamori`                            | 重命名，`cradle_in_ones_arms` → `kaichu_omamori`                     | 客制化类 `KaichuOmamoriItem`，实现 `ICurioItem`，现在可佩戴，佩戴后启动激活专属热键，+5幸运，品质 LEGENDARY                             |
 | `turnback_cloak`               | `turnback_cloak`                            | 不改                                                               | 客制化类 `TurnbackCloakItem`，实现 `ICurioItem`，back 槽位，Z 键激活消耗 10 融梦能量，90s 内 6 次回避 + 反击，冷却 300s，品质 LEGENDARY（数值以 tooltip 为准） |
-| `white_flower_body`            | `brooch_of_white_orchid`                    | 重命名，`white_flower_body` → `brooch_of_white_orchid`               | 客制化类 `BroochOfWhiteOrchidItem`，实现 `ICurioItem`，免疫环境降SAN效果，品质 EPIC                                        |
-| `degenerate_bodys`             | `seal_of_the_corrupted`                     | 重命名，`degenerate_bodys` → `seal_of_the_corrupted`                 | 客制化类 `SealOfTheCorruptedItem`，实现 `ICurioItem`，生命-4 / 触及+0.2 / 方块触及+1.0 / 攻击+2.0，品质 EPIC，body 槽位          |
+| `white_flower_body`            | `brooch_of_white_orchid`                    | 重命名，`white_flower_body` → `brooch_of_white_orchid`               | 客制化类 `BroochOfWhiteOrchidItem`，实现 `ICurioItem` + `ISanModifier`，免疫环境降SAN、+1 body 槽；白厄剑近战与剑雨对所有生物 +50%（对暗影再叠加共 ×2）、剑雨命中无视无敌帧；需完成 `story/talent_light`，品质 EPIC                                        |
+| `degenerate_bodys`             | `seal_of_the_corrupted`                     | 重命名，`degenerate_bodys` → `seal_of_the_corrupted`                 | 客制化类 `SealOfTheCorruptedItem`，实现 `ICurioItem` + `ISanModifier`，+1 body 槽 / 实体触及+1.0 / 方块触及+1.0 / 攻击+2.0 / 免疫低SAN负面 / 暗影生物中立且低SAN暗影替佩戴者作战；需完成 `story/talent_shadow`，品质 EPIC（无生命-4）          |
 | `sweetdream_disc`              | `sweet_dream_music_disc`                    | 重命名，修复 word glueing + `_disc` → `_music_disc`                    | 无需客制化类，直接用 `RecordItem`（旧类无有效覆写）                                                                         |
 | `snowfalldream_disc`           | `snowfall_dream_music_disc`                 | 重命名，修复 word glueing + `_disc` → `_music_disc`                    | 无需客制化类，直接用 `RecordItem`（旧类无有效覆写）                                                                         |
 | `aaroncos_disc`                | `aaroncos_music_disc`                      | 重命名，`_disc` → `_music_disc`                                        | 无需客制化类，直接用 `RecordItem`（旧类无有效覆写），播放 `aaroncos_music`，2980 tick                          |
@@ -721,7 +721,7 @@
 | `rest`                   | `rest`                   | 不改        | `RestEffect`，+0.9 理智光环                                     |
 | `dream_harp_of_wanderer` | `dream_harp_of_wanderer` | 不改        | `DreamharpOfWandererBuffEffect`，+4最大生命、+2.4SAN光环、+1%速度、治疗  |
 | -                             | `counter_attack`         | 新增        | `CounterAttackEffect`，战技伤害倍率 +50%，配合反击戒指触发                 |
-| `bind`                   | `bind`                   | 不改        | `BindEffect`，移速降至 0，由白厄剑雨命中施加，持续 2s                        |
+| `bind`                   | `bind`                   | 不改        | `BindEffect`，移速降至 0，由白厄剑雨命中施加，持续 6s                        |
 | `shadow_silence`         | `shadow_silence`         | 不改        | `ShadowSilenceEffect`，标记效果，由白厄剑雨命中 shadow_mob 实体时施加，持续 10s |
 | `cloudmist_buff`              | `cloud_mist`             | 重命名      | `CloudMistEffect`，云雾标记，风之旅途显示退出进度                          |
 | `tailwind`               | `tailwind`               | 不改        | `TailwindEffect`，顺风，移速/闪烁距离提升，与逆风互斥                        |
@@ -765,7 +765,7 @@
 | `projectile_squeal_wave_projectile` | `squeal_wave_projectile`      | 重命名，去 `projectile_` 前缀                           | 弹射物 `SquealWaveProjectileEntity`（`world/entity/ghost/`）                              |
 | `black_beetle`                      | `black_beetle`                | 不改                                               | 客制化类 `BlackBeetleEntity`（`world/entity/beetle/`），可驯服 TamableAnimal，食物为白厄花            |
 | `black_beetle_mother`               | `black_beetle_mother`         | 不改                                               | 客制化类 `BlackBeetleMotherEntity`（`world/entity/beetle/`），Boss，受击触发技能：召唤小甲虫 + buff 周围甲虫 |
-| `white_sword_rain_projectile`       | `white_sword_rain_projectile` | 不改                                               | 弹射物 `WhiteSwordRainProjectileEntity`，穿透方块，25tick 寿命，命中造成近战伤害+束缚+暗影沉寐                 |
+| `white_sword_rain_projectile`       | `white_sword_rain_projectile` | 不改                                               | 弹射物 `WhiteSwordRainProjectileEntity`，穿透方块，30tick 寿命，命中造成魔法伤害+束缚 6 秒，对暗影生物沉默 10 秒并额外 +50% 伤害                 |
 | `shaking_crystal`                   | `shaking_crystal`             | 不改                                               | GeckoLib 实体 `ShakingCrystalEntity`，特效载体，1s 自毁，生成粒子 + 施加混乱效果                          |
 | `wind_knight`                       | `wind_knight`                 | 不改                                               | 客制化类 `WindKnightEntity`（Boss，GeckoLib，祭坛召唤）                                                  |
 | `thundercloud`                      | `thundercloud`                | 不改                                               | 客制化类 `ThundercloudEntity`（飞行雷云，祭坛召唤的随从）                                                   |
@@ -789,7 +789,7 @@
 
 | 旧 ID                    | 新 ID           | 变更说明                   | 备注                 |
 |-------------------------|----------------|------------------------|--------------------|
-| `enchantment_atkspd`    | `swift_strike` | 重命名                    | 重做附魔，现在每级提供10%攻击速度 |
+| `enchantment_atkspd`    | `swift_strike` | 重命名                    | 重做附魔，剑每级 +6% 攻击速度、斧每级 +4%（MULTIPLY_BASE，最高 4 级） |
 | `enchantment_shelterer` | `shelter`      | 重命名，去除`enchantment_`前缀 | 现在每级可以正确减免2%伤害     |
 
 
