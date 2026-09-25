@@ -23,9 +23,9 @@ import java.util.List;
 
 public class PasterDreamFoodItem extends Item
 {
-    private final int useDuration;
-    private final double sanAdd;
-    private final double meltDreamEnergyAdd;
+    public final int useDuration;
+    public final double sanAdd;
+    public final double meltDreamEnergyAdd;
 
     public PasterDreamFoodItem(PasterDreamDrinkAndFoodProperties properties)
     {

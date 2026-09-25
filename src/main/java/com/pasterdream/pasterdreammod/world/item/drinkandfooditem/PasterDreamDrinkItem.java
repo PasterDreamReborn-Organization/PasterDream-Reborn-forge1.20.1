@@ -26,9 +26,9 @@ import java.util.List;
 
 public class PasterDreamDrinkItem extends Item
 {
-    private final int useDuration;
-    private final double sanAdd;
-    private final double meltDreamEnergyAdd;
+    public final int useDuration;
+    public final double sanAdd;
+    public final double meltDreamEnergyAdd;
 
     public PasterDreamDrinkItem(PasterDreamDrinkAndFoodProperties properties)
     {
@@ -142,7 +142,7 @@ public class PasterDreamDrinkItem extends Item
             return stack;
         }
 
-        var entry = FluidContainerRegistry.getEntryForFillToEmpty(new ItemStack(this));
+        FluidContainerRegistry.ContainerEntry entry = FluidContainerRegistry.getEntryForFillToEmpty(new ItemStack(this));
         Item emptyContainer = entry != null ? entry.emptyContainerItemStack.getItem() : null;
         stack.shrink(1);
 

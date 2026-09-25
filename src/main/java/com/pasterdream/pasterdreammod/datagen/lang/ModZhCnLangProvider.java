@@ -1674,6 +1674,22 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.可充电", "可充电");
         add("message.pasterdream.不可充电", "不可充电");
         add("button.pasterdream.充电", "充电");
+        add("message.pasterdream.物品名称:", "物品名称:");
+        add("message.pasterdream.物品ID:", "物品ID:");
+        add("message.pasterdream.最大堆叠数量:", "最大堆叠数量:");
+        add("message.pasterdream.是否防火:", "是否防火:");
+        add("message.pasterdream.使用动画:", "使用动画:");
+        add("message.pasterdream.最大耐久:", "最大耐久:");
+        add("message.pasterdream.饱食度:", "饱食度:");
+        add("message.pasterdream.饱和度:", "饱和度:");
+        add("message.pasterdream.SAN值回复:", "SAN值回复:");
+        add("message.pasterdream.融梦能量回复:", "融梦能量回复:");
+        add("message.pasterdream.饮用后返还:", "饮用后返还:");
+        add("message.pasterdream.食用时长:", "食用时长:");
+        add("message.pasterdream.是否可一直食用:", "是否可一直食用:");
+        add("message.pasterdream.是否为肉类:", "是否为肉类:");
+        add("message.pasterdream.食用后获得效果:", "食用后获得效果:");
+        add("message.pasterdream.,概率:", ",概率:");
 
         // 琴雨梦装备
         add(ModItems.QYM_CAT_EARS.get(), "琴雨梦的猫耳发卡");

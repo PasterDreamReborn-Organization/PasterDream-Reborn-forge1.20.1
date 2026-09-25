@@ -9,27 +9,30 @@ public class StringHelper
 {
     public static List<String> ListStringFromString(String string, int width)
     {
-        if(string != null && !string.isEmpty())
+        List<String> lines = new ArrayList<>();
+        String[] paragraphs = string.replace("\r\n", "\n").replace("$(br)", "\n").split("\n", -1);
+        for (String paragraph : paragraphs)
         {
-            List<String> stringBuilderList = new ArrayList<>();
-            StringBuilder remaining = new StringBuilder(string);
-            StringBuilder trimmedBuffer;
-
-            while(!remaining.isEmpty())
+            if (paragraph.isEmpty())
             {
-                trimmedBuffer = new StringBuilder(Minecraft.getInstance().font.plainSubstrByWidth(remaining.toString(), Math.max(8, width)));
-                if (trimmedBuffer.isEmpty())
-                {
-                    break;
-                }
-                stringBuilderList.add(trimmedBuffer.toString());
-                remaining.delete(0, trimmedBuffer.length());
+                lines.add("");
             }
-            return stringBuilderList;
-        }
             else
-            {
-                return List.of("");
-            }
+                if (Minecraft.getInstance().font.width(paragraph) <= Math.max(8, width))
+                {
+                    lines.add(paragraph);
+                }
+                    else
+                    {
+                        String remaining = paragraph;
+                        while (!remaining.isEmpty())
+                        {
+                            String trimmed = Minecraft.getInstance().font.plainSubstrByWidth(remaining, Math.max(8, width));
+                            remaining = remaining.substring(trimmed.length());
+                            lines.add(trimmed);
+                        }
+                    }
+        }
+        return lines;
     }
 }
