@@ -29,7 +29,7 @@ public class TerraFloatingIslandItem extends Item implements ICurioItem {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         // Effects are handled in TerraBladeItem.tryFireSwordWave:
-        // energy cost -0.05 (0.1 → 0.05), sword wave damage +30%, ignores i-frames
+        // energy cost 0.5 → 0.4, sword wave damage +30%, ignores i-frames
     }
 
     @Override
