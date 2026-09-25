@@ -237,11 +237,26 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY)
     {
-        if (nbtPreviewWidget != null && button == 0 && nbtPreviewWidget.mouseDragged(mouseX, mouseY, button, dragX, dragY))
+        boolean needReturn = false;
+
+        if(nbtPreviewWidget != null && button == 0 && nbtPreviewWidget.mouseDragged(mouseX, mouseY, button, dragX, dragY))
+        {
+            needReturn = true;
+        }
+
+        if(itemPropertiesPreviewWidget != null && button == 0 && itemPropertiesPreviewWidget.mouseDragged(mouseX, mouseY, button, dragX, dragY))
+        {
+            needReturn = true;
+        }
+
+        if(needReturn)
         {
             return true;
         }
-        return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
+            else
+            {
+                return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
+            }
     }
 
     @Override

@@ -726,6 +726,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.pasterdream_plants_tab", "Paster Dream | Plants");
         add("itemGroup.pasterdream.pasterdream_equipment_tab", "Paster Dream | Equipment");
         add("itemGroup.pasterdream.pasterdream_dream_notes_tab", "Paster Dream | Dream Notes");
+        add("itemGroup.pasterdream.deprecated_pasterdream_dream_notes_tab", "Paster Dream | Deprecated Dream Notes");
         add("itemGroup.pasterdream.pasterdream_dream_debug_tab", "Paster Dream | Debug");
         add("itemGroup.pasterdream.pasterdream_expansion_tab", "Paster Dream | Expansion");
         add("itemGroup.pasterdream.pasterdream_memento_tab", "Paster Dream | Mementos");
