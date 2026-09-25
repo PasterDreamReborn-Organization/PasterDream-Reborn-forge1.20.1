@@ -1399,7 +1399,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_header", "§bDash·Windbreak:");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9Right-click to charge a vanilla riptide-style dash (3s cooldown); Riptide boosts its power");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header", "§eThrow·Windwreathed Thunder Throw:");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9Shift+Right-click to charge a throw; on hit it chains lightning and returns automatically");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9Shift+Right-click to charge a phantom throw; on hit it chains lightning and returns automatically (on cooldown until it returns)");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive_name", "Passive: §bThunder Follows the Wind");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive1", "§7▪ §9The faster you move, the more damage you deal, plus lightning damage");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive2", "§7▪ §9Drops from broken blocks or killed mobs are swept to you by the wind");

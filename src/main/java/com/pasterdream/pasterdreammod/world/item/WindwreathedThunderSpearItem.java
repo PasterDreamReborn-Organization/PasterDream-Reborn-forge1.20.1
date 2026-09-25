@@ -57,7 +57,8 @@ import java.util.function.Consumer;
  *
  * 左键 · 近战：物理伤害 + 附带雷伤（不连锁），吃移速，耗 1 耐久。
  * 普通右键蓄力 · 突进：原版激流式前冲（冲量 + 自旋攻击），冷却 3s。
- * Shift+右键蓄力 · 投掷：蓄满投出，命中/落地触发连锁闪电后自动飞回（内置忠诚），耗 1 耐久。
+ * Shift+右键蓄力 · 投掷：蓄满投出「虚影」（本体始终留在手中），命中/落地触发连锁闪电后飞回；
+ *                       虚影返回前武器处于冷却，最长 10s 兜底（避免掉落进虚空 / 投掷后死亡丢武器）。
  *
  * 被动 · 雷随疾风：移动速度越高伤害越高，并附带雷电伤害；掉落物被风卷至身边。
  */
@@ -84,6 +85,7 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
     // ===== 投掷 · 萦风投雷 =====
     private static final float THROW_SPEED = 2.5F;            // 投掷速度（原版三叉戟同为 2.5）
     private static final double THROW_DAMAGE_FACTOR = 1.5;    // 投掷伤害 = (1+移速)×攻击力×1.5
+    private static final int THROW_COOLDOWN_TICKS = 200;      // 虚影冷却 10s（虚影返回立即解除）
 
     // ===== 被动 · 雷随疾风 =====
     private static final double PASSIVE_LIGHTNING_RATIO = 0.1; // 附带攻击力×0.1 雷电伤害
@@ -145,9 +147,9 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
         if (stack.getDamageValue() >= stack.getMaxDamage() - 1) return InteractionResultHolder.fail(stack);
 
-        // 形态在释放瞬间按 shift 判定（蓄力中途切换潜行同样生效）；
-        // 若按下时为突进意图且冷却中，直接失败不进入蓄力。
-        if (!player.isShiftKeyDown() && player.getCooldowns().isOnCooldown(stack.getItem())) {
+        // 冷却中禁止进入蓄力：突进冷却（共享战技冷却）与投掷虚影冷却共用矛的物品冷却，
+        // 冷却结束前无法再次使用任一形态（虚影返回会立即解除投掷冷却）。
+        if (player.getCooldowns().isOnCooldown(stack.getItem())) {
             return InteractionResultHolder.fail(stack);
         }
         player.startUsingItem(hand);
@@ -162,7 +164,8 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
 
         // 释放瞬间按 shift 判定形态
         if (player.isShiftKeyDown()) {
-            // 投掷：只在服务端生成实体 / 移除物品
+            // 投掷：冷却中不投掷；虚影只在服务端生成
+            if (player.getCooldowns().isOnCooldown(stack.getItem())) return;
             if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
                 throwSpear(stack, serverPlayer);
             }
@@ -224,7 +227,7 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         float damage = (float) ((1 + speed) * atk * THROW_DAMAGE_FACTOR);
 
         WindThunderSpearEntity spear = new WindThunderSpearEntity(level, player, stack);
-        spear.init(player, damage, !creative,
+        spear.init(player, damage,
                 stack.getEnchantmentLevel(Enchantments.SMITE),
                 stack.getEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS),
                 stack.getEnchantmentLevel(Enchantments.FIRE_ASPECT));
@@ -232,9 +235,19 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         level.addFreshEntity(spear);
         level.playSound(null, spear, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
 
-        if (!creative) {
-            player.getInventory().removeItem(stack);
-        }
+        // 本体留在手中：投掷出的只是虚影。虚影返回前武器冷却，10s 后兜底解除。
+        player.getCooldowns().addCooldown(stack.getItem(), THROW_COOLDOWN_TICKS);
+    }
+
+    /** 虚影返回时调用：立即解除本次投掷冷却。 */
+    public static void clearThrowCooldown(Player player, ItemStack spearStack) {
+        if (spearStack.isEmpty()) return;
+        player.getCooldowns().removeCooldown(spearStack.getItem());
+    }
+
+    /** 投掷虚影的冷却时长（tick），供弹射物侧兜底参考。 */
+    public static int getThrowCooldownTicks() {
+        return THROW_COOLDOWN_TICKS;
     }
 
     // ==================== 触及距离 ====================

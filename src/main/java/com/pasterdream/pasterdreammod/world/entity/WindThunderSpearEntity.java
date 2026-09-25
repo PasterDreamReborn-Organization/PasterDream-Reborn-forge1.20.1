@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.item.WindwreathedThunderSpearItem;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
@@ -42,10 +43,10 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- * 萦风雷矛的投掷弹射物实体。
+ * 萦风雷矛的投掷弹射物实体（虚影）。
  * <p>
- * 飞行命中生物/方块后：对命中目标造成雷电伤害 → 触发「连锁闪电」（向最近敌人跳跃、逐跳衰减）
- * → 自动飞回投掷者手中（内置忠诚，不依赖忠诚附魔）。
+ * 投掷时本体仍留在投掷者手中，此实体只是「虚影」：飞行命中生物/方块后对命中目标造成雷电伤害
+ * → 触发「连锁闪电」（向最近敌人跳跃、逐跳衰减）→ 自动飞回投掷者并解除其投掷冷却。
  * 由 {@code WindwreathedThunderSpearItem} 的 shift+右键蓄力投掷生成。
  */
 public class WindThunderSpearEntity extends AbstractArrow implements GeoEntity {
@@ -72,7 +73,6 @@ public class WindThunderSpearEntity extends AbstractArrow implements GeoEntity {
     private ItemStack spearItem;
     private boolean returning;
     private boolean dealtDamage;
-    private boolean returnItem = true;
     private float attackDamage;
     private int smite;
     private int baneOfArthropods;
@@ -99,11 +99,10 @@ public class WindThunderSpearEntity extends AbstractArrow implements GeoEntity {
     }
 
     /** 由物品在投掷时调用：写入伤害与附魔加成。 */
-    public void init(Player owner, float attackDamage, boolean returnItem, int smite, int baneOfArthropods, int fireAspect) {
+    public void init(Player owner, float attackDamage, int smite, int baneOfArthropods, int fireAspect) {
         this.cachedOwner = owner;
         this.ownerUUID = owner.getUUID();
         this.attackDamage = attackDamage;
-        this.returnItem = returnItem;
         this.smite = smite;
         this.baneOfArthropods = baneOfArthropods;
         this.fireAspect = fireAspect;
@@ -142,13 +141,16 @@ public class WindThunderSpearEntity extends AbstractArrow implements GeoEntity {
 
     @Override
     public void tick() {
+        if (!this.level().isClientSide && !this.returning
+                && this.tickCount > WindwreathedThunderSpearItem.getThrowCooldownTicks()) {
+            // 兜底：虚影长时间未命中（如投空）也主动飞回，避免残留
+            this.returning = true;
+        }
         if (this.returning && !this.level().isClientSide) {
             this.setNoPhysics(true);
             Entity owner = this.getOwner();
             if (owner == null || !owner.isAlive()) {
-                if (this.returnItem) {
-                    this.spawnAtLocation(this.spearItem.copy(), 0.1F);
-                }
+                // 本体始终留在投掷者手中，虚影丢失时直接消失即可，不掉落物品
                 this.discard();
                 return;
             }
@@ -303,11 +305,9 @@ public class WindThunderSpearEntity extends AbstractArrow implements GeoEntity {
     // ==================== 飞回 ====================
 
     private void returnToOwner(Entity owner) {
-        if (!(owner instanceof Player player) || !this.returnItem) return;
-        ItemStack stack = this.spearItem.copy();
-        if (!player.getInventory().add(stack)) {
-            player.drop(stack, false);
-        }
+        if (!(owner instanceof Player player)) return;
+        // 本体仍留在玩家手中：虚影回归时只需解除投掷冷却
+        WindwreathedThunderSpearItem.clearThrowCooldown(player, this.spearItem);
         this.playSound(SoundEvents.TRIDENT_RETURN, 1.0F, 1.0F);
     }
 
@@ -324,7 +324,6 @@ public class WindThunderSpearEntity extends AbstractArrow implements GeoEntity {
         tag.put("SpearItem", this.spearItem.save(new CompoundTag()));
         tag.putBoolean("Returning", this.returning);
         tag.putBoolean("DealtDamage", this.dealtDamage);
-        tag.putBoolean("ReturnItem", this.returnItem);
         tag.putFloat("AttackDamage", this.attackDamage);
         tag.putInt("Smite", this.smite);
         tag.putInt("BaneOfArthropods", this.baneOfArthropods);
@@ -349,7 +348,6 @@ public class WindThunderSpearEntity extends AbstractArrow implements GeoEntity {
         }
         this.returning = tag.getBoolean("Returning");
         this.dealtDamage = tag.getBoolean("DealtDamage");
-        this.returnItem = tag.getBoolean("ReturnItem");
         this.attackDamage = tag.getFloat("AttackDamage");
         this.smite = tag.getInt("Smite");
         this.baneOfArthropods = tag.getInt("BaneOfArthropods");
