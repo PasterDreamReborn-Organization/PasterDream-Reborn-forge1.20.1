@@ -1495,6 +1495,22 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.可充电", "Chargeable");
         add("message.pasterdream.不可充电", "Can't Chargeable");
         add("button.pasterdream.充电", "Charge");
+        add("message.pasterdream.物品名称:", "Item Name:");
+        add("message.pasterdream.物品ID:", "Item ID:");
+        add("message.pasterdream.最大堆叠数量:", "Max Stack Size:");
+        add("message.pasterdream.是否防火:", "Is Fire Resistant:");
+        add("message.pasterdream.使用动画:", "Use Animation:");
+        add("message.pasterdream.最大耐久:", "Max Damage:");
+        add("message.pasterdream.饱食度:", "Nutrition:");
+        add("message.pasterdream.饱和度:", "Saturation:");
+        add("message.pasterdream.SAN值回复:", "SAN Reply:");
+        add("message.pasterdream.融梦能量回复:", "Melt Dream Energy Reply:");
+        add("message.pasterdream.饮用后返还:", "Return After Drink:");
+        add("message.pasterdream.食用时长:", "Use Duration:");
+        add("message.pasterdream.是否可一直食用:", "Can Always Eat:");
+        add("message.pasterdream.是否为肉类:", "Is Meat:");
+        add("message.pasterdream.食用后获得效果:", "Achieve Effects After Eat:");
+        add("message.pasterdream.,概率:", ",Probability:");
 
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");

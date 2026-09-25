@@ -81,7 +81,7 @@ public class ElixirBottleItem extends Item
                 line.append(Component.translatable(instance.getDescriptionId()));
                 if (instance.getAmplifier() > 0)
                 {
-                    line.append(" ").append(Component.literal(toRoman(instance.getAmplifier() + 1)));
+                    line.append(" ").append(Component.literal(PotionHelper.toRoman(instance.getAmplifier() + 1)));
                 }
                 if (instance.getDuration() > 20)
                 {
@@ -136,29 +136,6 @@ public class ElixirBottleItem extends Item
     {
         return !fluidStack.isEmpty() && fluidStack.getFluid() == ModFluids.POTION.get()
                 && !PotionHelper.getEffectType(fluidStack).isEmpty();
-    }
-
-    /** 等级 → 罗马数字（原版 potency 语言键只覆盖到 V，更高等级需自行生成） */
-    private static final int[] ROMAN_VALUES = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-    private static final String[] ROMAN_SYMBOLS =
-            {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-
-    private static String toRoman(int level)
-    {
-        if (level <= 0)
-        {
-            return String.valueOf(level);
-        }
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < ROMAN_VALUES.length; i++)
-        {
-            while (level >= ROMAN_VALUES[i])
-            {
-                sb.append(ROMAN_SYMBOLS[i]);
-                level -= ROMAN_VALUES[i];
-            }
-        }
-        return sb.toString();
     }
 
     @Override

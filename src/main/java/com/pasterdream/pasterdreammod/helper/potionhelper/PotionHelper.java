@@ -190,4 +190,27 @@ public class PotionHelper
 
         return waterBottle;
     }
+
+    /** 等级 → 罗马数字（原版 potency 语言键只覆盖到 V，更高等级需自行生成） */
+    private static final int[] ROMAN_VALUES = {100, 90, 50, 40, 10, 9, 5, 4, 1};
+    private static final String[] ROMAN_SYMBOLS =
+            {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
+    public static String toRoman(int level)
+    {
+        if (level <= 0)
+        {
+            return String.valueOf(level);
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < ROMAN_VALUES.length; i++)
+        {
+            while (level >= ROMAN_VALUES[i])
+            {
+                stringBuilder.append(ROMAN_SYMBOLS[i]);
+                level -= ROMAN_VALUES[i];
+            }
+        }
+        return stringBuilder.toString();
+    }
 }
