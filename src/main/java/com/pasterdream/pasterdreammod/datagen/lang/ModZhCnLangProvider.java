@@ -2529,7 +2529,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.pink_chicken.page2", "当然，你如果有兴趣让它们繁殖，可以尝试喂给它们染梦果。");
 
         add("pasterdream.seniors_dream.entry.pink_slime", "粉红史莱姆");
-        add("pasterdream.seniors_dream.entry.pink_slime.page0", "这种可爱的粉色小玩意会在染梦世界出现，不过由于颜色和环境过于相近，你大概也已经漏过它好多次了。当然它虽然叫史莱姆，但是我们在主世界见到的那种绿色史莱姆差异巨大。");
+        add("pasterdream.seniors_dream.entry.pink_slime.page0", "这种可爱的粉色小玩意会在染梦世界出现，不过由于它们自身颜色和环境过于相近，你大概也已经和它们擦肩而过好多次了。当然它虽然叫史莱姆，但是我们在主世界见到的那种绿色史莱姆差异巨大。");
         add("pasterdream.seniors_dream.entry.pink_slime.page2", "一方面它们不会仇视玩家，而且好像没有那些更加庞大的个体(看样子是染梦世界让它们有点营养不良)，所以击败它们也不会分裂。另一方面，它产生的粉史莱姆球堆集成块时，性质似乎也不太一样。$(br)粉史莱姆块确实像粘液块一样能防止摔落受伤。但是它更像是蜂蜜块，黏糊糊的根本跳不起来，而且这玩意......这么黏还是重力方块？！");
 
         add("pasterdream.seniors_dream.entry.friendly_shadow_ghost", "友善怨魂");
