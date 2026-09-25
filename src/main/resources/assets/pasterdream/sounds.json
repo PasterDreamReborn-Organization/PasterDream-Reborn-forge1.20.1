@@ -56,7 +56,7 @@
     "sounds": [{"name": "pasterdream:thermal_dagger", "stream": false}]
   },
   "sword_wave": {
-    "sounds": [{"name": "pasterdream:sword_wave", "stream": false}]
+    "sounds": [{"name": "pasterdream:sword_wave", "stream": false, "volume": 0.3}]
   },
   "fox_fire": {
     "sounds": [{"name": "pasterdream:fox_fire", "stream": false}]
