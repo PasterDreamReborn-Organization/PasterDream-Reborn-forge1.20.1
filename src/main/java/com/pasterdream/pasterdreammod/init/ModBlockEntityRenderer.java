@@ -26,6 +26,7 @@ import com.pasterdream.pasterdreammod.world.block.shadowbrazier.ShadowBrazierBlo
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternTileRenderer;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotBlockEntityRenderer;
 import com.pasterdream.pasterdreammod.world.block.windknightaltar.WindKnightAltarBlockEntityRenderer;
+import com.pasterdream.pasterdreammod.world.block.SlumberPalmBlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -67,5 +68,6 @@ public class ModBlockEntityRenderer
         event.registerBlockEntityRenderer(ModBlockEntities.BREAK_WIND_KNIGHT_ALTAR.get(), WindKnightAltarBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.AARONCOS_EYE.get(), AaroncosEyeTileRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.AARONCOS_HAND_CHEST.get(), AaroncosHandChestTileRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.SLUMBER_PALM.get(), SlumberPalmBlockEntityRenderer::new);
     }
 }

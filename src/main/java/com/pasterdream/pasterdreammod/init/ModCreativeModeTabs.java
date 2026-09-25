@@ -436,6 +436,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SLUMBER_PALM_LEAVES.get());
                         output.accept(ModItems.SLUMBER_PALM_PLANKS.get());
                         output.accept(ModItems.SLUMBER_PALM_SAPLING.get());
+                        output.accept(ModItems.SLUMBER_PALM_BLOCK.get());
                         output.accept(ModItems.DYEDREAM_STAIRS.get());
                         output.accept(ModItems.DYEDREAM_SLAB.get());
                         output.accept(ModItems.DYEDREAM_FENCE.get());

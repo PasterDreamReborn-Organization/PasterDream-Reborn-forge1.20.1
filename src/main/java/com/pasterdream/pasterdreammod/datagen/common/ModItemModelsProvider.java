@@ -385,6 +385,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         withExistingParent(ModItems.SLUMBER_PALM_SAPLING.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/slumber_palm_sapling"));
 
+        withExistingParent(ModItems.SLUMBER_PALM_BLOCK.getId().getPath(), modLoc("block/slumber_palm_block"));
+
         withExistingParent(ModItems.WIND_MOOR_SAPLING.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/wind_moor_sapling"));
 

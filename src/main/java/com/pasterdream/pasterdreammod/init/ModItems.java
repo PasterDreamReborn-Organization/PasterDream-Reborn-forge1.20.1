@@ -17,6 +17,8 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.S
 import com.pasterdream.pasterdreammod.world.item.debugtool.DebugToolItem;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.StandingAndWallBlockItem;
+import net.minecraft.core.Direction;
 import com.pasterdream.pasterdreammod.world.block.aaroncoseye.AaroncosEyeDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.aaroncoshandchest.AaroncosHandChestDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowvortex.ShadowVortexDisplayItem;
@@ -1241,6 +1243,8 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.SLUMBER_PALM_PLANKS.get(), new Item.Properties()));
     public static final RegistryObject<Item> SLUMBER_PALM_SAPLING = ITEMS.register("slumber_palm_sapling",
             () -> new BlockItem(ModBlocks.SLUMBER_PALM_SAPLING.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SLUMBER_PALM_BLOCK = ITEMS.register("slumber_palm_block",
+            () -> new StandingAndWallBlockItem(ModBlocks.SLUMBER_PALM_BLOCK.get(), ModBlocks.SLUMBER_PALM_WALL_BLOCK.get(), new Item.Properties(), Direction.DOWN));
     public static final RegistryObject<Item> DYEDREAM_QUARTZ_ORE = ITEMS.register("dyedream_quartz_ore",
             () -> new BlockItem(ModBlocks.DYEDREAM_QUARTZ_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> DYEDREAM_DUST_ORE = ITEMS.register("dyedream_dust_ore",

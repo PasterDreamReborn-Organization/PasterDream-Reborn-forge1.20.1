@@ -2,7 +2,9 @@ package com.pasterdream.pasterdreammod.worldgen.feature;
 
 import com.mojang.serialization.Codec;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
+import com.pasterdream.pasterdreammod.world.block.SlumberPalmWallBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.LeavesBlock;
@@ -83,6 +85,7 @@ public class SlumberPalmTreeFeature extends Feature<SlumberPalmTreeConfiguration
         if (branchCount == 1) {
             // GT 单干：树冠直接放在主干顶端（紧贴顶部原木，不留空隙）
             placeCrown(level, random, trunk, leaves, config, trunkTop);
+            placeCoconuts(level, random, List.of(trunkTop));
             return true;
         }
 
@@ -93,6 +96,7 @@ public class SlumberPalmTreeFeature extends Feature<SlumberPalmTreeConfiguration
         int branchLength = config.branchLength().sample(random);
         double branchSpread = config.branchSpread();
         double step = Math.PI * 2.0 / branchCount;
+        List<BlockPos> crownAnchors = new ArrayList<>(branchCount);
         for (int i = 0; i < branchCount; i++) {
             double angle = i * step;
             double fx = Math.cos(angle);
@@ -110,7 +114,9 @@ public class SlumberPalmTreeFeature extends Feature<SlumberPalmTreeConfiguration
                 tip = cell;
             }
             placeCrown(level, random, trunk, leaves, config, tip);
+            crownAnchors.add(tip);
         }
+        placeCoconuts(level, random, crownAnchors);
         return true;
     }
 
@@ -164,6 +170,36 @@ public class SlumberPalmTreeFeature extends Feature<SlumberPalmTreeConfiguration
                     BlockPos p = crown.offset(cx, -d, cz);
                     if (trunk.contains(p)) continue;
                     placeLeaf(level, p, leaves);
+                }
+            }
+        }
+    }
+
+    /** 在树冠处的枝干（主干顶 / 各分支顶）侧面随机挂 1~3 个眠椰（眠椰块·贴墙形态）。 */
+    private void placeCoconuts(WorldGenLevel level, RandomSource random, List<BlockPos> crownAnchors) {
+        if (crownAnchors.isEmpty()) {
+            return;
+        }
+        int count = 1 + random.nextInt(3);
+        BlockState coconut = ModBlocks.SLUMBER_PALM_WALL_BLOCK.get().defaultBlockState();
+        Direction[] directions = Direction.Plane.HORIZONTAL.stream().toArray(Direction[]::new);
+        for (int i = 0; i < count; i++) {
+            BlockPos anchor = crownAnchors.get(random.nextInt(crownAnchors.size()));
+            for (int j = directions.length - 1; j > 0; j--) {
+                int k = random.nextInt(j + 1);
+                Direction tmp = directions[j];
+                directions[j] = directions[k];
+                directions[k] = tmp;
+            }
+            for (Direction direction : directions) {
+                BlockPos pos = anchor.relative(direction);
+                if (!level.isEmptyBlock(pos)) {
+                    continue;
+                }
+                BlockState state = coconut.setValue(SlumberPalmWallBlock.FACING, direction);
+                if (state.canSurvive(level, pos)) {
+                    level.setBlock(pos, state, 2);
+                    break;
                 }
             }
         }
