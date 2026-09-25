@@ -89,8 +89,7 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
             fluidSlot.y = height * 5 / 8 - 62;
         }
 
-        ItemStack _36SlotItemStack = menu.getSlot(36).getItem();
-        CompoundTag NBT = _36SlotItemStack.getTag();
+        CompoundTag NBT = menu.getSlot(36).getItem().getTag();
         nbtPreviewWidget = new NBTPreviewWidget(5, 5, width / 2 - 95, height - 26, StringHelper.ListStringFromString(NBT == null ? "" : NBT.toString(), width / 2 - 104));
         menu.addEditorSlotListener(itemStack ->
         {
@@ -101,7 +100,7 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
 
         Button NBTEditorButton = Button.builder(Component.translatable("button.pasterdream.编辑NBT"), button ->
         {
-            CompoundTag nbt = _36SlotItemStack.getTag();
+            CompoundTag nbt = menu.getSlot(36).getItem().getTag();
             Minecraft.getInstance().setScreen(new DebugToolNBTEditorScreen(this, nbt == null ? "" : nbt.toString(), savedText ->
             {
                 CompoundTag parsed;
@@ -120,7 +119,7 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
         }).pos(5, height - 21).size(width / 2 - 95, 16).build();
         addRenderableWidget(NBTEditorButton);
 
-        List<String> itemProperties = StringHelper.ListStringFromString(GetItemProperties.getItemProperties(_36SlotItemStack), width / 2 - 104);
+        List<String> itemProperties = StringHelper.ListStringFromString(GetItemProperties.getItemProperties(menu.getSlot(36).getItem()), width / 2 - 104);
         itemPropertiesPreviewWidget = new NBTPreviewWidget(width / 2 + 90, 5, width / 2 - 95, height - 10, itemProperties);
         menu.addEditorSlotListener(itemStack ->
         {
@@ -131,7 +130,7 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
 
         Button ItemHandlerButton = Button.builder(Component.translatable("button.pasterdream.操作ItemHandler"), button ->
         {
-            IItemHandler handler = _36SlotItemStack.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
+            IItemHandler handler = menu.getSlot(36).getItem().getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
             if (handler != null)
             {
                 thisItemIsNotHaveItemHandler = false;
