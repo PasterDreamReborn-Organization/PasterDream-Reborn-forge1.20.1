@@ -31,6 +31,8 @@ textures/block/dyedream_bud_block.png
 textures/block/large_dyedream_bud.png
 textures/block/medium_dyedream_bud.png
 textures/block/small_dyedream_bud.png
+textures/block/molten_gold_block.png
+textures/block/molten_gold_ore.png
 textures/gui/pasterdream_inventory.png
 textures/item/attack_enhance_stone.png
 textures/item/black_metal_ingot.png
@@ -51,12 +53,21 @@ textures/item/glass_cup_of_dyedream_juice.png
 textures/item/glass_cup_of_honey_juice.png
 textures/item/glass_cup_of_uncooked_dyedream_flower_tea.png
 textures/item/glass_cup_of_watermelon_juice.png
-textures/item/glass_jar_of_ink.png
+textures/item/hellfire_pickaxe.png
+textures/item/hellfire_sword.png
+textures/item/inferno_sword.png
 textures/item/luck_enhance_stone.png
 textures/item/melt_dream_axe.png
 textures/item/melt_dream_hoe.png
 textures/item/melt_dream_pickaxe.png
 textures/item/melt_dream_shovel.png
+textures/item/molten_gold_axe.png
+textures/item/molten_gold_hoe.png
+textures/item/molten_gold_ingot.png
+textures/item/molten_gold_nugget.png
+textures/item/molten_gold_pickaxe.png
+textures/item/molten_gold_shovel.png
+textures/item/molten_gold_sword.png
 textures/item/potion_bottle_of_inferno.png
 textures/item/prophecy_card_balance.png
 textures/item/prophecy_card_chaos.png
@@ -68,6 +79,7 @@ textures/item/prophecy_card_sin.png
 textures/item/prophecy_card_sprint.png
 textures/item/prophecy_card_wielding_sword.png
 textures/item/queer_soup.png
+textures/item/raw_molten_gold.png
 textures/item/rust_black_metal_grain.png
 textures/item/sandwich.png
 textures/item/seal_of_the_corrupted.png
@@ -158,6 +170,7 @@ textures/item/fortune_jelly.png
 textures/item/fractured_angel_statue.png
 textures/item/galaxy_jelly.png
 textures/item/glass_cup_of_slumber_palm_club_soda.png
+textures/item/glass_jar_of_ink.png
 textures/item/magnifying_glass_of_sherry.png
 textures/item/martini_glass.png
 textures/item/martini_glass_of_sea_salt_slumber_palm_beverage.png
