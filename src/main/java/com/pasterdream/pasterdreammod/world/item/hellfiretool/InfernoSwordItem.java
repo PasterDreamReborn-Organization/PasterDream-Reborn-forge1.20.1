@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -12,8 +13,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -84,9 +86,10 @@ public class InfernoSwordItem extends SwordItem {
             float mult = attacker instanceof Player pl ? SkillCooldownHelper.getSkillDamageMultiplier(pl) : 1.0f;
             float extraDamage = (SKILL_BASE_DAMAGE + atk + target.getRemainingFireTicks() * FIRE_TICK_DAMAGE_MULTIPLIER) * mult;
             target.invulnerableTime = 0;
-            target.hurt(new DamageSource(target.level().registryAccess()
+            Holder<DamageType> lavaHolder = target.level().registryAccess()
                     .registryOrThrow(net.minecraft.core.registries.Registries.DAMAGE_TYPE)
-                    .getHolderOrThrow(DamageTypes.LAVA)), extraDamage);
+                    .getHolderOrThrow(DamageTypes.LAVA);
+            target.hurt(new DamageSource(lavaHolder, attacker, attacker), extraDamage);
             // 燃烧超过 10 tick → 缓慢
             if (target.getRemainingFireTicks() >= SLOW_FIRE_THRESHOLD) {
                 target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1,

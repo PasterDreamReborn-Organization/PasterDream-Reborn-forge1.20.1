@@ -208,20 +208,19 @@ public class WindAlloyLightningEntity extends Entity {
         AABB area = new AABB(
                 strikePos.x - AOE_XZ, strikePos.y - AOE_Y, strikePos.z - AOE_XZ,
                 strikePos.x + AOE_XZ, strikePos.y + AOE_Y, strikePos.z + AOE_XZ);
-        Player ownerPlayer = cachedOwner instanceof Player pl ? pl : null;
+        Player ownerPlayer = resolveOwner();
+        if (ownerPlayer == null) {
+            return;
+        }
         List<LivingEntity> entities = sl.getEntitiesOfClass(LivingEntity.class, area,
-                e -> e != cachedOwner && e.isAlive() && !isOwnedMinion(e, ownerPlayer));
+                e -> e != ownerPlayer && e.isAlive() && !isOwnedMinion(e, ownerPlayer));
         for (LivingEntity e : entities) {
             e.invulnerableTime = 0;
             float dmg = attackDamage;
             if (smite > 0 && e.getMobType() == MobType.UNDEAD) dmg += smite * SMITE_BANE_DAMAGE;
             if (baneOfArthropods > 0 && e.getMobType() == MobType.ARTHROPOD) dmg += baneOfArthropods * SMITE_BANE_DAMAGE;
             if (fireAspect > 0 && !e.isOnFire()) e.setSecondsOnFire(1);
-            if (ownerPlayer != null) {
-                e.hurt(lightningDamageSource(e, ownerPlayer), dmg);
-            } else {
-                e.hurt(e.level().damageSources().lightningBolt(), dmg);
-            }
+            e.hurt(lightningDamageSource(e, ownerPlayer), dmg);
             if (fireAspect > 0) e.setSecondsOnFire(fireAspect * FIRE_ASPECT_TICK_MULTIPLIER);
         }
     }
@@ -247,6 +246,21 @@ public class WindAlloyLightningEntity extends Entity {
             return fe.resolveOwner() == owner;
         }
         return e.isAlliedTo(owner);
+    }
+
+    @Nullable
+    private Player resolveOwner() {
+        if (cachedOwner instanceof Player pl && !pl.isRemoved()) {
+            return pl;
+        }
+        if (ownerUUID != null && this.level() instanceof ServerLevel sl) {
+            Entity entity = sl.getEntity(ownerUUID);
+            if (entity instanceof Player pl) {
+                cachedOwner = pl;
+                return pl;
+            }
+        }
+        return null;
     }
 
     private LivingEntity resolveTarget() {

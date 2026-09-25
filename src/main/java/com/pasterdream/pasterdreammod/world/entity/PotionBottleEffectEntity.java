@@ -213,6 +213,7 @@ public class PotionBottleEffectEntity extends Entity {
         double r = 3.0;
         Vec3 pos = position();
         LivingEntity thrower = getThrower();
+        if (thrower == null) return;
         sl.getEntitiesOfClass(LivingEntity.class,
                 new AABB(pos.x - r, pos.y - r, pos.z - r, pos.x + r, pos.y + r, pos.z + r),
                 e -> e != thrower)
@@ -221,7 +222,7 @@ public class PotionBottleEffectEntity extends Entity {
                     if (thrower instanceof Player pl) {
                         magic *= MagicDamageHelper.getMagicDamageMultiplier(pl);
                     }
-                    e.hurt(e.damageSources().magic(), magic);
+                    e.hurt(e.damageSources().indirectMagic(this, thrower), magic);
                     e.setSecondsOnFire(4);
                     // 易伤叠加，每波+1级，最高3级
                     var vuln = ModEffects.VULNERABILITY.get();

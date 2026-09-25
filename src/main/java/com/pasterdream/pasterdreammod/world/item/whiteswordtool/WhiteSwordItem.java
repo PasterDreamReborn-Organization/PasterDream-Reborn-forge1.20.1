@@ -170,7 +170,6 @@ public class WhiteSwordItem extends SwordItem {
         int bane = weapon.getEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS);
         int fireAspect = weapon.getEnchantmentLevel(Enchantments.FIRE_ASPECT);
         int sweepingEdge = weapon.getEnchantmentLevel(Enchantments.SWEEPING_EDGE);
-        int looting = weapon.getEnchantmentLevel(Enchantments.MOB_LOOTING);
         double effectiveSpread = PASSIVE_SPREAD + sweepingEdge * SWEEPING_EDGE_SPREAD_BONUS;
 
         for (int i = 0; i < PASSIVE_PROJECTILE_COUNT; i++) {
@@ -195,7 +194,6 @@ public class WhiteSwordItem extends SwordItem {
             projectile.getPersistentData().putInt("paster_fire_aspect", fireAspect);
             projectile.getPersistentData().putInt("paster_sweeping_edge", sweepingEdge);
             projectile.getPersistentData().putInt("paster_knockback", 0);
-            projectile.getPersistentData().putInt("paster_looting", looting);
             serverLevel.addFreshEntity(projectile);
         }
 
@@ -231,7 +229,6 @@ public class WhiteSwordItem extends SwordItem {
         int bane = weapon.getEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS);
         int fireAspect = weapon.getEnchantmentLevel(Enchantments.FIRE_ASPECT);
         int sweepingEdge = weapon.getEnchantmentLevel(Enchantments.SWEEPING_EDGE);
-        int looting = weapon.getEnchantmentLevel(Enchantments.MOB_LOOTING);
         double effectiveSpread = spread + sweepingEdge * SWEEPING_EDGE_SPREAD_BONUS;
 
         for (int i = 0; i < count; i++) {
@@ -258,7 +255,6 @@ public class WhiteSwordItem extends SwordItem {
             projectile.getPersistentData().putInt("paster_fire_aspect", fireAspect);
             projectile.getPersistentData().putInt("paster_sweeping_edge", sweepingEdge);
             projectile.getPersistentData().putInt("paster_knockback", 0);
-            projectile.getPersistentData().putInt("paster_looting", looting);
             serverLevel.addFreshEntity(projectile);
         }
     }
