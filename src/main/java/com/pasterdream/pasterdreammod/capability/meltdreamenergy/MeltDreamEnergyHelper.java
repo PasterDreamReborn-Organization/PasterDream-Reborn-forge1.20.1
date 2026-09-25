@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MaxMeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 
 import java.util.concurrent.atomic.AtomicReference;
@@ -38,7 +39,7 @@ public class MeltDreamEnergyHelper
         });
     }
 
-    public static double getPlayerMeltDreamEnergy(ServerPlayer player)
+    public static double getPlayerMeltDreamEnergy(Player player)
     {
         AtomicReference<Double> meltDreamEnergyValue = new AtomicReference<>(null);
         player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(capability ->
