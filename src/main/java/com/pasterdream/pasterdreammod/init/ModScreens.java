@@ -18,6 +18,7 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.We
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotScreen;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableScreen;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneScreen;
+import com.pasterdream.pasterdreammod.world.item.debugtool.screen.DebugToolBlockEditorScreen;
 import com.pasterdream.pasterdreammod.world.item.debugtool.screen.DebugToolItemEditorScreen;
 import com.pasterdream.pasterdreammod.world.item.debugtool.screen.FluidHandlerScreen;
 import com.pasterdream.pasterdreammod.world.item.debugtool.screen.ItemHandlerScreen;
@@ -55,6 +56,7 @@ public class ModScreens
             MenuScreens.register(ModMenus.SHADOW_BLAST_FURNACE.get(), ShadowBlastFurnaceScreen::new);
             MenuScreens.register(ModMenus.SHADOW_SELECT_END.get(), ShadowSelectEndScreen::new);
             MenuScreens.register(ModMenus.DEBUG_TOOL_ITEM_EDITOR.get(), DebugToolItemEditorScreen::new);
+            MenuScreens.register(ModMenus.DEBUG_TOOL_BLOCK_EDITOR.get(), DebugToolBlockEditorScreen::new);
             MenuScreens.register(ModMenus.ITEM_HANDLER.get(), ItemHandlerScreen::new);
             MenuScreens.register(ModMenus.FLUID_HANDLER.get(), FluidHandlerScreen::new);
         });

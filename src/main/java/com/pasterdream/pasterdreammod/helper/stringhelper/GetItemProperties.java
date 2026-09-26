@@ -6,9 +6,13 @@ import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamDri
 import com.pasterdream.pasterdreammod.world.item.drinkandfooditem.PasterDreamFoodItem;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
 
 public class GetItemProperties
 {
@@ -58,6 +62,23 @@ public class GetItemProperties
                 foodProperties.getEffects().forEach(pair -> stringBuilder.append(PotionHelper.formatTime(pair.getFirst().getDuration())).append(Component.translatable(pair.getFirst().getDescriptionId()).getString()).append(PotionHelper.toRoman(pair.getFirst().getAmplifier() + 1)).append(Component.translatable("message.pasterdream.,概率:").getString()).append(pair.getSecond()).append('\n'));
             }
         }
+
+        var holder = item.builtInRegistryHolder();
+        List<ResourceLocation> tagIds = holder.tags().map(TagKey::location).sorted().toList();
+        StringBuilder buffer = new StringBuilder("ItemTag:\n");
+        if (tagIds.isEmpty())
+        {
+            buffer.append("null");
+        }
+            else
+            {
+                for (ResourceLocation id : tagIds)
+                {
+                    buffer.append("#").append(id).append('\n');
+                }
+            }
+
+        stringBuilder.append(buffer);
 
         return stringBuilder.toString();
     }
