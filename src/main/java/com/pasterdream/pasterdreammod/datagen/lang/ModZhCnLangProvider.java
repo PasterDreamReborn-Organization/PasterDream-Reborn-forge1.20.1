@@ -1712,6 +1712,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.是否具有随机刻:", "是否具有随机刻:");
         add("message.pasterdream.声音类型:", "声音类型:");
         add("message.pasterdream.地图颜色:", "地图颜色:");
+        add("button.pasterdream.存入背包", "存入背包");
 
         // 琴雨梦装备
         add(ModItems.QYM_CAT_EARS.get(), "琴雨梦的猫耳发卡");

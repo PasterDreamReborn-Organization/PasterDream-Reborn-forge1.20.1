@@ -1531,6 +1531,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.是否具有随机刻:", "Is Randomly Ticking:");
         add("message.pasterdream.声音类型:", "Sound Type:");
         add("message.pasterdream.地图颜色:", "Map Color:");
+        add("button.pasterdream.存入背包", "Save To Inventory");
 
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");

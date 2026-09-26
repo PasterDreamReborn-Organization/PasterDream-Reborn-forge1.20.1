@@ -1,13 +1,17 @@
 package com.pasterdream.pasterdreammod.world.item.debugtool.menu;
 
+import com.pasterdream.pasterdreammod.helper.nbthelper.WrappedNBTBlockItem;
 import com.pasterdream.pasterdreammod.init.ModMenus;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.DebugItemEditorMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.FluidHandlerLaunchData;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ItemHandlerLaunchData;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.PlayerEditorSlotData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.StringTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -19,12 +23,16 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.items.IItemHandler;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 
-public class DebugToolBlockEditorMenu extends AbstractContainerMenu
+public class DebugToolBlockEditorMenu extends AbstractContainerMenu implements DebugItemEditorMenu
 {
     private final Container editorContainer;
     private final Player player;
@@ -132,16 +140,7 @@ public class DebugToolBlockEditorMenu extends AbstractContainerMenu
             CompoundTag nbt = blockEntity.saveWithId();
             if (!nbt.isEmpty())
             {
-                CompoundTag wrapper = new CompoundTag();
-                wrapper.put("BlockEntityTag", nbt);
-
-                CompoundTag display = new CompoundTag();
-                ListTag lore = new ListTag();
-                lore.add(StringTag.valueOf("\"(+NBT)\""));
-                display.put("Lore", lore);
-                wrapper.put("display", display);
-
-                itemStack.setTag(wrapper);
+                itemStack.setTag(WrappedNBTBlockItem.wrapper(nbt));
             }
         }
         return itemStack;
@@ -227,6 +226,65 @@ public class DebugToolBlockEditorMenu extends AbstractContainerMenu
         {
             listener.accept(stateString);
         }
+    }
+
+    @Override
+    public MenuProvider asMenuProvider()
+    {
+        return new MenuProvider()
+        {
+            @Override
+            public Component getDisplayName()
+            {
+                return Component.empty();
+            }
+
+            @Override
+            public AbstractContainerMenu createMenu(int id, Inventory playerInventory, Player player)
+            {
+                return new DebugToolBlockEditorMenu(id, playerInventory, blockPosition);
+            }
+        };
+    }
+
+    @Override
+    public ItemHandlerLaunchData provideItemHandlerLaunch()
+    {
+        BlockEntity blockEntity = level.getBlockEntity(blockPosition);
+        if (blockEntity != null)
+        {
+            IItemHandler handler = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
+            if (handler != null)
+            {
+                Runnable onChanged = () ->
+                {
+                    blockEntity.setChanged();
+                    level.sendBlockUpdated(blockPosition, blockEntity.getBlockState(), blockEntity.getBlockState(), 3);
+                };
+                return new ItemHandlerLaunchData(handler, onChanged);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public @Nullable FluidHandlerLaunchData provideFluidHandlerLaunch()
+    {
+        BlockEntity blockEntity = level.getBlockEntity(blockPosition);
+        if (blockEntity != null)
+        {
+            IFluidHandler handler = blockEntity.getCapability(ForgeCapabilities.FLUID_HANDLER).resolve().orElse(null);
+            if (handler != null)
+            {
+                Runnable onChanged = () ->
+                {
+                    blockEntity.setChanged();
+                    level.sendBlockUpdated(blockPosition, blockEntity.getBlockState(), blockEntity.getBlockState(), 3);
+                };
+                return new FluidHandlerLaunchData(handler, onChanged);
+            }
+        }
+        return null;
     }
 
     public BlockEntity getBlockEntity()

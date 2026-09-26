@@ -97,6 +97,7 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, SyncBlockNbtPacket.class, SyncBlockNbtPacket::encode, SyncBlockNbtPacket::new, SyncBlockNbtPacket::handle);
         CHANNEL.registerMessage(id++, SetBlockStatePacket.class, SetBlockStatePacket::encode, SetBlockStatePacket::new, SetBlockStatePacket::handle);
         CHANNEL.registerMessage(id++, SyncBlockStatePacket.class, SyncBlockStatePacket::encode, SyncBlockStatePacket::new, SyncBlockStatePacket::handle);
+        CHANNEL.registerMessage(id++, StoreBlockToInventoryPacket.class, StoreBlockToInventoryPacket::encode, StoreBlockToInventoryPacket::new, StoreBlockToInventoryPacket::handle);
     }
 
     public static void sendMeltDreamEnergySyncPacketToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)

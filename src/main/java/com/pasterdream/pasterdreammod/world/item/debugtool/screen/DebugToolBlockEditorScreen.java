@@ -1,14 +1,18 @@
 package com.pasterdream.pasterdreammod.world.item.debugtool.screen;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.helper.stringhelper.GetBlockProperties;
 import com.pasterdream.pasterdreammod.helper.stringhelper.GetItemProperties;
 import com.pasterdream.pasterdreammod.helper.stringhelper.StringHelper;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
+import com.pasterdream.pasterdreammod.network.debugtool.OpenItemHandlerPacket;
 import com.pasterdream.pasterdreammod.network.debugtool.SetBlockEntityNbtPacket;
 import com.pasterdream.pasterdreammod.network.debugtool.SetBlockStatePacket;
+import com.pasterdream.pasterdreammod.network.debugtool.StoreBlockToInventoryPacket;
 import com.pasterdream.pasterdreammod.network.menu.SetSlotNbtPacket;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ClientItemHandlerContext;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolBlockEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.widget.NBTPreviewWidget;
 import net.minecraft.client.Minecraft;
@@ -22,7 +26,10 @@ import net.minecraft.nbt.TagParser;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.IItemHandler;
 
 import java.util.List;
 
@@ -137,6 +144,36 @@ public class DebugToolBlockEditorScreen extends AbstractContainerScreen<DebugToo
         List<String> blockProperties = StringHelper.ListStringFromString(GetBlockProperties.getBlockProperties(menu.getBlockState(), menu.getLevel(), menu.getBlockPosition()), width / 2 - 104);
         blockPropertiesPreviewWidget = new NBTPreviewWidget(width / 2 + 90, height / 3 + 5, width / 2 - 95, height * 2 / 3 - 10, blockProperties);
         addRenderableWidget(blockPropertiesPreviewWidget);
+
+        Button givePlayerButton = Button.builder(Component.translatable("button.pasterdream.存入背包"), button ->
+        {
+            ModNetwork.CHANNEL.sendToServer(new StoreBlockToInventoryPacket(menu.getBlockPosition()));
+        }).pos(width / 2 + 18, height / 8 - 18).size(48, 16).build();
+        addRenderableWidget(givePlayerButton);
+
+        Button ItemHandlerButton = Button.builder(Component.translatable("button.pasterdream.操作ItemHandler"), button ->
+        {
+            BlockEntity blockEntity = menu.getBlockEntity();
+            if(blockEntity != null)
+            {
+                IItemHandler handler = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
+                if (handler != null)
+                {
+                    thisItemIsNotHaveItemHandler = false;
+                    ClientItemHandlerContext.set(handler);
+                    ModNetwork.CHANNEL.sendToServer(new OpenItemHandlerPacket(menu.containerId, 0));
+                }
+                    else
+                    {
+                        thisItemIsNotHaveItemHandler = true;
+                    }
+            }
+                else
+                {
+                    thisItemIsNotHaveItemHandler = true;
+                }
+        }).pos(width / 2 - 48, height * 3 / 8 - 39).size(96, 16).build();
+        addRenderableWidget(ItemHandlerButton);
     }
 
     @Override
@@ -163,6 +200,11 @@ public class DebugToolBlockEditorScreen extends AbstractContainerScreen<DebugToo
         renderBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         renderTooltip(guiGraphics, mouseX, mouseY);
+
+        if(thisItemIsNotHaveItemHandler)
+        {
+            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 3 / 8 - 18, Component.translatable("message.pasterdream.无ItemHandler").getString(), 0xFFFF0000);
+        }
     }
 
     @Override
