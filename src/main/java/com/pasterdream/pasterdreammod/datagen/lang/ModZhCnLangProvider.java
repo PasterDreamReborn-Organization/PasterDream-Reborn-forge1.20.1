@@ -1694,6 +1694,25 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.是否为肉类:", "是否为肉类:");
         add("message.pasterdream.食用后获得效果:", "食用后获得效果:");
         add("message.pasterdream.,概率:", ",概率:");
+        add("button.pasterdream.编辑BlockState", "编辑BlockState");
+        add("error.pasterdream.无效的BlockState", "无效的BlockState");
+        add("message.pasterdream.方块名称:", "方块名称:");
+        add("message.pasterdream.方块ID:", "方块ID:");
+        add("message.pasterdream.对应物品:", "对应物品:");
+        add("message.pasterdream.自发光亮度:", "自发光亮度:");
+        add("message.pasterdream.亮度遮挡:", "亮度遮挡:");
+        add("message.pasterdream.是否遮挡天空光照:", "是否遮挡天空光照:");
+        add("message.pasterdream.硬度:", "硬度:");
+        add("message.pasterdream.抗爆系数:", "抗爆系数:");
+        add("message.pasterdream.是否可燃:", "是否可燃:");
+        add("message.pasterdream.点燃概率:", "点燃概率:");
+        add("message.pasterdream.摩擦系数:", "摩擦系数:");
+        add("message.pasterdream.速度系数:", "速度系数:");
+        add("message.pasterdream.跳跃提升系数:", "跳跃提升系数:");
+        add("message.pasterdream.是否具有随机刻:", "是否具有随机刻:");
+        add("message.pasterdream.声音类型:", "声音类型:");
+        add("message.pasterdream.地图颜色:", "地图颜色:");
+        add("button.pasterdream.存入背包", "存入背包");
 
         // 琴雨梦装备
         add(ModItems.QYM_CAT_EARS.get(), "琴雨梦的猫耳发卡");

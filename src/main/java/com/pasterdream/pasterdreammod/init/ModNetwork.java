@@ -7,9 +7,7 @@ import com.pasterdream.pasterdreammod.network.blueprint.BlueprintPlacePacket;
 import com.pasterdream.pasterdreammod.network.blueprint.StartBlueprintPlacementPacket;
 import com.pasterdream.pasterdreammod.network.blueprint.UpdateBlueprintPlacingPacket;
 import com.pasterdream.pasterdreammod.network.debugsword.DebugBlockActionPacket;
-import com.pasterdream.pasterdreammod.network.debugtool.EnergyTransferPacket;
-import com.pasterdream.pasterdreammod.network.debugtool.OpenFluidHandlerPacket;
-import com.pasterdream.pasterdreammod.network.debugtool.OpenItemHandlerPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.*;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSlotInteractPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSoundPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSyncPacket;
@@ -95,6 +93,11 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, OpenItemHandlerPacket.class, OpenItemHandlerPacket::encode, OpenItemHandlerPacket::decode, OpenItemHandlerPacket::handle);
         CHANNEL.registerMessage(id++, OpenFluidHandlerPacket.class, OpenFluidHandlerPacket::encode, OpenFluidHandlerPacket::decode, OpenFluidHandlerPacket::handle);
         CHANNEL.registerMessage(id++, EnergyTransferPacket.class, EnergyTransferPacket::encode, EnergyTransferPacket::new, EnergyTransferPacket::handle);
+        CHANNEL.registerMessage(id++, SetBlockEntityNbtPacket.class, SetBlockEntityNbtPacket::encode, SetBlockEntityNbtPacket::new, SetBlockEntityNbtPacket::handle);
+        CHANNEL.registerMessage(id++, SyncBlockNbtPacket.class, SyncBlockNbtPacket::encode, SyncBlockNbtPacket::new, SyncBlockNbtPacket::handle);
+        CHANNEL.registerMessage(id++, SetBlockStatePacket.class, SetBlockStatePacket::encode, SetBlockStatePacket::new, SetBlockStatePacket::handle);
+        CHANNEL.registerMessage(id++, SyncBlockStatePacket.class, SyncBlockStatePacket::encode, SyncBlockStatePacket::new, SyncBlockStatePacket::handle);
+        CHANNEL.registerMessage(id++, StoreBlockToInventoryPacket.class, StoreBlockToInventoryPacket::encode, StoreBlockToInventoryPacket::new, StoreBlockToInventoryPacket::handle);
     }
 
     public static void sendMeltDreamEnergySyncPacketToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)

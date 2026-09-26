@@ -2,8 +2,10 @@ package com.pasterdream.pasterdreammod.world.item.debugtool;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolBlockEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolItemEditorMenu;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -19,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
@@ -73,15 +76,38 @@ public class DebugToolItem extends Item
         Player player = context.getPlayer();
         if (player == null)
         {
-            return InteractionResult.FAIL;
+            return InteractionResult.PASS;
         }
 
         Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
+        BlockPos blockPosition = context.getClickedPos();
 
         if (!level.isClientSide)
         {
+            NetworkHooks.openScreen((ServerPlayer) player, new MenuProvider()
+            {
+                @Override
+                public Component getDisplayName()
+                {
+                    return Component.translatable("gui." + PasterDreamMod.MOD_ID + ".debug_tool_block_editor");
+                }
 
+                @Override
+                public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player)
+                {
+                    return new DebugToolBlockEditorMenu(id, inventory, blockPosition);
+                }
+            },friendlyByteBuf ->
+            {
+                friendlyByteBuf.writeBlockPos(blockPosition);
+
+                BlockEntity blockEntity = level.getBlockEntity(blockPosition);
+                friendlyByteBuf.writeBoolean(blockEntity != null);
+                if (blockEntity != null)
+                {
+                    friendlyByteBuf.writeNbt(blockEntity.saveWithId());
+                }
+            });
         }
 
         return InteractionResult.sidedSuccess(player.level().isClientSide);

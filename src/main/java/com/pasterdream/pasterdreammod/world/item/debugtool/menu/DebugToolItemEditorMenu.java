@@ -102,26 +102,6 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot 
         editorSlotListeners.add(listener);
     }
 
-    public void clearEditorSlotListeners()
-    {
-        editorSlotListeners.clear();
-    }
-
-    private void clearContainer(Container container, Player player)
-    {
-        for (int i = 0; i < container.getContainerSize(); i++)
-        {
-            ItemStack stack = container.removeItemNoUpdate(i);
-            if (!stack.isEmpty())
-            {
-                if (!player.getInventory().add(stack))
-                {
-                    player.drop(stack, false);
-                }
-            }
-        }
-    }
-
     @Override
     public ItemStack quickMoveStack(Player player, int index)
     {

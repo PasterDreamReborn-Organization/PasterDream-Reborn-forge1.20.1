@@ -1513,6 +1513,25 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.是否为肉类:", "Is Meat:");
         add("message.pasterdream.食用后获得效果:", "Achieve Effects After Eat:");
         add("message.pasterdream.,概率:", ",Probability:");
+        add("button.pasterdream.编辑BlockState", "Edit BlockState");
+        add("error.pasterdream.无效的BlockState", "Invalid BlockState");
+        add("message.pasterdream.方块名称:", "Block Name:");
+        add("message.pasterdream.方块ID:", "Block ID:");
+        add("message.pasterdream.对应物品:", "BlockItem:");
+        add("message.pasterdream.自发光亮度:", "LightEmission:");
+        add("message.pasterdream.亮度遮挡:", "Light Weaken:");
+        add("message.pasterdream.是否遮挡天空光照:", "Is Occlusion Sky Light:");
+        add("message.pasterdream.硬度:", "Hardness:");
+        add("message.pasterdream.抗爆系数:", "Explosion Resistance:");
+        add("message.pasterdream.是否可燃:", "Is Flammable:");
+        add("message.pasterdream.点燃概率:", "Flammability:");
+        add("message.pasterdream.摩擦系数:", "Friction:");
+        add("message.pasterdream.速度系数:", "Speed Factor:");
+        add("message.pasterdream.跳跃提升系数:", "Jump Factor:");
+        add("message.pasterdream.是否具有随机刻:", "Is Randomly Ticking:");
+        add("message.pasterdream.声音类型:", "Sound Type:");
+        add("message.pasterdream.地图颜色:", "Map Color:");
+        add("button.pasterdream.存入背包", "Save To Inventory");
 
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");
