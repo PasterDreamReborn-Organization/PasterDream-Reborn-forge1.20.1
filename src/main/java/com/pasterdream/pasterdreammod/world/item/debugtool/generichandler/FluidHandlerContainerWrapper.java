@@ -31,18 +31,7 @@ public class FluidHandlerContainerWrapper implements IFluidContainer
     @Override
     public void setFluid(int index, FluidStack fluidStack)
     {
-        // IFluidHandler 没有 setFluidInTank，用 drain + fill 模拟
-        // 先把这个 tank 里的流体全部抽出
-        FluidStack current = handler.getFluidInTank(index);
-        if (!current.isEmpty())
-        {
-            handler.drain(current, IFluidHandler.FluidAction.EXECUTE);
-        }
-        // 再灌入新流体
-        if (!fluidStack.isEmpty())
-        {
-            handler.fill(fluidStack, IFluidHandler.FluidAction.EXECUTE);
-        }
+
     }
 
     @Override

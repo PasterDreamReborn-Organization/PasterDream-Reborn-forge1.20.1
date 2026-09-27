@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 
-public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot implements DebugItemEditorMenu
+public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot implements IDebugItemHandlerAndFluidHandlerEditorMenu
 {
     private final Container editorContainer;
     private final Player player;

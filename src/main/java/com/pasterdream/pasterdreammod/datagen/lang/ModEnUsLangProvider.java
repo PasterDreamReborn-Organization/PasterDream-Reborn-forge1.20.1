@@ -1490,7 +1490,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("button.pasterdream.编辑NBT", "Edit NBT");
         add("error.pasterdream.无效的NBT", "Invalid NBT");
         add("button.pasterdream.操作ItemHandler", "Operate ItemHandler");
+        add("button.pasterdream.操作FluidHandler", "Operate FluidHandler");
         add("message.pasterdream.无ItemHandler", " Not Have ItemHandler");
+        add("message.pasterdream.无FluidHandler", " Not Have FluidHandler");
         add("message.pasterdream.无EnergyStorage", "Not Have EnergyStorage");
         add("message.pasterdream.可放电", "Dischargeable");
         add("message.pasterdream.不可放电", "Can't Dischargeable");
@@ -1532,6 +1534,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.声音类型:", "Sound Type:");
         add("message.pasterdream.地图颜色:", "Map Color:");
         add("button.pasterdream.存入背包", "Save To Inventory");
+        add("button.pasterdream.取出流体", "Extract Fluid");
+        add("button.pasterdream.存入流体", "Store Fluid");
 
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");

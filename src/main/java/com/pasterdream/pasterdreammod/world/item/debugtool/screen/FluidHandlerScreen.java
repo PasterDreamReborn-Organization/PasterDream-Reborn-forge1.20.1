@@ -6,8 +6,12 @@ import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidSlot;
 import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.init.ModNetwork;
+import com.pasterdream.pasterdreammod.network.debugtool.EnergyTransferPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.FluidTransferPacket;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.FluidHandlerMenu;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
@@ -42,6 +46,18 @@ public class FluidHandlerScreen extends AbstractContainerScreenWithFluidSlot<Flu
         downArrowButton = new DownArrowButton(leftPos + 154, topPos + 57, button -> nextPage());
         addRenderableWidget(upArrowButton);
         addRenderableWidget(downArrowButton);
+
+        Button drainButton = Button.builder(Component.translatable("button.pasterdream.取出流体"), button ->
+        {
+            ModNetwork.CHANNEL.sendToServer(new FluidTransferPacket(menu.containerId, true));
+        }).pos(leftPos - 72, topPos + 45).size(48, 16).build();
+        addRenderableWidget(drainButton);
+
+        Button fillButton = Button.builder(Component.translatable("button.pasterdream.存入流体"), button ->
+        {
+            ModNetwork.CHANNEL.sendToServer(new FluidTransferPacket(menu.containerId, false));
+        }).pos( leftPos - 72, topPos + 109).size(48, 16).build();
+        addRenderableWidget(fillButton);
     }
 
     @Override
@@ -49,6 +65,8 @@ public class FluidHandlerScreen extends AbstractContainerScreenWithFluidSlot<Flu
     {
         GUIBackGroundRender.rendItemHandlerAndFluidHandlerScreen(guiGraphics, leftPos, topPos);
         GUIBackGroundRender.rendPasterDreamInventoryGUI(guiGraphics, leftPos + 3, topPos + 86);
+        GUIBackGroundRender.rendMinecraftSingleSlot(guiGraphics, leftPos - 57, topPos + 76);
+        super.renderBg(guiGraphics, partialTick, mouseX, mouseY);
     }
 
     @Override
