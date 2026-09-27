@@ -36,10 +36,7 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.W
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableMenu;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneMenu;
-import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolBlockEditorMenu;
-import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolItemEditorMenu;
-import com.pasterdream.pasterdreammod.world.item.debugtool.menu.FluidHandlerMenu;
-import com.pasterdream.pasterdreammod.world.item.debugtool.menu.ItemHandlerMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.*;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
 import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.StorageBagMenu;
 import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.LargeStorageBagMenu;
@@ -173,6 +170,7 @@ public class ModMenus
 
     public static final RegistryObject<MenuType<DebugToolItemEditorMenu>> DEBUG_TOOL_ITEM_EDITOR = MENUS.register("debug_tool_item_editor", () -> IForgeMenuType.create((windowId, playerInventory, data) -> new DebugToolItemEditorMenu(windowId, playerInventory)));
     public static final RegistryObject<MenuType<DebugToolBlockEditorMenu>> DEBUG_TOOL_BLOCK_EDITOR = MENUS.register("debug_tool_block_editor", () -> IForgeMenuType.create(DebugToolBlockEditorMenu::new));
+    public static final RegistryObject<MenuType<DebugToolEntityEditorMenu>> DEBUG_TOOL_ENTITY_EDITOR = MENUS.register("debug_tool_entity_editor", () -> IForgeMenuType.create(DebugToolEntityEditorMenu::new));
     public static final RegistryObject<MenuType<ItemHandlerMenu>> ITEM_HANDLER = MENUS.register("item_handler", () -> IForgeMenuType.create(ItemHandlerMenu::new));
     public static final RegistryObject<MenuType<FluidHandlerMenu>> FLUID_HANDLER = MENUS.register("fluid_handler", () -> IForgeMenuType.create(FluidHandlerMenu::new));
 

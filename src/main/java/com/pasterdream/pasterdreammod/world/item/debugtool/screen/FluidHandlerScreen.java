@@ -7,7 +7,6 @@ import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.
 import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
-import com.pasterdream.pasterdreammod.network.debugtool.EnergyTransferPacket;
 import com.pasterdream.pasterdreammod.network.debugtool.FluidTransferPacket;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.FluidHandlerMenu;
 import net.minecraft.client.gui.GuiGraphics;

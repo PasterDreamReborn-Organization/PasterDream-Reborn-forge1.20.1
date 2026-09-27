@@ -78,7 +78,7 @@ public class ItemHandlerScreen extends AbstractContainerScreen<ItemHandlerMenu>
 
     private void prevPage()
     {
-        setPageSlotsNotActive(page);
+        setPageSlotsActive(page, false);
         if(page > 0)
         {
             page--;
@@ -87,12 +87,12 @@ public class ItemHandlerScreen extends AbstractContainerScreen<ItemHandlerMenu>
             {
                 page = (itemSlots.size() - 5) / 32 - 1;
             }
-        setPageSlotsActive(page);
+        setPageSlotsActive(page, true);
     }
 
     private void nextPage()
     {
-        setPageSlotsNotActive(page);
+        setPageSlotsActive(page, false);
         if(page < (itemSlots.size() - 5) / 32 - 1)
         {
             page++;
@@ -101,22 +101,14 @@ public class ItemHandlerScreen extends AbstractContainerScreen<ItemHandlerMenu>
             {
                 page = 0;
             }
-        setPageSlotsActive(page);
+        setPageSlotsActive(page, true);
     }
 
-    private void setPageSlotsActive(int page)
+    private void setPageSlotsActive(int page, boolean isActive)
     {
         for(int i = 32 * page + 36; i < Math.min(itemSlots.size(), 32 * page + 68); i++)
         {
-            ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(true);
-        }
-    }
-
-    private void setPageSlotsNotActive(int page)
-    {
-        for(int i = 32 * page + 36; i < Math.min(itemSlots.size(), 32 * page + 68); i++)
-        {
-            ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(false);
+            ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(isActive);
         }
     }
 
