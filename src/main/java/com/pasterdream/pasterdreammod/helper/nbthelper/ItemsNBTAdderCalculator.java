@@ -22,6 +22,11 @@ public class ItemsNBTAdderCalculator
 
         for(CompoundTag itemNBT : itemsNBT)
         {
+            if(itemNBT == null)
+            {
+                continue;
+            }
+
             if(itemNBT.contains("Enchantments"))
             {
                 isHaveEnchantment = true;
