@@ -1,6 +1,6 @@
 package com.pasterdream.pasterdreammod.network.debugtool;
 
-import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.IDebugItemHandlerAndFluidHandlerEditorMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.IDebugItemHandlerAndFluidHandlerAndEnergyStorageEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ItemHandlerLaunchData;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ServerMenuReturnStack;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.ItemHandlerMenu;
@@ -43,7 +43,7 @@ public class OpenItemHandlerPacket
             if(player != null && player.containerMenu.containerId == packet.menuId)
             {
                 AbstractContainerMenu current = player.containerMenu;
-                if ((current instanceof IDebugItemHandlerAndFluidHandlerEditorMenu editor))
+                if ((current instanceof IDebugItemHandlerAndFluidHandlerAndEnergyStorageEditorMenu editor))
                 {
                     ItemHandlerLaunchData data = editor.provideItemHandlerLaunch();
                     if(data != null)

@@ -4,7 +4,7 @@ import net.minecraft.world.MenuProvider;
 
 import javax.annotation.Nullable;
 
-public interface IDebugItemHandlerAndFluidHandlerEditorMenu
+public interface IDebugItemHandlerAndFluidHandlerAndEnergyStorageEditorMenu
 {
     MenuProvider asMenuProvider();
 
@@ -13,4 +13,10 @@ public interface IDebugItemHandlerAndFluidHandlerEditorMenu
 
     @Nullable
     FluidHandlerLaunchData provideFluidHandlerLaunch();
+
+    @Nullable
+    EnergyStorageLaunchData provideEnergyStorageTarget();
+
+    @Nullable
+    EnergyStorageLaunchData provideEnergyStorageExternal();
 }

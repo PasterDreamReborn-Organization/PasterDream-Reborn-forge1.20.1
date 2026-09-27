@@ -2,10 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.debugtool.menu;
 
 import com.pasterdream.pasterdreammod.helper.nbthelper.WrappedNBTBlockItem;
 import com.pasterdream.pasterdreammod.init.ModMenus;
-import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.IDebugItemHandlerAndFluidHandlerEditorMenu;
-import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.FluidHandlerLaunchData;
-import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ItemHandlerLaunchData;
-import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.PlayerEditorSlotData;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -24,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 import org.jetbrains.annotations.Nullable;
@@ -32,7 +30,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 
-public class DebugToolBlockEditorMenu extends AbstractContainerMenu implements IDebugItemHandlerAndFluidHandlerEditorMenu
+public class DebugToolBlockEditorMenu extends AbstractContainerMenu implements IDebugItemHandlerAndFluidHandlerAndEnergyStorageEditorMenu
 {
     private final Container editorContainer;
     private final Player player;
@@ -41,6 +39,7 @@ public class DebugToolBlockEditorMenu extends AbstractContainerMenu implements I
     private CompoundTag serverBlockNbt;
     private final List<Consumer<CompoundTag>> nbtListeners = new CopyOnWriteArrayList<>();
     private final List<Consumer<String>> blockStateListeners = new CopyOnWriteArrayList<>();
+    public IEnergyStorage energyStorage = null;
 
     public DebugToolBlockEditorMenu(int id, Inventory playerInventory, BlockPos blockPosition)
     {
@@ -107,6 +106,16 @@ public class DebugToolBlockEditorMenu extends AbstractContainerMenu implements I
                 PlayerEditorSlotData.set(player, itemStack, 1);
             }
         });
+
+        BlockEntity blockEntity = getBlockEntity();
+        if(blockEntity != null)
+        {
+            energyStorage = getBlockEntity().getCapability(ForgeCapabilities.ENERGY).resolve().orElse(null);
+        }
+            else
+            {
+                energyStorage = null;
+            }
     }
 
     public DebugToolBlockEditorMenu(int id, Inventory playerInventory, FriendlyByteBuf buffer)
@@ -285,6 +294,46 @@ public class DebugToolBlockEditorMenu extends AbstractContainerMenu implements I
             }
         }
         return null;
+    }
+
+    @Override
+    public EnergyStorageLaunchData provideEnergyStorageTarget()
+    {
+        BlockEntity blockEntity = level.getBlockEntity(blockPosition);
+        if (blockEntity != null)
+        {
+            IEnergyStorage storage = blockEntity.getCapability(ForgeCapabilities.ENERGY).resolve().orElse(null);
+            if (storage != null)
+            {
+                Runnable onChanged = () ->
+                {
+                    blockEntity.setChanged();
+                    level.sendBlockUpdated(blockPosition, blockEntity.getBlockState(), blockEntity.getBlockState(), 3);
+                };
+                return new EnergyStorageLaunchData(storage, onChanged);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public EnergyStorageLaunchData provideEnergyStorageExternal()
+    {
+        ItemStack stack = getSlot(37).getItem();
+        IEnergyStorage storage = stack.getCapability(ForgeCapabilities.ENERGY).resolve().orElse(null);
+        if (storage != null)
+        {
+            Runnable onChanged = () ->
+            {
+                Slot slot = getSlot(37);
+                slot.set(slot.getItem());
+            };
+            return new EnergyStorageLaunchData(storage, onChanged);
+        }
+            else
+            {
+                return null;
+            }
     }
 
     public BlockEntity getBlockEntity()
