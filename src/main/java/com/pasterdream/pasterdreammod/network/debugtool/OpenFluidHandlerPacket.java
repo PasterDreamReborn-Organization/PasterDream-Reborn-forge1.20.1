@@ -1,6 +1,6 @@
 package com.pasterdream.pasterdreammod.network.debugtool;
 
-import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.DebugItemEditorMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.IDebugItemHandlerAndFluidHandlerAndEnergyStorageEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.FluidHandlerLaunchData;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ServerMenuReturnStack;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.FluidHandlerMenu;
@@ -19,23 +19,20 @@ import java.util.function.Supplier;
 public class OpenFluidHandlerPacket
 {
     private final int menuId;
-    private final int slotIndex;
 
-    public OpenFluidHandlerPacket(int menuId, int slotIndex)
+    public OpenFluidHandlerPacket(int menuId)
     {
         this.menuId = menuId;
-        this.slotIndex = slotIndex;
     }
 
-    public void encode(FriendlyByteBuf buf)
+    public void encode(FriendlyByteBuf buffer)
     {
-        buf.writeVarInt(menuId);
-        buf.writeVarInt(slotIndex);
+        buffer.writeVarInt(menuId);
     }
 
     public static OpenFluidHandlerPacket decode(FriendlyByteBuf buffer)
     {
-        return new OpenFluidHandlerPacket(buffer.readVarInt(), buffer.readVarInt());
+        return new OpenFluidHandlerPacket(buffer.readVarInt());
     }
 
     public static void handle(OpenFluidHandlerPacket packet, Supplier<NetworkEvent.Context> context)
@@ -46,14 +43,13 @@ public class OpenFluidHandlerPacket
             if(player != null && player.containerMenu.containerId == packet.menuId)
             {
                 AbstractContainerMenu current = player.containerMenu;
-                if ((current instanceof DebugItemEditorMenu editor))
+                if ((current instanceof IDebugItemHandlerAndFluidHandlerAndEnergyStorageEditorMenu editor))
                 {
                     FluidHandlerLaunchData data = editor.provideFluidHandlerLaunch();
                     if(data != null)
                     {
                         ServerMenuReturnStack.push(player, editor.asMenuProvider());
                         final int totalSlots = data.handler().getTanks();
-                        System.out.println("调用NetworkHooks.openScreen");
                         NetworkHooks.openScreen(player, new MenuProvider()
                         {
                             @Override

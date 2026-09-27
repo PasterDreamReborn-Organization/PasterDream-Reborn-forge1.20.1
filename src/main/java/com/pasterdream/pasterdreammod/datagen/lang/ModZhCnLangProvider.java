@@ -1671,7 +1671,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("button.pasterdream.编辑NBT", "编辑NBT");
         add("error.pasterdream.无效的NBT", "无效的NBT");
         add("button.pasterdream.操作ItemHandler", "操作ItemHandler");
+        add("button.pasterdream.操作FluidHandler", "操作FluidHandler");
         add("message.pasterdream.无ItemHandler", "无ItemHandler");
+        add("message.pasterdream.无FluidHandler", "无FluidHandler");
         add("message.pasterdream.无EnergyStorage", "无EnergyStorage");
         add("message.pasterdream.可放电", "可放电");
         add("message.pasterdream.不可放电", "不可放电");
@@ -1713,6 +1715,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.声音类型:", "声音类型:");
         add("message.pasterdream.地图颜色:", "地图颜色:");
         add("button.pasterdream.存入背包", "存入背包");
+        add("button.pasterdream.取出流体", "取出流体");
+        add("button.pasterdream.存入流体", "存入流体");
 
         // 琴雨梦装备
         add(ModItems.QYM_CAT_EARS.get(), "琴雨梦的猫耳发卡");
