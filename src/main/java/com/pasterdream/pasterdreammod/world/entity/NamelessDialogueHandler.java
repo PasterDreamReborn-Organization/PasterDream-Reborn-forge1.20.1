@@ -26,6 +26,13 @@ public class NamelessDialogueHandler {
     }
 
     public static void onInteract(NamelessEntity entity, ServerPlayer player) {
+        if (entity.isDialogueActive()) {
+            if (!entity.isDialoguePlayer(player)) {
+                sendLine(player, "dialogue.pasterdream.nameless.busy");
+            }
+            return;
+        }
+
         entity.setAnimation("say");
 
         if (!AdvancementHelper.isDone(player, FIRST_DIALOGUE)) {
