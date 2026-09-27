@@ -4,7 +4,7 @@ import net.minecraft.world.MenuProvider;
 
 import javax.annotation.Nullable;
 
-public interface DebugItemEditorMenu
+public interface IDebugItemHandlerAndFluidHandlerEditorMenu
 {
     MenuProvider asMenuProvider();
 

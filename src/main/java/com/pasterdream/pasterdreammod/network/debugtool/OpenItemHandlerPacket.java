@@ -1,6 +1,6 @@
 package com.pasterdream.pasterdreammod.network.debugtool;
 
-import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.DebugItemEditorMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.IDebugItemHandlerAndFluidHandlerEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ItemHandlerLaunchData;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ServerMenuReturnStack;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.ItemHandlerMenu;
@@ -19,23 +19,20 @@ import java.util.function.Supplier;
 public class OpenItemHandlerPacket
 {
     private final int menuId;
-    private final int slotIndex;
 
-    public OpenItemHandlerPacket(int menuId, int slotIndex)
+    public OpenItemHandlerPacket(int menuId)
     {
         this.menuId = menuId;
-        this.slotIndex = slotIndex;
     }
 
     public void encode(FriendlyByteBuf buf)
     {
         buf.writeVarInt(menuId);
-        buf.writeVarInt(slotIndex);
     }
 
     public static OpenItemHandlerPacket decode(FriendlyByteBuf buffer)
     {
-        return new OpenItemHandlerPacket(buffer.readVarInt(), buffer.readVarInt());
+        return new OpenItemHandlerPacket(buffer.readVarInt());
     }
 
     public static void handle(OpenItemHandlerPacket packet, Supplier<NetworkEvent.Context> context)
@@ -46,7 +43,7 @@ public class OpenItemHandlerPacket
             if(player != null && player.containerMenu.containerId == packet.menuId)
             {
                 AbstractContainerMenu current = player.containerMenu;
-                if ((current instanceof DebugItemEditorMenu editor))
+                if ((current instanceof IDebugItemHandlerAndFluidHandlerEditorMenu editor))
                 {
                     ItemHandlerLaunchData data = editor.provideItemHandlerLaunch();
                     if(data != null)

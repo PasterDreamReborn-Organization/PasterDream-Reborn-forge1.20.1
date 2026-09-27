@@ -16,7 +16,7 @@ public class PlayerEditorSlotData
         if (compoundTag.contains(KEY, Tag.TAG_LIST))
         {
             ListTag listTag = compoundTag.getList(KEY, Tag.TAG_COMPOUND);
-            if(slotIndex == 0 || slotIndex == 1)
+            if(slotIndex >= 0 && slotIndex < listTag.size())
             {
                 return ItemStack.of(listTag.getCompound(slotIndex));
             }
@@ -35,10 +35,13 @@ public class PlayerEditorSlotData
             else
             {
                 listTag = new ListTag();
-                listTag.add(new CompoundTag());
-                listTag.add(new CompoundTag());
                 compoundTag.put(KEY, listTag);
             }
+
+        while (listTag.size() <= slotIndex)
+        {
+            listTag.add(new CompoundTag());
+        }
 
         listTag.set(slotIndex, itemStack.isEmpty() ? new CompoundTag() : itemStack.save(new CompoundTag()));
     }

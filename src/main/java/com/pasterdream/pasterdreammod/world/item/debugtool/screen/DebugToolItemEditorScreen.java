@@ -134,7 +134,7 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
             {
                 thisItemIsNotHaveItemHandler = false;
                 ClientItemHandlerContext.set(handler);
-                ModNetwork.CHANNEL.sendToServer(new OpenItemHandlerPacket(menu.containerId, 36));
+                ModNetwork.CHANNEL.sendToServer(new OpenItemHandlerPacket(menu.containerId));
             }
                 else
                 {

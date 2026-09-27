@@ -7,11 +7,9 @@ import com.pasterdream.pasterdreammod.helper.stringhelper.GetBlockProperties;
 import com.pasterdream.pasterdreammod.helper.stringhelper.GetItemProperties;
 import com.pasterdream.pasterdreammod.helper.stringhelper.StringHelper;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
-import com.pasterdream.pasterdreammod.network.debugtool.OpenItemHandlerPacket;
-import com.pasterdream.pasterdreammod.network.debugtool.SetBlockEntityNbtPacket;
-import com.pasterdream.pasterdreammod.network.debugtool.SetBlockStatePacket;
-import com.pasterdream.pasterdreammod.network.debugtool.StoreBlockToInventoryPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.*;
 import com.pasterdream.pasterdreammod.network.menu.SetSlotNbtPacket;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ClientFluidHandlerContext;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ClientItemHandlerContext;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolBlockEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.widget.NBTPreviewWidget;
@@ -29,6 +27,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import java.util.List;
@@ -161,7 +160,7 @@ public class DebugToolBlockEditorScreen extends AbstractContainerScreen<DebugToo
                 {
                     thisItemIsNotHaveItemHandler = false;
                     ClientItemHandlerContext.set(handler);
-                    ModNetwork.CHANNEL.sendToServer(new OpenItemHandlerPacket(menu.containerId, 0));
+                    ModNetwork.CHANNEL.sendToServer(new OpenItemHandlerPacket(menu.containerId));
                 }
                     else
                     {
@@ -174,6 +173,30 @@ public class DebugToolBlockEditorScreen extends AbstractContainerScreen<DebugToo
                 }
         }).pos(width / 2 - 48, height * 3 / 8 - 39).size(96, 16).build();
         addRenderableWidget(ItemHandlerButton);
+
+        Button FluidHandlerButton = Button.builder(Component.translatable("button.pasterdream.操作FluidHandler"), button ->
+        {
+            BlockEntity blockEntity = menu.getBlockEntity();
+            if(blockEntity != null)
+            {
+                IFluidHandler handler = blockEntity.getCapability(ForgeCapabilities.FLUID_HANDLER).resolve().orElse(null);
+                if (handler != null)
+                {
+                    thisItemIsNotHaveFluidHandler = false;
+                    ClientFluidHandlerContext.set(handler);
+                    ModNetwork.CHANNEL.sendToServer(new OpenFluidHandlerPacket(menu.containerId));
+                }
+                    else
+                    {
+                        thisItemIsNotHaveFluidHandler = true;
+                    }
+            }
+                else
+                {
+                    thisItemIsNotHaveFluidHandler = true;
+                }
+        }).pos(width / 2 - 48, height * 5 / 8 - 61).size(96, 16).build();
+        addRenderableWidget(FluidHandlerButton);
     }
 
     @Override
@@ -204,6 +227,11 @@ public class DebugToolBlockEditorScreen extends AbstractContainerScreen<DebugToo
         if(thisItemIsNotHaveItemHandler)
         {
             NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 3 / 8 - 18, Component.translatable("message.pasterdream.无ItemHandler").getString(), 0xFFFF0000);
+        }
+
+        if(thisItemIsNotHaveFluidHandler)
+        {
+            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 5 / 8 - 40, Component.translatable("message.pasterdream.无FluidHandler").getString(), 0xFFFF0000);
         }
     }
 

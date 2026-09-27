@@ -2,7 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.debugtool.menu;
 
 import com.pasterdream.pasterdreammod.helper.nbthelper.WrappedNBTBlockItem;
 import com.pasterdream.pasterdreammod.init.ModMenus;
-import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.DebugItemEditorMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.IDebugItemHandlerAndFluidHandlerEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.FluidHandlerLaunchData;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.ItemHandlerLaunchData;
 import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.PlayerEditorSlotData;
@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 
-public class DebugToolBlockEditorMenu extends AbstractContainerMenu implements DebugItemEditorMenu
+public class DebugToolBlockEditorMenu extends AbstractContainerMenu implements IDebugItemHandlerAndFluidHandlerEditorMenu
 {
     private final Container editorContainer;
     private final Player player;
