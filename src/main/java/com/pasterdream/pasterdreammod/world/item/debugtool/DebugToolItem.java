@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.item.debugtool;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolBlockEditorMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolEntityEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolItemEditorMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -114,13 +115,34 @@ public class DebugToolItem extends Item
     }
 
     @Override
-    public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand)
+    public InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity target, InteractionHand hand)
     {
         if (!player.level().isClientSide)
         {
+            ServerPlayer serverPlayer = (ServerPlayer) player;
+            int entityId = target.getId();
 
+            NetworkHooks.openScreen(serverPlayer, new MenuProvider()
+            {
+                @Override
+                public Component getDisplayName()
+                {
+                    return Component.empty();
+                }
+
+                @Override
+                public AbstractContainerMenu createMenu(int id, Inventory playerInventory, Player player)
+                {
+                    return new DebugToolEntityEditorMenu(id, playerInventory, entityId);
+                }
+            }, buffer ->
+            {
+                buffer.writeVarInt(entityId);
+                CompoundTag nbt = new CompoundTag();
+                target.saveWithoutId(nbt);
+                buffer.writeNbt(nbt);
+            });
         }
-
-        return InteractionResult.sidedSuccess(player.level().isClientSide);
+        return InteractionResult.SUCCESS;
     }
 }

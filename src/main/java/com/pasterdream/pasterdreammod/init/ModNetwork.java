@@ -99,6 +99,8 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, SyncBlockStatePacket.class, SyncBlockStatePacket::encode, SyncBlockStatePacket::new, SyncBlockStatePacket::handle);
         CHANNEL.registerMessage(id++, StoreBlockToInventoryPacket.class, StoreBlockToInventoryPacket::encode, StoreBlockToInventoryPacket::new, StoreBlockToInventoryPacket::handle);
         CHANNEL.registerMessage(id++, FluidTransferPacket.class, FluidTransferPacket::encode, FluidTransferPacket::new, FluidTransferPacket::handle);
+        CHANNEL.registerMessage(id++, SetEntityNbtPacket.class, SetEntityNbtPacket::encode, SetEntityNbtPacket::new, SetEntityNbtPacket::handle);
+        CHANNEL.registerMessage(id++, SyncEntityNbtPacket.class, SyncEntityNbtPacket::encode, SyncEntityNbtPacket::new, SyncEntityNbtPacket::handle);
     }
 
     public static void sendMeltDreamEnergySyncPacketToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)
