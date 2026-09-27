@@ -1821,6 +1821,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 无名对话：等待状态
         add("dialogue.pasterdream.nameless.wait", "无名：......");
+        add("dialogue.pasterdream.nameless.busy", "无名：......（他正专注于与另一人的对话）");
         add("item.pasterdream.shadow_magicball_spawn_egg", "暗影魔法球刷怪蛋");
         add("item.pasterdream.shadow_tune_totem_spawn_egg", "暗影符文塔刷怪蛋");
         add("item.pasterdream.aaroncos_left_hand_spawn_egg", "亚伦柯斯之触-左手刷怪蛋");

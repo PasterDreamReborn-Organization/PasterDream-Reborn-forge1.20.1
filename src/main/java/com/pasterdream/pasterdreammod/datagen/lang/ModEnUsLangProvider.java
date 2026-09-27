@@ -1643,6 +1643,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         // Nameless dialogue: waiting state
         add("dialogue.pasterdream.nameless.wait", "Nameless: ......");
+        add("dialogue.pasterdream.nameless.busy", "Nameless: ...... (He is focused on a conversation with someone else)");
         add("item.pasterdream.shadow_magicball_spawn_egg", "Shadow Magicball Spawn Egg");
         add("item.pasterdream.shadow_tune_totem_spawn_egg", "Shadow Tune Totem Spawn Egg");
         add("item.pasterdream.aaroncos_left_hand_spawn_egg", "Aaroncos's Left Hand Spawn Egg");

@@ -165,6 +165,16 @@ public class NamelessEntity extends PathfinderMob implements GeoEntity {
         }
     }
 
+    /** 是否正处于一段对话中 */
+    public boolean isDialogueActive() {
+        return this.dialoguePhase != DialoguePhase.NONE;
+    }
+
+    /** 当前对话是否属于该玩家 */
+    public boolean isDialoguePlayer(Player player) {
+        return this.dialoguePlayer != null && this.dialoguePlayer.equals(player.getUUID());
+    }
+
     /** 开始一段对话，下一 tick 立即发送第一行 */
     public void startDialogue(ServerPlayer player, DialoguePhase phase) {
         this.dialoguePlayer = player.getUUID();
