@@ -159,7 +159,7 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
                 {
 
                 }
-            ModNetwork.CHANNEL.sendToServer(new EnergyTransferPacket(36, 45, energyAmount));
+            ModNetwork.CHANNEL.sendToServer(new EnergyTransferPacket(menu.containerId, energyAmount));
         }).pos(width / 2 + 10, height * 7 / 8 - 82).size(32, 16).build();
         addRenderableWidget(chargeButton);
     }

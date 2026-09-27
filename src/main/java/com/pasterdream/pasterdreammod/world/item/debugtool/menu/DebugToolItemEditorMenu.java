@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 
-public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot implements IDebugItemHandlerAndFluidHandlerEditorMenu
+public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot implements IDebugItemHandlerAndFluidHandlerAndEnergyStorageEditorMenu
 {
     private final Container editorContainer;
     private final Player player;
@@ -197,6 +197,46 @@ public class DebugToolItemEditorMenu extends AbstractContainerMenuWithFluidSlot 
         {
             Runnable onChanged = () -> PlayerEditorSlotData.set(player, itemStack, 0);
             return new FluidHandlerLaunchData(handler, onChanged);
+        }
+            else
+            {
+                return null;
+            }
+    }
+
+    @Override
+    public EnergyStorageLaunchData provideEnergyStorageTarget()
+    {
+        ItemStack stack = getSlot(36).getItem();
+        IEnergyStorage storage = stack.getCapability(ForgeCapabilities.ENERGY).resolve().orElse(null);
+        if (storage != null)
+        {
+            Runnable onChanged = () ->
+            {
+                Slot slot = getSlot(36);
+                slot.set(slot.getItem());
+            };
+            return new EnergyStorageLaunchData(storage, onChanged);
+        }
+            else
+            {
+                return null;
+            }
+    }
+
+    @Override
+    public EnergyStorageLaunchData provideEnergyStorageExternal()
+    {
+        ItemStack stack = getSlot(45).getItem();
+        IEnergyStorage storage = stack.getCapability(ForgeCapabilities.ENERGY).resolve().orElse(null);
+        if (storage != null)
+        {
+            Runnable onChanged = () ->
+            {
+                Slot slot = getSlot(45);
+                slot.set(slot.getItem());
+            };
+            return new EnergyStorageLaunchData(storage, onChanged);
         }
             else
             {

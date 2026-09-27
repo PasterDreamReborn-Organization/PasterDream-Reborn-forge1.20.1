@@ -16,6 +16,7 @@ import com.pasterdream.pasterdreammod.world.item.debugtool.widget.NBTPreviewWidg
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.commands.arguments.blocks.BlockStateParser;
 import net.minecraft.core.registries.Registries;
@@ -27,6 +28,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 
@@ -197,6 +199,26 @@ public class DebugToolBlockEditorScreen extends AbstractContainerScreen<DebugToo
                 }
         }).pos(width / 2 - 48, height * 5 / 8 - 61).size(96, 16).build();
         addRenderableWidget(FluidHandlerButton);
+
+        EditBox amountBox = new EditBox(Minecraft.getInstance().font, width / 2 + 44, height * 7 / 8 - 82,  36, 16, Component.literal("FE"));
+        amountBox.setValue("0");
+        amountBox.setMaxLength(10);
+        addRenderableWidget(amountBox);
+
+        Button chargeButton = Button.builder(Component.translatable("button.pasterdream.充电"), button ->
+        {
+            int energyAmount = 0;
+            try
+            {
+                energyAmount = Integer.parseInt(amountBox.getValue().trim());
+            }
+                catch (NumberFormatException e)
+                {
+
+                }
+            ModNetwork.CHANNEL.sendToServer(new EnergyTransferPacket(menu.containerId, energyAmount));
+        }).pos(width / 2 + 10, height * 7 / 8 - 82).size(32, 16).build();
+        addRenderableWidget(chargeButton);
     }
 
     @Override
@@ -233,6 +255,36 @@ public class DebugToolBlockEditorScreen extends AbstractContainerScreen<DebugToo
         {
             NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 5 / 8 - 40, Component.translatable("message.pasterdream.无FluidHandler").getString(), 0xFFFF0000);
         }
+
+        if(menu.energyStorage == null)
+        {
+            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 7 / 8 - 87, Component.translatable("message.pasterdream.无EnergyStorage").getString(), 0xFFFF0000);
+            guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable("message.pasterdream.不可放电"), width / 2 - 80, height * 7 / 8 - 82, 0xFFFF0000, false);
+            guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable("message.pasterdream.不可充电"), width / 2 - 80, height * 7 / 8 - 73, 0xFFFF0000, false);
+        }
+            else
+            {
+                IEnergyStorage energyStorage = menu.energyStorage;
+                NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 7 / 8 - 87, energyStorage.getEnergyStored() + "FE/" + energyStorage.getMaxEnergyStored() + "FE", 0xFF000000);
+
+                if(energyStorage.canExtract())
+                {
+                    guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable("message.pasterdream.可放电"), width / 2 - 80, height * 7 / 8 - 82, 0xFF00FF00, false);
+                }
+                    else
+                    {
+                        guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable("message.pasterdream.不可放电"), width / 2 - 80, height * 7 / 8 - 82, 0xFFFF0000, false);
+                    }
+
+                if(energyStorage.canReceive())
+                {
+                    guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable("message.pasterdream.可充电"), width / 2 - 80, height * 7 / 8 - 73, 0xFF00FF00, false);
+                }
+                    else
+                    {
+                        guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable("message.pasterdream.不可充电"), width / 2 - 80, height * 7 / 8 - 73, 0xFFFF0000, false);
+                    }
+            }
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.network.debugtool;
 
 import com.pasterdream.pasterdreammod.helper.energycalculator.EnergyCalculator;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.EnergyStorageLaunchData;
+import com.pasterdream.pasterdreammod.world.item.debugtool.generichandler.IDebugItemHandlerAndFluidHandlerAndEnergyStorageEditorMenu;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -13,28 +15,24 @@ import java.util.function.Supplier;
 
 public class EnergyTransferPacket
 {
-    private final int fromSlotIndex;
-    private final int toSlotIndex;
+    private final int menuId;
     private final int amount;
 
-    public EnergyTransferPacket(int fromSlotIndex, int toSlotIndex, int amount)
+    public EnergyTransferPacket(int menuId, int amount)
     {
-        this.fromSlotIndex = fromSlotIndex;
-        this.toSlotIndex = toSlotIndex;
+        this.menuId = menuId;
         this.amount = amount;
     }
 
     public EnergyTransferPacket(FriendlyByteBuf buffer)
     {
-        this.fromSlotIndex = buffer.readVarInt();
-        this.toSlotIndex = buffer.readVarInt();
+        this.menuId = buffer.readVarInt();
         this.amount = buffer.readVarInt();
     }
 
     public void encode(FriendlyByteBuf buffer)
     {
-        buffer.writeVarInt(fromSlotIndex);
-        buffer.writeVarInt(toSlotIndex);
+        buffer.writeVarInt(menuId);
         buffer.writeVarInt(amount);
     }
 
@@ -43,36 +41,33 @@ public class EnergyTransferPacket
         context.get().enqueueWork(() ->
         {
             ServerPlayer player = context.get().getSender();
-            if(player != null)
+            if (player != null && player.containerMenu.containerId == packet.menuId && player.containerMenu instanceof IDebugItemHandlerAndFluidHandlerAndEnergyStorageEditorMenu menu && packet.amount != 0)
             {
-                AbstractContainerMenu menu = player.containerMenu;
-
-                if(packet.amount != 0)
+                EnergyStorageLaunchData external = menu.provideEnergyStorageExternal();
+                EnergyStorageLaunchData target = menu.provideEnergyStorageTarget();
+                if (external != null && target != null)
                 {
-                    Slot dischargeItemSlot;
-                    Slot chargeItemSlot;
+                    IEnergyStorage disCharge;
+                    IEnergyStorage charge;
+                    int amount;
 
-                    if(packet.amount > 0)
+                    if (packet.amount > 0)
                     {
-                        dischargeItemSlot = menu.getSlot(packet.toSlotIndex);
-                        chargeItemSlot = menu.getSlot(packet.fromSlotIndex);
+                        disCharge = external.handler();
+                        charge = target.handler();
+                        amount = packet.amount;;
                     }
                         else
                         {
-                            dischargeItemSlot = menu.getSlot(packet.fromSlotIndex);
-                            chargeItemSlot = menu.getSlot(packet.toSlotIndex);
+                            disCharge = target.handler();
+                            charge = external.handler();
+                            amount = -packet.amount;
                         }
 
-                    IEnergyStorage discharge = dischargeItemSlot.getItem().getCapability(ForgeCapabilities.ENERGY).resolve().orElse(null);
-                    IEnergyStorage charge = chargeItemSlot.getItem().getCapability(ForgeCapabilities.ENERGY).resolve().orElse(null);
-
-                    if (discharge != null && charge != null)
-                    {
-                        EnergyCalculator.calculate(discharge, charge, packet.amount);
-                        dischargeItemSlot.set(dischargeItemSlot.getItem());
-                        chargeItemSlot.set(chargeItemSlot.getItem());
-                        menu.broadcastChanges();
-                    }
+                    EnergyCalculator.calculate(disCharge, charge, amount);
+                    external.onChanged().run();
+                    target.onChanged().run();
+                    player.containerMenu.broadcastChanges();
                 }
             }
         });
