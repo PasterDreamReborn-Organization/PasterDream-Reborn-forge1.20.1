@@ -87,6 +87,11 @@ public class ElixirBottleItem extends Item
                 {
                     line.append(" (").append(MobEffectUtil.formatDuration(instance, 1.0F)).append(")");
                 }
+                else
+                    if(instance.getDuration() == -1)
+                    {
+                        line.append(" (∞)");
+                    }
                 line.withStyle(instance.getEffect().getCategory().getTooltipFormatting());
                 tooltip.add(line);
             }

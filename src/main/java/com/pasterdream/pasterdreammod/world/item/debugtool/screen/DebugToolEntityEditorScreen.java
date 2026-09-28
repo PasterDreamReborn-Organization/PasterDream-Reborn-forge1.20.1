@@ -5,12 +5,16 @@ import com.pasterdream.pasterdreammod.component.arrowbutton.DownArrowButton;
 import com.pasterdream.pasterdreammod.component.arrowbutton.UpArrowButton;
 import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.helper.stringhelper.GetEntityProperties;
+import com.pasterdream.pasterdreammod.helper.stringhelper.GetItemProperties;
 import com.pasterdream.pasterdreammod.helper.stringhelper.StringHelper;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
+import com.pasterdream.pasterdreammod.network.debugtool.EntityDiscardPacket;
 import com.pasterdream.pasterdreammod.network.debugtool.SetEntityNbtPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.StoreBlockToInventoryPacket;
+import com.pasterdream.pasterdreammod.network.debugtool.StoreEntityToInventoryPacket;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolEntityEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.slot.ActiveStatusChangeableSlot;
-import com.pasterdream.pasterdreammod.world.item.debugtool.slot.DelegatedSlot;
 import com.pasterdream.pasterdreammod.world.item.debugtool.widget.NBTPreviewWidget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -29,6 +33,7 @@ public class DebugToolEntityEditorScreen extends AbstractContainerScreen<DebugTo
     private NBTPreviewWidget nbtPreviewWidget;
     private NBTPreviewWidget entityPropertiesPreviewWidget;
     private List<Slot> itemSlots;
+    private boolean isLivingEntity;
     private int curiosSlotPageSize;
     private int curiosSlotCurrentPage = 0;
     private UpArrowButton curiosUpArrowButton;
@@ -43,17 +48,32 @@ public class DebugToolEntityEditorScreen extends AbstractContainerScreen<DebugTo
         super(menu, playerInventory, title);
 
         itemSlots = menu.slots;
-        for(int i = 49; i < 43 + menu.getCuriosSlotCount(); i++)
-        {
-            ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(false);
-        }
-        curiosSlotPageSize = Math.max(1, (menu.getCuriosSlotCount() + 5) / 6);
+        isLivingEntity = menu.getIsLivingEntity();
 
-        for(int i = 49 + menu.getCuriosSlotCount(); i < 43 + menu.getCuriosSlotCount() + menu.getItemHandlerSlotCount(); i++)
+        if(isLivingEntity)
         {
-            ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(false);
+            for(int i = 49; i < 43 + menu.getCuriosSlotCount(); i++)
+            {
+                ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(false);
+            }
+            curiosSlotPageSize = Math.max(1, (menu.getCuriosSlotCount() + 5) / 6);
+
+            for(int i = 49 + menu.getCuriosSlotCount(); i < 43 + menu.getCuriosSlotCount() + menu.getItemHandlerSlotCount(); i++)
+            {
+                ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(false);
+            }
+            itemHandlerPageSize = Math.max(1, (menu.getItemHandlerSlotCount() + 5) / 6);
         }
-        itemHandlerPageSize = Math.max(1, (menu.getItemHandlerSlotCount() + 5) / 6);
+            else
+            {
+                curiosSlotPageSize = 1;
+
+                for(int i = 43; i < 37 + menu.getItemHandlerSlotCount(); i++)
+                {
+                    ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(false);
+                }
+                itemHandlerPageSize = Math.max(1, (menu.getItemHandlerSlotCount() + 5) / 6);
+            }
     }
 
     @Override
@@ -84,29 +104,40 @@ public class DebugToolEntityEditorScreen extends AbstractContainerScreen<DebugTo
                         slot.y = height / 8 - 18;
                     }
                     else
-                        if(index == 37 || index == 38)
+                        if(isLivingEntity)
                         {
-                            slot.x = width / 2 - 62 + 18 * (index - 37);
-                            slot.y = height * 3 / 8 - 39;
-                        }
-                        else
-                            if(index >= 39 && index <= 42)
+                            if(index == 37 || index == 38)
                             {
-                                slot.x = width / 2 - 8 + 18 * (index - 39);
+                                slot.x = width / 2 - 62 + 18 * (index - 37);
                                 slot.y = height * 3 / 8 - 39;
                             }
                             else
-                                if(index >= 43 && index < 43 + menu.getCuriosSlotCount())
+                                if(index >= 39 && index <= 42)
                                 {
-                                    slot.x = width / 2 - 80 + 18 * ((index - 43) % 6);
-                                    slot.y =  height * 5 / 8 - 61;
+                                    slot.x = width / 2 - 8 + 18 * (index - 39);
+                                    slot.y = height * 3 / 8 - 39;
                                 }
                                 else
-                                    if(index >= 43 + menu.getCuriosSlotCount() && index < 43 + menu.getCuriosSlotCount() + menu.getItemHandlerSlotCount())
+                                    if(index >= 43 && index < 43 + menu.getCuriosSlotCount())
                                     {
-                                        slot.x = width / 2 - 80 + 18 * ((index - menu.getCuriosSlotCount() - 43) % 6);
-                                        slot.y =  height * 7 / 8 - 82;
+                                        slot.x = width / 2 - 80 + 18 * ((index - 43) % 6);
+                                        slot.y =  height * 5 / 8 - 61;
                                     }
+                                    else
+                                        if(index >= 43 + menu.getCuriosSlotCount() && index < 43 + menu.getCuriosSlotCount() + menu.getItemHandlerSlotCount())
+                                        {
+                                            slot.x = width / 2 - 80 + 18 * ((index - menu.getCuriosSlotCount() - 43) % 6);
+                                            slot.y =  height * 7 / 8 - 82;
+                                        }
+                        }
+                            else
+                            {
+                                if(index >= 37 && index < 37 + menu.getItemHandlerSlotCount())
+                                {
+                                    slot.x = width / 2 - 80 + 18 * ((index - menu.getCuriosSlotCount() - 37) % 6);
+                                    slot.y =  height * 7 / 8 - 82;
+                                }
+                            }
         }
 
         CompoundTag NBT = menu.getEntityNBT();
@@ -137,6 +168,19 @@ public class DebugToolEntityEditorScreen extends AbstractContainerScreen<DebugTo
         menu.clearNbtListeners();
         menu.addNbtListener(nbt -> nbtPreviewWidget.setListString(StringHelper.ListStringFromString(nbt == null ? "" : nbt.toString(), width / 2 - 104)));
 
+        Button givePlayerButton = Button.builder(Component.translatable("button.pasterdream.存入背包"), button ->
+        {
+            ModNetwork.CHANNEL.sendToServer(new StoreEntityToInventoryPacket(menu.getEntityId()));
+            ModNetwork.CHANNEL.sendToServer(new EntityDiscardPacket(menu.getEntityId()));
+        }).pos(width / 2 + 18, height / 8 - 18).size(48, 16).build();
+        addRenderableWidget(givePlayerButton);
+
+        Button discardEntityButton = Button.builder(Component.translatable("button.pasterdream.删除实体"), button ->
+        {
+            ModNetwork.CHANNEL.sendToServer(new EntityDiscardPacket(menu.getEntityId()));
+        }).pos(width / 2 - 66, height / 8 - 18).size(48, 16).build();
+        addRenderableWidget(discardEntityButton);
+
         curiosUpArrowButton = new UpArrowButton(width / 2 + 28, height * 5 / 8 - 64, button -> curiosPrevPage());
         curiosDownArrowButton = new DownArrowButton(width / 2 + 66, height * 5 / 8 - 64, button -> curiosNextPage());
         addRenderableWidget(curiosUpArrowButton);
@@ -146,6 +190,10 @@ public class DebugToolEntityEditorScreen extends AbstractContainerScreen<DebugTo
         itemHandlerDownArrowButton = new DownArrowButton(width / 2 + 66, height * 7 / 8 - 85, button -> itemHandlerNextPage());
         addRenderableWidget(itemHandlerUpArrowButton);
         addRenderableWidget(itemHandlerDownArrowButton);
+
+        List<String> entityProperties = StringHelper.ListStringFromString(GetEntityProperties.getEntityProperties(menu.getEntity()), width / 2 - 104);
+        entityPropertiesPreviewWidget = new NBTPreviewWidget(width / 2 + 90, 5, width / 2 - 95, height - 10, entityProperties);
+        addRenderableWidget(entityPropertiesPreviewWidget);
     }
 
     @Override
@@ -214,10 +262,10 @@ public class DebugToolEntityEditorScreen extends AbstractContainerScreen<DebugTo
         {
             return true;
         }
-        else
-        {
-            return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
-        }
+            else
+            {
+                return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
+            }
     }
 
     @Override
@@ -284,19 +332,33 @@ public class DebugToolEntityEditorScreen extends AbstractContainerScreen<DebugTo
 
     private void setCuriosSlotActive(int page, boolean isActive)
     {
-        int startIndex = page * 6 + 43;
-        for(int i = startIndex; i < Math.min(startIndex + 6, 43 + menu.getCuriosSlotCount()); i++)
+        if(isLivingEntity)
         {
-            ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(isActive);
+            int startIndex = page * 6 + 43;
+            for(int i = startIndex; i < Math.min(startIndex + 6, 43 + menu.getCuriosSlotCount()); i++)
+            {
+                ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(isActive);
+            }
         }
     }
 
     private void setItemHandlerSlotActive(int page, boolean isActive)
     {
-        int startIndex = page * 6 + menu.getCuriosSlotCount() + 43;
-        for(int i = startIndex; i < Math.min(startIndex + 6, 43 + menu.getCuriosSlotCount() + menu.getItemHandlerSlotCount()); i++)
+        if(isLivingEntity)
         {
-            ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(isActive);
+            int startIndex = page * 6 + menu.getCuriosSlotCount() + 43;
+            for(int i = startIndex; i < Math.min(startIndex + 6, 43 + menu.getCuriosSlotCount() + menu.getItemHandlerSlotCount()); i++)
+            {
+                ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(isActive);
+            }
         }
+            else
+            {
+                int startIndex = page * 6 + 37;
+                for(int i = startIndex; i < Math.min(startIndex + 6, 37 + menu.getItemHandlerSlotCount()); i++)
+                {
+                    ((ActiveStatusChangeableSlot)(itemSlots.get(i))).setActive(isActive);
+                }
+            }
     }
 }
