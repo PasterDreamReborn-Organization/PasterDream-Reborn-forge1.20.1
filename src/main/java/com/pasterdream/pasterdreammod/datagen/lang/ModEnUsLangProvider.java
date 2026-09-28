@@ -1536,6 +1536,15 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("button.pasterdream.存入背包", "Save To Inventory");
         add("button.pasterdream.取出流体", "Extract Fluid");
         add("button.pasterdream.存入流体", "Store Fluid");
+        add("button.pasterdream.删除实体", "Delete Entity");
+        add("message.pasterdream.实体名称:", "Entity Name:");
+        add("message.pasterdream.实体ID:", "Entity ID:");
+        add("message.pasterdream.实体类型:", "Entity Type:");
+        add("message.pasterdream.实体UUID:", "Entity UUID:");
+        add("message.pasterdream.最大生命值:", "Max Health:");
+        add("message.pasterdream.当前生命值:", "Current Health:");
+        add("message.pasterdream.伤害吸收:", "Absorption:");
+        add("message.pasterdream.生物效果:", "Mob Effect:");
 
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");

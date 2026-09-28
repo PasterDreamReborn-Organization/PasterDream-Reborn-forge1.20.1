@@ -79,19 +79,24 @@ public class PotionHelper
 
     public static String formatTime(int ticks)
     {
-        if (ticks == 0 || ticks == 1)
+        if(ticks == -1)
         {
-            return "";
+            return "∞";
         }
         else
-            if (ticks < 72000)
+            if (ticks == 0 || ticks == 1)
             {
-                return (String.format("%02d", (ticks / 1200)) + ":" + String.format("%02d", ((ticks % 1200) / 20)));
+                return "";
             }
-                else
+            else
+                if (ticks < 72000)
                 {
-                    return (String.format("%02d", (ticks / 72000)) + ":" + String.format("%02d", ((ticks % 72000) / 1200)) + ":" + String.format("%02d", ((ticks % 1200) / 20)));
+                    return (String.format("%02d", (ticks / 1200)) + ":" + String.format("%02d", ((ticks % 1200) / 20)));
                 }
+                    else
+                    {
+                        return (String.format("%02d", (ticks / 72000)) + ":" + String.format("%02d", ((ticks % 72000) / 1200)) + ":" + String.format("%02d", ((ticks % 1200) / 20)));
+                    }
     }
 
     public static int getMixingPotionColor(List<GenericMobEffect> effectList)

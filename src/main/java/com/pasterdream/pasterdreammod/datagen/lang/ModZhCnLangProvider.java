@@ -1717,6 +1717,15 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("button.pasterdream.存入背包", "存入背包");
         add("button.pasterdream.取出流体", "取出流体");
         add("button.pasterdream.存入流体", "存入流体");
+        add("button.pasterdream.删除实体", "删除实体");
+        add("message.pasterdream.实体名称:", "实体名称:");
+        add("message.pasterdream.实体ID:", "实体ID:");
+        add("message.pasterdream.实体类型:", "实体类型:");
+        add("message.pasterdream.实体UUID:", "实体UUID:");
+        add("message.pasterdream.最大生命值:", "最大生命值:");
+        add("message.pasterdream.当前生命值:", "当前生命值:");
+        add("message.pasterdream.伤害吸收:", "伤害吸收:");
+        add("message.pasterdream.生物效果:", "生物效果:");
 
         // 琴雨梦装备
         add(ModItems.QYM_CAT_EARS.get(), "琴雨梦的猫耳发卡");

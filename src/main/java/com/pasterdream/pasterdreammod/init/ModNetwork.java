@@ -101,6 +101,8 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, FluidTransferPacket.class, FluidTransferPacket::encode, FluidTransferPacket::new, FluidTransferPacket::handle);
         CHANNEL.registerMessage(id++, SetEntityNbtPacket.class, SetEntityNbtPacket::encode, SetEntityNbtPacket::new, SetEntityNbtPacket::handle);
         CHANNEL.registerMessage(id++, SyncEntityNbtPacket.class, SyncEntityNbtPacket::encode, SyncEntityNbtPacket::new, SyncEntityNbtPacket::handle);
+        CHANNEL.registerMessage(id++, StoreEntityToInventoryPacket.class, StoreEntityToInventoryPacket::encode, StoreEntityToInventoryPacket::new, StoreEntityToInventoryPacket::handle);
+        CHANNEL.registerMessage(id++, EntityDiscardPacket.class, EntityDiscardPacket::encode, EntityDiscardPacket::new, EntityDiscardPacket::handle);
     }
 
     public static void sendMeltDreamEnergySyncPacketToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)

@@ -3,17 +3,14 @@ package com.pasterdream.pasterdreammod.world.item.debugtool;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolBlockEditorMenu;
-import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolEntityEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolItemEditorMenu;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -112,37 +109,5 @@ public class DebugToolItem extends Item
         }
 
         return InteractionResult.sidedSuccess(player.level().isClientSide);
-    }
-
-    @Override
-    public InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity target, InteractionHand hand)
-    {
-        if (!player.level().isClientSide)
-        {
-            ServerPlayer serverPlayer = (ServerPlayer) player;
-            int entityId = target.getId();
-
-            NetworkHooks.openScreen(serverPlayer, new MenuProvider()
-            {
-                @Override
-                public Component getDisplayName()
-                {
-                    return Component.empty();
-                }
-
-                @Override
-                public AbstractContainerMenu createMenu(int id, Inventory playerInventory, Player player)
-                {
-                    return new DebugToolEntityEditorMenu(id, playerInventory, entityId);
-                }
-            }, buffer ->
-            {
-                buffer.writeVarInt(entityId);
-                CompoundTag nbt = new CompoundTag();
-                target.saveWithoutId(nbt);
-                buffer.writeNbt(nbt);
-            });
-        }
-        return InteractionResult.SUCCESS;
     }
 }

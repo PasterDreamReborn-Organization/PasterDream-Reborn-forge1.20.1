@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item.debugtool.menu;
 
+import com.pasterdream.pasterdreammod.helper.itemwithnbt.spawneggwithnbt.GetSpawnEgg;
 import com.pasterdream.pasterdreammod.init.ModMenus;
 import com.pasterdream.pasterdreammod.world.item.debugtool.slot.ActiveStatusChangeableSlot;
 import com.pasterdream.pasterdreammod.world.item.debugtool.slot.DelegatedSlot;
@@ -12,6 +13,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.npc.InventoryCarrier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -21,7 +23,7 @@ import net.minecraft.world.item.SpawnEggItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
+import net.minecraftforge.items.wrapper.InvWrapper;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.List;
@@ -34,6 +36,7 @@ public class DebugToolEntityEditorMenu extends AbstractContainerMenu
     private final int entityId;
     private CompoundTag serverEntityNbt;
     private final List<Consumer<CompoundTag>> nbtListeners = new CopyOnWriteArrayList<>();
+    private boolean isLivingEntity = false;
     private int curiosSlotCount = 0;
     private int itemHandlerSlotCount = 0;
 
@@ -71,12 +74,13 @@ public class DebugToolEntityEditorMenu extends AbstractContainerMenu
     {
         if(entity instanceof LivingEntity livingEntity)
         {
+            isLivingEntity = true;
             addSlot(new Slot(new SimpleContainer(1), 0, 152, 12)
             {
                 @Override
                 public ItemStack getItem()
                 {
-                    return getSpawnEggStack();
+                    return GetSpawnEgg.getSpawnEgg(player.level().getEntity(entityId));
                 }
 
                 @Override
@@ -134,16 +138,68 @@ public class DebugToolEntityEditorMenu extends AbstractContainerMenu
                 }
             });
 
-            IItemHandler itemHandler = entity.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
-            if (itemHandler != null)
+            if (entity instanceof InventoryCarrier carrier)
             {
-                itemHandlerSlotCount = itemHandler.getSlots();
-                for (int i = 0; i < itemHandlerSlotCount; i++)
+                SimpleContainer inv = carrier.getInventory();
+                int size = inv.getContainerSize();
+                for (int i = 0; i < size; i++)
                 {
-                    this.addSlot(new ActiveStatusChangeableSlot(itemHandler, i, 80 + 18 * (i % 6), 128));
+                    this.addSlot(new ActiveStatusChangeableSlot(new InvWrapper(inv), i, 80 + 18 * (i % 6), 128));
                 }
+                itemHandlerSlotCount = size;
             }
         }
+            else
+            {
+                addSlot(new Slot(new SimpleContainer(1), 0, 152, 12)
+                {
+                    @Override
+                    public ItemStack getItem()
+                    {
+                        return GetSpawnEgg.getSpawnEgg(player.level().getEntity(entityId));
+                    }
+
+                    @Override
+                    public void set(ItemStack stack)
+                    {
+
+                    }
+
+                    @Override
+                    public ItemStack remove(int amount)
+                    {
+                        return ItemStack.EMPTY;
+                    }
+
+                    @Override
+                    public boolean mayPlace(ItemStack stack)
+                    {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean mayPickup(Player player)
+                    {
+                        return false;
+                    }
+
+                    @Override
+                    public void setChanged()
+                    {
+
+                    }
+                });
+
+                IItemHandler itemHandler = entity.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null);
+                if (itemHandler != null)
+                {
+                    itemHandlerSlotCount = itemHandler.getSlots();
+                    for (int i = 0; i < itemHandlerSlotCount; i++)
+                    {
+                        this.addSlot(new ActiveStatusChangeableSlot(itemHandler, i, 80 + 18 * (i % 6), 128));
+                    }
+                }
+            }
     }
 
     @Override
@@ -158,20 +214,41 @@ public class DebugToolEntityEditorMenu extends AbstractContainerMenu
         ItemStack stack = slot.getItem();
         ItemStack copy = stack.copy();
 
-        if ((index >= 37 && index <= 42 + curiosSlotCount + itemHandlerSlotCount))
-        {   //从机器移出到背包
-            if (!this.moveItemStackTo(stack, 0, 36, false))
-            {
-                return ItemStack.EMPTY;
-            }
-        }
-        else
-            if((index >= 0 && index <= 35))
-            {   //从背包移入输入槽
-                if (!(this.moveItemStackTo(stack, 37, 43 + curiosSlotCount + itemHandlerSlotCount, false)))
+        if(isLivingEntity)
+        {
+            if ((index >= 37 && index <= 42 + curiosSlotCount + itemHandlerSlotCount))
+            {   //从机器移出到背包
+                if (!this.moveItemStackTo(stack, 0, 36, false))
                 {
                     return ItemStack.EMPTY;
                 }
+            }
+            else
+                if((index >= 0 && index <= 35))
+                {   //从背包移入输入槽
+                    if (!(this.moveItemStackTo(stack, 37, 43 + curiosSlotCount + itemHandlerSlotCount, false)))
+                    {
+                        return ItemStack.EMPTY;
+                    }
+                }
+        }
+            else
+            {
+                if ((index >= 37 && index < 37 + itemHandlerSlotCount))
+                {   //从机器移出到背包
+                    if (!this.moveItemStackTo(stack, 0, 36, false))
+                    {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                else
+                    if((index >= 0 && index <= 35))
+                    {   //从背包移入输入槽
+                        if (!(this.moveItemStackTo(stack, 37, 37 + itemHandlerSlotCount, false)))
+                        {
+                            return ItemStack.EMPTY;
+                        }
+                    }
             }
 
         if (stack.isEmpty())
@@ -189,62 +266,6 @@ public class DebugToolEntityEditorMenu extends AbstractContainerMenu
     public boolean stillValid(Player player)
     {
         return true;
-    }
-
-    private ItemStack getSpawnEggStack()
-    {
-        Entity entity = player.level().getEntity(entityId);
-        if (entity != null)
-        {
-            SpawnEggItem spawnEgg = ForgeSpawnEggItem.fromEntityType(entity.getType());
-            if(spawnEgg != null)
-            {
-                ItemStack itemStack = new ItemStack(spawnEgg);
-
-                CompoundTag entityTag = new CompoundTag();
-                entity.saveWithoutId(entityTag);
-
-                entityTag.remove("Pos");
-                entityTag.remove("Motion");
-                entityTag.remove("Rotation");
-                entityTag.remove("FallDistance");
-                entityTag.remove("PortalCooldown");
-                entityTag.remove("HurtTime");
-                entityTag.remove("HurtByTimestamp");
-                entityTag.remove("Fire");
-                entityTag.remove("UUID");
-
-                if (entityTag.contains("Attributes", Tag.TAG_LIST))
-                {
-                    ListTag attributes = entityTag.getList("Attributes", Tag.TAG_COMPOUND);
-                    for (int i = 0; i < attributes.size(); i++)
-                    {
-                        CompoundTag attribute = attributes.getCompound(i);
-                        if (attribute.contains("Modifiers", Tag.TAG_LIST))
-                        {
-                            ListTag modifiers = attribute.getList("Modifiers", Tag.TAG_COMPOUND);
-                            modifiers.removeIf(tag ->
-                            {
-                                if(tag instanceof CompoundTag modifier)
-                                {
-                                    "Random spawn bonus".equals(modifier.getString("Name"));
-                                }
-                                return false;
-                            });
-                            if (modifiers.isEmpty())
-                            {
-                                attribute.remove("Modifiers");
-                            }
-                        }
-                    }
-                }
-
-                itemStack.getOrCreateTag().put("EntityTag", entityTag);
-
-                return itemStack;
-            }
-        }
-        return ItemStack.EMPTY;
     }
 
     public void setServerEntityNbt(CompoundTag nbt)
@@ -274,6 +295,16 @@ public class DebugToolEntityEditorMenu extends AbstractContainerMenu
     public int getEntityId()
     {
         return entityId;
+    }
+
+    public Entity getEntity()
+    {
+        return player.level().getEntity(entityId);
+    }
+
+    public boolean getIsLivingEntity()
+    {
+        return isLivingEntity;
     }
 
     public int getCuriosSlotCount()
