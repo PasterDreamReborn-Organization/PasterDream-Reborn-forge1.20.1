@@ -1665,7 +1665,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.debug_tool.我将赐予你操控万物的能力", "§7LOGGER.info(\"我将赐予你操控万物的能力\");");
         add("tooltip.pasterdream.debug_tool.拿在手上右键点击打开屏幕", "§7System.out.println(\"拿在手上右键点击打开屏幕\");");
         add("tooltip.pasterdream.debug_tool.2884omgpy的专属遗物。", "§72884omgpy的专属遗物。");
-        add("tooltip.pasterdream.debug_tool.PasterDream: Reborn 程序", "§7PasterDream: Reborn 程序");
+        add("tooltip.pasterdream.debug_tool.PasterDream: Reborn 程序", "§6PasterDream: Reborn 程序");
         add("button.pasterdream.确认", "确认");
         add("button.pasterdream.取消", "取消");
         add("button.pasterdream.编辑NBT", "编辑NBT");
