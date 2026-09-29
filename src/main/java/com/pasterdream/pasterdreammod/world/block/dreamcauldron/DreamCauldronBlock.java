@@ -16,10 +16,13 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -33,9 +36,19 @@ import static net.minecraft.world.Containers.dropItemStack;
 
 public class DreamCauldronBlock extends HorizontalDirectionalGeckolibBaseEntityBlock
 {
+    public static final BooleanProperty POWERED = BooleanProperty.create("powered");
+
     public DreamCauldronBlock(Properties properties)
     {
         super(properties);
+        registerDefaultState(stateDefinition.any().setValue(POWERED, false));
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
+    {
+        super.createBlockStateDefinition(builder);
+        builder.add(POWERED);
     }
 
     @Nullable
@@ -114,6 +127,32 @@ public class DreamCauldronBlock extends HorizontalDirectionalGeckolibBaseEntityB
                 level.updateNeighbourForOutputSignal(pos, this);
             }
             super.onRemove(state, level, pos, newState, movedByPiston);
+        }
+    }
+
+    @Override
+    public void neighborChanged(BlockState state, Level level, BlockPos blockPosition, Block block, BlockPos fromPosition, boolean isMoving)
+    {
+        super.neighborChanged(state, level, blockPosition, block, fromPosition, isMoving);
+
+        if (!level.isClientSide)
+        {
+            boolean wasPowered = state.getValue(POWERED);
+            boolean powered = level.hasNeighborSignal(blockPosition);
+
+            if (!wasPowered && powered)
+            {
+                BlockEntity blockEntity = level.getBlockEntity(blockPosition);
+                if (blockEntity instanceof DreamCauldronBlockEntity cauldron)
+                {
+                    cauldron.craft(null);
+                }
+            }
+
+            if (wasPowered != powered)
+            {
+                level.setBlock(blockPosition, state.setValue(POWERED, powered), 2);
+            }
         }
     }
 }
