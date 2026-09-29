@@ -217,10 +217,14 @@ public class WeaponWorkshopCraftingTableBlockEntity extends BlockEntity implemen
         WeaponWorkshopCraftingTableRecipeInventory matchedResult = WeaponWorkshopCraftingTableRecipeMatcher.matches(inventory, recipes);
         if(matchedResult != null)
         {
-            double playerLuckValue = player.getAttributeValue(Attributes.LUCK);
-            if(player.getEffect(MobEffects.LUCK) != null)
+            double playerLuckValue = 0;
+            if(player != null)
             {
-                playerLuckValue += player.getEffect(MobEffects.LUCK).getAmplifier();
+                playerLuckValue = player.getAttributeValue(Attributes.LUCK);
+                if(player.getEffect(MobEffects.LUCK) != null)
+                {
+                    playerLuckValue += player.getEffect(MobEffects.LUCK).getAmplifier();
+                }
             }
 
             WeaponWorkshopCraftingTableRecipeInventory processedResult = WeaponWorkshopCraftingTableRecipeProcessor.processing(matchedResult, inventory, level.getRandom(), playerLuckValue);
