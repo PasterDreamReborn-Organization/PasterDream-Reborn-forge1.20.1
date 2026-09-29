@@ -427,8 +427,11 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.skill_name"));
         tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_header"));
         tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.desc1"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_energy"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_cooldown"));
         tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header"));
         tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.desc2"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_energy"));
         tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.passive_name"));
         tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.passive1"));
         tooltip.add(Component.translatable("tooltip.pasterdream.windwreathed_thunder_spear.passive2"));
