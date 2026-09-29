@@ -1396,11 +1396,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc4", "§7▪ §9When sneaking, mining chains §c3×3×3 §9blocks of the same type around, or harvests crops in a §c5×5 §9area");
 
         // Windwreathed Thunder Spear
-        add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "Combat Art: §bWindwreathed Thunder Throw");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_header", "§bDash·Windbreak:");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9Right-click to charge a dash (base 3s cooldown, 1 Melt Dream Energy); Riptide boosts power but adds 1s cooldown and 1.0 energy per level");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "Combat Art: §bWind and Thunder as One");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_header", "§bDash·Charged Thunder Break:");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9Right-click to charge a dash; Riptide boosts the impulse");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_energy", "§7▪ §9Melt Dream Energy cost: §c1.0");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_cooldown", "§7▪ §9Cooldown: 3s");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header", "§eThrow·Windwreathed Thunder Throw:");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9Shift+Right-click to charge a phantom throw (costs 1 Melt Dream Energy); on hit it chains lightning and returns automatically (on cooldown until it returns)");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc2", "§7▪ §9Shift+Right-click to charge a phantom throw; on hit it chains lightning and returns automatically (cannot throw again until it returns)");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_energy", "§7▪ §9Melt Dream Energy cost: §c1.0");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive_name", "Passive: §bThunder Follows the Wind");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive1", "§7▪ §9The faster you move, the more damage you deal, plus lightning damage");
         add("tooltip.pasterdream.windwreathed_thunder_spear.passive2", "§7▪ §9Drops from broken blocks or killed mobs are swept to you by the wind");

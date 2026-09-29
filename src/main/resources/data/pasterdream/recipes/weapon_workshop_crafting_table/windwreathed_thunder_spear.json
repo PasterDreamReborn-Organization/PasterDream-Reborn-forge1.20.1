@@ -1,0 +1,40 @@
+{
+  "type": "pasterdream:weapon_workshop_crafting_table",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:fluffy_wind_alloy_sword",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:fluffy_wind_alloy_pickaxe",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:fluffy_wind_alloy_axe",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:fluffy_wind_alloy_shovel",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:fluffy_wind_alloy_hoe",
+      "count": 1
+    }
+  ],
+  "enhanceStone":
+  [
+    {
+      "tag": "pasterdream:enhance_stone",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:windwreathed_thunder_spear",
+      "count": 1
+    }
+  ]
+}
