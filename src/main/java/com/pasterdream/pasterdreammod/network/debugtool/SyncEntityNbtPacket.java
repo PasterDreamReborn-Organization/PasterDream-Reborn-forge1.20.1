@@ -1,10 +1,8 @@
 package com.pasterdream.pasterdreammod.network.debugtool;
 
-import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolEntityEditorMenu;
-import net.minecraft.client.Minecraft;
+import com.pasterdream.pasterdreammod.client.network.ClientPacketHandlers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -30,14 +28,7 @@ public class SyncEntityNbtPacket
 
     public static void handle(SyncEntityNbtPacket packet, Supplier<NetworkEvent.Context> context)
     {
-        context.get().enqueueWork(() ->
-        {
-            Player player = Minecraft.getInstance().player;
-            if (player != null && player.containerMenu instanceof DebugToolEntityEditorMenu menu)
-            {
-                menu.setServerEntityNbt(packet.NBT);
-            }
-        });
+        context.get().enqueueWork(() -> ClientPacketHandlers.handleSyncEntityNbt(packet.NBT));
         context.get().setPacketHandled(true);
     }
 }
