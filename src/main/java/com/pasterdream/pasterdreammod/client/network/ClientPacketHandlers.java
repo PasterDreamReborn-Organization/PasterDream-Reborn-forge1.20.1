@@ -4,6 +4,8 @@ import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronScreen;
 import com.pasterdream.pasterdreammod.world.block.geckolibblock.AnimatableSync;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolBlockEditorMenu;
+import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolEntityEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -181,6 +183,33 @@ public class ClientPacketHandlers
     public static void handleCurioActivation(Item item)
     {
         Minecraft.getInstance().gameRenderer.displayItemActivation(new ItemStack(item));
+    }
+
+    public static void handleSyncBlockNbt(CompoundTag nbt)
+    {
+        Player player = Minecraft.getInstance().player;
+        if (player != null && player.containerMenu instanceof DebugToolBlockEditorMenu menu)
+        {
+            menu.setServerBlockNbt(nbt);
+        }
+    }
+
+    public static void handleSyncBlockState(String stateString)
+    {
+        Player player = Minecraft.getInstance().player;
+        if (player != null && player.containerMenu instanceof DebugToolBlockEditorMenu menu)
+        {
+            menu.setServerBlockStateString(stateString);
+        }
+    }
+
+    public static void handleSyncEntityNbt(CompoundTag nbt)
+    {
+        Player player = Minecraft.getInstance().player;
+        if (player != null && player.containerMenu instanceof DebugToolEntityEditorMenu menu)
+        {
+            menu.setServerEntityNbt(nbt);
+        }
     }
 
     /** 法术工厂提示：界面打开时渲染在三物品槽上方，否则回落到动作栏 */
