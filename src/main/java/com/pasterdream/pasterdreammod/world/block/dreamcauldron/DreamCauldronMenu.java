@@ -95,9 +95,9 @@ public class DreamCauldronMenu extends AbstractContainerMenuWithFluidSlot
         ItemStack copy = stack.copy();
 
         //移出到背包
-        if (index >= 2 && index <= 5)
+        if (index >= 3 && index <= 6)
         {
-            if (!this.moveItemStackTo(stack, 6, 42, false))
+            if (!this.moveItemStackTo(stack, 7, 43, false))
             {
                 return ItemStack.EMPTY;
             }
@@ -105,7 +105,7 @@ public class DreamCauldronMenu extends AbstractContainerMenuWithFluidSlot
         else    //背包移入输入槽
             if (index >= 6 && index <= 41)
             {
-                if (!this.moveItemStackTo(stack, 2, 5, false))
+                if (!this.moveItemStackTo(stack, 3, 6, false))
                 {
                     return ItemStack.EMPTY;
                 }
