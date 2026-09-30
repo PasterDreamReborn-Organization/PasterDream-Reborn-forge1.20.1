@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
 import com.pasterdream.pasterdreammod.event.CookOverflowHandler;
 import com.pasterdream.pasterdreammod.event.ModMobDrops;
 import com.pasterdream.pasterdreammod.event.ModMobSpawnEvents;
+import com.pasterdream.pasterdreammod.event.ModResourcePacks;
 import com.pasterdream.pasterdreammod.event.ModVillagerTrades;
 import com.pasterdream.pasterdreammod.datagen.common.ModRaidRewardsProvider;
 import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
@@ -100,6 +101,7 @@ public class PasterDreamMod
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
+        modEventBus.addListener(ModResourcePacks::onAddPackFinders); //注册内置旧版材质资源包
         MinecraftForge.EVENT_BUS.addListener(this::AddItemTooltip);
         MinecraftForge.EVENT_BUS.addListener(this::AddCommand);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
