@@ -142,8 +142,20 @@ public class PasterDreamDrinkItem extends Item
             return stack;
         }
 
+        Item emptyContainer = null;
         FluidContainerRegistry.ContainerEntry entry = FluidContainerRegistry.getEntryForFillToEmpty(new ItemStack(this));
-        Item emptyContainer = entry != null ? entry.emptyContainerItemStack.getItem() : null;
+        if (entry != null)
+        {
+            emptyContainer = entry.emptyContainerItemStack.getItem();
+        }
+            else
+            {
+                ItemStack remainder = stack.getItem().getCraftingRemainingItem(stack);
+                if (!remainder.isEmpty())
+                {
+                    emptyContainer = remainder.getItem();
+                }
+            }
         stack.shrink(1);
 
         if (stack.isEmpty())
