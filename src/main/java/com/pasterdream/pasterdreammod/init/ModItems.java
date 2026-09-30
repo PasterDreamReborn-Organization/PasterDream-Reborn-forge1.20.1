@@ -1003,12 +1003,14 @@ public class ModItems {
 
     public static final RegistryObject<Item> ELIXIR_BOTTLE_OF_MELT_DREAM = ITEMS.register("elixir_bottle_of_melt_dream",
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).meltDreamEnergyAdd(25).rarity(Rarity.UNCOMMON)
+                    .craftRemainder(ModItems.ELIXIR_BOTTLE.get())
                     .food(new FoodProperties.Builder().nutrition(4).saturationMod(2).alwaysEat().build())));
 
     private static final UUID ELIXIR_BOTTLE_OF_RAGE_ELIXIR_SKILL_CD_UUID = UUID.fromString("78e1cdd9-d201-4e2b-8adb-0af735d2c806");
     private static final UUID ELIXIR_BOTTLE_OF_RAGE_ELIXIR_ATTACK_DAMAGE_UUID = UUID.fromString("78e1cdd9-d201-4e2b-8adb-0af735d2c807");
     public static final RegistryObject<Item> ELIXIR_BOTTLE_OF_RAGE_ELIXIR = ITEMS.register("elixir_bottle_of_rage_elixir",
             () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().stacksTo(1).rarity(Rarity.UNCOMMON)
+                    .craftRemainder(ModItems.ELIXIR_BOTTLE.get())
                     .food(new FoodProperties.Builder().alwaysEat().build())) {
                 @Override
                 protected void onDrinkSpecial(LivingEntity entity, Level level) {
