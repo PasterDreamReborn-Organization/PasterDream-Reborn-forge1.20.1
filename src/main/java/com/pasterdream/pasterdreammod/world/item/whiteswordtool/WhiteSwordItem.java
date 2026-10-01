@@ -296,7 +296,8 @@ public class WhiteSwordItem extends SwordItem {
                 return;
             }
             if (event.getSource().getEntity() instanceof Player player
-                    && player.getMainHandItem().getItem() instanceof WhiteSwordItem) {
+                    && player.getMainHandItem().getItem() instanceof WhiteSwordItem
+                    && event.getSource().getDirectEntity() == player) {
                 boolean hasBrooch = CuriosApi.getCuriosInventory(player)
                         .map(inv -> inv.findFirstCurio(ModItems.BROOCH_OF_WHITE_ORCHID.get()).isPresent())
                         .orElse(false);
