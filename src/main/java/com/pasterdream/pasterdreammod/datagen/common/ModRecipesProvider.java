@@ -2746,7 +2746,8 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(Ingredient.of(ItemTags.create(
                         ResourceLocation.fromNamespaceAndPath("forge", "cooked_eggs"))),2)
                 .requires(Items.COOKED_PORKCHOP,1)
-                .requires(ModItems.SALT.get(),1)
+                .requires(Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "salt"))),1)
                 .unlockedBy(getHasName(ModItems.SALT.get()), has(ModItems.SALT.get()))
                 .save(pWriter);
 
@@ -2790,7 +2791,8 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE.get(), 2)
                 .requires(ModItems.MARTINI_GLASS.get(), 2)
                 .requires(ModItems.SLUMBER_PALM.get(), 1)
-                .requires(ModItems.SALT.get(), 1)
+                .requires(Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "salt"))), 1)
                 .unlockedBy(getHasName(ModItems.SLUMBER_PALM.get()), has(ModItems.SLUMBER_PALM.get()))
                 .save(pWriter);
 
