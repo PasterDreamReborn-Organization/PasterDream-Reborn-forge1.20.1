@@ -46,6 +46,8 @@ import com.pasterdream.pasterdreammod.world.block.claypan.ClaypanScreen;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorRecipe;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorScreen;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronRecipe;
+import com.pasterdream.pasterdreammod.world.block.dreamcauldron.potion.PotionEffectCodec;
+import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableCopyRecipe;
 import com.pasterdream.pasterdreammod.world.block.researchtable.ResearchTableResearchRecipe;
 import com.pasterdream.pasterdreammod.world.item.curio.RedDewRingItem;
@@ -59,6 +61,7 @@ import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.ingredients.subtypes.IIngredientSubtypeInterpreter;
 import mezz.jei.api.registration.*;
@@ -353,7 +356,8 @@ public class ModJEIPlugin implements IModPlugin
     {
         IIngredientManager ingredientManager = runtime.getIngredientManager();
         IEditModeConfig editModeConfig = runtime.getEditModeConfig();
-        boolean show = PasterDreamClientConfig.showFluidsInJei;
+
+        boolean showFluids = PasterDreamClientConfig.showFluidsInJei;
 
         for (FluidStack fluidStack : ingredientManager.getAllIngredients(ForgeTypes.FLUID_STACK))
         {
@@ -365,7 +369,7 @@ public class ModJEIPlugin implements IModPlugin
 
             ingredientManager.createTypedIngredient(ForgeTypes.FLUID_STACK, fluidStack).ifPresent(typed ->
             {
-                if (show)
+                if (showFluids)
                 {
                     editModeConfig.showIngredientUsingConfigFile(typed, IEditModeConfig.HideMode.WILDCARD);
                 }
@@ -375,5 +379,38 @@ public class ModJEIPlugin implements IModPlugin
                 }
             });
         }
+
+        // 按配置控制装满药水的灵药瓶是否出现在 JEI 原料列表（仅隐藏药水变体，空灵药瓶保留）
+        boolean showPotionElixir = PasterDreamClientConfig.showPotionElixirBottlesInJei;
+
+        for (ItemStack stack : ingredientManager.getAllIngredients(VanillaTypes.ITEM_STACK))
+        {
+            if (!isPotionElixirBottle(stack))
+            {
+                continue;
+            }
+
+            ingredientManager.createTypedIngredient(VanillaTypes.ITEM_STACK, stack).ifPresent(typed ->
+            {
+                if (showPotionElixir)
+                {
+                    editModeConfig.showIngredientUsingConfigFile(typed, IEditModeConfig.HideMode.SINGLE);
+                }
+                else
+                {
+                    editModeConfig.hideIngredientUsingConfigFile(typed, IEditModeConfig.HideMode.SINGLE);
+                }
+            });
+        }
+    }
+
+    /** 是否为装满药水的灵药瓶（灵药瓶物品且瓶内为成品药水流体） */
+    private static boolean isPotionElixirBottle(ItemStack stack)
+    {
+        if (!stack.is(ModItems.ELIXIR_BOTTLE.get()))
+        {
+            return false;
+        }
+        return PotionEffectCodec.isPotionFluid(ElixirBottleItem.getElixirBottleFluidStack(stack));
     }
 }
