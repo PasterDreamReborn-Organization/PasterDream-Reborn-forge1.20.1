@@ -122,6 +122,12 @@ public class PasterDreamClientConfig {
                     + "\n修改后需重启游戏生效。")
             .define("showFluidsInJei", false);
 
+    public static final ForgeConfigSpec.BooleanValue SHOW_POTION_ELIXIR_BOTTLES_IN_JEI = BUILDER
+            .comment("是否在 JEI 的原料列表（右侧物品栏）中显示装满药水的灵药瓶（按药水效果展开的条目）。"
+                    + "\n默认 false：药水灵药瓶不出现在原料列表中，但仍会正常显示在配方里，空灵药瓶不受影响。"
+                    + "\n修改后需重启游戏生效。")
+            .define("showPotionElixirBottlesInJei", false);
+
     public static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static boolean loadingGuiTips;
@@ -155,6 +161,7 @@ public class PasterDreamClientConfig {
 
     // === JEI 兼容 ===
     public static boolean showFluidsInJei;
+    public static boolean showPotionElixirBottlesInJei;
 
     @SubscribeEvent
     public static void onLoad(final ModConfigEvent event) {
@@ -185,6 +192,7 @@ public class PasterDreamClientConfig {
         shaderBlockInjection = SHADER_BLOCK_INJECTION.get();
 
         showFluidsInJei = SHOW_FLUIDS_IN_JEI.get();
+        showPotionElixirBottlesInJei = SHOW_POTION_ELIXIR_BOTTLES_IN_JEI.get();
 
         // 将客户端配置作为低 San 效果运行时值的初始来源（/pasterdreamdebug lowsan 指令可在运行时覆盖）
         Config.lowSanOverlay = lowSanOverlay;
