@@ -217,7 +217,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.WIND_MOOR_LOG.get())
                 .add(ModBlocks.WIND_MOOR_WOOD.get())
                 .add(ModBlocks.STRIPPED_WIND_MOOR_LOG.get())
-                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get());
+                .add(ModBlocks.STRIPPED_WIND_MOOR_WOOD.get())
+                .add(ModBlocks.LIGHT_BALL.get());
 
         //可以燃烧的木头（可制成木炭，可作为燃料）
         tag(BlockTags.LOGS_THAT_BURN)
