@@ -277,9 +277,16 @@ public class PasterDreamMod
                 totalLevel += armor.getEnchantmentLevel(shelter);
             }
         }
+        double dmg_reduce;
 
         if (totalLevel > 0) {
-            event.setAmount(event.getAmount() * (1.0f - totalLevel * 0.02f));
+            if(totalLevel<= 12)
+                event.setAmount(event.getAmount() * (1.0f - totalLevel * 0.02f));
+            if (totalLevel > 12)
+            {
+                dmg_reduce = 25 - 1.2/ (totalLevel-10.8);
+                event.setAmount(event.getAmount() * (1.0f - (float)(dmg_reduce*0.01)));
+            }
         }
     }
 
