@@ -277,9 +277,17 @@ public class PasterDreamMod
                 totalLevel += armor.getEnchantmentLevel(shelter);
             }
         }
+        double dmg_reduce;
 
+        // 超过12级时，限制减伤上限，使用反比例函数，减伤理论上限不会超过25%
         if (totalLevel > 0) {
-            event.setAmount(event.getAmount() * (1.0f - totalLevel * 0.02f));
+            if(totalLevel<= 12)
+                event.setAmount(event.getAmount() * (1.0f - totalLevel * 0.02f));
+            if (totalLevel > 12)
+            {
+                dmg_reduce = 25 - 1.2/ (totalLevel-10.8);
+                event.setAmount(event.getAmount() * (1.0f - (float)(dmg_reduce*0.01)));
+            }
         }
     }
 
