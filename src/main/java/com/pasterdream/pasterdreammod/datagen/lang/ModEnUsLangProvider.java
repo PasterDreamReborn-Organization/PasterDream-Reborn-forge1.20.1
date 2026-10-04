@@ -849,7 +849,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.inferno_sword.5", "§7▪ §9Cooldown: 10s");
         add("tooltip.pasterdreammod.inferno_sword.6", "Passive:");
         add("tooltip.pasterdreammod.inferno_sword.7", "§7▪ §9Attacks ignite for 4s or extend fire by 3s");
-        add("tooltip.pasterdreammod.melt_dream_tool.1", "While held");
+        add("tooltip.pasterdreammod.melt_dream_tool.1", "While in inventory");
         add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §bMelt-Repair: 0.01E/1 Durability");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7Set Bonus: §dDyedream Protection");
         add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9Max Health +4");
@@ -1572,8 +1572,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // Enchantments
         add("enchantment.pasterdream.swift_strike", "Swift Strike");
         add("enchantment.pasterdream.shelter", "Shelter");
+        add("enchantment.pasterdream.gather_dream", "Gather Dream");
+        add("enchantment.pasterdream.melt_dream_repair", "Melt-Repair");
         add("enchantment.pasterdream.swift_strike.desc", "Increases attack speed.");
         add("enchantment.pasterdream.shelter.desc", "Reduce the damage taken.");
+        add("enchantment.pasterdream.gather_dream.desc", "Grants +0.25 Melt Dream Aura per level.");
+        add("enchantment.pasterdream.melt_dream_repair.desc", "Repairs the item with the player's Melt Dream Energy while it is in the inventory.");
 
         // Counter Ring
         add(ModItems.COUNTER_RING.get(), "Counter Ring");

@@ -24,7 +24,6 @@ import com.pasterdream.pasterdreammod.world.dimension.AaroncosArenaTeleporter;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
@@ -64,7 +63,6 @@ public class PasterDreamMod
 {
     public static final String MOD_ID = "pasterdream";
 
-    private static final UUID SWIFT_STRIKE_ATTACK_SPEED_UUID = UUID.fromString("bdf05f70-b53d-4828-8e37-9a502bde0ec1");
     private static final UUID CONGEAL_WIND_IRON_REACH_UUID = UUID.fromString("7c2a9f4e-5d81-4b3a-9e6c-1f8d0a2b4c6e");
 
     public PasterDreamMod(FMLJavaModLoadingContext context)
@@ -122,7 +120,6 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(CookOverflowHandler::onItemUseFinish);
         MinecraftForge.EVENT_BUS.addListener(QymArmorEvents::onEquipChange);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onItemAttributeModifier);
-        MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onShelterLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onGuardLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onRapidReactionFall);
         MinecraftForge.EVENT_BUS.addListener(ModWorldGenEvents::onLevelLoad);
@@ -221,14 +218,13 @@ public class PasterDreamMod
         }
     }
 
-    // 疾风连击：根据附魔等级增加攻击速度（剑每级+6%，斧每级+4%）
+    // 凝风铁工具：主手 +1 触及距离
     public static void onItemAttributeModifier(ItemAttributeModifierEvent event) {
         if (event.getSlotType() != EquipmentSlot.MAINHAND) return;
 
         ItemStack stack = event.getItemStack();
         Item item = stack.getItem();
 
-        // 凝风铁工具：+1 触及距离
         if (item == ModItems.CONGEAL_WIND_IRON_SWORD.get()
                 || item == ModItems.CONGEAL_WIND_IRON_PICKAXE.get()
                 || item == ModItems.CONGEAL_WIND_IRON_AXE.get()
@@ -243,51 +239,6 @@ public class PasterDreamMod
                             AttributeModifier.Operation.ADDITION
                     )
             );
-        }
-
-        var swiftStrike = ModEnchantment.SWIFT_STRIKE_ENCHANTMENT.get();
-
-        int level = stack.getEnchantmentLevel(swiftStrike);
-        if (level > 0) {
-            double multiplier = stack.getItem() instanceof AxeItem ? 0.04 : 0.06;
-            event.addModifier(
-                    Attributes.ATTACK_SPEED,
-                    new AttributeModifier(
-                            SWIFT_STRIKE_ATTACK_SPEED_UUID,
-                            "Swift Strike attack speed bonus",
-                            level * multiplier,
-                            AttributeModifier.Operation.MULTIPLY_BASE
-                    )
-            );
-        }
-    }
-
-    // 庇护：每级-2%受到的伤害（全身护甲叠加）
-    public static void onShelterLivingHurt(LivingHurtEvent event) {
-        if (!(event.getEntity() instanceof LivingEntity)) return;
-        LivingEntity entity = event.getEntity();
-
-        var shelter = ModEnchantment.SHELTER_ENCHANTMENT.get();
-
-        int totalLevel = 0;
-        for (EquipmentSlot slot : EquipmentSlot.values()) {
-            if (slot.getType() != EquipmentSlot.Type.ARMOR) continue;
-            ItemStack armor = entity.getItemBySlot(slot);
-            if (!armor.isEmpty()) {
-                totalLevel += armor.getEnchantmentLevel(shelter);
-            }
-        }
-        double dmg_reduce;
-
-        // 超过12级时，限制减伤上限，使用反比例函数，减伤理论上限不会超过25%
-        if (totalLevel > 0) {
-            if(totalLevel<= 12)
-                event.setAmount(event.getAmount() * (1.0f - totalLevel * 0.02f));
-            if (totalLevel > 12)
-            {
-                dmg_reduce = 25 - 1.2/ (totalLevel-10.8);
-                event.setAmount(event.getAmount() * (1.0f - (float)(dmg_reduce*0.01)));
-            }
         }
     }
 
