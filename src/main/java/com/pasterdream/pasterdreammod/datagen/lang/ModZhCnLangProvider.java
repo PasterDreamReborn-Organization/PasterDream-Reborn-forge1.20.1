@@ -855,7 +855,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.inferno_sword.5", "§7▪ §9冷却：10秒");
         add("tooltip.pasterdreammod.inferno_sword.6", "被动：");
         add("tooltip.pasterdreammod.inferno_sword.7", "§7▪ §9攻击点燃目标4秒或延长3秒时间");
-        add("tooltip.pasterdreammod.melt_dream_tool.1", "手持工具时");
+        add("tooltip.pasterdreammod.melt_dream_tool.1", "在背包中时");
         add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §b融梦修补：0.01E/1耐久");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7套装效果：§d染梦守护");
         add("tooltip.pasterdreammod.dyedream_armor.2", "§7▪ §9最大生命值+4");
@@ -1750,8 +1750,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 附魔
         add("enchantment.pasterdream.swift_strike", "疾风连击");
         add("enchantment.pasterdream.shelter", "庇护");
+        add("enchantment.pasterdream.gather_dream", "聚梦");
+        add("enchantment.pasterdream.melt_dream_repair", "融梦修补");
         add("enchantment.pasterdream.swift_strike.desc", "增加攻击速度。");
         add("enchantment.pasterdream.shelter.desc", "降低所受伤害。");
+        add("enchantment.pasterdream.gather_dream.desc", "每级提升0.25融梦光环。");
+        add("enchantment.pasterdream.melt_dream_repair.desc", "物品在背包中时消耗融梦能量修复自身耐久。");
 
         // 反击戒指
         add(ModItems.COUNTER_RING.get(), "反击戒指");

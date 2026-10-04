@@ -84,7 +84,7 @@ public final class MeltDreamCrystalArmorHandler {
     /** 与融梦水晶工具相同的融梦修补：消耗融梦能量修复耐久。 */
     private static void repairMeltArmor(ServerPlayer player, double cost) {
         player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(energy -> {
-            boolean free = energy.getIsOrNotNeedConsumeDreamEnergy() || player.isCreative();
+            boolean free = !energy.getIsOrNotNeedConsumeDreamEnergy() || player.isCreative();
             for (EquipmentSlot slot : EquipmentSlot.values()) {
                 if (!slot.isArmor()) {
                     continue;
