@@ -65,6 +65,21 @@ public final class ShaderBlockInjector
             "minecraft:poppy"
     };
 
+    /**
+     * 藤蔓参考方块：光影包普遍把藤蔓/垂泪藤/诡异藤划进「叶片式摆动」组
+     * （例如 Complementary {@code block.10013=vine}、Chocapic 把 {@code vine} 和树叶放同一组、
+     * BSL/Photon {@code block.10014}），与草的摆动不同。它应作为本模组藤蔓的首选参考。
+     */
+    private static final String[] VINE_REFERENCES = {
+            "minecraft:vine",
+            "minecraft:weeping_vines",
+            "minecraft:weeping_vines_plant",
+            "minecraft:twisting_vines",
+            "minecraft:twisting_vines_plant",
+            "minecraft:cave_vines",
+            "minecraft:cave_vines_plant"
+    };
+
     /** 两格高植物参考方块：按 {@code half=lower/upper} 分别抄 ID，让上下半段各自正确飘动。 */
     private static final String[] TALL_PLANT_REFERENCES = {
             "minecraft:tall_grass",
@@ -114,13 +129,15 @@ public final class ShaderBlockInjector
 
             OptionalInt leavesId = firstId(blockMap, LEAVES_REFERENCES);
             OptionalInt plantId = firstId(blockMap, PLANT_REFERENCES);
+            OptionalInt vineId = firstId(blockMap, VINE_REFERENCES);
             OptionalInt tallLowerId = firstIdWithProperty(blockMap, TALL_PLANT_REFERENCES, PROP_HALF_LOWER);
             OptionalInt tallUpperId = firstIdWithProperty(blockMap, TALL_PLANT_REFERENCES, PROP_HALF_UPPER);
 
-            if (leavesId.isEmpty() && plantId.isEmpty() && tallLowerId.isEmpty() && tallUpperId.isEmpty())
+            if (leavesId.isEmpty() && plantId.isEmpty() && vineId.isEmpty()
+                    && tallLowerId.isEmpty() && tallUpperId.isEmpty())
             {
                 lastMap = map;
-                LOGGER.info("[ShaderCompat] 当前光影包未给任何原版草/树叶分配 shader ID，跳过方块动效注入");
+                LOGGER.info("[ShaderCompat] 当前光影包未给任何原版草/树叶/藤蔓分配 shader ID，跳过方块动效注入");
                 return;
             }
 
@@ -134,6 +151,20 @@ public final class ShaderBlockInjector
                 if (block instanceof LeavesBlock)
                 {
                     int id = leavesId.orElse(0);
+                    if (id <= 0) continue;
+
+                    blocks++;
+                    for (BlockState state : block.getStateDefinition().getPossibleStates())
+                    {
+                        put.invoke(map, state, id);
+                        states++;
+                    }
+                }
+                else if (isVine(block))
+                {
+                    // 藤蔓优先用包内藤蔓组（叶片式摆动）；包未定义藤蔓时退回树叶组，最后才退回草组
+                    int id = vineId.isPresent() ? vineId.getAsInt()
+                            : (leavesId.isPresent() ? leavesId.getAsInt() : plantId.orElse(0));
                     if (id <= 0) continue;
 
                     blocks++;
@@ -164,8 +195,8 @@ public final class ShaderBlockInjector
             lastMap = map;
             failures = 0;
             LOGGER.info("[ShaderCompat] 已注入 {} 个 pasterdream 方块（{} 个方块状态）以启用光影动效"
-                            + "（树叶ID={}, 植物ID={}, 高植物下半={}, 高植物上半={}）",
-                    blocks, states, leavesId.orElse(-1), plantId.orElse(-1),
+                            + "（树叶ID={}, 藤蔓ID={}, 植物ID={}, 高植物下半={}, 高植物上半={}）",
+                    blocks, states, leavesId.orElse(-1), vineId.orElse(-1), plantId.orElse(-1),
                     tallLowerId.orElse(-1), tallUpperId.orElse(-1));
         }
         catch (Throwable t)
@@ -217,13 +248,20 @@ public final class ShaderBlockInjector
         return fallback;
     }
 
+    /** 藤蔓类方块：应走光影包里的「藤蔓/叶片式摆动」组，而不是草组。 */
+    private static boolean isVine(Block block)
+    {
+        return block instanceof VineBlock
+                || block == ModBlocks.FIG_VINE.get()
+                || block == ModBlocks.DYEDREAM_VINE.get();
+    }
+
+    /** 非藤蔓的摆动植物：走光影包里的草组。 */
     private static boolean isWavingPlant(Block block)
     {
         return block instanceof BushBlock
-                || block instanceof VineBlock
                 || block instanceof SugarCaneBlock
                 || block instanceof GrowingPlantBlock
-                || block == ModBlocks.FIG_VINE.get()
                 || block == ModBlocks.DYEDREAM_SEAGRASS.get();
     }
 
