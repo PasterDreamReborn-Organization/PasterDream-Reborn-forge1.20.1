@@ -81,10 +81,6 @@ public class MeltDreamEnergy implements IMeltDreamEnergy
     public void setMaxMeltDreamEnergy(double maxMeltDreamEnergy)
     {
         this.maxMeltDreamEnergy = maxMeltDreamEnergy;
-        if(meltDreamEnergy > maxMeltDreamEnergy)
-        {
-            meltDreamEnergy = maxMeltDreamEnergy;
-        }
     }
 
     @Override
