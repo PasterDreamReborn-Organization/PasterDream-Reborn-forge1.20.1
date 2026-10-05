@@ -8,6 +8,7 @@
     "CampfireBlockEntityMixin",
     "CombatTrackerMixin",
     "EatBlockGoalMixin",
+    "EnchantBookForEmeraldsMixin",
     "FishingHookMixin",
     "FlowerPotBlockMixin",
     "FoxTargetMixin",
