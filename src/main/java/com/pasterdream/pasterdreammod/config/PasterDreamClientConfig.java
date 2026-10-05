@@ -93,6 +93,15 @@ public class PasterDreamClientConfig {
             .comment("精神值条预设2：创造模式下是否仅在下蹲时显示，默认 true")
             .define("sanBarPreset2SneakShowInCreative", true);
 
+    // === 玩家血条 HUD ===
+    private static final ForgeConfigSpec.BooleanValue PASTER_HEALTH_HUD = BUILDER
+            .comment("启用帕斯特之梦主题玩家血条（替换原版生命值行），默认 true")
+            .define("pasterHealthHud", true);
+
+    private static final ForgeConfigSpec.IntValue PASTER_HEALTH_HUD_DECIMAL_PLACES = BUILDER
+            .comment("玩家血条数值小数位数（0~2），默认 0；设为 0 时只显示整数，避免过长小数")
+            .defineInRange("pasterHealthHudDecimalPlaces", 0, 0, 2);
+
     // === 疯狂状态效果的屏幕效果设置 ===
     private static final ForgeConfigSpec.BooleanValue LOW_SAN_OVERLAY = BUILDER
             .comment("疯狂状态效果的全屏画面叠加效果，默认 true。"
@@ -151,6 +160,10 @@ public class PasterDreamClientConfig {
     public static double sanBarPreset2LowThreshold;
     public static boolean sanBarPreset2SneakShowInCreative;
 
+    // === 玩家血条 HUD ===
+    public static boolean pasterHealthHud;
+    public static int pasterHealthHudDecimalPlaces;
+
     // === 疯狂状态效果的屏幕效果设置 ===
     public static boolean lowSanOverlay;
     public static boolean lowSanJitter;
@@ -185,6 +198,8 @@ public class PasterDreamClientConfig {
         sanBarPreset2Scale = SAN_BAR_PRESET2_SCALE.get();
         sanBarPreset2LowThreshold = SAN_BAR_PRESET2_LOW_THRESHOLD.get();
         sanBarPreset2SneakShowInCreative = SAN_BAR_PRESET2_SNEAK_SHOW_IN_CREATIVE.get();
+        pasterHealthHud = PASTER_HEALTH_HUD.get();
+        pasterHealthHudDecimalPlaces = PASTER_HEALTH_HUD_DECIMAL_PLACES.get();
         lowSanOverlay = LOW_SAN_OVERLAY.get();
         lowSanJitter = LOW_SAN_JITTER.get();
         lowSanSound = LOW_SAN_SOUND.get();

@@ -747,6 +747,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.wind_journey_world", "风之旅途");
         add("pack.pasterdream.legacy_textures", "帕斯特之梦 · 旧版材质包");
         add("pack.pasterdream.legacy_textures.desc", "帕斯特之梦 · 旧版材质包：将重绘的方块与物品纹理还原为原模组旧材质");
+        add("pack.pasterdream.vanilla_ui", "帕斯特之梦 · 原版 UI 材质包");
+        add("pack.pasterdream.vanilla_ui.desc", "帕斯特之梦 · 原版 UI 材质包：将原版物品栏、按钮等界面纹理替换为原模组风格");
 
 
         add("button.pasterdream.mortarbutton", "研磨");
