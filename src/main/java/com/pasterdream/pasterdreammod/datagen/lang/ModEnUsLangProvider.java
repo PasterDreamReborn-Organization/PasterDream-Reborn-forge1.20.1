@@ -856,7 +856,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9Gain 4 Absorption hearts every 30s");
         add("tooltip.pasterdreammod.dyedream_armor.4", "§7▪ §9Enhances wielded Dyedream tools");
         add("tooltip.pasterdreammod.melt_dream_armor.1", "§7▪ §9Max Health +2");
-        add("tooltip.pasterdreammod.melt_dream_armor.2", "§7▪ §9Melt Dream Energy +0.2/min, Max +5");
+        add("tooltip.pasterdreammod.melt_dream_armor.2", "§7▪ §9Melt Dream Energy +1/min, Max +5");
         add("tooltip.pasterdreammod.melt_dream_armor.3", "§7▪ §bMelt-Repair: 0.01E/1 Durability");
         add("tooltip.pasterdreammod.melt_dream_armor.4", "§7Set Bonus: §dMelt Dream Protection");
         add("tooltip.pasterdreammod.melt_dream_armor.5", "§7▪ §bMelt-Repair cost reduced by 50%");
@@ -1584,7 +1584,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.MELT_DREAM_ENERGY_RING.get(), "Melt Dream Energy Ring");
         add("tooltip.pasterdream.counter_ring.effect1", "§7▪ §9On successful dodge: gain Counterattack I (0:10)");
         add("tooltip.pasterdream.counter_ring.effect2", "§7▪ §9Next attack: Attack +3, Skill DMG ×+50%, then buff ends");
-        add("tooltip.pasterdream.melt_dream_energy_ring.effect1", "§7▪ §9Melt Dream Energy +0.3/min");
+        add("tooltip.pasterdream.melt_dream_energy_ring.effect1", "§7▪ §9Melt Dream Energy +1/min");
         add("effect.pasterdream.counter_attack", "Counterattack");
         add("effect.pasterdream.memento", "Dream Seeker's Prayer");
 

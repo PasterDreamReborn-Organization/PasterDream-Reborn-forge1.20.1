@@ -862,7 +862,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.dyedream_armor.3", "§7▪ §9每 30 秒获得 4 颗吸收之♡");
         add("tooltip.pasterdreammod.dyedream_armor.4", "§7▪ §9增强手持的染梦工具");
         add("tooltip.pasterdreammod.melt_dream_armor.1", "§7▪ §9最大生命值+2");
-        add("tooltip.pasterdreammod.melt_dream_armor.2", "§7▪ §9融梦能量 +0.2/min，能量上限+5");
+        add("tooltip.pasterdreammod.melt_dream_armor.2", "§7▪ §9融梦能量 +1/min，能量上限+5");
         add("tooltip.pasterdreammod.melt_dream_armor.3", "§7▪ §b融梦修补：0.01E/1耐久");
         add("tooltip.pasterdreammod.melt_dream_armor.4", "§7套装效果：§d融梦守护");
         add("tooltip.pasterdreammod.melt_dream_armor.5", "§7▪ §b融梦修补费用减少50%");
@@ -1762,7 +1762,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.MELT_DREAM_ENERGY_RING.get(), "融梦光环戒指");
         add("tooltip.pasterdream.counter_ring.effect1", "§7▪ §9成功回避伤害时获得反击I (0:10)");
         add("tooltip.pasterdream.counter_ring.effect2", "§7▪ §9下一次攻击：攻击力+3 战技伤害+50%，命中后效果解除");
-        add("tooltip.pasterdream.melt_dream_energy_ring.effect1", "§7▪ §9融梦能量+0.3/min");
+        add("tooltip.pasterdream.melt_dream_energy_ring.effect1", "§7▪ §9融梦能量+1/min");
         add("effect.pasterdream.counter_attack", "反击");
         add("effect.pasterdream.memento", "寻梦者的祈愿");
 

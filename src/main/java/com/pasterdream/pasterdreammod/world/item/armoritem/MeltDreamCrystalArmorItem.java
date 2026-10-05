@@ -43,7 +43,7 @@ public class MeltDreamCrystalArmorItem extends ArmorItem {
     /** 每件融梦能量上限加成 */
     private static final double MAX_ENERGY_PER_PIECE = 5.0;
     /** 每件每分钟融梦能量回复量（融梦光环） */
-    private static final double ENERGY_PER_MIN_PER_PIECE = 0.2;
+    private static final double ENERGY_PER_MIN_PER_PIECE = 1.0;
 
     public MeltDreamCrystalArmorItem(ArmorMaterial material, Type type, Properties properties) {
         super(material, type, properties.fireResistant());

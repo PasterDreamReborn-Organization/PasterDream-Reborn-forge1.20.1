@@ -22,7 +22,7 @@ import java.util.UUID;
 public class MeltDreamEnergyRingItem extends Item implements ICurioItem {
 
     /** 每分钟融梦能量回复量（融梦光环） */
-    private static final double ENERGY_PER_MIN = 0.3;
+    private static final double ENERGY_PER_MIN = 1.0;
     private static final UUID MELT_DREAM_VARIABILITY_UUID = UUID.fromString("6e9f8a4b-bc5d-7f6e-ca4b-5c6d7e8f9ab1");
 
     public MeltDreamEnergyRingItem() {
