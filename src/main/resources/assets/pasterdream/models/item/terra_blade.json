@@ -1,0 +1,29 @@
+{
+	"format_version": "26.3",
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "pasterdream:item/terra_blade"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 90, 45],
+			"translation": [0, 7.5, 1.5]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, -90, -45],
+			"translation": [0, 7.5, 1.5]
+		},
+		"firstperson_righthand": {
+			"rotation": [27, 85, 35],
+			"translation": [1.25, 5.75, 0]
+		},
+		"firstperson_lefthand": {
+			"rotation": [27, -85, -35],
+			"translation": [1.25, 5.75, 0]
+		},
+		"ground": {
+			"translation": [0, 3.75, 0]
+		}
+	}
+}
