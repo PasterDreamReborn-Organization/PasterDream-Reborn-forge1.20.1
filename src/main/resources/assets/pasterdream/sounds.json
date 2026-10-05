@@ -146,7 +146,7 @@
     "sounds": [{"name": "pasterdream:lightning_charge", "stream": false}]
   },
   "frozen_shock": {
-    "sounds": [{"name": "pasterdream:frozen_shock", "stream": false}]
+    "sounds": [{"name": "pasterdream:frozen_shock", "stream": false, "volume": 0.5}]
   },
   "inferno_impact": {
     "sounds": [{"name": "pasterdream:inferno_impact", "stream": false}]
