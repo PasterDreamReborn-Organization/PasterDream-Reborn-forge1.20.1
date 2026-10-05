@@ -95,8 +95,8 @@ public class PasterDreamClientConfig {
 
     // === 玩家血条 HUD ===
     private static final ForgeConfigSpec.BooleanValue PASTER_HEALTH_HUD = BUILDER
-            .comment("启用帕斯特之梦主题玩家血条（替换原版生命值行），默认 true")
-            .define("pasterHealthHud", true);
+            .comment("启用帕斯特之梦主题玩家血条（替换原版生命值行），默认 false（需手动开启）")
+            .define("pasterHealthHud", false);
 
     private static final ForgeConfigSpec.IntValue PASTER_HEALTH_HUD_DECIMAL_PLACES = BUILDER
             .comment("玩家血条数值小数位数（0~2），默认 0；设为 0 时只显示整数，避免过长小数")
