@@ -1060,6 +1060,28 @@ public class ModItems {
     public static final RegistryObject<Item> BUBBLE_TEA = ITEMS.register("bubble_tea", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties()
             .food(new FoodProperties.Builder().nutrition(5).saturationMod(0.7f).alwaysEat().build())));
 
+    // ===== 特殊食物 =====
+    public static final RegistryObject<Item> MOLTEN_GOLD_APPLE = ITEMS.register("molten_gold_apple",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().rarity(Rarity.RARE)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2f).alwaysEat()//金苹果数值
+                            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2400, 0), 1.0f)//2分钟抗火
+                            .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 2400, 1), 1.0f)//2分钟急迫II
+                            .build())));
+
+    public static final RegistryObject<Item> ENCHANTED_MOLTEN_GOLD_APPLE = ITEMS.register("enchanted_molten_gold_apple",
+            () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().rarity(Rarity.EPIC)
+                    .food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2f).alwaysEat()//附魔金苹果数值
+                            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 6000, 0), 1.0f)//5分钟抗火
+                            .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 6000, 3), 1.0f)//5分钟急迫IV
+                            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 6000, 2), 1.0f)//5分钟迅捷III
+                            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400, 1), 1.0f)//20秒生命恢复II
+                            .build())) {
+                @Override
+                public boolean isFoil(ItemStack stack) {
+                    return true;
+                }
+            });
+
 
     // ===== 露滴 =====
     public static final RegistryObject<Item> RED_DEW = ITEMS.register("red_dew",

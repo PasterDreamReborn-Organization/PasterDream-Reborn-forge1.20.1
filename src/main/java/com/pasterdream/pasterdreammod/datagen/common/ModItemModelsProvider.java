@@ -68,6 +68,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.GLASS_CUP_OF_SLUMBER_PALM_CLUB_SODA.get());
         basicItem(ModItems.MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE.get());
         basicItem(ModItems.BUBBLE_TEA.get());
+        basicItem(ModItems.MOLTEN_GOLD_APPLE.get());
+        withExistingParent(ModItems.ENCHANTED_MOLTEN_GOLD_APPLE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/molten_gold_apple"));
         basicItem(ModItems.FLOUR.get());
         basicItem(ModItems.DOUGH.get());
         basicItem(ModItems.RYE_SEED.get());
