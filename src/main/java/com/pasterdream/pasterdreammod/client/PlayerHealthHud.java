@@ -99,12 +99,15 @@ public class PlayerHealthHud implements IGuiOverlay
         return text;
     }
 
-    /** 启用主题血条时隐藏原版生命值行，避免两条血条重叠。 */
+    /**
+     * 启用主题血条时隐藏原版生命值行（含伤害吸收黄心），避免两条血条重叠。
+     * 按 overlay id 比较，避免依赖 {@code VanillaGuiOverlay.type()} 的实例身份。
+     */
     @SubscribeEvent
     public static void onRenderGuiOverlay(RenderGuiOverlayEvent.Pre event)
     {
         if (!PasterDreamClientConfig.pasterHealthHud) return;
-        if (event.getOverlay() == VanillaGuiOverlay.PLAYER_HEALTH.type())
+        if (event.getOverlay().id().equals(VanillaGuiOverlay.PLAYER_HEALTH.id()))
             event.setCanceled(true);
     }
 }
