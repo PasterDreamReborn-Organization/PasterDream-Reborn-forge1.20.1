@@ -15,12 +15,15 @@ import java.nio.file.Path;
 
 /**
  * 将模组自带的可选资源包注册为内置资源包，使其在正式环境中也能被资源包界面检测到。
- * 资源包位于 jar 内的 {@code resourcepacks/pasterdream_legacy_textures}。
+ * 资源包位于 jar 内的 {@code resourcepacks/} 目录下。
  */
 public final class ModResourcePacks
 {
     public static final String LEGACY_TEXTURES_PACK_ID = PasterDreamMod.MOD_ID + ":legacy_textures";
     private static final String LEGACY_TEXTURES_PATH = "resourcepacks/pasterdream_legacy_textures";
+
+    public static final String VANILLA_UI_PACK_ID = PasterDreamMod.MOD_ID + ":vanilla_ui";
+    private static final String VANILLA_UI_PATH = "resourcepacks/paster_vanilla_ui";
 
     private ModResourcePacks() {}
 
@@ -33,15 +36,24 @@ public final class ModResourcePacks
         if (modFileInfo == null)
             return;
 
-        Path packRoot = modFileInfo.getFile().findResource(LEGACY_TEXTURES_PATH);
+        registerPack(event, modFileInfo, LEGACY_TEXTURES_PACK_ID, LEGACY_TEXTURES_PATH,
+                "pack.pasterdream.legacy_textures");
+        registerPack(event, modFileInfo, VANILLA_UI_PACK_ID, VANILLA_UI_PATH,
+                "pack.pasterdream.vanilla_ui");
+    }
+
+    private static void registerPack(AddPackFindersEvent event, IModFileInfo modFileInfo,
+                                     String packId, String path, String titleKey)
+    {
+        Path packRoot = modFileInfo.getFile().findResource(path);
         if (packRoot == null || !Files.exists(packRoot))
             return;
 
         event.addRepositorySource(consumer ->
         {
             Pack pack = Pack.readMetaAndCreate(
-                    LEGACY_TEXTURES_PACK_ID,
-                    Component.translatable("pack.pasterdream.legacy_textures"),
+                    packId,
+                    Component.translatable(titleKey),
                     false,
                     id -> new PathPackResources(id, true, packRoot),
                     PackType.CLIENT_RESOURCES,

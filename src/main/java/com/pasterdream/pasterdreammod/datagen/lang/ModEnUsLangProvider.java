@@ -737,6 +737,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("itemGroup.pasterdream.wind_journey_world", "Wind Journey World");
         add("pack.pasterdream.legacy_textures", "PasterDream · Legacy Textures");
         add("pack.pasterdream.legacy_textures.desc", "PasterDream · Legacy Textures: restores redrawn block and item textures to the original mod's look.");
+        add("pack.pasterdream.vanilla_ui", "PasterDream · Vanilla UI");
+        add("pack.pasterdream.vanilla_ui.desc", "PasterDream · Vanilla UI: replaces vanilla inventory, buttons and other interface textures with the original mod's style.");
 
         add("item.pasterdream.duke_coin_curio", "Duke Coin Curio");
         add("tooltip.pasterdream.duke_coin_curio.effect.luck", "§7▪ §9+7 Luck");

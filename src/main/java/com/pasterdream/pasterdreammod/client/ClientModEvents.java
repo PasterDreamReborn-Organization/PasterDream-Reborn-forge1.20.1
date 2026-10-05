@@ -20,6 +20,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
@@ -58,6 +59,7 @@ public class ClientModEvents
         event.registerAboveAll("aaroncos_hand_boss_bar", AaroncosHandBossBar.OVERLAY);
         event.registerAboveAll("wind_knight_boss_bar", WindKnightBossBar.OVERLAY);
         event.registerBelowAll("cloud_mist_hud", CloudMistHud.GUI_OVERLAY);
+        event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "pd_health", new PlayerHealthHud());
     }
 
     @SubscribeEvent

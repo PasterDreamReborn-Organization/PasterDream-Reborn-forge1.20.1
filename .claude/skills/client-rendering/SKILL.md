@@ -49,7 +49,9 @@ description: 客户端渲染（RenderType、HUD、粒子、音效、GeckoLib 动
 
 ## HUD
 
-- `client/MeltDreamEnergyTank.java`、`client/SanTank.java`、`client/LoseMind.java`
+- `client/MeltDreamEnergyTank.java`、`client/SanTank.java`、`client/LoseMind.java`、`client/PlayerHealthHud.java`（主题血条，替换原版 `VanillaGuiOverlay.PLAYER_HEALTH`）
+- HUD 数值禁用浮点 `toString`/`replace(".0","")` 截小数，统一固定小数位格式化去尾零
+- 内置可选资源包（`paster_vanilla_ui` 等）注册见 `document/rule/program/程序规范文档.md`「模组自带资源包必须打进 jar 并注册为内置包」
 
 ---
 
