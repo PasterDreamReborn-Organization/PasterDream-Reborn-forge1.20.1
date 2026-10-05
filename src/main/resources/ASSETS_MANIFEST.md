@@ -27,6 +27,7 @@ This manifest currently covers **textures** only, determined by pixel-level comp
 (Replace corresponding original mod textures)
 
 ```
+textures/block/black_metal_block.png
 textures/block/dyedream_bud_block.png
 textures/block/large_dyedream_bud.png
 textures/block/medium_dyedream_bud.png
@@ -35,6 +36,7 @@ textures/block/molten_gold_block.png
 textures/block/molten_gold_ore.png
 textures/gui/pasterdream_inventory.png
 textures/item/attack_enhance_stone.png
+textures/item/black_metal_grain.png
 textures/item/black_metal_ingot.png
 textures/item/bread_slice.png
 textures/item/calais_spice_bottle.png
@@ -83,6 +85,11 @@ textures/item/raw_molten_gold.png
 textures/item/rust_black_metal_grain.png
 textures/item/sandwich.png
 textures/item/seal_of_the_corrupted.png
+textures/item/shadow_erosion_axe.png
+textures/item/shadow_erosion_dagger.png
+textures/item/shadow_erosion_hoe.png
+textures/item/shadow_erosion_pickaxe.png
+textures/item/shadow_erosion_shovel.png
 textures/item/shadow_sword.png
 textures/mob_effect/guard.png
 textures/particle/squeal_wave.png
