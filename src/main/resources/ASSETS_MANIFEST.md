@@ -93,6 +93,13 @@ textures/item/shadow_erosion_shovel.png
 textures/item/shadow_sword.png
 textures/mob_effect/guard.png
 textures/particle/squeal_wave.png
+textures/item/qym_cat_ears.png
+textures/item/qym_cloud_boots.png
+textures/item/qym_swaying_skirt.png
+textures/item/qym_wind_shirt.png
+textures/item/strawberry_heart.png
+textures/item/terra_blade.png
+textures/item/white_sword.png
 ```
 
 ## 新增 / New

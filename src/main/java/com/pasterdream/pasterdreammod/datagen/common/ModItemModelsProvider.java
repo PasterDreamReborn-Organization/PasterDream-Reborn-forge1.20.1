@@ -239,7 +239,6 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.DESERT_SWORD);
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD);
         handheldItem(ModItems.BROKEN_HERO_SWORD);
-        handheldItem(ModItems.TERRA_BLADE);
         handheldItem(ModItems.WHITE_SWORD);
         handheldItem(ModItems.SHADOW_SWORD);
         handheldItem(ModItems.DEBUG_SWORD);
