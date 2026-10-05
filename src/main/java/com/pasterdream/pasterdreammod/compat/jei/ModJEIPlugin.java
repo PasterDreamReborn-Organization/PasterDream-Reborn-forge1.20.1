@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.compat.jei;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.config.PasterDreamClientConfig;
 import com.pasterdream.pasterdreammod.compat.jei.brewingrecipe.FortuneJellyJeiBrewingRecipe;
+import com.pasterdream.pasterdreammod.compat.jei.info.ModJEIInfoRegistry;
 import com.pasterdream.pasterdreammod.compat.jei.fluidcontainerrelation.FluidContainerRecipeCategory;
 import com.pasterdream.pasterdreammod.compat.jei.shadowblastfurnacerecipe.ShadowBlastFurnaceJEIRecipe;
 import com.pasterdream.pasterdreammod.compat.jei.shadowblastfurnacerecipe.ShadowBlastFurnaceRecipeCategory;
@@ -160,6 +161,9 @@ public class ModJEIPlugin implements IModPlugin
             }
             registration.addRecipes(RecipeTypes.BREWING, brewingRecipes);
         }
+
+        // ===== 物品信息页（JEI 中按 R/U 查看）=====
+        ModJEIInfoRegistry.register(registration);
     }
 
     @Override

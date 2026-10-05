@@ -59,6 +59,20 @@ description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、
 
 ---
 
+## JEI 信息页（按 R/U 查看）
+
+给物品/流体加「描述页」用 JEI 内置 API，**无需**自建 `IRecipeCategory`。所有信息页集中在 `compat/jei/info/ModJEIInfoRegistry.java`，由 `ModJEIPlugin.registerRecipes` 调用其 `register(registration)`；新增信息页只在该类的 `register` 里加一行：
+
+- 物品：`registration.addItemStackInfo(new ItemStack(item), Component.translatable("jei.pasterdream.<id>.info", ...))`
+- 其它原料（流体等）：`registration.addIngredientInfo(ingredient, IIngredientType, Component...)`
+
+约束：
+- 文案走语言文件 `jei.pasterdream.<id>.info`，中英各登记一条（`ModZhCnLangProvider` / `ModEnUsLangProvider` 的 `jei.pasterdream.*` 段）
+- 该 API 不产生 JSON、无需 `runData`；对物品按 R 与 U 均显示
+- 参考：`ModItems.MURAKUMO_KUSANAGI`（天丛云草薙）的进化说明
+
+---
+
 ## 实现步骤
 
 1. 定义配方类（无特殊逻辑复用 `genericrecipe` 基类，有特殊逻辑新建）
@@ -85,6 +99,7 @@ description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、
 | 配方 datagen | `datagen/common/ModRecipesProvider.java` |
 | 配方工具 | `datagen/util/RecipeHelpers.java` |
 | JEI 插件 | `compat/jei/ModJEIPlugin.java` |
+| JEI 信息页登记 | `compat/jei/info/ModJEIInfoRegistry.java` |
 
 ---
 
