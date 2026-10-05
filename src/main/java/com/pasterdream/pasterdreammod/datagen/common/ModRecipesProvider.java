@@ -2679,6 +2679,26 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.AMBER_CANDY.get()), has(ModItems.AMBER_CANDY.get()))
                 .save(pWriter);
 
+        // 炙焰金苹果合成配方（8 炙焰金锭 + 1 苹果）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MOLTEN_GOLD_APPLE.get(), 1)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', ModItems.MOLTEN_GOLD_INGOT.get())
+                .define('b', Items.APPLE)
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_INGOT.get()), has(ModItems.MOLTEN_GOLD_INGOT.get()))
+                .save(pWriter);
+
+        // 附魔炙焰金苹果合成配方（8 炙焰金块 + 1 苹果）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ENCHANTED_MOLTEN_GOLD_APPLE.get(), 1)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', ModItems.MOLTEN_GOLD_BLOCK.get())
+                .define('b', Items.APPLE)
+                .unlockedBy(getHasName(ModItems.MOLTEN_GOLD_BLOCK.get()), has(ModItems.MOLTEN_GOLD_BLOCK.get()))
+                .save(pWriter);
+
         // 染梦冰棒合成配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_POPSICLE.get(), 1)
                 .requires(Items.SNOWBALL, 1)
@@ -3519,6 +3539,8 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 "golden_fox_trade_coin_pile");
         saveGoldenFoxTrade(pWriter, Ingredient.of(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()),
                 new ItemStack(ModItems.KAICHU_OMAMORI.get()), "golden_fox_trade_crystal_fragment");
+        saveGoldenFoxTrade(pWriter, Ingredient.of(ModItems.MOLTEN_GOLD_APPLE.get()),
+                new ItemStack(ModItems.ENCHANTED_MOLTEN_GOLD_APPLE.get()), "golden_fox_trade_molten_gold_apple");
 
         // ===== 你把暗影之手扔熔炉有什么意义吗？ =====
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.SHADOW_HAND_TRAP.get()),

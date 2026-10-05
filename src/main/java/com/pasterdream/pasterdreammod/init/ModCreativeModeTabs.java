@@ -55,6 +55,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CAKE_BASE.get());
                         output.accept(ModItems.WAFER_BISCUIT.get());
                         output.accept(ModItems.DYEDREAM_FRUIT.get());
+                        output.accept(ModItems.MOLTEN_GOLD_APPLE.get());
+                        output.accept(ModItems.ENCHANTED_MOLTEN_GOLD_APPLE.get());
                         output.accept(ModItems.SLUMBER_PALM.get());
                         output.accept(ModItems.FIG.get());
                         output.accept(ModItems.GLASS_JAR_OF_DREAM_JUICE.get());
