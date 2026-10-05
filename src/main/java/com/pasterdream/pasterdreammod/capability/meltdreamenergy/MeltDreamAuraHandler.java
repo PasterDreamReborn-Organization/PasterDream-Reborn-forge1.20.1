@@ -26,6 +26,11 @@ public class MeltDreamAuraHandler {
         if (!player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).isPresent()) return;
         if (player.isSpectator()) return;
 
+        double effectiveMax = MeltDreamEnergyHelper.getPlayerMaxMeltDreamEnergyEffective(player);
+        if (MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(player) > effectiveMax) {
+            MeltDreamEnergyHelper.setPlayerMeltDreamEnergyAndSync(player, effectiveMax);
+        }
+
         double rate = player.getAttributeValue(ModAttributes.MELT_DREAM_VARIABILITY.get());
         if (rate == 0.0) return;
 
