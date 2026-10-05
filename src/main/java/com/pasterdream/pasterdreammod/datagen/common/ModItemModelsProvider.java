@@ -429,6 +429,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         wallItem(ModBlocks.SHADOW_STONE_TILES_WALL, ModBlocks.SHADOW_STONE_TILES);
         wallItem(ModBlocks.CYAN_STONE_BRICK_WALL, ModBlocks.CYAN_STONE_BRICKS);
         wallItem(ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL, ModBlocks.MOSSY_CYAN_STONE_BRICKS);
+        wallItem(ModBlocks.POLISHED_CYAN_STONE_WALL, ModBlocks.POLISHED_CYAN_STONE);
 
         wallItem(ModBlocks.RUST_BLACK_METAL_WALL, ModBlocks.RUST_BLACK_METAL_BLOCK);
 

@@ -345,6 +345,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.CYAN_MOSS_STONE.get(), block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(ModBlocks.CYAN_STONE.get())));
         buildingFamily(new BuildingBlockFamily(ModBlocks.CYAN_STONE_BRICKS, ModBlocks.CYAN_STONE_BRICK_STAIRS, ModBlocks.CYAN_STONE_BRICK_SLAB, ModBlocks.CYAN_STONE_BRICK_WALL));
         buildingFamily(new BuildingBlockFamily(ModBlocks.MOSSY_CYAN_STONE_BRICKS, ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS, ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB, ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL));
+        buildingFamily(new BuildingBlockFamily(ModBlocks.POLISHED_CYAN_STONE, ModBlocks.POLISHED_CYAN_STONE_STAIRS, ModBlocks.POLISHED_CYAN_STONE_SLAB, ModBlocks.POLISHED_CYAN_STONE_WALL));
         dropSelf(ModBlocks.CYAN_STONE_PRESSURE_PLATE.get());
         dropSelf(ModBlocks.CYAN_STONE_BUTTON.get());
         dropSelf(ModBlocks.CHISELED_CYAN_STONE_BRICKS.get());
