@@ -2438,6 +2438,17 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(ModItems.CYAN_STONE.get())
                 .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
                 .save(pWriter);
+
+        // 苍青岩 → 磨制苍青岩 (切石机)
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.CYAN_STONE.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.POLISHED_CYAN_STONE.get())
+                .unlockedBy(getHasName(ModItems.CYAN_STONE.get()), has(ModItems.CYAN_STONE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":polished_cyan_stone_from_stonecutting");
+
+        // 磨制苍青岩 → 楼梯/台阶/墙 + 切石机
+        RecipeHelpers.buildingBlockFamilyRecipes(pWriter,
+                ModItems.POLISHED_CYAN_STONE.get(), ModItems.POLISHED_CYAN_STONE_STAIRS.get(),
+                ModItems.POLISHED_CYAN_STONE_SLAB.get(), ModItems.POLISHED_CYAN_STONE_WALL.get(),
+                PasterDreamMod.MOD_ID);
     }
 
     // ===== 苔苍青岩砖系列配方 =====

@@ -128,6 +128,7 @@ textures/block/dyedream_sandstone_bottom.png
 textures/block/dyedream_sandstone_top.png
 textures/block/dyedream_world_leapstone.png
 textures/block/dyedream_world_portal.png
+textures/block/polished_cyan_stone.png
 textures/block/shadow_stone_cage_rune.png
 textures/block/shadow_stone_holy_grail_rune.png
 textures/block/shadow_stone_oblation_rune.png

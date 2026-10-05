@@ -655,6 +655,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MOSSY_CYAN_STONE_BRICK_WALL.get());
                         output.accept(ModItems.CHISELED_CYAN_STONE_BRICKS.get());
                         output.accept(ModItems.CYAN_STONE_PILLAR.get());
+                        output.accept(ModItems.POLISHED_CYAN_STONE.get());
+                        output.accept(ModItems.POLISHED_CYAN_STONE_STAIRS.get());
+                        output.accept(ModItems.POLISHED_CYAN_STONE_SLAB.get());
+                        output.accept(ModItems.POLISHED_CYAN_STONE_WALL.get());
                         output.accept(ModItems.CLARITY_GLASS.get());
                         output.accept(ModItems.CLARITY_GLASS_PANE.get());
                         output.accept(ModItems.CARVE_CLARITY_GLASS.get());

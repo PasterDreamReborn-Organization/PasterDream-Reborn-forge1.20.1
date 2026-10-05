@@ -397,6 +397,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         var shadowStoneTilesFamily = new BuildingBlockFamily(ModBlocks.SHADOW_STONE_TILES, ModBlocks.SHADOW_STONE_TILES_STAIRS, ModBlocks.SHADOW_STONE_TILES_SLAB, ModBlocks.SHADOW_STONE_TILES_WALL);
         var cyanStoneBrickFamily = new BuildingBlockFamily(ModBlocks.CYAN_STONE_BRICKS, ModBlocks.CYAN_STONE_BRICK_STAIRS, ModBlocks.CYAN_STONE_BRICK_SLAB, ModBlocks.CYAN_STONE_BRICK_WALL);
         var mossyCyanStoneBrickFamily = new BuildingBlockFamily(ModBlocks.MOSSY_CYAN_STONE_BRICKS, ModBlocks.MOSSY_CYAN_STONE_BRICK_STAIRS, ModBlocks.MOSSY_CYAN_STONE_BRICK_SLAB, ModBlocks.MOSSY_CYAN_STONE_BRICK_WALL);
+        var polishedCyanStoneFamily = new BuildingBlockFamily(ModBlocks.POLISHED_CYAN_STONE, ModBlocks.POLISHED_CYAN_STONE_STAIRS, ModBlocks.POLISHED_CYAN_STONE_SLAB, ModBlocks.POLISHED_CYAN_STONE_WALL);
 
         addBuildingFamilyToTags(budFamily);
         addBuildingFamilyToTags(polishedCalciteFamily);
@@ -406,6 +407,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         addBuildingFamilyToTags(shadowStoneTilesFamily);
         addBuildingFamilyToTags(cyanStoneBrickFamily);
         addBuildingFamilyToTags(mossyCyanStoneBrickFamily);
+        addBuildingFamilyToTags(polishedCyanStoneFamily);
 
         // ===== 染梦砂岩建材系列 =====
         var dyedreamSandstoneFamily = new BuildingBlockFamily(ModBlocks.DYEDREAM_SANDSTONE, ModBlocks.DYEDREAM_SANDSTONE_STAIRS, ModBlocks.DYEDREAM_SANDSTONE_SLAB, ModBlocks.DYEDREAM_SANDSTONE_WALL);
