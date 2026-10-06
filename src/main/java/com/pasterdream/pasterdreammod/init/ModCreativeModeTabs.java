@@ -859,6 +859,7 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("关于美梦世界的研究"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦世界跃迁石"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("梦境世界的本质"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("苍白雪莲与苍白骨针"));
 
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("探求秘辛"));
 
