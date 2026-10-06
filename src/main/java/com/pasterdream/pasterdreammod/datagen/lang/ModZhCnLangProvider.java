@@ -2172,8 +2172,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 狱炎剑
         add("pasterdream.seniors_dream.entry.inferno_sword", "『融骸』狱炎剑");
-        add("pasterdream.seniors_dream.entry.inferno_sword.page0", "利用远古残骸，配上烈焰粉和炙焰金块来强化炙焰金剑后，便将它升级成狱炎剑。它的锋利程度和钻石剑不相上下，而它也会给予敌人长时间的烈焰炙烤，如果敌人原本就在承受着火焰的灼烧，那么，这把剑会延长他们受到折磨的时间。");
-        add("pasterdream.seniors_dream.entry.inferno_sword.page1", "强化后，这把剑获名『融骸』，它变得更加轻便，使用者可以主动释放战技，让这把剑获得「融骸斩击」，使它下一击更致命，如果敌人将会受到长时间的火焰灼烧，融骸斩击还会熄灭他们身上的火焰，让他们的行动更加迟缓。$(br)——浴身于战火，铸炼于战砧。");
+        add("pasterdream.seniors_dream.entry.inferno_sword.page0", "利用远古残骸，配上烈焰粉和炙焰金块来强化炙焰金剑后，它会升级成狱炎剑。这把剑会给予敌人长时间的烈焰炙烤，如果敌人原本就在承受着火焰的灼烧，那么，这把剑会延长他们受到折磨的时间。");
+        add("pasterdream.seniors_dream.entry.inferno_sword.page1", "你也可以用下界之星和下界砖在锻造台进一步强化这把武器。强化后，这把剑获名『融骸』，它变得更加轻便，使用者可以主动释放战技，让这把剑获得「融骸斩击」，使它下一击更致命，如果敌人将会受到长时间的火焰灼烧，融骸斩击还会熄灭他们身上的火焰，让他们的行动更加迟缓。$(br)——浴身于战火，铸炼于战砧。");
 
         // 草薙
         add("pasterdream.seniors_dream.entry.kusanagi", "『天丛云』草薙");
@@ -2182,7 +2182,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 引潮
         add("pasterdream.seniors_dream.entry.tide_sword", "『北海若』引潮");
-        add("pasterdream.seniors_dream.entry.tide_sword.page0", "某一日，你感觉到深海秘宝中发现的蔚蓝露滴与你合成的引潮剑产生了共鸣，于是，你将蔚蓝露滴进一步打磨，试着镶嵌在引潮剑中。现在，这把剑被冠以了古代的海神之名，不仅更加锋利，持有者还可以主动释放「涌流剑技」，在水中快速冲刺。另外，如果你的敌人在水中和你战斗，那么你释放涌流剑技之后，下一次斩击将会更加致命。");
+        add("pasterdream.seniors_dream.entry.tide_sword.page0", "某一日，你感觉到深海秘宝中发现的蔚蓝露滴与你合成的引潮剑产生了共鸣，于是，你将蔚蓝露滴进一步打磨，配合你的海晶碎片，试着在锻造台上把它们镶嵌在引潮剑中。现在，这把剑被冠以了古代的海神之名，不仅更加锋利，持有者还可以主动释放「涌流剑技」，在水中快速冲刺。另外，如果你的敌人在水中和你战斗，那么你释放涌流剑技之后，下一次斩击将会更加致命。");
         add("pasterdream.seniors_dream.entry.tide_sword.page1", "——九河横流归海若，孤峰俯眺慑天吴。");
 
         // 朔漠
@@ -2334,7 +2334,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 大地之刃
         add("pasterdream.seniors_dream.entry.terra_blade", "大地之刃");
-        add("pasterdream.seniors_dream.entry.terra_blade.page0", "当你在现实与炼狱中获得了八把古代遗存之物所制造的剑后，你或许有一种其他办法来让它们发挥更大的作用……$(br)这八把剑与梦境中的涌泉合而为一的神剑——大地之刃，具有极致的伤害和不菲的力量，你可以在融梦能量充足时开启剑气状态，每一次斩击都会释放出无比致命的剑气来杀死远处的敌人，当然，记得随时关注你的融梦能量……");
+        add("pasterdream.seniors_dream.entry.terra_blade.page0", "当你在现实与炼狱中获得了五把古代遗存之物所制造的剑后，你或许有一种其他办法来让它们发挥更大的作用……$(br)这五把剑通过精炼合而为一的神剑——大地之刃，具有极致的伤害和不菲的力量，你可以在融梦能量充足时开启剑气状态，每一次斩击都会释放出无比致命的剑气来杀死远处的敌人，当然，记得随时关注你的融梦能量……");
         add("pasterdream.seniors_dream.entry.terra_blade.page1", "——此身剑所天成，数剑合一，铸为英雄之刃。");
 
         // 银河果冻
@@ -2588,7 +2588,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("pasterdream.seniors_dream.entry.jellyfish", "水母");
         add("pasterdream.seniors_dream.entry.jellyfish.page0", "这种友善的小生物会在风之旅途梦境的风波群岛出现，而且似乎被玩家伤害了也不会反击。它们漂浮在天上(遨游云海，很合理)，而且似乎对海带情有独钟。");
-        add("pasterdream.seniors_dream.entry.jellyfish.page2", "你可能会好奇这个梦境根本没有海带，他们是为什么会喜欢这种食物，而且为什么新诞生的小水母体积和成年水母一样。这个问题嘛......毕竟这里是梦境，梦里什么都有。$(br)如果击杀它们，会掉落一种叫水母泥的物质，这是一种可以用来制作果冻的优秀原料，而且就算不经过加工，它们本身也可以直接吃，虽然不太建议生吃就是了......");
+        add("pasterdream.seniors_dream.entry.jellyfish.page2", "你可能会好奇这个梦境根本没有海带，他们为什么会喜欢这种食物，而且为什么新诞生的小水母体积和成年水母一样。这些问题嘛......毕竟这里是梦境，梦里什么都有。$(br)如果击杀它们，会掉落凝结之风，和一种叫水母泥的物质，这是一种可以用来制作果冻的优秀原料，而且就算不经过加工，它们本身也可以直接吃，虽然不太建议生吃就是了......");
 
         add("pasterdream.seniors_dream.entry.aaroncos_left_hand", "亚伦柯斯之触—左手");
         add("pasterdream.seniors_dream.entry.aaroncos_left_hand.page0", "当你前往亚伦柯斯竞技场，并右键正中间的诡异眼睛，你就会召唤亚伦柯斯之触，这是一名暗影受害者的残余躯体——一双巨大的手。因为暗影的影响，现在这双手已经变得无比巨大。");
