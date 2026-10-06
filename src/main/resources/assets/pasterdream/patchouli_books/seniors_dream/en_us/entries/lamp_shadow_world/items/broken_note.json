@@ -1,7 +1,7 @@
 {
   "sortnum": 5,
   "name": "pasterdream.seniors_dream.entry.broken_note",
-  "icon": "pasterdream:broken_note",
+  "icon": "pasterdream:lamp_shadow_broken_note",
   "category": "pasterdream:lamp_shadow_world/items",
   "advancement": "pasterdream:story/enter_lamp_shadow_world",
   "pages": [

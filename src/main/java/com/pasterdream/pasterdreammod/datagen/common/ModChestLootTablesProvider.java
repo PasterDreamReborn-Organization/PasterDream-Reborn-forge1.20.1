@@ -20,16 +20,16 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import java.util.function.BiConsumer;
 public class ModChestLootTablesProvider implements LootTableSubProvider {
     /**
-     *资料来源于 minecraft wiki:
-     * bonus_rolls：（默认为0）根据战利品上下文提供的幸运值增加抽取次数。游戏会将玩家幸运值属性的值和钓鱼时工具上fishing_luck_bonus魔咒效果的等级相加后，与此字段的值相乘并向下取整，作为额外的抽取次数。
-     * 换句话说，抽取次数的计算公式为：final_rolls = [rolls + luck * bonus_rolls]
+     *璧勬枡鏉ユ簮浜?minecraft wiki:
+     * bonus_rolls锛氾紙榛樿涓?锛夋牴鎹垬鍒╁搧涓婁笅鏂囨彁渚涚殑骞歌繍鍊煎鍔犳娊鍙栨鏁般€傛父鎴忎細灏嗙帺瀹跺垢杩愬€煎睘鎬х殑鍊煎拰閽撻奔鏃跺伐鍏蜂笂fishing_luck_bonus榄斿拻鏁堟灉鐨勭瓑绾х浉鍔犲悗锛屼笌姝ゅ瓧娈电殑鍊肩浉涔樺苟鍚戜笅鍙栨暣锛屼綔涓洪澶栫殑鎶藉彇娆℃暟銆?
+     * 鎹㈠彞璇濊锛屾娊鍙栨鏁扮殑璁＄畻鍏紡涓猴細final_rolls = [rolls + luck * bonus_rolls]
      **/
     @Override
     public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/picnic_basket_overworld"),//原loots_relic_9
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/picnic_basket_overworld"),//鍘焞oots_relic_9
                 LootTable.lootTable()
-                        // 幸运影响系数0.15，移除原版的2-4次抽取，改为固定4次抽取
+                        // 骞歌繍褰卞搷绯绘暟0.15锛岀Щ闄ゅ師鐗堢殑2-4娆℃娊鍙栵紝鏀逛负鍥哄畾4娆℃娊鍙?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(4.0F))
@@ -98,7 +98,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
         consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/picnic_basket_dyedream_world"),
                 LootTable.lootTable()
-                        // 幸运影响系数0.15，移除原版的2-4次抽取，改为固定4次抽取
+                        // 骞歌繍褰卞搷绯绘暟0.15锛岀Щ闄ゅ師鐗堢殑2-4娆℃娊鍙栵紝鏀逛负鍥哄畾4娆℃娊鍙?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(4.0F))
@@ -126,11 +126,11 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
-                                .add(LootItem.lootTableItem(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get())//TODO:加入眠椰树生成后替换为海盐眠椰饮
+                                .add(LootItem.lootTableItem(ModItems.GLASS_CUP_OF_WATERMELON_JUICE.get())//TODO:鍔犲叆鐪犳ぐ鏍戠敓鎴愬悗鏇挎崲涓烘捣鐩愮湢妞伴ギ
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
-                                .add(LootItem.lootTableItem(Items.APPLE)//TODO:加入眠椰树生成后替换为眠椰
+                                .add(LootItem.lootTableItem(Items.APPLE)//TODO:鍔犲叆鐪犳ぐ鏍戠敓鎴愬悗鏇挎崲涓虹湢妞?
                                         .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(2.0F, 4.0F))))
@@ -165,9 +165,9 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                         )
         );
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/dyedream_relic_chest_loot_common"),//原loots_relic_0
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/dyedream_relic_chest_loot_common"),//鍘焞oots_relic_0
                 LootTable.lootTable()
-                        // 染梦物品，固定2抽取，幸运影响系数0.15
+                        // 鏌撴ⅵ鐗╁搧锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.15
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -190,7 +190,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(5))
                         )
-                        // 植物，固定2抽取，幸运影响系数0.1
+                        // 妞嶇墿锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.1
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.1F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -229,7 +229,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                         )
 
                         .withPool(LootPool.lootPool()
-                                // 食材&食物，固定3抽取，幸运影响系数0.15
+                                // 椋熸潗&椋熺墿锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.15
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(3.0F))
                                 .add(LootItem.lootTableItem(ModItems.DOUGH.get())
@@ -303,7 +303,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                         )
 
                         .withPool(LootPool.lootPool()
-                                // 建材，固定1抽取，不提供额外抽取次数
+                                // 寤烘潗锛屽浐瀹?鎶藉彇锛屼笉鎻愪緵棰濆鎶藉彇娆℃暟
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.POLISHED_CALCITE.get())
@@ -357,7 +357,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
 
                         )
                         .withPool(LootPool.lootPool()
-                                // 装备&工具，固定1抽取，不提供额外抽取次数
+                                // 瑁呭&宸ュ叿锛屽浐瀹?鎶藉彇锛屼笉鎻愪緵棰濆鎶藉彇娆℃暟
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.PALE_BONENEEDLE.get())
@@ -435,7 +435,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                                 .allowTreasure()))
                         )
                         .withPool(LootPool.lootPool()
-                                // 材料物品，固定1抽取，幸运影响系数0.25
+                                // 鏉愭枡鐗╁搧锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.25
                                 .setBonusRolls(ConstantValue.exactly(0.25F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get())
@@ -462,11 +462,15 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.DYEDREAM_BROKEN_NOTE.get())
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(90))
                         )
                         .withPool(LootPool.lootPool()
-                                // 染梦装备
+                                // 鏌撴ⅵ瑁呭
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.DYEDREAM_UPGRADE.get())
@@ -513,7 +517,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(400))
                         )
                         .withPool(LootPool.lootPool()
-                                // 饰品，固定1抽取，无幸运修正系数
+                                // 楗板搧锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇绯绘暟
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.EMBRYO_RING.get())
@@ -546,7 +550,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(30)))
                         .withPool(LootPool.lootPool()
-                                // 附魔书，固定1抽取，无幸运修正系数
+                                // 闄勯瓟涔︼紝鍥哄畾1鎶藉彇锛屾棤骞歌繍淇绯绘暟
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(Items.BOOK)
@@ -559,9 +563,9 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                         )
         );
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/dyedream_relic_chest_loot_rare"),//原loots_relic_1
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/dyedream_relic_chest_loot_rare"),//鍘焞oots_relic_1
                 LootTable.lootTable()
-                        // 染梦物品，固定1抽取，幸运影响系数0.2
+                        // 鏌撴ⅵ鐗╁搧锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.2
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.2F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -584,7 +588,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(9))
                         )
-                        // 植物，固定2抽取，幸运影响系数0.1
+                        // 妞嶇墿锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.1
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.1F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -623,7 +627,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                         )
 
                         .withPool(LootPool.lootPool()
-                                // 食材&食物，固定3抽取，幸运影响系数0.15
+                                // 椋熸潗&椋熺墿锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.15
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(3.0F))
                                 .add(LootItem.lootTableItem(ModItems.DOUGH.get())
@@ -697,7 +701,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                         )
 
                         .withPool(LootPool.lootPool()
-                                // 建材，固定1抽取，不提供额外抽取次数
+                                // 寤烘潗锛屽浐瀹?鎶藉彇锛屼笉鎻愪緵棰濆鎶藉彇娆℃暟
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.POLISHED_CALCITE.get())
@@ -751,7 +755,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
 
                         )
                         .withPool(LootPool.lootPool()
-                                // 装备&工具，固定1抽取，幸运修正系数0.1
+                                // 瑁呭&宸ュ叿锛屽浐瀹?鎶藉彇锛屽垢杩愪慨姝ｇ郴鏁?.1
                                 .setBonusRolls(ConstantValue.exactly(0.1F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.PALE_BONENEEDLE.get())
@@ -825,7 +829,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                                 .allowTreasure()))
                         )
                         .withPool(LootPool.lootPool()
-                                // 材料物品，固定1抽取，幸运影响系数0.25
+                                // 鏉愭枡鐗╁搧锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.25
                                 .setBonusRolls(ConstantValue.exactly(0.25F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get())
@@ -856,7 +860,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(80))
                         )
                         .withPool(LootPool.lootPool()
-                                // 染梦装备
+                                // 鏌撴ⅵ瑁呭
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.DYEDREAM_UPGRADE.get())
@@ -903,7 +907,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(400))
                         )
                         .withPool(LootPool.lootPool()
-                                // 饰品，固定1抽取，无幸运修正系数
+                                // 楗板搧锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇绯绘暟
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.EMBRYO_RING.get())
@@ -936,7 +940,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(50)))
                         .withPool(LootPool.lootPool()
-                                // 附魔书，固定1抽取，无幸运修正系数
+                                // 闄勯瓟涔︼紝鍥哄畾1鎶藉彇锛屾棤骞歌繍淇绯绘暟
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(Items.BOOK)
@@ -951,9 +955,9 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
         );
 
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/shadow_relic_chest_loot_common"),//原loots_relic_3
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/shadow_relic_chest_loot_common"),//鍘焞oots_relic_3
                 LootTable.lootTable()
-                        // 阴影建筑方块，固定2抽取，幸运影响系数0.15
+                        // 闃村奖寤虹瓚鏂瑰潡锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.15
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -984,7 +988,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(1))
                         )
-                        // 阴影植物，固定1抽取，无幸运修正
+                        // 闃村奖妞嶇墿锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1017,7 +1021,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 3.0F))))
                         )
-                        // 材料&杂物，固定1抽取，幸运影响系数0.15
+                        // 鏉愭枡&鏉傜墿锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.15
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1041,12 +1045,12 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get())
+                                .add(LootItem.lootTableItem(ModItems.LAMP_SHADOW_BROKEN_NOTE.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
                         )
-                        // 稀有物品混入，固定1抽取，无幸运修正
+                        // 绋€鏈夌墿鍝佹贩鍏ワ紝鍥哄畾1鎶藉彇锛屾棤骞歌繍淇
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1054,7 +1058,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
-                                .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get())
+                                .add(LootItem.lootTableItem(ModItems.LAMP_SHADOW_BROKEN_NOTE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
@@ -1088,9 +1092,9 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
         );
 
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/desert_fortress_chest"),//原loots_relic_4
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/desert_fortress_chest"),//鍘焞oots_relic_4
                 LootTable.lootTable()
-                        // 沙漠建材，固定1抽取，无幸运修正
+                        // 娌欐紶寤烘潗锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1107,7 +1111,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
                         )
-                        // 植物&食物，固定1抽取，无幸运修正
+                        // 妞嶇墿&椋熺墿锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1128,7 +1132,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                         )
-                        // 杂物，固定1抽取，无幸运修正
+                        // 鏉傜墿锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1149,7 +1153,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(2.0F, 4.0F))))
                         )
-                        // 工具&装备，固定1抽取，无幸运修正
+                        // 宸ュ叿&瑁呭锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1174,7 +1178,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                         )
-                        // 材料&贵重物品，固定1抽取，无幸运修正
+                        // 鏉愭枡&璐甸噸鐗╁搧锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1204,7 +1208,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
         consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/desert_cottage_chest"),
                 LootTable.lootTable()
-                        // 沙漠建材，固定1抽取，无幸运修正
+                        // 娌欐紶寤烘潗锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1221,7 +1225,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
                         )
-                        // 植物&食物，固定1抽取，无幸运修正
+                        // 妞嶇墿&椋熺墿锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1246,7 +1250,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(4.0F, 7.0F))))
                         )
-                        // 工具&装备，固定1抽取，无幸运修正
+                        // 宸ュ叿&瑁呭锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1271,7 +1275,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                         )
-                        // 材料&贵重物品，固定2抽取，无幸运修正
+                        // 鏉愭枡&璐甸噸鐗╁搧锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -1299,9 +1303,9 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
         );
 
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/fisherman_hut_chest"),//原loots_relic_5
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/fisherman_hut_chest"),//鍘焞oots_relic_5
                 LootTable.lootTable()
-                        // 水产，改为固定2次抽取，不受幸运影响
+                        // 姘翠骇锛屾敼涓哄浐瀹?娆℃娊鍙栵紝涓嶅彈骞歌繍褰卞搷
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -1334,7 +1338,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 3.0F))))
                         )
-                        //食材，抽取1次，无幸运修正
+                        //椋熸潗锛屾娊鍙?娆★紝鏃犲垢杩愪慨姝?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1351,7 +1355,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(4.0F, 8.0F))))
                         )
-                        //杂物，抽取1次，无幸运修正
+                        //鏉傜墿锛屾娊鍙?娆★紝鏃犲垢杩愪慨姝?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1386,7 +1390,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                                         UniformGenerator.between(1.0F, 20.0F))
                                                 .allowTreasure()))
                         )
-                        //真活鱼真好吃，抽取1次，无幸运修正
+                        //鐪熸椿楸肩湡濂藉悆锛屾娊鍙?娆★紝鏃犲垢杩愪慨姝?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1415,7 +1419,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
                         )
-                        //食物，抽取1次，无幸运修正
+                        //椋熺墿锛屾娊鍙?娆★紝鏃犲垢杩愪慨姝?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1440,7 +1444,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                         )
-                        //钓鱼宝匣，抽取1次，0.25幸运修正系数
+                        //閽撻奔瀹濆專锛屾娊鍙?娆★紝0.25骞歌繍淇绯绘暟
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.25F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -1453,7 +1457,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
         consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/ecosystem_bubble_chest"),
                 LootTable.lootTable()
-                        // 水产，改为固定2次抽取，不受幸运影响
+                        // 姘翠骇锛屾敼涓哄浐瀹?娆℃娊鍙栵紝涓嶅彈骞歌繍褰卞搷
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -1486,7 +1490,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 3.0F))))
                         )
-                        //食材，抽取1次，无幸运修正
+                        //椋熸潗锛屾娊鍙?娆★紝鏃犲垢杩愪慨姝?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1503,7 +1507,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(4.0F, 8.0F))))
                         )
-                        //杂物，抽取1次，无幸运修正
+                        //鏉傜墿锛屾娊鍙?娆★紝鏃犲垢杩愪慨姝?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1538,7 +1542,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                                         UniformGenerator.between(1.0F, 20.0F))
                                                 .allowTreasure()))
                         )
-                        //真活鱼真好吃，抽取1次，无幸运修正
+                        //鐪熸椿楸肩湡濂藉悆锛屾娊鍙?娆★紝鏃犲垢杩愪慨姝?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1567,7 +1571,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
                         )
-                        //食物，抽取1次，无幸运修正
+                        //椋熺墿锛屾娊鍙?娆★紝鏃犲垢杩愪慨姝?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1592,7 +1596,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                         )
-                        //染梦钓鱼宝匣，抽取1次，0.25幸运修正系数
+                        //鏌撴ⅵ閽撻奔瀹濆專锛屾娊鍙?娆★紝0.25骞歌繍淇绯绘暟
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.25F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -1602,23 +1606,23 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                         )
         );
 
-        //测试战利品列表0
+        //娴嬭瘯鎴樺埄鍝佸垪琛?
         consumer.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/test_loot_table_0"), LootTable.lootTable()
-                //抽取1次，0幸运抽取，每次1个命令方块
+                //鎶藉彇1娆★紝0骞歌繍鎶藉彇锛屾瘡娆?涓懡浠ゆ柟鍧?
                 .withPool(LootPool.lootPool()
                         .setBonusRolls(ConstantValue.exactly(0F))
                         .setRolls(ConstantValue.exactly(1F))
                         .add(LootItem.lootTableItem(Items.COMMAND_BLOCK)
                                 .setWeight(1)
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1F)))))
-                //抽取1次，0幸运抽取，每次2-16个娇小琴雨梦玩偶
+                //鎶藉彇1娆★紝0骞歌繍鎶藉彇锛屾瘡娆?-16涓▏灏忕惔闆ㄦⅵ鐜╁伓
                 .withPool(LootPool.lootPool()
                         .setBonusRolls(ConstantValue.exactly(0F))
                         .setRolls(ConstantValue.exactly(1F))
                         .add(LootItem.lootTableItem(ModItems.QYM_DOLL.get())
                                 .setWeight(1)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(2F, 16F)))))
-                //抽取1次，0幸运抽取，每次2/3概率获得1个结构方块，1/3概率获得1个结构空位
+                //鎶藉彇1娆★紝0骞歌繍鎶藉彇锛屾瘡娆?/3姒傜巼鑾峰緱1涓粨鏋勬柟鍧楋紝1/3姒傜巼鑾峰緱1涓粨鏋勭┖浣?
                 .withPool(LootPool.lootPool()
                         .setBonusRolls(ConstantValue.exactly(0F))
                         .setRolls(ConstantValue.exactly(1F))
@@ -1628,14 +1632,14 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                         .add(LootItem.lootTableItem(Items.STRUCTURE_VOID)
                                 .setWeight(1)
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1F)))))
-                //随机抽取2-16次，0幸运抽取，每次1个破碎粒子提供方块0
+                //闅忔満鎶藉彇2-16娆★紝0骞歌繍鎶藉彇锛屾瘡娆?涓牬纰庣矑瀛愭彁渚涙柟鍧?
                 .withPool(LootPool.lootPool()
                         .setBonusRolls(ConstantValue.exactly(0F))
                         .setRolls(UniformGenerator.between(2F, 16F))
                         .add(LootItem.lootTableItem(ModItems.MODEL_BREAK_PARTICLE_PROVIDER_BLOCK_0.get())
                                 .setWeight(1)
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1F)))))
-                //抽取1次，16幸运影响，每次1个破碎粒子提供方块1
+                //鎶藉彇1娆★紝16骞歌繍褰卞搷锛屾瘡娆?涓牬纰庣矑瀛愭彁渚涙柟鍧?
                 .withPool(LootPool.lootPool()
                         .setBonusRolls(ConstantValue.exactly(16F))
                         .setRolls(ConstantValue.exactly(1F))
@@ -1643,9 +1647,9 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .setWeight(1)
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1F))))));
 
-        //测试战利品列表1
+        //娴嬭瘯鎴樺埄鍝佸垪琛?
         consumer.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/test_loot_table_1"), LootTable.lootTable()
-                //抽取1次，0幸运抽取，每次1个连锁型命令方块
+                //鎶藉彇1娆★紝0骞歌繍鎶藉彇锛屾瘡娆?涓繛閿佸瀷鍛戒护鏂瑰潡
                 .withPool(LootPool.lootPool()
                         .setBonusRolls(ConstantValue.exactly(0F))
                         .setRolls(ConstantValue.exactly(1F))
@@ -1653,9 +1657,9 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .setWeight(1)
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1F))))));
 
-        //测试战利品列表2
+        //娴嬭瘯鎴樺埄鍝佸垪琛?
         consumer.accept(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/test_loot_table_2"), LootTable.lootTable()
-                //抽取1次，0幸运抽取，每次1个循环型命令方块
+                //鎶藉彇1娆★紝0骞歌繍鎶藉彇锛屾瘡娆?涓惊鐜瀷鍛戒护鏂瑰潡
                 .withPool(LootPool.lootPool()
                         .setBonusRolls(ConstantValue.exactly(0F))
                         .setRolls(ConstantValue.exactly(1F))
@@ -1663,13 +1667,13 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .setWeight(1)
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1F))))));
 
-        // === 风之旅途维度战利品 ===
+        // === 椋庝箣鏃呴€旂淮搴︽垬鍒╁搧 ===
 
-        // 风之旅途通用战利品（原 loots_relic_6）：热气球/波奇/灵梦/风车小屋/失落风骑士遗迹
+        // 椋庝箣鏃呴€旈€氱敤鎴樺埄鍝侊紙鍘?loots_relic_6锛夛細鐑皵鐞?娉㈠/鐏垫ⅵ/椋庤溅灏忓眿/澶辫惤椋庨獞澹仐杩?
         consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/wind_journey_chest"),
                 LootTable.lootTable()
-                        // 维度特色物品，固定2抽取，幸运影响系数0.15
+                        // 缁村害鐗硅壊鐗╁搧锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.15
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -1700,7 +1704,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(5))
                         )
-                        // 植物，固定2抽取，幸运影响系数0.1
+                        // 妞嶇墿锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.1
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.1F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -1721,7 +1725,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
                         )
-                        // 食物，固定3抽取，幸运影响系数0.15
+                        // 椋熺墿锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.15
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(3.0F))
@@ -1766,7 +1770,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 3.0F))))
                         )
-                        // 建材，固定1抽取，不提供额外抽取次数
+                        // 寤烘潗锛屽浐瀹?鎶藉彇锛屼笉鎻愪緵棰濆鎶藉彇娆℃暟
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1803,7 +1807,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 4.0F))))
                         )
-                        // 装备&工具，固定1抽取，幸运影响系数0.1
+                        // 瑁呭&宸ュ叿锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.1
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.1F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1868,7 +1872,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(2.0F, 8.0F))))
                         )
-                        // 材料物品，固定1抽取，幸运影响系数0.25
+                        // 鏉愭枡鐗╁搧锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.25
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.25F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1891,7 +1895,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(90))
                         )
-                        // 稀有材料，固定1抽取，幸运影响系数1（萦风合金锭为Boss产出的延伸，概率极低）
+                        // 绋€鏈夋潗鏂欙紝鍥哄畾1鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?锛堣惁椋庡悎閲戦敪涓築oss浜у嚭鐨勫欢浼革紝姒傜巼鏋佷綆锛?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(1.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1902,7 +1906,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(400))
                         )
-                        // 特殊物品，固定1抽取，无幸运修正系数
+                        // 鐗规畩鐗╁搧锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇绯绘暟
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1932,7 +1936,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                                 ConstantValue.exactly(1.0F))))
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(120)))
-                        // 附魔书，固定1抽取，无幸运修正系数
+                        // 闄勯瓟涔︼紝鍥哄畾1鎶藉彇锛屾棤骞歌繍淇绯绘暟
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1946,11 +1950,11 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                         )
         );
 
-        // 风之旅途稀有战利品（原 loots_relic_7）：风岛/风车小屋/失落风骑士遗迹
+        // 椋庝箣鏃呴€旂█鏈夋垬鍒╁搧锛堝師 loots_relic_7锛夛細椋庡矝/椋庤溅灏忓眿/澶辫惤椋庨獞澹仐杩?
         consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/wind_journey_chest_rare"),
                 LootTable.lootTable()
-                        // 维度特色物品，固定2抽取，幸运影响系数0.2
+                        // 缁村害鐗硅壊鐗╁搧锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.2
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.2F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -1981,7 +1985,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(9))
                         )
-                        // 植物，固定2抽取，幸运影响系数0.1
+                        // 妞嶇墿锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.1
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.1F))
                                 .setRolls(ConstantValue.exactly(2.0F))
@@ -2002,7 +2006,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(2.0F, 3.0F))))
                         )
-                        // 食物，固定3抽取，幸运影响系数0.15
+                        // 椋熺墿锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.15
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
                                 .setRolls(ConstantValue.exactly(3.0F))
@@ -2047,7 +2051,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 4.0F))))
                         )
-                        // 建材，固定1抽取，不提供额外抽取次数
+                        // 寤烘潗锛屽浐瀹?鎶藉彇锛屼笉鎻愪緵棰濆鎶藉彇娆℃暟
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -2084,7 +2088,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 6.0F))))
                         )
-                        // 装备&工具，固定1抽取，幸运影响系数0.1
+                        // 瑁呭&宸ュ叿锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.1
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.1F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -2149,7 +2153,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(3.0F, 10.0F))))
                         )
-                        // 材料物品，固定1抽取，幸运影响系数0.25
+                        // 鏉愭枡鐗╁搧锛屽浐瀹?鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?.25
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.25F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -2172,7 +2176,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(80))
                         )
-                        // 稀有材料，固定1抽取，幸运影响系数1（萦风合金锭为Boss产出的延伸，概率极低）
+                        // 绋€鏈夋潗鏂欙紝鍥哄畾1鎶藉彇锛屽垢杩愬奖鍝嶇郴鏁?锛堣惁椋庡悎閲戦敪涓築oss浜у嚭鐨勫欢浼革紝姒傜巼鏋佷綆锛?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(1.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -2183,7 +2187,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(300))
                         )
-                        // 特殊物品，固定1抽取，无幸运修正系数
+                        // 鐗规畩鐗╁搧锛屽浐瀹?鎶藉彇锛屾棤骞歌繍淇绯绘暟
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -2209,7 +2213,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                                 ConstantValue.exactly(1.0F))))
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(70)))
-                        // 附魔书，固定1抽取，无幸运修正系数
+                        // 闄勯瓟涔︼紝鍥哄畾1鎶藉彇锛屾棤骞歌繍淇绯绘暟
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -2223,11 +2227,11 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                         )
         );
 
-        // 圣诞树战利品（原 loots_relic_8）
+        // 鍦ｈ癁鏍戞垬鍒╁搧锛堝師 loots_relic_8锛?
         consumer.accept(
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/christmas_tree_chest"),
                 LootTable.lootTable()
-                        // 甜食&食物，抽取3~5次，无幸运修正
+                        // 鐢滈&椋熺墿锛屾娊鍙?~5娆★紝鏃犲垢杩愪慨姝?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0F))
                                 .setRolls(UniformGenerator.between(3F, 5F))
@@ -2355,7 +2359,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(5)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(2.0F, 5.0F)))))
-                        // 装饰&彩灯，抽取2~3次，无幸运修正
+                        // 瑁呴グ&褰╃伅锛屾娊鍙?~3娆★紝鏃犲垢杩愪慨姝?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0F))
                                 .setRolls(UniformGenerator.between(2F, 3F))
@@ -2387,7 +2391,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .setWeight(5)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(5F, 9F)))))
-                        // 稀有掉落，抽取1次（原作 tabitem_1 占位权重100 → 空条目），无幸运修正
+                        // 绋€鏈夋帀钀斤紝鎶藉彇1娆★紙鍘熶綔 tabitem_1 鍗犱綅鏉冮噸100 鈫?绌烘潯鐩級锛屾棤骞歌繍淇
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0F))
                                 .setRolls(ConstantValue.exactly(1F))
@@ -2405,7 +2409,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                                 ConstantValue.exactly(1F))))
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(100)))
-                        // 雪景物品，抽取1~2次，无幸运修正
+                        // 闆櫙鐗╁搧锛屾娊鍙?~2娆★紝鏃犲垢杩愪慨姝?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0F))
                                 .setRolls(UniformGenerator.between(1F, 2F))
@@ -2436,7 +2440,7 @@ public class ModChestLootTablesProvider implements LootTableSubProvider {
                                         .apply(EnchantWithLevelsFunction.enchantWithLevels(
                                                         UniformGenerator.between(1F, 30F))
                                                 .allowTreasure())))
-                        // 宝石，抽取1次，无幸运修正
+                        // 瀹濈煶锛屾娊鍙?娆★紝鏃犲垢杩愪慨姝?
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0F))
                                 .setRolls(ConstantValue.exactly(1F))

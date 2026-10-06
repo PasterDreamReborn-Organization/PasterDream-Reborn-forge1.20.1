@@ -509,7 +509,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
                         .add(LootItem.lootTableItem(Items.COAL).setWeight(1))
                         .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get()).setWeight(1))
                         .add(LootItem.lootTableItem(ModItems.RUST_BLACK_METAL_GRAIN.get()).setWeight(1))
-                        .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get()).setWeight(2))
+                        .add(LootItem.lootTableItem(ModItems.LAMP_SHADOW_BROKEN_NOTE.get()).setWeight(2))
                         .when(HAS_SILK_TOUCH.invert())));
         // 阴影陶罐：掉落自身
         dropSelf(ModBlocks.SHADOW_CLAY_POT.get());

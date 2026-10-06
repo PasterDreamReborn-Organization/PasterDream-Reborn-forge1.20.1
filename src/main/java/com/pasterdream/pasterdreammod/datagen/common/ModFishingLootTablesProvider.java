@@ -130,7 +130,7 @@ public class ModFishingLootTablesProvider implements LootTableSubProvider {
                                         .apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.5F, 0.95F))))
                                 .add(LootItem.lootTableItem(Items.IRON_SWORD).setWeight(2)
                                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.BROKEN_NOTE.get()).setWeight(1)
+                                .add(LootItem.lootTableItem(ModItems.LAMP_SHADOW_BROKEN_NOTE.get()).setWeight(1)
                                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.BLACK_METAL_GRAIN.get()).setWeight(1)
                                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
