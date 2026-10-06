@@ -312,7 +312,7 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/eat_galaxy_jelly_on_high_height"), existingFileHelper);
 
-            // ========== 子进度：纯洁无暇 ==========
+            // ========== 子进度：纯洁无瑕 ==========
             Advancement pureAndFlawless = Advancement.Builder.advancement()
                     .parent(root)
                     .display(
