@@ -5,8 +5,10 @@ import com.pasterdream.pasterdreammod.world.conditions.RealPlayerCondition;
 import com.pasterdream.pasterdreammod.world.conditions.RealPlayerEmptyHandCondition;
 import com.pasterdream.pasterdreammod.world.functions.ApplyEntityLootingFunction;
 import com.pasterdream.pasterdreammod.world.functions.SpawnEntityFunction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -30,6 +32,14 @@ public class ModLootTables {
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/ecosystem_bubble_chest");
     public static final ResourceLocation DESERT_FORTRESS_CHEST_LOOT =
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/desert_fortress_chest");
+
+    /** 园艺钳破坏方块走自定义战利品表：pliers_cutting/<方块注册名>，与 datagen 路径一致 */
+    public static final String PLIERS_CUTTING_PREFIX = "pliers_cutting/";
+
+    public static ResourceLocation pliersCuttingLoot(Block block) {
+        return ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                PLIERS_CUTTING_PREFIX + BuiltInRegistries.BLOCK.getKey(block).getPath());
+    }
 
     public static final DeferredRegister<LootItemFunctionType> LOOT_FUNCTION_TYPES =
             DeferredRegister.create(Registries.LOOT_FUNCTION_TYPE, PasterDreamMod.MOD_ID);

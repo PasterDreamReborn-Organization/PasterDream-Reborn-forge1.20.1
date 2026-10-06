@@ -1037,6 +1037,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("tooltip.pasterdream.pliers.1", "§7▪ §9Can harvest crops and plants");
         add("tooltip.pasterdream.pliers.2", "§7▪ §9Sneak + right-click to directly harvest Pasterdream plants");
+        add("tooltip.pasterdream.pliers.3", "§7▪ §9sneaking + right-click on leaves will greatly increases the drop rate of saplings and fruits");
 
         // Broken Note
         add(ModItems.LAMP_SHADOW_BROKEN_NOTE.get(), "Lamp Shadow Broken Note");
