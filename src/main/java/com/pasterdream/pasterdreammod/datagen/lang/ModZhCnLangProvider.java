@@ -1208,6 +1208,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("tooltip.pasterdream.pliers.1", "§7▪ §9可以收获作物和植物");
         add("tooltip.pasterdream.pliers.2", "§7▪ §9潜行右键可直接采集帕斯特的植物");
+        add("tooltip.pasterdream.pliers.3", "§7▪ §9潜行右键对树叶使用时，大幅提高树苗和果实的掉率");
 
         // 笔记残页
         add(ModItems.LAMP_SHADOW_BROKEN_NOTE.get(), "灯影之下笔记碎片");
