@@ -1097,8 +1097,10 @@ public class ModItems {
     public static final RegistryObject<Item> PLIERS = ITEMS.register("pliers",
             () -> new PliersItem(new Item.Properties()));
 
-    public static final RegistryObject<Item> BROKEN_NOTE = ITEMS.register("broken_note", () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
-    public static final RegistryObject<Item> UNKNOWN_NOTE = ITEMS.register("unknown_note", () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> LAMP_SHADOW_BROKEN_NOTE = ITEMS.register("lamp_shadow_broken_note", () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> LAMP_SHADOW_UNKNOWN_NOTE = ITEMS.register("lamp_shadow_unknown_note", () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> DYEDREAM_BROKEN_NOTE = ITEMS.register("dyedream_broken_note", () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> DYEDREAM_UNKNOWN_NOTE = ITEMS.register("dyedream_unknown_note", () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
 
     // ===== 饰品（护符） =====
     public static final RegistryObject<Item> EMBRYO_CHARM = ITEMS.register("embryo_charm",
@@ -1978,7 +1980,8 @@ public class ModItems {
     public static final RegistryObject<Item> DREAM_NOTES_DYEDREAM_WORLD = ITEMS.register("dream_notes_dyedream_world", () -> new DreamNotesItem(new Item.Properties()));
     public static final RegistryObject<Item> DREAM_NOTES_LAMP_SHADOW_WORLD = ITEMS.register("dream_notes_lamp_shadow_world", () -> new DreamNotesItem(new Item.Properties()));
     public static final RegistryObject<Item> DREAM_NOTES_WIND_JOURNEY_WORLD = ITEMS.register("dream_notes_wind_journey_world", () -> new DreamNotesItem(new Item.Properties()));
-    public static final RegistryObject<Item> DREAM_NOTES_STORY_GUIDE = ITEMS.register("dream_notes_story_guide", () -> new StoryProgressItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> LAMP_SHADOW_STORY_GUIDE = ITEMS.register("lamp_shadow_story_guide", () -> new StoryProgressItem(new Item.Properties().stacksTo(64), StoryProgressItem.LAMP_SHADOW));
+    public static final RegistryObject<Item> DYEDREAM_STORY_GUIDE = ITEMS.register("dyedream_story_guide", () -> new StoryProgressItem(new Item.Properties().stacksTo(64), StoryProgressItem.DYEDREAM));
     public static final RegistryObject<Item> BLUE_PRINT = ITEMS.register("blue_print", () -> new BluePrintItem(new Item.Properties()));
     public static final RegistryObject<Item> DREAM_NOTES_BOOK = ITEMS.register("dream_notes_book", () -> new DreamNotesBookItem(new Item.Properties()));
 

@@ -282,7 +282,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "Dream Notes - Dyedream World");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "Dream Notes - Lamp Shadow World");
         add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "Dream Notes - Wind Journey World");
-        add(ModItems.DREAM_NOTES_STORY_GUIDE.get(), "Resolved Notes");
+        add(ModItems.LAMP_SHADOW_STORY_GUIDE.get(), "Lamp Shadow Resolved Notes");
+        add(ModItems.DYEDREAM_STORY_GUIDE.get(), "Dyedream World Resolved Notes");
         add(ModItems.BLUE_PRINT.get(), "Blue Print");
         add(ModItems.REED_ROD.get(), "Reed Rod");
         add(ModItems.MELT_DREAM_COIN.get(), "Melt Dream Coin");
@@ -1038,8 +1039,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.pliers.2", "§7▪ §9Sneak + right-click to directly harvest Pasterdream plants");
 
         // Broken Note
-        add(ModItems.BROKEN_NOTE.get(), "Broken Note");
-        add(ModItems.UNKNOWN_NOTE.get(), "Unknown Note");
+        add(ModItems.LAMP_SHADOW_BROKEN_NOTE.get(), "Lamp Shadow Broken Note");
+        add(ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get(), "Lamp Shadow Unknown Note");
+        add(ModItems.DYEDREAM_BROKEN_NOTE.get(), "Dyedream World Broken Note");
+        add(ModItems.DYEDREAM_UNKNOWN_NOTE.get(), "Dyedream World Unknown Note");
         add(ModItems.PALE_BONENEEDLE.get(), "Pale Boneneedle");
         add(ModItems.ROOTS_PALE_BONENEEDLE.get(), "Roots Pale Boneneedle");
         add("tooltip.pasterdream.broken_note", "§7We still need to learn more......");
@@ -1783,6 +1786,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.chocolate_000.description", "Craft and obtain Black Metal Grains");
         add("advancements.pasterdream.story.broken_note.title", "Dipped in Shadow Memory");
         add("advancements.pasterdream.story.broken_note.description", "Obtain a fragment of the notes from the dream beneath the lamp shadow");
+        add("advancements.pasterdream.story.dyedream_broken_note.title", "Dyedream Fragment");
+        add("advancements.pasterdream.story.dyedream_broken_note.description", "Obtain a fragment of the notes from the Dyedream World");
         add("advancements.pasterdream.story.research_table.title", "Reading in the Shadow");
         add("advancements.pasterdream.story.research_table.description", "Craft a research table to decipher the notes");
         add("advancements.pasterdream.story.shadow_prisoner.title", "Weary Prisoner");
@@ -2047,6 +2052,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.dream_accumulator.found_note", "You found a Dream Seeker's note and tucked it into your backpack");
         add("message.pasterdream.story_guide.not_entered_lamp_shadow", "You have not yet set foot in the Lamp Shadow World");
         add("message.pasterdream.story_guide.all_done", "All Lamp Shadow World notes have been resolved");
+        add("message.pasterdream.story_guide.not_entered_dyedream", "You have not yet set foot in the Dyedream World");
+        add("message.pasterdream.story_guide.all_done_dyedream", "All Dyedream World notes have been resolved");
 
         add("message.pasterdream.dream_train.train_pass", "A Dream Train rumbles past......");
         add("message.pasterdream.dream_train.location_info", "The train revealed a location...... §aX：%s §aZ：%s");

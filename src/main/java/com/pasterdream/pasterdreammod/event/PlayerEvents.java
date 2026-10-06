@@ -53,6 +53,7 @@ public class PlayerEvents {
     private static final ResourceLocation LOOK_AT_PINK_SHEEP_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/look_at_pink_sheep");
     private static final ResourceLocation ENTER_LAMP_SHADOW_WORLD_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/enter_lamp_shadow_world");
     private static final ResourceLocation BROKEN_NOTE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/broken_note");
+    private static final ResourceLocation DYEDREAM_BROKEN_NOTE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/dyedream_broken_note");
     private static final ResourceLocation RESEARCH_TABLE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/research_table");
     private static final ResourceLocation SHADOW_BLAST_FURNACE_CORE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_blast_furnace_core");
     private static final ResourceLocation CHOCOLATE_000_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/chocolate_000");
@@ -135,7 +136,7 @@ public class PlayerEvents {
                     && player.tickCount % 20 == 0
                     && isAdvancementDone(serverPlayer, ENTER_LAMP_SHADOW_WORLD_ADV)) {
                 if (!isAdvancementDone(serverPlayer, BROKEN_NOTE_ADV)
-                        && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.BROKEN_NOTE.get()))) {
+                        && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.LAMP_SHADOW_BROKEN_NOTE.get()))) {
                     ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
                 }
                 if (!isAdvancementDone(serverPlayer, RESEARCH_TABLE_ADV)
@@ -148,6 +149,16 @@ public class PlayerEvents {
                 }
                 if (!isAdvancementDone(serverPlayer, CHOCOLATE_000_ADV)
                         && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.BLACK_METAL_GRAIN.get()))) {
+                    ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
+                }
+            }
+
+            // 染梦世界前置进度型进度兜底：已进入染梦世界且已持有染梦笔记碎片时授予
+            if (player instanceof ServerPlayer serverPlayer
+                    && player.tickCount % 20 == 0
+                    && isAdvancementDone(serverPlayer, DYEDREAM_WORLD_ADV)) {
+                if (!isAdvancementDone(serverPlayer, DYEDREAM_BROKEN_NOTE_ADV)
+                        && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.DYEDREAM_BROKEN_NOTE.get()))) {
                     ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
                 }
             }
@@ -384,6 +395,11 @@ public class PlayerEvents {
 
         // 获得灯影之下根进度后，立即检查依赖该进度的进度（浸影回忆/于影研读）
         if (advancement.getId().equals(ENTER_LAMP_SHADOW_WORLD_ADV)) {
+            ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
+        }
+
+        // 首次进入染梦世界后，立即检查依赖该进度的进度（染梦笔记碎片）
+        if (advancement.getId().equals(DYEDREAM_WORLD_ADV)) {
             ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
         }
     }

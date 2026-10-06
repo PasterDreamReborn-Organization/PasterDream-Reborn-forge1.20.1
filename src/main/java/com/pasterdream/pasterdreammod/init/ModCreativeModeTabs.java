@@ -216,8 +216,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GLASS_JAR_OF_INK.get());
                         output.accept(ModItems.SCULK_HEART.get());
                         output.accept(ModItems.BLACK_STICK.get());
-                        output.accept(ModItems.BROKEN_NOTE.get());
-                        output.accept(ModItems.UNKNOWN_NOTE.get());
+                        output.accept(ModItems.LAMP_SHADOW_BROKEN_NOTE.get());
+                        output.accept(ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get());
+                        output.accept(ModItems.DYEDREAM_BROKEN_NOTE.get());
+                        output.accept(ModItems.DYEDREAM_UNKNOWN_NOTE.get());
                         output.accept(ModItems.BLACK_METAL_INGOT.get());
                         output.accept(ModItems.BLACK_METAL_GRAIN.get());
                         output.accept(ModItems.RUST_BLACK_METAL_GRAIN.get());
@@ -823,7 +825,8 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) ->
                     {
                         // 剧情进度引导物品
-                        output.accept(ModItems.DREAM_NOTES_STORY_GUIDE.get());
+                        output.accept(ModItems.LAMP_SHADOW_STORY_GUIDE.get());
+                        output.accept(ModItems.DYEDREAM_STORY_GUIDE.get());
 
                         output.accept(BluePrintWithNBTToCreativeModeTab.buildNBT("精铸工坊"));
                         output.accept(BluePrintWithNBTToCreativeModeTab.buildNBT("暗影高炉"));

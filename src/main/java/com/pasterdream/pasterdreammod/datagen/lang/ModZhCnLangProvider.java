@@ -296,7 +296,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "寻梦者笔记-染梦世界");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "寻梦者笔记-灯影之下");
         add(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get(), "寻梦者笔记-风之旅途");
-        add(ModItems.DREAM_NOTES_STORY_GUIDE.get(), "已解析的笔记");
+        add(ModItems.LAMP_SHADOW_STORY_GUIDE.get(), "灯影之下已解析的笔记");
+        add(ModItems.DYEDREAM_STORY_GUIDE.get(), "染梦世界已解析的笔记");
         add(ModItems.BLUE_PRINT.get(), "蓝图");
         add(ModItems.DREAM_NOTES_BOOK.get(), "寻梦者笔记书");
 
@@ -1209,8 +1210,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.pliers.2", "§7▪ §9潜行右键可直接采集帕斯特的植物");
 
         // 笔记残页
-        add(ModItems.BROKEN_NOTE.get(), "笔记残页");
-        add(ModItems.UNKNOWN_NOTE.get(), "未解析的笔记");
+        add(ModItems.LAMP_SHADOW_BROKEN_NOTE.get(), "灯影之下笔记碎片");
+        add(ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get(), "灯影之下未解析的笔记");
+        add(ModItems.DYEDREAM_BROKEN_NOTE.get(), "染梦世界笔记碎片");
+        add(ModItems.DYEDREAM_UNKNOWN_NOTE.get(), "染梦世界未解析的笔记");
         add(ModItems.PALE_BONENEEDLE.get(), "苍白骨针");
         add(ModItems.ROOTS_PALE_BONENEEDLE.get(), "溯源苍白骨针");
         add("tooltip.pasterdream.broken_note", "§7我们还需要了解更多......");
@@ -1964,6 +1967,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.chocolate_000.description", "制作并获得黑金属粒");
         add("advancements.pasterdream.story.broken_note.title", "浸影回忆");
         add("advancements.pasterdream.story.broken_note.description", "获得一张灯影之下梦境的笔记残片");
+        add("advancements.pasterdream.story.dyedream_broken_note.title", "染梦残页");
+        add("advancements.pasterdream.story.dyedream_broken_note.description", "获得一张染梦世界的笔记碎片");
         add("advancements.pasterdream.story.research_table.title", "于影研读");
         add("advancements.pasterdream.story.research_table.description", "制作研究台以解析笔记");
         add("advancements.pasterdream.story.shadow_prisoner.title", "困顿囚徒");
@@ -2680,6 +2685,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.dream_accumulator.found_note", "你发现了一张寻梦者笔记，并收进了你的背包");
         add("message.pasterdream.story_guide.not_entered_lamp_shadow", "你尚未踏足灯影之下");
         add("message.pasterdream.story_guide.all_done", "灯影之下的所有笔记都已解析完毕");
+        add("message.pasterdream.story_guide.not_entered_dyedream", "你尚未踏足染梦世界");
+        add("message.pasterdream.story_guide.all_done_dyedream", "染梦世界的所有笔记都已解析完毕");
 
         add("message.pasterdream.dream_train.train_pass", "一辆逐梦列车呼啸而过......");
         add("message.pasterdream.dream_train.location_info", "列车向我们暴露了一个位置信息...... §aX：%s §aZ：%s");

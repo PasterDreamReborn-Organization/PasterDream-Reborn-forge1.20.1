@@ -55,10 +55,10 @@ public class AddToolTip
             tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor.3"));
             tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_armor.4"));
         }
-        if(stack.is(ModItems.BROKEN_NOTE.get())){
+        if(stack.is(ModItems.LAMP_SHADOW_BROKEN_NOTE.get()) || stack.is(ModItems.DYEDREAM_BROKEN_NOTE.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.broken_note"));
         }
-        if(stack.is(ModItems.UNKNOWN_NOTE.get())){
+        if(stack.is(ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get()) || stack.is(ModItems.DYEDREAM_UNKNOWN_NOTE.get())){
             tooltip.add(Component.translatable("tooltip.pasterdream.unknown_note.1"));
             tooltip.add(Component.translatable("tooltip.pasterdream.unknown_note.2"));
         }

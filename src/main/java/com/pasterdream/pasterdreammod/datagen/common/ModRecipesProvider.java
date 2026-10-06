@@ -3100,10 +3100,16 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(Items.FEATHER), has(Items.FEATHER))
                 .save(pWriter);
 
-        // 4x 笔记残页 -> 未解析的笔记
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.UNKNOWN_NOTE.get(), 1)
-                .requires(ModItems.BROKEN_NOTE.get(), 4)
-                .unlockedBy(getHasName(ModItems.BROKEN_NOTE.get()), has(ModItems.BROKEN_NOTE.get()))
+        // 4x 灯影之下笔记残页 -> 未解析的笔记（灯影之下）
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get(), 1)
+                .requires(ModItems.LAMP_SHADOW_BROKEN_NOTE.get(), 4)
+                .unlockedBy(getHasName(ModItems.LAMP_SHADOW_BROKEN_NOTE.get()), has(ModItems.LAMP_SHADOW_BROKEN_NOTE.get()))
+                .save(pWriter);
+
+        // 4x 染梦世界笔记碎片 -> 未解析的笔记（染梦世界）
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DYEDREAM_UNKNOWN_NOTE.get(), 1)
+                .requires(ModItems.DYEDREAM_BROKEN_NOTE.get(), 4)
+                .unlockedBy(getHasName(ModItems.DYEDREAM_BROKEN_NOTE.get()), has(ModItems.DYEDREAM_BROKEN_NOTE.get()))
                 .save(pWriter);
 
         // 苍白骨针 = 骨头 + 苍白花冠

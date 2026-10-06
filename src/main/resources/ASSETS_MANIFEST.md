@@ -175,6 +175,8 @@ textures/item/dream_notes_book_lamp_shadow_world.png
 textures/item/dream_notes_book_overworld.png
 textures/item/dream_notes_book_wind_journey_world.png
 textures/item/dream_train_ticket.png
+textures/item/dyedream_broken_note.png
+textures/item/dyedream_unknown_note.png
 textures/item/feather_pen.png
 textures/item/fluffy_wind_alloy_axe.png
 textures/item/fluffy_wind_alloy_hoe.png

@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.world.item;
 
-import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookWithNBTToCreativeModeTab;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
@@ -19,47 +18,74 @@ import net.minecraft.world.level.Level;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 已解析的笔记：右键后按各自剧情解析线顺序发放下一本笔记书，并同步授予对应进度。
+ * 灯影之下与染梦世界各持有独立的 {@link Line} 配置。
+ */
 public class StoryProgressItem extends Item {
 
-    /** 入场检测：玩家是否进入过灯影之下 */
-    private static final ResourceLocation ENTER_LAMP_SHADOW_WORLD =
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/enter_lamp_shadow_world");
+    /** 一条剧情解析线：入场门槛进度 + 按顺序发放的笔记书与对应进度。 */
+    public record Line(ResourceLocation entryAdvancement,
+                       ResourceLocation[] grantAdvancements,
+                       String[] nextNoteBookContents,
+                       String notEnteredMessageKey,
+                       String allDoneMessageKey) {
 
-    /** 剧情线终点（发放完破碎笔记书后即全部完成） */
-    private static final ResourceLocation ALL_DONE_ADV =
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shattered");
-
-    /** 发放笔记书时同步授予的剧情进度，按顺序排列 */
-    private static final ResourceLocation[] GRANT_ADVANCEMENTS = {
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/deposition_shadow"),
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/lamp_shadow_travelogue_1"),
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_dungeon"),
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/deception"),
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/bargain"),
-            ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shattered")
-    };
-
-    /** 发放的笔记书 content 键，与 GRANT_ADVANCEMENTS 一一对应 */
-    private static final String[] NEXT_NOTE_BOOK_CONTENTS = {
-            "沉淀阴影",
-            "灯影游记 其一",
-            "暗影地牢",
-            "欺诈",
-            "交易",
-            "破碎"
-    };
-
-    /** 打开剧情笔记书时授予的剧情进度（content 键 → 进度ID） */
-    private static final Map<String, ResourceLocation> NOTE_OPEN_ADVANCEMENTS = new HashMap<>();
-
-    static {
-        for (int i = 0; i < NEXT_NOTE_BOOK_CONTENTS.length; i++) {
-            NOTE_OPEN_ADVANCEMENTS.put(NEXT_NOTE_BOOK_CONTENTS[i], GRANT_ADVANCEMENTS[i]);
+        ResourceLocation allDoneAdvancement() {
+            return grantAdvancements[grantAdvancements.length - 1];
         }
     }
 
-    public StoryProgressItem(Properties properties) {
+    /** 灯影之下剧情解析线。 */
+    public static final Line LAMP_SHADOW = new Line(
+            id("story/enter_lamp_shadow_world"),
+            new ResourceLocation[]{
+                    id("story/deposition_shadow"),
+                    id("story/lamp_shadow_travelogue_1"),
+                    id("story/shadow_dungeon"),
+                    id("story/deception"),
+                    id("story/bargain"),
+                    id("story/shattered")
+            },
+            new String[]{"沉淀阴影", "灯影游记 其一", "暗影地牢", "欺诈", "交易", "破碎"},
+            "message.pasterdream.story_guide.not_entered_lamp_shadow",
+            "message.pasterdream.story_guide.all_done");
+
+    /** 染梦世界剧情解析线。 */
+    public static final Line DYEDREAM = new Line(
+            id("story/dyedream_world"),
+            new ResourceLocation[]{
+                    id("story/research_on_sweet_dream_world"),
+                    id("story/essence_of_dream_world"),
+                    id("story/pale_snow_lotus_and_boneneeedle")
+            },
+            new String[]{"关于美梦世界的研究", "梦境世界的本质", "苍白雪莲与苍白骨针"},
+            "message.pasterdream.story_guide.not_entered_dyedream",
+            "message.pasterdream.story_guide.all_done_dyedream");
+
+    /** 打开剧情笔记书时授予的剧情进度（content 键 → 进度ID），两条线共用。 */
+    private static final Map<String, ResourceLocation> NOTE_OPEN_ADVANCEMENTS = new HashMap<>();
+
+    static {
+        registerLine(LAMP_SHADOW);
+        registerLine(DYEDREAM);
+    }
+
+    private static void registerLine(Line line) {
+        for (int i = 0; i < line.nextNoteBookContents().length; i++) {
+            NOTE_OPEN_ADVANCEMENTS.put(line.nextNoteBookContents()[i], line.grantAdvancements()[i]);
+        }
+    }
+
+    private static ResourceLocation id(String path) {
+        return ResourceLocation.fromNamespaceAndPath("pasterdream", path);
+    }
+
+    private final Line line;
+
+    public StoryProgressItem(Properties properties, Line line) {
         super(properties);
+        this.line = line;
     }
 
     @Override
@@ -74,35 +100,36 @@ public class StoryProgressItem extends Item {
             return InteractionResultHolder.fail(stack);
         }
 
-        // 1. 检查是否进入过灯影之下
-        if (!isAdvancementDone(serverPlayer, ENTER_LAMP_SHADOW_WORLD)) {
+        // 1. 检查是否踏入对应梦境
+        if (!isAdvancementDone(serverPlayer, line.entryAdvancement())) {
             serverPlayer.displayClientMessage(
-                    Component.translatable("message.pasterdream.story_guide.not_entered_lamp_shadow"), true);
+                    Component.translatable(line.notEnteredMessageKey()), true);
             return InteractionResultHolder.fail(stack);
         }
 
         // 2. 全部完成？
-        if (isAdvancementDone(serverPlayer, ALL_DONE_ADV)) {
+        if (isAdvancementDone(serverPlayer, line.allDoneAdvancement())) {
             serverPlayer.displayClientMessage(
-                    Component.translatable("message.pasterdream.story_guide.all_done"), true);
+                    Component.translatable(line.allDoneMessageKey()), true);
             return InteractionResultHolder.fail(stack);
         }
 
         // 3. 从后往前找最高已完成的前置进度，发放下一本笔记书并同步授予进度
+        ResourceLocation[] grants = line.grantAdvancements();
         int grantIndex = 0;
-        for (int i = GRANT_ADVANCEMENTS.length - 1; i >= 0; i--) {
-            if (isAdvancementDone(serverPlayer, GRANT_ADVANCEMENTS[i])) {
+        for (int i = grants.length - 1; i >= 0; i--) {
+            if (isAdvancementDone(serverPlayer, grants[i])) {
                 grantIndex = i + 1;
                 break;
             }
         }
 
-        ItemStack note = DreamNotesBookWithNBTToCreativeModeTab.buildNBT(NEXT_NOTE_BOOK_CONTENTS[grantIndex]);
+        ItemStack note = DreamNotesBookWithNBTToCreativeModeTab.buildNBT(line.nextNoteBookContents()[grantIndex]);
         if (!player.getInventory().add(note)) {
             player.drop(note, false);
         }
 
-        grantAdvancement(serverPlayer, GRANT_ADVANCEMENTS[grantIndex]);
+        grantAdvancement(serverPlayer, grants[grantIndex]);
 
         level.playSound(null, player.blockPosition(),
                 SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1.0f, 1.0f);

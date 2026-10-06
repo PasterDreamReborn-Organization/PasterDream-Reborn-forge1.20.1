@@ -256,8 +256,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get());
         basicItem(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get());
         basicItem(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get());
-        withExistingParent("dream_notes_story_guide", mcLoc("item/generated"))
+        withExistingParent("lamp_shadow_story_guide", mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/dream_notes_lamp_shadow_world"));
+        withExistingParent("dyedream_story_guide", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/dream_notes_dyedream_world"));
         basicItem(ModItems.BLUE_PRINT.get());
         basicItem(ModItems.DREAM_NOTES_BOOK.get());
         basicItem(ModItems.REED_ROD.get());
@@ -270,8 +272,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.JUNGLE_SPORE.get());
         basicItem(ModItems.PERGAMYN.get());
 
-        basicItem(ModItems.BROKEN_NOTE.get());
-        basicItem(ModItems.UNKNOWN_NOTE.get());
+        basicItem(ModItems.LAMP_SHADOW_BROKEN_NOTE.get());
+        basicItem(ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get());
+        basicItem(ModItems.DYEDREAM_BROKEN_NOTE.get());
+        basicItem(ModItems.DYEDREAM_UNKNOWN_NOTE.get());
 
         basicItem(ModItems.PALE_BONENEEDLE.get());
         basicItem(ModItems.ROOTS_PALE_BONENEEDLE.get());

@@ -18,14 +18,14 @@
   "unresolvedNote":
   [
     {
-      "item": "pasterdream:lamp_shadow_unknown_note",
+      "item": "pasterdream:dyedream_unknown_note",
       "count": 1
     }
   ],
   "output":
   [
     {
-      "item": "pasterdream:lamp_shadow_story_guide",
+      "item": "pasterdream:dyedream_story_guide",
       "count": 1
     }
   ]

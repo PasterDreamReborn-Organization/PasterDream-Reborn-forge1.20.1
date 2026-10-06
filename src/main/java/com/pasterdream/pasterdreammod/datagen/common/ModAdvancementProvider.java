@@ -507,7 +507,7 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
             Advancement shadowBrokenNote = Advancement.Builder.advancement()
                     .parent(enterLampShadowWorld)
                     .display(
-                            ModItems.BROKEN_NOTE.get(),
+                            ModItems.LAMP_SHADOW_BROKEN_NOTE.get(),
                             Component.translatable("advancements.pasterdream.story.broken_note.title"),
                             Component.translatable("advancements.pasterdream.story.broken_note.description"),
                             null,
@@ -515,16 +515,39 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             true, true, false
                     )
                     .addCriterion("obtain_broken_note", InventoryChangeTrigger.TriggerInstance.hasItems(
-                            ItemPredicate.Builder.item().of(ModItems.BROKEN_NOTE.get())
+                            ItemPredicate.Builder.item().of(ModItems.LAMP_SHADOW_BROKEN_NOTE.get())
                                     .withCount(MinMaxBounds.Ints.exactly(1)).build()))
                     .addCriterion("has_lamp_shadow_root",
                             HasAdvancementTrigger.TriggerInstance.hasAdvancement(
                                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                                             "story/enter_lamp_shadow_world")))
                     .rewards(AdvancementRewards.Builder.experience(10)
-                            .addRecipe(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "unknown_note")))
+                            .addRecipe(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lamp_shadow_unknown_note")))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/broken_note"), existingFileHelper);
+
+            // 染梦残页 —— 获得染梦世界笔记碎片（前置：进入染梦世界，+10 XP，解锁解析配方）
+            Advancement dyedreamBrokenNote = Advancement.Builder.advancement()
+                    .parent(dyedreamWorld)
+                    .display(
+                            ModItems.DYEDREAM_BROKEN_NOTE.get(),
+                            Component.translatable("advancements.pasterdream.story.dyedream_broken_note.title"),
+                            Component.translatable("advancements.pasterdream.story.dyedream_broken_note.description"),
+                            null,
+                            FrameType.TASK,
+                            true, true, false
+                    )
+                    .addCriterion("obtain_dyedream_broken_note", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ItemPredicate.Builder.item().of(ModItems.DYEDREAM_BROKEN_NOTE.get())
+                                    .withCount(MinMaxBounds.Ints.exactly(1)).build()))
+                    .addCriterion("has_dyedream_world",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/dyedream_world")))
+                    .rewards(AdvancementRewards.Builder.experience(10)
+                            .addRecipe(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dyedream_unknown_note")))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/dyedream_broken_note"), existingFileHelper);
 
             // 于影研读 —— 获得研究台（原作 achievement_shadow_a_1 位置，+10 XP）
             Advancement shadowResearchTable = Advancement.Builder.advancement()
@@ -605,6 +628,28 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             ReadDreamNoteTrigger.TriggerInstance.forContent("破碎"))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/shattered"), existingFileHelper);
+
+            // ========== 染梦世界剧情线（纯逻辑进度，不在进度界面显示）==========
+            Advancement researchOnSweetDreamWorld = Advancement.Builder.advancement()
+                    .parent(dyedreamWorld)
+                    .addCriterion("read_research_on_sweet_dream_world_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("关于美梦世界的研究"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/research_on_sweet_dream_world"), existingFileHelper);
+
+            Advancement essenceOfDreamWorld = Advancement.Builder.advancement()
+                    .parent(researchOnSweetDreamWorld)
+                    .addCriterion("read_essence_of_dream_world_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("梦境世界的本质"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/essence_of_dream_world"), existingFileHelper);
+
+            Advancement paleSnowLotusAndBoneneedle = Advancement.Builder.advancement()
+                    .parent(essenceOfDreamWorld)
+                    .addCriterion("read_pale_snow_lotus_and_boneneeedle_note",
+                            ReadDreamNoteTrigger.TriggerInstance.forContent("苍白雪莲与苍白骨针"))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/pale_snow_lotus_and_boneneeedle"), existingFileHelper);
 
             // ========== 无名剧情线（暗影地牢 NPC 对话 + 灯影选择） ==========
             // 纯逻辑标记，不在进度界面显示
