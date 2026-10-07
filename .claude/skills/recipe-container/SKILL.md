@@ -91,7 +91,7 @@ description: 新增/修改配方或容器类工艺方块（陶盆、梦之釜、
 | 通用配方框架 | `recipe/genericrecipe/` |
 | 配方序列化器注册 | `init/ModRecipes.java` |
 | 容器平衡核心 | `helper/ContainerBalanceHelper.java` |
-| NBT 保留配方 | `recipe/NbtPreservingShapelessRecipe.java` / `NbtPreservingShapedRecipe.java` |
+| NBT 保留配方 | `recipe/NbtPreservingShapelessRecipe.java` / `NbtPreservingShapedRecipe.java`（两者均剥离 `Damage`，用于升级配方耐久重置满） |
 | 研钵配方 | `world/item/mortar/MortarCraftingRecipe.java` |
 | 自定义原料 | `helper/pasterdreamingredient/` |
 | 带流体槽容器基类 | `helper/abstractcontainermenuwithfluidslot/` |

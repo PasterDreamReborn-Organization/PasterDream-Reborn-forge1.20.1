@@ -256,6 +256,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_EROSION_AXE.get(), "Shadow Erosion Axe");
         add(ModItems.SHADOW_EROSION_SHOVEL.get(), "Shadow Erosion Shovel");
         add(ModItems.SHADOW_EROSION_HOE.get(), "Shadow Erosion Hoe");
+        add(ModItems.SHADOW_ALLOY_PICKAXE.get(), "Shadow Alloy Pickaxe");
+        add(ModItems.SHADOW_ALLOY_AXE.get(), "Shadow Alloy Axe");
+        add(ModItems.SHADOW_ALLOY_SHOVEL.get(), "Shadow Alloy Shovel");
+        add(ModItems.SHADOW_ALLOY_HOE.get(), "Shadow Alloy Hoe");
         add(ModItems.THERMAL_DAGGER.get(), "Thermal Dagger");
         add(ModItems.DESERT_SWORD.get(), "Desert Greatsword");
         add(ModItems.CHENJINGMEN_DESERT_SWORD.get(), "Chenjingmen Desert");
@@ -914,6 +918,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
         add("tooltip.pasterdreammod.shadow_erosion_tool.1","§7▪ §9The digging speed will increase as the brightness decreases.");
         add("tooltip.pasterdreammod.shadow_erosion_tool.2","§7▪ §9Provides a mining speed boost for shadow-type, deepslate-type, and sculk-type blocks");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.1","§7▪ §9Digging speed rises as light fades, inheriting the Shadow Erosion boost against shadow-type blocks");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.2","§7▪ §9The lower your Sanity, the higher your mining speed and attack damage (peak at <=20%)");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.3","§7▪ §9Cost: holding slowly erodes Sanity, and every hit drains Sanity (floor 20%)");
 
         add("tooltip.pasterdream.developerNameList", "§dDeveloper Name List");
         add("tooltip.pasterdream.dyedreamCreak", "§dDyedream Creak");

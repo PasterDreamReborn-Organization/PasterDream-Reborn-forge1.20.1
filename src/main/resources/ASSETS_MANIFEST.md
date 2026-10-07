@@ -203,7 +203,11 @@ textures/item/melt_dream_helmet.png
 textures/item/melt_dream_leggings.png
 textures/item/rebirth_dream_crystal.png
 textures/item/seniors_dream_book.png
+textures/item/shadow_alloy_axe.png
+textures/item/shadow_alloy_hoe.png
 textures/item/shadow_alloy_ingot.png
+textures/item/shadow_alloy_pickaxe.png
+textures/item/shadow_alloy_shovel.png
 textures/item/shadow_deep_sea_treasure.png
 textures/item/shadow_dyed_dream_notes_book_lamp_shadow_world.png
 textures/item/shadow_jelly.png
