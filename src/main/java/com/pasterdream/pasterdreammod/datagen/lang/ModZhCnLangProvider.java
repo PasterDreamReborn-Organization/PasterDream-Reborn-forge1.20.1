@@ -268,6 +268,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_ALLOY_AXE.get(), "暗影合金斧");
         add(ModItems.SHADOW_ALLOY_SHOVEL.get(), "暗影合金锹");
         add(ModItems.SHADOW_ALLOY_HOE.get(), "暗影合金锄");
+        add(ModItems.SHADOW_ALLOY_HELMET.get(), "暗影合金头盔");
+        add(ModItems.SHADOW_ALLOY_CHESTPLATE.get(), "暗影合金胸甲");
+        add(ModItems.SHADOW_ALLOY_LEGGINGS.get(), "暗影合金护腿");
+        add(ModItems.SHADOW_ALLOY_BOOTS.get(), "暗影合金靴子");
         add(ModItems.THERMAL_DAGGER.get(), "热能匕首");
         add(ModItems.DESERT_SWORD.get(), "朔漠大剑");
         add(ModItems.CHENJINGMEN_DESERT_SWORD.get(), "『沉荆门』朔漠");
