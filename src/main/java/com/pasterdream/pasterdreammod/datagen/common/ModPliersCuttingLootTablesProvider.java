@@ -1,13 +1,15 @@
 package com.pasterdream.pasterdreammod.datagen.common;
 
-import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.init.ModLootTables;
 import com.pasterdream.pasterdreammod.world.functions.SpawnEntityFunction;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
@@ -24,7 +26,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
     public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
         // 白桦树叶
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/birch_leaves"),
+                ModLootTables.pliersCuttingLoot(Blocks.BIRCH_LEAVES),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -42,7 +44,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 橡树树叶，园艺钳特殊效果：大幅增加苹果掉率
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/oak_leaves"),
+                ModLootTables.pliersCuttingLoot(Blocks.OAK_LEAVES),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -68,7 +70,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 针叶树树叶
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/spruce_leaves"),
+                ModLootTables.pliersCuttingLoot(Blocks.SPRUCE_LEAVES),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -86,7 +88,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 樱花树树叶
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/cherry_leaves"),
+                ModLootTables.pliersCuttingLoot(Blocks.CHERRY_LEAVES),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -112,7 +114,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 金合欢树树叶
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/acacia_leaves"),
+                ModLootTables.pliersCuttingLoot(Blocks.ACACIA_LEAVES),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -130,7 +132,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 丛林树树叶
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/jungle_leaves"),
+                ModLootTables.pliersCuttingLoot(Blocks.JUNGLE_LEAVES),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -148,7 +150,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 深色橡树树叶
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/dark_oak_leaves"),
+                ModLootTables.pliersCuttingLoot(Blocks.DARK_OAK_LEAVES),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -174,7 +176,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 杜鹃花树叶
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/azalea_leaves"),
+                ModLootTables.pliersCuttingLoot(Blocks.AZALEA_LEAVES),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -196,7 +198,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 盛开的杜鹃花树叶
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/flowering_azalea_leaves"),
+                ModLootTables.pliersCuttingLoot(Blocks.FLOWERING_AZALEA_LEAVES),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -218,7 +220,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 红树树叶
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/mangrove_leaves"),
+                ModLootTables.pliersCuttingLoot(Blocks.MANGROVE_LEAVES),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -232,7 +234,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 染梦树叶
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/dyedream_leaves"),
+                ModLootTables.pliersCuttingLoot(ModBlocks.DYEDREAM_LEAVES.get()),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -258,7 +260,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 染梦世界树树叶
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/dyedream_worldtree_leaves"),
+                ModLootTables.pliersCuttingLoot(ModBlocks.DYEDREAM_WORLDTREE_LEAVES.get()),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -296,7 +298,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 风泊树叶1
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/wind_moor_leaves_0"),
+                ModLootTables.pliersCuttingLoot(ModBlocks.WIND_MOOR_LEAVES_0.get()),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -334,7 +336,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 风泊树叶2
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/wind_moor_leaves_1"),
+                ModLootTables.pliersCuttingLoot(ModBlocks.WIND_MOOR_LEAVES_1.get()),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -372,7 +374,7 @@ public class ModPliersCuttingLootTablesProvider implements LootTableSubProvider 
         );
         // 眠椰树叶
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pliers_cutting/slumber_palm_leaves"),
+                ModLootTables.pliersCuttingLoot(ModBlocks.SLUMBER_PALM_LEAVES.get()),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
