@@ -8,9 +8,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 /**
- * 暗影合金工具攻击特性：
- * 1. 低 SAN 时按档位提升攻击伤害（作用于最终伤害，含暴击/附魔）；
- * 2. 每次命中扣减使用者 SAN（下限 20%）。
+ * 暗影合金工具攻击特性：低 SAN 时按档位提升攻击伤害（作用于最终伤害，含暴击/附魔）。
  * <p>
  * 攻击加成不能用 getAttributeModifiers（SAN 变化不会刷新属性缓存），
  * 因此在 LivingHurtEvent 里动态结算。
@@ -29,6 +27,5 @@ public class ShadowAlloyAttackHandler {
         if (multiplier > 1.0F) {
             event.setAmount(event.getAmount() * multiplier);
         }
-        ShadowAlloyToolHelper.drainSanWithFloor(sp, ShadowAlloyToolHelper.ATTACK_DRAIN_AMOUNT);
     }
 }

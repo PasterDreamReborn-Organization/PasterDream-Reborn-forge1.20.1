@@ -2,10 +2,13 @@ package com.pasterdream.pasterdreammod.world.item.shadowalloytool;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
+import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -20,14 +23,16 @@ import java.util.UUID;
 /**
  * 暗影合金工具共享逻辑。
  * <p>
- * 继承影蚀工具的主手属性（SAN 波动 -1.2、方块触及 +1），
- * 并提供低 SAN 档位加成倍率与 SAN 代价（下限 20%）的公共逻辑。
+ * 主手时提供理智光环 -1.2、方块触及 +1（继承影蚀工具），
+ * 并提供低 SAN 档位加成倍率。
+ * <p>
+ * 自带「噬心修补」（内置被动，非真实附魔）：位于背包中时消耗理智修复耐久。
  * <p>
  * 数值均为占位，待 runClient 原型调整（见 document/design/item/暗影合金工具.md）。
  */
 final class ShadowAlloyToolHelper {
 
-    // ==== 继承自影蚀的属性 ====
+    // ==== 主手属性（继承自影蚀） ====
     private static final UUID SAN_VARIABILITY_UUID = UUID.fromString("daf6c47c-454a-48e4-a05d-4d7fb0deb673");
     private static final String SAN_VARIABILITY_NAME = "pasterdream.shadow_alloy.san_variability";
     private static final double SAN_VARIABILITY_AMOUNT = -1.2;
@@ -37,21 +42,17 @@ final class ShadowAlloyToolHelper {
 
     // ==== 低 SAN 档位加成倍率（占位，待调） ====
     /** 中档（40%~60%）倍率 */
-    static final float LOW_SAN_BONUS_MID = 1.05F;
+    static final float LOW_SAN_BONUS_MID = 1.15F;
     /** 高档（20%~40%）倍率 */
-    static final float LOW_SAN_BONUS_HIGH = 1.15F;
+    static final float LOW_SAN_BONUS_HIGH = 1.30F;
     /** 最高档（<=20%）倍率 */
-    static final float LOW_SAN_BONUS_MAX = 1.30F;
+    static final float LOW_SAN_BONUS_MAX = 1.50F;
 
-    // ==== SAN 代价（占位，待调） ====
-    /** 持有扣 SAN 的周期（tick） */
-    static final int HELD_DRAIN_INTERVAL_TICKS = 40;
-    /** 持有每周期扣减的 SAN */
-    static final double HELD_DRAIN_AMOUNT = 0.1D;
-    /** 攻击命中扣减的 SAN */
-    static final double ATTACK_DRAIN_AMOUNT = 1.0D;
-    /** SAN 代价下限比例（保底 20%） */
-    static final double SAN_FLOOR_RATIO = 0.2D;
+    // ==== 自带「噬心修补」（内置被动） ====
+    /** 修复 1 点耐久的理智消耗 */
+    private static final double REPAIR_COST = 0.1D;
+    /** 噬心修补处理间隔（tick） */
+    private static final int REPAIR_INTERVAL = 10;
 
     private ShadowAlloyToolHelper() {
     }
@@ -84,23 +85,33 @@ final class ShadowAlloyToolHelper {
     }
 
     /**
-     * 扣除玩家 SAN，但保底 20%（工具不会把使用者逼到 20% 以下）。
-     * 返回是否实际发生扣除。
+     * 自带「噬心修补」（内置被动，非真实附魔，效仿融梦水晶系列）：
+     * 工具位于背包中时，每 {@link #REPAIR_INTERVAL} tick 消耗 {@link #REPAIR_COST} 理智修复 1 点耐久。
+     * 创造模式不消耗理智；理智不足则停止修复。
      */
-    static boolean drainSanWithFloor(ServerPlayer player, double amount) {
-        if (amount <= 0.0D) return false;
-        double maxSan = SanHelper.getPlayerMaxSanEffective(player);
-        double floor = maxSan * SAN_FLOOR_RATIO;
-        double current = SanHelper.getPlayerSan(player);
-        if (current <= floor) return false;
-        double actual = Math.min(amount, current - floor);
-        SanHelper.addPlayerSanAndSync(player, -actual);
-        return true;
+    static void onInventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
+        if (level.isClientSide || !(entity instanceof ServerPlayer player)) return;
+        if (player.tickCount % REPAIR_INTERVAL != 0) return;
+        if (stack.getDamageValue() < 1) return;
+
+        player.getCapability(ModCapabilities.SAN).ifPresent(san -> {
+            if (!san.getIsSanEnabled()) return;
+            boolean free = player.isCreative();
+            if (!free && san.getSanValue() < REPAIR_COST) return;
+            if (!free) {
+                san.addSanValue(-REPAIR_COST);
+                SanSyncPacket.sendToPlayer(player, san);
+            }
+            stack.setDamageValue(stack.getDamageValue() - 1);
+        });
     }
 
     static void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.passive"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.1"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.2"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.3"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.repair_header"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.repair"));
     }
 }

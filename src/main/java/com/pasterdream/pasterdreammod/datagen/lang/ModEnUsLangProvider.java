@@ -918,9 +918,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_energy", "Melt Dream Energy: ");
         add("tooltip.pasterdreammod.shadow_erosion_tool.1","§7▪ §9The digging speed will increase as the brightness decreases.");
         add("tooltip.pasterdreammod.shadow_erosion_tool.2","§7▪ §9Provides a mining speed boost for shadow-type, deepslate-type, and sculk-type blocks");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.passive","Passive: §5Shadow Erosion");
         add("tooltip.pasterdreammod.shadow_alloy_tool.1","§7▪ §9Digging speed rises as light fades, inheriting the Shadow Erosion boost against shadow-type blocks");
-        add("tooltip.pasterdreammod.shadow_alloy_tool.2","§7▪ §9The lower your Sanity, the higher your mining speed and attack damage (peak at <=20%)");
-        add("tooltip.pasterdreammod.shadow_alloy_tool.3","§7▪ §9Cost: holding slowly erodes Sanity, and every hit drains Sanity (floor 20%)");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.2","§7▪ §9The lower your Sanity, the higher your mining speed and attack damage");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.3","§7▪ §9Up to +50% mining speed and attack damage");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.repair_header","While in inventory");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.repair","§7▪ §5Heart-Devour Repair: 0.1SAN/1 Durability");
 
         add("tooltip.pasterdream.developerNameList", "§dDeveloper Name List");
         add("tooltip.pasterdream.dyedreamCreak", "§dDyedream Creak");

@@ -924,9 +924,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_energy", "融梦能量: ");
         add("tooltip.pasterdreammod.shadow_erosion_tool.1","§7▪ §9挖掘速率会随着亮度降低而提升");
         add("tooltip.pasterdreammod.shadow_erosion_tool.2","§7▪ §9对于暗影类，深板岩类和幽匿类方块，提供挖掘速率提升");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.passive","被动：§5影之侵蚀");
         add("tooltip.pasterdreammod.shadow_alloy_tool.1","§7▪ §9挖掘速率会随着亮度降低而提升，并继承影蚀对暗影类方块的加成");
-        add("tooltip.pasterdreammod.shadow_alloy_tool.2","§7▪ §9理智值越低，挖掘速度与攻击伤害越高（≤20% 时达到最高档）");
-        add("tooltip.pasterdreammod.shadow_alloy_tool.3","§7▪ §9代价：持有时缓慢侵蚀理智，且每次攻击都会消耗理智（下限 20%）");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.2","§7▪ §9精神值越低，挖掘速度与攻击伤害越高");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.3","§7▪ §9最高+50%挖掘速度与攻击伤害");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.repair_header","在背包中时");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.repair","§7▪ §5噬心修补：0.1SAN/1耐久");
 
         add("tooltip.pasterdream.developerNameList", "§d开发者名单");
         add("tooltip.pasterdream.dyedreamCreak", "§d染梦裂隙");
