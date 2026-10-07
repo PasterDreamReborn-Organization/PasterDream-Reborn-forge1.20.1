@@ -31,6 +31,7 @@ import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AdvancementEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -213,7 +214,7 @@ public class PlayerEvents {
         }
     }
 
-    /** 反击 buff 命中后移除 + 白厄剑近战沉默暗影生物 */
+    /** 白厄剑近战沉默暗影生物 */
     public static void onAttackEntity(AttackEntityEvent event) {
         Player player = event.getEntity();
         if (player.level().isClientSide()) return;
@@ -225,8 +226,16 @@ public class PlayerEvents {
             target.addEffect(new MobEffectInstance(ModEffects.SHADOW_SILENCE.get(), 200, 0));
             target.addEffect(new MobEffectInstance(ModEffects.BIND.get(), 40, 0));
         }
+    }
 
+    /** 反击 buff：玩家造成的下一次伤害在减伤结算后 +50%，随后移除反击与力量I */
+    public static void onLivingDamage(LivingDamageEvent event) {
+        if (!(event.getSource().getEntity() instanceof Player player)) return;
+        if (player.level().isClientSide()) return;
         if (!player.hasEffect(ModEffects.COUNTER_ATTACK.get())) return;
+        if (event.getAmount() <= 0) return;
+
+        event.setAmount(event.getAmount() * 1.5f);
         player.removeEffect(ModEffects.COUNTER_ATTACK.get());
         player.removeEffect(MobEffects.DAMAGE_BOOST);
     }

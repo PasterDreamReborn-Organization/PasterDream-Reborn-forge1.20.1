@@ -612,7 +612,7 @@
 | `iceshadow_curio`              | `ice_shadow_curio`                          | 重命名，`iceshadow` → `ice_shadow`，加下划线                              | 客制化类 `IceShadowCurioItem`，装备后冰影战锤技能额外释放 2 个撼地水晶，品质 MASTER                                                |
 | `white_sword_rain`             | `white_sword_rain`                          | 不改                                                               | 客制化类 `WhiteSwordRainItem`，弹射物视觉载体                                                                        |
 | `boboji_curio`                 | `boboji_curio`                              | 不改                                                               | 客制化类 `BobojiCurioItem`，实现 `ICurioItem`，+5%速度、+0.1瞬身术距离、-0.2冷却、-0.4消耗，禁止重复装备                              |
-| `counter_ring`                 | `counter_ring`                              | 不改                                                               | 客制化类 `CounterRingItem`，实现 `ICurioItem`，成功闪避时获得反击 buff（力量 I + 战技伤害 +50%，2s）                               |
+| `counter_ring`                 | `counter_ring`                              | 不改                                                               | 客制化类 `CounterRingItem`，实现 `ICurioItem`，成功闪避时获得反击 buff（力量 I + 下一次攻击最终伤害 +50%，10s）                               |
 | `meltdream_energy_0_ring`      | `melt_dream_energy_ring`                    | 重命名，补下划线 + 去 `_0` 后缀                                             | 客制化类 `MeltDreamEnergyRingItem`，实现 `ICurioItem`，提供 `MELT_DREAM_VARIABILITY` +1/min（融梦光环）              |
 | `duke_coin_curio`              | `duke_coin_curio`                           | 不改                                                               | 客制化类 `DukeCoinCurioItem`，实现 `ICurioItem`，+7 幸运值、+7 瞬身术冷却，禁止重复装备                                          |
 | `qym_head`                     | `qym_butterfly_star_hairpin`                | 重命名，`qym_head` → `qym_butterfly_star_hairpin`                    | 客制化类 `QymButterflyStarHairpinItem`，实现 `ICurioItem`，所有生物不主动攻击（可反击），品质 MIRACLE，防火                          |
@@ -720,7 +720,7 @@
 | `fondillusion_buff`           | `misty_dream`            | 重命名      | `MistyDreamEffect`，迷梦标记，主世界高空显示进入进度                        |
 | `rest`                   | `rest`                   | 不改        | `RestEffect`，+0.9 理智光环                                     |
 | `dream_harp_of_wanderer` | `dream_harp_of_wanderer` | 不改        | `DreamharpOfWandererBuffEffect`，+4最大生命、+2.4SAN光环、+1%速度、治疗  |
-| -                             | `counter_attack`         | 新增        | `CounterAttackEffect`，战技伤害倍率 +50%，配合反击戒指触发                 |
+| -                             | `counter_attack`         | 新增        | `CounterAttackEffect`，下一次攻击在减伤结算后最终伤害 +50%，配合反击戒指/转身衣装触发                 |
 | `bind`                   | `bind`                   | 不改        | `BindEffect`，移速降至 0，由白厄剑雨命中施加，持续 6s                        |
 | `shadow_silence`         | `shadow_silence`         | 不改        | `ShadowSilenceEffect`，标记效果，由白厄剑雨命中 shadow_mob 实体时施加，持续 10s |
 | `cloudmist_buff`              | `cloud_mist`             | 重命名      | `CloudMistEffect`，云雾标记，风之旅途显示退出进度                          |
