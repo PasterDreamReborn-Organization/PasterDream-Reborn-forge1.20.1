@@ -583,6 +583,17 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         RecipeCategory.TOOLS, ModItems.MELT_DREAM_HOE.get())
                 .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":melt_dream_hoe_smithing");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.MELT_DREAM_BOW.get())
+                .pattern("abb")
+                .pattern("bcd")
+                .pattern("bd ")
+                .define('a', ModItems.BLACK_STICK.get())
+                .define('b', ModItems.DYEDREAM_ALLOY_INGOT.get())
+                .define('c', ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get())
+                .define('d', Items.STRING)
+                .unlockedBy(getHasName(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()), has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
+                .save(pWriter);
     }
 
     // ===== 铜工具配方 =====
