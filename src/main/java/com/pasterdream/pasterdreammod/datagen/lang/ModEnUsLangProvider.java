@@ -1594,10 +1594,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("enchantment.pasterdream.shelter", "Shelter");
         add("enchantment.pasterdream.gather_dream", "Gather Dream");
         add("enchantment.pasterdream.melt_dream_repair", "Melt-Repair");
+        add("enchantment.pasterdream.heart_devour", "Curse of Heart-Devouring");
+        add("enchantment.pasterdream.heart_devour_repair", "Heart-Devouring Repair");
         add("enchantment.pasterdream.swift_strike.desc", "Increases attack speed.");
         add("enchantment.pasterdream.shelter.desc", "Reduce the damage taken.");
         add("enchantment.pasterdream.gather_dream.desc", "Grants +0.25 Melt Dream Aura per level.");
         add("enchantment.pasterdream.melt_dream_repair.desc", "Repairs the item with the player's Melt Dream Energy while it is in the inventory.");
+        add("enchantment.pasterdream.heart_devour.desc", "Taking damage also drains an equal amount of Sanity for each cursed armor piece.");
+        add("enchantment.pasterdream.heart_devour_repair.desc", "Repairs the item using the player's Sanity (0.1 Sanity per durability).");
 
         // Counter Ring
         add(ModItems.COUNTER_RING.get(), "Counter Ring");
