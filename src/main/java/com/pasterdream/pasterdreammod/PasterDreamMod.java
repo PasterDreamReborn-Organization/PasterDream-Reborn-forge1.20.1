@@ -110,6 +110,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onFoxFireVulnerableHurt);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onVulnerabilityHurt);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onLivingHurt);
+        MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onLivingDamage);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerTick);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onPlayerSleepInBed);
         MinecraftForge.EVENT_BUS.addListener(PlayerEvents::onAttackEntity);
