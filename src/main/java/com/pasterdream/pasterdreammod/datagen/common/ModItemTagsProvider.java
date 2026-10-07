@@ -286,6 +286,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "galaxy_jelly_boost")))
                 .add(Items.ELYTRA);
 
+        // 可转化为纯粹恐惧的物品 —— 亚伦柯斯重复挑战溢出的饰品与核心材料
+        tag(ModItemTags.PURE_HORROR_SOURCES)
+                .add(ModItems.BROOCH_OF_WHITE_ORCHID.get())
+                .add(ModItems.SEAL_OF_THE_CORRUPTED.get())
+                .add(ModItems.WHITE_CRYSTAL.get())
+                .add(ModItems.SHADOW_HILT.get());
+
         // 狐狸食物
         tag(ItemTags.FOX_FOOD)
                 .add(ModItems.DYEDREAM_FRUIT.get());

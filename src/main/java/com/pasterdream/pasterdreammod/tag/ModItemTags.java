@@ -18,6 +18,8 @@ public class ModItemTags {
     public static final TagKey<Item> SKILL_COOLDOWN = bind("skill_cooldown");
     /** 星河果冻强化标签 —— 饰品栏或胸甲栏有此标签的物品时触发强化弹射效果 */
     public static final TagKey<Item> GALAXY_JELLY_BOOST = bind("galaxy_jelly_boost");
+    /** 可转化为纯粹恐惧的物品标签 —— 亚伦柯斯重复挑战溢出的饰品与核心材料 */
+    public static final TagKey<Item> PURE_HORROR_SOURCES = bind("pure_horror_sources");
 
     private static TagKey<Item> bind(String pName) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, pName));

@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.world.item.DeepTreasureItem;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModRecipes;
+import com.pasterdream.pasterdreammod.tag.ModItemTags;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -3192,6 +3193,17 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('d', ModItems.PURE_HORROR.get())
                 .unlockedBy(getHasName(ModItems.PURE_HORROR.get()), has(ModItems.PURE_HORROR.get()))
                 .save(pWriter);
+
+        // 多余战利品 → 纯粹恐惧：胸针 / 印章 / 白厄水晶 / 凝影剑柄 皆可作原料
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PURE_HORROR.get(), 2)
+                .pattern("aba")
+                .pattern("aca")
+                .pattern("aaa")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', ModItems.PURE_HORROR.get())
+                .define('c', ModItemTags.PURE_HORROR_SOURCES)
+                .unlockedBy("has_pure_horror_source", has(ModItemTags.PURE_HORROR_SOURCES))
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "pure_horror_from_source"));
 
         // 风之旅途音乐唱片 = 破风幕帐 + 凝风铁粒 + 云朵 + 灵魂精华
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WIND_JOURNEY_MUSIC_DISC.get(), 1)
