@@ -31,9 +31,9 @@ public class MeltDreamEnergyHelper
                 double current = capability.getMeltDreamEnergy();
                 capability.setMeltDreamEnergy(Math.min(current + meltDreamEnergyValue, effectiveMax));
             }
-            else
+            else if (capability.getIsOrNotNeedConsumeDreamEnergy())
             {
-                capability.addMeltDreamEnergy(meltDreamEnergyValue);
+                capability.addMeltDreamEnergy(-getEffectiveConsumeCost(capability, -meltDreamEnergyValue));
             }
             MeltDreamEnergySyncPacket.sendToPlayer(player, capability);
         });
@@ -101,6 +101,12 @@ public class MeltDreamEnergyHelper
             maxMeltDreamEnergyValue.set(capability.getMaxMeltDreamEnergy());
         });
         return maxMeltDreamEnergyValue.get() == null ? 0.0 : maxMeltDreamEnergyValue.get();
+    }
+
+    /** 依据「消耗翻倍」减益计算实际消耗量（处于该减益下基础消耗 ×2）。 */
+    public static double getEffectiveConsumeCost(IMeltDreamEnergy energy, double baseCost)
+    {
+        return energy.isConsumeDoubled() ? baseCost * 2.0 : baseCost;
     }
 
     /** 有效融梦能量上限 = 能力字段基础上限 + MAX_MELT_DREAM_ENERGY_EXTRA 属性的装备修饰器加成。 */

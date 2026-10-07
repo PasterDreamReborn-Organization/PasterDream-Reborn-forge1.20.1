@@ -22,29 +22,7 @@ public class MeltDreamEnergy implements IMeltDreamEnergy
     @Override
     public void addMeltDreamEnergy(double delta)
     {
-        if(delta < 0)
-        {
-            if(isNeedConsume)
-            {
-                if(isConsumeDoubled)
-                {
-                    delta *= 2;
-                }
-                setMeltDreamEnergy(meltDreamEnergy + delta);
-            }
-        }
-        else
-            if(delta > 0)
-            {
-                if(meltDreamEnergy + delta <= maxMeltDreamEnergy)
-                {
-                    setMeltDreamEnergy(meltDreamEnergy + delta);
-                }
-                    else
-                    {
-                        setMeltDreamEnergy(maxMeltDreamEnergy);
-                    }
-            }
+        setMeltDreamEnergy(Math.max(0.0, meltDreamEnergy + delta));
     }
 
     @Override

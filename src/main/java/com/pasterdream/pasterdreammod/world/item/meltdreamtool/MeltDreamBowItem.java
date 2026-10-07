@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.meltdreamtool;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.world.dimension.DyedreamDimension;
@@ -158,9 +159,9 @@ public class MeltDreamBowItem extends BowItem {
                 empowered.set(true);
             } else {
                 // 消耗翻倍减益下按实际消耗判定，避免能量被扣成负数
-                double effectiveCost = energy.isConsumeDoubled() ? ENERGY_COST * 2.0 : ENERGY_COST;
+                double effectiveCost = MeltDreamEnergyHelper.getEffectiveConsumeCost(energy, ENERGY_COST);
                 if (energy.getMeltDreamEnergy() >= effectiveCost) {
-                    energy.addMeltDreamEnergy(-ENERGY_COST);
+                    energy.addMeltDreamEnergy(-effectiveCost);
                     MeltDreamEnergySyncPacket.sendToPlayer(player, energy);
                     empowered.set(true);
                 }
