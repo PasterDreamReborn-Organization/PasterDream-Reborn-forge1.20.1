@@ -211,6 +211,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RUST_BLACK_METAL_GRAIN = ITEMS.register("rust_black_metal_grain",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_ALLOY_INGOT = ITEMS.register("shadow_alloy_ingot",
+            () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> MELT_DREAM_COIN = ITEMS.register("melt_dream_coin",
             () -> new MeltDreamCoinItem(new Item.Properties(), false));

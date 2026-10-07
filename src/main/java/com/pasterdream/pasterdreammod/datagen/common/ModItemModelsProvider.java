@@ -396,6 +396,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.BLACK_METAL_INGOT.get());
         basicItem(ModItems.BLACK_METAL_GRAIN.get());
         basicItem(ModItems.RUST_BLACK_METAL_GRAIN.get());
+        basicItem(ModItems.SHADOW_ALLOY_INGOT.get());
 
         withExistingParent(ModItems.PINK_MUSHROOM.getId().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/pink_mushroom"));
