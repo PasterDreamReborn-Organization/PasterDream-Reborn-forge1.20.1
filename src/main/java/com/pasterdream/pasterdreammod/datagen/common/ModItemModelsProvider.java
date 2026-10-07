@@ -211,6 +211,23 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.MELT_DREAM_AXE);
         handheldItem(ModItems.MELT_DREAM_SHOVEL);
         handheldItem(ModItems.MELT_DREAM_HOE);
+        // 融梦弓：弓类模型（含拉弓 0/1/2 覆层）
+        ItemModelBuilder meltDreamBow = withExistingParent(ModItems.MELT_DREAM_BOW.getId().getPath(), mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/melt_dream_bow"));
+        ItemModelBuilder meltDreamBowPulling0 = withExistingParent("melt_dream_bow_pulling_0", mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/melt_dream_bow_pulling_0"));
+        ItemModelBuilder meltDreamBowPulling1 = withExistingParent("melt_dream_bow_pulling_1", mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/melt_dream_bow_pulling_1"));
+        ItemModelBuilder meltDreamBowPulling2 = withExistingParent("melt_dream_bow_pulling_2", mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/melt_dream_bow_pulling_2"));
+        meltDreamBow.override().predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "pulling"), 1.0F)
+                .model(meltDreamBowPulling0).end()
+                .override().predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "pulling"), 1.0F)
+                .predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "pull"), 0.65F)
+                .model(meltDreamBowPulling1).end()
+                .override().predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "pulling"), 1.0F)
+                .predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "pull"), 0.9F)
+                .model(meltDreamBowPulling2).end();
         handheldItem(ModItems.TITANIUM_SWORD);
         handheldItem(ModItems.TITANIUM_PICKAXE);
         handheldItem(ModItems.TITANIUM_AXE);

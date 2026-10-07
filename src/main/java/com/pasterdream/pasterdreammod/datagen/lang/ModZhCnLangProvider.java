@@ -243,6 +243,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.MELT_DREAM_AXE.get(), "融梦水晶斧");
         add(ModItems.MELT_DREAM_SHOVEL.get(), "融梦水晶锹");
         add(ModItems.MELT_DREAM_HOE.get(), "融梦水晶锄");
+        add(ModItems.MELT_DREAM_BOW.get(), "融梦弓");
         add(ModItems.INFERNO_SWORD.get(), "『融骸』狱炎剑");
         add(ModItems.DYEDREAM_SWORD.get(), "染梦合金剑");
         add(ModItems.DYEDREAM_PICKAXE.get(), "染梦合金镐");
@@ -883,6 +884,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.2", "战技：§b凌空斩击");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.3", "§7▪ §9下次攻击造成额外伤害，并将目标击飞");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.4", "§7▪ §9冷却：5秒（拥有染梦守护时为3秒）");
+        add("tooltip.pasterdreammod.melt_dream_bow.1", "被动：§b融梦箭");
+        add("tooltip.pasterdreammod.melt_dream_bow.2", "§7▪ §b消耗0.2融梦能量，本次箭矢伤害+30%");
+        add("tooltip.pasterdreammod.melt_dream_bow.3", "§7▪ §9融梦能量不足时照常射出，但不触发强化");
+        add("tooltip.pasterdreammod.melt_dream_bow.4", "§7▪ §9在染梦世界发射普通箭矢不消耗箭矢/耐久/融梦能量");
         add("tooltip.pasterdreammod.tide_sword.1", "镶嵌：§7无");
         add("tooltip.pasterdreammod.tide_sword.2", "§7▪ §9手持武器时获得水下呼吸效果");
         add("tooltip.pasterdreammod.beihai_ruo_tide_sword.1", "镶嵌：§3海洋之心");
