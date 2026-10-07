@@ -187,6 +187,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.RUST_BLACK_METAL_GRAIN.get(), "Rust Black Metal Grain");
         add(ModItems.BLACK_METAL_INGOT.get(), "Black Metal Ingot");
         add(ModItems.BLACK_METAL_GRAIN.get(), "Black Metal Grain");
+        add(ModItems.SHADOW_ALLOY_INGOT.get(), "Shadow Alloy Ingot");
         add(ModItems.SPOOL.get(), "Spool");
         add(ModItems.FABRIC.get(), "Fabric");
         add(ModItems.PROTECT_DECK.get(), "Protect Deck");

@@ -1,0 +1,28 @@
+{
+  "type": "pasterdream:shadow_blast_furnace",
+  "fluidInputs":
+  [
+    {
+      "fluid": "pasterdream:shadow_liquid",
+      "amount": 2000
+    }
+  ],
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:black_metal_ingot",
+      "count": 4
+    },
+    {
+      "item": "pasterdream:pure_horror"
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:shadow_alloy_ingot",
+      "count": 4
+    }
+  ],
+  "processingTime": 200
+}

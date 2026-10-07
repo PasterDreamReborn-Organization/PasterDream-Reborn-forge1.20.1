@@ -172,6 +172,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.RUST_BLACK_METAL_GRAIN.get(), "锈蚀金属碎屑");
         add(ModItems.BLACK_METAL_INGOT.get(), "黑金属锭");
         add(ModItems.BLACK_METAL_GRAIN.get(), "黑金属粒");
+        add(ModItems.SHADOW_ALLOY_INGOT.get(), "暗影合金锭");
         add(ModItems.DYEDREAM_COROLLA.get(), "梦染花冠");
         add(ModItems.WHITE_COROLLA.get(), "苍白花冠");
         add(ModItems.WHITE_CRYSTAL.get(), "白厄水晶");
