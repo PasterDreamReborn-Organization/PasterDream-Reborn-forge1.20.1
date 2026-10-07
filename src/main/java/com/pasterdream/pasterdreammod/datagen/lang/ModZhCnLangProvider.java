@@ -1773,10 +1773,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("enchantment.pasterdream.shelter", "庇护");
         add("enchantment.pasterdream.gather_dream", "聚梦");
         add("enchantment.pasterdream.melt_dream_repair", "融梦修补");
+        add("enchantment.pasterdream.heart_devour", "噬心诅咒");
+        add("enchantment.pasterdream.heart_devour_repair", "噬心修补");
         add("enchantment.pasterdream.swift_strike.desc", "增加攻击速度。");
         add("enchantment.pasterdream.shelter.desc", "降低所受伤害。");
         add("enchantment.pasterdream.gather_dream.desc", "每级提升0.25融梦光环。");
         add("enchantment.pasterdream.melt_dream_repair.desc", "物品在背包中时消耗融梦能量修复自身耐久。");
+        add("enchantment.pasterdream.heart_devour.desc", "每件附带此诅咒的护甲使你受伤时额外扣除等量理智。");
+        add("enchantment.pasterdream.heart_devour_repair.desc", "物品在背包中时消耗理智修复自身耐久（0.1理智/1耐久）。");
 
         // 反击戒指
         add(ModItems.COUNTER_RING.get(), "反击戒指");

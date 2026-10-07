@@ -2,6 +2,8 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.enchantment.DreamGatheringEnchantment;
+import com.pasterdream.pasterdreammod.world.enchantment.HeartDevourCurseEnchantment;
+import com.pasterdream.pasterdreammod.world.enchantment.HeartDevourRepairEnchantment;
 import com.pasterdream.pasterdreammod.world.enchantment.MeltDreamRepairEnchantment;
 import com.pasterdream.pasterdreammod.world.enchantment.ShelterEnchantment;
 import com.pasterdream.pasterdreammod.world.enchantment.SwiftStrikeEnchantment;
@@ -17,6 +19,8 @@ public class ModEnchantment {
     public static final RegistryObject<Enchantment> SHELTER_ENCHANTMENT = REGISTRY.register("shelter", () -> new ShelterEnchantment());
     public static final RegistryObject<Enchantment> DREAM_GATHERING_ENCHANTMENT = REGISTRY.register("gather_dream", () -> new DreamGatheringEnchantment());
     public static final RegistryObject<Enchantment> MELT_DREAM_REPAIR_ENCHANTMENT = REGISTRY.register("melt_dream_repair", () -> new MeltDreamRepairEnchantment());
+    public static final RegistryObject<Enchantment> HEART_DEVOUR_ENCHANTMENT = REGISTRY.register("heart_devour", () -> new HeartDevourCurseEnchantment());
+    public static final RegistryObject<Enchantment> HEART_DEVOUR_REPAIR_ENCHANTMENT = REGISTRY.register("heart_devour_repair", () -> new HeartDevourRepairEnchantment());
     public static void register(IEventBus modEventBus) {
         REGISTRY.register(modEventBus);
     }
