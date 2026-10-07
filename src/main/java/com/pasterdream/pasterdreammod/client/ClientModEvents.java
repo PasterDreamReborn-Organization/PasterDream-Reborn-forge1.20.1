@@ -91,6 +91,23 @@ public class ClientModEvents
                 }
         );
 
+        // 融梦弓拉弓切换模型（原版 pull/pulling predicate 仅注册在 Items.BOW 上）
+        ItemProperties.register(
+                ModItems.MELT_DREAM_BOW.get(),
+                ResourceLocation.parse("pulling"),
+                (stack, level, entity, seed) ->
+                        entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
+        );
+        ItemProperties.register(
+                ModItems.MELT_DREAM_BOW.get(),
+                ResourceLocation.parse("pull"),
+                (stack, level, entity, seed) -> {
+                    if (entity == null) return 0.0F;
+                    return entity.getUseItem() != stack ? 0.0F
+                            : (float) (stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 20.0F;
+                }
+        );
+
         ItemProperties.register(
                 ModItems.RED_DEW_RING.get(),
                 ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "lv"),

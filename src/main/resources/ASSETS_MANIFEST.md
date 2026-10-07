@@ -193,6 +193,10 @@ textures/item/magnifying_glass_of_sherry.png
 textures/item/martini_glass.png
 textures/item/martini_glass_of_sea_salt_slumber_palm_beverage.png
 textures/item/molten_gold_apple.png
+textures/item/melt_dream_bow.png
+textures/item/melt_dream_bow_pulling_0.png
+textures/item/melt_dream_bow_pulling_1.png
+textures/item/melt_dream_bow_pulling_2.png
 textures/item/melt_dream_boots.png
 textures/item/melt_dream_chestplate.png
 textures/item/melt_dream_helmet.png

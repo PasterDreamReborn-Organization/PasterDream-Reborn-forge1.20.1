@@ -416,6 +416,8 @@ public class ModItems {
             () -> new MeltDreamShovelItem(ModToolTiers.MELT_DREAM, 1.5f, -3.0f, new Item.Properties().fireResistant().rarity(Rarity.RARE)));
     public static final RegistryObject<Item> MELT_DREAM_HOE = ITEMS.register("melt_dream_hoe",
             () -> new MeltDreamHoeItem(ModToolTiers.MELT_DREAM, -3, 0.5f, new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> MELT_DREAM_BOW = ITEMS.register("melt_dream_bow",
+            () -> new MeltDreamBowItem(new Item.Properties().fireResistant().durability(1024).rarity(Rarity.RARE)));
 
     // ===== 炙焰金工具 =====
     public static final RegistryObject<Item> MOLTEN_GOLD_SWORD = ITEMS.register("molten_gold_sword",

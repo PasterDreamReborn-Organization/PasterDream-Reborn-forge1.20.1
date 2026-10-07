@@ -319,6 +319,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MELT_DREAM_AXE.get());
                         output.accept(ModItems.MELT_DREAM_SHOVEL.get());
                         output.accept(ModItems.MELT_DREAM_HOE.get());
+                        output.accept(ModItems.MELT_DREAM_BOW.get());
                         // 融梦水晶装备
                         output.accept(ModItems.MELT_DREAM_HELMET.get());
                         output.accept(ModItems.MELT_DREAM_CHESTPLATE.get());
