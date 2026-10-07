@@ -32,6 +32,10 @@ public enum ModToolTiers implements Tier {
     SHADOW_EROSION(1725, 13.0F, 3.0F, 4, 16,
             () -> Ingredient.of(ModItems.BLACK_METAL_INGOT.get())),
 
+    // 暗影合金（灯影之下二级工具，由影蚀工具升级）
+    SHADOW_ALLOY(1850, 15.0F, 5.0F, 5, 24,
+            () -> Ingredient.of(ModItems.SHADOW_ALLOY_INGOT.get())),
+
     // 染梦合金
     DYEDREAM(1314, 11.0F, 4.0F, 4, 22,
             () -> Ingredient.of(ModItems.DYEDREAM_ALLOY_INGOT.get())),

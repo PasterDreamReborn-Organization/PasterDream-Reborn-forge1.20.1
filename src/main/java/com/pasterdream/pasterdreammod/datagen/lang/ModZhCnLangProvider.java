@@ -264,6 +264,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_EROSION_AXE.get(), "影蚀斧");
         add(ModItems.SHADOW_EROSION_SHOVEL.get(), "影蚀锹");
         add(ModItems.SHADOW_EROSION_HOE.get(), "影蚀锄");
+        add(ModItems.SHADOW_ALLOY_PICKAXE.get(), "暗影合金镐");
+        add(ModItems.SHADOW_ALLOY_AXE.get(), "暗影合金斧");
+        add(ModItems.SHADOW_ALLOY_SHOVEL.get(), "暗影合金锹");
+        add(ModItems.SHADOW_ALLOY_HOE.get(), "暗影合金锄");
         add(ModItems.THERMAL_DAGGER.get(), "热能匕首");
         add(ModItems.DESERT_SWORD.get(), "朔漠大剑");
         add(ModItems.CHENJINGMEN_DESERT_SWORD.get(), "『沉荆门』朔漠");
@@ -920,6 +924,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_energy", "融梦能量: ");
         add("tooltip.pasterdreammod.shadow_erosion_tool.1","§7▪ §9挖掘速率会随着亮度降低而提升");
         add("tooltip.pasterdreammod.shadow_erosion_tool.2","§7▪ §9对于暗影类，深板岩类和幽匿类方块，提供挖掘速率提升");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.1","§7▪ §9挖掘速率会随着亮度降低而提升，并继承影蚀对暗影类方块的加成");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.2","§7▪ §9理智值越低，挖掘速度与攻击伤害越高（≤20% 时达到最高档）");
+        add("tooltip.pasterdreammod.shadow_alloy_tool.3","§7▪ §9代价：持有时缓慢侵蚀理智，且每次攻击都会消耗理智（下限 20%）");
 
         add("tooltip.pasterdream.developerNameList", "§d开发者名单");
         add("tooltip.pasterdream.dyedreamCreak", "§d染梦裂隙");

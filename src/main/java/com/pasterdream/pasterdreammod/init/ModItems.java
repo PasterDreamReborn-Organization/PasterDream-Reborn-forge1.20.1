@@ -75,6 +75,7 @@ import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloy
 import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyShovelItem;
 import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyHoeItem;
 import com.pasterdream.pasterdreammod.world.item.shadowerosiontool.*;
+import com.pasterdream.pasterdreammod.world.item.shadowalloytool.*;
 import com.pasterdream.pasterdreammod.world.item.deserttool.DesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.deserttool.ChenjingmenDesertSwordItem;
 import com.pasterdream.pasterdreammod.world.item.iceshadowhammertool.IceShadowHammerItem;
@@ -461,6 +462,16 @@ public class ModItems {
             () -> new ShadowErosionShovelItem(ModToolTiers.SHADOW_EROSION, 3, -3.0f, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_EROSION_HOE = ITEMS.register("shadow_erosion_hoe",
             () -> new ShadowErosionHoeItem(ModToolTiers.SHADOW_EROSION, -2, 0.0f, new Item.Properties()));
+
+    // ===== 暗影合金系列（灯影之下二级工具，由影蚀工具升级） =====
+    public static final RegistryObject<Item> SHADOW_ALLOY_PICKAXE = ITEMS.register("shadow_alloy_pickaxe",
+            () -> new ShadowAlloyPickaxeItem(ModToolTiers.SHADOW_ALLOY, 2, -2.8f, new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_ALLOY_AXE = ITEMS.register("shadow_alloy_axe",
+            () -> new ShadowAlloyAxeItem(ModToolTiers.SHADOW_ALLOY, 7, -3.0f, new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_ALLOY_SHOVEL = ITEMS.register("shadow_alloy_shovel",
+            () -> new ShadowAlloyShovelItem(ModToolTiers.SHADOW_ALLOY, 3, -3.0f, new Item.Properties()));
+    public static final RegistryObject<Item> SHADOW_ALLOY_HOE = ITEMS.register("shadow_alloy_hoe",
+            () -> new ShadowAlloyHoeItem(ModToolTiers.SHADOW_ALLOY, -2, 0.0f, new Item.Properties()));
 
     // ===== 独立武器 =====
     public static final RegistryObject<Item> THERMAL_DAGGER = ITEMS.register("thermal_dagger",

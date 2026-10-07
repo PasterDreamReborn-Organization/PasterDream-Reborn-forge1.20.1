@@ -30,6 +30,10 @@ public class NbtPreservingShapedRecipe extends ShapedRecipe {
                 break;
             }
         }
+        // 升级产物耐久重置满：剥离旧工具的耐久损伤
+        if (result.hasTag()) {
+            result.getTag().remove("Damage");
+        }
         return result;
     }
 

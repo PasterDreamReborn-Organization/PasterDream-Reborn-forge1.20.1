@@ -252,6 +252,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.SHADOW_EROSION_AXE);
         handheldItem(ModItems.SHADOW_EROSION_SHOVEL);
         handheldItem(ModItems.SHADOW_EROSION_HOE);
+        handheldItem(ModItems.SHADOW_ALLOY_PICKAXE);
+        handheldItem(ModItems.SHADOW_ALLOY_AXE);
+        handheldItem(ModItems.SHADOW_ALLOY_SHOVEL);
+        handheldItem(ModItems.SHADOW_ALLOY_HOE);
         handheldItem(ModItems.THERMAL_DAGGER);
         handheldItem(ModItems.DESERT_SWORD);
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD);

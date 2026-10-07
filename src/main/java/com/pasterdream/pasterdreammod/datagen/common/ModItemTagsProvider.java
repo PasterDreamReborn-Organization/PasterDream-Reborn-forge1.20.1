@@ -165,28 +165,32 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.FLUFFY_WIND_ALLOY_PICKAXE.get())
                 .add(ModItems.TITANIUM_PICKAXE.get())
                 .add(ModItems.DYEDREAM_PICKAXE.get())
-                .add(ModItems.HELLFIRE_PICKAXE.get());
+                .add(ModItems.HELLFIRE_PICKAXE.get())
+                .add(ModItems.SHADOW_ALLOY_PICKAXE.get());
         tag(ItemTags.AXES)
                 .add(ModItems.MOLTEN_GOLD_AXE.get())
                 .add(ModItems.COPPER_AXE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_AXE.get())
                 .add(ModItems.FLUFFY_WIND_ALLOY_AXE.get())
                 .add(ModItems.TITANIUM_AXE.get())
-                .add(ModItems.DYEDREAM_AXE.get());
+                .add(ModItems.DYEDREAM_AXE.get())
+                .add(ModItems.SHADOW_ALLOY_AXE.get());
         tag(ItemTags.SHOVELS)
                 .add(ModItems.MOLTEN_GOLD_SHOVEL.get())
                 .add(ModItems.COPPER_SHOVEL.get())
                 .add(ModItems.CONGEAL_WIND_IRON_SHOVEL.get())
                 .add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get())
                 .add(ModItems.TITANIUM_SHOVEL.get())
-                .add(ModItems.DYEDREAM_SHOVEL.get());
+                .add(ModItems.DYEDREAM_SHOVEL.get())
+                .add(ModItems.SHADOW_ALLOY_SHOVEL.get());
         tag(ItemTags.HOES)
                 .add(ModItems.MOLTEN_GOLD_HOE.get())
                 .add(ModItems.COPPER_HOE.get())
                 .add(ModItems.CONGEAL_WIND_IRON_HOE.get())
                 .add(ModItems.FLUFFY_WIND_ALLOY_HOE.get())
                 .add(ModItems.TITANIUM_HOE.get())
-                .add(ModItems.DYEDREAM_HOE.get());
+                .add(ModItems.DYEDREAM_HOE.get())
+                .add(ModItems.SHADOW_ALLOY_HOE.get());
 
         // 原版方解石可作为石制工具的合成材料
         tag(ItemTags.STONE_TOOL_MATERIALS)

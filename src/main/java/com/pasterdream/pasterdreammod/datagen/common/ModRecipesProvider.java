@@ -228,6 +228,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         copperToolRecipes(pWriter);
         congealWindIronToolRecipes(pWriter);
         fluffyWindAlloyToolRecipes(pWriter);
+        shadowAlloyToolRecipes(pWriter);
         copperArmorRecipes(pWriter);
         titaniumToolRecipes(pWriter);
         titaniumToolDirectRecipes(pWriter);
@@ -793,6 +794,40 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         RecipeCategory.TOOLS, ModItems.TITANIUM_HOE.get())
                 .unlocks("has_titanium_upgrade", has(ModItems.TITANIUM_UPGRADE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":titanium_hoe_smithing");
+    }
+
+    // ===== 暗影合金工具配方（合成台 NBT 保留升级，耐久重置满） =====
+
+    private void shadowAlloyToolRecipes(Consumer<FinishedRecipe> pWriter) {
+        // aba / bcb / aba（a 噩梦燃料、b 暗影合金锭、c 原影蚀工具）→ 暗影合金工具（保留附魔/名字，耐久归满）
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_ALLOY_PICKAXE.get())
+                .pattern("aba").pattern("bcb").pattern("aba")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', ModItems.SHADOW_ALLOY_INGOT.get())
+                .define('c', ModItems.SHADOW_EROSION_PICKAXE.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get())),
+                pWriter, "shadow_alloy_pickaxe_upgrade");
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_ALLOY_AXE.get())
+                .pattern("aba").pattern("bcb").pattern("aba")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', ModItems.SHADOW_ALLOY_INGOT.get())
+                .define('c', ModItems.SHADOW_EROSION_AXE.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get())),
+                pWriter, "shadow_alloy_axe_upgrade");
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_ALLOY_SHOVEL.get())
+                .pattern("aba").pattern("bcb").pattern("aba")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', ModItems.SHADOW_ALLOY_INGOT.get())
+                .define('c', ModItems.SHADOW_EROSION_SHOVEL.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get())),
+                pWriter, "shadow_alloy_shovel_upgrade");
+        saveNbtPreservingShaped(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHADOW_ALLOY_HOE.get())
+                .pattern("aba").pattern("bcb").pattern("aba")
+                .define('a', ModItems.NIGHTMARE_FUEL.get())
+                .define('b', ModItems.SHADOW_ALLOY_INGOT.get())
+                .define('c', ModItems.SHADOW_EROSION_HOE.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get())),
+                pWriter, "shadow_alloy_hoe_upgrade");
     }
 
     // ===== 钛金工具配方（直接合成） =====
