@@ -878,10 +878,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.2", "Combat Art: §bSkyward Slash");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.3", "§7▪ §9The next attack deals bonus damage and launches the target upward");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.4", "§7▪ §9Cooldown: 5s (3s with Dyedream Protection)");
-        add("tooltip.pasterdreammod.melt_dream_bow.1", "Passive: §bMelt Dream Arrow");
-        add("tooltip.pasterdreammod.melt_dream_bow.2", "§7▪ §bConsumes 0.2 Melt Dream Energy to deal +30% arrow damage");
+        add("tooltip.pasterdreammod.melt_dream_bow.1", "Passive: §bCondensed Dream Arrow");
+        add("tooltip.pasterdreammod.melt_dream_bow.2", "§7▪ §9Consumes 0.2 Melt Dream Energy to deal +30% arrow damage");
         add("tooltip.pasterdreammod.melt_dream_bow.3", "§7▪ §9Fires normally when Melt Dream Energy is insufficient, without the bonus");
-        add("tooltip.pasterdreammod.melt_dream_bow.4", "§7▪ §9In the Dyedream World, normal arrows consume no arrow/durability/energy");
+        add("tooltip.pasterdreammod.melt_dream_bow.4", "§7▪ §9In the Dyedream World, normal arrows consume no arrow/durability/energy when fired");
         add("tooltip.pasterdreammod.tide_sword.1", "Inlaid: §7None");
         add("tooltip.pasterdreammod.tide_sword.2", "§7▪ §9Grants Water Breathing while held");
         add("tooltip.pasterdreammod.beihai_ruo_tide_sword.1", "Inlaid: §3Heart of the Sea");
