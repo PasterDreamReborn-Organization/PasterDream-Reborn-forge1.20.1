@@ -260,6 +260,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_ALLOY_AXE.get(), "Shadow Alloy Axe");
         add(ModItems.SHADOW_ALLOY_SHOVEL.get(), "Shadow Alloy Shovel");
         add(ModItems.SHADOW_ALLOY_HOE.get(), "Shadow Alloy Hoe");
+        add(ModItems.SHADOW_ALLOY_HELMET.get(), "Shadow Alloy Helmet");
+        add(ModItems.SHADOW_ALLOY_CHESTPLATE.get(), "Shadow Alloy Chestplate");
+        add(ModItems.SHADOW_ALLOY_LEGGINGS.get(), "Shadow Alloy Leggings");
+        add(ModItems.SHADOW_ALLOY_BOOTS.get(), "Shadow Alloy Boots");
         add(ModItems.THERMAL_DAGGER.get(), "Thermal Dagger");
         add(ModItems.DESERT_SWORD.get(), "Desert Greatsword");
         add(ModItems.CHENJINGMEN_DESERT_SWORD.get(), "Chenjingmen Desert");

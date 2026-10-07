@@ -354,6 +354,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_ALLOY_AXE.get());
                         output.accept(ModItems.SHADOW_ALLOY_SHOVEL.get());
                         output.accept(ModItems.SHADOW_ALLOY_HOE.get());
+                        // 暗影合金装备
+                        output.accept(ModItems.SHADOW_ALLOY_HELMET.get());
+                        output.accept(ModItems.SHADOW_ALLOY_CHESTPLATE.get());
+                        output.accept(ModItems.SHADOW_ALLOY_LEGGINGS.get());
+                        output.accept(ModItems.SHADOW_ALLOY_BOOTS.get());
                         // 独立武器
                         output.accept(ModItems.TIDE_SWORD.get());
                         output.accept(ModItems.BEIHAI_RUO_TIDE_SWORD.get());

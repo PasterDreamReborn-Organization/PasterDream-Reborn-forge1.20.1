@@ -256,6 +256,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.SHADOW_ALLOY_AXE);
         handheldItem(ModItems.SHADOW_ALLOY_SHOVEL);
         handheldItem(ModItems.SHADOW_ALLOY_HOE);
+        // 暗影合金装备（GEO 模型盔甲）
+        basicItem(ModItems.SHADOW_ALLOY_HELMET.get());
+        basicItem(ModItems.SHADOW_ALLOY_CHESTPLATE.get());
+        basicItem(ModItems.SHADOW_ALLOY_LEGGINGS.get());
+        basicItem(ModItems.SHADOW_ALLOY_BOOTS.get());
         handheldItem(ModItems.THERMAL_DAGGER);
         handheldItem(ModItems.DESERT_SWORD);
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD);

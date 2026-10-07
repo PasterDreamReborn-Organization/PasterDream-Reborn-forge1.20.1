@@ -41,7 +41,12 @@ public enum ModArmorMaterials implements ArmorMaterial {
     // 琴雨梦
     QYM("qym", 0, new int[]{2, 10, 10, 10}, 99,
             SoundEvents.EMPTY, 10.0F, 1.0F,
-            () -> Ingredient.of(ModItems.MEMORY_GEM.get()));
+            () -> Ingredient.of(ModItems.MEMORY_GEM.get())),
+
+    // 暗影合金（灯影之下二级装备，全部件）
+    SHADOW_ALLOY("shadow_alloy", 37, new int[]{4, 9, 7, 4}, 15,
+            SoundEvents.ARMOR_EQUIP_NETHERITE, 3.5F, 0.1F,
+            () -> Ingredient.of(ModItems.SHADOW_ALLOY_INGOT.get()));
 
     // 天使之翼已改为背饰，不再使用盔甲材质
 
