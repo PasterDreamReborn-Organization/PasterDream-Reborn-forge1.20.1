@@ -69,10 +69,14 @@ public class PlayerHealthHud implements IGuiOverlay
             int x = width / 2 - 91;
             int y = height - 40;
 
+            /* Clamp to the 83px interior so current > max (e.g. 24/20) never overflows the frame. */
+            float healthRatio = playerMaxHealth > 0.0F
+                    ? Mth.clamp(health / playerMaxHealth, 0.0F, 1.0F) : 0.0F;
+
             /* Render Bar and Health */
             guiGraphics.blit(ICON, x, y, 0, 0, 85, 10);
             guiGraphics.blit(ICON, x + 1, y + 2, startCount + 1, 10 + 6 * flagColor,
-                    (int) (83 * (health / playerMaxHealth)), 6);
+                    (int) (83 * healthRatio), 6);
 
             /* Render String */
             String text = formatValue(health + playerOtherHealth) + "/" + formatValue(playerMaxHealth);
