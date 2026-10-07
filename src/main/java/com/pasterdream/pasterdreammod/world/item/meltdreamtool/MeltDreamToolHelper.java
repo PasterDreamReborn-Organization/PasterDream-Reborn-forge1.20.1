@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.meltdreamtool;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
@@ -30,9 +31,10 @@ final class MeltDreamToolHelper {
         double cost = 0.01;
         player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(energy -> {
             boolean free = !energy.getIsOrNotNeedConsumeDreamEnergy() || player.isCreative();
-            if (free || energy.getMeltDreamEnergy() > cost) {
+            double effectiveCost = MeltDreamEnergyHelper.getEffectiveConsumeCost(energy, cost);
+            if (free || energy.getMeltDreamEnergy() > effectiveCost) {
                 if (!free) {
-                    energy.addMeltDreamEnergy(-cost);
+                    energy.addMeltDreamEnergy(-effectiveCost);
                     MeltDreamEnergySyncPacket.sendToPlayer(player, energy);
                 }
                 // 恢复耐久；极端情况保护

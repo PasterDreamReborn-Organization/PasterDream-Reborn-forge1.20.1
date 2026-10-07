@@ -85,6 +85,7 @@ public final class MeltDreamCrystalArmorHandler {
     private static void repairMeltArmor(ServerPlayer player, double cost) {
         player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(energy -> {
             boolean free = !energy.getIsOrNotNeedConsumeDreamEnergy() || player.isCreative();
+            double effectiveCost = MeltDreamEnergyHelper.getEffectiveConsumeCost(energy, cost);
             for (EquipmentSlot slot : EquipmentSlot.values()) {
                 if (!slot.isArmor()) {
                     continue;
@@ -96,11 +97,11 @@ public final class MeltDreamCrystalArmorHandler {
                 if (stack.getDamageValue() < 1) {
                     continue;
                 }
-                if (!free && energy.getMeltDreamEnergy() <= cost) {
+                if (!free && energy.getMeltDreamEnergy() <= effectiveCost) {
                     continue;
                 }
                 if (!free) {
-                    energy.addMeltDreamEnergy(-cost);
+                    energy.addMeltDreamEnergy(-effectiveCost);
                     MeltDreamEnergySyncPacket.sendToPlayer(player, energy);
                 }
                 if (stack.hurt(-1, RandomSource.create(), null)) {

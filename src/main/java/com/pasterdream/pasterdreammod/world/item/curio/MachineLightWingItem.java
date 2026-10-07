@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.curio;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
@@ -35,6 +36,8 @@ import java.util.UUID;
  */
 public class MachineLightWingItem extends Item implements GeoItem, ICurioItem {
 
+    /** 飞行时每次结算消耗的融梦能量 */
+    private static final double FLY_COST = 0.02;
     private static final RawAnimation IDLE = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation FLY = RawAnimation.begin().thenLoop("fly");
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
@@ -63,10 +66,11 @@ public class MachineLightWingItem extends Item implements GeoItem, ICurioItem {
 
         player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(energy -> {
             boolean free = !energy.getIsOrNotNeedConsumeDreamEnergy() || player.isCreative();
-            if (free || energy.getMeltDreamEnergy() >= 0.02) {
+            double effectiveCost = MeltDreamEnergyHelper.getEffectiveConsumeCost(energy, FLY_COST);
+            if (free || energy.getMeltDreamEnergy() >= effectiveCost) {
                 player.getAbilities().mayfly = true;
                 if (!free && player.getAbilities().flying && player.tickCount % 20 == 0) {
-                    energy.addMeltDreamEnergy(-0.02);
+                    energy.addMeltDreamEnergy(-effectiveCost);
                     MeltDreamEnergySyncPacket.sendToPlayer(player, energy);
                 }
             } else {

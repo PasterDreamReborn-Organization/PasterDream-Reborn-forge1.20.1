@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.enchantment;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.IMeltDreamEnergy;
+import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
 import com.pasterdream.pasterdreammod.init.ModEnchantment;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmorItem;
@@ -74,8 +75,9 @@ public final class MeltDreamRepairHandler {
         if (stack.getEnchantmentLevel(enchantment) < 1) return false;
 
         if (!free) {
-            if (energy.getMeltDreamEnergy() <= REPAIR_COST) return false;
-            energy.addMeltDreamEnergy(-REPAIR_COST);
+            double effectiveCost = MeltDreamEnergyHelper.getEffectiveConsumeCost(energy, REPAIR_COST);
+            if (energy.getMeltDreamEnergy() <= effectiveCost) return false;
+            energy.addMeltDreamEnergy(-effectiveCost);
         }
         stack.setDamageValue(stack.getDamageValue() - 1);
         return true;
