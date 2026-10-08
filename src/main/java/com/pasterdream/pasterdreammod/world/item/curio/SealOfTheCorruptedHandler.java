@@ -41,11 +41,11 @@ public class SealOfTheCorruptedHandler {
     @SubscribeEvent
     public static void onLivingChangeTarget(LivingChangeTargetEvent event) {
         if (!(event.getNewTarget() instanceof Player player)) return;
-        if (!hasSeal(player)) return;
         if (!event.getEntity().getType().is(ModEntityTypeTags.SHADOW_MOB)) return;
         // 亚伦柯斯BOSS不受堕落者之印影响，始终攻击佩戴者
         if (event.getEntity() instanceof AaroncosLeftHandEntity || event.getEntity() instanceof AaroncosRightHandEntity) return;
 
+        // 友善暗影生物（低SAN刷怪）不攻击任何玩家，只把仇恨转向附近敌对生物
         if (event.getEntity() instanceof Mob mob
                 && event.getEntity().getPersistentData().getBoolean(FRIENDLY_TAG)) {
             LivingEntity altTarget = findNearbyHostile(mob, player, 20);
@@ -53,7 +53,12 @@ public class SealOfTheCorruptedHandler {
                 event.setNewTarget(altTarget);
                 return;
             }
+            event.setCanceled(true);
+            return;
         }
+
+        // 普通暗影生物不攻击佩戴封印的玩家（中立）
+        if (!hasSeal(player)) return;
         event.setCanceled(true);
     }
 
@@ -69,8 +74,9 @@ public class SealOfTheCorruptedHandler {
         if (mob.tickCount % 20 != 0) return;
 
         LivingEntity currentTarget = mob.getTarget();
+        // 友善暗影生物不保留任何玩家目标，只保留对敌对生物的目标
         if (currentTarget != null && currentTarget.isAlive()
-                && !(currentTarget instanceof Player p && hasSeal(p))) {
+                && !(currentTarget instanceof Player)) {
             return;
         }
         if (currentTarget != null) {
