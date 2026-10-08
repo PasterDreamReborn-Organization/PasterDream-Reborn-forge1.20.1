@@ -113,7 +113,7 @@ public class PliersItem extends Item {
         return InteractionResult.SUCCESS;
     }
 
-    // shift+右键剪碎树叶：破坏树叶并走模组战利品表 pliers_cutting/<树叶注册名>
+    // shift+右键剪碎树叶：破坏树叶并走模组战利品表 pliers_cutting/<命名空间>/<树叶注册名>
     private void cutLeaves(Level level, Player player, InteractionHand hand, ItemStack stack, BlockPos pos, BlockState state) {
         if (level.isClientSide) {
             return;

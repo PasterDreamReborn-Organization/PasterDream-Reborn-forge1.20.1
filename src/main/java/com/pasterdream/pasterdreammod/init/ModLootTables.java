@@ -33,12 +33,14 @@ public class ModLootTables {
     public static final ResourceLocation DESERT_FORTRESS_CHEST_LOOT =
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/desert_fortress_chest");
 
-    /** 园艺钳破坏方块走自定义战利品表：pliers_cutting/<方块注册名>，与 datagen 路径一致 */
+    /** 园艺钳剪树叶走自定义战利品表：pliers_cutting/<命名空间>/<方块注册名>，与 datagen 路径一致。
+     *  路径带命名空间，避免不同模组注册同名树叶（如 somemod:oak_leaves 与 minecraft:oak_leaves）撞表。 */
     public static final String PLIERS_CUTTING_PREFIX = "pliers_cutting/";
 
     public static ResourceLocation pliersCuttingLoot(Block block) {
+        ResourceLocation key = BuiltInRegistries.BLOCK.getKey(block);
         return ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
-                PLIERS_CUTTING_PREFIX + BuiltInRegistries.BLOCK.getKey(block).getPath());
+                PLIERS_CUTTING_PREFIX + key.getNamespace() + "/" + key.getPath());
     }
 
     public static final DeferredRegister<LootItemFunctionType> LOOT_FUNCTION_TYPES =
