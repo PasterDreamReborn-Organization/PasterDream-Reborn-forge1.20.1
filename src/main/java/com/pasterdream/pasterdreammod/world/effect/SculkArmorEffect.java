@@ -11,12 +11,27 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.UUID;
 
-public class SculkArmorEffect extends MobEffect {
+public class SculkArmorEffect extends MobEffect implements ProtectedRemovalEffect {
 
     private static final String HP_UUID = "4a5d1e2c-3f6b-4a8d-9c7e-2b3f5d6a8e1c";
 
     public SculkArmorEffect() {
         super(MobEffectCategory.BENEFICIAL, 0x1A4D5E);
+    }
+
+    @Override
+    public boolean hasRemovalAllowance(LivingEntity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean consumeRemovalAllowance(LivingEntity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean forceApplicableWhenAffected() {
+        return true;
     }
 
     @Override

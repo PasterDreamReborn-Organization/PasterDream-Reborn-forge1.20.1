@@ -297,6 +297,21 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.WHITE_CRYSTAL.get())
                 .add(ModItems.SHADOW_HILT.get());
 
+        // 灯影之下的武器 —— 满套暗影合金盔甲时造成伤害 +30%（白厄 + 影蚀系列 + 暗影合金系列 + 影刃）
+        tag(ModItemTags.LAMP_SHADOW_WEAPON)
+                .add(ModItems.WHITE_SWORD.get())
+                .add(ModItems.ICE_SHADOW_HAMMER.get())
+                .add(ModItems.SHADOW_EROSION_DAGGER.get())
+                .add(ModItems.SHADOW_EROSION_PICKAXE.get())
+                .add(ModItems.SHADOW_EROSION_AXE.get())
+                .add(ModItems.SHADOW_EROSION_SHOVEL.get())
+                .add(ModItems.SHADOW_EROSION_HOE.get())
+                .add(ModItems.SHADOW_ALLOY_PICKAXE.get())
+                .add(ModItems.SHADOW_ALLOY_AXE.get())
+                .add(ModItems.SHADOW_ALLOY_SHOVEL.get())
+                .add(ModItems.SHADOW_ALLOY_HOE.get())
+                .add(ModItems.SHADOW_SWORD.get());
+
         // 狐狸食物
         tag(ItemTags.FOX_FOOD)
                 .add(ModItems.DYEDREAM_FRUIT.get());

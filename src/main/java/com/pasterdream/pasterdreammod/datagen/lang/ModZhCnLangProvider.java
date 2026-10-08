@@ -840,6 +840,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.titanium_armor", "钛金守护");
         add("effect.pasterdream.dyedream_up", "染梦工具增强");
         add("effect.pasterdream.melt_dream_crystal_armor", "融梦守护");
+        add("effect.pasterdream.dark_watch", "黑暗守望");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9启用飞行能力");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4融梦能量消耗：1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9获得飞行能力且免疫摔落伤害");
@@ -889,6 +890,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_armor.6", "§7▪ §9获得生命恢复II");
         add("tooltip.pasterdreammod.melt_dream_armor.7", "§7▪ §9获得染梦工具增强");
         add("tooltip.pasterdreammod.melt_dream_armor.8", "§7▪ §9融梦能量>50%时理智光环+1.2，反之+0.6");
+        add("tooltip.pasterdreammod.shadow_alloy_armor.1", "§7▪ §9最大生命值+4，攻击力+1");
+        add("tooltip.pasterdreammod.shadow_alloy_armor.2", "§7套装效果：§5黑暗守望");
+        add("tooltip.pasterdreammod.shadow_alloy_armor.3", "§7▪ §9灯影之下的武器攻击力+30%");
+        add("tooltip.pasterdreammod.shadow_alloy_armor.4", "§7▪ §9受到攻击时获得10s反击，冷却30s");
+        add("tooltip.pasterdreammod.shadow_alloy_armor.5", "§7▪ §9对来自暗影生物的攻击获得50%最终减伤");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.1", "镶嵌：§d融梦水晶碎片");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.2", "战技：§b凌空斩击");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.3", "§7▪ §9下次攻击造成额外伤害，并将目标击飞");

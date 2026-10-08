@@ -11,12 +11,27 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.UUID;
 
-public class DyedreamArmorEffect extends MobEffect {
+public class DyedreamArmorEffect extends MobEffect implements ProtectedRemovalEffect {
 
     private static final String HP_UUID = "d1e8a3f2-4b5c-6d7e-8f9a-0b1c2d3e4f5a";
 
     public DyedreamArmorEffect() {
         super(MobEffectCategory.BENEFICIAL, 0xFF69B4);
+    }
+
+    @Override
+    public boolean hasRemovalAllowance(LivingEntity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean consumeRemovalAllowance(LivingEntity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean forceApplicableWhenAffected() {
+        return true;
     }
 
     @Override

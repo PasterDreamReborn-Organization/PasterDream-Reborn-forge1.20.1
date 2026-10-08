@@ -834,6 +834,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.titanium_armor", "Titanium Protection");
         add("effect.pasterdream.dyedream_up", "Dyedream Tool Boost");
         add("effect.pasterdream.melt_dream_crystal_armor", "Melt Dream Protection");
+        add("effect.pasterdream.dark_watch", "Dark Watch");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9Enables flight");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4Melt Dream Energy Cost: 1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
@@ -883,6 +884,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_armor.6", "§7▪ §9Gain Regeneration II");
         add("tooltip.pasterdreammod.melt_dream_armor.7", "§7▪ §9Gain Dyedream tool enhancement");
         add("tooltip.pasterdreammod.melt_dream_armor.8", "§7▪ §9San Aura +1.2 when Melt Dream Energy is above 50%, otherwise +0.6");
+        add("tooltip.pasterdreammod.shadow_alloy_armor.1", "§7▪ §9+4 Max Health, +1 Attack Damage");
+        add("tooltip.pasterdreammod.shadow_alloy_armor.2", "§7Set Bonus: §5Dark Watch");
+        add("tooltip.pasterdreammod.shadow_alloy_armor.3", "§7▪ §9Weapons under the Lamp Shadow deal +30% damage");
+        add("tooltip.pasterdreammod.shadow_alloy_armor.4", "§7▪ §9Gain 10s Counterattack when hit (30s cooldown)");
+        add("tooltip.pasterdreammod.shadow_alloy_armor.5", "§7▪ §950% final damage reduction against shadow attacks");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.1", "Inlaid: §dMelt Dream Crystal Fragment");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.2", "Combat Art: §bSkyward Slash");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.3", "§7▪ §9The next attack deals bonus damage and launches the target upward");

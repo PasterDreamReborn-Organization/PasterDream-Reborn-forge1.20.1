@@ -6,10 +6,25 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 
-public class MeltDreamCrystalArmorEffect extends MobEffect {
+public class MeltDreamCrystalArmorEffect extends MobEffect implements ProtectedRemovalEffect {
 
     public MeltDreamCrystalArmorEffect() {
         super(MobEffectCategory.BENEFICIAL, 0xD98EFF);
+    }
+
+    @Override
+    public boolean hasRemovalAllowance(LivingEntity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean consumeRemovalAllowance(LivingEntity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean forceApplicableWhenAffected() {
+        return true;
     }
 
     @Override

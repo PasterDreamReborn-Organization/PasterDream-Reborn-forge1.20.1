@@ -474,15 +474,15 @@ public class ModItems {
     public static final RegistryObject<Item> SHADOW_ALLOY_HOE = ITEMS.register("shadow_alloy_hoe",
             () -> new ShadowAlloyHoeItem(ModToolTiers.SHADOW_ALLOY, -2, 0.0f, new Item.Properties()));
 
-    // ===== 暗影合金装备（GEO 模型盔甲，测试空壳） =====
+    // ===== 暗影合金装备（GEO 模型盔甲，灯影之下毕业套） =====
     public static final RegistryObject<Item> SHADOW_ALLOY_HELMET = ITEMS.register("shadow_alloy_helmet",
-            () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.HELMET, new Item.Properties()));
+            () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> SHADOW_ALLOY_CHESTPLATE = ITEMS.register("shadow_alloy_chestplate",
-            () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+            () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> SHADOW_ALLOY_LEGGINGS = ITEMS.register("shadow_alloy_leggings",
-            () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+            () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> SHADOW_ALLOY_BOOTS = ITEMS.register("shadow_alloy_boots",
-            () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.BOOTS, new Item.Properties()));
+            () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.EPIC)));
 
     // ===== 独立武器 =====
     public static final RegistryObject<Item> THERMAL_DAGGER = ITEMS.register("thermal_dagger",
