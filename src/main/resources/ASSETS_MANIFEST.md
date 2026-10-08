@@ -205,8 +205,12 @@ textures/item/melt_dream_leggings.png
 textures/item/rebirth_dream_crystal.png
 textures/item/seniors_dream_book.png
 textures/item/shadow_alloy_axe.png
+textures/item/shadow_alloy_boots.png
+textures/item/shadow_alloy_chestplate.png
+textures/item/shadow_alloy_helmet.png
 textures/item/shadow_alloy_hoe.png
 textures/item/shadow_alloy_ingot.png
+textures/item/shadow_alloy_leggings.png
 textures/item/shadow_alloy_pickaxe.png
 textures/item/shadow_alloy_shovel.png
 textures/item/shadow_deep_sea_treasure.png
@@ -219,6 +223,7 @@ textures/item/wind_runner_jelly.png
 textures/item/wind_spirit.png
 textures/item/windwreathed_thunder_spear.png
 textures/mob_effect/conflict_mark.png
+textures/mob_effect/dark_watch.png
 textures/mob_effect/melt_dream_crystal_armor.png
 textures/mob_effect/war_flag.png
 textures/models/armor/melt_dream_layer_1.png

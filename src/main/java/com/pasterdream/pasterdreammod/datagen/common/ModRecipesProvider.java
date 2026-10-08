@@ -237,6 +237,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         sculkArmorRecipes(pWriter);
         dyedreamArmorRecipes(pWriter);
         meltDreamCrystalArmorRecipes(pWriter);
+        shadowAlloyArmorRecipes(pWriter);
         toolRecipes(pWriter);
         glassRecipes(pWriter);
         lanternRecipes(pWriter);
@@ -828,6 +829,37 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('c', ModItems.SHADOW_EROSION_HOE.get())
                 .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get())),
                 pWriter, "shadow_alloy_hoe_upgrade");
+    }
+
+    // ===== 暗影合金装备配方（合成台：暗影合金锭，四件套） =====
+
+    private void shadowAlloyArmorRecipes(Consumer<FinishedRecipe> pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SHADOW_ALLOY_HELMET.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .define('a', ModItems.SHADOW_ALLOY_INGOT.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SHADOW_ALLOY_CHESTPLATE.get())
+                .pattern("a a")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', ModItems.SHADOW_ALLOY_INGOT.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SHADOW_ALLOY_LEGGINGS.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern("a a")
+                .define('a', ModItems.SHADOW_ALLOY_INGOT.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SHADOW_ALLOY_BOOTS.get())
+                .pattern("a a")
+                .pattern("a a")
+                .define('a', ModItems.SHADOW_ALLOY_INGOT.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get()))
+                .save(pWriter);
     }
 
     // ===== 钛金工具配方（直接合成） =====

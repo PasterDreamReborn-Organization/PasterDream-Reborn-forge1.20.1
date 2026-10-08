@@ -6,10 +6,25 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 
-public class TitaniumArmorEffect extends MobEffect {
+public class TitaniumArmorEffect extends MobEffect implements ProtectedRemovalEffect {
 
     public TitaniumArmorEffect() {
         super(MobEffectCategory.BENEFICIAL, 0xE0E0E0);
+    }
+
+    @Override
+    public boolean hasRemovalAllowance(LivingEntity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean consumeRemovalAllowance(LivingEntity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean forceApplicableWhenAffected() {
+        return true;
     }
 
     @Override

@@ -26,6 +26,8 @@ public class ModEffects {
             EFFECTS.register("dyedream_up", DyedreamUpEffect::new);
     public static final RegistryObject<MobEffect> MELT_DREAM_CRYSTAL_ARMOR =
             EFFECTS.register("melt_dream_crystal_armor", MeltDreamCrystalArmorEffect::new);
+    public static final RegistryObject<MobEffect> DARK_WATCH =
+            EFFECTS.register("dark_watch", DarkWatchEffect::new);
     public static final RegistryObject<MobEffect> DYEDREAM_PERFUME =
             EFFECTS.register("dyedream_perfume", DyedreamPerfumeEffect::new);
     public static final RegistryObject<MobEffect> GOLDENROD_TEA =
