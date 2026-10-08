@@ -34,22 +34,20 @@ import java.util.Set;
  * 相邻横截面之间画 3 个侧面四边形，头/尾各封 3 个收拢到端点的四边形。
  * 顶点色由头部（亮粉不透明）渐变到尾部（粉透明），配合加法混合呈发光感。
  * <p>
- * 拖尾数据以「快照」形式保存在客户端（每 tick 从箭实体刷新）。箭命中实体/方块被移除后，
- * 快照仍保留并继续渲染、淡出，因此拖尾不会随箭一起瞬间消失。
+ * 拖尾数据以「快照」形式保存在客户端（每 tick 从箭实体刷新）。箭命中实体/方块后，
+ * 快照仍保留并继续渲染，同时从尾端向命中点逐点收缩，因此拖尾不会随箭一起瞬间消失。
  */
 @Mod.EventBusSubscriber(modid = PasterDreamMod.MOD_ID, value = Dist.CLIENT)
 public final class MeltDreamTrailRenderer {
 
     /** 拖尾横截面半径（格） */
     private static final double TRAIL_SIZE = 0.08;
-    /** 拖尾起点相对箭中心的向后偏移（格） */
-    private static final float REAR_OFFSET = 0.25F;
+    /** 拖尾起点相对箭中心沿飞行方向的向前偏移（格），使拖尾接到箭尖，命中目标时能接触目标 */
+    private static final float HEAD_OFFSET = 0.6F;
     /** 横截面两翼相对主法线的旋转角（度） */
     private static final double CROSS_ANGLE = 100.0;
-    /** 落地后拖尾淡出时长（tick） */
-    private static final float GROUND_FADE_TICKS = 20.0F;
-    /** 箭被移除后拖尾残影保留并淡出的时长（tick） */
-    private static final int GHOST_LIFETIME = 15;
+    /** 落地/被移除后拖尾收缩消失的总时长（tick） */
+    private static final float DISSOLVE_TICKS = 20.0F;
 
     /** 头部颜色（ARGB，亮粉不透明） */
     private static final int HEAD_COLOR = 0xFFFF8AD8;
@@ -92,9 +90,12 @@ public final class MeltDreamTrailRenderer {
             snapshot.entity = arrow;
             snapshot.points = new ArrayList<>(arrow.getClientTrail());
             snapshot.lastOrigin = arrow.position();
-            snapshot.lastMotion = arrow.getDeltaMovement();
-            snapshot.groundTicks = arrow.isArrowInGround() ? arrow.getArrowInGroundTime() : 0;
-            snapshot.ghostTicks = 0;
+            Vec3 motion = arrow.getDeltaMovement();
+            snapshot.lastDirection = motion.lengthSqr() > 1.0E-8
+                    ? motion.normalize()
+                    : arrow.getViewVector(1.0F);
+            // 飞行中不收缩；落地后按已落地时长收缩
+            snapshot.dissolveTicks = arrow.isArrowInGround() ? arrow.getArrowInGroundTime() : 0;
             seen.add(id);
         }
 
@@ -105,7 +106,8 @@ public final class MeltDreamTrailRenderer {
                 continue;
             }
             snapshot.entity = null;
-            if (++snapshot.ghostTicks > GHOST_LIFETIME) {
+            // 从当前收缩进度继续（落地后被拾取不会“复生”）；飞行中命中被移除则从 0 开始
+            if (++snapshot.dissolveTicks > DISSOLVE_TICKS) {
                 iterator.remove();
             }
         }
@@ -133,31 +135,30 @@ public final class MeltDreamTrailRenderer {
             }
 
             Vec3 origin;
-            Vec3 motion;
-            float fade;
+            // dissolve：0 = 完整拖尾，1 = 完全收缩消失；由快照累计的收缩时长推进，落地后被拾取也不重置
+            float dissolve;
             MeltDreamArrowEntity entity = snapshot.entity;
             if (entity != null && !entity.isRemoved()) {
                 origin = entity.getPosition(partialTick);
-                motion = entity.getDeltaMovement();
-                fade = snapshot.groundTicks > 0
-                        ? 1.0F - Mth.clamp((snapshot.groundTicks + partialTick) / GROUND_FADE_TICKS, 0.0F, 1.0F)
-                        : 1.0F;
+                dissolve = snapshot.dissolveTicks > 0
+                        ? Mth.clamp((snapshot.dissolveTicks + partialTick) / DISSOLVE_TICKS, 0.0F, 1.0F)
+                        : 0.0F;
             } else {
                 origin = snapshot.lastOrigin;
-                motion = snapshot.lastMotion;
-                fade = 1.0F - Mth.clamp((snapshot.ghostTicks + partialTick) / (float) GHOST_LIFETIME, 0.0F, 1.0F);
+                dissolve = Mth.clamp((snapshot.dissolveTicks + partialTick) / DISSOLVE_TICKS, 0.0F, 1.0F);
             }
-            if (fade <= 0.0F) {
+            if (dissolve >= 1.0F) {
                 continue;
             }
+            float fade = 1.0F - dissolve;
 
-            // 沿运动反方向整体平移（而非只偏移头端），避免头段轴方向每 tick 翻转
-            Vec3 shift = motion.lengthSqr() > 1.0E-8 ? motion.normalize().scale(REAR_OFFSET) : Vec3.ZERO;
+            // 沿飞行方向整体平移到箭尖（拖尾从箭头发散）；避免只偏移头端导致头段轴方向每 tick 翻转
+            Vec3 shift = snapshot.lastDirection.scale(HEAD_OFFSET);
             poseStack.pushPose();
-            poseStack.translate(origin.x - cameraPos.x - shift.x, origin.y - cameraPos.y - shift.y,
-                    origin.z - cameraPos.z - shift.z);
+            poseStack.translate(origin.x - cameraPos.x + shift.x, origin.y - cameraPos.y + shift.y,
+                    origin.z - cameraPos.z + shift.z);
             drawTrail(bufferSource.getBuffer(CustomRenderTypes.MELT_DREAM_TRAIL),
-                    poseStack.last().pose(), snapshot.points, origin, fade);
+                    poseStack.last().pose(), snapshot.points, origin, fade, dissolve);
             poseStack.popPose();
             renderedAnything = true;
         }
@@ -168,13 +169,16 @@ public final class MeltDreamTrailRenderer {
     }
 
     /** @param trail 世界坐标采样点（旧 → 新） */
-    private static void drawTrail(VertexConsumer consumer, Matrix4f matrix, List<Vec3> trail, Vec3 origin, float fade) {
+    private static void drawTrail(VertexConsumer consumer, Matrix4f matrix, List<Vec3> trail, Vec3 origin,
+                                  float fade, float dissolve) {
         // 头 → 尾：头端直接取实体插值位置（后移量由调用方整体平移姿态实现）+ 采样点倒序（新 → 旧）
-        List<Vec3> points = new ArrayList<>(trail.size() + 1);
-        points.add(origin);
+        List<Vec3> raw = new ArrayList<>(trail.size() + 1);
+        raw.add(origin);
         for (int i = trail.size() - 1; i >= 0; i--) {
-            points.add(trail.get(i));
+            raw.add(trail.get(i));
         }
+        // 收缩：dissolve 增大时从尾端（旧点）向头端裁剪，使拖尾缩回命中点而非原地淡出
+        List<Vec3> points = trimTail(raw, dissolve);
         int count = points.size();
         if (count < 3) {
             return;
@@ -237,6 +241,35 @@ public final class MeltDreamTrailRenderer {
         }
     }
 
+    /**
+     * 从尾端（列表末端、最旧的点）向头端裁剪一定比例，使拖尾收缩回命中点。
+     * <p>
+     * {@code amount} 为 0 时原样返回；为 1 时全部裁掉。裁剪按点为单位、并对最后保留点做
+     * 分数插值，保证收缩过程平滑无跳变。列表顺序为头 → 尾。
+     */
+    private static List<Vec3> trimTail(List<Vec3> points, float amount) {
+        int count = points.size();
+        if (count < 2 || amount <= 0.0F) {
+            return points;
+        }
+        float scaled = Mth.clamp(amount, 0.0F, 1.0F) * (count - 1);
+        int drop = (int) scaled;
+        float frac = scaled - drop;
+        int keep = count - drop;
+        if (keep < 2) {
+            return List.of();
+        }
+        List<Vec3> result = new ArrayList<>(keep);
+        for (int i = 0; i < keep; i++) {
+            result.add(points.get(i));
+        }
+        if (frac > 0.0F) {
+            // 尾点朝前一个点收拢，保证跨刻连续
+            result.set(keep - 1, result.get(keep - 1).lerp(result.get(keep - 2), frac));
+        }
+        return result;
+    }
+
     private static void sideQuad(VertexConsumer consumer, Matrix4f matrix, Vec3 from, Vec3 to,
                                  Vec3[] sectionFrom, Vec3[] sectionTo, int a, int b, float[] c1, float[] c2) {
         Vec3 v1 = from.add(sectionFrom[a]);
@@ -297,15 +330,16 @@ public final class MeltDreamTrailRenderer {
         return new Vec3(x, y, z);
     }
 
-    /** 单条拖尾的客户端快照：实体消失后仍保留采样点用于淡出。 */
+    /** 单条拖尾的客户端快照：实体消失后仍保留采样点用于收缩。 */
     private static final class TrailSnapshot {
         final int entityId;
         MeltDreamArrowEntity entity;
         List<Vec3> points = List.of();
         Vec3 lastOrigin = Vec3.ZERO;
-        Vec3 lastMotion = Vec3.ZERO;
-        int groundTicks;
-        int ghostTicks;
+        /** 最近一次的飞行/朝向方向（落地静止时也保留，供收缩阶段定位箭尖） */
+        Vec3 lastDirection = Vec3.ZERO;
+        /** 收缩进度累计 tick：飞行中为 0，落地/移除后递增，跨阶段连续不重置 */
+        int dissolveTicks;
 
         TrailSnapshot(int entityId) {
             this.entityId = entityId;
