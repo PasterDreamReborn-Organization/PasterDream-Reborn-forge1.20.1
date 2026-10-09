@@ -900,7 +900,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.3", "§7▪ §9下次攻击造成额外伤害，并将目标击飞");
         add("tooltip.pasterdreammod.sharp_melt_dream_sword.4", "§7▪ §9冷却：5秒（拥有染梦守护时为3秒）");
         add("tooltip.pasterdreammod.melt_dream_bow.1", "被动：§b凝梦之箭");
-        add("tooltip.pasterdreammod.melt_dream_bow.2", "§7▪ §9消耗0.2融梦能量，本次箭矢伤害+30%");
+        add("tooltip.pasterdreammod.melt_dream_bow.2", "§7▪ §9消耗0.2融梦能量，本次箭矢伤害+30%并转为魔法伤害");
         add("tooltip.pasterdreammod.melt_dream_bow.3", "§7▪ §9融梦能量不足时照常射出，但不触发强化");
         add("tooltip.pasterdreammod.melt_dream_bow.4", "§7▪ §9在染梦世界发射普通箭矢时不消耗箭矢/耐久/融梦能量");
         add("tooltip.pasterdreammod.tide_sword.1", "镶嵌：§7无");

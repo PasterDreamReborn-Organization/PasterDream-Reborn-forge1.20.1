@@ -1,6 +1,10 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.init.ModEntities;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -17,7 +21,8 @@ import java.util.List;
  * 融梦箭 —— 融梦弓「融梦箭」强化射击专用的箭实体。
  * <p>
  * 行为与原版 {@link Arrow} 完全一致（含药水箭效果、可拾取），
- * 唯一区别是客户端会记录拖尾采样点，由 {@code MeltDreamTrailRenderer} 在
+ * 区别有二：一是伤害类型为魔法伤害（见 {@link #damageSources()}）；
+ * 二是客户端会记录拖尾采样点，由 {@code MeltDreamTrailRenderer} 在
  * {@code RenderLevelStageEvent.AFTER_PARTICLES} 阶段绘制粉色渐变三棱柱拖尾。
  * 因只在强化射击时生成，实体本身即代表「拖尾开启」，无需额外同步标记。
  * <p>
@@ -37,6 +42,9 @@ public class MeltDreamArrowEntity extends Arrow {
     /** 客户端拖尾采样点（旧 → 新），仅用于渲染，不同步、不存档 */
     private final List<Vec3> clientTrail = new ArrayList<>();
 
+    /** 魔法伤害来源表（首次命中时按维度注册表构建后缓存） */
+    private DamageSources magicDamageSources;
+
     public MeltDreamArrowEntity(EntityType<? extends MeltDreamArrowEntity> type, Level level) {
         super(type, level);
     }
@@ -51,6 +59,34 @@ public class MeltDreamArrowEntity extends Arrow {
         this.setOwner(shooter);
         if (shooter instanceof Player) {
             this.pickup = AbstractArrow.Pickup.ALLOWED;
+        }
+    }
+
+    /**
+     * 强化箭造成的是魔法伤害。仅覆盖 {@link DamageSources#arrow} 的返回类型：
+     * 有射击者时归因到射击者（{@code indirect_magic}，可享受魔法伤害加成与击杀归属），
+     * 无射击者时为无源魔法伤害。命中、药水效果、可拾取、暴击、击退等其余逻辑均沿用原版箭。
+     */
+    @Override
+    public DamageSources damageSources() {
+        if (this.magicDamageSources == null) {
+            this.magicDamageSources = new MagicArrowDamageSources(this.level().registryAccess());
+        }
+        return this.magicDamageSources;
+    }
+
+    /** 将箭矢伤害来源重定向为魔法伤害的来源表。 */
+    private static final class MagicArrowDamageSources extends DamageSources {
+
+        private MagicArrowDamageSources(RegistryAccess registryAccess) {
+            super(registryAccess);
+        }
+
+        @Override
+        public DamageSource arrow(AbstractArrow arrow, Entity owner) {
+            return owner == null || owner == arrow
+                    ? this.magic()
+                    : this.indirectMagic(arrow, owner);
         }
     }
 
