@@ -33,7 +33,7 @@
     "ItemElytraMixin",
     "ItemStackGetAttributeModifiersMixin",
     "PlayerCanEatMixin",
-    "PlayerMixin"
+    "ServerGamePacketListenerImplMixin"
   ],
   "client": [
     "BossHealthOverlayAccessor",
