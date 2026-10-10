@@ -111,6 +111,9 @@ public class ModBiomes {
     private static final ResourceKey<SoundEvent> WIND_JOURNEY_MUSIC_KEY =
             ResourceKey.create(Registries.SOUND_EVENT,
                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "wind_journey"));
+    private static final ResourceKey<SoundEvent> SHADOW_BIOME_KEY =
+            ResourceKey.create(Registries.SOUND_EVENT,
+                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_biome"));
     private static final int MUSIC_MIN_DELAY = 12000;
     private static final int MUSIC_MAX_DELAY = 24000;
 
@@ -627,12 +630,26 @@ public class ModBiomes {
 
     // ==================== 灯影之下 ====================
 
+    /** 灯影群系共享的环境音（暗影低语，原作 shadow_biome_0，tick_chance 0.0111） */
+    private static AmbientAdditionsSettings shadowAmbient() {
+        return new AmbientAdditionsSettings(
+                BuiltInRegistries.SOUND_EVENT.getHolderOrThrow(SHADOW_BIOME_KEY), 0.0111);
+    }
+
+    /** 灯影群系背景音乐（原作 shadow_biome_0，replace_current_music = true） */
+    private static Music shadowBiomeMusic() {
+        return new Music(BuiltInRegistries.SOUND_EVENT.getHolderOrThrow(SHADOW_BIOME_KEY),
+                MUSIC_MIN_DELAY, MUSIC_MAX_DELAY, true);
+    }
+
     private static BiomeSpecialEffects.Builder shadowEffects() {
         return new BiomeSpecialEffects.Builder()
                 .skyColor(0x000000)
                 .fogColor(0x000000)
                 .waterColor(0x404040)
-                .waterFogColor(0x202020);
+                .waterFogColor(0x202020)
+                .ambientAdditionsSound(shadowAmbient())
+                .backgroundMusic(shadowBiomeMusic());
     }
 
     /** 灯影群系共享：洞穴 + 峡谷 + 锁链柱 */

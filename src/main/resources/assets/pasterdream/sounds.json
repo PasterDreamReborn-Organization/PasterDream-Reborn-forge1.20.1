@@ -139,6 +139,9 @@
   "shadow_music": {
     "sounds": [{"name": "pasterdream:shadow_music", "stream": true}]
   },
+  "shadow_biome": {
+    "sounds": [{"name": "pasterdream:shadow_biome", "stream": false}]
+  },
   "shadow_door": {
     "sounds": [{"name": "pasterdream:shadow_door", "stream": false}]
   },

@@ -895,6 +895,7 @@
 | `ghost0`                 | `ghost_wail`             | 重命名，语义化                    | 哀嚎影鬼召唤技能                                             |
 | `shadow0`                | `shadow_ominous`         | 重命名，语义化                    | 暮影灯事件开幕、暗影火盆仪式                                       |
 | `shadow_music_0`         | `shadow_music`           | 重命名，去 `_0` 后缀              | 暗影事件背景音乐                                             |
+| `shadow_biome_0`         | `shadow_biome`           | 重命名，去 `_0` 后缀              | 灯影之下群系背景音乐 + 群系环境音（additions_sound）              |
 | `stone_break`            | `stone_shatter`          | 重命名，语义化                    | 亚伦柯斯左右手音调图腾石崩                                        |
 | `stone_break_0`          | `stone_crack`            | 重命名，语义化                    | 亚伦柯斯左右手魔法球蓄力石裂                                       |
 | `shadow_trap_0`          | `shadow_trap`            | 重命名，去 `_0` 后缀              | 暗影手陷阱触发                                              |
