@@ -33,7 +33,7 @@
     "ItemElytraMixin",
     "ItemStackGetAttributeModifiersMixin",
     "PlayerCanEatMixin",
-    "PlayerMixin"
+    "ServerGamePacketListenerImplMixin"
   ],
   "client": [
     "BossHealthOverlayAccessor",
@@ -45,7 +45,8 @@
     "MusicManagerMixin",
     "SituationalMusicMixin",
     "BlockElementMixin",
-    "DynamicFluidContainerModelMixin"
+    "DynamicFluidContainerModelMixin",
+    "MultiPlayerGameModeMixin"
   ],
   "server": [],
   "minVersion": "0.8"
