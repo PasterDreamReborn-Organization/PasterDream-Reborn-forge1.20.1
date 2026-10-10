@@ -714,7 +714,7 @@ public class ModBiomes {
         addShadowForestVegetation(gen);
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
-                .temperature(0.2f)
+                .temperature(0.5f)
                 .downfall(0.3f)
                 .temperatureAdjustment(Biome.TemperatureModifier.NONE)
                 .specialEffects(shadowEffects().build())
