@@ -238,6 +238,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         sculkArmorRecipes(pWriter);
         dyedreamArmorRecipes(pWriter);
         meltDreamCrystalArmorRecipes(pWriter);
+        windRunnerCloakRecipe(pWriter);
         toolRecipes(pWriter);
         glassRecipes(pWriter);
         lanternRecipes(pWriter);
@@ -1225,6 +1226,21 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         RecipeCategory.COMBAT, ModItems.MELT_DREAM_BOOTS.get())
                 .unlocks("has_melt_dream_crystal_fragment", has(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":melt_dream_boots_smithing");
+    }
+
+    // ===== 风行者披风配方 =====
+
+    private void windRunnerCloakRecipe(Consumer<FinishedRecipe> pWriter) {
+        // 风行者披风：萦风合金锭×5 + 折翼天使雕像 + 凝结之风×2
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.WIND_RUNNER_CLOAK.get(), 1)
+                .pattern("aba")
+                .pattern("aca")
+                .pattern("c c")
+                .define('a', ModItems.FLUFFY_WIND_ALLOY_INGOT.get())
+                .define('b', ModItems.FRACTURED_ANGEL_STATUE.get())
+                .define('c', ModItems.CONGEAL_WIND.get())
+                .unlockedBy(getHasName(ModItems.FRACTURED_ANGEL_STATUE.get()), has(ModItems.FRACTURED_ANGEL_STATUE.get()))
+                .save(pWriter);
     }
 
     // ===== 升级套件配方 =====

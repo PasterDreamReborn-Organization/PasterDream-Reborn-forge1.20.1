@@ -491,13 +491,13 @@ public class ModItems {
 
     // ===== 萦风合金装备（GEO 模型盔甲，风之旅途毕业套） =====
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_HELMET = ITEMS.register("fluffy_wind_alloy_helmet",
-            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_CHESTPLATE = ITEMS.register("fluffy_wind_alloy_chestplate",
-            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_LEGGINGS = ITEMS.register("fluffy_wind_alloy_leggings",
-            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_BOOTS = ITEMS.register("fluffy_wind_alloy_boots",
-            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     // ===== 风行者披风（GEO 模型胸甲/披风，当前为渲染测试壳） =====
     public static final RegistryObject<Item> WIND_RUNNER_CLOAK = ITEMS.register("wind_runner_cloak",
