@@ -354,6 +354,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHADOW_ALLOY_AXE.get());
                         output.accept(ModItems.SHADOW_ALLOY_SHOVEL.get());
                         output.accept(ModItems.SHADOW_ALLOY_HOE.get());
+                        output.accept(ModItems.SHADOW_ALLOY_CROSSBOW.get());
                         // 暗影合金装备
                         output.accept(ModItems.SHADOW_ALLOY_HELMET.get());
                         output.accept(ModItems.SHADOW_ALLOY_CHESTPLATE.get());

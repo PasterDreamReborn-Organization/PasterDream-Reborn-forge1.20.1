@@ -473,6 +473,9 @@ public class ModItems {
             () -> new ShadowAlloyShovelItem(ModToolTiers.SHADOW_ALLOY, 3, -3.0f, new Item.Properties()));
     public static final RegistryObject<Item> SHADOW_ALLOY_HOE = ITEMS.register("shadow_alloy_hoe",
             () -> new ShadowAlloyHoeItem(ModToolTiers.SHADOW_ALLOY, -2, 0.0f, new Item.Properties()));
+    // 暗影合金弩
+    public static final RegistryObject<Item> SHADOW_ALLOY_CROSSBOW = ITEMS.register("shadow_alloy_crossbow",
+            () -> new ShadowAlloyCrossbowItem(new Item.Properties().stacksTo(1).durability(842)));
 
     // ===== 暗影合金装备（GEO 模型盔甲，灯影之下毕业套） =====
     public static final RegistryObject<Item> SHADOW_ALLOY_HELMET = ITEMS.register("shadow_alloy_helmet",

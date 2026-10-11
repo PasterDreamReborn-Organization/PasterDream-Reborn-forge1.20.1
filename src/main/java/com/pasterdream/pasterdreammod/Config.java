@@ -475,6 +475,22 @@ public class Config
             .comment("卡莱调料瓶回避增益持续时间（tick），默认 20（1 秒）")
             .defineInRange("calaisSpiceBottleEvasionDuration", 20, 0, 200);
 
+    // === 暗影合金弩 ===
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> SHADOW_ALLOY_CROSSBOW_DEBUFFS = BUILDER
+            .comment("暗影合金弩命中生物时随机施加的负面效果 ID 列表（格式：modid:effect_id）",
+                    "\n例：minecraft:slowness 为缓慢，minecraft:weakness 为虚弱")
+            .defineListAllowEmpty("shadowAlloyCrossbowDebuffs",
+                    List.of("minecraft:slowness", "minecraft:mining_fatigue", "minecraft:blindness",
+                            "minecraft:weakness", "minecraft:poison", "minecraft:wither",
+                            "minecraft:levitation", "pasterdream:confusion", "pasterdream:bind"),
+                    obj -> obj instanceof String);
+    private static final ForgeConfigSpec.IntValue SHADOW_ALLOY_CROSSBOW_DEBUFF_DURATION = BUILDER
+            .comment("暗影合金弩随机负面效果的持续时间（tick），默认 100（5 秒）")
+            .defineInRange("shadowAlloyCrossbowDebuffDuration", 100, 0, 6000);
+    private static final ForgeConfigSpec.IntValue SHADOW_ALLOY_CROSSBOW_DEBUFF_AMPLIFIER = BUILDER
+            .comment("暗影合金弩随机负面效果的等级（0=I, 1=II, ...），默认 0")
+            .defineInRange("shadowAlloyCrossbowDebuffAmplifier", 0, 0, 255);
+
     // === 村民交易 ===
     private static final ForgeConfigSpec.DoubleValue TOOLSMITH_BLUEPRINT_TRADE_CHANCE = BUILDER
             .comment("工具匠专家（5级）出售精铸工坊蓝图的概率，默认 1.0（100%）")
@@ -621,6 +637,11 @@ public class Config
     public static int calaisSpiceBottleDebuffAmplifier;
     public static int calaisSpiceBottleEvasionDuration;
 
+    //暗影合金弩
+    public static List<? extends String> shadowAlloyCrossbowDebuffs;
+    public static int shadowAlloyCrossbowDebuffDuration;
+    public static int shadowAlloyCrossbowDebuffAmplifier;
+
     //罪恶
     public static List<? extends String> sinInstakillEntities;
     private static Set<EntityType<?>> cachedSinInstakillTypes = Set.of();
@@ -654,6 +675,13 @@ public class Config
 
     public static List<MobEffect> getCalaisSpiceBottleDebuffs() {
         return cachedCalaisSpiceBottleDebuffs;
+    }
+
+    /** 暗影合金弩随机负面效果缓存 */
+    private static List<MobEffect> cachedShadowAlloyCrossbowDebuffs = List.of();
+
+    public static List<MobEffect> getShadowAlloyCrossbowDebuffs() {
+        return cachedShadowAlloyCrossbowDebuffs;
     }
 
     // === 重生之梦水晶 ===
@@ -925,6 +953,25 @@ public class Config
         LOGGER.info("calaisSpiceBottleDebuffs: loaded {} effects", cachedCalaisSpiceBottleDebuffs.size());
     }
 
+    private static void rebuildShadowAlloyCrossbowDebuffCache() {
+        List<MobEffect> list = new ArrayList<>();
+        for (String idStr : shadowAlloyCrossbowDebuffs) {
+            ResourceLocation rl = ResourceLocation.tryParse(idStr);
+            if (rl == null) {
+                LOGGER.warn("shadowAlloyCrossbowDebuffs: invalid resource location '{}', skipping", idStr);
+                continue;
+            }
+            MobEffect effect = ForgeRegistries.MOB_EFFECTS.getValue(rl);
+            if (effect == null) {
+                LOGGER.warn("shadowAlloyCrossbowDebuffs: unknown effect '{}', skipping", idStr);
+                continue;
+            }
+            list.add(effect);
+        }
+        cachedShadowAlloyCrossbowDebuffs = List.copyOf(list);
+        LOGGER.info("shadowAlloyCrossbowDebuffs: loaded {} effects", cachedShadowAlloyCrossbowDebuffs.size());
+    }
+
     private static void rebuildRebirthDreamCrystalLootCache() {
         List<Item> list = new ArrayList<>();
         for (String idStr : rebirthDreamCrystalLoot) {
@@ -1061,6 +1108,10 @@ public class Config
         calaisSpiceBottleDebuffAmplifier = CALAIS_SPICE_BOTTLE_DEBUFF_AMPLIFIER.get();
         calaisSpiceBottleEvasionDuration = CALAIS_SPICE_BOTTLE_EVASION_DURATION.get();
 
+        shadowAlloyCrossbowDebuffs = SHADOW_ALLOY_CROSSBOW_DEBUFFS.get();
+        shadowAlloyCrossbowDebuffDuration = SHADOW_ALLOY_CROSSBOW_DEBUFF_DURATION.get();
+        shadowAlloyCrossbowDebuffAmplifier = SHADOW_ALLOY_CROSSBOW_DEBUFF_AMPLIFIER.get();
+
         ghostFaceProjectileBlacklist = GHOST_FACE_PROJECTILE_BLACKLIST.get();
         ghostFaceCloneCooldownSeconds = GHOST_FACE_CLONE_COOLDOWN.get();
         rebuildGhostFaceBlacklistCache();
@@ -1083,5 +1134,6 @@ public class Config
         rebuildCaptureEntityCache();
         rebuildCalaisSpiceBottleCache();
         rebuildCalaisSpiceBottleDebuffCache();
+        rebuildShadowAlloyCrossbowDebuffCache();
     }
 }

@@ -207,6 +207,12 @@ textures/item/seniors_dream_book.png
 textures/item/shadow_alloy_axe.png
 textures/item/shadow_alloy_boots.png
 textures/item/shadow_alloy_chestplate.png
+textures/item/shadow_alloy_crossbow.png
+textures/item/shadow_alloy_crossbow_arrow.png
+textures/item/shadow_alloy_crossbow_firework.png
+textures/item/shadow_alloy_crossbow_pulling_0.png
+textures/item/shadow_alloy_crossbow_pulling_1.png
+textures/item/shadow_alloy_crossbow_pulling_2.png
 textures/item/shadow_alloy_helmet.png
 textures/item/shadow_alloy_hoe.png
 textures/item/shadow_alloy_ingot.png

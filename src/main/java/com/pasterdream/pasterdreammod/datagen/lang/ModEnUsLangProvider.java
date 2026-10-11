@@ -260,6 +260,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_ALLOY_AXE.get(), "Shadow Alloy Axe");
         add(ModItems.SHADOW_ALLOY_SHOVEL.get(), "Shadow Alloy Shovel");
         add(ModItems.SHADOW_ALLOY_HOE.get(), "Shadow Alloy Hoe");
+        add(ModItems.SHADOW_ALLOY_CROSSBOW.get(), "Shadow Alloy Crossbow");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.1", "Passive: §5Shadow Flying Arrow");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.2", "§7▪ §9Creatures hit gain 10s Vulnerability");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.3", "§7▪ §9Creatures hit gain a random 5s negative effect");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.4", "§7▪ §9Built-in Power III, stacks with the Power enchantment");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.5", "§7▪ §9Can be enchanted with Infinity");
         add(ModItems.SHADOW_ALLOY_HELMET.get(), "Shadow Alloy Helmet");
         add(ModItems.SHADOW_ALLOY_CHESTPLATE.get(), "Shadow Alloy Chestplate");
         add(ModItems.SHADOW_ALLOY_LEGGINGS.get(), "Shadow Alloy Leggings");

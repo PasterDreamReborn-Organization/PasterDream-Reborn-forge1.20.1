@@ -310,6 +310,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.SHADOW_ALLOY_AXE.get())
                 .add(ModItems.SHADOW_ALLOY_SHOVEL.get())
                 .add(ModItems.SHADOW_ALLOY_HOE.get())
+                .add(ModItems.SHADOW_ALLOY_CROSSBOW.get())
                 .add(ModItems.SHADOW_SWORD.get());
 
         // 狐狸食物
