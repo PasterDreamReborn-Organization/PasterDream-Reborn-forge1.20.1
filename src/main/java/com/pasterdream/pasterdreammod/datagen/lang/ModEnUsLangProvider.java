@@ -1597,6 +1597,16 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.伤害吸收:", "Absorption:");
         add("message.pasterdream.生物效果:", "Mob Effect:");
 
+        add(ModItems.IRIDESCENT_FAIRY_JADE.get(), "Iridescent Fairy Jade");
+        add("tooltip.pasterdream.iridescent_fairy_jade.1", "§7\"A weird stone that a fox accidentally made in an alchemy accident, full of potential.\"");
+        add("tooltip.pasterdream.iridescent_fairy_jade.2", "§7Wait a minute? Why does this thing feel so much like the magical weapon of some eight-tailed fox from another world?");
+        add("tooltip.pasterdream.iridescent_fairy_jade.3", "§7▪ §9Increase projectiles speed by 50%. Your projectiles applies Vulnerability II effect.");
+        add("tooltip.pasterdream.iridescent_fairy_jade.4", "§7▪ §9Ranged damage ignores invincibility frames.");
+        add("tooltip.pasterdream.iridescent_fairy_jade.5", "§7▪ §9Your bow and crossbow shoot random projectiles while firing the main barrage.");
+        add("tooltip.pasterdream.iridescent_fairy_jade.6", "§7Exclusive memento of Garam_1314.");
+        add("tooltip.pasterdream.iridescent_fairy_jade.7", "§7\"Did you find it? Alright, you win, then I'll give it to you. Make good use of it.\"");
+        add("tooltip.pasterdream.iridescent_fairy_jade.8", "§6PasterDream: Reborn Programmer");
+
         // Qym Gear
         add(ModItems.QYM_CAT_EARS.get(), "Qym's Cat Ears");
         add("tooltip.pasterdream.qym_cat_ears.san", "§7▪ §9SAN always at maximum");
