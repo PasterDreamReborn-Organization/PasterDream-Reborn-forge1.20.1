@@ -24,7 +24,7 @@ public class SculkArmorItem extends ArmorItem {
         if (!level.isClientSide && slotId == EquipmentSlot.HEAD.getIndex()
                 && entity instanceof Player player && hasFullSet(player)) {
             player.addEffect(new MobEffectInstance(ModEffects.SCULK_ARMOR.get(), 25, 0,
-                    true, false, true));
+                    true, false, false));
             player.removeEffect(MobEffects.BLINDNESS);
         }
     }

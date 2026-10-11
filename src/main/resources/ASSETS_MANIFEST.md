@@ -237,6 +237,7 @@ textures/mob_effect/conflict_mark.png
 textures/mob_effect/dark_watch.png
 textures/mob_effect/melt_dream_crystal_armor.png
 textures/mob_effect/war_flag.png
+textures/mob_effect/wind_thunder_boon.png
 textures/models/armor/melt_dream_layer_1.png
 textures/models/armor/melt_dream_layer_2.png
 textures/painting/pasterdream_dyedream_flower.png

@@ -854,6 +854,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.dyedream_up", "染梦工具增强");
         add("effect.pasterdream.melt_dream_crystal_armor", "融梦守护");
         add("effect.pasterdream.dark_watch", "黑暗守望");
+        add("effect.pasterdream.wind_thunder_boon", "风雷之佑");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9启用飞行能力");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4融梦能量消耗：1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9获得飞行能力且免疫摔落伤害");
@@ -1625,6 +1626,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc2", "§7▪ §9冷却：3秒");
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc3", "§7▪ §9耐久消耗：每格作物1耐久");
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc4", "§7▪ §9潜行挖掘时，连锁破坏周围3×3×3的同类方块或周围5×5的作物");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.1", "§7▪ §9移动速度+5%，战技冷却-5%");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.2", "§7套装效果：§b风雷之佑");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.3", "§7▪ §9拉弓与弩装填时间-25%");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.4", "§7▪ §9免疫雷电伤害");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.5", "§7▪ §9非晴朗天气时单件增益翻倍");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.6", "§7▪ §9雨天受到伤害-10%，雷雨天-20%");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.7", "§7▪ §950%概率弹开命中你的弹射物");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.8", "§7▪ §9下落时按住空格可滞空（消耗饥饿度）");
 
         // 萦风雷矛
         add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "战技：§b风雷齐行");
