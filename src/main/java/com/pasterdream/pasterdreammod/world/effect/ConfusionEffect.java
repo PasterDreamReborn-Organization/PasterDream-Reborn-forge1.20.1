@@ -44,7 +44,10 @@ public class ConfusionEffect extends MobEffect {
             entity.xRotO = entity.getXRot();
             entity.yBodyRotO = entity.getYRot();
             entity.yHeadRotO = entity.getYRot();
-            entity.setDeltaMovement(new Vec3(0, -1, 0));
+            // 穿透方块的生物（noPhysics）被下压会穿地坠入虚空，故跳过下压，仅保留朝向混乱
+            if (!entity.noPhysics) {
+                entity.setDeltaMovement(new Vec3(0, -1, 0));
+            }
         }
     }
 
