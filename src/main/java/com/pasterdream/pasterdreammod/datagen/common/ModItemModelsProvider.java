@@ -433,6 +433,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.SLIVER_BELL.get());
         basicItem(ModItems.EMPTY_PROPHECY_CARD.get());
         basicItem(ModItems.DEBUG_TOOL.get());
+        basicItem(ModItems.IRIDESCENT_FAIRY_JADE.get());
 
         basicItem(ModItems.BLACK_METAL_INGOT.get());
         basicItem(ModItems.BLACK_METAL_GRAIN.get());

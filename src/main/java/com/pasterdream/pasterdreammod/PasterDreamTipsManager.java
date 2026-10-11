@@ -64,7 +64,8 @@ public class PasterDreamTipsManager {
             "想要更多树苗却无从获取更多？园艺钳可以帮到你！",
             "你知道吗？帕斯特重生于2026/6/13正式建立仓库。",
             "不...不要flower_x，grass_x也不行...",
-            "了解不同梦境独特的特性对你探索是有所帮助的。"
+            "了解不同梦境独特的特性对你探索是有所帮助的。",
+            "瞬身术会帮助你到达一些原本到达不了的地方"
     );
 
     private final List<String> customTips = new ArrayList<>();

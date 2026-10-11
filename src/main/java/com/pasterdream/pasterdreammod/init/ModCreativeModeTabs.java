@@ -1087,6 +1087,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.REBIRTH_DREAM_CRYSTAL.get());
                         output.accept(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get());
                         output.accept(ModItems.MAGNIFYING_GLASS_OF_SHERRY.get());
+                        output.accept(ModItems.IRIDESCENT_FAIRY_JADE.get());
                         output.accept(ModItems.EMPTY_VESSEL.get());
                         output.accept(ModItems.DEBUG_TOOL.get());
                     })
