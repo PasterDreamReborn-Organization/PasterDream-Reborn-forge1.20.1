@@ -10,6 +10,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -28,6 +29,18 @@ public class ServerGamePacketListenerImplMixin
 {
     @Shadow
     public ServerPlayer player;
+
+    @Shadow
+    private boolean clientIsFloating;
+
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void pasterdream$exemptSlowFallingFromFloatingCheck(CallbackInfo ci)
+    {
+        if (this.player.hasEffect(MobEffects.SLOW_FALLING))
+        {
+            this.clientIsFloating = false;
+        }
+    }
 
     @Inject(method = "handleInteract", at = @At("HEAD"), cancellable = true)
     private void pasterdream$handleInteract(ServerboundInteractPacket packet, CallbackInfo ci)
