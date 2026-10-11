@@ -754,6 +754,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("jei.pasterdream.通用流体储罐", "通用流体储罐");
         add("jei.pasterdream.dyedream_contamination", "染梦侵染");
         add("jei.pasterdream.murakumo_kusanagi.info", "使用草薙击杀 %d 个生物即可进化获得。");
+        add("jei.pasterdream.pulse_wind_runner_crystal.info", "由破风骑士掉落");
+        add("jei.pasterdream.fractured_angel_statue.info", "由破风骑士概率掉落");
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "帕斯特之梦 | 饮食");
         add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "帕斯特之梦 | 灵药瓶");
