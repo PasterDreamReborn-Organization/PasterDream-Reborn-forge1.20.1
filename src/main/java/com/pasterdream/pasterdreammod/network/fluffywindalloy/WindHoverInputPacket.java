@@ -8,7 +8,7 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 /**
- * 客户端跳跃键（空格）状态同步：供萦风合金盔甲「滞空」在服务端判定。
+ * 客户端跳跃键（空格）状态同步：供萦风合金盔甲「缓降」在服务端判定。
  * 1.20.1 服务端仅在骑乘时收到跳跃输入，故单独同步。
  */
 public class WindHoverInputPacket {

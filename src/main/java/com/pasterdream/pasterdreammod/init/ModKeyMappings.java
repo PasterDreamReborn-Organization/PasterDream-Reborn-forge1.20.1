@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.network.curio.KaichuOmamoriActivationPacke
 import com.pasterdream.pasterdreammod.network.curio.CloakActivationPacket;
 import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindHoverInputPacket;
 import com.pasterdream.pasterdreammod.network.skill.BlinkPacket;
+import com.pasterdream.pasterdreammod.world.item.armoritem.FluffyWindAlloyArmorHandler;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
@@ -33,7 +34,7 @@ public class ModKeyMappings {
     @Mod.EventBusSubscriber({Dist.CLIENT})
     public static class KeyEventListener {
 
-        /** 上次同步给服务端的跳跃键状态（萦风合金盔甲「滞空」用） */
+        /** 上次同步给服务端的跳跃键状态（萦风合金盔甲「缓降」用） */
         private static boolean lastJumpSent = false;
 
         @SubscribeEvent
@@ -52,6 +53,9 @@ public class ModKeyMappings {
                 boolean jumping = Minecraft.getInstance().options.keyJump.isDown();
                 if (jumping != lastJumpSent) {
                     lastJumpSent = jumping;
+                    // 本地也记录跳跃键状态：萦风合金盔甲「缓降」在客户端本地复刻，避免服务端逐 tick 速度同步。
+                    Minecraft.getInstance().player.getPersistentData()
+                            .putBoolean(FluffyWindAlloyArmorHandler.NBT_HOVER_JUMP, jumping);
                     ModNetwork.CHANNEL.sendToServer(new WindHoverInputPacket(jumping));
                 }
             }

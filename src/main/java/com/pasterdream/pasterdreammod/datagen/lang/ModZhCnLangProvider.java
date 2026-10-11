@@ -1637,7 +1637,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.5", "§7▪ §9非晴朗天气时单件增益翻倍");
         add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.6", "§7▪ §9雨天受到伤害-10%，雷雨天-20%");
         add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.7", "§7▪ §950%概率弹开命中你的弹射物");
-        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.8", "§7▪ §9下落时按住空格可滞空（消耗饥饿度）");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.8", "§7▪ §9下落时按住空格可缓降（消耗饥饿度）");
 
         // 萦风雷矛
         add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "战技：§b风雷齐行");
