@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.network.curio.KaichuOmamoriActivationPacket;
 import com.pasterdream.pasterdreammod.network.curio.CloakActivationPacket;
+import com.pasterdream.pasterdreammod.network.fluffywindalloy.WindHoverInputPacket;
 import com.pasterdream.pasterdreammod.network.skill.BlinkPacket;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -31,6 +32,10 @@ public class ModKeyMappings {
 
     @Mod.EventBusSubscriber({Dist.CLIENT})
     public static class KeyEventListener {
+
+        /** 上次同步给服务端的跳跃键状态（萦风合金盔甲「滞空」用） */
+        private static boolean lastJumpSent = false;
+
         @SubscribeEvent
         public static void onClientTick(TickEvent.ClientTickEvent event) {
             if (Minecraft.getInstance().screen == null && Minecraft.getInstance().player != null) {
@@ -42,6 +47,12 @@ public class ModKeyMappings {
                 }
                 while (ModKeyMappings.CLOAK_ACTIVATE.consumeClick()) {
                     ModNetwork.CHANNEL.sendToServer(new CloakActivationPacket());
+                }
+
+                boolean jumping = Minecraft.getInstance().options.keyJump.isDown();
+                if (jumping != lastJumpSent) {
+                    lastJumpSent = jumping;
+                    ModNetwork.CHANNEL.sendToServer(new WindHoverInputPacket(jumping));
                 }
             }
         }

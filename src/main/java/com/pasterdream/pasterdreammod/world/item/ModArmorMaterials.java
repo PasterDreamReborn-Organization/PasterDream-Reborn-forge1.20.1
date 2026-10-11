@@ -46,7 +46,12 @@ public enum ModArmorMaterials implements ArmorMaterial {
     // 暗影合金（灯影之下毕业装备，全部件；面板略高于融梦水晶）
     SHADOW_ALLOY("shadow_alloy", 47, new int[]{4, 10, 8, 4}, 20,
             SoundEvents.ARMOR_EQUIP_NETHERITE, 4.0F, 0.15F,
-            () -> Ingredient.of(ModItems.SHADOW_ALLOY_INGOT.get()));
+            () -> Ingredient.of(ModItems.SHADOW_ALLOY_INGOT.get())),
+
+    // 萦风合金（风之旅途毕业装备，与暗影合金同档）
+    FLUFFY_WIND_ALLOY("fluffy_wind_alloy", 46, new int[]{4, 10, 8, 4}, 22,
+            SoundEvents.ARMOR_EQUIP_DIAMOND, 4.0F, 0.15F,
+            () -> Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get()));
 
     // 天使之翼已改为背饰，不再使用盔甲材质
 

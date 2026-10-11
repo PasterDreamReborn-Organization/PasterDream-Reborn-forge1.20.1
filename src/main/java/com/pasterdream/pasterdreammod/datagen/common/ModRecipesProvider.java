@@ -2182,6 +2182,16 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         // 风行者水晶块 ↔ 风行者水晶
         RecipeHelpers.storageCompress(pWriter, ModItems.WIND_RUNNER_CRYSTAL.get(), ModItems.WIND_RUNNER_CRYSTAL_BLOCK.get(), PasterDreamMod.MOD_ID);
         RecipeHelpers.storageDecompress(pWriter, ModItems.WIND_RUNNER_CRYSTAL_BLOCK.get(), ModItems.WIND_RUNNER_CRYSTAL.get(), PasterDreamMod.MOD_ID);
+        // 脉冲风行者水晶：凝结之风×7 + 脉冲风行者水晶 + 折翼天使雕像 → 2
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PULSE_WIND_RUNNER_CRYSTAL.get(), 2)
+                .pattern("aba")
+                .pattern("aca")
+                .pattern("aaa")
+                .define('a', ModItems.CONGEAL_WIND.get())
+                .define('b', ModItems.PULSE_WIND_RUNNER_CRYSTAL.get())
+                .define('c', ModItems.FRACTURED_ANGEL_STATUE.get())
+                .unlockedBy(getHasName(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()), has(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()))
+                .save(pWriter);
         // 凝风铁锭：铁锭 + 风植萃取液 + 凝结之风×2
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CONGEAL_WIND_IRON_INGOT.get(), 1)
                 .requires(Items.IRON_INGOT)

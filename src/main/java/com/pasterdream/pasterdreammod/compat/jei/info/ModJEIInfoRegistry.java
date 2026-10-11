@@ -23,5 +23,13 @@ public final class ModJEIInfoRegistry
                 new ItemStack(ModItems.MURAKUMO_KUSANAGI.get()),
                 Component.translatable("jei.pasterdream.murakumo_kusanagi.info",
                         Config.TheNumberofKillEnemytoEvolve));
+        // 脉冲风行者水晶：由破风骑士掉落
+        registration.addItemStackInfo(
+                new ItemStack(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()),
+                Component.translatable("jei.pasterdream.pulse_wind_runner_crystal.info"));
+        // 折翼天使雕像：由破风骑士概率掉落
+        registration.addItemStackInfo(
+                new ItemStack(ModItems.FRACTURED_ANGEL_STATUE.get()),
+                Component.translatable("jei.pasterdream.fractured_angel_statue.info"));
     }
 }

@@ -224,6 +224,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.FLUFFY_WIND_ALLOY_AXE.get(), "萦风合金斧");
         add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get(), "萦风合金锹");
         add(ModItems.FLUFFY_WIND_ALLOY_HOE.get(), "萦风合金锄");
+        add(ModItems.FLUFFY_WIND_ALLOY_HELMET.get(), "萦风合金头盔");
+        add(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get(), "萦风合金胸甲");
+        add(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get(), "萦风合金护腿");
+        add(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get(), "萦风合金靴子");
         add(ModItems.COPPER_HELMET.get(), "铜头盔");
         add(ModItems.COPPER_CHESTPLATE.get(), "铜胸甲");
         add(ModItems.COPPER_LEGGINGS.get(), "铜护腿");
@@ -750,6 +754,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("jei.pasterdream.通用流体储罐", "通用流体储罐");
         add("jei.pasterdream.dyedream_contamination", "染梦侵染");
         add("jei.pasterdream.murakumo_kusanagi.info", "使用草薙击杀 %d 个生物即可进化获得。");
+        add("jei.pasterdream.pulse_wind_runner_crystal.info", "由破风骑士掉落");
+        add("jei.pasterdream.fractured_angel_statue.info", "由破风骑士概率掉落");
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "帕斯特之梦 | 饮食");
         add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "帕斯特之梦 | 灵药瓶");
@@ -848,6 +854,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.dyedream_up", "染梦工具增强");
         add("effect.pasterdream.melt_dream_crystal_armor", "融梦守护");
         add("effect.pasterdream.dark_watch", "黑暗守望");
+        add("effect.pasterdream.wind_thunder_boon", "风雷之佑");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9启用飞行能力");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4融梦能量消耗：1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9获得飞行能力且免疫摔落伤害");
@@ -1619,6 +1626,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc2", "§7▪ §9冷却：3秒");
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc3", "§7▪ §9耐久消耗：每格作物1耐久");
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc4", "§7▪ §9潜行挖掘时，连锁破坏周围3×3×3的同类方块或周围5×5的作物");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.1", "§7▪ §9移动速度+5%，战技冷却-5%");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.2", "§7套装效果：§b风雷之佑");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.3", "§7▪ §9拉弓与弩装填时间-25%");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.4", "§7▪ §9免疫雷电伤害");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.5", "§7▪ §9非晴朗天气时单件增益翻倍");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.6", "§7▪ §9雨天受到伤害-10%，雷雨天-20%");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.7", "§7▪ §950%概率弹开命中你的弹射物");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.8", "§7▪ §9下落时按住空格可滞空（消耗饥饿度）");
 
         // 萦风雷矛
         add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "战技：§b风雷齐行");
