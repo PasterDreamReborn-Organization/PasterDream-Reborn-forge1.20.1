@@ -488,15 +488,15 @@ public class ModItems {
     public static final RegistryObject<Item> SHADOW_ALLOY_BOOTS = ITEMS.register("shadow_alloy_boots",
             () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.EPIC)));
 
-    // ===== 萦风合金装备（GEO 模型盔甲，空壳占位，用于验证渲染） =====
+    // ===== 萦风合金装备（GEO 模型盔甲，风之旅途毕业套） =====
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_HELMET = ITEMS.register("fluffy_wind_alloy_helmet",
-            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_CHESTPLATE = ITEMS.register("fluffy_wind_alloy_chestplate",
-            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_LEGGINGS = ITEMS.register("fluffy_wind_alloy_leggings",
-            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_BOOTS = ITEMS.register("fluffy_wind_alloy_boots",
-            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.EPIC)));
 
     // ===== 独立武器 =====
     public static final RegistryObject<Item> THERMAL_DAGGER = ITEMS.register("thermal_dagger",

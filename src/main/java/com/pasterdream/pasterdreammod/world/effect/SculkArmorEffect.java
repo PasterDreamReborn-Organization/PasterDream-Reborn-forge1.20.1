@@ -54,15 +54,15 @@ public class SculkArmorEffect extends MobEffect implements ProtectedRemovalEffec
         // 身处深层时获得抗性提升
         if (entity.getY() < 0) {
             entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 25, 0,
-                    true, false, true));
+                    true, false, false));
         }
         // 受到黑暗效果时：移除黑暗，给予加速和抗性
         if (entity.hasEffect(MobEffects.DARKNESS)) {
             entity.removeEffect(MobEffects.DARKNESS);
             entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 1,
-                    true, false, true));
+                    true, false, false));
             entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 1,
-                    true, false, true));
+                    true, false, false));
         }
     }
 

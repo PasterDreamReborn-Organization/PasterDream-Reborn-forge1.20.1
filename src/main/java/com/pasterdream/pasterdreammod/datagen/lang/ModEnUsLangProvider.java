@@ -848,6 +848,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.dyedream_up", "Dyedream Tool Boost");
         add("effect.pasterdream.melt_dream_crystal_armor", "Melt Dream Protection");
         add("effect.pasterdream.dark_watch", "Dark Watch");
+        add("effect.pasterdream.wind_thunder_boon", "Boon of Wind and Thunder");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9Enables flight");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4Melt Dream Energy Cost: 1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
@@ -1448,6 +1449,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc2", "§7▪ §9Cooldown: 3s");
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc3", "§7▪ §9Durability cost: 1 per crop");
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc4", "§7▪ §9When sneaking, mining chains §c3×3×3 §9blocks of the same type around, or harvests crops in a §c5×5 §9area");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.1", "§7▪ §9+5% Movement Speed, -5% Skill Cooldown");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.2", "§7Set Bonus: §bBoon of Wind and Thunder");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.3", "§7▪ §9-25% bow draw and crossbow load time");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.4", "§7▪ §9Immune to lightning damage");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.5", "§7▪ §9Per-piece bonuses doubled in non-clear weather");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.6", "§7▪ §9-10% damage taken in rain, -20% in thunderstorms");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.7", "§7▪ §950% chance to deflect incoming projectiles");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.8", "§7▪ §9Hold jump while falling to hover (costs hunger)");
 
         // Windwreathed Thunder Spear
         add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "Combat Art: §bWind and Thunder as One");

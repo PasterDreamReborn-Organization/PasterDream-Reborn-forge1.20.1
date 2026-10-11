@@ -1,0 +1,40 @@
+{
+  "type": "pasterdream:weapon_workshop_crafting_table",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:titanium_leggings",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:fluffy_wind_alloy_upgrade",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:fluffy_wind_alloy_ingot",
+      "count": 1
+    },
+    {
+      "item": "pasterdream:congeal_wind",
+      "count": 2
+    },
+    {
+      "item": "pasterdream:congeal_wind_iron_ingot",
+      "count": 4
+    }
+  ],
+  "enhanceStone":
+  [
+    {
+      "tag": "pasterdream:enhance_stone",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:fluffy_wind_alloy_leggings",
+      "count": 1
+    }
+  ]
+}
