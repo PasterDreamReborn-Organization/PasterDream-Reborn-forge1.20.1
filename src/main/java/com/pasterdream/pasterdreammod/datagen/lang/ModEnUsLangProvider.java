@@ -1460,7 +1460,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.5", "§7▪ §9Per-piece bonuses doubled in non-clear weather");
         add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.6", "§7▪ §9-10% damage taken in rain, -20% in thunderstorms");
         add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.7", "§7▪ §950% chance to deflect incoming projectiles");
-        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.8", "§7▪ §9Hold jump while falling to hover (costs hunger)");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.8", "§7▪ §9Hold jump while falling to slow fall (costs hunger)");
 
         // Windwreathed Thunder Spear
         add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "Combat Art: §bWind and Thunder as One");

@@ -39,7 +39,7 @@ import java.util.function.Consumer;
  * <p>单件效果：移动速度 +5%、战技冷却 -5%（属性修正）。
  * 满套套装效果「御风之誓」由 {@code FluffyWindAlloyArmorHandler} 结算：
  * 拉弓/弩装填 -25%、免疫雷电、非晴朗天气单件增益翻倍、雨天/雷雨最终减伤、
- * 50% 弹开弹射物、下落按住空格滞空（消耗饥饿度）。
+ * 50% 弹开弹射物、下落按住空格缓降（消耗饥饿度）。
  */
 public class FluffyWindAlloyArmorItem extends ArmorItem implements GeoItem {
 
