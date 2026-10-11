@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * 折翼天使雕像：每次受到伤害时按配置概率获得短暂无敌（概率/时长由 Config 控制，Tooltip 自动同步）；
- * 免疫摔落伤害与鞘翅飞行撞击动能伤害。
+ * 免疫摔落伤害。
  */
 public class FracturedAngelStatueItem extends Item implements ICurioItem {
 
@@ -38,7 +38,6 @@ public class FracturedAngelStatueItem extends Item implements ICurioItem {
         list.add(Component.translatable("tooltip.pasterdream.fractured_angel_statue.effect1",
                 formatPercent(Config.fracturedAngelStatueInvulnerableChance),
                 formatSeconds(Config.fracturedAngelStatueInvulnerableTicks)));
-        list.add(Component.translatable("tooltip.pasterdream.fractured_angel_statue.effect2"));
         list.add(Component.translatable("tooltip.pasterdream.fractured_angel_statue.effect3"));
         list.add(Component.translatable("tooltip.pasterdream.fractured_angel_statue.effect4"));
         list.add(Component.translatable("tooltip.pasterdream.fractured_angel_statue.lore"));

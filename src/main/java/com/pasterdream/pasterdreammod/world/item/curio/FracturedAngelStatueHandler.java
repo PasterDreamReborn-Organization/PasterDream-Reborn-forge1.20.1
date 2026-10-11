@@ -21,7 +21,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 /**
  * 折翼天使雕像全局被动处理器。
  * 每次受到伤害时按配置概率获得短暂无敌（概率/时长由 Config 控制，触发时播放破风骑士无敌被动同款 SCRAPE 粒子）；
- * 佩戴期间免疫摔落伤害与鞘翅飞行撞击动能伤害。
+ * 佩戴期间免疫摔落伤害。
  */
 @Mod.EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
 public class FracturedAngelStatueHandler {
@@ -57,15 +57,14 @@ public class FracturedAngelStatueHandler {
         }
     }
 
-    /** 无敌窗口内拦截所有伤害，并免疫摔落 / 鞘翅撞击动能伤害 */
+    /** 无敌窗口内拦截所有伤害，并免疫摔落伤害 */
     @SubscribeEvent
     public static void onLivingAttack(LivingAttackEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         if (!isWearing(player)) return;
 
         DamageSource source = event.getSource();
-        if (source.is(DamageTypes.FALL) || source.is(DamageTypes.FLY_INTO_WALL)
-                || isInvulnerableActive(player)) {
+        if (source.is(DamageTypes.FALL) || isInvulnerableActive(player)) {
             event.setCanceled(true);
         }
     }

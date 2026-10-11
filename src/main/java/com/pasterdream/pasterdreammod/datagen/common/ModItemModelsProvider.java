@@ -292,6 +292,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.SHADOW_ALLOY_CHESTPLATE.get());
         basicItem(ModItems.SHADOW_ALLOY_LEGGINGS.get());
         basicItem(ModItems.SHADOW_ALLOY_BOOTS.get());
+        basicItem(ModItems.WIND_RUNNER_CLOAK.get());
         handheldItem(ModItems.THERMAL_DAGGER);
         handheldItem(ModItems.DESERT_SWORD);
         handheldItem(ModItems.CHENJINGMEN_DESERT_SWORD);

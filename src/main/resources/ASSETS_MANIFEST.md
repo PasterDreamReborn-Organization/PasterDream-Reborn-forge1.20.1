@@ -109,6 +109,8 @@ textures/item/white_sword.png
 (Entirely new textures not in the original mod)
 
 ```
+textures/item/wind_runner_cloak.png
+textures/item/armor/wind_runner_cloak.png
 textures/gui/wind_knight_boss_bar/wind_knight_boss_bar_empty.png
 textures/gui/wind_knight_boss_bar/wind_knight_boss_bar_full.png
 textures/block/dyedream_grass_block_snow.png
