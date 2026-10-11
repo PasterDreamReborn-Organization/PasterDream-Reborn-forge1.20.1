@@ -84,6 +84,7 @@ import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiItem;
 import com.pasterdream.pasterdreammod.world.item.grasstool.MurakumoKusanagiItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.ShadowAlloyArmorItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.FluffyWindAlloyArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymWindShirtItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymSwayingSkirtItem;
@@ -486,6 +487,16 @@ public class ModItems {
             () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> SHADOW_ALLOY_BOOTS = ITEMS.register("shadow_alloy_boots",
             () -> new ShadowAlloyArmorItem(ModArmorMaterials.SHADOW_ALLOY, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.EPIC)));
+
+    // ===== 萦风合金装备（GEO 模型盔甲，空壳占位，用于验证渲染） =====
+    public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_HELMET = ITEMS.register("fluffy_wind_alloy_helmet",
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_CHESTPLATE = ITEMS.register("fluffy_wind_alloy_chestplate",
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_LEGGINGS = ITEMS.register("fluffy_wind_alloy_leggings",
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_BOOTS = ITEMS.register("fluffy_wind_alloy_boots",
+            () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     // ===== 独立武器 =====
     public static final RegistryObject<Item> THERMAL_DAGGER = ITEMS.register("thermal_dagger",

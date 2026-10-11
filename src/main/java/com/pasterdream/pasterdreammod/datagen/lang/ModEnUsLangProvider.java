@@ -216,6 +216,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.FLUFFY_WIND_ALLOY_AXE.get(), "Fluffy Wind Alloy Axe");
         add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get(), "Fluffy Wind Alloy Shovel");
         add(ModItems.FLUFFY_WIND_ALLOY_HOE.get(), "Fluffy Wind Alloy Hoe");
+        add(ModItems.FLUFFY_WIND_ALLOY_HELMET.get(), "Fluffy Wind Alloy Helmet");
+        add(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get(), "Fluffy Wind Alloy Chestplate");
+        add(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get(), "Fluffy Wind Alloy Leggings");
+        add(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get(), "Fluffy Wind Alloy Boots");
         add(ModItems.COPPER_HELMET.get(), "Copper Helmet");
         add(ModItems.COPPER_CHESTPLATE.get(), "Copper Chestplate");
         add(ModItems.COPPER_LEGGINGS.get(), "Copper Leggings");

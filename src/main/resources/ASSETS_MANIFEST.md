@@ -160,6 +160,7 @@ textures/gui/dream_notes_book/dream_notes_book_overworld.png
 textures/gui/dream_notes_book/dream_notes_book_wind_journey_world.png
 textures/gui/dream_notes_book/empty_notes.png
 textures/gui/dream_notes_book/shadow_dyed_dream_notes_book.png
+textures/item/armor/fluffy_wind_alloy_armor.png
 textures/item/armor/shadow_alloy_armor.png
 textures/item/chocolate_storage_cell.png
 textures/item/congeal_wind_iron_axe.png
@@ -185,6 +186,10 @@ textures/item/fluffy_wind_alloy_pickaxe.png
 textures/item/fluffy_wind_alloy_shovel.png
 textures/item/fluffy_wind_alloy_sword.png
 textures/item/fluffy_wind_alloy_upgrade.png
+textures/item/fluffy_wind_alloy_boots.png
+textures/item/fluffy_wind_alloy_chestplate.png
+textures/item/fluffy_wind_alloy_helmet.png
+textures/item/fluffy_wind_alloy_leggings.png
 textures/item/fortune_jelly.png
 textures/item/fractured_angel_statue.png
 textures/item/galaxy_jelly.png
