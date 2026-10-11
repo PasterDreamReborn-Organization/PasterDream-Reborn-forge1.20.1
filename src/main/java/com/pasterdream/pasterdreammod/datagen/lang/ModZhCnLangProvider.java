@@ -1794,6 +1794,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.伤害吸收:", "伤害吸收:");
         add("message.pasterdream.生物效果:", "生物效果:");
 
+        add(ModItems.IRIDESCENT_FAIRY_JADE.get(), "虹彩仙玉");
+        add("tooltip.pasterdream.iridescent_fairy_jade.1", "§7\"某狐狸在一次炼金事故无意中整出来的奇异石头，拥有无穷的潜力\"");
+        add("tooltip.pasterdream.iridescent_fairy_jade.2", "§7等等？怎么感觉这玩意这么像某个异世界的八尾狐的法器呢？");
+        add("tooltip.pasterdream.iridescent_fairy_jade.3", "§7▪ §9提高50%远程弹幕速度，你的远程弹幕造成易伤II效果");
+        add("tooltip.pasterdream.iridescent_fairy_jade.4", "§7▪ §9远程伤害无视无敌帧");
+        add("tooltip.pasterdream.iridescent_fairy_jade.5", "§7▪ §9你的弓和弩在发射主弹幕的同时，发射随机射弹");
+        add("tooltip.pasterdream.iridescent_fairy_jade.6", "§7Garam_1314的专属遗物。");
+        add("tooltip.pasterdream.iridescent_fairy_jade.7", "§7\"让你找到了吗？好吧，算你赢了，那就送给你了，好好使用\"");
+        add("tooltip.pasterdream.iridescent_fairy_jade.8", "§6PasterDream: Reborn 程序");
+
         // 琴雨梦装备
         add(ModItems.QYM_CAT_EARS.get(), "琴雨梦的猫耳发卡");
         add("tooltip.pasterdream.qym_cat_ears.san", "§7▪ §9精神值始终为精神值上限");

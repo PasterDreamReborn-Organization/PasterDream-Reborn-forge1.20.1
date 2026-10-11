@@ -2100,6 +2100,7 @@ public class ModItems {
     public static final RegistryObject<Item> REBIRTH_DREAM_CRYSTAL = ITEMS.register("rebirth_dream_crystal",
             RebirthDreamCrystalItem::new);
     public static final RegistryObject<Item> DEBUG_TOOL = ITEMS.register("debug_tool", DebugToolItem::new);
+    public static final RegistryObject<Item> IRIDESCENT_FAIRY_JADE = ITEMS.register("iridescent_fairy_jade", IridescentFairyJadeItem::new);
     public static final RegistryObject<Item> QYM_CAT_EARS = ITEMS.register("qym_cat_ears",
             () -> new QymCatEarsItem(ModArmorMaterials.QYM, ArmorItem.Type.HELMET,
                     new Item.Properties().fireResistant().rarity(ModRarities.MIRACLE)));

@@ -509,6 +509,20 @@ public class Config
             .comment("鬼魂之面复制弹幕的内置冷却时间（秒），默认 3 秒，设为 0 可关闭冷却")
             .defineInRange("ghostFaceCloneCooldownSeconds", 3, 0, Integer.MAX_VALUE);
 
+    // === 虹彩仙玉 ===
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> IRIDESCENT_FAIRY_JADE_PROJECTILE_WHITELIST = BUILDER
+            .comment("虹彩仙玉：弓/弩发射主弹幕时额外发射的弹幕（投射物实体类型）白名单（格式：modid:entity_id），"
+                    + "\n例：minecraft:arrow 为箭，pasterdream:golden_fox_fireball 为黄金狐火球"
+                    + "\n支持模组投射物。每次发射主弹幕时，随机取其中一种发射 1 发")
+            .defineListAllowEmpty("iridescentFairyJadeProjectileWhitelist",
+                    List.of("pasterdream:golden_fox_fireball", "pasterdream:lightning_projectile",
+                            "pasterdream:squeal_wave_projectile", "pasterdream:pebble_projectile",
+                            "pasterdream:thrown_pink_egg",
+                            "minecraft:arrow", "minecraft:spectral_arrow", "minecraft:dragon_fireball",
+                            "minecraft:snowball", "minecraft:egg", "minecraft:trident",
+                            "minecraft:llama_spit"),
+                    obj -> obj instanceof String);
+
     // === 重生之梦水晶 ===
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> REBIRTH_DREAM_CRYSTAL_LOOT = BUILDER
             .comment("重生之梦水晶 shift+右键 释放遗物中的灵魂时可随机获得的物品 ID 列表（格式：modid:item_id），"
@@ -662,6 +676,15 @@ public class Config
     public static List<? extends String> ghostFaceProjectileBlacklist;
     public static int ghostFaceCloneCooldownSeconds;
     private static Set<ResourceLocation> cachedGhostFaceBlacklistTypes = Set.of();
+
+    //虹彩仙玉
+    public static List<? extends String> iridescentFairyJadeProjectileWhitelist;
+    private static List<EntityType<?>> cachedIridescentFairyJadeProjectileTypes = List.of();
+
+    /** 虹彩仙玉随机弹幕白名单缓存（解析后的投射物 EntityType 列表） */
+    public static List<EntityType<?>> getIridescentFairyJadeProjectileTypes() {
+        return cachedIridescentFairyJadeProjectileTypes;
+    }
 
     /** 卡莱调料瓶随机增益缓存（解析后的 MobEffect 列表） */
     private static List<MobEffect> cachedCalaisSpiceBottleEffects = List.of();
@@ -853,6 +876,25 @@ public class Config
             set.add(rl);
         }
         cachedGhostFaceBlacklistTypes = Set.copyOf(set);
+    }
+
+    private static void rebuildIridescentFairyJadeProjectileCache() {
+        List<EntityType<?>> list = new ArrayList<>();
+        for (String idStr : iridescentFairyJadeProjectileWhitelist) {
+            ResourceLocation rl = ResourceLocation.tryParse(idStr);
+            if (rl == null) {
+                LOGGER.warn("iridescentFairyJadeProjectileWhitelist: invalid resource location '{}', skipping", idStr);
+                continue;
+            }
+            if (!ForgeRegistries.ENTITY_TYPES.containsKey(rl)) {
+                LOGGER.warn("iridescentFairyJadeProjectileWhitelist: unknown entity type '{}', skipping", idStr);
+                continue;
+            }
+            EntityType<?> et = ForgeRegistries.ENTITY_TYPES.getValue(rl);
+            list.add(et);
+        }
+        cachedIridescentFairyJadeProjectileTypes = List.copyOf(list);
+        LOGGER.info("iridescentFairyJadeProjectileWhitelist: loaded {} entity types", list.size());
     }
 
     private static void rebuildSinInstakillCache() {
@@ -1115,6 +1157,9 @@ public class Config
         ghostFaceProjectileBlacklist = GHOST_FACE_PROJECTILE_BLACKLIST.get();
         ghostFaceCloneCooldownSeconds = GHOST_FACE_CLONE_COOLDOWN.get();
         rebuildGhostFaceBlacklistCache();
+
+        iridescentFairyJadeProjectileWhitelist = IRIDESCENT_FAIRY_JADE_PROJECTILE_WHITELIST.get();
+        rebuildIridescentFairyJadeProjectileCache();
 
         rebirthDreamCrystalLoot = REBIRTH_DREAM_CRYSTAL_LOOT.get();
         rebuildRebirthDreamCrystalLootCache();
