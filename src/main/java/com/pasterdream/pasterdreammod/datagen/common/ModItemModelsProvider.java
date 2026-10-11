@@ -171,6 +171,11 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.FLUFFY_WIND_ALLOY_SHOVEL);
         handheldItem(ModItems.FLUFFY_WIND_ALLOY_HOE);
         basicItem(ModItems.FLUFFY_WIND_ALLOY_UPGRADE.get());
+        // 萦风合金装备（GEO 模型盔甲）
+        basicItem(ModItems.FLUFFY_WIND_ALLOY_HELMET.get());
+        basicItem(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get());
+        basicItem(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
+        basicItem(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
         basicItem(ModItems.COPPER_HELMET.get());
         basicItem(ModItems.COPPER_CHESTPLATE.get());
         basicItem(ModItems.COPPER_LEGGINGS.get());

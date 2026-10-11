@@ -224,6 +224,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.FLUFFY_WIND_ALLOY_AXE.get(), "萦风合金斧");
         add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get(), "萦风合金锹");
         add(ModItems.FLUFFY_WIND_ALLOY_HOE.get(), "萦风合金锄");
+        add(ModItems.FLUFFY_WIND_ALLOY_HELMET.get(), "萦风合金头盔");
+        add(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get(), "萦风合金胸甲");
+        add(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get(), "萦风合金护腿");
+        add(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get(), "萦风合金靴子");
         add(ModItems.COPPER_HELMET.get(), "铜头盔");
         add(ModItems.COPPER_CHESTPLATE.get(), "铜胸甲");
         add(ModItems.COPPER_LEGGINGS.get(), "铜护腿");

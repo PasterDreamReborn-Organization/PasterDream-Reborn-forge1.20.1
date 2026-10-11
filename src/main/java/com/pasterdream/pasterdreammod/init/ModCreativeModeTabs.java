@@ -291,6 +291,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_AXE.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_HOE.get());
+                        // 萦风合金装备
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_HELMET.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
+                        output.accept(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
                         // 钛金工具
                         output.accept(ModItems.TITANIUM_SWORD.get());
                         output.accept(ModItems.TITANIUM_PICKAXE.get());
