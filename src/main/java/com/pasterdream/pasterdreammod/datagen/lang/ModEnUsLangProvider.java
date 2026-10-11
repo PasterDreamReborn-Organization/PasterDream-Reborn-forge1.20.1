@@ -774,7 +774,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.goldenrod_tea", "§dContinuously removes Hunger and Nausea");
         add("tooltip.pasterdreammod.glass_cup_of_honey_juice", "§dClears all negative effects upon drinking");
         add("tooltip.pasterdreammod.dyedream_perfume", "§dClears insomnia and prevents phantom attacks");
-        add("tooltip.pasterdreammod.dyedream_perfume.flavor", "§7§oWhen you're wondering why perfume is meant to be drunk,\nmaybe you should first consider: are you dreaming?");
+        add("tooltip.pasterdreammod.dyedream_perfume.flavor.1", "§7§oWhen you're wondering why perfume is meant to be drunk,");
+        add("tooltip.pasterdreammod.dyedream_perfume.flavor.2", "§7§omaybe you should first consider: are you dreaming?");
         add("tooltip.pasterdreammod.melt_dream_crystal_fragment", "§7All creatures with souls in this world have dreams\nThose fleeting memories that cannot be recalled upon waking\nShatter and melt, buried across the world, condensing into crystals\nWaiting to be discovered by new souls");
         add("tooltip.pasterdreammod.upgrade_kit", "§7Used at the smithing table to upgrade equipment Can preserve the original enhancement properties of the equipment");
         add("tooltip.pasterdream.enhance_stone.usage", "§7Used to enhance Weapons/Tools/Armor at the Weapon Workshop Crafting Table");
