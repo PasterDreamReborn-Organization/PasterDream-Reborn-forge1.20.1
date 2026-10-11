@@ -53,8 +53,8 @@ public enum ModArmorMaterials implements ArmorMaterial {
             SoundEvents.ARMOR_EQUIP_DIAMOND, 4.0F, 0.15F,
             () -> Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get())),
 
-    // 风行者披风（GEO 模型披风，当前为渲染测试壳，数值待定）
-    WIND_RUNNER_CLOAK("wind_runner_cloak", 15, new int[]{2, 5, 4, 2}, 15,
+    // 风行者披风（GEO 模型披风，胸甲槽耐久 480 = 16 × 30）
+    WIND_RUNNER_CLOAK("wind_runner_cloak", 30, new int[]{2, 5, 4, 2}, 15,
             SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F,
             () -> Ingredient.of(ModItems.FLUFFY_WIND_ALLOY_INGOT.get()));
 
