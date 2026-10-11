@@ -87,7 +87,10 @@ public class ShadowAlloyCrossbowItem extends CrossbowItem {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return enchantment == Enchantments.INFINITY_ARROWS || super.canApplyAtEnchantingTable(stack, enchantment);
+        // 力量（原版仅限弓）与无限（原版仅限弓）本弩也放行；Forge 将附魔台 / 铁砧（附魔书）/ /enchant 统一走本方法
+        return enchantment == Enchantments.INFINITY_ARROWS
+                || enchantment == Enchantments.POWER_ARROWS
+                || super.canApplyAtEnchantingTable(stack, enchantment);
     }
 
     @Override
