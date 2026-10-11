@@ -268,6 +268,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_ALLOY_AXE.get(), "暗影合金斧");
         add(ModItems.SHADOW_ALLOY_SHOVEL.get(), "暗影合金锹");
         add(ModItems.SHADOW_ALLOY_HOE.get(), "暗影合金锄");
+        add(ModItems.SHADOW_ALLOY_CROSSBOW.get(), "暗影合金弩");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.1", "被动：§5暗影飞矢");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.2", "§7▪ §9命中的生物获得 10s 易伤");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.3", "§7▪ §9命中的生物随机获得 5s 负面效果");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.4", "§7▪ §9自带力量 III，可与力量附魔叠加");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.5", "§7▪ §9可附魔无限");
         add(ModItems.SHADOW_ALLOY_HELMET.get(), "暗影合金头盔");
         add(ModItems.SHADOW_ALLOY_CHESTPLATE.get(), "暗影合金胸甲");
         add(ModItems.SHADOW_ALLOY_LEGGINGS.get(), "暗影合金护腿");

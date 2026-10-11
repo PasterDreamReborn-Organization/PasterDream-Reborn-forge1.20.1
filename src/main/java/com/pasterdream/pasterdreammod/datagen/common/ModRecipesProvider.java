@@ -229,6 +229,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         congealWindIronToolRecipes(pWriter);
         fluffyWindAlloyToolRecipes(pWriter);
         shadowAlloyToolRecipes(pWriter);
+        shadowAlloyCrossbowRecipe(pWriter);
         copperArmorRecipes(pWriter);
         titaniumToolRecipes(pWriter);
         titaniumToolDirectRecipes(pWriter);
@@ -831,8 +832,22 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 pWriter, "shadow_alloy_hoe_upgrade");
     }
 
-    // ===== 暗影合金装备配方（合成台：暗影合金锭，四件套） =====
+    // ===== 暗影合金弩配方（合成台：黑石棍 + 暗影合金锭 + 原版弩 + 噩梦燃料） =====
 
+    private void shadowAlloyCrossbowRecipe(Consumer<FinishedRecipe> pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SHADOW_ALLOY_CROSSBOW.get())
+                .pattern("aba")
+                .pattern("bcb")
+                .pattern("dbd")
+                .define('a', ModItems.BLACK_STICK.get())
+                .define('b', ModItems.SHADOW_ALLOY_INGOT.get())
+                .define('c', Items.CROSSBOW)
+                .define('d', ModItems.NIGHTMARE_FUEL.get())
+                .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get()))
+                .save(pWriter);
+    }
+
+    // ===== 暗影合金装备配方（合成台：暗影合金锭，四件套） =====
     private void shadowAlloyArmorRecipes(Consumer<FinishedRecipe> pWriter) {
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SHADOW_ALLOY_HELMET.get())
                 .pattern("aaa")

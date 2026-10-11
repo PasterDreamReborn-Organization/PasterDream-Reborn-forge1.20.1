@@ -256,6 +256,32 @@ public class ModItemModelsProvider extends ItemModelProvider {
         handheldItem(ModItems.SHADOW_ALLOY_AXE);
         handheldItem(ModItems.SHADOW_ALLOY_SHOVEL);
         handheldItem(ModItems.SHADOW_ALLOY_HOE);
+        // 暗影合金弩：弩类模型（含拉弦 pulling 0/1/2 与装填 arrow/firework 覆层）
+        ItemModelBuilder shadowAlloyCrossbow = withExistingParent(ModItems.SHADOW_ALLOY_CROSSBOW.getId().getPath(), mcLoc("item/crossbow"))
+                .texture("layer0", modLoc("item/shadow_alloy_crossbow"));
+        ItemModelBuilder shadowAlloyCrossbowPulling0 = withExistingParent("shadow_alloy_crossbow_pulling_0", mcLoc("item/crossbow"))
+                .texture("layer0", modLoc("item/shadow_alloy_crossbow_pulling_0"));
+        ItemModelBuilder shadowAlloyCrossbowPulling1 = withExistingParent("shadow_alloy_crossbow_pulling_1", mcLoc("item/crossbow"))
+                .texture("layer0", modLoc("item/shadow_alloy_crossbow_pulling_1"));
+        ItemModelBuilder shadowAlloyCrossbowPulling2 = withExistingParent("shadow_alloy_crossbow_pulling_2", mcLoc("item/crossbow"))
+                .texture("layer0", modLoc("item/shadow_alloy_crossbow_pulling_2"));
+        ItemModelBuilder shadowAlloyCrossbowArrow = withExistingParent("shadow_alloy_crossbow_arrow", mcLoc("item/crossbow"))
+                .texture("layer0", modLoc("item/shadow_alloy_crossbow_arrow"));
+        ItemModelBuilder shadowAlloyCrossbowFirework = withExistingParent("shadow_alloy_crossbow_firework", mcLoc("item/crossbow"))
+                .texture("layer0", modLoc("item/shadow_alloy_crossbow_firework"));
+        shadowAlloyCrossbow.override().predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "pulling"), 1.0F)
+                .model(shadowAlloyCrossbowPulling0).end()
+                .override().predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "pulling"), 1.0F)
+                .predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "pull"), 0.58F)
+                .model(shadowAlloyCrossbowPulling1).end()
+                .override().predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "pulling"), 1.0F)
+                .predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "pull"), 1.0F)
+                .model(shadowAlloyCrossbowPulling2).end()
+                .override().predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "charged"), 1.0F)
+                .model(shadowAlloyCrossbowArrow).end()
+                .override().predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "charged"), 1.0F)
+                .predicate(ResourceLocation.fromNamespaceAndPath("minecraft", "firework"), 1.0F)
+                .model(shadowAlloyCrossbowFirework).end();
         // 暗影合金装备（GEO 模型盔甲）
         basicItem(ModItems.SHADOW_ALLOY_HELMET.get());
         basicItem(ModItems.SHADOW_ALLOY_CHESTPLATE.get());

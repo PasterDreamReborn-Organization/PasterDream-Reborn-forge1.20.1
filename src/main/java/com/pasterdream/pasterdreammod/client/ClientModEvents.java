@@ -15,7 +15,9 @@ import com.pasterdream.pasterdreammod.world.item.curio.StrikeRingItem;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ModelEvent;
@@ -106,6 +108,37 @@ public class ClientModEvents
                     return entity.getUseItem() != stack ? 0.0F
                             : (float) (stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 20.0F;
                 }
+        );
+
+        // 暗影合金弩装填/拉弦切换模型（原版 pull/pulling/charged/firework predicate 仅注册在 Items.CROSSBOW 上）
+        ItemProperties.register(
+                ModItems.SHADOW_ALLOY_CROSSBOW.get(),
+                ResourceLocation.parse("pull"),
+                (stack, level, entity, seed) -> {
+                    if (entity == null) return 0.0F;
+                    return CrossbowItem.isCharged(stack) ? 0.0F
+                            : (float) (stack.getUseDuration() - entity.getUseItemRemainingTicks())
+                            / CrossbowItem.getChargeDuration(stack);
+                }
+        );
+        ItemProperties.register(
+                ModItems.SHADOW_ALLOY_CROSSBOW.get(),
+                ResourceLocation.parse("pulling"),
+                (stack, level, entity, seed) ->
+                        entity != null && entity.isUsingItem() && entity.getUseItem() == stack
+                                && !CrossbowItem.isCharged(stack) ? 1.0F : 0.0F
+        );
+        ItemProperties.register(
+                ModItems.SHADOW_ALLOY_CROSSBOW.get(),
+                ResourceLocation.parse("charged"),
+                (stack, level, entity, seed) -> CrossbowItem.isCharged(stack) ? 1.0F : 0.0F
+        );
+        ItemProperties.register(
+                ModItems.SHADOW_ALLOY_CROSSBOW.get(),
+                ResourceLocation.parse("firework"),
+                (stack, level, entity, seed) ->
+                        CrossbowItem.isCharged(stack)
+                                && CrossbowItem.containsChargedProjectile(stack, Items.FIREWORK_ROCKET) ? 1.0F : 0.0F
         );
 
         ItemProperties.register(

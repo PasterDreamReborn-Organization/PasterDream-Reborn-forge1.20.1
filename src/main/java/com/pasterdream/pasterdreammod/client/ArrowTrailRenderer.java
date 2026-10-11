@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.renderhelper.CustomRenderTypes;
-import com.pasterdream.pasterdreammod.world.entity.MeltDreamArrowEntity;
+import com.pasterdream.pasterdreammod.world.entity.TrailArrowEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -27,18 +27,20 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * 融梦箭拖尾渲染：客户端快照 + 三棱柱管状拖尾。
+ * 带拖尾箭实体（{@link TrailArrowEntity}）的拖尾渲染：客户端快照 + 三棱柱管状拖尾。
  * <p>
  * 在 {@code RenderLevelStageEvent.AFTER_PARTICLES} 阶段遍历拖尾快照，沿轨迹绘制
  * <b>三棱柱管状</b>拖尾（非朝向相机的平面 ribbon）：每个采样点算一个三角形横截面，
  * 相邻横截面之间画 3 个侧面四边形，头/尾各封 3 个收拢到端点的四边形。
- * 顶点色由头部（亮粉不透明）渐变到尾部（粉透明），配合加法混合呈发光感。
+ * 顶点色由头部渐变到尾部（尾部透明），配合加法混合呈发光感；颜色按实体
+ * {@link TrailArrowEntity#trailHeadColor()} / {@link TrailArrowEntity#trailTailColor()}
+ * 逐条取值（融梦箭粉、暗影合金弩箭暗紫），并以快照保留，故实体移除后仍按原色收缩消失。
  * <p>
  * 拖尾数据以「快照」形式保存在客户端（每 tick 从箭实体刷新）。箭命中实体/方块后，
  * 快照仍保留并继续渲染，同时从尾端向命中点逐点收缩，因此拖尾不会随箭一起瞬间消失。
  */
 @Mod.EventBusSubscriber(modid = PasterDreamMod.MOD_ID, value = Dist.CLIENT)
-public final class MeltDreamTrailRenderer {
+public final class ArrowTrailRenderer {
 
     /** 拖尾横截面半径（格） */
     private static final double TRAIL_SIZE = 0.08;
@@ -49,23 +51,9 @@ public final class MeltDreamTrailRenderer {
     /** 落地/被移除后拖尾收缩消失的总时长（tick） */
     private static final float DISSOLVE_TICKS = 20.0F;
 
-    /** 头部颜色（ARGB，亮粉不透明） */
-    private static final int HEAD_COLOR = 0xFFFF8AD8;
-    /** 尾部颜色（ARGB，粉透明） */
-    private static final int TAIL_COLOR = 0x00FF55B0;
-
-    private static final float HEAD_R = ((HEAD_COLOR >> 16) & 0xFF) / 255.0F;
-    private static final float HEAD_G = ((HEAD_COLOR >> 8) & 0xFF) / 255.0F;
-    private static final float HEAD_B = (HEAD_COLOR & 0xFF) / 255.0F;
-    private static final float HEAD_A = ((HEAD_COLOR >>> 24) & 0xFF) / 255.0F;
-    private static final float TAIL_R = ((TAIL_COLOR >> 16) & 0xFF) / 255.0F;
-    private static final float TAIL_G = ((TAIL_COLOR >> 8) & 0xFF) / 255.0F;
-    private static final float TAIL_B = (TAIL_COLOR & 0xFF) / 255.0F;
-    private static final float TAIL_A = ((TAIL_COLOR >>> 24) & 0xFF) / 255.0F;
-
     private static final Map<Integer, TrailSnapshot> SNAPSHOTS = new HashMap<>();
 
-    private MeltDreamTrailRenderer() {
+    private ArrowTrailRenderer() {
     }
 
     /** 每 tick 从存活箭实体刷新快照；消失的实体转入残影并延时移除。 */
@@ -82,13 +70,15 @@ public final class MeltDreamTrailRenderer {
 
         Set<Integer> seen = new HashSet<>();
         for (Entity entity : level.entitiesForRendering()) {
-            if (!(entity instanceof MeltDreamArrowEntity arrow)) {
+            if (!(entity instanceof TrailArrowEntity arrow)) {
                 continue;
             }
             int id = arrow.getId();
             TrailSnapshot snapshot = SNAPSHOTS.computeIfAbsent(id, TrailSnapshot::new);
             snapshot.entity = arrow;
             snapshot.points = new ArrayList<>(arrow.getClientTrail());
+            snapshot.headArgb = arrow.trailHeadColor();
+            snapshot.tailArgb = arrow.trailTailColor();
             snapshot.lastOrigin = arrow.position();
             Vec3 motion = arrow.getDeltaMovement();
             snapshot.lastDirection = motion.lengthSqr() > 1.0E-8
@@ -137,7 +127,7 @@ public final class MeltDreamTrailRenderer {
             Vec3 origin;
             // dissolve：0 = 完整拖尾，1 = 完全收缩消失；由快照累计的收缩时长推进，落地后被拾取也不重置
             float dissolve;
-            MeltDreamArrowEntity entity = snapshot.entity;
+            TrailArrowEntity entity = snapshot.entity;
             if (entity != null && !entity.isRemoved()) {
                 origin = entity.getPosition(partialTick);
                 dissolve = snapshot.dissolveTicks > 0
@@ -158,7 +148,8 @@ public final class MeltDreamTrailRenderer {
             poseStack.translate(origin.x - cameraPos.x + shift.x, origin.y - cameraPos.y + shift.y,
                     origin.z - cameraPos.z + shift.z);
             drawTrail(bufferSource.getBuffer(CustomRenderTypes.MELT_DREAM_TRAIL),
-                    poseStack.last().pose(), snapshot.points, origin, fade, dissolve);
+                    poseStack.last().pose(), snapshot.points, origin, fade, dissolve,
+                    snapshot.headArgb, snapshot.tailArgb);
             poseStack.popPose();
             renderedAnything = true;
         }
@@ -170,7 +161,7 @@ public final class MeltDreamTrailRenderer {
 
     /** @param trail 世界坐标采样点（旧 → 新） */
     private static void drawTrail(VertexConsumer consumer, Matrix4f matrix, List<Vec3> trail, Vec3 origin,
-                                  float fade, float dissolve) {
+                                  float fade, float dissolve, int headArgb, int tailArgb) {
         // 头 → 尾：头端直接取实体插值位置（后移量由调用方整体平移姿态实现）+ 采样点倒序（新 → 旧）
         List<Vec3> raw = new ArrayList<>(trail.size() + 1);
         raw.add(origin);
@@ -226,18 +217,18 @@ public final class MeltDreamTrailRenderer {
             if (sections[i][0] == null || sections[i + 1][0] == null) {
                 continue;
             }
-            float[] c1 = colorAt(i, count, fade);
-            float[] c2 = colorAt(i + 1, count, fade);
+            float[] c1 = colorAt(i, count, fade, headArgb, tailArgb);
+            float[] c2 = colorAt(i + 1, count, fade, headArgb, tailArgb);
             sideQuad(consumer, matrix, local[i], local[i + 1], sections[i], sections[i + 1], 0, 1, c1, c2);
             sideQuad(consumer, matrix, local[i], local[i + 1], sections[i], sections[i + 1], 1, 2, c1, c2);
             sideQuad(consumer, matrix, local[i], local[i + 1], sections[i], sections[i + 1], 2, 0, c1, c2);
         }
 
         if (sections[0][0] != null) {
-            cap(consumer, matrix, local[0], sections[0], colorAt(0, count, fade));
+            cap(consumer, matrix, local[0], sections[0], colorAt(0, count, fade, headArgb, tailArgb));
         }
         if (sections[count - 1][0] != null) {
-            cap(consumer, matrix, local[count - 1], sections[count - 1], colorAt(count - 1, count, fade));
+            cap(consumer, matrix, local[count - 1], sections[count - 1], colorAt(count - 1, count, fade, headArgb, tailArgb));
         }
     }
 
@@ -306,12 +297,12 @@ public final class MeltDreamTrailRenderer {
     }
 
     /** 头部(0) → 尾部(1) 的颜色与透明度插值。 */
-    private static float[] colorAt(int index, int count, float fade) {
+    private static float[] colorAt(int index, int count, float fade, int headArgb, int tailArgb) {
         float t = count <= 1 ? 1.0F : (float) index / (float) (count - 1);
-        float r = Mth.lerp(t, HEAD_R, TAIL_R);
-        float g = Mth.lerp(t, HEAD_G, TAIL_G);
-        float b = Mth.lerp(t, HEAD_B, TAIL_B);
-        float a = Mth.lerp(t, HEAD_A, TAIL_A) * fade;
+        float r = Mth.lerp(t, ((headArgb >> 16) & 0xFF) / 255.0F, ((tailArgb >> 16) & 0xFF) / 255.0F);
+        float g = Mth.lerp(t, ((headArgb >> 8) & 0xFF) / 255.0F, ((tailArgb >> 8) & 0xFF) / 255.0F);
+        float b = Mth.lerp(t, (headArgb & 0xFF) / 255.0F, (tailArgb & 0xFF) / 255.0F);
+        float a = Mth.lerp(t, ((headArgb >>> 24) & 0xFF) / 255.0F, ((tailArgb >>> 24) & 0xFF) / 255.0F) * fade;
         return new float[]{r, g, b, a};
     }
 
@@ -330,11 +321,14 @@ public final class MeltDreamTrailRenderer {
         return new Vec3(x, y, z);
     }
 
-    /** 单条拖尾的客户端快照：实体消失后仍保留采样点用于收缩。 */
+    /** 单条拖尾的客户端快照：实体消失后仍保留采样点与颜色用于收缩。 */
     private static final class TrailSnapshot {
         final int entityId;
-        MeltDreamArrowEntity entity;
+        TrailArrowEntity entity;
         List<Vec3> points = List.of();
+        /** 头/尾颜色（ARGB），实体消失后沿用最后一次值 */
+        int headArgb = 0xFFFFFFFF;
+        int tailArgb = 0x00FFFFFF;
         Vec3 lastOrigin = Vec3.ZERO;
         /** 最近一次的飞行/朝向方向（落地静止时也保留，供收缩阶段定位箭尖） */
         Vec3 lastDirection = Vec3.ZERO;
