@@ -52,6 +52,8 @@ public final class FluffyWindAlloyArmorHandler {
 
     private static final double HOVER_FALL_SPEED = -0.02D;
     private static final float HOVER_EXHAUSTION = 0.05F;
+    /** 滞空时抵消原版空气阻力（空中水平速度每刻 ×0.91），保持横向惯性。 */
+    private static final double HOVER_FRICTION_COMPENSATION = 1.0D / 0.91D;
 
     /** 套装标记效果刷新时长（刻） */
     private static final int OATH_DURATION = 25;
@@ -111,7 +113,9 @@ public final class FluffyWindAlloyArmorHandler {
         if (motion.y >= 0) return;
 
         player.causeFoodExhaustion(HOVER_EXHAUSTION);
-        player.setDeltaMovement(motion.x, HOVER_FALL_SPEED, motion.z);
+        double horizontalX = motion.x * HOVER_FRICTION_COMPENSATION;
+        double horizontalZ = motion.z * HOVER_FRICTION_COMPENSATION;
+        player.setDeltaMovement(horizontalX, HOVER_FALL_SPEED, horizontalZ);
         player.fallDistance = 0.0F;
         player.hurtMarked = true;
     }

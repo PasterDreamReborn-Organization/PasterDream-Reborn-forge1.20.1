@@ -2783,7 +2783,7 @@
 				},
 				{
 					"name": "waist",
-					"parent": "armorBody",
+					"parent": "bipedBody",
 					"pivot": [
 						4.52,
 						14.48133,

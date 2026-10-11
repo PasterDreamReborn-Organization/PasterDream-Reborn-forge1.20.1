@@ -45,6 +45,14 @@ description: 客户端渲染（RenderType、HUD、粒子、音效、GeckoLib 动
 - `.geo.json` → `assets/pasterdream/geo/`；`.animation.json` → `assets/pasterdream/animations/`
 - 显示设置 → `models/displaysettings/`；特殊模型 → `models/custom/`
 
+### 护甲骨骼与槽位可见性（`GeoArmorRenderer`）
+
+- 渲染按**装备槽**决定显示哪根骨，不按分组名。`applyBoneVisibilityBySlot` 只认 8 根：`HEAD`→`armorHead`，`CHEST`→`armorBody`+`armorRightArm`+`armorLeftArm`，`LEGS`→`armorRightLeg`+`armorLeftLeg`，`FEET`→`armorRightBoot`+`armorLeftBoot`；其余骨可见性**跟随父骨**（`setHidden` 级联子树）。
+- 因此某件几何想出现在哪个槽，就必须挂在那根 `armor*` 骨（或其子树）下；挂在 `biped*` 容器下则**不受槽位控制、恒显示**。
+- `armorRightLeg`/`armorLeftLeg` 会被套用原版腿部旋转 → 其子树**随腿摆动**。
+- **需要「属于护腿但不随腿摆」的静态件**（如裙甲）：把它挂在顶层容器（如 `bipedBody`）使其脱离腿骨旋转，再覆写 `applyBoneVisibilityBySlot`，`super` 之后手动 `bone.setHidden(slot != EquipmentSlot.LEGS)`。参考 `FluffyWindAlloyArmorRenderer`。
+- 源模型里与 `body` 平级的骨（父为 `Root`），搬运时不要误挂进 `armorBody`。
+
 ---
 
 ## HUD
