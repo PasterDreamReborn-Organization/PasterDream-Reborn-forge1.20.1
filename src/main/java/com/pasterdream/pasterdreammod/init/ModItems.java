@@ -85,6 +85,7 @@ import com.pasterdream.pasterdreammod.world.item.grasstool.MurakumoKusanagiItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.SculkArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.ShadowAlloyArmorItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.FluffyWindAlloyArmorItem;
+import com.pasterdream.pasterdreammod.world.item.armoritem.WindRunnerCloakItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymWindShirtItem;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymSwayingSkirtItem;
@@ -497,6 +498,11 @@ public class ModItems {
             () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_BOOTS = ITEMS.register("fluffy_wind_alloy_boots",
             () -> new FluffyWindAlloyArmorItem(ModArmorMaterials.FLUFFY_WIND_ALLOY, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.EPIC)));
+
+    // ===== 风行者披风（GEO 模型胸甲/披风，当前为渲染测试壳） =====
+    public static final RegistryObject<Item> WIND_RUNNER_CLOAK = ITEMS.register("wind_runner_cloak",
+            () -> new WindRunnerCloakItem(ModArmorMaterials.WIND_RUNNER_CLOAK, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
     // ===== 独立武器 =====
     public static final RegistryObject<Item> THERMAL_DAGGER = ITEMS.register("thermal_dagger",

@@ -282,6 +282,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_ALLOY_CHESTPLATE.get(), "暗影合金胸甲");
         add(ModItems.SHADOW_ALLOY_LEGGINGS.get(), "暗影合金护腿");
         add(ModItems.SHADOW_ALLOY_BOOTS.get(), "暗影合金靴子");
+        add(ModItems.WIND_RUNNER_CLOAK.get(), "风行者披风");
+        add("tooltip.pasterdream.wind_runner_cloak.flight", "§7▪ §9可进行鞘翅飞行");
+        add("tooltip.pasterdream.wind_runner_cloak.boost", "§7▪ §9飞行时按住[空格]进行助力");
+        add("tooltip.pasterdream.wind_runner_cloak.kinetic", "§7▪ §9免疫鞘翅飞行撞击的动能伤害");
         add(ModItems.THERMAL_DAGGER.get(), "热能匕首");
         add(ModItems.DESERT_SWORD.get(), "朔漠大剑");
         add(ModItems.CHENJINGMEN_DESERT_SWORD.get(), "『沉荆门』朔漠");
@@ -2974,7 +2978,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.wind_spirit.effect1", "§7▪ §9增加50%箭矢速度");
         add("tooltip.pasterdream.wind_spirit.lore", "§7§o--风给予你祝福");
         add("tooltip.pasterdream.fractured_angel_statue.effect1", "§7▪ §9受到伤害时有%s%%的概率获得%s秒无敌");
-        add("tooltip.pasterdream.fractured_angel_statue.effect2", "§7▪ §9免疫鞘翅飞行撞击时的动能伤害");
         add("tooltip.pasterdream.fractured_angel_statue.effect3", "§7▪ §9免疫摔落伤害");
         add("tooltip.pasterdream.fractured_angel_statue.effect4", "§7▪ §9使用瞬身术时若主手为弩，则立即为其装填弹射物");
         add("tooltip.pasterdream.fractured_angel_statue.lore", "§7§o--无骨的天使西丽亚");

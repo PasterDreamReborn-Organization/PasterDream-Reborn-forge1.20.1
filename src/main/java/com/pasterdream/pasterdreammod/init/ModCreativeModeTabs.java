@@ -296,6 +296,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_BOOTS.get());
+                        // 风行者披风
+                        output.accept(ModItems.WIND_RUNNER_CLOAK.get());
                         // 钛金工具
                         output.accept(ModItems.TITANIUM_SWORD.get());
                         output.accept(ModItems.TITANIUM_PICKAXE.get());

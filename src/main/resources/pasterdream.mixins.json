@@ -38,6 +38,7 @@
   ],
   "client": [
     "BossHealthOverlayAccessor",
+    "CapeLayerMixin",
     "FogRendererMixin",
     "GuiPortalOverlayMixin",
     "IMixinOptionInstance",
