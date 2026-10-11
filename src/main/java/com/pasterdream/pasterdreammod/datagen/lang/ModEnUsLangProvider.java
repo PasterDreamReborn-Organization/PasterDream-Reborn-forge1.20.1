@@ -744,6 +744,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("jei.pasterdream.通用流体储罐", "Generic Fluid Contianer");
         add("jei.pasterdream.dyedream_contamination", "Dyedream Contamination");
         add("jei.pasterdream.murakumo_kusanagi.info", "Kill %d mobs with Kusanagi to evolve it into Murakumo Kusanagi.");
+        add("jei.pasterdream.pulse_wind_runner_crystal.info", "Dropped by the Wind Knight");
+        add("jei.pasterdream.fractured_angel_statue.info", "Dropped rarely by the Wind Knight");
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "Paster Dream | Food & Drinks");
         add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "Paster Dream | Elixir Bottle");
