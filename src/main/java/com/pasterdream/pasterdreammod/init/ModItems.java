@@ -592,12 +592,13 @@ public class ModItems {
                 }
             });
     public static final RegistryObject<Item> GLASS_JAR_OF_DYEDREAM_PERFUME = ITEMS.register("glass_jar_of_dyedream_perfume",
-            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.DYEDREAM_PERFUME.get(), 1200, 0), 1.0f).alwaysEat().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())) {
+            () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.DYEDREAM_PERFUME.get(), 12000, 0), 1.0f).alwaysEat().build()).useDuration(24).craftRemainder(ModItems.GLASS_JAR.get())) {
                 @Override
                 public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
                     super.appendHoverText(stack, level, tooltip, flag);
                     tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_perfume"));
-                    tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_perfume.flavor"));
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_perfume.flavor.1"));
+                    tooltip.add(Component.translatable("tooltip.pasterdreammod.dyedream_perfume.flavor.2"));
                 }
 
                 @Override
