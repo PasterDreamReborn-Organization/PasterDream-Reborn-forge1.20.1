@@ -841,7 +841,7 @@ public class ModCreativeModeTabs {
     public static final RegistryObject<CreativeModeTab> PASTERDREAM_DREAM_NOTES_TAB = CREATIVE_MODE_TABS.register("pasterdream_dream_notes_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.pasterdream.pasterdream_dream_notes_tab"))
-                    .icon(() -> new ItemStack(ModItems.DREAM_NOTES_BOOK.get()))
+                    .icon(() -> DreamNotesBookWithNBTToCreativeModeTab.buildNBT("花园解密:迷梦冶梦莲"))
                     .displayItems((parameters, output) ->
                     {
                         // 剧情进度引导物品
@@ -878,11 +878,14 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("代达罗斯之翼与浮空岛"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("星河果冻和浮空岛"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("融梦釜与融梦炼金术"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使的记录-其一"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使的记录 其一"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("关于美梦世界的研究"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦世界跃迁石"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("梦境世界的本质"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("苍白雪莲与苍白骨针"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("逐梦列车"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("灵魂石的现世"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("灵魂石的现世（假）"));
 
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("探求秘辛"));
 
@@ -905,11 +908,12 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("欺诈"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("交易"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("破碎"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使的记录 其三"));
 
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("无翼鸟也有展翅的梦"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("破风的骑士"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("清晨的新风"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使的记录-其二"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使的记录 其二"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("空岛的圣诞树"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("风铃笼"));
                     })
