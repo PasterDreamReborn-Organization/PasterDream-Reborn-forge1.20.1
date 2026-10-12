@@ -60,5 +60,9 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
         tag(EntityTypeTags.SKELETONS)
                 .add(ModEntities.BONE_WING.get())
                 .add(ModEntities.ASH_BONE_WING.get());
+
+        tag(EntityTypeTags.ARROWS)
+                .add(ModEntities.MELT_DREAM_ARROW.get())
+                .add(ModEntities.SHADOW_ALLOY_ARROW.get());
     }
 }
