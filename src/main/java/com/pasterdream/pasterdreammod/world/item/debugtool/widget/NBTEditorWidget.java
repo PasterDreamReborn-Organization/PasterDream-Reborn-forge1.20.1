@@ -501,20 +501,10 @@ public class NBTEditorWidget extends AbstractScrollWidget
         {
             int[] selection = textField.getSelectionStartAndEndCharIndex();
             allString.delete(selection[0], selection[1]);
-            if(selectionStartLine < selectionEndLine || selectionStartLine == selectionEndLine && selectionStartColumn <= selectionEndColumn)
-            {
-                cursorLine = selectionStartLine;
-                cursorColumn = selectionStartColumn;
-            }
-                else
-                {
-                    cursorLine = selectionEndLine;
-                    cursorColumn = selectionEndColumn;
-                }
-
-            syncIndexFromLineAndColumn();
+            cursorIndex = selection[0];
             cancelSelection();
             refreshLines();
+            syncLineAndColumnFromIndex();
         }
 
         //插入字符
@@ -540,9 +530,10 @@ public class NBTEditorWidget extends AbstractScrollWidget
             else
                 if(cursorIndex > 0)
                 {
-                    allString.deleteCharAt(getCharIndexFromLineAndColumn(cursorLine, cursorColumn) - 1);
-                    moveCursorLeft();
+                    allString.deleteCharAt(cursorIndex - 1);
+                    cursorIndex--;
                     refreshLines();
+                    syncLineAndColumnFromIndex();
                 }
         }
 
@@ -556,8 +547,9 @@ public class NBTEditorWidget extends AbstractScrollWidget
             else
                 if(cursorIndex < allString.length())
                 {
-                    allString.deleteCharAt(getCharIndexFromLineAndColumn(cursorLine, cursorColumn));
+                    allString.deleteCharAt(cursorIndex);
                     refreshLines();
+                    syncLineAndColumnFromIndex();
                 }
         }
 
