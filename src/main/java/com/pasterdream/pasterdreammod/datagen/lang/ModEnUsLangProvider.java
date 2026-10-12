@@ -1003,13 +1003,6 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.花园解密:迷梦冶梦莲", "Garden Decode: Misty Dreaming Lotus");
         add("book.pasterdream.title.花园解密:凛冽雪绒花", "Garden Decode: Piercing Edel Weiss");
         add("book.pasterdream.title.花园解密:九尾狐", "Garden Decode: Golden Fox");
-        add("book.pasterdream.content.花园解密:迷梦冶梦莲", "To the northwest, a dyedream lily softly chimes,\n\nTo the northeast, a cloudbell shrouds the sun in old times.\n\nTo the southwest, luminous twilight fades into violet,\n\nTo the southeast, pinkcap parasols rise in the quiet.\n\nAround all four sides, low stem grass hugs the ground,\n\nTouch the dreamforge lotus's roots where secrets are found.");
-        add("book.pasterdream.content.花园解密:凛冽雪绒花", "To the north, a dyedream sapling grows to block the freezing wind,\n\nTo the south, a dreamdyed camellia blooms where soft dreams are pinned.\n\nTo the west, a ling-lantern shines to mimic the sunset glow,\n\nTo the east, a peculiar fern watches time's eternal flow.\n\nThe keepers who wander this silent space,\n\nAre golems of snow and allays of grace.");
-        add("book.pasterdream.content.花园解密:九尾狐", "The Morning Glow is like a dream, shining brightly.\n\nIn the floating crystal flower pots, the tall Lotus Flowers burning Misty flames.\n\nThe middle of a pool on a floating island is A Statue of A Nine-Tailed Fox.\n\nIf you satisfy her taste, she will fulfill your little wish.\n\nBring a Sweet Berry with Golden Light.\n\nWish List:\n\nInfuse magic power into the Golden Apple.\n\nFill the bucket with liquid from the fountain of Melt Dreams.\n\nUse a heap of Coins in the dream to exchange a Treasure Chest.\n\nWhen you give her a Golden Lily of The Valley or a Fragment reflecting the dream to make the sleeping golden fox's dream come true, she will give you a Special Souvenir.");
-        add("book.pasterdream.花园解密-迷梦冶梦莲_第1页", "          Garden Puzzle\n\nTo the northwest, a dyedream lily softly chimes,\n\nTo the northeast, a cloudbell shrouds the sun in old times.\n\nTo the southwest, luminous twilight fades into violet,\n\nTo the southeast, pinkcap parasols rise in the quiet.\n\nAround all four sides, low stem grass hugs the ground,\n\nTouch the dreamforge lotus's roots where secrets are found.");
-        add("book.pasterdream.花园解密-凛冽雪绒花_第1页", "          Garden Puzzle\n\nTo the north, a dyedream sapling grows to block the freezing wind,\n\nTo the south, a dreamdyed camellia blooms where soft dreams are pinned.\n\nTo the west, a ling-lantern shines to mimic the sunset glow,\n\nTo the east, a peculiar fern watches time's eternal flow.\n\nThe keepers who wander this silent space,\n\nAre golems of snow and allays of grace.\n");
-        add("book.pasterdream.花园解密-九尾狐_第1页", "          Garden Puzzle\n\nThe Morning Glow is like a dream, shining brightly.\n\nIn the floating crystal flower pots, the tall Lotus Flowers burning Misty flames.\n\nThe middle of a pool on a floating island is A Statue of A Nine-Tailed Fox.\n\nIf you satisfy her taste, she will fulfill your little wish.\n\nBring a Sweet Berry with Golden Light.\n");
-        add("book.pasterdream.花园解密-九尾狐_第2页", "Wish List:\n\nInfuse magic power into the Golden Apple.\n\nFill the bucket with liquid from the fountain of Melt Dreams.\n\nUse a heap of Coins in the dream to exchange a Treasure Chest.\n\nWhen you give her a Golden Lily of The Valley or a Fragment reflecting the dream to make the sleeping golden fox's dream come true, she will give you a Special Souvenir.");
         add("book.pasterdream.title.染梦裂隙", "The Dyedream Crack");
         add("book.pasterdream.title.染梦游记 其一", "Dyedream Travelogue I");
         add("book.pasterdream.title.染梦游记 其二", "Dyedream Travelogue II");
@@ -1036,6 +1029,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.染梦世界跃迁石", "The Dyedream World Leapstone");
         add("book.pasterdream.title.梦境世界的本质", "The Essence of the Dream World");
         add("book.pasterdream.title.苍白雪莲与苍白骨针", "The Pale Snow Lotus and the Pale Boneneedle");
+        add("book.pasterdream.title.魔法使的记录 其一", "Records of the Mage I");
+        add("book.pasterdream.title.逐梦列车", "Dream Train");
+        add("book.pasterdream.title.灵魂石的现世", "Soul Gem In Current World");
+        add("book.pasterdream.title.灵魂石的现世（假）", "Soul Gem In Current World (Fake)");
 
         add("book.pasterdream.title.探求秘辛", "In Pursuit of Secrets");
 
@@ -1058,17 +1055,26 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.欺诈", "Deception");
         add("book.pasterdream.title.交易", "The Bargain");
         add("book.pasterdream.title.破碎", "Shattered");
+        add("book.pasterdream.title.魔法使的记录 其三", "Records of the Mage III");
 
         add("book.pasterdream.title.无翼鸟也有展翅的梦", "A Wingless Bird's Dream of Spreading Wings");
         add("book.pasterdream.title.破风的骑士", "The Wind-Breaking Knight");
         add("book.pasterdream.title.清晨的新风", "The Fresh Morning Wind");
-        add("book.pasterdream.title.魔法使的记录-其一", "Records of the Mage I");
-        add("book.pasterdream.title.魔法使的记录-其二", "Records of the Mage II");
+        add("book.pasterdream.title.魔法使的记录 其二", "Records of the Mage II");
         add("book.pasterdream.title.空岛的圣诞树", "The Christmas Tree of the Sky Island");
         add("book.pasterdream.title.风铃笼", "Windbell Cage");
 
         add("book.pasterdream.title.精铸工坊", "Weapon Workshop");
         add("book.pasterdream.title.暗影高炉", "Shadow Blast Furnace");
+
+        add("book.pasterdream.content.花园解密:迷梦冶梦莲", "To the northwest, a dyedream lily softly chimes,\n\nTo the northeast, a cloudbell shrouds the sun in old times.\n\nTo the southwest, luminous twilight fades into violet,\n\nTo the southeast, pinkcap parasols rise in the quiet.\n\nAround all four sides, low stem grass hugs the ground,\n\nTouch the dreamforge lotus's roots where secrets are found.");
+        add("book.pasterdream.content.花园解密:凛冽雪绒花", "To the north, a dyedream sapling grows to block the freezing wind,\n\nTo the south, a dreamdyed camellia blooms where soft dreams are pinned.\n\nTo the west, a ling-lantern shines to mimic the sunset glow,\n\nTo the east, a peculiar fern watches time's eternal flow.\n\nThe keepers who wander this silent space,\n\nAre golems of snow and allays of grace.");
+        add("book.pasterdream.content.花园解密:九尾狐", "The Morning Glow is like a dream, shining brightly.\n\nIn the floating crystal flower pots, the tall Lotus Flowers burning Misty flames.\n\nThe middle of a pool on a floating island is A Statue of A Nine-Tailed Fox.\n\nIf you satisfy her taste, she will fulfill your little wish.\n\nBring a Sweet Berry with Golden Light.\n\nWish List:\n\nInfuse magic power into the Golden Apple.\n\nFill the bucket with liquid from the fountain of Melt Dreams.\n\nUse a heap of Coins in the dream to exchange a Treasure Chest.\n\nWhen you give her a Golden Lily of The Valley or a Fragment reflecting the dream to make the sleeping golden fox's dream come true, she will give you a Special Souvenir.");
+
+        add("book.pasterdream.花园解密-迷梦冶梦莲_第1页", "          Garden Puzzle\n\nTo the northwest, a dyedream lily softly chimes,\n\nTo the northeast, a cloudbell shrouds the sun in old times.\n\nTo the southwest, luminous twilight fades into violet,\n\nTo the southeast, pinkcap parasols rise in the quiet.\n\nAround all four sides, low stem grass hugs the ground,\n\nTouch the dreamforge lotus's roots where secrets are found.");
+        add("book.pasterdream.花园解密-凛冽雪绒花_第1页", "          Garden Puzzle\n\nTo the north, a dyedream sapling grows to block the freezing wind,\n\nTo the south, a dreamdyed camellia blooms where soft dreams are pinned.\n\nTo the west, a ling-lantern shines to mimic the sunset glow,\n\nTo the east, a peculiar fern watches time's eternal flow.\n\nThe keepers who wander this silent space,\n\nAre golems of snow and allays of grace.\n");
+        add("book.pasterdream.花园解密-九尾狐_第1页", "          Garden Puzzle\n\nThe Morning Glow is like a dream, shining brightly.\n\nIn the floating crystal flower pots, the tall Lotus Flowers burning Misty flames.\n\nThe middle of a pool on a floating island is A Statue of A Nine-Tailed Fox.\n\nIf you satisfy her taste, she will fulfill your little wish.\n\nBring a Sweet Berry with Golden Light.\n");
+        add("book.pasterdream.花园解密-九尾狐_第2页", "Wish List:\n\nInfuse magic power into the Golden Apple.\n\nFill the bucket with liquid from the fountain of Melt Dreams.\n\nUse a heap of Coins in the dream to exchange a Treasure Chest.\n\nWhen you give her a Golden Lily of The Valley or a Fragment reflecting the dream to make the sleeping golden fox's dream come true, she will give you a Special Souvenir.");
 
         // Dew Tooltip
         add("tooltip.pasterdream.drink_effect", "§7When consumed:");
