@@ -620,6 +620,7 @@
 | `allkinds_ring`                | `allkinds_ring`                             | 不改                                                               | 客制化类 `AllkindsRingItem`，实现 `ICurioItem`，+4 生命、+2 攻击、+0.1 攻速、+0.2 触及、+0.5 方块触及、+5% 移速，品质 LEGENDARY，跳过战技属性 |
 | `cradle_in_ones_arms`          | `kaichu_omamori`                            | 重命名，`cradle_in_ones_arms` → `kaichu_omamori`                     | 客制化类 `KaichuOmamoriItem`，实现 `ICurioItem`，现在可佩戴，佩戴后启动激活专属热键，+5幸运，品质 LEGENDARY                             |
 | `turnback_cloak`               | `turnback_cloak`                            | 不改                                                               | 客制化类 `TurnbackCloakItem`，实现 `ICurioItem`，back 槽位，Z 键激活消耗 10 融梦能量，90s 内 6 次回避 + 反击，冷却 300s，品质 LEGENDARY（数值以 tooltip 为准） |
+| `evasion_cloak`                | `evasion_cloak`                             | 不改                                                               | 客制化类 `EvasionCloakItem`，实现 `ICurioItem`，back 槽位，Z 键激活消耗 10 融梦能量，90s 内瞬身术回避时间延长至 0.6s，成功回避触发反击，冷却 300s，品质 LEGENDARY（数值以 tooltip 为准） |
 | `white_flower_body`            | `brooch_of_white_orchid`                    | 重命名，`white_flower_body` → `brooch_of_white_orchid`               | 客制化类 `BroochOfWhiteOrchidItem`，实现 `ICurioItem` + `ISanModifier`，免疫环境降SAN、+1 body 槽；白厄剑近战与剑雨对所有生物 +50%（对暗影再叠加共 ×2）、剑雨命中无视无敌帧；需完成 `story/talent_light`，品质 EPIC                                        |
 | `degenerate_bodys`             | `seal_of_the_corrupted`                     | 重命名，`degenerate_bodys` → `seal_of_the_corrupted`                 | 客制化类 `SealOfTheCorruptedItem`，实现 `ICurioItem` + `ISanModifier`，+1 body 槽 / 实体触及+1.0 / 方块触及+1.0 / 攻击+2.0 / 免疫低SAN负面 / 暗影生物中立且低SAN暗影替佩戴者作战；需完成 `story/talent_shadow`，品质 EPIC（无生命-4）          |
 | `sweetdream_disc`              | `sweet_dream_music_disc`                    | 重命名，修复 word glueing + `_disc` → `_music_disc`                    | 无需客制化类，直接用 `RecordItem`（旧类无有效覆写）                                                                         |
@@ -728,6 +729,7 @@
 | `deadwind`               | `deadwind`               | 不改        | `DeadwindEffect`，逆风，移速/闪烁距离降低，与顺风互斥                        |
 | `windproof`              | `windproof`              | 不改        | `WindproofEffect`，防风标记，免疫顺风/逆风                             |
 | `turnback_cloak_buff`    | `turnback_cloak`         | 重命名，去 `_buff` 后缀 | `TurnbackCloakBuffEffect`，每 tick 金色+灰尘粒子环绕，转身衣装激活后持续 90s    |
+| `evasion_cloak_buff`     | `evasion_cloak`          | 重命名，去 `_buff` 后缀 | `EvasionCloakBuffEffect`，每 tick 银色+灰尘粒子环绕，回避衣装激活后持续 90s，期间瞬身术回避时间延长至 0.6s |
 | `evasion_buff`           | `evasion`                | 合并进现有回避效果 | 复用 `ModEffects.EVASION`（放大器=次数-1），原闪避BUFF 不再单独注册                 |
 | `rapid_reaction`         | `rapid_reaction`         | 不改（补登记，原漏填） | 高速反射，`RapidReactionEffect`                                 |
 | `restrainmove_block_buff` | `restrainmove_block`    | 重命名，去 `_buff`（补登记，原漏填） | 行动抑制                                                    |
@@ -862,8 +864,8 @@
 | `calle_particle`                  | 未搬运                     | -                                          | -                                                        |
 | `poison_soul_particle`            | 未搬运                     | -                                          | -                                                        |
 | `healing_spell_particle`          | 未搬运                     | -                                          | -                                                        |
-| `golden_particle`                 | 未搬运                     | -                                          | -                                                        |
-| `silver_particle`                 | 未搬运                     | -                                          | -                                                        |
+| `golden_particle`                 | `golden`                     | 重命名                                          | 转身衣装激活/环绕粒子（补登记，原漏填）                                                        |
+| `silver_particle`                 | `silver`                     | 重命名                                          | 回避衣装激活/环绕粒子                                                        |
 | `white_star_particle`             | 未搬运                     | -                                          | -                                                        |
 
 > 重置模组新增、源模组无对应旧 ID 的粒子（`新 ID` 一列为空）：

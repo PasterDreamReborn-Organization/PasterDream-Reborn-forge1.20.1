@@ -73,6 +73,8 @@ public class ModParticleTypes {
             PARTICLE_TYPES.register("firefly", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> GOLDEN_PARTICLE =
             PARTICLE_TYPES.register("golden", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> SILVER_PARTICLE =
+            PARTICLE_TYPES.register("silver", () -> new SimpleParticleType(false));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

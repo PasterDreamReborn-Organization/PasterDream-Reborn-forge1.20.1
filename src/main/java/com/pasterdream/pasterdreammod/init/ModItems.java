@@ -2136,6 +2136,10 @@ public class ModItems {
     public static final RegistryObject<Item> TURNBACK_CLOAK = ITEMS.register("turnback_cloak",
             () -> new TurnbackCloakItem());
 
+    // 回避衣装
+    public static final RegistryObject<Item> EVASION_CLOAK = ITEMS.register("evasion_cloak",
+            () -> new EvasionCloakItem());
+
     // 厚翅甲壳
     public static final RegistryObject<Item> BLACK_BEETLE_CARAPACE = ITEMS.register("black_beetle_carapace",
             () -> new Item(new Item.Properties()));

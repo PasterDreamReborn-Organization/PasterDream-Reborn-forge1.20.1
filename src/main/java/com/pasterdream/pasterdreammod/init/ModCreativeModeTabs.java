@@ -1075,6 +1075,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FORSAKENS_WING.get());
                         output.accept(ModItems.MACHINE_LIGHT_WING.get());
                         output.accept(ModItems.TURNBACK_CLOAK.get());
+                        output.accept(ModItems.EVASION_CLOAK.get());
                         output.accept(ModItems.SLIVER_BELL.get());
                     })
                     .build());
