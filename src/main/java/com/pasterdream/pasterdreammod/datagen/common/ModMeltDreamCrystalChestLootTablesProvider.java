@@ -389,6 +389,10 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.COUNTER_RING.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CARAPAX_CHARM.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -1090,6 +1094,10 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CROSS_NECKLACE.get())
+                                        .setWeight(1)
+                                        .apply(SetItemCountFunction.setCount(
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(ModItems.COUNTER_RING.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
