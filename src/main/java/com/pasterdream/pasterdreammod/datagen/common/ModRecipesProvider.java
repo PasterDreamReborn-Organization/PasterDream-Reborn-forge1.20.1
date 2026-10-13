@@ -2681,7 +2681,8 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
 
         // 面团合成配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DOUGH.get(), 1)
-                .requires(ModItems.FLOUR.get(), 1)
+                .requires(Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "flour"))), 1)
                 .requires(ModItems.GLASS_JAR_OF_WATER.get(), 2)
                 .unlockedBy(getHasName(ModItems.FLOUR.get()), has(ModItems.FLOUR.get()))
                 .save(pWriter);
@@ -2690,7 +2691,8 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DOUGH_WITH_EGG.get(), 1)
                 .requires(Ingredient.of(ItemTags.create(
                         ResourceLocation.fromNamespaceAndPath("forge", "eggs"))), 1)
-                .requires(ModItems.DOUGH.get(), 2)
+                .requires(Ingredient.of(ItemTags.create(
+                        ResourceLocation.fromNamespaceAndPath("forge", "dough"))), 2)
                 .unlockedBy(getHasName(ModItems.DOUGH.get()), has(ModItems.DOUGH.get()))
                 .save(pWriter);
 
