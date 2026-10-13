@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.network.curio;
 
+import com.pasterdream.pasterdreammod.world.item.curio.EvasionCloakItem;
 import com.pasterdream.pasterdreammod.world.item.curio.TurnbackCloakItem;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,6 +23,7 @@ public class CloakActivationPacket {
             ServerPlayer player = context.get().getSender();
             if (player != null) {
                 TurnbackCloakItem.tryActivate(player);
+                EvasionCloakItem.tryActivate(player);
             }
         });
         context.get().setPacketHandled(true);

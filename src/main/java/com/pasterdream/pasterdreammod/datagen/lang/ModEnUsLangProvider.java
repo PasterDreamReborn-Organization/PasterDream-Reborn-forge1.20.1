@@ -302,6 +302,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.ANGEL_WING.get(), "Angel Wing");
         add(ModItems.FORSAKENS_WING.get(), "Forsakens Wing");
         add(ModItems.TURNBACK_CLOAK.get(), "Turnback Cloak");
+        add(ModItems.EVASION_CLOAK.get(), "Evasion Cloak");
         add(ModItems.DREAM_FERTILIZER.get(), "Dream Fertilizer");
         add(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get(), "Dream Notes - Dyedream World");
         add(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get(), "Dream Notes - Lamp Shadow World");
@@ -1322,6 +1323,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.insane", "Insanity");
         add("effect.pasterdream.evasion", "Evasion");
         add("effect.pasterdream.turnback_cloak", "Turnback Cloak");
+        add("effect.pasterdream.evasion_cloak", "Evasion Cloak");
         add("effect.pasterdream.blink_cooldown", "Blink Cooldown");
         add("effect.pasterdream.dyedream_perfume", "Dyedream Perfume");
         add("effect.pasterdream.goldenrod_tea", "Goldenrod Tea");
@@ -1680,6 +1682,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.turnback_cloak.effect2", "§7▪ §9On successful dodge: gain Counterattack I (0:10)");
         add("tooltip.pasterdream.turnback_cloak.cooldown", "§7▪ §9Cooldown: 300 seconds");
         add("tooltip.pasterdream.turnback_cloak.energy_cost", "§7▪ §9Melt Dream Energy cost: §c10");
+
+        // Evasion Cloak
+        add("tooltip.pasterdream.evasion_cloak.hotkey", "§7▪ §9Press §e%s §9by default to activate the cloak");
+        add("tooltip.pasterdream.evasion_cloak.effect1", "§7▪ §9While active, extend Blink's evasion time to 0.6 seconds within 90 seconds");
+        add("tooltip.pasterdream.evasion_cloak.effect2", "§7▪ §9On successful dodge: gain Counterattack I (0:10)");
+        add("tooltip.pasterdream.evasion_cloak.cooldown", "§7▪ §9Cooldown: 300 seconds");
+        add("tooltip.pasterdream.evasion_cloak.energy_cost", "§7▪ §9Melt Dream Energy cost: §c10");
 
         // War Flag
         add(ModItems.WAR_FLAG.get(), "War Flag");

@@ -110,6 +110,8 @@ public class ModEffects {
             EFFECTS.register("wind_runner", WindRunnerEffect::new);
     public static final RegistryObject<MobEffect> TURNBACK_CLOAK =
             EFFECTS.register("turnback_cloak", TurnbackCloakBuffEffect::new);
+    public static final RegistryObject<MobEffect> EVASION_CLOAK =
+            EFFECTS.register("evasion_cloak", EvasionCloakBuffEffect::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

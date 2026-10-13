@@ -310,6 +310,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.ANGEL_WING.get(), "天使之翼");
         add(ModItems.FORSAKENS_WING.get(), "遗忘之翼");
         add(ModItems.TURNBACK_CLOAK.get(), "转身衣装");
+        add(ModItems.EVASION_CLOAK.get(), "回避衣装");
         add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
         add(ModItems.MELT_DREAM_AURORIAN_STEEL.get(), "融梦极光钢锭");
@@ -1503,6 +1504,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.insane", "疯狂");
         add("effect.pasterdream.evasion", "回避");
         add("effect.pasterdream.turnback_cloak", "转身衣装");
+        add("effect.pasterdream.evasion_cloak", "回避衣装");
         add("effect.pasterdream.blink_cooldown", "瞬身术冷却");
         add("effect.pasterdream.dyedream_perfume", "染梦香水");
         add("effect.pasterdream.goldenrod_tea", "秋麒麟茶");
@@ -1864,6 +1866,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.turnback_cloak.effect2", "§7▪ §9成功回避伤害后获得 反击I (0:10)");
         add("tooltip.pasterdream.turnback_cloak.cooldown", "§7▪ §9冷却时间：300秒");
         add("tooltip.pasterdream.turnback_cloak.energy_cost", "§7▪ §9融梦能量消耗：§c10");
+
+        // 回避衣装
+        add("tooltip.pasterdream.evasion_cloak.hotkey", "§7▪ §9默认按 §e%s §9启用衣装");
+        add("tooltip.pasterdream.evasion_cloak.effect1", "§7▪ §9衣装启用后可以在90秒内将瞬身术的回避时间延长至0.6秒");
+        add("tooltip.pasterdream.evasion_cloak.effect2", "§7▪ §9成功回避伤害后获得 反击I (0:10)");
+        add("tooltip.pasterdream.evasion_cloak.cooldown", "§7▪ §9冷却时间：300秒");
+        add("tooltip.pasterdream.evasion_cloak.energy_cost", "§7▪ §9融梦能量消耗：§c10");
 
         // 战争旗帜
         add(ModItems.WAR_FLAG.get(), "战争旗帜");
