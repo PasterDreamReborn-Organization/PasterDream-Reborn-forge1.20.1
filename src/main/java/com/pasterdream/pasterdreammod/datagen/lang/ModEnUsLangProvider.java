@@ -1033,7 +1033,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.魔法使的记录 其一", "Records of the Mage I");
         add("book.pasterdream.title.逐梦列车", "Dream Train");
         add("book.pasterdream.title.灵魂石的现世", "Soul Gem In Current World");
-        add("book.pasterdream.title.灵魂石的现世（假）", "Soul Gem In Current World (Fake)");
+        add("book.pasterdream.title.灵魂石的现世（假）", "Soul Gem In Current World");
 
         add("book.pasterdream.title.探求秘辛", "In Pursuit of Secrets");
 
