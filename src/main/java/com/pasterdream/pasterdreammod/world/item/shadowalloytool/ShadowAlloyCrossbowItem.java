@@ -1,5 +1,8 @@
 package com.pasterdream.pasterdreammod.world.item.shadowalloytool;
 
+import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
+import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.world.entity.ShadowAlloyArrowEntity;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.nbt.CompoundTag;
@@ -34,15 +37,18 @@ import org.joml.Vector3f;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * 暗影合金弩 —— 暗影合金系列远程武器。
  * <p>
  * 在原版弩基础上追加：
  * <ul>
- *   <li>可附魔「无限」；装填/发射不消耗普通箭矢（类似原版弓的无限）。</li>
+ *   <li>被动「暗影飞矢」：发射时消耗 0.2 融梦能量，本次箭矢带标记，命中生物时由
+ *       {@link ShadowAlloyCrossbowHandler} 施加 10s 易伤与随机 5s 负面效果；能量不足则照常发射但
+ *       不触发被动。</li>
+ *   <li>可附魔「无限」；装填/发射不消耗普通箭矢（类似原版弓的无限）。无限只免箭矢，不免融梦能量。</li>
  *   <li>自带力量 III（相当于原版力量 III），可与附魔力量 V 叠加（等效等级相加）。</li>
- *   <li>发射的箭矢带标记，命中生物时由 {@link ShadowAlloyCrossbowHandler} 施加 10s 易伤与随机 5s 负面效果。</li>
  * </ul>
  * 与暗影合金工具一致：防火、EPIC 稀有度、暗影合金锭修复。
  */
@@ -51,6 +57,8 @@ public class ShadowAlloyCrossbowItem extends CrossbowItem {
     private static final String TAG_CHARGED_PROJECTILES = "ChargedProjectiles";
     private static final float ARROW_POWER = 3.15F;
     private static final float FIREWORK_POWER = 1.6F;
+    /** 被动「暗影飞矢」单次发射消耗的融梦能量 */
+    private static final double ENERGY_COST = 0.2;
     /** 内置力量等级（相当于原版力量 III），与附魔力量等级相加 */
     public static final int BUILT_IN_POWER = 3;
 
@@ -107,6 +115,8 @@ public class ShadowAlloyCrossbowItem extends CrossbowItem {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_crossbow.3"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_crossbow.4"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_crossbow.5"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_crossbow.6"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_crossbow.7"));
     }
 
     /* ============================ 装填（无限感知） ============================ */
@@ -117,6 +127,34 @@ public class ShadowAlloyCrossbowItem extends CrossbowItem {
 
     private static boolean hasInfinity(Player player, ItemStack stack) {
         return EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0;
+    }
+
+    /**
+     * 尝试消耗 0.2 融梦能量以触发被动「暗影飞矢」。创造模式或「无需消耗」状态下不扣能量但仍触发。
+     * 仅在服务端结算；能量不足时不扣能量、返回 {@code false}（照常发射但不带标记）。
+     *
+     * @return 本次发射是否触发被动
+     */
+    private static boolean tryConsumeEnergy(Level level, Player player) {
+        if (level.isClientSide) {
+            return false;
+        }
+        AtomicBoolean empowered = new AtomicBoolean(false);
+        player.getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(energy -> {
+            boolean free = !energy.getIsOrNotNeedConsumeDreamEnergy() || player.isCreative();
+            if (free) {
+                empowered.set(true);
+            } else {
+                // 消耗翻倍减益下按实际消耗判定，避免能量被扣成负数
+                double effectiveCost = MeltDreamEnergyHelper.getEffectiveConsumeCost(energy, ENERGY_COST);
+                if (energy.getMeltDreamEnergy() >= effectiveCost) {
+                    energy.addMeltDreamEnergy(-effectiveCost);
+                    MeltDreamEnergySyncPacket.sendToPlayer(player, energy);
+                    empowered.set(true);
+                }
+            }
+        });
+        return empowered.get();
     }
 
     private static float computeChargePower(int time, ItemStack stack) {
@@ -178,6 +216,9 @@ public class ShadowAlloyCrossbowItem extends CrossbowItem {
     private static void shootChargedProjectiles(Level level, LivingEntity shooter, InteractionHand hand,
                                                 ItemStack crossbow, float velocity, float inaccuracy) {
         List<ItemStack> projectiles = readChargedProjectiles(crossbow);
+        // 被动「暗影飞矢」：玩家发射时按实有弹药结算一次 0.2 融梦能量；能量不足则不标记（不触发被动）
+        boolean empowered = !projectiles.isEmpty()
+                && (!(shooter instanceof Player player) || tryConsumeEnergy(level, player));
         float[] pitches = computeShotPitches(shooter);
         boolean creative = shooter instanceof Player player && player.getAbilities().instabuild;
         boolean infinity = shooter instanceof Player player && hasInfinity(player, crossbow);
@@ -188,14 +229,14 @@ public class ShadowAlloyCrossbowItem extends CrossbowItem {
             }
             float angle = i == 0 ? 0.0F : (i == 1 ? -10.0F : 10.0F);
             fireProjectile(level, shooter, hand, crossbow, projectile, pitches[i % pitches.length],
-                    creative || infinity, velocity, inaccuracy, angle);
+                    creative || infinity, velocity, inaccuracy, angle, empowered);
         }
         afterCrossbowShot(level, shooter, crossbow);
     }
 
     private static void fireProjectile(Level level, LivingEntity shooter, InteractionHand hand, ItemStack crossbow,
                                         ItemStack projectile, float soundPitch, boolean creativeOnly, float velocity,
-                                        float inaccuracy, float angle) {
+                                        float inaccuracy, float angle, boolean empowered) {
         if (level.isClientSide) {
             return;
         }
@@ -205,14 +246,16 @@ public class ShadowAlloyCrossbowItem extends CrossbowItem {
             shot = new FireworkRocketEntity(level, projectile, shooter, shooter.getX(),
                     shooter.getEyeY() - 0.15D, shooter.getZ(), true);
         } else {
-            shot = createCrossbowArrow(level, shooter, crossbow, projectile);
+            shot = createCrossbowArrow(level, shooter, crossbow, projectile, empowered);
             if (creativeOnly || angle != 0.0F) {
                 ((AbstractArrow) shot).pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
             }
         }
 
-        // 标记为暗影合金弩发射的弹射物：箭命中 / 烟花爆炸伤害时据此施加被动
-        shot.getPersistentData().putBoolean(ShadowAlloyCrossbowHandler.PROJECTILE_TAG, true);
+        // 标记为暗影合金弩发射的弹射物：箭命中 / 烟花爆炸伤害时据此施加被动（仅在触发被动时标记）
+        if (empowered) {
+            shot.getPersistentData().putBoolean(ShadowAlloyCrossbowHandler.PROJECTILE_TAG, true);
+        }
 
         if (shooter instanceof CrossbowAttackMob mob) {
             mob.shootCrossbowProjectile(mob.getTarget(), crossbow, shot, angle);
@@ -230,16 +273,18 @@ public class ShadowAlloyCrossbowItem extends CrossbowItem {
                 SoundSource.PLAYERS, 1.0F, soundPitch);
     }
 
-    private static AbstractArrow createCrossbowArrow(Level level, LivingEntity shooter, ItemStack crossbow, ItemStack projectile) {
-        // 普通/药水箭使用带暗紫拖尾的自定义箭实体；光谱箭保留原版实体以维持发光效果
+    private static AbstractArrow createCrossbowArrow(Level level, LivingEntity shooter, ItemStack crossbow,
+                                                     ItemStack projectile, boolean empowered) {
+        // 触发被动（暗影飞矢）的普通/药水箭使用带暗紫拖尾的自定义箭实体；
+        // 未触发被动（能量不足）或光谱箭保留原版实体（无拖尾；光谱箭以维持发光）。
         AbstractArrow arrow;
-        if (projectile.is(Items.SPECTRAL_ARROW)) {
-            ArrowItem arrowItem = (ArrowItem) (projectile.getItem() instanceof ArrowItem ? projectile.getItem() : Items.ARROW);
-            arrow = arrowItem.createArrow(level, projectile, shooter);
-        } else {
+        if (empowered && !projectile.is(Items.SPECTRAL_ARROW)) {
             ShadowAlloyArrowEntity trailArrow = new ShadowAlloyArrowEntity(level, shooter);
             trailArrow.setEffectsFromItem(projectile);
             arrow = trailArrow;
+        } else {
+            ArrowItem arrowItem = (ArrowItem) (projectile.getItem() instanceof ArrowItem ? projectile.getItem() : Items.ARROW);
+            arrow = arrowItem.createArrow(level, projectile, shooter);
         }
         if (shooter instanceof Player) {
             arrow.setCritArrow(true);

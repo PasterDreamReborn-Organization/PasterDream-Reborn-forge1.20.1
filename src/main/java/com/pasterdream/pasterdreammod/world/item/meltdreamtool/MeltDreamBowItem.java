@@ -203,6 +203,8 @@ public class MeltDreamBowItem extends BowItem {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_bow.2"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_bow.3"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_bow.4"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_bow.5"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_bow.6"));
         MeltDreamToolHelper.appendHoverText(stack, level, tooltip, flag);
     }
 }
