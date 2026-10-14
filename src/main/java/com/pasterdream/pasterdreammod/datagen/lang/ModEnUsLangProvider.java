@@ -888,10 +888,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.inferno_sword.1", "Inlaid: §6Nether Star");
         add("tooltip.pasterdreammod.inferno_sword.2", "Combat Art: §6Bone-melting Slash");
         add("tooltip.pasterdreammod.inferno_sword.3", "§7▪ §9Landing a melee hit triggers an area lava blast dealing 50% of Attack Damage as Lava damage");
-        add("tooltip.pasterdreammod.inferno_sword.4", "§7▪ §9Blast radius: 5 blocks");
-        add("tooltip.pasterdreammod.inferno_sword.5", "§7▪ §9Cooldown: 1s");
+        add("tooltip.pasterdreammod.inferno_sword.4", "§7▪ §9Blast radius: 3 blocks");
+        add("tooltip.pasterdreammod.inferno_sword.5", "§7▪ §9Cooldown: 2s");
         add("tooltip.pasterdreammod.inferno_sword.6", "Passive:");
         add("tooltip.pasterdreammod.inferno_sword.7", "§7▪ §9Attacks ignite for 4s or extend fire by 3s");
+        add("tooltip.pasterdreammod.inferno_sword.8", "Traits:");
+        add("tooltip.pasterdreammod.inferno_sword.9", "§7▪ §9Each level of Fire Aspect extends the passive burn by 2s");
+        add("tooltip.pasterdreammod.inferno_sword.10", "§7▪ §9Each level of Sweeping Edge increases the blast radius by 1 block (max 6)");
         add("tooltip.pasterdreammod.melt_dream_tool.1", "While in inventory");
         add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §bMelt-Repair: 0.01E/1 Durability");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7Set Bonus: §dDyedream Protection");

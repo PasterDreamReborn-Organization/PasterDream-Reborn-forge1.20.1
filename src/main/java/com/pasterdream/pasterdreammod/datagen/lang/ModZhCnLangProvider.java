@@ -894,10 +894,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.inferno_sword.1", "镶嵌：§6下界之星");
         add("tooltip.pasterdreammod.inferno_sword.2", "战技：§6融骸斩击");
         add("tooltip.pasterdreammod.inferno_sword.3", "§7▪ §9近战命中自动引发范围熔岩爆炸，造成攻击力50%的熔岩伤害");
-        add("tooltip.pasterdreammod.inferno_sword.4", "§7▪ §9爆炸半径5格");
-        add("tooltip.pasterdreammod.inferno_sword.5", "§7▪ §9冷却：1秒");
+        add("tooltip.pasterdreammod.inferno_sword.4", "§7▪ §9爆炸半径3格");
+        add("tooltip.pasterdreammod.inferno_sword.5", "§7▪ §9冷却：2秒");
         add("tooltip.pasterdreammod.inferno_sword.6", "被动：");
         add("tooltip.pasterdreammod.inferno_sword.7", "§7▪ §9攻击点燃目标4秒或延长3秒时间");
+        add("tooltip.pasterdreammod.inferno_sword.8", "特性：");
+        add("tooltip.pasterdreammod.inferno_sword.9", "§7▪ §9每级火焰附加使被动燃烧时长+2秒");
+        add("tooltip.pasterdreammod.inferno_sword.10", "§7▪ §9每级横扫之刃使爆炸半径+1格（最大6格）");
         add("tooltip.pasterdreammod.melt_dream_tool.1", "在背包中时");
         add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §b融梦修补：0.01E/1耐久");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7套装效果：§d染梦守护");
