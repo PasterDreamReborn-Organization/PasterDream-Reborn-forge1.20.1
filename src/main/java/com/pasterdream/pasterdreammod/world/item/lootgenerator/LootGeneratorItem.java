@@ -15,6 +15,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
@@ -54,6 +55,7 @@ public class LootGeneratorItem extends Item
                 if(blockEntity != null)
                 {
                     CompoundTag containerTag = blockEntity.serializeNBT();
+                    //清除已有物品
                     if(containerTag.contains("Items") || containerTag.contains("LootTable") || containerTag.contains("LootTableSeed"))
                     {
                         containerTag.put("Items", new ListTag());
@@ -63,12 +65,14 @@ public class LootGeneratorItem extends Item
                         {
                             containerTag.getCompound("Inventory").put("Items", new ListTag());
                         }
-                            else
+                        else
+                            if(blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve().orElse(null) == null)
                             {
                                 player.displayClientMessage(Component.translatable("message.pasterdream.loot_generator.not_container"), true);
                                 return InteractionResult.FAIL;
                             }
 
+                    //清除已有战利品列表种子
                     if(containerTag.contains("LootTableSeed"))
                     {
                         containerTag.remove("LootTableSeed");

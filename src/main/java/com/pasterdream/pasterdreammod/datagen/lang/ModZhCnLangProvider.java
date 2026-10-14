@@ -1043,7 +1043,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("book.pasterdream.title.魔法使的记录 其一", "魔法使的记录 其一");
         add("book.pasterdream.title.逐梦列车", "逐梦列车");
         add("book.pasterdream.title.灵魂石的现世", "灵魂石的现世");
-        add("book.pasterdream.title.灵魂石的现世（假）", "灵魂石的现世（假）");
+        add("book.pasterdream.title.灵魂石的现世（假）", "灵魂石的现世");
 
         add("book.pasterdream.title.探求秘辛", "探求秘辛");
 
