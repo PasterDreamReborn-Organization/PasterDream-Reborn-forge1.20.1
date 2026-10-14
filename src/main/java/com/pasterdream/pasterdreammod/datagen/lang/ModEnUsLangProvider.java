@@ -266,10 +266,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.SHADOW_ALLOY_HOE.get(), "Shadow Alloy Hoe");
         add(ModItems.SHADOW_ALLOY_CROSSBOW.get(), "Shadow Alloy Crossbow");
         add("tooltip.pasterdreammod.shadow_alloy_crossbow.1", "Passive: §5Shadow Flying Arrow");
-        add("tooltip.pasterdreammod.shadow_alloy_crossbow.2", "§7▪ §9Creatures hit gain 10s Vulnerability");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.2", "§7▪ §9Consumes 0.2 Melt Dream Energy; creatures hit gain 10s Vulnerability");
         add("tooltip.pasterdreammod.shadow_alloy_crossbow.3", "§7▪ §9Creatures hit gain a random 5s negative effect");
-        add("tooltip.pasterdreammod.shadow_alloy_crossbow.4", "§7▪ §9Built-in Power III, stacks with the Power enchantment");
-        add("tooltip.pasterdreammod.shadow_alloy_crossbow.5", "§7▪ §9Can be enchanted with Infinity");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.4", "§7▪ §9Fires normally when Melt Dream Energy is insufficient, without the passive");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.5", "Traits:");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.6", "§7▪ §9Built-in Power III, stacks with the Power enchantment");
+        add("tooltip.pasterdreammod.shadow_alloy_crossbow.7", "§7▪ §9Can be enchanted with Infinity");
         add(ModItems.SHADOW_ALLOY_HELMET.get(), "Shadow Alloy Helmet");
         add(ModItems.SHADOW_ALLOY_CHESTPLATE.get(), "Shadow Alloy Chestplate");
         add(ModItems.SHADOW_ALLOY_LEGGINGS.get(), "Shadow Alloy Leggings");
@@ -916,6 +918,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_bow.2", "§7▪ §9Consumes 0.2 Melt Dream Energy to deal +30% arrow damage as magic damage");
         add("tooltip.pasterdreammod.melt_dream_bow.3", "§7▪ §9Fires normally when Melt Dream Energy is insufficient, without the bonus");
         add("tooltip.pasterdreammod.melt_dream_bow.4", "§7▪ §9In the Dyedream World, normal arrows consume no arrow/durability/energy when fired");
+        add("tooltip.pasterdreammod.melt_dream_bow.5", "Traits:");
+        add("tooltip.pasterdreammod.melt_dream_bow.6", "§7▪ §9Can be enchanted with Looting");
         add("tooltip.pasterdreammod.tide_sword.1", "Inlaid: §7None");
         add("tooltip.pasterdreammod.tide_sword.2", "§7▪ §9Grants Water Breathing while held");
         add("tooltip.pasterdreammod.beihai_ruo_tide_sword.1", "Inlaid: §3Heart of the Sea");
