@@ -446,7 +446,7 @@ public class ModItems {
     public static final RegistryObject<Item> HELLFIRE_PICKAXE = ITEMS.register("hellfire_pickaxe",
             () -> new HellfirePickaxeItem(ModToolTiers.HELLFIRE, 1, -2.6f, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> INFERNO_SWORD = ITEMS.register("inferno_sword",
-            () -> new InfernoSwordItem(ModToolTiers.HELLFIRE, 4, -2.15f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new InfernoSwordItem(ModToolTiers.HELLFIRE, 4, -3.1f, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> DYEDREAM_HAMMER = ITEMS.register("dyedream_hammer",
             () -> new DyedreamHammerItem(ModToolTiers.DYEDREAM, new Item.Properties().rarity(Rarity.UNCOMMON)));

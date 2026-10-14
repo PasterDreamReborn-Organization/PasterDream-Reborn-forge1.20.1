@@ -893,11 +893,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.hellfire_tool.3", "§7▪ §9冷却时间：8秒");
         add("tooltip.pasterdreammod.inferno_sword.1", "镶嵌：§6下界之星");
         add("tooltip.pasterdreammod.inferno_sword.2", "战技：§6融骸斩击");
-        add("tooltip.pasterdreammod.inferno_sword.3", "§7▪ §9下次攻击转为熔岩伤害并附带额外伤害");
-        add("tooltip.pasterdreammod.inferno_sword.4", "§7▪ §9目标燃烧时间越长伤害越高，且时间超过10s时，移除其燃烧效果并赋予减速");
-        add("tooltip.pasterdreammod.inferno_sword.5", "§7▪ §9冷却：10秒");
+        add("tooltip.pasterdreammod.inferno_sword.3", "§7▪ §9近战命中自动引发范围熔岩爆炸，造成攻击力50%的熔岩伤害");
+        add("tooltip.pasterdreammod.inferno_sword.4", "§7▪ §9爆炸半径3格");
+        add("tooltip.pasterdreammod.inferno_sword.5", "§7▪ §9冷却：2秒");
         add("tooltip.pasterdreammod.inferno_sword.6", "被动：");
         add("tooltip.pasterdreammod.inferno_sword.7", "§7▪ §9攻击点燃目标4秒或延长3秒时间");
+        add("tooltip.pasterdreammod.inferno_sword.8", "特性：");
+        add("tooltip.pasterdreammod.inferno_sword.9", "§7▪ §9每级火焰附加使被动燃烧时长+2秒");
+        add("tooltip.pasterdreammod.inferno_sword.10", "§7▪ §9每级横扫之刃使爆炸半径+1格（最大6格）");
         add("tooltip.pasterdreammod.melt_dream_tool.1", "在背包中时");
         add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §b融梦修补：0.01E/1耐久");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7套装效果：§d染梦守护");
@@ -2278,7 +2281,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 狱炎剑
         add("pasterdream.seniors_dream.entry.inferno_sword", "『融骸』狱炎剑");
         add("pasterdream.seniors_dream.entry.inferno_sword.page0", "利用远古残骸，配上烈焰粉和炙焰金块来强化炙焰金剑后，它会升级成狱炎剑。这把剑会给予敌人长时间的烈焰炙烤，如果敌人原本就在承受着火焰的灼烧，那么，这把剑会延长他们受到折磨的时间。");
-        add("pasterdream.seniors_dream.entry.inferno_sword.page1", "你也可以用下界之星和下界砖在锻造台进一步强化这把武器。强化后，这把剑获名『融骸』，它变得更加轻便，使用者可以主动释放战技，让这把剑获得「融骸斩击」，使它下一击更致命，如果敌人将会受到长时间的火焰灼烧，融骸斩击还会熄灭他们身上的火焰，让他们的行动更加迟缓。$(br)——浴身于战火，铸炼于战砧。");
+        add("pasterdream.seniors_dream.entry.inferno_sword.page1", "你也可以用下界之星和下界砖在锻造台进一步强化这把武器。强化后，这把剑获名『融骸』，它变得更加沉重，每一次挥砍都会迸发熔岩爆炸，将周围的敌人一并卷入火海，持续灼烧他们。$(br)——浴身于战火，铸炼于战砧。");
 
         // 草薙
         add("pasterdream.seniors_dream.entry.kusanagi", "『天丛云』草薙");

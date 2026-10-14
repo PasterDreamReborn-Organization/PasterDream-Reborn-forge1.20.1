@@ -887,11 +887,14 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.hellfire_tool.3", "§7▪ §9Cooldown: 8s");
         add("tooltip.pasterdreammod.inferno_sword.1", "Inlaid: §6Nether Star");
         add("tooltip.pasterdreammod.inferno_sword.2", "Combat Art: §6Bone-melting Slash");
-        add("tooltip.pasterdreammod.inferno_sword.3", "§7▪ §9The next attack becomes Lava damage and deals bonus damage");
-        add("tooltip.pasterdreammod.inferno_sword.4", "§7▪ §9The longer the target burns, the more damage; after 10s, removes its fire and slows it");
-        add("tooltip.pasterdreammod.inferno_sword.5", "§7▪ §9Cooldown: 10s");
+        add("tooltip.pasterdreammod.inferno_sword.3", "§7▪ §9Landing a melee hit triggers an area lava blast dealing 50% of Attack Damage as Lava damage");
+        add("tooltip.pasterdreammod.inferno_sword.4", "§7▪ §9Blast radius: 3 blocks");
+        add("tooltip.pasterdreammod.inferno_sword.5", "§7▪ §9Cooldown: 2s");
         add("tooltip.pasterdreammod.inferno_sword.6", "Passive:");
         add("tooltip.pasterdreammod.inferno_sword.7", "§7▪ §9Attacks ignite for 4s or extend fire by 3s");
+        add("tooltip.pasterdreammod.inferno_sword.8", "Traits:");
+        add("tooltip.pasterdreammod.inferno_sword.9", "§7▪ §9Each level of Fire Aspect extends the passive burn by 2s");
+        add("tooltip.pasterdreammod.inferno_sword.10", "§7▪ §9Each level of Sweeping Edge increases the blast radius by 1 block (max 6)");
         add("tooltip.pasterdreammod.melt_dream_tool.1", "While in inventory");
         add("tooltip.pasterdreammod.melt_dream_tool.2", "§7▪ §bMelt-Repair: 0.01E/1 Durability");
         add("tooltip.pasterdreammod.dyedream_armor.1", "§7Set Bonus: §dDyedream Protection");
@@ -2416,7 +2419,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.sculk_upgrade.page1", "--When wearing the Sculk Echo set, what I feel is not just power, but a deeper, more ancient darkness and dread coiling around my ears, never fading. Like a nightmare, it calls out for me to embrace it...");
         add("pasterdream.seniors_dream.entry.inferno_sword", "Inferno Sword");
         add("pasterdream.seniors_dream.entry.inferno_sword.page0", "Use Ancient Debris, Blaze Powder, and a block of Molten Gold to strengthen the Molten Gold Sword; it then upgrades into the Inferno Sword. This sword sears enemies with a long-lasting blaze. If an enemy is already burning, this sword prolongs their torment.");
-        add("pasterdream.seniors_dream.entry.inferno_sword.page1", "You can also further strengthen this weapon with a Nether Star and Nether Bricks at a smithing table. Once strengthened, the sword earns the name \"Melt Corpse\". It becomes lighter, and the wielder can actively unleash a Combat Art, granting the sword the \"Bone-melting Slash\", making its next strike deadlier. If the enemy would suffer a long blaze, the Bone-melting Slash also quenches their flames, slowing their movements.$(br)--Bathed in the fires of war, forged upon the anvil of battle.");
+        add("pasterdream.seniors_dream.entry.inferno_sword.page1", "You can also further strengthen this weapon with a Nether Star and Nether Bricks at a smithing table. Once strengthened, the sword earns the name \"Melt Corpse\". It becomes heavier, and every swing erupts in a lava blast that engulfs nearby enemies in flames.$(br)--Bathed in the fires of war, forged upon the anvil of battle.");
         add("pasterdream.seniors_dream.entry.kusanagi", "Kusanagi");
         add("pasterdream.seniors_dream.entry.kusanagi.page0", "This sword named \"Kusanagi\" is as sharp as one made of diamond, and it inflicts painful, lethal venom upon the creatures it wounds. When two hundred lives have fallen to this blade, it reveals its full might as a divine weapon — Kusanagi becomes even sharper, and its victims suffer a longer, crueler poison. The wielder can actively unleash a Combat Art, granting it \"Extreme Sharpness\", making the divine blade's next strike more deadly.");
         add("pasterdream.seniors_dream.entry.kusanagi.page1", "--This sword may be called the Sword of the Cloud Cluster, but this mod has no Yamata no Orochi; it cannot be used as a holy relic to summon heroic spirits, nor can its Noble Phantasm be unleashed upon foes as an eight-headed raging wave.");
