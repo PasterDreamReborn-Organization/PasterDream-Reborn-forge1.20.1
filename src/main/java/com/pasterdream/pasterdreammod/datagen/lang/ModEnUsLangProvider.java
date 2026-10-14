@@ -216,6 +216,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.FLUFFY_WIND_ALLOY_AXE.get(), "Fluffy Wind Alloy Axe");
         add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get(), "Fluffy Wind Alloy Shovel");
         add(ModItems.FLUFFY_WIND_ALLOY_HOE.get(), "Fluffy Wind Alloy Hoe");
+        add(ModItems.FLUFFY_WIND_BOW.get(), "Fluffy Wind Bow");
         add(ModItems.FLUFFY_WIND_ALLOY_HELMET.get(), "Fluffy Wind Alloy Helmet");
         add(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get(), "Fluffy Wind Alloy Chestplate");
         add(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get(), "Fluffy Wind Alloy Leggings");
@@ -920,6 +921,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_bow.4", "§7▪ §9In the Dyedream World, normal arrows consume no arrow/durability/energy when fired");
         add("tooltip.pasterdreammod.melt_dream_bow.5", "Traits:");
         add("tooltip.pasterdreammod.melt_dream_bow.6", "§7▪ §9Can be enchanted with Looting");
+        add("tooltip.pasterdreammod.fluffy_wind_bow.1", "Passive: §bFluffy Wind Arrow");
+        add("tooltip.pasterdreammod.fluffy_wind_bow.2", "§7▪ §9Consumes 0.2 Melt Dream Energy; the arrow ignores gravity");
+        add("tooltip.pasterdreammod.fluffy_wind_bow.3", "§7▪ §9On hit, grants the target 1s Levitation");
+        add("tooltip.pasterdreammod.fluffy_wind_bow.4", "§7▪ §9Fires normally when Melt Dream Energy is insufficient, without the passive");
+        add("tooltip.pasterdreammod.fluffy_wind_bow.5", "Traits:");
+        add("tooltip.pasterdreammod.fluffy_wind_bow.6", "§7▪ §9Can be enchanted with Channeling, increasing Melt Dream Energy cost by 0.1");
         add("tooltip.pasterdreammod.tide_sword.1", "Inlaid: §7None");
         add("tooltip.pasterdreammod.tide_sword.2", "§7▪ §9Grants Water Breathing while held");
         add("tooltip.pasterdreammod.beihai_ruo_tide_sword.1", "Inlaid: §3Heart of the Sea");
@@ -1477,7 +1484,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // Windwreathed Thunder Spear
         add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "Combat Art: §bWind and Thunder as One");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_header", "§bDash·Charged Thunder Break:");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9Right-click to charge a dash; Riptide boosts the impulse");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9Right-click to charge a dash; Riptide boosts the impulse and adds 1.0 Melt Dream Energy cost per level");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_energy", "§7▪ §9Melt Dream Energy cost: §c1.0");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_cooldown", "§7▪ §9Cooldown: 3s");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header", "§eThrow·Windwreathed Thunder Throw:");

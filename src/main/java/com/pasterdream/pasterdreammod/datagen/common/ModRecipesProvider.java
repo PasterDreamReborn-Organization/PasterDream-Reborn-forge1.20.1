@@ -228,6 +228,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         copperToolRecipes(pWriter);
         congealWindIronToolRecipes(pWriter);
         fluffyWindAlloyToolRecipes(pWriter);
+        fluffyWindBowRecipe(pWriter);
         shadowAlloyToolRecipes(pWriter);
         shadowAlloyCrossbowRecipe(pWriter);
         copperArmorRecipes(pWriter);
@@ -830,6 +831,21 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('c', ModItems.SHADOW_EROSION_HOE.get())
                 .unlockedBy(getHasName(ModItems.SHADOW_ALLOY_INGOT.get()), has(ModItems.SHADOW_ALLOY_INGOT.get())),
                 pWriter, "shadow_alloy_hoe_upgrade");
+    }
+
+    // ===== 萦风弓配方（合成台：黑石棍 + 萦风合金锭 + 脉冲风行者水晶 + 线） =====
+
+    private void fluffyWindBowRecipe(Consumer<FinishedRecipe> pWriter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.FLUFFY_WIND_BOW.get())
+                .pattern("abb")
+                .pattern("bcd")
+                .pattern("bd ")
+                .define('a', ModItems.BLACK_STICK.get())
+                .define('b', ModItems.FLUFFY_WIND_ALLOY_INGOT.get())
+                .define('c', ModItems.PULSE_WIND_RUNNER_CRYSTAL.get())
+                .define('d', Items.STRING)
+                .unlockedBy(getHasName(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()), has(ModItems.PULSE_WIND_RUNNER_CRYSTAL.get()))
+                .save(pWriter);
     }
 
     // ===== 暗影合金弩配方（合成台：黑石棍 + 暗影合金锭 + 原版弩 + 噩梦燃料） =====

@@ -224,6 +224,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.FLUFFY_WIND_ALLOY_AXE.get(), "萦风合金斧");
         add(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get(), "萦风合金锹");
         add(ModItems.FLUFFY_WIND_ALLOY_HOE.get(), "萦风合金锄");
+        add(ModItems.FLUFFY_WIND_BOW.get(), "萦风弓");
         add(ModItems.FLUFFY_WIND_ALLOY_HELMET.get(), "萦风合金头盔");
         add(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get(), "萦风合金胸甲");
         add(ModItems.FLUFFY_WIND_ALLOY_LEGGINGS.get(), "萦风合金护腿");
@@ -926,6 +927,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.melt_dream_bow.4", "§7▪ §9在染梦世界发射普通箭矢时不消耗箭矢/耐久/融梦能量");
         add("tooltip.pasterdreammod.melt_dream_bow.5", "特性：");
         add("tooltip.pasterdreammod.melt_dream_bow.6", "§7▪ §9可附魔抢夺");
+        add("tooltip.pasterdreammod.fluffy_wind_bow.1", "被动：§b萦风之箭");
+        add("tooltip.pasterdreammod.fluffy_wind_bow.2", "§7▪ §9消耗0.2融梦能量，本次箭矢不受重力影响");
+        add("tooltip.pasterdreammod.fluffy_wind_bow.3", "§7▪ §9命中目标时使其飘浮 1s");
+        add("tooltip.pasterdreammod.fluffy_wind_bow.4", "§7▪ §9融梦能量不足时照常射出，但不触发被动");
+        add("tooltip.pasterdreammod.fluffy_wind_bow.5", "特性：");
+        add("tooltip.pasterdreammod.fluffy_wind_bow.6", "§7▪ §9可附魔引雷，会使融梦能量消耗+0.1");
         add("tooltip.pasterdreammod.tide_sword.1", "镶嵌：§7无");
         add("tooltip.pasterdreammod.tide_sword.2", "§7▪ §9手持武器时获得水下呼吸效果");
         add("tooltip.pasterdreammod.beihai_ruo_tide_sword.1", "镶嵌：§3海洋之心");
@@ -1659,7 +1666,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         // 萦风雷矛
         add("tooltip.pasterdream.windwreathed_thunder_spear.skill_name", "战技：§b风雷齐行");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_header", "§b突进·蓄雷破风：");
-        add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9普通右键蓄力突进，激流附魔可增强冲量");
+        add("tooltip.pasterdream.windwreathed_thunder_spear.desc1", "§7▪ §9普通右键蓄力突进，激流附魔可增强冲量，每级增加1.0融梦能量消耗");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_energy", "§7▪ §9融梦能量消耗：§c1.0");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_dash_cooldown", "§7▪ §9冷却：3秒");
         add("tooltip.pasterdream.windwreathed_thunder_spear.desc_throw_header", "§e投掷·萦风投雷：");

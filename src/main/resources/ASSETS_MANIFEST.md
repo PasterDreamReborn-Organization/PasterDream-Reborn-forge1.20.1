@@ -192,6 +192,10 @@ textures/item/fluffy_wind_alloy_boots.png
 textures/item/fluffy_wind_alloy_chestplate.png
 textures/item/fluffy_wind_alloy_helmet.png
 textures/item/fluffy_wind_alloy_leggings.png
+textures/item/fluffy_wind_bow.png
+textures/item/fluffy_wind_bow_pulling_0.png
+textures/item/fluffy_wind_bow_pulling_1.png
+textures/item/fluffy_wind_bow_pulling_2.png
 textures/item/fortune_jelly.png
 textures/item/fractured_angel_statue.png
 textures/item/galaxy_jelly.png

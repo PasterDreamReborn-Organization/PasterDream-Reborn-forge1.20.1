@@ -110,6 +110,23 @@ public class ClientModEvents
                 }
         );
 
+        // 萦风弓拉弓切换模型（原版 pull/pulling predicate 仅注册在 Items.BOW 上）
+        ItemProperties.register(
+                ModItems.FLUFFY_WIND_BOW.get(),
+                ResourceLocation.parse("pulling"),
+                (stack, level, entity, seed) ->
+                        entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
+        );
+        ItemProperties.register(
+                ModItems.FLUFFY_WIND_BOW.get(),
+                ResourceLocation.parse("pull"),
+                (stack, level, entity, seed) -> {
+                    if (entity == null) return 0.0F;
+                    return entity.getUseItem() != stack ? 0.0F
+                            : (float) (stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 20.0F;
+                }
+        );
+
         // 暗影合金弩装填/拉弦切换模型（原版 pull/pulling/charged/firework predicate 仅注册在 Items.CROSSBOW 上）
         ItemProperties.register(
                 ModItems.SHADOW_ALLOY_CROSSBOW.get(),

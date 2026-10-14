@@ -291,6 +291,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_AXE.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_SHOVEL.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_HOE.get());
+                        output.accept(ModItems.FLUFFY_WIND_BOW.get());
                         // 萦风合金装备
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_HELMET.get());
                         output.accept(ModItems.FLUFFY_WIND_ALLOY_CHESTPLATE.get());
