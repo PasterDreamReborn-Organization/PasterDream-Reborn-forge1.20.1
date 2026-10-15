@@ -46,7 +46,7 @@ public class PasterDreamTipsManager {
             "请对琴雨梦玩偶好一点。",
             "AAA急需美工",
             "Give me this shock to the heart. ",
-            "I believe in my dream！",
+            "I believe in my dream!",
             "旧梦归引会给你很大的帮助！",
             "你知道你其实是可以不拔剑的吗？",
             "本重制版已击毙盲肠人逆天代码。",
@@ -59,13 +59,25 @@ public class PasterDreamTipsManager {
             "梦之特斯帕",
             "java.lang.NullPointerException:Tooltip for the mod is Null",
             "PasterDream Tip: PasterDream Tip: PasterDream Tip: PasterDream Tip:",
+            "I am the dream that is approaching!",
             "当你决心面对那深邃的黑暗，请一定要记得保持自己的理智，祝你好运...",
             "不要在黑暗的地方待得太久，过于黑暗的环境会导致掉san！",
             "想要更多树苗却无从获取更多？园艺钳可以帮到你！",
             "你知道吗？帕斯特重生于2026/6/13正式建立仓库。",
             "不...不要flower_x，grass_x也不行...",
             "了解不同梦境独特的特性对你探索是有所帮助的。",
-            "瞬身术会帮助你到达一些原本到达不了的地方"
+            "瞬身术会帮助你到达一些原本到达不了的地方",
+            "啊...你个只会吃白融梦能量的融梦水晶箱！",
+            "点击输入文本",
+            "有的武器有它独特的战技！",
+            "有的盔甲是有它独特的套装效果的。",
+            "不同情况下，瞬身术有不同的效果，正常是向前冲刺，潜行向后撤步，游泳状态则是向指针冲刺，学会了吗？",
+            "园艺钳可以修剪一部分作物来获得一些材料。",
+            "白狐牌杀虫剂，专业消杀小精灵，海鸥和各种出生1000年！",
+            "北旭今天发橘雪莉了吗？",
+            "你看这个粉红鸡，它已经吃了2147483647个染梦果了...欸怎么变成-1个了？",
+            "你看这个粉红史莱姆...欸你有看见它吗？我看不见。",
+            "方块人可以梦到粉红羊吗？"
     );
 
     private final List<String> customTips = new ArrayList<>();
