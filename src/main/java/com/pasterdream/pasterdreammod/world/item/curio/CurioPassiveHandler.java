@@ -675,6 +675,13 @@ public class CurioPassiveHandler {
         }
         // 标记来源，避免被鬼魂之面当作主弹幕再次复制
         projectile.getPersistentData().putBoolean("pasterdream_iridescent_fairy_jade_spawned", true);
+        // 失败则放弃生成，避免崩溃（例如 tacz 子弹这类 create() 后缺少 gunId、无法序列化的实体）。
+        try {
+            NetworkHooks.getEntitySpawningPacket(projectile);
+        } catch (Exception e) {
+            projectile.discard();
+            return;
+        }
         player.level().addFreshEntity(projectile);
     }
 

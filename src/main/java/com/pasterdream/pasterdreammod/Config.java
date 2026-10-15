@@ -518,7 +518,7 @@ public class Config
                     List.of("pasterdream:golden_fox_fireball", "pasterdream:lightning_projectile",
                             "pasterdream:squeal_wave_projectile", "pasterdream:pebble_projectile",
                             "pasterdream:thrown_pink_egg",
-                            "minecraft:arrow", "minecraft:spectral_arrow", "minecraft:dragon_fireball",
+                            "minecraft:arrow", "minecraft:spectral_arrow",
                             "minecraft:snowball", "minecraft:egg", "minecraft:trident",
                             "minecraft:llama_spit"),
                     obj -> obj instanceof String);
