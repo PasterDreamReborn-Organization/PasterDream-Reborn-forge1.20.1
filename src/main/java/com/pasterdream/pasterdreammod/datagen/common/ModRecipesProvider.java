@@ -2470,6 +2470,11 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.SHADOW_STONE.get()), has(ModItems.SHADOW_STONE.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":chiseled_shadow_stone_brick_from_stonecutting");
 
+        // 阴影石瓦 → 阴影陶罐 (切石机)
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModItems.SHADOW_STONE_TILES.get()), RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_CHEST.get())
+                .unlockedBy(getHasName(ModBlocks.SHADOW_STONE_TILES.get()), has(ModBlocks.SHADOW_STONE_TILES.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_chest_from_stonecutting");
+
         // ===== 暮影长床配方 =====
         // 噩梦燃料 + 黑床 + 阴影石瓦 + 阴影木板台阶
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.SHADOW_BED.get(), 1)
@@ -3365,6 +3370,15 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('f', Items.CARTOGRAPHY_TABLE)
                 .unlockedBy(getHasName(ModItems.DREAM_NOTES_BOOK.get()), has(ModItems.DREAM_NOTES_BOOK.get()))
                 .save(pWriter);
+        //风泊板条筐
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WIND_MOOR_CRATE.get(), 1)
+                .pattern("a a")
+                .pattern("aba")
+                .define('a', ModBlocks.WIND_MOOR_PLANKS.get())
+                .define('b', ModBlocks.CYAN_STONE.get())
+                .unlockedBy(getHasName(ModBlocks.WIND_MOOR_PLANKS.get()), has(ModBlocks.WIND_MOOR_PLANKS.get()))
+                .save(pWriter);
+
 
         // 旧梦归引宝典 = 书 + 染梦果（使用帕秋莉 shapeless_book_recipe）
         pWriter.accept(new FinishedRecipe() {
