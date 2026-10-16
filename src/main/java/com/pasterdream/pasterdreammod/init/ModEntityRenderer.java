@@ -48,6 +48,7 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.LIGHTNING_PROJECTILE.get(), EmptyEntityRenderer::new);
         event.registerEntityRenderer(ModEntities.WIND_ALLOY_LIGHTNING.get(), EmptyEntityRenderer::new);
         event.registerEntityRenderer(ModEntities.WIND_THUNDER_SPEAR.get(), WindThunderSpearRenderer::new);
+        event.registerEntityRenderer(ModEntities.TIDE_SWORD_PROJECTILE.get(), TideSwordProjectileRenderer::new);
         event.registerEntityRenderer(ModEntities.MELT_DREAM_ARROW.get(), MeltDreamArrowRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_ALLOY_ARROW.get(), ShadowAlloyArrowRenderer::new);
         event.registerEntityRenderer(ModEntities.FLUFFY_WIND_ARROW.get(), FluffyWindArrowRenderer::new);

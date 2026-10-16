@@ -35,6 +35,7 @@ import com.pasterdream.pasterdreammod.world.entity.ThundercloudEntity;
 import com.pasterdream.pasterdreammod.world.entity.LightningProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
+import com.pasterdream.pasterdreammod.world.entity.TideSwordProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.MeltDreamArrowEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowAlloyArrowEntity;
 import com.pasterdream.pasterdreammod.world.entity.FluffyWindArrowEntity;
@@ -436,6 +437,14 @@ public class ModEntities {
                     .setTrackingRange(64)
                     .setUpdateInterval(1)
                     .setCustomClientFactory(WindThunderSpearEntity::new)
+                    .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<TideSwordProjectileEntity>> TIDE_SWORD_PROJECTILE = register("tide_sword_projectile",
+            EntityType.Builder.<TideSwordProjectileEntity>of(TideSwordProjectileEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(TideSwordProjectileEntity::new)
                     .sized(0.5f, 0.5f));
 
     public static final RegistryObject<EntityType<MeltDreamArrowEntity>> MELT_DREAM_ARROW = register("melt_dream_arrow",

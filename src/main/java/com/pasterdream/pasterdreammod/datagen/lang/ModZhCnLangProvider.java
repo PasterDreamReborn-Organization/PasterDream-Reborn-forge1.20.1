@@ -938,13 +938,18 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.fluffy_wind_bow.6", "§7▪ §9可附魔引雷，会使融梦能量消耗+0.1");
         add("tooltip.pasterdreammod.tide_sword.1", "镶嵌：§7无");
         add("tooltip.pasterdreammod.tide_sword.2", "§7▪ §9手持武器时获得水下呼吸效果");
-        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.1", "镶嵌：§3海洋之心");
-        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.2", "战技：§3涌流剑技");
-        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.3", "§7▪ §9在水中向前方冲刺，期间减免80%伤害");
+        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.1", "镶嵌：§e蔚蓝海洋之心");
+        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.2", "战技：§3北海潮涌（右键）");
+        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.3", "§7▪ §9在水中或雨中向前方冲刺，期间减免80%伤害");
         add("tooltip.pasterdreammod.beihai_ruo_tide_sword.4", "§7▪ §9下次攻击造成额外伤害");
         add("tooltip.pasterdreammod.beihai_ruo_tide_sword.5", "§7▪ §9冷却：2.5秒");
-        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.6", "被动：");
-        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.7", "§7▪ §9手持武器获得水下呼吸效果");
+        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.6", "投掷：§3海若东来（潜行+长按右键）");
+        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.7", "§7▪ §9蓄力投掷造成伤害；附魔激流时无法投掷，改为在水中或雨中蓄力突进");
+        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.8", "§7▪ §9忠诚、引雷等按原版三叉戟逻辑生效");
+        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.9", "被动：");
+        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.10", "§7▪ §9手持武器获得潮涌能量II");
+        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.11", "特性：");
+        add("tooltip.pasterdreammod.beihai_ruo_tide_sword.12", "§7▪ §9可附魔三叉戟专属附魔");
         add("tooltip.pasterdreammod.kusanagi.1", "亡魂: §7%d/%d");
         add("tooltip.pasterdreammod.kusanagi.2", "§7▪ §9攻击施加中毒效果");
         add("tooltip.pasterdreammod.kusanagi.evolve", "武器成长到了新的阶段");
@@ -2291,7 +2296,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 引潮
         add("pasterdream.seniors_dream.entry.tide_sword", "『北海若』引潮");
-        add("pasterdream.seniors_dream.entry.tide_sword.page0", "某一日，你感觉到深海秘宝中发现的蔚蓝露滴与你合成的引潮剑产生了共鸣，于是，你将蔚蓝露滴进一步打磨，配合你的海晶碎片，试着在锻造台上把它们镶嵌在引潮剑中。现在，这把剑被冠以了古代的海神之名，不仅更加锋利，持有者还可以主动释放「涌流剑技」，在水中快速冲刺。另外，如果你的敌人在水中和你战斗，那么你释放涌流剑技之后，下一次斩击将会更加致命。");
+        add("pasterdream.seniors_dream.entry.tide_sword.page0", "某一日，你感觉到深海秘宝中发现的蔚蓝露滴与你合成的引潮剑产生了共鸣，于是，你将蔚蓝露滴进一步打磨，配合你的海晶碎片，试着在锻造台上把它们镶嵌在引潮剑中。现在，这把剑被冠以了古代的海神之名，不仅更加锋利，持有者还可以主动释放「北海潮涌」，在水中快速冲刺。另外，如果你的敌人在水中和你战斗，那么你释放北海潮涌之后，下一次斩击将会更加致命。");
         add("pasterdream.seniors_dream.entry.tide_sword.page1", "——九河横流归海若，孤峰俯眺慑天吴。");
 
         // 朔漠
