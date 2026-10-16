@@ -23,6 +23,7 @@ import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
 import com.pasterdream.pasterdreammod.network.curio.KaichuOmamoriActivationPacket;
 import com.pasterdream.pasterdreammod.network.curio.CloakActivationPacket;
 import com.pasterdream.pasterdreammod.network.skill.BlinkPacket;
+import com.pasterdream.pasterdreammod.network.skill.KusanagiVenomStingerPacket;
 import com.pasterdream.pasterdreammod.network.skill.TerraBladeSwingPacket;
 import com.pasterdream.pasterdreammod.network.san.IsSanEnableSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.LowSanConfigSyncPacket;
@@ -79,6 +80,8 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, BlinkPacket.class, BlinkPacket::encode, BlinkPacket::decode, BlinkPacket::handle);
 
         CHANNEL.registerMessage(id++, TerraBladeSwingPacket.class, TerraBladeSwingPacket::encode, TerraBladeSwingPacket::decode, TerraBladeSwingPacket::handle);
+
+        CHANNEL.registerMessage(id++, KusanagiVenomStingerPacket.class, KusanagiVenomStingerPacket::encode, KusanagiVenomStingerPacket::decode, KusanagiVenomStingerPacket::handle);
 
         CHANNEL.registerMessage(id++, CurioActivationPacket.class, CurioActivationPacket::encode, CurioActivationPacket::decode, CurioActivationPacket::handle);
         CHANNEL.registerMessage(id++, KaichuOmamoriActivationPacket.class, KaichuOmamoriActivationPacket::encode, KaichuOmamoriActivationPacket::decode, KaichuOmamoriActivationPacket::handle);

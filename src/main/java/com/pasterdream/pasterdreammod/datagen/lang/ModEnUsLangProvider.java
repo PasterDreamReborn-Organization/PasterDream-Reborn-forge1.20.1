@@ -943,11 +943,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.kusanagi.2", "§7▪ §9Applies Poison on hit");
         add("tooltip.pasterdreammod.kusanagi.evolve", "The weapon has grown to a new stage");
         add("tooltip.pasterdreammod.murakumo_kusanagi.1", "Inlaid: §f%d Souls");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.2", "Combat Art: §bExtreme Sharpness");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.3", "§7▪ §9The next attack deals high bonus damage, scaling with Sharpness level");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.4", "§7▪ §9Cooldown: 4s");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.5", "Passive:");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.6", "§7▪ §9Applies Poison on hit");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.2", "Passive: §aVenomous Stinger");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.3", "§7▪ §9Melee or stinger hits stack Highly Toxic: +1 level and +5s per stack (max III / 60s)");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.4", "§7▪ §9Each swing launches a venom stinger toward your crosshair (no damage, up to 2 targets each)");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.5", "§7▪ §9Stingers fly on an elliptical orbit and home in on targets within 3 blocks");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.6", "§7▪ §9Launch cooldown: 0.5s");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.7", "§7▪ §9Venom never drops a target below 1 HP; stingers execute poisoned targets left at 1 HP");
         add("tooltip.pasterdreammod.desert_sword.1", "Inlaid: §7None");
         add("tooltip.pasterdreammod.desert_sword.2", "§7▪ §9Move Speed -15% and Resistance +20% while held");
         add("tooltip.pasterdreammod.chenjingmen_desert_sword.1", "Inlaid: §eLonely Family Letter");
@@ -2421,7 +2422,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.inferno_sword.page0", "Use Ancient Debris, Blaze Powder, and a block of Molten Gold to strengthen the Molten Gold Sword; it then upgrades into the Inferno Sword. This sword sears enemies with a long-lasting blaze. If an enemy is already burning, this sword prolongs their torment.");
         add("pasterdream.seniors_dream.entry.inferno_sword.page1", "You can also further strengthen this weapon with a Nether Star and Nether Bricks at a smithing table. Once strengthened, the sword earns the name \"Melt Corpse\". It becomes heavier, and every swing erupts in a lava blast that engulfs nearby enemies in flames.$(br)--Bathed in the fires of war, forged upon the anvil of battle.");
         add("pasterdream.seniors_dream.entry.kusanagi", "Kusanagi");
-        add("pasterdream.seniors_dream.entry.kusanagi.page0", "This sword named \"Kusanagi\" is as sharp as one made of diamond, and it inflicts painful, lethal venom upon the creatures it wounds. When two hundred lives have fallen to this blade, it reveals its full might as a divine weapon — Kusanagi becomes even sharper, and its victims suffer a longer, crueler poison. The wielder can actively unleash a Combat Art, granting it \"Extreme Sharpness\", making the divine blade's next strike more deadly.");
+        add("pasterdream.seniors_dream.entry.kusanagi.page0", "This sword named \"Kusanagi\" is as sharp as one made of diamond, and it inflicts painful, lethal venom upon the creatures it wounds. When two hundred lives have fallen to this blade, it reveals its full might as a divine weapon — Kusanagi becomes even sharper, and every swing unleashes venomous stinger projectiles, afflicting whatever they strike with a longer, crueler venom.");
         add("pasterdream.seniors_dream.entry.kusanagi.page1", "--This sword may be called the Sword of the Cloud Cluster, but this mod has no Yamata no Orochi; it cannot be used as a holy relic to summon heroic spirits, nor can its Noble Phantasm be unleashed upon foes as an eight-headed raging wave.");
         add("pasterdream.seniors_dream.entry.tide_sword", "Beihai Ruo Tide Sword");
         add("pasterdream.seniors_dream.entry.tide_sword.page0", "One day, you sense that the Blue Dew found in Deep Sea Treasures resonates with the Tide Sword you forged. So you further polish the Blue Dew, and with your Prismarine Shards, try to set them into the Tide Sword at a smithing table. Now this sword bears the name of the ancient sea god: it is sharper than ever, and its wielder can actively unleash \"Surging Current\" to dash swiftly through water. Moreover, if your enemy fights you in water, your next slash after releasing Surging Current will be even more deadly.");

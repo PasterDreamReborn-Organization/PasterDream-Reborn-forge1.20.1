@@ -949,11 +949,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.kusanagi.2", "§7▪ §9攻击施加中毒效果");
         add("tooltip.pasterdreammod.kusanagi.evolve", "武器成长到了新的阶段");
         add("tooltip.pasterdreammod.murakumo_kusanagi.1", "镶嵌：§f%d亡魂");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.2", "战技：§b极致锋利");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.3", "§7▪ §9下次攻击造成高额伤害，且锋利等级越高，附加伤害越高");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.4", "§7▪ §9冷却：4秒");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.5", "被动：");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.6", "§7▪ §9攻击施加中毒效果");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.2", "被动：§a剧毒之刺");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.3", "§7▪ §9近战或毒刺命中会叠加剧毒：每层等级 +1、持续 +5 秒（上限 III 级 / 60 秒）");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.4", "§7▪ §9每次挥砍向准心方向发射一枚毒刺射弹（射弹无伤害，每枚最多命中2个目标）");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.5", "§7▪ §9射弹沿椭圆轨道飞行，追踪3格内的目标");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.6", "§7▪ §9发射冷却：0.5秒");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.7", "§7▪ §9剧毒不会使目标低于1点生命；射弹可斩杀仅剩1点生命的中毒目标");
         add("tooltip.pasterdreammod.desert_sword.1", "镶嵌：§7无");
         add("tooltip.pasterdreammod.desert_sword.2", "§7▪ §9手持武器时移速-15% 抗性+20%");
         add("tooltip.pasterdreammod.chenjingmen_desert_sword.1", "镶嵌：§e沉寂家书");
@@ -2285,7 +2286,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 草薙
         add("pasterdream.seniors_dream.entry.kusanagi", "『天丛云』草薙");
-        add("pasterdream.seniors_dream.entry.kusanagi.page0", "这把名为「草薙」的剑如同钻石所制造而成的剑一般锋利，同时，这把剑也会让它所伤害的生物染上痛苦的剧毒。而当有两百个生命成为这把剑的刀下亡魂时，它便会展现出它作为神器的完全威能——草薙不仅更加锋利，而它所伤害的生命会遭受更长时间的剧毒摧残，持有者可以主动释放战技，使其获得「极致锋利」，令这把神剑接下来的一击更为致命。");
+        add("pasterdream.seniors_dream.entry.kusanagi.page0", "这把名为「草薙」的剑如同钻石所制造而成的剑一般锋利，同时，这把剑也会让它所伤害的生物染上痛苦的剧毒。而当有两百个生命成为这把剑的刀下亡魂时，它便会展现出它作为神器的完全威能——草薙不仅更加锋利，每一次挥砍都会迸发出剧毒的尖刺射弹，凡被命中的生命都将遭受更长时间的剧毒摧残。");
         add("pasterdream.seniors_dream.entry.kusanagi.page1", "——这把剑虽说叫天丛云剑，但是本模组没有八岐大蛇，这把剑也不能用来当作圣遗物召唤英灵，更不能解放宝具给敌对生物来个八岐怒涛。");
 
         // 引潮
