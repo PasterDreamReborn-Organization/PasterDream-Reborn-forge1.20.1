@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.client.model.FireballProjectileModel;
+import com.pasterdream.pasterdreammod.client.model.KusanagiVenomStingerModel;
 import com.pasterdream.pasterdreammod.client.model.Modelslime;
 import com.pasterdream.pasterdreammod.client.renderer.*;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -55,10 +56,12 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.BONE_WING_FIRE_BALL_PROJECTILE.get(), BoneWingFireBallProjectileRenderer::new);
         event.registerEntityRenderer(ModEntities.JELLYFISH.get(), JellyfishRenderer::new);
         event.registerEntityRenderer(ModEntities.SMALL_STONE_SPIRIT.get(), SmallStoneSpiritRenderer::new);
+        event.registerEntityRenderer(ModEntities.KUSANAGI_VENOM_STINGER.get(), KusanagiVenomStingerRenderer::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(Modelslime.LAYER_LOCATION, Modelslime::createBodyLayer);
         event.registerLayerDefinition(FireballProjectileModel.LAYER_LOCATION, FireballProjectileModel::createBodyLayer);
+        event.registerLayerDefinition(KusanagiVenomStingerModel.LAYER_LOCATION, KusanagiVenomStingerModel::createBodyLayer);
     }
 }

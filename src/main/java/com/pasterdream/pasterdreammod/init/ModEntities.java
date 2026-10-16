@@ -44,6 +44,7 @@ import com.pasterdream.pasterdreammod.world.entity.BoneWingEntity;
 import com.pasterdream.pasterdreammod.world.entity.AshBoneWingEntity;
 import com.pasterdream.pasterdreammod.world.entity.BoneWingFireBallProjectileEntity;
 import com.pasterdream.pasterdreammod.world.entity.JellyfishEntity;
+import com.pasterdream.pasterdreammod.world.entity.KusanagiVenomStingerEntity;
 import com.pasterdream.pasterdreammod.world.entity.SmallStoneSpiritEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -459,6 +460,15 @@ public class ModEntities {
                     .setTrackingRange(64)
                     .setUpdateInterval(1)
                     .setCustomClientFactory(FluffyWindArrowEntity::new)
+                    .sized(0.5f, 0.5f));
+
+    /** 『天丛云』草薙毒刺射弹：椭圆轨道 + 追踪 + 剧毒 */
+    public static final RegistryObject<EntityType<KusanagiVenomStingerEntity>> KUSANAGI_VENOM_STINGER = register("kusanagi_venom_stinger",
+            EntityType.Builder.<KusanagiVenomStingerEntity>of(KusanagiVenomStingerEntity::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(KusanagiVenomStingerEntity::new)
                     .sized(0.5f, 0.5f));
 
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder) {
