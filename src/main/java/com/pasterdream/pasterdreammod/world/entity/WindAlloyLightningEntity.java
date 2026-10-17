@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
+import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
@@ -13,7 +14,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
@@ -213,7 +213,7 @@ public class WindAlloyLightningEntity extends Entity {
             return;
         }
         List<LivingEntity> entities = sl.getEntitiesOfClass(LivingEntity.class, area,
-                e -> e != ownerPlayer && e.isAlive() && !isOwnedMinion(e, ownerPlayer));
+                e -> e != ownerPlayer && e.isAlive() && !MinionFilterHelper.isOwnedMinion(e, ownerPlayer));
         for (LivingEntity e : entities) {
             e.invulnerableTime = 0;
             float dmg = attackDamage;
@@ -234,18 +234,6 @@ public class WindAlloyLightningEntity extends Entity {
                 .registryOrThrow(Registries.DAMAGE_TYPE)
                 .getHolderOrThrow(DamageTypes.LIGHTNING_BOLT);
         return new DamageSource(holder, owner);
-    }
-
-    /** 是否为玩家自己的仆从/召唤物/同队盟友（战技不应命中） */
-    private static boolean isOwnedMinion(LivingEntity e, @Nullable Player owner) {
-        if (owner == null) return false;
-        if (e instanceof OwnableEntity ownable) {
-            return ownable.getOwner() == owner;
-        }
-        if (e instanceof FoxFireEntity fe) {
-            return fe.resolveOwner() == owner;
-        }
-        return e.isAlliedTo(owner);
     }
 
     @Nullable

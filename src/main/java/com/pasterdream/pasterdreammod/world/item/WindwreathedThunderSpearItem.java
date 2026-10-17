@@ -1,9 +1,9 @@
 package com.pasterdream.pasterdreammod.world.item;
 
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
+import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
-import com.pasterdream.pasterdreammod.world.entity.FoxFireEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.Holder;
@@ -26,7 +26,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -365,7 +364,7 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
     /** 突进自旋接触结算：把原版自旋伤害替换为突进伤害（激流加成伤害、横扫之刃扩大溅射范围）。 */
     private static void applyDashOnTouch(Player player, LivingHurtEvent event) {
         LivingEntity target = event.getEntity();
-        if (isOwnedMinion(target, player)) {
+        if (MinionFilterHelper.isOwnedMinion(target, player)) {
             event.setCanceled(true);
             return;
         }
@@ -391,7 +390,7 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
             Vec3 center = target.position();
             List<LivingEntity> candidates = sl.getEntitiesOfClass(LivingEntity.class,
                     target.getBoundingBox().inflate(radius),
-                    e -> e != player && e != target && e.isAlive() && !isOwnedMinion(e, player));
+                    e -> e != player && e != target && e.isAlive() && !MinionFilterHelper.isOwnedMinion(e, player));
             candidates.sort(Comparator.comparingDouble(e -> e.distanceToSqr(center)));
             player.getPersistentData().putBoolean(APPLYING_TAG, true);
             int hit = 0;
@@ -405,18 +404,6 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
             }
             player.getPersistentData().remove(APPLYING_TAG);
         }
-    }
-
-    /** 是否为玩家自己的仆从/召唤物/同队盟友（战技不应命中） */
-    private static boolean isOwnedMinion(LivingEntity e, @Nullable Player owner) {
-        if (owner == null) return false;
-        if (e instanceof OwnableEntity ownable) {
-            return ownable.getOwner() == owner;
-        }
-        if (e instanceof FoxFireEntity fe) {
-            return fe.resolveOwner() == owner;
-        }
-        return e.isAlliedTo(owner);
     }
 
     // ==================== 其余 ====================
