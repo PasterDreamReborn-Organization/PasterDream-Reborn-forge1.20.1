@@ -111,7 +111,7 @@ public class TerraBladeItem extends SwordItem {
                 MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(serverPlayer, -cost);
             }
             executeSkillWave(level, player, stack, hasCharm);
-            player.getCooldowns().addCooldown(stack.getItem(), SKILL_COOLDOWN_TICKS);
+            SkillCooldownHelper.applySharedCooldown(player, SKILL_COOLDOWN_TICKS);
         } else {
             tag.putBoolean("skill_active", false);
             player.displayClientMessage(Component.translatable("tooltip.pasterdream.terra_blade.no_energy"), true);

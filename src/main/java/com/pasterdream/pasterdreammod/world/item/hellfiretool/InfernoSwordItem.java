@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.hellfiretool;
 
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.world.entity.FoxFireEntity;
 import net.minecraft.core.Holder;
@@ -63,7 +64,9 @@ public class InfernoSwordItem extends SwordItem {
     /** 命中：战技冷却就绪则自动引发范围熔岩爆炸。被动引燃于攻击命中前由 AttackEntityEvent 施加，确保致死的点燃目标掉落熟食。 */
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (attacker instanceof Player player && !player.getCooldowns().isOnCooldown(stack.getItem())) {
+        if (attacker instanceof Player player
+                && !SkillLockHelper.isSkillLockedSilent(player)
+                && !player.getCooldowns().isOnCooldown(stack.getItem())) {
             triggerInfernoBlast(player, stack, target);
             SkillCooldownHelper.applySharedCooldown(player, SKILL_COOLDOWN_TICKS);
         }

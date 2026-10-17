@@ -51,7 +51,9 @@ public class SharpMeltDreamSwordItem extends SwordItem {
         if (!level.isClientSide) {
             // 原版物品冷却作为唯一冷却源：踏云之靴每 tick 清除该冷却 → 真正零冷却；
             // 冷却倍率属性（狂暴/燃起等）也经 applySharedCooldown 缩放，与 HUD 显示一致。
-            if (player.getCooldowns().isOnCooldown(stack.getItem())) {
+            // 已蓄势时不再重复开启（与尘境门漠剑 / 北海若引潮剑一致）：避免重放音效、刷新冷却、覆盖蓄势。
+            if (player.getCooldowns().isOnCooldown(stack.getItem())
+                    || stack.getOrCreateTag().getBoolean(TAG_CHARGED)) {
                 return InteractionResultHolder.fail(stack);
             }
             // 染梦守护 buff 缩短冷却：3 秒 vs 5 秒

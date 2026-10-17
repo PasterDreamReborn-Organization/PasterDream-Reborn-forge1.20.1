@@ -88,6 +88,10 @@ public class ShadowSwordItem extends SwordItem {
             if (player.getCooldowns().isOnCooldown(stack.getItem())) {
                 return InteractionResultHolder.fail(stack);
             }
+            // 已蓄势（噩梦斩待命中）时不再重复开启：避免重复扣 SAN/HP（与尘境门漠剑 / 北海若引潮剑一致）
+            if (player.getPersistentData().getBoolean(NIGHTMARE_SLASH_TAG)) {
+                return InteractionResultHolder.fail(stack);
+            }
             if (!player.isCreative()) {
                 if (SanHelper.getIsSanEnabled(sp)) {
                     double currentSan = SanHelper.getPlayerSan(sp);

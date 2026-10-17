@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.grasstool;
 
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.network.skill.KusanagiVenomStingerPacket;
 import com.pasterdream.pasterdreammod.world.entity.KusanagiVenomStingerEntity;
@@ -54,6 +55,9 @@ public class MurakumoKusanagiItem extends SwordItem {
     public static void onSwing(ServerPlayer player) {
         ItemStack stack = player.getMainHandItem();
         if (!(stack.getItem() instanceof MurakumoKusanagiItem)) {
+            return;
+        }
+        if (SkillLockHelper.isSkillLockedSilent(player)) {
             return;
         }
         if (player.getCooldowns().isOnCooldown(stack.getItem())) {
