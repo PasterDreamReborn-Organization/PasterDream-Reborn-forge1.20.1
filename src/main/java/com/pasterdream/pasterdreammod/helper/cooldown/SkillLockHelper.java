@@ -11,15 +11,21 @@ public final class SkillLockHelper {
 
     /**
      * 战技是否被锁定（当前唯一来源：佩戴大侦探的放大镜）。
-     * 未来新增锁定来源时在此处叠加判断即可，武器侧无需改动。
+     * <p>
+     * 高频自动触发路径（命中 / 挥砍 / 被动）应使用 {@link #isSkillLockedSilent}，避免刷屏。
      */
     public static boolean isSkillLocked(Player player) {
-        if (MagnifyingGlassOfSherryItem.isWearing(player)) {
+        if (isSkillLockedSilent(player)) {
             if (player instanceof ServerPlayer sp) {
                 sp.displayClientMessage(Component.translatable("message.pasterdream.skill_locked"), true);
             }
             return true;
         }
         return false;
+    }
+
+    /** 战技是否被锁定（不发送提示）。用于每次攻击 / 挥砍等高频路径。 */
+    public static boolean isSkillLockedSilent(Player player) {
+        return MagnifyingGlassOfSherryItem.isWearing(player);
     }
 }

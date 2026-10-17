@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.fluffywindalloy;
 
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
+import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -45,6 +46,7 @@ public class FluffyWindAlloyHoeItem extends HoeItem implements FluffyWindAlloyTo
         if (!FluffyWindAlloyToolHelper.isCrop(state)) {
             return super.useOn(context); // 普通锄地
         }
+        if (SkillLockHelper.isSkillLocked(player)) return InteractionResult.FAIL;
 
         ItemStack stack = context.getItemInHand();
         if (!level.isClientSide && !player.getCooldowns().isOnCooldown(stack.getItem())) {

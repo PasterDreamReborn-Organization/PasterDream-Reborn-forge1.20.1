@@ -65,7 +65,7 @@ import java.util.function.Consumer;
  * 左键 · 近战：物理伤害 + 附带雷伤（不连锁），吃移速，耗 1 耐久。
  * 普通右键蓄力 · 突进：原版激流式前冲（冲量 + 自旋攻击），冷却 3s。
  * Shift+右键蓄力 · 投掷：蓄满投出「虚影」（本体始终留在手中），命中/落地触发连锁闪电后飞回；
- *                       虚影返回前武器处于冷却，最长 10s 兜底（避免掉落进虚空 / 投掷后死亡丢武器）。
+ *                       投掷冷却并入共享战技冷却，虚影命中或冷却结束即解除（与其它战技武器互锁）。
  *
  * 被动 · 雷随疾风：移动速度越高伤害越高，并附带雷电伤害；掉落物被风卷至身边。
  */
@@ -161,8 +161,8 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
         if (stack.getDamageValue() >= stack.getMaxDamage() - 1) return InteractionResultHolder.fail(stack);
 
-        // 冷却中禁止进入蓄力：突进冷却（共享战技冷却）与投掷虚影冷却共用矛的物品冷却，
-        // 冷却结束前无法再次使用任一形态（虚影返回会立即解除投掷冷却）。
+        // 冷却中禁止进入蓄力：投掷与突进共用共享战技冷却，冷却结束前无法再次使用任一形态
+        // （投掷虚影返回会提前解除该共享冷却）。
         if (player.getCooldowns().isOnCooldown(stack.getItem())) {
             return InteractionResultHolder.fail(stack);
         }
@@ -275,17 +275,17 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         level.addFreshEntity(spear);
         level.playSound(null, spear, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
 
-        // 本体留在手中：投掷出的只是虚影。虚影返回前武器冷却，10s 后兜底解除。
-        player.getCooldowns().addCooldown(stack.getItem(), THROW_COOLDOWN_TICKS);
+        // 本体留在手中：投掷出的只是虚影。投掷冷却并入共享战技冷却（不缩放，与虚影 200t 兜底严格对齐），
+        // 虚影命中/兜底飞回即提前解除。
+        SkillCooldownHelper.applySharedCooldownExact(player, THROW_COOLDOWN_TICKS);
     }
 
-    /** 虚影返回时调用：立即解除本次投掷冷却。 */
+    /** 虚影返回时调用：提前解除本次投掷冷却（投掷冷却已并入共享战技冷却）。 */
     public static void clearThrowCooldown(Player player, ItemStack spearStack) {
-        if (spearStack.isEmpty()) return;
-        player.getCooldowns().removeCooldown(spearStack.getItem());
+        SkillCooldownHelper.clearSharedCooldown(player);
     }
 
-    /** 投掷虚影的冷却时长（tick），供弹射物侧兜底参考。 */
+    /** 投掷虚影的兜底冷却时长（tick），弹射物以此计时兜底飞回。 */
     public static int getThrowCooldownTicks() {
         return THROW_COOLDOWN_TICKS;
     }
