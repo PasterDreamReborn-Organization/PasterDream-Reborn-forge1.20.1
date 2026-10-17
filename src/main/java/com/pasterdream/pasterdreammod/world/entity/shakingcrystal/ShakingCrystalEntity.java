@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.entity.shakingcrystal;
 
+import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
@@ -119,13 +120,6 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
         return null;
     }
 
-    private boolean isOwnerOrPet(Entity entity, Player owner) {
-        if (entity == owner) return true;
-        if (entity instanceof TamableAnimal tamable && owner.getUUID().equals(tamable.getOwnerUUID()))
-            return true;
-        return false;
-    }
-
     @Override
     public Packet<ClientGamePacketListener> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
@@ -234,8 +228,8 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
         for (Entity entity : nearby) {
             if (entity instanceof ShakingCrystalEntity) continue;
             if (entity.getType().is(ModEntityTypeTags.SPECIAL_ENTITY)) continue;
-            if (isOwnerOrPet(entity, owner)) continue;
             if (entity instanceof LivingEntity living) {
+                if (living == owner || MinionFilterHelper.isOwnedMinion(living, owner)) continue;
                 living.addEffect(new MobEffectInstance(ModEffects.CONFUSION.get(), 30, 1));
             }
             entity.setTicksFrozen(entity.getTicksRequiredToFreeze() * 2);
@@ -260,7 +254,8 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
         for (Entity entity : targets) {
             if (entity instanceof ShakingCrystalEntity) continue;
             if (entity.getType().is(ModEntityTypeTags.SPECIAL_ENTITY)) continue;
-            if (owner != null && isOwnerOrPet(entity, owner)) continue;
+            if (entity == owner) continue;
+            if (entity instanceof LivingEntity living && MinionFilterHelper.isOwnedMinion(living, owner)) continue;
 
             float finalDamage = damage;
             if (entity instanceof LivingEntity living) {

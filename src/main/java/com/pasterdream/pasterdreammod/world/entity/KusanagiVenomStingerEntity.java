@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
+import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
@@ -217,12 +218,14 @@ public class KusanagiVenomStingerEntity extends Entity {
 
     @Nullable
     private LivingEntity findTarget() {
+        Player owner = this.resolveOwnerPlayer();
         AABB area = this.getBoundingBox().inflate(HOMING_RANGE);
         List<LivingEntity> candidates = this.level().getEntitiesOfClass(LivingEntity.class, area,
                 e -> e.isAlive() && !e.isSpectator()
                         && !this.hitTargets.contains(e.getUUID())
                         && !e.getUUID().equals(this.ownerUUID)
-                        && !(e instanceof Player player && player.isCreative()));
+                        && !(e instanceof Player player && player.isCreative())
+                        && !MinionFilterHelper.isOwnedMinion(e, owner));
         LivingEntity best = null;
         double bestDist = Double.MAX_VALUE;
         for (LivingEntity candidate : candidates) {
@@ -274,6 +277,12 @@ public class KusanagiVenomStingerEntity extends Entity {
             }
         }
         return null;
+    }
+
+    @Nullable
+    private Player resolveOwnerPlayer() {
+        LivingEntity owner = this.resolveOwner();
+        return owner instanceof Player player ? player : null;
     }
 
     private void onHitEffects(LivingEntity target) {

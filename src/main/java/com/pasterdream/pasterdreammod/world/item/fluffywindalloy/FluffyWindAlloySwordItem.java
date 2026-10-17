@@ -1,11 +1,11 @@
 package com.pasterdream.pasterdreammod.world.item.fluffywindalloy;
 
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
+import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
-import com.pasterdream.pasterdreammod.world.entity.FoxFireEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import net.minecraft.core.BlockPos;
@@ -25,7 +25,6 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -187,7 +186,7 @@ public class FluffyWindAlloySwordItem extends SwordItem {
                 Math.max(start.x, end.x) + sweepXZ, Math.max(start.y, end.y) + WIND_SWEEP_Y, Math.max(start.z, end.z) + sweepXZ);
         player.getPersistentData().putBoolean(APPLYING_TAG, true);
         List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, swept,
-                e -> e != player && e.isAlive() && !isOwnedMinion(e, player));
+                e -> e != player && e.isAlive() && !MinionFilterHelper.isOwnedMinion(e, player));
         for (LivingEntity target : targets) {
             target.invulnerableTime = 0;
             float dmg = damage;
@@ -297,18 +296,6 @@ public class FluffyWindAlloySwordItem extends SwordItem {
 
     /** 雷击目标：target 非空表示追踪实体（落雷于脚下），否则按 strikePos 固定落雷（方块上表面）。 */
     private record ThunderTarget(LivingEntity target, Vec3 strikePos) {}
-
-    /** 是否为玩家自己的仆从/召唤物/同队盟友（战技不应命中） */
-    private static boolean isOwnedMinion(LivingEntity e, @Nullable Player owner) {
-        if (owner == null) return false;
-        if (e instanceof OwnableEntity ownable) {
-            return ownable.getOwner() == owner;
-        }
-        if (e instanceof FoxFireEntity fe) {
-            return fe.resolveOwner() == owner;
-        }
-        return e.isAlliedTo(owner);
-    }
 
     // ==================== 被动 · 雷随疾风 ====================
 

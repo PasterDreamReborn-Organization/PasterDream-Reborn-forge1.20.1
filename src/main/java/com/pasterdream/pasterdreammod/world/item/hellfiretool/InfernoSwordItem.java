@@ -1,9 +1,9 @@
 package com.pasterdream.pasterdreammod.world.item.hellfiretool;
 
+import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillCooldownHelper;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
 import com.pasterdream.pasterdreammod.init.ModSounds;
-import com.pasterdream.pasterdreammod.world.entity.FoxFireEntity;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
@@ -16,7 +16,6 @@ import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
@@ -102,7 +101,7 @@ public class InfernoSwordItem extends SwordItem {
         AABB area = center.getBoundingBox().inflate(radius);
         List<LivingEntity> affected = level.getEntitiesOfClass(LivingEntity.class, area,
                 e -> e != player && e.isAlive() && !(e instanceof ArmorStand)
-                        && !isOwnedMinion(e, player)
+                        && !MinionFilterHelper.isOwnedMinion(e, player)
                         && e.distanceToSqr(center) <= radius * radius);
         for (LivingEntity entity : affected) {
             float dmg = damage;
@@ -125,17 +124,6 @@ public class InfernoSwordItem extends SwordItem {
         } else {
             target.setSecondsOnFire(PASSIVE_IGNITE_SECONDS + bonusSeconds);
         }
-    }
-
-    /** 是否为玩家自己的仆从/召唤物/同队盟友（爆炸不应波及）。 */
-    private static boolean isOwnedMinion(LivingEntity e, Player owner) {
-        if (e instanceof OwnableEntity ownable) {
-            return ownable.getOwner() == owner;
-        }
-        if (e instanceof FoxFireEntity fe) {
-            return fe.resolveOwner() == owner;
-        }
-        return e.isAlliedTo(owner);
     }
 
     @Override

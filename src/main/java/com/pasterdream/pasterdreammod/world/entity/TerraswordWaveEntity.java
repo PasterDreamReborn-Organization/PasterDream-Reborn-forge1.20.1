@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
+import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import net.minecraft.core.BlockPos;
@@ -201,6 +202,7 @@ public class TerraswordWaveEntity extends PathfinderMob {
             Player owner = resolveOwner();
             for (LivingEntity target : entities) {
                 if (target != owner && !(target instanceof TerraswordWaveEntity)
+                        && !MinionFilterHelper.isOwnedMinion(target, owner)
                         && !hitEntities.contains(target.getUUID())) {
                     hitEntities.add(target.getUUID());
                     float damage = (float) (BASE_DAMAGE_OFFSET + pasterAtk);

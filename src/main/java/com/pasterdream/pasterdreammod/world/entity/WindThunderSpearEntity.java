@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
+import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.item.WindwreathedThunderSpearItem;
@@ -19,7 +20,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
@@ -154,7 +154,7 @@ public class WindThunderSpearEntity extends AbstractArrow implements GeoEntity {
     protected boolean canHitEntity(Entity entity) {
         if (!super.canHitEntity(entity)) return false;
         if (entity instanceof LivingEntity living && this.getOwner() instanceof Player player) {
-            return !isOwnedMinion(living, player);
+            return !MinionFilterHelper.isOwnedMinion(living, player);
         }
         return true;
     }
@@ -279,7 +279,7 @@ public class WindThunderSpearEntity extends AbstractArrow implements GeoEntity {
     private LivingEntity findChainTarget(ServerLevel sl, LivingEntity from, Set<UUID> hitIds, @Nullable Player owner) {
         List<LivingEntity> candidates = sl.getEntitiesOfClass(LivingEntity.class,
                 from.getBoundingBox().inflate(CHAIN_RANGE),
-                e -> e != owner && e.isAlive() && !hitIds.contains(e.getUUID()) && !isOwnedMinion(e, owner));
+                e -> e != owner && e.isAlive() && !hitIds.contains(e.getUUID()) && !MinionFilterHelper.isOwnedMinion(e, owner));
         LivingEntity best = null;
         double bestDist = Double.MAX_VALUE;
         for (LivingEntity candidate : candidates) {
@@ -308,18 +308,6 @@ public class WindThunderSpearEntity extends AbstractArrow implements GeoEntity {
                 .registryOrThrow(Registries.DAMAGE_TYPE)
                 .getHolderOrThrow(DamageTypes.LIGHTNING_BOLT);
         return new DamageSource(holder, this, owner);
-    }
-
-    /** 是否为玩家自己的仆从/召唤物/同队盟友（连锁不应命中） */
-    private static boolean isOwnedMinion(LivingEntity e, @Nullable Player owner) {
-        if (owner == null) return false;
-        if (e instanceof OwnableEntity ownable) {
-            return ownable.getOwner() == owner;
-        }
-        if (e instanceof FoxFireEntity fe) {
-            return fe.resolveOwner() == owner;
-        }
-        return e.isAlliedTo(owner);
     }
 
     // ==================== 飞回 ====================
