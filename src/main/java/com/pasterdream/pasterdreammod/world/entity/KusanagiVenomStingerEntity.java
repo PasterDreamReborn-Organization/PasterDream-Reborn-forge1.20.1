@@ -31,10 +31,11 @@ import java.util.UUID;
 /**
  * 『天丛云』草薙的毒刺射弹。
  *
- * <p>以玩家准心朝向为椭圆长轴、玩家位于长轴端点的轨道飞行：
+ * <p>以玩家准心朝向为椭圆长轴、近端位于玩家脑后的轨道飞行：
  * <ul>
- *     <li>长轴直径 8（半轴 4），短轴直径 5（半短轴 2.5）；</li>
- *     <li>轴面法线与屏幕 Y 轴夹角随机取 ±[30°, 60°]；</li>
+ *     <li>长轴直径 10（半轴 5），短轴直径 5（半短轴 2.5）；</li>
+ *     <li>发射点位于玩家脑后（避免遮挡视野）；</li>
+ *     <li>轴面相对视野水平面倾斜角随机取 [-60°, 60°]；</li>
  *     <li>目标进入 3 格内时脱离轨道直冲目标；</li>
  *     <li>每枚射弹最多命中 2 个不同目标，命中叠加剧毒（无直接伤害）；</li>
  *     <li>绕轨道飞行固定圈数后消失。</li>
@@ -43,16 +44,16 @@ import java.util.UUID;
 public class KusanagiVenomStingerEntity extends Entity {
 
     // ===== 数值（硬编码） =====
-    private static final double SEMI_MAJOR = 4.0;          // 长半轴（长轴直径 8）
+    private static final double SEMI_MAJOR = 5.0;          // 长半轴（长轴直径 10）
     private static final double SEMI_MINOR = 2.5;          // 短半轴（短轴直径 5）
+    private static final double LAUNCH_BEHIND = 0.5;       // 发射点在玩家眼后距离（格）
     private static final double TICKS_PER_LAP = 24.0;      // 绕椭圆一周所需 tick
     private static final int LAPS = 2;                     // 飞行圈数（超时消失）
     private static final double HOMING_RANGE = 3.0;        // 追踪范围（格）
     private static final double HOMING_SPEED = 1.2;        // 追踪直冲速度（格/tick）
     private static final double HIT_RADIUS = 0.5;          // 命中判定膨胀半径
     private static final int MAX_HITS = 2;                 // 最多命中的目标数
-    private static final double MIN_PLANE_ANGLE = 30.0;    // 轴面法线与屏幕 Y 轴最小夹角（度）
-    private static final double MAX_PLANE_ANGLE = 60.0;    // 轴面法线与屏幕 Y 轴最大夹角（度）
+    private static final double MAX_PLANE_TILT = 60.0;     // 轴面相对视野水平面的最大倾斜角（度）
     private static final int HARD_LIFE = (int) (TICKS_PER_LAP * LAPS) + 120;
     private static final float EXECUTE_DAMAGE = 1.0E6f;    // 斩杀伤害（必死）
 
@@ -96,8 +97,9 @@ public class KusanagiVenomStingerEntity extends Entity {
     }
 
     private void setupOrbit(Player owner) {
-        Vec3 origin = owner.getEyePosition();
         Vec3 dir = owner.getViewVector(1.0f).normalize();
+        // 发射点位于玩家脑后：从眼睛位置沿准心反方向后退，避免射弹在视野正前方生成
+        Vec3 origin = owner.getEyePosition().subtract(dir.scale(LAUNCH_BEHIND));
 
         Vec3 worldUp = new Vec3(0.0, 1.0, 0.0);
         Vec3 upCam = worldUp.subtract(dir.scale(worldUp.dot(dir)));
@@ -108,17 +110,13 @@ public class KusanagiVenomStingerEntity extends Entity {
         upCam = upCam.normalize();
         Vec3 right = dir.cross(upCam).normalize();
 
-        // 轴面法线与屏幕 Y 轴夹角随机取 ±[MIN, MAX]
-        double angle = Math.toRadians(MIN_PLANE_ANGLE
-                + this.random.nextDouble() * (MAX_PLANE_ANGLE - MIN_PLANE_ANGLE));
-        if (this.random.nextBoolean()) {
-            angle = -angle;
-        }
+        // 轴面相对视野水平面的倾斜角随机取 [-MAX, MAX]
+        double angle = Math.toRadians((this.random.nextDouble() * 2.0 - 1.0) * MAX_PLANE_TILT);
         Vec3 normal = upCam.scale(Math.cos(angle)).add(right.scale(Math.sin(angle))).normalize();
 
         this.majorAxis = dir;
         this.minorAxis = normal.cross(dir).normalize();
-        // 玩家位于长轴端点：中心在玩家前方一个半长轴处
+        // 发射点位于长轴近端：中心在发射点前方一个半长轴处
         this.center = origin.add(dir.scale(SEMI_MAJOR));
         this.phi = Math.PI;
         this.direction = this.random.nextBoolean() ? 1.0 : -1.0;
@@ -128,6 +126,8 @@ public class KusanagiVenomStingerEntity extends Entity {
 
         this.setPos(origin.x, origin.y, origin.z);
         this.updateRotation(this.orbitVelocity().scale(this.direction));
+        // 预置首 tick 的位移，供客户端在收到首个运动同步前也能外推（并用于拖尾方向）
+        this.setDeltaMovement(this.orbitVelocity().scale(this.direction).scale((Math.PI * 2.0) / TICKS_PER_LAP));
     }
 
     private Vec3 orbitPosition() {
@@ -166,6 +166,12 @@ public class KusanagiVenomStingerEntity extends Entity {
         super.tick();
 
         if (this.level().isClientSide) {
+            // 客户端外推：本实体不参与客户端 AI，位置仅靠网络同步。
+            // 用同步来的 deltaMovement 自行推进一 tick，丢包/抖动的当帧也不会停顿（同箭矢）。
+            Vec3 dm = this.getDeltaMovement();
+            if (dm.lengthSqr() > 1.0E-9) {
+                this.setPos(this.getX() + dm.x, this.getY() + dm.y, this.getZ() + dm.z);
+            }
             this.spawnTrail();
             return;
         }
