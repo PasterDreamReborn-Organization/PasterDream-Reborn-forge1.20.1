@@ -15,7 +15,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -29,7 +28,8 @@ import java.util.List;
  * 『天丛云』草薙。
  *
  * <p>被动「剧毒之刺」：每次挥砍向准心方向发射一枚毒刺射弹（冷却 0.5s）。
- * 射弹本身无伤害，命中叠加剧毒（等级 +1、时长 +5s，上限 III 级 / 60s）。
+ * 射弹命中叠加剧毒（等级 +1、时长 +5s，上限 III 级 / 60s），并造成攻击力 50% 的魔法伤害
+ * （受锋利/亡灵杀手/截肢杀手/抢夺加成）。
  * 近战命中同样叠加剧毒。
  *
  * <p>发射由客户端左键事件经 {@link KusanagiVenomStingerPacket} 触发，
@@ -67,9 +67,7 @@ public class MurakumoKusanagiItem extends SwordItem {
             return;
         }
         KusanagiVenomStingerEntity stinger = new KusanagiVenomStingerEntity(serverLevel, player);
-        stinger.setWeaponEnchantments(
-                stack.getEnchantmentLevel(Enchantments.FIRE_ASPECT),
-                stack.getEnchantmentLevel(Enchantments.MOB_LOOTING));
+        stinger.setWeapon(player, stack);
         serverLevel.addFreshEntity(stinger);
         // 接入战技共享冷却（随 SKILL_COOLDOWN_RATE 缩放，并联动其它战技武器）
         SkillCooldownHelper.applySharedCooldown(player, LAUNCH_COOLDOWN_TICKS);
@@ -85,6 +83,8 @@ public class MurakumoKusanagiItem extends SwordItem {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.murakumo_kusanagi.5"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.murakumo_kusanagi.6"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.murakumo_kusanagi.7"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.murakumo_kusanagi.8"));
+        tooltip.add(Component.translatable("tooltip.pasterdreammod.murakumo_kusanagi.9"));
     }
 
     /** 仅客户端：监听左键（空挥 / 破坏方块 / 攻击实体）发送发射请求。 */

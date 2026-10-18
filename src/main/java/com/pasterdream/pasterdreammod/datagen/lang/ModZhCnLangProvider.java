@@ -956,10 +956,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.murakumo_kusanagi.1", "镶嵌：§f%d亡魂");
         add("tooltip.pasterdreammod.murakumo_kusanagi.2", "被动：§a剧毒之刺");
         add("tooltip.pasterdreammod.murakumo_kusanagi.3", "§7▪ §9近战或毒刺命中会叠加剧毒：每层等级 +1、持续 +5 秒（上限 III 级 / 60 秒）");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.4", "§7▪ §9每次挥砍向准心方向发射一枚毒刺射弹（射弹无伤害，每枚最多命中2个目标）");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.4", "§7▪ §9每次挥砍向准心方向发射一枚毒刺射弹（每枚最多命中2个目标）");
         add("tooltip.pasterdreammod.murakumo_kusanagi.5", "§7▪ §9射弹沿椭圆轨道飞行，追踪3格内的目标");
         add("tooltip.pasterdreammod.murakumo_kusanagi.6", "§7▪ §9发射冷却：0.5秒");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.7", "§7▪ §9剧毒不会使目标低于1点生命；射弹可斩杀仅剩1点生命的中毒目标");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.7", "§7▪ §9射弹造成攻击力50%的魔法伤害（受锋利/亡灵杀手/截肢杀手/抢夺加成）");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.8", "§7▪ §9剧毒不会使目标低于1点生命");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.9", "§7▪ §9剧毒对亡灵、节肢与普通生物均生效");
         add("tooltip.pasterdreammod.desert_sword.1", "镶嵌：§7无");
         add("tooltip.pasterdreammod.desert_sword.2", "§7▪ §9手持武器时移速-15% 抗性+20%");
         add("tooltip.pasterdreammod.chenjingmen_desert_sword.1", "镶嵌：§e沉寂家书");

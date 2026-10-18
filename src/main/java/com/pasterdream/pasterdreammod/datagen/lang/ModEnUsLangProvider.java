@@ -950,10 +950,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.murakumo_kusanagi.1", "Inlaid: §f%d Souls");
         add("tooltip.pasterdreammod.murakumo_kusanagi.2", "Passive: §aVenomous Stinger");
         add("tooltip.pasterdreammod.murakumo_kusanagi.3", "§7▪ §9Melee or stinger hits stack Highly Toxic: +1 level and +5s per stack (max III / 60s)");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.4", "§7▪ §9Each swing launches a venom stinger toward your crosshair (no damage, up to 2 targets each)");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.4", "§7▪ §9Each swing launches a venom stinger toward your crosshair (up to 2 targets each)");
         add("tooltip.pasterdreammod.murakumo_kusanagi.5", "§7▪ §9Stingers fly on an elliptical orbit and home in on targets within 3 blocks");
         add("tooltip.pasterdreammod.murakumo_kusanagi.6", "§7▪ §9Launch cooldown: 0.5s");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.7", "§7▪ §9Venom never drops a target below 1 HP; stingers execute poisoned targets left at 1 HP");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.7", "§7▪ §9Stingers deal magic damage equal to 50% of attack power (benefits from Sharpness/Smite/Bane of Arthropods/Looting)");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.8", "§7▪ §9Venom never drops a target below 1 HP");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.9", "§7▪ §9Venom affects undead, arthropods, and normal creatures alike");
         add("tooltip.pasterdreammod.desert_sword.1", "Inlaid: §7None");
         add("tooltip.pasterdreammod.desert_sword.2", "§7▪ §9Move Speed -15% and Resistance +20% while held");
         add("tooltip.pasterdreammod.chenjingmen_desert_sword.1", "Inlaid: §eLonely Family Letter");
