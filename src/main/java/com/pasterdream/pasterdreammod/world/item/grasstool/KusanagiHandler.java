@@ -12,12 +12,12 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = "pasterdream", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class KusanagiHandler {
 
-    /** 毒刺斩杀时读取发射武器上的抢夺等级。 */
+    /** 毒刺命中瞬间读取发射武器上的抢夺等级，用于目标死亡掉落。 */
     @SubscribeEvent
     public static void onLootingLevel(LootingLevelEvent event) {
         CompoundTag data = event.getEntity().getPersistentData();
-        if (data.contains("pasterdream:stinger_execute_looting")) {
-            event.setLootingLevel(data.getInt("pasterdream:stinger_execute_looting"));
+        if (data.contains("pasterdream:stinger_looting")) {
+            event.setLootingLevel(data.getInt("pasterdream:stinger_looting"));
         }
     }
 

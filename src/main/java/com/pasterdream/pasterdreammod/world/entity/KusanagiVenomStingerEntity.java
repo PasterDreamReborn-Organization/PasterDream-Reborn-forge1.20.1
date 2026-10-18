@@ -1,7 +1,6 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
 import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
-import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.world.item.grasstool.KusanagiVenomHelper;
@@ -15,7 +14,11 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -37,7 +40,8 @@ import java.util.UUID;
  *     <li>发射点位于玩家脑后（避免遮挡视野）；</li>
  *     <li>轴面相对视野水平面倾斜角随机取 [-60°, 60°]；</li>
  *     <li>目标进入 3 格内时脱离轨道直冲目标；</li>
- *     <li>每枚射弹最多命中 2 个不同目标，命中叠加剧毒（无直接伤害）；</li>
+ *     <li>每枚射弹最多命中 2 个不同目标，命中叠加剧毒并造成攻击力 50% 的魔法伤害
+ *         （受锋利/亡灵杀手/截肢杀手/抢夺加成）；</li>
  *     <li>绕轨道飞行固定圈数后消失。</li>
  * </ul>
  */
@@ -55,12 +59,15 @@ public class KusanagiVenomStingerEntity extends Entity {
     private static final int MAX_HITS = 2;                 // 最多命中的目标数
     private static final double MAX_PLANE_TILT = 60.0;     // 轴面相对视野水平面的最大倾斜角（度）
     private static final int HARD_LIFE = (int) (TICKS_PER_LAP * LAPS) + 120;
-    private static final float EXECUTE_DAMAGE = 1.0E6f;    // 斩杀伤害（必死）
+    private static final float MAGIC_DAMAGE_RATIO = 0.5f;   // 魔法伤害 = 攻击力 × 50%
+    private static final String LOOTING_KEY = "pasterdream:stinger_looting";
 
     @Nullable
     private UUID ownerUUID;
     private final Set<UUID> hitTargets = new HashSet<>();
-    // 发射时从武器读取的附魔
+    // 发射时从武器读取的数据
+    private ItemStack weaponStack = ItemStack.EMPTY;
+    private float attackDamage = 0.0f;
     private int fireAspectLevel = 0;
     private int lootingLevel = 0;
 
@@ -90,10 +97,12 @@ public class KusanagiVenomStingerEntity extends Entity {
         this.setupOrbit(owner);
     }
 
-    /** 记录发射武器上的附魔等级（火焰附加、抢夺）。 */
-    public void setWeaponEnchantments(int fireAspectLevel, int lootingLevel) {
-        this.fireAspectLevel = Math.max(0, fireAspectLevel);
-        this.lootingLevel = Math.max(0, lootingLevel);
+    /** 记录发射武器的攻击力与附魔（火焰附加、抢夺），并保留武器副本用于伤害类附魔加成。 */
+    public void setWeapon(Player owner, ItemStack stack) {
+        this.weaponStack = stack.copy();
+        this.attackDamage = (float) owner.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        this.fireAspectLevel = Math.max(0, stack.getEnchantmentLevel(Enchantments.FIRE_ASPECT));
+        this.lootingLevel = Math.max(0, stack.getEnchantmentLevel(Enchantments.MOB_LOOTING));
     }
 
     private void setupOrbit(Player owner) {
@@ -244,7 +253,7 @@ public class KusanagiVenomStingerEntity extends Entity {
         return best;
     }
 
-    /** 命中目标：施加火焰附加、剧毒，并在条件满足时斩杀。返回是否已达命中上限。 */
+    /** 命中目标：施加火焰附加、剧毒，并造成攻击力 50% 的魔法伤害。返回是否已达命中上限。 */
     private boolean applyHit(LivingEntity target) {
         this.hitTargets.add(target.getUUID());
         if (this.fireAspectLevel > 0) {
@@ -252,26 +261,34 @@ public class KusanagiVenomStingerEntity extends Entity {
         }
         KusanagiVenomHelper.applyStacks(target);
         this.onHitEffects(target);
-        // 斩杀：仅剩 1 点生命且带有本武器剧毒的目标
-        if (target.getHealth() <= 1.0F && target.hasEffect(ModEffects.HIGHLY_TOXIC.get())) {
-            this.execute(target);
-        }
+        this.dealMagicDamage(target);
         return this.hitTargets.size() >= MAX_HITS;
     }
 
-    /** 斩杀目标：由持有者结算击杀（读取武器抢夺），并不受无敌帧限制。 */
-    private void execute(LivingEntity target) {
+    /**
+     * 对目标造成攻击力 50% 的魔法伤害。
+     * <p>攻击力 = 持有者攻击力属性 + 武器的伤害类附魔加成
+     * （锋利/亡灵杀手/截肢杀手，按目标生物类型结算）。
+     * 由持有者结算击杀，并在命中瞬间写入发射武器上的抢夺等级。
+     */
+    private void dealMagicDamage(LivingEntity target) {
+        float attackPower = this.attackDamage
+                + EnchantmentHelper.getDamageBonus(this.weaponStack, target.getMobType());
+        float damage = attackPower * MAGIC_DAMAGE_RATIO;
+        if (damage <= 0.0F) {
+            return;
+        }
         LivingEntity owner = this.resolveOwner();
-        target.getPersistentData().putInt("pasterdream:stinger_execute_looting", this.lootingLevel);
+        target.getPersistentData().putInt(LOOTING_KEY, this.lootingLevel);
         target.invulnerableTime = 0;
         if (owner instanceof Player player) {
-            target.hurt(player.damageSources().playerAttack(player), EXECUTE_DAMAGE);
+            target.hurt(player.damageSources().indirectMagic(this, player), damage);
         } else if (owner != null) {
-            target.hurt(owner.damageSources().mobAttack(owner), EXECUTE_DAMAGE);
+            target.hurt(owner.damageSources().indirectMagic(this, owner), damage);
         } else {
-            target.hurt(this.damageSources().generic(), EXECUTE_DAMAGE);
+            target.hurt(this.damageSources().magic(), damage);
         }
-        target.getPersistentData().remove("pasterdream:stinger_execute_looting");
+        target.getPersistentData().remove(LOOTING_KEY);
     }
 
     @Nullable
@@ -322,6 +339,10 @@ public class KusanagiVenomStingerEntity extends Entity {
         if (tag.hasUUID("Owner")) {
             this.ownerUUID = tag.getUUID("Owner");
         }
+        if (tag.contains("Weapon")) {
+            this.weaponStack = ItemStack.of(tag.getCompound("Weapon"));
+        }
+        this.attackDamage = tag.getFloat("AttackDamage");
         this.fireAspectLevel = tag.getInt("FireAspect");
         this.lootingLevel = tag.getInt("Looting");
     }
@@ -331,6 +352,10 @@ public class KusanagiVenomStingerEntity extends Entity {
         if (this.ownerUUID != null) {
             tag.putUUID("Owner", this.ownerUUID);
         }
+        if (!this.weaponStack.isEmpty()) {
+            tag.put("Weapon", this.weaponStack.save(new CompoundTag()));
+        }
+        tag.putFloat("AttackDamage", this.attackDamage);
         tag.putInt("FireAspect", this.fireAspectLevel);
         tag.putInt("Looting", this.lootingLevel);
     }
