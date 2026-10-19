@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.entity;
 
+import com.mojang.logging.LogUtils;
 import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
@@ -8,6 +9,9 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -26,6 +30,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
+import org.slf4j.Logger;
 
 import javax.annotation.Nullable;
 import java.util.Comparator;
@@ -37,9 +42,11 @@ import java.util.UUID;
 public class TerraswordWaveEntity extends PathfinderMob {
 
     private int lifeTicks = 0;
-    private static final int MAX_LIFE_TICKS = 25; // 最大存活时间(tick)
+    private static final int BLOCK_HIT_LINGER_TICKS = 10;
+    private int blockHitLifeTick = -1;
+    public static final int MAX_LIFE_TICKS = 32; // 最大存活时间(tick)，1.6 秒
     private static final double COLLISION_RADIUS_BASE = 2.5; // 基础碰撞半径（水平）
-    private static final double COLLISION_HEIGHT = 3.0; // 攻击范围高度（竖直，格）
+    private static final double COLLISION_HEIGHT = 5.0; // 攻击范围高度（竖直，格）
     private static final double COLLISION_RADIUS_SWEEPING_BONUS = 0.5; // 横扫之刃每级碰撞半径加成
     private static final int MAX_SWEEPING_EDGE_LEVEL = 3; // 横扫之刃加成生效的最大等级(III)
     private static final int PARTICLE_COUNT_BASE = 8; // 基础粒子数量
@@ -49,14 +56,26 @@ public class TerraswordWaveEntity extends PathfinderMob {
     private static final double PARTICLE_VELOCITY = 0.1; // 粒子初速度
     private static final double BASE_DAMAGE_OFFSET = 2.0; // 基础伤害偏移
     private static final float SMITE_BANE_MULTIPLIER = 2.5f; // 亡灵杀手/节肢杀手每级伤害加成
-    private static final float PENETRATION_DECAY = 0.25f; // 每次穿透伤害衰减系数
-    private static final int MAX_PENETRATION = 4; // 最大穿透次数
+    private static final double PENETRATION_DECAY = 0.75; // 每次命中后伤害乘数（累乘 25% 衰减）
+    private static final float MIN_DAMAGE = 1.0f; // 衰减至 <= 该伤害后消失
     private static final int FIRE_ASPECT_TICK_MULTIPLIER = 4; // 火焰附加tick倍数
     private static final float KNOCKBACK_MULTIPLIER = 0.6f; // 击退力度系数
     private static final double KNOCKBACK_Y = 0.2; // 击退Y速度
+    private static final EntityDataAccessor<Float> DATA_ROLL_ANGLE =
+            SynchedEntityData.defineId(TerraswordWaveEntity.class, EntityDataSerializers.FLOAT); // 刀光平面绕飞行方向的翻滚角（度）
+    /** 调试用：可视化碰撞框的基础半尺寸（不含横扫之刃加成），客户端渲染 OBB 时使用。 */
+    public static final double COLLISION_HALF_WIDTH = COLLISION_RADIUS_BASE / 2d;
+    public static final double COLLISION_HALF_HEIGHT = COLLISION_HEIGHT / 2d;
+    public static final double COLLISION_HALF_DEPTH = COLLISION_RADIUS_BASE / 2d;
+    private static final Logger LOGGER = LogUtils.getLogger();
+    private static final boolean DEBUG_LOG = false; // 调试：需要排查飞行方向时再启用
+    private static final double DIRECTION_DEVIATION_WARN_DEG = 0.5; // 飞行方向偏离初速方向超过该角度才告警
     private final Set<UUID> hitEntities = new HashSet<>();
     private final Set<UUID> reflectedProjectiles = new HashSet<>();
     private int penetrationCount = 0;
+    private double initialSpeed = -1.0; // 生成时的初速度，用于线性减速
+    @Nullable
+    private Vec3 travelDir; // 生成时的飞行方向
     @Nullable
     private Player owner;
     @Nullable
@@ -75,6 +94,16 @@ public class TerraswordWaveEntity extends PathfinderMob {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
+        this.entityData.define(DATA_ROLL_ANGLE, 0.0f);
+    }
+
+    /** 刀光平面绕飞行方向的翻滚角（度），0~180 随机，使 5 格长轴相对水平面随机倾斜。 */
+    public float getRollAngle() {
+        return this.entityData.get(DATA_ROLL_ANGLE);
+    }
+
+    public void setRollAngle(float rollAngle) {
+        this.entityData.set(DATA_ROLL_ANGLE, rollAngle);
     }
 
     @Override
@@ -122,6 +151,19 @@ public class TerraswordWaveEntity extends PathfinderMob {
     }
 
     @Override
+    public boolean shouldRenderAtSqrDistance(double distance) {
+        // The tiny physical box must not limit the five-block blade to a 6.4-block draw distance.
+        double range = COLLISION_HEIGHT * 64.0 * getViewScale();
+        return distance < range * range;
+    }
+
+    @Override
+    public AABB getBoundingBoxForCulling() {
+        // Enclose the rolled blade, including its visual forward offset, bulge and thickness.
+        return this.getBoundingBox().inflate(COLLISION_HALF_HEIGHT + 3.5);
+    }
+
+    @Override
     protected void pushEntities() {
     }
 
@@ -131,6 +173,9 @@ public class TerraswordWaveEntity extends PathfinderMob {
         if (compound.hasUUID("Owner")) {
             this.ownerUUID = compound.getUUID("Owner");
         }
+        if (compound.contains("RollAngle")) {
+            this.setRollAngle(compound.getFloat("RollAngle"));
+        }
     }
 
     @Override
@@ -139,6 +184,7 @@ public class TerraswordWaveEntity extends PathfinderMob {
         if (ownerUUID != null) {
             compound.putUUID("Owner", ownerUUID);
         }
+        compound.putFloat("RollAngle", this.getRollAngle());
     }
 
     @Override
@@ -147,6 +193,23 @@ public class TerraswordWaveEntity extends PathfinderMob {
         Level level = this.level();
         if (!level.isClientSide()) {
             lifeTicks++;
+
+            if (blockHitLifeTick >= 0 && lifeTicks - blockHitLifeTick >= BLOCK_HIT_LINGER_TICKS) {
+                this.discard();
+                return;
+            }
+
+            // 线性负加速度：初速度在 1.6 秒(32tick)内匀速衰减到 0。
+            // 配合 3.5 格/tick 初速度，实际移动约 54.25 格，含生成偏移后约 55 格。
+            if (initialSpeed < 0.0) {
+                Vec3 motion = this.getDeltaMovement();
+                initialSpeed = motion.length();
+                travelDir = motion.lengthSqr() > 1.0E-7 ? motion.normalize() : this.getLookAngle();
+            }
+            double currentSpeed = Math.max(0.0, initialSpeed * (1.0 - (double) lifeTicks / MAX_LIFE_TICKS));
+            if (travelDir != null) {
+                this.setDeltaMovement(travelDir.scale(currentSpeed));
+            }
 
             CompoundTag data = this.getPersistentData();
             int sweepingEdge = Math.min(data.getInt("sweeping_edge"), MAX_SWEEPING_EDGE_LEVEL);
@@ -157,21 +220,10 @@ public class TerraswordWaveEntity extends PathfinderMob {
             double radius = COLLISION_RADIUS_BASE / 2d + sweepingEdge * COLLISION_RADIUS_SWEEPING_BONUS;
             Vec3 center = new Vec3(this.getX(), this.getY(), this.getZ());
 
-            // 朝向框架：3格高度轴始终垂直于移动方向（水平飞行时保持竖直，斜向/竖直飞行时随之倾斜）
-            Vec3 moveDir = this.getDeltaMovement();
-            if (moveDir.lengthSqr() < 1.0E-7) {
-                moveDir = new Vec3(0, 1, 0);
-            } else {
-                moveDir = moveDir.normalize();
-            }
-            Vec3 up = new Vec3(0, 1, 0);
-            Vec3 side = moveDir.cross(up);
-            if (side.lengthSqr() < 1.0E-7) {
-                side = new Vec3(1, 0, 0);
-            } else {
-                side = side.normalize();
-            }
-            Vec3 heightAxis = moveDir.cross(side).normalize();
+            // 朝向框架：5格高度轴垂直于飞行方向，并绕飞行方向随机翻滚（相对水平面倾角 0~180°）
+            Vec3 moveDir = getMoveDirection(1.0f);
+            Vec3 side = getWaveSide(moveDir);
+            Vec3 heightAxis = getWaveHeightAxis(moveDir);
             final Vec3 finalSide = side;
             final Vec3 finalHeightAxis = heightAxis;
             final Vec3 finalMoveDir = moveDir;
@@ -215,13 +267,12 @@ public class TerraswordWaveEntity extends PathfinderMob {
                     if (data.getBoolean("ignore_iframe")) {
                         target.invulnerableTime = 0;
                     }
-                    float decayMultiplier = 1.0f - penetrationCount * PENETRATION_DECAY;
-                    float finalDamage = damage * decayMultiplier;
+                    float finalDamage = (float) (damage * Math.pow(PENETRATION_DECAY, penetrationCount));
                     if (fireAspect > 0 && !target.isOnFire()) {
                         target.setSecondsOnFire(1);
                     }
                     if (owner != null) {
-                        target.hurt(this.damageSources().playerAttack(owner), finalDamage);
+                        target.hurt(new DamageSource(this.damageSources().playerAttack(owner).typeHolder(), this, owner), finalDamage);
                     }
                     penetrationCount++;
                     if (fireAspect > 0) {
@@ -236,7 +287,8 @@ public class TerraswordWaveEntity extends PathfinderMob {
                                 target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
                                 3, 0.3, 0.3, 0.3, 0.1);
                     }
-                    if (penetrationCount >= MAX_PENETRATION) {
+                    // 每次命中后伤害累乘 25% 衰减，衰减至 <=1 时消失（可穿透无限目标）
+                    if ((float) (damage * Math.pow(PENETRATION_DECAY, penetrationCount)) <= MIN_DAMAGE) {
                         if (level instanceof ServerLevel sl) {
                             sl.sendParticles(ParticleTypes.EXPLOSION,
                                     this.getX(), this.getY(), this.getZ(),
@@ -303,13 +355,81 @@ public class TerraswordWaveEntity extends PathfinderMob {
     @Override
     public void aiStep() {
         super.aiStep();
+        // 朝向始终跟随飞行方向：Mob 的 LookControl 每 tick 会把 xRot 归零，这里覆盖回真实俯仰，
+        // 否则 F3+B 的蓝色视线（getViewVector）不会指向前方。
+        Vec3 motion = this.getDeltaMovement();
+        if (motion.lengthSqr() > 1.0E-8) {
+            double horizontal = Math.sqrt(motion.x * motion.x + motion.z * motion.z);
+            this.setYRot((float) (Math.atan2(motion.z, motion.x) * 180.0 / Math.PI) - 90.0F);
+            this.setXRot((float) (-(Math.atan2(motion.y, horizontal) * 180.0 / Math.PI)));
+        }
+        this.yRotO = this.getYRot();
+        this.xRotO = this.getXRot();
         this.yBodyRot = this.getYRot();
+        this.yBodyRotO = this.yBodyRot;
         this.yHeadRot = this.getYRot();
+        this.yHeadRotO = this.yHeadRot;
+
+        if (DEBUG_LOG && !this.level().isClientSide()) {
+            Vec3 moveDir = this.getMoveDirection(1.0f);
+            double deviation = travelDir == null ? 0.0
+                    : Math.toDegrees(Math.acos(Math.max(-1.0, Math.min(1.0, moveDir.dot(travelDir)))));
+            // 只在生成首 tick 或飞行方向偏离初速方向时输出，正常飞行时保持安静
+            if (lifeTicks <= 1 || deviation > DIRECTION_DEVIATION_WARN_DEG) {
+                LOGGER.info("[TerraswordWave] id={} tick={} deviation={}° delta={} moveDir={} travelDir={} view={} yRot={} xRot={} roll={} heightAxis={}",
+                        this.getId(), lifeTicks, fmt(deviation), fmt(motion), fmt(moveDir),
+                        travelDir == null ? "null" : fmt(travelDir), fmt(this.getViewVector(1.0f)),
+                        fmt(this.getYRot()), fmt(this.getXRot()), fmt(this.getRollAngle()), fmt(this.getWaveHeightAxis(moveDir)));
+            }
+        }
+    }
+
+    private static String fmt(Vec3 vec) {
+        return String.format("(%.3f, %.3f, %.3f)", vec.x, vec.y, vec.z);
+    }
+
+    private static String fmt(float value) {
+        return String.format("%.2f", value);
+    }
+
+    private static String fmt(double value) {
+        return String.format("%.3f", value);
     }
 
     @Override
     public void travel(Vec3 input) {
-        this.move(MoverType.SELF, this.getDeltaMovement());
+        // LivingEntity.aiStep already interpolates client positions from server packets.
+        // Moving again here overshoots that target and causes repeated network corrections.
+        if (this.level().isClientSide()) {
+            return;
+        }
+        // 沿初速度方向直线飞行，不做方块碰撞解算：否则 move() 会把被挡住的坐标轴速度清零，
+        // 导致飞行方向（以及刀光朝向、视线）在地形边缘突然改变。
+        Vec3 delta = this.getDeltaMovement();
+        if (delta.lengthSqr() < 1.0E-12) {
+            return;
+        }
+        Vec3 from = this.position();
+        Vec3 to = from.add(delta);
+        if (blockHitLifeTick < 0 && !this.getPersistentData().getBoolean("pierce_blocks") && hitsSolidAlong(from, to)) {
+            // Keep moving for half a second after the first solid-block contact.
+            blockHitLifeTick = lifeTicks;
+        }
+        this.setPos(to.x, to.y, to.z);
+    }
+
+    /** 沿移动线段采样，判断是否撞上实心方块（避免高速穿透）。 */
+    private boolean hitsSolidAlong(Vec3 from, Vec3 to) {
+        double distance = from.distanceTo(to);
+        int steps = Math.max(1, (int) Math.ceil(distance / 0.5));
+        for (int i = 1; i <= steps; i++) {
+            Vec3 point = from.lerp(to, (double) i / steps);
+            BlockPos pos = BlockPos.containing(point);
+            if (!this.level().getBlockState(pos).getCollisionShape(this.level(), pos).isEmpty()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void init() {
@@ -333,6 +453,51 @@ public class TerraswordWaveEntity extends PathfinderMob {
         this.ownerUUID = player.getUUID();
     }
 
+    /** 当前飞行方向：优先取速度方向，速度为 0 时退化为实体朝向。 */
+    public Vec3 getMoveDirection(float partialTick) {
+        Vec3 motion = this.getDeltaMovement();
+        if (motion.lengthSqr() > 1.0E-8) {
+            return motion.normalize();
+        }
+        Vec3 look = this.getViewVector(partialTick);
+        return look.lengthSqr() > 1.0E-8 ? look.normalize() : new Vec3(0, 0, 1);
+    }
+
+    /** 刀光的宽度轴：垂直于飞行方向。 */
+    public static Vec3 getWaveSide(Vec3 moveDir) {
+        Vec3 side = moveDir.cross(new Vec3(0, 1, 0));
+        if (side.lengthSqr() < 1.0E-7) {
+            side = new Vec3(1, 0, 0);
+        }
+        return side.normalize();
+    }
+
+    /** 刀光的高度轴：垂直于飞行方向，并绕飞行方向按 {@link #getRollAngle()} 翻滚。 */
+    public Vec3 getWaveHeightAxis(Vec3 moveDir) {
+        Vec3 side = getWaveSide(moveDir);
+        Vec3 vertical = side.cross(moveDir);
+        if (vertical.lengthSqr() < 1.0E-7) {
+            vertical = new Vec3(0, 1, 0);
+        } else {
+            vertical = vertical.normalize();
+        }
+        return rotateAroundAxis(vertical, moveDir, Math.toRadians(this.getRollAngle()));
+    }
+
+    /** Rodrigues 轴角旋转：把向量绕任意单位轴旋转指定弧度。 */
+    public static Vec3 rotateAroundAxis(Vec3 v, Vec3 axis, double radians) {
+        double sin = Math.sin(radians);
+        double cos = Math.cos(radians);
+        double k = 1.0 - cos;
+        double a = axis.x;
+        double b = axis.y;
+        double c = axis.z;
+        double x = v.x * (a * a * k + cos) + v.y * (a * b * k - c * sin) + v.z * (a * c * k + b * sin);
+        double y = v.x * (b * a * k + c * sin) + v.y * (b * b * k + cos) + v.z * (b * c * k - a * sin);
+        double z = v.x * (c * a * k - b * sin) + v.y * (c * b * k + a * sin) + v.z * (c * c * k + cos);
+        return new Vec3(x, y, z);
+    }
+
     /**
      * 判断点是否落在朝向碰撞盒（OBB）内：高度轴垂直于移动方向。
      */
@@ -351,7 +516,8 @@ public class TerraswordWaveEntity extends PathfinderMob {
                                         int count, double spread, double verticalSpread) {
         for (int i = 0; i < count; i++) {
             double u = (serverLevel.random.nextDouble() - 0.5) * 2.0;
-            double v = (serverLevel.random.nextDouble() - 0.5) * 2.0;
+            // Include both ends so every burst spans the full five-block long axis.
+            double v = count > 1 ? -1.0 + 2.0 * i / (count - 1) : 0.0;
             double w = (serverLevel.random.nextDouble() - 0.5) * 2.0;
             Vec3 offset = side.scale(u * spread)
                     .add(heightAxis.scale(v * verticalSpread))
