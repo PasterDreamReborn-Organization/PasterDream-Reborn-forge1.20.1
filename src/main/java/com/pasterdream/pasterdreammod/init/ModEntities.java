@@ -71,7 +71,8 @@ public class ModEntities {
             EntityType.Builder.<TerraswordWaveEntity>of(TerraswordWaveEntity::new, MobCategory.MISC)
                     .setShouldReceiveVelocityUpdates(true)
                     .setTrackingRange(64)
-                    .setUpdateInterval(3)
+                    // The wave is a short-lived, fast-moving visual entity; three-tick updates are visibly jerky.
+                    .setUpdateInterval(1)
                     .setCustomClientFactory(TerraswordWaveEntity::new)
                     .fireImmune()
                     .sized(0.1f, 0.1f));

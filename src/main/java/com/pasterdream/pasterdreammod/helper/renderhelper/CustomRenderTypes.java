@@ -32,6 +32,27 @@ public class CustomRenderTypes
                     .createCompositeState(false)
     );
 
+    /**
+     * 泰拉剑气弧形刀光：纯色（POSITION_COLOR）平面网格，加法混合、禁剔除、不写深度。
+     * 与 {@link #MELT_DREAM_TRAIL} 同构，仅命名区分用途。
+     */
+    public static final RenderType SWORD_WAVE_ARC = RenderType.create(
+            "sword_wave_arc",
+            DefaultVertexFormat.POSITION_COLOR,
+            VertexFormat.Mode.QUADS,
+            256,
+            false,
+            false,
+            RenderType.CompositeState.builder()
+                    .setShaderState(RenderStateShard.POSITION_COLOR_SHADER)
+                    .setTransparencyState(RenderStateShard.LIGHTNING_TRANSPARENCY)
+                    .setOutputState(RenderStateShard.MAIN_TARGET)
+                    .setDepthTestState(RenderStateShard.LEQUAL_DEPTH_TEST)
+                    .setCullState(RenderStateShard.NO_CULL)
+                    .setWriteMaskState(RenderStateShard.COLOR_WRITE)
+                    .createCompositeState(false)
+    );
+
     private static RenderType createEntityTranslucent(String name, boolean depthWrite)
     {
         return RenderType.create(

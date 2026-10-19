@@ -19,7 +19,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -44,7 +43,8 @@ public class TerraBladeItem extends SwordItem {
     private static final double ENERGY_COST = 0.5; // 技能能量消耗
     private static final double ENERGY_COST_WITH_CHARM = 0.4; // 装备泰拉浮岛饰品时的能量消耗
     private static final int SKILL_COOLDOWN_TICKS = 5; // 技能冷却时间(tick)
-    private static final double WAVE_SPEED = 2.0; // 剑气波速度
+    private static final double WAVE_SPEED = 3.5; // 剑气波初速度（实体随后线性减速，约1.6秒停止）
+    private static final float WAVE_ROLL_MAX_DEG = 180.0f; // 刀光绕飞行方向的随机翻滚上限（度）
     private static final double SHARPNESS_DAMAGE_BONUS = 0.5; // 锋利附魔每级伤害加成
     private static final double CHARM_DAMAGE_MULTIPLIER = 1.3; // 泰拉浮岛饰品伤害倍率
     private static final double WAVE_SPAWN_Y_OFFSET = 1.5; // 剑气波生成Y偏移
@@ -124,14 +124,16 @@ public class TerraBladeItem extends SwordItem {
         double y = player.getY() + WAVE_SPAWN_Y_OFFSET;
         double z = player.getZ() + look.z;
 
-        TerraswordWaveEntity wave = ModEntities.TERRASWORD_WAVE.get().spawn(
-                (ServerLevel) level,
-                BlockPos.containing(x, y, z),
-                MobSpawnType.MOB_SUMMONED);
+        TerraswordWaveEntity wave = ModEntities.TERRASWORD_WAVE.get().create(level);
         if (wave != null) {
             wave.setOwner(player);
-            wave.setYRot(player.getYRot());
-            wave.setXRot(player.getXRot());
+            // Initialize body, head and interpolation state before the spawn packet is built.
+            wave.moveTo(x, y, z, player.getYHeadRot(), player.getXRot());
+            wave.yRotO = wave.getYRot();
+            wave.xRotO = wave.getXRot();
+            wave.yHeadRot = wave.yHeadRotO = wave.getYRot();
+            wave.yBodyRot = wave.yBodyRotO = wave.getYRot();
+            wave.setRollAngle(level.random.nextFloat() * WAVE_ROLL_MAX_DEG);
             wave.setDeltaMovement(look.x * WAVE_SPEED, look.y * WAVE_SPEED, look.z * WAVE_SPEED);
 
             double atk = player.getAttributeValue(Attributes.ATTACK_DAMAGE)
@@ -149,6 +151,9 @@ public class TerraBladeItem extends SwordItem {
             waveData.putInt("fire_aspect", stack.getEnchantmentLevel(Enchantments.FIRE_ASPECT));
             waveData.putInt("knockback", stack.getEnchantmentLevel(Enchantments.KNOCKBACK));
             waveData.putBoolean("ignore_iframe", hasCharm);
+            waveData.putBoolean("pierce_blocks", hasCharm);
+
+            level.addFreshEntity(wave);
 
             level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()),
                     ModSounds.SWORD_WAVE.get(), SoundSource.PLAYERS, SOUND_VOLUME, SOUND_PITCH);

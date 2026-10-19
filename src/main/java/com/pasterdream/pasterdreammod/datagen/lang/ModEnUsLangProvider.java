@@ -1517,8 +1517,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         // Terra Floating Island
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "Terra Floating Island");
         add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9Terra Sword wave cost reduced to §c0.4");
-        add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9Terra Sword wave damage +30%");
+        add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9Terra Sword damage +30% (including waves)");
         add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9Terra Sword wave ignores invulnerability frames");
+        add("tooltip.pasterdream.terra_floating_island.desc4", "§7▪ §9Terra Sword waves pass through blocks");
 
         // Strawberry Heart
         add(ModItems.STRAWBERRY_HEART.get(), "Strawberry Heart");
