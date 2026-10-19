@@ -521,6 +521,14 @@ public class Config
                             "minecraft:arrow", "minecraft:spectral_arrow",
                             "minecraft:snowball", "minecraft:egg", "minecraft:trident",
                             "minecraft:llama_spit"),
+                     obj -> obj instanceof String);
+
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> IRIDESCENT_FAIRY_JADE_PROJECTILE_BLACKLIST = BUILDER
+            .comment("虹彩仙玉不触发额外弹幕的投射物实体类型 ID 黑名单（格式：modid:entity_id），"
+                    + "\n用于屏蔽无法作为弓/弩主弹幕处理的投射物")
+            .defineListAllowEmpty("iridescentFairyJadeProjectileBlacklist",
+                    List.of("minecraft:trident", "pasterdream:wind_thunder_spear",
+                            "pasterdream:tide_sword_projectile"),
                     obj -> obj instanceof String);
 
     // === 重生之梦水晶 ===
@@ -679,11 +687,18 @@ public class Config
 
     //虹彩仙玉
     public static List<? extends String> iridescentFairyJadeProjectileWhitelist;
+    public static List<? extends String> iridescentFairyJadeProjectileBlacklist;
     private static List<EntityType<?>> cachedIridescentFairyJadeProjectileTypes = List.of();
+    private static Set<EntityType<?>> cachedIridescentFairyJadeProjectileBlacklistTypes = Set.of();
 
     /** 虹彩仙玉随机弹幕白名单缓存（解析后的投射物 EntityType 列表） */
     public static List<EntityType<?>> getIridescentFairyJadeProjectileTypes() {
         return cachedIridescentFairyJadeProjectileTypes;
+    }
+
+    /** 查询指定实体类型是否在虹彩仙玉额外弹幕触发黑名单中。 */
+    public static boolean isIridescentFairyJadeProjectileBlacklisted(EntityType<?> type) {
+        return cachedIridescentFairyJadeProjectileBlacklistTypes.contains(type);
     }
 
     /** 卡莱调料瓶随机增益缓存（解析后的 MobEffect 列表） */
@@ -895,6 +910,24 @@ public class Config
         }
         cachedIridescentFairyJadeProjectileTypes = List.copyOf(list);
         LOGGER.info("iridescentFairyJadeProjectileWhitelist: loaded {} entity types", list.size());
+    }
+
+    private static void rebuildIridescentFairyJadeProjectileBlacklistCache() {
+        Set<EntityType<?>> set = new HashSet<>();
+        for (String idStr : iridescentFairyJadeProjectileBlacklist) {
+            ResourceLocation rl = ResourceLocation.tryParse(idStr);
+            if (rl == null) {
+                LOGGER.warn("iridescentFairyJadeProjectileBlacklist: invalid resource location '{}', skipping", idStr);
+                continue;
+            }
+            if (!ForgeRegistries.ENTITY_TYPES.containsKey(rl)) {
+                LOGGER.warn("iridescentFairyJadeProjectileBlacklist: unknown entity type '{}', skipping", idStr);
+                continue;
+            }
+            set.add(ForgeRegistries.ENTITY_TYPES.getValue(rl));
+        }
+        cachedIridescentFairyJadeProjectileBlacklistTypes = Set.copyOf(set);
+        LOGGER.info("iridescentFairyJadeProjectileBlacklist: loaded {} entity types", set.size());
     }
 
     private static void rebuildSinInstakillCache() {
@@ -1160,6 +1193,8 @@ public class Config
 
         iridescentFairyJadeProjectileWhitelist = IRIDESCENT_FAIRY_JADE_PROJECTILE_WHITELIST.get();
         rebuildIridescentFairyJadeProjectileCache();
+        iridescentFairyJadeProjectileBlacklist = IRIDESCENT_FAIRY_JADE_PROJECTILE_BLACKLIST.get();
+        rebuildIridescentFairyJadeProjectileBlacklistCache();
 
         rebirthDreamCrystalLoot = REBIRTH_DREAM_CRYSTAL_LOOT.get();
         rebuildRebirthDreamCrystalLootCache();
