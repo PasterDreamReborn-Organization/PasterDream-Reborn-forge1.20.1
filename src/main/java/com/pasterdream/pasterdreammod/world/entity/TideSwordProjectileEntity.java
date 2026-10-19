@@ -155,6 +155,8 @@ public class TideSwordProjectileEntity extends AbstractArrow {
         SoundEvent sound = SoundEvents.TRIDENT_HIT;
         if (hit.hurt(source, damage)) {
             if (hit.getType() == EntityType.ENDERMAN) {
+                // 闪避成功也会返回 true，提前退出前仍需减速，供忠诚正常回收。
+                this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01, -0.1, -0.01));
                 return;
             }
             if (hit instanceof LivingEntity living) {

@@ -90,7 +90,8 @@ public class BeihaiRuoTideSwordItem extends SwordItem {
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
         super.inventoryTick(stack, level, entity, slot, selected);
-        if (selected && entity instanceof LivingEntity living && !level.isClientSide()) {
+        if (selected && entity instanceof LivingEntity living && !level.isClientSide()
+                && living.getMainHandItem().is(this)) {
             living.addEffect(new MobEffectInstance(MobEffects.CONDUIT_POWER, 20, 1, false, false));
         }
     }

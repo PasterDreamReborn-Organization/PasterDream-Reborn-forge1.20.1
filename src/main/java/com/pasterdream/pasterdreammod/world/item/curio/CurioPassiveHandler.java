@@ -17,7 +17,6 @@ import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPotionBottle;
-import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -644,12 +643,10 @@ public class CurioPassiveHandler {
                 .orElse(false);
         if (!hasJade) return;
 
-        // 只对弓/弩射出的箭矢或烟花触发（三叉戟、雷矛等其它 AbstractArrow 不触发）
-        boolean bowOrCrossbow = (projectile instanceof AbstractArrow arrow
-                && !(arrow instanceof ThrownTrident)
-                && !(arrow instanceof WindThunderSpearEntity))
-                || projectile instanceof FireworkRocketEntity;
+        // 只对弓/弩射出的箭矢或烟花触发；不能作为弓/弩主弹幕处理的实体由配置黑名单控制
+        boolean bowOrCrossbow = projectile instanceof AbstractArrow || projectile instanceof FireworkRocketEntity;
         if (!bowOrCrossbow) return;
+        if (Config.isIridescentFairyJadeProjectileBlacklisted(projectile.getType())) return;
 
         // multishot 在同一 tick 生成多支箭，去重为一次
         long gameTime = player.level().getGameTime();
