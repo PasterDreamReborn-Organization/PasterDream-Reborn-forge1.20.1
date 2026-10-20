@@ -1,0 +1,18 @@
+{
+  "sortnum": 1,
+  "name": "pasterdream.seniors_dream.entry.windwreathed_thunder_spear",
+  "icon": "pasterdream:windwreathed_thunder_spear",
+  "category": "pasterdream:wind_journey/items",
+  "advancement": "pasterdream:story/enter_wind_journey",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:windwreathed_thunder_spear",
+      "text": "pasterdream.seniors_dream.entry.windwreathed_thunder_spear.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.windwreathed_thunder_spear.page1"
+    }
+  ]
+}

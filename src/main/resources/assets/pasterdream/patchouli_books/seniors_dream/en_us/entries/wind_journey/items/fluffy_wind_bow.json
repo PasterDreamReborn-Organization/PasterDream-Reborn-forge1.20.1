@@ -1,0 +1,18 @@
+{
+  "sortnum": 2,
+  "name": "pasterdream.seniors_dream.entry.fluffy_wind_bow",
+  "icon": "pasterdream:fluffy_wind_bow",
+  "category": "pasterdream:wind_journey/items",
+  "advancement": "pasterdream:story/enter_wind_journey",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:fluffy_wind_bow",
+      "text": "pasterdream.seniors_dream.entry.fluffy_wind_bow.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.fluffy_wind_bow.page1"
+    }
+  ]
+}
