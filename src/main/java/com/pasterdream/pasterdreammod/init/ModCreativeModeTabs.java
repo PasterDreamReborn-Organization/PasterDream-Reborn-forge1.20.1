@@ -887,6 +887,7 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("逐梦列车"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("灵魂石的现世"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("灵魂石的现世（假）"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使建家记"));
 
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("探求秘辛"));
 
