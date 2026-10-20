@@ -36,7 +36,7 @@ import java.util.Objects;
  *
  * 战技 · 融骸斩击：冷却就绪时，近战命中以命中点为中心 3 格范围（横扫之刃每级 +1，上限 6），
  *                 对其中敌人造成攻击力 50% 的熔岩伤害，冷却 2s；
- *                 爆炸伤害受亡灵杀手/节肢杀手按生物类型加成。
+ *                 爆炸伤害计入锋利加成，并受亡灵杀手/节肢杀手按生物类型加成。
  * 被动 · 引燃：命中点燃目标 4 秒，已燃烧目标延长 3 秒（爆炸波及的目标同样生效）；
  *              每级火焰附加额外增加 2 秒燃烧时长。
  */
@@ -50,6 +50,7 @@ public class InfernoSwordItem extends SwordItem {
     private static final int PASSIVE_FIRE_TICKS = 60; // 被动引燃延长 tick 数(3s)
     private static final int PASSIVE_IGNITE_SECONDS = 4; // 被动引燃秒数
     private static final int FIRE_ASPECT_BONUS_SECONDS = 2; // 每级火焰附加增加的被动燃烧时长(秒)
+    private static final float SHARPNESS_DAMAGE_BONUS = 0.5f; // 锋利每级攻击力加成
     private static final float SMITE_BANE_DAMAGE = 2.5f; // 亡灵杀手/节肢杀手每级对爆炸的额外伤害
     private static final float HIT_SOUND_VOLUME = 1.5f; // 命中音效音量
     private static final float DRAGON_SOUND_VOLUME = 1.0f; // 龙息爆炸音效音量
@@ -92,7 +93,8 @@ public class InfernoSwordItem extends SwordItem {
         int fireAspect = stack.getEnchantmentLevel(Enchantments.FIRE_ASPECT);
         int smite = stack.getEnchantmentLevel(Enchantments.SMITE);
         int bane = stack.getEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS);
-        float atk = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        float atk = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE)
+                + stack.getEnchantmentLevel(Enchantments.SHARPNESS) * SHARPNESS_DAMAGE_BONUS;
         float damage = atk * AOE_DAMAGE_RATIO * SkillCooldownHelper.getSkillDamageMultiplier(player);
         Holder<DamageType> lavaHolder = level.registryAccess()
                 .registryOrThrow(Registries.DAMAGE_TYPE)
