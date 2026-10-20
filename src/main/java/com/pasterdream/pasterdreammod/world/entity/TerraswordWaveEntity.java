@@ -418,6 +418,14 @@ public class TerraswordWaveEntity extends PathfinderMob {
         this.setPos(to.x, to.y, to.z);
     }
 
+    @Override
+    public void lerpTo(double x, double y, double z, float yRot, float xRot, int lerpSteps, boolean teleport) {
+        // 高速弹射物只用 1 tick 插值：既保留逐帧平滑移动，又不会像默认的 3 tick 插值那样
+        // 让刀光明显落后于服务端的命中判定与本 tick 生成的拖尾粒子。不要直接吸附坐标，
+        // 那样 xo 与当前位置相同，渲染会退化成每 tick 跳一次的卡顿。
+        super.lerpTo(x, y, z, yRot, xRot, 1, teleport);
+    }
+
     /** 沿移动线段采样，判断是否撞上实心方块（避免高速穿透）。 */
     private boolean hitsSolidAlong(Vec3 from, Vec3 to) {
         double distance = from.distanceTo(to);
@@ -518,10 +526,12 @@ public class TerraswordWaveEntity extends PathfinderMob {
             double u = (serverLevel.random.nextDouble() - 0.5) * 2.0;
             // Include both ends so every burst spans the full five-block long axis.
             double v = count > 1 ? -1.0 + 2.0 * i / (count - 1) : 0.0;
-            double w = (serverLevel.random.nextDouble() - 0.5) * 2.0;
+            // 只向飞行方向的反侧散布：particles 在 baseTick 生成（位于上一 tick 的坐标），
+            // 再向后偏移可确保拖尾始终落在刀光后方，而不是穿到刀光前面。
+            double w = serverLevel.random.nextDouble();
             Vec3 offset = side.scale(u * spread)
                     .add(heightAxis.scale(v * verticalSpread))
-                    .add(moveDir.scale(w * spread));
+                    .add(moveDir.scale(-w * spread));
             Vec3 pos = center.add(offset);
             serverLevel.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(),
                     pos.x, pos.y, pos.z, 1, 0, 0, 0, PARTICLE_VELOCITY);
