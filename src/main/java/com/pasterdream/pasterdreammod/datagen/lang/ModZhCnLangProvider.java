@@ -762,8 +762,15 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("jei.pasterdream.通用流体储罐", "通用流体储罐");
         add("jei.pasterdream.dyedream_contamination", "染梦侵染");
         add("jei.pasterdream.murakumo_kusanagi.info", "使用草薙击杀 %d 个生物即可进化获得。");
-        add("jei.pasterdream.pulse_wind_runner_crystal.info", "由破风骑士掉落");
-        add("jei.pasterdream.fractured_angel_statue.info", "由破风骑士概率掉落");
+        add("jei.pasterdream.pulse_wind_runner_crystal.info", "由破风骑士掉落。");
+        add("jei.pasterdream.fractured_angel_statue.info", "由破风骑士概率掉落。");
+        add("jei.pasterdream.sword_embryo.info", "携带力量II的玩家从失落剑冢中拔出可获得。\n也许还有其它获取方式......");
+        add("jei.pasterdream.lost_sword_tomb.info", "可在丛林中发现。");
+        add("jei.pasterdream.desert_sword.info", "接取荒漠英雄的三个任务即可获得。");
+        add("jei.pasterdream.chenjingmen_desert_sword.info", "完成荒漠英雄的三个任务，由朔漠大剑升级而来。");
+        add("jei.pasterdream.broken_hero_sword.info", "开启融梦水晶箱有概率获得。");
+        add("jei.pasterdream.snow_vow_head.info", "开启融梦水晶箱有概率获得。\n也可在圣诞树岛开箱获取。");
+        add("jei.pasterdream.kaichu_omamori.info", "与金狐狸交易获得。");
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "帕斯特之梦 | 饮食");
         add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "帕斯特之梦 | 灵药瓶");

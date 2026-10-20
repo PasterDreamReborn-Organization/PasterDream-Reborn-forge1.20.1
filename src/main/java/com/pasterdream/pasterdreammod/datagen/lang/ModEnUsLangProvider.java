@@ -752,8 +752,15 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("jei.pasterdream.通用流体储罐", "Generic Fluid Contianer");
         add("jei.pasterdream.dyedream_contamination", "Dyedream Contamination");
         add("jei.pasterdream.murakumo_kusanagi.info", "Kill %d mobs with Kusanagi to evolve it into Murakumo Kusanagi.");
-        add("jei.pasterdream.pulse_wind_runner_crystal.info", "Dropped by the Wind Knight");
-        add("jei.pasterdream.fractured_angel_statue.info", "Dropped rarely by the Wind Knight");
+        add("jei.pasterdream.pulse_wind_runner_crystal.info", "Dropped by the Wind Knight.");
+        add("jei.pasterdream.fractured_angel_statue.info", "Dropped rarely by the Wind Knight.");
+        add("jei.pasterdream.sword_embryo.info", "Obtained by pulling it out of the Lost Sword Tomb as a player with Strength II.\nPerhaps there are other ways...");
+        add("jei.pasterdream.lost_sword_tomb.info", "Can be found in jungles.");
+        add("jei.pasterdream.desert_sword.info", "Obtained by accepting the Desert Hero's three quests.");
+        add("jei.pasterdream.chenjingmen_desert_sword.info", "Upgraded from the Desert Greatsword after completing the Desert Hero's three quests.");
+        add("jei.pasterdream.broken_hero_sword.info", "Has a chance to be obtained by opening Melt Dream Crystal Chests.");
+        add("jei.pasterdream.snow_vow_head.info", "Has a chance to be obtained by opening Melt Dream Crystal Chests.\nCan also be obtained from chests on the Christmas Tree Island.");
+        add("jei.pasterdream.kaichu_omamori.info", "Obtained by trading with the Golden Fox.");
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "Paster Dream | Food & Drinks");
         add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "Paster Dream | Elixir Bottle");
