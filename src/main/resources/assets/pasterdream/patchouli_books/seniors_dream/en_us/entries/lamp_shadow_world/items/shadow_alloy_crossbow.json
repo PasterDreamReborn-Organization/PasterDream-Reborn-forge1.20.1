@@ -1,0 +1,18 @@
+{
+  "sortnum": 9,
+  "name": "pasterdream.seniors_dream.entry.shadow_alloy_crossbow",
+  "icon": "pasterdream:shadow_alloy_crossbow",
+  "category": "pasterdream:lamp_shadow_world/items",
+  "advancement": "pasterdream:story/enter_lamp_shadow_world",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:shadow_alloy_crossbow",
+      "text": "pasterdream.seniors_dream.entry.shadow_alloy_crossbow.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.shadow_alloy_crossbow.page1"
+    }
+  ]
+}

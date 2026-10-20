@@ -1,0 +1,17 @@
+{
+  "sortnum": 16,
+  "name": "pasterdream.seniors_dream.entry.melt_dream_bow",
+  "icon": "pasterdream:melt_dream_bow",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:melt_dream_bow",
+      "text": "pasterdream.seniors_dream.entry.melt_dream_bow.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.melt_dream_bow.page1"
+    }
+  ]
+}

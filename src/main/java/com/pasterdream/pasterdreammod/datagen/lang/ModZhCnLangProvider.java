@@ -2492,6 +2492,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.roots_pale_boneneedle.page1", "我突然有一个非常天才的想法，古城的幽匿回响有向监守者标记目标大致方位的功能，而末影珍珠不仅可以强化标记的精准度，还可以在把我送出梦境时携带上末影的传送功能，进而让骨针在使用后还可以再次利用，而不是直接报废，同时还能直接把我传送到标记点。如果把它们用在骨针上，应该可以在使用骨针出梦后传送到目标地点。");
         add("pasterdream.seniors_dream.entry.roots_pale_boneneedle.page2", "正好我有之前冒死搜寻剩下的回响碎片和没用完的末影珍珠各一个，和骨针放在一起合成后的产物完美符合我的预期，嗯，基于标记回溯点这个功能，就叫它溯源苍白骨针吧。$(br)嘿嘿，本小姐真是个超级天才。$(br)By 绫苒");
 
+        // 融梦弓
+        add("pasterdream.seniors_dream.entry.melt_dream_bow", "融梦弓");
+        add("pasterdream.seniors_dream.entry.melt_dream_bow.page0", "在梦境的探索中，你获得了许多新装备，它们让你的战斗更加得心应手。但是你用于远程攻击的手段基本上还是古旧的弓和弩，跟不上近战武器的升级迭代。那么，是时候利用梦境的力量来迭代你的远程武器了。$(br)利用染梦合金锭和融梦水晶，你制作出了可以利用融梦能量的弓。它发射箭矢时会吸取你的融梦能量，以魔法加强这一箭的伤害。同时，你可以为它附魔抢夺来获得更多战利品。");
+        add("pasterdream.seniors_dream.entry.melt_dream_bow.page1", "所有梦境弓弩的原理都是用融梦能量来加强你的箭矢，因此就算你的融梦能量枯竭，你也可以用它们射出箭矢——效果相当于普通的弓弩。$(br)——以梦凝箭，贯穿天穹。");
+
         // 染梦教堂
         add("pasterdream.seniors_dream.entry.dyedream_church", "染梦教堂");
         add("pasterdream.seniors_dream.entry.dyedream_church.page1", "当你在染梦世界探索时，有可能会发现这种漂浮在天空中的神秘教堂，你可以在这个教堂内发现一个融梦水晶箱，讲经台上还有来自寻梦者前辈们的随记，或许你应该仔细检查一下教堂内部的边边角角，说不定能有意外之喜……");
@@ -2615,6 +2620,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.bright_butterfly_curio.page0", "在过去，第一位进入灯影的寻梦者借助光明飞蝶掌控暗影的力量，最终成功离开了灯影之下。在掌控了光明的力量后，你或许可以尝试用白厄水晶改造一下夜明蝶……$(br)利用白厄水晶复现了光明飞蝶，并将其佩戴后，你的眼中常驻光明，眼前的黑暗消散殆尽。任何尝试夺走你眼前光明的手段都将失效。");
         add("pasterdream.seniors_dream.entry.bright_butterfly_curio.page1", "——眼中所见皆为光明之时，黑暗自然无处遁形。");
 
+        // 暗影合金弩
+        add("pasterdream.seniors_dream.entry.shadow_alloy_crossbow", "暗影合金弩");
+        add("pasterdream.seniors_dream.entry.shadow_alloy_crossbow.page0", "利用击败那双黑暗之手后获得的阴影，你似乎可以将黑金属进一步熔炼成一种适合用于制作战斗装备的合金……$(br)利用这种合金在工作台上强化弩，似乎可以制作出一种利用这片黑暗梦境力量的武器。它本身就携带着能强化射矢威力的魔法，当然，你可以在此基础上进一步叠加力量附魔。这把弩会为自己的受害者附加随机一种负面效果，另外还会让受害者们短时间内更容易被伤害。");
+        add("pasterdream.seniors_dream.entry.shadow_alloy_crossbow.page1", "——通过我的飞矢，黑暗弱化了敌人，如同之前暗影的受害者那样。");
+
         // 灯影之下-结构
         add("pasterdream.seniors_dream.entry.shadow_foundry", "阴影铸造厂");
         add("pasterdream.seniors_dream.entry.shadow_foundry.page0", "过去的寻梦者在这片黑暗之地摸爬滚打，留下了许多遗存，其中，这座废墟是琴雨梦和夜岚的有关锈蚀金属的研究所遗留下来的。$(br)在这里，你能找到一份暗影高炉的蓝图以及它的残骸。你或许可以尝试一下在其他地方重新搭建这台机器，并用它尝试复现琴雨梦的研究成果……");
@@ -2646,6 +2656,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.wind_runner_jelly", "风行者果冻");
         add("pasterdream.seniors_dream.entry.wind_runner_jelly.page0", "一种独属于风之旅途的果冻，而且它居然可以合成制作出来？！$(br)如果给水母果冻添加一点甜味，加上岛屿凝结的水晶和风，再配合一点植物的提取物一起研磨的话……");
         add("pasterdream.seniors_dream.entry.wind_runner_jelly.page1", "风行者果冻可以让你在即使不装备鞘翅类装备的情况下仍然启用鞘翅飞行，不过有些翅膀的加速功能和创造飞行功能还是做不到的啦。$(br)——等等，不能飞，那你是怎么到这个梦境来的？");
+
+        add("pasterdream.seniors_dream.entry.windwreathed_thunder_spear", "萦风雷矛");
+        add("pasterdream.seniors_dream.entry.windwreathed_thunder_spear.page0", "它是由来自风的世界的五把萦绕着风的工具所精铸而成的，驾驭着狂风惊雷的大杀器。虽然你可能对它最开始的表现不是很满意，但是如果愿意为它提供强力的附魔，它将会向你展示无与伦比的威力。$(br)它有两种战技，站立时，它会带着你冲破云霄，向敌人突进，附上激流附魔后，它可以突进更远，造成更高的伤害，但是激流附魔越高级，你消耗的融梦能量就越多。蹲下时，你可以将它投掷出去，贯穿敌人，它会向周围的敌人释放出连锁雷电来让它们灰飞烟灭。");
+        add("pasterdream.seniors_dream.entry.windwreathed_thunder_spear.page1", "——AAA风旅烤串批发商");
+
+        add("pasterdream.seniors_dream.entry.fluffy_wind_bow", "萦风弓");
+        add("pasterdream.seniors_dream.entry.fluffy_wind_bow.page0", "萦风弓是一种利用梦境力量的弓箭变种，它需要你用萦风合金和从破风骑士手中获得的脉冲风行者水晶制作。$(br)这把弓借由风之梦境的力量，让狂风托举着你的箭，让它永不下坠，因此，这把弓非常适合远程狙杀目标。它还会让受害者短暂漂浮，方便你进行第二次狙击。它可以附魔引雷，用雷电惩戒它的箭矢所命中的目标。");
+        add("pasterdream.seniors_dream.entry.fluffy_wind_bow.page1", "——我是那即将迫近的风暴！");
 
         add("pasterdream.seniors_dream.entry.break_wind_curtain", "破风幕帐");
         add("pasterdream.seniors_dream.entry.break_wind_curtain.page0", "在云层飞行的时候，你会发现这种青绿色的一层“膜”。不用担心，撞上它也不会受到什么伤害，不过确实可以“感受到动能”。破风幕帐会多给予你一份飞行的能量，给予短暂的加速效果，如果能多穿过几个，飞跃云层并不是什么难事。$(br)当然，这种好东西可以用吸收了梦境力量和风的力量的一些物品来制作。");
