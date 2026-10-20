@@ -26,8 +26,7 @@ public class TerraswordWaveRenderer extends EntityRenderer<TerraswordWaveEntity>
 
     private static final int SEGMENTS = 20;               // 中心线分段数
     private static final double ARC_HALF_HEIGHT = 2.5;    // 5 格长轴的一半
-    private static final double FORWARD_BULGE = 1.0;      // 弧面在飞行方向的鼓起量
-    private static final double FORWARD_OFFSET = 2.5;    // 刀光前移，避免埋入粒子拖尾
+    private static final double FORWARD_BULGE = 1.0;     // 弧面在飞行方向的鼓起量（连同厚度仍位于碰撞盒内）
     private static final double MAX_HALF_THICKNESS = 0.5; // 刀光最厚处半厚
     private static final double[] THICKNESS_OFFSETS = {-1.0, -0.5, 0.0, 0.5, 1.0}; // 厚度方向采样列
     private static final float[] EDGE_COLOR = {0.25f, 0.85f, 0.4f}; // 边缘：泰拉绿
@@ -70,7 +69,7 @@ public class TerraswordWaveRenderer extends EntityRenderer<TerraswordWaveEntity>
 
             // The blade plane contains the flight direction, rather than facing it.
             Vec3 centre = heightAxis.scale(t * ARC_HALF_HEIGHT)
-                    .add(moveDir.scale(FORWARD_OFFSET + FORWARD_BULGE * (1.0 - t * t)));
+                    .add(moveDir.scale(FORWARD_BULGE * (1.0 - t * t)));
 
             // 面内切线 (x=飞行轴分量, y=高度轴分量) 旋转 90° 得到面内法线，用于铺厚度
             double tangentX = -2.0 * FORWARD_BULGE * t;
