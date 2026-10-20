@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.world.item.TerraBladeItem;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -34,6 +35,19 @@ public class TerraFloatingIslandItem extends Item implements ICurioItem {
         list.add(Component.translatable("tooltip.pasterdream.terra_floating_island.desc2"));
         list.add(Component.translatable("tooltip.pasterdream.terra_floating_island.desc3"));
         list.add(Component.translatable("tooltip.pasterdream.terra_floating_island.desc4"));
+    }
+
+    @SubscribeEvent
+    public static void onAttackEntity(AttackEntityEvent event) {
+        Player player = event.getEntity();
+        if (player.level().isClientSide()
+                || !(player.getMainHandItem().getItem() instanceof TerraBladeItem)
+                || !CuriosApi.getCuriosInventory(player)
+                        .map(handler -> handler.findFirstCurio(ModItems.TERRA_FLOATING_ISLAND.get()).isPresent())
+                        .orElse(false)) {
+            return;
+        }
+        event.getTarget().invulnerableTime = 0;
     }
 
     @SubscribeEvent

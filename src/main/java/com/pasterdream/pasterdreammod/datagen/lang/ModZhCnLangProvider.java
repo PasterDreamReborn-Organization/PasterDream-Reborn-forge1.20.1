@@ -1709,7 +1709,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.TERRA_FLOATING_ISLAND.get(), "泰拉浮岛模型");
         add("tooltip.pasterdream.terra_floating_island.desc1", "§7▪ §9泰拉剑气消耗减少至 §c0.4§9");
         add("tooltip.pasterdream.terra_floating_island.desc2", "§7▪ §9泰拉剑伤害 +30%（包含剑气）");
-        add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9泰拉剑气攻击无视无敌帧");
+        add("tooltip.pasterdream.terra_floating_island.desc3", "§7▪ §9泰拉剑近战攻击与剑气无视无敌帧");
         add("tooltip.pasterdream.terra_floating_island.desc4", "§7▪ §9泰拉剑气可穿透方块");
 
         add("message.pasterdream.lost_sword_tomb.lack_strength", "你的力气不足以拔出这柄剑");
