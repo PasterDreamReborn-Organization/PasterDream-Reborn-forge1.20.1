@@ -46,7 +46,9 @@ public class ModStructureConfig
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_crystal_ball", "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 1, 1, false, "rigid", "minecraft:empty", 1, 24, 12, 62594864,  11, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:dyedream_wishing_tree",         "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 48, 24, 15873492, 5, "dyedream_structures"));
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:fluffy_wind_church",      "pasterdream:dyedream_world_biome", "surface_structures", "none", 64, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 8, 82985163,    8, "dyedream_structures"));
-        STRUCTURES.add(new StructureGenerationConfig("pasterdream:moon_house", "pasterdream:dyedream_world_snowy_biome", "surface_structures", "none", 128, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 32, 8, 45968763,    1, "dyedream_structures"));
+        // 月亮小屋为独立结构集（不并入 dyedream_structures），避免被共享集的高频网格带密；
+        // spacing=256 / separation=128，仅在雪地群系内约每 256×256 区块一座。
+        STRUCTURES.add(new StructureGenerationConfig("pasterdream:moon_house", "pasterdream:dyedream_world_snowy_biome", "surface_structures", "none", 128, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 256, 128, 45968763, 1));
 
         // 地表结构
         STRUCTURES.add(new StructureGenerationConfig("pasterdream:garden_decryption_misty_dreaming_lotus", "pasterdream:dyedream_world_biome", "surface_structures", "beard_box", 0, "WORLD_SURFACE_WG", 64, 1, false, "rigid", "minecraft:empty", 1, 26, 20, 93746251, 14, "dyedream_structures"));
