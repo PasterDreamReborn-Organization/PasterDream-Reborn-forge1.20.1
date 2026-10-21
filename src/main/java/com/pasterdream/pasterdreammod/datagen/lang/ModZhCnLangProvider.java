@@ -2941,9 +2941,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.desert_cottage", "沙漠小屋");
         add("structure.pasterdream.dyedream_church_0", "染梦教堂");
         add("structure.pasterdream.dyedream_church_1", "染梦教堂");
-        add("structure.pasterdream.dyedream_church_2", "染梦教堂");
-        add("structure.pasterdream.dyedream_church_4", "染梦教堂");
-        add("structure.pasterdream.dyedream_church_6", "染梦教堂");
         add("structure.pasterdream.dyedream_crystal_ball", "染梦水晶球");
         add("structure.pasterdream.garden_decryption_misty_dreaming_lotus", "花园解密·迷梦冶梦莲");
         add("structure.pasterdream.garden_decryption_nippy_edelweiss", "花园解密·凌冽雪绒花");
@@ -2952,6 +2949,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("structure.pasterdream.dyedream_pavilion_plain", "染梦凉亭");
         add("structure.pasterdream.dyedream_pavilion_snowy_plain", "雪原染梦凉亭");
         add("structure.pasterdream.dyedream_worldtree", "染梦世界树");
+        add("structure.pasterdream.moon_house", "月亮小屋");
         add("structure.pasterdream.dyedream_wishing_tree", "染梦祈愿树");
         add("structure.pasterdream.dyedream_floating_temple", "浮空神庙");
         add("structure.pasterdream.dyedream_tavern", "染梦客栈");
