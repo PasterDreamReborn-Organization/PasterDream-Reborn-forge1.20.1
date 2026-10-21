@@ -230,7 +230,7 @@ public class TerraswordWaveEntity extends PathfinderMob {
 
             if (level instanceof ServerLevel serverLevel) {
                 spawnOrientedParticles(serverLevel, center, finalSide, finalHeightAxis, finalMoveDir,
-                        particleCount, particleSpread, particleVerticalSpread);
+                        particleCount, particleSpread, particleVerticalSpread, currentSpeed);
             }
 
             double pasterAtk = data.getDouble("paster_atk");
@@ -518,20 +518,26 @@ public class TerraswordWaveEntity extends PathfinderMob {
     }
 
     /**
-     * 在垂直于移动方向的平面内散布粒子。
+     * 在剑气平面（高度轴 × 飞行方向）内随机散布粒子。
+     * <p>
+     * 剑气速度可达 3.5 格/tick，若每 tick 的粒子只沿高度轴排成一条线，就会退化成
+     * 「| | | |」的断续竖条。这里把高度轴改为分层随机、并沿飞行方向反侧铺满上一 tick 的
+     * 位移长度，使相邻两 tick 的粒子相接成连续的一片，而不是互不相连的竖线。
      */
     private void spawnOrientedParticles(ServerLevel serverLevel, Vec3 center, Vec3 side, Vec3 heightAxis, Vec3 moveDir,
-                                        int count, double spread, double verticalSpread) {
+                                        int count, double spread, double verticalSpread, double trailLength) {
         for (int i = 0; i < count; i++) {
             double u = (serverLevel.random.nextDouble() - 0.5) * 2.0;
-            // Include both ends so every burst spans the full five-block long axis.
-            double v = count > 1 ? -1.0 + 2.0 * i / (count - 1) : 0.0;
+            // 高度轴分层随机：每层取一个随机点，既覆盖整条五格长轴，又不会在同一 tick 内连成竖线。
+            double stratum = (i + serverLevel.random.nextDouble()) / count;
+            double v = stratum * 2.0 - 1.0;
             // 只向飞行方向的反侧散布：particles 在 baseTick 生成（位于上一 tick 的坐标），
             // 再向后偏移可确保拖尾始终落在刀光后方，而不是穿到刀光前面。
+            // 偏移长度取上一 tick 的位移量，才能把相邻两 tick 粒子团之间数格宽的空隙填满。
             double w = serverLevel.random.nextDouble();
             Vec3 offset = side.scale(u * spread)
                     .add(heightAxis.scale(v * verticalSpread))
-                    .add(moveDir.scale(-w * spread));
+                    .add(moveDir.scale(-w * trailLength));
             Vec3 pos = center.add(offset);
             serverLevel.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(),
                     pos.x, pos.y, pos.z, 1, 0, 0, 0, PARTICLE_VELOCITY);
