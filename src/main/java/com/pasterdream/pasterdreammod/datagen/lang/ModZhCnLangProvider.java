@@ -2569,6 +2569,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.fluffy_wind_church.page1", "在染梦世界中探索时，偶尔会在天空中发现这样一种一半被来自另一个梦境的青苔与微风所侵染为翠绿色的教堂。在这座微风萦绕的教堂中能够发现融梦水晶箱。仔细寻找的话，在角落里也能够发现一些遗落的宝箱。");
         add("pasterdream.seniors_dream.entry.fluffy_wind_church.page2", "在教堂正中的讲台之上有一件寻梦者的永恒书卷，可以从中获取来自最初寻梦者的笔记。或许按照笔记吃下奇异炖菜飞向高空就能到达将教堂侵染为翠绿的另一场梦境？$(br)——萦绕着翠绿与微风的教堂，蕴藏着渴望飞翔的梦。");
 
+        // 月亮小屋
+        add("pasterdream.seniors_dream.entry.moon_house", "月亮小屋");
+        add("pasterdream.seniors_dream.entry.moon_house.page1", "研究梦境的纯白魔法使在经历了长期冒险后，决定在粉红的梦境中长期安居。她仿照在旅途中见到的月亮型小屋，把它建在了染梦世界飘落着白雪的天空中。");
+        add("pasterdream.seniors_dream.entry.moon_house.page2", "现如今，这里已经人去楼空，但是她在这里留下了很多给予后人的礼物。除此之外，她还收藏了一块强大的宝石，当然，她可不会把这块宝石放在很明显的地方，要小心不要被她留下的赝品戏耍了……$(br)——据说绫苒的伙伴看了素晴Story的建筑教程，于是教着她建起了这个房子，在此也谢谢素晴Story大佬的帮助和支持啦～");
+
         // 灯影之下
         add("pasterdream.seniors_dream.category.lamp_shadow_world", "灯影之下");
         add("pasterdream.seniors_dream.category.lamp_shadow_world.desc", "阳光越是强烈的地方阴影就越是深邃。这里是另外一个世界，堕落，疯癫，同化，皆是寻梦者的归属。但废墟中的残留的文字似乎隐藏更多的未知。当你站在那片黑暗之前，你会如何抉择？");
