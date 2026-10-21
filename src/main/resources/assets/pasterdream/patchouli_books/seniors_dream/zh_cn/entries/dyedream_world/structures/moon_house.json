@@ -1,0 +1,21 @@
+{
+  "sortnum": 13,
+  "name": "pasterdream.seniors_dream.entry.moon_house",
+  "icon": "pasterdream:soul_gem_of_akizuki_ayane",
+  "category": "pasterdream:dyedream_world/structures",
+  "pages": [
+    {
+      "type": "patchouli:image",
+      "images": ["pasterdream:textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/moon_house.png"],
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.moon_house.page1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.moon_house.page2"
+    }
+  ]
+}

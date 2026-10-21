@@ -268,6 +268,7 @@ textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/g
 textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/invaded_church.png
 textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/melt_dream_liquid_well_1.png
 textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/melt_dream_liquid_well_2.png
+textures/patchouli_books/seniors_dream/en_us/entries/dyedream_world/structures/moon_house.png
 textures/patchouli_books/seniors_dream/en_us/entries/foretold_dream/structures/desert_fortress_surface.png
 textures/patchouli_books/seniors_dream/en_us/entries/foretold_dream/structures/desert_fortress_underground.png
 textures/patchouli_books/seniors_dream/en_us/entries/foretold_dream/structures/dyedream_sky_island.png
