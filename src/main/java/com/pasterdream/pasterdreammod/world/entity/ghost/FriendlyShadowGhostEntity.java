@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.world.entity.IShadowMob;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -262,8 +263,12 @@ public class FriendlyShadowGhostEntity extends TamableAnimal implements RangedAt
                 } else if (this.isFood(itemstack)) {
                     return InteractionResult.PASS;
                 } else {
-                    this.setOrderedToSit(!this.isOrderedToSit());
+                    boolean sitting = !this.isOrderedToSit();
+                    this.setOrderedToSit(sitting);
                     this.setTarget(null);
+                    player.displayClientMessage(Component.translatable(sitting
+                            ? "message.pasterdream.friendly_shadow_ghost.sit"
+                            : "message.pasterdream.friendly_shadow_ghost.follow"), true);
                     return InteractionResult.sidedSuccess(this.level().isClientSide());
                 }
             }

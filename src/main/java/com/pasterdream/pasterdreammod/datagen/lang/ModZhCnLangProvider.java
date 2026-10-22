@@ -2811,6 +2811,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("entity.pasterdream.golden_fox.tamed", "金色狐狸成为了你的伙伴！");
         add("message.pasterdream.golden_fox_pet.sit", "金狐狸进入待命状态");
         add("message.pasterdream.golden_fox_pet.follow", "金狐狸开始跟随你");
+        add("message.pasterdream.friendly_shadow_ghost.sit", "友善怨魂进入待命状态");
+        add("message.pasterdream.friendly_shadow_ghost.follow", "友善怨魂开始跟随你");
 
         // 染梦裂隙消息
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5身体从这个奇怪的洞穴中穿过，但并没有什么反应。");

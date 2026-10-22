@@ -2149,6 +2149,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("entity.pasterdream.golden_fox.tamed", "The golden fox became your companion!");
         add("message.pasterdream.golden_fox_pet.sit", "Golden Fox is now staying");
         add("message.pasterdream.golden_fox_pet.follow", "Golden Fox is now following you");
+        add("message.pasterdream.friendly_shadow_ghost.sit", "Friendly Shadow Ghost is now staying");
+        add("message.pasterdream.friendly_shadow_ghost.follow", "Friendly Shadow Ghost is now following you");
 
         // Dyedream Crack Messages
         add("message.pasterdream.dyedream_crack.first_contact.1", "§5Your body passes through this strange hole, but nothing happens.");
