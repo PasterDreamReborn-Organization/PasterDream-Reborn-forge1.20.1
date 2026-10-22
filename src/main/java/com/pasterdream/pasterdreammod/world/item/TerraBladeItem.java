@@ -9,6 +9,7 @@ import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.network.skill.TerraBladeSwingPacket;
 import com.pasterdream.pasterdreammod.world.entity.TerraswordWaveEntity;
 import com.pasterdream.pasterdreammod.helper.cooldown.SkillLockHelper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -29,6 +30,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -185,6 +187,21 @@ public class TerraBladeItem extends SwordItem {
         @SubscribeEvent
         public static void onAttackEntity(AttackEntityEvent event) {
             sendSwingPacket(event.getEntity());
+        }
+
+        /** 按住左键时按冷却自动连发剑气（对准空气时原版不会重复触发左键事件）。 */
+        @SubscribeEvent
+        public static void onClientTick(TickEvent.ClientTickEvent event) {
+            if (event.phase != TickEvent.Phase.END) return;
+            Minecraft minecraft = Minecraft.getInstance();
+            if (minecraft.player == null || minecraft.screen != null) return;
+            if (!minecraft.options.keyAttack.isDown()) return;
+            ItemStack stack = minecraft.player.getMainHandItem();
+            if (!(stack.getItem() instanceof TerraBladeItem)) return;
+            if (!stack.getOrCreateTag().getBoolean("skill_active")) return;
+            if (minecraft.player.getCooldowns().isOnCooldown(stack.getItem())) return;
+            minecraft.player.swing(InteractionHand.MAIN_HAND);
+            sendSwingPacket(minecraft.player);
         }
 
         private static void sendSwingPacket(Player player) {
