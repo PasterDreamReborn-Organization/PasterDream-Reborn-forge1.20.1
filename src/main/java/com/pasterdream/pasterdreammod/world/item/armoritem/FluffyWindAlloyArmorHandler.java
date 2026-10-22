@@ -40,8 +40,8 @@ public final class FluffyWindAlloyArmorHandler {
 
     /** 天气翻倍：额外的移速加成（4 件 × +5%） */
     private static final double WEATHER_SPEED_BONUS = 0.20;
-    /** 天气翻倍：额外的战技冷却降低（4 件 × -5%） */
-    private static final double WEATHER_CD_BONUS = -0.20;
+    /** 天气翻倍：额外的战技冷却缩减（4 件 × +5%） */
+    private static final double WEATHER_CD_BONUS = 0.20;
 
     private static final UUID WEATHER_SPEED_UUID = UUID.fromString("f1e2d3c4-1001-4b01-8a01-000000001001");
     private static final UUID WEATHER_CD_UUID = UUID.fromString("f1e2d3c4-1002-4b01-8a01-000000001002");
@@ -96,18 +96,19 @@ public final class FluffyWindAlloyArmorHandler {
     /** 非晴朗天气时额外挂一组属性修饰器，使单件增益翻倍。 */
     private static void applyWeatherBonus(Player player, boolean active) {
         toggleModifier(player.getAttribute(Attributes.MOVEMENT_SPEED), WEATHER_SPEED_UUID,
-                "pasterdream.wind_weather_speed", WEATHER_SPEED_BONUS, active);
-        toggleModifier(player.getAttribute(ModAttributes.SKILL_COOLDOWN_RATE.get()), WEATHER_CD_UUID,
-                "pasterdream.wind_weather_cooldown", WEATHER_CD_BONUS, active);
+                "pasterdream.wind_weather_speed", WEATHER_SPEED_BONUS,
+                AttributeModifier.Operation.MULTIPLY_TOTAL, active);
+        toggleModifier(player.getAttribute(ModAttributes.SKILL_COOLDOWN_REDUCTION.get()), WEATHER_CD_UUID,
+                "pasterdream.wind_weather_cooldown_reduction", WEATHER_CD_BONUS,
+                AttributeModifier.Operation.ADDITION, active);
     }
 
     private static void toggleModifier(AttributeInstance instance, UUID uuid, String name,
-                                       double amount, boolean active) {
+                                       double amount, AttributeModifier.Operation operation, boolean active) {
         if (instance == null) return;
         if (active) {
             if (instance.getModifier(uuid) == null) {
-                instance.addTransientModifier(new AttributeModifier(uuid, name, amount,
-                        AttributeModifier.Operation.MULTIPLY_TOTAL));
+                instance.addTransientModifier(new AttributeModifier(uuid, name, amount, operation));
             }
         } else {
             instance.removeModifier(uuid);

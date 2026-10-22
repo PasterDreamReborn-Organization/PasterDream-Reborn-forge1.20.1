@@ -33,12 +33,12 @@ public class ModFluidPropertiesRelation
 
             boolean applied = false;
 
-            AttributeInstance skillCdAttr = livingEntity.getAttribute(ModAttributes.SKILL_COOLDOWN_RATE.get());
+            AttributeInstance skillCdAttr = livingEntity.getAttribute(ModAttributes.SKILL_COOLDOWN_REDUCTION.get());
 
             //ELIXIR_BOTTLE_OF_RAGE_ELIXIR_SKILL_CD_UUID = UUID.fromString("78e1cdd9-d201-4e2b-8adb-0af735d2c806")
             if (skillCdAttr != null && skillCdAttr.getModifier(UUID.fromString("78e1cdd9-d201-4e2b-8adb-0af735d2c806")) == null)
             {
-                skillCdAttr.addPermanentModifier(new AttributeModifier(UUID.fromString("78e1cdd9-d201-4e2b-8adb-0af735d2c806"), "elixir_bottle_of_rage_elixir_skill_cd", -0.15, AttributeModifier.Operation.MULTIPLY_TOTAL));
+                skillCdAttr.addPermanentModifier(new AttributeModifier(UUID.fromString("78e1cdd9-d201-4e2b-8adb-0af735d2c806"), "elixir_bottle_of_rage_elixir_skill_cd_reduction", 0.15, AttributeModifier.Operation.ADDITION));
                 applied = true;
             }
 

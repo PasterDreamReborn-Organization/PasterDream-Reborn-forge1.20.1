@@ -187,7 +187,6 @@ public class BeihaiRuoTideSwordItem extends SwordItem {
             }
             Vec3 look = player.getLookAngle();
             player.setDeltaMovement(look.x * DASH_SPEED, look.y * DASH_SPEED, look.z * DASH_SPEED);
-            player.getCooldowns().addCooldown(this, COOLDOWN_TICKS);
             SkillCooldownHelper.applySharedCooldown(player, COOLDOWN_TICKS);
         }
 

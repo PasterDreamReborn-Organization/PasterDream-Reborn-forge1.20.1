@@ -1070,10 +1070,10 @@ public class ModItems {
 
                     boolean applied = false;
 
-                    var skillCdAttr = entity.getAttribute(ModAttributes.SKILL_COOLDOWN_RATE.get());
+                    var skillCdAttr = entity.getAttribute(ModAttributes.SKILL_COOLDOWN_REDUCTION.get());
                     if (skillCdAttr != null && skillCdAttr.getModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_SKILL_CD_UUID) == null) {
                         skillCdAttr.addPermanentModifier(new AttributeModifier(ELIXIR_BOTTLE_OF_RAGE_ELIXIR_SKILL_CD_UUID,
-                                "elixir_bottle_of_rage_elixir_skill_cd", -0.15, AttributeModifier.Operation.MULTIPLY_TOTAL));
+                                "elixir_bottle_of_rage_elixir_skill_cd_reduction", 0.15, AttributeModifier.Operation.ADDITION));
                         applied = true;
                     }
 

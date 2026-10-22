@@ -19,8 +19,8 @@ public class FlareupEffect extends MobEffect {
                 0.2, AttributeModifier.Operation.ADDITION);
         this.addAttributeModifier(ModAttributes.SKILL_DAMAGE_RATE.get(), UUID,
                 0.3, AttributeModifier.Operation.MULTIPLY_TOTAL);
-        this.addAttributeModifier(ModAttributes.SKILL_COOLDOWN_RATE.get(), UUID,
-                -0.20, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        this.addAttributeModifier(ModAttributes.SKILL_COOLDOWN_REDUCTION.get(), UUID,
+                0.20, AttributeModifier.Operation.ADDITION);
     }
 }
 

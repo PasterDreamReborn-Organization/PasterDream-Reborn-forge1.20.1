@@ -236,7 +236,7 @@ public class WindwreathedThunderSpearItem extends SwordItem implements GeoItem {
         level.playSound(null, player, sound, SoundSource.PLAYERS, 1.0F, 1.0F);
 
         // 伤害不在此处结算：由自旋接触触发（ThunderSpearPassiveHandler），覆盖整条冲刺路径
-        // 接入战技共享冷却（随 SKILL_COOLDOWN_RATE 缩放，并联动其它战技武器）
+        // 接入战技共享冷却（随 SKILL_COOLDOWN_REDUCTION 缩放，并联动其它战技武器）
         // 激流每级延长冷却 1s（不封顶）
         int cooldownTicks = DASH_COOLDOWN_TICKS + riptide * DASH_COOLDOWN_PER_RIPTIDE_LEVEL;
         SkillCooldownHelper.applySharedCooldown(player, cooldownTicks);

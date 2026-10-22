@@ -40,10 +40,10 @@ public class BobojiCurioItem extends Item implements ICurioItem {
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
         if (slotContext.entity() != null) {
-            AttributeInstance blinkCd = slotContext.entity().getAttribute(ModAttributes.BLINK_CD.get());
+            AttributeInstance blinkCd = slotContext.entity().getAttribute(ModAttributes.BLINK_COOLDOWN_REDUCTION.get());
             if (blinkCd != null && blinkCd.getModifier(BLINK_CD_UUID) == null) {
                 blinkCd.addPermanentModifier(new AttributeModifier(BLINK_CD_UUID,
-                        "Boboji blink cd", -0.2, AttributeModifier.Operation.ADDITION));
+                        "Boboji blink cooldown reduction", 0.2, AttributeModifier.Operation.ADDITION));
             }
             AttributeInstance blinkRange = slotContext.entity().getAttribute(ModAttributes.BLINK_RANGE.get());
             if (blinkRange != null && blinkRange.getModifier(BLINK_RANGE_UUID) == null) {
@@ -66,7 +66,7 @@ public class BobojiCurioItem extends Item implements ICurioItem {
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         if (slotContext.entity() != null) {
-            AttributeInstance blinkCd = slotContext.entity().getAttribute(ModAttributes.BLINK_CD.get());
+            AttributeInstance blinkCd = slotContext.entity().getAttribute(ModAttributes.BLINK_COOLDOWN_REDUCTION.get());
             if (blinkCd != null) blinkCd.removeModifier(BLINK_CD_UUID);
             AttributeInstance blinkRange = slotContext.entity().getAttribute(ModAttributes.BLINK_RANGE.get());
             if (blinkRange != null) blinkRange.removeModifier(BLINK_RANGE_UUID);

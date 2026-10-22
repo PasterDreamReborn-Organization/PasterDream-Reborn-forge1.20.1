@@ -36,19 +36,19 @@ public class TailwindEffect extends MobEffect {
 
         double speed = amplifier == 0 ? 0.03 : 0.04;
         double range = amplifier == 0 ? 1.0 : 1.5;
-        double cd = amplifier == 0 ? 0.7 : 0.6;
+        double cd = amplifier == 0 ? 0.3 : 0.4;
 
         addModifier(entity, Attributes.MOVEMENT_SPEED, SPEED_UUID, speed, AttributeModifier.Operation.ADDITION);
         addModifier(entity, ModAttributes.BLINK_RANGE.get(), RANGE_UUID, range, AttributeModifier.Operation.ADDITION);
-        // 原作数值：MULTIPLY_BASE 语义为 ×(1+amount)
-        addModifier(entity, ModAttributes.BLINK_CD.get(), CD_UUID, cd, AttributeModifier.Operation.MULTIPLY_BASE);
+        // 顺风降低瞬身冷却：+0.3 / +0.4 缩减，对应 0.7× / 0.6×
+        addModifier(entity, ModAttributes.BLINK_COOLDOWN_REDUCTION.get(), CD_UUID, cd, AttributeModifier.Operation.ADDITION);
     }
 
     @Override
     public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
         removeModifier(entity, Attributes.MOVEMENT_SPEED, SPEED_UUID);
         removeModifier(entity, ModAttributes.BLINK_RANGE.get(), RANGE_UUID);
-        removeModifier(entity, ModAttributes.BLINK_CD.get(), CD_UUID);
+        removeModifier(entity, ModAttributes.BLINK_COOLDOWN_REDUCTION.get(), CD_UUID);
     }
 
     @Override

@@ -33,10 +33,10 @@ public class DreamTravelerBeltItem extends Item implements ICurioItem {
                 speedAttr.addPermanentModifier(new AttributeModifier(MOVEMENT_SPEED_UUID,
                         "Dream traveler belt movement speed", 0.03, AttributeModifier.Operation.MULTIPLY_BASE));
             }
-            AttributeInstance cdAttr = slotContext.entity().getAttribute(ModAttributes.BLINK_CD.get());
+            AttributeInstance cdAttr = slotContext.entity().getAttribute(ModAttributes.BLINK_COOLDOWN_REDUCTION.get());
             if (cdAttr != null && cdAttr.getModifier(BLINK_CD_UUID) == null) {
                 cdAttr.addPermanentModifier(new AttributeModifier(BLINK_CD_UUID,
-                        "Dream traveler belt blink cd", -0.1, AttributeModifier.Operation.ADDITION));
+                        "Dream traveler belt blink cooldown reduction", 0.1, AttributeModifier.Operation.ADDITION));
             }
         }
     }
@@ -48,7 +48,7 @@ public class DreamTravelerBeltItem extends Item implements ICurioItem {
             if (speedAttr != null) {
                 speedAttr.removeModifier(MOVEMENT_SPEED_UUID);
             }
-            AttributeInstance cdAttr = slotContext.entity().getAttribute(ModAttributes.BLINK_CD.get());
+            AttributeInstance cdAttr = slotContext.entity().getAttribute(ModAttributes.BLINK_COOLDOWN_REDUCTION.get());
             if (cdAttr != null) {
                 cdAttr.removeModifier(BLINK_CD_UUID);
             }

@@ -22,14 +22,16 @@ public class SkillCooldownHelper {
 
     /**
      * 对 {@code pasterdream:skill_cooldown} 标签下所有物品施加共享冷却，
-     * 时长按玩家的 {@code skill_cooldown_rate} 属性缩放。
+     * 时长按玩家的 {@code skill_cooldown_reduction} 属性缩放。
      */
     public static void applySharedCooldown(Player player, int baseTicks) {
-        applySharedCooldownTicks(player, scaleCooldown(player, baseTicks));
+        int scaledTicks = scaleCooldown(player, baseTicks);
+        if (scaledTicks <= 0) return;
+        applySharedCooldownTicks(player, scaledTicks);
     }
 
     /**
-     * 施加共享冷却，时长**不**随 {@code skill_cooldown_rate} 缩放。
+     * 施加共享冷却，时长**不**随 {@code skill_cooldown_reduction} 缩放。
      * <p>
      * 用于需与实体计时严格对齐的冷却：萦风雷矛投掷虚影的兜底飞回时长（200t）必须 == 冷却时长，
      * 否则冷却会先于虚影结束，玩家可在旧虚影仍在场上时再次投掷（叠虚影 / 提前解冷却）。
@@ -39,6 +41,7 @@ public class SkillCooldownHelper {
     }
 
     private static void applySharedCooldownTicks(Player player, int finalTicks) {
+        if (finalTicks <= 0) return;
         BuiltInRegistries.ITEM.getTagOrEmpty(ModItemTags.SKILL_COOLDOWN)
                 .forEach(holder -> player.getCooldowns().addCooldown(holder.value(), finalTicks));
     }
@@ -55,16 +58,23 @@ public class SkillCooldownHelper {
 
     // ==================== 数值 ====================
 
-    /** 按玩家的 {@code skill_cooldown_rate} 属性缩放基础冷却时长（tick）。 */
+    /** 按玩家的 {@code skill_cooldown_reduction} 属性缩放基础冷却时长（tick，0 = 无冷却）。 */
     public static int scaleCooldown(Player player, int baseTicks) {
-        return Math.max(1, Math.round(baseTicks * getSkillCooldownMultiplier(player)));
+        return Math.round(baseTicks * getSkillCooldownMultiplier(player));
     }
 
     /**
      * Returns the player's skill cooldown multiplier (default 1.0 = no change).
      */
     public static float getSkillCooldownMultiplier(Player player) {
-        return getAttributeValue(player, ModAttributes.SKILL_COOLDOWN_RATE.get(), 1.0f);
+        return (float) CooldownReductionHelper.getCooldownFactor(
+                player, ModAttributes.SKILL_COOLDOWN_REDUCTION.get());
+    }
+
+    /** Returns the player's raw skill cooldown reduction (default 0.0 = no reduction). */
+    public static float getSkillCooldownReduction(Player player) {
+        return (float) CooldownReductionHelper.getReduction(
+                player, ModAttributes.SKILL_COOLDOWN_REDUCTION.get());
     }
 
     /**

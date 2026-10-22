@@ -937,4 +937,16 @@
 | `wind_journey`           | `wind_journey`           | 不改                           | 风之旅途维度音乐                                            |
 | `bone_wing_fire_ball`    | `bone_wing_fire_ball`    | 不改                           | 骨翼火球弹射物                                             |
 
+---
+
+## 属性映射
+
+> 属性不进入 `tools/generate_id_mapping.py` / `mapping.json`（该工具仅生成方块/物品映射），在此登记重命名与语义变化。
+
+| 旧 ID | 新 ID | 变更说明 | 备注 |
+|---|---|---|---|
+| `teleportationcd` | `blink_cooldown_reduction` | 重命名 + 语义改为“冷却缩减” | `ModAttributes.BLINK_COOLDOWN_REDUCTION`，默认 `0.0`，正值减 CD |
+| `blink_cd` | `blink_cooldown_reduction` | 内部过渡 ID 重命名 | 同上，旧存档数据不迁移 |
+| `skill_cooldown_rate` | `skill_cooldown_reduction` | 内部重命名 + 语义改为“冷却缩减” | `ModAttributes.SKILL_COOLDOWN_REDUCTION`，默认 `0.0`，正值减 CD |
+
 

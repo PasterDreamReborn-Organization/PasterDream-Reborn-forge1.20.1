@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.skill;
 
+import com.pasterdream.pasterdreammod.helper.cooldown.CooldownReductionHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.world.item.curio.FracturedAngelStatueHandler;
@@ -59,9 +60,12 @@ public class BlinkSkill {
     }
 
     private static void applyCooldown(Player player) {
-        double cd = getAttributeValue(player, ModAttributes.BLINK_CD.get(), 1.0);
+        double factor = CooldownReductionHelper.getCooldownFactor(
+                player, ModAttributes.BLINK_COOLDOWN_REDUCTION.get());
         boolean hasElytra = player.getItemBySlot(EquipmentSlot.CHEST).is(Items.ELYTRA);
-        int duration = hasElytra ? (int) (100 * cd) : (int) (50 * cd);
+        int baseTicks = hasElytra ? 100 : 50;
+        int duration = (int) Math.round(baseTicks * factor);
+        if (duration <= 0) return;
         player.addEffect(new MobEffectInstance(ModEffects.BLINK_COOLDOWN.get(), duration, 0,
                 false, false, false));
     }
