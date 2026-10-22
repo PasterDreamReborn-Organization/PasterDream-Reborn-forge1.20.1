@@ -69,7 +69,7 @@ public class MurakumoKusanagiItem extends SwordItem {
         KusanagiVenomStingerEntity stinger = new KusanagiVenomStingerEntity(serverLevel, player);
         stinger.setWeapon(player, stack);
         serverLevel.addFreshEntity(stinger);
-        // 接入战技共享冷却（随 SKILL_COOLDOWN_RATE 缩放，并联动其它战技武器）
+        // 接入战技共享冷却（随 SKILL_COOLDOWN_REDUCTION 缩放，并联动其它战技武器）
         SkillCooldownHelper.applySharedCooldown(player, LAUNCH_COOLDOWN_TICKS);
     }
 

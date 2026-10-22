@@ -57,20 +57,20 @@ public class AllkindsRingItem extends Item implements ICurioItem {
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
         if (slotContext.entity() != null) {
-            AttributeInstance skillCd = slotContext.entity().getAttribute(ModAttributes.SKILL_COOLDOWN_RATE.get());
+            AttributeInstance skillCd = slotContext.entity().getAttribute(ModAttributes.SKILL_COOLDOWN_REDUCTION.get());
             if (skillCd != null && skillCd.getModifier(SKILL_CD_UUID) == null) {
                 skillCd.addPermanentModifier(new AttributeModifier(SKILL_CD_UUID,
-                        "Allkinds ring skill cooldown", -0.05, AttributeModifier.Operation.ADDITION));
+                        "Allkinds ring skill cooldown reduction", 0.05, AttributeModifier.Operation.ADDITION));
             }
             AttributeInstance skillDmg = slotContext.entity().getAttribute(ModAttributes.SKILL_DAMAGE_RATE.get());
             if (skillDmg != null && skillDmg.getModifier(SKILL_MULTIPLIER_UUID) == null) {
                 skillDmg.addPermanentModifier(new AttributeModifier(SKILL_MULTIPLIER_UUID,
                         "Allkinds ring skill damage", 0.05, AttributeModifier.Operation.ADDITION));
             }
-            AttributeInstance blinkCd = slotContext.entity().getAttribute(ModAttributes.BLINK_CD.get());
+            AttributeInstance blinkCd = slotContext.entity().getAttribute(ModAttributes.BLINK_COOLDOWN_REDUCTION.get());
             if (blinkCd != null && blinkCd.getModifier(BLINK_CD_UUID) == null) {
                 blinkCd.addPermanentModifier(new AttributeModifier(BLINK_CD_UUID,
-                        "Allkinds ring blink cooldown", -0.05, AttributeModifier.Operation.ADDITION));
+                        "Allkinds ring blink cooldown reduction", 0.05, AttributeModifier.Operation.ADDITION));
             }
         }
     }
@@ -78,11 +78,11 @@ public class AllkindsRingItem extends Item implements ICurioItem {
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         if (slotContext.entity() != null) {
-            AttributeInstance skillCd = slotContext.entity().getAttribute(ModAttributes.SKILL_COOLDOWN_RATE.get());
+            AttributeInstance skillCd = slotContext.entity().getAttribute(ModAttributes.SKILL_COOLDOWN_REDUCTION.get());
             if (skillCd != null) skillCd.removeModifier(SKILL_CD_UUID);
             AttributeInstance skillDmg = slotContext.entity().getAttribute(ModAttributes.SKILL_DAMAGE_RATE.get());
             if (skillDmg != null) skillDmg.removeModifier(SKILL_MULTIPLIER_UUID);
-            AttributeInstance blinkCd = slotContext.entity().getAttribute(ModAttributes.BLINK_CD.get());
+            AttributeInstance blinkCd = slotContext.entity().getAttribute(ModAttributes.BLINK_COOLDOWN_REDUCTION.get());
             if (blinkCd != null) blinkCd.removeModifier(BLINK_CD_UUID);
         }
     }

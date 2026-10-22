@@ -783,7 +783,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
 
         add("item.pasterdream.duke_coin_curio", "Duke Coin Curio");
         add("tooltip.pasterdream.duke_coin_curio.effect.luck", "§7▪ §9+7 Luck");
-        add("tooltip.pasterdream.duke_coin_curio.effect.blink_cd", "§7▪ §c+7 Blink Cooldown");
+        add("tooltip.pasterdream.duke_coin_curio.effect.blink_cd", "§7▪ §cBlink Cooldown +700%");
         add("tooltip.pasterdream.duke_coin_curio.flavor", "§7§o--7 Days to Die");
 
         add("button.pasterdream.mortarbutton", "grinding");
@@ -1226,9 +1226,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.ALLKINDS_RING.get(), "Allkinds Ring");
         add("tooltip.pasterdream.allkinds_ring.flavor", "§7§oGather the power of all things, forge this ring");
         add("tooltip.pasterdream.allkinds_ring.lore", "§7§o--Szuperlina Deonne");
-        add("tooltip.pasterdream.allkinds_ring.skill_cd", "§7▪ §9-5% Skill Cooldown");
+        add("tooltip.pasterdream.allkinds_ring.skill_cd", "§7▪ §9+5% Skill Cooldown Reduction");
         add("tooltip.pasterdream.allkinds_ring.skill_dmg", "§7▪ §9+5% Skill Damage");
-        add("tooltip.pasterdream.allkinds_ring.blink_cd", "§7▪ §9-5% Blink Cooldown");
+        add("tooltip.pasterdream.allkinds_ring.blink_cd", "§7▪ §9+5% Blink Cooldown Reduction");
         add(ModItems.LIGHT_BUTTERFLY_CURIO.get(), "Light Butterfly Curio");
         add("tooltip.pasterdream.light_butterfly_curio.effect", "§7▪ §9Grants Night Vision in low light");
         add("tooltip.pasterdream.light_butterfly_curio.energy", "§7▪ §4Melt Dream Energy cost: 0.24/min");
@@ -1242,7 +1242,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.BOBOJI_CURIO.get(), "Boboji's Gorgeous Feather");
         add("tooltip.pasterdream.boboji_curio.stat.speed", "§7▪ §9+5% Speed");
         add("tooltip.pasterdream.boboji_curio.stat.range", "§7▪ §9+0.1 Blink Range");
-        add("tooltip.pasterdream.boboji_curio.stat.cd", "§7▪ §9-0.2 Blink Cooldown");
+        add("tooltip.pasterdream.boboji_curio.stat.cd", "§7▪ §9+20% Blink Cooldown Reduction");
         add("tooltip.pasterdream.boboji_curio.stat.consume", "§7▪ §9-0.4 Blink Consume");
         add("tooltip.pasterdream.boboji_curio.effect.elytra", "§7▪ §9No longer extends Blink cooldown when wearing Elytra");
         add("tooltip.pasterdream.boboji_curio.effect.evasion", "§7▪ §9Evade one instance of damage within 0.25s after Blink");
@@ -1331,7 +1331,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.traveler_belt.effect", "§7▪ §9-0.5 Blink Consumption");
         add(ModItems.DREAM_TRAVELER_BELT.get(), "Dream Traveler Belt");
         add("tooltip.pasterdream.dream_traveler_belt.effect1", "§7▪ §9+3% Movement Speed");
-        add("tooltip.pasterdream.dream_traveler_belt.effect2", "§7▪ §9-0.1 Blink Cooldown");
+        add("tooltip.pasterdream.dream_traveler_belt.effect2", "§7▪ §9+10% Blink Cooldown Reduction");
         //Embryo
         add("tooltip.pasterdream.introduction.tooltip", "§f▪ §7Introduction");
         add("tooltip.pasterdream.embryo.tooltip1", "§7A curios embryo made from titanium and soul essence");
@@ -1367,11 +1367,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.holy_grail", "Holy Grail");
         add("effect.pasterdream.flare_up", "Flare up");
         add("effect.pasterdream.conflict_mark", "Conflict Mark");
-        add("attribute.pasterdream.blink_cd", "Blink Cooldown");
+        add("attribute.pasterdream.blink_cooldown_reduction", "Blink Cooldown Reduction");
         add("attribute.pasterdream.blink_consume", "Blink Hunger Cost");
         add("attribute.pasterdream.blink_range", "Blink Distance");
         add("attribute.pasterdream.san_variability", "Sanity Variability");
-        add("attribute.pasterdream.skill_cooldown_rate", "Skill Cooldown Rate");
+        add("attribute.pasterdream.skill_cooldown_reduction", "Skill Cooldown Reduction");
         add("attribute.pasterdream.skill_damage_rate", "Skill Damage Rate");
         add("attribute.pasterdream.max_san_extra", "Max Sanity Bonus");
         add("attribute.pasterdream.max_melt_dream_energy_extra", "Max Melt Dream Energy Bonus");
@@ -1491,7 +1491,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc2", "§7▪ §9Cooldown: 3s");
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc3", "§7▪ §9Durability cost: 1 per crop");
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc4", "§7▪ §9When sneaking, mining chains §c3×3×3 §9blocks of the same type around, or harvests crops in a §c5×5 §9area");
-        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.1", "§7▪ §9+5% Movement Speed, -5% Skill Cooldown");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.1", "§7▪ §9+5% Movement Speed, +5% Skill Cooldown Reduction");
         add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.2", "§7Set Bonus: §bBoon of Wind and Thunder");
         add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.3", "§7▪ §9-25% bow draw and crossbow load time");
         add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.4", "§7▪ §9Immune to lightning damage");

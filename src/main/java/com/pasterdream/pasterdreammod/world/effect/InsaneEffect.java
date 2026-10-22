@@ -19,7 +19,7 @@ public class InsaneEffect extends MobEffect {
 
     public InsaneEffect() {
         super(MobEffectCategory.HARMFUL, -14744315);
-        this.addAttributeModifier(ModAttributes.BLINK_CD.get(), UUID, 2, AttributeModifier.Operation.ADDITION);
+        this.addAttributeModifier(ModAttributes.BLINK_COOLDOWN_REDUCTION.get(), UUID, -2.0, AttributeModifier.Operation.ADDITION);
         this.addAttributeModifier(Attributes.MOVEMENT_SPEED, UUID, -0.3, AttributeModifier.Operation.MULTIPLY_BASE);
         this.addAttributeModifier(Attributes.ATTACK_SPEED, UUID, -0.1, AttributeModifier.Operation.MULTIPLY_BASE);
         this.addAttributeModifier(Attributes.ATTACK_DAMAGE, UUID, -2, AttributeModifier.Operation.ADDITION);

@@ -30,9 +30,9 @@ ModKeyMappings (按键) → BlinkPacket (网络) → BlinkSkill (逻辑) → Eva
 ## 关键约束
 
 - 自定义属性（cd / consume / range 等）注册在 `init/ModAttributes.java`，通过 `ModAttributes.XXX` 读取，可被饰品/效果动态修正
-- 冷却与战技锁定复用 `helper/cooldown/`（`SkillCooldownHelper`、`SkillLockHelper`）
+- 冷却与战技锁定复用 `helper/cooldown/`（`SkillCooldownHelper`、`CooldownReductionHelper`、`SkillLockHelper`）
 - **每个战技触发路径都要先判锁定**（`SkillLockHelper`）：不只 `use`，命中自动触发（`hurtEnemy`）、挥砍包（`onSwing`）、`useOn` 等都要判。高频路径（每次攻击/挥砍）用 `isSkillLockedSilent` 免刷屏，用户主动右键用 `isSkillLocked`（带提示）
-- 战技共享冷却即对 `#pasterdream:skill_cooldown` 标签物品写**原版物品冷却**（`SkillCooldownHelper.applySharedCooldown`，按 `skill_cooldown_rate` 缩放）；判定用 `player.getCooldowns().isOnCooldown(item)`（`use`/`useOn` 已由原版 `ServerPlayerGameMode` 自动拦截）。少数动作并入共享：萦风雷矛投掷用 `applySharedCooldownExact`（不缩放，与虚影 200t 对齐）+ `clearSharedCooldown` 提前解除
+- 战技共享冷却即对 `#pasterdream:skill_cooldown` 标签物品写**原版物品冷却**（`SkillCooldownHelper.applySharedCooldown`，按 `skill_cooldown_reduction` 缩减：`ADDITION`、100% 封顶、0 冷却时不写冷却）；判定用 `player.getCooldowns().isOnCooldown(item)`（`use`/`useOn` 已由原版 `ServerPlayerGameMode` 自动拦截）。少数动作并入共享：萦风雷矛投掷用 `applySharedCooldownExact`（不缩放，与虚影 200t 对齐）+ `clearSharedCooldown` 提前解除
 - 网络包注册在 `init/ModNetwork.java`
 - 技能逻辑放 `world/skill/`，纯效果定义放 `world/effect/`（业务逻辑不要塞进 MobEffect 类）
 - 需「不可被牛奶 / totem / `/effect clear` / 其它 mod 清除」的效果标记实现 `world/effect/ProtectedRemovalEffect`，正当移除前调用其 `allowRemoval`（由 `ProtectedEffectRemovalMixin` 统一拦截，参考暗影窥视 / 回避）

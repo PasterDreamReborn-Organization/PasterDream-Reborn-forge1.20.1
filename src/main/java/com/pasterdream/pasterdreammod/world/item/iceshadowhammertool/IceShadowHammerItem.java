@@ -66,7 +66,6 @@ public class IceShadowHammerItem extends SwordItem {
             }
             MeltDreamEnergyHelper.addPlayerMeltDreamEnergyAndSync(sp, -ENERGY_COST);
         }
-        player.getCooldowns().addCooldown(this, COOLDOWN_TICKS);
         SkillCooldownHelper.applySharedCooldown(player, COOLDOWN_TICKS);
 
         double x = context.getClickedPos().getX();

@@ -43,9 +43,9 @@ public class DukeCoinCurioItem extends Item implements ICurioItem {
             if (luckAttr != null && luckAttr.getModifier(LUCK_UUID) == null) {
                 luckAttr.addPermanentModifier(new AttributeModifier(LUCK_UUID, "Duke coin luck", 7.0, AttributeModifier.Operation.ADDITION));
             }
-            var blinkCdAttr = entity.getAttribute(ModAttributes.BLINK_CD.get());
+            var blinkCdAttr = entity.getAttribute(ModAttributes.BLINK_COOLDOWN_REDUCTION.get());
             if (blinkCdAttr != null && blinkCdAttr.getModifier(BLINK_CD_UUID) == null) {
-                blinkCdAttr.addPermanentModifier(new AttributeModifier(BLINK_CD_UUID, "Duke coin blink cooldown", 7.0, AttributeModifier.Operation.ADDITION));
+                blinkCdAttr.addPermanentModifier(new AttributeModifier(BLINK_CD_UUID, "Duke coin blink cooldown reduction", -7.0, AttributeModifier.Operation.ADDITION));
             }
         }
     }
@@ -58,7 +58,7 @@ public class DukeCoinCurioItem extends Item implements ICurioItem {
             if (luckAttr != null) {
                 luckAttr.removeModifier(LUCK_UUID);
             }
-            var blinkCdAttr = entity.getAttribute(ModAttributes.BLINK_CD.get());
+            var blinkCdAttr = entity.getAttribute(ModAttributes.BLINK_COOLDOWN_REDUCTION.get());
             if (blinkCdAttr != null) {
                 blinkCdAttr.removeModifier(BLINK_CD_UUID);
             }

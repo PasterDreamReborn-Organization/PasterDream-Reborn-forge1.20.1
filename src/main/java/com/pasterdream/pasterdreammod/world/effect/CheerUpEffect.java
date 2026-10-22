@@ -12,9 +12,9 @@ public class CheerUpEffect extends MobEffect {
 
     public CheerUpEffect() {
         super(MobEffectCategory.BENEFICIAL, -33158);
-        this.addAttributeModifier(ModAttributes.BLINK_CD.get(), UUID, -0.1, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        this.addAttributeModifier(ModAttributes.BLINK_COOLDOWN_REDUCTION.get(), UUID, 0.1, AttributeModifier.Operation.ADDITION);
         this.addAttributeModifier(Attributes.MOVEMENT_SPEED, UUID, 0.05, AttributeModifier.Operation.ADDITION);
         this.addAttributeModifier(Attributes.ATTACK_SPEED, UUID, 0.05, AttributeModifier.Operation.ADDITION);
-        this.addAttributeModifier(ModAttributes.SKILL_COOLDOWN_RATE.get(), UUID, -0.1, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        this.addAttributeModifier(ModAttributes.SKILL_COOLDOWN_REDUCTION.get(), UUID, 0.1, AttributeModifier.Operation.ADDITION);
     }
 }

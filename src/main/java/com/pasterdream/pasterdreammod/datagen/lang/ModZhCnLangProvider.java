@@ -1422,9 +1422,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.ALLKINDS_RING.get(), "万象神戒");
         add("tooltip.pasterdream.allkinds_ring.flavor", "§7§o聚万象之力 铸以此戒");
         add("tooltip.pasterdream.allkinds_ring.lore", "§7§o--斯卓贝莉·黛欧恩");
-        add("tooltip.pasterdream.allkinds_ring.skill_cd", "§7▪ §9战技冷却时间-5%");
+        add("tooltip.pasterdream.allkinds_ring.skill_cd", "§7▪ §9+5% 战技冷却缩减");
         add("tooltip.pasterdream.allkinds_ring.skill_dmg", "§7▪ §9战技伤害+5%");
-        add("tooltip.pasterdream.allkinds_ring.blink_cd", "§7▪ §9瞬身术冷却时间-5%");
+        add("tooltip.pasterdream.allkinds_ring.blink_cd", "§7▪ §9+5% 瞬身术冷却缩减");
         add(ModItems.LIGHT_BUTTERFLY_CURIO.get(), "夜明蝶");
         add("tooltip.pasterdream.light_butterfly_curio.effect", "§7▪ §9自身处于低亮度环境下获得夜视");
         add("tooltip.pasterdream.light_butterfly_curio.energy", "§7▪ §4融梦能量消耗：0.24/min");
@@ -1438,7 +1438,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.BOBOJI_CURIO.get(), "啵啵鸡的华丽飞羽");
         add("tooltip.pasterdream.boboji_curio.stat.speed", "§7▪ §9+5% 速度");
         add("tooltip.pasterdream.boboji_curio.stat.range", "§7▪ §9+0.1 瞬身术距离");
-        add("tooltip.pasterdream.boboji_curio.stat.cd", "§7▪ §9-0.2 瞬身术冷却");
+        add("tooltip.pasterdream.boboji_curio.stat.cd", "§7▪ §9+20% 瞬身术冷却缩减");
         add("tooltip.pasterdream.boboji_curio.stat.consume", "§7▪ §9-0.4 瞬身术消耗");
         add("tooltip.pasterdream.boboji_curio.effect.elytra", "§7▪ §9装备鞘翅时不再延长瞬身术冷却时间");
         add("tooltip.pasterdream.boboji_curio.effect.evasion", "§7▪ §9使用瞬身术时可以在0.25秒内回避一次伤害");
@@ -1479,7 +1479,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.worldtree_seedpod.flavor", "§7§o--落叶归根 裂荚归冠");
         add("item.pasterdream.duke_coin_curio", "公爵赌场币");
         add("tooltip.pasterdream.duke_coin_curio.effect.luck", "§7▪ §9+7 幸运值");
-        add("tooltip.pasterdream.duke_coin_curio.effect.blink_cd", "§7▪ §c+7 瞬身术冷却");
+        add("tooltip.pasterdream.duke_coin_curio.effect.blink_cd", "§7▪ §c瞬身术冷却时间 +700%");
         add("tooltip.pasterdream.duke_coin_curio.flavor", "§7§o--7 Days to Die");
         // 项链
         add(ModItems.EMBRYO_NECKLACE.get(), "项链原胚");
@@ -1511,7 +1511,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.traveler_belt.effect", "§7▪ §9-0.5 瞬身术消耗");
         add(ModItems.DREAM_TRAVELER_BELT.get(), "迷梦旅者腰带");
         add("tooltip.pasterdream.dream_traveler_belt.effect1", "§7▪ §9+3% 移动速度");
-        add("tooltip.pasterdream.dream_traveler_belt.effect2", "§7▪ §9-0.1 瞬身术冷却");
+        add("tooltip.pasterdream.dream_traveler_belt.effect2", "§7▪ §9+10% 瞬身术冷却缩减");
 
         //原胚
         add("tooltip.pasterdream.introduction.tooltip", "§f▪ §7简介");
@@ -1550,11 +1550,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.holy_grail", "圣杯");
         add("effect.pasterdream.flare_up", "怒气爆发");
         add("effect.pasterdream.conflict_mark", "纷争标记");
-        add("attribute.pasterdream.blink_cd", "瞬身术冷却");
+        add("attribute.pasterdream.blink_cooldown_reduction", "瞬身术冷却缩减");
         add("attribute.pasterdream.blink_consume", "瞬身术消耗");
         add("attribute.pasterdream.blink_range", "瞬身术距离");
         add("attribute.pasterdream.san_variability", "理智光环");
-        add("attribute.pasterdream.skill_cooldown_rate", "战技冷却倍率");
+        add("attribute.pasterdream.skill_cooldown_reduction", "战技冷却缩减");
         add("attribute.pasterdream.skill_damage_rate", "战技伤害倍率");
         add("attribute.pasterdream.max_san_extra", "理智上限加成");
         add("attribute.pasterdream.max_melt_dream_energy_extra", "融梦能量上限加成");
@@ -1674,7 +1674,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc2", "§7▪ §9冷却：3秒");
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc3", "§7▪ §9耐久消耗：每格作物1耐久");
         add("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc4", "§7▪ §9潜行挖掘时，连锁破坏周围3×3×3的同类方块或周围5×5的作物");
-        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.1", "§7▪ §9移动速度+5%，战技冷却-5%");
+        add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.1", "§7▪ §9移动速度+5%，战技冷却缩减+5%");
         add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.2", "§7套装效果：§b风雷之佑");
         add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.3", "§7▪ §9拉弓与弩装填时间-25%");
         add("tooltip.pasterdreammod.fluffy_wind_alloy_armor.4", "§7▪ §9免疫雷电伤害");

@@ -20,9 +20,9 @@ public class BerserkEffect extends MobEffect {
                 0.5, AttributeModifier.Operation.MULTIPLY_TOTAL);
         this.addAttributeModifier(ModAttributes.SKILL_DAMAGE_RATE.get(), UUID,
                 0.3, AttributeModifier.Operation.MULTIPLY_TOTAL);
-        this.addAttributeModifier(ModAttributes.BLINK_CD.get(), UUID,
-                -0.3, AttributeModifier.Operation.MULTIPLY_TOTAL);
-        this.addAttributeModifier(ModAttributes.SKILL_COOLDOWN_RATE.get(), UUID,
-                -0.3, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        this.addAttributeModifier(ModAttributes.BLINK_COOLDOWN_REDUCTION.get(), UUID,
+                0.3, AttributeModifier.Operation.ADDITION);
+        this.addAttributeModifier(ModAttributes.SKILL_COOLDOWN_REDUCTION.get(), UUID,
+                0.3, AttributeModifier.Operation.ADDITION);
     }
 }

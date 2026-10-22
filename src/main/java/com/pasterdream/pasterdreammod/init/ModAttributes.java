@@ -18,9 +18,9 @@ public class ModAttributes {
     public static final DeferredRegister<Attribute> ATTRIBUTES =
             DeferredRegister.create(ForgeRegistries.ATTRIBUTES, PasterDreamMod.MOD_ID);
 
-    public static final RegistryObject<Attribute> BLINK_CD =
-            ATTRIBUTES.register("blink_cd", () -> new RangedAttribute(
-                    "attribute.pasterdream.blink_cd", 1.0, 0.0, 10.0).setSyncable(true));
+    public static final RegistryObject<Attribute> BLINK_COOLDOWN_REDUCTION =
+            ATTRIBUTES.register("blink_cooldown_reduction", () -> new RangedAttribute(
+                    "attribute.pasterdream.blink_cooldown_reduction", 0.0, -10.0, 1.0).setSyncable(true));
     public static final RegistryObject<Attribute> BLINK_CONSUME =
             ATTRIBUTES.register("blink_consume", () -> new RangedAttribute(
                     "attribute.pasterdream.blink_consume", 1.0, 0.0, 10.0).setSyncable(true));
@@ -28,9 +28,9 @@ public class ModAttributes {
             ATTRIBUTES.register("blink_range", () -> new RangedAttribute(
                     "attribute.pasterdream.blink_range", 1.0, 0.0, 10.0).setSyncable(true));
 
-    public static final RegistryObject<Attribute> SKILL_COOLDOWN_RATE =
-            ATTRIBUTES.register("skill_cooldown_rate", () -> new RangedAttribute(
-                    "attribute.pasterdream.skill_cooldown_rate", 1.0, 0.0, 10.0).setSyncable(true));
+    public static final RegistryObject<Attribute> SKILL_COOLDOWN_REDUCTION =
+            ATTRIBUTES.register("skill_cooldown_reduction", () -> new RangedAttribute(
+                    "attribute.pasterdream.skill_cooldown_reduction", 0.0, -10.0, 1.0).setSyncable(true));
     public static final RegistryObject<Attribute> SKILL_DAMAGE_RATE =
             ATTRIBUTES.register("skill_damage_rate", () -> new RangedAttribute(
                     "attribute.pasterdream.skill_damage_rate", 1.0, 0.0, 100.0).setSyncable(true));
@@ -68,10 +68,10 @@ public class ModAttributes {
 
     @SubscribeEvent
     public static void addAttributes(EntityAttributeModificationEvent event) {
-        event.add(EntityType.PLAYER, BLINK_CD.get());
+        event.add(EntityType.PLAYER, BLINK_COOLDOWN_REDUCTION.get());
         event.add(EntityType.PLAYER, BLINK_CONSUME.get());
         event.add(EntityType.PLAYER, BLINK_RANGE.get());
-        event.add(EntityType.PLAYER, SKILL_COOLDOWN_RATE.get());
+        event.add(EntityType.PLAYER, SKILL_COOLDOWN_REDUCTION.get());
         event.add(EntityType.PLAYER, SKILL_DAMAGE_RATE.get());
         event.add(EntityType.PLAYER, MAGIC_DAMAGE_RATE.get());
         event.add(EntityType.PLAYER, SAN_VARIABILITY.get());

@@ -93,15 +93,15 @@ public class PasterDreamKubeJSPlugin extends KubeJSPlugin {
 
         /**
          * 对所有 pasterdream:skill_cooldown 物品施加共享冷却，
-         * 时长自动按玩家的 SKILL_COOLDOWN_RATE 属性缩放。
+         * 时长自动按玩家的 SKILL_COOLDOWN_REDUCTION 属性缩放。
          */
         public void startSharedCooldown(Player player, int baseTicks) {
             SkillCooldownHelper.applySharedCooldown(player, baseTicks);
         }
 
-        /** 玩家当前技能冷却倍率（SKILL_COOLDOWN_RATE，默认 1.0）。 */
-        public float getSkillCooldownRate(Player player) {
-            return SkillCooldownHelper.getSkillCooldownMultiplier(player);
+        /** 玩家当前技能冷却缩减（SKILL_COOLDOWN_REDUCTION，默认 0.0，+0.2 = 20% 缩减）。 */
+        public float getSkillCooldownReduction(Player player) {
+            return SkillCooldownHelper.getSkillCooldownReduction(player);
         }
 
         /** 玩家当前技能伤害倍率（SKILL_DAMAGE_RATE，默认 1.0）。 */

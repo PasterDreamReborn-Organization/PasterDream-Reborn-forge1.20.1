@@ -45,7 +45,7 @@ public class FluffyWindAlloyArmorItem extends ArmorItem implements GeoItem {
 
     /** 单件移动速度加成（MULTIPLY_TOTAL） */
     public static final double MOVE_SPEED_PER_PIECE = 0.05;
-    /** 单件战技冷却降低（MULTIPLY_TOTAL，取负） */
+    /** 单件战技冷却缩减（ADDITION，正数 = 减 CD） */
     public static final double SKILL_COOLDOWN_PER_PIECE = 0.05;
 
     private static final UUID HELMET_SPEED_UUID = UUID.fromString("f1e2d3c4-0001-4b01-8a01-000000000001");
@@ -73,10 +73,10 @@ public class FluffyWindAlloyArmorItem extends ArmorItem implements GeoItem {
                     new AttributeModifier(getSpeedUuid(slot),
                             "pasterdream.fluffy_wind_alloy_armor.speed", MOVE_SPEED_PER_PIECE,
                             AttributeModifier.Operation.MULTIPLY_TOTAL));
-            builder.put(ModAttributes.SKILL_COOLDOWN_RATE.get(),
+            builder.put(ModAttributes.SKILL_COOLDOWN_REDUCTION.get(),
                     new AttributeModifier(getCooldownUuid(slot),
-                            "pasterdream.fluffy_wind_alloy_armor.skill_cooldown", -SKILL_COOLDOWN_PER_PIECE,
-                            AttributeModifier.Operation.MULTIPLY_TOTAL));
+                            "pasterdream.fluffy_wind_alloy_armor.skill_cooldown_reduction", SKILL_COOLDOWN_PER_PIECE,
+                            AttributeModifier.Operation.ADDITION));
         }
         return builder.build();
     }
