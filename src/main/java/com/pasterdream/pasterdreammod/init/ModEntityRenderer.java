@@ -58,6 +58,11 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.JELLYFISH.get(), JellyfishRenderer::new);
         event.registerEntityRenderer(ModEntities.SMALL_STONE_SPIRIT.get(), SmallStoneSpiritRenderer::new);
         event.registerEntityRenderer(ModEntities.KUSANAGI_VENOM_STINGER.get(), KusanagiVenomStingerRenderer::new);
+        event.registerEntityRenderer(ModEntities.TOXIC_SPORE_ARROW.get(), ToxicSporeArrowRenderer::new);
+        event.registerEntityRenderer(ModEntities.FRAGDREAM_ARROW.get(), FragdreamArrowRenderer::new);
+        event.registerEntityRenderer(ModEntities.MAGICAL_ARROW.get(), MagicalArrowRenderer::new);
+        event.registerEntityRenderer(ModEntities.CHARGED_ARROW.get(), ChargedArrowRenderer::new);
+        event.registerEntityRenderer(ModEntities.BLACKSTONE_ARROW.get(), BlackstoneArrowRenderer::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {

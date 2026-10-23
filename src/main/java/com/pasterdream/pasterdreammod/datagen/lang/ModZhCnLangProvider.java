@@ -2029,6 +2029,21 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.ghost_face.effect.2", "§7▪ §9远程武器射弹无视无敌帧");
         add("tooltip.pasterdream.ghost_face.cooldown", "§7▪ §9复制弹幕效果有%s秒冷却");
 
+        //特殊箭
+        add(ModItems.TOXIC_SPORE_ARROW.get(), "毒孢箭");
+        add("tooltip.pasterdream.toxic_spore_arrow.tooltip1","§9让被击中的目标染上剧毒");
+        add("tooltip.pasterdream.toxic_spore_arrow.tooltip2","§7§o——比100个毒马铃薯更毒");
+        add(ModItems.FRAGDREAM_ARROW.get(), "碎梦箭");
+        add("tooltip.pasterdream.fragdream_arrow.tooltip1","§9击中物块或实体时造成范围伤害");
+        add("tooltip.pasterdream.fragdream_arrow.tooltip2","§c无法回收");
+        add(ModItems.MAGICAL_ARROW.get(), "魔法箭");
+        add("tooltip.pasterdream.magical_arrow.tooltip1","§9追杀目标");
+        add(ModItems.CHARGED_ARROW.get(), "充能箭");
+        add("tooltip.pasterdream.charged_arrow.tooltip1","§9造成两次伤害，其中一次为魔法伤害");
+        add("tooltip.pasterdream.charged_arrow.tooltip2","§7§o——1 = 2");
+        add(ModItems.BLACKSTONE_ARROW.get(), "黑石箭");
+
+
         // 进度 - 故事
         add("advancements.pasterdream.story.root.title", "帕斯特之梦");
         add("advancements.pasterdream.story.root.description", "以心之祈愿为始");

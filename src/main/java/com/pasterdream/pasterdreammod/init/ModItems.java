@@ -14,6 +14,11 @@ import com.pasterdream.pasterdreammod.world.block.shadowdungeongate.gate.ShadowD
 import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanternDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalDisplayItem;
+import com.pasterdream.pasterdreammod.world.item.arrows.MagicalArrowItem;
+import com.pasterdream.pasterdreammod.world.item.arrows.ChargedArrowItem;
+import com.pasterdream.pasterdreammod.world.item.arrows.BlackstoneArrowItem;
+import com.pasterdream.pasterdreammod.world.item.arrows.FragdreamArrowItem;
+import com.pasterdream.pasterdreammod.world.item.arrows.ToxicSporeArrowItem;
 import com.pasterdream.pasterdreammod.world.item.debugtool.DebugToolItem;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem;
 import net.minecraft.world.item.BlockItem;
@@ -2157,6 +2162,18 @@ public class ModItems {
             });
 
     // 药剂瓶物品注册已移至 PotionBottleRegistry（world/item 包）
+
+    // 箭
+    public static final RegistryObject<Item> TOXIC_SPORE_ARROW = ITEMS.register("toxic_spore_arrow",
+            () -> new ToxicSporeArrowItem(new Item.Properties()));
+    public static final RegistryObject<Item> FRAGDREAM_ARROW = ITEMS.register("fragdream_arrow",
+            () -> new FragdreamArrowItem(new Item.Properties()));
+    public static final RegistryObject<Item> MAGICAL_ARROW = ITEMS.register("magical_arrow",
+            () -> new MagicalArrowItem(new Item.Properties()));
+    public static final RegistryObject<Item> CHARGED_ARROW = ITEMS.register("charged_arrow",
+            () -> new ChargedArrowItem(new Item.Properties()));
+    public static final RegistryObject<Item> BLACKSTONE_ARROW = ITEMS.register("blackstone_arrow",
+            () -> new BlackstoneArrowItem(new Item.Properties()));
 
     // 刷怪蛋
     public static final RegistryObject<Item> PINK_CHICKEN_SPAWN_EGG = ITEMS.register("pink_chicken_spawn_egg",

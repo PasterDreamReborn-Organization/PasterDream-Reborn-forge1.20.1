@@ -16,6 +16,11 @@ import com.pasterdream.pasterdreammod.world.entity.ThrownPotionBottle;
 import com.pasterdream.pasterdreammod.world.entity.RejuvenationBottleEntity;
 import com.pasterdream.pasterdreammod.world.entity.PotionBottleEffectEntity;
 import com.pasterdream.pasterdreammod.world.entity.PebbleProjectile;
+import com.pasterdream.pasterdreammod.world.entity.arrows.ToxicSporeArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.FragdreamArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.MagicalArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.ChargedArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.BlackstoneArrow;
 import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowMagicballEntity;
@@ -479,6 +484,45 @@ public class ModEntities {
                     .setTrackingRange(64)
                     .setUpdateInterval(1)
                     .setCustomClientFactory(KusanagiVenomStingerEntity::new)
+                    .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<ToxicSporeArrow>> TOXIC_SPORE_ARROW = register("toxic_spore_arrow",
+            EntityType.Builder.<ToxicSporeArrow>of(ToxicSporeArrow::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(ToxicSporeArrow::new)
+                    .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<FragdreamArrow>> FRAGDREAM_ARROW = register("fragdream_arrow",
+            EntityType.Builder.<FragdreamArrow>of(FragdreamArrow::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(FragdreamArrow::new)
+                    .sized(0.5f, 0.5f));
+    public static final RegistryObject<EntityType<MagicalArrow>> MAGICAL_ARROW = register("magical_arrow",
+            EntityType.Builder.<MagicalArrow>of(MagicalArrow::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(MagicalArrow::new)
+                    .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<ChargedArrow>> CHARGED_ARROW = register("charged_arrow",
+            EntityType.Builder.<ChargedArrow>of(ChargedArrow::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(ChargedArrow::new)
+                    .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<BlackstoneArrow>> BLACKSTONE_ARROW = register("blackstone_arrow",
+            EntityType.Builder.<BlackstoneArrow>of(BlackstoneArrow::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(BlackstoneArrow::new)
                     .sized(0.5f, 0.5f));
 
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder) {

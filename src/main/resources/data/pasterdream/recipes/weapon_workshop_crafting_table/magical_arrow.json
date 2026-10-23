@@ -1,0 +1,28 @@
+{
+  "type": "pasterdream:weapon_workshop_crafting_table",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:blackstone_arrow",
+      "count": 2
+    },
+    {
+      "item": "pasterdream:magic_stone",
+      "count": 1
+    }
+  ],
+  "enhanceStone":
+  [
+    {
+      "item": "minecraft:air",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:magical_arrow",
+      "count": 2
+    }
+  ]
+}

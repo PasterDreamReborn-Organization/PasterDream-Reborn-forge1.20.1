@@ -687,6 +687,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
         basicItem(ModItems.BLACK_BEETLE_CARAPACE.get());
         basicItem(ModItems.BLACK_BEETLE_VOCALCORD.get());
+
+        //箭
+        basicItem(ModItems.TOXIC_SPORE_ARROW.get());
+        basicItem(ModItems.FRAGDREAM_ARROW.get());
+        basicItem(ModItems.MAGICAL_ARROW.get());
+        basicItem(ModItems.CHARGED_ARROW.get());
+        basicItem(ModItems.BLACKSTONE_ARROW.get());
     }
 
     @Override

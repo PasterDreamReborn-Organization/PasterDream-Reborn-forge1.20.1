@@ -434,6 +434,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WIND_VANE.get());
                         output.accept(ModItems.WIND_SPIRIT.get());
                         output.accept(ModItems.FRACTURED_ANGEL_STATUE.get());
+                        // 特殊箭
+                        output.accept(ModItems.BLACKSTONE_ARROW.get());
+                        output.accept(ModItems.TOXIC_SPORE_ARROW.get());
+                        output.accept(ModItems.FRAGDREAM_ARROW.get());
+                        output.accept(ModItems.MAGICAL_ARROW.get());
+                        output.accept(ModItems.CHARGED_ARROW.get());
                     })
                     .build());
 

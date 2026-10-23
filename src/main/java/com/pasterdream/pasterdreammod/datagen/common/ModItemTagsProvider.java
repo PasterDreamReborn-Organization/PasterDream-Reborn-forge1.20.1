@@ -198,6 +198,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.STONE_CRAFTING_MATERIALS)
                 .add(Items.CALCITE);
 
+        // 毒孢子箭作为原版弓/弩的弹药（BowItem/CrossbowItem 通过 minecraft:arrows 标签识别箭矢）
+        tag(ItemTags.ARROWS)
+                .add(ModItems.TOXIC_SPORE_ARROW.get())
+                .add(ModItems.FRAGDREAM_ARROW.get())
+                .add(ModItems.MAGICAL_ARROW.get())
+                .add(ModItems.CHARGED_ARROW.get())
+                .add(ModItems.BLACKSTONE_ARROW.get());
+
         tag(ModItemTags.COMPOSTABLE)
                 // 蘑菇建材
                 .add(ModBlocks.PINK_MUSHROOM_BLOCK.get().asItem())

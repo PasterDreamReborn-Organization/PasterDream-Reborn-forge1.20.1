@@ -1842,6 +1842,21 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.ghost_face.effect.2", "§7▪ §9Ranged weapon projectiles ignore invincibility frames.");
         add("tooltip.pasterdream.ghost_face.cooldown", "§7▪ §9Cooldown: %s seconds");
 
+        //special arrows
+        add(ModItems.TOXIC_SPORE_ARROW.get(), "Toxic Spore Arrow");
+        add("tooltip.pasterdream.toxic_spore_arrow.tooltip1","§9Make the target hit get poisoned.");
+        add("tooltip.pasterdream.toxic_spore_arrow.tooltip2","§7§o——More poisonous than 100 poisonous potatoes.");
+        add(ModItems.FRAGDREAM_ARROW.get(), "Fragdream Arrow");
+        add("tooltip.pasterdream.fragdream_arrow.tooltip1","§9Deals area damage when hitting a block or entity.");
+        add("tooltip.pasterdream.fragdream_arrow.tooltip2","§cCannot be recycled.");
+        add(ModItems.MAGICAL_ARROW.get(), "Magical Arrow");
+        add("tooltip.pasterdream.magical_arrow.tooltip1","§9Trace the target.");
+        add(ModItems.CHARGED_ARROW.get(), "Charged Arrow");
+        add("tooltip.pasterdream.charged_arrow.tooltip1","§9Deals damage twice, one of which is magic damage.");
+        add("tooltip.pasterdream.charged_arrow.tooltip2","§7§o——1 = 2");
+        add(ModItems.BLACKSTONE_ARROW.get(), "Blackstone Arrow");
+
+
         // Advancements - Story
         add("advancements.pasterdream.story.root.title", "PasterDream");
         add("advancements.pasterdream.story.root.description", "Begins with a wish from the heart");
