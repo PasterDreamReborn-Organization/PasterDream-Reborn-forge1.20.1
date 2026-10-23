@@ -1,6 +1,9 @@
 package com.pasterdream.pasterdreammod.world.item.arrows;
 
 import com.pasterdream.pasterdreammod.world.entity.arrows.ChargedArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehavior;
+import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviorProvider;
+import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviors;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -11,8 +14,8 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-/** 充能箭物品。作为原版弓的弹药，射出 {@link ChargedArrow}。 */
-public class ChargedArrowItem extends ArrowItem {
+/** 充能箭物品。作为弓 / 弩的弹药，射出 {@link ChargedArrow}。 */
+public class ChargedArrowItem extends ArrowItem implements ArrowBehaviorProvider {
 
     public ChargedArrowItem(Properties properties) {
         super(properties);
@@ -22,6 +25,12 @@ public class ChargedArrowItem extends ArrowItem {
     public AbstractArrow createArrow(Level level, ItemStack stack, LivingEntity shooter) {
         return new ChargedArrow(level, shooter);
     }
+
+    @Override
+    public ArrowBehavior arrowBehavior() {
+        return ArrowBehaviors.CHARGED;
+    }
+
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
         list.add(Component.translatable("tooltip.pasterdream.charged_arrow.tooltip1"));

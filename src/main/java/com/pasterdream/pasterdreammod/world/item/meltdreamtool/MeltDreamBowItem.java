@@ -6,6 +6,7 @@ import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.world.dimension.DyedreamDimension;
 import com.pasterdream.pasterdreammod.world.entity.MeltDreamArrowEntity;
+import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviors;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -94,6 +95,8 @@ public class MeltDreamBowItem extends BowItem {
                 // 强化射击改用带粉色拖尾的融梦箭实体（光谱箭保留原版发光行为）
                 MeltDreamArrowEntity trailArrow = new MeltDreamArrowEntity(level, player);
                 trailArrow.setEffectsFromItem(ammo);
+                trailArrow.setAmmoItem(ammo);
+                ArrowBehaviors.applyBaseStats(trailArrow, ammo);
                 arrow = trailArrow;
             } else {
                 ArrowItem arrowItem = (ArrowItem) (ammo.getItem() instanceof ArrowItem ? ammo.getItem() : Items.ARROW);

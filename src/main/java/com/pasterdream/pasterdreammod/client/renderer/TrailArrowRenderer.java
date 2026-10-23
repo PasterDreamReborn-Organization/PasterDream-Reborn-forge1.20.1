@@ -24,6 +24,10 @@ public abstract class TrailArrowRenderer<T extends TrailArrowEntity> extends Arr
 
     @Override
     public ResourceLocation getTextureLocation(T entity) {
+        ResourceLocation ammoTexture = ArrowProjectileTextures.get(entity.getAmmoItem());
+        if (ammoTexture != null) {
+            return ammoTexture;
+        }
         return entity.getColor() != -1 ? TIPPED_ARROW_TEXTURE : ARROW_TEXTURE;
     }
 }

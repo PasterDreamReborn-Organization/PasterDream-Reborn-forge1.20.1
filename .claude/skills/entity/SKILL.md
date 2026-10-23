@@ -54,11 +54,23 @@ description: 新增/修改实体（生物、弹射物、投影物）。覆盖实
 
 ---
 
+## 自定义箭矢
+
+- 箭矢物品实现 `ArrowBehaviorProvider`，返回 `world/entity/arrows/behavior/ArrowBehaviors` 中的行为实例
+- 箭矢特性（伤害倍率、命中效果、飞行粒子、追踪）写在 `ArrowBehavior` 钩子里，箭实体自身与其被强化到武器拖尾箭时共用
+- 武器强化拖尾箭（`TrailArrowEntity` 子类）通过同步的弹药 `ItemStack` 解析行为；新建强化箭必须 `setAmmoItem(ammo)` 并 `ArrowBehaviors.applyBaseStats(...)`
+- 强化拖尾箭的箭体贴图由 `client/renderer/ArrowProjectileTextures.java` 按弹药映射，新增自制箭矢需在此登记贴图
+- 新箭矢同时加入 `minecraft:arrows` 物品标签，否则弓 / 弩无法装填
+- 需要「无限」生效的箭矢覆写 `ArrowItem#isInfinite`
+
+---
+
 ## 文件速查
 
 | 用途 | 路径 |
 |------|------|
 | 实体实现 | `world/entity/` |
+| 箭矢行为 | `world/entity/arrows/behavior/` |
 | 实体类型注册 | `init/ModEntities.java` |
 | 渲染器注册 | `init/ModEntityRenderer.java` |
 | 模型 | `client/model/` |

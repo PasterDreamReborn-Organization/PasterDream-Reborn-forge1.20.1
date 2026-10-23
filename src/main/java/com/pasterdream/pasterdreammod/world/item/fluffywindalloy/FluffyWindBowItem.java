@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergy
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.world.entity.FluffyWindArrowEntity;
+import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviors;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -90,6 +91,8 @@ public class FluffyWindBowItem extends BowItem {
                 // 强化射击改用不受重力的萦风箭实体（光谱箭保留原版发光行为）
                 FluffyWindArrowEntity windArrow = new FluffyWindArrowEntity(level, player);
                 windArrow.setEffectsFromItem(ammo);
+                windArrow.setAmmoItem(ammo);
+                ArrowBehaviors.applyBaseStats(windArrow, ammo);
                 if (channelingLevel > 0) {
                     // 附魔引雷：命中生物时落雷，并记录火矢等级用于范围点燃
                     windArrow.enableChannelingLightning(flameLevel);

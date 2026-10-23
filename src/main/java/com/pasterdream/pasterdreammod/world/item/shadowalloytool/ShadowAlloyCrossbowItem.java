@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.capability.ModCapabilities;
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
 import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyncPacket;
 import com.pasterdream.pasterdreammod.world.entity.ShadowAlloyArrowEntity;
+import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviors;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -192,8 +193,12 @@ public class ShadowAlloyCrossbowItem extends CrossbowItem {
         if (projectile.isEmpty()) {
             return false;
         }
-        // 无限仅作用于普通箭矢：药水箭 / 光谱箭 / 烟花照常消耗
-        boolean infiniteProjectile = infinity && projectile.is(Items.ARROW);
+        // 无限仅作用于「普通箭矢类」弹药：药水箭 / 光谱箭 / 烟花照常消耗；
+        // 自定义箭矢可覆写 ArrowItem#isInfinite 声明自身是否享受无限（黑石箭已覆写）。
+        boolean infiniteProjectile = infinity
+                && shooter instanceof Player player
+                && projectile.getItem() instanceof ArrowItem arrowItem
+                && arrowItem.isInfinite(projectile, crossbow, player);
         ItemStack loaded;
         if (creative || infiniteProjectile || secondary) {
             loaded = projectile.copy();
@@ -281,6 +286,8 @@ public class ShadowAlloyCrossbowItem extends CrossbowItem {
         if (empowered && !projectile.is(Items.SPECTRAL_ARROW)) {
             ShadowAlloyArrowEntity trailArrow = new ShadowAlloyArrowEntity(level, shooter);
             trailArrow.setEffectsFromItem(projectile);
+            trailArrow.setAmmoItem(projectile);
+            ArrowBehaviors.applyBaseStats(trailArrow, projectile);
             arrow = trailArrow;
         } else {
             ArrowItem arrowItem = (ArrowItem) (projectile.getItem() instanceof ArrowItem ? projectile.getItem() : Items.ARROW);

@@ -1,23 +1,23 @@
 package com.pasterdream.pasterdreammod.world.entity.arrows;
 
 import com.pasterdream.pasterdreammod.init.ModEntities;
+import com.pasterdream.pasterdreammod.init.ModItems;
+import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviors;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
 
-/** 黑石箭 —— 伤害为普通箭的 1.2 倍。 */
+/** 黑石箭——伤害为普通箭的 1.2 倍。 */
 public class BlackstoneArrow extends Arrow {
-
-    /** 伤害倍率（相对普通箭基础伤害） */
-    private static final double DAMAGE_MULTIPLIER = 1.2;
 
     public BlackstoneArrow(EntityType<? extends BlackstoneArrow> type, Level level) {
         super(type, level);
-        this.setBaseDamage(this.getBaseDamage() * DAMAGE_MULTIPLIER);
+        ArrowBehaviors.BLACKSTONE.applyBaseStats(this);
     }
 
     public BlackstoneArrow(PlayMessages.SpawnEntity packet, Level level) {
@@ -31,5 +31,10 @@ public class BlackstoneArrow extends Arrow {
         if (shooter instanceof Player) {
             this.pickup = AbstractArrow.Pickup.ALLOWED;
         }
+    }
+
+    @Override
+    protected ItemStack getPickupItem() {
+        return new ItemStack(ModItems.BLACKSTONE_ARROW.get());
     }
 }
