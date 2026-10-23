@@ -60,6 +60,7 @@ public class PasterDreamTipsManager {
             "java.lang.NullPointerException:Tooltip for the mod is Null",
             "PasterDream Tip: PasterDream Tip: PasterDream Tip: PasterDream Tip:",
             "I am the dream that is approaching!",
+            "My guiding star.",
             "当你决心面对那深邃的黑暗，请一定要记得保持自己的理智，祝你好运...",
             "不要在黑暗的地方待得太久，过于黑暗的环境会导致掉san！",
             "想要更多树苗却无从获取更多？园艺钳可以帮到你！",

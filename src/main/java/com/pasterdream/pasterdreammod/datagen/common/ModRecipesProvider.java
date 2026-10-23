@@ -3686,6 +3686,23 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModBlocks.SHADOW_HAND_TRAP.get()), has(ModBlocks.SHADOW_HAND_TRAP.get()))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":shadow_from_shadow_hand_trap");
 
+        // ===== 箭合成配方 =====
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLACKSTONE_ARROW.get(), 4)
+                .pattern(" a ")
+                .pattern(" b ")
+                .pattern(" c ")
+                .define('a', ModItems.TITANIUM_NUGGET.get())
+                .define('b', ModItems.BLACK_STICK.get())
+                .define('c',Items.FEATHER)
+                .unlockedBy(getHasName(ModItems.BLACK_STICK.get()),
+                        has(ModItems.BLACK_STICK.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TOXIC_SPORE_ARROW.get(), 8)
+                .requires(ModItems.JUNGLE_SPORE.get())
+                .requires(Items.ARROW,8)
+                .unlockedBy(getHasName(ModItems.JUNGLE_SPORE.get()), has(ModItems.JUNGLE_SPORE.get()))
+                .save(pWriter);
     }
 
     // ===== 容器配平校验 =====
