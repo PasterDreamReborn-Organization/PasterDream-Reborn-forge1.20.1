@@ -26,6 +26,8 @@ public final class FluffyWindBowHandler {
     private static final float LIGHTNING_DAMAGE_RATIO = 0.25F;
     /** 落雷伤害下限 */
     private static final float MIN_LIGHTNING_DAMAGE = 5.0F;
+    /** 持久数据键：本箭已触发过引雷（保证一箭只落一次雷，兼容碎梦箭 AOE、充能箭双段伤害等附加伤害） */
+    private static final String TAG_CHANNELING_TRIGGERED = "pasterdream:fluffy_wind_channeling_triggered";
 
     private FluffyWindBowHandler() {
     }
@@ -42,6 +44,11 @@ public final class FluffyWindBowHandler {
         if (!arrow.hasChannelingLightning()) {
             return;
         }
+        // 自定义箭矢的附加伤害（AOE / 魔法追加）同样以本箭为直接伤害源，去重避免一箭多雷
+        if (arrow.getPersistentData().getBoolean(TAG_CHANNELING_TRIGGERED)) {
+            return;
+        }
+        arrow.getPersistentData().putBoolean(TAG_CHANNELING_TRIGGERED, true);
         LivingEntity victim = event.getEntity();
         if (!(victim.level() instanceof ServerLevel serverLevel)) {
             return;
