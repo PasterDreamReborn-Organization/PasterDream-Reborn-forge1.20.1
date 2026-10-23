@@ -1,10 +1,12 @@
 package com.pasterdream.pasterdreammod.world.item.meltdreamcrystalchestresettool;
 
 import com.pasterdream.pasterdreammod.capability.meltdreamenergy.MeltDreamEnergyHelper;
+import com.pasterdream.pasterdreammod.client.MeltDreamCrystalChestResetCooldownClient;
 import com.pasterdream.pasterdreammod.helper.meltdreamenergycostcalculator.MeltDreamEnergyCostCalculator;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlock;
 import com.pasterdream.pasterdreammod.world.block.meltdreamcrystalchest.MeltDreamCrystalChestBlockEntity;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -64,6 +66,15 @@ public class MeltDreamCrystalChestResetToolItem extends Item
             {
                 tooltip.add(Component.translatable("tooltip.pasterdream.not_have_loot_table"));
             }
+
+        if (level != null && level.isClientSide)
+        {
+            long remainingTicks = MeltDreamCrystalChestResetCooldownClient.getRemainingTicks();
+            if (remainingTicks > 0L)
+            {
+                tooltip.add(Component.translatable("tooltip.pasterdream.melt_dream_crystal_chest.reset_cooldown", MeltDreamCrystalChestResetCooldown.formatRemainingTicks(remainingTicks)).withStyle(ChatFormatting.GOLD));
+            }
+        }
     }
 
     @Override
@@ -90,6 +101,13 @@ public class MeltDreamCrystalChestResetToolItem extends Item
 
                 if(player != null && !player.isCreative())
                 {
+                    long remainingTicks = MeltDreamCrystalChestResetCooldown.getRemainingTicks(serverPlayer);
+                    if(remainingTicks > 0L)
+                    {
+                        player.displayClientMessage(Component.translatable("message.pasterdream.melt_dream_crystal_chest.reset_cooldown", MeltDreamCrystalChestResetCooldown.formatRemainingTicks(remainingTicks)), true);
+                        return InteractionResult.PASS;
+                    }
+
                     double meltDreamEnergyCost = MeltDreamEnergyCostCalculator.calculate(lootTableListTag);
                     if(MeltDreamEnergyHelper.getPlayerMeltDreamEnergyIsNeed(serverPlayer) && MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(serverPlayer) < meltDreamEnergyCost)
                     {
@@ -109,6 +127,11 @@ public class MeltDreamCrystalChestResetToolItem extends Item
                 if (blockEntity instanceof MeltDreamCrystalChestBlockEntity meltDreamCrystalChest)
                 {
                     meltDreamCrystalChest.setLootTablesNbt(lootTableListTag);
+                }
+
+                if(player != null && !player.isCreative())
+                {
+                    MeltDreamCrystalChestResetCooldown.markReset(serverPlayer);
                 }
             }
         }

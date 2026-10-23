@@ -154,6 +154,11 @@ public class Config
             .comment("融梦水晶箱传奇品质物品抛出速度，默认 0.375")
             .defineInRange("meltDreamCrystalChestLegendYSpeed", 0.375, 0.0, 5.0);
 
+    private static final ForgeConfigSpec.IntValue MELT_DREAM_CRYSTAL_CHEST_RESET_COOLDOWN_SECONDS = BUILDER
+            .comment("融梦水晶箱重置工具的冷却时间（秒），默认 1200 秒（20 分钟）。"
+                    + "\n按玩家独立计算，死亡、重进存档后仍然保留；设为 0 则无冷却")
+            .defineInRange("meltDreamCrystalChestResetCooldownSeconds", 1200, 0, Integer.MAX_VALUE);
+
     // === SAN 阈值（ratio = 当前SAN / 最大SAN） ===
     private static final ForgeConfigSpec.DoubleValue SAN_CHEER_UP_THRESHOLD = BUILDER
             .comment("振奋效果触发阈值（ratio >= 该值），默认 0.9（90%）")
@@ -607,6 +612,7 @@ public class Config
     public static double meltDreamCrystalChestNormalYSpeed;
     public static double meltDreamCrystalChestRareYSpeed;
     public static double meltDreamCrystalChestLegendYSpeed;
+    public static int meltDreamCrystalChestResetCooldownSeconds;
 
     // === 冶梦莲转化 ===
     public static boolean destroyDeskOnDreamingLotusConversion;
@@ -1092,6 +1098,7 @@ public class Config
         meltDreamCrystalChestNormalYSpeed = MELT_DREAM_CRYSTAL_CHEST_NORMAL_Y_SPEED.get();
         meltDreamCrystalChestRareYSpeed = MELT_DREAM_CRYSTAL_CHEST_RARE_Y_SPEED.get();
         meltDreamCrystalChestLegendYSpeed = MELT_DREAM_CRYSTAL_CHEST_LEGEND_Y_SPEED.get();
+        meltDreamCrystalChestResetCooldownSeconds = MELT_DREAM_CRYSTAL_CHEST_RESET_COOLDOWN_SECONDS.get();
         destroyDeskOnDreamingLotusConversion = DESTROY_DESK_ON_DREAMING_LOTUS_CONVERSION.get();
         destroyDeskOnEdelweissConversion = DESTROY_DESK_ON_EDELWEISS_CONVERSION.get();
         dyedreamPortalContaminationEnabled = DYEDREAM_PORTAL_CONTAMINATION_ENABLED.get();

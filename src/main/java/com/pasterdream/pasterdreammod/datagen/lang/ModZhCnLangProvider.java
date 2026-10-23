@@ -831,6 +831,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.not_have_loot_table", "§c无战利品");
         add("tooltip.pasterdream.按住Shift+右键点击打开的融梦水晶箱可复位（写入此物品NBT中包含的战利品列表）", "§7按住Shift+右键点击打开的融梦水晶箱可复位（写入此物品NBT中包含的战利品列表）");
         add("tooltip.pasterdream.reset_cost_melt_dream_energy", "复位消耗%f融梦能量");
+        add("tooltip.pasterdream.melt_dream_crystal_chest.reset_cooldown", "重置冷却剩余：%s");
 
         add("tooltip.pasterdream.空", "空");
         add("tooltip.pasterdream.总容量:", "总容量:");
@@ -838,6 +839,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.不可饮用", "不可饮用");
 
         add("message.pasterdream.融梦水晶箱重置工具只能重置打开的融梦水晶箱", "融梦水晶箱重置工具只能重置打开的融梦水晶箱");
+        add("message.pasterdream.melt_dream_crystal_chest.reset_cooldown", "融梦水晶箱重置冷却中，还需等待 %s");
         add("message.pasterdream.融梦水晶箱战利品品质应为1，2或3，但是此时为", "融梦水晶箱战利品品质应为1，2或3，但是此时为%d");
         add("message.pasterdream.融梦能量不足", "融梦能量不足");
 
@@ -1328,6 +1330,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.sand_of_time.3", "§7§o--沙漏将会记得 我们所遗忘的时光");
         add("tooltip.pasterdream.sand_of_time.4", "还剩%s秒冷却");
         add("tooltip.pasterdream.sand_of_time.5", "§a力量已恢复，可以切换昼夜");
+        add("tooltip.pasterdream.sand_of_time.6", "§7若融梦水晶箱重置冷却中，使用时会直接跳过该冷却");
+        add("message.pasterdream.sand_of_time.reset_cooldown_skipped", "时之沙的力量直接跳过了融梦水晶箱的重置冷却");
         add(ModItems.STORAGE_BAG.get(), "便携储物袋");
         add(ModItems.LARGE_STORAGE_BAG.get(), "大型便携储物袋");
         add(ModItems.DREAM_HARP_OF_WANDERER.get(), "漂泊旅者的染梦竖琴");

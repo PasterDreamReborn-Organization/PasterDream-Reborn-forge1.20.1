@@ -19,6 +19,7 @@ import com.pasterdream.pasterdreammod.network.mortar.MortarCraftPacket;
 import com.pasterdream.pasterdreammod.network.mortar.MortarNbtSyncPacket;
 import com.pasterdream.pasterdreammod.network.researchtable.ResearchTableCopyPacket;
 import com.pasterdream.pasterdreammod.network.researchtable.ResearchTableResearchPacket;
+import com.pasterdream.pasterdreammod.network.meltdreamcrystalchest.MeltDreamCrystalChestResetCooldownSyncPacket;
 import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
 import com.pasterdream.pasterdreammod.network.curio.KaichuOmamoriActivationPacket;
 import com.pasterdream.pasterdreammod.network.curio.CloakActivationPacket;
@@ -109,6 +110,8 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, SyncEntityNbtPacket.class, SyncEntityNbtPacket::encode, SyncEntityNbtPacket::new, SyncEntityNbtPacket::handle);
         CHANNEL.registerMessage(id++, StoreEntityToInventoryPacket.class, StoreEntityToInventoryPacket::encode, StoreEntityToInventoryPacket::new, StoreEntityToInventoryPacket::handle);
         CHANNEL.registerMessage(id++, EntityDiscardPacket.class, EntityDiscardPacket::encode, EntityDiscardPacket::new, EntityDiscardPacket::handle);
+
+        CHANNEL.registerMessage(id++, MeltDreamCrystalChestResetCooldownSyncPacket.class, MeltDreamCrystalChestResetCooldownSyncPacket::encode, MeltDreamCrystalChestResetCooldownSyncPacket::decode, MeltDreamCrystalChestResetCooldownSyncPacket::handle);
     }
 
     public static void sendMeltDreamEnergySyncPacketToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)
