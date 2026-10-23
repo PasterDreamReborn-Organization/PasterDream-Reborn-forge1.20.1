@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.client.network;
 
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.client.MeltDreamCrystalChestResetCooldownClient;
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerMenuWithFluidSlot;
 import com.pasterdream.pasterdreammod.world.block.dreamcauldron.DreamCauldronScreen;
 import com.pasterdream.pasterdreammod.world.block.geckolibblock.AnimatableSync;
@@ -69,6 +70,11 @@ public class ClientPacketHandlers
 
             player.playSound(sound, 1.0F, 1.0F);
         }
+    }
+
+    public static void handleMeltDreamCrystalChestResetCooldown(int remainingTicks)
+    {
+        MeltDreamCrystalChestResetCooldownClient.setRemainingTicks(remainingTicks);
     }
 
     public static void handleSanSync(double sanValue)

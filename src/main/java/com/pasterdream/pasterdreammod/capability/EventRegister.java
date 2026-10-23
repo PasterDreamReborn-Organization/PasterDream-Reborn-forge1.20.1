@@ -11,6 +11,7 @@ import com.pasterdream.pasterdreammod.network.san.IsSanEnableSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.MaxSanSyncPacket;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
 import com.pasterdream.pasterdreammod.Config;
+import com.pasterdream.pasterdreammod.world.item.meltdreamcrystalchestresettool.MeltDreamCrystalChestResetCooldown;
 
 import com.pasterdream.pasterdreammod.tag.ModItemTags;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -61,6 +62,7 @@ public class EventRegister
             event.getOriginal().reviveCaps();
             event.getOriginal().getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(oldCapability -> event.getEntity().getCapability(ModCapabilities.MELT_DREAM_ENERGY).ifPresent(newCapability -> newCapability.copyValueFromOtherMeltDreamEnergy(oldCapability)));
             event.getOriginal().getCapability(ModCapabilities.SAN).ifPresent(oldCapability -> event.getEntity().getCapability(ModCapabilities.SAN).ifPresent(newCapability -> newCapability.copyValueFromOtherSan(oldCapability)));
+            MeltDreamCrystalChestResetCooldown.copyOnPlayerClone(event.getOriginal(), event.getEntity());
             event.getOriginal().invalidateCaps();
             sync(event.getEntity());
         }
@@ -69,6 +71,7 @@ public class EventRegister
         public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event)
         {
             sync(event.getEntity());
+            syncChestResetCooldown(event.getEntity());
             givePatchouliBookOnFirstJoin(event);
         }
 
@@ -76,12 +79,22 @@ public class EventRegister
         public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event)
         {
             sync(event.getEntity());
+            syncChestResetCooldown(event.getEntity());
         }
 
         @SubscribeEvent
         public static void onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event)
         {
             sync(event.getEntity());
+            syncChestResetCooldown(event.getEntity());
+        }
+
+        private static void syncChestResetCooldown(Player player)
+        {
+            if (player instanceof net.minecraft.server.level.ServerPlayer serverPlayer)
+            {
+                MeltDreamCrystalChestResetCooldown.syncToClient(serverPlayer);
+            }
         }
 
         private static final String PATCHOULI_BOOK_TAG = "pasterdream_received_book";
