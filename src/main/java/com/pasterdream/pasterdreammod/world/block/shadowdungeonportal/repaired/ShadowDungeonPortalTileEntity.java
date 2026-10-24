@@ -46,16 +46,12 @@ import java.util.List;
 
 public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlockEntity, AnimatableSync
 {
-    private static final ResourceLocation DEFEAT_AARONCOS_ADVANCEMENT =
-            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/defeat_aaroncos");
-
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private int animationState = 0;
     private int tickCounter = 0;
     private List<Player> playerList = new ArrayList<>();
-    private int progress = 0;//0:第一次进入，1:第二次进入，2:后续刷材料
+    private int progress = 0;//0:第一次进入，1:击败阴影入侵事件后进入，2:暗影地牢宝库挑战
     private int allFloorCounts = 0;
-    private boolean useRepository = false;
 
     public boolean isEntry = true;
     public BlockPos targetPosition = new BlockPos(0, 0, 0);
@@ -79,8 +75,6 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
             {
                 if (!checkIsHavePlayer())
                 {
-                    useRepository = player instanceof ServerPlayer serverPlayer
-                            && AdvancementHelper.isDone(serverPlayer, DEFEAT_AARONCOS_ADVANCEMENT);
                     animationState = 1;
                     setChangedAndSync();
                 }
@@ -96,7 +90,6 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
         }
             else
             {
-                useRepository = false;
                 animationState = 1;
                 setChangedAndSync();
             }
@@ -173,32 +166,6 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
         }
     }
 
-    private void clearAndPlaceStructure(ResourceLocation resourceLocation, int x, int y, int z)
-    {
-        if (level == null || level.isClientSide())
-        {
-            return;
-        }
-
-        StructureTemplateManager manager = ((ServerLevel) level).getStructureManager();
-        manager.get(resourceLocation).ifPresent(template ->
-        {
-            BlockPos structureOrigin = new BlockPos(x, y, z);
-            var size = template.getSize();
-            for (int dx = 0; dx < size.getX(); dx++)
-            {
-                for (int dy = 0; dy < size.getY(); dy++)
-                {
-                    for (int dz = 0; dz < size.getZ(); dz++)
-                    {
-                        level.setBlock(structureOrigin.offset(dx, dy, dz), Blocks.AIR.defaultBlockState(), 2);
-                    }
-                }
-            }
-            template.placeInWorld((ServerLevel) level, structureOrigin, structureOrigin, new StructurePlaceSettings(), level.getRandom(), 2);
-        });
-    }
-
     public static void tick(Level level, BlockPos blockPosition, ShadowDungeonPortalTileEntity blockEntity)
     {
         if (level.isClientSide)
@@ -223,14 +190,17 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                             for (Player player : blockEntity.playerList)
                             {
                                 player.displayClientMessage(Component.translatable("message.pasterdream.broken_portal.传送倒计时：").append("3"), false);
-                                Advancement _1timesAdvancement = ((ServerPlayer)player).server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_npc_first_dialogue"));
-                                if (_1timesAdvancement != null && ((ServerPlayer)player).getAdvancements().getOrStartProgress(_1timesAdvancement).isDone())
+
+                                //已击败阴影入侵事件
+                                Advancement firstDialogueAdvancement = ((ServerPlayer)player).server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_npc_first_dialogue"));
+                                if (firstDialogueAdvancement != null && ((ServerPlayer)player).getAdvancements().getOrStartProgress(firstDialogueAdvancement).isDone())
                                 {
                                     blockEntity.progress = 1;
                                 }
 
-                                Advancement finishedAdvancement = ((ServerPlayer)player).server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_choice"));
-                                if (finishedAdvancement != null && ((ServerPlayer)player).getAdvancements().getOrStartProgress(finishedAdvancement).isDone())
+                                //已击败亚伦柯斯之触
+                                Advancement defeatAaroncosAdvancement = ((ServerPlayer)player).server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/defeat_aaroncos"));
+                                if (defeatAaroncosAdvancement != null && ((ServerPlayer)player).getAdvancements().getOrStartProgress(defeatAaroncosAdvancement).isDone())
                                 {
                                     blockEntity.progress = 2;
                                 }
@@ -382,15 +352,8 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                     {
                         if(blockEntity.allFloorCounts >= 1)
                         {
-                            ResourceLocation floorZero = ModShadowDungeonStructureSet.selectFloorZero(blockEntity.useRepository, blockEntity.progress);
-                            if (blockEntity.useRepository)
-                            {
-                                blockEntity.clearAndPlaceStructure(floorZero, blockPosition.getX() - 11, level.getMinBuildHeight() + 18, blockPosition.getZ() - 11);
-                            }
-                                else
-                                {
-                                    blockEntity.placeStructure(floorZero, blockPosition.getX() - 11, level.getMinBuildHeight() + 18, blockPosition.getZ() - 11);
-                                }
+                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(0);
+                            blockEntity.placeStructure(floorStructureSets.get(blockEntity.progress), blockPosition.getX() - 11, level.getMinBuildHeight() + 18, blockPosition.getZ() - 11);
                         }
                     }
 
@@ -507,6 +470,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                                 AdvancementHelper.grant(serverPlayer, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/shadow_prisoner"), "enter_shadow_dungeon");
                             }
                         }
+
                         if(blockEntity.progress == 1)
                         {
                             blockEntity.teleportPlayers(blockEntity.playerList, blockPosition.getX() + 4.5, level.getMinBuildHeight() + 19, blockPosition.getZ() + 0.5);
@@ -578,7 +542,6 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
     {
         super.saveAdditional(tag);
         tag.putBoolean("isEntry", isEntry);
-        tag.putBoolean("useRepository", useRepository);
         tag.putInt("targetX", targetPosition.getX());
         tag.putInt("targetY", targetPosition.getY());
         tag.putInt("targetZ", targetPosition.getZ());
@@ -589,7 +552,6 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
     {
         super.load(tag);
         isEntry = tag.getBoolean("isEntry");
-        useRepository = tag.getBoolean("useRepository");
         int targetX = tag.getInt("targetX");
         int targetY = tag.getInt("targetY");
         int targetZ = tag.getInt("targetZ");
