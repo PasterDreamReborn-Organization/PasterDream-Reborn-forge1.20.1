@@ -26,6 +26,12 @@ public class ModLootTables {
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/dyedream_relic_chest_loot_rare");
     public static final ResourceLocation SHADOW_RELIC_CHEST_LOOT_COMMON =
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/shadow_relic_chest_loot_common");
+    public static final ResourceLocation SHADOW_DUNGEON_REPOSITORY_CORE =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/shadow_dungeon_repository_core");
+    public static final ResourceLocation SHADOW_DUNGEON_REPOSITORY_COMMON =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/shadow_dungeon_repository_common");
+    public static final ResourceLocation SHADOW_DUNGEON_REPOSITORY_SUPPLY =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/shadow_dungeon_repository_supply");
     public static final ResourceLocation FISHERMAN_HUT_CHEST_LOOT =
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,"chests/fisherman_hut_chest");
     public static final ResourceLocation ECOSYSTEM_BUBBLE_CHEST_LOOT =
