@@ -24,6 +24,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
@@ -45,12 +46,16 @@ import java.util.List;
 
 public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlockEntity, AnimatableSync
 {
+    private static final ResourceLocation DEFEAT_AARONCOS_ADVANCEMENT =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/defeat_aaroncos");
+
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private int animationState = 0;
     private int tickCounter = 0;
     private List<Player> playerList = new ArrayList<>();
     private int progress = 0;//0:第一次进入，1:第二次进入，2:后续刷材料
     private int allFloorCounts = 0;
+    private boolean useRepository = false;
 
     public boolean isEntry = true;
     public BlockPos targetPosition = new BlockPos(0, 0, 0);
@@ -74,6 +79,8 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
             {
                 if (!checkIsHavePlayer())
                 {
+                    useRepository = player instanceof ServerPlayer serverPlayer
+                            && AdvancementHelper.isDone(serverPlayer, DEFEAT_AARONCOS_ADVANCEMENT);
                     animationState = 1;
                     setChangedAndSync();
                 }
@@ -89,6 +96,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
         }
             else
             {
+                useRepository = false;
                 animationState = 1;
                 setChangedAndSync();
             }
@@ -163,6 +171,32 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                 template.placeInWorld((ServerLevel)level, structureOrigin, structureOrigin, new StructurePlaceSettings(), level.getRandom(), 2);
             });
         }
+    }
+
+    private void clearAndPlaceStructure(ResourceLocation resourceLocation, int x, int y, int z)
+    {
+        if (level == null || level.isClientSide())
+        {
+            return;
+        }
+
+        StructureTemplateManager manager = ((ServerLevel) level).getStructureManager();
+        manager.get(resourceLocation).ifPresent(template ->
+        {
+            BlockPos structureOrigin = new BlockPos(x, y, z);
+            var size = template.getSize();
+            for (int dx = 0; dx < size.getX(); dx++)
+            {
+                for (int dy = 0; dy < size.getY(); dy++)
+                {
+                    for (int dz = 0; dz < size.getZ(); dz++)
+                    {
+                        level.setBlock(structureOrigin.offset(dx, dy, dz), Blocks.AIR.defaultBlockState(), 2);
+                    }
+                }
+            }
+            template.placeInWorld((ServerLevel) level, structureOrigin, structureOrigin, new StructurePlaceSettings(), level.getRandom(), 2);
+        });
     }
 
     public static void tick(Level level, BlockPos blockPosition, ShadowDungeonPortalTileEntity blockEntity)
@@ -348,8 +382,15 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
                     {
                         if(blockEntity.allFloorCounts >= 1)
                         {
-                            List<ResourceLocation> floorStructureSets = ModShadowDungeonStructureSet.ALL_FLOORS.get(0);
-                            blockEntity.placeStructure(floorStructureSets.get(blockEntity.progress % floorStructureSets.size()), blockPosition.getX() - 11, level.getMinBuildHeight() + 18, blockPosition.getZ() - 11);
+                            ResourceLocation floorZero = ModShadowDungeonStructureSet.selectFloorZero(blockEntity.useRepository, blockEntity.progress);
+                            if (blockEntity.useRepository)
+                            {
+                                blockEntity.clearAndPlaceStructure(floorZero, blockPosition.getX() - 11, level.getMinBuildHeight() + 18, blockPosition.getZ() - 11);
+                            }
+                                else
+                                {
+                                    blockEntity.placeStructure(floorZero, blockPosition.getX() - 11, level.getMinBuildHeight() + 18, blockPosition.getZ() - 11);
+                                }
                         }
                     }
 
@@ -537,6 +578,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
     {
         super.saveAdditional(tag);
         tag.putBoolean("isEntry", isEntry);
+        tag.putBoolean("useRepository", useRepository);
         tag.putInt("targetX", targetPosition.getX());
         tag.putInt("targetY", targetPosition.getY());
         tag.putInt("targetZ", targetPosition.getZ());
@@ -547,6 +589,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
     {
         super.load(tag);
         isEntry = tag.getBoolean("isEntry");
+        useRepository = tag.getBoolean("useRepository");
         int targetX = tag.getInt("targetX");
         int targetY = tag.getInt("targetY");
         int targetZ = tag.getInt("targetZ");

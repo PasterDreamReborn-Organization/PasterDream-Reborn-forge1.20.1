@@ -16,6 +16,9 @@ public class ModShadowDungeonStructureSet
 
     public static List<List<ResourceLocation>> ALL_FLOORS = new CopyOnWriteArrayList<>();
 
+    public static final ResourceLocation SHADOW_DUNGEON_REPOSITORY =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_repository");
+
     public static void register()
     {
         ALL_FLOORS.add(FLOOR_0);
@@ -45,5 +48,14 @@ public class ModShadowDungeonStructureSet
 
         FLOOR_0.add(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_nameless_dyedream_world"));
         FLOOR_0.add(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_nameless_overworld"));
+    }
+
+    public static ResourceLocation selectFloorZero(boolean repositoryUnlocked, int progress)
+    {
+        if (repositoryUnlocked)
+        {
+            return SHADOW_DUNGEON_REPOSITORY;
+        }
+        return FLOOR_0.get(progress % FLOOR_0.size());
     }
 }
