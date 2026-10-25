@@ -3261,12 +3261,13 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .requires(Items.MOSSY_COBBLESTONE)
                 .unlockedBy(getHasName(ModItems.SWORD_EMBRYO.get()), has(ModItems.SWORD_EMBRYO.get()))
                 .save(pWriter);
-        // 苍白骨针护符 = 线 + 苍白骨针
+        // 苍白骨针护符 = 线 + 苍白骨针 + 下界之星
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PALE_BONE_NEEDLE_TALISMAN.get(), 1)
                 .pattern(" a ")
-                .pattern("a a")
+                .pattern("ana")
                 .pattern(" b ")
                 .define('a', Items.STRING)
+                .define('n', Items.NETHER_STAR)
                 .define('b', ModItems.PALE_BONENEEDLE.get())
                 .unlockedBy(getHasName(ModItems.PALE_BONENEEDLE.get()), has(ModItems.PALE_BONENEEDLE.get()))
                 .save(pWriter);

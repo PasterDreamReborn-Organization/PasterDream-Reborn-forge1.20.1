@@ -25,6 +25,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
@@ -160,6 +161,54 @@ public class CurioPassiveHandler {
         // 致死判定（event.getAmount() 已计算抗性，此处加上伤害吸收）
         if (player.getHealth() + player.getAbsorptionAmount() - event.getAmount() > 0.0F) return;
 
+        // 不死图腾优先级最高：手持图腾时交给原版结算，避免抢先消耗加护/护符
+        if (!event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)
+                && (player.getMainHandItem().is(Items.TOTEM_OF_UNDYING)
+                    || player.getOffhandItem().is(Items.TOTEM_OF_UNDYING))) {
+            return;
+        }
+
+        // 塞西莉亚的加护（未失色）：拦截致命伤害
+        boolean hasCharm = CuriosApi.getCuriosInventory(player)
+                .map(h -> h.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).isPresent())
+                .orElse(false);
+        if (hasCharm) {
+            // 取消致命伤害
+            event.setCanceled(true);
+            player.setHealth(1.0F);
+
+            // 在原槽位替换为失色版本
+            CuriosApi.getCuriosInventory(player).ifPresent(handler ->
+                    handler.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).ifPresent(slotResult ->
+                            handler.setEquippedCurio(slotResult.slotContext().identifier(),
+                                    slotResult.slotContext().index(),
+                                    new ItemStack(ModItems.FADED_BLESSING_OF_CECILIA.get()))));
+
+            // 饰品激活动画（发包至客户端） + 音效
+            ModNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),
+                    new CurioActivationPacket(ModItems.BLESSING_OF_CECILIA.get()));
+            player.level().playSound(null, player.blockPosition(), SoundEvents.TOTEM_USE,
+                    SoundSource.NEUTRAL, 1.0F, 1.0F);
+
+            // 粒子
+            if (player.level() instanceof ServerLevel sl) {
+                sl.sendParticles(ModParticleTypes.DUST_0_PARTICLE.get(),
+                        player.getX(), player.getY(), player.getZ(), 64, 1, 1, 1, 0.2);
+                sl.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(),
+                        player.getX(), player.getY(), player.getZ(), 64, 1, 1, 1, 0.2);
+                sl.sendParticles(ModParticleTypes.BUFF_0_PARTICLE.get(),
+                        player.getX(), player.getY(), player.getZ(), 32, 1, 1, 1, 0.2);
+            }
+
+            // 施加效果：无敌（5秒），抗性V、回复X、吸收V、速度II（10秒）
+            player.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING.get(), 100, 0, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 4, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 9, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 4, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false));
+            return;
+        }
+
         // 苍白骨针护符：梦境维度中拦截致命伤害
         if (DreamDimensionHelper.isDreamDimension(player.level())) {
             boolean hasTalisman = CuriosApi.getCuriosInventory(player)
@@ -201,49 +250,8 @@ public class CurioPassiveHandler {
 
                 // 记录传送延迟（1秒 = 20 tick）
                 player.getPersistentData().putInt("pasterdream_talisman_teleport_delay", 20);
-                return;
             }
         }
-
-        boolean hasCharm = CuriosApi.getCuriosInventory(player)
-                .map(h -> h.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).isPresent())
-                .orElse(false);
-        if (!hasCharm) return;
-
-        // 取消致命伤害
-        event.setCanceled(true);
-        player.setHealth(1.0F);
-
-        // 在原槽位替换为失色版本
-        CuriosApi.getCuriosInventory(player).ifPresent(handler ->
-                handler.findFirstCurio(ModItems.BLESSING_OF_CECILIA.get()).ifPresent(slotResult ->
-                        handler.setEquippedCurio(slotResult.slotContext().identifier(),
-                                slotResult.slotContext().index(),
-                                new ItemStack(ModItems.FADED_BLESSING_OF_CECILIA.get()))));
-
-        // 饰品激活动画（发包至客户端） + 音效
-        ModNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),
-                new CurioActivationPacket(ModItems.BLESSING_OF_CECILIA.get()));
-        player.level().playSound(null, player.blockPosition(), SoundEvents.TOTEM_USE,
-                SoundSource.NEUTRAL, 1.0F, 1.0F);
-
-        // 粒子
-        if (player.level() instanceof ServerLevel sl) {
-            sl.sendParticles(ModParticleTypes.DUST_0_PARTICLE.get(),
-                    player.getX(), player.getY(), player.getZ(), 64, 1, 1, 1, 0.2);
-            sl.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(),
-                    player.getX(), player.getY(), player.getZ(), 64, 1, 1, 1, 0.2);
-            sl.sendParticles(ModParticleTypes.BUFF_0_PARTICLE.get(),
-                    player.getX(), player.getY(), player.getZ(), 32, 1, 1, 1, 0.2);
-        }
-
-        // 施加效果：无敌（5秒），抗性V、回复X、吸收V、速度II（10秒）
-        player.addEffect(new MobEffectInstance(ModEffects.CECILIA_BLESSING.get(), 100, 0, false, false));
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 4, false, false));
-        player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 9, false, false));
-        player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 4, false, false));
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false));
-
     }
 
     /**
