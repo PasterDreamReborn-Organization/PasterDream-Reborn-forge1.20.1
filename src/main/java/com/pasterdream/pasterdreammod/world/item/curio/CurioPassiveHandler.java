@@ -17,6 +17,7 @@ import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.network.curio.CurioActivationPacket;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPotionBottle;
+import com.pasterdream.pasterdreammod.world.entity.TrailArrowEntity;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymCatEarsItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -64,6 +65,7 @@ import net.minecraftforge.network.PacketDistributor;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.List;
+import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
 public class CurioPassiveHandler {
@@ -74,6 +76,19 @@ public class CurioPassiveHandler {
      * 通常已远离玩家本体。据此跳过副弹幕，只复制主弹幕。
      */
     private static final double GHOST_FACE_CLONE_MAX_SPAWN_DISTANCE_SQR = 9.0; // 3 格
+
+    /** 鬼魂之面：原始投射物弹药（NBT）暂存键，克隆时还原到带拖尾的箭实体。 */
+    private static final String GHOST_FACE_AMMO_TAG = "pasterdream_ghost_face_ammo";
+    /** 鬼魂之面：原始投射物模组自定义持久标记（NBT）暂存键，克隆时合并到克隆体。 */
+    private static final String GHOST_FACE_STATE_TAG = "pasterdream_ghost_face_state";
+    /**
+     * 不随克隆体复制的持久标记：来源标记用于防止克隆体被再次处理，
+     * 箭矢速度标记由克隆体生成时重新结算。
+     */
+    private static final Set<String> GHOST_FACE_STATE_EXCLUDES = Set.of(
+            "pasterdream_ghost_face_spawned",
+            "pasterdream_iridescent_fairy_jade_spawned",
+            "pasterdream_arrow_velocity_applied");
 
 
     @SubscribeEvent
@@ -494,6 +509,7 @@ public class CurioPassiveHandler {
         CompoundTag pd = player.getPersistentData();
         // 如果 ArrowLooseEvent 已设置数据（弓/弩），用实际箭矢类型覆盖默认的 Arrow 类型
         if (pd.contains("pasterdream_ghost_face_delay")) {
+            captureGhostFaceProjectileState(pd, projectile);
             if (!(projectile instanceof ThrownTrident)) {
                 pd.putInt("pasterdream_ghost_face_type", 2);
                 pd.putString("pasterdream_ghost_face_clone",
@@ -550,6 +566,7 @@ public class CurioPassiveHandler {
             pd.putString("pasterdream_ghost_face_potion_type",
                     PotionBottleItem.getPotionType(potionBottle.getItem()));
         }
+        captureGhostFaceProjectileState(pd, projectile);
 
         markGhostFaceClone(player);
     }
@@ -789,6 +806,17 @@ public class CurioPassiveHandler {
 
         copyProj.setOwner(player);
         copy.moveTo(player.getX(), player.getEyeY() - 0.1, player.getZ(), player.getYRot(), player.getXRot());
+        // 还原原始投射物的弹药与模组自定义标记：带拖尾箭实体的自定义箭矢行为 / 贴图均按弹药解析，
+        // 不还原会让克隆体退化成普通箭（追踪、范围伤害、中毒、附魔落雷等全部失效）。
+        if (copy instanceof TrailArrowEntity trailArrow) {
+            ItemStack ammo = ItemStack.of(pd.getCompound(GHOST_FACE_AMMO_TAG));
+            if (!ammo.isEmpty()) {
+                trailArrow.setAmmoItem(ammo);
+            }
+        }
+        if (pd.contains(GHOST_FACE_STATE_TAG)) {
+            copy.getPersistentData().merge(pd.getCompound(GHOST_FACE_STATE_TAG));
+        }
         copyProj.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, 1.0F);
         if (copy instanceof AbstractArrow copyArrow) {
             copyArrow.setBaseDamage(damage);
@@ -817,6 +845,39 @@ public class CurioPassiveHandler {
         player.level().addFreshEntity(copy);
     }
 
+    /**
+     * 记录原始投射物上需要随鬼魂之面克隆体保留的模组自定义状态：
+     * 带拖尾箭实体的同步弹药（决定自定义箭矢行为与贴图）与模组自定义持久标记。
+     */
+    private static void captureGhostFaceProjectileState(CompoundTag pd, Projectile projectile) {
+        pd.remove(GHOST_FACE_AMMO_TAG);
+        pd.remove(GHOST_FACE_STATE_TAG);
+
+        if (projectile instanceof TrailArrowEntity trailArrow) {
+            ItemStack ammo = trailArrow.getAmmoItem();
+            if (!ammo.isEmpty()) {
+                CompoundTag ammoTag = new CompoundTag();
+                ammo.save(ammoTag);
+                pd.put(GHOST_FACE_AMMO_TAG, ammoTag);
+            }
+        }
+
+        CompoundTag source = projectile.getPersistentData();
+        CompoundTag copied = new CompoundTag();
+        for (String key : source.getAllKeys()) {
+            if (!key.startsWith("pasterdream") || GHOST_FACE_STATE_EXCLUDES.contains(key)) {
+                continue;
+            }
+            net.minecraft.nbt.Tag value = source.get(key);
+            if (value != null) {
+                copied.put(key, value.copy());
+            }
+        }
+        if (!copied.isEmpty()) {
+            pd.put(GHOST_FACE_STATE_TAG, copied);
+        }
+    }
+
     private static void clearGhostFaceData(CompoundTag pd) {
         pd.remove("pasterdream_ghost_face_delay");
         pd.remove("pasterdream_ghost_face_extra");
@@ -828,6 +889,8 @@ public class CurioPassiveHandler {
         pd.remove("pasterdream_ghost_face_type");
         pd.remove("pasterdream_ghost_face_clone");
         pd.remove("pasterdream_ghost_face_potion_type");
+        pd.remove(GHOST_FACE_AMMO_TAG);
+        pd.remove(GHOST_FACE_STATE_TAG);
     }
 
     /**
