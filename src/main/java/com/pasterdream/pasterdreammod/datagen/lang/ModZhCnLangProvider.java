@@ -2521,6 +2521,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.melt_dream_bow.page0", "在梦境的探索中，你获得了许多新装备，它们让你的战斗更加得心应手。但是你用于远程攻击的手段基本上还是古旧的弓和弩，跟不上近战武器的升级迭代。那么，是时候利用梦境的力量来迭代你的远程武器了。$(br)利用染梦合金锭和融梦水晶，你制作出了可以利用融梦能量的弓。它发射箭矢时会吸取你的融梦能量，以魔法加强这一箭的伤害。同时，你可以为它附魔抢夺来获得更多战利品。");
         add("pasterdream.seniors_dream.entry.melt_dream_bow.page1", "所有梦境弓弩的原理都是用融梦能量来加强你的箭矢，因此就算你的融梦能量枯竭，你也可以用它们射出箭矢——效果相当于普通的弓弩。$(br)——以梦凝箭，贯穿天穹。");
 
+        // 时之沙
+        add("pasterdream.seniors_dream.entry.sand_of_time", "时之沙");
+        add("pasterdream.seniors_dream.entry.sand_of_time.page0", "有时候，你会在梦境之中发现这种神秘的沙漏，看样子，它有着操纵时间的伟力，或许我们不应该浪费这种力量……");
+        add("pasterdream.seniors_dream.entry.sand_of_time.page1", "在日常的使用中，你可以用它来加速时间，置换昼夜。当然，你也可以利用它，让刚刚被重置过的融梦水晶箱再次获得盈满宝物的能力……$(br)不过这种物品终究存在极限，每一次使用过后，你就必须让它休息一段时间……$(br)——此世之中，永恒不灭之物唯有时间。");
+
         // 染梦教堂
         add("pasterdream.seniors_dream.entry.dyedream_church", "染梦教堂");
         add("pasterdream.seniors_dream.entry.dyedream_church.page1", "当你在染梦世界探索时，有可能会发现这种漂浮在天空中的神秘教堂，你可以在这个教堂内发现一个融梦水晶箱，讲经台上还有来自寻梦者前辈们的随记，或许你应该仔细检查一下教堂内部的边边角角，说不定能有意外之喜……");
@@ -2669,6 +2674,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         add("pasterdream.seniors_dream.entry.aaroncos_arena", "亚伦柯斯竞技场");
         add("pasterdream.seniors_dream.entry.aaroncos_arena.page0", "当你在灯与影之中做出了你的选择后，你终于获得了资格穿过传送门，前来见证无比恐怖的暗影之手。这里会侵蚀你的理智，让你在之后的战斗中慢慢落入劣势。$(br)无论你是选择化身为灯来消灭它，战胜它，还是选择融入阴影来接纳它，取代它，这一次战斗都是前所未有的恶战。请确保做好了万全准备再来向它发起挑战。");
+
+        // 暗影地牢:宝库层
+        add("pasterdream.seniors_dream.entry.shadow_dungeon_repository", "暗影地牢:宝库层");
+        add("pasterdream.seniors_dream.entry.shadow_dungeon_repository.page0", "在击败了那双漆黑的恐怖之手后，你或许会再次重返地牢，但是这一次，你却没有被送到无名的身边，而是重新站在了地牢的第一层，就像你初次踏足一样……");
+        add("pasterdream.seniors_dream.entry.shadow_dungeon_repository.page1", "或许，当你重新踏足地牢的底层时，会有数不尽的宝藏等待着你……$(br)——财富为敢于再次踏入深渊者准备。");
 
         // 风之旅途
         add("pasterdream.seniors_dream.category.wind_journey", "风之旅途");

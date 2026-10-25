@@ -1,0 +1,17 @@
+{
+  "sortnum": 17,
+  "name": "pasterdream.seniors_dream.entry.sand_of_time",
+  "icon": "pasterdream:sand_of_time",
+  "category": "pasterdream:dyedream_world/items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:sand_of_time",
+      "text": "pasterdream.seniors_dream.entry.sand_of_time.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.sand_of_time.page1"
+    }
+  ]
+}
