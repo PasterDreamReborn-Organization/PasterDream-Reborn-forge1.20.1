@@ -24,86 +24,74 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                 ModLootTables.SHADOW_DUNGEON_REPOSITORY_COMMON,
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
-                                .setBonusRolls(ConstantValue.exactly(0.1F))
-                                .setRolls(ConstantValue.exactly(2.0F))
-                                .add(LootItem.lootTableItem(ModItems.SHADOW.get())
-                                        .setWeight(3)
-                                        .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(4.0F, 8.0F))))
-                                .add(LootItem.lootTableItem(ModItems.SHADOW_STONE.get())
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(4.0F, 8.0F))))
-                                .add(LootItem.lootTableItem(ModItems.THICK_SHADOW.get())
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(4.0F, 8.0F))))
-                                .add(LootItem.lootTableItem(ModItems.DARK_CLOUD.get())
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(4.0F, 8.0F))))
-                                .add(LootItem.lootTableItem(ModItems.SHADOW_PLANKS.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(4.0F, 8.0F))))
-                        )
-                        .withPool(LootPool.lootPool()
-                                .setBonusRolls(ConstantValue.exactly(0.1F))
-                                .setRolls(ConstantValue.exactly(1.0F))
+                                .setBonusRolls(ConstantValue.exactly(0.15F))
+                                .setRolls(ConstantValue.exactly(4.0F))
                                 .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
-                                        .setWeight(3)
+                                        .setWeight(4)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 2.0F))))
+                                                UniformGenerator.between(2.0F, 6.0F))))
                                 .add(LootItem.lootTableItem(ModItems.RUST_BLACK_METAL_GRAIN.get())
-                                        .setWeight(3)
+                                        .setWeight(6)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 3.0F))))
+                                                UniformGenerator.between(2.0F, 4.0F))))
                                 .add(LootItem.lootTableItem(ModItems.BLACK_METAL_GRAIN.get())
-                                        .setWeight(2)
+                                        .setWeight(6)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
                                 .add(LootItem.lootTableItem(ModItems.SOUL_DUST.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 3.0F))))
+                                                UniformGenerator.between(2.0F, 4.0F))))
                                 .add(LootItem.lootTableItem(ModItems.SHADOW_CANDLE.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(ModItems.SOUL_ESSENCE.get())
-                                        .setWeight(1)
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(2.0F, 3.0F))))
+                                .add(LootItem.lootTableItem(ModItems.SHADOW_LIGHT.get())
+                                        .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
-                                .add(LootItem.lootTableItem(ModItems.SHADOW_LIGHT.get())
-                                        .setWeight(1)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(1))
                         )
                         .withPool(LootPool.lootPool()
-                                .setBonusRolls(ConstantValue.exactly(0.0F))
-                                .setRolls(ConstantValue.exactly(1.0F))
+                                .setBonusRolls(ConstantValue.exactly(0.1F))
+                                .setRolls(ConstantValue.exactly(3.0F))
                                 .add(LootItem.lootTableItem(Items.DIAMOND)
                                         .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 2.0F))))
+                                                UniformGenerator.between(1.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(Items.EMERALD)
-                                        .setWeight(3)
+                                        .setWeight(4)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(2.0F, 4.0F))))
+                                                UniformGenerator.between(3.0F, 6.0F))))
                                 .add(LootItem.lootTableItem(Items.GOLD_INGOT)
+                                        .setWeight(4)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(6.0F, 12.0F))))
+                                .add(LootItem.lootTableItem(Items.IRON_INGOT)
+                                        .setWeight(4)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(6.0F, 12.0F))))
+                                .add(LootItem.lootTableItem(Items.NETHERITE_SCRAP)
                                         .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(4.0F, 8.0F))))
+                                                ConstantValue.exactly(1.0F))))
+                                .add(LootItem.lootTableItem(Items.ECHO_SHARD)
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
                                 .add(LootItem.lootTableItem(Items.EXPERIENCE_BOTTLE)
                                         .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(2.0F, 6.0F))))
                                 .add(LootItem.lootTableItem(Items.GOLDEN_APPLE)
-                                        .setWeight(2)
+                                        .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(1.0F, 2.0F))))
                                 .add(LootItem.lootTableItem(Items.ENCHANTED_GOLDEN_APPLE)
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -117,7 +105,7 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(EmptyLootItem.emptyItem()
-                                        .setWeight(3))
+                                        .setWeight(1))
                         )
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
@@ -127,11 +115,11 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
                                 .add(LootItem.lootTableItem(ModItems.EMPTY_PROPHECY_CARD.get())
-                                        .setWeight(1)
+                                        .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(EmptyLootItem.emptyItem()
-                                        .setWeight(12))
+                                        .setWeight(8))
                         )
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
@@ -157,7 +145,7 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(EmptyLootItem.emptyItem()
-                                        .setWeight(39))
+                                        .setWeight(60))
                         )
                         .withPool(createShadowAlloyPool())
         );
@@ -167,9 +155,9 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.15F))
-                                .setRolls(ConstantValue.exactly(2.0F))
+                                .setRolls(ConstantValue.exactly(3.0F))
                                 .add(LootItem.lootTableItem(ModItems.BLACK_METAL_INGOT.get())
-                                        .setWeight(3)
+                                        .setWeight(5)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(ModItems.NIGHTMARE_FUEL.get())
@@ -177,33 +165,49 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(2.0F, 4.0F))))
                                 .add(LootItem.lootTableItem(ModItems.SOUL_ESSENCE.get())
-                                        .setWeight(2)
+                                        .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(2.0F, 4.0F))))
+                                                UniformGenerator.between(3.0F, 6.0F))))
                                 .add(LootItem.lootTableItem(ModItems.SHADOW_LIGHT.get())
-                                        .setWeight(2)
+                                        .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(2.0F, 4.0F))))
+                                                UniformGenerator.between(3.0F, 6.0F))))
                         )
                         .withPool(LootPool.lootPool()
-                                .setBonusRolls(ConstantValue.exactly(0.0F))
-                                .setRolls(ConstantValue.exactly(2.0F))
+                                .setBonusRolls(ConstantValue.exactly(0.1F))
+                                .setRolls(ConstantValue.exactly(3.0F))
                                 .add(LootItem.lootTableItem(Items.DIAMOND)
                                         .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(3.0F, 6.0F))))
                                 .add(LootItem.lootTableItem(Items.EMERALD)
-                                        .setWeight(3)
+                                        .setWeight(4)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(4.0F, 8.0F))))
+                                                UniformGenerator.between(6.0F, 12.0F))))
                                 .add(LootItem.lootTableItem(Items.GOLD_INGOT)
-                                        .setWeight(3)
+                                        .setWeight(4)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(8.0F, 16.0F))))
+                                                UniformGenerator.between(10.0F, 20.0F))))
+                                .add(LootItem.lootTableItem(Items.IRON_INGOT)
+                                        .setWeight(4)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(10.0F, 20.0F))))
+                                .add(LootItem.lootTableItem(Items.NETHERITE_SCRAP)
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 2.0F))))
+                                .add(LootItem.lootTableItem(Items.ECHO_SHARD)
+                                        .setWeight(2)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(1.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(Items.EXPERIENCE_BOTTLE)
                                         .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(4.0F, 8.0F))))
+                                .add(LootItem.lootTableItem(Items.GOLDEN_APPLE)
+                                        .setWeight(3)
+                                        .apply(SetItemCountFunction.setCount(
+                                                UniformGenerator.between(2.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(Items.ENCHANTED_GOLDEN_APPLE)
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -217,7 +221,7 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(EmptyLootItem.emptyItem()
-                                        .setWeight(2))
+                                        .setWeight(1))
                         )
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
@@ -261,8 +265,8 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                 ModLootTables.SHADOW_DUNGEON_REPOSITORY_SUPPLY,
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
-                                .setBonusRolls(ConstantValue.exactly(0.1F))
-                                .setRolls(ConstantValue.exactly(2.0F))
+                                .setBonusRolls(ConstantValue.exactly(0.15F))
+                                .setRolls(ConstantValue.exactly(3.0F))
                                 .add(LootItem.lootTableItem(Items.BREAD)
                                         .setWeight(4)
                                         .apply(SetItemCountFunction.setCount(
@@ -288,17 +292,17 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))
                                 .add(LootItem.lootTableItem(Items.GOLDEN_APPLE)
-                                        .setWeight(1)
+                                        .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(1.0F, 2.0F))))
                         )
                         .withPool(LootPool.lootPool()
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
-                                .setRolls(ConstantValue.exactly(1.0F))
+                                .setRolls(ConstantValue.exactly(2.0F))
                                 .add(LootItem.lootTableItem(Items.IRON_INGOT)
-                                        .setWeight(3)
+                                        .setWeight(4)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(2.0F, 6.0F))))
+                                                UniformGenerator.between(4.0F, 8.0F))))
                                 .add(LootItem.lootTableItem(Items.ARROW)
                                         .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
@@ -312,9 +316,9 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(ModItems.SHADOW_LIGHT.get())
-                                        .setWeight(1)
+                                        .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 2.0F))))
+                                                UniformGenerator.between(1.0F, 3.0F))))
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(1))
                         )
@@ -322,7 +326,7 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                 .setBonusRolls(ConstantValue.exactly(0.0F))
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(ModItems.BLACK_METAL_INGOT.get())
-                                        .setWeight(1)
+                                        .setWeight(3)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.ATTACK_ENHANCE_STONE.get())
