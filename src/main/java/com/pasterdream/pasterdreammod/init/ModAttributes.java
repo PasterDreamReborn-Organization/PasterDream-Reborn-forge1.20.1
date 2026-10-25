@@ -62,6 +62,14 @@ public class ModAttributes {
             ATTRIBUTES.register("arrow_velocity", () -> new RangedAttribute(
                     "attribute.pasterdream.arrow_velocity", 0.0, -1024.0, 1024.0).setSyncable(true));
 
+    /**
+     * 拉弓与弩装填时间缩减：基础值 0，正值 = 缩减，{@code 0.25} 表示使用时长 ×0.75。
+     * 上限 0.95 保证换算出的速度倍率 1/(1-值) 始终有限。
+     */
+    public static final RegistryObject<Attribute> RANGED_CHARGE_TIME_REDUCTION =
+            ATTRIBUTES.register("ranged_charge_time_reduction", () -> new RangedAttribute(
+                    "attribute.pasterdream.ranged_charge_time_reduction", 0.0, -0.95, 0.95).setSyncable(true));
+
     public static void register(IEventBus eventBus) {
         ATTRIBUTES.register(eventBus);
     }
@@ -79,5 +87,6 @@ public class ModAttributes {
         event.add(EntityType.PLAYER, MAX_MELT_DREAM_ENERGY_EXTRA.get());
         event.add(EntityType.PLAYER, MELT_DREAM_VARIABILITY.get());
         event.add(EntityType.PLAYER, ARROW_VELOCITY.get());
+        event.add(EntityType.PLAYER, RANGED_CHARGE_TIME_REDUCTION.get());
     }
 }

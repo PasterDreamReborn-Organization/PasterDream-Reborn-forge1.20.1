@@ -1563,6 +1563,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("attribute.pasterdream.max_san_extra", "理智上限加成");
         add("attribute.pasterdream.max_melt_dream_energy_extra", "融梦能量上限加成");
         add("attribute.pasterdream.melt_dream_variability", "融梦光环");
+        add("attribute.pasterdream.ranged_charge_time_reduction", "拉弓与装填时间缩减");
         add("subtitles.pasterdream.evasion", "瞬身术: 回避");
         add("subtitles.pasterdream.cloak", "衣装展开");
 
@@ -3070,6 +3071,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_vane.angle", "角度：%s 方向：%s");
         add("tooltip.pasterdream.wind_knight_flag.effect1", "§7▪ §9可以将逆风视为顺风");
         add("tooltip.pasterdream.wind_spirit.effect1", "§7▪ §9增加50%箭矢速度");
+        add("tooltip.pasterdream.wind_spirit.effect2", "§7▪ §9拉弓与装填时间缩减25%");
         add("tooltip.pasterdream.wind_spirit.lore", "§7§o--风给予你祝福");
         add("tooltip.pasterdream.fractured_angel_statue.effect1", "§7▪ §9受到伤害时有%s%%的概率获得%s秒无敌");
         add("tooltip.pasterdream.fractured_angel_statue.effect3", "§7▪ §9免疫摔落伤害");

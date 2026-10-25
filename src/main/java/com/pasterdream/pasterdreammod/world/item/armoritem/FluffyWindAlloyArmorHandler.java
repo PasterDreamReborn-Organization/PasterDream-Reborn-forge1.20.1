@@ -32,7 +32,9 @@ import java.util.UUID;
  *   <li>被弹射物命中时 50% 概率弹开（视同对弹射物免疫，弹射物归属不变）；</li>
  *   <li>下落途中按住空格可缓降（手感等同原版缓降效果），持续消耗饥饿度。</li>
  * </ul>
- * 拉弓 / 弩装填 -25% 由 Mixin（{@code UsingItemSpeedMixin}，加速使用计时器，逻辑与动画同步）实现。
+ * 满套另以临时属性修饰器提供「拉弓 / 弩装填时间缩减 +25%」
+ * （{@link ModAttributes#RANGED_CHARGE_TIME_REDUCTION}），由 Mixin（{@code UsingItemSpeedMixin}）
+ * 读取属性加速使用计时器，逻辑与动画同步。
  * 单件 +5% 移速 / -5% 冷却由 {@link FluffyWindAlloyArmorItem#getAttributeModifiers} 提供。
  */
 @Mod.EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
@@ -43,8 +45,12 @@ public final class FluffyWindAlloyArmorHandler {
     /** 天气翻倍：额外的战技冷却缩减（4 件 × +5%） */
     private static final double WEATHER_CD_BONUS = 0.20;
 
+    /** 满套「疾射」：拉弓与弩装填时间缩减（时间 ×0.75，等效速度 ×4/3） */
+    private static final double DRAW_TIME_REDUCTION = 0.25;
+
     private static final UUID WEATHER_SPEED_UUID = UUID.fromString("f1e2d3c4-1001-4b01-8a01-000000001001");
     private static final UUID WEATHER_CD_UUID = UUID.fromString("f1e2d3c4-1002-4b01-8a01-000000001002");
+    private static final UUID DRAW_TIME_UUID = UUID.fromString("f1e2d3c4-1003-4b01-8a01-000000001003");
 
     private static final float RAIN_DAMAGE_MULTIPLIER = 0.90F;
     private static final float THUNDER_DAMAGE_MULTIPLIER = 0.80F;
@@ -83,6 +89,7 @@ public final class FluffyWindAlloyArmorHandler {
 
         boolean fullSet = FluffyWindAlloyArmorItem.hasFullSet(serverPlayer);
         applyWeatherBonus(serverPlayer, fullSet && serverPlayer.level().isRaining());
+        applyDrawTimeBonus(serverPlayer, fullSet);
         if (fullSet) {
             serverPlayer.addEffect(new MobEffectInstance(ModEffects.WIND_THUNDER_BOON.get(), OATH_DURATION, 0,
                     true, false, false));
@@ -100,6 +107,13 @@ public final class FluffyWindAlloyArmorHandler {
                 AttributeModifier.Operation.MULTIPLY_TOTAL, active);
         toggleModifier(player.getAttribute(ModAttributes.SKILL_COOLDOWN_REDUCTION.get()), WEATHER_CD_UUID,
                 "pasterdream.wind_weather_cooldown_reduction", WEATHER_CD_BONUS,
+                AttributeModifier.Operation.ADDITION, active);
+    }
+
+    /** 满套时挂「拉弓与装填时间缩减」属性修饰器，拆套即移除。 */
+    private static void applyDrawTimeBonus(Player player, boolean active) {
+        toggleModifier(player.getAttribute(ModAttributes.RANGED_CHARGE_TIME_REDUCTION.get()), DRAW_TIME_UUID,
+                "pasterdream.wind_thunder_boon.draw_time_reduction", DRAW_TIME_REDUCTION,
                 AttributeModifier.Operation.ADDITION, active);
     }
 
