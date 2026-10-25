@@ -1380,6 +1380,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("attribute.pasterdream.max_san_extra", "Max Sanity Bonus");
         add("attribute.pasterdream.max_melt_dream_energy_extra", "Max Melt Dream Energy Bonus");
         add("attribute.pasterdream.melt_dream_variability", "Melt Dream Aura");
+        add("attribute.pasterdream.ranged_charge_time_reduction", "Bow Draw & Crossbow Load Time Reduction");
         add("subtitles.pasterdream.evasion", "Evasion");
         add("subtitles.pasterdream.cloak", "Cloak unfurls");
 
@@ -2953,6 +2954,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("message.pasterdream.wind_vane.angle", "Angle: %s Direction: %s");
         add("tooltip.pasterdream.wind_knight_flag.effect1", "§7▪ §9Treats deadwind as tailwind");
         add("tooltip.pasterdream.wind_spirit.effect1", "§7▪ §9Increases arrow velocity by 50%");
+        add("tooltip.pasterdream.wind_spirit.effect2", "§7▪ §9-25% bow draw and crossbow load time");
         add("tooltip.pasterdream.wind_spirit.lore", "§7§o--The wind blesses you");
         add("tooltip.pasterdream.fractured_angel_statue.effect1", "§7▪ §9When damaged, has a %s%% chance to gain %ss of invulnerability");
         add("tooltip.pasterdream.fractured_angel_statue.effect3", "§7▪ §9Immune to fall damage");

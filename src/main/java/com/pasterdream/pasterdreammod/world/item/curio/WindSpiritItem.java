@@ -19,11 +19,12 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * 风精灵：佩戴后，玩家发射的弹射物速度提高 50%。
+ * 风精灵：佩戴后，玩家发射的弹射物速度提高 50%，拉弓与弩装填时间缩减 25%。
  */
 public class WindSpiritItem extends Item implements ICurioItem {
 
     private static final UUID ARROW_VELOCITY_UUID = UUID.fromString("5d2a7f3e-9b1c-4d6e-8a0f-2c3b4d5e6f7a");
+    private static final UUID RANGED_CHARGE_TIME_UUID = UUID.fromString("5d2a7f3e-9b1c-4d6e-8a0f-2c3b4d5e6f7b");
 
     public WindSpiritItem() {
         super(new Item.Properties().stacksTo(1).rarity(ModRarities.SUPERIOR));
@@ -32,6 +33,7 @@ public class WindSpiritItem extends Item implements ICurioItem {
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
         list.add(Component.translatable("tooltip.pasterdream.wind_spirit.effect1"));
+        list.add(Component.translatable("tooltip.pasterdream.wind_spirit.effect2"));
         list.add(Component.translatable("tooltip.pasterdream.wind_spirit.lore"));
     }
 
@@ -52,6 +54,10 @@ public class WindSpiritItem extends Item implements ICurioItem {
                 new AttributeModifier(ARROW_VELOCITY_UUID,
                         "pasterdream.wind_spirit.arrow_velocity",
                         0.5, AttributeModifier.Operation.ADDITION));
+        modifiers.put(ModAttributes.RANGED_CHARGE_TIME_REDUCTION.get(),
+                new AttributeModifier(RANGED_CHARGE_TIME_UUID,
+                        "pasterdream.wind_spirit.ranged_charge_time_reduction",
+                        0.25, AttributeModifier.Operation.ADDITION));
         return modifiers;
     }
 }
