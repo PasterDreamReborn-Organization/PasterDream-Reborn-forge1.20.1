@@ -23,26 +23,46 @@ public class BreakWindCurtainTrigger extends SimpleCriterionTrigger<BreakWindCur
     protected @NotNull TriggerInstance createInstance(@NotNull JsonObject json,
                                                        ContextAwarePredicate player,
                                                        DeserializationContext context) {
-        return new TriggerInstance(player);
+        MinMaxBounds.Ints count = json.has("count")
+                ? MinMaxBounds.Ints.fromJson(json.get("count"))
+                : MinMaxBounds.Ints.atLeast(1);
+        return new TriggerInstance(player, count);
+    }
+
+    public void trigger(ServerPlayer player, int count) {
+        this.trigger(player, instance -> instance.matches(count));
     }
 
     public void trigger(ServerPlayer player) {
-        this.trigger(player, instance -> true);
+        this.trigger(player, 1);
     }
 
     public static class TriggerInstance extends AbstractCriterionTriggerInstance {
 
-        public TriggerInstance(ContextAwarePredicate player) {
+        private final MinMaxBounds.Ints count;
+
+        public TriggerInstance(ContextAwarePredicate player, MinMaxBounds.Ints count) {
             super(ID, player);
+            this.count = count;
         }
 
         public static TriggerInstance passed() {
-            return new TriggerInstance(ContextAwarePredicate.ANY);
+            return new TriggerInstance(ContextAwarePredicate.ANY, MinMaxBounds.Ints.atLeast(1));
+        }
+
+        public static TriggerInstance passedTimes(int times) {
+            return new TriggerInstance(ContextAwarePredicate.ANY, MinMaxBounds.Ints.atLeast(times));
+        }
+
+        public boolean matches(int count) {
+            return this.count.matches(count);
         }
 
         @Override
         public @NotNull JsonObject serializeToJson(SerializationContext context) {
-            return new JsonObject();
+            JsonObject obj = new JsonObject();
+            obj.add("count", this.count.serializeToJson());
+            return obj;
         }
     }
 }

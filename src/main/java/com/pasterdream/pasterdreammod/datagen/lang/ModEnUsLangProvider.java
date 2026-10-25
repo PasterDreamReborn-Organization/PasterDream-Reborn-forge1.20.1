@@ -2038,6 +2038,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.wingless_bird.description", "Eat a Wind Runner Jelly");
         add("advancements.pasterdream.story.break_wind_curtain.title", "Ride the Wind, Break the Curtain");
         add("advancements.pasterdream.story.break_wind_curtain.description", "Pass through a Break Wind Curtain");
+        add("advancements.pasterdream.story.break_wind_curtain_hundred.title", "Hundred Veils");
+        add("advancements.pasterdream.story.break_wind_curtain_hundred.description", "Pass through Break Wind Curtains 100 times in total");
+        add("advancements.pasterdream.story.angel_beats.title", "Angel Beats!");
+        add("advancements.pasterdream.story.angel_beats.description", "Complete all three flight challenges to obtain the Angel Wing");
         add("advancements.pasterdream.story.wind_journey_treasure.title", "Treasure Among the Clouds");
         add("advancements.pasterdream.story.wind_journey_treasure.description", "Open a Melt Dream Crystal Chest in the Journey of Wind");
         add("advancements.pasterdream.story.christmas_tree_island.title", "Christmas Tree on the Sky Island");
@@ -2045,9 +2049,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.wind_follow.title", "Wind Accompanies You");
         add("advancements.pasterdream.story.wind_follow.description", "Have experienced both the tailwind and headwind effects");
         add("advancements.pasterdream.story.wind_deadwind_flight.title", "Advancing Against the Wind");
-        add("advancements.pasterdream.story.wind_deadwind_flight.description", "Fly a total of 2000 blocks with the headwind effect");
+        add("advancements.pasterdream.story.wind_deadwind_flight.description", "Fly a total of 10000 blocks with the headwind effect");
         add("advancements.pasterdream.story.wind_tailwind_flight.title", "Riding the Wind");
-        add("advancements.pasterdream.story.wind_tailwind_flight.description", "Fly a total of 2000 blocks with the tailwind effect");
+        add("advancements.pasterdream.story.wind_tailwind_flight.description", "Fly a total of 10000 blocks with the tailwind effect");
 
         // Patchouli book
 

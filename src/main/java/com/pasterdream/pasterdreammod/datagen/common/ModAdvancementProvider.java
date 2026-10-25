@@ -1509,6 +1509,50 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/break_wind_curtain"), existingFileHelper);
 
+            // ========== 乘风破幕子进度：百幕穿行（二级挑战） ==========
+            // 累计穿过破风幕帐 100 次
+            Advancement breakWindCurtainHundred = Advancement.Builder.advancement()
+                    .parent(breakWindCurtain)
+                    .display(
+                            ModItems.BREAK_WIND_CURTAIN.get(),
+                            Component.translatable("advancements.pasterdream.story.break_wind_curtain_hundred.title"),
+                            Component.translatable("advancements.pasterdream.story.break_wind_curtain_hundred.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("pass_break_wind_curtain_100_times",
+                            BreakWindCurtainTrigger.TriggerInstance.passedTimes(100))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/break_wind_curtain_hundred"), existingFileHelper);
+
+            // ========== 百幕穿行子进度：Angel Beats! ==========
+            // 完成三项飞行挑战后获得天使之翼
+            Advancement angelBeats = Advancement.Builder.advancement()
+                    .parent(breakWindCurtainHundred)
+                    .display(
+                            ModItems.ANGEL_WING.get(),
+                            Component.translatable("advancements.pasterdream.story.angel_beats.title"),
+                            Component.translatable("advancements.pasterdream.story.angel_beats.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("complete_wind_tailwind_flight",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/wind_tailwind_flight")))
+                    .addCriterion("complete_wind_deadwind_flight",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/wind_deadwind_flight")))
+                    .addCriterion("complete_break_wind_curtain_hundred",
+                            HasAdvancementTrigger.TriggerInstance.hasAdvancement(
+                                    ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                                            "story/break_wind_curtain_hundred")))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/angel_beats"), existingFileHelper);
+
             // ========== 展翅的无翼鸟子进度：云端珍藏 ==========
             // 打开风之旅途的融梦水晶箱
             Advancement windJourneyTreasure = Advancement.Builder.advancement()
@@ -1563,7 +1607,7 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             "story/wind_follow"), existingFileHelper);
 
             // ========== 风伴你而行子进度：逆风而进 ==========
-            // 逆风效果下累计鞘翅飞行 2000 格
+            // 逆风效果下累计鞘翅飞行 10000 格
             Advancement windDeadwindFlight = Advancement.Builder.advancement()
                     .parent(windFollow)
                     .display(
@@ -1574,14 +1618,14 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             FrameType.CHALLENGE,
                             true, true, false
                     )
-                    .addCriterion("fly_2000_with_deadwind",
+                    .addCriterion("fly_10000_with_deadwind",
                             WindFlightTrigger.TriggerInstance.flown(WindFlightTrigger.FlightType.DEADWIND,
-                                    MinMaxBounds.Doubles.atLeast(2000)))
+                                    MinMaxBounds.Doubles.atLeast(10000)))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/wind_deadwind_flight"), existingFileHelper);
 
             // ========== 风伴你而行子进度：御风而行 ==========
-            // 顺风效果下累计鞘翅飞行 2000 格
+            // 顺风效果下累计鞘翅飞行 10000 格
             Advancement windTailwindFlight = Advancement.Builder.advancement()
                     .parent(windFollow)
                     .display(
@@ -1592,9 +1636,9 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             FrameType.CHALLENGE,
                             true, true, false
                     )
-                    .addCriterion("fly_2000_with_tailwind",
+                    .addCriterion("fly_10000_with_tailwind",
                             WindFlightTrigger.TriggerInstance.flown(WindFlightTrigger.FlightType.TAILWIND,
-                                    MinMaxBounds.Doubles.atLeast(2000)))
+                                    MinMaxBounds.Doubles.atLeast(10000)))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/wind_tailwind_flight"), existingFileHelper);
 
