@@ -28,6 +28,8 @@ description: 新增/修改进度与梦笔记分发。覆盖进度定义、四种
 - 睡眠笔记（`dyedream_crack`）有门禁：玩家须先身体接触染梦裂隙方块（`entityInside()` → `first_contact_dyedream_crack`），首次睡觉不可直接触发
 - Frame 对照：task→`TASK`、goal→`GOAL`、challenge→`CHALLENGE`
 - 自定义触发器放 `advancement/critereon/`，注册在 `init/ModCriteriaTriggers.java`
+- 进度奖励物品（如 `story/angel_beats` → 天使之翼）在 `event/PlayerEvents.java` 的 `onAdvancementEarned` 按进度 ID 发放（背包满则掉落），不走 loot table
+- 累计次数类触发器参考 `BreakWindCurtainTrigger`：JSON 用 `count` 下限，玩家计数存持久化数据（`pasterdream:break_wind_curtain_passes`），进入幕帐时仅在"上一 tick 不在幕帐内"累加，避免停留重复计数
 
 ---
 

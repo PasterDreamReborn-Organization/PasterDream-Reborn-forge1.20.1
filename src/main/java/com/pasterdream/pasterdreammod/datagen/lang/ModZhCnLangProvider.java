@@ -2226,6 +2226,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.wingless_bird.description", "食用风行者果冻");
         add("advancements.pasterdream.story.break_wind_curtain.title", "乘风破幕");
         add("advancements.pasterdream.story.break_wind_curtain.description", "穿过破风幕帐");
+        add("advancements.pasterdream.story.break_wind_curtain_hundred.title", "百幕穿行");
+        add("advancements.pasterdream.story.break_wind_curtain_hundred.description", "累计穿过100次破风幕帐");
+        add("advancements.pasterdream.story.angel_beats.title", "Angel Beats!");
+        add("advancements.pasterdream.story.angel_beats.description", "完成三项飞行挑战，获得天使之翼");
         add("advancements.pasterdream.story.wind_journey_treasure.title", "云端珍藏");
         add("advancements.pasterdream.story.wind_journey_treasure.description", "打开风之旅途的融梦水晶箱");
         add("advancements.pasterdream.story.christmas_tree_island.title", "空岛的圣诞树");
@@ -2233,9 +2237,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.wind_follow.title", "风伴你而行");
         add("advancements.pasterdream.story.wind_follow.description", "获得过顺风与逆风效果");
         add("advancements.pasterdream.story.wind_deadwind_flight.title", "逆风而进");
-        add("advancements.pasterdream.story.wind_deadwind_flight.description", "在逆风效果下累计飞行2000格");
+        add("advancements.pasterdream.story.wind_deadwind_flight.description", "在逆风效果下累计飞行10000格");
         add("advancements.pasterdream.story.wind_tailwind_flight.title", "御风而行");
-        add("advancements.pasterdream.story.wind_tailwind_flight.description", "在顺风效果下累计飞行2000格");
+        add("advancements.pasterdream.story.wind_tailwind_flight.description", "在顺风效果下累计飞行10000格");
 
 
         // 帕秋莉宝典

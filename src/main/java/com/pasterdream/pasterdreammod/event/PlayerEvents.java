@@ -58,6 +58,10 @@ public class PlayerEvents {
     private static final ResourceLocation RESEARCH_TABLE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/research_table");
     private static final ResourceLocation SHADOW_BLAST_FURNACE_CORE_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/shadow_blast_furnace_core");
     private static final ResourceLocation CHOCOLATE_000_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/chocolate_000");
+    private static final ResourceLocation WIND_TAILWIND_FLIGHT_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/wind_tailwind_flight");
+    private static final ResourceLocation WIND_DEADWIND_FLIGHT_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/wind_deadwind_flight");
+    private static final ResourceLocation BREAK_WIND_CURTAIN_HUNDRED_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/break_wind_curtain_hundred");
+    private static final ResourceLocation ANGEL_BEATS_ADV = ResourceLocation.fromNamespaceAndPath("pasterdream", "story/angel_beats");
 
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
@@ -162,6 +166,16 @@ public class PlayerEvents {
                         && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.DYEDREAM_BROKEN_NOTE.get()))) {
                     ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
                 }
+            }
+
+            // 飞行挑战进度兜底：任一挑战完成后同步 Angel Beats! 的子条件进度
+            if (player instanceof ServerPlayer serverPlayer
+                    && player.tickCount % 20 == 0
+                    && !isAdvancementDone(serverPlayer, ANGEL_BEATS_ADV)
+                    && (isAdvancementDone(serverPlayer, WIND_TAILWIND_FLIGHT_ADV)
+                    || isAdvancementDone(serverPlayer, WIND_DEADWIND_FLIGHT_ADV)
+                    || isAdvancementDone(serverPlayer, BREAK_WIND_CURTAIN_HUNDRED_ADV))) {
+                ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
             }
         }
     }
@@ -410,6 +424,23 @@ public class PlayerEvents {
 
         // 首次进入染梦世界后，立即检查依赖该进度的进度（染梦笔记碎片）
         if (advancement.getId().equals(DYEDREAM_WORLD_ADV)) {
+            ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
+        }
+
+        // 完成 Angel Beats! → 发放天使之翼
+        if (advancement.getId().equals(ANGEL_BEATS_ADV)) {
+            ItemStack angelWing = new ItemStack(ModItems.ANGEL_WING.get());
+            if (!serverPlayer.getInventory().add(angelWing)) {
+                serverPlayer.drop(angelWing, false);
+            }
+            return;
+        }
+
+        // 完成任一飞行挑战 → 同步 Angel Beats! 的子条件进度（1/3、2/3、3/3）
+        ResourceLocation id = advancement.getId();
+        if (id.equals(WIND_TAILWIND_FLIGHT_ADV)
+                || id.equals(WIND_DEADWIND_FLIGHT_ADV)
+                || id.equals(BREAK_WIND_CURTAIN_HUNDRED_ADV)) {
             ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
         }
     }

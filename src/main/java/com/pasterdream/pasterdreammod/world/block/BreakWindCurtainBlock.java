@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.block;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -32,6 +33,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class BreakWindCurtainBlock extends Block implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+
+    /** 玩家累计穿过破风幕帐次数（玩家持久化数据） */
+    private static final String PASS_COUNT_KEY = "pasterdream:break_wind_curtain_passes";
 
     private static final VoxelShape SHAPE_NORTH_SOUTH = box(0, 0, 7, 16, 16, 9);
     private static final VoxelShape SHAPE_EAST_WEST = box(7, 0, 0, 9, 16, 16);
@@ -126,9 +130,16 @@ public class BreakWindCurtainBlock extends Block implements SimpleWaterloggedBlo
             Vec3 look = entity.getLookAngle();
             entity.setDeltaMovement(new Vec3(look.x * 5, look.y, look.z * 5));
 
-            // 玩家飞行穿过破风幕帐时触发进度：乘风破幕
+            // 玩家飞行穿过破风幕帐时触发进度：乘风破幕 / 百幕穿行
+            // 用上一 tick 位置判定是否"刚进入"，避免停留在幕帐内被重复计数
             if (entity instanceof ServerPlayer sp) {
-                ModCriteriaTriggers.BREAK_WIND_CURTAIN.trigger(sp);
+                BlockPos previousPos = BlockPos.containing(entity.xo, entity.yo, entity.zo);
+                if (!(level.getBlockState(previousPos).getBlock() instanceof BreakWindCurtainBlock)) {
+                    CompoundTag data = sp.getPersistentData();
+                    int count = data.getInt(PASS_COUNT_KEY) + 1;
+                    data.putInt(PASS_COUNT_KEY, count);
+                    ModCriteriaTriggers.BREAK_WIND_CURTAIN.trigger(sp, count);
+                }
             }
         }
     }
