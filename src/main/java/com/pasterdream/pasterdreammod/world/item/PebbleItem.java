@@ -5,7 +5,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -25,6 +27,15 @@ public class PebbleItem extends BlockItem {
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.pasterdream.pebble.throw"));
         tooltip.add(Component.translatable("tooltip.pasterdream.pebble.place"));
+    }
+
+    @Override
+    public InteractionResult useOn(UseOnContext context) {
+        Player player = context.getPlayer();
+        if (player == null || player.isShiftKeyDown()) {
+            return super.useOn(context);
+        }
+        return use(context.getLevel(), player, context.getHand()).getResult();
     }
 
     @Override
