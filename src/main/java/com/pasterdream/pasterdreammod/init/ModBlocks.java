@@ -715,23 +715,7 @@ public class ModBlocks {
         }
     });
     public static final RegistryObject<Block> DYEDREAM_VINE = BLOCKS.register("dyedream_vine", DyedreamVineBlock::new);
-    public static final RegistryObject<Block> JUNGLE_SPORANGIUM = BLOCKS.register("jungle_sporangium", () -> new BushBlock(
-            BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_BROWN)
-                    .instabreak()
-                    .noCollission()
-                    .noOcclusion()
-                    .sound(SoundType.GRASS)
-                    .offsetType(BlockBehaviour.OffsetType.XZ)
-                    .pushReaction(PushReaction.DESTROY)
-                    .lightLevel(s->6)
-    ){
-        @Override
-        public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-            Vec3 offset = state.getOffset(world, pos);
-            return box(4, 0, 4, 12, 12, 12).move(offset.x, offset.y, offset.z);
-        }
-    });
+    public static final RegistryObject<Block> JUNGLE_SPORANGIUM = BLOCKS.register("jungle_sporangium", JungleSporangiumBlock::new);
 
     public static final RegistryObject<Block> FOURLEAF_CLOVER = BLOCKS.register("fourleaf_clover",
             () -> new FlowerBlock(() -> MobEffects.LUCK, 0, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN)

@@ -225,6 +225,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         meltDreamToolRecipes(pWriter);
         tideSwordRecipes(pWriter);
         grassSwordRecipe(pWriter);
+        jungleSporeRecipe(pWriter);
         copperToolRecipes(pWriter);
         congealWindIronToolRecipes(pWriter);
         fluffyWindAlloyToolRecipes(pWriter);
@@ -1426,6 +1427,16 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('d', Items.EMERALD_BLOCK)
                 .unlockedBy(getHasName(ModItems.JUNGLE_SPORE.get()), has(ModItems.JUNGLE_SPORE.get()))
                 .save(pWriter);
+    }
+
+    // ===== 丛林孢子骨粉复制配方 =====
+
+    private void jungleSporeRecipe(Consumer<FinishedRecipe> pWriter) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.JUNGLE_SPORE.get(), 2)
+                .requires(ModItems.JUNGLE_SPORE.get())
+                .requires(Items.BONE_MEAL)
+                .unlockedBy(getHasName(ModItems.JUNGLE_SPORE.get()), has(ModItems.JUNGLE_SPORE.get()))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":jungle_spore_from_bone_meal");
     }
 
     // ===== 引潮剑配方 =====
