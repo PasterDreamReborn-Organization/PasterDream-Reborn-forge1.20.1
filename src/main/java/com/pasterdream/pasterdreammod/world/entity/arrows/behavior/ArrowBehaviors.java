@@ -47,7 +47,7 @@ public final class ArrowBehaviors {
     public static final ArrowBehavior FRAGDREAM = new FragdreamBehavior();
     public static final ArrowBehavior MAGICAL = new MagicalBehavior();
     public static final ArrowBehavior CHARGED = new ChargedBehavior();
-    public static final ArrowBehavior CHAOSIC = new ChaosicBehavior();
+    public static final ArrowBehavior CHAOTIC = new ChaoticBehavior();
     public static final ArrowBehavior BLAST = new BlastBehavior();
     public static final ArrowBehavior CONGEAL_WIND = new CongealWindBehavior();
     public static final ArrowBehavior DEW = new DewBehavior();
@@ -302,7 +302,7 @@ public final class ArrowBehaviors {
     /* ============================ 混沌箭 ============================ */
 
     /** 混沌箭：飞行带黑色粒子拖尾，命中施加混乱，概率恢复理智（概率随蓄力缩放），对暗影生物造成额外伤害。 */
-    private static final class ChaosicBehavior implements ArrowBehavior {
+    private static final class ChaoticBehavior implements ArrowBehavior {
 
         /** 混乱时长（tick），3 秒 */
         private static final int CONFUSION_DURATION = 60;

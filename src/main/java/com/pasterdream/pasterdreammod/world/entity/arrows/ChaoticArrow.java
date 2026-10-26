@@ -14,23 +14,23 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.network.PlayMessages;
 
 /** 混沌箭——命中施加混乱、概率恢复理智、对暗影生物造成额外伤害。 */
-public class ChaosicArrow extends Arrow {
+public class ChaoticArrow extends Arrow {
 
-    public ChaosicArrow(EntityType<? extends ChaosicArrow> type, Level level) {
+    public ChaoticArrow(EntityType<? extends ChaoticArrow> type, Level level) {
         super(type, level);
     }
 
-    public ChaosicArrow(PlayMessages.SpawnEntity packet, Level level) {
-        this(ModEntities.CHAOSIC_ARROW.get(), level);
+    public ChaoticArrow(PlayMessages.SpawnEntity packet, Level level) {
+        this(ModEntities.CHAOTIC_ARROW.get(), level);
     }
 
-    public ChaosicArrow(Level level, double x, double y, double z) {
-        this(ModEntities.CHAOSIC_ARROW.get(), level);
+    public ChaoticArrow(Level level, double x, double y, double z) {
+        this(ModEntities.CHAOTIC_ARROW.get(), level);
         this.setPos(x, y, z);
     }
 
-    public ChaosicArrow(Level level, LivingEntity shooter) {
-        this(ModEntities.CHAOSIC_ARROW.get(), level);
+    public ChaoticArrow(Level level, LivingEntity shooter) {
+        this(ModEntities.CHAOTIC_ARROW.get(), level);
         this.setPos(shooter.getX(), shooter.getEyeY() - 0.1, shooter.getZ());
         this.setOwner(shooter);
         if (shooter instanceof Player) {
@@ -40,30 +40,30 @@ public class ChaosicArrow extends Arrow {
 
     @Override
     public void shoot(double x, double y, double z, float velocity, float inaccuracy) {
-        ArrowBehaviors.CHAOSIC.onShoot(this, velocity);
+        ArrowBehaviors.CHAOTIC.onShoot(this, velocity);
         super.shoot(x, y, z, velocity, inaccuracy);
     }
 
     @Override
     public void tick() {
         super.tick();
-        ArrowBehaviors.CHAOSIC.onTick(this, this.inGround);
+        ArrowBehaviors.CHAOTIC.onTick(this, this.inGround);
     }
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        ArrowBehaviors.CHAOSIC.onHitEntityPre(this, result);
+        ArrowBehaviors.CHAOTIC.onHitEntityPre(this, result);
         super.onHitEntity(result);
     }
 
     @Override
     protected void doPostHurtEffects(LivingEntity target) {
         super.doPostHurtEffects(target);
-        ArrowBehaviors.CHAOSIC.doPostHurtEffects(this, target);
+        ArrowBehaviors.CHAOTIC.doPostHurtEffects(this, target);
     }
 
     @Override
     protected ItemStack getPickupItem() {
-        return new ItemStack(ModItems.CHAOSIC_ARROW.get());
+        return new ItemStack(ModItems.CHAOTIC_ARROW.get());
     }
 }

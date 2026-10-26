@@ -1,0 +1,32 @@
+{
+  "type": "pasterdream:weapon_workshop_crafting_table",
+  "itemInputs":
+  [
+    {
+      "item": "pasterdream:blackstone_arrow",
+      "count": 8
+    },
+    {
+      "item": "pasterdream:molten_gold_ingot",
+      "count": 1
+    },
+    {
+      "item": "minecraft:gunpowder",
+      "count": 4
+    }
+  ],
+  "enhanceStone":
+  [
+    {
+      "item": "minecraft:air",
+      "count": 1
+    }
+  ],
+  "itemOutputs":
+  [
+    {
+      "item": "pasterdream:blast_arrow",
+      "count": 8
+    }
+  ]
+}

@@ -1860,12 +1860,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.charged_arrow.tooltip1","§9Deals damage twice, one of which is magic damage.");
         add("tooltip.pasterdream.charged_arrow.tooltip2","§7§o--1 = 2");
         add(ModItems.BLACKSTONE_ARROW.get(), "Blackstone Arrow");
-        add(ModItems.CHAOSIC_ARROW.get(), "Chaosic Arrow");
-        add("tooltip.pasterdream.chaosic_arrow.tooltip1","§9Causes confusion on hit, has a chance to restore sanity, and deals extra damage to shadow mobs.");
-        add("tooltip.pasterdream.chaosic_arrow.tooltip2","§9Enchant the bow with a damage-to-spirit enchantment so that it can be used infinitely.");
-        add("tooltip.pasterdream.chaosic_arrow.tooltip3","§7§o--Darkness! Obedience! Madness!");
+        add(ModItems.CHAOTIC_ARROW.get(), "Chaotic Arrow");
+        add("tooltip.pasterdream.chaotic_arrow.tooltip1","§9Causes confusion on hit, has a chance to restore sanity, and deals extra damage to shadow mobs.");
+        add("tooltip.pasterdream.chaotic_arrow.tooltip2","§9Enchant the bow with a damage-to-spirit enchantment so that it can be used infinitely.");
+        add("tooltip.pasterdream.chaotic_arrow.tooltip3","§7§o--Darkness! Obedience! Madness!");
         add(ModItems.BLAST_ARROW.get(), "Blast Arrow");
-        add("tooltip.pasterdream.blast_arrow.tooltip1","§9Hits blocks or entities to cause an explosion, watch out or it might blow you up!");
+        add("tooltip.pasterdream.blast_arrow.tooltip1","§9Hits blocks or entities to cause an explosion and destroy blocks, watch out for blowing yourself up!");
         add("tooltip.pasterdream.blast_arrow.tooltip2","§cCannot be recycled.");
         add("tooltip.pasterdream.blast_arrow.tooltip3","§7§o--Let's make something 'explosive'.");
         add(ModItems.CONGEAL_WIND_ARROW.get(), "Congeal Wind Arrow");

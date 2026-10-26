@@ -694,7 +694,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.MAGICAL_ARROW.get());
         basicItem(ModItems.CHARGED_ARROW.get());
         basicItem(ModItems.BLACKSTONE_ARROW.get());
-        basicItem(ModItems.CHAOSIC_ARROW.get());
+        basicItem(ModItems.CHAOTIC_ARROW.get());
         basicItem(ModItems.BLAST_ARROW.get());
         basicItem(ModItems.CONGEAL_WIND_ARROW.get());
         basicItem(ModItems.DEW_ARROW.get());
