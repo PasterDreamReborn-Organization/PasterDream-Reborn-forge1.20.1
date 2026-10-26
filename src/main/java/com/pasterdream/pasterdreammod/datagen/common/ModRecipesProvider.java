@@ -3710,10 +3710,27 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         has(ModItems.BLACK_STICK.get()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CONGEAL_WIND_ARROW.get(), 4)
+                .pattern(" a ")
+                .pattern(" b ")
+                .pattern(" c ")
+                .define('a', ModItems.CONGEAL_WIND.get())
+                .define('b', Items.STICK)
+                .define('c',ModItems.WIND_FEATHER_GRASS.get())
+                .unlockedBy(getHasName(ModItems.CONGEAL_WIND.get()),
+                        has(ModItems.CONGEAL_WIND.get()))
+                .save(pWriter);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TOXIC_SPORE_ARROW.get(), 8)
                 .requires(ModItems.JUNGLE_SPORE.get())
                 .requires(Items.ARROW,8)
                 .unlockedBy(getHasName(ModItems.JUNGLE_SPORE.get()), has(ModItems.JUNGLE_SPORE.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DEW_ARROW.get(), 8)
+                .requires(ModItems.BLUE_DEW.get())
+                .requires(Items.ARROW,8)
+                .unlockedBy(getHasName(ModItems.BLUE_DEW.get()), has(ModItems.BLUE_DEW.get()))
                 .save(pWriter);
     }
 

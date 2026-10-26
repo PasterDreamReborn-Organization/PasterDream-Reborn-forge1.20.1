@@ -2170,8 +2170,8 @@ public class ModItems {
             () -> new ChargedArrowItem(new Item.Properties()));
     public static final RegistryObject<Item> BLACKSTONE_ARROW = ITEMS.register("blackstone_arrow",
             () -> new BlackstoneArrowItem(new Item.Properties()));
-    public static final RegistryObject<Item> CHAOSIC_ARROW = ITEMS.register("chaosic_arrow",
-            () -> new ChaosicArrowItem(new Item.Properties()));
+    public static final RegistryObject<Item> CHAOTIC_ARROW = ITEMS.register("chaotic_arrow",
+            () -> new ChaoticArrowItem(new Item.Properties()));
     public static final RegistryObject<Item> BLAST_ARROW = ITEMS.register("blast_arrow",
             () -> new BlastArrowItem(new Item.Properties()));
     public static final RegistryObject<Item> CONGEAL_WIND_ARROW = ITEMS.register("congeal_wind_arrow",

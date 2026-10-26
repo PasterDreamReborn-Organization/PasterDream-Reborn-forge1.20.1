@@ -21,7 +21,7 @@ import com.pasterdream.pasterdreammod.world.entity.arrows.FragdreamArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.MagicalArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.ChargedArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.BlackstoneArrow;
-import com.pasterdream.pasterdreammod.world.entity.arrows.ChaosicArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.ChaoticArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.BlastArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.CongealWindArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.DewArrow;
@@ -529,12 +529,12 @@ public class ModEntities {
                     .setCustomClientFactory(BlackstoneArrow::new)
                     .sized(0.5f, 0.5f));
 
-    public static final RegistryObject<EntityType<ChaosicArrow>> CHAOSIC_ARROW = register("chaosic_arrow",
-            EntityType.Builder.<ChaosicArrow>of(ChaosicArrow::new, MobCategory.MISC)
+    public static final RegistryObject<EntityType<ChaoticArrow>> CHAOTIC_ARROW = register("chaotic_arrow",
+            EntityType.Builder.<ChaoticArrow>of(ChaoticArrow::new, MobCategory.MISC)
                     .setShouldReceiveVelocityUpdates(true)
                     .setTrackingRange(64)
                     .setUpdateInterval(1)
-                    .setCustomClientFactory(ChaosicArrow::new)
+                    .setCustomClientFactory(ChaoticArrow::new)
                     .sized(0.5f, 0.5f));
 
     public static final RegistryObject<EntityType<BlastArrow>> BLAST_ARROW = register("blast_arrow",

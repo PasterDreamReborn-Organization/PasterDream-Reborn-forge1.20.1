@@ -205,7 +205,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.MAGICAL_ARROW.get())
                 .add(ModItems.CHARGED_ARROW.get())
                 .add(ModItems.BLACKSTONE_ARROW.get())
-                .add(ModItems.CHAOSIC_ARROW.get())
+                .add(ModItems.CHAOTIC_ARROW.get())
                 .add(ModItems.BLAST_ARROW.get())
                 .add(ModItems.CONGEAL_WIND_ARROW.get())
                 .add(ModItems.DEW_ARROW.get());

@@ -2047,12 +2047,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.charged_arrow.tooltip1","§9造成两次伤害，其中一次为魔法伤害");
         add("tooltip.pasterdream.charged_arrow.tooltip2","§7§o--1 = 2");
         add(ModItems.BLACKSTONE_ARROW.get(), "黑石箭");
-        add(ModItems.CHAOSIC_ARROW.get(), "混沌箭");
-        add("tooltip.pasterdream.chaosic_arrow.tooltip1","§9击中造成混乱，概率恢复理智，对暗影生物造成额外伤害");
-        add("tooltip.pasterdream.chaosic_arrow.tooltip2","§9让弓获得损害精神的附魔来让它可以无限使用");
-        add("tooltip.pasterdream.chaosic_arrow.tooltip3","§7§o--黑暗！服从！疯狂！");
+        add(ModItems.CHAOTIC_ARROW.get(), "混沌箭");
+        add("tooltip.pasterdream.chaotic_arrow.tooltip1","§9击中造成混乱，概率恢复理智，对暗影生物造成额外伤害");
+        add("tooltip.pasterdream.chaotic_arrow.tooltip2","§9让弓获得损害精神的附魔来让它可以无限使用");
+        add("tooltip.pasterdream.chaotic_arrow.tooltip3","§7§o--黑暗！服从！疯狂！");
         add(ModItems.BLAST_ARROW.get(), "爆破箭");
-        add("tooltip.pasterdream.blast_arrow.tooltip1","§9击中物块或实体造成一次爆炸，当心炸到自己！");
+        add("tooltip.pasterdream.blast_arrow.tooltip1","§9击中物块或实体造成一次爆炸并破坏方块，当心炸到自己！");
         add("tooltip.pasterdream.blast_arrow.tooltip2","§c无法回收");
         add("tooltip.pasterdream.blast_arrow.tooltip3","§7§o--让我们整点“爆破性”的东西");
         add(ModItems.CONGEAL_WIND_ARROW.get(), "凝风箭");
