@@ -1,13 +1,16 @@
 package com.pasterdream.pasterdreammod.world.entity.arrows.behavior;
 
+import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
+import com.pasterdream.pasterdreammod.world.entity.IShadowMob;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -18,6 +21,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
@@ -43,6 +47,10 @@ public final class ArrowBehaviors {
     public static final ArrowBehavior FRAGDREAM = new FragdreamBehavior();
     public static final ArrowBehavior MAGICAL = new MagicalBehavior();
     public static final ArrowBehavior CHARGED = new ChargedBehavior();
+    public static final ArrowBehavior CHAOSIC = new ChaosicBehavior();
+    public static final ArrowBehavior BLAST = new BlastBehavior();
+    public static final ArrowBehavior CONGEAL_WIND = new CongealWindBehavior();
+    public static final ArrowBehavior DEW = new DewBehavior();
 
     /** 持久数据键：射出初速反推的蓄力系数（0.1 ~ 1.0）。 */
     private static final String TAG_CHARGE_FACTOR = "pasterdream:arrow_charge_factor";
@@ -288,6 +296,202 @@ public final class ArrowBehaviors {
             float magicDamage = (float) (arrow.getBaseDamage() * MAGIC_DAMAGE_MULTIPLIER * chargeFactor(arrow));
             target.hurt(arrow.damageSources().indirectMagic(arrow, arrow.getOwner()), magicDamage);
             target.invulnerableTime = 0;
+        }
+    }
+
+    /* ============================ 混沌箭 ============================ */
+
+    /** 混沌箭：飞行带黑色粒子拖尾，命中施加混乱，概率恢复理智（概率随蓄力缩放），对暗影生物造成额外伤害。 */
+    private static final class ChaosicBehavior implements ArrowBehavior {
+
+        /** 混乱时长（tick），3 秒 */
+        private static final int CONFUSION_DURATION = 60;
+        /** SAN 恢复基础概率（满蓄力时） */
+        private static final float SAN_RESTORE_CHANCE = 0.3F;
+        /** SAN 恢复量下限 */
+        private static final float SAN_RESTORE_MIN = 0.5F;
+        /** SAN 恢复量上限 */
+        private static final float SAN_RESTORE_MAX = 2.0F;
+        /** 暗影生物额外伤害倍率 */
+        private static final float SHADOW_EXTRA_DAMAGE_MULTIPLIER = 0.3F;
+
+        @Override
+        public void onShoot(AbstractArrow arrow, float velocity) {
+            markChargeFactor(arrow, velocity);
+        }
+
+        @Override
+        public void onTick(AbstractArrow arrow, boolean inGround) {
+            if (!arrow.level().isClientSide || inGround) {
+                return;
+            }
+            if (arrow.tickCount % 2 != 0) {
+                return;
+            }
+            Vec3 motion = arrow.getDeltaMovement();
+            arrow.level().addParticle(ParticleTypes.SMOKE,
+                    arrow.getX(), arrow.getY(), arrow.getZ(),
+                    motion.x * 0.1, motion.y * 0.1, motion.z * 0.1);
+        }
+
+        @Override
+        public void onHitEntityPre(AbstractArrow arrow, EntityHitResult result) {
+            if (arrow.level().isClientSide || !(result.getEntity() instanceof LivingEntity target)) {
+                return;
+            }
+            // 暗影生物额外伤害：先结算 30% 额外伤害，再走原版物理伤害
+            if (target instanceof IShadowMob) {
+                float extraDamage = (float) (arrow.getBaseDamage() * SHADOW_EXTRA_DAMAGE_MULTIPLIER);
+                target.hurt(arrow.damageSources().arrow(arrow, arrow.getOwner()), extraDamage);
+                target.invulnerableTime = 0;
+            }
+        }
+
+        @Override
+        public void doPostHurtEffects(AbstractArrow arrow, LivingEntity target) {
+            if (arrow.level().isClientSide) {
+                return;
+            }
+            // 施加混乱
+            target.addEffect(new MobEffectInstance(ModEffects.CONFUSION.get(),
+                    CONFUSION_DURATION, 0, false, true));
+            // 概率恢复理智（概率随蓄力缩放）
+            double chance = SAN_RESTORE_CHANCE * chargeFactor(arrow);
+            if (arrow.level().getRandom().nextDouble() < chance) {
+                this.restoreSan(arrow);
+            }
+        }
+
+        /** 恢复射击者的理智值 0.5 ~ 2.0。 */
+        private void restoreSan(AbstractArrow arrow) {
+            if (!(arrow.getOwner() instanceof ServerPlayer player)) {
+                return;
+            }
+            double amount = SAN_RESTORE_MIN
+                    + (SAN_RESTORE_MAX - SAN_RESTORE_MIN) * arrow.level().getRandom().nextDouble();
+            SanHelper.addPlayerSanAndSync(player, amount);
+        }
+    }
+
+    /* ============================ 爆破箭 ============================ */
+
+    /** 爆破箭：飞行带岩浆粒子拖尾，命中实体或物块后，造成 2 级爆炸（不生成火焰）。 */
+    private static final class BlastBehavior implements ArrowBehavior {
+
+        /** 爆炸威力 */
+        private static final float EXPLOSION_POWER = 2.0F;
+
+        @Override
+        public void onTick(AbstractArrow arrow, boolean inGround) {
+            if (!arrow.level().isClientSide || inGround) {
+                return;
+            }
+            if (arrow.tickCount % 2 != 0) {
+                return;
+            }
+            Vec3 motion = arrow.getDeltaMovement();
+            arrow.level().addParticle(ParticleTypes.LAVA,
+                    arrow.getX(), arrow.getY(), arrow.getZ(),
+                    motion.x * 0.1, motion.y * 0.1, motion.z * 0.1);
+        }
+
+        @Override
+        public void onHitEntityPost(AbstractArrow arrow, EntityHitResult result) {
+            this.explode(arrow, result.getLocation());
+        }
+
+        @Override
+        public void onHitBlock(AbstractArrow arrow, BlockHitResult result) {
+            this.explode(arrow, result.getLocation());
+            arrow.discard();
+        }
+
+        /** 在命中点引发无火焰的爆炸。 */
+        private void explode(AbstractArrow arrow, Vec3 pos) {
+            if (arrow.level().isClientSide) {
+                return;
+            }
+            arrow.level().explode(arrow, pos.x, pos.y, pos.z, EXPLOSION_POWER, Level.ExplosionInteraction.BLOCK);
+        }
+    }
+
+    /* ============================ 凝风箭 ============================ */
+
+    /** 凝风箭：穿透 2 个实体、自带冲击 I、飞行带天使之翼羽毛粒子（速度 +30% 由实体 shoot 覆写处理）。 */
+    private static final class CongealWindBehavior implements ArrowBehavior {
+
+        /** 穿透实体数（Piercing II） */
+        private static final byte PIERCE_LEVEL = 2;
+        /** 冲击（击退）等级（Punch I） */
+        private static final int KNOCKBACK = 1;
+
+        @Override
+        public void applyBaseStats(AbstractArrow arrow) {
+            arrow.setPierceLevel(PIERCE_LEVEL);
+            arrow.setKnockback(KNOCKBACK);
+        }
+
+        @Override
+        public void onTick(AbstractArrow arrow, boolean inGround) {
+            if (!arrow.level().isClientSide || inGround) {
+                return;
+            }
+            if (arrow.tickCount % 2 != 0) {
+                return;
+            }
+            Vec3 motion = arrow.getDeltaMovement();
+            arrow.level().addParticle(ModParticleTypes.FEATHER_WHITE_PARTICLE.get(),
+                    arrow.getX(), arrow.getY(), arrow.getZ(),
+                    motion.x * 0.1, motion.y * 0.1, motion.z * 0.1);
+        }
+    }
+
+    /* ============================ 露滴箭 ============================ */
+
+    /** 露滴箭：对水中生物造成 20% 额外伤害，命中后为射击者恢复 1 格氧气。无视水阻由实体覆写 {@code getWaterInertia} 处理。 */
+    private static final class DewBehavior implements ArrowBehavior {
+
+        /** 对水中生物的额外伤害倍率 */
+        private static final float WATER_EXTRA_DAMAGE_MULTIPLIER = 0.2F;
+        /** 命中后为射击者恢复的氧气量（1 格 = 30 点空气） */
+        private static final int AIR_RESTORE = 30;
+
+        @Override
+        public void onTick(AbstractArrow arrow, boolean inGround) {
+            if (!arrow.level().isClientSide || inGround) {
+                return;
+            }
+            if (arrow.tickCount % 2 != 0) {
+                return;
+            }
+            Vec3 motion = arrow.getDeltaMovement();
+            arrow.level().addParticle(ParticleTypes.SPLASH,
+                    arrow.getX(), arrow.getY(), arrow.getZ(),
+                    motion.x * 0.1, motion.y * 0.1, motion.z * 0.1);
+        }
+
+        @Override
+        public void onHitEntityPre(AbstractArrow arrow, EntityHitResult result) {
+            if (arrow.level().isClientSide || !(result.getEntity() instanceof LivingEntity target)) {
+                return;
+            }
+            // 水中生物额外伤害：先结算 20% 额外伤害，再走原版物理伤害
+            if (target.isInWater()) {
+                float extraDamage = (float) (arrow.getBaseDamage() * WATER_EXTRA_DAMAGE_MULTIPLIER);
+                target.hurt(arrow.damageSources().arrow(arrow, arrow.getOwner()), extraDamage);
+                target.invulnerableTime = 0;
+            }
+        }
+
+        @Override
+        public void doPostHurtEffects(AbstractArrow arrow, LivingEntity target) {
+            if (arrow.level().isClientSide) {
+                return;
+            }
+            // 命中后为射击者恢复氧气（仅对玩家有意义）
+            if (arrow.getOwner() instanceof Player player) {
+                player.setAirSupply(Math.min(player.getAirSupply() + AIR_RESTORE, player.getMaxAirSupply()));
+            }
         }
     }
 }

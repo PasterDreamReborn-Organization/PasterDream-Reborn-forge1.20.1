@@ -24,6 +24,11 @@ public class BlackstoneArrow extends Arrow {
         this(ModEntities.BLACKSTONE_ARROW.get(), level);
     }
 
+    public BlackstoneArrow(Level level, double x, double y, double z) {
+        this(ModEntities.BLACKSTONE_ARROW.get(), level);
+        this.setPos(x, y, z);
+    }
+
     public BlackstoneArrow(Level level, LivingEntity shooter) {
         this(ModEntities.BLACKSTONE_ARROW.get(), level);
         this.setPos(shooter.getX(), shooter.getEyeY() - 0.1, shooter.getZ());

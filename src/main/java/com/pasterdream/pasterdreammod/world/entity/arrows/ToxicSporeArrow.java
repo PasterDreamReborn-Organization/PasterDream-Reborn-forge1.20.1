@@ -23,6 +23,11 @@ public class ToxicSporeArrow extends Arrow {
         this(ModEntities.TOXIC_SPORE_ARROW.get(), level);
     }
 
+    public ToxicSporeArrow(Level level, double x, double y, double z) {
+        this(ModEntities.TOXIC_SPORE_ARROW.get(), level);
+        this.setPos(x, y, z);
+    }
+
     public ToxicSporeArrow(Level level, LivingEntity shooter) {
         this(ModEntities.TOXIC_SPORE_ARROW.get(), level);
         this.setPos(shooter.getX(), shooter.getEyeY() - 0.1, shooter.getZ());
