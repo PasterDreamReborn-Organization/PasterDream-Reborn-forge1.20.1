@@ -21,6 +21,10 @@ import com.pasterdream.pasterdreammod.world.entity.arrows.FragdreamArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.MagicalArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.ChargedArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.BlackstoneArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.ChaosicArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.BlastArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.CongealWindArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.DewArrow;
 import com.pasterdream.pasterdreammod.world.entity.terrorbeak.TerrorbeakEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.ShadowMagicballEntity;
@@ -523,6 +527,38 @@ public class ModEntities {
                     .setTrackingRange(64)
                     .setUpdateInterval(1)
                     .setCustomClientFactory(BlackstoneArrow::new)
+                    .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<ChaosicArrow>> CHAOSIC_ARROW = register("chaosic_arrow",
+            EntityType.Builder.<ChaosicArrow>of(ChaosicArrow::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(ChaosicArrow::new)
+                    .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<BlastArrow>> BLAST_ARROW = register("blast_arrow",
+            EntityType.Builder.<BlastArrow>of(BlastArrow::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(BlastArrow::new)
+                    .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<CongealWindArrow>> CONGEAL_WIND_ARROW = register("congeal_wind_arrow",
+            EntityType.Builder.<CongealWindArrow>of(CongealWindArrow::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(CongealWindArrow::new)
+                    .sized(0.5f, 0.5f));
+
+    public static final RegistryObject<EntityType<DewArrow>> DEW_ARROW = register("dew_arrow",
+            EntityType.Builder.<DewArrow>of(DewArrow::new, MobCategory.MISC)
+                    .setShouldReceiveVelocityUpdates(true)
+                    .setTrackingRange(64)
+                    .setUpdateInterval(1)
+                    .setCustomClientFactory(DewArrow::new)
                     .sized(0.5f, 0.5f));
 
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder) {

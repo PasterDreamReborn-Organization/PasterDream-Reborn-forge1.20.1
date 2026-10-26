@@ -1850,7 +1850,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         //special arrows
         add(ModItems.TOXIC_SPORE_ARROW.get(), "Toxic Spore Arrow");
         add("tooltip.pasterdream.toxic_spore_arrow.tooltip1","§9Make the target hit get poisoned.");
-        add("tooltip.pasterdream.toxic_spore_arrow.tooltip2","§7§o——More poisonous than 100 poisonous potatoes.");
+        add("tooltip.pasterdream.toxic_spore_arrow.tooltip2","§7§o--More poisonous than 100 poisonous potatoes.");
         add(ModItems.FRAGDREAM_ARROW.get(), "Fragdream Arrow");
         add("tooltip.pasterdream.fragdream_arrow.tooltip1","§9Deals area damage when hitting a block or entity.");
         add("tooltip.pasterdream.fragdream_arrow.tooltip2","§cCannot be recycled.");
@@ -1858,9 +1858,22 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.magical_arrow.tooltip1","§9Trace the target.");
         add(ModItems.CHARGED_ARROW.get(), "Charged Arrow");
         add("tooltip.pasterdream.charged_arrow.tooltip1","§9Deals damage twice, one of which is magic damage.");
-        add("tooltip.pasterdream.charged_arrow.tooltip2","§7§o——1 = 2");
+        add("tooltip.pasterdream.charged_arrow.tooltip2","§7§o--1 = 2");
         add(ModItems.BLACKSTONE_ARROW.get(), "Blackstone Arrow");
-
+        add(ModItems.CHAOSIC_ARROW.get(), "Chaosic Arrow");
+        add("tooltip.pasterdream.chaosic_arrow.tooltip1","§9Causes confusion on hit, has a chance to restore sanity, and deals extra damage to shadow mobs.");
+        add("tooltip.pasterdream.chaosic_arrow.tooltip2","§9Enchant the bow with a damage-to-spirit enchantment so that it can be used infinitely.");
+        add("tooltip.pasterdream.chaosic_arrow.tooltip3","§7§o--Darkness! Obedience! Madness!");
+        add(ModItems.BLAST_ARROW.get(), "Blast Arrow");
+        add("tooltip.pasterdream.blast_arrow.tooltip1","§9Hits blocks or entities to cause an explosion, watch out or it might blow you up!");
+        add("tooltip.pasterdream.blast_arrow.tooltip2","§cCannot be recycled.");
+        add("tooltip.pasterdream.blast_arrow.tooltip3","§7§o--Let's make something 'explosive'.");
+        add(ModItems.CONGEAL_WIND_ARROW.get(), "Congeal Wind Arrow");
+        add("tooltip.pasterdream.congeal_wind_arrow.tooltip1","§9Faster than regular arrows and can knock back enemies even more.");
+        add("tooltip.pasterdream.congeal_wind_arrow.tooltip2","§9The arrow can pierce through the target.");
+        add(ModItems.DEW_ARROW.get(), "Dew Arrow");
+        add("tooltip.pasterdream.dew_arrow.tooltip1","§9Ignore water resistance and deal extra damage if the target is in water.");
+        add("tooltip.pasterdream.dew_arrow.tooltip2","§9Restore 1 oxygen when hitting a target.");
 
         // Advancements - Story
         add("advancements.pasterdream.story.root.title", "PasterDream");

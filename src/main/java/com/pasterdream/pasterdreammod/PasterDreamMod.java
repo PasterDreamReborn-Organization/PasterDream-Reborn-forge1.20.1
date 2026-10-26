@@ -19,6 +19,7 @@ import com.pasterdream.pasterdreammod.event.RecipeUnlockHandler;
 import com.pasterdream.pasterdreammod.init.*;
 import com.pasterdream.pasterdreammod.world.item.prophecycard.ProphecyCardItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
+import com.pasterdream.pasterdreammod.world.item.arrows.ArrowDispenserBehaviors;
 import com.pasterdream.pasterdreammod.world.item.armoritem.qym.QymArmorEvents;
 import com.pasterdream.pasterdreammod.world.conditions.DyedreamWorldLeapstoneEnabledCondition;
 import com.pasterdream.pasterdreammod.world.dimension.AaroncosArenaTeleporter;
@@ -157,6 +158,9 @@ public class PasterDreamMod
         // 药剂瓶：发射器行为 + 砸碎效果绑定
         PotionBottleRegistry.registerDispenserBehavior();
         PotionBottleRegistry.registerAllEffects();
+
+        // 自定义箭矢：发射器行为
+        ArrowDispenserBehaviors.register();
     }
 
     //在这里输入客户端注册内容

@@ -25,6 +25,11 @@ public class FragdreamArrow extends Arrow {
         this(ModEntities.FRAGDREAM_ARROW.get(), level);
     }
 
+    public FragdreamArrow(Level level, double x, double y, double z) {
+        this(ModEntities.FRAGDREAM_ARROW.get(), level);
+        this.setPos(x, y, z);
+    }
+
     public FragdreamArrow(Level level, LivingEntity shooter) {
         this(ModEntities.FRAGDREAM_ARROW.get(), level);
         this.setPos(shooter.getX(), shooter.getEyeY() - 0.1, shooter.getZ());
