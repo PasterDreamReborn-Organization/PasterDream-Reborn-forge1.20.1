@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.block.aaroncoshandchest;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
+import com.pasterdream.pasterdreammod.helper.ShadowDifficultyHelper;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
@@ -41,6 +42,7 @@ public class AaroncosHandChestTileEntity extends BlockEntity implements GeoBlock
     private int tickCounter = 0;
     private boolean hasTalentLight;
     private boolean hasTalentShadow;
+    private double lootMultiplier = 1.0;
 
     // 原作 achievement_talent_light（信仰光明，选灯）→ 白厄花胸针 + 白水晶
     private static final ResourceLocation TALENT_LIGHT_ADV =
@@ -68,6 +70,7 @@ public class AaroncosHandChestTileEntity extends BlockEntity implements GeoBlock
 
         hasTalentLight = player instanceof ServerPlayer sp1 && AdvancementHelper.isDone(sp1, TALENT_LIGHT_ADV);
         hasTalentShadow = player instanceof ServerPlayer sp2 && AdvancementHelper.isDone(sp2, TALENT_SHADOW_ADV);
+        lootMultiplier = ShadowDifficultyHelper.getLootMultiplier(player);
 
         // 启动方块实体开箱状态机（40t 掉落，41t 自毁）
         totalTicks = 410;
@@ -91,24 +94,30 @@ public class AaroncosHandChestTileEntity extends BlockEntity implements GeoBlock
                 sw.sendParticles(ParticleTypes.SMOKE, cx, cy, cz, 24, 1, 1, 1, 0.2);
                 sw.sendParticles(ModParticleTypes.DUST_0_PARTICLE.get(), cx, cy, cz, 32, 1, 1, 1, 0.2);
                 if (blockEntity.hasTalentLight) {
-                    dropItem(sw, cx, cy, cz, ModItems.BROOCH_OF_WHITE_ORCHID.get());
-                    dropItem(sw, cx, cy, cz, ModItems.WHITE_CRYSTAL.get());
+                    dropItem(sw, cx, cy, cz, ModItems.BROOCH_OF_WHITE_ORCHID.get(), blockEntity.lootMultiplier);
+                    dropItem(sw, cx, cy, cz, ModItems.WHITE_CRYSTAL.get(), blockEntity.lootMultiplier);
                 }
                 if (blockEntity.hasTalentShadow) {
-                    dropItem(sw, cx, cy, cz, ModItems.SEAL_OF_THE_CORRUPTED.get());
-                    dropItem(sw, cx, cy, cz, ModItems.SHADOW_HILT.get());
+                    dropItem(sw, cx, cy, cz, ModItems.SEAL_OF_THE_CORRUPTED.get(), blockEntity.lootMultiplier);
+                    dropItem(sw, cx, cy, cz, ModItems.SHADOW_HILT.get(), blockEntity.lootMultiplier);
                 }
-                dropItem(sw, cx, cy, cz, ModItems.PURE_HORROR.get());
+                dropItem(sw, cx, cy, cz, ModItems.PURE_HORROR.get(), blockEntity.lootMultiplier);
             }
             case 41 -> sw.destroyBlock(pos, false);
         }
         blockEntity.tickCounter++;
     }
 
-    private static void dropItem(ServerLevel sw, double x, double y, double z, Item item) {
-        ItemEntity drop = new ItemEntity(sw, x, y, z, new ItemStack(item));
-        drop.setPickUpDelay(10);
-        sw.addFreshEntity(drop);
+    private static void dropItem(ServerLevel sw, double x, double y, double z, Item item, double multiplier) {
+        double effective = Math.max(1.0, multiplier);
+        int copies = (int) Math.floor(effective);
+        if (sw.random.nextDouble() < effective - copies)
+            copies++;
+        for (int i = 0; i < copies; i++) {
+            ItemEntity drop = new ItemEntity(sw, x, y, z, new ItemStack(item));
+            drop.setPickUpDelay(10);
+            sw.addFreshEntity(drop);
+        }
     }
 
     private int getAnimationValue() {
@@ -158,12 +167,14 @@ public class AaroncosHandChestTileEntity extends BlockEntity implements GeoBlock
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         tag.putBoolean("switch", opened);
+        tag.putDouble("lootMultiplier", lootMultiplier);
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
         opened = tag.getBoolean("switch");
+        lootMultiplier = tag.contains("lootMultiplier") ? tag.getDouble("lootMultiplier") : 1.0;
     }
 
     @Override

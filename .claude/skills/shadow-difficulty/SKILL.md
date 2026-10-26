@@ -52,6 +52,7 @@ description: 修改暗影难度系统（暗影生物数值缩放、特殊行为�
 | gamerule 注册 | `init/ModGameRules.java` |
 | 属性缩放 | `event/ModMobSpawnEvents.java` |
 | 战利品加成 | `event/ModMobDrops.java` |
+| BOSS 奖励箱掉落加成 | `world/block/aaroncoshandchest/AaroncosHandChestTileEntity.java` |
 | 低理智刷怪 | `event/LowSanSpawnHandler.java` |
 | 难度命令 | `command/san/ShadowDifficulty.java` |
 | 低 SAN 视觉命令 | `command/san/LowSanEffect.java` |
