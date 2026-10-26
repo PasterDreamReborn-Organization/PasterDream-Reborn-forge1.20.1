@@ -32,6 +32,11 @@ public class MagicalArrow extends TrailArrowEntity {
         this(ModEntities.MAGICAL_ARROW.get(), level);
     }
 
+    public MagicalArrow(Level level, double x, double y, double z) {
+        this(ModEntities.MAGICAL_ARROW.get(), level);
+        this.setPos(x, y, z);
+    }
+
     public MagicalArrow(Level level, LivingEntity shooter) {
         this(ModEntities.MAGICAL_ARROW.get(), level);
         this.setPos(shooter.getX(), shooter.getEyeY() - 0.1, shooter.getZ());

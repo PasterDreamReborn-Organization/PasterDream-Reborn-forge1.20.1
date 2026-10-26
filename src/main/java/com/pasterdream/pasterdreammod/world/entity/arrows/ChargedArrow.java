@@ -24,6 +24,11 @@ public class ChargedArrow extends Arrow {
         this(ModEntities.CHARGED_ARROW.get(), level);
     }
 
+    public ChargedArrow(Level level, double x, double y, double z) {
+        this(ModEntities.CHARGED_ARROW.get(), level);
+        this.setPos(x, y, z);
+    }
+
     public ChargedArrow(Level level, LivingEntity shooter) {
         this(ModEntities.CHARGED_ARROW.get(), level);
         this.setPos(shooter.getX(), shooter.getEyeY() - 0.1, shooter.getZ());

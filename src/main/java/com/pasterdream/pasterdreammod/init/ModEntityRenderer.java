@@ -63,6 +63,10 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.MAGICAL_ARROW.get(), MagicalArrowRenderer::new);
         event.registerEntityRenderer(ModEntities.CHARGED_ARROW.get(), ChargedArrowRenderer::new);
         event.registerEntityRenderer(ModEntities.BLACKSTONE_ARROW.get(), BlackstoneArrowRenderer::new);
+        event.registerEntityRenderer(ModEntities.CHAOSIC_ARROW.get(), ChaosicArrowRenderer::new);
+        event.registerEntityRenderer(ModEntities.BLAST_ARROW.get(), BlastArrowRenderer::new);
+        event.registerEntityRenderer(ModEntities.CONGEAL_WIND_ARROW.get(), CongealWindArrowRenderer::new);
+        event.registerEntityRenderer(ModEntities.DEW_ARROW.get(), DewArrowRenderer::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
