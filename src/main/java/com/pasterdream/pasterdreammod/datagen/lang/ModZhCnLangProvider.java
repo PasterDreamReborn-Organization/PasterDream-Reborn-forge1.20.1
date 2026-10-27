@@ -1410,7 +1410,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("message.pasterdream.brooch_of_white_orchid.rejected", "这件饰品拒绝了你");
         add(ModItems.KAICHU_OMAMORI.get(), "怀中御守");
         add("tooltip.pasterdream.brooch_of_white_orchid.flavor", "§7§o--我消逝于无形  此刻享受你应得的荣耀");
-        add("tooltip.pasterdream.kaichu_omamori.effect.foxfire", "§7▪ §9对12*12区域范围内生成狐火立场");
+        add("tooltip.pasterdream.kaichu_omamori.effect.foxfire", "§7▪ §9对12*12区域范围内生成狐火力场");
         add("tooltip.pasterdream.kaichu_omamori.effect.vulnerable", "§7▪ §9使除玩家外的生物受到20%的易伤和缓慢V效果");
         add("tooltip.pasterdream.kaichu_omamori.effect.regen", "§7▪ §9给予玩家生命恢复");
         add("tooltip.pasterdream.kaichu_omamori.effect.duration", "§7▪ §9持续时间 %s秒");
@@ -1418,7 +1418,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.kaichu_omamori.effect.cooldown", "§7▪ §9冷却时间 %s 秒");
         add("tooltip.pasterdream.kaichu_omamori.equip", "§7当装备时：");
         add("tooltip.pasterdream.kaichu_omamori.luck", "§7▪ §9+5幸运");
-        add("tooltip.pasterdream.kaichu_omamori.hotkey", "§7▪ §9按下 §e%s §9释放狐火立场");
+        add("tooltip.pasterdream.kaichu_omamori.hotkey", "§7▪ §9按下 §e%s §9释放狐火力场");
         add("tooltip.pasterdream.kaichu_omamori.flavor", "§7§o--Alirea定制物品");
         add("key.pasterdream.kaichu_omamori", "激活怀中御守");
         add("key.pasterdream.cloak_activate", "启用衣装");

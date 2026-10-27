@@ -2888,7 +2888,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         // 三明治合成配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SANDWICH.get(), 1)
                 .requires(Items.BREAD,1)
-                .requires(Items.CHICKEN,1)
+                .requires(Items.COOKED_CHICKEN,1)
                 .requires(Ingredient.of(ItemTags.create(
                         ResourceLocation.fromNamespaceAndPath("forge", "cooked_eggs"))),1)
                 .requires(Items.KELP,1)
