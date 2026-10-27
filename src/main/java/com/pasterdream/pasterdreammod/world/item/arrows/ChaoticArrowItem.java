@@ -1,7 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.arrows;
 
 import com.pasterdream.pasterdreammod.init.ModEnchantment;
-import com.pasterdream.pasterdreammod.world.entity.arrows.ChaosicArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.ChaoticArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehavior;
 import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviorProvider;
 import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehaviors;
@@ -17,21 +17,21 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-/** 混沌箭物品。作为弓 / 弩的弹药，射出 {@link ChaosicArrow}。 */
-public class ChaosicArrowItem extends ArrowItem implements ArrowBehaviorProvider {
+/** 混沌箭物品。作为弓 / 弩的弹药，射出 {@link ChaoticArrow}。 */
+public class ChaoticArrowItem extends ArrowItem implements ArrowBehaviorProvider {
 
-    public ChaosicArrowItem(Properties properties) {
+    public ChaoticArrowItem(Properties properties) {
         super(properties);
     }
 
     @Override
     public AbstractArrow createArrow(Level level, ItemStack stack, LivingEntity shooter) {
-        return new ChaosicArrow(level, shooter);
+        return new ChaoticArrow(level, shooter);
     }
 
     @Override
     public ArrowBehavior arrowBehavior() {
-        return ArrowBehaviors.CHAOSIC;
+        return ArrowBehaviors.CHAOTIC;
     }
 
     @Override
@@ -41,8 +41,8 @@ public class ChaosicArrowItem extends ArrowItem implements ArrowBehaviorProvider
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(Component.translatable("tooltip.pasterdream.chaosic_arrow.tooltip1"));
-        list.add(Component.translatable("tooltip.pasterdream.chaosic_arrow.tooltip2"));
-        list.add(Component.translatable("tooltip.pasterdream.chaosic_arrow.tooltip3"));
+        list.add(Component.translatable("tooltip.pasterdream.chaotic_arrow.tooltip1"));
+        list.add(Component.translatable("tooltip.pasterdream.chaotic_arrow.tooltip2"));
+        list.add(Component.translatable("tooltip.pasterdream.chaotic_arrow.tooltip3"));
     }
 }

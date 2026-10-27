@@ -4,7 +4,7 @@ import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.entity.arrows.BlackstoneArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.BlastArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.ChargedArrow;
-import com.pasterdream.pasterdreammod.world.entity.arrows.ChaosicArrow;
+import com.pasterdream.pasterdreammod.world.entity.arrows.ChaoticArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.CongealWindArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.DewArrow;
 import com.pasterdream.pasterdreammod.world.entity.arrows.FragdreamArrow;
@@ -36,7 +36,7 @@ public final class ArrowDispenserBehaviors {
         register(ModItems.MAGICAL_ARROW.get(), (level, x, y, z) -> new MagicalArrow(level, x, y, z));
         register(ModItems.CHARGED_ARROW.get(), (level, x, y, z) -> new ChargedArrow(level, x, y, z));
         register(ModItems.BLACKSTONE_ARROW.get(), (level, x, y, z) -> new BlackstoneArrow(level, x, y, z));
-        register(ModItems.CHAOSIC_ARROW.get(), (level, x, y, z) -> new ChaosicArrow(level, x, y, z));
+        register(ModItems.CHAOTIC_ARROW.get(), (level, x, y, z) -> new ChaoticArrow(level, x, y, z));
         register(ModItems.BLAST_ARROW.get(), (level, x, y, z) -> new BlastArrow(level, x, y, z));
         register(ModItems.CONGEAL_WIND_ARROW.get(), (level, x, y, z) -> new CongealWindArrow(level, x, y, z));
         register(ModItems.DEW_ARROW.get(), (level, x, y, z) -> new DewArrow(level, x, y, z));

@@ -440,7 +440,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FRAGDREAM_ARROW.get());
                         output.accept(ModItems.MAGICAL_ARROW.get());
                         output.accept(ModItems.CHARGED_ARROW.get());
-                        output.accept(ModItems.CHAOSIC_ARROW.get());
+                        output.accept(ModItems.CHAOTIC_ARROW.get());
                         output.accept(ModItems.BLAST_ARROW.get());
                         output.accept(ModItems.CONGEAL_WIND_ARROW.get());
                         output.accept(ModItems.DEW_ARROW.get());
