@@ -17,7 +17,7 @@ import java.util.UUID;
  * 生命值已满时转化为原版吸收（黄心）。
  *
  * <p>溢出量 = 未吃进去的 nutrition + 被 20 上限卡掉的 saturation。
- * 黄心上限 = (cook 等级 + 1) * 10，即 I=20 / II=30 / III=40；
+ * 黄心上限 = (amplifier + 2) * 10，即 I=20 / II=30 / III=40；
  * 加法时把总量钳到上限，永不降低，不单独追踪本效果贡献。
  *
  * <p>规则详见 {@code document/rule/program/料理状态效果.md}。
@@ -86,7 +86,7 @@ public class CookOverflowHandler
             return;
         }
 
-        int cap = (cook.getAmplifier() + 1) * 10;
+        int cap = (cook.getAmplifier() + 2) * 10;
 
         float healed = Math.min(overflow, player.getMaxHealth() - player.getHealth());
         if (healed > 0.0F)
