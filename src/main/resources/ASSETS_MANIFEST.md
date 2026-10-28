@@ -36,7 +36,7 @@ textures/block/molten_gold_block.png
 textures/block/molten_gold_ore.png
 textures/gui/pasterdream_inventory.png
 textures/item/attack_enhance_stone.png
-textures/item/black_metal_grain.png
+textures/item/black_metal_nugget.png
 textures/item/black_metal_ingot.png
 textures/item/bread_slice.png
 textures/item/calais_spice_bottle.png
