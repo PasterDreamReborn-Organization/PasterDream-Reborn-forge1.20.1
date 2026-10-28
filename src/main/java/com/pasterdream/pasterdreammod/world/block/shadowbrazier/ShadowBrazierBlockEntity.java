@@ -156,7 +156,7 @@ public class ShadowBrazierBlockEntity extends BlockEntity implements GeoBlockEnt
                 serverLevel.addFreshEntity(keyDrop);
 
                 ItemEntity grainDrop = new ItemEntity(serverLevel, x + 0.5, y + 0.5, z + 0.5,
-                        new ItemStack(ModItems.BLACK_METAL_GRAIN.get()));
+                        new ItemStack(ModItems.BLACK_METAL_NUGGET.get()));
                 grainDrop.setPickUpDelay(10);
                 serverLevel.addFreshEntity(grainDrop);
             }

@@ -199,7 +199,7 @@ public class ModItems {
     public static final RegistryObject<Item> RAW_MOLTEN_GOLD = ITEMS.register("raw_molten_gold",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> MELT_DREAM_AURORIAN_STEEL = ITEMS.register("melt_dream_aurorian_steel",
+    public static final RegistryObject<Item> MELT_DREAM_AURORIAN_STEEL_INGOT = ITEMS.register("melt_dream_aurorian_steel_ingot",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> MAGIC_STONE = ITEMS.register("magic_stone",
@@ -213,7 +213,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BLACK_METAL_INGOT = ITEMS.register("black_metal_ingot",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> BLACK_METAL_GRAIN = ITEMS.register("black_metal_grain",
+    public static final RegistryObject<Item> BLACK_METAL_NUGGET = ITEMS.register("black_metal_nugget",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RUST_BLACK_METAL_GRAIN = ITEMS.register("rust_black_metal_grain",
             () -> new Item(new Item.Properties()));

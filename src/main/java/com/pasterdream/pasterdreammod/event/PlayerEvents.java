@@ -153,7 +153,7 @@ public class PlayerEvents {
                     ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
                 }
                 if (!isAdvancementDone(serverPlayer, CHOCOLATE_000_ADV)
-                        && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.BLACK_METAL_GRAIN.get()))) {
+                        && serverPlayer.getInventory().hasAnyOf(java.util.Set.of(ModItems.BLACK_METAL_NUGGET.get()))) {
                     ModCriteriaTriggers.HAS_ADVANCEMENT.trigger(serverPlayer);
                 }
             }

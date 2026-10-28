@@ -486,7 +486,7 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
             Advancement chocolate000 = Advancement.Builder.advancement()
                     .parent(shadowBlastFurnaceCore)
                     .display(
-                            ModItems.BLACK_METAL_GRAIN.get(),
+                            ModItems.BLACK_METAL_NUGGET.get(),
                             Component.translatable("advancements.pasterdream.story.chocolate_000.title"),
                             Component.translatable("advancements.pasterdream.story.chocolate_000.description"),
                             null,
@@ -494,7 +494,7 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             true, true, true
                     )
                     .addCriterion("obtain_black_metal_grain", InventoryChangeTrigger.TriggerInstance.hasItems(
-                            ModItems.BLACK_METAL_GRAIN.get()))
+                            ModItems.BLACK_METAL_NUGGET.get()))
                     .addCriterion("has_lamp_shadow_root",
                             HasAdvancementTrigger.TriggerInstance.hasAdvancement(
                                     ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
