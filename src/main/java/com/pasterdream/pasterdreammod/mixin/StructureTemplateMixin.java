@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,13 +24,13 @@ public class StructureTemplateMixin {
         FORCE_NO_KEEP_LIQUIDS.remove();
     }
 
-    @Redirect(method = "placeInWorld",
+    @ModifyExpressionValue(method = "placeInWorld",
               at = @At(value = "INVOKE",
                        target = "Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;shouldKeepLiquids()Z"))
-    private boolean forceNoKeepLiquids(StructurePlaceSettings settings) {
+    private boolean forceNoKeepLiquids(boolean original) {
         if (FORCE_NO_KEEP_LIQUIDS.get() != null) {
             return false;
         }
-        return settings.shouldKeepLiquids();
+        return original;
     }
 }

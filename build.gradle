@@ -74,6 +74,12 @@ dependencies {
     // Mixin annotation processor — 生成 refmap
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
+    // MixinExtras
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.5"))
+    implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.5.5")) {
+        jarJar.ranged(it, "[0.5.5,)")
+    }
+
     // Curios API（本地 libs）
     implementation fg.deobf("blank:curios-forge:5.14.1+1.20.1")
 

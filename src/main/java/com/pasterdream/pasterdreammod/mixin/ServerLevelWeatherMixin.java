@@ -1,13 +1,12 @@
 package com.pasterdream.pasterdreammod.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.pasterdream.pasterdreammod.world.dimension.LampShadowDimension;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.dimension.DimensionType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
@@ -42,13 +41,12 @@ public class ServerLevelWeatherMixin {
      * 该维度的 {@code serverLevelData} 是 DerivedLevelData（写入为空实现、读取主世界），
      * 所以放行后只会镜像主世界天气，不会产生独立的天气循环。
      */
-    @Redirect(method = "advanceWeatherCycle", at = @At(value = "INVOKE",
+    @ModifyExpressionValue(method = "advanceWeatherCycle", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/level/dimension/DimensionType;hasSkyLight()Z"))
-    private boolean pasterdream$allowWeatherWithoutSkyLight(DimensionType dimensionType) {
-        if (dimensionType.hasSkyLight()) {
+    private boolean pasterdream$allowWeatherWithoutSkyLight(boolean original) {
+        if (original) {
             return true;
         }
-        ServerLevel self = (ServerLevel) (Object) this;
-        return self.dimension().equals(LampShadowDimension.LAMP_SHADOW_WORLD);
+        return ((ServerLevel) (Object) this).dimension().equals(LampShadowDimension.LAMP_SHADOW_WORLD);
     }
 }
