@@ -34,7 +34,7 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                         .setWeight(6)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(2.0F, 4.0F))))
-                                .add(LootItem.lootTableItem(ModItems.BLACK_METAL_GRAIN.get())
+                                .add(LootItem.lootTableItem(ModItems.BLACK_METAL_NUGGET.get())
                                         .setWeight(6)
                                         .apply(SetItemCountFunction.setCount(
                                                 UniformGenerator.between(1.0F, 2.0F))))

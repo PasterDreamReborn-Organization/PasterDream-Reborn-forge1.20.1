@@ -17,7 +17,6 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -364,5 +363,205 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(Items.PHANTOM_MEMBRANE)
                 .add(Items.TURTLE_HELMET)
                 .add(Items.FERMENTED_SPIDER_EYE);
+
+        //金属锭标签
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ingots")))
+                .add(ModItems.TITANIUM_INGOT.get().asItem())
+                .add(ModItems.MOLTEN_GOLD_INGOT.get().asItem())
+                .add(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get().asItem())
+                .add(ModItems.DYEDREAM_ALLOY_INGOT.get().asItem())
+                .add(ModItems.CONGEAL_WIND_IRON_INGOT.get().asItem())
+                .add(ModItems.FLUFFY_WIND_ALLOY_INGOT.get().asItem())
+                .add(ModItems.BLACK_METAL_INGOT.get().asItem())
+                .add(ModItems.SHADOW_ALLOY_INGOT.get().asItem())
+                .add(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ingots/titanium")))
+                .add(ModItems.TITANIUM_INGOT.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ingots/molten_gold")))
+                .add(ModItems.MOLTEN_GOLD_INGOT.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ingots/raw_dyedream_alloy")))
+                .add(ModItems.RAW_DYEDREAM_ALLOY_INGOT.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ingots/dyedream_alloy")))
+                .add(ModItems.DYEDREAM_ALLOY_INGOT.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ingots/congeal_wind_iron")))
+                .add(ModItems.CONGEAL_WIND_IRON_INGOT.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ingots/fluffy_wind_alloy")))
+                .add(ModItems.FLUFFY_WIND_ALLOY_INGOT.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ingots/black_metal")))
+                .add(ModItems.BLACK_METAL_INGOT.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ingots/shadow_alloy")))
+                .add(ModItems.SHADOW_ALLOY_INGOT.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ingots/melt_dream_aurorian_steel")))
+                .add(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get().asItem());
+
+        //金属块标签
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks")))
+                .add(ModItems.TITANIUM_BLOCK.get().asItem())
+                .add(ModItems.MOLTEN_GOLD_BLOCK.get().asItem())
+                .add(ModItems.DYEDREAM_ALLOY_BLOCK.get().asItem())
+                .add(ModItems.CONGEAL_WIND_IRON_BLOCK.get().asItem())
+                .add(ModItems.FLUFFY_WIND_ALLOY_BLOCK.get().asItem())
+                .add(ModItems.BLACK_METAL_BLOCK.get().asItem())
+                .add(ModItems.DYEDREAM_BUD_BLOCK.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/titanium")))
+                .add(ModItems.TITANIUM_BLOCK.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/molten_gold")))
+                .add(ModItems.MOLTEN_GOLD_BLOCK.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/dyedream_alloy")))
+                .add(ModItems.DYEDREAM_ALLOY_BLOCK.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/congeal_wind_iron")))
+                .add(ModItems.CONGEAL_WIND_IRON_BLOCK.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/fluffy_wind_alloy")))
+                .add(ModItems.FLUFFY_WIND_ALLOY_BLOCK.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/black_metal")))
+                .add(ModItems.BLACK_METAL_BLOCK.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/dyedream_bud")))
+                .add(ModItems.DYEDREAM_BUD_BLOCK.get().asItem());
+
+        //金属粒标签
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "nuggets")))
+                .add(ModItems.TITANIUM_NUGGET.get().asItem())
+                .add(ModItems.MOLTEN_GOLD_NUGGET.get().asItem())
+                .add(ModItems.DYEDREAM_ALLOY_NUGGET.get().asItem())
+                .add(ModItems.CONGEAL_WIND_IRON_NUGGET.get().asItem())
+                .add(ModItems.BLACK_METAL_NUGGET.get().asItem())
+                .add(ModItems.DYEDREAM_BUD_NUGGET.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "nuggets/titanium")))
+                .add(ModItems.TITANIUM_NUGGET.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "nuggets/molten_gold")))
+                .add(ModItems.MOLTEN_GOLD_NUGGET.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "nuggets/dyedream_alloy")))
+                .add(ModItems.DYEDREAM_ALLOY_NUGGET.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "nuggets/congeal_wind_iron")))
+                .add(ModItems.CONGEAL_WIND_IRON_NUGGET.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "nuggets/black_metal")))
+                .add(ModItems.BLACK_METAL_NUGGET.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "nuggets/dyedream_bud")))
+                .add(ModItems.DYEDREAM_BUD_NUGGET.get().asItem());
+
+        //矿石标签
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores")))
+                .add(ModItems.DEEPSLATE_TITANIUM_ORE.get().asItem())
+                .add(ModItems.MOLTEN_GOLD_ORE.get().asItem())
+                .add(ModItems.WIND_RUNNER_CRYSTAL_ORE.get().asItem())
+                .add(ModItems.DYEDREAM_QUARTZ_ORE.get().asItem())
+                .add(ModItems.DYEDREAM_DUST_ORE.get().asItem())
+                .add(ModItems.AMBER_CANDY_ORE.get().asItem())
+                .add(ModItems.TITANIUM_ORE.get().asItem())
+                .add(ModItems.CALCITE_COAL_ORE.get().asItem())
+                .add(ModItems.CALCITE_IRON_ORE.get().asItem())
+                .add(ModItems.CALCITE_COPPER_ORE.get().asItem())
+                .add(ModItems.CALCITE_GOLD_ORE.get().asItem())
+                .add(ModItems.CALCITE_REDSTONE_ORE.get().asItem())
+                .add(ModItems.CALCITE_LAPIS_ORE.get().asItem())
+                .add(ModItems.CALCITE_DIAMOND_ORE.get().asItem())
+                .add(ModItems.CALCITE_EMERALD_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/deepslate")))
+                .add(ModItems.DEEPSLATE_TITANIUM_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/netherrack")))
+                .add(ModItems.MOLTEN_GOLD_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/cyan_stone")))
+                .add(ModItems.WIND_RUNNER_CRYSTAL_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/calcite")))
+                .add(ModItems.DYEDREAM_QUARTZ_ORE.get().asItem())
+                .add(ModItems.DYEDREAM_DUST_ORE.get().asItem())
+                .add(ModItems.AMBER_CANDY_ORE.get().asItem())
+                .add(ModItems.TITANIUM_ORE.get().asItem())
+                .add(ModItems.CALCITE_COAL_ORE.get().asItem())
+                .add(ModItems.CALCITE_IRON_ORE.get().asItem())
+                .add(ModItems.CALCITE_COPPER_ORE.get().asItem())
+                .add(ModItems.CALCITE_GOLD_ORE.get().asItem())
+                .add(ModItems.CALCITE_REDSTONE_ORE.get().asItem())
+                .add(ModItems.CALCITE_LAPIS_ORE.get().asItem())
+                .add(ModItems.CALCITE_DIAMOND_ORE.get().asItem())
+                .add(ModItems.CALCITE_EMERALD_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ore_rates/singular")))
+                .add(ModItems.DEEPSLATE_TITANIUM_ORE.get().asItem())
+                .add(ModItems.MOLTEN_GOLD_ORE.get().asItem())
+                .add(ModItems.WIND_RUNNER_CRYSTAL_ORE.get().asItem())
+                .add(ModItems.TITANIUM_ORE.get().asItem())
+                .add(ModItems.CALCITE_COAL_ORE.get().asItem())
+                .add(ModItems.CALCITE_IRON_ORE.get().asItem())
+                .add(ModItems.CALCITE_GOLD_ORE.get().asItem())
+                .add(ModItems.CALCITE_DIAMOND_ORE.get().asItem())
+                .add(ModItems.CALCITE_EMERALD_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ore_rates/dense")))
+                .add(ModItems.DYEDREAM_QUARTZ_ORE.get().asItem())
+                .add(ModItems.DYEDREAM_DUST_ORE.get().asItem())
+                .add(ModItems.AMBER_CANDY_ORE.get().asItem())
+                .add(ModItems.CALCITE_COPPER_ORE.get().asItem())
+                .add(ModItems.CALCITE_REDSTONE_ORE.get().asItem())
+                .add(ModItems.CALCITE_LAPIS_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/titanium")))
+                .add(ModItems.DEEPSLATE_TITANIUM_ORE.get().asItem())
+                .add(ModItems.TITANIUM_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/molten_gold")))
+                .add(ModItems.MOLTEN_GOLD_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/wind_runner_crystal")))
+                .add(ModItems.WIND_RUNNER_CRYSTAL_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/dyedream_quartz")))
+                .add(ModItems.DYEDREAM_QUARTZ_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/dyedream_dust")))
+                .add(ModItems.DYEDREAM_DUST_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/amber_candy")))
+                .add(ModItems.AMBER_CANDY_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/coal")))
+                .add(ModItems.CALCITE_COAL_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/iron")))
+                .add(ModItems.CALCITE_IRON_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/copper")))
+                .add(ModItems.CALCITE_COPPER_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/gold")))
+                .add(ModItems.CALCITE_GOLD_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/redstone")))
+                .add(ModItems.CALCITE_REDSTONE_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/lapis")))
+                .add(ModItems.CALCITE_LAPIS_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/diamond")))
+                .add(ModItems.CALCITE_DIAMOND_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/emerald")))
+                .add(ModItems.CALCITE_EMERALD_ORE.get().asItem());
     }
 }

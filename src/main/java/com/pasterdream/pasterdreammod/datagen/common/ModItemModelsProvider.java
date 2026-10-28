@@ -328,7 +328,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.SHADOW_DEEP_SEA_TREASURE.get());
         basicItem(ModItems.DREAM_FERTILIZER.get());
         basicItem(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get());
-        basicItem(ModItems.MELT_DREAM_AURORIAN_STEEL.get());
+        basicItem(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get());
         basicItem(ModItems.DREAM_NOTES_DYEDREAM_WORLD.get());
         basicItem(ModItems.DREAM_NOTES_LAMP_SHADOW_WORLD.get());
         basicItem(ModItems.DREAM_NOTES_WIND_JOURNEY_WORLD.get());
@@ -453,7 +453,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.IRIDESCENT_FAIRY_JADE.get());
 
         basicItem(ModItems.BLACK_METAL_INGOT.get());
-        basicItem(ModItems.BLACK_METAL_GRAIN.get());
+        basicItem(ModItems.BLACK_METAL_NUGGET.get());
         basicItem(ModItems.RUST_BLACK_METAL_GRAIN.get());
         basicItem(ModItems.SHADOW_ALLOY_INGOT.get());
 

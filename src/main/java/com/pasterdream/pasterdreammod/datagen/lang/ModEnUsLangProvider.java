@@ -186,7 +186,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.nightmare_fuel", "§7This is the stuff of nightmares!");
         add(ModItems.RUST_BLACK_METAL_GRAIN.get(), "Rust Black Metal Grain");
         add(ModItems.BLACK_METAL_INGOT.get(), "Black Metal Ingot");
-        add(ModItems.BLACK_METAL_GRAIN.get(), "Black Metal Grain");
+        add(ModItems.BLACK_METAL_NUGGET.get(), "Black Metal Grain");
         add(ModItems.SHADOW_ALLOY_INGOT.get(), "Shadow Alloy Ingot");
         add(ModItems.SPOOL.get(), "Spool");
         add(ModItems.FABRIC.get(), "Fabric");
@@ -712,7 +712,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.POTTED_WIND_CLEAVING_GRASS.get(), "Potted Wind Cleaving Grass");
 
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "Melt Dream Crystal Fragment");
-        add(ModItems.MELT_DREAM_AURORIAN_STEEL.get(), "Melt Dream Aurorian Steel");
+        add(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get(), "Melt Dream Aurorian Steel");
         add("tooltip.pasterdreammod.melt_dream_aurorian_steel", "§7§o--Kids, did you ask?");
 
 

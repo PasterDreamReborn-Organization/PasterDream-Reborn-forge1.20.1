@@ -171,7 +171,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.CHARGED_AMETHYST.get(), "盈能紫水晶");
         add(ModItems.RUST_BLACK_METAL_GRAIN.get(), "锈蚀金属碎屑");
         add(ModItems.BLACK_METAL_INGOT.get(), "黑金属锭");
-        add(ModItems.BLACK_METAL_GRAIN.get(), "黑金属粒");
+        add(ModItems.BLACK_METAL_NUGGET.get(), "黑金属粒");
         add(ModItems.SHADOW_ALLOY_INGOT.get(), "暗影合金锭");
         add(ModItems.DYEDREAM_COROLLA.get(), "梦染花冠");
         add(ModItems.WHITE_COROLLA.get(), "苍白花冠");
@@ -316,7 +316,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.EVASION_CLOAK.get(), "回避衣装");
         add(ModItems.DREAM_FERTILIZER.get(), "衍梦肥泥");
         add(ModItems.MELT_DREAM_CRYSTAL_FRAGMENT.get(), "融梦水晶碎片");
-        add(ModItems.MELT_DREAM_AURORIAN_STEEL.get(), "融梦极光钢锭");
+        add(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get(), "融梦极光钢锭");
         add("tooltip.pasterdreammod.melt_dream_aurorian_steel", "§7§o--孩子们，问了吗？");
         add("block.pasterdream.shadow_liquid", "熔融阴影");
         add("block.pasterdream.melt_dream_liquid", "融梦涌泉");

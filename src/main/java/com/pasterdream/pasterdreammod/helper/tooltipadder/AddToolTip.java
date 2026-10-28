@@ -62,7 +62,7 @@ public class AddToolTip
             tooltip.add(Component.translatable("tooltip.pasterdream.unknown_note.1"));
             tooltip.add(Component.translatable("tooltip.pasterdream.unknown_note.2"));
         }
-        if(stack.is(ModItems.MELT_DREAM_AURORIAN_STEEL.get())){
+        if(stack.is(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get())){
             tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_aurorian_steel"));
         }
         if(stack.is(ModItems.GLASS_JAR_OF_DREAM_JUICE.get())){

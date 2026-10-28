@@ -920,8 +920,8 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLACK_METAL_INGOT.get(), 1)
                 .pattern("aa")
                 .pattern("aa")
-                .define('a', ModItems.BLACK_METAL_GRAIN.get())
-                .unlockedBy(getHasName(ModItems.BLACK_METAL_GRAIN.get()), has(ModItems.BLACK_METAL_GRAIN.get()))
+                .define('a', ModItems.BLACK_METAL_NUGGET.get())
+                .unlockedBy(getHasName(ModItems.BLACK_METAL_NUGGET.get()), has(ModItems.BLACK_METAL_NUGGET.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_ingot_from_grain"));
 
         // 黑金属锭 → 黑金属块
@@ -933,7 +933,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_block_from_ingot"));
 
         // 黑金属锭 → 黑金属粒（分解）
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLACK_METAL_GRAIN.get(), 4)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLACK_METAL_NUGGET.get(), 4)
                 .requires(ModItems.BLACK_METAL_INGOT.get())
                 .unlockedBy(getHasName(ModItems.BLACK_METAL_INGOT.get()), has(ModItems.BLACK_METAL_INGOT.get()))
                 .save(pWriter, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_grain_from_ingot"));
@@ -3301,7 +3301,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .pattern("aba")
                 .define('a', ModItems.NIGHTMARE_FUEL.get())
                 .define('b', ModItems.SHADOW_LIGHT.get())
-                .define('c', ModItems.BLACK_METAL_GRAIN.get())
+                .define('c', ModItems.BLACK_METAL_NUGGET.get())
                 .define('d', ModItems.PURE_HORROR.get())
                 .unlockedBy(getHasName(ModItems.PURE_HORROR.get()), has(ModItems.PURE_HORROR.get()))
                 .save(pWriter);

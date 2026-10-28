@@ -221,7 +221,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DYEDREAM_BROKEN_NOTE.get());
                         output.accept(ModItems.DYEDREAM_UNKNOWN_NOTE.get());
                         output.accept(ModItems.BLACK_METAL_INGOT.get());
-                        output.accept(ModItems.BLACK_METAL_GRAIN.get());
+                        output.accept(ModItems.BLACK_METAL_NUGGET.get());
                         output.accept(ModItems.RUST_BLACK_METAL_GRAIN.get());
                         output.accept(ModItems.SHADOW_ALLOY_INGOT.get());
                         output.accept(ModItems.NIGHTMARE_FUEL.get());
@@ -1077,7 +1077,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ALLKINDS_RING.get());
                         output.accept(ModItems.KAICHU_OMAMORI.get());
                         output.accept(ModItems.THERMAL_DAGGER.get());
-                        output.accept(ModItems.MELT_DREAM_AURORIAN_STEEL.get());
+                        output.accept(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get());
                         output.accept(ModItems.TERRA_BLADE.get());
                         output.accept(ModItems.TERRA_FLOATING_ISLAND.get());
                         output.accept(ModItems.FADED_BLESSING_OF_CECILIA.get());
