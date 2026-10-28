@@ -13,6 +13,7 @@ description: 新增/修改 Mixin 注入。覆盖使用原则（优先事件/继�
 
 - **Mixin 是最后手段**：能通过 Forge 事件、`Entity.getPersistentData()`、原版子类覆写、数据驱动（标签/配方/战利品表）实现的，绝不写 Mixin。
 - **绝不优先使用 `@Overwrite` 覆写方法实现功能**。`@Overwrite` 会整体替换原方法体，破坏其他模组对同一方法 `@Inject` 的注入（本项目已因此踩坑）。**优先**用 `@Inject`（`HEAD`/`RETURN`/`TAIL`，必要时 `cancellable = true` 短路）、`@Redirect`、`@ModifyArg`、`@ModifyVariable`、`@ModifyConstant`、`@ModifyExpressionValue` 等注入方式。
+- **同一调用点可能被多个模组注入时用 MixinExtras**：`@WrapOperation`（替代 `@Redirect`）、`@ModifyExpressionValue`（含常量/字段/比较）、`@WrapWithCondition`（替代空实现 `@Redirect` 取消调用）、`@ModifyReturnValue`。它们支持嵌套与冲突合并，比 `@Redirect` 更兼容；常量改写用 `@ModifyExpressionValue` + `@At("CONSTANT")` 代替 `@ModifyConstant`。
 - 仅在**注入方式确实无法实现**时才考虑 `@Overwrite`，并在类注释中写明原因与影响范围。
 - 读取原版私有字段/方法用 `@Accessor` / `@Invoker`，不要为取值整段覆写。
 - 客户端专属行为（渲染、HUD、音乐、光照）必须放 `"client"` 段；核心行为放 `"mixins"` 段。类文件命名遵循 `XxxMixin`。
@@ -35,6 +36,7 @@ description: 新增/修改 Mixin 注入。覆盖使用原则（优先事件/继�
 |------|------|
 | Mixin 注入类 | `src/main/java/com/pasterdream/pasterdreammod/mixin/` |
 | Mixin 配置 | `src/main/resources/pasterdream.mixins.json` |
+| MixinExtras 依赖/打包 | `build.gradle`（`jarJar`，0.5.5；发布默认 jar 即含 `META-INF/jarjar/mixinextras-forge-0.5.5.jar`，纯包为 `-slim`） |
 | 规范文档 | `document/rule/program/架构规范.md` |
 | 易犯错误 | `document/rule/program/程序规范文档.md`「官方映射下前置模组 Mixin 兼容问题」 |
 

@@ -42,7 +42,6 @@
     "CapeLayerMixin",
     "FogRendererMixin",
     "GuiPortalOverlayMixin",
-    "IMixinOptionInstance",
     "LevelRendererMixin",
     "LightTextureGammaMixin",
     "MusicManagerMixin",
