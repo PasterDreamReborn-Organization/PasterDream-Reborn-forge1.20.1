@@ -19,6 +19,10 @@ import net.minecraftforge.registries.MissingMappingsEvent;
  * <p>梦笔记解析线按梦境拆分后，旧的通用 ID 统一重映射到灯影之下版本：
  * {@code broken_note → lamp_shadow_broken_note}、{@code unknown_note → lamp_shadow_unknown_note}、
  * {@code dream_notes_story_guide → lamp_shadow_story_guide}。
+ *
+ * <p>金属材料 ID 规范化后，旧的 {@code melt_dream_aurorian_steel} 统一指向
+ * {@code melt_dream_aurorian_steel_ingot}，旧的 {@code black_metal_grain} 统一指向
+ * {@code black_metal_nugget}。
  */
 public final class LegacyRegistryCompat {
 
@@ -31,6 +35,11 @@ public final class LegacyRegistryCompat {
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "unknown_note");
     private static final ResourceLocation REMOVED_DREAM_NOTES_STORY_GUIDE =
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_notes_story_guide");
+
+    private static final ResourceLocation REMOVED_MELT_DREAM_AURORIAN_STEEL =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "melt_dream_aurorian_steel");
+    private static final ResourceLocation REMOVED_BLACK_METAL_GRAIN =
+            ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "black_metal_grain");
 
     private LegacyRegistryCompat() {
     }
@@ -51,6 +60,10 @@ public final class LegacyRegistryCompat {
                 mapping.remap(ModItems.LAMP_SHADOW_UNKNOWN_NOTE.get());
             } else if (REMOVED_DREAM_NOTES_STORY_GUIDE.equals(mapping.getKey())) {
                 mapping.remap(ModItems.LAMP_SHADOW_STORY_GUIDE.get());
+            } else if (REMOVED_MELT_DREAM_AURORIAN_STEEL.equals(mapping.getKey())) {
+                mapping.remap(ModItems.MELT_DREAM_AURORIAN_STEEL_INGOT.get());
+            } else if (REMOVED_BLACK_METAL_GRAIN.equals(mapping.getKey())) {
+                mapping.remap(ModItems.BLACK_METAL_NUGGET.get());
             }
         }
     }
