@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,16 +20,16 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(ServerLevel.class)
 public class ServerLevelSleepTimeMixin {
 
-    @Redirect(method = "tick",
-              at = @At(value = "INVOKE",
-                       target = "Lnet/minecraft/server/level/ServerLevel;setDayTime(J)V"))
-    private void pasterdream$applySleepTimeGlobally(ServerLevel level, long time) {
+    @WrapOperation(method = "tick",
+            at = @At(value = "INVOKE",
+                    target = "Lnet/minecraft/server/level/ServerLevel;setDayTime(J)V"))
+    private void pasterdream$applySleepTimeGlobally(ServerLevel level, long time, Operation<Void> original) {
         MinecraftServer server = level.getServer();
         ServerLevel overworld = server == null ? null : server.overworld();
         if (overworld != null) {
             overworld.setDayTime(time);
         } else {
-            level.setDayTime(time);
+            original.call(level, time);
         }
     }
 }

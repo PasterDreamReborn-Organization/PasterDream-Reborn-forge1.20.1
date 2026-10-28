@@ -1,30 +1,31 @@
 package com.pasterdream.pasterdreammod.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.OptionInstance;
 import net.minecraft.client.renderer.LightTexture;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @Mixin(LightTexture.class)
 public class LightTextureGammaMixin {
 
-    private static final double GAMMA_OVERRIDE_VALUE = 10.0;
+    @Unique
+    private static final float GAMMA_OVERRIDE_VALUE = 10.0F;
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    @Redirect(
-        method = "updateLightTexture",
-        at = @At(
-            value = "INVOKE",
-            target = "Lnet/minecraft/client/OptionInstance;get()Ljava/lang/Object;"
-        )
+    @ModifyExpressionValue(
+            method = "updateLightTexture",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Ljava/lang/Double;floatValue()F",
+                    ordinal = 1
+            )
     )
-    private Object redirectOptionGet(OptionInstance instance) {
+    private float redirectOptionGet(float original) {
         Minecraft mc = Minecraft.getInstance();
-        if (mc.player != null && instance == mc.options.gamma()) {
+        if (mc.player != null) {
             boolean hasCurio = CuriosApi.getCuriosInventory(mc.player)
                     .map(h -> h.findFirstCurio(ModItems.BRIGHT_BUTTERFLY_CURIO.get()).isPresent())
                     .orElse(false);
@@ -32,6 +33,6 @@ public class LightTextureGammaMixin {
                 return GAMMA_OVERRIDE_VALUE;
             }
         }
-        return ((IMixinOptionInstance) (Object) instance).pasterdream_getValue();
+        return original;
     }
 }

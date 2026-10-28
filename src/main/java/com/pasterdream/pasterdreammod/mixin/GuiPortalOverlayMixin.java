@@ -1,5 +1,7 @@
 package com.pasterdream.pasterdreammod.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -12,7 +14,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 /**
  * 传送门屏幕叠加层按门类型换贴图。
@@ -29,21 +30,21 @@ public class GuiPortalOverlayMixin {
 
     private static boolean pasterdream$lastPortalWasDyedream;
 
-    @Redirect(
+    @WrapOperation(
             method = "renderPortalOverlay",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/renderer/block/BlockModelShaper;getParticleIcon(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;"
             )
     )
-    private TextureAtlasSprite pasterdream$useDyedreamPortalIcon(BlockModelShaper shaper, BlockState state) {
+    private TextureAtlasSprite pasterdream$useDyedreamPortalIcon(BlockModelShaper shaper, BlockState state, Operation<TextureAtlasSprite> original) {
         Boolean dyedream = pasterdream$currentPortalIsDyedream();
         if (dyedream != null) {
             pasterdream$lastPortalWasDyedream = dyedream;
         }
         return pasterdream$lastPortalWasDyedream
-                ? shaper.getParticleIcon(ModBlocks.DYEDREAM_WORLD_PORTAL.get().defaultBlockState())
-                : shaper.getParticleIcon(state);
+                ? original.call(shaper, ModBlocks.DYEDREAM_WORLD_PORTAL.get().defaultBlockState())
+                : original.call(shaper, state);
     }
 
     /**

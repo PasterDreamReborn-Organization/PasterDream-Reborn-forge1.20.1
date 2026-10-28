@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
@@ -9,7 +10,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix4f;
 import org.objectweb.asm.Opcodes;
@@ -18,7 +18,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LevelRenderer.class)
@@ -34,18 +33,17 @@ public class LevelRendererMixin
      * 灯影之下维度降雨时改用黑色雨纹理。重定向原版静态字段读取而非整段覆写，
      * 与其他模组对 renderSnowAndRain 的注入天然兼容。
      */
-    @Redirect(method = "renderSnowAndRain", at = @At(value = "FIELD",
+    @ModifyExpressionValue(method = "renderSnowAndRain", at = @At(value = "FIELD",
             target = "Lnet/minecraft/client/renderer/LevelRenderer;RAIN_LOCATION:Lnet/minecraft/resources/ResourceLocation;",
             opcode = Opcodes.GETSTATIC))
-    private ResourceLocation pasterdream$useBlackRainInLampShadow(LightTexture lightTexture, float partialTick,
-                                                                 double camX, double camY, double camZ)
+    private ResourceLocation pasterdream$useBlackRainInLampShadow(ResourceLocation original)
     {
         ClientLevel level = Minecraft.getInstance().level;
         if (level != null && level.dimension().equals(LampShadowDimension.LAMP_SHADOW_WORLD))
         {
             return PASTERDREAM$BLACK_RAIN;
         }
-        return RAIN_LOCATION;
+        return original;
     }
 
     @Inject(method = "renderSky", at = @At("HEAD"), cancellable = true)
