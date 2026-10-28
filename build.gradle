@@ -127,8 +127,10 @@ mixin {
     config "${mod_id}.mixins.json"
 }
 
-// 如何将属性放入 manifest 以便在运行时读取的示例。
+// 发布产物统一为含 jar-in-jar 依赖（MixinExtras 等）的 jarJar 包；纯包改名 -slim 以免混发
 tasks.named('jar', Jar).configure {
+    archiveClassifier = 'slim'
+
     manifest {
         attributes([
                 'Specification-Title'     : mod_id,
@@ -146,11 +148,15 @@ tasks.named('jar', Jar).configure {
     finalizedBy 'reobfJar'
 }
 
+tasks.named('jarJar').configure {
+    archiveClassifier = ''
+}
+
 // 使用 maven-publish 插件进行发布的示例配置
 publishing {
     publications {
         register('mavenJava', MavenPublication) {
-            artifact jar
+            artifact tasks.named('jarJar')
         }
     }
     repositories {
