@@ -912,27 +912,25 @@ public class CurioPassiveHandler {
 
     private static void teleportToSpawn(ServerPlayer sp) {
         ServerLevel overworld = sp.server.getLevel(Level.OVERWORLD);
-        if (overworld == null) {
-            return;
+        if (overworld != null && sp.level().dimension() != Level.OVERWORLD) {
+            sp.teleportTo(overworld, sp.getX(), sp.getY(), sp.getZ(), sp.getYRot(), sp.getXRot());
         }
+        ServerLevel targetLevel = (ServerLevel) sp.level();
         double spawnX, spawnY, spawnZ;
-        if (sp.getRespawnDimension().equals(Level.OVERWORLD) && sp.getRespawnPosition() != null) {
+        if (sp.getRespawnDimension().equals(sp.level().dimension()) && sp.getRespawnPosition() != null) {
             BlockPos respawn = sp.getRespawnPosition();
             spawnX = respawn.getX() + 0.5;
             spawnY = respawn.getY();
             spawnZ = respawn.getZ() + 0.5;
         } else {
-            spawnX = overworld.getLevelData().getXSpawn();
-            spawnY = overworld.getLevelData().getYSpawn();
-            spawnZ = overworld.getLevelData().getZSpawn();
+            spawnX = targetLevel.getLevelData().getXSpawn();
+            spawnY = targetLevel.getLevelData().getYSpawn();
+            spawnZ = targetLevel.getLevelData().getZSpawn();
         }
-        if (sp.level().dimension() == Level.OVERWORLD) {
-            sp.teleportTo(spawnX, spawnY, spawnZ);
-        } else {
-            TeleportHelper.teleportToDimension(sp, overworld,
-                    spawnX, spawnY, spawnZ, sp.getYRot(), sp.getXRot());
-        }
+        sp.teleportTo(spawnX, spawnY, spawnZ);
         sp.fallDistance = 0;
+        // 跨维度传送会重建客户端 LocalPlayer，补发效果包以恢复图标
+        TeleportHelper.resendActiveEffects(sp);
         // 离开梦境维度后恢复进入前的游戏模式（防止卡在冒险模式）
         GameModeHelper.restorePreDreamGameMode(sp);
     }

@@ -159,11 +159,13 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
 
         switch (direction)
         {
-            case EAST  -> TeleportHelper.teleportToDimension(player, targetLevel, pos.getX() + 2.5, pos.getY() + 0.5, pos.getZ() + 0.5, 90, 30);
-            case SOUTH -> TeleportHelper.teleportToDimension(player, targetLevel, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 2.5, 180, 30);
-            case WEST  -> TeleportHelper.teleportToDimension(player, targetLevel, pos.getX() - 1.5, pos.getY() + 0.5, pos.getZ() + 0.5, 270, 30);
-            case NORTH -> TeleportHelper.teleportToDimension(player, targetLevel, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() - 1.5, 0, 30);
+            case EAST  -> player.teleportTo(targetLevel, pos.getX() + 2.5, pos.getY() + 0.5, pos.getZ() + 0.5, 90, 30);
+            case SOUTH -> player.teleportTo(targetLevel, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 2.5, 180, 30);
+            case WEST  -> player.teleportTo(targetLevel, pos.getX() - 1.5, pos.getY() + 0.5, pos.getZ() + 0.5, 270, 30);
+            case NORTH -> player.teleportTo(targetLevel, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() - 1.5, 0, 30);
         }
+        // 跨维度传送会重建客户端 LocalPlayer，补发效果包以恢复图标
+        TeleportHelper.resendActiveEffects(player);
     }
 
     private void placePortalStructure(ServerLevel level, BlockState state, BlockPos portalPos)
