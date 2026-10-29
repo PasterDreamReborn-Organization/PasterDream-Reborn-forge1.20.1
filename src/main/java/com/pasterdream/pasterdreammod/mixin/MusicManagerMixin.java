@@ -15,9 +15,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(MusicManager.class)
 public class MusicManagerMixin {
 
-    @Shadow @Final private Minecraft minecraft;
-    @Shadow private int nextSongDelay;
-
     @Inject(method = "tick", at = @At("RETURN"))
     private void pasterdream$adjustMusicDelay(CallbackInfo ci) {
         MusicManager musicManager = (MusicManager)(Object)this;
