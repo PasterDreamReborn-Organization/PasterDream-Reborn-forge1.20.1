@@ -85,9 +85,8 @@ public class PlayerEvents {
                             resetBedOccupied(player);
                             ServerLevel dyedream = serverPlayer.server.getLevel(DYEDREAM_WORLD);
                             if (dyedream != null) {
-                                serverPlayer.teleportTo(dyedream, 0.5, 108, 0.5,
-                                        serverPlayer.getYRot(), serverPlayer.getXRot());
-                                TeleportHelper.resendActiveEffects(serverPlayer);
+                                TeleportHelper.teleportToDimension(serverPlayer, dyedream,
+                                        0.5, 108, 0.5, serverPlayer.getYRot(), serverPlayer.getXRot());
                             }
                         } else if (!toDyedream
                                 && player.level().dimension().equals(Level.OVERWORLD)) {
@@ -96,13 +95,12 @@ public class PlayerEvents {
                             ServerLevel windJourney = serverPlayer.server
                                     .getLevel(WindJourneyDimension.WIND_JOURNEY_WORLD);
                             if (windJourney != null) {
-                                serverPlayer.teleportTo(windJourney,
+                                TeleportHelper.teleportToDimension(serverPlayer, windJourney,
                                         serverPlayer.getX(), WIND_JOURNEY_ENTRY_Y, serverPlayer.getZ(),
                                         serverPlayer.getYRot(), serverPlayer.getXRot());
                                 // 高空传送后给予 20s 缓降，避免直接摔落
                                 serverPlayer.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING,
                                         400, 0, false, false));
-                                TeleportHelper.resendActiveEffects(serverPlayer);
                             }
                         }
                     }
