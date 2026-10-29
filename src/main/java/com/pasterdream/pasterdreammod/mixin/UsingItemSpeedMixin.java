@@ -28,9 +28,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LivingEntity.class)
 public abstract class UsingItemSpeedMixin {
 
-    @Shadow
-    protected int useItemRemaining;
-
     /** 每 tick 额外扣减 tick 数的小数累积（不足 1 tick 的部分留到下一 tick）。 */
     @Unique
     private double pasterdream$chargeTimeCredit;
@@ -55,7 +52,7 @@ public abstract class UsingItemSpeedMixin {
         int extra = (int) this.pasterdream$chargeTimeCredit;
         if (extra != 0) {
             this.pasterdream$chargeTimeCredit -= extra;
-            this.useItemRemaining = Math.max(0, this.useItemRemaining - extra);
+            self.useItemRemaining = Math.max(0, self.useItemRemaining - extra);
         }
     }
 }

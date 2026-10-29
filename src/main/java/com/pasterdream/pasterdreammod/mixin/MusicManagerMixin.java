@@ -20,7 +20,10 @@ public class MusicManagerMixin {
 
     @Inject(method = "tick", at = @At("RETURN"))
     private void pasterdream$adjustMusicDelay(CallbackInfo ci) {
-        LocalPlayer player = minecraft.player;
+        MusicManager musicManager = (MusicManager)(Object)this;
+
+        LocalPlayer player = musicManager.minecraft.player;
+
         if (player == null) return;
         if (!player.level().dimension().equals(DyedreamDimension.DYEDREAM_WORLD)
                 && !player.level().dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD)) return;
@@ -30,8 +33,8 @@ public class MusicManagerMixin {
             return;
         }
 
-        if (nextSongDelay > 1200) {
-            nextSongDelay = 1200;
+        if (musicManager.nextSongDelay > 1200) {
+            musicManager.nextSongDelay = 1200;
         }
     }
 }

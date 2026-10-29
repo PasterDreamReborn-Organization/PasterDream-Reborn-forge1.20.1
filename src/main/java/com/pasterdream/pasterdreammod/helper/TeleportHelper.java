@@ -4,6 +4,7 @@ import net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket;
 import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.effect.MobEffectInstance;
 
 import java.util.Set;
@@ -28,11 +29,16 @@ public final class TeleportHelper {
                                            double x, double y, double z, float yRot, float xRot) {
         // 带 Set 的重载会为落点区块添加 POST_TELEPORT 票，确保目标区块加载并开始向客户端发送区块。
         player.teleportTo(target, x, y, z, Set.of(), yRot, xRot);
+
+        player.connection.firstGoodX = x;
+        player.connection.firstGoodY = y;
+        player.connection.firstGoodZ = z;
+
         resendActiveEffects(player);
-        for (int delay = 1; delay <= 3; delay++) {
-            player.server.tell(new TickTask(delay,
-                    () -> forcePosition(player, target, x, y, z, yRot, xRot)));
-        }
+        //for (int delay = 1; delay <= 3; delay++)
+        //{
+        //    player.server.tell(new TickTask(delay, () -> forcePosition(player, target, x, y, z, yRot, xRot)));
+        //}
     }
 
     /** 服务端 setPos + 客户端位置包（设置 awaiting 位置，期间拒绝旧坐标上报）。 */
