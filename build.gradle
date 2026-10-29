@@ -158,6 +158,12 @@ afterEvaluate {
 
 tasks.named('jarJar').configure {
     archiveClassifier = ''
+    // 发布用的正是 jarJar 产物，必须同样重混淆（映射 mojmap -> SRG），否则服务端报 NoSuchFieldError
+    finalizedBy 'reobfJarJar'
+}
+
+reobf {
+    jarJar {}
 }
 
 // 使用 maven-publish 插件进行发布的示例配置
