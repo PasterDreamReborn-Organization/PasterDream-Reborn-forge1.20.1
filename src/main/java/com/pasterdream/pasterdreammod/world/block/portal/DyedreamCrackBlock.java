@@ -94,6 +94,8 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
         {
             if (player.getPortalCooldown() > 0)
             {
+                // 与染梦世界跃迁石门一致：在方块内持续刷新冷却，离开后才开始倒计时
+                player.setPortalCooldown();
                 return;
             }
 
@@ -102,7 +104,7 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
             {
                 level.playSound(null, blockPosition, ModSounds.DYEDREAM_CRACK.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 teleportToDreamDimension(player, state, blockPosition);
-                player.setPortalCooldown(20);
+                player.setPortalCooldown();
                 return;
             }
 
@@ -112,7 +114,7 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
             {
                 level.playSound(null, blockPosition, ModSounds.DYEDREAM_CRACK.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 teleportToDreamDimension(player, state, blockPosition);
-                player.setPortalCooldown(20);
+                player.setPortalCooldown();
                 return;
             }
 
@@ -134,7 +136,7 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
                 }
             }
 
-            player.setPortalCooldown(20);
+            player.setPortalCooldown();
         }
     }
 
