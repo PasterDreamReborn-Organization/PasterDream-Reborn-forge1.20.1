@@ -20,12 +20,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(CombatTracker.class)
 public class CombatTrackerMixin {
 
-    @Shadow @Final private LivingEntity mob;
-
     @Inject(method = "getDeathMessage", at = @At("HEAD"), cancellable = true)
     private void pasterdream$customLampShadowDeathMessage(CallbackInfoReturnable<Component> cir) {
-        if (!(this.mob instanceof Player)) return;
-        if (!this.mob.level().dimension().equals(LampShadowDimension.LAMP_SHADOW_WORLD)) return;
-        cir.setReturnValue(Component.translatable("death.pasterdream.lamp_shadow_world", this.mob.getDisplayName()));
+        CombatTracker combatTracker = (CombatTracker)(Object)this;
+        LivingEntity mob = combatTracker.mob;
+
+        if (!(mob instanceof Player)) return;
+        if (!mob.level().dimension().equals(LampShadowDimension.LAMP_SHADOW_WORLD)) return;
+        cir.setReturnValue(Component.translatable("death.pasterdream.lamp_shadow_world", mob.getDisplayName()));
     }
 }

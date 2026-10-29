@@ -23,8 +23,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LevelRenderer.class)
 public class LevelRendererMixin
 {
-    @Shadow @Final private static ResourceLocation RAIN_LOCATION;
-
     /** 灯影之下维度专用的黑色降雨纹理 */
     private static final ResourceLocation PASTERDREAM$BLACK_RAIN =
             ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "textures/environment/black_rain.png");

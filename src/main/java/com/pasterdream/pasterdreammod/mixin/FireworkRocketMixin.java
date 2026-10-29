@@ -22,9 +22,6 @@ public class FireworkRocketMixin {
     /** 原版烟花巡航速率上限（平衡速度约 1.7，留出转向余量） */
     private static final double CRUISE_SPEED_CAP = 1.75;
 
-    @Shadow
-    private LivingEntity attachedToEntity;
-
     /**
      * 替换附身者速度更新调用：超速时保持沿视线方向的多余动量（垂直分量随转向逐渐并入视线方向）。
      */
@@ -33,7 +30,8 @@ public class FireworkRocketMixin {
                     target = "Lnet/minecraft/world/entity/LivingEntity;setDeltaMovement(Lnet/minecraft/world/phys/Vec3;)V"),
             index = 0)
     private Vec3 preserveExternalMomentum(Vec3 vanillaMotion) {
-        LivingEntity rider = this.attachedToEntity;
+        FireworkRocketEntity fireworkRocket = (FireworkRocketEntity)(Object)this;
+        LivingEntity rider = fireworkRocket.attachedToEntity;
         if (rider == null || !rider.isFallFlying()) return vanillaMotion;
 
         Vec3 look = rider.getLookAngle();
