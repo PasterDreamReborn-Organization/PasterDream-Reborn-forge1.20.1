@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -123,28 +124,28 @@ public class PaleBoneneedleItem extends Item {
 
     static void teleportToOverworldAndSpawn(ServerLevel serverLevel, Player player) {
         if (player instanceof ServerPlayer sp) {
-            ServerLevel overworld = sp.server.getLevel(Level.OVERWORLD);
-            if (overworld == null) {
-                return;
+            ResourceKey<Level> destKey = Level.OVERWORLD;
+            if (sp.level().dimension() != destKey) {
+                ServerLevel overworld = sp.server.getLevel(destKey);
+                if (overworld != null) {
+                    sp.teleportTo(overworld, sp.getX(), sp.getY(), sp.getZ(), sp.getYRot(), sp.getXRot());
+                }
             }
             double spawnX, spawnY, spawnZ;
-            if (sp.getRespawnDimension().equals(Level.OVERWORLD) && sp.getRespawnPosition() != null) {
+            if (sp.getRespawnDimension().equals(sp.level().dimension()) && sp.getRespawnPosition() != null) {
                 BlockPos respawn = sp.getRespawnPosition();
                 spawnX = respawn.getX();
                 spawnY = respawn.getY();
                 spawnZ = respawn.getZ();
             } else {
-                spawnX = overworld.getLevelData().getXSpawn();
-                spawnY = overworld.getLevelData().getYSpawn();
-                spawnZ = overworld.getLevelData().getZSpawn();
+                spawnX = sp.level().getLevelData().getXSpawn();
+                spawnY = sp.level().getLevelData().getYSpawn();
+                spawnZ = sp.level().getLevelData().getZSpawn();
             }
-            if (sp.level().dimension() == Level.OVERWORLD) {
-                sp.teleportTo(spawnX, spawnY, spawnZ);
-            } else {
-                TeleportHelper.teleportToDimension(sp, overworld,
-                        spawnX, spawnY, spawnZ, sp.getYRot(), sp.getXRot());
-            }
+            sp.teleportTo(spawnX, spawnY, spawnZ);
             sp.fallDistance = 0;
+            // 跨维度传送会重建客户端 LocalPlayer，补发效果包以恢复图标
+            TeleportHelper.resendActiveEffects(sp);
             // 离开梦境维度后恢复进入前的游戏模式（防止卡在冒险模式）
             GameModeHelper.restorePreDreamGameMode(sp);
         }

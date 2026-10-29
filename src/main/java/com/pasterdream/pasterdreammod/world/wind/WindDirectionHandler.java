@@ -94,16 +94,16 @@ public final class WindDirectionHandler {
         if (player.level().dimension().equals(WindJourneyDimension.WIND_JOURNEY_WORLD)) return;
         ServerLevel next = player.server.getLevel(WindJourneyDimension.WIND_JOURNEY_WORLD);
         if (next != null) {
-            TeleportHelper.teleportToDimension(player, next,
-                    player.getX(), player.getY(), player.getZ(), player.getYRot(), player.getXRot());
+            player.teleportTo(next, player.getX(), player.getY(), player.getZ(), player.getYRot(), player.getXRot());
+            TeleportHelper.resendActiveEffects(player);
         }
     }
 
     private static void teleportBackToOverworld(ServerPlayer player) {
         ServerLevel overworld = player.server.getLevel(Level.OVERWORLD);
         if (overworld == null) return;
-        TeleportHelper.teleportToDimension(player, overworld,
-                player.getX(), 304, player.getZ(), player.getYRot(), player.getXRot());
+        player.teleportTo(overworld, player.getX(), 304, player.getZ(), player.getYRot(), player.getXRot());
+        TeleportHelper.resendActiveEffects(player);
     }
 
     private static void tickWindChange(ServerLevel level) {

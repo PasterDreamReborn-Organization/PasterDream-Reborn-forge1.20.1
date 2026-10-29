@@ -38,8 +38,8 @@ public class LampShadowWorldTeleporter {
         boolean low = destination.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, -9, -9) <= 100;
         double targetY = low ? 104 : 154;
 
-        TeleportHelper.teleportToDimension(player, destination,
-                0.5, targetY, 0.5, player.getYRot(), player.getXRot());
+        player.teleportTo(destination, 0.5, targetY, 0.5, player.getYRot(), player.getXRot());
+        TeleportHelper.resendActiveEffects(player);
     }
 
     /**
@@ -66,8 +66,8 @@ public class LampShadowWorldTeleporter {
                 destY = overworld.getLevelData().getYSpawn();
                 destZ = overworld.getLevelData().getZSpawn() + 0.5;
             }
-            TeleportHelper.teleportToDimension(player, overworld,
-                    destX, destY, destZ, player.getYRot(), player.getXRot());
+            player.teleportTo(overworld, destX, destY, destZ, player.getYRot(), player.getXRot());
+            TeleportHelper.resendActiveEffects(player);
             player.fallDistance = 0;
             player.connection.send(new ClientboundBlockUpdatePacket(overworld, sourcePos));
         });

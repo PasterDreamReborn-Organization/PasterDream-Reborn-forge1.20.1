@@ -95,8 +95,8 @@ public final class DyedreamWorldPortalTeleporter {
         source.playSound(null, portalPos, SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.BLOCKS, 1.0F, 1.0F);
 
         if (entity instanceof ServerPlayer player) {
-            TeleportHelper.teleportToDimension(player, target, landing.x, landing.y, landing.z,
-                    player.getYRot(), player.getXRot());
+            player.teleportTo(target, landing.x, landing.y, landing.z, player.getYRot(), player.getXRot());
+            TeleportHelper.resendActiveEffects(player);
         } else {
             transferNonPlayer(entity, target, landing);
         }

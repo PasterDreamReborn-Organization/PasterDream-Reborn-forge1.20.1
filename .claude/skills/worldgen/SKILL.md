@@ -1,6 +1,6 @@
 ---
 name: worldgen
-description: 新增/修改世界生成（群系、维度类型、噪声设置、LevelStem、地物 ConfiguredFeature/PlacedFeature、结构、自定义 Feature）与运行时跨维度传送。覆盖 bootstrap 数据生成模式与跨维度传送的效果补发 + 落点同步约定。当用户要加群系/维度/结构/地物、改世界生成、做维度传送时使用。
+description: 新增/修改世界生成（群系、维度类型、噪声设置、LevelStem、地物 ConfiguredFeature/PlacedFeature、结构、自定义 Feature）与运行时跨维度传送。覆盖 bootstrap 数据生成模式与跨维度 teleportTo 的效果补发约定。当用户要加群系/维度/结构/地物、改世界生成、做维度传送时使用。
 ---
 
 # 世界生成（Worldgen）
@@ -46,19 +46,18 @@ description: 新增/修改世界生成（群系、维度类型、噪声设置、
 
 ## 运行时维度传送
 
-跨维度把玩家送往自定义维度/主世界，统一调用：
+跨维度把玩家送往自定义维度/主世界，统一用 `ServerPlayer.teleportTo(ServerLevel, x, y, z, yRot, xRot)`。
+
+**关键坑**：该重载只发送 `ClientboundRespawnPacket`，客户端会重建一个不带任何效果实例的 `LocalPlayer`，而原版 `changeDimension` 会在重生包后逐条补发效果包。若不处理，会出现「效果还在服务端身上、但客户端图标/HUD 不显示」。
+
+**规范**：任何跨维度 `ServerPlayer.teleportTo(ServerLevel, ...)` 之后，必须紧跟一行：
 
 ```java
-TeleportHelper.teleportToDimension(player, target, x, y, z, yRot, xRot); // helper/TeleportHelper.java
+TeleportHelper.resendActiveEffects(player); // helper/TeleportHelper.java
 ```
 
-**关键坑**：六参 `ServerPlayer.teleportTo(ServerLevel, ...)` 只发送 `ClientboundRespawnPacket`，客户端会重建一个不带效果实例的 `LocalPlayer`；且重生包与位置包同 tick 连发时，客户端处理重生期间可能忽略位置包，停留在原传送门坐标并继续上报移动，服务端确认窗口（20 tick）超时后接受旧坐标把玩家拉回入口，反复触发传送。本地通常正常，高延迟服务器会卡「加载地形」且 ping 飙升，服务端状态却正常。
-
-`teleportToDimension` 已统一处理：带 `Set` 的 `teleportTo` 重载（落点加 `POST_TELEPORT` 票）→ 补发状态效果 → 后续 3 tick 强制同步落点。禁止跨维度直连六参 `teleportTo`。
-
-- 同维度传送（目标 `ServerLevel == player.level()`）不触发重生包，可直接 `teleportTo`
-- 已是跨维度调用点的参考：`event/PlayerEvents.java`（睡觉）、`world/wind/WindDirectionHandler.java`、`world/block/portal/DyedreamWorldPortalTeleporter.java`、`world/block/portal/DyedreamCrackBlock.java`、`world/block/twilightlantern/LampShadowWorldTeleporter.java`、`world/dimension/AaroncosArenaTeleporter.java`
-- 自动化逻辑详见 `document/rule/program/程序规范文档.md`「跨维度 teleportTo 需延迟同步落点」
+- 同维度传送（`teleportTo` 目标 `ServerLevel == player.level()`）不触发重生包，无需补发
+- 已是跨维度调用点的参考：`event/PlayerEvents.java`（睡觉）、`world/wind/WindDirectionHandler.java`、`world/item/PaleBoneneedleItem.java`、`world/item/curio/CurioPassiveHandler.java`、`world/block/portal/DyedreamWorldPortalTeleporter.java`、`world/block/portal/DyedreamCrackBlock.java`、`world/block/twilightlantern/LampShadowWorldTeleporter.java`、`world/dimension/AaroncosArenaTeleporter.java`
 
 ---
 
@@ -75,7 +74,7 @@ TeleportHelper.teleportToDimension(player, target, x, y, z, yRot, xRot); // help
 | 世界生成 datagen | `datagen/common/ModWorldGenProvider.java` |
 | 结构生成辅助 | `helper/structuregenerate/` |
 | 结构生成事件 | `event/ModWorldGenEvents.java` |
-| 跨维度传送（效果补发 + 落点同步） | `helper/TeleportHelper.java` |
+| 跨维度传送补发效果 | `helper/TeleportHelper.java` |
 
 ---
 
