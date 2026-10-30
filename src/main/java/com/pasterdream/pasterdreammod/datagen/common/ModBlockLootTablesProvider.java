@@ -301,9 +301,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         add(ModBlocks.FRAME_CLARITY_GLASS_PANE.get(),
                 block -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(net.minecraft.world.item.Items.AIR)));
 
-        add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(),
-                block -> createSilkTouchDispatchTable(block,
-                        applyExplosionDecay(block, LootItem.lootTableItem(ModBlocks.DYEDREAM_BUDDING_BLOCK.get()))));
+        add(ModBlocks.DYEDREAM_BUDDING_BLOCK.get(), ModBlockLootTablesProvider::createSilkTouchOnlyTable);
         add(ModBlocks.SMALL_DYEDREAM_BUD.get(),
                 block -> createSilkTouchDispatchTable(block,
                         applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DYEDREAM_BUD_NUGGET.get())
