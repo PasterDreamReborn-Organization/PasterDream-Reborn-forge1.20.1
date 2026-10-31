@@ -411,7 +411,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.CONGEAL_WIND_IRON_BLOCK.get().asItem())
                 .add(ModItems.FLUFFY_WIND_ALLOY_BLOCK.get().asItem())
                 .add(ModItems.BLACK_METAL_BLOCK.get().asItem())
-                .add(ModItems.DYEDREAM_BUD_BLOCK.get().asItem());
+                .add(ModItems.DYEDREAM_BUD_BLOCK.get().asItem())
+                .add(ModItems.CONGEAL_WIND_BLOCK.get().asItem())
+                .add(ModItems.WIND_RUNNER_CRYSTAL_BLOCK.get().asItem())
+                .add(ModItems.RAW_TITANIUM_BLOCK.get().asItem())
+                .add(ModItems.CHARGED_AMETHYST_BLOCK.get().asItem());
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/titanium")))
                 .add(ModItems.TITANIUM_BLOCK.get().asItem());
@@ -433,6 +437,18 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/dyedream_bud")))
                 .add(ModItems.DYEDREAM_BUD_BLOCK.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/congral_wind")))
+                .add(ModItems.CONGEAL_WIND_BLOCK.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/wind_runner_crystal")))
+                .add(ModItems.WIND_RUNNER_CRYSTAL_BLOCK.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/raw_titanium")))
+                .add(ModItems.RAW_TITANIUM_BLOCK.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/charged_amethyst")))
+                .add(ModItems.CHARGED_AMETHYST_BLOCK.get().asItem());
 
         //金属粒标签
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "nuggets")))
@@ -465,6 +481,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores")))
                 .add(ModItems.DEEPSLATE_TITANIUM_ORE.get().asItem())
                 .add(ModItems.MOLTEN_GOLD_ORE.get().asItem())
+                .add(ModItems.SOUL_ORE.get().asItem())
                 .add(ModItems.WIND_RUNNER_CRYSTAL_ORE.get().asItem())
                 .add(ModItems.DYEDREAM_QUARTZ_ORE.get().asItem())
                 .add(ModItems.DYEDREAM_DUST_ORE.get().asItem())
@@ -484,6 +501,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/netherrack")))
                 .add(ModItems.MOLTEN_GOLD_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/soul_soil")))
+                .add(ModItems.SOUL_ORE.get().asItem());
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/cyan_stone")))
                 .add(ModItems.WIND_RUNNER_CRYSTAL_ORE.get().asItem());
@@ -514,6 +534,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.CALCITE_EMERALD_ORE.get().asItem());
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ore_rates/dense")))
+                .add(ModItems.SOUL_ORE.get().asItem())
                 .add(ModItems.DYEDREAM_QUARTZ_ORE.get().asItem())
                 .add(ModItems.DYEDREAM_DUST_ORE.get().asItem())
                 .add(ModItems.AMBER_CANDY_ORE.get().asItem())
@@ -527,6 +548,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/molten_gold")))
                 .add(ModItems.MOLTEN_GOLD_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/soul_dust")))
+                .add(ModItems.SOUL_ORE.get().asItem());
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/wind_runner_crystal")))
                 .add(ModItems.WIND_RUNNER_CRYSTAL_ORE.get().asItem());
@@ -563,5 +587,16 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/emerald")))
                 .add(ModItems.CALCITE_EMERALD_ORE.get().asItem());
+
+        //粗矿
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "raw_materials")))
+                .add(ModItems.RAW_TITANIUM.get().asItem())
+                .add(ModItems.RAW_MOLTEN_GOLD.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "raw_materials/titanium")))
+                .add(ModItems.RAW_TITANIUM.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "raw_materials/molten_gold")))
+                .add(ModItems.RAW_MOLTEN_GOLD.get().asItem());
     }
 }

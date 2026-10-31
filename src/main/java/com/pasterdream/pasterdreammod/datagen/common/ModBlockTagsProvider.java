@@ -368,7 +368,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get())
                 .add(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get())
                 .add(ModBlocks.BLACK_METAL_BLOCK.get())
-                .add(ModBlocks.DYEDREAM_BUD_BLOCK.get());
+                .add(ModBlocks.DYEDREAM_BUD_BLOCK.get())
+                .add(ModBlocks.CONGEAL_WIND_BLOCK.get())
+                .add(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get())
+                .add(ModBlocks.RAW_TITANIUM_BLOCK.get())
+                .add(ModBlocks.CHARGED_AMETHYST_BLOCK.get());
 
         tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/titanium")))
                 .add(ModBlocks.TITANIUM_BLOCK.get());
@@ -391,6 +395,18 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/dyedream_bud")))
                 .add(ModBlocks.DYEDREAM_BUD_BLOCK.get());
 
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/congral_wind")))
+                .add(ModBlocks.CONGEAL_WIND_BLOCK.get());
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/wind_runner_crystal")))
+                .add(ModBlocks.WIND_RUNNER_CRYSTAL_BLOCK.get());
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/raw_titanium")))
+                .add(ModBlocks.RAW_TITANIUM_BLOCK.get());
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "storage_blocks/charged_amethyst")))
+                .add(ModBlocks.CHARGED_AMETHYST_BLOCK.get());
+
         tag(Tags.Blocks.ORES)
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get())
@@ -398,6 +414,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.TITANIUM_ORE.get())
                 .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get())
+                .add(ModBlocks.SOUL_ORE.get())
                 .add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get())
                 .add(ModBlocks.CONGEAL_WIND_ORE.get())
                 .add(ModBlocks.CALCITE_COAL_ORE.get())
@@ -414,6 +431,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/netherrack")))
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get());
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/soul_soil")))
+                .add(ModBlocks.SOUL_ORE.get());
 
         tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/cyan_stone")))
                 .add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get());
@@ -444,6 +464,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CALCITE_EMERALD_ORE.get());
 
         tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ore_rates/dense")))
+                .add(ModBlocks.SOUL_ORE.get())
                 .add(ModBlocks.DYEDREAM_QUARTZ_ORE.get())
                 .add(ModBlocks.DYEDREAM_DUST_ORE.get())
                 .add(ModBlocks.AMBER_CANDY_ORE.get())
@@ -457,6 +478,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/molten_gold")))
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get());
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/soul_dust")))
+                .add(ModBlocks.SOUL_ORE.get());
 
         tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/wind_runner_crystal")))
                 .add(ModBlocks.WIND_RUNNER_CRYSTAL_ORE.get());
