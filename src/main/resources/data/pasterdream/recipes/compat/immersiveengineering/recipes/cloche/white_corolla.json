@@ -6,8 +6,8 @@
   },
   "render":
   {
-    "type":"generic",
-    "block":"pasterdream:white_corolla_crop_age_1"
+    "type":"crop",
+    "block":"pasterdream:white_corolla_crop"
   },
   "results":
   [

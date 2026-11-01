@@ -11,7 +11,7 @@
   "growthTicks":1200,
   "display":
   {
-    "block":"pasterdream:cotton_crop_age_1"
+    "block":"pasterdream:cotton_crop"
   },
   "drops":
   [

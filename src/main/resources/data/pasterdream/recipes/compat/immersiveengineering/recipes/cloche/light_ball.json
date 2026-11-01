@@ -6,8 +6,8 @@
   },
   "render":
   {
-    "type":"generic",
-    "block":"pasterdream:light_ball_crop_age_1"
+    "type":"crop",
+    "block":"pasterdream:light_ball_crop"
   },
   "results":
   [
@@ -17,7 +17,7 @@
   ],
   "soil":
   {
-    "item":"pasterdream:dyedream_dirt"
+    "tag":"pasterdream:dyedream_dirt"
   },
   "time":600
 }
