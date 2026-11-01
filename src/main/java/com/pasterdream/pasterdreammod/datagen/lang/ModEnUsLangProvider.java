@@ -1568,6 +1568,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.rebirth_dream_crystal.5", "§7Exclusive memento of ShiLiuYinYu.");
         add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7Shift right-click to destroy itself and release the soul within.");
         add("tooltip.pasterdream.rebirth_dream_crystal.7", "§6PasterDream: Reborn Developer");
+        add("content.pasterdream.book.维度:", "Dimension:");
+        add("content.pasterdream.book.进度:", "Progress:");
+        add("button.pasterdream.提交", "upload");
+        add("button.pasterdream.此笔记尚未解锁", "this note is unlock");
 
         add(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get(), "Soul Gem of Akizuki Ayane");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.1", "§7\"I bestow upon you my legacy magic, to walk beside you and witness the dreams you see\"");

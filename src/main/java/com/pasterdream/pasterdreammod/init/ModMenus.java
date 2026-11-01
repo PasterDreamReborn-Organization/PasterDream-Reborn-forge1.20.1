@@ -36,6 +36,7 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.W
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableMenu;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneBlockEntity;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneMenu;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.RebirthDreamCrystalMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.*;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
 import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.StorageBagMenu;
@@ -173,6 +174,8 @@ public class ModMenus
     public static final RegistryObject<MenuType<DebugToolEntityEditorMenu>> DEBUG_TOOL_ENTITY_EDITOR = MENUS.register("debug_tool_entity_editor", () -> IForgeMenuType.create(DebugToolEntityEditorMenu::new));
     public static final RegistryObject<MenuType<ItemHandlerMenu>> ITEM_HANDLER = MENUS.register("item_handler", () -> IForgeMenuType.create(ItemHandlerMenu::new));
     public static final RegistryObject<MenuType<FluidHandlerMenu>> FLUID_HANDLER = MENUS.register("fluid_handler", () -> IForgeMenuType.create(FluidHandlerMenu::new));
+
+    public static final RegistryObject<MenuType<RebirthDreamCrystalMenu>> REBIRTH_DREAM_CRYSTAL = MENUS.register("rebirth_dream_crystal", () -> IForgeMenuType.create((windowId, playerInventory, data) -> new RebirthDreamCrystalMenu(windowId, playerInventory)));
 
     public static void register(IEventBus eventBus)
     {

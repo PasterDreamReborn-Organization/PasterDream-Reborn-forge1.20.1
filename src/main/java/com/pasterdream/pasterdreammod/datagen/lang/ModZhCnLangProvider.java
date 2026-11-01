@@ -1756,6 +1756,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.rebirth_dream_crystal.5", "§7ShiLiuYinYu的专属遗物。");
         add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7shift右键销毁自身并释放遗物中的灵魂。");
         add("tooltip.pasterdream.rebirth_dream_crystal.7", "§6PasterDream: Reborn 开发者");
+        add("content.pasterdream.book.维度:", "维度:");
+        add("content.pasterdream.book.进度:", "进度:");
+        add("button.pasterdream.提交", "提交");
+        add("button.pasterdream.此笔记尚未解锁", "此笔记尚未解锁");
 
         add(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get(), "魔法使的灵魂石");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.1", "§7\"我将我遗留的魔法赠予你，让它替我与你同行，见证你所见的梦幻\"");

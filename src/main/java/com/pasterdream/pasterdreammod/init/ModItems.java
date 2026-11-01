@@ -15,6 +15,7 @@ import com.pasterdream.pasterdreammod.world.block.twilightlantern.TwilightLanter
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.broken.BrokenShadowDungeonPortalDisplayItem;
 import com.pasterdream.pasterdreammod.world.block.shadowdungeonportal.repaired.ShadowDungeonPortalDisplayItem;
 import com.pasterdream.pasterdreammod.world.item.arrows.*;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.RebirthDreamCrystalItem;
 import com.pasterdream.pasterdreammod.world.item.debugtool.DebugToolItem;
 import com.pasterdream.pasterdreammod.world.item.fluidcontainer.elixirbottle.ElixirBottleItem;
 import net.minecraft.world.item.BlockItem;

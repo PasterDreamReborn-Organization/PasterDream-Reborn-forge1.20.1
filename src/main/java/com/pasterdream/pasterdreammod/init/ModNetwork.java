@@ -8,6 +8,8 @@ import com.pasterdream.pasterdreammod.network.blueprint.StartBlueprintPlacementP
 import com.pasterdream.pasterdreammod.network.blueprint.UpdateBlueprintPlacingPacket;
 import com.pasterdream.pasterdreammod.network.debugsword.DebugBlockActionPacket;
 import com.pasterdream.pasterdreammod.network.debugtool.*;
+import com.pasterdream.pasterdreammod.network.dreamnotesbook.NotesProgressResponsePacket;
+import com.pasterdream.pasterdreammod.network.dreamnotesbook.RequestNotesProgressPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSlotInteractPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSoundPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSyncPacket;
@@ -112,6 +114,9 @@ public class ModNetwork
         CHANNEL.registerMessage(id++, EntityDiscardPacket.class, EntityDiscardPacket::encode, EntityDiscardPacket::new, EntityDiscardPacket::handle);
 
         CHANNEL.registerMessage(id++, MeltDreamCrystalChestResetCooldownSyncPacket.class, MeltDreamCrystalChestResetCooldownSyncPacket::encode, MeltDreamCrystalChestResetCooldownSyncPacket::decode, MeltDreamCrystalChestResetCooldownSyncPacket::handle);
+
+        CHANNEL.registerMessage(id++, RequestNotesProgressPacket.class, RequestNotesProgressPacket::encode, RequestNotesProgressPacket::decode, RequestNotesProgressPacket::handle);
+        CHANNEL.registerMessage(id++, NotesProgressResponsePacket.class, NotesProgressResponsePacket::encode, NotesProgressResponsePacket::decode, NotesProgressResponsePacket::handle);
     }
 
     public static void sendMeltDreamEnergySyncPacketToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)

@@ -149,6 +149,7 @@ public class PasterDreamMod
         ModFluidPropertiesRelation.register();
         ModDreamNotesContentRelation.registerDreamNotesContentRelation();
         ModDreamNotesBookContentRelation.registerDreamNotesBookContentRelation();
+        ModDreamNotesBookProgressRelation.registerDreamNotesBookProgressRelation();
         ModBluePrintsContentRelation.registerBluePrintsContentRelation();
         ModCropRelation.registerCropRelation();
         ProphecyCardItem.registerAllCardEffects();
