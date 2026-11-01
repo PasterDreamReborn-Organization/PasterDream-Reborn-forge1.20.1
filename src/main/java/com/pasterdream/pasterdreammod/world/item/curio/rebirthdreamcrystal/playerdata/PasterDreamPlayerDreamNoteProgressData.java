@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PasterDreamPlayerDreamNoteProgressData
@@ -50,7 +51,7 @@ public class PasterDreamPlayerDreamNoteProgressData
     {
         CompoundTag persistentData = player.getPersistentData();
         List<String> singleDimensionBooks = DreamNotesBookProgressRegistry.getNotesByDimension(dimension);
-        List<Boolean> progressData = new ArrayList<>();
+        List<Boolean> progressData = new ArrayList<>(Collections.nCopies(singleDimensionBooks.size(), Boolean.FALSE));
 
         if(persistentData.contains("pasterdream_player_dream_note_progress_data", Tag.TAG_COMPOUND))
         {
@@ -65,33 +66,27 @@ public class PasterDreamPlayerDreamNoteProgressData
                     if(singleDimension.getString("dimension").equals(dimension))
                     {
                         ListTag singleDimensionProgress = singleDimension.getList("single_dimension_progress", Tag.TAG_COMPOUND);
-                        for(String contentName : singleDimensionBooks)
+                        for(int j = 0; j < singleDimensionBooks.size(); j++)
                         {
                             boolean singleProgress = false;
-                            for(int j = 0; j < singleDimensionProgress.size(); j++)
+                            for(int k = 0; k < singleDimensionProgress.size(); k++)
                             {
-                                CompoundTag singleProgressCompoundTag = singleDimensionProgress.getCompound(j);
+                                CompoundTag singleProgressCompoundTag = singleDimensionProgress.getCompound(k);
 
-                                if(singleProgressCompoundTag.getString("name").equals(contentName))
+                                if(singleProgressCompoundTag.getString("name").equals(singleDimensionBooks.get(j)))
                                 {
                                     singleProgress = singleProgressCompoundTag.getBoolean("is_read");
                                     break;
                                 }
                             }
-                            progressData.add(singleProgress);
+                            progressData.set(j, singleProgress);
                         }
-                        return progressData;
+                        break;
                     }
                 }
             }
         }
-
-        for(String contentName : singleDimensionBooks)
-        {
-            progressData.add(false);
-            return progressData;
-        }
-        return List.of();
+        return progressData;
     }
 
     public static void setProgressData(Player player, String dimension, String dreamNotesName, boolean isRead)
