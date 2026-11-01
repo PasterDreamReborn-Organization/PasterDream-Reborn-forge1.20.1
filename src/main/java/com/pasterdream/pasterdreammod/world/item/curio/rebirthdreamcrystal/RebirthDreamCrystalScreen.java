@@ -43,6 +43,8 @@ public class RebirthDreamCrystalScreen extends AbstractContainerScreen<RebirthDr
     protected void init()
     {
         super.init();
+        bookNameListButtons.clear();
+
         Button uploadButton = Button.builder(Component.translatable("button.pasterdream.提交"), button ->
         {
 
@@ -87,6 +89,42 @@ public class RebirthDreamCrystalScreen extends AbstractContainerScreen<RebirthDr
         NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 155, (dimensionPage + 1) + " / " + allDimensions.size(), 0xFF000000);
         NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 135, Component.translatable("content.pasterdream.book.维度:").append(allDimensions.get(dimensionPage)).getString(), 0xFF000000);
         NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 145, Component.translatable("content.pasterdream.book.进度:").append(unlockCount + "/" + singleDimensionsBooks.size()).getString(), 0xFF000000);
+    }
+
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double delta)
+    {
+        if(mouseY >= topPos && mouseY < topPos + 180)
+        {
+            if(delta > 0)
+            {
+                if(mouseX >= leftPos && mouseX < leftPos + 140)
+                {
+                    bookListPrevPage();
+                }
+                else
+                    if(mouseX >= leftPos + 140 && mouseX < leftPos + 280)
+                    {
+                        dimensionPrevPage();
+                    }
+            }
+            else
+                if(delta < 0)
+                {
+                    if(mouseX >= leftPos && mouseX < leftPos + 140)
+                    {
+                        bookListNextPage();
+                    }
+                    else
+                        if(mouseX >= leftPos + 140 && mouseX < leftPos + 280)
+                        {
+                            dimensionNextPage();
+                        }
+                }
+            return true;
+        }
+
+        return super.mouseScrolled(mouseX, mouseY, delta);
     }
 
     private void dimensionPrevPage()
