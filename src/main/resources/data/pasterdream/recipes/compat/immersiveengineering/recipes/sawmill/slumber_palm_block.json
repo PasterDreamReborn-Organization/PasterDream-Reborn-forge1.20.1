@@ -1,0 +1,15 @@
+{
+  "type":"immersiveengineering:sawmill",
+  "energy":1600,
+  "input":
+  {
+    "item":"pasterdream:slumber_palm_block"
+  },
+  "result":
+  {
+    "count":2,
+    "item":"pasterdream:slumber_palm"
+  },
+  "secondaries":
+  []
+}

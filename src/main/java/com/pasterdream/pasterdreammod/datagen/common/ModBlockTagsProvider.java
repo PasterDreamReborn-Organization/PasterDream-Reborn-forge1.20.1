@@ -424,7 +424,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CALCITE_REDSTONE_ORE.get())
                 .add(ModBlocks.CALCITE_LAPIS_ORE.get())
                 .add(ModBlocks.CALCITE_DIAMOND_ORE.get())
-                .add(ModBlocks.CALCITE_EMERALD_ORE.get());
+                .add(ModBlocks.CALCITE_EMERALD_ORE.get())
+                .add(ModBlocks.CONGEAL_WIND_ORE.get());
 
         tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/deepslate")))
                 .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get());
@@ -452,6 +453,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CALCITE_DIAMOND_ORE.get())
                 .add(ModBlocks.CALCITE_EMERALD_ORE.get());
 
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/thick_cloud")))
+                .add(ModBlocks.CONGEAL_WIND_ORE.get());
+
         tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ore_rates/singular")))
                 .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
                 .add(ModBlocks.MOLTEN_GOLD_ORE.get())
@@ -470,7 +474,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.AMBER_CANDY_ORE.get())
                 .add(ModBlocks.CALCITE_COPPER_ORE.get())
                 .add(ModBlocks.CALCITE_REDSTONE_ORE.get())
-                .add(ModBlocks.CALCITE_LAPIS_ORE.get());
+                .add(ModBlocks.CALCITE_LAPIS_ORE.get())
+                .add(ModBlocks.CONGEAL_WIND_ORE.get());
 
         tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/titanium")))
                 .add(ModBlocks.DEEPSLATE_TITANIUM_ORE.get())
@@ -517,6 +522,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/emerald")))
                 .add(ModBlocks.CALCITE_EMERALD_ORE.get());
+
+        tag(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("forge", "ores/congeal_wind")))
+                .add(ModBlocks.CONGEAL_WIND_ORE.get());
 
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.DYEDREAM_QUARTZ_BLOCK_STAIRS.get());

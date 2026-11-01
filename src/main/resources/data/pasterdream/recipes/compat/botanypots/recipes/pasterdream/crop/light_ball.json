@@ -1,0 +1,28 @@
+{
+  "type":"botanypots:crop",
+  "seed":
+  {
+    "item":"pasterdream:light_ball_crop_age_0"
+  },
+  "categories":
+  [
+    "dyedream_dirt"
+  ],
+  "growthTicks":1200,
+  "display":
+  {
+    "block":"pasterdream:light_ball_crop_age_1"
+  },
+  "drops":
+  [
+    {
+      "chance":1.00,
+      "output":
+      {
+        "item":"pasterdream:light_ball"
+      },
+      "minRolls":1,
+      "maxRolls":2
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "pasterdream:amber_candy_ore"
+    }
+  ],
+  "processingTime": 250,
+  "results": [
+    {
+      "count": 4,
+      "item": "pasterdream:amber_candy"
+    },
+    {
+      "chance": 0.5,
+      "item": "pasterdream:amber_candy"
+    },
+    {
+      "chance": 0.75,
+      "item": "create:experience_nugget"
+    },
+    {
+      "chance": 0.125,
+      "item": "minecraft:calcite"
+    }
+  ]
+}

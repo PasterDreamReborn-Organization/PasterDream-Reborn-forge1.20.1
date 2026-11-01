@@ -494,7 +494,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.CALCITE_REDSTONE_ORE.get().asItem())
                 .add(ModItems.CALCITE_LAPIS_ORE.get().asItem())
                 .add(ModItems.CALCITE_DIAMOND_ORE.get().asItem())
-                .add(ModItems.CALCITE_EMERALD_ORE.get().asItem());
+                .add(ModItems.CALCITE_EMERALD_ORE.get().asItem())
+                .add(ModItems.CONGEAL_WIND_ORE.get().asItem());
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/deepslate")))
                 .add(ModItems.DEEPSLATE_TITANIUM_ORE.get().asItem());
@@ -522,6 +523,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.CALCITE_DIAMOND_ORE.get().asItem())
                 .add(ModItems.CALCITE_EMERALD_ORE.get().asItem());
 
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores_in_ground/thick_cloud")))
+                .add(ModItems.CONGEAL_WIND_ORE.get().asItem());
+
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ore_rates/singular")))
                 .add(ModItems.DEEPSLATE_TITANIUM_ORE.get().asItem())
                 .add(ModItems.MOLTEN_GOLD_ORE.get().asItem())
@@ -540,7 +544,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.AMBER_CANDY_ORE.get().asItem())
                 .add(ModItems.CALCITE_COPPER_ORE.get().asItem())
                 .add(ModItems.CALCITE_REDSTONE_ORE.get().asItem())
-                .add(ModItems.CALCITE_LAPIS_ORE.get().asItem());
+                .add(ModItems.CALCITE_LAPIS_ORE.get().asItem())
+                .add(ModItems.CONGEAL_WIND_ORE.get().asItem());
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/titanium")))
                 .add(ModItems.DEEPSLATE_TITANIUM_ORE.get().asItem())
@@ -587,6 +592,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/emerald")))
                 .add(ModItems.CALCITE_EMERALD_ORE.get().asItem());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "ores/congeal_wind")))
+                .add(ModItems.CONGEAL_WIND_ORE.get().asItem());
 
         //粗矿
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "raw_materials")))

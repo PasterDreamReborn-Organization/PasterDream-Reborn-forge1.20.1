@@ -1,0 +1,38 @@
+{
+  "type":"immersiveengineering:sawmill",
+  "energy":800,
+  "input":
+  {
+    "item":"pasterdream:worn_shadow_bookshelf"
+  },
+  "result":
+  {
+    "count": 4,
+    "item":"pasterdream:shadow_planks"
+  },
+  "secondaries":
+  [
+    {
+      "output":
+      {
+        "tag":"forge:dusts/wood"
+      },
+      "stripping":false
+    },
+    {
+      "output":
+      {
+        "item":"minecraft:book"
+      },
+      "stripping":false
+    },
+    {
+      "output":
+      {
+        "count": 2,
+        "item":"minecraft:paper"
+      },
+      "stripping":false
+    }
+  ]
+}

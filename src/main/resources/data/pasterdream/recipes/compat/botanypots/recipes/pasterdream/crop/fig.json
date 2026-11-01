@@ -1,0 +1,28 @@
+{
+  "type":"botanypots:crop",
+  "seed":
+  {
+    "item":"pasterdream:fig"
+  },
+  "categories":
+  [
+    "leave"
+  ],
+  "growthTicks":1200,
+  "display":
+  {
+    "block":"pasterdream:fig_vine"
+  },
+  "drops":
+  [
+    {
+      "chance":1.00,
+      "output":
+      {
+        "item":"pasterdream:fig"
+      },
+      "minRolls":2,
+      "maxRolls":4
+    }
+  ]
+}

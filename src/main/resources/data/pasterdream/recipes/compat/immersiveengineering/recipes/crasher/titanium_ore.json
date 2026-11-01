@@ -1,0 +1,14 @@
+{
+  "type":"immersiveengineering:crusher",
+  "energy":6000,
+  "input":
+  {
+    "tag":"forge:ores/titanium"
+  },
+  "result":
+  {
+    "count":2,
+    "item":"pasterdream:raw_titanium"
+  },
+  "secondaries": []
+}

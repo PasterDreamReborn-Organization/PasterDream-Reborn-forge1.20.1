@@ -1,0 +1,27 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "pasterdream:soul_ore"
+    }
+  ],
+  "processingTime": 150,
+  "results": [
+    {
+      "count": 4,
+      "item": "pasterdream:soul_dust"
+    },
+    {
+      "chance": 0.5,
+      "item": "pasterdream:raw_molten_gold"
+    },
+    {
+      "chance": 0.75,
+      "item": "create:experience_nugget"
+    },
+    {
+      "chance": 0.125,
+      "item": "minecraft:soul_soil"
+    }
+  ]
+}

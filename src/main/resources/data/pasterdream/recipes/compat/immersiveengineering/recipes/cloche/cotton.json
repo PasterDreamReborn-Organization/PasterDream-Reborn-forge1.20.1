@@ -1,0 +1,23 @@
+{
+  "type":"immersiveengineering:cloche",
+  "input":
+  {
+    "item":"pasterdream:cotton_crop_age_0"
+  },
+  "render":
+  {
+    "type":"generic",
+    "block":"pasterdream:cotton_crop_age_1"
+  },
+  "results":
+  [
+    {
+      "item":"pasterdream:cotton"
+    }
+  ],
+  "soil":
+  {
+    "tag":"minecraft:dirt"
+  },
+  "time":600
+}

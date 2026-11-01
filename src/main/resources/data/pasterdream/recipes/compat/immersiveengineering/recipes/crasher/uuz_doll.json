@@ -1,0 +1,14 @@
+{
+  "type":"immersiveengineering:crusher",
+  "energy":0,
+  "input":
+  {
+    "item":"pasterdream:uuz_doll"
+  },
+  "result":
+  {
+    "item":"pasterdream:uuz_doll"
+  },
+  "secondaries":
+  []
+}

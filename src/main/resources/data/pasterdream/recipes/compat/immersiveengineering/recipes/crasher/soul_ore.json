@@ -1,0 +1,23 @@
+{
+  "type":"immersiveengineering:crusher",
+  "energy":6000,
+  "input":
+  {
+    "item":"pasterdream:soul_ore"
+  },
+  "result":
+  {
+    "count":4,
+    "item":"pasterdream:soul_dust"
+  },
+  "secondaries":
+  [
+    {
+      "chance":0.5,
+      "output":
+      {
+        "item":"pasterdream:soul_dust"
+      }
+    }
+  ]
+}

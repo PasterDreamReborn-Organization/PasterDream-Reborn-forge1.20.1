@@ -1,0 +1,23 @@
+{
+  "type":"immersiveengineering:cloche",
+  "input":
+  {
+    "item":"pasterdream:light_ball_crop_age_0"
+  },
+  "render":
+  {
+    "type":"generic",
+    "block":"pasterdream:light_ball_crop_age_1"
+  },
+  "results":
+  [
+    {
+      "item":"pasterdream:light_ball"
+    }
+  ],
+  "soil":
+  {
+    "item":"pasterdream:dyedream_dirt"
+  },
+  "time":600
+}

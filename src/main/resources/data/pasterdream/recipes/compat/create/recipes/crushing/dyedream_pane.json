@@ -1,0 +1,17 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "pasterdream:dyedream_pane"
+    }
+  ],
+  "processingTime": 100,
+  "results": [
+    {
+      "item": "pasterdream:dyedream_planks"
+    },
+    {
+      "item": "minecraft:glass_pane"
+    }
+  ]
+}

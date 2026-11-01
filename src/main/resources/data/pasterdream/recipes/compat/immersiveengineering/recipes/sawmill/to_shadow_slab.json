@@ -1,0 +1,23 @@
+{
+  "type":"immersiveengineering:sawmill",
+  "energy":800,
+  "input":
+  {
+    "item":"pasterdream:shadow_planks"
+  },
+  "result":
+  {
+    "count":2,
+    "item":"pasterdream:shadow_slab"
+  },
+  "secondaries":
+  [
+    {
+      "output":
+      {
+        "tag":"forge:dusts/wood"
+      },
+      "stripping":false
+    }
+  ]
+}

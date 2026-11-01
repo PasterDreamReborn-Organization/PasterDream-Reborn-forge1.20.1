@@ -1,0 +1,23 @@
+{
+  "type":"immersiveengineering:crusher",
+  "energy":6000,
+  "input":
+  {
+    "tag":"forge:ores/amber_candy"
+  },
+  "result":
+  {
+    "count":4,
+    "item":"pasterdream:amber_candy"
+  },
+  "secondaries":
+  [
+    {
+      "chance":0.5,
+      "output":
+      {
+        "item":"pasterdream:amber_candy"
+      }
+    }
+  ]
+}

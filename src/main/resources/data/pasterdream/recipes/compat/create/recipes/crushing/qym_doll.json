@@ -1,0 +1,14 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "pasterdream:qym_doll"
+    }
+  ],
+  "processingTime": 1,
+  "results": [
+    {
+      "item": "pasterdream:qym_doll"
+    }
+  ]
+}

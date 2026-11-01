@@ -1,0 +1,30 @@
+{
+  "type":"immersiveengineering:arc_furnace",
+  "additives":[],
+  "energy":230400,
+  "input":
+  {
+    "tag":"forge:storage_blocks/raw_titanium"
+  },
+  "results":
+  [
+    {
+      "base_ingredient":
+      {
+        "item":"pasterdream:titanium_ingot"
+      },
+      "count":13
+    }
+  ],
+  "secondaries":
+  [
+    {
+      "chance":0.5,
+      "output":
+      {
+        "item":"pasterdream:titanium_ingot"
+      }
+    }
+  ],
+  "time":900
+}

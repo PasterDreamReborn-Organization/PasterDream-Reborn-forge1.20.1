@@ -1,0 +1,27 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "pasterdream:dyedreamquartz_ore"
+    }
+  ],
+  "processingTime": 350,
+  "results": [
+    {
+      "count": 2,
+      "item": "pasterdream:dyedream_quartz"
+    },
+    {
+      "chance": 0.25,
+      "item": "pasterdream:dyedream_quartz"
+    },
+    {
+      "chance": 0.75,
+      "item": "create:experience_nugget"
+    },
+    {
+      "chance": 0.125,
+      "item": "minecraft:calcite"
+    }
+  ]
+}
