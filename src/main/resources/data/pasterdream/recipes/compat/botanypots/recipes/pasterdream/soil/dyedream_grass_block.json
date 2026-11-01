@@ -1,0 +1,16 @@
+{
+  "type":"botanypots:soil",
+  "input":
+  {
+    "item":"pasterdream:dyedream_grass_block"
+  },
+  "display":
+  {
+    "block":"pasterdream:dyedream_grass_block"
+  },
+  "categories":
+  [
+    "dyedream_dirt"
+  ],
+  "growthModifier":1
+}
