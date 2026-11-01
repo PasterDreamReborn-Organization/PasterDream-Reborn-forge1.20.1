@@ -1,0 +1,27 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "pasterdream:molten_gold_ore"
+    }
+  ],
+  "processingTime": 350,
+  "results": [
+    {
+      "count": 2,
+      "item": "pasterdream:raw_molten_gold"
+    },
+    {
+      "chance": 0.25,
+      "item": "pasterdream:raw_molten_gold"
+    },
+    {
+      "chance": 0.75,
+      "item": "create:experience_nugget"
+    },
+    {
+      "chance": 0.125,
+      "item": "minecraft:netherrack"
+    }
+  ]
+}

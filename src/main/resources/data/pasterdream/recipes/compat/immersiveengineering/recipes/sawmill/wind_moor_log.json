@@ -1,0 +1,34 @@
+{
+  "type":"immersiveengineering:sawmill",
+  "energy":1600,
+  "input":
+  {
+    "item":"pasterdream:wind_moor_log"
+  },
+  "result":
+  {
+    "count":6,
+    "item":"pasterdream:wind_moor_planks"
+  },
+  "secondaries":
+  [
+    {
+      "output":
+      {
+        "tag":"forge:dusts/wood"
+      },
+      "stripping":true
+    },
+    {
+      "output":
+      {
+        "tag":"forge:dusts/wood"
+      },
+      "stripping":false
+    }
+  ],
+  "stripped":
+  {
+    "item":"pasterdream:stripped_wind_moor_log"
+  }
+}

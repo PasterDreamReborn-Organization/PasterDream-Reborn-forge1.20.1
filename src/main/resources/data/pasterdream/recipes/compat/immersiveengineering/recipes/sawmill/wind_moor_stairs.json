@@ -1,0 +1,22 @@
+{
+  "type":"immersiveengineering:sawmill",
+  "energy":1600,
+  "input":
+  {
+    "item":"pasterdream:wind_moor_stairs"
+  },
+  "result":
+  {
+    "item":"pasterdream:wind_moor_planks"
+  },
+  "secondaries":
+  [
+    {
+      "output":
+      {
+        "tag":"forge:dusts/wood"
+      },
+      "stripping":false
+    }
+  ]
+}

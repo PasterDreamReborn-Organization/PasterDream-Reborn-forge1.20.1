@@ -1,0 +1,21 @@
+{
+  "type":"immersiveengineering:crusher",
+  "energy":100,
+  "input":
+  {
+    "item":"pasterdream:dyedream_pane"
+  },
+  "result":
+  {
+    "item":"pasterdream:dyedream_planks"
+  },
+  "secondaries":
+  [
+    {
+      "output":
+      {
+        "item":"minecraft:glass_pane"
+      }
+    }
+  ]
+}

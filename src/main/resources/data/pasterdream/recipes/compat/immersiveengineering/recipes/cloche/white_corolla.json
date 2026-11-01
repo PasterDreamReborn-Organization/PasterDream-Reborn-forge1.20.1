@@ -1,0 +1,23 @@
+{
+  "type":"immersiveengineering:cloche",
+  "input":
+  {
+    "item":"pasterdream:white_corolla_crop_age_0"
+  },
+  "render":
+  {
+    "type":"generic",
+    "block":"pasterdream:white_corolla_crop_age_1"
+  },
+  "results":
+  [
+    {
+      "item":"pasterdream:white_corolla"
+    }
+  ],
+  "soil":
+  {
+    "item":"minecraft:snow_block"
+  },
+  "time":600
+}

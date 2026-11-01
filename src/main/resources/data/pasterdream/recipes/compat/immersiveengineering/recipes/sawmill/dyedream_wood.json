@@ -1,0 +1,23 @@
+{
+  "type":"immersiveengineering:sawmill",
+  "energy":1600,
+  "input":
+  {
+    "item":"pasterdream:dyedream_wood"
+  },
+  "result":
+  {
+    "count":6,
+    "item":"pasterdream:dyedream_planks"
+  },
+  "secondaries":
+  [
+    {
+      "output":
+      {
+        "tag":"forge:dusts/wood"
+      },
+      "stripping":false
+    }
+  ]
+}

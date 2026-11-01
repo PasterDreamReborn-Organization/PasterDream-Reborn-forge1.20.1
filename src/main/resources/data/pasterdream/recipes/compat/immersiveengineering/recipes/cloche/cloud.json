@@ -1,0 +1,24 @@
+{
+  "type":"immersiveengineering:cloche",
+  "input":
+  {
+    "item":"pasterdream:cloud_crop_age_0"
+  },
+  "render":
+  {
+    "type":"generic",
+    "block":"pasterdream:cloud_crop_age_1"
+  },
+  "results":
+  [
+    {
+      "count": 5,
+      "item":"pasterdream:cloud"
+    }
+  ],
+  "soil":
+  {
+    "item":"pasterdream:dyedream_dirt"
+  },
+  "time":600
+}

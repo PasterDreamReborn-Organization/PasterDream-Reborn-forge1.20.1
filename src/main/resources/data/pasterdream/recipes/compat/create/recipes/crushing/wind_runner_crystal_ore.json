@@ -1,0 +1,27 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "tag":"forge:ores/wind_runner_crystal"
+    }
+  ],
+  "processingTime": 250,
+  "results": [
+    {
+      "count": 4,
+      "item": "pasterdream:wind_runner_crystal"
+    },
+    {
+      "chance": 0.5,
+      "item": "pasterdream:wind_runner_crystal"
+    },
+    {
+      "chance": 0.75,
+      "item": "create:experience_nugget"
+    },
+    {
+      "chance": 0.125,
+      "item": "pasterdream:cyan_stone"
+    }
+  ]
+}

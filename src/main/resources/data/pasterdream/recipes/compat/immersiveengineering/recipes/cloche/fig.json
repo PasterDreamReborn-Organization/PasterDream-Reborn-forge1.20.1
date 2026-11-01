@@ -1,0 +1,24 @@
+{
+  "type":"immersiveengineering:cloche",
+  "input":
+  {
+    "item":"pasterdream:fig"
+  },
+  "render":
+  {
+    "type":"generic",
+    "block":"pasterdream:fig_vine"
+  },
+  "results":
+  [
+    {
+      "count": 2,
+      "item":"pasterdream:fig"
+    }
+  ],
+  "soil":
+  {
+    "tag":"minecraft:leaves"
+  },
+  "time":600
+}

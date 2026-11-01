@@ -1,0 +1,17 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "pasterdream:shadow_pane"
+    }
+  ],
+  "processingTime": 100,
+  "results": [
+    {
+      "item": "pasterdream:shadow_planks"
+    },
+    {
+      "item": "minecraft:glass_pane"
+    }
+  ]
+}

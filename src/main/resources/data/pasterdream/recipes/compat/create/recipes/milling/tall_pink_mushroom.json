@@ -1,0 +1,21 @@
+{
+  "type": "create:milling",
+  "ingredients":
+  [
+    {
+      "item": "pasterdream:tall_pink_mushroom"
+    }
+  ],
+  "processingTime": 50,
+  "results":
+  [
+    {
+      "count": 4,
+      "item": "minecraft:pink_dye"
+    },
+    {
+      "count": 2,
+      "item": "minecraft:white_dye"
+    }
+  ]
+}

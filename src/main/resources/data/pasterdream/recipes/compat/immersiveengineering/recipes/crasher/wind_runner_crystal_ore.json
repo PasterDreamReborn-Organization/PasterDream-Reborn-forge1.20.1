@@ -1,0 +1,23 @@
+{
+  "type":"immersiveengineering:crusher",
+  "energy":6000,
+  "input":
+  {
+    "item":"pasterdream:wind_runner_crystal_ore"
+  },
+  "result":
+  {
+    "count":4,
+    "item":"pasterdream:wind_runner_crystal"
+  },
+  "secondaries":
+  [
+    {
+      "chance":0.5,
+      "output":
+      {
+        "item":"pasterdream:wind_runner_crystal"
+      }
+    }
+  ]
+}

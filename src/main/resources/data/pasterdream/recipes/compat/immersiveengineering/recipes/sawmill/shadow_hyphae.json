@@ -1,0 +1,34 @@
+{
+  "type":"immersiveengineering:sawmill",
+  "energy":1600,
+  "input":
+  {
+    "item":"pasterdream:shadow_hyphae"
+  },
+  "result":
+  {
+    "count":6,
+    "item":"pasterdream:shadow_planks"
+  },
+  "secondaries":
+  [
+    {
+      "output":
+      {
+        "tag":"forge:dusts/wood"
+      },
+      "stripping":true
+    },
+    {
+      "output":
+      {
+        "tag":"forge:dusts/wood"
+      },
+      "stripping":false
+    }
+  ],
+  "stripped":
+  {
+    "item":"pasterdream:stripped_shadow_stem_hyphae"
+  }
+}

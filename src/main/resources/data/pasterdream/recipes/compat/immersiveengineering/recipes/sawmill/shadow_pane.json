@@ -1,0 +1,22 @@
+{
+  "type":"immersiveengineering:sawmill",
+  "energy":800,
+  "input":
+  {
+    "item":"pasterdream:shadow_pane"
+  },
+  "result":
+  {
+    "item":"pasterdream:shadow_planks"
+  },
+  "secondaries":
+  [
+    {
+      "output":
+      {
+        "item":"minecraft:glass_pane"
+      },
+      "stripping":false
+    }
+  ]
+}

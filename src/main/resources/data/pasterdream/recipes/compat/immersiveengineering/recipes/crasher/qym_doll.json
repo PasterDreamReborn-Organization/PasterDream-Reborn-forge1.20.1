@@ -1,0 +1,14 @@
+{
+  "type":"immersiveengineering:crusher",
+  "energy":0,
+  "input":
+  {
+    "item":"pasterdream:qym_doll"
+  },
+  "result":
+  {
+    "item":"pasterdream:qym_doll"
+  },
+  "secondaries":
+  []
+}

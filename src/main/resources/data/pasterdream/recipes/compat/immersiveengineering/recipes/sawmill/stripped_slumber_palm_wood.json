@@ -1,0 +1,23 @@
+{
+  "type":"immersiveengineering:sawmill",
+  "energy":1600,
+  "input":
+  {
+    "item":"pasterdream:stripped_slumber_palm_wood"
+  },
+  "result":
+  {
+    "count":6,
+    "item":"pasterdream:slumber_palm_planks"
+  },
+  "secondaries":
+  [
+    {
+      "output":
+      {
+        "tag":"forge:dusts/wood"
+      },
+      "stripping":false
+    }
+  ]
+}

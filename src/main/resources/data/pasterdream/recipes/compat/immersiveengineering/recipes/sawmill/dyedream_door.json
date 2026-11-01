@@ -1,0 +1,22 @@
+{
+  "type":"immersiveengineering:sawmill",
+  "energy":800,
+  "input":
+  {
+    "item":"pasterdream:dyedream_door"
+  },
+  "result":
+  {
+    "item":"pasterdream:dyedream_planks"
+  },
+  "secondaries":
+  [
+    {
+      "output":
+      {
+        "tag":"forge:dusts/wood"
+      },
+      "stripping":false
+    }
+  ]
+}

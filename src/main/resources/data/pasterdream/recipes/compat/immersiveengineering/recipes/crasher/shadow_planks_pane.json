@@ -1,0 +1,21 @@
+{
+  "type":"immersiveengineering:crusher",
+  "energy":100,
+  "input":
+  {
+    "item":"pasterdream:shadow_pane"
+  },
+  "result":
+  {
+    "item":"pasterdream:shadow_planks"
+  },
+  "secondaries":
+  [
+    {
+      "output":
+      {
+        "item":"minecraft:glass_pane"
+      }
+    }
+  ]
+}

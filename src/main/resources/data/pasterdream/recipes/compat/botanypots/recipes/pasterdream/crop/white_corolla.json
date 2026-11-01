@@ -1,0 +1,28 @@
+{
+  "type":"botanypots:crop",
+  "seed":
+  {
+    "item":"pasterdream:white_corolla_crop_age_0"
+  },
+  "categories":
+  [
+    "snow_block"
+  ],
+  "growthTicks":1200,
+  "display":
+  {
+    "block":"pasterdream:white_corolla_crop_age_1"
+  },
+  "drops":
+  [
+    {
+      "chance":1.00,
+      "output":
+      {
+        "item":"pasterdream:white_corolla"
+      },
+      "minRolls":1,
+      "maxRolls":2
+    }
+  ]
+}

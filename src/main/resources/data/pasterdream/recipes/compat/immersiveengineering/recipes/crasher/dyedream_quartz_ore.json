@@ -1,0 +1,23 @@
+{
+  "type":"immersiveengineering:crusher",
+  "energy":6000,
+  "input":
+  {
+    "tag":"forge:ores/dyedream_quartz"
+  },
+  "result":
+  {
+    "count":3,
+    "item":"pasterdream:dyedream_quartz"
+  },
+  "secondaries":
+  [
+    {
+      "chance":0.25,
+      "output":
+      {
+        "item":"pasterdream:dyedream_dust_piece"
+      }
+    }
+  ]
+}

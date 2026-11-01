@@ -1,0 +1,14 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "pasterdream:uuz_doll"
+    }
+  ],
+  "processingTime": 1,
+  "results": [
+    {
+      "item": "pasterdream:uuz_doll"
+    }
+  ]
+}

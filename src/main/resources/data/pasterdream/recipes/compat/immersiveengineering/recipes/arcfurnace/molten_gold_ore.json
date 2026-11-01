@@ -1,0 +1,24 @@
+{
+  "type":"immersiveengineering:arc_furnace",
+  "additives":[],
+  "energy":102400,
+  "input":
+  {
+    "tag":"forge:ores/molten_gold"
+  },
+  "results":
+  [
+    {
+      "base_ingredient":
+      {
+        "item":"pasterdream:molten_gold_ingot"
+      },
+      "count":2
+    }
+  ],
+  "slag":
+  {
+    "tag":"forge:slag"
+  },
+  "time":200
+}

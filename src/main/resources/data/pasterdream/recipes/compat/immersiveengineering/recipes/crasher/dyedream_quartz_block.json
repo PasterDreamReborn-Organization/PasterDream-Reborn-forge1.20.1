@@ -1,0 +1,14 @@
+{
+  "type":"immersiveengineering:crusher",
+  "energy":3200,
+  "input":
+  {
+    "item":"pasterdream:dyedream_quartz_block"
+  },
+  "result":
+  {
+    "count":4,
+    "item":"pasterdream:dyedream_quartz"
+  },
+  "secondaries": []
+}
