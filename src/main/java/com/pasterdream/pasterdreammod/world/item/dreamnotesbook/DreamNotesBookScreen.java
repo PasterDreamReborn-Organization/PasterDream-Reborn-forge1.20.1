@@ -17,6 +17,8 @@ import java.util.List;
 
 public class DreamNotesBookScreen extends Screen
 {
+    private final Screen previousScreen;
+
     private LeftArrowButton leftArrowButton;
     private RightArrowButton rightArrowButton;
 
@@ -43,10 +45,11 @@ public class DreamNotesBookScreen extends Screen
     private int totalPage = 0;
     private int currentPage = 0;
 
-    public DreamNotesBookScreen(DreamNotesBookInfo dreamNotesBookInfo)
+    public DreamNotesBookScreen(DreamNotesBookInfo dreamNotesBookInfo, Screen previousScreen)
     {
         super(Component.empty());
         this.dreamNotesBookInfo = dreamNotesBookInfo;
+        this.previousScreen = previousScreen;
     }
 
     @Override
@@ -206,6 +209,12 @@ public class DreamNotesBookScreen extends Screen
                     guiGraphics.drawString(font, stringInPage.get(i), GUIStartX + contentStartX, GUIStartY + contentStartY + i * font.lineHeight, color, false);
                 }
             }
+    }
+
+    @Override
+    public void onClose()
+    {
+        Minecraft.getInstance().setScreen(previousScreen);
     }
 
     @Override

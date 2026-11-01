@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
 import com.pasterdream.pasterdreammod.event.ModWorldGenEvents.TwilightLanternPlacedData;
 import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import com.pasterdream.pasterdreammod.world.item.StoryProgressItem;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.playerdata.PasterDreamPlayerDreamNoteProgressData;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -40,38 +41,51 @@ public class DreamNotesBookItem extends Item
     {
         ItemStack itemStack = player.getItemInHand(hand);
         CompoundTag compoundTag = itemStack.getTag();
+        String contentName = null;
+        if(compoundTag != null && compoundTag.contains("content"))
+        {
+            contentName = compoundTag.getString("content");
+        }
+
+
         if (level.isClientSide)
         {
-            DreamNotesBookInfo dreamNotesBookInfo = (compoundTag != null && compoundTag.contains("content")) ? DreamNotesBookRegistry.getInfo(compoundTag.getString("content")) : null;
+            DreamNotesBookInfo dreamNotesBookInfo = (contentName != null ? DreamNotesBookRegistry.getInfo(contentName) : null);
             DreamNotesBookClientHelper.openDreamNotesBookScreen(dreamNotesBookInfo);
         }
-        else
-        {
-            level.playSound(null, player.blockPosition(), SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1.0f, 1.0f);
-            if (compoundTag != null && compoundTag.contains("content") && player instanceof ServerPlayer serverPlayer)
+            else
             {
-                String content = compoundTag.getString("content");
-                ModCriteriaTriggers.READ_DREAM_NOTE.trigger(serverPlayer, content);
+                level.playSound(null, player.blockPosition(), SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1.0f, 1.0f);
 
-                // 剧情笔记书：打开时授予剧情进度（同时由进度解锁帕秋莉对应词条）
-                StoryProgressItem.grantProgressOnNoteOpened(serverPlayer, content);
-
-                if ("侵染教堂-黑面".equals(content))
+                String dimension = DreamNotesBookProgressRegistry.getDimensionByNotes(contentName);
+                if(dimension != null)
                 {
-                    ServerLevel nether = serverPlayer.server.getLevel(Level.NETHER);
-                    if (nether != null)
+                    PasterDreamPlayerDreamNoteProgressData.setProgressData(player, dimension, contentName, true);
+                }
+
+                if (player instanceof ServerPlayer serverPlayer)
+                {
+                    ModCriteriaTriggers.READ_DREAM_NOTE.trigger(serverPlayer, contentName);
+
+                    // 剧情笔记书：打开时授予剧情进度（同时由进度解锁帕秋莉对应词条）
+                    StoryProgressItem.grantProgressOnNoteOpened(serverPlayer, contentName);
+
+                    if ("侵染教堂-黑面".equals(contentName))
                     {
-                        TwilightLanternPlacedData data = TwilightLanternPlacedData.get(nether);
-                        if (data.isPlaced())
+                        ServerLevel nether = serverPlayer.server.getLevel(Level.NETHER);
+                        if (nether != null)
                         {
-                            serverPlayer.sendSystemMessage(Component.translatable(
-                                    "message.pasterdream.twilight_lantern_location",
-                                    data.getPosX(), data.getPosZ()));
+                            TwilightLanternPlacedData data = TwilightLanternPlacedData.get(nether);
+                            if (data.isPlaced())
+                            {
+                                serverPlayer.sendSystemMessage(Component.translatable(
+                                        "message.pasterdream.twilight_lantern_location",
+                                        data.getPosX(), data.getPosZ()));
+                            }
                         }
                     }
                 }
             }
-        }
         return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide);
     }
 }

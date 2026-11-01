@@ -18,6 +18,7 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.We
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.coolerpot.WeaponWorkshopCoolerPotScreen;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.craftingtable.WeaponWorkshopCraftingTableScreen;
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.WeaponWorkshopGrindStoneScreen;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.RebirthDreamCrystalScreen;
 import com.pasterdream.pasterdreammod.world.item.debugtool.screen.*;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarScreen;
 import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.StorageBagScreen;
@@ -57,6 +58,7 @@ public class ModScreens
             MenuScreens.register(ModMenus.DEBUG_TOOL_ENTITY_EDITOR.get(), DebugToolEntityEditorScreen::new);
             MenuScreens.register(ModMenus.ITEM_HANDLER.get(), ItemHandlerScreen::new);
             MenuScreens.register(ModMenus.FLUID_HANDLER.get(), FluidHandlerScreen::new);
+            MenuScreens.register(ModMenus.REBIRTH_DREAM_CRYSTAL.get(), RebirthDreamCrystalScreen::new);
         });
     }
 }

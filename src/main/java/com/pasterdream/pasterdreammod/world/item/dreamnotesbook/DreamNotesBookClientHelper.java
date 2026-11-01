@@ -11,6 +11,6 @@ public class DreamNotesBookClientHelper
 {
     public static void openDreamNotesBookScreen(DreamNotesBookInfo info)
     {
-        Minecraft.getInstance().setScreen(new DreamNotesBookScreen(info));
+        Minecraft.getInstance().setScreen(new DreamNotesBookScreen(info, null));
     }
 }

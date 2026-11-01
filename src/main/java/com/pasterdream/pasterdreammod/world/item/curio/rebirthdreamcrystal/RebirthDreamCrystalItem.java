@@ -1,6 +1,7 @@
-package com.pasterdream.pasterdreammod.world.item.curio;
+package com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal;
 
 import com.pasterdream.pasterdreammod.Config;
+import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModSounds;
@@ -10,15 +11,19 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.ItemHandlerHelper;
+import net.minecraftforge.network.NetworkHooks;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -40,26 +45,46 @@ public class RebirthDreamCrystalItem extends Item implements ICurioItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        ItemStack stack = player.getItemInHand(hand);
-        if (!player.isShiftKeyDown()) {
-            return super.use(level, player, hand);
-        }
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
+    {
+        ItemStack itemStack = player.getItemInHand(hand);
+        if(!level.isClientSide())
+        {
+            if (player.isShiftKeyDown())
+            {
+                List<Item> loot = Config.getRebirthDreamCrystalLoot();
+                if (!loot.isEmpty())
+                {
+                    Item picked = loot.get(player.getRandom().nextInt(loot.size()));
+                    ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(picked));
+                }
+                level.playSound(null, player.blockPosition(), ModSounds.DING.get(), SoundSource.PLAYERS, 1, 1);
 
-        if (!level.isClientSide()) {
-            List<Item> loot = Config.getRebirthDreamCrystalLoot();
-            if (!loot.isEmpty()) {
-                Item picked = loot.get(player.getRandom().nextInt(loot.size()));
-                ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(picked));
+                if (!player.getAbilities().instabuild)
+                {
+                    itemStack.shrink(1);
+                }
             }
-            level.playSound(null, player.blockPosition(), ModSounds.DING.get(), SoundSource.PLAYERS, 1, 1);
-        }
+                else
+                {
+                    NetworkHooks.openScreen((ServerPlayer) player, new MenuProvider()
+                    {
+                        @Override
+                        public Component getDisplayName()
+                        {
+                            return Component.translatable("gui." + PasterDreamMod.MOD_ID + ".rebirth_dream_crystal");
+                        }
 
-        if (!player.getAbilities().instabuild) {
-            stack.shrink(1);
-        }
+                        @Override
+                        public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player)
+                        {
+                            return new RebirthDreamCrystalMenu(id, inventory);
+                        }
+                    });
 
-        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+                }
+        }
+        return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
     }
 
     @Override
