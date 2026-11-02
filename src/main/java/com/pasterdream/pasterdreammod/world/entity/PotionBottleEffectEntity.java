@@ -34,6 +34,7 @@ public class PotionBottleEffectEntity extends Entity {
     public static final String TYPE_TOXIC = "toxic";
     public static final String TYPE_FROZEN = "frozen";
     public static final String TYPE_INFERNO = "inferno";
+    public static final String TYPE_CYCLONE = "cyclone";
 
     private String effectType = TYPE_LIGHTNING;
     private int ticks = 0;
@@ -107,6 +108,7 @@ public class PotionBottleEffectEntity extends Entity {
             case TYPE_TOXIC -> tickToxic(sl);
             case TYPE_FROZEN -> tickFrozen(sl);
             case TYPE_INFERNO -> tickInferno(sl);
+            case TYPE_CYCLONE -> tickCyclone(sl);
             default -> this.discard();
         }
     }
@@ -195,6 +197,22 @@ public class PotionBottleEffectEntity extends Entity {
         }
         ticks++;
         if (ticks > 90) this.discard();
+    }
+
+    // ===== 飓风药剂瓶：白色粒子旋风柱（向上漂浮） =====
+
+    private void tickCyclone(ServerLevel sl) {
+        double x = getX(), y = getY(), z = getZ();
+        // 每 tick 在落点周围刷白色上升粒子
+        for (int i = 0; i < 3; i++) {
+            double ox = (sl.random.nextDouble() - 0.5) * 3.0;
+            double oz = (sl.random.nextDouble() - 0.5) * 3.0;
+            double oy = sl.random.nextDouble() * 2.0;
+            sl.sendParticles(ParticleTypes.WHITE_ASH, x + ox, y + oy, z + oz, 1, 0.1, 0.1, 0.1, 0.0);
+            sl.sendParticles(ParticleTypes.CLOUD, x + ox, y + oy, z + oz, 1, 0.2, 0.2, 0.2, 0.01);
+        }
+        ticks++;
+        if (ticks > 30) this.discard();
     }
 
     // ===== 辅助方法 =====

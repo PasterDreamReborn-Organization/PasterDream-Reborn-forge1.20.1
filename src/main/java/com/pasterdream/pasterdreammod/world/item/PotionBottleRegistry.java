@@ -11,6 +11,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -53,6 +54,7 @@ public class PotionBottleRegistry {
         registerBerserkBottleEffect();
         registerFrozenBottleEffect();
         registerInfernoBottleEffect();
+        registerCycloneBottleEffect();
     }
 
     /** 注册发射器行为 */
@@ -223,6 +225,44 @@ public class PotionBottleRegistry {
                     // 5 轮伤害波 (t=10,30,50,70,90)：由效果实体驱动
                     sl.addFreshEntity(new PotionBottleEffectEntity(sl,
                             hitPos.x, hitPos.y, hitPos.z, PotionBottleEffectEntity.TYPE_INFERNO, thrower));
+                });
+    }
+
+    // ===== 飓风药剂瓶 =====
+
+    private static void registerCycloneBottleEffect() {
+        PotionBottleItem.registerEffect(PotionBottleItem.TYPE_CYCLONE,
+                (stack, level, thrower, hitPos) -> {
+                    if (!(level instanceof ServerLevel sl)) return;
+
+                    double x = hitPos.x, y = hitPos.y, z = hitPos.z;
+
+                    // t=0: 风爆音效 + 白色粒子爆发
+                    sl.playSound(null, x, y, z,
+                            SoundEvents.SPLASH_POTION_BREAK, SoundSource.NEUTRAL,
+                            1.0F, 1.0F);
+                    sl.sendParticles(ParticleTypes.CLOUD, x, y + 1, z, 64, 3.0, 1.0, 3.0, 0.02);
+                    sl.sendParticles(ParticleTypes.END_ROD, x, y + 1, z, 24, 3.0, 2.0, 3.0, 0.02);
+
+                    // 8x8 范围内除玩家外、且不免疫摔落伤害的实体抛飞约60格
+                    double r = 4.0;
+                    sl.getEntitiesOfClass(LivingEntity.class,
+                            new AABB(x - r, y - r, z - r, x + r, y + r, z + r),
+                            e -> !(e instanceof Player) && !e.getType().is(EntityTypeTags.FALL_DAMAGE_IMMUNE))
+                            .forEach(e -> {
+                                e.setDeltaMovement(
+                                        (sl.random.nextDouble() - 0.5) * 0.6,
+                                        3.2,
+                                        (sl.random.nextDouble() - 0.5) * 0.6);
+                                e.hurtMarked = true;
+                                int brokenWingLevel = Math.max(1, Math.min((int) (e.getMaxHealth() / 20.0F), 5));
+                                e.addEffect(new MobEffectInstance(
+                                        ModEffects.BROKEN_WING.get(), 200, brokenWingLevel - 1));
+                            });
+
+                    // 白色粒子旋风柱（向上漂浮）：由效果实体驱动
+                    sl.addFreshEntity(new PotionBottleEffectEntity(sl,
+                            x, y, z, PotionBottleEffectEntity.TYPE_CYCLONE, thrower));
                 });
     }
 }

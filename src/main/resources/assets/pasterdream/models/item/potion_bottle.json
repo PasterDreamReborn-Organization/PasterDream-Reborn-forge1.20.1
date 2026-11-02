@@ -5,6 +5,7 @@
   },
   "overrides": [
     { "predicate": { "pasterdream:type": 0.332 }, "model": "pasterdream:item/potion_bottle_of_rejuvenation" },
+    { "predicate": { "pasterdream:type": 0.363 }, "model": "pasterdream:item/potion_bottle_of_cyclone" },
     { "predicate": { "pasterdream:type": 0.471 }, "model": "pasterdream:item/potion_bottle_of_highly_toxic" },
     { "predicate": { "pasterdream:type": 0.632 }, "model": "pasterdream:item/potion_bottle_of_frozen" },
     { "predicate": { "pasterdream:type": 0.711 }, "model": "pasterdream:item/potion_bottle_of_inferno" },
