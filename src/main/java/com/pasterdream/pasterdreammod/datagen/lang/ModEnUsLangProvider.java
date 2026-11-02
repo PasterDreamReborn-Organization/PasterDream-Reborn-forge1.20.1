@@ -2291,6 +2291,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("item.pasterdream.potion_bottle.lightning", "Potion Bottle of Lightning");
         add("item.pasterdream.potion_bottle.rejuvenation", "Potion Bottle of Rejuvenation");
         add("item.pasterdream.potion_bottle.inferno", "Potion Bottle of Inferno");
+        add("item.pasterdream.potion_bottle.cyclone", "Potion Bottle of Cyclone");
         add("effect.pasterdream.highly_toxic", "Highly Toxic");
         add("tooltip.pasterdream.potion_bottle.highly_toxic.description","§9After Smashing, release a highly toxic cloud, inflicting Highly Toxic, Slowness, and Weakness buff on all creatures in a 6x6 area.");
         add("tooltip.pasterdream.potion_bottle.lightning.description.1","§9After Smashing, release a dark cloud at the landing spot, and after a short time, randomly strikes lightning 4 times within a 5x5 area.");
@@ -2302,9 +2303,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.potion_bottle.berserk.description.2","§9Players in it +20% attack damage, +10% movement speed, +50% attack speed, -30% skill cooldown, -30% blink cooldown, and +30% skill damage.");
         add("tooltip.pasterdream.potion_bottle.inferno.description.1","§9After smashing, create a blazing fire in a 6x6 area, dealing magic damage over time to all enemies within the range and igniting them.");
         add("tooltip.pasterdream.potion_bottle.inferno.description.2","§9Enemies hit will get a vulnerability debuff, up to 3 stacks.");
+        add("tooltip.pasterdream.potion_bottle.cyclone.description.1","§9After smashing, launches all entities except players within an 8*8 area at the landing spot into the air.");
+        add("tooltip.pasterdream.potion_bottle.cyclone.description.2","§9For every 20 max health, the entity gains 1 level of Broken Wing (up to 5), which increases fall damage by 50% per level.");
+        add("tooltip.pasterdream.potion_bottle.cyclone.description.3","§7§o--粉骨砕身カジノゥ");
         add("effect.pasterdream.berserk", "Frenzy");
         add("effect.pasterdream.frozen", "Flash Freeze");
         add("effect.pasterdream.vulnerability", "Vulnerability");
+        add("effect.pasterdream.broken_wing", "Broken Wing");
 
 
         // Shadow Hand Lantern

@@ -197,7 +197,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.STONE_CRAFTING_MATERIALS)
                 .add(Items.CALCITE);
 
-        // 毒孢子箭作为原版弓/弩的弹药（BowItem/CrossbowItem 通过 minecraft:arrows 标签识别箭矢）
         tag(ItemTags.ARROWS)
                 .add(ModItems.TOXIC_SPORE_ARROW.get())
                 .add(ModItems.FRAGDREAM_ARROW.get())
@@ -327,6 +326,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         // 狐狸食物
         tag(ItemTags.FOX_FOOD)
                 .add(ModItems.DYEDREAM_FRUIT.get());
+
+        tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "fruits")))
+                .add(ModItems.DYEDREAM_FRUIT.get())
+                .add(ModItems.SLUMBER_PALM.get())
+                .add(ModItems.FIG.get());
 
         // 音乐唱片
         tag(ItemTags.MUSIC_DISCS)

@@ -94,6 +94,8 @@ public class ModEffects {
             EFFECTS.register("berserk",BerserkEffect::new);
     public static final RegistryObject<MobEffect> FROZEN =
             EFFECTS.register("frozen", FrozenEffect::new);
+    public static final RegistryObject<MobEffect> BROKEN_WING =
+            EFFECTS.register("broken_wing", BrokenWingEffect::new);
     public static final RegistryObject<MobEffect> VULNERABILITY =
             EFFECTS.register("vulnerability", VulnerabilityEffect::new);
     public static final RegistryObject<MobEffect> TAILWIND =
