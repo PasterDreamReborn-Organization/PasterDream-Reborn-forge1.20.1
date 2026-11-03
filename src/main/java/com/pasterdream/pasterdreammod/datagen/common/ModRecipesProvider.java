@@ -2948,6 +2948,14 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         ResourceLocation.fromNamespaceAndPath("forge", "glass_panes"))))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":martini_glass_from_glass_panes");
 
+        // 风羽草 + 眠椰 + 玻璃杯 -> 眠椰苏打水
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_CUP_OF_SLUMBER_PALM_CLUB_SODA.get(), 1)
+                .requires(ModItems.WIND_FEATHER_GRASS.get(), 1)
+                .requires(ModItems.SLUMBER_PALM.get(), 1)
+                .requires(ModItems.GLASS_CUP.get(), 1)
+                .unlockedBy(getHasName(ModItems.SLUMBER_PALM.get()), has(ModItems.SLUMBER_PALM.get()))
+                .save(pWriter);
+
         // 2*马天尼杯 + 眠椰 + 盐 -> 2*海盐眠椰饮
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE.get(), 2)
                 .requires(ModItems.MARTINI_GLASS.get(), 2)

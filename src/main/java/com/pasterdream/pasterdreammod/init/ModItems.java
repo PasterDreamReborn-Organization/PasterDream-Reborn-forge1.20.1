@@ -669,8 +669,8 @@ public class ModItems {
     // ===== 眠椰系列 =====
     public static final RegistryObject<Item> MARTINI_GLASS = ITEMS.register("martini_glass", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SLUMBER_PALM = ITEMS.register("slumber_palm", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f).alwaysEat().build())));
-    public static final RegistryObject<Item> GLASS_CUP_OF_SLUMBER_PALM_CLUB_SODA = ITEMS.register("glass_cup_of_slumber_palm_club_soda", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f).alwaysEat().build())));
-    public static final RegistryObject<Item> MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE = ITEMS.register("martini_glass_of_sea_salt_slumber_palm_beverage", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f).alwaysEat().build())));
+    public static final RegistryObject<Item> GLASS_CUP_OF_SLUMBER_PALM_CLUB_SODA = ITEMS.register("glass_cup_of_slumber_palm_club_soda", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 0), 1.0f).nutrition(3).saturationMod(0.5f).alwaysEat().build())));
+    public static final RegistryObject<Item> MARTINI_GLASS_OF_SEA_SALT_SLUMBER_PALM_BEVERAGE = ITEMS.register("martini_glass_of_sea_salt_slumber_palm_beverage", () -> new PasterDreamDrinkItem(new PasterDreamDrinkAndFoodProperties().food(new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModEffects.COOK.get(), 600, 0), 1.0f).nutrition(3).saturationMod(0.5f).alwaysEat().build())));
 
     // ===== 食材系列 =====
     public static final RegistryObject<Item> FLOUR = ITEMS.register("flour",
