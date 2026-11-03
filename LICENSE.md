@@ -29,13 +29,20 @@ Copyright (c) 2026 PasterDream: Reborn Team (ShiLiuYinYu, 2884omgpy, Garam)
 
 以下行为**必须事先获得版权所有者书面许可**，否则禁止：
 
-- **附属模组**：制作、发布基于或扩展本模组内容的附属模组，包括但不限于复制本模组代码、资源或改动其机制。
+- **附属模组**：制作、发布基于或扩展本模组内容的附属模组，包括但不限于复制本模组代码、资源或改动其机制。除事先获得书面许可外，还必须满足下方第 3.1 条的名单登记要求。
 - **移植**：将本模组（或其任何部分）移植到其他 Minecraft 版本或模组加载器（Forge、NeoForge、Fabric、Quilt 等）。
 - **再分发修改版**：禁止修改代码后以任何形式再分发，包括所谓的"修复版""改进版"等。若出于玩法扩展等目的，请以**附属模组**的形式实现，并通过 Mixin 等技术在运行时修改，**不要修改模组本体**。发布资源包/光影包（其中可能包含翻译文件、物品/方块材质等）须经版权所有者书面许可。
 - **含本模组的地图出售**：出售使用、包含或展示本模组的地图、存档等制品，需事先获得书面许可。
 - **OC 二创**：对本模组剧情中的原创角色（OC）绫苒、青岚进行二次创作，需事先获得书面许可。
 
 许可申请方式：在本仓库 [GitHub Issues](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1/issues) 提出申请，或直接联系版权所有者。在获得明确书面答复前，请勿实施上述行为。
+
+### 3.1 附属模组授权名单与留档
+
+- **名单登记为必要条件**：附属模组必须由版权所有者或其授权维护者登记于[官方仓库](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1)维护的[已授权附属模组名单](AUTHORIZED_ADDONS.md)。**未列入该名单的附属模组，视为未取得有效授权**，即使持有单独的授权答复或授权文件，也不能替代名单登记。
+- **授权文件留档可选**：授权书、聊天记录、邮件等证明材料可按需留档或在名单中附链接，不强制提交或公开；未附授权文件不影响已获书面许可且列入名单的附属模组的授权效力，也不免除事先取得书面许可的要求。
+- **团队成员同样适用**：由本项目团队成员制作的附属模组也必须列入名单，团队成员身份不能替代授权登记。
+- **授权范围**：授权仅适用于名单中明确标识的附属项目及获准范围。列入名单不豁免本协议其他条款，也不自动授予美术资源的使用权；美术资源仍遵循 [LICENSE_ASSETS.md](src/main/resources/LICENSE_ASSETS.md)。
 
 ## 4. 内容规范
 
@@ -86,13 +93,20 @@ The following are **prohibited under all circumstances**; the copyright holder w
 
 The following **require prior written permission** from the copyright holder; without it, they are prohibited:
 
-- **Addon mods**: creating or distributing addons that extend or build upon this mod, including copying its code, assets, or modifying its mechanics.
+- **Addon mods**: creating or distributing addons that extend or build upon this mod, including copying its code, assets, or modifying its mechanics. In addition to prior written permission, addons must meet the registry requirement in Section 3.1 below.
 - **Ports**: porting the mod (or any part of it) to other Minecraft versions or mod loaders (Forge, NeoForge, Fabric, Quilt, etc.).
 - **Modified redistribution**: redistributing modified versions of the code is prohibited, including so-called "fixed" or "improved" versions. For gameplay extensions or similar purposes, please implement them as **addon mods** and modify behavior at runtime via Mixin or similar techniques — **do not modify the mod itself**. Publishing resource packs or shader packs (which may contain translation files, item/block textures, etc.) requires prior written permission from the copyright holder.
 - **Map sales**: selling maps, worlds, or other creations that use, include, or feature this mod requires prior written permission.
 - **OC derivative works**: creating derivative works of the original characters (OCs) 绫苒 and 青岚 in this mod's story requires prior written permission.
 
 To request permission, open an issue on the [GitHub repository](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1/issues) or contact the copyright holder. Do not proceed until you receive an explicit written reply.
+
+#### 3.1 Authorized Addon Registry and Optional Records
+
+- **Registration is mandatory**: an addon must be entered by the copyright holder or an authorized maintainer in the [Authorized Addons list](AUTHORIZED_ADDONS.md) maintained in the [official repository](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1). **An addon absent from that list is deemed to have no valid authorization**, even if it has a separate permission reply or authorization document; such materials do not replace registration.
+- **Archiving authorization documents is optional**: permission letters, chat records, emails, or other supporting materials may be archived or linked from the list, but their submission or publication is not required. The absence of an attached authorization document does not invalidate an addon that has written permission and is listed, nor does it waive the requirement to obtain prior written permission.
+- **Team members are subject to the same rule**: addons created by members of this project's team must also be listed; team membership does not replace authorization registration.
+- **Scope of authorization**: permission applies only to the addon project identified in the list and its approved scope. Listing does not waive any other license terms or automatically grant rights to use art assets, which remain subject to [LICENSE_ASSETS.md](src/main/resources/LICENSE_ASSETS.md).
 
 ### 4. Content Regulations
 
