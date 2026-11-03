@@ -2173,6 +2173,13 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                         .unlockedBy(getHasName(Items.COBBLESTONE), has(Items.COBBLESTONE)),
                 pWriter, "pebble");
 
+        // 雪球 = 原版雪球 + 小石子
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SNOWBALL_PEBBLE.get(), 1)
+                .requires(Items.SNOWBALL)
+                .requires(ModItems.PEBBLE.get())
+                .unlockedBy(getHasName(ModItems.PEBBLE.get()), has(ModItems.PEBBLE.get()))
+                .save(pWriter);
+
         // 小石子 → 圆石
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.COBBLESTONE, 1)
                 .pattern("aa")

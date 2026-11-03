@@ -28,6 +28,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.DYEDREAM_DUST_PIECE.get());
         basicItem(ModItems.AMBER_CANDY.get());
         basicItem(ModItems.PINK_SLIMEBALL.get());
+        withExistingParent(ModItems.SNOWBALL_PEBBLE.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", mcLoc("item/snowball"));
 
         basicItem(ModItems.MORTAR.get());
         basicItem(ModItems.FEATHER_PEN.get());

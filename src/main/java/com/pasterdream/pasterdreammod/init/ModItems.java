@@ -108,6 +108,7 @@ import com.pasterdream.pasterdreammod.world.item.StarWishRodItem;
 import com.pasterdream.pasterdreammod.world.item.ThermalDaggerItem;
 import com.pasterdream.pasterdreammod.world.entity.ThrownPinkEgg;
 import com.pasterdream.pasterdreammod.world.item.PebbleItem;
+import com.pasterdream.pasterdreammod.world.item.SnowballPebbleItem;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -1282,6 +1283,9 @@ public class ModItems {
     // ===== 小石子 =====
     public static final RegistryObject<Item> PEBBLE = ITEMS.register("pebble",
             () -> new PebbleItem(ModBlocks.PEBBLE.get(), new Item.Properties()));
+    // ===== 雪球（石子雪球） =====
+    public static final RegistryObject<Item> SNOWBALL_PEBBLE = ITEMS.register("snowball_pebble",
+            () -> new SnowballPebbleItem(new Item.Properties()));
     public static final RegistryObject<Item> SMALL_STONE_SPIRIT_BLOCK = ITEMS.register("small_stone_spirit_block",
             () -> new BlockItem(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), new Item.Properties()));
     // ===== 方解石锥 =====

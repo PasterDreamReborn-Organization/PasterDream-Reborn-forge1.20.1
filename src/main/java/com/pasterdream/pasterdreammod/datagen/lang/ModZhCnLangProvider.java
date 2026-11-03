@@ -16,6 +16,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add(ModBlocks.PEBBLE.get(), "小石子");
+        add(ModItems.SNOWBALL_PEBBLE.get(), "雪球");
         add(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), "小石堆");
         add("tooltip.pasterdream.pebble.throw", "§7右键投掷");
         add("tooltip.pasterdream.pebble.place", "§7潜行+右键放置");

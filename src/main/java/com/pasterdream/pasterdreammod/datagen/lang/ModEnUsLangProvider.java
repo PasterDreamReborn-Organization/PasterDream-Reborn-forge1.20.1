@@ -16,6 +16,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add(ModBlocks.PEBBLE.get(), "Pebble");
+        add(ModItems.SNOWBALL_PEBBLE.get(), "Snowball");
         add(ModBlocks.SMALL_STONE_SPIRIT_BLOCK.get(), "Small Stone Spirit Block");
         add("tooltip.pasterdream.pebble.throw", "§7Right-click to throw");
         add("tooltip.pasterdream.pebble.place", "§7Sneak + Right-click to place");
