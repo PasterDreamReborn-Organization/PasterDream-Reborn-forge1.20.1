@@ -969,7 +969,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdreammod.murakumo_kusanagi.4", "§7▪ §9每次挥砍向准心方向发射一枚毒刺射弹（每枚最多命中2个目标）");
         add("tooltip.pasterdreammod.murakumo_kusanagi.5", "§7▪ §9射弹沿椭圆轨道飞行，追踪3格内的目标");
         add("tooltip.pasterdreammod.murakumo_kusanagi.6", "§7▪ §9发射冷却：0.5秒");
-        add("tooltip.pasterdreammod.murakumo_kusanagi.7", "§7▪ §9射弹造成攻击力50%的魔法伤害（受锋利/亡灵杀手/截肢杀手/抢夺加成）");
+        add("tooltip.pasterdreammod.murakumo_kusanagi.7", "§7▪ §9射弹造成攻击力50%的魔法伤害");
         add("tooltip.pasterdreammod.murakumo_kusanagi.8", "§7▪ §9剧毒不会使目标低于1点生命");
         add("tooltip.pasterdreammod.murakumo_kusanagi.9", "§7▪ §9剧毒对亡灵、节肢与普通生物均生效");
         add("tooltip.pasterdreammod.desert_sword.1", "镶嵌：§7无");
