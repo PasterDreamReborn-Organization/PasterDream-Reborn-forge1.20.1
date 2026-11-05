@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 融梦水晶工具共享逻辑 —— 位于背包中时消耗融梦能量修复耐久。
  */
-final class MeltDreamToolHelper {
+public final class MeltDreamToolHelper {
 
     /**
      * 在背包中时每 10 tick 消耗 0.01 融梦能量修复 1 点耐久。

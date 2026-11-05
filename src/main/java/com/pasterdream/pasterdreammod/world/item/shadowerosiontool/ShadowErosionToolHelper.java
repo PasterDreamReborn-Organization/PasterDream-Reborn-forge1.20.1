@@ -18,7 +18,7 @@ import java.util.UUID;
 /**
  * 影蚀工具共享逻辑 —— 主手时附加 SAN 波动属性修正（原版为 -1.2）。
  */
-final class ShadowErosionToolHelper {
+public final class ShadowErosionToolHelper {
 
     private static final UUID SAN_VARIABILITY_UUID = UUID.fromString("daf6c47c-454a-48e4-a05d-4d7fb0deb673");
     private static final String SAN_VARIABILITY_NAME = "pasterdream.shadow_erosion.san_variability";

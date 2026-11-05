@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 炙焰金工具的共享逻辑 —— 右键急迫 + Tooltip。
  */
-final class MoltenGoldToolHelper {
+public final class MoltenGoldToolHelper {
 
     static InteractionResultHolder<ItemStack> use(Item item, Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
