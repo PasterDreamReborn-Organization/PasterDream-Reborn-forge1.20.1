@@ -1,5 +1,2 @@
-# 对生成文件禁用 autocrlf，它们始终以 LF 生成
-# 在此处添加任何额外的文件或路径，使 git 不再提示
-# 仅在换行符改变时文件已更改。
-src/generated/**/.cache/cache text eol=lf
-src/generated/**/*.json text eol=lf
+# 文本文件在工作区统一使用 CRLF；二进制文件由 Git 自动识别。
+* text=auto eol=crlf
