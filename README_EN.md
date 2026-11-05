@@ -20,7 +20,7 @@ This project is released with permission from the original author "Aerolite_Dust
 
 ## License
 
-- **Code**: [PDR License](LICENSE.md) — Free to play, include in modpacks, and study; addons require prior written permission and inclusion in the [Authorized Addons list](AUTHORIZED_ADDONS.md). Unlisted addons have no valid authorization; archiving authorization documents is optional. See the license for all other permission requirements and restrictions
+- **Project License**: [PDR License](LICENSE.md) — a custom (non-open-source) license covering the source code, documentation, and the use, distribution, addon creation, and related content publication of the mod. Free to play, include in modpacks, and study; addons require prior written permission and inclusion in the [Authorized Addons list](AUTHORIZED_ADDONS.md), even if implemented solely through Public API without copying any code or assets. Unlisted addons have no valid authorization; archiving authorization documents is optional. See the license for all other permission requirements and restrictions
 - **Art Assets**: [ARR](src/main/resources/LICENSE_ASSETS.md) — All Rights Reserved. Original mod assets copyright by the original author; rewrite team assets copyright by the rewrite team. See [Asset Manifest](src/main/resources/ASSETS_MANIFEST.md)
 
 ## Installation

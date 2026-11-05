@@ -24,7 +24,7 @@ This project is a community remake of 《帕斯特之梦》(PasterDream) for Min
 
 | Scope / 范围 | License / 协议 |
 |---|---|
-| Code / 代码 | MIT License |
+| Code / 代码 | PDR License（自定义协议，非开源）/ PDR License (custom, not open source) — 详见 [LICENSE.md](LICENSE.md) |
 | Art assets from the original mod / 原模组美术资源 | All Rights Reserved, copyright belongs to the original author 异星之尘 |
 
 ---
