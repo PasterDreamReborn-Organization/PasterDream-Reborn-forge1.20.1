@@ -30,7 +30,7 @@ import java.util.UUID;
  * <p>
  * 数值均为占位，待 runClient 原型调整（见 document/design/item/暗影合金工具.md）。
  */
-final class ShadowAlloyToolHelper {
+public final class ShadowAlloyToolHelper {
 
     // ==== 主手属性（继承自影蚀） ====
     private static final UUID SAN_VARIABILITY_UUID = UUID.fromString("daf6c47c-454a-48e4-a05d-4d7fb0deb673");
