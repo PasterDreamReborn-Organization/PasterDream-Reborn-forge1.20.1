@@ -4,9 +4,17 @@ PasterDream: Reborn Custom License (PDR License)
 
 Copyright (c) 2026 PasterDream: Reborn Team (ShiLiuYinYu, 2884omgpy, Garam)
 
-> 本协议适用于本项目的**代码与文档**。美术资源（纹理、模型、音效、粒子等）不适用本协议，其版权归原作者"异星之尘"(Aerolite_Dust) 及重写团队所有，采用保留所有权利（ARR）方式，详见 [LICENSE_ASSETS.md](src/main/resources/LICENSE_ASSETS.md)。
+> 本协议适用于本项目的**源代码与文档**，以及**对本模组的使用、分发、附属创作与相关内容发布行为**。美术资源的版权及复制、分发、修改许可另行适用 [LICENSE_ASSETS.md](src/main/resources/LICENSE_ASSETS.md)（保留所有权利 ARR，版权归原作者"异星之尘"(Aerolite_Dust) 及重写团队所有）；但本协议第 2 条（禁止行为）、第 4 条（内容规范）及其他关于使用行为的条款，同样适用于涉及这些美术资源的内容发布。
 
 ---
+
+## 0. 定义
+
+- **本模组**：PasterDream: Reborn 的官方发布版本及其源代码、文档与资源。
+- **公开 API（Public API）**：本模组明确对外提供、允许第三方调用或实现的接口，包括官方文档列明的类与方法、事件、注册扩展点、KubeJS 等脚本接口，以及数据包/资源包格式。**未被官方文档列明或在代码中标注为公开的部分，均不属于公开 API。**
+- **附属模组（Addon）**：与 Minecraft 及本模组一同加载运行，并在运行时扩展、修改或依赖本模组内容、机制、数据或实现的任何模组、插件、数据包、资源包或脚本。**是否复制本模组代码或资源，不影响其被认定为附属模组。**
+- **独立程序**：不以扩展或修改本模组为目的、不随 Minecraft 或本模组一同加载，仅通过公开 API（如外部数据查询、构建工具）访问本模组的独立软件。
+- **条款优先级**：本协议第 3 条优先于第 1 条。任何符合「附属模组」定义的作品，一律适用第 3 条，不因第 1 条「独立程序」的授权而豁免事先书面许可与名单登记要求。
 
 ## 1. 授权范围（无需事先许可即可）
 
@@ -15,7 +23,7 @@ Copyright (c) 2026 PasterDream: Reborn Team (ShiLiuYinYu, 2884omgpy, Garam)
 - **下载与游玩**：安装并使用本模组。
 - **整合包收录**：在整合包中分发**未经修改的官方发布版本**，建议标注模组来源。
 - **个人学习**：出于个人学习、研究目的阅读、分析或反编译代码。
-- **独立程序**：编写仅通过公开 API 依赖本模组、且未复制本模组代码或资源的独立程序。
+- **独立程序**：编写符合第 0 条「独立程序」定义、仅通过公开 API 依赖本模组的独立程序。**本条不适用于任何附属模组。**
 
 ## 2. 完全禁止（任何情况下均禁止）
 
@@ -29,7 +37,7 @@ Copyright (c) 2026 PasterDream: Reborn Team (ShiLiuYinYu, 2884omgpy, Garam)
 
 以下行为**必须事先获得版权所有者书面许可**，否则禁止：
 
-- **附属模组**：制作、发布基于或扩展本模组内容的附属模组，包括但不限于复制本模组代码、资源或改动其机制。除事先获得书面许可外，还必须满足下方第 3.1 条的名单登记要求。
+- **附属模组**：制作、发布基于或扩展本模组内容的附属模组，包括但不限于复制本模组代码、资源或改动其机制。**即使该附属模组仅通过公开 API 实现、未复制任何代码或资源，亦不例外。** 除事先获得书面许可外，还必须满足下方第 3.1 条的名单登记要求。
 - **移植**：将本模组（或其任何部分）移植到其他 Minecraft 版本或模组加载器（Forge、NeoForge、Fabric、Quilt 等）。
 - **再分发修改版**：禁止修改代码后以任何形式再分发，包括所谓的"修复版""改进版"等。若出于玩法扩展等目的，请以**附属模组**的形式实现，并通过 Mixin 等技术在运行时修改，**不要修改模组本体**。发布资源包/光影包（其中可能包含翻译文件、物品/方块材质等）须经版权所有者书面许可。
 - **含本模组的地图出售**：出售使用、包含或展示本模组的地图、存档等制品，需事先获得书面许可。
@@ -70,7 +78,15 @@ Copyright (c) 2026 PasterDream: Reborn Team (ShiLiuYinYu, 2884omgpy, Garam)
 
 ## English Version
 
-This license applies to the **source code and documentation** of this project. Art assets (textures, models, sounds, particles, etc.) are **not** covered by this license; they belong to the original author "Aerolite_Dust" and the rewrite team under All Rights Reserved (ARR). See [LICENSE_ASSETS.md](src/main/resources/LICENSE_ASSETS.md).
+This license applies to the **source code and documentation** of this project, as well as to **use and distribution of the mod, addon creation, and publication of related content**. Copyright in, and permission to copy, distribute, or modify, art assets are governed separately by [LICENSE_ASSETS.md](src/main/resources/LICENSE_ASSETS.md) (All Rights Reserved; copyright belongs to the original author "Aerolite_Dust" and the rewrite team). However, Section 2 (prohibited conduct), Section 4 (content regulations), and the other provisions governing use also apply to publication of content involving those art assets.
+
+### 0. Definitions
+
+- **This mod**: the official releases of PasterDream: Reborn and their source code, documentation, and assets.
+- **Public API**: the interfaces this mod explicitly exposes for third-party use, including classes and methods listed in official documentation, events, registration extension points, script interfaces such as KubeJS, and data pack/resource pack formats. **Anything not listed in official documentation or marked public in the code is not Public API.**
+- **Addon**: any mod, plugin, data pack, resource pack, or script that is loaded and run together with Minecraft and this mod and that extends, modifies, or depends on this mod's content, mechanics, data, or implementation at runtime. **Whether it copies this mod's code or assets does not affect its classification as an addon.**
+- **Independent program**: standalone software that is not intended to extend or modify this mod, is not loaded together with Minecraft or this mod, and accesses this mod only through Public API (e.g., external data queries, build tooling).
+- **Order of precedence**: Section 3 prevails over Section 1. Any work meeting the definition of an addon is governed exclusively by Section 3 and is not exempted from prior written permission or registration by the "independent programs" grant in Section 1.
 
 ### 1. Granted Rights (no prior permission required)
 
@@ -79,7 +95,7 @@ Subject to full compliance with this license:
 - **Download and play**: install and use the mod.
 - **Modpack inclusion**: distribute **unmodified official releases** within modpacks (credit appreciated).
 - **Personal study**: read, analyze, or decompile the code for personal learning and research.
-- **Independent programs**: create standalone programs that only depend on the mod through public APIs and do not copy its code or assets.
+- **Independent programs**: create independent programs that meet the definition in Section 0 and depend on the mod only through Public API. **This clause does not apply to any addon.**
 
 ### 2. Absolutely Prohibited (no permission will be granted)
 
@@ -93,7 +109,7 @@ The following are **prohibited under all circumstances**; the copyright holder w
 
 The following **require prior written permission** from the copyright holder; without it, they are prohibited:
 
-- **Addon mods**: creating or distributing addons that extend or build upon this mod, including copying its code, assets, or modifying its mechanics. In addition to prior written permission, addons must meet the registry requirement in Section 3.1 below.
+- **Addon mods**: creating or distributing addons that extend or build upon this mod, including copying its code, assets, or modifying its mechanics. **This applies even if the addon is implemented solely through Public API and copies no code or assets.** In addition to prior written permission, addons must meet the registry requirement in Section 3.1 below.
 - **Ports**: porting the mod (or any part of it) to other Minecraft versions or mod loaders (Forge, NeoForge, Fabric, Quilt, etc.).
 - **Modified redistribution**: redistributing modified versions of the code is prohibited, including so-called "fixed" or "improved" versions. For gameplay extensions or similar purposes, please implement them as **addon mods** and modify behavior at runtime via Mixin or similar techniques — **do not modify the mod itself**. Publishing resource packs or shader packs (which may contain translation files, item/block textures, etc.) requires prior written permission from the copyright holder.
 - **Map sales**: selling maps, worlds, or other creations that use, include, or feature this mod requires prior written permission.
