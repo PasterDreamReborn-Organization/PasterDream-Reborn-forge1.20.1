@@ -2624,6 +2624,30 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy(getHasName(ModItems.SOUL_DUST.get()), has(ModItems.SOUL_DUST.get()))
                 .save(pWriter);
 
+        // 面粉：小麦 + 研钵（研钵作为工具不消耗）
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 1)
+                        .requires(ModItems.MORTAR.get())
+                        .requires(Items.WHEAT, 2)
+                        .unlockedBy(getHasName(Items.WHEAT), has(Items.WHEAT)),
+                pWriter, "flour_from_wheat");
+
+        // 面粉：野麦粒 + 研钵（研钵作为工具不消耗）
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 1)
+                        .requires(ModItems.MORTAR.get())
+                        .requires(ModItems.RYE_SEED.get(), 2)
+                        .unlockedBy(getHasName(ModItems.RYE_SEED.get()), has(ModItems.RYE_SEED.get())),
+                pWriter, "flour_from_rye_seed");
+
+        // 面粉：小麦种子 + 研钵（研钵作为工具不消耗）
+        saveMortarCrafting(
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 1)
+                        .requires(ModItems.MORTAR.get())
+                        .requires(Items.WHEAT_SEEDS, 4)
+                        .unlockedBy(getHasName(Items.WHEAT_SEEDS), has(Items.WHEAT_SEEDS)),
+                pWriter, "flour_from_wheat_seeds");
+
         // 药引瓶合成（研钵作为工具不消耗）
         saveMortarCrafting(
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLASS_JAR_OF_GUIDING_DRUG.get(), 2)
