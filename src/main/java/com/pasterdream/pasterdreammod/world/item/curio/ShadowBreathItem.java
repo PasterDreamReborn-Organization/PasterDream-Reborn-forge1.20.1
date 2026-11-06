@@ -37,7 +37,7 @@ public class ShadowBreathItem extends Item implements ICurioItem {
     /** 生命恢复效果即将到期（1 tick）时重新施加，保证恢复节奏不断档。 */
     private static final int REGEN_REFRESH_THRESHOLD = 1;
     /** 生命恢复等级对应的罗马数字显示名。 */
-    static final String[] REGEN_LEVELS = {"I", "II", "III"};
+    static final String[] REGEN_LEVELS = {"I", "II", "III", "IV"};
 
     static String getRegenLevelName(int regenTier) {
         return REGEN_LEVELS[regenTier];
@@ -71,7 +71,7 @@ public class ShadowBreathItem extends Item implements ICurioItem {
     /**
      * 根据当前理智比例刷新加成：
      * 理智 ≥ 50%：每增加 10% 理智，攻击力 +4%、魔法伤害 +4%（最高 +20%）；
-     * 理智 < 50%：每降低 10% 理智，护甲值 +2（最高 +10）；理智 ≤ 40% 时获得生命恢复 I，每降低 10% 理智，生命恢复 +1 级（最高 III）。
+     * 理智 < 50%：每降低 10% 理智，护甲值 +2（最高 +10）；同时获得生命恢复 I，每降低 10% 理智，生命恢复 +1 级（最高 IV）。
      * 理智系统使能关闭时不生效。
      */
     private static void updateState(LivingEntity entity) {
@@ -122,9 +122,9 @@ public class ShadowBreathItem extends Item implements ICurioItem {
         return ratio < 0.5 ? Math.min((int) ((0.5 - ratio) * 10.0), 5) : 0;
     }
 
-    /** 理智 ≤ 40%：每 -10% 理智 1 级，最高 3 级（生命恢复 III）；40% 以上无生命恢复。 */
+    /** 理智 < 50%：每 -10% 理智 1 级，最高 4 级（生命恢复 IV）；50% 及以上无生命恢复。 */
     static int getRegenTier(double ratio) {
-        return ratio <= 0.4 ? Math.min((int) ((0.4 - ratio) * 10.0), 2) : -1;
+        return ratio < 0.5 ? Math.min((int) ((0.5 - ratio) * 10.0), 3) : -1;
     }
 
     private static void setModifier(LivingEntity entity, Attribute attribute, UUID id, String name,

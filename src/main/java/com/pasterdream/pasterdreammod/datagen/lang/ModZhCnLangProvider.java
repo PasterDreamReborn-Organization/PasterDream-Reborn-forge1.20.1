@@ -1457,9 +1457,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.shadow_breath.2", "§9  攻击力+4%（最高+20%）");
         add("tooltip.pasterdream.shadow_breath.3", "§9  魔法伤害+4%（最高+20%）");
         add("tooltip.pasterdream.shadow_breath.4", "§7▪ §9理智<50%时：");
-        add("tooltip.pasterdream.shadow_breath.5", "§9  （理智≤40%获得生命恢复I）");
+        add("tooltip.pasterdream.shadow_breath.5", "§9  （获得生命恢复I）");
         add("tooltip.pasterdream.shadow_breath.6", "§9  每降低10%理智");
-        add("tooltip.pasterdream.shadow_breath.7", "§9  生命恢复等级+1（最高III）");
+        add("tooltip.pasterdream.shadow_breath.7", "§9  生命恢复等级+1（最高IV）");
         add("tooltip.pasterdream.shadow_breath.8", "§9  护甲值+2（最高+10）");
         add("tooltip.pasterdream.shadow_breath.hint", "§7按住[§rShift§7]键查看当前加成");
         add("tooltip.pasterdream.shadow_breath.current.header", "§7▪ §9当前加成：");
