@@ -1262,7 +1262,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.shadow_breath.2", "§9  Attack Damage +4% (max +20%)");
         add("tooltip.pasterdream.shadow_breath.3", "§9  Magic Damage +4% (max +20%)");
         add("tooltip.pasterdream.shadow_breath.4", "§7▪ §9When SAN < 50%:");
-        add("tooltip.pasterdream.shadow_breath.5", "§9  (Gain Regeneration I)");
+        add("tooltip.pasterdream.shadow_breath.5", "§9  (Gain Regeneration I when SAN ≤ 40%)");
         add("tooltip.pasterdream.shadow_breath.6", "§9  Every -10% SAN");
         add("tooltip.pasterdream.shadow_breath.7", "§9  Regeneration level +1 (max IV)");
         add("tooltip.pasterdream.shadow_breath.8", "§9  Armor +2 (max +10)");
