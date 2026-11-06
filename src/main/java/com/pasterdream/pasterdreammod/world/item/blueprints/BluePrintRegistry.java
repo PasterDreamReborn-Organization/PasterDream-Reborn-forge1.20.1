@@ -3,12 +3,12 @@ package com.pasterdream.pasterdreammod.world.item.blueprints;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class BluePrintRegistry
 {
-    private static final Map<String,BluePrintInfo> BLUE_PRINTS = new HashMap<>();
+    private static final Map<String,BluePrintInfo> BLUE_PRINTS = new ConcurrentHashMap<>();
 
     public static void register(String contentName, Component title, ResourceLocation materialNBT, ResourceLocation resultNBT)
     {

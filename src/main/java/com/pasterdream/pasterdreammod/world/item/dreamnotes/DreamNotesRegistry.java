@@ -2,12 +2,12 @@ package com.pasterdream.pasterdreammod.world.item.dreamnotes;
 
 import net.minecraft.resources.ResourceLocation;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DreamNotesRegistry
 {
-    private static final Map<String, DreamNotesInfo> NOTES = new HashMap<>();
+    private static final Map<String, DreamNotesInfo> NOTES = new ConcurrentHashMap<>();
 
     public static void register(String content, int width, int height, ResourceLocation texture)
     {
