@@ -5,10 +5,13 @@ import com.pasterdream.pasterdreammod.world.entity.arrows.behavior.ArrowBehavior
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -38,6 +41,8 @@ public abstract class TrailArrowEntity extends Arrow {
     private static final double MIN_SAMPLE_DISTANCE_SQR = 1.0E-6;
     /** 落地后经过该 tick 数清空拖尾 */
     private static final int GROUND_TRAIL_LIFETIME = 20;
+    /** 光灵箭命中后的原版发光时长（tick） */
+    private static final int SPECTRAL_GLOW_DURATION = 200;
 
     /** 同步的弹药物品：武器强化后替换了实体类，仍需据此复现自定义箭矢特性。 */
     private static final EntityDataAccessor<ItemStack> DATA_AMMO_ITEM =
@@ -113,6 +118,9 @@ public abstract class TrailArrowEntity extends Arrow {
     @Override
     protected void doPostHurtEffects(LivingEntity target) {
         super.doPostHurtEffects(target);
+        if (!this.level().isClientSide && this.getAmmoItem().is(Items.SPECTRAL_ARROW)) {
+            target.addEffect(new MobEffectInstance(MobEffects.GLOWING, SPECTRAL_GLOW_DURATION, 0));
+        }
         ArrowBehaviors.get(this.getAmmoItem()).doPostHurtEffects(this, target);
     }
 

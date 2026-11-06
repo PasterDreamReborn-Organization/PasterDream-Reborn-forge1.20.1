@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.world.entity.TrailArrowEntity;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
 
 /**
  * 带拖尾箭实体的箭头模型渲染器基类。
@@ -17,6 +18,8 @@ public abstract class TrailArrowRenderer<T extends TrailArrowEntity> extends Arr
             ResourceLocation.withDefaultNamespace("textures/entity/projectiles/arrow.png");
     private static final ResourceLocation TIPPED_ARROW_TEXTURE =
             ResourceLocation.withDefaultNamespace("textures/entity/projectiles/tipped_arrow.png");
+    private static final ResourceLocation SPECTRAL_ARROW_TEXTURE =
+            ResourceLocation.withDefaultNamespace("textures/entity/projectiles/spectral_arrow.png");
 
     protected TrailArrowRenderer(EntityRendererProvider.Context context) {
         super(context);
@@ -24,6 +27,9 @@ public abstract class TrailArrowRenderer<T extends TrailArrowEntity> extends Arr
 
     @Override
     public ResourceLocation getTextureLocation(T entity) {
+        if (entity.getAmmoItem().is(Items.SPECTRAL_ARROW)) {
+            return SPECTRAL_ARROW_TEXTURE;
+        }
         ResourceLocation ammoTexture = ArrowProjectileTextures.get(entity.getAmmoItem());
         if (ammoTexture != null) {
             return ammoTexture;

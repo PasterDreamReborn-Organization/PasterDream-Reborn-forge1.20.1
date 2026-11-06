@@ -91,8 +91,8 @@ public class MeltDreamBowItem extends BowItem {
 
         if (!level.isClientSide) {
             AbstractArrow arrow;
-            if (empowered && !ammo.is(Items.SPECTRAL_ARROW)) {
-                // 强化射击改用带粉色拖尾的融梦箭实体（光谱箭保留原版发光行为）
+            if (empowered) {
+                // 强化射击统一使用融梦箭；光灵箭的命中发光由 TrailArrowEntity 保留
                 MeltDreamArrowEntity trailArrow = new MeltDreamArrowEntity(level, player);
                 trailArrow.setEffectsFromItem(ammo);
                 trailArrow.setAmmoItem(ammo);

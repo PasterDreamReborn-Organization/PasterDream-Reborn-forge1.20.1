@@ -87,8 +87,8 @@ public class FluffyWindBowItem extends BowItem {
 
         if (!level.isClientSide) {
             AbstractArrow arrow;
-            if (empowered && !ammo.is(Items.SPECTRAL_ARROW)) {
-                // 强化射击改用不受重力的萦风箭实体（光谱箭保留原版发光行为）
+            if (empowered) {
+                // 强化射击统一使用萦风箭；光灵箭的命中发光由 TrailArrowEntity 保留
                 FluffyWindArrowEntity windArrow = new FluffyWindArrowEntity(level, player);
                 windArrow.setEffectsFromItem(ammo);
                 windArrow.setAmmoItem(ammo);

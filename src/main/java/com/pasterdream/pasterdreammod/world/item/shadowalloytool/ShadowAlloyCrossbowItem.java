@@ -280,10 +280,10 @@ public class ShadowAlloyCrossbowItem extends CrossbowItem {
 
     private static AbstractArrow createCrossbowArrow(Level level, LivingEntity shooter, ItemStack crossbow,
                                                      ItemStack projectile, boolean empowered) {
-        // 触发被动（暗影飞矢）的普通/药水箭使用带暗紫拖尾的自定义箭实体；
-        // 未触发被动（能量不足）或光谱箭保留原版实体（无拖尾；光谱箭以维持发光）。
+        // 触发被动的箭矢统一使用带暗紫拖尾的实体；光灵箭的命中发光由 TrailArrowEntity 保留。
+        // 未触发被动（能量不足）时保留原版实体。
         AbstractArrow arrow;
-        if (empowered && !projectile.is(Items.SPECTRAL_ARROW)) {
+        if (empowered) {
             ShadowAlloyArrowEntity trailArrow = new ShadowAlloyArrowEntity(level, shooter);
             trailArrow.setEffectsFromItem(projectile);
             trailArrow.setAmmoItem(projectile);
