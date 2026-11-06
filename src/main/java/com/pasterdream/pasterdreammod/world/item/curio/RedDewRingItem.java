@@ -58,6 +58,13 @@ public class RedDewRingItem extends Item implements ICurioItem {
         return stack;
     }
 
+    /**
+     * 根据等级返回增加的最大生命值：lv1 → 4, lv2 → 6, lv3 → 8, lv4 → 10
+     */
+    public static int getHealthBonus(int lv) {
+        return 2 * Math.max(lv, 1) + 2;
+    }
+
     @Override
     public Rarity getRarity(ItemStack stack) {
         int lv = getLv(stack);
@@ -73,7 +80,7 @@ public class RedDewRingItem extends Item implements ICurioItem {
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
         int lv = getLv(stack);
         list.add(Component.translatable("tooltip.pasterdream.lv", lv).withStyle(ChatFormatting.GREEN));
-        list.add(Component.translatable("tooltip.pasterdream.red_dew_ring.effect", lv).withStyle(ChatFormatting.BLUE));
+        list.add(Component.translatable("tooltip.pasterdream.red_dew_ring.effect", getHealthBonus(lv)).withStyle(ChatFormatting.BLUE));
         if (Screen.hasShiftDown()) {
             list.add(Component.translatable("tooltip.pasterdream.introduction.tooltip"));
             list.add(Component.translatable("tooltip.pasterdream.only_one.tooltip"));
@@ -99,16 +106,16 @@ public class RedDewRingItem extends Item implements ICurioItem {
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
         LivingEntity entity = slotContext.entity();
-        int lv = getLv(stack);
+        int bonus = getHealthBonus(getLv(stack));
         if (entity != null && !entity.level().isClientSide()) {
             var attr = entity.getAttribute(Attributes.MAX_HEALTH);
             if (attr != null) {
                 var existing = attr.getModifier(HEALTH_MODIFIER_UUID);
-                if (existing == null || existing.getAmount() != lv) {
+                if (existing == null || existing.getAmount() != bonus) {
                     attr.removeModifier(HEALTH_MODIFIER_UUID);
                     attr.addPermanentModifier(
                             new AttributeModifier(HEALTH_MODIFIER_UUID, "Red dew ring health",
-                                    lv, AttributeModifier.Operation.ADDITION));
+                                    bonus, AttributeModifier.Operation.ADDITION));
                 }
             }
         }
