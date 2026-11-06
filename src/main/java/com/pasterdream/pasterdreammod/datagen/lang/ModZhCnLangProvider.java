@@ -772,6 +772,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("jei.pasterdream.broken_hero_sword.info", "开启融梦水晶箱有概率获得。");
         add("jei.pasterdream.snow_vow_head.info", "开启融梦水晶箱有概率获得。\n也可在圣诞树岛开箱获取。");
         add("jei.pasterdream.kaichu_omamori.info", "与金狐狸交易获得。");
+        add("jei.pasterdream.shadow_breath.info", "能够在暗影地牢宝库获取。");
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "帕斯特之梦 | 饮食");
         add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "帕斯特之梦 | 灵药瓶");

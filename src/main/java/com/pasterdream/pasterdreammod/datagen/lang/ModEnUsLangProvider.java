@@ -762,6 +762,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("jei.pasterdream.broken_hero_sword.info", "Has a chance to be obtained by opening Melt Dream Crystal Chests.");
         add("jei.pasterdream.snow_vow_head.info", "Has a chance to be obtained by opening Melt Dream Crystal Chests.\nCan also be obtained from chests on the Christmas Tree Island.");
         add("jei.pasterdream.kaichu_omamori.info", "Obtained by trading with the Golden Fox.");
+        add("jei.pasterdream.shadow_breath.info", "Can be obtained from the Shadow Dungeon's repository layer.");
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "Paster Dream | Food & Drinks");
         add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "Paster Dream | Elixir Bottle");

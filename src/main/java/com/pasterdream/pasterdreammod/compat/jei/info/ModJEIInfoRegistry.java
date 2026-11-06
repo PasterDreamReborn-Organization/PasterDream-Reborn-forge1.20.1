@@ -59,5 +59,9 @@ public final class ModJEIInfoRegistry
         registration.addItemStackInfo(
                 new ItemStack(ModItems.KAICHU_OMAMORI.get()),
                 Component.translatable("jei.pasterdream.kaichu_omamori.info"));
+        // 暗影之息：可在暗影地牢宝库获取
+        registration.addItemStackInfo(
+                new ItemStack(ModItems.SHADOW_BREATH.get()),
+                Component.translatable("jei.pasterdream.shadow_breath.info"));
     }
 }

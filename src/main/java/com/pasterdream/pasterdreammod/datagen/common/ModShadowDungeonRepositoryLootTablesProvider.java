@@ -136,10 +136,6 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.SHADOW_BREATH.get())
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CALAIS_SPICE_BOTTLE.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -148,6 +144,7 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                         .setWeight(60))
                         )
                         .withPool(createShadowAlloyPool())
+                        .withPool(createShadowBreathPool())
         );
 
         consumer.accept(
@@ -238,10 +235,6 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
                                                 ConstantValue.exactly(1.0F))))
-                                .add(LootItem.lootTableItem(ModItems.SHADOW_BREATH.get())
-                                        .setWeight(2)
-                                        .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CALAIS_SPICE_BOTTLE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -259,6 +252,7 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                         .setWeight(8))
                         )
                         .withPool(createShadowAlloyPool())
+                        .withPool(createShadowBreathPool())
         );
 
         consumer.accept(
@@ -336,7 +330,20 @@ public class ModShadowDungeonRepositoryLootTablesProvider implements LootTableSu
                                 .add(EmptyLootItem.emptyItem()
                                         .setWeight(10))
                         )
+                        .withPool(createShadowBreathPool())
         );
+    }
+
+    private static LootPool.Builder createShadowBreathPool() {
+        return LootPool.lootPool()
+                .setBonusRolls(ConstantValue.exactly(0.0F))
+                .setRolls(ConstantValue.exactly(1.0F))
+                .add(LootItem.lootTableItem(ModItems.SHADOW_BREATH.get())
+                        .setWeight(1)
+                        .apply(SetItemCountFunction.setCount(
+                                ConstantValue.exactly(1.0F))))
+                .add(EmptyLootItem.emptyItem()
+                        .setWeight(99));
     }
 
     private static LootPool.Builder createShadowAlloyPool() {
