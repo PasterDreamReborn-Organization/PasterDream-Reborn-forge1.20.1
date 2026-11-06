@@ -7,12 +7,12 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ModCropRelation
 {
-    private static final Map<Block, CropBindingContent> BINDINGS = new HashMap<>();
+    private static final Map<Block, CropBindingContent> BINDINGS = new ConcurrentHashMap<>();
 
     public static void register(Block cropBlock, CropBindingContent binding)
     {
