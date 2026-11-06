@@ -44,7 +44,7 @@ public class ShadowBreathItem extends Item implements ICurioItem {
     }
 
     public ShadowBreathItem() {
-        super(new Item.Properties().stacksTo(1).rarity(ModRarities.SUPERIOR));
+        super(new Item.Properties().stacksTo(1).rarity(ModRarities.ANCIENT));
     }
 
     @Override
