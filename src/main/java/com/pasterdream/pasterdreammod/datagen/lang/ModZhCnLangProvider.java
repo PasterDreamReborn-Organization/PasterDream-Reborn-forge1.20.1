@@ -1762,6 +1762,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("content.pasterdream.book.进度:", "进度:");
         add("button.pasterdream.提交", "提交");
         add("button.pasterdream.此笔记尚未解锁", "此笔记尚未解锁");
+        add("task.pasterdream.阅读30本染梦世界寻梦者笔记", "阅读30本染梦世界寻梦者笔记");
+        add("task.pasterdream.阅读16本灯影之下寻梦者笔记", "阅读16本灯影之下寻梦者笔记");
+        add("task.pasterdream.击杀200个暗影生物", "击杀200个暗影生物");
+        add("task.pasterdream.阅读6本风之旅途寻梦者笔记", "阅读6本风之旅途寻梦者笔记");
+        add("task.pasterdream.完成天使的心跳挑战", "完成天使的心跳挑战");
+        add("task.pasterdream.提交物品:", "提交物品:");
+        add("task.pasterdream.已完成", "已完成");
 
         add(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get(), "魔法使的灵魂石");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.1", "§7\"我将我遗留的魔法赠予你，让它替我与你同行，见证你所见的梦幻\"");

@@ -49,47 +49,89 @@ public class PasterDreamPlayerDreamNoteProgressData
 
     public static List<Boolean> getProgressData(Player player, String dimension)
     {
-        CompoundTag persistentData = player.getPersistentData();
         List<String> singleDimensionBooks = DreamNotesBookProgressRegistry.getNotesByDimension(dimension);
         List<Boolean> progressData = new ArrayList<>(Collections.nCopies(singleDimensionBooks.size(), Boolean.FALSE));
 
-        if(persistentData.contains("pasterdream_player_dream_note_progress_data", Tag.TAG_COMPOUND))
+        CompoundTag singleDimension = getSingleDimensionCompoundTag(player, dimension);
+
+        if(singleDimension.getString("dimension").equals(dimension))
         {
-            CompoundTag compoundTag = persistentData.getCompound("pasterdream_player_dream_note_progress_data");
-            if(compoundTag.contains("progress"))
+            ListTag singleDimensionProgress = singleDimension.getList("single_dimension_progress", Tag.TAG_COMPOUND);
+            for(int j = 0; j < singleDimensionBooks.size(); j++)
             {
-                ListTag progress = compoundTag.getList("progress", Tag.TAG_COMPOUND);
-
-                for(int i = 0; i < progress.size(); i++)
+                boolean singleProgress = false;
+                for(int k = 0; k < singleDimensionProgress.size(); k++)
                 {
-                    CompoundTag singleDimension = progress.getCompound(i);
-                    if(singleDimension.getString("dimension").equals(dimension))
-                    {
-                        ListTag singleDimensionProgress = singleDimension.getList("single_dimension_progress", Tag.TAG_COMPOUND);
-                        for(int j = 0; j < singleDimensionBooks.size(); j++)
-                        {
-                            boolean singleProgress = false;
-                            for(int k = 0; k < singleDimensionProgress.size(); k++)
-                            {
-                                CompoundTag singleProgressCompoundTag = singleDimensionProgress.getCompound(k);
+                    CompoundTag singleProgressCompoundTag = singleDimensionProgress.getCompound(k);
 
-                                if(singleProgressCompoundTag.getString("name").equals(singleDimensionBooks.get(j)))
-                                {
-                                    singleProgress = singleProgressCompoundTag.getBoolean("is_read");
-                                    break;
-                                }
-                            }
-                            progressData.set(j, singleProgress);
-                        }
+                    if(singleProgressCompoundTag.getString("name").equals(singleDimensionBooks.get(j)))
+                    {
+                        singleProgress = singleProgressCompoundTag.getBoolean("is_read");
                         break;
                     }
                 }
+                progressData.set(j, singleProgress);
             }
         }
         return progressData;
     }
 
     public static void setProgressData(Player player, String dimension, String dreamNotesName, boolean isRead)
+    {
+        CompoundTag singleDimension = getSingleDimensionCompoundTag(player, dimension);
+
+        ListTag singleDimensionProgress;
+        if(singleDimension.contains("single_dimension_progress"))
+        {
+            singleDimensionProgress = singleDimension.getList("single_dimension_progress", Tag.TAG_COMPOUND);
+        }
+            else
+            {
+                singleDimensionProgress = new ListTag();
+                singleDimension.put("single_dimension_progress", singleDimensionProgress);
+            }
+
+        CompoundTag singleProgress = null;
+        for(int i = 0; i < singleDimensionProgress.size(); i++)
+        {
+            CompoundTag singleProgressBuffer = singleDimensionProgress.getCompound(i);
+            if(singleProgressBuffer.contains("name") && singleProgressBuffer.getString("name").equals(dreamNotesName))
+            {
+                singleProgress = singleProgressBuffer;
+                break;
+            }
+        }
+
+        if(singleProgress == null)
+        {
+            singleProgress = new CompoundTag();
+            singleProgress.putString("name", dreamNotesName);
+            singleDimensionProgress.add(singleProgress);
+        }
+
+        singleProgress.putBoolean("is_read", isRead);
+    }
+
+    public static boolean getTaskStatus(Player player, String dimension)
+    {
+        CompoundTag singleDimension = getSingleDimensionCompoundTag(player, dimension);
+
+        if(singleDimension.getString("dimension").equals(dimension))
+        {
+            if(singleDimension.contains("task_progress"))
+            {
+                return singleDimension.getBoolean("task_progress");
+            }
+        }
+        return false;
+    }
+
+    public static void setTaskStatus(Player player, String dimension, boolean status)
+    {
+        getSingleDimensionCompoundTag(player, dimension).putBoolean("task_progress", status);
+    }
+
+    public static CompoundTag getSingleDimensionCompoundTag(Player player, String dimension)
     {
         CompoundTag persistentData = player.getPersistentData();
 
@@ -133,35 +175,6 @@ public class PasterDreamPlayerDreamNoteProgressData
             progress.add(singleDimension);
         }
 
-        ListTag singleDimensionProgress;
-        if(singleDimension.contains("single_dimension_progress"))
-        {
-            singleDimensionProgress = singleDimension.getList("single_dimension_progress", Tag.TAG_COMPOUND);
-        }
-            else
-            {
-                singleDimensionProgress = new ListTag();
-                singleDimension.put("single_dimension_progress", singleDimensionProgress);
-            }
-
-        CompoundTag singleProgress = null;
-        for(int i = 0; i < singleDimensionProgress.size(); i++)
-        {
-            CompoundTag singleProgressBuffer = singleDimensionProgress.getCompound(i);
-            if(singleProgressBuffer.contains("name") && singleProgressBuffer.getString("name").equals(dreamNotesName))
-            {
-                singleProgress = singleProgressBuffer;
-                break;
-            }
-        }
-
-        if(singleProgress == null)
-        {
-            singleProgress = new CompoundTag();
-            singleProgress.putString("name", dreamNotesName);
-            singleDimensionProgress.add(singleProgress);
-        }
-
-        singleProgress.putBoolean("is_read", isRead);
+        return singleDimension;
     }
 }
