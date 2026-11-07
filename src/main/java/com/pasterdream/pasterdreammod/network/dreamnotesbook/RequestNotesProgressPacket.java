@@ -2,11 +2,16 @@ package com.pasterdream.pasterdreammod.network.dreamnotesbook;
 
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.playerdata.PasterDreamPlayerDreamNoteProgressData;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.IPasterDreamDimensionTask;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.IPasterDreamSingleTask;
+import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookProgressRegistry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.PacketDistributor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -38,7 +43,24 @@ public class RequestNotesProgressPacket
             if (player != null)
             {
                 List<Boolean> progressData = PasterDreamPlayerDreamNoteProgressData.getProgressData(player, message.dimension);
-                ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new NotesProgressResponsePacket(message.dimension, progressData));
+                IPasterDreamDimensionTask dimensionTask = DreamNotesBookProgressRegistry.getTaskByDimension(message.dimension);
+                List<Double> taskProgress = new ArrayList<>();
+                List<Double> taskMaxProgress = new ArrayList<>();
+                ItemStack needUploadItemStack = ItemStack.EMPTY;
+                boolean isCompleteThisDimensionTasks = false;
+
+                if(dimensionTask != null)
+                {
+                    for(IPasterDreamSingleTask singleTask : dimensionTask.getAllTasks(player))
+                    {
+                        taskProgress.add(singleTask.getTaskProgress(player));
+                        taskMaxProgress.add(singleTask.getTaskMaxProgress(player));
+                    }
+                    needUploadItemStack = dimensionTask.getUploadItemStack(player);
+                    isCompleteThisDimensionTasks = PasterDreamPlayerDreamNoteProgressData.getTaskStatus(player, message.dimension);
+                }
+
+                ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new NotesProgressResponsePacket(message.dimension, progressData, taskProgress, taskMaxProgress, needUploadItemStack, isCompleteThisDimensionTasks));
             }
         });
         context.setPacketHandled(true);

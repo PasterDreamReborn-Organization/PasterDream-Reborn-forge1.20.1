@@ -1,6 +1,9 @@
 package com.pasterdream.pasterdreammod.init;
 
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.dyedreamworld.DyedreamWorldTask;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.lampshadowworld.LampShadowWorldTask;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.windjourneyworld.WindJourneyWorldTask;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookProgressRegistry;
 
 public class ModDreamNotesBookProgressRelation
@@ -17,10 +20,10 @@ public class ModDreamNotesBookProgressRelation
         DreamNotesBookProgressRegistry.dimensionListRegister(LAMP_SHADOW_WORLD);
         DreamNotesBookProgressRegistry.dimensionListRegister(WIND_JOURNEY_WORLD);
 
-        DreamNotesBookProgressRegistry.dimensionGUIRegister(OVERWORLD, GUIBackGroundRender.DREAM_NOTES_BOOK_OVERWORLD_GUI);
-        DreamNotesBookProgressRegistry.dimensionGUIRegister(DYEDREAM_WORLD, GUIBackGroundRender.DREAM_NOTES_BOOK_DYEDREAM_WORLD_GUI);
-        DreamNotesBookProgressRegistry.dimensionGUIRegister(LAMP_SHADOW_WORLD, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI);
-        DreamNotesBookProgressRegistry.dimensionGUIRegister(WIND_JOURNEY_WORLD, GUIBackGroundRender.DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD_GUI);
+        DreamNotesBookProgressRegistry.dimensionInfoRegister(OVERWORLD, GUIBackGroundRender.DREAM_NOTES_BOOK_OVERWORLD_GUI, 0xFF000000, null);
+        DreamNotesBookProgressRegistry.dimensionInfoRegister(DYEDREAM_WORLD, GUIBackGroundRender.DREAM_NOTES_BOOK_DYEDREAM_WORLD_GUI, 0xFF000000, new DyedreamWorldTask());
+        DreamNotesBookProgressRegistry.dimensionInfoRegister(LAMP_SHADOW_WORLD, GUIBackGroundRender.DREAM_NOTES_BOOK_LAMP_SHADOW_WORLD_GUI, 0xFFFFFFFF, new LampShadowWorldTask());
+        DreamNotesBookProgressRegistry.dimensionInfoRegister(WIND_JOURNEY_WORLD, GUIBackGroundRender.DREAM_NOTES_BOOK_WIND_JOURNEY_WORLD_GUI, 0xFF000000, new WindJourneyWorldTask());
 
         DreamNotesBookProgressRegistry.notesDimensionRegister("探求秘辛", OVERWORLD);
 

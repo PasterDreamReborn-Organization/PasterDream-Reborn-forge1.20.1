@@ -1574,6 +1574,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("content.pasterdream.book.进度:", "Progress:");
         add("button.pasterdream.提交", "upload");
         add("button.pasterdream.此笔记尚未解锁", "this note is unlock");
+        add("task.pasterdream.阅读30本染梦世界寻梦者笔记", "Read 30 Dyedream World Dream Notes");
+        add("task.pasterdream.阅读16本灯影之下寻梦者笔记", "Read 16 Lamp Shadow World Dream Notes");
+        add("task.pasterdream.击杀200个暗影生物", "Kill 200 Shadow Mobs");
+        add("task.pasterdream.阅读6本风之旅途寻梦者笔记", "Read 6 Wind Journey World Dream Notes");
+        add("task.pasterdream.完成天使的心跳挑战", "Finish Angel Beats Advancement");
+        add("task.pasterdream.提交物品:", "Upload Item:");
+        add("task.pasterdream.已完成", "Is Finished");
 
         add(ModItems.SOUL_GEM_OF_AKIZUKI_AYANE.get(), "Soul Gem of Akizuki Ayane");
         add("tooltip.pasterdream.soul_gem_of_akizuki_ayane.1", "§7\"I bestow upon you my legacy magic, to walk beside you and witness the dreams you see\"");

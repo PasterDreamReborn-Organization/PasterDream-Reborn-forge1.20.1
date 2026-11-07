@@ -215,7 +215,7 @@ public class ShadowDungeonPortalTileEntity extends BlockEntity implements GeoBlo
 
                                 for(LivingEntity livingEntity : livingEntities)
                                 {
-                                    if(livingEntity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob"))))
+                                    if(livingEntity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_dungeon_mob"))))
                                     {
                                         livingEntity.discard();
                                     }

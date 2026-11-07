@@ -7,6 +7,8 @@ import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCe
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.network.dreamnotesbook.RequestNotesProgressPacket;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.IPasterDreamDimensionTask;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.IPasterDreamSingleTask;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookProgressRegistry;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookRegistry;
 import net.minecraft.client.gui.GuiGraphics;
@@ -15,9 +17,11 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class RebirthDreamCrystalScreen extends AbstractContainerScreen<RebirthDreamCrystalMenu>
 {
@@ -31,6 +35,10 @@ public class RebirthDreamCrystalScreen extends AbstractContainerScreen<RebirthDr
 
     private List<BookNameListButton> bookNameListButtons = new ArrayList<>();
 
+    private List<Double> taskProgress = new ArrayList<>();
+    private List<Double> taskMaxProgress = new ArrayList<>();
+    private ItemStack needUploadItemStack = ItemStack.EMPTY;
+    private boolean isCompleteThisDimensionTasks = false;
 
     public RebirthDreamCrystalScreen(RebirthDreamCrystalMenu menu, Inventory playerInventory, Component title)
     {
@@ -85,10 +93,38 @@ public class RebirthDreamCrystalScreen extends AbstractContainerScreen<RebirthDr
         renderBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
-        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 70, topPos + 155, (dreamNotesBookListPage + 1) + " / " + (singleDimensionsBooks.size() + 11) / 12, 0xFF000000);
-        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 155, (dimensionPage + 1) + " / " + allDimensions.size(), 0xFF000000);
-        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 135, Component.translatable("content.pasterdream.book.维度:").append(allDimensions.get(dimensionPage)).getString(), 0xFF000000);
-        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 145, Component.translatable("content.pasterdream.book.进度:").append(unlockCount + "/" + singleDimensionsBooks.size()).getString(), 0xFF000000);
+        int color = DreamNotesBookProgressRegistry.getColorByDimension(allDimensions.get(dimensionPage));
+        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 70, topPos + 155, (dreamNotesBookListPage + 1) + " / " + (singleDimensionsBooks.size() + 11) / 12, color);
+        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 155, (dimensionPage + 1) + " / " + allDimensions.size(), color);
+        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 135, Component.translatable("content.pasterdream.book.维度:").append(allDimensions.get(dimensionPage)).getString(), color);
+        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 145, Component.translatable("content.pasterdream.book.进度:").append(unlockCount + "/" + singleDimensionsBooks.size()).getString(), color);
+
+        IPasterDreamDimensionTask dimensionTask = DreamNotesBookProgressRegistry.getTaskByDimension(allDimensions.get(dimensionPage));
+        if(dimensionTask != null)
+        {
+            List<IPasterDreamSingleTask> tasks = dimensionTask.getAllTasks(null);
+            int allIndex = 0;
+            for(int i = 0; i < tasks.size(); i++)
+            {
+                if(taskProgress.size() > i && taskMaxProgress.size() > i)
+                {
+                    if(tasks.get(i).isTaskProgressShowWithIntOrDouble())
+                    {
+                        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 50 + i * 10, (tasks.get(i).getTaskName().getString() + ":" + String.format(Locale.ROOT, "%.0f", taskProgress.get(i)) + "/" + String.format(Locale.ROOT, "%.0f", taskMaxProgress.get(i))), color);
+                    }
+                        else
+                        {
+                            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 50 + i * 10, (tasks.get(i).getTaskName().getString() + ":" + taskProgress.get(i) + "/" + taskMaxProgress.get(i)), color);
+                        }
+                }
+                allIndex = i;
+            }
+            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 60 + allIndex * 10, (Component.translatable("task.pasterdream.提交物品:").getString() + needUploadItemStack.getItem().getDescription().getString()), color);
+            if(isCompleteThisDimensionTasks)
+            {
+                NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 70 + allIndex * 10, (Component.translatable("task.pasterdream.已完成").getString()), 0xFF7FFF7F);
+            }
+        }
     }
 
     @Override
@@ -187,13 +223,17 @@ public class RebirthDreamCrystalScreen extends AbstractContainerScreen<RebirthDr
         ModNetwork.CHANNEL.sendToServer(new RequestNotesProgressPacket(allDimensions.get(dimensionPage)));
     }
 
-    public void onNotesProgressReceived(String dimension, List<Boolean> singleDimensionProgress)
+    public void onNotesProgressReceived(String dimension, List<Boolean> singleDimensionProgress, List<Double> taskProgress, List<Double> taskMaxProgress, ItemStack needUploadItemStack, boolean isCompleteThisDimensionTasks)
     {
         if (allDimensions.get(dimensionPage).equals(dimension))
         {
             this.singleDimensionProgress = singleDimensionProgress;
             refreshBookListPreview();
             unlockCount = (int)(singleDimensionProgress.stream().filter(Boolean.TRUE::equals).count());
+            this.taskProgress = taskProgress;
+            this.taskMaxProgress = taskMaxProgress;
+            this.needUploadItemStack = needUploadItemStack;
+            this.isCompleteThisDimensionTasks = isCompleteThisDimensionTasks;
         }
     }
 

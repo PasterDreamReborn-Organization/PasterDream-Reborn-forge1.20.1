@@ -1,0 +1,33 @@
+package com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.windjourneyworld;
+
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.playerdata.PasterDreamPlayerDreamNoteProgressData;
+import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.IPasterDreamSingleTask;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
+
+public class Read6WindJourneyWorldDreamNotes implements IPasterDreamSingleTask
+{
+    @Override
+    public Component getTaskName()
+    {
+        return Component.translatable("task.pasterdream.阅读6本风之旅途寻梦者笔记");
+    }
+
+    @Override
+    public boolean isTaskProgressShowWithIntOrDouble()
+    {
+        return true;
+    }
+
+    @Override
+    public double getTaskProgress(Player player)
+    {
+        return PasterDreamPlayerDreamNoteProgressData.getProgressData(player, "wind_journey_world").stream().filter(Boolean.TRUE::equals).count();
+    }
+
+    @Override
+    public double getTaskMaxProgress(Player player)
+    {
+        return 6;
+    }
+}
