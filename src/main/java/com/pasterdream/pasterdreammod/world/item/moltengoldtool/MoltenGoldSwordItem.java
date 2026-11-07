@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 炙焰金剑 —— 命中时点燃目标 3 秒。
  */
-public class MoltenGoldSwordItem extends SwordItem {
+public class MoltenGoldSwordItem extends SwordItem implements MoltenGoldTool {
 
     public MoltenGoldSwordItem(Tier tier, int damage, float speed, Properties properties) {
         super(tier, damage, speed, properties.fireResistant());

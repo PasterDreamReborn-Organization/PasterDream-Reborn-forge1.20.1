@@ -38,7 +38,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * <p>
  * 与融梦水晶工具一样自带「融梦修补」（在背包中消耗融梦能量修复耐久）。
  */
-public class MeltDreamBowItem extends BowItem {
+public class MeltDreamBowItem extends BowItem implements MeltDreamTool {
 
     /** 单次强化射击消耗的融梦能量 */
     private static final double ENERGY_COST = 0.2;

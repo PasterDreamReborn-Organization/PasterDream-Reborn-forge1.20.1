@@ -7,7 +7,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class MeltDreamHoeItem extends HoeItem {
+public class MeltDreamHoeItem extends HoeItem implements MeltDreamTool {
 
     public MeltDreamHoeItem(Tier tier, int damage, float speed, Properties properties) {
         super(tier, damage, speed, properties.fireResistant());
