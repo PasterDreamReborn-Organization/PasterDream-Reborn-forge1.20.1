@@ -730,7 +730,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(ModBlockTags.SHADOW_PLANTS_CAN_PLACE_ON)
                 .add(ModBlocks.SHADOW_NYLIUM.get())
                 .add(Blocks.CRIMSON_NYLIUM)
-                .add(Blocks.WARPED_NYLIUM);
+                .add(Blocks.WARPED_NYLIUM)
+                .add(Blocks.MYCELIUM);
 
         tag(BlockTags.VALID_SPAWN)
                 .add(ModBlocks.SHADOW_NYLIUM.get())
