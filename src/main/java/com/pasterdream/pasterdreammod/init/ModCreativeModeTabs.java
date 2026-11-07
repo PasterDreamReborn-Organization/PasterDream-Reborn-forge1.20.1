@@ -49,6 +49,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GLASS_JAR_OF_MILK.get());
                         output.accept(ModItems.GLASS_JAR_OF_YEAST.get());
                         output.accept(ModItems.GLASS_JAR_OF_GUIDING_DRUG.get());
+                        output.accept(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get());
                         output.accept(ModItems.DOUGH.get());
                         output.accept(ModItems.DOUGH_WITH_EGG.get());
                         output.accept(ModItems.BREAD_SLICE.get());
@@ -210,7 +211,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FLOUR.get());
                         output.accept(ModItems.SALT.get());
                         output.accept(ModItems.COARSE_SALT.get());
-                        output.accept(ModItems.GLASS_JAR_OF_WIND_PLANT_EXTRACT.get());
                         output.accept(ModItems.MELT_DREAM_LIQUID_BUCKET.get());
                         output.accept(ModItems.SHADOW_LIQUID_BUCKET.get());
                         output.accept(ModItems.GLASS_JAR_OF_INK.get());
