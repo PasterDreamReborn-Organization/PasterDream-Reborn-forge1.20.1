@@ -3,7 +3,6 @@ package com.pasterdream.pasterdreammod.helper.fluidcontainercapability;
 import com.pasterdream.pasterdreammod.helper.potionhelper.GenericMobEffect;
 import com.pasterdream.pasterdreammod.helper.potionhelper.PotionHelper;
 import com.pasterdream.pasterdreammod.init.ModFluids;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -14,22 +13,22 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class FluidContainerRegistry
 {
-    private static final Map<Item, ContainerEntry> EMPTY_TO_FILL = new HashMap<>();
-    private static final Map<Item, ContainerEntry> FILL_TO_EMPTY = new HashMap<>();
-    private static final Map<Item, Map<Fluid, ContainerEntry>> EMPTY_FLUID_TO_ENTRY = new HashMap<>();
+    private static final Map<Item, ContainerEntry> EMPTY_TO_FILL = new ConcurrentHashMap<>();
+    private static final Map<Item, ContainerEntry> FILL_TO_EMPTY = new ConcurrentHashMap<>();
+    private static final Map<Item, Map<Fluid, ContainerEntry>> EMPTY_FLUID_TO_ENTRY = new ConcurrentHashMap<>();
 
     public static void register(Item emptyItem, Fluid fluid, int amount, Item filledItem)
     {
         ContainerEntry entry = new ContainerEntry(new ItemStack(emptyItem), new FluidStack(fluid, amount), new ItemStack(filledItem));
         EMPTY_TO_FILL.put(emptyItem, entry);
         FILL_TO_EMPTY.put(filledItem, entry);
-        EMPTY_FLUID_TO_ENTRY.computeIfAbsent(emptyItem, item -> new HashMap<>()).put(fluid, entry);
+        EMPTY_FLUID_TO_ENTRY.computeIfAbsent(emptyItem, item -> new ConcurrentHashMap<>()).put(fluid, entry);
     }
 
     @Nullable

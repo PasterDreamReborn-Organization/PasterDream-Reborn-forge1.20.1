@@ -5,12 +5,12 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class FluidDrinkPropertiesRegistry
 {
-    private static final Map<ResourceLocation, GenericFluidDrinkProperties> PROPERTIES = new HashMap<>();
+    private static final Map<ResourceLocation, GenericFluidDrinkProperties> PROPERTIES = new ConcurrentHashMap<>();
 
     public static void register(Fluid fluid, GenericFluidDrinkProperties properties)
     {

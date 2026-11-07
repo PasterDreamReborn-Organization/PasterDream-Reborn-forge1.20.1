@@ -4,10 +4,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DreamNotesBookRegistry
 {
-    private static Map<String, DreamNotesBookInfo> NOTES = new HashMap<>();
+    private static Map<String, DreamNotesBookInfo> NOTES = new ConcurrentHashMap<>();
     private static List<ResourceLocation> MODEL_LOCATIONS = new ArrayList<>();
 
     public static void register(String contentName, Component title, String author, Component content, ResourceLocation GUI, int GUI_X, int GUI_Y, int contentStartX, int contentStartY, int contentFinalX, int contentFinalY, ResourceLocation itemTexture, int color)
