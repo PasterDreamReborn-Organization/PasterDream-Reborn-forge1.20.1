@@ -1567,6 +1567,12 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.rebirth_dream_crystal.2", "§7\"Welcome back, Dreamseeker.\"");
         add("tooltip.pasterdream.rebirth_dream_crystal.3", "§7▪ §9+12 Sanity Aura");
         add("tooltip.pasterdream.rebirth_dream_crystal.4", "§7▪ §9Gains 12s Evasion every 10s");
+        add("tooltip.pasterdream.rebirth_dream_crystal.+16最大生命值(完成染梦世界任务后解锁)", "§7▪ §9+16 Max Health(Unlock Require Complete Dyedream World Task)");
+        add("tooltip.pasterdream.rebirth_dream_crystal.+8融梦光环(完成染梦世界任务后解锁)", "§7▪ §9+8 Melt Dream Aura(Unlock Require Complete Dyedream World Task)");
+        add("tooltip.pasterdream.rebirth_dream_crystal.+16%战技伤害(完成灯影之下任务后解锁)", "§7▪ §9+16% Skill Damage(Unlock Require Complete Lamp Shadow World Task)");
+        add("tooltip.pasterdream.rebirth_dream_crystal.+16护甲值(完成灯影之下任务后解锁)", "§7▪ §9+16 Armor(Unlock Require Complete Lamp Shadow World Task)");
+        add("tooltip.pasterdream.rebirth_dream_crystal.+16%速度(完成风之旅途任务后解锁)", "§7▪ §9+16% Speed(Unlock Require Complete Wind Journey World Task)");
+        add("tooltip.pasterdream.rebirth_dream_crystal.-16%战技冷却(完成风之旅途任务后解锁)", "§7▪ §9-16% Skill Cooldown(Unlock Require Complete Wind Journey World Task)");
         add("tooltip.pasterdream.rebirth_dream_crystal.5", "§7Exclusive memento of ShiLiuYinYu.");
         add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7Shift right-click to destroy itself and release the soul within.");
         add("tooltip.pasterdream.rebirth_dream_crystal.7", "§6PasterDream: Reborn Developer");

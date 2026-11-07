@@ -25,6 +25,6 @@ public record GenericMobEffect(MobEffect effectType, int level, int time)
 
     public static MobEffectInstance fromGenericMobEffectToEffectInstance(GenericMobEffect genericMobEffect)
     {
-        return new MobEffectInstance(genericMobEffect.effectType(), genericMobEffect.time(), genericMobEffect.level());
+        return genericMobEffect.effectType() != null ? new MobEffectInstance(genericMobEffect.effectType(), genericMobEffect.time(), genericMobEffect.level()) : null;
     }
 }
