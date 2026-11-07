@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.network.dreamnotesbook;
+package com.pasterdream.pasterdreammod.network.rebirthdreamcrystal;
 
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.playerdata.PasterDreamPlayerDreamNoteProgressData;

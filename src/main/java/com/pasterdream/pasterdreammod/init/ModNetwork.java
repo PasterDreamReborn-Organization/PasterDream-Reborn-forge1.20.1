@@ -8,8 +8,8 @@ import com.pasterdream.pasterdreammod.network.blueprint.StartBlueprintPlacementP
 import com.pasterdream.pasterdreammod.network.blueprint.UpdateBlueprintPlacingPacket;
 import com.pasterdream.pasterdreammod.network.debugsword.DebugBlockActionPacket;
 import com.pasterdream.pasterdreammod.network.debugtool.*;
-import com.pasterdream.pasterdreammod.network.dreamnotesbook.NotesProgressResponsePacket;
-import com.pasterdream.pasterdreammod.network.dreamnotesbook.RequestNotesProgressPacket;
+import com.pasterdream.pasterdreammod.network.rebirthdreamcrystal.NotesProgressResponsePacket;
+import com.pasterdream.pasterdreammod.network.rebirthdreamcrystal.RequestNotesProgressPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSlotInteractPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSoundPacket;
 import com.pasterdream.pasterdreammod.network.fluidslot.FluidSyncPacket;
@@ -19,6 +19,7 @@ import com.pasterdream.pasterdreammod.network.meltdreamenergy.MeltDreamEnergySyn
 import com.pasterdream.pasterdreammod.network.menu.SetSlotNbtPacket;
 import com.pasterdream.pasterdreammod.network.mortar.MortarCraftPacket;
 import com.pasterdream.pasterdreammod.network.mortar.MortarNbtSyncPacket;
+import com.pasterdream.pasterdreammod.network.rebirthdreamcrystal.UploadItemPacket;
 import com.pasterdream.pasterdreammod.network.researchtable.ResearchTableCopyPacket;
 import com.pasterdream.pasterdreammod.network.researchtable.ResearchTableResearchPacket;
 import com.pasterdream.pasterdreammod.network.meltdreamcrystalchest.MeltDreamCrystalChestResetCooldownSyncPacket;
@@ -117,6 +118,7 @@ public class ModNetwork
 
         CHANNEL.registerMessage(id++, RequestNotesProgressPacket.class, RequestNotesProgressPacket::encode, RequestNotesProgressPacket::decode, RequestNotesProgressPacket::handle);
         CHANNEL.registerMessage(id++, NotesProgressResponsePacket.class, NotesProgressResponsePacket::encode, NotesProgressResponsePacket::decode, NotesProgressResponsePacket::handle);
+        CHANNEL.registerMessage(id++, UploadItemPacket.class, UploadItemPacket::encode, UploadItemPacket::decode, UploadItemPacket::handle);
     }
 
     public static void sendMeltDreamEnergySyncPacketToPlayer(MeltDreamEnergySyncPacket packet, ServerPlayer player)

@@ -98,4 +98,9 @@ public class RebirthDreamCrystalMenu extends AbstractContainerMenu
     {
         return true;
     }
+
+    public ItemStack getUploadSlotItemStack()
+    {
+        return menuContainer.getItem(0);
+    }
 }
