@@ -9,7 +9,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class MoltenGoldHoeItem extends HoeItem {
+public class MoltenGoldHoeItem extends HoeItem implements MoltenGoldTool {
 
     public MoltenGoldHoeItem(Tier tier, int damage, float speed, Properties properties) {
         super(tier, damage, speed, properties.fireResistant());

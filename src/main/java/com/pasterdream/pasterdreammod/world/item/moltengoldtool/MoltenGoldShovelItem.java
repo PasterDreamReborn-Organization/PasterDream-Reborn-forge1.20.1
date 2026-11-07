@@ -9,7 +9,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class MoltenGoldShovelItem extends ShovelItem {
+public class MoltenGoldShovelItem extends ShovelItem implements MoltenGoldTool {
 
     public MoltenGoldShovelItem(Tier tier, float damage, float speed, Properties properties) {
         super(tier, damage, speed, properties.fireResistant());

@@ -9,7 +9,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class MoltenGoldPickaxeItem extends PickaxeItem {
+public class MoltenGoldPickaxeItem extends PickaxeItem implements MoltenGoldTool {
 
     public MoltenGoldPickaxeItem(Tier tier, int damage, float speed, Properties properties) {
         super(tier, damage, speed, properties.fireResistant());

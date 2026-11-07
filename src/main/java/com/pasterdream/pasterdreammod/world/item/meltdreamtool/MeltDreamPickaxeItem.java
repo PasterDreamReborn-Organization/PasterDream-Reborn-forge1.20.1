@@ -7,7 +7,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class MeltDreamPickaxeItem extends PickaxeItem {
+public class MeltDreamPickaxeItem extends PickaxeItem implements MeltDreamTool {
 
     public MeltDreamPickaxeItem(Tier tier, int damage, float speed, Properties properties) {
         super(tier, damage, speed, properties.fireResistant());

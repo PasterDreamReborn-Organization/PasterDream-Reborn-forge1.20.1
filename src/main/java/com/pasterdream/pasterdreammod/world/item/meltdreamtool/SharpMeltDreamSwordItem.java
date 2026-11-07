@@ -23,7 +23,7 @@ import java.util.List;
  * 镶嵌：融梦水晶碎片<br>
  * 战技：凌空斩 —— 冷却 5 秒，拥有染梦守护缩短为 3 秒。
  */
-public class SharpMeltDreamSwordItem extends SwordItem {
+public class SharpMeltDreamSwordItem extends SwordItem implements MeltDreamTool {
 
     private static final String TAG_CHARGED = "SharpCharged";
     private static final int COOLDOWN_WITHOUT_BUFF = 100; // 无染梦守护时冷却(tick)
