@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.helper.potionhelper;
 
-import com.pasterdream.pasterdreammod.helper.fluidcontainercapability.FluidContainerRegistry;
 import com.pasterdream.pasterdreammod.init.ModFluids;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -65,7 +64,8 @@ public class PotionHelper
         for (GenericMobEffect effect : effectList)
         {
             result.append(formatTime(effect.time()));
-            result.append(Component.translatable(effect.effectType().getDescriptionId()));
+            MobEffect mobEffect = effect.effectType();
+            result.append(mobEffect != null ? Component.translatable(mobEffect.getDescriptionId()).getString() : "null");
             if(effect.level() != 0)
             {
                 result.append(Component.translatable("enchantment.level." + (effect.level() + 1)));
@@ -108,16 +108,20 @@ public class PotionHelper
 
         for(GenericMobEffect effect : effectList)
         {
-            int singleColor = effect.effectType().getColor();
+            MobEffect mobEffect = effect.effectType();
+            if(mobEffect != null)
+            {
+                int singleColor = mobEffect.getColor();
 
-            int level = effect.level() + 1;
-            totalLevel += level;
-            totalRed += (long)(singleColor & 0x00FF0000) * level;
-            totalGreen += (long)(singleColor & 0x0000FF00) * level;
-            totalBlue += (long)(singleColor & 0x000000FF) * level;
+                int level = effect.level() + 1;
+                totalLevel += level;
+                totalRed += (long)(singleColor & 0x00FF0000) * level;
+                totalGreen += (long)(singleColor & 0x0000FF00) * level;
+                totalBlue += (long)(singleColor & 0x000000FF) * level;
+            }
         }
 
-        return effectList.isEmpty() ? 0xFF000000 : 0xFF000000 | (int)(totalRed / totalLevel) + (int)(totalGreen / totalLevel) + (int)(totalBlue / totalLevel);
+        return (effectList.isEmpty() || totalLevel == 0) ? 0xFF000000 : 0xFF000000 | (int)(totalRed / totalLevel) + (int)(totalGreen / totalLevel) + (int)(totalBlue / totalLevel);
     }
 
     public static FluidStack createNBTPotion(List<GenericMobEffect> effectList, int amount)

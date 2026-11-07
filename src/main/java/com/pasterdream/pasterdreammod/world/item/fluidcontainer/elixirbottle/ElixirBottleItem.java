@@ -77,23 +77,26 @@ public class ElixirBottleItem extends Item
             for (GenericMobEffect effect : PotionHelper.getEffectType(fluidStack))
             {
                 MobEffectInstance instance = GenericMobEffect.fromGenericMobEffectToEffectInstance(effect);
-                MutableComponent line = Component.literal("· ");
-                line.append(Component.translatable(instance.getDescriptionId()));
-                if (instance.getAmplifier() > 0)
+                if(instance != null)
                 {
-                    line.append(" ").append(Component.literal(PotionHelper.toRoman(instance.getAmplifier() + 1)));
-                }
-                if (instance.getDuration() > 20)
-                {
-                    line.append(" (").append(MobEffectUtil.formatDuration(instance, 1.0F)).append(")");
-                }
-                else
-                    if(instance.getDuration() == -1)
+                    MutableComponent line = Component.literal("· ");
+                    line.append(Component.translatable(instance.getDescriptionId()));
+                    if (instance.getAmplifier() > 0)
                     {
-                        line.append(" (∞)");
+                        line.append(" ").append(Component.literal(PotionHelper.toRoman(instance.getAmplifier() + 1)));
                     }
-                line.withStyle(instance.getEffect().getCategory().getTooltipFormatting());
-                tooltip.add(line);
+                    if (instance.getDuration() > 20)
+                    {
+                        line.append(" (").append(MobEffectUtil.formatDuration(instance, 1.0F)).append(")");
+                    }
+                    else
+                        if(instance.getDuration() == -1)
+                        {
+                            line.append(" (∞)");
+                        }
+                    line.withStyle(instance.getEffect().getCategory().getTooltipFormatting());
+                    tooltip.add(line);
+                }
             }
             tooltip.add(Component.translatable("pasterdream.tooltip.elixir_capacity", fluidStack.getAmount())
                     .withStyle(ChatFormatting.GRAY));

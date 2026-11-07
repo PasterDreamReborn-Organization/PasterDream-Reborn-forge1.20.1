@@ -1755,6 +1755,12 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.rebirth_dream_crystal.2", "§7\"欢迎回来，寻梦者。\"");
         add("tooltip.pasterdream.rebirth_dream_crystal.3", "§7▪ §9+12 理智光环");
         add("tooltip.pasterdream.rebirth_dream_crystal.4", "§7▪ §9每10秒获得12秒回避");
+        add("tooltip.pasterdream.rebirth_dream_crystal.+16最大生命值(完成染梦世界任务后解锁)", "§7▪ §9+16最大生命值(完成染梦世界任务后解锁)");
+        add("tooltip.pasterdream.rebirth_dream_crystal.+8融梦光环(完成染梦世界任务后解锁)", "§7▪ §9+8融梦光环(完成染梦世界任务后解锁)");
+        add("tooltip.pasterdream.rebirth_dream_crystal.+16%战技伤害(完成灯影之下任务后解锁)", "§7▪ §9+16%战技伤害(完成灯影之下任务后解锁)");
+        add("tooltip.pasterdream.rebirth_dream_crystal.+16护甲值(完成灯影之下任务后解锁)", "§7▪ §9+16护甲值(完成灯影之下任务后解锁)");
+        add("tooltip.pasterdream.rebirth_dream_crystal.+16%速度(完成风之旅途任务后解锁)", "§7▪ §9+16%速度(完成风之旅途任务后解锁)");
+        add("tooltip.pasterdream.rebirth_dream_crystal.-16%战技冷却(完成风之旅途任务后解锁)", "§7▪ §9-16%战技冷却(完成风之旅途任务后解锁)");
         add("tooltip.pasterdream.rebirth_dream_crystal.5", "§7ShiLiuYinYu的专属遗物。");
         add("tooltip.pasterdream.rebirth_dream_crystal.6", "§7shift右键销毁自身并释放遗物中的灵魂。");
         add("tooltip.pasterdream.rebirth_dream_crystal.7", "§6PasterDream: Reborn 开发者");
