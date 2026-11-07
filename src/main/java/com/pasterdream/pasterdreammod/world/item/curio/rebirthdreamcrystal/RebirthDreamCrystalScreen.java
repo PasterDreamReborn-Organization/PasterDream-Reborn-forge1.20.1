@@ -6,7 +6,8 @@ import com.pasterdream.pasterdreammod.component.arrowbutton.RightArrowButton;
 import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
-import com.pasterdream.pasterdreammod.network.dreamnotesbook.RequestNotesProgressPacket;
+import com.pasterdream.pasterdreammod.network.rebirthdreamcrystal.RequestNotesProgressPacket;
+import com.pasterdream.pasterdreammod.network.rebirthdreamcrystal.UploadItemPacket;
 import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.IPasterDreamDimensionTask;
 import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.IPasterDreamSingleTask;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookProgressRegistry;
@@ -55,7 +56,8 @@ public class RebirthDreamCrystalScreen extends AbstractContainerScreen<RebirthDr
 
         Button uploadButton = Button.builder(Component.translatable("button.pasterdream.提交"), button ->
         {
-
+            ModNetwork.CHANNEL.sendToServer(new UploadItemPacket(allDimensions.get(dimensionPage)));
+            refreshBookListContent();
         }).pos(leftPos + 228, topPos + 21).size(32, 16).build();
         addRenderableWidget(uploadButton);
 

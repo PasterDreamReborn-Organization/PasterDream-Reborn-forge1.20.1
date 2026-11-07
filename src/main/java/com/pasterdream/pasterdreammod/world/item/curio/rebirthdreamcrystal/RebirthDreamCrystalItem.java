@@ -81,7 +81,6 @@ public class RebirthDreamCrystalItem extends Item implements ICurioItem {
                             return new RebirthDreamCrystalMenu(id, inventory);
                         }
                     });
-
                 }
         }
         return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
