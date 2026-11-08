@@ -773,6 +773,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("jei.pasterdream.snow_vow_head.info", "开启融梦水晶箱有概率获得。\n也可在圣诞树岛开箱获取。");
         add("jei.pasterdream.kaichu_omamori.info", "与金狐狸交易获得。");
         add("jei.pasterdream.shadow_breath.info", "能够在暗影地牢宝库获取。");
+        add("jei.pasterdream.dyedream_corolla.info", "可由剪刀或园艺钳右键收获成熟的梦染茶花植株获得。");
+        add("jei.pasterdream.white_corolla.info", "可由剪刀或园艺钳右键收获成熟的苍白雪莲植株获得。");
+        add("jei.pasterdream.light_ball.info", "可由剪刀或园艺钳右键收获成熟的流明堇植株获得。");
+        add("jei.pasterdream.cloud.info", "可由剪刀或园艺钳右键收获成熟的玲云花植株获得。");
+        add("jei.pasterdream.cotton.info", "可由剪刀或园艺钳右键收获成熟的棉花植株获得。");
+        add("jei.pasterdream.misty_dreaming_lotus.info", "完成花园解密获得。");
+        add("jei.pasterdream.fourleaf_clover_curio.info", "破坏四叶草时低概率掉落。");
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "帕斯特之梦 | 饮食");
         add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "帕斯特之梦 | 灵药瓶");

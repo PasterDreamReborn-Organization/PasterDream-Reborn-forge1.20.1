@@ -63,5 +63,33 @@ public final class ModJEIInfoRegistry
         registration.addItemStackInfo(
                 new ItemStack(ModItems.SHADOW_BREATH.get()),
                 Component.translatable("jei.pasterdream.shadow_breath.info"));
+        // 梦染花冠：由剪刀或园艺钳右键收获成熟的梦染茶花植株获得
+        registration.addItemStackInfo(
+                new ItemStack(ModItems.DYEDREAM_COROLLA.get()),
+                Component.translatable("jei.pasterdream.dyedream_corolla.info"));
+        // 苍白花冠：由剪刀或园艺钳右键收获成熟的苍白雪莲植株获得
+        registration.addItemStackInfo(
+                new ItemStack(ModItems.WHITE_COROLLA.get()),
+                Component.translatable("jei.pasterdream.white_corolla.info"));
+        // 流明光球：由剪刀或园艺钳右键收获成熟的流明堇植株获得
+        registration.addItemStackInfo(
+                new ItemStack(ModItems.LIGHT_BALL.get()),
+                Component.translatable("jei.pasterdream.light_ball.info"));
+        // 云：由剪刀或园艺钳右键收获成熟的玲云花植株获得
+        registration.addItemStackInfo(
+                new ItemStack(ModItems.CLOUD.get()),
+                Component.translatable("jei.pasterdream.cloud.info"));
+        // 棉花：由剪刀或园艺钳右键收获成熟的棉花植株获得
+        registration.addItemStackInfo(
+                new ItemStack(ModItems.COTTON.get()),
+                Component.translatable("jei.pasterdream.cotton.info"));
+        // 迷梦冶梦莲：完成花园解密获得
+        registration.addItemStackInfo(
+                new ItemStack(ModItems.MISTY_DREAMING_LOTUS.get()),
+                Component.translatable("jei.pasterdream.misty_dreaming_lotus.info"));
+        // 幸运四叶草：破坏四叶草时低概率掉落
+        registration.addItemStackInfo(
+                new ItemStack(ModItems.FOURLEAF_CLOVER_CURIO.get()),
+                Component.translatable("jei.pasterdream.fourleaf_clover_curio.info"));
     }
 }

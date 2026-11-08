@@ -763,6 +763,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("jei.pasterdream.snow_vow_head.info", "Has a chance to be obtained by opening Melt Dream Crystal Chests.\nCan also be obtained from chests on the Christmas Tree Island.");
         add("jei.pasterdream.kaichu_omamori.info", "Obtained by trading with the Golden Fox.");
         add("jei.pasterdream.shadow_breath.info", "Can be obtained from the Shadow Dungeon's repository layer.");
+        add("jei.pasterdream.dyedream_corolla.info", "Obtained by right-clicking a mature Dyedream Corolla plant with Shears or Pliers.");
+        add("jei.pasterdream.white_corolla.info", "Obtained by right-clicking a mature White Corolla Crop with Shears or Pliers.");
+        add("jei.pasterdream.light_ball.info", "Obtained by right-clicking a mature Light Ball Crop with Shears or Pliers.");
+        add("jei.pasterdream.cloud.info", "Obtained by right-clicking a mature Cloud Crop with Shears or Pliers.");
+        add("jei.pasterdream.cotton.info", "Obtained by right-clicking a mature Cotton Crop with Shears or Pliers.");
+        add("jei.pasterdream.misty_dreaming_lotus.info", "Obtained by completing the Garden Decryption.");
+        add("jei.pasterdream.fourleaf_clover_curio.info", "Rarely dropped when breaking Fourleaf Clover.");
 
         add("itemGroup.pasterdream.pasterdream_food_tab", "Paster Dream | Food & Drinks");
         add("itemGroup.pasterdream.pasterdream_elixir_bottle_tab", "Paster Dream | Elixir Bottle");
