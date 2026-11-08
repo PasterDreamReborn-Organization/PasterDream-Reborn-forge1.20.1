@@ -164,7 +164,7 @@ public class PotionBottleRegistry {
                     sl.sendParticles(ParticleTypes.END_ROD,
                             hitPos.x, hitPos.y + 2, hitPos.z, 6, 2.5, 1.0, 2.5, 0.02);
 
-                    // 8格半径内所有玩家施加狂暴buff（60tick=3秒）
+                    // 8格半径内所有玩家施加狂暴buff（600tick=30秒）
                     sl.getEntitiesOfClass(Player.class,
                             new AABB(
                                     hitPos.x - 8, hitPos.y - 8, hitPos.z - 8,
@@ -172,7 +172,7 @@ public class PotionBottleRegistry {
                             e -> true)
                             .forEach(e -> e.addEffect(
                                     new MobEffectInstance(
-                                            ModEffects.BERSERK.get(), 60, 0)));
+                                            ModEffects.BERSERK.get(), 600, 0)));
                 });
     }
 
