@@ -33,7 +33,6 @@
     "FireworkRocketMixin",
     "ItemElytraMixin",
     "ItemStackGetAttributeModifiersMixin",
-    "LivingEntityAccessor",
     "PlayerCanEatMixin",
     "ServerGamePacketListenerImplMixin",
     "UsingItemSpeedMixin"
