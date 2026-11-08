@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.world.effect;
 
-import com.pasterdream.pasterdreammod.mixin.LivingEntityAccessor;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,13 +27,12 @@ public class HighlyToxicEffect extends MobEffect {
 
     /** 结算 1 点魔法伤害，且不读取、不占用目标的无敌帧。 */
     private static void applyIneffaceableDamage(LivingEntity entity) {
-        LivingEntityAccessor accessor = (LivingEntityAccessor) entity;
         int invulnerableTime = entity.invulnerableTime;
-        float lastHurt = accessor.pasterdream$getLastHurt();
+        float lastHurt = entity.lastHurt;
         entity.invulnerableTime = 0;
         entity.hurt(entity.damageSources().magic(), 1.0F);
         entity.invulnerableTime = invulnerableTime;
-        accessor.pasterdream$setLastHurt(lastHurt);
+        entity.lastHurt = lastHurt;
     }
 
     @Override
