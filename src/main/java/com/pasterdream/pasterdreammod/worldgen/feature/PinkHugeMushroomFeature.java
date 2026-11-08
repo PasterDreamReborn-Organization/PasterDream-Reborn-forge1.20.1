@@ -37,7 +37,7 @@ public class PinkHugeMushroomFeature extends HugeRedMushroomFeature {
 
         // 在菌柄中部到菌盖下方放置菌光体
         for (int y = 2; y < cachedHeight - 1; y++) {
-            if (random.nextFloat() > 0.25f) {
+            if (random.nextFloat() > 0.4f) {
                 continue;
             }
             Direction dir = Direction.Plane.HORIZONTAL.getRandomDirection(random);

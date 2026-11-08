@@ -1,9 +1,7 @@
 package com.pasterdream.pasterdreammod.world.block;
 
-import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.worldgen.ModConfiguredFeatures;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
@@ -83,69 +81,8 @@ public class PinkMushroom extends BushBlock implements BonemealableBlock {
             ConfiguredFeature<?, ?> mushroom = registry.get(ModConfiguredFeatures.PINK_HUGE_MUSHROOM);
             if (mushroom == null || !mushroom.place(level, level.getChunkSource().getGenerator(), random, pos)) {
                 level.setBlock(pos, state, 3);
-            } else {
-                scatterShroomlights(level, random, pos);
             }
         }
-    }
-
-    /** Scatters PINK_SHROOMLIGHT blocks around the stem inside the huge mushroom cap. */
-    private void scatterShroomlights(ServerLevel level, RandomSource random, BlockPos center) {
-        BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-        BlockState shroomlight = ModBlocks.PINK_SHROOMLIGHT.get().defaultBlockState();
-        BlockPos stemSurface = findStemSurface(level, center);
-        int stemBottom = stemSurface != null ? stemSurface.getY() : center.getY();
-
-        for (int y = stemBottom + 2; y <= stemBottom + 7; y++) {
-            for (int dx = -2; dx <= 2; dx++) {
-                for (int dz = -2; dz <= 2; dz++) {
-                    // only inside the cap radius (≈3) and not right at the stem core
-                    int dist2 = dx * dx + dz * dz;
-                    if (dist2 < 2 || dist2 > 9) continue;
-
-                    if (random.nextFloat() > 0.3f) continue;
-
-                    cursor.set(center.getX() + dx, y, center.getZ() + dz);
-                    if (level.getBlockState(cursor).isAir()
-                            && hasAdjacentStemOrCap(level, cursor)) {
-                        level.setBlock(cursor, shroomlight, 3);
-                    }
-                }
-            }
-        }
-    }
-
-    /** Finds the highest stem block near {@code center} to guess the mushroom base. */
-    private BlockPos findStemSurface(ServerLevel level, BlockPos center) {
-        BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-        for (int y = center.getY() + 10; y >= center.getY(); y--) {
-            for (int dx = -1; dx <= 1; dx++) {
-                for (int dz = -1; dz <= 1; dz++) {
-                    cursor.set(center.getX() + dx, y, center.getZ() + dz);
-                    if (level.getBlockState(cursor).is(ModBlocks.PINK_MUSHROOM_STEM.get())) {
-                        // walk down to the base of this stem column
-                        while (y > center.getY()
-                                && level.getBlockState(cursor.set(cursor.getX(), cursor.getY() - 1, cursor.getZ()))
-                                        .is(ModBlocks.PINK_MUSHROOM_STEM.get())) {
-                            y--;
-                        }
-                        return cursor.immutable();
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    private boolean hasAdjacentStemOrCap(ServerLevel level, BlockPos pos) {
-        for (Direction dir : Direction.values()) {
-            BlockState neighbor = level.getBlockState(pos.relative(dir));
-            if (neighbor.is(ModBlocks.PINK_MUSHROOM_STEM.get())
-                    || neighbor.is(ModBlocks.PINK_MUSHROOM_BLOCK.get())) {
-                return true;
-            }
-        }
-        return false;
     }
 
     // ---- 2×2 detection ----

@@ -81,4 +81,5 @@ TeleportHelper.resendActiveEffects(player); // helper/TeleportHelper.java
 ## 引用文档
 
 - `document/rule/program/架构规范.md` — 世界生成数据流、子包划分
+- `document/rule/program/程序规范文档.md`「易犯错误记录」— 骨粉催生与世界生成共用 Feature 时避免重复放置装饰方块
 - `document/design/风之旅途维度搬运分析.md` / `风之旅途风向机制搬运分析.md` — 维度搬运案例
