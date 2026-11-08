@@ -8,6 +8,7 @@ import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleItem;
 import com.pasterdream.pasterdreammod.world.item.PotionBottleRegistry;
+import com.pasterdream.pasterdreammod.worldgen.biome.ModBiomes;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
@@ -130,6 +131,53 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                     .addCriterion("first_enter_dyedream", new ImpossibleTrigger.TriggerInstance())
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/dyedream_world"), existingFileHelper);
+
+            // ========== 哥德堡安眠曲子进度：山河入梦（遍历全部染梦群系） ==========
+            Advancement.Builder.advancement()
+                    .parent(dyedreamWorld)
+                    .display(
+                            ModItems.MELT_DREAM_BOOTS.get(),
+                            Component.translatable("advancements.pasterdream.story.dyedream_biomes.title"),
+                            Component.translatable("advancements.pasterdream.story.dyedream_biomes.description"),
+                            null,
+                            FrameType.CHALLENGE,
+                            true, true, false
+                    )
+                    .addCriterion("dyedream_plains", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_PLAINS).build()))
+                    .addCriterion("dyedream_mushroom_mountains", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_MUSHROOM_MOUNTAINS).build()))
+                    .addCriterion("dyedream_snowy_plains", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_SNOWY_PLAINS).build()))
+                    .addCriterion("dyedream_frozen_ocean", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_FROZEN_OCEAN).build()))
+                    .addCriterion("dyedream_ocean", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_OCEAN).build()))
+                    .addCriterion("dyedream_cold_ocean", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_COLD_OCEAN).build()))
+                    .addCriterion("dyedream_beach", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_BEACH).build()))
+                    .addCriterion("dyedream_river", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_RIVER).build()))
+                    .addCriterion("dyedream_frozen_river", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_FROZEN_RIVER).build()))
+                    .addCriterion("dyedream_snowy_peaks", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_SNOWY_PEAKS).build()))
+                    .addCriterion("dyedream_cherry_grove", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_CHERRY_GROVE).build()))
+                    .addCriterion("dyedream_forest", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_FOREST).build()))
+                    .addCriterion("dyedream_flower_field", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_FLOWER_FIELD).build()))
+                    .addCriterion("dyedream_caves", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_CAVES).build()))
+                    .addCriterion("dyedream_lush_caves", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_LUSH_CAVES).build()))
+                    .addCriterion("dyedream_dripstone_caves", PlayerTrigger.TriggerInstance.located(
+                            LocationPredicate.Builder.location().setBiome(ModBiomes.DYEDREAM_DRIPSTONE_CAVES).build()))
+                    .rewards(AdvancementRewards.Builder.experience(100))
+                    .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
+                            "story/dyedream_biomes"), existingFileHelper);
 
             // ========== 哥德堡安眠曲子进度：冶梦花莲 ==========
             Advancement mistyDreamingLotus = Advancement.Builder.advancement()
