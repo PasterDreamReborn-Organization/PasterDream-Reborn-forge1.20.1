@@ -1,9 +1,7 @@
 package com.pasterdream.pasterdreammod.world.block;
 
-import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.worldgen.ModConfiguredFeatures;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
@@ -98,43 +96,8 @@ public class TallPinkMushroom extends DoublePlantBlock implements BonemealableBl
             if (mushroom == null || !mushroom.place(level, level.getChunkSource().getGenerator(), random, lowerPos)) {
                 level.setBlock(lowerPos, lowerState, 3);
                 level.setBlock(upperPos, upperState, 3);
-            } else {
-                scatterShroomlights(level, random, lowerPos);
             }
         }
-    }
-
-    // ---- shroomlight helper ----
-
-    private void scatterShroomlights(ServerLevel level, RandomSource random, BlockPos center) {
-        BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-        BlockState shroomlight = ModBlocks.PINK_SHROOMLIGHT.get().defaultBlockState();
-
-        for (int y = center.getY() + 2; y <= center.getY() + 7; y++) {
-            for (int dx = -2; dx <= 2; dx++) {
-                for (int dz = -2; dz <= 2; dz++) {
-                    int dist2 = dx * dx + dz * dz;
-                    if (dist2 < 2 || dist2 > 9) continue;
-                    if (random.nextFloat() > 0.3f) continue;
-
-                    cursor.set(center.getX() + dx, y, center.getZ() + dz);
-                    if (level.getBlockState(cursor).isAir() && hasAdjacentStemOrCap(level, cursor)) {
-                        level.setBlock(cursor, shroomlight, 3);
-                    }
-                }
-            }
-        }
-    }
-
-    private boolean hasAdjacentStemOrCap(ServerLevel level, BlockPos pos) {
-        for (Direction dir : Direction.values()) {
-            BlockState neighbor = level.getBlockState(pos.relative(dir));
-            if (neighbor.is(ModBlocks.PINK_MUSHROOM_STEM.get())
-                    || neighbor.is(ModBlocks.PINK_MUSHROOM_BLOCK.get())) {
-                return true;
-            }
-        }
-        return false;
     }
 
     // ---- 2×2 detection (uses lower halves) ----
