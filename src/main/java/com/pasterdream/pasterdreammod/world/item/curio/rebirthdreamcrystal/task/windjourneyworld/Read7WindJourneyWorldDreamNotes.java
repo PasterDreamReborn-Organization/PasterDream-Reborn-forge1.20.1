@@ -5,12 +5,12 @@ import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 
-public class Read6WindJourneyWorldDreamNotes implements IPasterDreamSingleTask
+public class Read7WindJourneyWorldDreamNotes implements IPasterDreamSingleTask
 {
     @Override
     public Component getTaskName()
     {
-        return Component.translatable("task.pasterdream.阅读6本风之旅途寻梦者笔记");
+        return Component.translatable("task.pasterdream.阅读7本风之旅途寻梦者笔记");
     }
 
     @Override
@@ -28,6 +28,6 @@ public class Read6WindJourneyWorldDreamNotes implements IPasterDreamSingleTask
     @Override
     public double getTaskMaxProgress(Player player)
     {
-        return 6;
+        return 7;
     }
 }

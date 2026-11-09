@@ -17,7 +17,7 @@ public class WindJourneyWorldTask implements IPasterDreamDimensionTask
     {
         List<IPasterDreamSingleTask> tasks = new CopyOnWriteArrayList<>();
 
-        tasks.add(new Read6WindJourneyWorldDreamNotes());
+        tasks.add(new Read7WindJourneyWorldDreamNotes());
         tasks.add(new FinishAngelBeats());
 
         return tasks;
