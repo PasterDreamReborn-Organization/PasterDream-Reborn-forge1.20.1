@@ -26,8 +26,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.List;
-
 public class DreamAccumulatorRecipeCategory implements IRecipeCategory<DreamAccumulatorJEIRecipe>
 {
     public static final RecipeType<DreamAccumulatorJEIRecipe> DREAM_ACCUMULATOR_RECIPE_TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "dream_accumulator"), DreamAccumulatorJEIRecipe.class);
@@ -74,7 +72,6 @@ public class DreamAccumulatorRecipeCategory implements IRecipeCategory<DreamAccu
     @Override
     public void draw(DreamAccumulatorJEIRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY)
     {
-        List<TagKey<Biome>> biomes = recipe.getBiomeTags();
         int time = recipe.getTime();
         double catalystMultiplier = recipe.getCatalystMultiplier();
         background.draw(guiGraphics);

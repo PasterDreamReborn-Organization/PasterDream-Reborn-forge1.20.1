@@ -2,7 +2,7 @@ package com.pasterdream.pasterdreammod.world.item.debugtool.screen;
 
 import com.pasterdream.pasterdreammod.component.arrowbutton.DownArrowButton;
 import com.pasterdream.pasterdreammod.component.arrowbutton.UpArrowButton;
-import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
+import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.ItemHandlerMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.slot.ActiveStatusChangeableSlot;
@@ -58,7 +58,7 @@ public class ItemHandlerScreen extends AbstractContainerScreen<ItemHandlerMenu>
         renderBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         renderTooltip(guiGraphics, mouseX, mouseY);
-        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 162, topPos + 43, String.valueOf(page + 1), 0xFF000000);
+        NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 162, topPos + 43, String.valueOf(page + 1), 0xFF000000);
     }
 
     @Override

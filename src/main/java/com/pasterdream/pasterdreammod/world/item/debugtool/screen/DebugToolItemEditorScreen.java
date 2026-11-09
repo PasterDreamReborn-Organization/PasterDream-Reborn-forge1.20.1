@@ -3,7 +3,7 @@ package com.pasterdream.pasterdreammod.world.item.debugtool.screen;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.AbstractContainerScreenWithFluidSlot;
 import com.pasterdream.pasterdreammod.helper.abstractcontainermenuwithfluidslot.FluidSlot;
-import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
+import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.helper.stringhelper.GetItemProperties;
 import com.pasterdream.pasterdreammod.helper.stringhelper.StringHelper;
@@ -198,19 +198,19 @@ public class DebugToolItemEditorScreen extends AbstractContainerScreenWithFluidS
 
         if(thisItemIsNotHaveItemHandler)
         {
-            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 3 / 8 - 18, Component.translatable("message.pasterdream.无ItemHandler").getString(), 0xFFFF0000);
+            NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 3 / 8 - 18, Component.translatable("message.pasterdream.无ItemHandler").getString(), 0xFFFF0000);
         }
 
         if(menu.energyStorage == null)
         {
-            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 7 / 8 - 87, Component.translatable("message.pasterdream.无EnergyStorage").getString(), 0xFFFF0000);
+            NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 7 / 8 - 87, Component.translatable("message.pasterdream.无EnergyStorage").getString(), 0xFFFF0000);
             guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable("message.pasterdream.不可放电"), width / 2 - 80, height * 7 / 8 - 82, 0xFFFF0000, false);
             guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable("message.pasterdream.不可充电"), width / 2 - 80, height * 7 / 8 - 73, 0xFFFF0000, false);
         }
             else
             {
                 IEnergyStorage energyStorage = menu.energyStorage;;
-                NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 7 / 8 - 87, energyStorage.getEnergyStored() + "FE/" + energyStorage.getMaxEnergyStored() + "FE", 0xFF000000);
+                NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height * 7 / 8 - 87, energyStorage.getEnergyStored() + "FE/" + energyStorage.getMaxEnergyStored() + "FE", 0xFF000000);
 
                 if(energyStorage.canExtract())
                 {

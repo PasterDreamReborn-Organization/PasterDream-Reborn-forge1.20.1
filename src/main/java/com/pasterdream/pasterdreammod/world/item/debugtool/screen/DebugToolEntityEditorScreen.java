@@ -3,15 +3,13 @@ package com.pasterdream.pasterdreammod.world.item.debugtool.screen;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.pasterdream.pasterdreammod.component.arrowbutton.DownArrowButton;
 import com.pasterdream.pasterdreammod.component.arrowbutton.UpArrowButton;
-import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
+import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.helper.stringhelper.GetEntityProperties;
-import com.pasterdream.pasterdreammod.helper.stringhelper.GetItemProperties;
 import com.pasterdream.pasterdreammod.helper.stringhelper.StringHelper;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.network.debugtool.EntityDiscardPacket;
 import com.pasterdream.pasterdreammod.network.debugtool.SetEntityNbtPacket;
-import com.pasterdream.pasterdreammod.network.debugtool.StoreBlockToInventoryPacket;
 import com.pasterdream.pasterdreammod.network.debugtool.StoreEntityToInventoryPacket;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.DebugToolEntityEditorMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.slot.ActiveStatusChangeableSlot;
@@ -239,8 +237,8 @@ public class DebugToolEntityEditorScreen extends AbstractContainerScreen<DebugTo
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         renderTooltip(guiGraphics, mouseX, mouseY);
 
-        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2 + 54, height * 5 / 8 - 52, String.valueOf(curiosSlotCurrentPage + 1), 0xFF000000);
-        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2 + 54, height * 7 / 8 - 73, String.valueOf(itemHandlerCurrentPage + 1), 0xFF000000);
+        NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, width / 2 + 54, height * 5 / 8 - 52, String.valueOf(curiosSlotCurrentPage + 1), 0xFF000000);
+        NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, width / 2 + 54, height * 7 / 8 - 73, String.valueOf(itemHandlerCurrentPage + 1), 0xFF000000);
     }
 
     @Override

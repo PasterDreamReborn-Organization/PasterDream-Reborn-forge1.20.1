@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.compat.jei.dreamaccumulatorrecipe;
 
-import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.FluidIngredient;
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import com.pasterdream.pasterdreammod.world.block.dreamaccumulator.DreamAccumulatorRecipe;
 import net.minecraft.tags.TagKey;
