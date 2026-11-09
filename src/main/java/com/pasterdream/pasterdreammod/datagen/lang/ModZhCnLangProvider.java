@@ -2120,7 +2120,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.glass_jar_of_dream_juice.title", "好梦在何方");
         add("advancements.pasterdream.story.glass_jar_of_dream_juice.description", "制作并饮用梦境果汁，在睡梦中前往染梦之境");
         add("advancements.pasterdream.story.dream_accumulator.title", "尘埃落定");
-        add("advancements.pasterdream.story.dream_accumulator.description", "使用蓄梦池收集染梦粉尘");
+        add("advancements.pasterdream.story.dream_accumulator.description", "首次打开蓄梦池");
         add("advancements.pasterdream.story.melt_dream_liquid_bucket.title", "百味杂陈");
         add("advancements.pasterdream.story.melt_dream_liquid_bucket.description", "获得一桶融梦涌泉");
         add("advancements.pasterdream.story.create_pliers.title", "太陽とレインボ一");

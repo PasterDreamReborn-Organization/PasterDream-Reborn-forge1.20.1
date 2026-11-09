@@ -1,9 +1,7 @@
 package com.pasterdream.pasterdreammod.world.item.dreamnotes;
 
-import com.pasterdream.pasterdreammod.init.ModCriteriaTriggers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -51,10 +49,9 @@ public class DreamNotesItem extends Item
         }
         else
         {
-            if (!content.isEmpty() && player instanceof ServerPlayer serverPlayer)
+            if (!content.isEmpty())
             {
                 level.playSound(null, player.blockPosition(), SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1.0f, 1.0f);
-                ModCriteriaTriggers.READ_DREAM_NOTE.trigger(serverPlayer, content);
             }
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);

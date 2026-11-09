@@ -385,7 +385,7 @@ description: 从源模组搬运方块、物品、工具、护甲、实体到重�
 - 适用：原作进度由 `impossible` 触发，实际通过读取笔记获得
 - 在方块/物品的交互代码中发放笔记（检查玩家是否已有进度 + 背包是否已有笔记）
 - 进度 criterion 使用 `ReadDreamNoteTrigger.forContent("contentKey")`
-- 示例：`dyedream_crack`（睡觉触发）、`dyedream_world`（进入维度触发）、`dream_accumulator`（打开蓄梦池触发）
+- 示例：`dyedream_crack`（睡觉触发）、`dyedream_world`（进入维度触发）；`dream_accumulator` 已改为打开蓄梦池界面时直接授予进度
 
 **模式 D：饮用/食用 → 得进度**
 
