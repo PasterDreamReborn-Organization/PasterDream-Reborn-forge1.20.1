@@ -1,6 +1,6 @@
 package com.pasterdream.pasterdreammod.world.item.debugtool.widget;
 
-import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
+import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowString;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractScrollWidget;
@@ -47,7 +47,7 @@ public class NBTPreviewWidget extends AbstractScrollWidget
         }
             else
             {
-                NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height / 2, "无NBT", 0xFF000000);
+                NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height / 2, "无NBT", 0xFF000000);
             }
     }
 

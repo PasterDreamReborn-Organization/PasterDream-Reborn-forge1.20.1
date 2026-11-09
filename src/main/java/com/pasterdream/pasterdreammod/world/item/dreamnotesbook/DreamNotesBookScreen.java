@@ -2,9 +2,10 @@ package com.pasterdream.pasterdreammod.world.item.dreamnotesbook;
 
 import com.pasterdream.pasterdreammod.component.arrowbutton.LeftArrowButton;
 import com.pasterdream.pasterdreammod.component.arrowbutton.RightArrowButton;
-import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
+import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.helper.stringhelper.StringHelper;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -183,21 +184,21 @@ public class DreamNotesBookScreen extends Screen
         rendPageContent(guiGraphics);
 
         super.render(guiGraphics, mouseX, mouseY, partialTick);
-        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height - 12, (currentPage + 1) + " / " + totalPage, 0xFFFFFFFF);
+        NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height - 12, (currentPage + 1) + " / " + totalPage, 0xFFFFFFFF);
     }
 
     private void rendPageContent(GuiGraphics guiGraphics)
     {
         if(dreamNotesBookInfo == null)
         {
-            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height / 2, "内容无法解析！", 0xFFFF0000);
+            NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, height / 2, "内容无法解析！", 0xFFFF0000);
             return;
         }
 
         if(currentPage == 0)
         {
-            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 4 * font.lineHeight, title.getString(), color);
-            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 6 * font.lineHeight, author, color);
+            NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 4 * font.lineHeight, 100, 50, title.getString(), color, Util.getMillis());
+            NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 6 * font.lineHeight, author, color);
         }
             else
             {

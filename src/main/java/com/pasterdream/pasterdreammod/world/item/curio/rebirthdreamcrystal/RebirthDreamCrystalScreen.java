@@ -3,7 +3,7 @@ package com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal;
 import com.pasterdream.pasterdreammod.component.BookNameListButton;
 import com.pasterdream.pasterdreammod.component.arrowbutton.LeftArrowButton;
 import com.pasterdream.pasterdreammod.component.arrowbutton.RightArrowButton;
-import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowCenteredString;
+import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowString;
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import com.pasterdream.pasterdreammod.init.ModNetwork;
 import com.pasterdream.pasterdreammod.network.rebirthdreamcrystal.RequestNotesProgressPacket;
@@ -12,6 +12,7 @@ import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.
 import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.task.IPasterDreamSingleTask;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookProgressRegistry;
 import com.pasterdream.pasterdreammod.world.item.dreamnotesbook.DreamNotesBookRegistry;
+import net.minecraft.Util;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -96,10 +97,10 @@ public class RebirthDreamCrystalScreen extends AbstractContainerScreen<RebirthDr
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
         int color = DreamNotesBookProgressRegistry.getColorByDimension(allDimensions.get(dimensionPage));
-        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 70, topPos + 155, (dreamNotesBookListPage + 1) + " / " + (singleDimensionsBooks.size() + 11) / 12, color);
-        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 155, (dimensionPage + 1) + " / " + allDimensions.size(), color);
-        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 135, Component.translatable("content.pasterdream.book.维度:").append(allDimensions.get(dimensionPage)).getString(), color);
-        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 145, Component.translatable("content.pasterdream.book.进度:").append(unlockCount + "/" + singleDimensionsBooks.size()).getString(), color);
+        NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 70, topPos + 155, (dreamNotesBookListPage + 1) + " / " + (singleDimensionsBooks.size() + 11) / 12, color);
+        NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 155, (dimensionPage + 1) + " / " + allDimensions.size(), color);
+        NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 135, 100, 50, Component.translatable("content.pasterdream.book.维度:").append(allDimensions.get(dimensionPage)).getString(), color, Util.getMillis());
+        NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 145, 100, 50, Component.translatable("content.pasterdream.book.进度:").append(unlockCount + "/" + singleDimensionsBooks.size()).getString(), color, Util.getMillis());
 
         IPasterDreamDimensionTask dimensionTask = DreamNotesBookProgressRegistry.getTaskByDimension(allDimensions.get(dimensionPage));
         if(dimensionTask != null)
@@ -112,19 +113,19 @@ public class RebirthDreamCrystalScreen extends AbstractContainerScreen<RebirthDr
                 {
                     if(tasks.get(i).isTaskProgressShowWithIntOrDouble())
                     {
-                        NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 50 + i * 10, (tasks.get(i).getTaskName().getString() + ":" + String.format(Locale.ROOT, "%.0f", taskProgress.get(i)) + "/" + String.format(Locale.ROOT, "%.0f", taskMaxProgress.get(i))), color);
+                        NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 50 + i * 10, 100, 50, (tasks.get(i).getTaskName().getString() + ":" + String.format(Locale.ROOT, "%.0f", taskProgress.get(i)) + "/" + String.format(Locale.ROOT, "%.0f", taskMaxProgress.get(i))), color, Util.getMillis());
                     }
                         else
                         {
-                            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 50 + i * 10, (tasks.get(i).getTaskName().getString() + ":" + taskProgress.get(i) + "/" + taskMaxProgress.get(i)), color);
+                            NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 50 + i * 10, 100, 50, (tasks.get(i).getTaskName().getString() + ":" + taskProgress.get(i) + "/" + taskMaxProgress.get(i)), color, Util.getMillis());
                         }
                 }
                 allIndex = i;
             }
-            NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 60 + allIndex * 10, (Component.translatable("task.pasterdream.提交物品:").getString() + needUploadItemStack.getItem().getDescription().getString()), color);
+            NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 60 + allIndex * 10, 100, 50, (Component.translatable("task.pasterdream.提交物品:").getString() + needUploadItemStack.getItem().getDescription().getString()), color, Util.getMillis());
             if(isCompleteThisDimensionTasks)
             {
-                NonShadowCenteredString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 70 + allIndex * 10, (Component.translatable("task.pasterdream.已完成").getString()), 0xFF7FFF7F);
+                NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 70 + allIndex * 10, 100, 50, (Component.translatable("task.pasterdream.已完成").getString()), 0xFF7FFF7F, Util.getMillis());
             }
         }
     }
