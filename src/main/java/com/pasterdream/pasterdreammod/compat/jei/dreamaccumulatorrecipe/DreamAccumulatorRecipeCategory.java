@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.compat.jei.dreamaccumulatorrecipe;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.nonshadowcenteredstring.NonShadowString;
 import com.pasterdream.pasterdreammod.helper.pasterdreamingredient.ItemIngredient;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import mezz.jei.api.constants.VanillaTypes;
@@ -13,6 +14,7 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.Holder;
@@ -25,6 +27,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DreamAccumulatorRecipeCategory implements IRecipeCategory<DreamAccumulatorJEIRecipe>
 {
@@ -75,9 +80,9 @@ public class DreamAccumulatorRecipeCategory implements IRecipeCategory<DreamAccu
         int time = recipe.getTime();
         double catalystMultiplier = recipe.getCatalystMultiplier();
         background.draw(guiGraphics);
+        List<String> biomesList = new ArrayList<>();
 
         Registry<Biome> biomeRegistry = Minecraft.getInstance().level.registryAccess().registryOrThrow(Registries.BIOME);
-        final int[] line = {0};
 
         for (TagKey<Biome> tag : recipe.getBiomeTags())
         {
@@ -88,13 +93,13 @@ public class DreamAccumulatorRecipeCategory implements IRecipeCategory<DreamAccu
                     holder.unwrapKey().ifPresent(resourceKey ->
                     {
                         ResourceLocation id = resourceKey.location();
-                        String key = "biome." + id.getNamespace() + "." + id.getPath();
-                        guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable(key), 112, 10 * line[0], 0xFFFFFFFF, false);
-                        line[0]++;
+                        biomesList.add(Component.translatable("biome." + id.getNamespace() + "." + id.getPath()).getString());
                     });
                 }
             });
         }
+
+        NonShadowString.drawLongitudinalScrollingStringWithOutShadow(guiGraphics, 112, 0, 480, 81, 50, biomesList, 0xFFFFFFFF, Util.getMillis());
 
         guiGraphics.drawString(Minecraft.getInstance().font, String.format("%02d", (time / 72000)) + "h" + String.format("%02d", ((time % 72000) / 1200)) + "m" + String.format("%02d", ((time % 1200) / 20)) + "s" + String.format("%02d", (time % 20)) + "tick", 28, 38, 0xFFFFFFFF, false);
         guiGraphics.drawString(Minecraft.getInstance().font, catalystMultiplier + "x", 28, 65, 0xFFFFFFFF, false);

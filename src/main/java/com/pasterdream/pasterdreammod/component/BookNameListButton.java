@@ -51,7 +51,7 @@ public class BookNameListButton extends Button
 
                         timerDelay = (long)((targetT - timer) * 1000);
                     }
-                    NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, getX() + 50, getY() + 5, 100, 50, content, unlocked ? dreamNotesBookInfo.color() : 0x7F000000, Util.getMillis() + timerDelay);
+                    NonShadowString.drawHorizontalScrollingStringWithOutShadow(guiGraphics, getX() + 50, getY() + 5, 100, 50, content, unlocked ? dreamNotesBookInfo.color() : 0x7F000000, Util.getMillis() + timerDelay);
                 }
                     else
                     {

@@ -99,8 +99,8 @@ public class RebirthDreamCrystalScreen extends AbstractContainerScreen<RebirthDr
         int color = DreamNotesBookProgressRegistry.getColorByDimension(allDimensions.get(dimensionPage));
         NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 70, topPos + 155, (dreamNotesBookListPage + 1) + " / " + (singleDimensionsBooks.size() + 11) / 12, color);
         NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 155, (dimensionPage + 1) + " / " + allDimensions.size(), color);
-        NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 135, 100, 50, Component.translatable("content.pasterdream.book.维度:").append(allDimensions.get(dimensionPage)).getString(), color, Util.getMillis());
-        NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 145, 100, 50, Component.translatable("content.pasterdream.book.进度:").append(unlockCount + "/" + singleDimensionsBooks.size()).getString(), color, Util.getMillis());
+        NonShadowString.drawHorizontalScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 135, 100, 50, Component.translatable("content.pasterdream.book.维度:").append(allDimensions.get(dimensionPage)).getString(), color, Util.getMillis());
+        NonShadowString.drawHorizontalScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 145, 100, 50, Component.translatable("content.pasterdream.book.进度:").append(unlockCount + "/" + singleDimensionsBooks.size()).getString(), color, Util.getMillis());
 
         IPasterDreamDimensionTask dimensionTask = DreamNotesBookProgressRegistry.getTaskByDimension(allDimensions.get(dimensionPage));
         if(dimensionTask != null)
@@ -113,19 +113,19 @@ public class RebirthDreamCrystalScreen extends AbstractContainerScreen<RebirthDr
                 {
                     if(tasks.get(i).isTaskProgressShowWithIntOrDouble())
                     {
-                        NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 50 + i * 10, 100, 50, (tasks.get(i).getTaskName().getString() + ":" + String.format(Locale.ROOT, "%.0f", taskProgress.get(i)) + "/" + String.format(Locale.ROOT, "%.0f", taskMaxProgress.get(i))), color, Util.getMillis());
+                        NonShadowString.drawHorizontalScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 50 + i * 10, 100, 50, (tasks.get(i).getTaskName().getString() + ":" + String.format(Locale.ROOT, "%.0f", taskProgress.get(i)) + "/" + String.format(Locale.ROOT, "%.0f", taskMaxProgress.get(i))), color, Util.getMillis());
                     }
                         else
                         {
-                            NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 50 + i * 10, 100, 50, (tasks.get(i).getTaskName().getString() + ":" + taskProgress.get(i) + "/" + taskMaxProgress.get(i)), color, Util.getMillis());
+                            NonShadowString.drawHorizontalScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 50 + i * 10, 100, 50, (tasks.get(i).getTaskName().getString() + ":" + taskProgress.get(i) + "/" + taskMaxProgress.get(i)), color, Util.getMillis());
                         }
                 }
                 allIndex = i;
             }
-            NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 60 + allIndex * 10, 100, 50, (Component.translatable("task.pasterdream.提交物品:").getString() + needUploadItemStack.getItem().getDescription().getString()), color, Util.getMillis());
+            NonShadowString.drawHorizontalScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 60 + allIndex * 10, 100, 50, (Component.translatable("task.pasterdream.提交物品:").getString() + needUploadItemStack.getItem().getDescription().getString()), color, Util.getMillis());
             if(isCompleteThisDimensionTasks)
             {
-                NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 70 + allIndex * 10, 100, 50, (Component.translatable("task.pasterdream.已完成").getString()), 0xFF7FFF7F, Util.getMillis());
+                NonShadowString.drawHorizontalScrollingStringWithOutShadow(guiGraphics, leftPos + 210, topPos + 70 + allIndex * 10, 100, 50, (Component.translatable("task.pasterdream.已完成").getString()), 0xFF7FFF7F, Util.getMillis());
             }
         }
     }

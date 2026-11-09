@@ -197,7 +197,7 @@ public class DreamNotesBookScreen extends Screen
 
         if(currentPage == 0)
         {
-            NonShadowString.drawScrollingStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 4 * font.lineHeight, 100, 50, title.getString(), color, Util.getMillis());
+            NonShadowString.drawHorizontalScrollingStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 4 * font.lineHeight, 100, 50, title.getString(), color, Util.getMillis());
             NonShadowString.drawCenteredStringWithOutShadow(guiGraphics, width / 2, GUIStartY + contentStartY + 6 * font.lineHeight, author, color);
         }
             else
