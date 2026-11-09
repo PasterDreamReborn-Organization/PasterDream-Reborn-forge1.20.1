@@ -1,8 +1,11 @@
 package com.pasterdream.pasterdreammod.world.block.dreamaccumulator;
 
+import com.pasterdream.pasterdreammod.PasterDreamMod;
+import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
 import com.pasterdream.pasterdreammod.init.ModBlockEntities;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -26,6 +29,8 @@ import static net.minecraft.world.Containers.dropItemStack;
 
 public class DreamAccumulatorBlock extends BaseEntityBlock
 {
+    private static final ResourceLocation DREAM_ACCUMULATOR_ADV = ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "story/dream_accumulator");
+
     public DreamAccumulatorBlock(Properties properties)
     {
         super(properties);
@@ -58,7 +63,9 @@ public class DreamAccumulatorBlock extends BaseEntityBlock
             BlockEntity blockEntity = level.getBlockEntity(blockPosition);
             if (blockEntity instanceof DreamAccumulatorBlockEntity dreamAccumulator)
             {
-                NetworkHooks.openScreen((ServerPlayer) player, dreamAccumulator, buf -> buf.writeBlockPos(blockPosition));
+                ServerPlayer serverPlayer = (ServerPlayer) player;
+                NetworkHooks.openScreen(serverPlayer, dreamAccumulator, buf -> buf.writeBlockPos(blockPosition));
+                AdvancementHelper.grant(serverPlayer, DREAM_ACCUMULATOR_ADV, "open_dream_accumulator");
                 level.playSound(null, blockPosition, ModSounds.DREAM_ACCUMULATOR.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             }
         }

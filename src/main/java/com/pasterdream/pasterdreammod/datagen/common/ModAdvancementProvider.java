@@ -304,8 +304,7 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
                             FrameType.GOAL,
                             true, true, false
                     )
-                    .addCriterion("read_dream_accumulator_note",
-                            ReadDreamNoteTrigger.TriggerInstance.forContent("dreamAccumulator"))
+                    .addCriterion("open_dream_accumulator", new ImpossibleTrigger.TriggerInstance())
                     .rewards(AdvancementRewards.Builder.experience(10))
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/dream_accumulator"), existingFileHelper);
@@ -637,22 +636,19 @@ public class ModAdvancementProvider extends ForgeAdvancementProvider {
             // ========== 灯影世界剧情线（纯逻辑进度，不在进度界面显示）==========
             Advancement depositionShadow = Advancement.Builder.advancement()
                     .parent(enterLampShadowWorld)
-                    .addCriterion("read_deposition_shadow_note",
-                            ReadDreamNoteTrigger.TriggerInstance.forContent("depositionShadow"))
+                    .addCriterion("story_progress", new ImpossibleTrigger.TriggerInstance())
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/deposition_shadow"), existingFileHelper);
 
             Advancement lampShadowTravelogue1 = Advancement.Builder.advancement()
                     .parent(depositionShadow)
-                    .addCriterion("read_lamp_shadow_travelogue_1_note",
-                            ReadDreamNoteTrigger.TriggerInstance.forContent("lampShadowTravelogue1"))
+                    .addCriterion("story_progress", new ImpossibleTrigger.TriggerInstance())
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/lamp_shadow_travelogue_1"), existingFileHelper);
 
             Advancement shadowDungeon = Advancement.Builder.advancement()
                     .parent(lampShadowTravelogue1)
-                    .addCriterion("read_shadow_dungeon_note",
-                            ReadDreamNoteTrigger.TriggerInstance.forContent("shadowDungeon"))
+                    .addCriterion("story_progress", new ImpossibleTrigger.TriggerInstance())
                     .save(saver, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID,
                             "story/shadow_dungeon"), existingFileHelper);
 

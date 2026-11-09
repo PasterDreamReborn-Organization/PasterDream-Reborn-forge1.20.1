@@ -1931,7 +1931,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.glass_jar_of_dream_juice.title", "Where Lies the Sweet Dream");
         add("advancements.pasterdream.story.glass_jar_of_dream_juice.description", "Craft and drink Dream Juice, then journey to the Dyedream World in your sleep");
         add("advancements.pasterdream.story.dream_accumulator.title", "The Dust Has Settled");
-        add("advancements.pasterdream.story.dream_accumulator.description", "Use the Dream Accumulator to collect Dyedream Dust");
+        add("advancements.pasterdream.story.dream_accumulator.description", "Open a Dream Accumulator for the first time");
         add("advancements.pasterdream.story.melt_dream_liquid_bucket.title", "Mixed Emotions");
         add("advancements.pasterdream.story.melt_dream_liquid_bucket.description", "Obtain a bucket of Melt Dream Spring");
         add("advancements.pasterdream.story.create_pliers.title", "太陽とレインボ一");
