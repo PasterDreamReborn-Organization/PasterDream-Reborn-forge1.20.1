@@ -62,6 +62,7 @@ public class ModDreamNotesBookProgressRelation
         DreamNotesBookProgressRegistry.notesDimensionRegister("灵魂石的现世（假）", DYEDREAM_WORLD);
         DreamNotesBookProgressRegistry.notesDimensionRegister("魔法使建家记", DYEDREAM_WORLD);
         DreamNotesBookProgressRegistry.notesDimensionRegister("侵染教堂-亮面", DYEDREAM_WORLD);
+        DreamNotesBookProgressRegistry.notesDimensionRegister("世界树调查记录", DYEDREAM_WORLD);
 
         DreamNotesBookProgressRegistry.notesDimensionRegister("研究笔记:黑金属", LAMP_SHADOW_WORLD);
         DreamNotesBookProgressRegistry.notesDimensionRegister("灯影游记 其二", LAMP_SHADOW_WORLD);
@@ -89,5 +90,6 @@ public class ModDreamNotesBookProgressRelation
         DreamNotesBookProgressRegistry.notesDimensionRegister("魔法使的记录 其二", WIND_JOURNEY_WORLD);
         DreamNotesBookProgressRegistry.notesDimensionRegister("空岛的圣诞树", WIND_JOURNEY_WORLD);
         DreamNotesBookProgressRegistry.notesDimensionRegister("风铃笼", WIND_JOURNEY_WORLD);
+        DreamNotesBookProgressRegistry.notesDimensionRegister("关于风旅生物的研究笔记", WIND_JOURNEY_WORLD);
     }
 }

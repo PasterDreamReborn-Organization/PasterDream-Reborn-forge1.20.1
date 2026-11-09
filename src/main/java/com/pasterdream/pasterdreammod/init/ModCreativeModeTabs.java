@@ -899,6 +899,7 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("灵魂石的现世"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("灵魂石的现世（假）"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使建家记"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("世界树调查记录"));
 
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("探求秘辛"));
 
@@ -929,6 +930,7 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使的记录 其二"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("空岛的圣诞树"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("风铃笼"));
+                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("关于风旅生物的研究笔记"));
                     })
                     .build());
 

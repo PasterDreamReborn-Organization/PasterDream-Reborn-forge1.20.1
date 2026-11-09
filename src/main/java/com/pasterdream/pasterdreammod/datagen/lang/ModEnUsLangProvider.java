@@ -1075,6 +1075,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.灵魂石的现世", "Soul Gem In Current World");
         add("book.pasterdream.title.灵魂石的现世（假）", "Soul Gem In Current World");
         add("book.pasterdream.title.魔法使建家记", "The Mage Builds a Home");
+        add("book.pasterdream.title.世界树调查记录", "Search Record About Dyedream Tree");
 
         add("book.pasterdream.title.探求秘辛", "In Pursuit of Secrets");
 
@@ -1105,6 +1106,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("book.pasterdream.title.魔法使的记录 其二", "Records of the Mage II");
         add("book.pasterdream.title.空岛的圣诞树", "The Christmas Tree of the Sky Island");
         add("book.pasterdream.title.风铃笼", "Windbell Cage");
+        add("book.pasterdream.title.关于风旅生物的研究笔记", "Search Notes About Wind Journey World's Mob");
 
         add("book.pasterdream.title.精铸工坊", "Weapon Workshop");
         add("book.pasterdream.title.暗影高炉", "Shadow Blast Furnace");
@@ -1590,7 +1592,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("task.pasterdream.阅读30本染梦世界寻梦者笔记", "Read 30 Dyedream World Dream Notes");
         add("task.pasterdream.阅读16本灯影之下寻梦者笔记", "Read 16 Lamp Shadow World Dream Notes");
         add("task.pasterdream.击杀200个暗影生物", "Kill 200 Shadow Mobs");
-        add("task.pasterdream.阅读6本风之旅途寻梦者笔记", "Read 6 Wind Journey World Dream Notes");
+        add("task.pasterdream.阅读7本风之旅途寻梦者笔记", "Read 7 Wind Journey World Dream Notes");
         add("task.pasterdream.完成天使的心跳挑战", "Finish Angel Beats Advancement");
         add("task.pasterdream.提交物品:", "Upload Item:");
         add("task.pasterdream.已完成", "Is Finished");
