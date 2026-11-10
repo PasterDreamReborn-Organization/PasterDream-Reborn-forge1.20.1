@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.world.enchantment;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.capability.san.SanDisabledHealthCost;
 import com.pasterdream.pasterdreammod.init.ModEnchantment;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
 import com.pasterdream.pasterdreammod.world.item.armoritem.MeltDreamCrystalArmorItem;
@@ -16,13 +17,15 @@ import top.theillusivec4.curios.api.CuriosApi;
 /**
  * 「噬心修补」附魔处理器：携带（背包 / 护甲 / 饰品栏）且附有该附魔、有损伤的物品，
  * 每 10 tick 消耗玩家 0.1 理智修复 1 点耐久；理智不足则停止修复。
- * 创造模式不消耗理智。
+ * SAN 系统关闭时改为消耗 1 点生命值修复 1 点耐久（可致死）。
+ * 创造模式不消耗理智或生命值。
  */
 @Mod.EventBusSubscriber(modid = PasterDreamMod.MOD_ID)
 public final class HeartDevourRepairHandler {
 
     /** 每次修复 1 点耐久的理智消耗 */
     private static final double REPAIR_COST = 0.1;
+    private static final double HEALTH_COST = 1.0;
     /** 处理间隔（tick） */
     private static final int INTERVAL = 10;
 
@@ -32,13 +35,12 @@ public final class HeartDevourRepairHandler {
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player)) return;
-        if (player.tickCount % INTERVAL != 0) return;
+        if (player.tickCount % INTERVAL != 0 || player.isDeadOrDying()) return;
 
         player.getCapability(ModCapabilities.SAN).ifPresent(san -> {
-            if (!san.getIsSanEnabled()) return;
-
             boolean free = player.isCreative();
-            double[] budget = {free ? Double.MAX_VALUE : san.getSanValue()};
+            boolean sanEnabled = san.getIsSanEnabled();
+            double[] budget = {free || !sanEnabled ? Double.MAX_VALUE : san.getSanValue()};
 
             int repaired = 0;
             repaired += repair(player.getInventory().items, budget, free);
@@ -55,11 +57,12 @@ public final class HeartDevourRepairHandler {
                     }));
             repaired += curioRepaired[0];
 
-            if (repaired > 0) {
-                if (!free) {
-                    san.addSanValue(-repaired * REPAIR_COST);
-                }
+            if (repaired <= 0 || free) return;
+            if (sanEnabled) {
+                san.addSanValue(-repaired * REPAIR_COST);
                 SanSyncPacket.sendToPlayer(player, san);
+            } else {
+                SanDisabledHealthCost.drain(player, (float) (repaired * HEALTH_COST));
             }
         });
     }

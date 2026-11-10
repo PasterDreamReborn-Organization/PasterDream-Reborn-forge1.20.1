@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.world.item.shadowalloytool;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.pasterdream.pasterdreammod.capability.ModCapabilities;
+import com.pasterdream.pasterdreammod.capability.san.SanDisabledHealthCost;
 import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
 import com.pasterdream.pasterdreammod.network.san.SanSyncPacket;
@@ -26,7 +27,7 @@ import java.util.UUID;
  * 主手时提供理智光环 -1.2、方块触及 +1（继承影蚀工具），
  * 并提供低 SAN 档位加成倍率。
  * <p>
- * 自带「噬心修补」（内置被动，非真实附魔）：位于背包中时消耗理智修复耐久。
+ * 自带「噬心修补」（内置被动，非真实附魔）：位于背包中时消耗理智修复耐久，SAN 系统关闭时改为消耗生命值。
  * <p>
  * 数值均为占位，待 runClient 原型调整（见 document/design/item/暗影合金工具.md）。
  */
@@ -51,6 +52,7 @@ public final class ShadowAlloyToolHelper {
     // ==== 自带「噬心修补」（内置被动） ====
     /** 修复 1 点耐久的理智消耗 */
     private static final double REPAIR_COST = 0.1D;
+    private static final double HEALTH_COST = 1.0D;
     /** 噬心修补处理间隔（tick） */
     private static final int REPAIR_INTERVAL = 10;
 
@@ -91,16 +93,20 @@ public final class ShadowAlloyToolHelper {
      */
     static void onInventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
         if (level.isClientSide || !(entity instanceof ServerPlayer player)) return;
-        if (player.tickCount % REPAIR_INTERVAL != 0) return;
+        if (player.tickCount % REPAIR_INTERVAL != 0 || player.isDeadOrDying()) return;
         if (stack.getDamageValue() < 1) return;
 
         player.getCapability(ModCapabilities.SAN).ifPresent(san -> {
-            if (!san.getIsSanEnabled()) return;
             boolean free = player.isCreative();
-            if (!free && san.getSanValue() < REPAIR_COST) return;
             if (!free) {
-                san.addSanValue(-REPAIR_COST);
-                SanSyncPacket.sendToPlayer(player, san);
+                if (san.getIsSanEnabled()) {
+                    if (san.getSanValue() < REPAIR_COST) return;
+                    san.addSanValue(-REPAIR_COST);
+                    SanSyncPacket.sendToPlayer(player, san);
+                } else {
+                    SanDisabledHealthCost.drain(player, (float) HEALTH_COST);
+                    if (player.isDeadOrDying()) return;
+                }
             }
             stack.setDamageValue(stack.getDamageValue() - 1);
         });

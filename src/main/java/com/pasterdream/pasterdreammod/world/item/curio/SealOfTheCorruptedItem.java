@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.capability.san.ISanModifier;
+import com.pasterdream.pasterdreammod.capability.san.SanHelper;
 import com.pasterdream.pasterdreammod.helper.AdvancementHelper;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
@@ -60,13 +61,25 @@ public class SealOfTheCorruptedItem extends Item implements ICurioItem, ISanModi
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
         if (!(slotContext.entity() instanceof ServerPlayer player)) return;
         if (player.isCreative()) return;
+        if (!SanHelper.getIsSanEnabled(player)) {
+            reject(player, stack, false);
+            return;
+        }
         if (AdvancementHelper.isDone(player, TALENT_SHADOW_ADV)) return;
+        reject(player, stack, true);
+    }
+
+    private static void reject(ServerPlayer player, ItemStack stack, boolean damage) {
+        ItemStack dropped = stack.copy();
+        dropped.setCount(1);
         player.displayClientMessage(Component.translatable("message.pasterdream.seal_of_the_corrupted.rejected"), true);
         clearEquippedCurio(player, stack.getItem());
-        player.hurt(player.level().damageSources().generic(), 5.0F);
+        if (damage) {
+            player.hurt(player.level().damageSources().generic(), 5.0F);
+        }
         if (player.level() instanceof ServerLevel serverLevel) {
             ItemEntity itemEntity = new IndestructibleItemEntity(serverLevel,
-                    player.getX(), player.getY() + 0.5, player.getZ(), new ItemStack(stack.getItem()));
+                    player.getX(), player.getY() + 0.5, player.getZ(), dropped);
             itemEntity.setPickUpDelay(20);
             itemEntity.setDeltaMovement(0, 0.2, 0);
             serverLevel.addFreshEntity(itemEntity);
