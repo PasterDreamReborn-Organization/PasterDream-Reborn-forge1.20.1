@@ -79,6 +79,11 @@ public class ShadowSwordItem extends SwordItem {
         ItemStack stack = player.getItemInHand(hand);
         if (SkillLockHelper.isSkillLocked(player)) return InteractionResultHolder.fail(stack);
         if (!level.isClientSide() && player instanceof ServerPlayer sp) {
+            if (!player.isCreative() && !SanHelper.getIsSanEnabled(sp)) {
+                player.displayClientMessage(Component.translatable("message.pasterdream.shadow_sword.san_disabled"), false);
+                dropSword(sp, stack);
+                return InteractionResultHolder.fail(stack);
+            }
             if (!player.isCreative() && !AdvancementHelper.isDone(sp, TALENT_SHADOW_ADV)) {
                 player.displayClientMessage(Component.translatable("message.pasterdream.shadow_sword.no_talent"), false);
                 player.hurt(player.level().damageSources().fellOutOfWorld(), player.getHealth() - 1);
@@ -93,14 +98,9 @@ public class ShadowSwordItem extends SwordItem {
                 return InteractionResultHolder.fail(stack);
             }
             if (!player.isCreative()) {
-                if (SanHelper.getIsSanEnabled(sp)) {
-                    double currentSan = SanHelper.getPlayerSan(sp);
-                    if (currentSan >= SKILL_SAN_COST) {
-                        SanHelper.addPlayerSanAndSync(sp, -SKILL_SAN_COST);
-                    } else {
-                        float newHealth = Math.max(SKILL_MIN_HP, player.getHealth() - SKILL_HP_COST);
-                        player.setHealth(newHealth);
-                    }
+                double currentSan = SanHelper.getPlayerSan(sp);
+                if (currentSan >= SKILL_SAN_COST) {
+                    SanHelper.addPlayerSanAndSync(sp, -SKILL_SAN_COST);
                 } else {
                     float newHealth = Math.max(SKILL_MIN_HP, player.getHealth() - SKILL_HP_COST);
                     player.setHealth(newHealth);
@@ -154,6 +154,7 @@ public class ShadowSwordItem extends SwordItem {
                         Component.translatable("message.pasterdream.shadow_sword.san_disabled"), false);
                 sp.hurt(sp.level().damageSources().fellOutOfWorld(), (float) (sp.getHealth() - 1));
                 sp.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
+                dropSword(sp, itemstack);
                 return retval;
             }
             if (!sp.isCreative() && SanHelper.getPlayerSan(sp) <= 0) {
@@ -184,6 +185,13 @@ public class ShadowSwordItem extends SwordItem {
                 itemstack.getOrCreateTag().remove("sanRatio");
             }
         }
+    }
+
+    private static void dropSword(ServerPlayer player, ItemStack stack) {
+        if (stack.isEmpty()) return;
+        ItemStack dropped = stack.copy();
+        stack.setCount(0);
+        player.drop(dropped, false, true);
     }
 
     @Override

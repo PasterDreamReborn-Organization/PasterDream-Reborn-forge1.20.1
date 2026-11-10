@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 
 /**
  * 「噬心诅咒」效果处理器：玩家受伤时按原始伤害扣除等量理智，每件附带诅咒的护甲各自叠加。
+ * SAN 系统关闭时改为额外受到本次伤害 50% 的生命值伤害（可致死，每件叠加）。
  * <p>
  * 使用 {@link EventPriority#HIGHEST} 在其它伤害修正（如「庇护」）之前读取原始伤害值。
  */
@@ -40,9 +41,12 @@ public final class HeartDevourCurseHandler {
 
         if (totalLevel <= 0) return;
 
-        double sanLoss = event.getAmount() * totalLevel;
-        if (sanLoss <= 0) return;
-
-        SanHelper.addPlayerSanAndSync(player, -sanLoss);
+        if (SanHelper.getIsSanEnabled(player)) {
+            double sanLoss = event.getAmount() * totalLevel;
+            if (sanLoss <= 0) return;
+            SanHelper.addPlayerSanAndSync(player, -sanLoss);
+        } else {
+            event.setAmount(event.getAmount() * (1.0F + 0.5F * totalLevel));
+        }
     }
 }
