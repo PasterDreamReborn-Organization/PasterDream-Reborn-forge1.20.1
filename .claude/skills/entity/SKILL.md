@@ -87,5 +87,6 @@ description: 新增/修改实体（生物、弹射物、投影物）。覆盖实
 ## 引用文档
 
 - `document/rule/program/架构规范.md` — entity 模块职责
+- `document/rule/program/程序规范文档.md` — 高速定向弹射物的命中判定与客户端插值
 - `.claude/skills/client-rendering/SKILL.md` — 渲染器与模型细节
 - `.claude/skills/shadow-difficulty/SKILL.md` — 暗影生物难度
