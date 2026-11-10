@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.client;
 
-import com.pasterdream.pasterdreammod.mixin.BossHealthOverlayAccessor;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosLeftHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.AaroncosRightHandEntity;
 import com.pasterdream.pasterdreammod.world.entity.WindKnightEntity;
@@ -30,8 +29,7 @@ public class ModBossBarLayout {
 
     /** 原版 BOSS 条下方第一条的基准 y 坐标。 */
     public static int baseY() {
-        var bossOverlay = Minecraft.getInstance().gui.getBossOverlay();
-        int vanillaCount = ((BossHealthOverlayAccessor) bossOverlay).pasterdream$getEvents().size();
+        int vanillaCount = Minecraft.getInstance().gui.getBossOverlay().events.size();
         return 12 + vanillaCount * 19;
     }
 
