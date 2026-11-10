@@ -48,8 +48,8 @@ public class TerraswordWaveRenderer extends EntityRenderer<TerraswordWaveEntity>
     public void render(TerraswordWaveEntity entity, float entityYaw, float partialTick, PoseStack poseStack,
                        MultiBufferSource buffer, int packedLight) {
         Vec3 moveDir = entity.getMoveDirection(partialTick);
-        Vec3 side = TerraswordWaveEntity.getWaveSide(moveDir);
         Vec3 heightAxis = entity.getWaveHeightAxis(moveDir);
+        Vec3 side = moveDir.cross(heightAxis).normalize();
         float lifeFade = computeLifeFade(entity, partialTick);
         if (lifeFade <= 0.0f) {
             return;
