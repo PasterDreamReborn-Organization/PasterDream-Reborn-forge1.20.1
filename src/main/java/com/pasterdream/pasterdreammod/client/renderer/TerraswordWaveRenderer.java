@@ -2,6 +2,7 @@ package com.pasterdream.pasterdreammod.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.renderhelper.CustomRenderTypes;
 import com.pasterdream.pasterdreammod.world.entity.TerraswordWaveEntity;
 import net.minecraft.client.Minecraft;
@@ -15,23 +16,18 @@ import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix4f;
 
 /**
- * 泰拉剑气弧形刀光渲染：不依赖模型/纹理，直接用 OpenGL（POSITION_COLOR + 加法混合）
- * 在飞行方向与高度轴构成的平面内画一片弯曲的刀光，平面法线垂直于飞行方向。
- * <p>
- * 刀光以「中心线 + 厚度」的方式构建：中心线是一条以 5 格长轴为高度、向飞行方向鼓起的
- * 弧线，沿面内法线向两侧铺开厚度，形成中间厚、两端收尖的月牙形。长轴（高度轴）绕飞行
- * 方向随机翻滚，故刀光在水平面内的倾角每次随机。
+ * 泰拉剑气刀光：将绘制好的透明月牙纹理放在飞行方向与高度轴构成的平面内。
+ * 高度轴仍随实体的随机翻滚角旋转，纹理透明度随生命周期渐隐；刀光始终以最大亮度渲染。
  */
 public class TerraswordWaveRenderer extends EntityRenderer<TerraswordWaveEntity> {
 
-    private static final int SEGMENTS = 20;               // 中心线分段数
-    private static final double ARC_HALF_HEIGHT = 2.5;    // 5 格长轴的一半
-    private static final double FORWARD_BULGE = 1.0;     // 弧面在飞行方向的鼓起量（连同厚度仍位于碰撞盒内）
-    private static final double MAX_HALF_THICKNESS = 0.5; // 刀光最厚处半厚
-    private static final double[] THICKNESS_OFFSETS = {-1.0, -0.5, 0.0, 0.5, 1.0}; // 厚度方向采样列
-    private static final float[] EDGE_COLOR = {0.25f, 0.85f, 0.4f}; // 边缘：泰拉绿
-    private static final float[] CORE_COLOR = {0.85f, 1.0f, 0.9f};  // 中心：亮白
-    private static final float CORE_ALPHA = 0.95f;
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
+            PasterDreamMod.MOD_ID, "textures/entities/terrasword_wave.png");
+    private static final RenderType WAVE_RENDER_TYPE = CustomRenderTypes.swordWave(TEXTURE);
+    private static final double HALF_HEIGHT = 2.5;
+    private static final double BACK_EDGE = -0.5;
+    private static final double FRONT_EDGE = 1.5;
+    private static final float EXTRA_GLOW_ALPHA = 0.35f;
     private static final float FADE_IN_TICKS = 2.0f;   // 生成淡入时长
     private static final float FADE_OUT_TICKS = 5.0f;  // 消失淡出时长
 
@@ -41,7 +37,7 @@ public class TerraswordWaveRenderer extends EntityRenderer<TerraswordWaveEntity>
 
     @Override
     public ResourceLocation getTextureLocation(TerraswordWaveEntity entity) {
-        return null;
+        return TEXTURE;
     }
 
     @Override
@@ -56,50 +52,13 @@ public class TerraswordWaveRenderer extends EntityRenderer<TerraswordWaveEntity>
         }
 
         Matrix4f matrix = poseStack.last().pose();
-        VertexConsumer vc = buffer.getBuffer(CustomRenderTypes.SWORD_WAVE_ARC);
-
-        int columns = THICKNESS_OFFSETS.length;
-        Vec3[][] points = new Vec3[SEGMENTS + 1][columns];
-        float[][] alpha = new float[SEGMENTS + 1][columns];
-        float[][][] rgb = new float[SEGMENTS + 1][columns][3];
-
-        for (int i = 0; i <= SEGMENTS; i++) {
-            double t = -1.0 + 2.0 * i / SEGMENTS;
-            double profile = Math.sqrt(Math.max(0.0, 1.0 - t * t));
-
-            // The blade plane contains the flight direction, rather than facing it.
-            Vec3 centre = heightAxis.scale(t * ARC_HALF_HEIGHT)
-                    .add(moveDir.scale(FORWARD_BULGE * (1.0 - t * t)));
-
-            // 面内切线 (x=飞行轴分量, y=高度轴分量) 旋转 90° 得到面内法线，用于铺厚度
-            double tangentX = -2.0 * FORWARD_BULGE * t;
-            double tangentY = ARC_HALF_HEIGHT;
-            double normalLen = Math.sqrt(tangentX * tangentX + tangentY * tangentY);
-            double normalX = normalLen > 1.0E-6 ? -tangentY / normalLen : -1.0;
-            double normalY = normalLen > 1.0E-6 ? tangentX / normalLen : 0.0;
-            Vec3 normal = moveDir.scale(normalX).add(heightAxis.scale(normalY));
-
-            double halfThickness = MAX_HALF_THICKNESS * profile;
-            for (int j = 0; j < columns; j++) {
-                points[i][j] = centre.add(normal.scale(THICKNESS_OFFSETS[j] * halfThickness));
-
-                double radial = 1.0 - Math.abs(THICKNESS_OFFSETS[j]);
-                alpha[i][j] = CORE_ALPHA * (float) (profile * Math.pow(radial, 0.8)) * lifeFade;
-                float mix = (float) radial;
-                rgb[i][j][0] = Mth.lerp(mix, EDGE_COLOR[0], CORE_COLOR[0]);
-                rgb[i][j][1] = Mth.lerp(mix, EDGE_COLOR[1], CORE_COLOR[1]);
-                rgb[i][j][2] = Mth.lerp(mix, EDGE_COLOR[2], CORE_COLOR[2]);
-            }
-        }
-
-        for (int i = 0; i < SEGMENTS; i++) {
-            for (int j = 0; j < columns - 1; j++) {
-                vertex(vc, matrix, points[i][j], rgb[i][j], alpha[i][j]);
-                vertex(vc, matrix, points[i + 1][j], rgb[i + 1][j], alpha[i + 1][j]);
-                vertex(vc, matrix, points[i + 1][j + 1], rgb[i + 1][j + 1], alpha[i + 1][j + 1]);
-                vertex(vc, matrix, points[i][j + 1], rgb[i][j + 1], alpha[i][j + 1]);
-            }
-        }
+        VertexConsumer vc = buffer.getBuffer(WAVE_RENDER_TYPE);
+        Vec3 topBack = heightAxis.scale(HALF_HEIGHT).add(moveDir.scale(BACK_EDGE));
+        Vec3 bottomBack = heightAxis.scale(-HALF_HEIGHT).add(moveDir.scale(BACK_EDGE));
+        Vec3 bottomFront = heightAxis.scale(-HALF_HEIGHT).add(moveDir.scale(FRONT_EDGE));
+        Vec3 topFront = heightAxis.scale(HALF_HEIGHT).add(moveDir.scale(FRONT_EDGE));
+        renderQuad(vc, matrix, topBack, bottomBack, bottomFront, topFront, lifeFade);
+        renderQuad(vc, matrix, topBack, bottomBack, bottomFront, topFront, lifeFade * EXTRA_GLOW_ALPHA);
 
         // F3+B 开启时，绘制实际的定向碰撞盒(OBB)与飞行方向轴，便于核对命中范围
         if (Minecraft.getInstance().getEntityRenderDispatcher().shouldRenderHitBoxes()) {
@@ -149,9 +108,18 @@ public class TerraswordWaveRenderer extends EntityRenderer<TerraswordWaveEntity>
                 .endVertex();
     }
 
-    private static void vertex(VertexConsumer vc, Matrix4f matrix, Vec3 pos, float[] rgb, float a) {
+    private static void renderQuad(VertexConsumer vc, Matrix4f matrix, Vec3 topBack, Vec3 bottomBack,
+                                   Vec3 bottomFront, Vec3 topFront, float alpha) {
+        vertex(vc, matrix, topBack, 0.0f, 0.0f, alpha);
+        vertex(vc, matrix, bottomBack, 0.0f, 1.0f, alpha);
+        vertex(vc, matrix, bottomFront, 1.0f, 1.0f, alpha);
+        vertex(vc, matrix, topFront, 1.0f, 0.0f, alpha);
+    }
+
+    private static void vertex(VertexConsumer vc, Matrix4f matrix, Vec3 pos, float u, float v, float alpha) {
         vc.vertex(matrix, (float) pos.x, (float) pos.y, (float) pos.z)
-                .color(rgb[0], rgb[1], rgb[2], a)
+                .color(1.0f, 1.0f, 1.0f, alpha)
+                .uv(u, v)
                 .endVertex();
     }
 
