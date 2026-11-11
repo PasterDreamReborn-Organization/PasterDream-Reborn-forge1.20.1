@@ -721,7 +721,7 @@
 | `fondillusion_buff`           | `misty_dream`            | 重命名      | `MistyDreamEffect`，迷梦标记，主世界高空显示进入进度                        |
 | `rest`                   | `rest`                   | 不改        | `RestEffect`，+0.9 理智光环                                     |
 | `dream_harp_of_wanderer` | `dream_harp_of_wanderer` | 不改        | `DreamharpOfWandererBuffEffect`，+4最大生命、+2.4SAN光环、+1%速度、治疗  |
-| -                             | `counter_attack`         | 新增        | `CounterAttackEffect`，下一次攻击在减伤结算后最终伤害 +50%，配合反击戒指/转身衣装触发                 |
+| `counterattack_buff`          | `counter_attack`         | 重命名，去 `_buff`，加下划线 | `CounterAttackEffect`，原为攻击力 +3 / 技能倍率 +0.5 的属性加成，重置改为下一次攻击在减伤结算后最终伤害 +50%，配合反击戒指/转身衣装触发 |
 | `bind`                   | `bind`                   | 不改        | `BindEffect`，移速降至 0，由白厄剑雨命中施加，持续 6s                        |
 | `shadow_silence`         | `shadow_silence`         | 不改        | `ShadowSilenceEffect`，标记效果，由白厄剑雨命中 shadow_mob 实体时施加，持续 10s |
 | `cloudmist_buff`              | `cloud_mist`             | 重命名      | `CloudMistEffect`，云雾标记，风之旅途显示退出进度                          |
