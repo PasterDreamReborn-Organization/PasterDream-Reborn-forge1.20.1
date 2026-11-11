@@ -5,6 +5,7 @@ import com.pasterdream.pasterdreammod.helper.MinionFilterHelper;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -13,6 +14,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -54,6 +56,7 @@ public class TerraswordWaveEntity extends PathfinderMob {
     private static final double PARTICLE_SPREAD_BASE = 0.3; // 基础水平粒子散布
     private static final double PARTICLE_SPREAD_SWEEPING_BONUS = 0.3; // 横扫之刃每级水平粒子散布加成
     private static final double PARTICLE_VELOCITY = 0.1; // 粒子初速度
+    private static final double TRAIL_PARTICLE_VIEW_DISTANCE = 96.0; // 覆盖远端剑气，避免向整张地图广播
     private static final double BASE_DAMAGE_OFFSET = 2.0; // 基础伤害偏移
     private static final float SMITE_BANE_MULTIPLIER = 2.5f; // 亡灵杀手/节肢杀手每级伤害加成
     private static final double PENETRATION_DECAY = 0.75; // 每次命中后伤害乘数（累乘 25% 衰减）
@@ -590,11 +593,21 @@ public class TerraswordWaveEntity extends PathfinderMob {
                     .add(heightAxis.scale(v * verticalSpread))
                     .add(moveDir.scale(-w * trailLength));
             Vec3 pos = center.add(offset);
-            serverLevel.sendParticles(ModParticleTypes.SPORE_PARTICLE.get(),
-                    pos.x, pos.y, pos.z, 1, 0, 0, 0, PARTICLE_VELOCITY);
-            serverLevel.sendParticles(ModParticleTypes.TERRASWORD_WAVE_PARTICLE.get(),
-                    pos.x, pos.y, pos.z, 1, 0, 0, 0, PARTICLE_VELOCITY);
+            for (ServerPlayer player : serverLevel.players()) {
+                if (player.distanceToSqr(pos) > TRAIL_PARTICLE_VIEW_DISTANCE * TRAIL_PARTICLE_VIEW_DISTANCE) {
+                    continue;
+                }
+                sendForcedTrailParticle(serverLevel, player, ModParticleTypes.SPORE_PARTICLE.get(), pos);
+                sendForcedTrailParticle(serverLevel, player, ModParticleTypes.TERRASWORD_WAVE_PARTICLE.get(), pos);
+            }
         }
+    }
+
+    private static void sendForcedTrailParticle(ServerLevel level, ServerPlayer player,
+                                                ParticleOptions particle, Vec3 pos) {
+        // true 同时放宽原版 32 格发送限制，并让客户端绕过“最少粒子”过滤。
+        level.sendParticles(player, particle, true,
+                pos.x, pos.y, pos.z, 1, 0, 0, 0, PARTICLE_VELOCITY);
     }
 
     @Nullable

@@ -89,6 +89,7 @@ description: 客户端渲染（RenderType、HUD、粒子、音效、GeckoLib 动
 | 动画文件 | `assets/pasterdream/animations/` |
 | 模型 | `client/model/` |
 | 渲染器 | `client/renderer/` |
+| 泰拉剑气双面加亮纹理渲染 | `client/renderer/TerraswordWaveRenderer.java` + `helper/renderhelper/CustomRenderTypes.java` + `textures/entities/terrasword_wave.png` |
 | GUI 渲染辅助 | `helper/renderhelper/` |
 | GUI 组件 | `component/` |
 | 美术资产清单 | `src/main/resources/ASSETS_MANIFEST.md` |
@@ -98,3 +99,4 @@ description: 客户端渲染（RenderType、HUD、粒子、音效、GeckoLib 动
 ## 引用文档
 
 - `document/rule/program/架构规范.md` — 客户端分离、粒子系统、GeckoLib 集成
+- `document/rule/program/程序规范文档.md`「服务端粒子的发送距离与客户端粒子设置」— 远端战技粒子的发送与客户端设置

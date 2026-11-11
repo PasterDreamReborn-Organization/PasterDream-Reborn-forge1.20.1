@@ -34,6 +34,7 @@ textures/block/medium_dyedream_bud.png
 textures/block/small_dyedream_bud.png
 textures/block/molten_gold_block.png
 textures/block/molten_gold_ore.png
+textures/entities/terrasword_wave.png
 textures/gui/pasterdream_inventory.png
 textures/item/attack_enhance_stone.png
 textures/item/black_metal_nugget.png
