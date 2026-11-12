@@ -42,7 +42,7 @@ public final class ShadowErosionToolHelper {
                         BLOCK_REACH_AMOUNT, AttributeModifier.Operation.ADDITION));
         return builder.build();
     }
-    static void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
+    public static void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_erosion_tool.1"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_erosion_tool.2"));
     }

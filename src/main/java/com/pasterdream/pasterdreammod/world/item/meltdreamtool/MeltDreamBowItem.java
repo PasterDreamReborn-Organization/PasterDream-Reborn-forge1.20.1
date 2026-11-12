@@ -11,7 +11,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -194,12 +193,6 @@ public class MeltDreamBowItem extends BowItem implements MeltDreamTool {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
-        super.inventoryTick(stack, level, entity, slot, selected);
-        MeltDreamToolHelper.onInventoryTick(stack, level, entity, slot, selected);
-    }
-
-    @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
         tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_bow.1"));
@@ -208,6 +201,5 @@ public class MeltDreamBowItem extends BowItem implements MeltDreamTool {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_bow.4"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_bow.5"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_bow.6"));
-        MeltDreamToolHelper.appendHoverText(stack, level, tooltip, flag);
     }
 }

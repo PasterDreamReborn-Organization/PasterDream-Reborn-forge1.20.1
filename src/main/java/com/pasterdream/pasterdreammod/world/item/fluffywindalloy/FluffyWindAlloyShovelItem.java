@@ -43,8 +43,5 @@ public class FluffyWindAlloyShovelItem extends ShovelItem implements FluffyWindA
         super.appendHoverText(stack, level, tooltip, flag);
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_shovel.skill_name"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_shovel.desc1"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive_name"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive1"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive2"));
     }
 }

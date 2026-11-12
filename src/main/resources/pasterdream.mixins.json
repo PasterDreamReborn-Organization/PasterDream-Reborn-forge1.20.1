@@ -32,7 +32,9 @@
     "LocateCommandMixin",
     "FireworkRocketMixin",
     "ItemElytraMixin",
+    "ItemSharedToolBehaviorMixin",
     "ItemStackGetAttributeModifiersMixin",
+    "ItemStackSharedToolBehaviorMixin",
     "PlayerCanEatMixin",
     "ServerGamePacketListenerImplMixin",
     "UsingItemSpeedMixin"

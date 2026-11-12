@@ -22,7 +22,7 @@ public final class MeltDreamToolHelper {
      * 在背包中时每 10 tick 消耗 0.01 融梦能量修复 1 点耐久。
      * 创造模式 / 无消耗标记时不扣能量。
      */
-    static void onInventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
+    public static void onInventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
         // 仅服务端、玩家、每 10 tick、有损伤
         if (level.isClientSide || !(entity instanceof Player player)) return;
         if (player.tickCount % 10 != 0) return;
@@ -46,7 +46,7 @@ public final class MeltDreamToolHelper {
         });
     }
 
-    static void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
+    public static void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_tool.1"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.melt_dream_tool.2"));
     }

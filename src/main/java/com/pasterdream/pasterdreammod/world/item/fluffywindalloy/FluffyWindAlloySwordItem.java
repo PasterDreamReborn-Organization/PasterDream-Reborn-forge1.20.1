@@ -10,17 +10,12 @@ import com.pasterdream.pasterdreammod.world.entity.WindAlloyLightningEntity;
 import com.pasterdream.pasterdreammod.world.item.IndestructibleItemEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -39,9 +34,6 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -54,18 +46,17 @@ import java.util.Optional;
  * 雷 · 萦风引雷：右键对准心处的生物或方块降下 5 道落雷（间隔 10tick），命中生物则落雷于其脚下并追踪，
  *               命中方块则落雷于方块上表面，每道造成 攻击力×1.0 的 4×3×4 范围雷电伤害，
  *               消耗融梦能量 1.0，冷却 5s。
- * 被动 · 雷随疾风：移动速度越高伤害越高，伤害=(1+移动速度)×攻击力，并附带攻击力×0.1 雷电伤害。
+ * 被动 · 疾风过境（全系列统一，见 {@link FluffyWindAlloyAttackHandler}）：
+ *               攻击附带雷电伤害；移动速度越快，挖掘速度越快、攻击伤害越高；
+ *               破坏方块或击杀生物时，掉落物被风卷至身边。
  *
  * 说明：伤害公式中的"移动速度"= max(移动速度属性, 进行攻击时的瞬时移动速度)。
  */
-public class FluffyWindAlloySwordItem extends SwordItem {
+public class FluffyWindAlloySwordItem extends SwordItem implements FluffyWindAlloyTool {
 
     private static final String MODE_TAG = "pasterdream:fluffy_wind_alloy_mode";
     private static final String MODE_WIND = "wind";
     private static final String MODE_THUNDER = "thunder";
-
-    /** 施加战技/被动自算伤害期间置位，防止被动对自身伤害再次套用形成递归 */
-    private static final String APPLYING_TAG = "pasterdream:fluffy_wind_alloy_applying";
 
     // ===== 风 · 疾风突进 =====
     private static final int WIND_COOLDOWN_TICKS = 40;            // 冷却 2s
@@ -88,9 +79,6 @@ public class FluffyWindAlloySwordItem extends SwordItem {
     private static final double THUNDER_ENERGY_COST = 1.0;        // 融梦能量消耗
     private static final double THUNDER_DAMAGE_MULTIPLIER = 1.0;  // 攻击力×1.0
     private static final int THUNDER_TARGET_RANGE = 24;           // 索敌/落雷距离
-
-    // ===== 被动 · 雷随疾风 =====
-    private static final double PASSIVE_LIGHTNING_RATIO = 0.1;    // 附带攻击力×0.1 雷电伤害
 
     // ===== 附魔加成（战技吃附魔，参考泰拉剑气） =====
     private static final double SHARPNESS_DAMAGE_BONUS = 0.5;     // 锋利每级攻击力加成
@@ -184,7 +172,7 @@ public class FluffyWindAlloySwordItem extends SwordItem {
         AABB swept = new AABB(
                 Math.min(start.x, end.x) - sweepXZ, Math.min(start.y, end.y) - WIND_SWEEP_Y, Math.min(start.z, end.z) - sweepXZ,
                 Math.max(start.x, end.x) + sweepXZ, Math.max(start.y, end.y) + WIND_SWEEP_Y, Math.max(start.z, end.z) + sweepXZ);
-        player.getPersistentData().putBoolean(APPLYING_TAG, true);
+        player.getPersistentData().putBoolean(FluffyWindAlloyToolHelper.APPLYING_TAG, true);
         List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, swept,
                 e -> e != player && e.isAlive() && !MinionFilterHelper.isOwnedMinion(e, player));
         for (LivingEntity target : targets) {
@@ -199,7 +187,7 @@ public class FluffyWindAlloySwordItem extends SwordItem {
             target.push(kb.x, 0.3 + knockback * 0.1, kb.z);
             if (fireAspect > 0) target.setSecondsOnFire(fireAspect * FIRE_ASPECT_TICK_MULTIPLIER);
         }
-        player.getPersistentData().remove(APPLYING_TAG);
+        player.getPersistentData().remove(FluffyWindAlloyToolHelper.APPLYING_TAG);
 
         if (level instanceof ServerLevel sl) {
             sl.sendParticles(ParticleTypes.CLOUD,
@@ -297,46 +285,6 @@ public class FluffyWindAlloySwordItem extends SwordItem {
     /** 雷击目标：target 非空表示追踪实体（落雷于脚下），否则按 strikePos 固定落雷（方块上表面）。 */
     private record ThunderTarget(LivingEntity target, Vec3 strikePos) {}
 
-    // ==================== 被动 · 雷随疾风 ====================
-
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
-    public static class WindAlloyPassiveHandler {
-        @SubscribeEvent
-        public static void onLivingHurt(LivingHurtEvent event) {
-            if (!(event.getSource().getEntity() instanceof Player player)) return;
-            if (!(player.getMainHandItem().getItem() instanceof FluffyWindAlloySwordItem)) return;
-            if (player.getPersistentData().getBoolean(APPLYING_TAG)) return;
-            if (event.getSource().getDirectEntity() == null) return;
-            if (event.getSource().getDirectEntity() != player) return;
-
-            LivingEntity target = event.getEntity();
-
-            float atk = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
-            float critRatio = atk > 0 ? event.getAmount() / atk : 1.0f; // 保留暴击/附魔比例
-            double speed = Math.max(player.getAttributeValue(Attributes.MOVEMENT_SPEED),
-                    player.getDeltaMovement().horizontalDistance());
-            float mainDamage = (float) ((1 + speed) * atk) * critRatio;
-            float lightningDamage = atk * (float) PASSIVE_LIGHTNING_RATIO;
-
-            event.setCanceled(true);
-            player.getPersistentData().putBoolean(APPLYING_TAG, true);
-            target.invulnerableTime = 0;
-            target.hurt(target.level().damageSources().playerAttack(player), mainDamage);
-            // 先造成攻击，再造成雷伤，取消无敌帧
-            target.invulnerableTime = 0;
-            target.hurt(lightningSource(target, player), lightningDamage);
-            player.getPersistentData().remove(APPLYING_TAG);
-        }
-
-        /** 以玩家为击杀归属的雷电伤害源，避免无来源伤害导致击杀/抢夺/统计丢失。 */
-        private static DamageSource lightningSource(LivingEntity target, Player player) {
-            Holder<DamageType> holder = target.level().registryAccess()
-                    .registryOrThrow(Registries.DAMAGE_TYPE)
-                    .getHolderOrThrow(DamageTypes.LIGHTNING_BOLT);
-            return new DamageSource(holder, player, player);
-        }
-    }
-
     // ==================== 其余 ====================
 
     @Override
@@ -351,9 +299,6 @@ public class FluffyWindAlloySwordItem extends SwordItem {
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.desc4"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.desc5"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.desc6"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.passive_name"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.passive1"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_sword.passive2"));
     }
 
     @Override

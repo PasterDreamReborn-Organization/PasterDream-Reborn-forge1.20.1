@@ -29,7 +29,7 @@ public final class MoltenGoldToolHelper {
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }
 
-    static void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
+    public static void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.molten_gold_tool.1"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.molten_gold_tool.2"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.molten_gold_tool.3"));

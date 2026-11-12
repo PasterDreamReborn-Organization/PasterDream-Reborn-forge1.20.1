@@ -91,7 +91,7 @@ public final class ShadowAlloyToolHelper {
      * 工具位于背包中时，每 {@link #REPAIR_INTERVAL} tick 消耗 {@link #REPAIR_COST} 理智修复 1 点耐久。
      * 创造模式不消耗理智；理智不足则停止修复。
      */
-    static void onInventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
+    public static void onInventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
         if (level.isClientSide || !(entity instanceof ServerPlayer player)) return;
         if (player.tickCount % REPAIR_INTERVAL != 0 || player.isDeadOrDying()) return;
         if (stack.getDamageValue() < 1) return;
@@ -112,7 +112,7 @@ public final class ShadowAlloyToolHelper {
         });
     }
 
-    static void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
+    public static void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.passive"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.1"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.shadow_alloy_tool.2"));
