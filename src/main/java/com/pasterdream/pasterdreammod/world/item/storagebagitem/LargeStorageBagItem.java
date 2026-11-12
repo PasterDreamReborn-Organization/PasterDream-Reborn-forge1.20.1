@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.item.StorgeBagItem;
+package com.pasterdream.pasterdreammod.world.item.storagebagitem;
 
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.ModSounds;

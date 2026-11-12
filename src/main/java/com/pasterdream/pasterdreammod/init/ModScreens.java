@@ -21,8 +21,8 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.Weap
 import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.RebirthDreamCrystalScreen;
 import com.pasterdream.pasterdreammod.world.item.debugtool.screen.*;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarScreen;
-import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.StorageBagScreen;
-import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.LargeStorageBagScreen;
+import com.pasterdream.pasterdreammod.world.item.storagebagitem.StorageBagScreen;
+import com.pasterdream.pasterdreammod.world.item.storagebagitem.LargeStorageBagScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 

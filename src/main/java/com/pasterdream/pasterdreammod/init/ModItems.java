@@ -43,8 +43,8 @@ import com.pasterdream.pasterdreammod.world.block.fireflyglassjar.FireflyGlassJa
 import com.pasterdream.pasterdreammod.world.block.weaponworkshop.blastfurnace.WeaponWorkshopBlastFurnaceItem;
 import com.pasterdream.pasterdreammod.world.item.*;
 import com.pasterdream.pasterdreammod.world.item.FireproofBlockItem;
-import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.StorageBagItem;
-import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.LargeStorageBagItem;
+import com.pasterdream.pasterdreammod.world.item.storagebagitem.StorageBagItem;
+import com.pasterdream.pasterdreammod.world.item.storagebagitem.LargeStorageBagItem;
 import com.pasterdream.pasterdreammod.world.item.blueprints.BluePrintItem;
 import com.pasterdream.pasterdreammod.world.item.curio.*;
 import com.pasterdream.pasterdreammod.world.item.curio.FadedBlessingOfCeciliaItem;

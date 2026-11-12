@@ -39,8 +39,8 @@ import com.pasterdream.pasterdreammod.world.block.weaponworkshop.grindstone.Weap
 import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.RebirthDreamCrystalMenu;
 import com.pasterdream.pasterdreammod.world.item.debugtool.menu.*;
 import com.pasterdream.pasterdreammod.world.item.mortar.MortarMenu;
-import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.StorageBagMenu;
-import com.pasterdream.pasterdreammod.world.item.StorgeBagItem.LargeStorageBagMenu;
+import com.pasterdream.pasterdreammod.world.item.storagebagitem.StorageBagMenu;
+import com.pasterdream.pasterdreammod.world.item.storagebagitem.LargeStorageBagMenu;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.ItemStack;

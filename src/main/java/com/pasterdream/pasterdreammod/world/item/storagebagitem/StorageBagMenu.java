@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.item.StorgeBagItem;
+package com.pasterdream.pasterdreammod.world.item.storagebagitem;
 
 import com.pasterdream.pasterdreammod.init.ModMenus;
 import net.minecraft.nbt.CompoundTag;
@@ -14,32 +14,33 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class LargeStorageBagMenu extends AbstractContainerMenu {
+public class StorageBagMenu extends AbstractContainerMenu {
 
     private final ItemStack bagStack;
     private final InteractionHand hand;
     private final int lockedSlotIndex;
     private final ItemStackHandler bagInventory;
 
-    public LargeStorageBagMenu(int id, Inventory playerInventory, ItemStack bagStack, InteractionHand hand) {
-        super(ModMenus.LARGE_STORAGE_BAG.get(), id);
+    // 从服务端构造 (物品直接打开)
+    public StorageBagMenu(int id, Inventory playerInventory, ItemStack bagStack, InteractionHand hand) {
+        super(ModMenus.STORAGE_BAG.get(), id);
         this.bagStack = bagStack;
         this.hand = hand;
         this.bagInventory = createInventory(bagStack);
 
         if (hand == InteractionHand.MAIN_HAND) {
-            lockedSlotIndex = LargeStorageBagItem.SLOT_COUNT + 27 + playerInventory.selected;
+            lockedSlotIndex = StorageBagItem.SLOT_COUNT + 27 + playerInventory.selected;
         } else {
             lockedSlotIndex = -1;
         }
 
-        // 大储物袋槽位 5×5
-        int bagTexLeft = 24;
-        int bagStartX = bagTexLeft + (128 - 5 * 18) / 2 - 2;
-        int bagStartY = 10 - 2;
-        for (int row = 0; row < 5; row++) {
-            for (int col = 0; col < 5; col++) {
-                addSlot(new SlotItemHandler(bagInventory, row * 5 + col,
+        // 储物袋槽位 3×3
+        int bagTexLeft = 45;
+        int bagStartX = bagTexLeft + (86 - 3 * 18) / 2 - 1;
+        int bagStartY = 17 + 7;
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                addSlot(new SlotItemHandler(bagInventory, row * 3 + col,
                         bagStartX + col * 18, bagStartY + row * 18) {
                     @Override
                     public boolean mayPlace(ItemStack stack) {
@@ -51,7 +52,7 @@ public class LargeStorageBagMenu extends AbstractContainerMenu {
 
         // 玩家背包 3×9
         int invStartX = 5;
-        int invStartY = 124 + 5;
+        int invStartY = 82 + 5;
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
                 addSlot(new Slot(playerInventory, col + row * 9 + 9,
@@ -66,26 +67,27 @@ public class LargeStorageBagMenu extends AbstractContainerMenu {
         }
     }
 
-    public LargeStorageBagMenu(int id, Inventory playerInventory, FriendlyByteBuf data) {
-        super(ModMenus.LARGE_STORAGE_BAG.get(), id);
+    // 从客户端构造 (NetworkHooks 数据包)
+    public StorageBagMenu(int id, Inventory playerInventory, FriendlyByteBuf data) {
+        super(ModMenus.STORAGE_BAG.get(), id);
         byte handId = data.readByte();
         this.hand = handId == 0 ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
         this.bagStack = playerInventory.player.getItemInHand(this.hand);
         this.bagInventory = createInventory(this.bagStack);
 
         if (this.hand == InteractionHand.MAIN_HAND) {
-            lockedSlotIndex = LargeStorageBagItem.SLOT_COUNT + 27 + playerInventory.selected;
+            lockedSlotIndex = StorageBagItem.SLOT_COUNT + 27 + playerInventory.selected;
         } else {
             lockedSlotIndex = -1;
         }
 
-        // 大储物袋槽位 5×5
-        int bagTexLeft = 24;
-        int bagStartX = bagTexLeft + (128 - 5 * 18) / 2 + 2;
-        int bagStartY = 10 + 2;
-        for (int row = 0; row < 5; row++) {
-            for (int col = 0; col < 5; col++) {
-                addSlot(new SlotItemHandler(bagInventory, row * 5 + col,
+        // 储物袋槽位 3×3
+        int bagTexLeft = 45;
+        int bagStartX = bagTexLeft + (86 - 3 * 18) / 2 + 1;
+        int bagStartY = 17 - 7;
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                addSlot(new SlotItemHandler(bagInventory, row * 3 + col,
                         bagStartX + col * 18, bagStartY + row * 18) {
                     @Override
                     public boolean mayPlace(ItemStack stack) {
@@ -97,7 +99,7 @@ public class LargeStorageBagMenu extends AbstractContainerMenu {
 
         // 玩家背包 3×9
         int invStartX = 5;
-        int invStartY = 124 + 5;
+        int invStartY = 82 + 5;
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
                 addSlot(new Slot(playerInventory, col + row * 9 + 9,
@@ -113,13 +115,13 @@ public class LargeStorageBagMenu extends AbstractContainerMenu {
     }
 
     private static ItemStackHandler createInventory(ItemStack stack) {
-        ItemStackHandler handler = new ItemStackHandler(LargeStorageBagItem.SLOT_COUNT);
-        ListTag items = LargeStorageBagItem.getInventoryTag(stack);
+        ItemStackHandler handler = new ItemStackHandler(StorageBagItem.SLOT_COUNT);
+        ListTag items = StorageBagItem.getInventoryTag(stack);
         for (int i = 0; i < items.size(); i++) {
             CompoundTag tag = items.getCompound(i);
             if (tag.contains("SlotIndex")) {
                 int slotIndex = tag.getInt("SlotIndex");
-                if (slotIndex >= 0 && slotIndex < LargeStorageBagItem.SLOT_COUNT) {
+                if (slotIndex >= 0 && slotIndex < StorageBagItem.SLOT_COUNT) {
                     handler.setStackInSlot(slotIndex, ItemStack.of(tag));
                 }
             }
@@ -137,7 +139,7 @@ public class LargeStorageBagMenu extends AbstractContainerMenu {
                 items.add(tag);
             }
         }
-        LargeStorageBagItem.saveInventoryTag(bagStack, items);
+        StorageBagItem.saveInventoryTag(bagStack, items);
     }
 
     @Override
@@ -147,7 +149,7 @@ public class LargeStorageBagMenu extends AbstractContainerMenu {
 
         ItemStack stack = slot.getItem();
         ItemStack copy = stack.copy();
-        int bagSlots = LargeStorageBagItem.SLOT_COUNT;
+        int bagSlots = StorageBagItem.SLOT_COUNT;
 
         if (index < bagSlots) {
             if (!moveItemStackTo(stack, bagSlots, bagSlots + 36, true)) return ItemStack.EMPTY;
@@ -170,8 +172,7 @@ public class LargeStorageBagMenu extends AbstractContainerMenu {
         if (slotIndex == lockedSlotIndex && clickType != ClickType.QUICK_MOVE) return;
         if (clickType == ClickType.QUICK_MOVE && slotIndex >= 0) {
             Slot slot = this.slots.get(slotIndex);
-            if (slot.hasItem() && (slot.getItem().getItem() instanceof StorageBagItem
-                    || slot.getItem().getItem() instanceof LargeStorageBagItem)) return;
+            if (slot.hasItem() && slot.getItem().getItem() instanceof StorageBagItem) return;
         }
         super.clicked(slotIndex, button, clickType, player);
     }
