@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.item.StorgeBagItem;
+package com.pasterdream.pasterdreammod.world.item.storagebagitem;
 
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -14,14 +14,14 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * 便携储物袋的 IItemHandler capability，直接读写物品 NBT 中的 BagItems 标签，
- * 与 {@link StorageBagMenu} 使用同一套存储格式，供调试工具等外部系统访问。
+ * 大便携储物袋的 IItemHandler capability，直接读写物品 NBT 中的 BagItems 标签，
+ * 与 {@link LargeStorageBagMenu} 使用同一套存储格式，供调试工具等外部系统访问。
  */
-public class StorageBagInventoryCapability implements ICapabilityProvider {
+public class LargeStorageBagInventoryCapability implements ICapabilityProvider {
 
     private final LazyOptional<ItemStackHandler> holder;
 
-    public StorageBagInventoryCapability(ItemStack stack) {
+    public LargeStorageBagInventoryCapability(ItemStack stack) {
         this.holder = LazyOptional.of(() -> new BagItemStackHandler(stack));
     }
 
@@ -40,7 +40,7 @@ public class StorageBagInventoryCapability implements ICapabilityProvider {
         private boolean suppressSave = true;
 
         BagItemStackHandler(ItemStack bagStack) {
-            super(StorageBagItem.SLOT_COUNT);
+            super(LargeStorageBagItem.SLOT_COUNT);
             this.bagStack = bagStack;
             load();
             suppressSave = false;
@@ -55,7 +55,7 @@ public class StorageBagInventoryCapability implements ICapabilityProvider {
         }
 
         private void load() {
-            ListTag items = StorageBagItem.getInventoryTag(bagStack);
+            ListTag items = LargeStorageBagItem.getInventoryTag(bagStack);
             for (int i = 0; i < items.size(); i++) {
                 CompoundTag tag = items.getCompound(i);
                 if (tag.contains("SlotIndex")) {
@@ -77,7 +77,7 @@ public class StorageBagInventoryCapability implements ICapabilityProvider {
                     items.add(tag);
                 }
             }
-            StorageBagItem.saveInventoryTag(bagStack, items);
+            LargeStorageBagItem.saveInventoryTag(bagStack, items);
         }
     }
 }

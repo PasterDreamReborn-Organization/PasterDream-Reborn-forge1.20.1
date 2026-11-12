@@ -1,4 +1,4 @@
-package com.pasterdream.pasterdreammod.world.item.StorgeBagItem;
+package com.pasterdream.pasterdreammod.world.item.storagebagitem;
 
 import com.pasterdream.pasterdreammod.helper.renderhelper.GUIBackGroundRender;
 import net.minecraft.client.gui.GuiGraphics;
@@ -6,12 +6,12 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class StorageBagScreen extends AbstractContainerScreen<StorageBagMenu> {
+public class LargeStorageBagScreen extends AbstractContainerScreen<LargeStorageBagMenu> {
 
-    public StorageBagScreen(StorageBagMenu menu, Inventory playerInventory, Component title) {
+    public LargeStorageBagScreen(LargeStorageBagMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
         this.imageWidth = 176;
-        this.imageHeight = 168;
+        this.imageHeight = 210;
         this.inventoryLabelY = this.imageHeight - 94;
     }
 
@@ -26,13 +26,9 @@ public class StorageBagScreen extends AbstractContainerScreen<StorageBagMenu> {
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
-        // 储物袋贴图 86×73 居中于 176 宽屏幕内
-        GUIBackGroundRender.rendStorageBagGUI(guiGraphics, x + 45, y);
+        // 大储物袋贴图 128×110 居中于 176 宽屏幕内
+        GUIBackGroundRender.rendBigStorageBagGUI(guiGraphics, x + 24, y);
         // 玩家库存背景 170×84
-        GUIBackGroundRender.rendPasterDreamInventoryGUI(guiGraphics, x, y + 82);
-    }
-
-    @Override
-    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        GUIBackGroundRender.rendPasterDreamInventoryGUI(guiGraphics, x, y + 124);
     }
 }
