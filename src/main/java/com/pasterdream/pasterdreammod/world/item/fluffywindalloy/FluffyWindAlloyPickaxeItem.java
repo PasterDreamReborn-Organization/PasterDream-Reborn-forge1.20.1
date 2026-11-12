@@ -43,8 +43,5 @@ public class FluffyWindAlloyPickaxeItem extends PickaxeItem implements FluffyWin
         super.appendHoverText(stack, level, tooltip, flag);
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.skill_name"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_pickaxe.desc1"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive_name"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive1"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive2"));
     }
 }

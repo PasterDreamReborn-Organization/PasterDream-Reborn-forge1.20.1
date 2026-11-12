@@ -2,7 +2,6 @@ package com.pasterdream.pasterdreammod.world.item.fluffywindalloy;
 
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.world.entity.WindThunderSpearEntity;
-import com.pasterdream.pasterdreammod.world.item.WindwreathedThunderSpearItem;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -14,7 +13,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 /**
- * 萦风合金被动 · 风卷：手持萦风合金工具/剑/雷矛时，掉落物被风卷到玩家身边（持续生效）。
+ * 萦风合金被动 · 风卷：手持萦风合金工具（剑/斧/镐/锹/锄）或雷矛时，掉落物被风卷到玩家身边（持续生效）。
  * <p>
  * 1. 方块掉落：通过 BreakEvent 在方块真正被破坏时触发，延迟 1 tick 等待掉落物生成后再吹向玩家。
  * 2. 击杀掉落：通过 LivingDropsEvent 在生物死亡掉落生成前把掉落物吹向玩家。
@@ -23,10 +22,7 @@ import net.minecraftforge.fml.common.Mod;
 public class FluffyWindAlloyDropSweepHandler {
 
     private static boolean isWindAlloyHeld(Player player) {
-        var item = player.getMainHandItem().getItem();
-        return item instanceof FluffyWindAlloyTool
-                || item instanceof FluffyWindAlloySwordItem
-                || item instanceof WindwreathedThunderSpearItem;
+        return player.getMainHandItem().getItem() instanceof FluffyWindAlloyTool;
     }
 
     @SubscribeEvent

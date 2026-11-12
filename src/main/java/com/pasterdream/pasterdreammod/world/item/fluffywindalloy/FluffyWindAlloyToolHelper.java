@@ -4,6 +4,7 @@ import com.pasterdream.pasterdreammod.world.block.cropblock.PasterDreamCropBlock
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.TickTask;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -34,11 +36,18 @@ import java.util.function.Predicate;
 /**
  * 萦风合金工具的共享逻辑。
  * <p>
- * 1. 疾风过境：移动速度越快挖掘速度越快（与剑被动"雷随疾风"同源的移速公式）。
- * 2. 风卷掉落：挖掘/连锁产生的掉落物被风卷到玩家身边。
- * 3. 连锁破坏：同类方块（镐共振 / 锹水平连锁）、原木+树叶（斧）、同类作物（锄）。
+ * 被动「疾风过境」（全系列剑/斧/镐/锹/锄统一，见 {@link FluffyWindAlloyAttackHandler}、挖掘速度
+ * {@code FluffyWindAlloyMiningSpeedHandler}、风卷掉落 {@code FluffyWindAlloyDropSweepHandler}）：
+ * 1. 攻击附带雷电伤害。
+ * 2. 移动速度越快，挖掘速度越快、攻击伤害越高。
+ * 3. 破坏方块或击杀生物时，掉落物被风卷到玩家身边。
+ * <p>
+ * 本类另提供各工具战技所需的连锁破坏 / 催熟 / 掉落物吹向玩家等工具函数。
  */
 public final class FluffyWindAlloyToolHelper {
+
+    /** 施加自算伤害期间置位，防止被动对自身伤害再次套用形成递归（剑/斧战技与统一攻击被动共用）。 */
+    public static final String APPLYING_TAG = "pasterdream:fluffy_wind_alloy_applying";
 
     private FluffyWindAlloyToolHelper() {
     }
@@ -266,5 +275,13 @@ public final class FluffyWindAlloyToolHelper {
             }
         }
         return ripened;
+    }
+
+    /** 疾风过境统一被动词条（全系列共用，由 {@code ItemStackSharedToolBehaviorMixin} 追加在工具自身词条之后）。 */
+    public static void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
+        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive_name"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive1"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive2"));
+        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive3"));
     }
 }

@@ -1,19 +1,27 @@
 package com.pasterdream.pasterdreammod.world.item.moltengoldtool;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
 
 /**
- * 炙焰金剑 —— 命中时点燃目标 3 秒。
+ * 炙焰金剑 —— 命中时点燃目标 3 秒；右键与其它炙焰金工具一样获得急迫。
  */
 public class MoltenGoldSwordItem extends SwordItem implements MoltenGoldTool {
 
     public MoltenGoldSwordItem(Tier tier, int damage, float speed, Properties properties) {
         super(tier, damage, speed, properties.fireResistant());
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        return MoltenGoldToolHelper.use(this, level, player, hand);
     }
 
     @Override
@@ -25,7 +33,6 @@ public class MoltenGoldSwordItem extends SwordItem implements MoltenGoldTool {
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
-        tooltip.add(Component.translatable("tooltip.pasterdreammod.molten_gold_sword.1"));
         tooltip.add(Component.translatable("tooltip.pasterdreammod.molten_gold_sword.2"));
     }
 }

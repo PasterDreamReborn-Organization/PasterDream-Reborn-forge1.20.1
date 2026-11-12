@@ -88,8 +88,5 @@ public class FluffyWindAlloyHoeItem extends HoeItem implements FluffyWindAlloyTo
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc2"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc3"));
         tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_hoe.desc4"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive_name"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive1"));
-        tooltip.add(Component.translatable("tooltip.pasterdream.fluffy_wind_alloy_tool.passive2"));
     }
 }

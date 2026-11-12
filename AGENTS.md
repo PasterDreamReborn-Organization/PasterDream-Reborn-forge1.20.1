@@ -12,6 +12,7 @@
 | 权威规范 | `document/rule/program/` | 架构、目录结构、程序规范、配方平衡、暗影难度。**冲突时以此为准** |
 | 策划/设计 | `document/design/` | 机制设计、ID 映射表、命名规范、搬运方案书 |
 | 参考 | `document/reference/` | 源项目结构分析、原模组资料 |
+| 重构说明 | `changelog/refactor/` | 大型重构的决策、行为变更与增量指南（命名 `YYYY-MM-DD-<主题>.md`，模板与索引见其 `README.md`） |
 | Skill | `.claude/skills/<name>/SKILL.md` | AI 可执行的任务流程与领域速查，**只做索引/速查/引用**，不复制大段规范 |
 
 **规矩**：规范变更先改 `document/rule/program/`，skill 只保留「引用文档」链接与必要速查表。禁止让 skill 成为规范的第二份副本。
@@ -80,5 +81,6 @@
 | 新增/重命名 ID | `document/design/ID映射表.md`，并刷新 `mapping.json` |
 | 新增**非搬运**内容（全新设计 / 原作废案） | `document/design/新内容列表.md` |
 | 新增或重绘**纹理** | `src/main/resources/ASSETS_MANIFEST.md`（纯重命名/直接搬运的原模组纹理不登记） |
+| 完成一次**大型重构** | `changelog/refactor/YYYY-MM-DD-<主题>.md`，并更新该目录 `README.md` 索引 |
 
 > 判断准则：**规范是权威、skill 是索引**。机制变了改规范，skill 只需保持「能指向正确规范 + 速查路径正确」。
