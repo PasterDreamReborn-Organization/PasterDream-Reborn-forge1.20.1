@@ -5,6 +5,7 @@
 - 范围：融梦水晶 / 炙焰金 / 暗影合金 / 影蚀 / 萦风合金（含萦风雷矛）
 - 验证：`.\gradlew compileJava`、`.\gradlew runData` 通过；refmap 正常生成
   （`Item#inventoryTick` → `m_6883_`，`ItemStack#getTooltipLines` → `m_41651_`）
+- 后续修正：2026-11-13 将公共词条注入点从 `getTooltipLines` 返回处移至原版属性词条之前，修复属性、ID 和模组名显示在公共词条上方的问题。
 
 ---
 
@@ -42,7 +43,7 @@
 if (self instanceof MeltDreamTool)    MeltDreamToolHelper.onInventoryTick(...);
 if (self instanceof ShadowAlloyTool)  ShadowAlloyToolHelper.onInventoryTick(...);
 
-// ItemStackSharedToolBehaviorMixin（ItemStack#getTooltipLines RETURN）
+// ItemStackSharedToolBehaviorMixin（ItemStack#getTooltipLines 中属性词条前）
 if (item instanceof MeltDreamTool)     MeltDreamToolHelper.appendHoverText(...);
 if (item instanceof MoltenGoldTool)    MoltenGoldToolHelper.appendHoverText(...);
 if (item instanceof ShadowAlloyTool)   ShadowAlloyToolHelper.appendHoverText(...);
@@ -62,7 +63,7 @@ if (item instanceof FluffyWindAlloyTool) FluffyWindAlloyToolHelper.appendHoverTe
 | 注入点 / Handler | 目标 | 派发的系列 |
 |---|---|---|
 | `mixin/ItemSharedToolBehaviorMixin` | `Item#inventoryTick`（TAIL） | 融梦水晶（融梦能量修耐久）、暗影合金（理智/生命修耐久） |
-| `mixin/ItemStackSharedToolBehaviorMixin` | `ItemStack#getTooltipLines`（RETURN，位于 `appendHoverText` 与 `ItemTooltipEvent` 之后） | 融梦、炙焰金、暗影合金、影蚀、萦风 |
+| `mixin/ItemStackSharedToolBehaviorMixin` | `ItemStack#getTooltipLines`（读取 `TooltipPart.MODIFIERS` 前，位于物品自身词条之后） | 融梦、炙焰金、暗影合金、影蚀、萦风 |
 | `ShadowAlloyAttackHandler` | `LivingHurtEvent` | 暗影合金（低 SAN 攻击加伤） |
 | `ShadowAlloyMiningSpeedHandler` | `PlayerEvent.BreakSpeed` | 暗影合金（暗影方块 + 亮度 + 低 SAN 挖掘） |
 | `ShadowErosionMiningSpeedHandler` | `PlayerEvent.BreakSpeed` | 影蚀（暗影方块 + 亮度挖掘） |
@@ -92,7 +93,7 @@ if (item instanceof FluffyWindAlloyTool) FluffyWindAlloyToolHelper.appendHoverTe
 
 - 删除 5 个工具类的 `inventoryTick` / `appendHoverText` 重复 override；剑/弓只保留自身战技词条。
 - `MeltDreamToolHelper.onInventoryTick/appendHoverText` 改 `public`，供 Mixin 调用。
-- 公共词条由 `ItemStack#getTooltipLines` 统一追加（位置仍在自己词条之后）。
+- 公共词条由 `ItemStack#getTooltipLines` 统一追加（位于自己词条之后、自动属性之前）。
 
 ### 4.2 炙焰金（`world/item/moltengoldtool/`）
 
@@ -138,7 +139,7 @@ if (item instanceof FluffyWindAlloyTool) FluffyWindAlloyToolHelper.appendHoverTe
 3. **萦风斧/镐/锹/锄**：新增「攻击附带雷电伤害」（此前只有剑/矛有）；词条统一为 3 条。
 4. **萦风雷矛**：被动改名/并入「疾风过境」，效果不变；公共词条与工具一致。
 5. **萦风剑与雷矛现在也吃「移速 → 挖掘速度」加成**（因为统一接口 + 统一词条）。若不想要，在 `FluffyWindAlloyMiningSpeedHandler` 里加物品排除即可。
-6. 公共词条顺序不变：仍在各物品自身词条之后（`getTooltipLines` RETURN）。
+6. 公共词条位于各物品自身词条之后、自动属性及物品 ID 与模组名之前；2026-11-13 修正了最初 `getTooltipLines` RETURN 注入造成的显示顺序问题。
 
 ---
 
@@ -211,6 +212,7 @@ if (item instanceof FluffyWindAlloyTool) FluffyWindAlloyToolHelper.appendHoverTe
 - Date: 2026-11-12
 - Version transition: 0.9.0beta2 ~ 1.0.0alpha
 - Scope: Melt Dream Crystal / Molten Gold / Shadow Alloy / Shadow Erosion / Fluffy Wind Alloy (including the Windwreathed Thunder Spear)
+- Follow-up fix (2026-11-13): moved shared tooltip insertion before vanilla attribute lines, so attributes, item ID, and mod name appear below it.
 - Verified with: `.\gradlew compileJava`, `.\gradlew runData`; refmap generated correctly
   (`Item#inventoryTick` → `m_6883_`, `ItemStack#getTooltipLines` → `m_41651_`)
 
@@ -245,7 +247,7 @@ At fixed injection points, dispatch per series with **independent, non-interferi
 if (self instanceof MeltDreamTool)    MeltDreamToolHelper.onInventoryTick(...);
 if (self instanceof ShadowAlloyTool)  ShadowAlloyToolHelper.onInventoryTick(...);
 
-// ItemStackSharedToolBehaviorMixin (ItemStack#getTooltipLines RETURN)
+// ItemStackSharedToolBehaviorMixin (before attribute lines in ItemStack#getTooltipLines)
 if (item instanceof MeltDreamTool)     MeltDreamToolHelper.appendHoverText(...);
 if (item instanceof MoltenGoldTool)    MoltenGoldToolHelper.appendHoverText(...);
 if (item instanceof ShadowAlloyTool)   ShadowAlloyToolHelper.appendHoverText(...);
@@ -263,7 +265,7 @@ Benefits:
 | Injection point / Handler | Target | Dispatched series |
 |---|---|---|
 | `mixin/ItemSharedToolBehaviorMixin` | `Item#inventoryTick` (TAIL) | Melt Dream (energy repair), Shadow Alloy (SAN/health repair) |
-| `mixin/ItemStackSharedToolBehaviorMixin` | `ItemStack#getTooltipLines` (RETURN, after `appendHoverText` and `ItemTooltipEvent`) | Melt Dream, Molten Gold, Shadow Alloy, Shadow Erosion, Fluffy Wind |
+| `mixin/ItemStackSharedToolBehaviorMixin` | `ItemStack#getTooltipLines` (before `TooltipPart.MODIFIERS`, after the item's own lines) | Melt Dream, Molten Gold, Shadow Alloy, Shadow Erosion, Fluffy Wind |
 | `ShadowAlloyAttackHandler` | `LivingHurtEvent` | Shadow Alloy (low-SAN attack bonus) |
 | `ShadowAlloyMiningSpeedHandler` | `PlayerEvent.BreakSpeed` | Shadow Alloy (shadow blocks + light + low SAN mining) |
 | `ShadowErosionMiningSpeedHandler` | `PlayerEvent.BreakSpeed` | Shadow Erosion (shadow blocks + light mining) |
@@ -291,7 +293,7 @@ Why `getAttributeModifiers` is not automated: it is an `IForgeItem` interface de
 
 - Removed duplicate `inventoryTick` / `appendHoverText` overrides from 5 tools; sword/bow keep only their own combat-art tooltips.
 - `MeltDreamToolHelper.onInventoryTick/appendHoverText` made `public` for the mixin.
-- Shared tooltip appended via `ItemStack#getTooltipLines` (still after the item's own lines).
+- Shared tooltip appended via `ItemStack#getTooltipLines` (after the item's own lines and before attributes).
 
 ### 4.2 Molten Gold (`world/item/moltengoldtool/`)
 
@@ -334,7 +336,7 @@ Details:
 3. **Fluffy Wind Axe/Pickaxe/Shovel/Hoe**: now also "attacks deal additional lightning damage" (previously only sword/spear); tooltip unified to 3 lines.
 4. **Windwreathed Thunder Spear**: passive renamed/merged into "Gale Passage", effects unchanged; shared tooltip identical to the tools.
 5. **Fluffy Wind Sword and Spear now also get "move speed → mining speed"** (unified interface + unified tooltip). To exclude, add an item check in `FluffyWindAlloyMiningSpeedHandler`.
-6. Shared tooltip order unchanged: still after each item's own lines (`getTooltipLines` RETURN).
+6. Shared tooltip lines appear after the item's own lines and before attributes, item ID, and mod name. The 2026-11-13 fix corrected the original RETURN injection's ordering bug.
 
 ## 6. File Changes
 
