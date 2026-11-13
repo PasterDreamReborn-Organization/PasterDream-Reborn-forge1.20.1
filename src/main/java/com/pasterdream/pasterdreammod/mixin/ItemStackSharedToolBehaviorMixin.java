@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.mixin;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyTool;
 import com.pasterdream.pasterdreammod.world.item.fluffywindalloy.FluffyWindAlloyToolHelper;
 import com.pasterdream.pasterdreammod.world.item.meltdreamtool.MeltDreamTool;
@@ -16,6 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -26,8 +28,8 @@ import java.util.List;
 /**
  * 工具系列「公共 tooltip」的唯一注入点。
  * <p>
- * 注入 {@link ItemStack#getTooltipLines} 的 {@code RETURN}（位于全部 {@code appendHoverText} 与原版
- * {@code ItemTooltipEvent} 之后），保证系列公共词条固定显示在各工具自身词条**之后**。
+ * 在 {@link ItemStack#getTooltipLines} 处理原版属性词条前注入：此时工具自身词条及 NBT 描述已加入列表，
+ * 属性、物品 ID 与模组名尚未加入，因此公共词条位于它们之间。
  * <p>
  * 用「独立 instanceof 分支」而不是接口 default：default 既压不过父类具体方法（JLS「class wins」），
  * 也无法叠加——附属模组想让一件工具同时拥有多个系列的公共词条时，多个同签名 default 会冲突。
@@ -38,13 +40,15 @@ import java.util.List;
 @Mixin(ItemStack.class)
 public class ItemStackSharedToolBehaviorMixin {
 
-    @Inject(method = "getTooltipLines", at = @At("RETURN"))
+    @Inject(method = "getTooltipLines", at = @At(value = "FIELD",
+            target = "Lnet/minecraft/world/item/ItemStack$TooltipPart;MODIFIERS:Lnet/minecraft/world/item/ItemStack$TooltipPart;",
+            opcode = Opcodes.GETSTATIC))
     private void pasterdream$sharedToolTooltip(Player player, TooltipFlag flag,
-                                               CallbackInfoReturnable<List<Component>> cir) {
+                                               CallbackInfoReturnable<List<Component>> cir,
+                                               @Local(ordinal = 0) List<Component> tooltip) {
         ItemStack stack = (ItemStack) (Object) this;
         Item item = stack.getItem();
         Level level = player == null ? null : player.level();
-        List<Component> tooltip = cir.getReturnValue();
 
         if (item instanceof MeltDreamTool) {
             MeltDreamToolHelper.appendHoverText(stack, level, tooltip, flag);
