@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.world.block.cropblock;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.ModCropRelation;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
@@ -115,7 +116,7 @@ public class PasterDreamCropBlock extends BushBlock implements IPlantable
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        if (state.getValue(AGE) == 1 && (player instanceof FakePlayer || held.is(Tags.Items.SHEARS) || held.is(ModItems.PLIERS.get())))
+        if (state.getValue(AGE) == 1 && (player instanceof FakePlayer || !Config.isNeedUsePliersOrShears || held.is(Tags.Items.SHEARS) || held.is(ModItems.PLIERS.get())))
         {
             if (!level.isClientSide)
             {
@@ -124,7 +125,7 @@ public class PasterDreamCropBlock extends BushBlock implements IPlantable
                 {
                     popResource(level, pos, new ItemStack(binding.productItem(), binding.productCount()));
                     level.setBlock(pos, state.setValue(AGE, 0), 2);
-                    if (!held.isEmpty())
+                    if (held.is(Tags.Items.SHEARS) || held.is(ModItems.PLIERS.get()))
                     {
                         held.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
                     }

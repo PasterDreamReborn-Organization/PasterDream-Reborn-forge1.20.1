@@ -60,22 +60,22 @@ public class Config
     private static final ForgeConfigSpec.IntValue MIN_TAKE_EFFECT_DURATION = BUILDER
             .comment("""
                     平衡预言卡：药水等级翻倍/时间减半时，\
-                    
+
                     低于此时长的效果不会被处理，\
-                    
+
                     用于跳过模组饰品提供的永久药水效果。\
-                    
+
                     默认：30秒""")
             .defineInRange("min_take_effect_duration", 30, 1, Integer.MAX_VALUE);
 
     private static final ForgeConfigSpec.IntValue MAX_TAKE_EFFECT_DURATION = BUILDER
             .comment("""
                     平衡预言卡：药水等级翻倍/时间减半时，\
-                    
+
                     高于此时长的效果不会被处理，\
-                    
+
                     用于跳过模组饰品提供的永久药水效果。\
-                    
+
                     默认：1小时（3600秒）""")
             .defineInRange("max_take_effect_duration", 3600, 1, Integer.MAX_VALUE);
 
@@ -596,6 +596,9 @@ public class Config
                     + "\n该内容为 0.2.0 的测试性内容，后续版本可能重置，故默认关闭")
             .define("dyedreamWorldLeapstoneEnabled", false);
 
+    //采摘是否需要园艺钳或剪刀
+    private static final ForgeConfigSpec.BooleanValue IS_NEED_USE_PLIERS_OR_SHEARS = BUILDER.comment("采摘是否需要园艺钳或剪刀").define("isNeedUsePliersOrShears", true);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     // === 时之沙 ===
@@ -628,6 +631,9 @@ public class Config
 
     // === 染梦世界跃迁石 ===
     public static boolean dyedreamWorldLeapstoneEnabled = false;
+
+    //采摘是否需要园艺钳或剪刀
+    public static boolean isNeedUsePliersOrShears;
 
     // === SAN 阈值 ===
     public static double sanCheerUpThreshold;
@@ -1106,6 +1112,7 @@ public class Config
         dyedreamCrackContaminationEnabled = DYEDREAM_CRACK_CONTAMINATION_ENABLED.get();
         dyedreamCrackContaminationRadius = DYEDREAM_CRACK_CONTAMINATION_RADIUS.get();
         dyedreamWorldLeapstoneEnabled = DYEDREAM_WORLD_LEAPSTONE_ENABLED.get();
+        isNeedUsePliersOrShears = IS_NEED_USE_PLIERS_OR_SHEARS.get();
         mintakeeffectduration= MIN_TAKE_EFFECT_DURATION.get();
         maxtakeeffectduration= MAX_TAKE_EFFECT_DURATION.get();
         maxlevel= MAX_LEVEL.get();
