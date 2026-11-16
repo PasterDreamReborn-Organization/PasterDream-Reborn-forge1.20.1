@@ -3207,7 +3207,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .pattern("   ")
                 .define('a', ModItems.REED_ROD.get())
                 .unlockedBy(getHasName(ModItems.REED_ROD.get()), has(ModItems.REED_ROD.get()))
-                .save(pWriter);
+                .save(pWriter, PasterDreamMod.MOD_ID + ":paper_from_reed_rod");
 
         // 鲜红露滴合成配方
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RED_DEW.get(), 1)
