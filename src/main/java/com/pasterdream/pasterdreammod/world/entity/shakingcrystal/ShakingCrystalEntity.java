@@ -14,13 +14,13 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
+public class ShakingCrystalEntity extends Entity implements GeoEntity {
 
     private static final EntityDataAccessor<String> TEXTURE =
             SynchedEntityData.defineId(ShakingCrystalEntity.class, EntityDataSerializers.STRING);
@@ -76,13 +76,10 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
 
     public ShakingCrystalEntity(EntityType<ShakingCrystalEntity> type, Level world) {
         super(type, world);
-        xpReward = 0;
-        setNoAi(true);
     }
 
     @Override
     protected void defineSynchedData() {
-        super.defineSynchedData();
         this.entityData.define(TEXTURE, "shaking_crystal");
     }
 
@@ -126,8 +123,36 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
     }
 
     @Override
-    public MobType getMobType() {
-        return MobType.UNDEFINED;
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
+    public boolean isPickable() {
+        return false;
+    }
+
+    @Override
+    public boolean canBeCollidedWith() {
+        return false;
+    }
+
+    @Override
+    public void push(Entity entity) {
+    }
+
+    @Override
+    public boolean isPushedByFluid() {
+        return false;
+    }
+
+    @Override
+    public void push(double x, double y, double z) {
+    }
+
+    @Override
+    public boolean causeFallDamage(float l, float d, DamageSource source) {
+        return false;
     }
 
     @Override
@@ -137,7 +162,6 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
 
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
-        super.readAdditionalSaveData(compound);
         if (compound.contains("Texture"))
             this.entityData.set(TEXTURE, compound.getString("Texture"));
         if (compound.hasUUID("Owner"))
@@ -152,7 +176,6 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
 
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
-        super.addAdditionalSaveData(compound);
         compound.putString("Texture", this.entityData.get(TEXTURE));
         if (ownerUUID != null)
             compound.putUUID("Owner", ownerUUID);
@@ -286,31 +309,7 @@ public class ShakingCrystalEntity extends PathfinderMob implements GeoEntity {
         }
     }
 
-    @Override
-    public EntityDimensions getDimensions(Pose pose) {
-        return super.getDimensions(pose).scale(1f);
-    }
-
     public static void init() {
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes()
-                .add(Attributes.MOVEMENT_SPEED, 0)
-                .add(Attributes.MAX_HEALTH, 50)
-                .add(Attributes.ARMOR, 0)
-                .add(Attributes.ATTACK_DAMAGE, 3)
-                .add(Attributes.FOLLOW_RANGE, 16)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 100);
-    }
-
-    @Override
-    protected void tickDeath() {
-        ++this.deathTime;
-        if (this.deathTime == 1) {
-            this.remove(RemovalReason.KILLED);
-            this.dropExperience();
-        }
     }
 
     // ===== GeoLib =====
