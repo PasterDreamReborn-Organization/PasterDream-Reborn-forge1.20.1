@@ -495,7 +495,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('b', Items.BLACKSTONE)
                 .unlockedBy(getHasName(Items.BLACKSTONE), has(Items.BLACKSTONE))
                 .save(pWriter, PasterDreamMod.MOD_ID + ":black_stick_straight");
-        
+
     }
 
     // ===== 炙焰金工具配方 =====
@@ -3201,9 +3201,9 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .save(pWriter);
 
         //三种染料合成配方
-        RecipeHelpers.dye(pWriter,ModItems.FERRARIA_CRISPA.get(), Items.BLACK_DYE);
-        RecipeHelpers.dye(pWriter,ModItems.EUSTOMA.get(), Items.GREEN_DYE);
-        RecipeHelpers.dye(pWriter,ModItems.MALVA_SINENSIS_CAVAN.get(), Items.PINK_DYE);
+        RecipeHelpers.dye(PasterDreamMod.MOD_ID, pWriter, ModItems.FERRARIA_CRISPA.get(), Items.BLACK_DYE);
+        RecipeHelpers.dye(PasterDreamMod.MOD_ID, pWriter, ModItems.EUSTOMA.get(), Items.GREEN_DYE);
+        RecipeHelpers.dye(PasterDreamMod.MOD_ID, pWriter, ModItems.MALVA_SINENSIS_CAVAN.get(), Items.PINK_DYE);
 
         //野餐篮合成配方
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PICNIC_BASKET.get(), 1)
