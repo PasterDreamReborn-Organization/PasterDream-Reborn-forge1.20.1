@@ -1,6 +1,8 @@
 package com.pasterdream.pasterdreammod.datagen.util;
 
+import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import mezz.jei.library.config.IModIdFormatConfig;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -212,7 +214,7 @@ public final class RecipeHelpers {
     }
 
     /**
-     * 蛋糕类合成配方
+     * 饮料类合成配方
      * @param material 合成材料，决定合成出来的玻璃饮品
      *@param drink 出来的饮料
      */
@@ -229,11 +231,11 @@ public final class RecipeHelpers {
      * @param flower 合成材料，决定合成出来的染料
      *@param dye 出来的染料
      */
-    public static void dye(Consumer<FinishedRecipe> writer,ItemLike flower,ItemLike dye) {
+    public static void dye(String modId, Consumer<FinishedRecipe> writer,ItemLike flower,ItemLike dye) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, dye)
                 .requires(flower)
                 .unlockedBy(getHasName(flower), has(flower))
-                .save(writer);
+                .save(writer, modId +":" + getItemName(dye)+"_from_"+getItemName(flower));
     }
 
     /**
