@@ -3181,7 +3181,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.THICK_CLOUD.get(),4)
                 .requires(ModItems.DARK_CLOUD.get())
                 .unlockedBy(getHasName(ModItems.DARK_CLOUD.get()), has(ModItems.DARK_CLOUD.get()))
-                .save(pWriter, PasterDreamMod.MOD_ID + "thick_cloud_from_dark_cloud");
+                .save(pWriter, PasterDreamMod.MOD_ID + ":thick_cloud_from_dark_cloud");
 
 
         // 阴影菌核 (2×2 shadow_stem → 3 shadow_hyphae)
@@ -3399,7 +3399,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .define('a', ModItems.DYEDREAM_DYE.get())
                 .define('b', Items.LECTERN)
                 .unlockedBy(getHasName(ModItems.DYEDREAM_DYE.get()), has(ModItems.DYEDREAM_DYE.get()))
-                .save(pWriter, "dyedream_desk_from_lectern");
+                .save(pWriter, ":dyedream_desk_from_lectern");
         // 风泊书桌
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WIND_MOOR_DESK.get(), 1)
                 .pattern(" a ")
