@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod;
 
+import com.pasterdream.pasterdreammod.compat.LegacyIdRemapper;
 import com.pasterdream.pasterdreammod.helper.BossLimitProfile;
 import com.pasterdream.pasterdreammod.helper.BossLimitValues;
 import net.minecraft.resources.ResourceLocation;
@@ -383,7 +384,7 @@ public class Config
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_MEDIUM_ENTITIES = BUILDER
             .comment("不振区间可生成的实体及权重，默认虚弱恐怖尖喙:0.15, 暗影之手:0.3")
             .defineListAllowEmpty("lowSanSpawnMediumEntities",
-                    List.of("pasterdream:weakeness_terrorbeak:0.15", "pasterdream:shadow_hand:0.3"),
+                    List.of("pasterdream:weakness_terrorbeak:0.15", "pasterdream:shadow_hand:0.3"),
                     obj -> obj instanceof String);
 
     // 低理智区间 (sanTranceLowerThreshold <= ratio < sanLethargyLowerThreshold)
@@ -393,7 +394,7 @@ public class Config
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> LOW_SAN_SPAWN_LOW_ENTITIES = BUILDER
             .comment("恍惚区间可生成的实体及权重，默认虚弱恐怖尖喙:0.4, 暗影之手:0.2")
             .defineListAllowEmpty("lowSanSpawnLowEntities",
-                    List.of("pasterdream:weakeness_terrorbeak:0.4", "pasterdream:shadow_hand:0.2",
+                    List.of("pasterdream:weakness_terrorbeak:0.4", "pasterdream:shadow_hand:0.2",
                             "pasterdream:terrorbeak:0.1"),
                     obj -> obj instanceof String);
 
@@ -405,7 +406,7 @@ public class Config
             .comment("极低理智区间可生成的实体及权重，默认疯狂恐怖尖喙:0.25, 恐怖尖喙:0.2, 虚弱恐怖尖喙:0.15, 暗影之手:0.15")
             .defineListAllowEmpty("lowSanSpawnCriticalEntities",
                     List.of("pasterdream:crazy_terrorbeak:0.25", "pasterdream:terrorbeak:0.2",
-                            "pasterdream:weakeness_terrorbeak:0.15", "pasterdream:shadow_hand:0.15"),
+                            "pasterdream:weakness_terrorbeak:0.15", "pasterdream:shadow_hand:0.15"),
                     obj -> obj instanceof String);
 
     private static final ForgeConfigSpec.ConfigValue<List<? extends Double>> LOW_SAN_SPAWN_HIGH_THRESHOLDS = BUILDER
@@ -900,6 +901,7 @@ public class Config
                 LOGGER.warn("ghostFaceProjectileBlacklist: invalid resource location '{}', skipping", idStr);
                 continue;
             }
+            rl = LegacyIdRemapper.entityType(rl);
             set.add(rl);
         }
         cachedGhostFaceBlacklistTypes = Set.copyOf(set);
@@ -913,6 +915,7 @@ public class Config
                 LOGGER.warn("iridescentFairyJadeProjectileWhitelist: invalid resource location '{}', skipping", idStr);
                 continue;
             }
+            rl = LegacyIdRemapper.entityType(rl);
             if (!ForgeRegistries.ENTITY_TYPES.containsKey(rl)) {
                 LOGGER.warn("iridescentFairyJadeProjectileWhitelist: unknown entity type '{}', skipping", idStr);
                 continue;
@@ -932,6 +935,7 @@ public class Config
                 LOGGER.warn("iridescentFairyJadeProjectileBlacklist: invalid resource location '{}', skipping", idStr);
                 continue;
             }
+            rl = LegacyIdRemapper.entityType(rl);
             if (!ForgeRegistries.ENTITY_TYPES.containsKey(rl)) {
                 LOGGER.warn("iridescentFairyJadeProjectileBlacklist: unknown entity type '{}', skipping", idStr);
                 continue;
@@ -950,6 +954,7 @@ public class Config
                 LOGGER.warn("sin_instakill_entities: invalid resource location '{}', skipping", idStr);
                 continue;
             }
+            rl = LegacyIdRemapper.entityType(rl);
             // 注意：getValue 对未知 ID 会返回默认值（minecraft:pig），必须先 containsKey 判空
             if (!ForgeRegistries.ENTITY_TYPES.containsKey(rl)) {
                 LOGGER.warn("sin_instakill_entities: unknown entity type '{}', skipping", idStr);
@@ -970,6 +975,7 @@ public class Config
                 LOGGER.warn("conflict_mark_blacklist: invalid resource location '{}', skipping", idStr);
                 continue;
             }
+            rl = LegacyIdRemapper.entityType(rl);
             // 注意：getValue 对未知 ID 会返回默认值（minecraft:pig），必须先 containsKey 判空
             if (!ForgeRegistries.ENTITY_TYPES.containsKey(rl)) {
                 LOGGER.warn("conflict_mark_blacklist: unknown entity type '{}', skipping", idStr);
@@ -990,6 +996,7 @@ public class Config
                 LOGGER.warn("creatureCaptureEntities: invalid resource location '{}', skipping", idStr);
                 continue;
             }
+            rl = LegacyIdRemapper.entityType(rl);
             // 注意：getValue 对未知 ID 会返回默认值（minecraft:pig），必须先 containsKey 判空
             if (!ForgeRegistries.ENTITY_TYPES.containsKey(rl)) {
                 LOGGER.warn("creatureCaptureEntities: unknown entity type '{}', skipping", idStr);
@@ -1067,6 +1074,7 @@ public class Config
                 LOGGER.warn("rebirthDreamCrystalLoot: invalid resource location '{}', skipping", idStr);
                 continue;
             }
+            rl = LegacyIdRemapper.item(rl);
             Item item = ForgeRegistries.ITEMS.getValue(rl);
             if (item == null) {
                 LOGGER.warn("rebirthDreamCrystalLoot: unknown item '{}', skipping", idStr);

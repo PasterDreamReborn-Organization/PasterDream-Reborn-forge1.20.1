@@ -22,7 +22,7 @@ public class ModEntityRenderer {
         event.registerEntityRenderer(ModEntities.SHADOW_GOLEM.get(), ShadowGolemRenderer::new);
         event.registerEntityRenderer(ModEntities.TERRORBEAK.get(), TerrorbeakRenderer::new);
         event.registerEntityRenderer(ModEntities.CRAZY_TERRORBEAK.get(), TerrorbeakRenderer::new);
-        event.registerEntityRenderer(ModEntities.WEAKENESS_TERRORBEAK.get(), TerrorbeakRenderer::new);
+        event.registerEntityRenderer(ModEntities.WEAKNESS_TERRORBEAK.get(), TerrorbeakRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_HAND.get(), ShadowHandRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_GHOST.get(), ShadowGhostRenderer::new);
         event.registerEntityRenderer(ModEntities.SHADOW_SQUEAL_GHOST.get(), ShadowGhostRenderer::new);

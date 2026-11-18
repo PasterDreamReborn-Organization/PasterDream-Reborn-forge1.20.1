@@ -219,7 +219,7 @@ public class ModEntities {
                     .setCustomClientFactory(AshBoneWingEntity::new)
                     .sized(1.7f, 0.8f));
 
-    public static final RegistryObject<EntityType<BoneWingFireBallProjectileEntity>> BONE_WING_FIRE_BALL_PROJECTILE = register("projectile_bone_wing_fire_ball_projectile",
+    public static final RegistryObject<EntityType<BoneWingFireBallProjectileEntity>> BONE_WING_FIRE_BALL_PROJECTILE = register("bone_wing_fire_ball_projectile",
             EntityType.Builder.<BoneWingFireBallProjectileEntity>of(BoneWingFireBallProjectileEntity::new, MobCategory.MISC)
                     .setCustomClientFactory(BoneWingFireBallProjectileEntity::new)
                     .setShouldReceiveVelocityUpdates(true)
@@ -268,7 +268,7 @@ public class ModEntities {
                     .fireImmune()
                     .sized(1.8f, 4f));
 
-    public static final RegistryObject<EntityType<TerrorbeakEntity>> WEAKENESS_TERRORBEAK = register("weakeness_terrorbeak",
+    public static final RegistryObject<EntityType<TerrorbeakEntity>> WEAKNESS_TERRORBEAK = register("weakness_terrorbeak",
             EntityType.Builder.<TerrorbeakEntity>of(TerrorbeakEntity::new, MobCategory.MONSTER)
                     .setShouldReceiveVelocityUpdates(true)
                     .setTrackingRange(64)
@@ -617,7 +617,7 @@ public class ModEntities {
         event.put(SHADOW_GOLEM.get(), ShadowGolemEntity.createAttributes().build());
         event.put(TERRORBEAK.get(), TerrorbeakEntity.createTerrorbeakAttributes().build());
         event.put(CRAZY_TERRORBEAK.get(), TerrorbeakEntity.createCrazyTerrorbeakAttributes().build());
-        event.put(WEAKENESS_TERRORBEAK.get(), TerrorbeakEntity.createWeakenessTerrorbeakAttributes().build());
+        event.put(WEAKNESS_TERRORBEAK.get(), TerrorbeakEntity.createWeaknessTerrorbeakAttributes().build());
         event.put(SHADOW_HAND.get(), ShadowHandEntity.createAttributes().build());
         event.put(SHADOW_GHOST.get(), ShadowGhostEntity.createShadowGhostAttributes().build());
         event.put(SHADOW_SQUEAL_GHOST.get(), ShadowGhostEntity.createShadowSquealGhostAttributes().build());
