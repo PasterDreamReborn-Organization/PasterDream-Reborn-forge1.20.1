@@ -28,6 +28,7 @@ import net.minecraft.world.level.levelgen.feature.HugeFungusConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import com.pasterdream.pasterdreammod.worldgen.feature.foliageplacers.DreamFoliagePlacer;
 import com.pasterdream.pasterdreammod.worldgen.feature.SlumberPalmTreeConfiguration;
+import com.pasterdream.pasterdreammod.worldgen.feature.WindJourneyWaterPoolConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
@@ -1189,10 +1190,14 @@ public class ModConfiguredFeatures {
         context.register(WIND_JOURNEY_CLOUD_PATCH_LOW, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(4, 11, 4, windCloudSelector())));
         // 水池 — 原作 ground_feature_wind_journey_1: lake, 水 + cyan_stone 围边
-        context.register(WIND_JOURNEY_WATER_POOL, new ConfiguredFeature<>(Feature.LAKE,
-                new LakeFeature.Configuration(
-                        BlockStateProvider.simple(Blocks.WATER),
-                        BlockStateProvider.simple(ModBlocks.CYAN_STONE.get()))));
+        // 每池 20% 概率在岸边生成 1~2 棵眠椰树（见 WindJourneyWaterPoolFeature）
+        context.register(WIND_JOURNEY_WATER_POOL, new ConfiguredFeature<>(ModFeatures.WIND_JOURNEY_WATER_POOL.get(),
+                new WindJourneyWaterPoolConfiguration(
+                        new LakeFeature.Configuration(
+                                BlockStateProvider.simple(Blocks.WATER),
+                                BlockStateProvider.simple(ModBlocks.CYAN_STONE.get())),
+                        0.2f,
+                        UniformInt.of(1, 2))));
         // 小石子 — 原作 ground_feature_wind_journey_3: tries=5（xz/y 默认 7/3）
         context.register(WIND_JOURNEY_PEBBLE_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(5, 7, 3,
