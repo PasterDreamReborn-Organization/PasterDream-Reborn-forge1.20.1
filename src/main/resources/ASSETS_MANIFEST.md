@@ -284,8 +284,6 @@ textures/patchouli_books/seniors_dream/en_us/entries/lamp_shadow_world/structure
 textures/patchouli_books/seniors_dream/en_us/entries/lamp_shadow_world/structures/shadow_foundry.png
 textures/patchouli_books/seniors_dream/en_us/entries/rules/meltdream_energy_bar.png
 textures/patchouli_books/seniors_dream/en_us/entries/rules/san_amount_bar.png
-textures/patchouli_books/seniors_dream/en_us/entries/story/deposition_shadow_1.png
-textures/patchouli_books/seniors_dream/en_us/entries/story/lamp_shadow_travelogue_1.png
 textures/patchouli_books/seniors_dream/en_us/entries/wind_journey/structures/break_wind_curtain.png
 textures/patchouli_books/seniors_dream/en_us/entries/wind_journey/structures/break_wind_knight_altar.png
 textures/patchouli_books/seniors_dream/en_us/entries/wind_journey/structures/christmas_tree_island.png

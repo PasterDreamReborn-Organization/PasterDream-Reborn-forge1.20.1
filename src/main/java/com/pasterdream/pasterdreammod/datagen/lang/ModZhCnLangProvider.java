@@ -2756,36 +2756,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.windbell_cage.page0", "这是一个悬浮在迷梦云层的巨大结构，上方是巨大的鸟笼，下面悬挂着巨大的……花？$(br)笼子里有一些基础的物资，还有些融梦水晶箱，记得不要错过哦。不过悬挂花里没什么东西，也不必大费周章再下去了。$(br)既然都叫风铃笼了，整个结构里没有一点和声音/音乐有关的东西，似乎不太合理吧。于是，你抬头看向笼顶，那里似乎有一束光源，说不定藏着什么东西。");
         add("pasterdream.seniors_dream.entry.windbell_cage.page1", "——据说筑梦者刷到了wen的建筑教学，所以有了这个，在此也感谢wen的帮助。");
 
-        // 剧情
-        add("pasterdream.seniors_dream.category.story", "剧情");
-        add("pasterdream.seniors_dream.category.story.desc", "本篇为模组剧情整合。");
-
-        add("pasterdream.seniors_dream.entry.deposition_shadow", "沉淀阴影");
-        add("pasterdream.seniors_dream.entry.deposition_shadow.page0", "沉淀的影子，废弃的文明，以及象征死亡的生机。这里的环境让我感觉异常的压抑，我没法从这个世界中找到一丝属于它自己的颜色。还有许多...不符合常理的怪物，就像是脱离现实的梦一样。");
-        add("pasterdream.seniors_dream.entry.deposition_shadow.page1", "沉淀阴影——荒寂的灯影世界。");
-        add("pasterdream.seniors_dream.entry.deposition_shadow.page2", "不过让人感到奇怪的是...这些影子一样的怪物并不会攻击我，但与我随行的人就没那么幸运。还有散落在这里的一些瓶瓶罐罐，通天的锁链，遍地的骸骨...又是谁建造了这些...或者说，这些只是我的想象罢了...");
-
-        add("pasterdream.seniors_dream.entry.lamp_shadow_travelogue_1", "灯影游记 其一");
-        add("pasterdream.seniors_dream.entry.lamp_shadow_travelogue_1.page0", "这里是一些有关在这里探索的记录：");
-        add("pasterdream.seniors_dream.entry.lamp_shadow_travelogue_1.page1", "灯影游记 其一——探索记录附图。");
-        add("pasterdream.seniors_dream.entry.lamp_shadow_travelogue_1.page2", "打败黑色透明的怪物会掉落一些......会“蠕动”的黑色胶状物。$(br)一种瓦石地形上会有一些陶罐和坟墓，能从里面掏出来一些好东西。$(br)部分锁链和遗迹里会有些锈蚀的金属，这种金属貌似并不属于现实存在的元素。$(br)长满蘑菇的地方生活着一些甲虫，它们很喜欢吃一种本地的白色花朵，可以和它们成为朋友。$(br)液体状的“阴影”小湖会在沉淀阴影的表面流淌。");
-
-        add("pasterdream.seniors_dream.entry.shadow_dungeon", "暗影地牢");
-        add("pasterdream.seniors_dream.entry.shadow_dungeon.page0", "还记得之前在探索的时候发现了一种奇怪的遗迹，像是一种仪式供奉着中间的一个东西。但当时我伸手去触碰它，却毫无反应，从残破的结构来看应该是年久失修坏掉了？");
-        add("pasterdream.seniors_dream.entry.shadow_dungeon.page1", "但我们最近提炼出来的黑金属和那个核心的材质很相似...还有中间那个会发光的白色灯块，我应该尝试去修复它。如果我能成功...我会把修复方法记录下来。以及...我的感觉告诉我这个遗迹不会只有地上的这部分...这个明亮的核心就像是盏灯，它的存在酝生了下面的影子。");
-
-        add("pasterdream.seniors_dream.entry.deception", "欺诈");
-        add("pasterdream.seniors_dream.entry.deception.page0", "它并不信任我，它留下了我的影子来限制我，如同人类一般，我的影子学习我如何思考，战斗，逐渐向我靠拢，但它听命于暗影，它始终跟随着我，监视着我是否完成交易内容。$(br)我在阅读亚伦柯斯遗留的手稿和暗影之书后，我尝试建立一套和暗影沟通的新方式，单方面的。");
-        add("pasterdream.seniors_dream.entry.deception.page1", "我成功了！我欺骗了我的影子，也包括暗影，逃离前我狂笑着，我在暗影面前大摇大摆的离开了这里。");
-
-        add("pasterdream.seniors_dream.entry.bargain", "交易");
-        add("pasterdream.seniors_dream.entry.bargain.page0", "我逐渐向深处走去，脚步也逐渐轻快，直到我被淹没在这黑水之间，无数的低语如同海水一般涌来，大脑传来的剧烈疼痛差点让我昏死过去，低语逐渐汇聚，最后只剩下一个声音。$(br)“给我你的力量，作为条件，我可以给你做任何事，但不是作为你的奴隶”");
-        add("pasterdream.seniors_dream.entry.bargain.page1", "此刻低语又散作一团，似乎在激烈讨论着，最后再次凝聚起来。$(br)“门”$(br)还未等我反应过来是什么，我已经被踹出黑暗之地了。");
-
-        add("pasterdream.seniors_dream.entry.shattered", "破碎");
-        add("pasterdream.seniors_dream.entry.shattered.page0", "“闭嘴！！我如今变成模样都是拜他所赐，你还有什么脸和我提让我救他！”$(br)“你看看我这张脸，还是人的模样吗！！和外面那些怪物有什么区别，而且你知道吗？你不知道，很疼，真的很疼，真该把你扔进火里让你也感觉一下！！我已经整整十天没有可以睡个安稳了。”");
-        add("pasterdream.seniors_dream.entry.shattered.page1", "“至于伊诺，我为什么要救她？我和蠢货一样......”$(br)“不对，不对！不对！！都是你们，你们都该死！！”$(br)“如果没有你们，这一切都不会有的。你，既然你一心如此，那就永远待在这里吧。至于亚伦柯斯，我会亲自打开封印，将他挫骨扬灰！”");
-
         // 生物
         add("pasterdream.seniors_dream.category.creatures", "生物");
         add("pasterdream.seniors_dream.category.creatures.desc", "本类别介绍模组中的生物。");
