@@ -103,7 +103,7 @@ public class ShadowIntrudeHandler {
             if (intrudeEnd && intruding) {
                 AABB area = AABB.ofSize(new Vec3(x, y, z), WEAKENED_CHECK_RANGE, WEAKENED_CHECK_RANGE, WEAKENED_CHECK_RANGE);
                 boolean allWeakenedGone = world.getEntitiesOfClass(TerrorbeakEntity.class, area,
-                        e -> e.getType() == ModEntities.WEAKENESS_TERRORBEAK.get()).isEmpty();
+                        e -> e.getType() == ModEntities.WEAKNESS_TERRORBEAK.get()).isEmpty();
                 if (allWeakenedGone) {
                     finish(world, entity, data);
                 }
@@ -119,7 +119,7 @@ public class ShadowIntrudeHandler {
             return;
         }
         if (world instanceof ServerLevel serverLevel) {
-            Entity terrorbeak = ModEntities.WEAKENESS_TERRORBEAK.get().spawn(serverLevel, spawnPos, MobSpawnType.MOB_SUMMONED);
+            Entity terrorbeak = ModEntities.WEAKNESS_TERRORBEAK.get().spawn(serverLevel, spawnPos, MobSpawnType.MOB_SUMMONED);
             if (terrorbeak != null) {
                 terrorbeak.setYRot(world.getRandom().nextFloat() * 360F);
             }

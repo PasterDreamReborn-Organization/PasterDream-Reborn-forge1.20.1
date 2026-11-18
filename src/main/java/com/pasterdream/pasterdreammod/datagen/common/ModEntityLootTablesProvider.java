@@ -122,7 +122,7 @@ public class ModEntityLootTablesProvider implements LootTableSubProvider {
         );
 
         consumer.accept(
-                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/weakeness_terrorbeak"),
+                ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "entities/weakness_terrorbeak"),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))

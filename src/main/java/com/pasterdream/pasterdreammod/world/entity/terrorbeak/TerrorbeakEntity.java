@@ -53,7 +53,7 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
                 true, false, 9, -2, 7, -0.02, true),
         CRAZY("crazy_terrorbeak", 60, 20, 0.31, 1.8, 10,
                 true, true, 10, -3, 30, -0.2, false),
-        WEAKENESS("weakness_terrorbeak", 30, 12, 0.3, 1.6, 4,
+        WEAKNESS("weakness_terrorbeak", 30, 12, 0.3, 1.6, 4,
                 false, false, 0, 0, 7, -0.02, true);
 
         final String texture;
@@ -112,7 +112,7 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
         if (variant == null) {
             EntityType<?> type = this.getType();
             if (type == ModEntities.CRAZY_TERRORBEAK.get()) variant = Variant.CRAZY;
-            else if (type == ModEntities.WEAKENESS_TERRORBEAK.get()) variant = Variant.WEAKENESS;
+            else if (type == ModEntities.WEAKNESS_TERRORBEAK.get()) variant = Variant.WEAKNESS;
             else variant = Variant.NORMAL;
         }
         return variant;
@@ -294,7 +294,7 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
                         world.getDifficulty() != Difficulty.PEACEFUL
                                 && Monster.isDarkEnoughToSpawn(world, pos, random)
                                 && Mob.checkMobSpawnRules(entityType, world, reason, pos, random));
-        SpawnPlacements.register(ModEntities.WEAKENESS_TERRORBEAK.get(),
+        SpawnPlacements.register(ModEntities.WEAKNESS_TERRORBEAK.get(),
                 SpawnPlacements.Type.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, world, reason, pos, random) ->
@@ -323,12 +323,12 @@ public class TerrorbeakEntity extends Monster implements GeoEntity, ITextureVari
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1);
     }
 
-    public static AttributeSupplier.Builder createWeakenessTerrorbeakAttributes() {
+    public static AttributeSupplier.Builder createWeaknessTerrorbeakAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MOVEMENT_SPEED, Variant.WEAKENESS.movementSpeed)
-                .add(Attributes.MAX_HEALTH, Variant.WEAKENESS.maxHealth)
+                .add(Attributes.MOVEMENT_SPEED, Variant.WEAKNESS.movementSpeed)
+                .add(Attributes.MAX_HEALTH, Variant.WEAKNESS.maxHealth)
                 .add(Attributes.ARMOR, 0)
-                .add(Attributes.ATTACK_DAMAGE, Variant.WEAKENESS.attackDamage)
+                .add(Attributes.ATTACK_DAMAGE, Variant.WEAKNESS.attackDamage)
                 .add(Attributes.FOLLOW_RANGE, 24)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1);
     }

@@ -27,7 +27,7 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.SHADOW_GOLEM.get())
                 .add(ModEntities.TERRORBEAK.get())
                 .add(ModEntities.CRAZY_TERRORBEAK.get())
-                .add(ModEntities.WEAKENESS_TERRORBEAK.get())
+                .add(ModEntities.WEAKNESS_TERRORBEAK.get())
                 .add(ModEntities.SHADOW_HAND.get())
                 .add(ModEntities.SHADOW_GHOST.get())
                 .add(ModEntities.SHADOW_SQUEAL_GHOST.get())

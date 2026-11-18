@@ -1,6 +1,7 @@
 package com.pasterdream.pasterdreammod.helper;
 
 import com.pasterdream.pasterdreammod.Config;
+import com.pasterdream.pasterdreammod.compat.LegacyIdRemapper;
 import com.pasterdream.pasterdreammod.init.ModGameRules;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
@@ -292,7 +293,8 @@ public final class ShadowDifficultyHelper {
     private static void spawnFromEntry(ServerPlayer player, String entry) {
         String[] parts = entry.split(":", 3);
         if (parts.length < 2) return;
-        ResourceLocation rl = ResourceLocation.fromNamespaceAndPath(parts[0], parts[1]);
+        ResourceLocation rl = LegacyIdRemapper.entityType(
+                ResourceLocation.fromNamespaceAndPath(parts[0], parts[1]));
         EntityType<?> type = ForgeRegistries.ENTITY_TYPES.getValue(rl);
         if (type == null) {
             LOGGER.warn("lowSanSpawn: unknown entity type '{}', skipping", rl);
