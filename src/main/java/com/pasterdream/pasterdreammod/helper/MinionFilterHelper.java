@@ -1,6 +1,5 @@
 package com.pasterdream.pasterdreammod.helper;
 
-import com.pasterdream.pasterdreammod.world.entity.FoxFireEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
@@ -23,9 +22,6 @@ public final class MinionFilterHelper {
         if (owner == null) return false;
         if (entity instanceof OwnableEntity ownable) {
             return ownable.getOwner() == owner;
-        }
-        if (entity instanceof FoxFireEntity foxFire) {
-            return foxFire.resolveOwner() == owner;
         }
         return entity.isAlliedTo(owner);
     }

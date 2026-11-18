@@ -603,7 +603,6 @@ public class ModEntities {
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(TERRASWORD_WAVE.get(), TerraswordWaveEntity.createAttributes().build());
-        event.put(FOX_FIRE.get(), FoxFireEntity.createAttributes().build());
         event.put(MELT_DREAM_CRYSTAL_ENTITY.get(), MeltDreamCrystalEntityEntity.createAttributes().build());
         event.put(PINK_CHICKEN.get(), PinkChickenEntity.createAttributes().build());
         event.put(PINK_SLIME.get(), PinkSlimeEntity.createAttributes().build());
@@ -626,7 +625,6 @@ public class ModEntities {
         event.put(FRIENDLY_SHADOW_GHOST.get(), FriendlyShadowGhostEntity.createAttributes().build());
         event.put(BLACK_BEETLE.get(), BlackBeetleEntity.createAttributes().build());
         event.put(BLACK_BEETLE_MOTHER.get(), BlackBeetleMotherEntity.createAttributes().build());
-        event.put(SHAKING_CRYSTAL.get(), ShakingCrystalEntity.createAttributes().build());
         event.put(WIND_KNIGHT.get(), WindKnightEntity.createAttributes().build());
         event.put(THUNDERCLOUD.get(), ThundercloudEntity.createAttributes().build());
         event.put(HIGHVOLTAGE_THUNDERCLOUD.get(), HighvoltageThundercloudEntity.createAttributes().build());

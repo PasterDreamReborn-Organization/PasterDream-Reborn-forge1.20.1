@@ -3,27 +3,19 @@ package com.pasterdream.pasterdreammod.world.entity;
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.ModEntities;
 import com.pasterdream.pasterdreammod.init.ModParticleTypes;
-import com.pasterdream.pasterdreammod.init.ModSounds;
-import com.sun.jna.platform.win32.Ddeml;
-import net.minecraft.core.BlockPos;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -39,11 +31,10 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
-import java.awt.*;
 import java.util.List;
 import java.util.UUID;
 
-public class FoxFireEntity extends PathfinderMob implements GeoEntity {
+public class FoxFireEntity extends Entity implements GeoEntity {
 
     private int lifeTicks = 0;
     @Nullable
@@ -57,29 +48,17 @@ public class FoxFireEntity extends PathfinderMob implements GeoEntity {
 
     public FoxFireEntity(EntityType<FoxFireEntity> type, Level world) {
         super(type, world);
-        xpReward = 0;
-        setNoAi(true);
-        setNoGravity(true);
         this.noPhysics = true;
+        this.setNoGravity(true);
     }
 
     @Override
     protected void defineSynchedData() {
-        super.defineSynchedData();
     }
 
     @Override
     public Packet<ClientGamePacketListener> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
-    }
-
-    @Override
-    protected void registerGoals() {
-    }
-
-    @Override
-    public MobType getMobType() {
-        return MobType.UNDEFINED;
     }
 
     @Override
@@ -117,40 +96,11 @@ public class FoxFireEntity extends PathfinderMob implements GeoEntity {
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (source.is(DamageTypes.IN_FIRE))
-            return false;
-        if (source.getDirectEntity() instanceof AbstractArrow)
-            return false;
-        if (source.getDirectEntity() instanceof Player)
-            return false;
-        if (source.getDirectEntity() instanceof ThrownPotion || source.getDirectEntity() instanceof AreaEffectCloud)
-            return false;
-        if (source.is(DamageTypes.FALL))
-            return false;
-        if (source.is(DamageTypes.CACTUS))
-            return false;
-        if (source.is(DamageTypes.DROWN))
-            return false;
-        if (source.is(DamageTypes.LIGHTNING_BOLT))
-            return false;
-        if (source.is(DamageTypes.EXPLOSION))
-            return false;
-        if (source.is(DamageTypes.TRIDENT))
-            return false;
-        if (source.is(DamageTypes.FALLING_ANVIL))
-            return false;
-        if (source.is(DamageTypes.DRAGON_BREATH))
-            return false;
-        if (source.is(DamageTypes.WITHER))
-            return false;
-        if (source.is(DamageTypes.WITHER_SKULL))
-            return false;
-        return super.hurt(source, amount);
+        return false;
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
-        super.readAdditionalSaveData(compound);
         if (compound.hasUUID("Owner")) {
             this.ownerUUID = compound.getUUID("Owner");
         }
@@ -158,7 +108,6 @@ public class FoxFireEntity extends PathfinderMob implements GeoEntity {
 
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
-        super.addAdditionalSaveData(compound);
         if (ownerUUID != null) {
             compound.putUUID("Owner", ownerUUID);
         }
@@ -193,8 +142,7 @@ public class FoxFireEntity extends PathfinderMob implements GeoEntity {
         double effectRadius = 6.0;
         Vec3 center = this.position();
         List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class,
-                new AABB(center, center).inflate(effectRadius),
-                e -> !(e instanceof FoxFireEntity));
+                new AABB(center, center).inflate(effectRadius));
 
         for (LivingEntity living : targets) {
             if (living instanceof Player) {
@@ -212,44 +160,12 @@ public class FoxFireEntity extends PathfinderMob implements GeoEntity {
     }
 
     @Override
-    public EntityDimensions getDimensions(Pose pose) {
-        return super.getDimensions(pose).scale(1f);
-    }
-
-    @Override
     public AABB getBoundingBoxForCulling() {
         double r = 6.0;
         return this.getBoundingBox().inflate(r);
     }
 
-    @Override
-    protected void checkFallDamage(double y, boolean onGroundIn, net.minecraft.world.level.block.state.BlockState state, BlockPos pos) {
-    }
-
-    @Override
-    public void setNoGravity(boolean ignored) {
-        super.setNoGravity(true);
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        this.setNoGravity(true);
-    }
-
     public static void init() {
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        AttributeSupplier.Builder builder = Mob.createMobAttributes();
-        builder = builder.add(Attributes.MOVEMENT_SPEED, 0);
-        builder = builder.add(Attributes.MAX_HEALTH, 999);
-        builder = builder.add(Attributes.ARMOR, 0);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 0);
-        builder = builder.add(Attributes.FOLLOW_RANGE, 0);
-        builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 999);
-        builder = builder.add(Attributes.FLYING_SPEED, 0);
-        return builder;
     }
 
     public void setOwner(Player player) {
