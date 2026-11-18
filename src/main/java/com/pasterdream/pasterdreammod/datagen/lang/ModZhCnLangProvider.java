@@ -841,6 +841,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.按住Shift+右键点击打开的融梦水晶箱可复位（写入此物品NBT中包含的战利品列表）", "§7按住Shift+右键点击打开的融梦水晶箱可复位（写入此物品NBT中包含的战利品列表）");
         add("tooltip.pasterdream.reset_cost_melt_dream_energy", "复位消耗%f融梦能量");
         add("tooltip.pasterdream.melt_dream_crystal_chest.reset_cooldown", "重置冷却剩余：%s");
+        add("tooltip.pasterdream.按住[Shift]查看战利品列表", "按住[Shift]查看战利品列表");
 
         add("tooltip.pasterdream.空", "空");
         add("tooltip.pasterdream.总容量:", "总容量:");
