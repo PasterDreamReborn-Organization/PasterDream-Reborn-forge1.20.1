@@ -2209,7 +2209,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModEntities.SQUEAL_WAVE_PROJECTILE.get(), "Squeal Wave");
         add(ModEntities.WIND_ALLOY_LIGHTNING.get(), "Wind Alloy Lightning");
         add(ModEntities.WIND_THUNDER_SPEAR.get(), "Windwreathed Thunder Spear");
-        add(ModEntities.TIDE_SWORD_PROJECTILE.get(), "Tide Sword Slash");
+        add(ModEntities.TIDE_SWORD_PROJECTILE.get(), "Tide Sword");
         add(ModEntities.KUSANAGI_VENOM_STINGER.get(), "Kusanagi Venom Stinger");
         add(ModEntities.MELT_DREAM_ARROW.get(), "Melt Dream Arrow");
         add(ModEntities.SHADOW_ALLOY_ARROW.get(), "Shadow Alloy Arrow");

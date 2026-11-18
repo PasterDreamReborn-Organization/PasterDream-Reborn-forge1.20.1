@@ -2852,7 +2852,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModEntities.SQUEAL_WAVE_PROJECTILE.get(), "尖啸音波");
         add(ModEntities.WIND_ALLOY_LIGHTNING.get(), "萦风合金闪电");
         add(ModEntities.WIND_THUNDER_SPEAR.get(), "萦风雷矛");
-        add(ModEntities.TIDE_SWORD_PROJECTILE.get(), "引潮剑气");
+        add(ModEntities.TIDE_SWORD_PROJECTILE.get(), "引潮剑");
         add(ModEntities.KUSANAGI_VENOM_STINGER.get(), "草薙毒刺");
         add(ModEntities.MELT_DREAM_ARROW.get(), "融梦箭");
         add(ModEntities.SHADOW_ALLOY_ARROW.get(), "暗影合金箭");
