@@ -16,6 +16,8 @@ import com.pasterdream.pasterdreammod.worldgen.feature.SlumberPalmTreeConfigurat
 import com.pasterdream.pasterdreammod.worldgen.feature.SlumberPalmTreeFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.SmallPinkMushroomFeature;
 import com.pasterdream.pasterdreammod.worldgen.feature.StonePillarFeature;
+import com.pasterdream.pasterdreammod.worldgen.feature.WindJourneyWaterPoolConfiguration;
+import com.pasterdream.pasterdreammod.worldgen.feature.WindJourneyWaterPoolFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -84,6 +86,10 @@ public class ModFeatures {
     public static final RegistryObject<Feature<SlumberPalmTreeConfiguration>> SLUMBER_PALM_TREE =
             FEATURES.register("slumber_palm_tree",
                     () -> new SlumberPalmTreeFeature(SlumberPalmTreeConfiguration.CODEC));
+
+    public static final RegistryObject<Feature<WindJourneyWaterPoolConfiguration>> WIND_JOURNEY_WATER_POOL =
+            FEATURES.register("wind_journey_water_pool",
+                    () -> new WindJourneyWaterPoolFeature(WindJourneyWaterPoolConfiguration.CODEC));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
