@@ -3,6 +3,7 @@ package com.pasterdream.pasterdreammod.event;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.helper.ShadowDifficultyHelper;
 import com.pasterdream.pasterdreammod.tag.ModEntityTypeTags;
+import com.pasterdream.pasterdreammod.world.dimension.DyedreamDimension;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -10,6 +11,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.animal.horse.SkeletonHorse;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
@@ -25,6 +27,15 @@ public class ModMobSpawnEvents {
     public static void onEntityJoinLevel(EntityJoinLevelEvent event) {
         if (event.getLevel().isClientSide()) return;
         if (event.loadedFromDisk()) return;
+
+        // 染梦世界没有独立天气，雷暴状态镜像主世界；主世界打雷时原版 ServerLevel#tickChunk
+        // 会在染梦的露天区块刷出 setTrap(true) 的骷髅马。这里拦掉该实体，其余雷击行为不变。
+        if (event.getEntity() instanceof SkeletonHorse horse
+                && horse.isTrap()
+                && event.getLevel().dimension().equals(DyedreamDimension.DYEDREAM_WORLD)) {
+            event.setCanceled(true);
+            return;
+        }
 
         if (event.getEntity() instanceof Sheep sheep) {
             Holder<Biome> biome = event.getLevel().getBiome(sheep.blockPosition());
