@@ -25,7 +25,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -99,21 +98,23 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
                 return;
             }
 
-            // 玩家在染梦世界中 → 尝试返回主世界
-            if (level.dimension().equals(DYEDREAM_WORLD))
-            {
-                level.playSound(null, blockPosition, ModSounds.DYEDREAM_CRACK.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
-                teleportToDreamDimension(player, state, blockPosition);
-                player.setPortalCooldown();
-                return;
-            }
+            boolean isCanTeleport;
 
-            // 检查是否已解锁染梦裂隙进度 → 允许进入染梦世界
-            Advancement crackAdv = player.server.getAdvancements().getAdvancement(DYEDREAM_CRACK_ADV);
-            if (crackAdv != null && player.getAdvancements().getOrStartProgress(crackAdv).isDone())
+            if(player.isCreative())
             {
+                isCanTeleport = true;
+            }
+                else
+                {
+                    Advancement crackAdv = player.server.getAdvancements().getAdvancement(DYEDREAM_CRACK_ADV);
+                    isCanTeleport = crackAdv != null && player.getAdvancements().getOrStartProgress(crackAdv).isDone();
+                }
+
+            if(isCanTeleport)
+            {
+                ServerLevel targetLevel = level.dimension().equals(DYEDREAM_WORLD) ? player.serverLevel().getServer().getLevel(Level.OVERWORLD) : player.serverLevel().getServer().getLevel(DYEDREAM_WORLD);
                 level.playSound(null, blockPosition, ModSounds.DYEDREAM_CRACK.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
-                teleportToDreamDimension(player, state, blockPosition);
+                teleportToDimension(player, state, blockPosition, targetLevel);
                 player.setPortalCooldown();
                 return;
             }
@@ -140,32 +141,27 @@ public class DyedreamCrackBlock extends HorizontalDirectionalGenericBlock
         }
     }
 
-    private void teleportToDreamDimension(ServerPlayer player, BlockState state, BlockPos pos)
+    private void teleportToDimension(ServerPlayer player, BlockState blockState, BlockPos blockPosition, ServerLevel targetLevel)
     {
-        ServerLevel currentLevel = player.serverLevel();
-        ResourceKey<Level> targetDim = currentLevel.dimension().equals(DYEDREAM_WORLD) ? Level.OVERWORLD : DYEDREAM_WORLD;
-        ServerLevel targetLevel = currentLevel.getServer().getLevel(targetDim);
-        if (targetLevel == null)
+        if (targetLevel != null)
         {
-            return;
-        }
+            if (!(targetLevel.getBlockState(blockPosition).getBlock() instanceof DyedreamCrackBlock))
+            {
+                placePortalStructure(targetLevel, blockState, blockPosition);
+            }
 
-        if (!(targetLevel.getBlockState(pos).getBlock() instanceof DyedreamCrackBlock))
-        {
-            placePortalStructure(targetLevel, state, pos);
-        }
+            Direction direction = blockState.getValue(FACING);
 
-        Direction direction = state.getValue(FACING);
-
-        switch (direction)
-        {
-            case EAST  -> player.teleportTo(targetLevel, pos.getX() + 2.5, pos.getY() + 0.5, pos.getZ() + 0.5, 90, 30);
-            case SOUTH -> player.teleportTo(targetLevel, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 2.5, 180, 30);
-            case WEST  -> player.teleportTo(targetLevel, pos.getX() - 1.5, pos.getY() + 0.5, pos.getZ() + 0.5, 270, 30);
-            case NORTH -> player.teleportTo(targetLevel, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() - 1.5, 0, 30);
+            switch (direction)
+            {
+                case EAST  -> player.teleportTo(targetLevel, blockPosition.getX() + 2.5, blockPosition.getY() + 0.5, blockPosition.getZ() + 0.5, 90, 30);
+                case SOUTH -> player.teleportTo(targetLevel, blockPosition.getX() + 0.5, blockPosition.getY() + 0.5, blockPosition.getZ() + 2.5, 180, 30);
+                case WEST  -> player.teleportTo(targetLevel, blockPosition.getX() - 1.5, blockPosition.getY() + 0.5, blockPosition.getZ() + 0.5, 270, 30);
+                case NORTH -> player.teleportTo(targetLevel, blockPosition.getX() + 0.5, blockPosition.getY() + 0.5, blockPosition.getZ() - 1.5, 0, 30);
+            }
+            // 跨维度传送会重建客户端 LocalPlayer，补发效果包以恢复图标
+            TeleportHelper.resendActiveEffects(player);
         }
-        // 跨维度传送会重建客户端 LocalPlayer，补发效果包以恢复图标
-        TeleportHelper.resendActiveEffects(player);
     }
 
     private void placePortalStructure(ServerLevel level, BlockState state, BlockPos portalPos)
