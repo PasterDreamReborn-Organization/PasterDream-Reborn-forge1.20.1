@@ -1568,10 +1568,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.REBIRTH_DREAM_CRYSTAL.get(), "Rebirth Dream Crystal");
         add("tooltip.pasterdream.rebirth_dream_crystal.1", "§7\"The old dream has woken, let us dream anew.\"");
         add("tooltip.pasterdream.rebirth_dream_crystal.2", "§7\"Welcome back, Dreamseeker.\"");
-        add("tooltip.pasterdream.rebirth_dream_crystal.3", "§7▪ §9+12 Sanity Aura");
-        add("tooltip.pasterdream.rebirth_dream_crystal.4", "§7▪ §9Gains 12s Evasion every 10s");
         add("tooltip.pasterdream.rebirth_dream_crystal.+16最大生命值(完成染梦世界任务后解锁)", "§7▪ §9+16 Max Health(Unlock Require Complete Dyedream World Task)");
-        add("tooltip.pasterdream.rebirth_dream_crystal.+8融梦光环(完成染梦世界任务后解锁)", "§7▪ §9+8 Melt Dream Aura(Unlock Require Complete Dyedream World Task)");
+        add("tooltip.pasterdream.rebirth_dream_crystal.+16融梦光环(完成染梦世界任务后解锁)", "§7▪ §9+16 Melt Dream Aura(Unlock Require Complete Dyedream World Task)");
         add("tooltip.pasterdream.rebirth_dream_crystal.+16%战技伤害(完成灯影之下任务后解锁)", "§7▪ §9+16% Skill Damage(Unlock Require Complete Lamp Shadow World Task)");
         add("tooltip.pasterdream.rebirth_dream_crystal.+16护甲值(完成灯影之下任务后解锁)", "§7▪ §9+16 Armor(Unlock Require Complete Lamp Shadow World Task)");
         add("tooltip.pasterdream.rebirth_dream_crystal.+16%速度(完成风之旅途任务后解锁)", "§7▪ §9+16% Speed(Unlock Require Complete Wind Journey World Task)");
