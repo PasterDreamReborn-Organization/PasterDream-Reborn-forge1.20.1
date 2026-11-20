@@ -3,6 +3,7 @@
   "name": "pasterdream.seniors_dream.entry.wind_knight",
   "icon": "pasterdream:wind_knight_spawn_egg",
   "category": "pasterdream:creatures/hostile",
+  "advancement": "pasterdream:story/lightning_in_bottle",
   "pages": [
     {
       "type": "patchouli:text",
