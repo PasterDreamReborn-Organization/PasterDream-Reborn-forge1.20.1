@@ -2793,6 +2793,14 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.wind_knight.page0", "患上白血病，被困在病房的少女在梦境中幻想了一名骑士，而她的幻想也具象在她的梦境之中，静候在天空的祭坛中，等待雷鸣的唤醒。");
         add("pasterdream.seniors_dream.entry.wind_knight.page2", "破风骑士的招式分为突刺和回旋斩，前者攻击速度较快，是破风骑士的主要招式，而后者的范围和伤害都较为恐怖，在回旋斩前，破风骑士会有明显的前兆动作。$(br)实际上，如果装备良好，与破风骑士本身的战斗实在不算是困难。但在你与破风骑士的战斗进行到一半时，破风骑士会召唤四个雷云，在你头上劈下落雷。这是与破风骑士战斗的最具有威胁的因素。请在战斗前确保自己有足够的反杂兵能力和防空能力。");
 
+        // 挑战
+        add("pasterdream.seniors_dream.category.challenge", "挑战");
+        add("pasterdream.seniors_dream.category.challenge.desc", "本类别介绍模组中的挑战进度。");
+
+        add("pasterdream.seniors_dream.entry.angel_beats", "Angel Beats！");
+        add("pasterdream.seniors_dream.entry.angel_beats.page0", "在到达风旅后，你可以尝试一下长途飞行探索风旅。比如分别在顺风和逆风的情况下飞行一万格，穿越一百次破风幕帐，感受一下风的触感和心脏的跳动。或许这样能获得如同“天使”般的飞行能力。");
+        add("pasterdream.seniors_dream.entry.angel_beats.page1", "也许，自由翱翔也是某人的心愿，也是某人的遗憾。$(br2)——音无结弦之时，悦动天使之心，独立浮华之世，奏响天籁之音。愿你有一天能与重要之人重逢。");
+
         // 实体
         add(ModEntities.PINK_CHICKEN.get(), "粉红鸡");
         add(ModItems.PINK_CHICKEN_SPAWN_EGG.get(), "粉红鸡刷怪蛋");

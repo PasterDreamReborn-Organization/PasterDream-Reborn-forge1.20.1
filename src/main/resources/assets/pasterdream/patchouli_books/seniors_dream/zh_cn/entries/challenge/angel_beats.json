@@ -1,0 +1,18 @@
+{
+  "sortnum": 0,
+  "name": "pasterdream.seniors_dream.entry.angel_beats",
+  "icon": "pasterdream:angel_wing",
+  "category": "pasterdream:challenge",
+  "advancement": "pasterdream:story/break_wind_curtain",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "pasterdream:angel_wing",
+      "text": "pasterdream.seniors_dream.entry.angel_beats.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.angel_beats.page1"
+    }
+  ]
+}
