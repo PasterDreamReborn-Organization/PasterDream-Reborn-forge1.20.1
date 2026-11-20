@@ -887,7 +887,6 @@ public class ModCreativeModeTabs {
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦实验室"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("来往于梦"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("染梦世界树"));
-                        output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("代达罗斯之翼与浮空岛"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("星河果冻和浮空岛"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("融梦釜与融梦炼金术"));
                         output.accept(DreamNotesBookWithNBTToCreativeModeTab.buildNBT("魔法使的记录 其一"));

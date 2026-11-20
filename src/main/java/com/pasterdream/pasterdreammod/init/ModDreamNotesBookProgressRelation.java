@@ -49,7 +49,6 @@ public class ModDreamNotesBookProgressRelation
         DreamNotesBookProgressRegistry.notesDimensionRegister("染梦实验室", DYEDREAM_WORLD);
         DreamNotesBookProgressRegistry.notesDimensionRegister("来往于梦", DYEDREAM_WORLD);
         DreamNotesBookProgressRegistry.notesDimensionRegister("染梦世界树", DYEDREAM_WORLD);
-        DreamNotesBookProgressRegistry.notesDimensionRegister("代达罗斯之翼与浮空岛", DYEDREAM_WORLD);
         DreamNotesBookProgressRegistry.notesDimensionRegister("星河果冻和浮空岛", DYEDREAM_WORLD);
         DreamNotesBookProgressRegistry.notesDimensionRegister("融梦釜与融梦炼金术", DYEDREAM_WORLD);
         DreamNotesBookProgressRegistry.notesDimensionRegister("魔法使的记录 其一", DYEDREAM_WORLD);
