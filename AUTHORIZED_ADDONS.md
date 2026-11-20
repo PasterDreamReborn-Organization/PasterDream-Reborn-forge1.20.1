@@ -7,3 +7,4 @@ This file lists addons authorized by the PasterDream: Reborn copyright holder an
 | 附属模组 / Addon | 作者 / Author | 授权范围 / Approved scope | 备注 / Notes | 授权文件（可选） / Authorization document (optional) |
 |---|---|---|---|---|
 | [PDR-Ores-Excavation](https://github.com/2884omgpy/PDR-Ores-Excavation) | 2884omgpy | 制作、发布该附属模组 / Create and distribute this addon | 本项目团队成员制作 / Created by a member of this project's team | 未附 / Not attached |
+| [晶彩梦艺 Crystal Dream](https://github.com/AmarokIce/CrystalDream-NeoForge) | AmarokIce | 制作、发布该附属模组 / Create and distribute this addon | 原 PasterDream（1.18.2/1.20.1）附属，计划迁移至 PDR / Former PasterDream 1.18.2/1.20.1 addon; planned migration to PDR; current code not yet pushed | [登记请求 / Registration request](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1/issues/1325) |
