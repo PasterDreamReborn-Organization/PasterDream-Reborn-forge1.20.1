@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * 自定义进度触发器 —— 穿过破风幕帐。
- * 由 {@code BreakWindCurtainBlock#entityInside} 在玩家飞行穿过幕帐时调用。
+ * 由 {@code BreakWindCurtainBlock#entityInside} 在玩家鞘翅滑翔（isFallFlying）穿过幕帐时调用。
  */
 public class BreakWindCurtainTrigger extends SimpleCriterionTrigger<BreakWindCurtainTrigger.TriggerInstance> {
 
