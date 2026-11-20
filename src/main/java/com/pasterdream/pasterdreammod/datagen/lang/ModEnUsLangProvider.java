@@ -1920,6 +1920,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.dyedream_dust.description", "Seek its traces from this world");
         add("advancements.pasterdream.story.melt_dream_crystal_fragment.title", "Melted in Dream");
         add("advancements.pasterdream.story.melt_dream_crystal_fragment.description", "Collect a Melt Dream Crystal Fragment");
+        add("advancements.pasterdream.story.melt_dream_full_set.title", "Woven of Dream");
+        add("advancements.pasterdream.story.melt_dream_full_set.description", "Wear the full Melt Dream Crystal set to invoke Melt Dream Protection");
         add("advancements.pasterdream.story.glass_jar_of_dream_juice.title", "Where Lies the Sweet Dream");
         add("advancements.pasterdream.story.glass_jar_of_dream_juice.description", "Craft and drink Dream Juice, then journey to the Dyedream World in your sleep");
         add("advancements.pasterdream.story.dream_accumulator.title", "The Dust Has Settled");
@@ -1968,6 +1970,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.talent_shadow.description", "Choose the shadow in the choice between light and shadow");
         add("advancements.pasterdream.story.defeat_aaroncos.title", "Shadow and Dust");
         add("advancements.pasterdream.story.defeat_aaroncos.description", "Defeat Aaroncos's Touch");
+        add("advancements.pasterdream.story.shadow_alloy_full_set.title", "Cloaked in Shadow");
+        add("advancements.pasterdream.story.shadow_alloy_full_set.description", "Wear the full Shadow Alloy set to invoke the Dark Watch");
         add("advancements.pasterdream.story.tame_friendly_ghost.title", "A Friend in the Shadow");
         add("advancements.pasterdream.story.tame_friendly_ghost.description", "Tame a friendly shadow ghost with a Soul Essence");
         add("advancements.pasterdream.story.mark_wailing_shadow_ghost.title", "Was it me who killed me?!");
@@ -2067,6 +2071,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("advancements.pasterdream.story.lightning_in_bottle.description", "Craft a Lightning Potion Bottle");
         add("advancements.pasterdream.story.summon_wind_knight.title", "The Wind-Breaking Knight");
         add("advancements.pasterdream.story.summon_wind_knight.description", "Summon the Wind-Breaking Knight");
+        add("advancements.pasterdream.story.fluffy_wind_alloy_full_set.title", "Gale-Borne");
+        add("advancements.pasterdream.story.fluffy_wind_alloy_full_set.description", "Wear the full Fluffy Wind Alloy set to invoke the Boon of Wind and Thunder");
         add("advancements.pasterdream.story.pulse_wind_runner_crystal.title", "Pulse of the Wind Core");
         add("advancements.pasterdream.story.pulse_wind_runner_crystal.description", "Obtain a Pulse Wind Runner Crystal");
         add("advancements.pasterdream.story.wingless_bird.title", "The Wingless Bird Takes Flight");

@@ -14,6 +14,7 @@ import com.pasterdream.pasterdreammod.advancement.critereon.OpenWindJourneyCryst
 import com.pasterdream.pasterdreammod.advancement.critereon.ReadDreamNoteTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.SummonWindKnightTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.UseBoneNeedleTrigger;
+import com.pasterdream.pasterdreammod.advancement.critereon.WearingArmorSetTrigger;
 import com.pasterdream.pasterdreammod.advancement.critereon.WindFlightTrigger;
 import net.minecraft.advancements.CriteriaTriggers;
 
@@ -68,6 +69,9 @@ public class ModCriteriaTriggers {
     /** 在破风骑士祭坛召唤破风骑士 */
     public static final SummonWindKnightTrigger SUMMON_WIND_KNIGHT = new SummonWindKnightTrigger();
 
+    /** 同时穿戴某一套护甲的全部四件 */
+    public static final WearingArmorSetTrigger WEARING_ARMOR_SET = new WearingArmorSetTrigger();
+
     public static void init() {
         CriteriaTriggers.register(USE_BONE_NEEDLE);
         CriteriaTriggers.register(FOUND_TOMB);
@@ -84,5 +88,6 @@ public class ModCriteriaTriggers {
         CriteriaTriggers.register(OPEN_WIND_JOURNEY_CRYSTAL_CHEST);
         CriteriaTriggers.register(CAPTURE_FIREFLY);
         CriteriaTriggers.register(SUMMON_WIND_KNIGHT);
+        CriteriaTriggers.register(WEARING_ARMOR_SET);
     }
 }
