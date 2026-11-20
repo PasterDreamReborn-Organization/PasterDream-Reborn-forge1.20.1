@@ -31,6 +31,7 @@ description: 新增/修改进度与梦笔记分发。覆盖进度定义、四种
 - 已弃用的寻梦者笔记不再承担进度触发；灯影剧情进度由 `StoryProgressItem` 的解析/打开新笔记书流程授予，蓄梦池进度由首次打开方块界面授予
 - 进度奖励物品（如 `story/angel_beats` → 天使之翼）在 `event/PlayerEvents.java` 的 `onAdvancementEarned` 按进度 ID 发放（背包满则掉落），不走 loot table
 - 累计次数类触发器参考 `BreakWindCurtainTrigger`：JSON 用 `count` 下限，玩家计数存持久化数据（`pasterdream:break_wind_curtain_passes`），进入幕帐时仅在"上一 tick 不在幕帐内"累加，避免停留重复计数
+- **别用 `inventory_changed` + `.requirements(AND)` 判「集齐/穿齐一套」**：该判据逐条 latch 并持久化，AND 只表示「各件在任意时刻各拿到过」，不要求同时持有。要「此刻正穿着」语义就得自定义触发器，参考 `WearingArmorSetTrigger`（`pasterdream:wearing_armor_set`，JSON 用 `set` 字段选套装）+ `ArmorSetAdvancementHandler` 在换装/登录/重生时触发（登录/重生覆盖「上线即穿齐」）
 
 ---
 
@@ -43,6 +44,7 @@ description: 新增/修改进度与梦笔记分发。覆盖进度定义、四种
 | 笔记分发事件 | `event/PlayerEvents.java` → `onAdvancementEarned()` |
 | 自定义触发器 | `advancement/critereon/` |
 | 触发器注册 | `init/ModCriteriaTriggers.java` |
+| 触发器事件入口 | `advancement/ArmorSetAdvancementHandler.java` |
 | 语言文件 | `datagen/lang/ModZhCnLangProvider.java` / `ModEnUsLangProvider.java` |
 | 梦笔记物品 | `world/item/dreamnotes/` |
 
