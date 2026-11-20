@@ -3,7 +3,6 @@ package com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal;
 import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.PasterDreamMod;
 import com.pasterdream.pasterdreammod.init.ModAttributes;
-import com.pasterdream.pasterdreammod.init.ModEffects;
 import com.pasterdream.pasterdreammod.init.ModSounds;
 import com.pasterdream.pasterdreammod.world.item.ModRarities;
 import com.pasterdream.pasterdreammod.world.item.curio.rebirthdreamcrystal.playerdata.PasterDreamPlayerDreamNoteProgressData;
@@ -13,7 +12,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -103,10 +101,11 @@ public class RebirthDreamCrystalItem extends Item implements ICurioItem {
         LivingEntity entity = slotContext.entity();
         if (entity != null && !entity.level().isClientSide())
         {
+            // 理智光环已移除：清理旧版本残留的永久修饰符
             AttributeInstance sanAttr = entity.getAttribute(ModAttributes.SAN_VARIABILITY.get());
-            if (sanAttr != null && sanAttr.getModifier(SAN_VARIABILITY_UUID) == null)
+            if (sanAttr != null)
             {
-                sanAttr.addPermanentModifier(new AttributeModifier(SAN_VARIABILITY_UUID, "Rebirth dream crystal sanity variability", 12.0, AttributeModifier.Operation.ADDITION));
+                sanAttr.removeModifier(SAN_VARIABILITY_UUID);
             }
 
             if(entity instanceof Player player)
@@ -123,7 +122,7 @@ public class RebirthDreamCrystalItem extends Item implements ICurioItem {
                     AttributeInstance maxMeltDreamVariability = entity.getAttribute(ModAttributes.MELT_DREAM_VARIABILITY.get());
                     if(maxMeltDreamVariability != null && maxMeltDreamVariability.getModifier(MELT_DREAM_VARIABILITY_UUID) == null)
                     {
-                        maxMeltDreamVariability.addPermanentModifier(new AttributeModifier(MELT_DREAM_VARIABILITY_UUID, "重生之梦水晶+8融梦光环", 8, AttributeModifier.Operation.ADDITION));
+                        maxMeltDreamVariability.addPermanentModifier(new AttributeModifier(MELT_DREAM_VARIABILITY_UUID, "重生之梦水晶+16融梦光环", 16, AttributeModifier.Operation.ADDITION));
                     }
                 }
 
@@ -226,9 +225,13 @@ public class RebirthDreamCrystalItem extends Item implements ICurioItem {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack)
     {
+        // 理智光环已移除：旧存档若正佩戴本饰品，其 onEquip 不会再触发，需在此清理残留的永久修饰符
         if (!(slotContext.entity() instanceof ServerPlayer player)) return;
-        if (player.tickCount % 200 != 0) return;
-        player.addEffect(new MobEffectInstance(ModEffects.EVASION.get(), 240, 0, false, false));
+        AttributeInstance sanAttr = player.getAttribute(ModAttributes.SAN_VARIABILITY.get());
+        if (sanAttr != null && sanAttr.getModifier(SAN_VARIABILITY_UUID) != null)
+        {
+            sanAttr.removeModifier(SAN_VARIABILITY_UUID);
+        }
     }
 
     @Override
@@ -245,10 +248,8 @@ public class RebirthDreamCrystalItem extends Item implements ICurioItem {
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
         list.add(Component.translatable("tooltip.pasterdream.rebirth_dream_crystal.1"));
         list.add(Component.translatable("tooltip.pasterdream.rebirth_dream_crystal.2"));
-        list.add(Component.translatable("tooltip.pasterdream.rebirth_dream_crystal.3"));
-        list.add(Component.translatable("tooltip.pasterdream.rebirth_dream_crystal.4"));
         list.add(Component.translatable("tooltip.pasterdream.rebirth_dream_crystal.+16最大生命值(完成染梦世界任务后解锁)"));
-        list.add(Component.translatable("tooltip.pasterdream.rebirth_dream_crystal.+8融梦光环(完成染梦世界任务后解锁)"));
+        list.add(Component.translatable("tooltip.pasterdream.rebirth_dream_crystal.+16融梦光环(完成染梦世界任务后解锁)"));
         list.add(Component.translatable("tooltip.pasterdream.rebirth_dream_crystal.+16%战技伤害(完成灯影之下任务后解锁)"));
         list.add(Component.translatable("tooltip.pasterdream.rebirth_dream_crystal.+16护甲值(完成灯影之下任务后解锁)"));
         list.add(Component.translatable("tooltip.pasterdream.rebirth_dream_crystal.+16%速度(完成风之旅途任务后解锁)"));
