@@ -211,6 +211,13 @@ public class MortarInventory implements Container, IFluidContainer
         saveToDataHandler();
     }
 
+    //流体槽变更：必须使用与原版 Container 不同的方法名，否则正式环境会因重混淆而 AbstractMethodError
+    @Override
+    public void setFluidChanged()
+    {
+        saveToDataHandler();
+    }
+
     @Override
     public boolean stillValid(Player player)
     {
@@ -240,10 +247,4 @@ public class MortarInventory implements Container, IFluidContainer
     {
         return fluidTanks;
     }
-
-    @Override
-    public void startOpen(Player player) {}
-
-    @Override
-    public void stopOpen(Player player) {}
 }

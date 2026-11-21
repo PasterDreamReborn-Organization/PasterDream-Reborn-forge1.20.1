@@ -34,7 +34,7 @@ public class FluidSlot
     public void setFluid(FluidStack fluidStack)
     {
         container.setFluid(fluidSlotIndex, fluidStack);
-        container.setChanged();
+        container.setFluidChanged();
         if(onChanged != null)
         {
             onChanged.run();
@@ -48,7 +48,7 @@ public class FluidSlot
 
     public void setChanged()
     {
-        container.setChanged();
+        container.setFluidChanged();
     }
 
     public boolean mayPlace(FluidStack stack)
