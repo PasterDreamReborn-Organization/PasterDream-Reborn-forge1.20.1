@@ -68,14 +68,8 @@ public class PlayerFluidSlotContainer implements IFluidContainer
     }
 
     @Override
-    public void setChanged()
+    public void setFluidChanged()
     {
 
-    }
-
-    @Override
-    public boolean stillValid(Player player)
-    {
-        return true;
     }
 }
