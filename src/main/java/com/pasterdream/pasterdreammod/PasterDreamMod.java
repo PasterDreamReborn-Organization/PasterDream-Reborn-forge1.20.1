@@ -12,6 +12,7 @@ import com.pasterdream.pasterdreammod.event.ModMobDrops;
 import com.pasterdream.pasterdreammod.event.ModMobSpawnEvents;
 import com.pasterdream.pasterdreammod.event.ModResourcePacks;
 import com.pasterdream.pasterdreammod.event.ModVillagerTrades;
+import com.pasterdream.pasterdreammod.event.ModWandererTrades;
 import com.pasterdream.pasterdreammod.datagen.common.ModRaidRewardsProvider;
 import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
 import com.pasterdream.pasterdreammod.event.PlayerEvents;
@@ -108,6 +109,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(ModMobDrops::onLivingDrops);
         MinecraftForge.EVENT_BUS.addListener(ModRaidRewardsProvider::onLootTableLoad);
         MinecraftForge.EVENT_BUS.addListener(ModVillagerTrades::onVillagerTrades);
+        MinecraftForge.EVENT_BUS.addListener(ModWandererTrades::onWandererTrades);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onFoxFireVulnerableHurt);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onVulnerabilityHurt);
