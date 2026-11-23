@@ -34,6 +34,9 @@ import java.util.Set;
  * <p>
  * 开关：{@code Config#dyedreamWandererTradesEnabled}（配置项 {@code dyedreamWandererTradesEnabled}，默认 true），
  * 关闭后染梦游商回退到全局交易池；{@code wanderingTraderTradesEnabled} 只作用于主世界，与染梦表无关。
+ * 投放方式与主世界共用 {@link Config#wanderingTraderTradesInjectToVanillaPool}：注入模式把 17 条并入
+ * generic / rare 池随机抽取，追加模式保持原版池不变并在末尾固定追加
+ * {@link Config#wanderingTraderTradesAppendCount} 条本表条目。
  */
 public final class DyedreamWandererTrades {
 
@@ -159,15 +162,29 @@ public final class DyedreamWandererTrades {
     }
 
     /**
-     * 按原版规则从「原版基础池 + 染梦表条目」抽取交易并填入 {@code trader} 的 offers。
+     * 按配置的投放方式填充 {@code trader} 的 offers。
+     * <p>
+     * 注入模式：按原版规则从「原版基础池 + 染梦表条目」抽取 5+1 条。
+     * 追加模式：原版池保持不变，先按原版规则抽 5+1 条，再从染梦表条目中随机追加
+     * {@link Config#wanderingTraderTradesAppendCount} 条（保证出现）。
+     * <p>
      * 调用时 {@code trader} 的 offers 必须已初始化（{@code updateTrades} 只会在
      * {@code AbstractVillager#getOffers} 初始化 offers 之后被调用）。
      */
     public static void fillOffers(WanderingTrader trader) {
         MerchantOffers offers = trader.getOffers();
         RandomSource random = trader.getRandom();
-        addOffers(offers, trader, merged(vanillaGeneric, GENERIC), GENERIC_PICKS, random);
-        addOffers(offers, trader, merged(vanillaRare, RARE), RARE_PICKS, random);
+        if (ModWandererTrades.isInjectedToVanillaPool()) {
+            addOffers(offers, trader, merged(vanillaGeneric, GENERIC), GENERIC_PICKS, random);
+            addOffers(offers, trader, merged(vanillaRare, RARE), RARE_PICKS, random);
+            return;
+        }
+        addOffers(offers, trader, vanillaGeneric, GENERIC_PICKS, random);
+        addOffers(offers, trader, vanillaRare, RARE_PICKS, random);
+        List<VillagerTrades.ItemListing> candidates = new ArrayList<>(GENERIC);
+        candidates.addAll(RARE);
+        ModWandererTrades.appendRandomOffers(offers, trader, candidates,
+                Config.wanderingTraderTradesAppendCount);
     }
 
     private static VillagerTrades.ItemListing[] merged(VillagerTrades.ItemListing[] vanilla,
