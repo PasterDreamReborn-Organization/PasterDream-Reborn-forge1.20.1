@@ -502,6 +502,13 @@ public class Config
             .comment("工具匠专家（5级）出售精铸工坊蓝图的概率，默认 1.0（100%）")
             .defineInRange("toolsmithBlueprintTradeChance", 1.0, 0.0, 1.0);
 
+    // === 游商交易注入 ===
+    private static final ForgeConfigSpec.BooleanValue WANDERING_TRADER_TRADES_ENABLED = BUILDER
+            .comment("是否向原版流浪商人（wandering_trader）的交易池注入本模组的 13 条交易，默认 true。"
+                    + "\n关闭后不修改原版 generic 池，原版交易不受影响"
+                    + "\n注入只在服务器启动阶段执行一次，改动此项需重启服务器/存档")
+            .define("wanderingTraderTradesEnabled", true);
+
     // === 鬼魂之面 ===
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> GHOST_FACE_PROJECTILE_BLACKLIST = BUILDER
             .comment("鬼魂之面不生效的投射物实体类型 ID 列表（格式：modid:entity_id），"
@@ -692,6 +699,7 @@ public class Config
 
     // === 村民交易 ===
     public static double toolsmithBlueprintTradeChance;
+    public static boolean wanderingTraderTradesEnabled = true;
 
     //鬼魂之面
     public static List<? extends String> ghostFaceProjectileBlacklist;
@@ -1222,6 +1230,7 @@ public class Config
         rebuildRebirthDreamCrystalLootCache();
 
         toolsmithBlueprintTradeChance = TOOLSMITH_BLUEPRINT_TRADE_CHANCE.get();
+        wanderingTraderTradesEnabled = WANDERING_TRADER_TRADES_ENABLED.get();
 
         bastionGuardGrantRadius = BASTION_GUARD_GRANT_RADIUS.get();
 
