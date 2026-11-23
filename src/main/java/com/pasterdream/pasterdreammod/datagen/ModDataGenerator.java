@@ -49,6 +49,7 @@ public class ModDataGenerator {
                 new LootTableProvider.SubProviderEntry(ModDeepTreasureLootTablesProvider::new, LootContextParamSets.CHEST),
                 new LootTableProvider.SubProviderEntry(ModFishingLootTablesProvider::new, LootContextParamSets.FISHING),
                 new LootTableProvider.SubProviderEntry(ModEntityLootTablesProvider::new, LootContextParamSets.ENTITY),
+                new LootTableProvider.SubProviderEntry(ModPiglinBarterLootTablesProvider::new, LootContextParamSets.PIGLIN_BARTER),
                 new LootTableProvider.SubProviderEntry(ModPliersCuttingLootTablesProvider::new, LootContextParamSets.ALL_PARAMS)
         )));
 

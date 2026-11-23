@@ -19,6 +19,7 @@
     "MobDeadTargetClearMixin",
     "NaturalSpawnerMixin",
     "PhantomTargetMixin",
+    "PiglinBarterMixin",
     "BrightButterflyCurioMixin",
     "SculkArmorWardenImmunityMixin",
     "ProtectedEffectRemovalMixin",
