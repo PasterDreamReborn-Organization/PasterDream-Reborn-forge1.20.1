@@ -17,6 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.entity.PartEntity;
 import net.minecraftforge.network.NetworkHooks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -68,8 +69,21 @@ public class ServerGamePacketListenerImplMixin
                                     player.drop(itemStack, false);
                                 }
                             }
-                            target.discard();
-                            player.sendSystemMessage(Component.translatable("已删除实体: " + target.getName().getString()));
+
+                            if (target instanceof PartEntity<?> partEntity)
+                            {
+                                target = partEntity.getParent();
+                            }
+
+                            if(target instanceof Player)
+                            {
+                                player.sendSystemMessage(Component.translatable("请不要尝试删除玩家实体！"));
+                            }
+                                else
+                                {
+                                    target.discard();
+                                    player.sendSystemMessage(Component.translatable("已删除实体: ").append(target.getName().getString()));
+                                }
                         }
                     }
                 }
