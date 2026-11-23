@@ -28,8 +28,8 @@ import java.util.List;
  * 开关：{@code Config#wanderingTraderTradesEnabled}（配置项 {@code wanderingTraderTradesEnabled}，默认 true），
  * 关闭时直接跳过注入，原版交易池保持不变。
  * <p>
- * 染梦世界生成的游商不走这里：{@link DyedreamWandererTrades} 会改用「原版基础池 + 染梦专属池」的独立表，
- * 因此这 13 条只出现在非染梦维度（主世界等）的游商身上。
+ * 染梦世界生成的游商不走这里：{@link DyedreamWandererTrades} 会改用「原版基础池 + 染梦表自己的条目」
+ * 的独立表。两张注入表互不引用：染梦表自己持有一份同款 13 条，改这里不影响它，反之亦然。
  */
 public class ModWandererTrades {
 
@@ -37,8 +37,10 @@ public class ModWandererTrades {
     private static final float PRICE_MULTIPLIER = 0.05f;
 
     public static void onWandererTrades(WandererTradesEvent event) {
-        // 必须在注入前快照原版基础池：染梦独立表以它为底，不能带上下面这 13 条
+        // 必须在注入前快照原版基础池：染梦独立表以它为底
         DyedreamWandererTrades.captureVanillaPools();
+        // 染梦表拥有自己独立的一份条目（与这里互不引用），双方各自维护
+        DyedreamWandererTrades.registerTrades();
         if (!Config.wanderingTraderTradesEnabled) {
             return;
         }
