@@ -22,6 +22,11 @@ public class ModItemTags {
     public static final TagKey<Item> PURE_HORROR_SOURCES = bind("pure_horror_sources");
     /** 灯影之下的武器标签 —— 满套暗影合金盔甲时其造成伤害 +30% */
     public static final TagKey<Item> LAMP_SHADOW_WEAPON = bind("lamp_shadow_weapon");
+    /**
+     * 猪灵交易货币标签 —— 持有此标签的物品都能与猪灵交易，每种货币对应一张战利品表。
+     * 该标签同时嵌套进 {@code minecraft:piglin_loved}，掉落在地上的货币也会被猪灵捡起检视。
+     */
+    public static final TagKey<Item> PIGLIN_BARTERING_CURRENCY = bind("piglin_bartering_currency");
 
     private static TagKey<Item> bind(String pName) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, pName));

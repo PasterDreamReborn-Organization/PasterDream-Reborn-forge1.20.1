@@ -610,5 +610,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "raw_materials/molten_gold")))
                 .add(ModItems.RAW_MOLTEN_GOLD.get().asItem());
+
+        //猪灵交易货币：金锭 + 炙焰金锭（以后加货币只需往标签里补物品）
+        tag(ModItemTags.PIGLIN_BARTERING_CURRENCY)
+                .add(Items.GOLD_INGOT)
+                .add(ModItems.MOLTEN_GOLD_INGOT.get());
+        //整组嵌套进原版喜爱物品标签，掉落在地上的货币才会被猪灵捡起检视并交易
+        tag(ItemTags.PIGLIN_LOVED)
+                .addTag(ModItemTags.PIGLIN_BARTERING_CURRENCY);
     }
 }
