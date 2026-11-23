@@ -34,8 +34,15 @@ public class DebugSwordHandler
                 target = partEntity.getParent();
             }
 
-            target.discard();
-            player.sendSystemMessage(Component.translatable("已删除实体: " + target.getName().getString()));
+            if(target instanceof Player)
+            {
+                player.sendSystemMessage(Component.translatable("请不要尝试删除玩家实体！"));
+            }
+                else
+                {
+                    target.discard();
+                    player.sendSystemMessage(Component.translatable("已删除实体: ").append(target.getName().getString()));
+                }
         }
     }
 
