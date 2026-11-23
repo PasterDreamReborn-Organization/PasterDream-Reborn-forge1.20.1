@@ -2050,6 +2050,15 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         RecipeHelpers.storageDecompress(pWriter, ModItems.TITANIUM_BLOCK.get(), ModItems.TITANIUM_INGOT.get(), PasterDreamMod.MOD_ID);
 
         // ===== 炙焰金系列 =====
+        // 烈焰粉 ×4 + 金锭 → 炙焰金锭（工作台）
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1)
+                .pattern(" a ")
+                .pattern("aba")
+                .pattern(" a ")
+                .define('a', Items.BLAZE_POWDER)
+                .define('b', Items.GOLD_INGOT)
+                .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(pWriter, PasterDreamMod.MOD_ID + ":molten_gold_ingot_from_blaze_powder");
         // 炙焰金矿石 → 炙焰金锭（熔炉 + 高炉）
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.MOLTEN_GOLD_ORE.get()),
                         RecipeCategory.MISC, ModItems.MOLTEN_GOLD_INGOT.get(), 1.0F, 200)

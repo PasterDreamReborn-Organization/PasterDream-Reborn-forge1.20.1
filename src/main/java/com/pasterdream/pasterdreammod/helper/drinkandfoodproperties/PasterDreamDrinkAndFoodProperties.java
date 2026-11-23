@@ -38,6 +38,13 @@ public class PasterDreamDrinkAndFoodProperties extends Item.Properties
         return this;
     }
 
+    @Override
+    public PasterDreamDrinkAndFoodProperties fireResistant()
+    {
+        super.fireResistant();
+        return this;
+    }
+
     public PasterDreamDrinkAndFoodProperties useDuration(int ticks)
     {
         this.useDuration = ticks;

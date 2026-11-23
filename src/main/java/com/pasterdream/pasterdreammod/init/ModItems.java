@@ -193,13 +193,13 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> MOLTEN_GOLD_INGOT = ITEMS.register("molten_gold_ingot",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> MOLTEN_GOLD_NUGGET = ITEMS.register("molten_gold_nugget",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> RAW_MOLTEN_GOLD = ITEMS.register("raw_molten_gold",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> MELT_DREAM_AURORIAN_STEEL_INGOT = ITEMS.register("melt_dream_aurorian_steel_ingot",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
@@ -248,7 +248,7 @@ public class ModItems {
     public static final RegistryObject<Item> CONGEAL_WIND_IRON_NUGGET = ITEMS.register("congeal_wind_iron_nugget",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_INGOT = ITEMS.register("fluffy_wind_alloy_ingot",
-            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> PULSE_WIND_RUNNER_CRYSTAL = ITEMS.register("pulse_wind_runner_crystal",
             () -> new PulseWindRunnerCrystalItem());
     public static final RegistryObject<Item> BREAK_WIND_KNIGHT_ALTAR = ITEMS.register("break_wind_knight_altar",
@@ -322,7 +322,7 @@ public class ModItems {
     public static final RegistryObject<Item> DYEDREAM_UPGRADE = ITEMS.register("dyedream_upgrade",
             () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_UPGRADE = ITEMS.register("fluffy_wind_alloy_upgrade",
-            () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
+            () -> new Item(new Item.Properties().stacksTo(16).fireResistant().rarity(Rarity.UNCOMMON)));
 
     // ===== 强化石 =====
     public static final RegistryObject<Item> ATTACK_ENHANCE_STONE = ITEMS.register("attack_enhance_stone",
@@ -383,15 +383,15 @@ public class ModItems {
 
     // ===== 萦风合金工具 =====
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_SWORD = ITEMS.register("fluffy_wind_alloy_sword",
-            () -> new FluffyWindAlloySwordItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloySwordItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_PICKAXE = ITEMS.register("fluffy_wind_alloy_pickaxe",
-            () -> new FluffyWindAlloyPickaxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyPickaxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_AXE = ITEMS.register("fluffy_wind_alloy_axe",
-            () -> new FluffyWindAlloyAxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyAxeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_SHOVEL = ITEMS.register("fluffy_wind_alloy_shovel",
-            () -> new FluffyWindAlloyShovelItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyShovelItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_HOE = ITEMS.register("fluffy_wind_alloy_hoe",
-            () -> new FluffyWindAlloyHoeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new FluffyWindAlloyHoeItem(ModToolTiers.FLUFFY_WIND_ALLOY, new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> FLUFFY_WIND_BOW = ITEMS.register("fluffy_wind_bow",
             () -> new FluffyWindBowItem(new Item.Properties().fireResistant().durability(842).rarity(Rarity.UNCOMMON)));
 
@@ -1119,7 +1119,8 @@ public class ModItems {
                     .food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2f).alwaysEat()//金苹果数值
                             .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2400, 0), 1.0f)//2分钟抗火
                             .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 2400, 1), 1.0f)//2分钟急迫II
-                            .build())));
+                            .build())
+                    .fireResistant()));
 
     public static final RegistryObject<Item> ENCHANTED_MOLTEN_GOLD_APPLE = ITEMS.register("enchanted_molten_gold_apple",
             () -> new PasterDreamFoodItem(new PasterDreamDrinkAndFoodProperties().rarity(Rarity.EPIC)
@@ -1128,7 +1129,8 @@ public class ModItems {
                             .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 6000, 3), 1.0f)//5分钟急迫IV
                             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 6000, 2), 1.0f)//5分钟迅捷III
                             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400, 1), 1.0f)//20秒生命恢复II
-                            .build())) {
+                            .build())
+                    .fireResistant()) {
                 @Override
                 public boolean isFoil(ItemStack stack) {
                     return true;
@@ -1338,7 +1340,7 @@ public class ModItems {
     public static final RegistryObject<Item> DEEPSLATE_TITANIUM_ORE = ITEMS.register("deepslate_titanium_ore",
             () -> new BlockItem(ModBlocks.DEEPSLATE_TITANIUM_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> MOLTEN_GOLD_ORE = ITEMS.register("molten_gold_ore",
-            () -> new BlockItem(ModBlocks.MOLTEN_GOLD_ORE.get(), new Item.Properties()));
+            () -> new BlockItem(ModBlocks.MOLTEN_GOLD_ORE.get(), new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> CALCITE_COAL_ORE = ITEMS.register("calcite_coal_ore",
             () -> new BlockItem(ModBlocks.CALCITE_COAL_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> CALCITE_IRON_ORE = ITEMS.register("calcite_iron_ore",
@@ -1366,7 +1368,7 @@ public class ModItems {
     public static final RegistryObject<Item> CONGEAL_WIND_IRON_BLOCK = ITEMS.register("congeal_wind_iron_block",
             () -> new BlockItem(ModBlocks.CONGEAL_WIND_IRON_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> FLUFFY_WIND_ALLOY_BLOCK = ITEMS.register("fluffy_wind_alloy_block",
-            () -> new BlockItem(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new BlockItem(ModBlocks.FLUFFY_WIND_ALLOY_BLOCK.get(), new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> EJECTION_PRESSURE_PLATE = ITEMS.register("ejection_pressure_plate",
             () -> new BlockItem(ModBlocks.EJECTION_PRESSURE_PLATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> EJECTION_PRESSURE_BLOCK = ITEMS.register("ejection_pressure_block",
@@ -1394,7 +1396,7 @@ public class ModItems {
     public static final RegistryObject<Item> TITANIUM_BLOCK = ITEMS.register("titanium_block",
             () -> new BlockItem(ModBlocks.TITANIUM_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> MOLTEN_GOLD_BLOCK = ITEMS.register("molten_gold_block",
-            () -> new BlockItem(ModBlocks.MOLTEN_GOLD_BLOCK.get(), new Item.Properties()));
+            () -> new BlockItem(ModBlocks.MOLTEN_GOLD_BLOCK.get(), new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> CHARGED_AMETHYST_BLOCK = ITEMS.register("charged_amethyst_block",
             () -> new BlockItem(ModBlocks.CHARGED_AMETHYST_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> BLACK_METAL_BLOCK = ITEMS.register("black_metal_block",
