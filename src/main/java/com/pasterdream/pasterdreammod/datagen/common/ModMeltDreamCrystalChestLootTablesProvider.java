@@ -44,7 +44,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN_PILE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(1.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(ModItems.TITANIUM_INGOT.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -72,7 +72,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 3.0F))))
+                                                UniformGenerator.between(5.0F, 10.0F))))
                                 .add(LootItem.lootTableItem(ModItems.TITANIUM_INGOT.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -154,7 +154,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(7)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(5.0F, 10.0F))))
                         )
                         // ===== 染梦装备，固定1次抽取 =====
                         .withPool(LootPool.lootPool()
@@ -220,7 +220,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN_PILE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(1.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(ModItems.TITANIUM_INGOT.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -248,7 +248,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 3.0F))))
+                                                UniformGenerator.between(5.0F, 10.0F))))
                                 .add(LootItem.lootTableItem(ModItems.TITANIUM_INGOT.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -334,7 +334,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(7)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(5.0F, 10.0F))))
                         )
                         // ===== 染梦装备，固定1次抽取 =====
                         .withPool(LootPool.lootPool()
@@ -478,7 +478,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN_PILE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(1.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(ModItems.TITANIUM_INGOT.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -506,7 +506,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 3.0F))))
+                                                UniformGenerator.between(5.0F, 10.0F))))
                                 .add(LootItem.lootTableItem(ModItems.TITANIUM_INGOT.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -604,7 +604,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(7)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(5.0F, 10.0F))))
                                 .add(LootItem.lootTableItem(ModItems.FOURLEAF_CLOVER_CURIO.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -742,7 +742,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN_PILE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(1.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_INGOT.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -774,7 +774,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 3.0F))))
+                                                UniformGenerator.between(5.0F, 10.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_INGOT.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -860,7 +860,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(7)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(5.0F, 10.0F))))
                         )
                         // ===== 凝风铁装备，固定1次抽取 =====
                         .withPool(LootPool.lootPool()
@@ -921,7 +921,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN_PILE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(1.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_INGOT.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -953,7 +953,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 3.0F))))
+                                                UniformGenerator.between(5.0F, 10.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_INGOT.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -1039,7 +1039,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(7)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(5.0F, 10.0F))))
                                 .add(LootItem.lootTableItem(ModItems.WIND_SPIRIT.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
@@ -1186,7 +1186,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN_PILE.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(1.0F, 3.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_INGOT.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -1218,7 +1218,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
-                                                UniformGenerator.between(1.0F, 3.0F))))
+                                                UniformGenerator.between(5.0F, 10.0F))))
                                 .add(LootItem.lootTableItem(ModItems.CONGEAL_WIND_IRON_INGOT.get())
                                         .setWeight(2)
                                         .apply(SetItemCountFunction.setCount(
@@ -1282,7 +1282,7 @@ public class ModMeltDreamCrystalChestLootTablesProvider implements LootTableSubP
                                 .add(LootItem.lootTableItem(ModItems.MELT_DREAM_COIN.get())
                                         .setWeight(7)
                                         .apply(SetItemCountFunction.setCount(
-                                                ConstantValue.exactly(1.0F))))
+                                                UniformGenerator.between(5.0F, 10.0F))))
                                 .add(LootItem.lootTableItem(ModItems.FOURLEAF_CLOVER_CURIO.get())
                                         .setWeight(1)
                                         .apply(SetItemCountFunction.setCount(
