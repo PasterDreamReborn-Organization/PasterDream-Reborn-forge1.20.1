@@ -505,6 +505,7 @@ public class Config
     // === 游商交易注入 ===
     private static final ForgeConfigSpec.BooleanValue WANDERING_TRADER_TRADES_ENABLED = BUILDER
             .comment("是否向原版流浪商人（wandering_trader）的交易池注入本模组的 13 条交易，默认 true。"
+                    + "\n只影响主世界等非染梦维度的游商；染梦世界独立交易表另有自己的一份同款 13 条，改这里不影响它"
                     + "\n关闭后不修改原版 generic 池，原版交易不受影响"
                     + "\n注入只在服务器启动阶段执行一次，改动此项需重启服务器/存档")
             .define("wanderingTraderTradesEnabled", true);
@@ -519,8 +520,9 @@ public class Config
 
     // === 游商交易（染梦独立表） ===
     private static final ForgeConfigSpec.BooleanValue DYEDREAM_WANDERER_TRADES_ENABLED = BUILDER
-            .comment("是否让染梦世界生成的流浪商人使用独立交易表（原版基础池 + 染梦专属池），默认 true。"
-                    + "\n独立表不含注入主世界的 13 条交易，染梦专属条目在 DyedreamWandererTrades 中登记"
+            .comment("是否让染梦世界生成的流浪商人使用独立交易表（原版基础池 + 染梦表自己的条目），默认 true。"
+                    + "\n独立表拥有自己的一份 13 条同款交易与染梦专属条目，与主世界注入表互不引用、互不影响"
+                    + "\n不受 wanderingTraderTradesEnabled 开关影响，而是本表独立维护"
                     + "\n关闭后染梦游商回退到全局交易池（原版 + 13 条注入）")
             .define("dyedreamWandererTradesEnabled", true);
 
