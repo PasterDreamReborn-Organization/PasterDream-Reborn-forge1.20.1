@@ -1,5 +1,6 @@
 package com.pasterdream.pasterdreammod.event;
 
+import com.pasterdream.pasterdreammod.Config;
 import com.pasterdream.pasterdreammod.init.ModItems;
 import com.pasterdream.pasterdreammod.world.item.DeepTreasureItem;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -23,6 +24,9 @@ import java.util.List;
  * 13 条交易全部加入 generic 池，并保留原版条目。原版 {@code WanderingTrader#updateTrades}
  * 每次从 generic 池等权、不重复地随机抽 5 条，因此池内每条被抽中的概率相同，
  * 但单只游商只展示其中 5 条，无法保证某条必定出现。
+ * <p>
+ * 开关：{@code Config#wanderingTraderTradesEnabled}（配置项 {@code wanderingTraderTradesEnabled}，默认 true），
+ * 关闭时直接跳过注入，原版交易池保持不变。
  */
 public class ModWandererTrades {
 
@@ -30,6 +34,10 @@ public class ModWandererTrades {
     private static final float PRICE_MULTIPLIER = 0.05f;
 
     public static void onWandererTrades(WandererTradesEvent event) {
+        if (!Config.wanderingTraderTradesEnabled) {
+            return;
+        }
+
         List<VillagerTrades.ItemListing> trades = event.getGenericTrades();
 
         Item coin = ModItems.MELT_DREAM_COIN.get();
