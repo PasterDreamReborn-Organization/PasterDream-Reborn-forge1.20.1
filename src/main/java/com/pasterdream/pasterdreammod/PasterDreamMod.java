@@ -7,6 +7,7 @@ import com.pasterdream.pasterdreammod.helper.fluidhandler.FluidHandlerResolvers;
 import com.pasterdream.pasterdreammod.helper.sanbiomeratemanager.SanBiomeRateManager;
 import com.pasterdream.pasterdreammod.helper.tooltipadder.AddToolTip;
 import com.pasterdream.pasterdreammod.event.CookOverflowHandler;
+import com.pasterdream.pasterdreammod.event.DyedreamWanderingTraderSpawner;
 import com.pasterdream.pasterdreammod.event.VanillaFoodSanHandler;
 import com.pasterdream.pasterdreammod.event.ModMobDrops;
 import com.pasterdream.pasterdreammod.event.ModMobSpawnEvents;
@@ -134,6 +135,8 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(ModWorldGenEvents::onCheckSpawn);
         MinecraftForge.EVENT_BUS.addListener(RecipeUnlockHandler::onBlockBreak);
         MinecraftForge.EVENT_BUS.addListener(ModMobSpawnEvents::onEntityJoinLevel);
+        MinecraftForge.EVENT_BUS.addListener(DyedreamWanderingTraderSpawner::onLevelTick);
+        MinecraftForge.EVENT_BUS.addListener(DyedreamWanderingTraderSpawner::onLevelUnload);
         MinecraftForge.EVENT_BUS.addListener(this::onAddReloadListeners);
         MinecraftForge.EVENT_BUS.addListener(LegacyRegistryCompat::onMissingMappings);
 

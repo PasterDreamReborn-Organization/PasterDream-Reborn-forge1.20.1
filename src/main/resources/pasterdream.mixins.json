@@ -24,6 +24,7 @@
     "SculkArmorWardenImmunityMixin",
     "ProtectedEffectRemovalMixin",
     "WardenTargetMixin",
+    "WanderingTraderTradesMixin",
     "WorldGenRegionMixin",
     "ServerLevelSleepTimeMixin",
     "ServerLevelWeatherMixin",

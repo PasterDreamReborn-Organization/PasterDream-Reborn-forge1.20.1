@@ -509,6 +509,21 @@ public class Config
                     + "\n注入只在服务器启动阶段执行一次，改动此项需重启服务器/存档")
             .define("wanderingTraderTradesEnabled", true);
 
+    // === 游商自然生成 ===
+    private static final ForgeConfigSpec.BooleanValue DYEDREAM_WANDERING_TRADER_ENABLED = BUILDER
+            .comment("是否让染梦世界（pasterdream:dyedream_world）像主世界一样自然生成原版流浪商人，默认 true。"
+                    + "\n生成完全复用原版逻辑（20 分钟一轮、25%~75% 概率、附带 2 只羊驼）"
+                    + "\n计时状态不写入存档，维度重载或服务器重启后重新等待一轮"
+                    + "\n原版规则 doTraderSpawning / doMobSpawning 仍然生效")
+            .define("dyedreamWanderingTraderEnabled", true);
+
+    // === 游商交易（染梦独立表） ===
+    private static final ForgeConfigSpec.BooleanValue DYEDREAM_WANDERER_TRADES_ENABLED = BUILDER
+            .comment("是否让染梦世界生成的流浪商人使用独立交易表（原版基础池 + 染梦专属池），默认 true。"
+                    + "\n独立表不含注入主世界的 13 条交易，染梦专属条目在 DyedreamWandererTrades 中登记"
+                    + "\n关闭后染梦游商回退到全局交易池（原版 + 13 条注入）")
+            .define("dyedreamWandererTradesEnabled", true);
+
     // === 鬼魂之面 ===
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> GHOST_FACE_PROJECTILE_BLACKLIST = BUILDER
             .comment("鬼魂之面不生效的投射物实体类型 ID 列表（格式：modid:entity_id），"
@@ -700,6 +715,12 @@ public class Config
     // === 村民交易 ===
     public static double toolsmithBlueprintTradeChance;
     public static boolean wanderingTraderTradesEnabled = true;
+
+    // === 游商自然生成 ===
+    public static boolean dyedreamWanderingTraderEnabled = true;
+
+    // === 游商交易（染梦独立表） ===
+    public static boolean dyedreamWandererTradesEnabled = true;
 
     //鬼魂之面
     public static List<? extends String> ghostFaceProjectileBlacklist;
@@ -1231,6 +1252,8 @@ public class Config
 
         toolsmithBlueprintTradeChance = TOOLSMITH_BLUEPRINT_TRADE_CHANCE.get();
         wanderingTraderTradesEnabled = WANDERING_TRADER_TRADES_ENABLED.get();
+        dyedreamWanderingTraderEnabled = DYEDREAM_WANDERING_TRADER_ENABLED.get();
+        dyedreamWandererTradesEnabled = DYEDREAM_WANDERER_TRADES_ENABLED.get();
 
         bastionGuardGrantRadius = BASTION_GUARD_GRANT_RADIUS.get();
 

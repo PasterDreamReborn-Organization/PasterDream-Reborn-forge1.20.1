@@ -42,6 +42,7 @@ description: 新增/修改实体（生物、弹射物、投影物）。覆盖实
 
 - `worldgen/biome/ModBiomeModifierProvider.java` 用 `addSpawns()`，标签 `forge:add_spawns`
 - 生成条件方块**必须**在 `BlockTags.ANIMALS_SPAWNABLE_ON` 标签（`ModBlockTagsProvider` 维护）
+- 原版 `customSpawners`（流浪商人、幻翼、巡逻队、猫、村庄袭击）只在主世界注入；其他维度要复用这些生成器，可在 `TickEvent.LevelTickEvent` 里手动 `tick`，参考 `event/DyedreamWanderingTraderSpawner.java`
 
 ---
 
