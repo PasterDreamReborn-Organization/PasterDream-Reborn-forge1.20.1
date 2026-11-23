@@ -45,7 +45,7 @@
 |------|------|
 | 编译检查 | `.\gradlew compileJava` |
 | 数据生成 | `.\gradlew runData` |
-| 客户端测试 | `.\gradlew runClient` |
+| 客户端测试 | `.\gradlew runClient`（**仅用户执行，Agent 禁止**） |
 | 构建 | `.\gradlew build` |
 | 刷新 ID 映射 JSON | `cd tools; python generate_id_mapping.py` |
 
@@ -61,6 +61,7 @@
 - 注册方块**必须**设 `.mapColor()` 并补全标签（挖掘工具/材质/功能）。
 - 搬运旧内容必须先登记 `document/design/ID映射表.md`（完全新设计/废案不登记）。
 - 提交信息格式 `[type](scope): message`（type 见 `程序规范文档.md`）。**未经用户明确要求不得提交**。
+- **Agent 禁止**运行 `runClient`/`runServer`，也禁止用 computer-use、截图点按、键鼠自动化做游戏内测试；客户端验证一律交给用户，Agent 只交付「可复现验证清单」（见 `程序规范文档.md` §AI 规范）。
 - 易踩的坑先查 `程序规范文档.md` 的「易犯错误记录」。
 
 ---

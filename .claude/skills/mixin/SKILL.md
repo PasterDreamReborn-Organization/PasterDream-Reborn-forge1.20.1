@@ -26,7 +26,7 @@ description: 新增/修改 Mixin 注入。覆盖使用原则（优先事件/继�
 2. 建 `XxxMixin` 类，选最小侵入的注入注解，`@Inject` 优先。
 3. 客户端专属加 `@Mixin` 后**登记到 mixins.json 的对应段**（`mixins` / `client` / `server`）。
 4. 需要跨模组兼容时，确认不与其他模组的注入点冲突（用 `@Inject` 而非 `@Overwrite` 即天然兼容）。
-5. 运行 `runClient` 验证注入成功；报 `InvalidInjectionException` / `InvalidAccessorException` 时优先检查方法签名与 refmap。
+5. 注入是否生效由用户在 `runClient` 中验证——**Agent 不得自行启动客户端**（见 `程序规范文档.md` §AI 规范）；报 `InvalidInjectionException` / `InvalidAccessorException` 时优先检查方法签名与 refmap。
 
 ---
 
