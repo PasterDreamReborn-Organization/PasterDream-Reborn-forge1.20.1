@@ -886,7 +886,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.melt_dream_crystal_armor", "融梦守护");
         add("effect.pasterdream.melt_dream_crystal_armor.description", "穿戴全套融梦水晶套装时获得，融梦修补费用-50%，获得生命恢复II与染梦工具增强，融梦能量>50%时理智光环+1.2，否则+0.6。");
         add("effect.pasterdream.dark_watch", "黑暗守望");
+        add("effect.pasterdream.dark_watch.description", "穿戴全套暗影合金套装时获得，提高灯影武器的伤害，受到攻击时给予反击buff，并提供对暗影生物的减伤。");
         add("effect.pasterdream.wind_thunder_boon", "风雷之佑");
+        add("effect.pasterdream.wind_thunder_boon.description", "穿戴全套萦风合金套装时获得，提高拉弓和弩装填的速度，免疫雷电伤害，在雨天降低10%所受伤害并在雷雨天降低20%所受伤害，概率免疫弹射物伤害，坠落时按住空格消耗饥饿值提供缓降，在雨天时还会提供额外属性加成。");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9启用飞行能力");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4融梦能量消耗：1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9获得飞行能力且免疫摔落伤害");
@@ -1968,7 +1970,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("effect.pasterdream.restrainmove_block", "行动抑制");
         add("effect.pasterdream.restrainmove_block.description", "效果持续期间移除跳跃提升并强制禁用飞行。");
         add("effect.pasterdream.oppression", "压抑");
+        add("effect.pasterdream.oppression.description", "效果期间降低理智光环。");
         add("effect.pasterdream.shadow_spyon", "暗影窥视");
+        add("effect.pasterdream.shadow_spyon.description", "效果期间在主世界夜晚低亮度时概率触发暗影入侵事件。");
         add("message.pasterdream.shadow_intrude.start_1", "§5你感到一丝凉意，眼前被笼罩了一层黑雾");
         add("message.pasterdream.shadow_intrude.start_2", "§5附近的的影子开始蠕动");
         add("message.pasterdream.shadow_intrude.end", "§5影子归于平息......");
@@ -3021,7 +3025,6 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("item.pasterdream.potion_bottle.rejuvenation", "回春药剂瓶");
         add("item.pasterdream.potion_bottle.inferno", "狱火药剂瓶");
         add("item.pasterdream.potion_bottle.cyclone", "飓风药剂瓶");
-        add("effect.pasterdream.highly_toxic", "剧毒");
         add("tooltip.pasterdream.potion_bottle.highly_toxic.description","§9砸碎后释放剧毒云，对6*6区域范围内的生物施加剧毒、缓慢和虚弱");
         add("tooltip.pasterdream.potion_bottle.lightning.description.1","§9砸碎后在落地地点释放乌云，并在短时间后对5*5区域范围内生成4次随机落雷");
         add("tooltip.pasterdream.potion_bottle.lightning.description.2","§7§o--瓶装闪电");
@@ -3035,10 +3038,16 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.potion_bottle.cyclone.description.1","§9砸碎后将落地地点8*8范围内除玩家以外所有实体抛飞");
         add("tooltip.pasterdream.potion_bottle.cyclone.description.2","§9波及的实体每拥有20最大生命值，增加1级折翼buff，最高5级，拥有该buff将增加实体的摔落伤害");
         add("tooltip.pasterdream.potion_bottle.cyclone.description.3","§7§o--粉骨砕身カジノゥ");
+        add("effect.pasterdream.highly_toxic", "剧毒");
+        add("effect.pasterdream.highly_toxic.description", "一种特殊的毒，可以作用于亡灵生物，并无视无敌帧造成伤害。");
         add("effect.pasterdream.berserk", "狂暴");
+        add("effect.pasterdream.berserk.description", "增加攻击伤害，移动速度，攻击速度，战技伤害倍率并降低战技和瞬身术冷却时间。");
         add("effect.pasterdream.frozen", "急冻");
+        add("effect.pasterdream.frozen.description", "使目标完全无法移动或攻击。");
         add("effect.pasterdream.vulnerability", "易伤");
+        add("effect.pasterdream.vulnerability.description", "每级增加10%所受伤害。");
         add("effect.pasterdream.broken_wing", "折翼");
+        add("effect.pasterdream.broken_wing.description", "每级增加50%所受摔落伤害。");
 
         // 暗影提灯
         add(ModItems.SHADOW_HAND_LANTERN.get(), "暗影提灯");
@@ -3151,11 +3160,15 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModItems.FRACTURED_ANGEL_STATUE.get(), "折翼天使雕像");
         add(ModItems.PAPER_PLANE.get(), "纸飞机");
         add("effect.pasterdream.tailwind", "顺风");
+        add("effect.pasterdream.tailwind.description", "在风之旅途顺风时获得，增加瞬身术移动距离和移动速度，并减少瞬身术冷却时间。");
         add("effect.pasterdream.deadwind", "逆风");
+        add("effect.pasterdream.deadwind.description", "在风之旅途逆风时获得，降低瞬身术移动距离和移动速度，并增加瞬身术冷却时间。");
         add("effect.pasterdream.windproof", "防风");
+        add("effect.pasterdream.windproof.description", "效果期间免疫顺风和逆风效果。");
         add("effect.pasterdream.wind_runner", "风行者");
-        add("effect.pasterdream.wind_runner.description", "食用风行者果冻获得，效果持续期间无需鞘翅即可进行鞘翅飞行。");
+        add("effect.pasterdream.wind_runner.description", "食用风行者果冻获得，效果持续期间无需鞘翅即可进行鞘翅飞行，携带该效果入睡即可进入风之旅途世界。");
         add("effect.pasterdream.misty_dream", "迷梦");
+        add("effect.pasterdream.misty_dream.description", "食用迷梦炖菜获得，携带该效果在主世界Y>310时可以将玩家传送至风之旅途世界。");
         add("effect.pasterdream.cloud_mist", "云雾");
         add("tooltip.pasterdream.wind_vane.desc", "§7检测当前的风向与玩家的角度");
         add("message.pasterdream.wind_vane.angle", "角度：%s 方向：%s");
