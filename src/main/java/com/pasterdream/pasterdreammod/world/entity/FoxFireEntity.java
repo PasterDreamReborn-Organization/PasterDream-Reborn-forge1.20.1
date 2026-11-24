@@ -146,7 +146,7 @@ public class FoxFireEntity extends Entity implements GeoEntity {
 
         for (LivingEntity living : targets) {
             if (living instanceof Player) {
-                living.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 40, 1, false, false, true));
+                living.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 300, 1, false, false, true));
             } else if (!this.isOwnerOrOwnedPet(living)) {
                 living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 4, false, false, true));
                 living.getPersistentData().putBoolean("pasterdream:fox_fire_vulnerable", true);
