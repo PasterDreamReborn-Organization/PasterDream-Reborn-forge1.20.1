@@ -12,7 +12,16 @@
   <span>简体中文</span>
 </p>
 
-重写原版帕斯特之梦模组，基于 Minecraft Forge 1.20.1，从空 MDK 从零搭建。
+重写原版帕斯特之梦模组，基于 Minecraft Forge 1.20.1，从空 MDK 从零搭建。NeoForge 1.21.1 移植版已完成并公开独立仓库，见下方[版本分支](#版本分支)。
+
+## 版本分支
+
+| 加载器 | Minecraft | 状态 | 仓库 |
+|--------|-----------|------|------|
+| Forge | 1.20.1 | 主线维护 | 本仓库（[PasterDream-Reborn-forge1.20.1](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1)） |
+| NeoForge | 1.21.1 | 移植完成，仓库已公开 | [PasterDream-Reborn-neoforge](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-neoforge) |
+
+两个仓库共用模组 ID `pasterdream`、包名与目录结构，仅加载器与 Minecraft 版本不同；代码差异、依赖与上游同步规则见 NeoForge 仓库的[移植总纲](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-neoforge/blob/main/document/reference/移植总纲.md)。
 
 ## 授权
 
