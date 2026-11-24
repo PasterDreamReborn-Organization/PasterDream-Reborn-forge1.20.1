@@ -16,6 +16,7 @@ import com.pasterdream.pasterdreammod.event.ModVillagerTrades;
 import com.pasterdream.pasterdreammod.event.ModWandererTrades;
 import com.pasterdream.pasterdreammod.datagen.common.ModRaidRewardsProvider;
 import com.pasterdream.pasterdreammod.event.ModWorldGenEvents;
+import com.pasterdream.pasterdreammod.event.NetherChestLootInjection;
 import com.pasterdream.pasterdreammod.event.PlayerEvents;
 import com.pasterdream.pasterdreammod.event.RecipeUnlockHandler;
 import com.pasterdream.pasterdreammod.init.*;
@@ -109,6 +110,7 @@ public class PasterDreamMod
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onHoeTill);
         MinecraftForge.EVENT_BUS.addListener(ModMobDrops::onLivingDrops);
         MinecraftForge.EVENT_BUS.addListener(ModRaidRewardsProvider::onLootTableLoad);
+        MinecraftForge.EVENT_BUS.addListener(NetherChestLootInjection::onLootTableLoad);
         MinecraftForge.EVENT_BUS.addListener(ModVillagerTrades::onVillagerTrades);
         MinecraftForge.EVENT_BUS.addListener(ModWandererTrades::onWandererTrades);
         MinecraftForge.EVENT_BUS.addListener(PasterDreamMod::onLivingHurt);
