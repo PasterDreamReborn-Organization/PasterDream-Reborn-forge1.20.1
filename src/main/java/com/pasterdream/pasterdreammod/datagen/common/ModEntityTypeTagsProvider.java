@@ -45,6 +45,12 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
             .addTag(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(PasterDreamMod.MOD_ID, "shadow_mob")))
             .add(EntityType.SILVERFISH);
 
+        tag(ModEntityTypeTags.LAMP_SHADOW_BROKEN_NOTE_DROP_EXCLUDED)
+                .add(ModEntities.AARONCOS_LEFT_HAND.get())
+                .add(ModEntities.AARONCOS_RIGHT_HAND.get())
+                .add(ModEntities.SHADOW_TUNE_TOTEM.get())
+                .add(ModEntities.SHADOW_MAGICBALL.get());
+
         tag(ModEntityTypeTags.SPECIAL_ENTITY)
                 .add(EntityType.ITEM)
                 .add(EntityType.EXPERIENCE_ORB)
