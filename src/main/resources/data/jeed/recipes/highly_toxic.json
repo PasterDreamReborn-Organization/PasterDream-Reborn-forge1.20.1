@@ -1,0 +1,12 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "pasterdream:highly_toxic",
+  "providers": [
+    {
+      "item": "pasterdream:toxic_spore_arrow"
+    },
+    {
+      "item": "pasterdream:murakumo_kusanagi"
+    }
+  ]
+}

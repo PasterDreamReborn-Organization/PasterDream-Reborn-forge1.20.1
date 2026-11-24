@@ -882,7 +882,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.melt_dream_crystal_armor", "Melt Dream Protection");
         add("effect.pasterdream.melt_dream_crystal_armor.description", "Obtained when wearing the full Melt Dream Crystal set, reduces Melt-Repair cost by 50%, grants Regeneration II and Dyedream tool enhancement, grants a San Aura of +1.2 when Melt Dream Energy is above 50%, otherwise +0.6.");
         add("effect.pasterdream.dark_watch", "Dark Watch");
+        add("effect.pasterdream.dark_watch.description", "Obtained when wearing the full Shadow Alloy set, increases the damage of Lamp Shadow weapons, grants a counterattack buff when hit, and reduces damage taken from shadow mobs.");
         add("effect.pasterdream.wind_thunder_boon", "Boon of Wind and Thunder");
+        add("effect.pasterdream.wind_thunder_boon.description", "Obtained when wearing the full Fluffy Wind Alloy set, increases bow draw and crossbow reload speed, grants lightning immunity, reduces damage taken by 10% in rain and 20% in thunderstorms, has a chance to deflect projectiles, provides slow falling while holding space at the cost of hunger, and grants additional attribute bonuses in rainy weather.");
         add("tooltip.pasterdream.machine_light_wing.flight", "§7▪ §9Enables flight");
         add("tooltip.pasterdream.machine_light_wing.energy", "§7▪ §4Melt Dream Energy Cost: 1.2/min");
         add("tooltip.pasterdream.angel_wing.flight", "§7▪ §9Grants flight and fall damage immunity");
@@ -1784,7 +1786,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("effect.pasterdream.restrainmove_block", "Movement Restraint");
         add("effect.pasterdream.restrainmove_block.description", "Remove jump boosts and force-disable flying while the effect lasts.");
         add("effect.pasterdream.oppression", "Oppression");
+        add("effect.pasterdream.oppression.description", "Reduces San Aura for the duration.");
         add("effect.pasterdream.shadow_spyon", "Shadow Gaze");
+        add("effect.pasterdream.shadow_spyon.description", "While active, has a chance to trigger shadow intrusion events at night in low-light areas of the Overworld.");
         add("message.pasterdream.shadow_intrude.start_1", "§5You feel a chill, your vision veiled by a layer of black fog");
         add("message.pasterdream.shadow_intrude.start_2", "§5The nearby shadows begin to stir");
         add("message.pasterdream.shadow_intrude.end", "§5The shadows fall silent......");
@@ -2369,6 +2373,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("item.pasterdream.potion_bottle.inferno", "Potion Bottle of Inferno");
         add("item.pasterdream.potion_bottle.cyclone", "Potion Bottle of Cyclone");
         add("effect.pasterdream.highly_toxic", "Highly Toxic");
+        add("effect.pasterdream.highly_toxic.description", "A special poison that also affects undead mobs and deals damage while ignoring invulnerability frames.");
         add("tooltip.pasterdream.potion_bottle.highly_toxic.description","§9After Smashing, release a highly toxic cloud, inflicting Highly Toxic, Slowness, and Weakness buff on all creatures in a 6x6 area.");
         add("tooltip.pasterdream.potion_bottle.lightning.description.1","§9After Smashing, release a dark cloud at the landing spot, and after a short time, randomly strikes lightning 4 times within a 5x5 area.");
         add("tooltip.pasterdream.potion_bottle.lightning.description.2","§7§o--Bottled Lightning");
@@ -2383,9 +2388,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("tooltip.pasterdream.potion_bottle.cyclone.description.2","§9For every 20 max health, the entity gains 1 level of Broken Wing (up to 5), which increases fall damage by 50% per level.");
         add("tooltip.pasterdream.potion_bottle.cyclone.description.3","§7§o--粉骨砕身カジノゥ");
         add("effect.pasterdream.berserk", "Frenzy");
+        add("effect.pasterdream.berserk.description", "Increases attack damage, movement speed, attack speed, and skill damage, and reduces skill and Blink cooldowns.");
         add("effect.pasterdream.frozen", "Flash Freeze");
+        add("effect.pasterdream.frozen.description", "Completely prevents the target from moving or attacking.");
         add("effect.pasterdream.vulnerability", "Vulnerability");
+        add("effect.pasterdream.vulnerability.description", "Increases damage taken by 10% per level.");
         add("effect.pasterdream.broken_wing", "Broken Wing");
+        add("effect.pasterdream.broken_wing.description", "Increases fall damage by 50% per level.");
 
 
         // Shadow Hand Lantern
@@ -3045,11 +3054,15 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModItems.FRACTURED_ANGEL_STATUE.get(), "Fractured Angel Statue");
         add(ModItems.PAPER_PLANE.get(), "Paper Plane");
         add("effect.pasterdream.tailwind", "Tailwind");
+        add("effect.pasterdream.tailwind.description", "Obtained when moving with the wind in the Wind Journey. Increases Blink range and movement speed, and reduces Blink cooldown.");
         add("effect.pasterdream.deadwind", "Deadwind");
+        add("effect.pasterdream.deadwind.description", "Obtained when moving against the wind in the Wind Journey. Decreases Blink range and movement speed, and increases Blink cooldown.");
         add("effect.pasterdream.windproof", "Windproof");
+        add("effect.pasterdream.windproof.description", "Grants immunity to tailwind and deadwind effects for the duration.");
         add("effect.pasterdream.wind_runner", "Wind Runner");
-        add("effect.pasterdream.wind_runner.description", "Obtained by eating the Wind Runner Jelly, allows elytra flight without an elytra while the effect lasts.");
+        add("effect.pasterdream.wind_runner.description", "Obtained by eating the Wind Runner Jelly, allows elytra flight without an elytra while the effect lasts, and sleeping while the effect is active sends you to the Wind Journey world.");
         add("effect.pasterdream.misty_dream", "Misty Dream");
+        add("effect.pasterdream.misty_dream.description", "Obtained by eating the Queer Soup. While active in the Overworld above Y=310, the player is teleported to the Wind Journey world.");
         add("effect.pasterdream.cloud_mist", "Cloud Mist");
         add("tooltip.pasterdream.wind_vane.desc", "§7Detects the current wind direction and the player's angle");
         add("message.pasterdream.wind_vane.angle", "Angle: %s Direction: %s");
