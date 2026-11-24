@@ -37,6 +37,7 @@ textures/block/molten_gold_ore.png
 textures/entities/terrasword_wave.png
 textures/gui/pasterdream_inventory.png
 textures/item/attack_enhance_stone.png
+textures/item/beihairuo_tide_sword.png
 textures/item/black_metal_nugget.png
 textures/item/black_metal_ingot.png
 textures/item/bread_slice.png
@@ -59,6 +60,7 @@ textures/item/glass_cup_of_watermelon_juice.png
 textures/item/hellfire_pickaxe.png
 textures/item/hellfire_sword.png
 textures/item/inferno_sword.png
+textures/item/kusanagi.png
 textures/item/luck_enhance_stone.png
 textures/item/melt_dream_axe.png
 textures/item/melt_dream_hoe.png
@@ -71,6 +73,7 @@ textures/item/molten_gold_nugget.png
 textures/item/molten_gold_pickaxe.png
 textures/item/molten_gold_shovel.png
 textures/item/molten_gold_sword.png
+textures/item/murakumo_kusanagi.png
 textures/item/potion_bottle_of_inferno.png
 textures/item/prophecy_card_balance.png
 textures/item/prophecy_card_chaos.png
@@ -92,6 +95,7 @@ textures/item/shadow_erosion_hoe.png
 textures/item/shadow_erosion_pickaxe.png
 textures/item/shadow_erosion_shovel.png
 textures/item/shadow_sword.png
+textures/item/silver_bell.png
 textures/mob_effect/guard.png
 textures/particle/squeal_wave.png
 textures/item/qym_cat_ears.png
@@ -100,6 +104,7 @@ textures/item/qym_swaying_skirt.png
 textures/item/qym_wind_shirt.png
 textures/item/strawberry_heart.png
 textures/item/terra_blade.png
+textures/item/tide_sword.png
 textures/item/white_sword.png
 ```
 

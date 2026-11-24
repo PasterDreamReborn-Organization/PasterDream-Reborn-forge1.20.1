@@ -12,7 +12,16 @@
   <a href="README.md">简体中文</a>
 </p>
 
-A community rewrite of the original PasterDream mod, rebuilt from scratch on Minecraft Forge 1.20.1.
+A community rewrite of the original PasterDream mod, rebuilt from scratch on Minecraft Forge 1.20.1. The NeoForge 1.21.1 port is complete and lives in its own public repository — see [Version Branches](#version-branches) below.
+
+## Version Branches
+
+| Loader | Minecraft | Status | Repository |
+|--------|-----------|--------|------------|
+| Forge | 1.20.1 | Mainline | This repository ([PasterDream-Reborn-forge1.20.1](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-forge1.20.1)) |
+| NeoForge | 1.21.1 | Port complete, repository public | [PasterDream-Reborn-neoforge](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-neoforge) |
+
+Both repositories share the mod ID `pasterdream`, the package layout, and the directory structure; only the loader and Minecraft version differ. See the NeoForge repository's [porting guide](https://github.com/PasterDreamReborn-Organization/PasterDream-Reborn-neoforge/blob/main/document/reference/移植总纲.md) for code differences, dependencies, and upstream sync rules.
 
 ## Authorization
 

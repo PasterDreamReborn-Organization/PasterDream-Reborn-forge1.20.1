@@ -3,6 +3,9 @@ package com.pasterdream.pasterdreammod.world.fluid;
 import com.pasterdream.pasterdreammod.init.ModBlocks;
 import com.pasterdream.pasterdreammod.init.ModFluids;
 import com.pasterdream.pasterdreammod.init.ModItems;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -50,6 +53,16 @@ public abstract class ShadowLiquidFluid extends ForgeFlowingFluid
         {
             return false;
         }
+    }
+
+    /**
+     * 与水一致：流动的熔融阴影若有两个相邻的同种源方块、且下方为固体，则转化为新的源方块。
+     * 是否生效遵循水的源转换游戏规则（waterSourceConversion），默认开启。
+     */
+    @Override
+    public boolean canConvertToSource(FluidState state, Level level, BlockPos pos)
+    {
+        return level.getGameRules().getBoolean(GameRules.RULE_WATER_SOURCE_CONVERSION);
     }
 
     @Override
