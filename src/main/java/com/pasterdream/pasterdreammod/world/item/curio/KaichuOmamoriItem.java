@@ -100,7 +100,7 @@ public class KaichuOmamoriItem extends Item implements ICurioItem {
 
             double currentEnergy = MeltDreamEnergyHelper.getPlayerMeltDreamEnergy(serverPlayer);
             if (!player.isCreative() && currentEnergy < ENERGY_COST) {
-                player.displayClientMessage(Component.translatable("tooltip.pasterdream.terra_blade.no_energy"), true);
+                player.displayClientMessage(Component.translatable("message.pasterdream.融梦能量不足"), true);
                 return false;
             }
 
