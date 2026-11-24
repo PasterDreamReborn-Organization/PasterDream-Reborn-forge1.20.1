@@ -14,6 +14,9 @@ import java.util.List;
 
 public class ModMobDrops {
 
+    /** 暗影生物额外掉落灯影之下笔记碎片的概率 */
+    private static final float SHADOW_BROKEN_NOTE_DROP_CHANCE = 0.8F;
+
     public static void onLivingDrops(LivingDropsEvent event) {
         if (event.getEntity() instanceof Warden) {
             event.getDrops().add(new ItemEntity(
@@ -47,6 +50,14 @@ public class ModMobDrops {
                     }
                 }
                 event.getDrops().addAll(extraDrops);
+            }
+            // 暗影生物额外掉落 1 个灯影之下笔记碎片（标签排除的实体除外；不受难度掉落倍率影响）
+            if (!event.getEntity().getType().is(ModEntityTypeTags.LAMP_SHADOW_BROKEN_NOTE_DROP_EXCLUDED)
+                    && event.getEntity().getRandom().nextFloat() < SHADOW_BROKEN_NOTE_DROP_CHANCE) {
+                event.getDrops().add(new ItemEntity(
+                        event.getEntity().level(),
+                        event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(),
+                        new ItemStack(ModItems.LAMP_SHADOW_BROKEN_NOTE.get())));
             }
         }
     }
