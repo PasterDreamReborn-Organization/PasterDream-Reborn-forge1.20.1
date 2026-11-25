@@ -2206,9 +2206,9 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("advancements.pasterdream.return_to_owner.title", "物归原主……？");
         add("advancements.pasterdream.return_to_owner.description", "你为什么要这么做？");
         add("advancements.pasterdream.craft_kusanagi.title", "丛林之力");
-        add("advancements.pasterdream.craft_kusanagi.description", "做出草雍，一把蕴含了丛林力量的剑，它饥渴地寻求着亡魂……");
+        add("advancements.pasterdream.craft_kusanagi.description", "做出草薙，一把蕴含了丛林力量的剑，它饥渴地寻求着亡魂……");
         add("advancements.pasterdream.get_murakumo_kusanagi.title", "刀下亡魂");
-        add("advancements.pasterdream.get_murakumo_kusanagi.description", "通过杀戮，让草雍得到进一步进化");
+        add("advancements.pasterdream.get_murakumo_kusanagi.description", "通过杀戮，让草薙得到进一步进化");
 
         add("advancements.pasterdream.adventure.find_desert_fortress.title", "沙漠英灵");
         add("advancements.pasterdream.adventure.find_desert_fortress.description", "发现沙漠遗迹，里面住着一个还没完成遗愿的英灵，或许你应当考虑先杀死附近的敌人......");
