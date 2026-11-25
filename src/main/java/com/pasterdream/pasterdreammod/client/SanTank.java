@@ -88,7 +88,7 @@ public class SanTank
         RenderSystem.disableBlend();
     }
 
-    /** 预设2：紧凑模式，居中于血量与饥饿值之间，缩小比例，仅显示整数。低SAN时数字变红、bar抖动 */
+    /** 预设2：紧凑模式，居中于血量与饥饿值之间，缩小比例，仅显示整数。低SAN时数字变红、bar抖动（数字可随bar抖动） */
     private static void renderPreset2(GuiGraphics guiGraphics, int width, int height, double sanValue, double maxSanValue)
     {
         var player = Minecraft.getInstance().player;
@@ -118,7 +118,8 @@ public class SanTank
 
         String sanString = String.format("%.0f%%", ratio * 100);
         int textX = sx + BAR_WIDTH / 2;
-        int textY = syBase + BAR_HEIGHT / 2 - 4;
+        int textBarY = PasterDreamClientConfig.sanBarPreset2TextShake ? sy : syBase;
+        int textY = textBarY + BAR_HEIGHT / 2 - 4;
         int color = lowSan ? 0xFFFF5555 : 0xFFFFFFFF;
         guiGraphics.drawCenteredString(Minecraft.getInstance().font, sanString, textX + 1, textY, color);
         guiGraphics.drawCenteredString(Minecraft.getInstance().font, sanString, textX, textY, color);

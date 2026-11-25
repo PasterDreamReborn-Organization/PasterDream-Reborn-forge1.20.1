@@ -93,6 +93,10 @@ public class PasterDreamClientConfig {
             .comment("精神值条预设2：创造模式下是否仅在下蹲时显示，默认 true")
             .define("sanBarPreset2SneakShowInCreative", true);
 
+    private static final ForgeConfigSpec.BooleanValue SAN_BAR_PRESET2_TEXT_SHAKE = BUILDER
+            .comment("精神值条预设2：低SAN预警时数值是否随bar一起抖动，默认 true（设为 false 时只有bar抖动，数值固定）")
+            .define("sanBarPreset2TextShake", true);
+
     // === 玩家血条 HUD ===
     private static final ForgeConfigSpec.BooleanValue PASTER_HEALTH_HUD = BUILDER
             .comment("启用帕斯特之梦主题玩家血条（替换原版生命值行），默认 false（需手动开启）")
@@ -159,6 +163,7 @@ public class PasterDreamClientConfig {
     public static double sanBarPreset2Scale;
     public static double sanBarPreset2LowThreshold;
     public static boolean sanBarPreset2SneakShowInCreative;
+    public static boolean sanBarPreset2TextShake;
 
     // === 玩家血条 HUD ===
     public static boolean pasterHealthHud;
@@ -198,6 +203,7 @@ public class PasterDreamClientConfig {
         sanBarPreset2Scale = SAN_BAR_PRESET2_SCALE.get();
         sanBarPreset2LowThreshold = SAN_BAR_PRESET2_LOW_THRESHOLD.get();
         sanBarPreset2SneakShowInCreative = SAN_BAR_PRESET2_SNEAK_SHOW_IN_CREATIVE.get();
+        sanBarPreset2TextShake = SAN_BAR_PRESET2_TEXT_SHAKE.get();
         pasterHealthHud = PASTER_HEALTH_HUD.get();
         pasterHealthHudDecimalPlaces = PASTER_HEALTH_HUD_DECIMAL_PLACES.get();
         lowSanOverlay = LOW_SAN_OVERLAY.get();
