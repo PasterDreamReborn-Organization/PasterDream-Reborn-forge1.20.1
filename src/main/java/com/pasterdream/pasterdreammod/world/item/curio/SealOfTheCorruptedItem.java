@@ -49,12 +49,8 @@ public class SealOfTheCorruptedItem extends Item implements ICurioItem, ISanModi
 
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        if (slotContext.entity() != null) {
-            return CuriosApi.getCuriosInventory(slotContext.entity())
-                    .map(handler -> handler.findFirstCurio(stack.getItem()).isEmpty())
-                    .orElse(true);
-        }
-        return true;
+        // 读档时 Curios 会把槽里那一件重新校验一遍，判重必须放行自身槽位；详见 CurioEquipHelper。
+        return CurioEquipHelper.allowsSingleCopy(slotContext, stack);
     }
 
     @Override
