@@ -14,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
@@ -95,12 +94,8 @@ public class RedDewRingItem extends Item implements ICurioItem {
      */
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        if (slotContext.entity() != null) {
-            return CuriosApi.getCuriosInventory(slotContext.entity()).map(handler ->
-                            handler.findFirstCurio(this).isEmpty())
-                    .orElse(true);
-        }
-        return true;
+        // 读档时 Curios 会把槽里那一件重新校验一遍，判重必须放行自身槽位；详见 CurioEquipHelper。
+        return CurioEquipHelper.allowsSingleCopy(slotContext, stack);
     }
 
     @Override

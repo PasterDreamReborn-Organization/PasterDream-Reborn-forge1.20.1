@@ -28,8 +28,10 @@ description: 新增/修改饰品（Curios）。覆盖 ICurioItem 实现、ModRar
 | `curioTick()` | 每 tick 持续效果 | 检查 `!level.isClientSide()` |
 | `onEquip()` / `onUnequip()` | 装备/卸下一次属性变更 | `AttributeInstance.addPermanentModifier/removeModifier` |
 | `makesPiglinsNeutral()` | 猪灵中立 | 仅覆写，无额外 tooltip |
-| `canEquip()` | 禁止重复装备同类饰品 | `CuriosApi.getCuriosInventory().findFirstCurio()` |
+| `canEquip()` | 禁止重复装备同类饰品 | 直接 `return CurioEquipHelper.allowsSingleCopy(slotContext, stack);`（**不要**自己写 `findFirstCurio().isEmpty()`，见下方警告） |
 | 事件驱动（外部 handler） | 依赖游戏事件（闪避/受击/攻击） | 在 `event/PlayerEvents.java` 或 `CurioPassiveHandler` 订阅 Forge 事件 |
+
+> **`canEquip()` 陷阱（会导致重进存档时饰品掉回物品栏）**：Curios 在 `CurioInventoryCapability.readTag` 里逐槽调用 `isItemValid → canEquip` 重新校验存档里的物品，此时**已装备的那一件自己也会被问一次**。若判重逻辑写成「槽里已有同类 → 拒绝」，就会把它自己判成重复件并 `loseInvalidStack` 弹回背包。统一用 `CurioEquipHelper#allowsSingleCopy`：命中项就是本次校验的槽位（同 identifier + index，或同一个 `ItemStack` 实例）时放行，只拦第二件。
 
 ---
 
