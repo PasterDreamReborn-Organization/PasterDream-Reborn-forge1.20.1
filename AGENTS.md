@@ -47,6 +47,7 @@
 | 数据生成 | `.\gradlew runData` |
 | 客户端测试 | `.\gradlew runClient`（**仅用户执行，Agent 禁止**） |
 | 构建 | `.\gradlew build` |
+| 语言文件校验 | `python tools/check_lang.py`（`.\gradlew check` 也会跑） |
 | 刷新 ID 映射 JSON | `cd tools; python generate_id_mapping.py` |
 
 > 数据生成产物在 `src/generated/`，**不可手动编辑**，必须改 datagen Provider 后重跑 `runData`。

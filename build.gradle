@@ -183,3 +183,16 @@ publishing {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // 使用 UTF-8 字符集进行 Java 编译
 }
+
+// 语言文件校验：有问题的语言文件不允许合并（CI 见 .github/workflows/lang-check.yml）
+tasks.register('checkLang', Exec) {
+    group = 'verification'
+    description = '校验 en_us / zh_cn 语言生成器（编码、行尾、省略号、括号、键重复）'
+    workingDir = project.projectDir
+    def pythonExe = System.getenv('PYTHON') ?: (org.gradle.internal.os.OperatingSystem.current().isWindows() ? 'python' : 'python3')
+    commandLine pythonExe, 'tools/check_lang.py'
+}
+
+tasks.named('check').configure {
+    dependsOn 'checkLang'
+}

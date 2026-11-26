@@ -1,0 +1,25 @@
+name: 语言文件检查
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: lang-check-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lang-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 运行语言文件校验
+        run: python tools/check_lang.py
