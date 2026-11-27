@@ -142,6 +142,10 @@ public class Config
             .comment("玩家首次加入世界时是否发放帕秋莉宝典（需要安装帕秋莉模组才生效），默认 true")
             .define("givePatchouliBookOnFirstJoin", true);
 
+    private static final ForgeConfigSpec.BooleanValue UNLOCK_ALL_PATCHOULI_ENTRIES_IN_CREATIVE = BUILDER
+            .comment("玩家处于创造模式时是否默认解锁《旧梦归引》帕秋莉宝典的全部词条（忽略剧情进度锁），默认 true")
+            .define("unlockAllPatchouliEntriesInCreative", true);
+
     // === 融梦水晶箱 ===
     private static final ForgeConfigSpec.DoubleValue MELT_DREAM_CRYSTAL_CHEST_NORMAL_Y_SPEED = BUILDER
             .comment("融梦水晶箱普通品质物品抛出速度（单位：m/tick），默认 0.375")
@@ -915,6 +919,7 @@ public class Config
 
     // === 帕秋莉宝典 ===
     public static boolean givePatchouliBookOnFirstJoin;
+    public static boolean unlockAllPatchouliEntriesInCreative;
 
     /**
      * 查询指定实体类型是否在罪之预言卡秒杀列表中。
@@ -1175,6 +1180,7 @@ public class Config
         healthpercentguardneed= HEALTH_PERCENT.get();
         resistdamage= RESIST_DAMAGE.get();
         givePatchouliBookOnFirstJoin = GIVE_PATCHOULI_BOOK_ON_FIRST_JOIN.get();
+        unlockAllPatchouliEntriesInCreative = UNLOCK_ALL_PATCHOULI_ENTRIES_IN_CREATIVE.get();
         graveyarddamage = GRAVEYARD_DAMAGE.get();
         conflictMarkRange = CONFLICT_MARK_RANGE.get();
         conflictCardReach = CONFLICT_CARD_REACH.get();
