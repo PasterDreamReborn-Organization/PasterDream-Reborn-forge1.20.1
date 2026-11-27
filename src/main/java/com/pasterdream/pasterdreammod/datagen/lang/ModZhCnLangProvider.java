@@ -2576,7 +2576,7 @@ public class ModZhCnLangProvider extends LanguageProvider {
 
         // 寻梦者笔记
         add("pasterdream.seniors_dream.entry.dream_notes_dyedream_world", "寻梦者笔记");
-        add("pasterdream.seniors_dream.entry.dream_notes_dyedream_world.page0", "你并非第一个进入梦境的寻梦者，在你之前有多位前辈曾踏入梦境之中。在梦中的各个角落，你可以找到他们留下的笔记，有些笔记是他们亲笔写就，也有一些笔记是梦境将他们的所见具现成文。有些笔记只是他们的心事或者碎碎念，但有一些则记载了梦境中更深层的隐秘。$(br)如果是想要更进一步追寻梦境的秘辛的话，或许你应该搜寻一下这些笔记，并好好阅读一下？");
+        add("pasterdream.seniors_dream.entry.dream_notes_dyedream_world.page0", "你并非第一个进入梦境的寻梦者，在你之前有多位前辈曾踏入梦境之中。在梦中的各个角落，你可以找到他们留下的笔记，有些笔记是他们亲笔写就，也有一些笔记是梦境将他们的所见具现成文。有些笔记只是他们的心事或者碎碎念，有些则记载了梦境中更深层的隐秘，有些业已成文，有些已然化作碎片，散落各处。$(br)如果想要更进一步追寻梦境的秘辛的话，或许你应该搜寻一下这些笔记，并好好阅读一下？在危险的梦境中，或许可以从遗迹之中和横行的敌人身上搜刮到笔记的碎片。");
 
         // 染梦世界跃迁石
         add("pasterdream.seniors_dream.entry.dyedream_world_leapstone", "染梦世界跃迁石");
