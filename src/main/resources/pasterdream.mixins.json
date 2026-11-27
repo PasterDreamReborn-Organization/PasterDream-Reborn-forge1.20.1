@@ -51,7 +51,8 @@
     "SituationalMusicMixin",
     "BlockElementMixin",
     "DynamicFluidContainerModelMixin",
-    "MultiPlayerGameModeMixin"
+    "MultiPlayerGameModeMixin",
+    "PatchouliBookEntryMixin"
   ],
   "server": [],
   "minVersion": "0.8"
