@@ -7,6 +7,10 @@
     {
       "type": "patchouli:text",
       "text": "pasterdream.seniors_dream.entry.cook.page0"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "pasterdream.seniors_dream.entry.cook.page1"
     }
   ]
 }

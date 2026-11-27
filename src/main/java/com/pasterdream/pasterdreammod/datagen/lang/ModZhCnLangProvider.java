@@ -2474,13 +2474,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.rest.page0", "休憩是一种可以为玩家逐渐恢复san值的buff效果，每级增加1.2理智光环。$(br)通过在原版的床上躺下、身处娇小琴雨梦玩偶或者营火附近，玩家都可以获得该buff。");
 
         add("pasterdream.seniors_dream.entry.cheer_up", "振奋");
-        add("pasterdream.seniors_dream.entry.cheer_up.page0", "当玩家san值>=90%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间-10%%；$(br)移动速度+0.05；$(br)攻击速度+0.05；$(br)技能冷却时间-10%%。");
+        add("pasterdream.seniors_dream.entry.cheer_up.page0", "当玩家san值>=90%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间-10%%；$(br)移动速度+0.05；$(br)攻击速度+0.05；$(br)战技冷却缩减+10%%。");
 
         add("pasterdream.seniors_dream.entry.lethargy", "不振");
-        add("pasterdream.seniors_dream.entry.lethargy.page0", "当玩家san值<=60%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+50%%；$(br)移动速度-10%%；$(br)攻击速度-0.1；$(br)技能冷却时间+20%%。");
+        add("pasterdream.seniors_dream.entry.lethargy.page0", "当玩家san值<=60%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+50%%；$(br)移动速度-10%%；$(br)攻击速度-0.1；$(br)战技冷却缩减-20%%。");
 
         add("pasterdream.seniors_dream.entry.trance", "恍惚");
-        add("pasterdream.seniors_dream.entry.trance.page0", "当玩家san值<=40%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+100%%；$(br)移动速度-20%%；$(br)攻击速度-0.2，攻击力-1；$(br)技能冷却时间+50%%。");
+        add("pasterdream.seniors_dream.entry.trance.page0", "当玩家san值<=40%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+100%%；$(br)移动速度-20%%；$(br)攻击速度-0.2，攻击力-1；$(br)战技冷却缩减-50%%。");
 
         add("pasterdream.seniors_dream.entry.insane", "疯狂");
         add("pasterdream.seniors_dream.entry.insane.page0", "当玩家san值<=20%%时获得的buff效果，具体效果为：$(br)瞬身术冷却时间+200%%；$(br)移动速度-30%%；$(br)攻击速度-0.4，攻击力-2；$(br)攻击和触及距离-0.2。");
@@ -2488,7 +2488,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("pasterdream.seniors_dream.entry.insane.page2", "当暗影难度处于“简单”及以上等级的时候，疯狂III效果会使玩家持续失去生命值。");
 
         add("pasterdream.seniors_dream.entry.cook", "料理");
-        add("pasterdream.seniors_dream.entry.cook.page0", "通过食用部分本模组内食物，以及有联动的模组食物，可以获得此buff。每级增加1.2理智光环。");
+        add("pasterdream.seniors_dream.entry.cook.page0", "有时候，一些美味的食物，比如培根煎蛋，比如甜点，都能让你开胃，让你想多吃一点食物。食用本模组的部分食物与饮品，以及蘑菇煲、甜菜根汤、兔肉煲等炖汤，都能获得“料理”效果。");
+        add("pasterdream.seniors_dream.entry.cook.page1", "效果生效期间，即使饱腹也能继续进食。饱食度已满时吃下的食物，没能吃进去的饱食度与饱和度会先补足生命值，生命值已满则转为黄心（吸收），食物越能饱腹，补得越多。黄心上限随料理等级提高（I=20 / II=30 / III=40），效果结束或降级都不会清除已获得的黄心（受击时照常消耗）。此外，每级料理还会增加1.2理智光环。");
 
         add("pasterdream.seniors_dream.entry.chaos", "混乱");
         add("pasterdream.seniors_dream.entry.chaos.page0", "部分武器和道具对敌人施加的buff效果，具体效果为：$(br)当玩家持有混乱效果时，玩家视野会发生类似“疯狂”效果下的抖动。$(br)当其他生物获得混乱效果时，它们的朝向会发生随机性的变化，同时被按压在地上，短暂失去行动能力。");
