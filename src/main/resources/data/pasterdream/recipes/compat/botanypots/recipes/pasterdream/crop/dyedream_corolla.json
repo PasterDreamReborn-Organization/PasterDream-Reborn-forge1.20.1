@@ -1,4 +1,5 @@
 {
+  "conditions":[{"type":"forge:mod_loaded","modid":"botanypots"}],
   "type":"botanypots:crop",
   "seed":
   {

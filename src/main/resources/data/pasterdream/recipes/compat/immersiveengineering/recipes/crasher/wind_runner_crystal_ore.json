@@ -1,4 +1,5 @@
 {
+  "conditions":[{"type":"forge:mod_loaded","modid":"immersiveengineering"}],
   "type":"immersiveengineering:crusher",
   "energy":6000,
   "input":

@@ -1,0 +1,25 @@
+name: 配方物品 ID 检查
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: item-id-check-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  item-id-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 运行配方物品 ID 校验
+        run: python tools/check_item_ids.py
