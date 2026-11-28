@@ -196,3 +196,16 @@ tasks.register('checkLang', Exec) {
 tasks.named('check').configure {
     dependsOn 'checkLang'
 }
+
+// 配方物品 ID 校验：minecraft / pasterdream 命名空间的物品必须真实存在（CI 见 .github/workflows/item-id-check.yml）
+tasks.register('checkItemIds', Exec) {
+    group = 'verification'
+    description = '校验静态配方的物品 ID 与 compat 配方的 forge:mod_loaded 条件'
+    workingDir = project.projectDir
+    def pythonExe = System.getenv('PYTHON') ?: (org.gradle.internal.os.OperatingSystem.current().isWindows() ? 'python' : 'python3')
+    commandLine pythonExe, 'tools/check_item_ids.py'
+}
+
+tasks.named('check').configure {
+    dependsOn 'checkItemIds'
+}
